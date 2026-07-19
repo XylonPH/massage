@@ -1,5 +1,5 @@
 Title: Massage Nexus Operator Workspace
-Document Version: 0.20
+Document Version: 0.30
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
 Document Description: Defines the private, permission-aware Operator Workspace used by authorized people to manage one or more establishment profiles, branches, public business information, services, staff relationships, media, booking operations, verification, documents, and analytics without controlling independent community or editorial content.
@@ -69,7 +69,7 @@ One person may hold several permission groups.
 Primary route family:
 
 /workspace/listing/spa
-/workspace/listing/spa/{spa-id}
+/workspace/listing/spa/{establishment_id}
 
 Possible later shortcut:
 
@@ -118,7 +118,7 @@ Only information related to the current establishment should appear.
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/profile
+/workspace/listing/spa/{establishment_id}/profile
 
 Possible sections:
 
@@ -182,7 +182,7 @@ A branch should remain its own establishment record when it has a separate publi
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/location
+/workspace/listing/spa/{establishment_id}/location
 
 Possible fields:
 
@@ -214,7 +214,7 @@ Home-based or restricted-entry establishments may show only limited public locat
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/contact
+/workspace/listing/spa/{establishment_id}/contact
 
 Possible contact items:
 
@@ -249,7 +249,7 @@ Each contact item may have:
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/hour
+/workspace/listing/spa/{establishment_id}/hour
 
 Possible functions:
 
@@ -280,7 +280,7 @@ The workspace should warn about:
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/service
+/workspace/listing/spa/{establishment_id}/service
 
 The establishment menu uses establishment_service records.
 
@@ -323,7 +323,7 @@ The establishment may preserve branded wording while mapping the item to normali
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/price
+/workspace/listing/spa/{establishment_id}/price
 
 Possible price types:
 
@@ -358,7 +358,7 @@ Expired promotional prices must not overwrite the ordinary menu price.
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/therapist
+/workspace/listing/spa/{establishment_id}/therapist
 
 Possible functions:
 
@@ -434,8 +434,8 @@ Permissions should be assigned per establishment or branch.
 
 Possible routes:
 
-/workspace/listing/spa/{spa-id}/facility
-/workspace/listing/spa/{spa-id}/amenity
+/workspace/listing/spa/{establishment_id}/facility
+/workspace/listing/spa/{establishment_id}/amenity
 
 Possible information:
 
@@ -474,7 +474,7 @@ Each item may include:
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/media
+/workspace/listing/spa/{establishment_id}/media
 
 Possible media:
 
@@ -514,7 +514,7 @@ Private staff or internal-operation media must not become public accidentally.
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/response
+/workspace/listing/spa/{establishment_id}/response
 
 Operators may:
 
@@ -557,7 +557,7 @@ Official replies should be clearly identified.
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/booking
+/workspace/listing/spa/{establishment_id}/booking
 
 Possible functions:
 
@@ -609,7 +609,7 @@ Calendar access may differ by staff permission.
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/promo
+/workspace/listing/spa/{establishment_id}/promo
 
 Possible fields:
 
@@ -684,7 +684,7 @@ Announcements should have:
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/verification
+/workspace/listing/spa/{establishment_id}/verification
 
 Possible verification areas:
 
@@ -735,7 +735,7 @@ Document fields may include:
 
 Possible route:
 
-/workspace/listing/spa/{spa-id}/analytics
+/workspace/listing/spa/{establishment_id}/analytics
 
 Possible metrics:
 

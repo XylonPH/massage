@@ -1,39 +1,18 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.30
+Document Version: 0.40
 Date Created: 2026-07-16
-Revision Date: 2026-07-18
-Status: Internal Planning Draft
-
-Related Documents:
-- Massage Nexus - Account Identity Registration and Authentication System v0.10
-- Massage Nexus - Terms of Use Requirements v0.10
-- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
-- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
-- Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
-- Massage Nexus - Analytics Statistics and Measurement System v0.10
-- Massage Nexus - Data Research Provenance and Field Verification System v0.10
-- Massage Nexus - 15 - Language Strategy v0.30
-- Massage Nexus - 20 - Translation System v0.20
-- Massage Nexus - 18 - Site Structure Map v1.70
-- Massage Nexus - 19 - Edit System v0.10
-- Massage Nexus - 20 - Translation System v0.10
-- Massage Nexus - 22 - Admin Workspace v0.10
-- Massage Nexus - 23 - Advertiser and Sponsor Workspace v0.10
-- Massage Nexus - 31 - Booking and Appointment System v1.00
-- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
-- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
-- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
-- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
-- Massage Nexus - 07 - Reputation System v1.70
-- Shared Project Standards v2.60
+Revision Date: 2026-07-19
+Document Description:
+This document defines the general authenticated User Workspace for Massage Nexus and the
+relationship between the shared network account, Massage Nexus membership, personal client
+context, professional contexts, language, security, research, translation, analytics, and
+content-access preferences. It also preserves the consolidated Client Service History,
+analytics, budgeting, data-portability, import, export, and therapist-identity-portability
+direction.
 
 Consolidation Note:
-This v0.20 document incorporates and supersedes:
+This document incorporates and supersedes:
 - Massage Nexus - 35 - Client Service History Analytics and Data Portability v0.10
-
-DOCUMENT DESCRIPTION
---------------------
-This document defines the general authenticated User Workspace for Massage Nexus and the relationship between the shared network account, Massage Nexus membership, personal client context, professional contexts, language, security, research, translation, analytics, and content-access preferences.
 
 Every registered user is considered a client by default. Therapist, establishment operator,
 seller, contributor, advertiser, editor, moderator, and administrator capabilities are
@@ -46,17 +25,6 @@ in a separate planning document.
 The workspace begins at /workspace. It is one permission-aware system rather than several unrelated websites for members, therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators.
 
 A user sees only the areas and actions available to that account and its current context.
-
-
-Version History
----------------
-- v0.30 (2026-07-18): Added shared network account and site-membership boundaries, 18+ Massage
-  Nexus eligibility, verification-before-login, protected username and policy acceptance
-  references, sessions, passkeys, recovery codes, universal and site-specific language
-  settings, NSFW preferences, branded and animated avatar direction, Research Workspace,
-  Translation Workspace, governed analytics, and new routes.
-- v0.20 (2026-07-17): Consolidated client service history, analytics, budgeting, import,
-  export, and user-as-client default.
 
 ================================================================================
 0. SHARED NETWORK ACCOUNT AND MASSAGE NEXUS MEMBERSHIP
@@ -569,6 +537,9 @@ Routes:
 /workspace/saved/product
 /workspace/saved/seller
 /workspace/saved/article
+/workspace/saved/news
+/workspace/saved/campus
+/workspace/saved/comic
 /workspace/saved/review
 /workspace/saved/promo
 /workspace/saved/search
@@ -597,6 +568,11 @@ Routes:
 /workspace/following/user
 /workspace/following/article
 /workspace/following/service
+
+Following relationships and following lists are private by default. A user may follow a public
+record or another user without publicly disclosing that relationship. A later sharing design
+may allow explicit opt-in visibility, but it must not make existing relationships public
+automatically.
 
 Following may generate notifications for:
 

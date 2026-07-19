@@ -1,5 +1,5 @@
 Title: Massage Nexus Therapist Profile Guide
-Document Version: 0.40
+Document Version: 0.50
 Date Created: 2026-07-14
 Revision Date: 2026-07-19
 Status: Internal Planning Reference
@@ -265,6 +265,8 @@ Provider Rank may be Trainee, Junior, Regular, Senior, Specialist, Master, or Vi
 The establishment may submit its title and rank. The therapist may confirm or dispute it. Massage Nexus may moderate misleading titles.
 
 The therapist must actively confirm an affiliation before it is eligible for display on the establishment's public roster; a submitted but unconfirmed affiliation must not appear publicly as though it were active. An active disaffiliation or dispute must immediately remove the therapist from that establishment's public roster and availability pools rather than waiting for a moderation pass. This prevents an establishment from presenting a "ghost roster" of therapists who have left or never confirmed the relationship; see docs/05-directory/spa-profile.txt section 6.
+
+Disaffiliation Booking Workflow: When a therapist disaffiliates from or disputes a relationship with an establishment, any existing pending or confirmed bookings through that establishment must immediately enter a resolution workflow (e.g., reassign to another available therapist at the establishment, cancel the booking, or transition to the therapist's independent practice by mutual agreement of all parties).
 
 A freelance therapist uses an Independent Practice context. Provider Rank is normally not applicable, but service market class, prices, service areas, availability, and booking rules may still be recorded.
 
@@ -575,6 +577,8 @@ The profile may include:
 
 Reviews should preserve the service, professional context, price, location, disclosure, and date when available. A review of one affiliation should not automatically describe every context in which the therapist works.
 
+Context-Specific Ratings: A rating or review earned at one affiliated establishment (e.g., a Standard market class setting) must be clearly attributed to that context. It must not be improperly aggregated into a single universal score that misrepresents the therapist's capability or service level in a different context (e.g., Premium independent practice).
+
 ================================================================================
 12. CREATION, CLAIM, EDITING, AND PERMISSIONS
 ================================================================================
@@ -591,6 +595,8 @@ Claimed Therapist
 - submit evidence relating to service market class;
 - request correction, merge, inactivity, retirement, or removal review;
 - cannot erase the complete public history.
+
+Claim-Lock and Impersonation Prevention: An establishment owner or manager must never be permitted to claim a therapist's profile on their behalf. Profile claims must be authenticated directly against the therapist's individual user account. This prevents establishments from "locking" therapists out of their own professional identity or impersonating them to retain bookings and client relationships.
 
 Authorized Establishment Owner or Manager
 - manage only the relationship to that establishment;

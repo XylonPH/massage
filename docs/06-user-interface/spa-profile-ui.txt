@@ -1,12 +1,12 @@
 Title: Massage Nexus Spa Profile UI
-Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 
 Spa Profile UI Documentation
 =============================
 
-This document records the current interface layout, section placement, and behavior of the public Spa Profile page as implemented at /spa/{slug}. It documents interface direction only: visual layout, section order, and interaction behavior. It does not define data fields, database structure, permissions, or lifecycle rules; those remain in the Spa Profile Guide (docs/05-directory/spa-profile.txt). Where this document and the Spa Profile Guide differ, the Spa Profile Guide is the content authority and this document should be reconciled to it rather than treated as a silent override.
+This document records the current interface layout, section placement, and behavior of the public Spa Profile page as implemented at /spa/{establishment_slug}. It documents interface direction only: visual layout, section order, and interaction behavior. It does not define data fields, database structure, permissions, or lifecycle rules; those remain in the Spa Profile Guide (docs/05-directory/spa-profile.txt). Where this document and the Spa Profile Guide differ, the Spa Profile Guide is the content authority and this document should be reconciled to it rather than treated as a silent override.
 
 Status: this is a first implementation-based draft (planning version), not yet a thoroughly reviewed interface specification. It is written from the built page so the interface has a durable record, and remains open to revision.
 

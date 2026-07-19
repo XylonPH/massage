@@ -1,22 +1,8 @@
 Title: Massage Nexus Language and Market Localization Strategy
-Document Version: 0.50
+Document Version: 0.60
 Date Created: 2026-07-10
 Revision Date: 2026-07-19
-Status: Internal Planning Reference
-
-Related Documents:
-- Massage Nexus - 02 - AI-Assisted Development Workflow v1.10
-- Massage Nexus - 03 - Features v2.40
-- Massage Nexus - 18 - Site Structure Map v1.90
-- Massage Nexus - 20 - Translation System v0.20
-- Massage Nexus - 21 - User Workspace v0.30
-- Massage Nexus - Terms of Use Requirements v0.10
-- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
-- Massage Nexus - Data Research Provenance and Field Verification System v0.10
-- Massage Nexus - Analytics Statistics and Measurement System v0.10
-
-DOCUMENT DESCRIPTION
---------------------
+Document Description:
 This document defines the language, locale, content-style, routing, fallback, market-priority,
 quality, and rollout strategy for Massage Nexus.
 
@@ -25,18 +11,6 @@ considers internet-addressable audience, massage and spa market relevance, likel
 users need discovery and booking information, availability of useful provider data, strategic
 proximity to the Philippine starting market, translation and moderation capacity, and the
 ability to maintain the language after launch.
-
-Version History
----------------
-- v0.50 (2026-07-19): Updated all language and locale codes to use the standard 3-letter ISO codes (e.g., 'eng' for English, 'fil' for Filipino, 'spa' for Spanish, 'jpn' for Japanese).
-- v0.40 (2026-07-19): Simplified Philippine market language configuration to only use standard Filipino (3-letter ISO code 'fil'), deprecating Tagalog (tl), Taglish styles, and removing regional languages (Cebuano, Hiligaynon) to eliminate linguistic confusion.
-- v0.30 (2026-07-18): Reframed language priority around online and Massage Nexus market
-  relevance; established Filipino with Taglish as a style/register; added Indonesian,
-  Brazilian Portuguese, Japanese, Thai, Vietnamese, Chinese script variants, French, German,
-  Arabic, and later market languages; added phased publication standards, completeness
-  measures, on-demand user-content translation, and market-data readiness.
-- v0.20 (2026-07-16): Established the earlier English, Taglish, Spanish, Korean, and Cebuano
-  working model and language-subdomain direction.
 
 ================================================================================
 1. LANGUAGE, LOCALE, AND STYLE ARE DIFFERENT
@@ -50,12 +24,12 @@ A language plus script, region, formatting, or jurisdiction where needed.
 
 Examples:
 - fil;
-- id-ID;
-- pt-BR;
-- ja-JP;
-- ko-KR;
-- zh-Hans;
-- zh-Hant.
+- ind-ID;
+- por-BR;
+- jpn-JP;
+- kor-KR;
+- zho-Hans;
+- zho-Hant.
 
 Style or register:
 How the language is written.
@@ -254,12 +228,9 @@ fra.massagenexus.com
 deu.massagenexus.com
 ara.massagenexus.com
 
-Do not use:
-spa.massagenexus.com for Spanish.
-
-Keep:
-/spa
-reserved for spa and establishment routes.
+The spa.massagenexus.com host identifies Spanish by its three-letter ISO language code. It does
+not conflict with the /spa path used for spa and establishment routes because the host and path
+are different URL components.
 
 The exact list of publicly activated subdomains depends on translation and market readiness.
 Inactive planned aliases may be reserved without publishing incomplete localized sites.

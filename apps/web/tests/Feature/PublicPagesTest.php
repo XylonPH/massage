@@ -17,10 +17,18 @@ class PublicPagesTest extends TestCase
         $response->assertSee(__('home.browse_by_type'));
         $response->assertSee(__('home.latest_articles'));
         $response->assertSee(__('footer.compass_guide'));
+        $response->assertSee('/directory/area', false);
+        $response->assertSee('/directory/type-spa', false);
+        $response->assertDontSee('/browse/', false);
     }
 
     public function test_spa_profile_renders_for_known_sample_slug(): void
     {
+        $this->assertSame(
+            url('/spa/the-resting-leaf'),
+            route('spa.show', ['establishment_slug' => 'the-resting-leaf']),
+        );
+
         $response = $this->get('/spa/the-resting-leaf');
 
         $response->assertStatus(200);
@@ -36,7 +44,7 @@ class PublicPagesTest extends TestCase
 
     public function test_planned_sections_render_coming_soon_pages(): void
     {
-        foreach (['/directory', '/article', '/campus', '/promo'] as $path) {
+        foreach (['/directory', '/directory/area', '/directory/type-spa', '/article', '/campus', '/promo'] as $path) {
             $response = $this->get($path);
 
             $response->assertStatus(200);
@@ -67,7 +75,7 @@ class PublicPagesTest extends TestCase
     {
         $this->get('/legal/terms')->assertStatus(200)->assertSee(__('auth.terms_of_use'));
         $this->get('/legal/privacy')->assertStatus(200)->assertSee(__('auth.privacy_notice'));
-        $this->get('/legal/cookies')->assertStatus(200)->assertSee(__('cookies.page_title'));
+        $this->get('/legal/cookie')->assertStatus(200)->assertSee(__('cookies.page_title'));
     }
 
     public function test_forgot_password_page_renders(): void

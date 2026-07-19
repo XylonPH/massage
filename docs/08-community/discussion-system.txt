@@ -1,8 +1,7 @@
 Title: Massage Nexus Discussion System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-16
-Revision Date: 2026-07-16
-Status: Internal Planning Draft
+Revision Date: 2026-07-19
 
 Related Documents:
 - Massage Nexus - 03 - Features v1.90
@@ -121,7 +120,7 @@ Possible public routes:
 Possible profile-linked routes:
 
 /service/{service-slug}/discussion
-/spa/{spa-slug}/discussion
+/spa/{establishment_slug}/discussion
 /therapist/{therapist-slug}/discussion
 /product/{product-slug}/discussion
 /article/{article-slug}/discussion

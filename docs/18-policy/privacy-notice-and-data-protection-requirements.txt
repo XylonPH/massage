@@ -1,7 +1,7 @@
 Title: Massage Nexus Privacy Notice and Data Protection Requirements
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Status: Internal Privacy Requirements Draft
 Publication Status: Not approved for public use
 Authority: Planning reference pending final data inventory, controller details, retention schedule, and qualified review
@@ -343,6 +343,7 @@ Private by default includes:
 - active sessions;
 - precise location;
 - saved items;
+- followed items and following relationships;
 - most history;
 - booking details;
 - intake;

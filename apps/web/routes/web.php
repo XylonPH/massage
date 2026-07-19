@@ -12,16 +12,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/spa/{slug}', [SpaProfileController::class, 'show'])->name('spa.show');
+Route::get('/spa/{establishment_slug}', [SpaProfileController::class, 'show'])->name('spa.show');
 
 Route::get('/legal/terms', [LegalController::class, 'terms'])->name('legal.terms');
 Route::get('/legal/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
-Route::get('/legal/cookies', [LegalController::class, 'cookies'])->name('legal.cookies');
+Route::get('/legal/cookie', [LegalController::class, 'cookies'])->name('legal.cookies');
 
 // Planned public sections that are not built yet render a shared
 // coming-soon page so header navigation never leads to a 404.
+Route::view('/directory/{path?}', 'coming-soon', ['sectionKey' => 'navigation.directory'])
+    ->where('path', '.*')
+    ->name('directory.index');
+
 foreach ([
-    'directory' => 'navigation.directory',
     'article' => 'navigation.articles',
     'campus' => 'navigation.campus',
     'promo' => 'navigation.promos',

@@ -1,20 +1,20 @@
-Massage Nexus - Branded Portal
-Document Version: 0.10
+Title: Massage Nexus Branded Portal
+Document Version: 0.20
 Date Created: 2026-07-14
-Revision Date: 2026-07-14
-Status: Future-Scope Concept
-Related Documents:
-- Massage Nexus - Site Structure Map v0.60
-- Massage Nexus - Massage Campus v0.10
-- Massage Nexus - Spa Classification v1.10
+Revision Date: 2026-07-19
+Document Description:
+This document records the direction for Branded Portal, a future Massage Nexus capability that
+may allow spas, therapists, schools, training institutions, and other approved organizations to
+present a customized public website while continuing to use Massage Nexus data, accounts,
+booking, learning, content, and management systems.
 
-DOCUMENT PURPOSE
-----------------
-This document records the early direction for Branded Portal, a future Massage Nexus capability that may allow spas, therapists, schools, training institutions, and other approved organizations to present a customized public website while continuing to use Massage Nexus data, accounts, booking, learning, content, and management systems.
+The concept may support platform-hosted tenant subdomains on a separate dedicated portal
+domain, customer-owned custom domains, and selected white-label presentation. The dedicated
+portal domain has not yet been selected or registered. Tenant portals will not use subdomains
+of massagenexus.com.
 
-The concept may support Massage Nexus-hosted subdomains, customer-owned custom domains, and selected white-label presentation.
-
-This is not an immediate MVP commitment, final architecture, pricing plan, domain policy, database design, or legal agreement.
+This document does not commit a release date, final architecture, pricing plan, domain policy,
+database design, or legal agreement.
 
 ================================================================================
 1. CONCEPT
@@ -26,8 +26,7 @@ The portal may look primarily like the spa, therapist, school, or institution's 
 
 Examples:
 
-therestingleaf.massagenexus.com
-example-spa.massagenexus.com
+a tenant subdomain on the future dedicated portal domain
 learn.example-school.com
 www.example-spa.com
 
@@ -54,15 +53,15 @@ Branded Portal
 
 The tenant-controlled public presentation generated through Massage Nexus.
 
-Tenant Subdomain
+Platform-Hosted Tenant Subdomain
 
-A Massage Nexus-hosted subdomain assigned to one portal, such as:
-
-example-spa.massagenexus.com
+A subdomain assigned to one portal on the future dedicated portal service domain. The service
+domain name remains undecided and must not be represented as a massagenexus.com subdomain.
 
 Custom Domain
 
-A domain or subdomain owned or controlled by the tenant and connected to the Massage Nexus-hosted portal, such as:
+A domain or subdomain owned or controlled by the tenant and connected to the platform-hosted
+portal, such as:
 
 www.example-spa.com
 booking.example-spa.com
@@ -114,7 +113,7 @@ Level 1 — Standard Massage Nexus Profile
 - standard profile layout;
 - no separate tenant domain.
 
-Level 2 — Branded Massage Nexus Subdomain
+Level 2 — Branded Portal Subdomain
 
 - tenant name and logo;
 - selected theme controls;
@@ -288,13 +287,12 @@ The Massage Nexus theme system may provide a technical foundation, but tenant th
 8. DOMAIN MODELS
 ================================================================================
 
-Massage Nexus Subdomain
+Dedicated Portal Service Subdomain
 
-A tenant may receive a subdomain such as:
+A tenant may receive a subdomain on a separate portal service domain. The service domain name
+has not yet been selected or registered. Tenant subdomains must not use massagenexus.com.
 
-tenant-slug.massagenexus.com
-
-Reserved platform and language subdomains cannot be assigned to tenants.
+Reserved service and security-sensitive subdomain labels cannot be assigned to tenants.
 
 Possible reserved examples include:
 
@@ -306,7 +304,6 @@ Possible reserved examples include:
 - app;
 - mail;
 - support;
-- language codes and approved language labels;
 - security-sensitive system words.
 
 Custom Domain
@@ -370,7 +367,7 @@ Every incoming portal request must resolve to the correct tenant.
 
 Possible routing inputs include:
 
-- Massage Nexus tenant subdomain;
+- platform-hosted tenant subdomain on the dedicated portal service domain;
 - verified custom domain;
 - domain alias;
 - language or regional host;
@@ -588,7 +585,7 @@ Massage Nexus may need platform-level analytics that tenants cannot alter.
 Potential commercial items include:
 
 - monthly or annual portal plan;
-- branded subdomain;
+- platform-hosted tenant subdomain;
 - custom-domain connection;
 - white-label level;
 - additional staff seats;
@@ -656,7 +653,9 @@ It introduces:
 - support;
 - portal lifecycle management.
 
-It should not be included in the first Massage Nexus MVP.
+It should be scheduled only after its platform, security, multitenancy, domain, billing, and
+operational prerequisites are sufficiently mature. This is a dependency decision, not a rule
+that planning stops at one product version.
 
 The recommended order is:
 
@@ -664,7 +663,7 @@ The recommended order is:
 2. shared workspace and permissions;
 3. reusable theme and page components;
 4. booking or learning functions where approved;
-5. branded subdomain pilot;
+5. dedicated portal-domain subdomain pilot;
 6. custom-domain pilot;
 7. white-label offering only after operations and support are mature.
 
@@ -690,7 +689,7 @@ It is not:
 Each real establishment retains its own classification regardless of whether it uses:
 
 - only a Massage Nexus profile;
-- a branded subdomain;
+- a platform-hosted tenant subdomain;
 - a custom domain;
 - a white-label portal.
 
@@ -705,8 +704,9 @@ The following remain open:
 - final tenant entity model;
 - supported tenant types at launch;
 - domain architecture;
-- wildcard subdomain policy;
-- reserved subdomain list;
+- dedicated portal service domain selection and registration;
+- wildcard subdomain policy for the dedicated portal service domain;
+- reserved portal subdomain list;
 - custom-domain verification method;
 - TLS certificate provider and lifecycle;
 - tenant routing;
@@ -731,8 +731,10 @@ The following remain open:
 
 CURRENT DECISION SUMMARY
 ------------------------
-- Branded Portal is a future multitenant website capability, not an immediate MVP feature.
-- It may support Massage Nexus profiles, tenant subdomains, custom domains, and later white-label presentation.
+- Branded Portal is a future multitenant website capability whose release depends on platform,
+  security, domain, billing, and operational readiness.
+- It may support Massage Nexus profiles, tenant subdomains on a separate dedicated portal domain, custom domains, and later white-label presentation.
+- Tenant portals will not use subdomains of massagenexus.com; the dedicated portal domain remains undecided.
 - The public tenant portal and the unified Massage Nexus workspace remain separate presentation surfaces.
 - The portal should reuse shared Massage Nexus data rather than create an unrelated duplicate system.
 - Custom branding must not change classification, verification, rating, review, or credential facts.

@@ -104,7 +104,7 @@
                 <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
                     @foreach ($featuredSpas as $spa)
                         <article class="group min-w-0 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-                            <a href="{{ route('spa.show', $spa['slug']) }}" class="block">
+                            <a href="{{ route('spa.show', ['establishment_slug' => $spa['slug']]) }}" class="block">
                                 <div class="relative flex h-28 items-center justify-center bg-gradient-to-br {{ $spa['gradient'] }}">
                                     <x-pictogram :name="$spa['icon']" class="size-11 text-white/60 transition group-hover:scale-110" />
                                     <div class="absolute left-2.5 top-2.5 flex gap-1">
@@ -165,17 +165,17 @@
             {{-- Browse by Area / Massage Type --}}
             <div class="grid gap-8 md:grid-cols-2">
                 <section aria-labelledby="browse-area">
-                    <x-section-heading id="browse-area" :title="__('home.browse_by_area')" :href="url('/browse/area')" />
+                    <x-section-heading id="browse-area" :title="__('home.browse_by_area')" :href="url('/directory/area')" />
                     <ul class="flex flex-wrap gap-2">
                         @foreach ($areas as $area)
                             <li>
-                                <a href="{{ url('/browse/area/'.\Illuminate\Support\Str::slug($area)) }}" class="inline-block rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
+                                <a href="{{ url('/directory/area/'.\Illuminate\Support\Str::slug($area)) }}" class="inline-block rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
                                     {{ $area }}
                                 </a>
                             </li>
                         @endforeach
                         <li>
-                            <a href="{{ url('/browse/area') }}" class="inline-flex items-center gap-1 rounded-full bg-ink-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-ink-800">
+                            <a href="{{ url('/directory/area') }}" class="inline-flex items-center gap-1 rounded-full bg-ink-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-ink-800">
                                 {{ __('home.more_areas') }}
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
                             </a>
@@ -184,11 +184,11 @@
                 </section>
 
                 <section aria-labelledby="browse-type">
-                    <x-section-heading id="browse-type" :title="__('home.browse_by_type')" :href="url('/browse/type-spa')" accent="leaf" />
+                    <x-section-heading id="browse-type" :title="__('home.browse_by_type')" :href="url('/directory/type-spa')" accent="leaf" />
                     <ul class="grid grid-cols-4 gap-2.5">
                         @foreach ($massageTypes as $type)
                             <li>
-                                <a href="{{ url('/browse/type-spa/'.\Illuminate\Support\Str::slug($type['name'])) }}" class="group flex flex-col items-center gap-1.5 rounded-xl border border-ink-100 bg-white px-2 py-3 text-center shadow-sm transition hover:border-leaf-300 hover:bg-leaf-50">
+                                <a href="{{ url('/directory/type-spa/'.\Illuminate\Support\Str::slug($type['name'])) }}" class="group flex flex-col items-center gap-1.5 rounded-xl border border-ink-100 bg-white px-2 py-3 text-center shadow-sm transition hover:border-leaf-300 hover:bg-leaf-50">
                                     <x-pictogram :name="$type['icon']" class="size-6 text-ink-500 transition group-hover:text-leaf-600" />
                                     <span class="text-xs font-semibold text-ink-700 group-hover:text-leaf-800">{{ $type['name'] }}</span>
                                 </a>
@@ -288,7 +288,7 @@
                     <ol class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
                         @foreach ($trendingSpas as $item)
                             <li>
-                                <a href="{{ route('spa.show', $item['slug']) }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50">
+                                <a href="{{ route('spa.show', ['establishment_slug' => $item['slug']]) }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50">
                                     <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-ember-50 text-sm font-black text-ember-600">{{ $item['rank'] }}</span>
                                     <span class="min-w-0 flex-1">
                                         <span class="block truncate text-sm font-bold text-ink-950">{{ $item['name'] }}</span>
@@ -403,7 +403,7 @@
                     <span class="rounded-full bg-ember-50 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-ember-600">{{ __('common.sponsored') }}</span>
                 </div>
                 <div class="p-4">
-                    <a href="{{ route('spa.show', 'the-resting-leaf') }}" class="group block">
+                    <a href="{{ route('spa.show', ['establishment_slug' => 'the-resting-leaf']) }}" class="group block">
                         <div class="relative flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-leaf-700 via-leaf-900 to-ink-950">
                             <x-pictogram name="leaf" class="size-12 text-white/60 transition group-hover:scale-110" />
                             <span class="absolute left-3 top-3 rounded-full bg-ember-500 px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">{{ __('common.premium') }}</span>
@@ -417,7 +417,7 @@
                     </div>
                     <p class="mt-1 text-sm text-ink-500">Mandaluyong City, Metro Manila</p>
                     <p class="mt-1 text-xs text-ink-500"><span class="font-bold text-ember-600">{{ __('home.signature') }}:</span> Relaxation, Aromatherapy, Hot Stone</p>
-                    <a href="{{ route('spa.show', 'the-resting-leaf') }}" class="mt-4 block rounded-xl border border-ember-300 px-4 py-2 text-center text-sm font-bold text-ember-600 transition hover:bg-ember-50">
+                    <a href="{{ route('spa.show', ['establishment_slug' => 'the-resting-leaf']) }}" class="mt-4 block rounded-xl border border-ember-300 px-4 py-2 text-center text-sm font-bold text-ember-600 transition hover:bg-ember-50">
                         {{ __('common.view_profile') }}
                     </a>
                 </div>

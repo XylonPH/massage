@@ -4,9 +4,9 @@ Massage Nexus Rating System
 Field            | Value
 -----------------+----------------------------
 Title            | Massage Nexus Rating System
-Document Version | 1.10
+Document Version | 1.20
 Date Created     | 2026-07-09
-Revision Date    | 2026-07-09
+Revision Date    | 2026-07-19
 
 Document Description
 --------------------
@@ -269,12 +269,20 @@ However, their ratings should be clearly treated as connected or self-interested
 Actor and Connection Weights
 ----------------------------
 
-Working starting weights:
+The scoring weight accounts for both the actor's platform role ($A_i$) and their connection/relationship ($K_i$) to the target. These weights are multiplied: $w_i = A_i \times K_i \times \dots$
 
-Actor / Relationship                           | Weight
+Platform Role Weight ($A_i$):
+
+Role                                           | Weight
 -----------------------------------------------+-------
 Editorial rating / Review Correspondent rating | 2.00
 Normal registered user                         | 1.00
+
+Relationship Connection Modifier ($K_i$):
+
+Relationship                                   | Weight
+-----------------------------------------------+-------
+Unconnected user                               | 1.00
 Connected staff                                | 0.15
 Owner / self-rating                            | 0.05
 
@@ -459,6 +467,8 @@ Within the same 83-day cycle, a user may have:
 
 The system should combine these into one user-period rating before the target’s public XCES is computed.
 
+To combine them, the user-period rating takes the score and the source weight ($S_i$) of the highest-priority source that the user submitted during that 83-day cycle. Lower-priority ratings are archived for audit logs but excluded from active XCES calculations.
+
 Priority Within a User-Period
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -554,6 +564,12 @@ Recommended public display:
 Code block (text):
     8.3 / 10
     Based on 27 ratings
+
+Display Precision Rule
+~~~~~~~~~~~~~~~~~~~~~~
+
+- Public display score: Display rounded to exactly one decimal place (e.g., 8.3 / 10).
+- Internal score calculation: Store and compute ratings with full floating-point precision (or at least two decimal places) to preserve accurate ranking and prevent ranking ties.
 
 Rating Summaries and System Performance
 ---------------------------------------
@@ -837,6 +853,8 @@ Code block (text):
     criterion_alignment = max(0, 1 - (difference / 4))
 
 Then average all criterion alignments.
+
+Only criteria-based ratings are eligible for alignment scoring. Simple 1-to-10 ratings are completely excluded from alignment calculations.
 
 Example:
 

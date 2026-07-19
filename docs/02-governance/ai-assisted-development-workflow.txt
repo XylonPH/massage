@@ -1,7 +1,7 @@
 Title: Massage Nexus AI-Assisted Development and Runtime AI Workflow
-Document Version: 1.30
+Document Version: 1.40
 Date Created: 2026-07-16
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Document Description: Defines how AI assists Massage Nexus planning, documentation, coding, testing, research, translation, moderation, content, analytics, and runtime features while limiting context, avoiding generic assumptions, preserving accepted decisions, and producing project-specific results that are complete enough to reduce repeated chat iterations.
 
 Related Documents:
@@ -235,6 +235,10 @@ AI Chat Handoff:
 
 AI must not treat casual scratchpad wording as a final decision.
 
+Implementation Artifacts:
+- Formal planning artifacts (e.g., implementation plans) must only be generated when explicitly requested or when a change is complex and high-risk enough to require explicit user approval before execution.
+- AI must not generate unsolicited formal implementation plans for simple, isolated, or one-off tasks to avoid bureaucratic overhead.
+
 ================================================================================
 8. CONTEXT SELECTION
 ================================================================================
@@ -383,7 +387,8 @@ During development:
 1. run the smallest relevant test;
 2. run the affected capability suite;
 3. run relevant static analysis, formatting, or lint checks;
-4. run the complete suite at a checkpoint and in CI.
+4. run the complete suite at a checkpoint and in CI;
+5. manually verify important user-facing visual or interactive behavior (e.g., layouts, custom error pages) when automated tests are insufficient.
 
 Do not place enormous successful test output into AI context.
 
@@ -486,6 +491,8 @@ Before modification:
 - read only relevant specifications;
 - inspect current code and tests;
 - identify data, security, privacy, localization, and route effects;
+- assess whether database schema or data changes are additive or destructive;
+- request explicit authorization before executing destructive database or schema changes;
 - verify the task is not already implemented;
 - state the narrow plan.
 
@@ -497,6 +504,7 @@ During modification:
 - do not weaken authorization;
 - do not install unnecessary packages;
 - do not expose internal technology publicly;
+- do not use generic placeholders (e.g., `// TODO`) instead of implementing actual logic unless drafting an exploratory document;
 - use synthetic test data;
 - keep changes recoverable.
 
@@ -585,6 +593,10 @@ Do not publish AI-only translations of:
 - serious moderation notices.
 
 Discussions and comments are normally translated on request and cached.
+
+Language Codes:
+- AI translation, content generation, and localization workflows must exclusively use 3-letter ISO language codes (e.g., eng, spa, ceb, fil, jpn).
+- Do not default to 2-letter codes or generic regional names for internal keys, routing, or file structures.
 
 ================================================================================
 19. RESEARCH AI

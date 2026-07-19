@@ -1,29 +1,17 @@
-Massage Nexus - Site Structure Map
-Document Version: 1.90
+Title: Massage Nexus Site Structure Map
+Document Version: 2.10
 Date Created: 2026-07-10
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 
 Document Description:
 This document maps the public website structure, profile page areas, content destinations, user-facing paths, unified workspace areas, system-facing routes, reserved route keywords, future Massage Campus areas, future Branded Portal entry points, and the accepted Booking and Appointment System surfaces for Massage Nexus. It is a site structure map, not a visible navigation menu, database schema, implementation schedule, or SEO XML sitemap.
 
-Related Documents:
-- Massage Nexus - 15 - Language Strategy v0.30
-- Massage Nexus - 20 - Translation System v0.20
-- Massage Nexus - Account Identity Registration and Authentication System v0.10
-- Massage Nexus - Terms of Use Requirements v0.10
-- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
-- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
-- Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
-- Massage Nexus - Analytics Statistics and Measurement System v0.10
-- Massage Nexus - Data Research Provenance and Field Verification System v0.10
-- Massage Nexus - 08 - Spa Profile v0.30
-- Massage Nexus - 10 - Therapist Profile v0.30
-- Massage Nexus - 21 - User Workspace v0.20
-- Massage Nexus - 31 - Booking and Appointment System v1.00
-- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
-- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
-- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
-- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
+Document Relationships:
+This map is a route inventory across the project and therefore does not attempt to list every
+related document. Each route family is governed by the corresponding capability, workspace,
+interface, policy, or platform document in docs. Where this map and a governing capability
+document differ on behavior, the governing capability document controls and this map must be
+synchronized.
 
 ================================================================================
 0. ROUTE CONVENTIONS
@@ -49,48 +37,52 @@ Default language if no language setting exists:
 English
 
 Public language subdomain model:
-en.massagenexus.com
+eng.massagenexus.com
 fil.massagenexus.com
-taglish.massagenexus.com
-ceb.massagenexus.com
-hil.massagenexus.com
-id.massagenexus.com
-es.massagenexus.com
-pt-br.massagenexus.com
-ja.massagenexus.com
-th.massagenexus.com
-vi.massagenexus.com
-ko.massagenexus.com
-zh-hant.massagenexus.com
-zh-hans.massagenexus.com
-fr.massagenexus.com
-de.massagenexus.com
-ar.massagenexus.com
+ind.massagenexus.com
+spa.massagenexus.com
+por.massagenexus.com
+jpn.massagenexus.com
+tha.massagenexus.com
+vie.massagenexus.com
+kor.massagenexus.com
+zho-hant.massagenexus.com
+zho-hans.massagenexus.com
+fra.massagenexus.com
+deu.massagenexus.com
+ara.massagenexus.com
 
 Language notes:
 - English remains default.
 - Filipino is the primary local language.
-- taglish is a Filipino presentation alias or style, not a separate canonical language record.
-- public aliases are activated only when the relevant language and market are ready.
-- Cebuano and Hiligaynon remain separate languages.
+- Public language identifiers use three-letter ISO language codes, with a script suffix where
+  required.
+- Taglish, Tagalog, Cebuano, and Hiligaynon are not separate public language hosts under the
+  current accepted Philippine language model.
+- Public language hosts are activated only when the relevant language and market are ready.
 
 Public language subdomain route examples:
-en.massagenexus.com/article/falling-asleep-during-a-massage
-taglish.massagenexus.com/article/falling-asleep-during-a-massage
-es.massagenexus.com/article/falling-asleep-during-a-massage
-ko.massagenexus.com/article/falling-asleep-during-a-massage
-ceb.massagenexus.com/article/falling-asleep-during-a-massage
+eng.massagenexus.com/article/falling-asleep-during-a-massage
+fil.massagenexus.com/article/falling-asleep-during-a-massage
+spa.massagenexus.com/article/falling-asleep-during-a-massage
+kor.massagenexus.com/article/falling-asleep-during-a-massage
+jpn.massagenexus.com/article/falling-asleep-during-a-massage
 
 Do not use first-level language prefixes:
-/en
-/taglish
-/es
-/ko
-/ceb
-/tl
+/eng
 /fil
-/hil
-/war
+/ind
+/spa
+/por
+/jpn
+/tha
+/vie
+/kor
+/zho-hant
+/zho-hans
+/fra
+/deu
+/ara
 
 URL word style:
 lowercase
@@ -98,7 +90,7 @@ dash-separated
 singular first-level keywords
 
 Entity route style:
-/spa/{spa-slug}
+/spa/{establishment_slug}
 /therapist/{therapist-slug}
 /product/{product-slug}
 /seller/{seller-slug}
@@ -109,9 +101,9 @@ Entity route style:
 /comic/{comic-slug}
 /room/{room-slug}
 
-Browse route style:
-/browse/{browse-group}
-/browse/{browse-group}/{browse-slug}
+Directory discovery route style:
+/directory/{directory-group}
+/directory/{directory-group}/{directory-slug}
 
 Workspace route style:
 Every registered user is a client by default in Personal context.
@@ -135,10 +127,10 @@ API route options:
 api.massagenexus.com
 
 Future branded portal host model:
-{portal-slug}.massagenexus.com
+tenant subdomain on a separate portal domain that has not yet been selected or registered
 verified custom domain mapped to a Massage Nexus tenant portal
 
-Reserved system, platform, and language subdomains cannot be assigned as tenant portal subdomains.
+Massage Nexus tenant portals must not use tenant subdomains under massagenexus.com.
 
 A branded portal does not require a public first-level /portal route. Portal administration belongs under /workspace/portal.
 
@@ -147,7 +139,6 @@ A branded portal does not require a public first-level /portal route. Portal adm
 ================================================================================
 
 /
-/browse
 /search
 /directory
 /map
@@ -178,7 +169,6 @@ A branded portal does not require a public first-level /portal route. Portal adm
 /help
 /contact
 /legal
-/policy
 /workspace
 /api
 
@@ -188,7 +178,6 @@ A branded portal does not require a public first-level /portal route. Portal adm
 
 massagenexus.com
     /
-    /browse
     /search
     /directory
     /map
@@ -217,16 +206,14 @@ massagenexus.com
     /help
     /contact
     /legal
-    /policy
     /workspace
     /api
 
 www.massagenexus.com
     /
 
-en.massagenexus.com
+{language_code}.massagenexus.com
     /
-    /browse
     /search
     /directory
     /spa
@@ -243,91 +230,25 @@ en.massagenexus.com
     /about
     /help
     /legal
-    /policy
 
-taglish.massagenexus.com
-    /
-    /browse
-    /search
-    /directory
-    /spa
-    /therapist
-    /service
-    /product
-    /article
-    /news
-    /campus
-    /comic
-    /room
-    /review
-    /user
-    /about
-    /help
-    /legal
-    /policy
+Planned language_code values:
+    eng
+    fil
+    ind
+    spa
+    por
+    jpn
+    tha
+    vie
+    kor
+    zho-hant
+    zho-hans
+    fra
+    deu
+    ara
 
-es.massagenexus.com
-    /
-    /browse
-    /search
-    /directory
-    /spa
-    /therapist
-    /service
-    /product
-    /article
-    /news
-    /campus
-    /comic
-    /room
-    /review
-    /user
-    /about
-    /help
-    /legal
-    /policy
-
-ko.massagenexus.com
-    /
-    /browse
-    /search
-    /directory
-    /spa
-    /therapist
-    /service
-    /product
-    /article
-    /news
-    /campus
-    /comic
-    /room
-    /review
-    /user
-    /about
-    /help
-    /legal
-    /policy
-
-ceb.massagenexus.com
-    /
-    /browse
-    /search
-    /directory
-    /spa
-    /therapist
-    /service
-    /product
-    /article
-    /news
-    /campus
-    /comic
-    /room
-    /review
-    /user
-    /about
-    /help
-    /legal
-    /policy
+Only ready and approved language hosts are activated. The language host does not change the
+path structure beneath it.
 
 api.massagenexus.com
     /
@@ -356,17 +277,9 @@ cdn.massagenexus.com
     /video
     /download
 
-{portal-slug}.massagenexus.com
-    /
-    /service
-    /therapist
-    /booking
-    /promo
-    /article
-    /contact
-    /course
-    /enroll
-    /certificate
+dedicated branded-portal service domain
+    domain name not yet selected or registered
+    may provide tenant subdomains without using massagenexus.com
 
 verified custom domain
     /
@@ -377,8 +290,9 @@ Branded portal notes:
 - spa and therapist portals may emphasize services, booking, staff, media, and contact;
 - institution portals may emphasize programs, courses, enrollment, instructors, and certificate verification;
 - the secured management surface remains /workspace;
-- custom domains and tenant subdomains are future capabilities, not MVP requirements;
-- reserved Massage Nexus subdomains cannot be claimed by tenants.
+- custom domains and tenant subdomains remain planned capabilities whose prerequisites must be
+  completed before they are offered;
+- tenant portals are not hosted as subdomains of massagenexus.com.
 
 
 ================================================================================
@@ -496,63 +410,7 @@ accessibility
 sort
 
 ================================================================================
-5. BROWSE
-================================================================================
-
-/browse
-/browse/area
-/browse/area/{area-slug}
-/browse/city
-/browse/city/{city-slug}
-/browse/region
-/browse/region/{region-slug}
-/browse/country
-/browse/country/{country-slug}
-/browse/landmark
-/browse/landmark/{landmark-slug}
-/browse/massage-type
-/browse/massage-type/{massage-type-slug}
-/browse/service
-/browse/service/{service-slug}
-/browse/service-category
-/browse/service-category/{service-category-slug}
-/browse/type-spa
-/browse/type-spa/{type-spa-slug}
-/browse/type-therapist
-/browse/type-therapist/{type-therapist-slug}
-/browse/market-class
-/browse/market-class/{market-class-slug}
-/browse/price
-/browse/price/{price-slug}
-/browse/amenity
-/browse/amenity/{amenity-slug}
-/browse/facility
-/browse/facility/{facility-slug}
-/browse/home-service
-/browse/open-now
-/browse/verified
-/browse/promo
-/browse/trending
-/browse/new
-/browse/updated
-/browse/accessibility
-/browse/accessibility/{accessibility-slug}
-
-Browse result groups:
-spa
-therapist
-service
-product
-seller
-article
-news
-campus
-comic
-review
-promo
-
-================================================================================
-6. DIRECTORY
+5. DIRECTORY DISCOVERY
 ================================================================================
 
 /directory
@@ -565,12 +423,60 @@ promo
 /directory/map
 /directory/new
 /directory/updated
+/directory/trending
 /directory/verified
 /directory/unclaimed
 /directory/claimed
 /directory/closed
 /directory/historical
 /directory/disputed
+/directory/area
+/directory/area/{area-slug}
+/directory/city
+/directory/city/{city-slug}
+/directory/region
+/directory/region/{region-slug}
+/directory/country
+/directory/country/{country-slug}
+/directory/landmark
+/directory/landmark/{landmark-slug}
+/directory/massage-type
+/directory/massage-type/{massage-type-slug}
+/directory/service/{service-slug}
+/directory/service-category
+/directory/service-category/{service-category-slug}
+/directory/type-spa
+/directory/type-spa/{type-spa-slug}
+/directory/type-therapist
+/directory/type-therapist/{type-therapist-slug}
+/directory/market-class
+/directory/market-class/{market-class-slug}
+/directory/price
+/directory/price/{price-slug}
+/directory/amenity
+/directory/amenity/{amenity-slug}
+/directory/facility
+/directory/facility/{facility-slug}
+/directory/home-service
+/directory/open-now
+/directory/accessibility
+/directory/accessibility/{accessibility-slug}
+
+Directory record groups:
+spa
+therapist
+service
+product
+seller
+promo
+
+Articles, news, campus content, comics, reviews, and other non-directory content use their own
+index routes and the cross-content /search route. They are not parallel directory record
+groups.
+
+================================================================================
+6. DIRECTORY RESULT PRESENTATION
+================================================================================
 
 Directory list item structure:
 thumbnail
@@ -645,34 +551,34 @@ notes
 ================================================================================
 
 /spa
-/spa/{spa-slug}
-/spa/{spa-slug}/service
-/spa/{spa-slug}/service/{service-slug}
-/spa/{spa-slug}/therapist
-/spa/{spa-slug}/price
-/spa/{spa-slug}/amenity
-/spa/{spa-slug}/facility
-/spa/{spa-slug}/hour
-/spa/{spa-slug}/contact
-/spa/{spa-slug}/location
-/spa/{spa-slug}/map
-/spa/{spa-slug}/gallery
-/spa/{spa-slug}/review
-/spa/{spa-slug}/rating
-/spa/{spa-slug}/promo
-/spa/{spa-slug}/booking
-/spa/{spa-slug}/booking/inquiry
-/spa/{spa-slug}/booking/request
-/spa/{spa-slug}/booking/availability
-/spa/{spa-slug}/booking/policy
-/spa/{spa-slug}/booking/waitlist
-/spa/{spa-slug}/booking/external
-/spa/{spa-slug}/verification
-/spa/{spa-slug}/update
-/spa/{spa-slug}/similar
-/spa/{spa-slug}/report
-/spa/{spa-slug}/claim
-/spa/{spa-slug}/correction
+/spa/{establishment_slug}
+/spa/{establishment_slug}/service
+/spa/{establishment_slug}/service/{service-slug}
+/spa/{establishment_slug}/therapist
+/spa/{establishment_slug}/price
+/spa/{establishment_slug}/amenity
+/spa/{establishment_slug}/facility
+/spa/{establishment_slug}/hour
+/spa/{establishment_slug}/contact
+/spa/{establishment_slug}/location
+/spa/{establishment_slug}/map
+/spa/{establishment_slug}/gallery
+/spa/{establishment_slug}/review
+/spa/{establishment_slug}/rating
+/spa/{establishment_slug}/promo
+/spa/{establishment_slug}/booking
+/spa/{establishment_slug}/booking/inquiry
+/spa/{establishment_slug}/booking/request
+/spa/{establishment_slug}/booking/availability
+/spa/{establishment_slug}/booking/policy
+/spa/{establishment_slug}/booking/waitlist
+/spa/{establishment_slug}/booking/external
+/spa/{establishment_slug}/verification
+/spa/{establishment_slug}/update
+/spa/{establishment_slug}/similar
+/spa/{establishment_slug}/report
+/spa/{establishment_slug}/claim
+/spa/{establishment_slug}/correction
 
 Spa profile page sections:
 profile-header
@@ -750,16 +656,28 @@ promo
 location
 about
 
-Spa status labels:
+Spa profile labels by semantic group:
+
+Claim labels:
 claimed
-verified
 unclaimed
+
+Verification labels:
+verified
+
+Record lifecycle and history labels:
 closed
 moved
 renamed
-disputed
 historical
+
+Dispute labels:
+disputed
+
+Commercial plan labels:
 premium
+
+Sponsorship disclosure labels:
 sponsored
 
 ================================================================================
@@ -856,19 +774,35 @@ promo
 credential
 about
 
-Therapist status labels:
+Therapist profile labels by semantic group:
+
+Working-arrangement labels:
 freelance
 spa-based
-home-service
-on-call
 in-house
-verified
+on-call
+
+Service-delivery labels:
+home-service
+
+Availability and lifecycle labels:
 unavailable
 inactive
+
+Verification labels:
+verified
+
+Claim labels:
 claimed
 unclaimed
+
+Dispute labels:
 disputed
+
+Commercial plan labels:
 premium
+
+Sponsorship disclosure labels:
 sponsored
 
 ================================================================================
@@ -1244,9 +1178,10 @@ preview
 16. MASSAGE CAMPUS
 ================================================================================
 
-Status:
-future major module
-not required for the initial Massage Nexus MVP
+Release placement:
+future major module whose delivery depends on the education, moderation, credential, and
+operational prerequisites defined by the Massage Campus specification. Its routes remain in
+this long-term map even when the module is not part of the next release.
 
 Public learning routes:
 /campus
@@ -1508,7 +1443,7 @@ preview
 ================================================================================
 
 Target discussion locations:
-/spa/{spa-slug}/discussion
+/spa/{establishment_slug}/discussion
 /therapist/{therapist-slug}/discussion
 /product/{product-slug}/discussion
 /seller/{seller-slug}/discussion
@@ -1559,8 +1494,6 @@ report-action
 /user/{user-slug}/badge
 /user/{user-slug}/reputation
 /user/{user-slug}/contribution
-/user/{user-slug}/following
-/user/{user-slug}/saved
 
 User profile page sections:
 profile-header
@@ -1579,12 +1512,15 @@ comment-list
 article-list
 media-list
 contribution-summary
-saved-public-list
-following-public-list
 privacy-controlled-activity
 report-action
 follow-action
 message-action
+
+The follow action may be available where permitted so a user can receive updates. Saved items
+and the identities of followed records or users remain private workspace data by default.
+Public saved or following lists require a later explicit opt-in sharing design and are not
+part of the default public profile.
 
 User profile tabs:
 overview
@@ -1594,8 +1530,6 @@ media
 badge
 reputation
 contribution
-following
-saved
 
 ================================================================================
 22. BUSINESS, OPERATOR, AND ADVERTISER HELP AREAS
@@ -1661,7 +1595,7 @@ review-response-guidelines
 
 /claim
 /claim/spa
-/claim/spa/{spa-slug}
+/claim/spa/{establishment_slug}
 /claim/therapist
 /claim/therapist/{therapist-slug}
 /claim/seller
@@ -2001,7 +1935,7 @@ bug
 feature-request
 
 ================================================================================
-29. LEGAL AND POLICY
+29. LEGAL DOCUMENTS AND PUBLIC POLICIES
 ================================================================================
 
 /legal
@@ -2014,38 +1948,43 @@ feature-request
 /legal/accessibility
 /legal/contact
 
-/policy
-/policy/community-guideline
-/policy/review
-/policy/rating
-/policy/reputation
-/policy/sponsored-content
-/policy/advertising
-/policy/nsfw-mature-restricted-content
-/policy/safety
-/policy/verification
-/policy/claim
-/policy/takedown
-/policy/correction
-/policy/dispute
-/policy/data-retention
-/policy/account-deletion
-/policy/booking
-/policy/booking-privacy
-/policy/intake
-/policy/consent
-/policy/payment
-/policy/refund
-/policy/cancellation
-/policy/no-show
-/policy/provider-loyalty
-/policy/financial-document
-/policy/contributor
-/policy/media-upload
-/policy/ai-generated-content
-/policy/moderation
-/policy/law-enforcement-request
-/policy/sensitive-topic
+/legal/policy
+/legal/policy/community-guideline
+/legal/policy/review
+/legal/policy/rating
+/legal/policy/reputation
+/legal/policy/sponsored-content
+/legal/policy/advertising
+/legal/policy/nsfw-mature-restricted-content
+/legal/policy/safety
+/legal/policy/verification
+/legal/policy/claim
+/legal/policy/takedown
+/legal/policy/correction
+/legal/policy/dispute
+/legal/policy/data-retention
+/legal/policy/account-deletion
+/legal/policy/booking
+/legal/policy/booking-privacy
+/legal/policy/intake
+/legal/policy/consent
+/legal/policy/payment
+/legal/policy/refund
+/legal/policy/cancellation
+/legal/policy/no-show
+/legal/policy/provider-loyalty
+/legal/policy/financial-document
+/legal/policy/contributor
+/legal/policy/media-upload
+/legal/policy/ai-generated-content
+/legal/policy/moderation
+/legal/policy/law-enforcement-request
+/legal/policy/sensitive-topic
+
+The /legal area is the single public-document umbrella. Binding notices and agreements use
+direct /legal routes. Operational, community, safety, content, booking, and moderation rules
+are grouped under /legal/policy so users do not have to understand two competing top-level
+document areas.
 
 ================================================================================
 30. WORKSPACE ROOT
@@ -2212,6 +2151,7 @@ Access-view notes:
 /workspace/following/seller
 /workspace/following/user
 /workspace/following/article
+/workspace/following/service
 
 /workspace/history
 /workspace/history/view
@@ -2418,42 +2358,42 @@ Provider, therapist, scheduling, loyalty, and finance tools appear only in autho
 /workspace/listing/status
 /workspace/listing/history
 
-/workspace/listing/spa/{spa-id}
-/workspace/listing/spa/{spa-id}/profile
-/workspace/listing/spa/{spa-id}/service
-/workspace/listing/spa/{spa-id}/price
-/workspace/listing/spa/{spa-id}/therapist
-/workspace/listing/spa/{spa-id}/amenity
-/workspace/listing/spa/{spa-id}/facility
-/workspace/listing/spa/{spa-id}/hour
-/workspace/listing/spa/{spa-id}/contact
-/workspace/listing/spa/{spa-id}/location
-/workspace/listing/spa/{spa-id}/media
-/workspace/listing/spa/{spa-id}/promo
-/workspace/listing/spa/{spa-id}/booking
-/workspace/listing/spa/{spa-id}/booking/setting
-/workspace/listing/spa/{spa-id}/booking/policy
-/workspace/listing/spa/{spa-id}/booking/intake-template
-/workspace/listing/spa/{spa-id}/booking/eligibility
-/workspace/listing/spa/{spa-id}/booking/request
-/workspace/listing/spa/{spa-id}/booking/assignment
-/workspace/listing/spa/{spa-id}/booking/walk-in
-/workspace/listing/spa/{spa-id}/booking/queue
-/workspace/listing/spa/{spa-id}/booking/waitlist
-/workspace/listing/spa/{spa-id}/booking/resource
-/workspace/listing/spa/{spa-id}/booking/payment
-/workspace/listing/spa/{spa-id}/booking/refund
-/workspace/listing/spa/{spa-id}/booking/loyalty
-/workspace/listing/spa/{spa-id}/booking/feedback
-/workspace/listing/spa/{spa-id}/finance
-/workspace/listing/spa/{spa-id}/finance/payout
-/workspace/listing/spa/{spa-id}/finance/compensation
-/workspace/listing/spa/{spa-id}/finance/invoice
-/workspace/listing/spa/{spa-id}/finance/reconciliation
-/workspace/listing/spa/{spa-id}/analytics
-/workspace/listing/spa/{spa-id}/verification
-/workspace/listing/spa/{spa-id}/response
-/workspace/listing/spa/{spa-id}/history
+/workspace/listing/spa/{establishment_id}
+/workspace/listing/spa/{establishment_id}/profile
+/workspace/listing/spa/{establishment_id}/service
+/workspace/listing/spa/{establishment_id}/price
+/workspace/listing/spa/{establishment_id}/therapist
+/workspace/listing/spa/{establishment_id}/amenity
+/workspace/listing/spa/{establishment_id}/facility
+/workspace/listing/spa/{establishment_id}/hour
+/workspace/listing/spa/{establishment_id}/contact
+/workspace/listing/spa/{establishment_id}/location
+/workspace/listing/spa/{establishment_id}/media
+/workspace/listing/spa/{establishment_id}/promo
+/workspace/listing/spa/{establishment_id}/booking
+/workspace/listing/spa/{establishment_id}/booking/setting
+/workspace/listing/spa/{establishment_id}/booking/policy
+/workspace/listing/spa/{establishment_id}/booking/intake-template
+/workspace/listing/spa/{establishment_id}/booking/eligibility
+/workspace/listing/spa/{establishment_id}/booking/request
+/workspace/listing/spa/{establishment_id}/booking/assignment
+/workspace/listing/spa/{establishment_id}/booking/walk-in
+/workspace/listing/spa/{establishment_id}/booking/queue
+/workspace/listing/spa/{establishment_id}/booking/waitlist
+/workspace/listing/spa/{establishment_id}/booking/resource
+/workspace/listing/spa/{establishment_id}/booking/payment
+/workspace/listing/spa/{establishment_id}/booking/refund
+/workspace/listing/spa/{establishment_id}/booking/loyalty
+/workspace/listing/spa/{establishment_id}/booking/feedback
+/workspace/listing/spa/{establishment_id}/finance
+/workspace/listing/spa/{establishment_id}/finance/payout
+/workspace/listing/spa/{establishment_id}/finance/compensation
+/workspace/listing/spa/{establishment_id}/finance/invoice
+/workspace/listing/spa/{establishment_id}/finance/reconciliation
+/workspace/listing/spa/{establishment_id}/analytics
+/workspace/listing/spa/{establishment_id}/verification
+/workspace/listing/spa/{establishment_id}/response
+/workspace/listing/spa/{establishment_id}/history
 
 /workspace/listing/therapist/{therapist-id}
 /workspace/listing/therapist/{therapist-id}/profile
@@ -3187,7 +3127,6 @@ app
 asset
 auth
 booking
-browse
 calendar
 consent
 campaign
@@ -3212,7 +3151,6 @@ logout
 map
 news
 newsletter
-policy
 portal
 payment
 product
@@ -3314,12 +3252,11 @@ lock-mode
 
 Real public pages:
 /
-/browse
 /search
 /directory
 /map
 /compare
-/spa/{spa-slug}
+/spa/{establishment_slug}
 /therapist/{therapist-slug}
 /service/{service-slug}
 /product/{product-slug}
@@ -3345,15 +3282,14 @@ Real public pages:
 /help
 /contact
 /legal
-/policy
 
 Profile tabs or sections:
-/spa/{spa-slug}/service
-/spa/{spa-slug}/therapist
-/spa/{spa-slug}/gallery
-/spa/{spa-slug}/review
-/spa/{spa-slug}/promo
-/spa/{spa-slug}/location
+/spa/{establishment_slug}/service
+/spa/{establishment_slug}/therapist
+/spa/{establishment_slug}/gallery
+/spa/{establishment_slug}/review
+/spa/{establishment_slug}/promo
+/spa/{establishment_slug}/location
 /therapist/{therapist-slug}/service
 /therapist/{therapist-slug}/schedule
 /therapist/{therapist-slug}/gallery
@@ -3417,7 +3353,7 @@ System-facing routes:
 api.massagenexus.com
 cdn.massagenexus.com
 status.massagenexus.com
-{portal-slug}.massagenexus.com
+dedicated branded-portal service domain whose name is not yet selected or registered
 verified tenant custom domains
 
 Not first-level public pages:
@@ -3450,18 +3386,3 @@ Not first-level public pages:
   rules as the website.
 - Booking is service-flexible but initially massage-, spa-, bodywork-, beauty-, and
   wellness-aware.
-
-================================================================================
-V1.90 SYNCHRONIZATION NOTES
-================================================================================
-
-- Added registration, login, verification, recovery, and profile-completion routes.
-- Added Filipino, Hiligaynon, Indonesian, Brazilian Portuguese, Japanese, Thai, Vietnamese,
-  Chinese script, French, German, and Arabic language aliases.
-- Taglish is a Filipino style or presentation alias.
-- Added public Research and Statistics areas.
-- Added Research, Translation, and expanded Analytics workspace routes.
-- Added passkey, recovery-code, and security-event routes.
-- Replaced the obsolete adult-service-exclusion route with the current NSFW, Mature, and
-  Restricted Content policy route.
-- Private research evidence, analytics, account, intake, and restricted media remain protected.
