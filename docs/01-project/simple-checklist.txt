@@ -1,5 +1,5 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 1.50
+Document Version: 1.70
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
 Document Description: This is the master categorical to-do checklist for Massage Nexus. It preserves completed planning and technical foundations, every detailed website feature and requirement from the Features inventory, release readiness, and continuing operations. It is not a changelog, Roadmap, Feature summary, release log, or document-version history; items stay in their logical category and change only by checkbox status or accepted wording.
@@ -57,13 +57,13 @@ Use:
 [x] Create the Documentation Writing and Management Standard
 [ ] Review current documents for contradictions and lost detail
 [ ] Refactor Shared Project Standards into a small core and focused topic files
-[ ] Create semantic repository documentation folders
+[x] Create semantic repository documentation folders
 [ ] Create the document manifest
 [ ] Identify one authoritative current document per subject
 [ ] Archive superseded active planning files
 [ ] Resolve duplicate document numbers and inconsistent filenames
-[ ] Move accepted repository documents without filename versions
-[ ] Create root AI instructions
+[x] Move accepted repository documents without filename versions
+[x] Create root AI instructions
 [ ] Create scoped AI instructions
 [ ] Create focused task-packet format
 [ ] Confirm AI reads only task-relevant documents
@@ -86,10 +86,10 @@ Use:
 [x] Route the local Massage Nexus host to apps/web/public
 [x] Run Laravel through Apache
 [x] Enable SQLite and run baseline migrations
-[ ] Verify Git initialization and remote
-[ ] Review the full baseline diff
-[ ] Commit and push the clean Laravel baseline
-[ ] Confirm no secrets, private uploads, generated dependencies, or logs are tracked
+[x] Verify Git initialization and remote
+[x] Review the full baseline diff
+[x] Commit and push the clean Laravel baseline
+[x] Confirm no secrets, private uploads, generated dependencies, or logs are tracked
 [x] Select and install the Laravel-compatible MongoDB integration
 [~] Prove MongoDB create, read, update, delete, indexes, uniqueness, and required transaction behavior
 [ ] Prepare Azure DocumentDB compatibility
@@ -98,7 +98,7 @@ Use:
 [ ] Configure frontend build and approved packages
 [ ] Configure queues, scheduler, logs, email, search, media processing, and backup
 [ ] Configure production-safe errors and reduced technology disclosure
-[ ] Add focused automated tests
+[x] Add focused automated tests
 [ ] Add GitHub Actions and protected deployment controls
 [ ] Test clean restoration from Git and backups
 
@@ -106,7 +106,8 @@ Use:
 4. WEBSITE FEATURE IMPLEMENTATION
 ================================================================================
 
-Every item below is unchecked because no Massage Nexus website feature is currently treated as implemented.
+Items below reflect verified implementation status. A completed planning document alone does not
+complete a website feature.
 
 ================================================================================
 
@@ -145,6 +146,7 @@ Every item below is unchecked because no Massage Nexus website feature is curren
 [ ] Article pages
 [ ] Shop pages
 [ ] Dashboard pages
+[x] Custom 404 error page
 
 
 1.3 Technical Page Behavior
@@ -755,19 +757,20 @@ Every item below is unchecked because no Massage Nexus website feature is curren
 ------------------
 [ ] Shared network account
 [ ] Massage Nexus site membership
-[ ] Public browsing without registration
-[ ] Massage Nexus membership limited to users aged 18 or older
-[ ] User registration
-[ ] Lowercase alphanumeric username beginning with a letter
-[ ] Protected authority, brand, route, and impersonation username families
-[ ] Login by username or email
-[ ] Password hashing through Argon2id
-[ ] Compromised and project-specific weak-password rejection
-[ ] Email verification required before normal login and workspace access
+[x] Public browsing without registration
+[x] Massage Nexus membership limited to users aged 18 or older
+[x] User registration
+[x] Lowercase alphanumeric username beginning with a letter
+[x] Protected authority, brand, route, and impersonation username families
+[x] Login by username or email
+[x] Password hashing through Argon2id
+[x] Compromised and project-specific weak-password rejection
+[x] Email verification required before normal login and workspace access
 [x] Password recovery
-[ ] Remember me
+[ ] Add registration rate limiting
+[x] Remember me
 [ ] Active session and device management
-[ ] Policy acceptance and privacy acknowledgment records
+[x] Policy acceptance and privacy acknowledgment records
 [ ] Social login later
 [ ] Optional phone verification
 [ ] TOTP two-factor authentication
@@ -778,7 +781,7 @@ Every item below is unchecked because no Massage Nexus website feature is curren
 
 8.2 User as Client by Default
 -----------------------------
-[ ] Every registered user is a client by default
+[x] Every registered user is a client by default
 [ ] Personal context remains available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
 [ ] Professional or managed roles do not replace the Personal client context
 [ ] One user account may manage several establishments, affiliations, or organizations
@@ -3893,18 +3896,52 @@ Every item below is unchecked because no Massage Nexus website feature is curren
 6. RELEASE READINESS
 ================================================================================
 
+6.1 Massage Nexus Version 1.00 - First Launch
+----------------------------------------------
+[x] Public browsing foundation
+[x] User registration
+[x] Email verification before normal member access
+[x] Login by username or email
+[x] Remember me and logout
+[x] Password recovery
+[ ] Replace temporary spa sample content with MongoDB-backed establishment records
+[ ] Generate random 16-character base62 establishment _id values
+[ ] Generate unique establishment_slug values separately from _id and title
+[ ] List and view persisted spa profiles
+[ ] Allow a verified member to create and save a private spa draft
+[ ] Allow the draft owner to view, edit, and safely delete an unused private draft
+[ ] Allow the draft owner to submit the spa for review
+[ ] Add My Spa Submissions with draft, pending, returned, approved, rejected, withdrawn, and
+    archived states and understandable reasons or next actions
+[ ] Allow the submitter to view, edit, and withdraw a returned or pending submission
+[ ] Add duplicate screening before publication
+[ ] Add spa-submission review to the existing Admin Workspace unified queue
+[ ] Add a minimum administrator or reviewer permission for every moderation action
+[ ] Approve, reject, return, restore, and escalate spa submissions
+[ ] Publish only an approved submission
+[ ] Preserve source, revision, moderation, and actor history
+[ ] Prevent cross-user viewing or modification of private drafts and submissions
+[ ] Route published-spa edits through accepted revision and permission rules
+[ ] Support closure, archive, duplicate, merge, removal request, restoration, and soft deletion
+[ ] Prevent ordinary users and operators from permanently erasing public history or evidence
+[ ] Add validation, authorization, rate-limit, abuse, identifier-collision, and slug-collision tests
+[ ] Verify accessible forms, understandable errors, responsive layouts, backup, restore, rollback,
+    and production-safe error handling
+[ ] Release Massage Nexus Version 1.00
+
+6.2 Later Release Gates
+-----------------------
 [ ] Complete Development Baseline milestone
 [ ] Complete Account, Language, Policy, Privacy, and Security milestone
-[ ] Complete Internal Data and Research Alpha
-[ ] Complete Internal Content and Campus Alpha
-[ ] Release Private Web Alpha
-[ ] Release Public Directory Beta
-[ ] Release Community Beta
-[ ] Release Provider and Workspace Beta
-[ ] Release Booking Beta
-[ ] Release Commercial Web 1.0
+[ ] Complete the Internal Data and Research milestone
+[ ] Complete the Internal Content and Campus milestone
+[ ] Complete the broader private-web milestone
+[ ] Release the public directory and community expansion under an assigned post-1.00 version
+[ ] Release the provider and workspace expansion under an assigned post-1.00 version
+[ ] Release the booking expansion under an assigned post-1.00 version
+[ ] Release the commercial web expansion under an assigned post-1.00 version
 [ ] Release first-party Mobile application
-[ ] Release Desktop operations application where justified
+[ ] Release the general Desktop Application when its release gate passes
 [ ] Complete a separate readiness gate for each international market
 
 ================================================================================

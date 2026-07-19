@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.40
+Document Version: 1.60
 Date Created: 2026-07-16
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -24,10 +24,13 @@ Document Description: This Roadmap organizes Massage Nexus into dependency phase
   operational readiness gate.
 
 Current position:
-Massage Nexus has extensive planning and a working local Laravel environment. No public
-website feature is currently treated as implemented. The immediate work remains documentation
-consolidation, recoverable version control, MongoDB application integration, localization,
-account and policy foundations, and internal data operations.
+Massage Nexus has a recoverable Git baseline synchronized with the private remote repository, a
+working Laravel and MongoDB foundation, organized repository documentation, root contributor
+instructions, public page foundations, and implemented registration, email verification, login,
+logout, and password recovery. Pre-coding planning is sufficiently complete for focused feature
+development. Documentation review and technical hardening continue alongside implementation
+rather than blocking all coding. The immediate product target is Massage Nexus Version 1.00,
+the first launch, with persistent, permission-aware spa submission and lifecycle management.
 
 ================================================================================
 PHASE 0. PROJECT DEFINITION, BRAND, AND PLANNING FOUNDATION
@@ -54,7 +57,7 @@ of truth, build order, implementation, testing, and releases.
 
 ================================================================================
 PHASE 1. DOCUMENTATION CONSOLIDATION AND AI CONTEXT GOVERNANCE
-CURRENT STATE: CURRENT
+CURRENT STATE: FOUNDATION ESTABLISHED; REVIEW AND CLEANUP CONTINUE
 ================================================================================
 
 Purpose:
@@ -90,7 +93,7 @@ No public release occurs here.
 
 ================================================================================
 PHASE 2. RECOVERABLE REPOSITORY AND TECHNICAL BASELINE
-CURRENT STATE: CURRENT
+CURRENT STATE: BASELINE ESTABLISHED; RELEASE HARDENING CONTINUES
 ================================================================================
 
 Purpose:
@@ -123,7 +126,7 @@ Passes when:
 
 ================================================================================
 PHASE 3. ACCOUNT, LANGUAGE, LEGAL, PRIVACY, SECURITY, AND ACCESSIBILITY
-CURRENT STATE: AFTER MILESTONE 2
+CURRENT STATE: IN PROGRESS; CORE REGISTRATION AND AUTHENTICATION IMPLEMENTED
 ================================================================================
 
 Purpose:
@@ -141,9 +144,20 @@ Account and membership:
 - roles and permissions for user, provider, therapist, seller, advertiser, contributor,
   researcher, translator, editor, Support, moderator, and administrator.
 
+Version 1.00 account slice:
+- public browsing;
+- registration with age eligibility, Terms acceptance, and Privacy acknowledgment;
+- email verification before normal member access;
+- login by username or email;
+- secure password hashing and password-policy enforcement;
+- remember me, logout, session rotation, and password recovery.
+
+Session and device management, remote revocation, TOTP, recovery codes, passkeys, external
+identities, public User Profiles, and advanced role contexts may continue after Version 1.00.
+
 Language and translation:
 - English source and fallback;
-- Filipino and approved Taglish presentation;
+- Filipino presentation for the Philippine localization;
 - initial local and international language registry;
 - semantic interface keys;
 - locale and regional preferences;
@@ -163,17 +177,17 @@ Legal, privacy, security, and accessibility:
 MILESTONE 3 — ACCOUNT AND POLICY ALPHA
 
 Passes when:
-- test accounts can register, verify, sign in, recover, and revoke sessions;
+- test accounts can register, verify, sign in, remember a session, log out, and recover access;
 - unverified or ineligible accounts cannot enter normal member workflows;
 - required policy acceptance is recorded;
-- critical account pages work in the activated languages;
+- critical account pages work in the languages activated for the release;
 - privacy, authorization, accessibility, and production-error tests pass.
 
 This milestone remains internal.
 
 ================================================================================
 PHASE 4. INTERNAL DATA, TAXONOMY, RESEARCH, TRANSLATION, AND ADMINISTRATION
-CURRENT STATE: AFTER MILESTONE 3
+CURRENT STATE: NEXT IMPLEMENTATION SLICE FOR VERSION 1.00
 ================================================================================
 
 Purpose:
@@ -186,6 +200,26 @@ Core data:
 - normalized services separated from provider menu items and therapist capabilities;
 - status, history, move, rename, closure, dispute, duplicate, merge, and archival behavior;
 - media, source, translation, revision, and audit relationships.
+
+Version 1.00 spa slice:
+- persistent establishment_main records backed by MongoDB rather than temporary sample content;
+- application-generated random 16-character base62 _id values and separate unique
+  establishment_slug values;
+- public or invited-tester spa listing and profile viewing by establishment_slug;
+- verified-member spa draft and submission workflow;
+- minimum useful identity, classification, status, location, contact, hours, service summary,
+  source, and last-confirmed information without requiring the full future profile immediately;
+- duplicate screening before a new establishment is accepted;
+- a My Spa Submissions view showing draft, pending, returned, approved, rejected, withdrawn, and
+  archived states with an understandable reason or next action where applicable;
+- submitter access to view and edit their own draft or returned submission;
+- withdrawal of an unapproved submission and deletion of an unused private draft when safe;
+- approved revisions for published facts rather than silent direct overwriting;
+- establishment closure, archive, duplicate, merge, removal-request, and soft-deletion handling;
+- spa-submission and correction review in the existing Admin Workspace unified queue, with
+  filters and actions to approve, reject, return, restore, or escalate a submission;
+- a minimum administrator or reviewer permission that protects every moderation action;
+- authorization, revision history, provenance, audit, validation, rate limiting, and abuse controls.
 
 Research and provenance:
 - source registry;
@@ -218,9 +252,48 @@ Passes when:
 - private evidence does not appear in public representations;
 - initial Mandaluyong and Metro Manila data can support real search and profile testing.
 
+FIRST LAUNCH — MASSAGE NEXUS VERSION 1.00
+
+Audience:
+Initial Massage Nexus users, approved contributors, and authorized internal reviewers.
+
+Required account capabilities:
+- browse permitted public pages without registration;
+- register, accept the required Terms and Privacy information, and verify email;
+- log in by username or email, remember the session when requested, log out, and recover a
+  forgotten password.
+
+Required spa capabilities:
+- list and view persisted spa profiles;
+- submit a new spa after authentication and email verification;
+- view, edit, and delete an unused private draft owned by the current user;
+- view and edit a returned or pending submission according to its moderation state;
+- withdraw a pending submission;
+- publish only after authorized approval;
+- propose revisions to a published spa without erasing accepted history;
+- close, archive, merge, or soft-delete published records through authorized lifecycle actions;
+- prevent an ordinary submitter or claimed operator from permanently erasing a real public record,
+  independent contributions, audit history, or legal and safety evidence.
+
+Release gate:
+- registration, verification, login, logout, and recovery tests pass;
+- spa create, read, update, draft deletion, withdrawal, submission, approval, rejection,
+  publication, closure, archive, restoration, duplicate, and authorization tests pass;
+- one user cannot edit or delete another user's draft or submission;
+- random identifier and slug uniqueness are enforced and collision handling is tested;
+- accepted spa facts retain source, revision, and actor history;
+- public pages do not expose private evidence, draft data, stack traces, or secrets;
+- forms are keyboard accessible, errors are understandable, and supported layouts are usable;
+- registration, authentication, and spa-submission rate limits and abuse protections are active;
+- a clean restore, backup, rollback, and production-safe error check succeeds.
+
+Not required for Version 1.00:
+- maps, advanced search, comparisons, reviews, ratings, comments, provider claiming, booking,
+  payments, advertising, mobile, desktop, or broad international expansion.
+
 ================================================================================
 PHASE 5. PUBLIC WEBSITE, DIRECTORY, SEARCH, MAPS, AND PROFILES
-CURRENT STATE: AFTER INTERNAL OPERATIONS ALPHA
+CURRENT STATE: EXPANDS AFTER VERSION 1.00
 ================================================================================
 
 Purpose:
@@ -255,12 +328,9 @@ Profiles:
 - branches, locations, service areas, hours, contact, facilities, menus, prices, media, status,
   trust, source, and historical information.
 
-RELEASE 0.1 — PRIVATE DIRECTORY ALPHA
+PHASE 5 EXIT GATE — DIRECTORY DISCOVERY FOUNDATION
 
-Audience:
-The owner, invited users, known providers, contributors, researchers, and testers.
-
-Gate:
+Passes when:
 - public pages work on supported browsers and screen sizes;
 - initial local search is useful;
 - no placeholder or uncertain information appears as verified truth;
@@ -270,7 +340,7 @@ Gate:
 
 ================================================================================
 PHASE 6. EDITORIAL CONTENT, NEWS, CAMPUS FOUNDATION, QUIZZES, SURVEYS, AND BRAND CONTENT
-CURRENT STATE: BUILDS WITH PHASE 5 AND EXPANDS AFTER RELEASE 0.1
+CURRENT STATE: BUILDS WITH PHASE 5 AND EXPANDS AFTER VERSION 1.00
 ================================================================================
 
 Purpose:
@@ -323,7 +393,7 @@ Passes when:
 
 ================================================================================
 PHASE 7. USERS, COMMUNITY, REPUTATION, MODERATION, AND SUPPORT
-CURRENT STATE: AFTER RELEASE 0.1
+CURRENT STATE: AFTER VERSION 1.00
 ================================================================================
 
 Purpose:
@@ -365,7 +435,7 @@ Support:
 - sanitized GitHub Issue conversion for confirmed development work;
 - Support analytics and repeated-question improvement.
 
-RELEASE 0.2 — PUBLIC DIRECTORY AND COMMUNITY BETA
+PUBLIC DIRECTORY AND COMMUNITY EXPANSION — VERSION TO BE ASSIGNED
 
 Audience:
 The public, initially concentrated in Mandaluyong, Metro Manila, and selected Philippine areas.
@@ -395,7 +465,7 @@ Claiming and verification:
 
 Professional and commercial workspaces:
 - Therapist Workspace;
-- Operator, Reception, Manager, Finance, and Owner Workspaces;
+- Operator Workspace with reception, manager, finance, owner, and other permission-aware contexts;
 - Seller Workspace;
 - Advertiser Workspace;
 - Contributor, Correspondent, Researcher, Translator, and Editor Workspaces;
@@ -409,7 +479,7 @@ Provider capabilities:
 - community history and lawful criticism preserved;
 - audit and high-impact confirmation.
 
-RELEASE 0.3 — PROVIDER AND WORKSPACE BETA
+PROVIDER AND WORKSPACE EXPANSION — VERSION TO BE ASSIGNED
 
 Gate:
 - claims and role permissions work;
@@ -460,7 +530,7 @@ Financial flow:
 - no confirmed platform payment for an unclaimed provider;
 - Support for failed bookings, payments, refunds, and privacy concerns.
 
-RELEASE 0.4 — BOOKING BETA
+BOOKING EXPANSION — VERSION TO BE ASSIGNED
 
 Gate:
 - only claimed and enabled providers receive confirmed platform bookings;
@@ -498,7 +568,7 @@ Non-negotiable boundaries:
 - private user data is not sold to advertisers;
 - refunds, tax, accounting, and Support responsibilities are operational.
 
-RELEASE 1.0 — COMMERCIAL WEB RELEASE
+COMMERCIAL WEB EXPANSION — VERSION TO BE ASSIGNED
 
 Gate:
 - the free directory and community remain useful;
@@ -564,6 +634,9 @@ Mobile:
 - store distribution, updates, crash reporting, permissions, and accessibility.
 
 Desktop:
+- public discovery, profiles, accounts, and other approved general client capabilities;
+- permission-aware personal, therapist, operator, editorial, moderation, Support, and
+  administrative capabilities;
 - high-volume research;
 - translation;
 - media;
@@ -575,13 +648,13 @@ Desktop:
 - signed updates;
 - no uncontrolled production database replica.
 
-RELEASE 1.1 — MOBILE PUBLIC RELEASE
+MOBILE PUBLIC RELEASE — VERSION TO BE ASSIGNED
 
 Gate:
 Store, permission, privacy, offline, synchronization, notification, accessibility, security,
 upgrade, and account-switching tests pass.
 
-RELEASE 1.2 — DESKTOP OPERATIONS RELEASE
+DESKTOP APPLICATION RELEASE — VERSION TO BE ASSIGNED
 
 Gate:
 Signed installation and updates, encrypted local storage, controlled imports and exports,

@@ -5,7 +5,8 @@
     // Place exported files under public/images/brand/ using these names:
     //   logo-full.svg|png|webp       full lockup (mark + wordmark) for light backgrounds
     //   logo-full-dark.svg|png|webp  full lockup for dark backgrounds
-    //   logo-mark.svg|png|webp       square mark only (used when $wordmark is false)
+    //   logo-mark.svg|png|webp       square mark only, light backgrounds (used when $wordmark is false)
+    //   logo-mark-dark.svg|png|webp  square mark only, dark backgrounds
     $brandFile = function (string $stem): ?string {
         foreach (['svg', 'png', 'webp'] as $extension) {
             if (file_exists(public_path("images/brand/{$stem}.{$extension}"))) {
@@ -16,7 +17,7 @@
         return null;
     };
 
-    $mark = $brandFile('logo-mark');
+    $mark = $dark ? ($brandFile('logo-mark-dark') ?? $brandFile('logo-mark')) : $brandFile('logo-mark');
     $full = $dark ? ($brandFile('logo-full-dark') ?? $brandFile('logo-full')) : $brandFile('logo-full');
 @endphp
 

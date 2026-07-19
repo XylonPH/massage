@@ -7,6 +7,8 @@
     @hasSection('meta_description')
         <meta name="description" content="@yield('meta_description')">
     @endif
+    {{-- Cache-busted by file mtime so browsers pick up a replaced favicon.ico without a manual hard refresh. --}}
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : 0 }}" sizes="any">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased">

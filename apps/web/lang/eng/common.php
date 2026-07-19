@@ -32,4 +32,8 @@ return [
     'coming_soon_text' => 'This area of Massage Nexus is being prepared. Meanwhile, explore featured spas, therapists, and wellness content on the homepage.',
     'back_to_home' => 'Back to home',
     'demo_notice' => 'Preview build — listings shown are sample data.',
+    '404_title' => 'Page Not Found',
+    '404_heading' => '404',
+    '404_message' => 'Sorry, we couldn\'t find the page you\'re looking for.',
+    '404_description' => 'The link you followed may be broken, or the page may have been removed.',
 ];

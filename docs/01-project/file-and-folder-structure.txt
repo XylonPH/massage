@@ -3,9 +3,7 @@ Document Version: 1.50
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
 
-DOCUMENT DESCRIPTION
---------------------
-This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
+Document Description: This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
 
 Confirmed repository information:
 - local repository path: C:\code\multiplatform\massage
