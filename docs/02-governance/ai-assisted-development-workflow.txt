@@ -1,891 +1,367 @@
-Title: Massage Nexus AI-Assisted Development and Runtime AI Workflow
-Document Version: 1.40
+Title: Massage Nexus AI-Assisted Development Workflow
+Document Version: 1.50
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
-Document Description: Defines how AI assists Massage Nexus planning, documentation, coding, testing, research, translation, moderation, content, analytics, and runtime features while limiting context, avoiding generic assumptions, preserving accepted decisions, and producing project-specific results that are complete enough to reduce repeated chat iterations.
+Document Description: Defines how repository coding agents and human-directed AI assist Massage Nexus planning, documentation, implementation, testing, review, debugging, and maintenance while following current project authority, preserving user work, limiting context, implementing authorized changes directly, and validating results in proportion to risk. Runtime AI features inside Massage Nexus are governed separately by the Runtime AI System and the applicable capability specifications.
 
-Related Documents:
-- Massage Nexus Documentation Writing and Management Standard v1.00
-- Massage Nexus Technology Stack
-- Massage Nexus File and Folder Structure
-- Massage Nexus Features
-- Massage Nexus Language Strategy
-- Massage Nexus Translation System
-- Massage Nexus User Workspace
-- Massage Nexus Account Identity Registration and Authentication System
-- Massage Nexus Privacy Notice and Data Protection Requirements
-- Massage Nexus Security Architecture and Information Disclosure Policy
-- Massage Nexus NSFW Mature and Restricted Content Policy
-- Massage Nexus Analytics Statistics and Measurement System
-- Massage Nexus Data Research Provenance and Field Verification System
+Document Relationships:
+AGENTS.md is the active operational instruction file for repository agents. Shared Project
+Standards defines reusable project rules. Documentation Writing and Management Standard owns
+documentation structure and versioning. Testing and Quality Assurance Strategy owns the
+cross-project testing model. GitHub Development and Repository Operations owns repository
+hosting and collaboration rules. Runtime AI System governs AI features executed by the
+Massage Nexus application. This list is intentionally limited to direct governing
+relationships rather than attempting to inventory all documents in docs.
 
 ================================================================================
-1. OPERATING PRINCIPLE
+1. PURPOSE AND BOUNDARY
 ================================================================================
 
-AI should reduce the user’s work rather than create repeated review cycles caused by generic,
-incomplete, overlong, or poorly organized output.
+This document governs AI-assisted work on the Massage Nexus repository.
 
-The preferred first result is:
-- project-specific;
-- logically complete for the requested scope;
-- explicit about constraints and edge cases;
+It applies to:
+- planning a focused repository change;
+- inspecting project documentation, code, tests, and data definitions;
+- implementing authorized changes;
+- reviewing, debugging, refactoring, and testing;
+- updating authoritative project documentation when accepted behavior changes;
+- explaining technical decisions at a level the user can evaluate.
+
+It does not define the product behavior of runtime AI features used by visitors, users,
+providers, contributors, moderators, support staff, or administrators. Those features follow
+Massage Nexus Runtime AI System and the specification that owns the affected capability.
+
+AI should reduce the user's work rather than create repeated review cycles caused by generic,
+incomplete, overly long, or poorly organized output.
+
+The preferred result is:
+- specific to Massage Nexus;
+- complete for the requested scope;
 - compact where explanation is unnecessary;
-- detailed where implementation needs exact decisions;
-- organized for manual editing;
-- limited to relevant context;
-- honest about unresolved decisions.
-
-AI must not optimize for speed by producing a shallow draft that immediately requires several
-more conversations.
-
-AI must not optimize for apparent completeness by adding duplicated options, generic
-strategies, unnecessary technical explanation, or unrelated “best practices.”
+- explicit about relevant constraints and edge cases;
+- tested and validated in proportion to risk;
+- honest about unresolved decisions or limitations;
+- free from unsolicited plans, handoffs, implementation-note files, and generic best-practice
+  material.
 
 ================================================================================
-2. AI USE AREAS
+2. AUTHORITY AND CONFLICT HANDLING
 ================================================================================
 
-Development AI:
-- planning;
-- documentation;
-- architecture;
-- code;
-- testing;
-- review;
-- debugging;
-- refactoring;
-- migration;
-- implementation records.
-
-Runtime AI:
-- writing assistance;
-- translation on request;
-- summarization;
-- search assistance;
-- duplicate suggestions;
-- moderation triage;
-- support;
-- approved Neural Agent conversations;
-- data-quality suggestions.
-
-Editorial and Creative AI:
-- articles;
-- reviews;
-- images;
-- video;
-- audio;
-- comics;
-- captions;
-- metadata;
-- prompts;
-- translations.
-
-Administrative and Research AI:
-- stale records;
-- missing evidence;
-- suspected duplicates;
-- incomplete translations;
-- moderation queues;
-- analytics anomalies;
-- source comparison;
-- research assignments;
-- candidate fact extraction.
-
-AI output remains a proposal until accepted through the relevant workflow.
-
-================================================================================
-3. PROJECT-SPECIFIC AUTHORITY
-================================================================================
-
-Use this order:
+Use this authority order:
 
 1. current explicit user decision;
-2. current accepted Massage Nexus specification;
-3. current policy and security requirement;
-4. current implementation contract;
-5. current code and tests;
-6. Shared Project Standards where not overridden;
-7. older or archived material;
-8. generic AI knowledge or suggestion.
+2. current project-specific specification;
+3. current Shared Project Standards;
+4. current code and tests, where they describe implemented behavior;
+5. older project documents;
+6. historical or archived material;
+7. general conventions, assumptions, or generic AI knowledge.
 
-Shared templates do not override a project-specific decision.
+AGENTS.md supplies the repository's active working instructions and documentation routing. A
+closer scoped AGENTS.md applies where one exists.
 
-AI must not create a full generic document set merely because Shared Project Standards lists
-possible documents.
+Project-specific specifications may override Shared Project Standards only through an
+explicitly recorded project exception. An inherited rule that merely became outdated must be
+synchronized rather than treated as an intentional exception.
 
-Create or update only the documents that Massage Nexus currently needs.
+When implementation and the governing specification disagree:
+- do not silently assume that either one is correct;
+- determine whether the implementation is wrong, the documentation is stale, or a decision is
+  unresolved;
+- fix both when the requested and accepted result is clear;
+- request direction when choosing one would create a new product decision or destructive
+  consequence.
 
-================================================================================
-4. DOCUMENT MATURITY AND VERSIONING
-================================================================================
-
-When AI creates documentation:
-
-Use v1.00 when:
-- the subject has already been thoroughly discussed;
-- the decision tree is substantially resolved;
-- the file records the accepted current direction.
-
-Use v0.10 when:
-- the user delegates an exploratory first draft;
-- major decisions have not been discussed;
-- the file is intended for later review.
-
-When a lower-version document becomes thoroughly discussed and accepted:
-- move it to v1.00;
-- preserve the original Date Created;
-- remove rejected proposals;
-- retain accepted decisions and unresolved matters.
-
-When splitting:
-- retain the original Date Created;
-- retain the exact version at the time of split;
-- do not increment merely because of the split;
-- use descriptive child titles;
-- archive the replaced combined file.
-
-AI must follow the Documentation Writing and Management Standard rather than infer versioning
-from file age or document length.
+Archived documents and Working Notes are not current implementation authority.
 
 ================================================================================
-5. DOCUMENT DRAFTING BEHAVIOR
+3. TASK ENTRY AND CONTEXT SELECTION
 ================================================================================
 
-Before drafting:
-1. identify the document type;
-2. determine whether the subject is thoroughly discussed;
-3. read the current authoritative project files;
-4. identify the exact scope;
-5. identify known decisions and unresolved decisions;
-6. identify cross-cutting security, privacy, language, accessibility, and data constraints;
-7. determine whether an existing file should be updated instead of creating a new one;
-8. determine whether a large combined file should be split.
+Before changing files:
+1. inspect Git status and preserve unrelated user changes;
+2. read AGENTS.md and any applicable scoped instructions;
+3. locate the smallest sufficient set of current specifications;
+4. inspect the affected code, tests, configuration, and structured data;
+5. confirm that the requested behavior is not already implemented;
+6. identify relevant data, security, privacy, localization, accessibility, route, and
+   compatibility effects;
+7. identify any unresolved decision that would materially change the result.
 
-During drafting:
-- write in English for internal documents;
-- use the structure appropriate to the document type;
-- do not force a universal template;
-- preserve exact names, codes, values, versions, routes, and filenames;
-- explain unfamiliar concepts only as much as needed;
-- avoid explaining basic concepts the user already understands;
-- use examples where they resolve ambiguity;
-- avoid generic filler;
-- do not use “and others” when the scope requires actual options;
-- place unresolved decisions clearly rather than inventing acceptance;
-- remove obsolete concepts from the active version.
+Do not load the entire documentation tree by default.
 
-After drafting:
-- check completeness;
-- check duplication;
-- check contradictions;
-- check filename and version;
-- check size and split need;
-- check that the user can edit it manually;
-- check that an AI can use it without reconstructing the chat.
+Prefer:
+- exact filename and symbol searches;
+- the documentation routing in AGENTS.md;
+- the governing capability specification;
+- relevant ranges of large files;
+- affected code and tests;
+- data/field_index.txt before proposing a new field;
+- matching taxonomy and structure-guide sources when structured data is affected.
 
-================================================================================
-6. ONE-PASS COMPLETENESS TARGET
-================================================================================
+Expand context only when a dependency requires it, a conflict appears, the task crosses
+several capabilities, or the user requests a broader review.
 
-For a focused subject, AI should consider relevant:
-- goals;
-- boundaries;
-- roles;
-- permissions;
-- states;
-- workflows;
-- validation;
-- edge cases;
-- data responsibility;
-- security;
-- privacy;
-- localization;
-- accessibility;
-- NSFW handling;
-- routes;
-- tests;
-- dependencies;
-- implementation order;
-- unresolved decisions.
+Do not recursively read archives, Working Notes, large idea catalogues, or unrelated feature
+folders.
 
-Not every output needs all of these sections.
-
-The AI should internally check them so that important areas are not omitted.
-
-Do not add an irrelevant section merely because it was checked.
+No separate documentation manifest is currently required. AGENTS.md, semantic docs folders,
+repository search, and data/field_index.txt provide the active routing mechanisms. A manifest
+should be introduced only when document discovery becomes unreliable, and it should be
+generated or easily maintained rather than becoming another manual authority.
 
 ================================================================================
-7. WORKING NOTES AND AI HANDOFF
+4. IMPLEMENTATION AUTONOMY AND APPROVAL BOUNDARIES
+================================================================================
+
+An explicit request to build, modify, fix, or update authorizes ordinary reversible repository
+work within that scope. The agent should implement and test the requested result directly
+without asking for a second confirmation merely because AI produced the change.
+
+Recommendations, exploratory architecture, unaccepted product choices, and runtime-generated
+content remain proposals until accepted through the relevant workflow.
+
+Stop and request direction when work requires:
+- a missing product decision that would materially change behavior;
+- destructive, irreversible, or production data action not already explicitly authorized;
+- deletion or incompatible migration with unknown downstream effects;
+- publication, deployment, release, commit, push, or external communication not requested by
+  the user;
+- purchasing, paid-service activation, or use of production credits outside an accepted
+  workflow;
+- access to unavailable secrets, accounts, evidence, or private data;
+- a meaningful expansion beyond the requested systems or people.
+
+Normal additive schema or code changes that are necessary for an explicitly requested feature
+do not require a ceremonial approval step when the governing design is clear and the change is
+recoverable. Destructive database, migration, or live-environment actions require exact target
+validation and explicit authority.
+
+Do not create formal task packets or implementation plans for simple, isolated work. A concise
+in-conversation scope statement is sufficient. A durable task packet is appropriate only when
+the user requests it or broad, delegated, high-risk, destructive, or multi-stage work genuinely
+needs explicit boundaries and acceptance gates.
+
+================================================================================
+5. WORKING NOTES, HANDOFFS, AND IMPLEMENTATION RECORDS
 ================================================================================
 
 Working Notes:
 - belong to the user;
-- may be dirty, incomplete, repetitive, or inconsistent;
-- are not read or edited by AI unless the user explicitly asks;
-- are not an implementation authority.
+- may be incomplete, repetitive, inconsistent, or temporary;
+- are not read, reorganized, edited, or treated as authority unless the user explicitly asks;
+- remain outside ordinary repository implementation work.
 
-AI Chat Handoff:
-- is generated and updated by AI;
-- preserves accepted decisions, important reasoning, unresolved questions, reusable
-  deliverables, technical state, and next actions;
-- does not displace current subject-specific documents;
-- is maintained for continuity between chat threads or AI systems;
-- normally remains outside the source repository.
+AI Chat Handoffs:
+- preserve continuity between tasks or AI systems when requested;
+- do not replace current subject-specific specifications;
+- are not created or updated automatically during ordinary repository work;
+- normally remain outside the source repository.
 
-AI must not treat casual scratchpad wording as a final decision.
-
-Implementation Artifacts:
-- Formal planning artifacts (e.g., implementation plans) must only be generated when explicitly requested or when a change is complex and high-risk enough to require explicit user approval before execution.
-- AI must not generate unsolicited formal implementation plans for simple, isolated, or one-off tasks to avoid bureaucratic overhead.
-
-================================================================================
-8. CONTEXT SELECTION
-================================================================================
-
-The repository may contain many documents. AI must not read all of them for every task.
-
-Default:
-Read the smallest sufficient set of instructions, specifications, code, and tests needed to
-complete the task safely.
-
-Possible future routing:
-- root AGENTS.md;
-- closest scoped AGENTS.md;
-- lightweight docs manifest;
-- direct project-document references;
-- affected code;
-- targeted tests.
-
-Do not recursively read:
-- all documentation;
-- archive;
-- unrelated capability folders;
-- large idea catalogs;
-- Working Notes.
-
-Expand context only when:
-- a direct dependency requires it;
-- a conflict appears;
-- the task crosses several capabilities;
-- the user explicitly requests broader review.
+Implementation records:
+- are not generated merely to restate a completed change;
+- are created only when the user requests one, a governing specification requires one, or the
+  change genuinely needs a durable operational record beyond Git history and the final report;
+- preserve final behavior, tests, migrations, risks, and limitations rather than a debugging
+  transcript.
 
 ================================================================================
-9. DOCUMENT MANIFEST
+6. DOCUMENTATION BEHAVIOR
 ================================================================================
 
-A future repository manifest may route AI to relevant documentation.
-
-It should remain lightweight.
-
-Possible fields:
-- identifier;
-- path;
-- title;
-- version;
-- authority;
-- summary;
-- keywords;
-- load_when;
-- do_not_load_when;
-- dependencies;
-- supersedes;
-- sensitivity;
-- last reviewed date.
-
-Do not require:
-- an Excel document list;
-- constant manual status maintenance;
-- duplicate descriptions;
-- a manifest before repository structure is ready.
-
-Prefer a generated or easily maintained manifest when implementation begins.
-
-================================================================================
-10. TASK PACKETS
-================================================================================
-
-A focused AI coding task should state:
-
-Goal
-Read
-Inspect
-Modify
-Do Not Modify
-Data Impact
-Security and Privacy Impact
-Localization Impact
-Tests
-Acceptance Criteria
-Known Non-Goals
-
-Example:
-
-Goal:
-Implement protected username validation.
-
-Read:
-- Account Identity Registration and Authentication System;
-- Security requirements;
-- relevant translation keys.
-
-Modify:
-- username policy;
-- registration validation;
-- targeted tests;
-- validation messages.
-
-Do Not Modify:
-- booking;
-- media;
-- unrelated profiles;
-- unrelated database design.
-
-Acceptance:
-- blocks protected authority and brand variants;
-- accepts ordinary compliant usernames;
-- uses localized validation;
-- targeted tests pass.
-
-Avoid:
-“Implement registration based on all our documents.”
-
-================================================================================
-11. CODE AND FILE RESPONSIBILITY
-================================================================================
-
-Split code and tests by coherent responsibility.
-
-Prefer:
-- domain-focused folders;
-- one clear responsibility per class;
-- business actions;
-- authorization policies;
-- validation requests and rules;
-- separate API resources;
-- focused tests;
-- capability-specific translation files.
-
-Avoid:
-- one giant service;
-- one giant test file;
-- unrelated helper collections;
-- business logic in views;
-- duplicated web and API rules;
-- excessive fragmentation requiring dozens of files for one simple behavior.
-
-Refactor when a file mixes responsibilities, causes unrelated context loading, or makes
-targeted testing difficult.
-
-Do not refactor unrelated areas during a narrow task unless safety or correctness requires it.
-
-================================================================================
-12. TESTING AND OUTPUT CONTROL
-================================================================================
-
-During development:
-1. run the smallest relevant test;
-2. run the affected capability suite;
-3. run relevant static analysis, formatting, or lint checks;
-4. run the complete suite at a checkpoint and in CI;
-5. manually verify important user-facing visual or interactive behavior (e.g., layouts, custom error pages) when automated tests are insufficient.
-
-Do not place enormous successful test output into AI context.
-
-Summarize successful results and preserve full details only for relevant failures.
-
-AI-feature tests use fake providers and do not spend production credits.
-
-================================================================================
-13. TOKEN AND CREDIT EFFICIENCY
-================================================================================
-
-Reduce unnecessary context by:
-- searching for exact symbols before opening complete files;
-- opening relevant ranges;
-- using authoritative summaries;
-- reading current files once;
-- avoiding repeated repository inventories;
-- keeping command output concise;
-- running targeted tests;
-- using narrow tasks;
-- separating growing idea lists from governing specifications;
-- archiving superseded documents;
-- stopping repeated failed retries.
-
-When a result repeatedly misses the target:
-1. stop;
-2. identify the mismatch;
-3. narrow scope;
-4. identify the authoritative file;
-5. provide exact accepted examples;
-6. define acceptance tests;
-7. retry once with corrected context.
-
-Do not respond to an unclear task by loading more unrelated documents.
-
-================================================================================
-14. TAXONOMY AND STRUCTURED DATA TASKS
-================================================================================
-
-AI must treat taxonomy work as structured design, not fast list generation.
-
-For each option, consider:
-- code;
-- label;
-- description;
-- inclusion;
-- exclusion;
-- relationship;
-- example;
-- distinction from similar options.
-
-Before adding an option:
-- compare it with existing options;
-- check whether it duplicates another concept;
-- check whether it combines multiple concepts;
-- check whether it belongs at another hierarchy level;
-- check whether a new field is actually needed.
-
-Do not:
-- provide only lowercase names;
-- use “and others” instead of completing accepted scope;
-- add Other by default;
-- create longer lists through redundant synonyms;
-- confuse completeness with length.
-
-When a taxonomy catalog grows large:
-- keep the governing rules separate;
-- split catalogs by family, domain, or coherent responsibility;
-- preserve codes and relationships;
-- keep validation against duplicates.
-
-================================================================================
-15. TECHNICAL EXPLANATION LEVEL
-================================================================================
-
-AI should adapt explanation to the user’s existing knowledge.
-
-For familiar areas:
-- use direct technical language;
-- do not explain basic terms unnecessarily;
-- focus on project consequences and decisions.
-
-For unfamiliar areas:
-- define the concept briefly;
-- explain why it matters to Massage Nexus;
-- state alternatives and consequences;
-- avoid unexplained jargon;
-- avoid turning the internal file into a textbook.
-
-Public-facing guidance should explain more fully because the audience may have varied
-technical knowledge.
-
-================================================================================
-16. DEVELOPMENT WORKFLOW
-================================================================================
-
-Before modification:
-- confirm Git state;
-- read applicable instructions;
-- read only relevant specifications;
-- inspect current code and tests;
-- identify data, security, privacy, localization, and route effects;
-- assess whether database schema or data changes are additive or destructive;
-- request explicit authorization before executing destructive database or schema changes;
-- verify the task is not already implemented;
-- state the narrow plan.
-
-During modification:
-- remain within scope;
-- preserve naming and data conventions;
-- use translation keys for user-facing text;
-- keep secrets out of prompts, code, logs, and documents;
-- do not weaken authorization;
-- do not install unnecessary packages;
-- do not expose internal technology publicly;
-- do not use generic placeholders (e.g., `// TODO`) instead of implementing actual logic unless drafting an exploratory document;
-- use synthetic test data;
-- keep changes recoverable.
-
-After modification:
-- run targeted checks;
-- run broader checks at the proper checkpoint;
-- remove debugging;
-- update the authoritative specification when behavior changed;
-- create a final-state implementation record where useful;
-- update roadmap or checklist only when the milestone changed;
-- report unresolved limitations honestly.
-
-================================================================================
-17. RUNTIME AI ARCHITECTURE
-================================================================================
-
-Runtime AI uses an internal provider abstraction.
-
-Possible areas:
-
-apps/web/app/Services/Ai/
-- Client;
-- Prompt;
-- Translation;
-- Research;
-- Moderation;
-- Search;
-- Usage.
-
-Flow:
-
-Authorized action
--> permission and quota check
--> privacy and content classification
--> prompt assembly
--> provider call
--> response validation
--> human review or user preview when required
--> accepted storage
--> usage and cost record
-
-Controllers and views do not call providers directly.
-
-================================================================================
-18. TRANSLATION AI
-================================================================================
-
-AI may draft:
-- interface translations;
-- taxonomy translations;
-- articles;
-- help content;
-- profile descriptions;
-- selected user-content translations.
-
-Requests include:
-- source language;
-- target locale;
-- source revision;
-- context;
-- tone;
-- glossary;
-- placeholders;
-- protected terms;
-- formatting;
-- NSFW classification;
-- review requirement.
-
-Support:
-- direct API;
-- manual export;
-- validated import;
-- human translation;
-- community suggestion.
-
-Do not publish AI-only translations of:
-- Terms;
-- Privacy;
-- security;
-- age eligibility;
-- payment obligations;
-- consent;
-- intake;
-- safety-critical instructions;
-- clinical claims;
-- serious moderation notices.
-
-Discussions and comments are normally translated on request and cached.
-
-Language Codes:
-- AI translation, content generation, and localization workflows must exclusively use 3-letter ISO language codes (e.g., eng, spa, ceb, fil, jpn).
-- Do not default to 2-letter codes or generic regional names for internal keys, routing, or file structures.
-
-================================================================================
-19. RESEARCH AI
-================================================================================
-
-AI may:
-- locate candidate sources;
-- identify official sites and social accounts;
-- extract candidate facts;
-- compare evidence;
-- flag contradictions;
-- suggest duplicates;
-- identify stale records;
-- prepare research assignments.
+Before creating, moving, renaming, splitting, merging, or substantially editing documentation,
+follow Massage Nexus Documentation Writing and Management Standard.
 
 AI must:
-- preserve the source and observation date;
-- distinguish candidate from verified fact;
-- never invent a visit, interview, price, address, therapist, credential, or status;
-- respect access controls, terms, rate limits, copyright, and privacy;
-- avoid publishing private residential locations;
-- send uncertain facts to review.
+- update the authoritative file rather than create a competing copy;
+- preserve accepted requirements, constraints, examples, metadata, and edge cases;
+- remove only obsolete, rejected, superseded, or truly duplicated material;
+- identify unresolved matters instead of inventing acceptance;
+- keep repository filenames lowercase, dash-separated, unnumbered, unversioned, and .txt
+  unless an approved exception applies;
+- update Document Version and Revision Date when required;
+- preserve Date Created;
+- update another document only when its meaning actually changed;
+- avoid duplicating a rule owned by another specification;
+- ensure the result can be understood without reconstructing the chat.
 
-Map services are research leads, not sole authorities.
+Documentation maturity, version numbering, metadata, file size, splitting, and public-document
+rules are owned by the Documentation Writing and Management Standard and are not duplicated
+here.
 
-================================================================================
-20. AI CRAWLERS AND REFERRALS
-================================================================================
-
-Massage Nexus prefers public discovery, citation, and referral over unrestricted bulk reuse.
-
-Possible launch direction:
-- allow ordinary search crawlers on approved public pages;
-- allow approved AI search crawlers when citation and referral are beneficial;
-- block training crawlers where a separate supported control exists and the final policy opts
-  out;
-- block private, workspace, account, booking, intake, message, moderation, evidence, and
-  restricted-media paths;
-- use noindex where required;
-- measure approved referral traffic;
-- provide controlled APIs later.
-
-Robots directives are voluntary and do not replace security or authorization.
-
-Exact crawler names and behavior must be checked against current official documentation before
-production configuration.
+The roadmap records dependency and milestone order. The Simple Checklist records completion.
+Update the roadmap only when an accepted milestone or dependency changes. Check off a feature
+only when its accepted scope is implemented and the relevant validation passes; a document,
+draft, or newly added test alone does not prove completion.
 
 ================================================================================
-21. AI LABELS AND HUMAN REVIEW
+7. CODE, DATA, AND FILE RESPONSIBILITY
 ================================================================================
 
-Possible labels:
-- AI-Generated;
-- AI-Assisted;
-- AI-Edited;
-- AI-Enhanced;
-- AI-Translated;
-- Human-Reviewed;
-- Human-Approved.
+During implementation:
+- remain within the requested scope;
+- preserve unrelated user changes in a dirty worktree;
+- follow the current framework and repository conventions;
+- keep one coherent responsibility per file without fragmenting simple behavior;
+- reuse established Models, Actions, Services, Policies, Requests, Resources, components,
+  translation keys, and tests where appropriate;
+- keep business logic out of views;
+- enforce authorization and validation server-side;
+- use translation keys for user-facing interface text;
+- keep secrets and environment-specific values out of source, logs, prompts, tests, and
+  documentation;
+- use deterministic synthetic test data;
+- avoid unrelated refactoring;
+- avoid installing or upgrading dependencies unless required by the task;
+- do not leave generic TODO comments instead of implementing requested logic unless the task is
+  explicitly exploratory;
+- keep changes narrow and recoverable.
 
-Use the label that accurately reflects the process.
+File length is a review signal, not an automatic line-count rule. Refactor when a file mixes
+responsibilities, forces unrelated context loading, or makes focused testing difficult. Do not
+split cohesive logic merely to satisfy an arbitrary number of lines.
 
-AI may assist moderation, translation, classification, and research.
+Before adding, renaming, or removing a field:
+- check data/field_index.txt;
+- inspect the matching taxonomy or structure-guide source;
+- reuse an existing semantic field when it answers the same question;
+- preserve stable identifiers and option meanings;
+- regenerate the field index in the same change when required by AGENTS.md;
+- assess compatibility, migration, defaults, indexes, and existing data.
 
-AI output is a signal, not proof.
-
-Serious enforcement, legal accusation, identity rejection, high-impact eligibility decisions,
-and permanent account action require the approved rule-based and human process.
-
-================================================================================
-22. PRIVACY AND SECURITY
-================================================================================
-
-Send the minimum data required.
-
-Do not send to a general AI provider:
-- passwords or hashes;
-- API keys;
-- private keys;
-- session tokens;
-- identity documents;
-- full payment data;
-- sealed intake;
-- unrelated private messages;
-- precise private addresses;
-- confidential provider records;
-- restricted media without an approved purpose.
-
-Review each provider for:
-- training use;
-- retention;
-- deletion;
-- processing region;
-- subprocessors;
-- security;
-- content policy;
-- cost;
-- availability;
-- contractual terms.
+Treat taxonomy work as structured design. Check code, label, description, inclusion, exclusion,
+relationships, examples, hierarchy, and duplication. Do not add Other by default or combine
+separate concepts merely to shorten a list.
 
 ================================================================================
-23. USAGE, QUOTAS, AND COST
+8. TESTING AND VALIDATION
 ================================================================================
 
-AI use may be limited by:
-- account;
-- role;
-- feature;
-- plan;
-- quota;
-- request size;
-- model cost;
-- abuse controls;
-- Embers.
+Testing follows AGENTS.md, Shared Project Standards, Testing and Quality Assurance Strategy,
+and the affected capability specification.
 
-Rules:
-- show user-visible Ember cost before spending;
-- require confirmation;
-- prevent duplicate charges;
-- define retry and refund behavior;
-- allow provider and budget shutoff;
-- measure cost and latency;
-- keep model names internal when public disclosure is unnecessary;
-- do not claim higher cost guarantees correctness.
+In proportion to risk:
+1. run the smallest relevant test or check while developing;
+2. run the affected capability suite;
+3. run relevant formatting, linting, static analysis, type, build, security, accessibility, or
+   contract checks;
+4. run the broader regression suite at an appropriate checkpoint;
+5. manually verify important visual, interactive, assistive-technology, or operational behavior
+   when automation is insufficient;
+6. inspect the final diff and remove temporary debugging.
 
-================================================================================
-24. TESTING
-================================================================================
+AI-generated tests are not the only evidence of correctness. Independently inspect edge cases,
+failure behavior, authorization, validation, privacy, compatibility, and regressions. Do not
+weaken existing tests merely to make a change pass.
 
-Test:
-- provider abstraction;
-- permissions;
-- quotas;
-- cost;
-- timeout;
-- retry;
-- cancellation;
-- duplicate requests;
-- schema validation;
-- unsafe output;
-- private-data leakage;
-- prompt injection;
-- provider switching;
-- translation placeholders;
-- source revisions;
-- research provenance;
-- crawler and noindex behavior;
-- moderation escalation;
-- human-review gates;
-- synthetic-data enforcement.
+Runtime AI tests use fake providers by default and must not spend production credits. Explicit
+provider integration tests use approved non-production credentials and data, run separately,
+and never expose secrets in output.
+
+Summarize successful checks. Preserve detailed output only when a failure needs diagnosis.
+Never claim a test passed unless it was actually run successfully.
 
 ================================================================================
-25. CURRENT DECISIONS
+9. SECURITY, PRIVACY, AND EXTERNAL SYSTEMS
 ================================================================================
 
-- AI aims for a complete project-specific first result, not a fast generic draft.
-- AI does not generate every document listed in a shared catalogue.
-- Documentation versions reflect discussion maturity.
-- Thoroughly discussed documents begin at v1.00.
-- Exploratory documents normally begin at v0.10.
-- Split documents retain the original version and Date Created.
-- Internal documents are English-only.
-- Public documents may be multilingual and more explanatory.
-- Working Notes are user-only unless explicitly supplied.
-- AI Chat Handoffs are AI-maintained continuity files.
-- No universal document-section template is required.
-- AI reads only task-relevant context.
-- Taxonomies require codes, labels, descriptions, distinctions, and duplicate review.
-- Complete does not mean long.
-- Technical explanation adapts to the user’s knowledge.
-- Code and tests split by coherent responsibility.
-- Runtime AI uses a provider abstraction.
-- Translation and research AI preserve source and review requirements.
-- AI search referrals may be allowed while training crawlers may be restricted.
-- Sensitive information and internal technology remain protected.
+AI-assisted development must not:
+- expose passwords, hashes, keys, tokens, private evidence, personal data, or environment
+  secrets;
+- copy production data into prompts or tests;
+- weaken authorization, validation, privacy, or security to make a test pass;
+- publish private repository content through logs, Issues, Pages, Releases, artifacts, or
+  external services;
+- make production, financial, moderation, account, or legal actions outside explicit authority;
+- assume that a third-party service may receive project data merely because an integration is
+  technically available.
+
+Use least privilege, synthetic data, safe failure behavior, and approved non-production
+services. Validate exact targets before migrations, bulk updates, deletion, or other destructive
+operations.
 
 ================================================================================
-26. SUPPORT AI AND TICKET ESCALATION
+10. CONTEXT, TOKEN, AND OUTPUT EFFICIENCY
 ================================================================================
 
-AI supports the public Help Center and ticket workflow.
+Reduce unnecessary context and cost by:
+- searching for exact paths and symbols before opening large files;
+- reading current authoritative content once;
+- opening relevant ranges when the whole file is not needed;
+- avoiding repeated repository inventories;
+- keeping tool output focused;
+- running targeted checks before broader suites;
+- separating growing catalogues from their governing specifications;
+- stopping repeated failed retries and reassessing the mismatch.
 
-AI may answer directly when:
-- approved current documentation covers the question;
-- the answer is informational;
-- authorization is sufficient;
-- no financial, legal, security, privacy, safety, moderation, or policy discretion is needed.
+When a result repeatedly misses the target:
+1. stop retrying the same approach;
+2. identify the mismatch and authoritative requirement;
+3. narrow the scope;
+4. find a concrete accepted example;
+5. define the relevant acceptance check;
+6. retry with corrected context.
 
-Examples:
-- how to add a spa;
-- how to claim a profile;
-- how to translate a Comment;
-- where to view campaign statistics;
-- how to change notification settings.
-
-AI creates or escalates a Support ticket when:
-- documented steps fail;
-- a technical problem or bug is reported;
-- account ownership is disputed;
-- billing, refund, credit, campaign, booking, or payment action is requested;
-- a complaint, appeal, privacy request, security report, or safety matter is involved;
-- evidence or manual correction needs authorized review;
-- no approved guidance covers the question;
-- confidence is insufficient.
-
-AI routes a matter to the project owner or another authorized decision-maker when:
-- a new policy precedent is created;
-- a major commercial settlement or exception is requested;
-- a permanent platform-wide decision is required;
-- significant legal or reputational risk exists;
-- pricing, scope, or public commitments may change;
-- current documentation authorizes no lower-level decision.
-
-Escalation includes:
-- concise requester need;
-- relevant facts;
-- attempted guidance;
-- risk;
-- requested decision;
-- recommended options;
-- privacy warning;
-- linked ticket.
-
-AI must not:
-- promise refund, ranking, verification, restoration, or campaign performance;
-- close a serious complaint automatically;
-- create a public GitHub Issue from a private ticket;
-- expose Support, advertiser, security, or private account data;
-- mark a bug fixed before tested deployment.
-
-Confirmed development work becomes a sanitized private GitHub Issue only after Support triage.
-
-The Support knowledge base is versioned and limited to approved current guidance. Repeated
-questions trigger documentation, interface, validation, automation, or product improvement.
+Efficiency must not remove necessary requirements, edge cases, validation, or security review.
 
 ================================================================================
-27. GITHUB ASSISTANCE
+11. TECHNICAL COMMUNICATION
 ================================================================================
 
-AI may assist GitHub operations by:
-- drafting sanitized Issues;
-- proposing labels, fields, and acceptance criteria;
-- linking Support defects to development work;
-- creating focused branches;
-- generating tests;
-- drafting Pull Requests;
-- summarizing Actions failures;
-- updating repository documentation;
-- organizing current work through GitHub Projects.
+Lead with the result or recommendation.
 
-AI distinguishes:
-- Support Ticket: requester case and private communication;
-- GitHub Issue: internal development work;
-- GitHub Project: table, board, or roadmap view over Issues, Pull Requests, and draft work;
-- Pull Request: reviewed proposed source change.
+For unfamiliar concepts:
+- define the term briefly;
+- explain why it matters to Massage Nexus;
+- provide a recommendation, not only a list of problems;
+- explain meaningful alternatives and consequences in plain language.
 
-AI must not publish private repository content through GitHub Pages, Releases, logs, Issues, or
-artifacts.
+For familiar concepts:
+- use concise technical language;
+- focus on project consequences;
+- avoid textbook explanations and generic implementation commentary.
 
-Ordinary public Help, community Discussions, Comments, and Support remain inside Massage Nexus.
+Do not create unsolicited implementation notes, repeat tool transcripts, or provide a formal
+plan after the work is already complete.
 
 ================================================================================
-28. COMMENTS AND DISCUSSIONS AI
+12. COMPLETION
 ================================================================================
 
-For Comments and Discussions, AI may:
-- suggest title, category, tags, or duplicate;
-- translate on demand;
-- summarize long threads;
-- identify possible Corrections, Support requests, or Review content;
-- assist moderation triage.
+Before reporting completion:
+- verify the requested behavior;
+- inspect the final file list and diff;
+- confirm unrelated user changes were preserved;
+- run relevant tests and checks;
+- update the authoritative specification when accepted behavior changed;
+- update the Simple Checklist only when a feature is fully implemented and verified;
+- record unresolved limitations or decisions honestly;
+- do not commit, push, publish, or deploy unless explicitly requested.
 
-AI preserves original speech, distinguishes opinion from fact, respects permissions, and does
-not answer account-specific Support matters publicly.
+The final response should report only:
+- the result;
+- important files changed;
+- validation actually completed;
+- unresolved limitations, risks, or decisions that matter.
 
 ================================================================================
-29. CACHE-AWARE AI
+13. CURRENT DECISIONS
 ================================================================================
 
-Reusable AI results may be cached only when input revision, locale, permissions, provider,
-model, prompt version, and safety policy make reuse valid.
-
-Do not reuse:
-- account-specific Support answers across users;
-- stale policy answers;
-- private prompts;
-- results after source revision;
-- restricted content outside its permission scope.
-
-Caching reduces repeated translation and Support cost without making stale AI output
-authoritative.
-
+- AGENTS.md is the active repository-agent instruction file.
+- AI implements explicitly requested, ordinary in-scope repository changes directly.
+- Product decisions and exploratory recommendations remain proposals until accepted.
+- Additional approval is reserved for unresolved, destructive, production, external, or
+  materially expanded actions.
+- No unsolicited formal plan, task packet, handoff, implementation-note file, or implementation
+  record is required for ordinary work.
+- AI reads the smallest sufficient authoritative context.
+- Working Notes remain user-controlled and outside ordinary AI work.
+- Documentation rules remain authoritative in Documentation Writing and Management Standard.
+- Testing rules remain authoritative in Testing and Quality Assurance Strategy and the affected
+  capability specification.
+- Files split by coherent responsibility, not an arbitrary line count.
+- Taxonomy and field work uses repository structured-data sources and data/field_index.txt.
+- Runtime AI product behavior is separate from repository-agent behavior.
+- Complete means logically sufficient for the task, not maximally long.
