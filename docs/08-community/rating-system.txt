@@ -4,9 +4,9 @@ Massage Nexus Rating System
 Field            | Value
 -----------------+----------------------------
 Title            | Massage Nexus Rating System
-Document Version | 1.20
+Document Version | 1.21
 Date Created     | 2026-07-09
-Revision Date    | 2026-07-19
+Revision Date    | 2026-07-20
 
 Document Description
 --------------------
@@ -684,6 +684,18 @@ Confirmed external/on-site criteria rating              | 3            | 30     
 User-entered manual history rating                      | 0            | 0      | 0
 Spa/therapist self-recorded rating                      | 0            | 0      | 0
 
+Open Question: Booking/Session Reward Ordering
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Confirmed Massage Nexus booking/session criteria rating and Confirmed external/on-site
+criteria rating rows pay less than the generic Criteria-based rating row above, even though the
+Source Weight table treats a confirmed booking/session as the highest-trust rating source (1.25)
+and an unverified direct profile rating as lower (0.75). Whether the booking/session and
+external-visit rows are meant to stack as a bonus on top of the base criteria-based reward, or
+intentionally replace it at a lower amount, is unresolved and listed under Deferred Decisions.
+This same reward table also appears in User Rewards and Gamification and must be kept identical
+until this is resolved.
+
 Daily Cap for Thumbs Up / Down Rewards
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -743,14 +755,8 @@ Rating badges should use the cross-project milestone system called Anchored Mile
 Anchored Milestone Sequence
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Short code:
-
-Code block (text):
-    AMS
-
-AMS is a reusable milestone progression system for badges, rewards, achievement thresholds, contribution progress, and other gamified systems across Massage Nexus and other projects.
-
-An AMS starts with one or more engagement anchors, then continues using a generalized Fibonacci-style progression where later milestones are produced by adding the two previous milestone values.
+AMS is defined in User Rewards and Gamification. This section only sets the two rating-specific
+milestone sequences.
 
 Criteria Rating AMS
 ~~~~~~~~~~~~~~~~~~~
@@ -930,6 +936,9 @@ Deferred Decisions
 The following should be discussed or finalized later:
 
 - rating abuse detection details;
+- whether booking/session and external-visit criteria-rating rewards stack on top of the base
+  criteria-based reward or replace it, given the source-weight hierarchy ranks confirmed
+  sessions highest;
 - product/shop/seller connection rules;
 - whether product ratings need versioning rules;
 - search and browse ranking formula;

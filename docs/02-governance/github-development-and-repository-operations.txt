@@ -1,12 +1,12 @@
 Title: Massage Nexus GitHub Development and Repository Operations
-Document Version: 0.10
+Document Version: 0.11
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Document Description: Defines how Massage Nexus uses private GitHub repositories, Issues, Projects, Pull Requests, Actions, Releases, Pages, repository documentation, support-to-development conversion, access control, and custom domains without exposing private code or support data.
 
 Related Documents:
 - Massage Nexus Documentation Writing and Management Standard
-- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus AI-Assisted Development Workflow
 - Massage Nexus Support and Ticketing System
 - Massage Nexus Testing and Quality Assurance Strategy
 - Massage Nexus Maintenance and Continuous Operations
@@ -454,7 +454,8 @@ Never place secrets, personal data, production logs, or exploit details in a pub
 18. AI AND GITHUB
 ================================================================================
 
-AI may:
+AI may, when the user has explicitly requested the branch, commit, push, or Pull Request per
+AI-Assisted Development Workflow:
 - draft sanitized Issues;
 - propose labels and acceptance criteria;
 - create focused branches;

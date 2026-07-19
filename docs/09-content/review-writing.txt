@@ -4,9 +4,9 @@ Massage Nexus Review Writing Guide
 Field            | Value
 -----------------+-----------------------------------
 Title            | Massage Nexus Review Writing Guide
-Document Version | 1.70
+Document Version | 1.71
 Date Created     | 2026-07-05
-Revision Date    | 2026-07-09
+Revision Date    | 2026-07-20
 
 Document Description
 --------------------
@@ -1249,5 +1249,5 @@ The following items should be discussed or updated later:
 
 Current related documents:
 
-- Massage Nexus - 14 - Rating System v1.10.md defines target rating rules, 1 to 10 labels, XCES, and the connected pulse / nexus node rating asset direction.
-- Massage Nexus - 16 - Reputation System v1.70.md defines review helpfulness effects on Review Author reputation, per-item caps, diminishing returns, reputation levels, and trust-weight mapping.
+- docs/08-community/rating-system.txt defines target rating rules, 1 to 10 labels, XCES, and the connected pulse / nexus node rating asset direction.
+- docs/08-community/reputation-system.txt defines review helpfulness effects on Review Author reputation, per-item caps, diminishing returns, reputation levels, and trust-weight mapping.

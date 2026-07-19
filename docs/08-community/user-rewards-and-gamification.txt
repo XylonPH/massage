@@ -4,9 +4,9 @@ Massage Nexus User Rewards, Gamification, Ranks, and Roles
 Field            | Value
 -----------------+-----------------------------------------------------------
 Title            | Massage Nexus User Rewards, Gamification, Ranks, and Roles
-Document Version | 1.60
+Document Version | 1.61
 Date Created     | 2026-07-07
-Revision Date    | 2026-07-09
+Revision Date    | 2026-07-20
 
 Document Description
 --------------------
@@ -327,6 +327,8 @@ Same-day cap:
 - same user + same therapist + same calendar day = one rewarded therapist session rating only.
 
 The user may still rate additional valid sessions, but the extra same-day ratings should not earn extra rewards for the same target.
+
+Open question: these booking/session rewards are lower than the flat Criteria-Based Rating reward above, even though Rating System ranks a confirmed booking/session as the highest-trust rating source. Whether these rows stack on top of the base criteria-based reward or intentionally replace it at a lower amount is unresolved in Rating System's Deferred Decisions and must be kept identical here until resolved.
 
 Repeat Rating Rule
 ~~~~~~~~~~~~~~~~~~

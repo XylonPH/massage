@@ -1,5 +1,5 @@
 Title: Massage Nexus AI-Assisted Development Workflow
-Document Version: 1.50
+Document Version: 1.51
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
 Document Description: Defines how repository coding agents and human-directed AI assist Massage Nexus planning, documentation, implementation, testing, review, debugging, and maintenance while following current project authority, preserving user work, limiting context, implementing authorized changes directly, and validating results in proportion to risk. Runtime AI features inside Massage Nexus are governed separately by the Runtime AI System and the applicable capability specifications.
@@ -81,7 +81,7 @@ Archived documents and Working Notes are not current implementation authority.
 
 Before changing files:
 1. inspect Git status and preserve unrelated user changes;
-2. read AGENTS.md and any applicable scoped instructions;
+2. read Shared Project Standards, AGENTS.md, and any applicable scoped instructions;
 3. locate the smallest sufficient set of current specifications;
 4. inspect the affected code, tests, configuration, and structured data;
 5. confirm that the requested behavior is not already implemented;
@@ -239,25 +239,13 @@ separate concepts merely to shorten a list.
 ================================================================================
 
 Testing follows AGENTS.md, Shared Project Standards, Testing and Quality Assurance Strategy,
-and the affected capability specification.
+and the affected capability specification. Those documents already own the risk-proportional
+check sequence and the rule that AI-generated tests are not sufficient proof of correctness;
+this section does not restate them.
 
-In proportion to risk:
-1. run the smallest relevant test or check while developing;
-2. run the affected capability suite;
-3. run relevant formatting, linting, static analysis, type, build, security, accessibility, or
-   contract checks;
-4. run the broader regression suite at an appropriate checkpoint;
-5. manually verify important visual, interactive, assistive-technology, or operational behavior
-   when automation is insufficient;
-6. inspect the final diff and remove temporary debugging.
-
-AI-generated tests are not the only evidence of correctness. Independently inspect edge cases,
-failure behavior, authorization, validation, privacy, compatibility, and regressions. Do not
-weaken existing tests merely to make a change pass.
-
-Runtime AI tests use fake providers by default and must not spend production credits. Explicit
-provider integration tests use approved non-production credentials and data, run separately,
-and never expose secrets in output.
+Runtime AI product-behavior testing has one addition beyond that general model: explicit
+provider integration tests use approved non-production credentials and data, run separately
+from routine fake-provider tests, and never expose secrets in output.
 
 Summarize successful checks. Preserve detailed output only when a failure needs diagnosis.
 Never claim a test passed unless it was actually run successfully.

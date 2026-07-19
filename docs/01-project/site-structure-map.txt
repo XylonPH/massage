@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.30
+Document Version: 2.32
 Date Created: 2026-07-10
 Revision Date: 2026-07-19
 
@@ -1295,6 +1295,7 @@ Campus boundary notes:
 - practical massage competency requires human observation or supervised assessment;
 - exact institution, learner, course, and certificate data structures are deferred.
 
+================================================================================
 17. COMIC
 ================================================================================
 
@@ -1336,6 +1337,7 @@ new
 edit
 preview
 
+================================================================================
 18. ROOM
 ================================================================================
 
@@ -2022,6 +2024,7 @@ document areas.
 /workspace/finance
 /workspace/listing
 /workspace/claim
+/workspace/affiliation
 /workspace/service
 /workspace/media
 /workspace/product
@@ -2350,7 +2353,7 @@ Personal context shows the user's client bookings and history by default.
 Provider, therapist, scheduling, loyalty, and finance tools appear only in authorized managed contexts.
 
 ================================================================================
-35. WORKSPACE LISTING AND CLAIM AREAS
+35. WORKSPACE LISTING, CLAIM, AND AFFILIATION AREAS
 ================================================================================
 
 /workspace/listing
@@ -2441,6 +2444,20 @@ Provider, therapist, scheduling, loyalty, and finance tools appear only in autho
 /workspace/claim/document
 /workspace/claim/contact
 /workspace/claim/proof
+
+/workspace/affiliation
+/workspace/affiliation/spa
+/workspace/affiliation/request
+/workspace/affiliation/invite
+/workspace/affiliation/pending
+/workspace/affiliation/active
+/workspace/affiliation/ended
+/workspace/affiliation/history
+
+A practitioner's affiliation area tracks the spa-affiliations and business-affiliations named in
+the Therapist Profile section and reflects the therapist working-arrangement labels (freelance,
+spa-based, in-house, on-call). One therapist account may hold concurrent affiliation records
+with more than one spa.
 
 ================================================================================
 36. WORKSPACE SERVICE, PRODUCT, SELLER, PROMO, AND SHOP AREAS
@@ -2568,22 +2585,8 @@ Provider, therapist, scheduling, loyalty, and finance tools appear only in autho
 36C. WORKSPACE ANALYTICS AREAS
 ================================================================================
 
-/workspace/analytics
-/workspace/analytics/personal
-/workspace/analytics/provider
-/workspace/analytics/profile
-/workspace/analytics/search
-/workspace/analytics/contact
-/workspace/analytics/booking
-/workspace/analytics/review
-/workspace/analytics/promo
-/workspace/analytics/social
-/workspace/analytics/research
-/workspace/analytics/translation
-/workspace/analytics/referral
-/workspace/analytics/export
-/workspace/analytics/definition
-/workspace/analytics/privacy
+The full /workspace/analytics route list is consolidated in Section 40 to avoid a duplicate,
+conflicting route inventory. See Section 40, WORKSPACE ADVERTISING AND ANALYTICS AREAS.
 
 ================================================================================
 37. WORKSPACE MEDIA AND GALLERY AREAS
@@ -2818,6 +2821,7 @@ archive-file
 /workspace/download/access
 /workspace/download/analytics
 
+================================================================================
 40. WORKSPACE ADVERTISING AND ANALYTICS AREAS
 ================================================================================
 
@@ -2839,6 +2843,8 @@ archive-file
 /workspace/advertising/policy
 
 /workspace/analytics
+/workspace/analytics/personal
+/workspace/analytics/provider
 /workspace/analytics/profile
 /workspace/analytics/spa
 /workspace/analytics/therapist
@@ -2849,6 +2855,7 @@ archive-file
 /workspace/analytics/article
 /workspace/analytics/newsletter
 /workspace/analytics/search
+/workspace/analytics/contact
 /workspace/analytics/booking
 /workspace/analytics/intake
 /workspace/analytics/schedule
@@ -2862,9 +2869,15 @@ archive-file
 /workspace/analytics/review
 /workspace/analytics/rating
 /workspace/analytics/contribution
+/workspace/analytics/social
+/workspace/analytics/research
+/workspace/analytics/translation
+/workspace/analytics/referral
 /workspace/analytics/platform
 /workspace/analytics/export
 /workspace/analytics/report
+/workspace/analytics/definition
+/workspace/analytics/privacy
 
 ================================================================================
 41. WORKSPACE MODERATION, VERIFICATION, DATABASE, SYSTEM, API, AND SUPPORT AREAS
@@ -3127,14 +3140,17 @@ API implementation notes:
 43. RESERVED FIRST-LEVEL ROUTE WORDS
 ================================================================================
 
+about
 api
 app
+article
 asset
 auth
 booking
 calendar
 consent
 campaign
+campus
 cdn
 chat
 claim
@@ -3162,12 +3178,14 @@ product
 promo
 register
 report
+research
 review
 room
 search
 seller
 service
 spa
+statistics
 storage
 therapist
 upload
@@ -3182,6 +3200,7 @@ workspace
 ================================================================================
 
 about
+account
 admin
 api
 archive
@@ -3191,9 +3210,11 @@ create
 dashboard
 delete
 edit
+editor
 help
 login
 logout
+moderator
 new
 preview
 register
