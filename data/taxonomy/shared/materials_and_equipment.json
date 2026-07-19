@@ -1,0 +1,355 @@
+[
+    {
+        "_id": 3,
+        "field_name": "type_treatment_surface",
+        "field_label": "Treatment Surface Type",
+        "field_description": "Reusable field template for Treatment Surface Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MSG",
+                "option_label": "Massage Table",
+                "option_description": "Select Massage Table for Treatment Surface Type."
+            },
+            {
+                "option_code": "TMT",
+                "option_label": "Thai Massage Mat",
+                "option_description": "Select Thai Massage Mat for Treatment Surface Type."
+            },
+            {
+                "option_code": "FBD",
+                "option_label": "Facial Bed",
+                "option_description": "Select Facial Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "SPC",
+                "option_label": "Spa Capsule",
+                "option_description": "Select Spa Capsule for Treatment Surface Type."
+            },
+            {
+                "option_code": "ACT",
+                "option_label": "Acupuncture Table",
+                "option_description": "Select Acupuncture Table for Treatment Surface Type."
+            },
+            {
+                "option_code": "ARB",
+                "option_label": "Aromatherapy Bed",
+                "option_description": "Select Aromatherapy Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "AMT",
+                "option_label": "Ayurvedic Massage Table",
+                "option_description": "Select Ayurvedic Massage Table for Treatment Surface Type."
+            },
+            {
+                "option_code": "CRB",
+                "option_label": "Cryotherapy Bed",
+                "option_description": "Select Cryotherapy Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "DTB",
+                "option_label": "Detoxification Bed",
+                "option_description": "Select Detoxification Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "DFB",
+                "option_label": "Dry Floatation Bed",
+                "option_description": "Select Dry Floatation Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "DMB",
+                "option_label": "Dry Water Massage Bed",
+                "option_description": "Select Dry Water Massage Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "FLT",
+                "option_label": "Floatation Tank",
+                "option_description": "Select Floatation Tank for Treatment Surface Type."
+            },
+            {
+                "option_code": "HKM",
+                "option_label": "Hammock",
+                "option_description": "Select Hammock for Treatment Surface Type."
+            },
+            {
+                "option_code": "HSM",
+                "option_label": "Hot Stone Massage Table",
+                "option_description": "Select Hot Stone Massage Table for Treatment Surface Type."
+            },
+            {
+                "option_code": "HBT",
+                "option_label": "Hydrotherapy Bed",
+                "option_description": "Select Hydrotherapy Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "ISB",
+                "option_label": "Infrared Sauna Bed",
+                "option_description": "Select Infrared Sauna Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "PDC",
+                "option_label": "Podiatry Chair",
+                "option_description": "Select Podiatry Chair for Treatment Surface Type."
+            },
+            {
+                "option_code": "PMT",
+                "option_label": "Pregnancy Massage Table",
+                "option_description": "Select Pregnancy Massage Table for Treatment Surface Type."
+            },
+            {
+                "option_code": "RFC",
+                "option_label": "Reflexology Chair",
+                "option_description": "Select Reflexology Chair for Treatment Surface Type."
+            },
+            {
+                "option_code": "SHM",
+                "option_label": "Shiatsu Mat",
+                "option_description": "Select Shiatsu Mat for Treatment Surface Type."
+            },
+            {
+                "option_code": "STB",
+                "option_label": "Sound Therapy Bed",
+                "option_description": "Select Sound Therapy Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "VSB",
+                "option_label": "Vichy Shower Bed",
+                "option_description": "Select Vichy Shower Bed for Treatment Surface Type."
+            },
+            {
+                "option_code": "ZMC",
+                "option_label": "Zero-Gravity Massage Chair",
+                "option_description": "Select Zero-Gravity Massage Chair for Treatment Surface Type."
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "field_name": "type_fabric_material",
+        "field_label": "Fabric Material Type",
+        "field_description": "Reusable field template for Fabric Material Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BF",
+                "option_label": "Bamboo Fiber",
+                "option_description": "Select Bamboo Fiber for Fabric Material Type."
+            },
+            {
+                "option_code": "CH",
+                "option_label": "Cashmere",
+                "option_description": "Select Cashmere for Fabric Material Type."
+            },
+            {
+                "option_code": "CC",
+                "option_label": "Combed Cotton",
+                "option_description": "Select Combed Cotton for Fabric Material Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "Cotton",
+                "option_description": "Select Cotton for Fabric Material Type."
+            },
+            {
+                "option_code": "HM",
+                "option_label": "Hemp",
+                "option_description": "Select Hemp for Fabric Material Type."
+            },
+            {
+                "option_code": "LN",
+                "option_label": "Linen",
+                "option_description": "Select Linen for Fabric Material Type."
+            },
+            {
+                "option_code": "MF",
+                "option_label": "Microfiber",
+                "option_description": "Select Microfiber for Fabric Material Type."
+            },
+            {
+                "option_code": "NY",
+                "option_label": "Nylon",
+                "option_description": "Select Nylon for Fabric Material Type."
+            },
+            {
+                "option_code": "PL",
+                "option_label": "Polyester",
+                "option_description": "Select Polyester for Fabric Material Type."
+            },
+            {
+                "option_code": "RM",
+                "option_label": "Ramie",
+                "option_description": "Select Ramie for Fabric Material Type."
+            },
+            {
+                "option_code": "SL",
+                "option_label": "Silk",
+                "option_description": "Select Silk for Fabric Material Type."
+            },
+            {
+                "option_code": "SY",
+                "option_label": "Soya",
+                "option_description": "Select Soya for Fabric Material Type."
+            },
+            {
+                "option_code": "WL",
+                "option_label": "Wool",
+                "option_description": "Select Wool for Fabric Material Type."
+            },
+            {
+                "option_code": "ACR",
+                "option_label": "Acrylic",
+                "option_description": "Select Acrylic for Fabric Material Type."
+            },
+            {
+                "option_code": "EL",
+                "option_label": "Elastane / Spandex",
+                "option_description": "Select Elastane / Spandex for Fabric Material Type."
+            },
+            {
+                "option_code": "RAY",
+                "option_label": "Rayon / Viscose",
+                "option_description": "Select Rayon / Viscose for Fabric Material Type."
+            },
+            {
+                "option_code": "MOD",
+                "option_label": "Modal",
+                "option_description": "Select Modal for Fabric Material Type."
+            },
+            {
+                "option_code": "LYO",
+                "option_label": "Lyocell",
+                "option_description": "Select Lyocell for Fabric Material Type."
+            }
+        ]
+    },
+    {
+        "_id": 11,
+        "field_name": "type_fabric_construction",
+        "field_label": "Fabric Construction Type",
+        "field_description": "Reusable field template for Fabric Construction Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BW",
+                "option_label": "Basketweave",
+                "option_description": "Select Basketweave for Fabric Construction Type."
+            },
+            {
+                "option_code": "BC",
+                "option_label": "Broadcloth",
+                "option_description": "Select Broadcloth for Fabric Construction Type."
+            },
+            {
+                "option_code": "CH",
+                "option_label": "Charvet",
+                "option_description": "Select Charvet for Fabric Construction Type."
+            },
+            {
+                "option_code": "CV",
+                "option_label": "Coverlet",
+                "option_description": "Select Coverlet for Fabric Construction Type."
+            },
+            {
+                "option_code": "DB",
+                "option_label": "Dobby",
+                "option_description": "Select Dobby for Fabric Construction Type."
+            },
+            {
+                "option_code": "DW",
+                "option_label": "Double Weave",
+                "option_description": "Select Double Weave for Fabric Construction Type."
+            },
+            {
+                "option_code": "EE",
+                "option_label": "End-on-End",
+                "option_description": "Select End-on-End for Fabric Construction Type."
+            },
+            {
+                "option_code": "EW",
+                "option_label": "Even-Weave",
+                "option_description": "Select Even-Weave for Fabric Construction Type."
+            },
+            {
+                "option_code": "GB",
+                "option_label": "Gabardine",
+                "option_description": "Select Gabardine for Fabric Construction Type."
+            },
+            {
+                "option_code": "LM",
+                "option_label": "Lampas",
+                "option_description": "Select Lampas for Fabric Construction Type."
+            },
+            {
+                "option_code": "OX",
+                "option_label": "Oxford",
+                "option_description": "Select Oxford for Fabric Construction Type."
+            },
+            {
+                "option_code": "PW",
+                "option_label": "Pile Weave",
+                "option_description": "Select Pile Weave for Fabric Construction Type."
+            },
+            {
+                "option_code": "PQ",
+                "option_label": "Piqué",
+                "option_description": "Select Piqué for Fabric Construction Type."
+            },
+            {
+                "option_code": "PL",
+                "option_label": "Plain Weave",
+                "option_description": "Select Plain Weave for Fabric Construction Type."
+            },
+            {
+                "option_code": "PP",
+                "option_label": "Poplin",
+                "option_description": "Select Poplin for Fabric Construction Type."
+            },
+            {
+                "option_code": "SW",
+                "option_label": "Satin Weave",
+                "option_description": "Select Satin Weave for Fabric Construction Type."
+            },
+            {
+                "option_code": "SH",
+                "option_label": "Shot",
+                "option_description": "Select Shot for Fabric Construction Type."
+            },
+            {
+                "option_code": "TW",
+                "option_label": "Twill",
+                "option_description": "Select Twill for Fabric Construction Type."
+            },
+            {
+                "option_code": "DEN",
+                "option_label": "Denim",
+                "option_description": "Select Denim for Fabric Construction Type."
+            },
+            {
+                "option_code": "FLE",
+                "option_label": "Fleece",
+                "option_description": "Select Fleece for Fabric Construction Type."
+            },
+            {
+                "option_code": "VEL",
+                "option_label": "Velvet",
+                "option_description": "Select Velvet for Fabric Construction Type."
+            },
+            {
+                "option_code": "CAN",
+                "option_label": "Canvas",
+                "option_description": "Select Canvas for Fabric Construction Type."
+            },
+            {
+                "option_code": "JER",
+                "option_label": "Jersey",
+                "option_description": "Select Jersey for Fabric Construction Type."
+            }
+        ]
+    }
+]

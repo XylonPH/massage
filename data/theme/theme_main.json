@@ -1,0 +1,592 @@
+{
+    "theme_main": [
+        {
+            "_id": 1,
+            "theme_key": "ink_and_ember_light",
+            "theme_label": {
+                "eng": {
+                    "text": "Ink & Ember (Light)"
+                },
+                "spa": {
+                    "text": "Tinta y Brasa (Claro)"
+                },
+                "fil": {
+                    "text": "Tinta at Baga (Maliwanag)"
+                },
+                "kor": {
+                    "text": "잉크와 불씨 (라이트)"
+                }
+            },
+            "theme_description": {
+                "eng": {
+                    "text": "Ink & Ember (Light) uses ink black for structure, royal blue for clarity, ember orange for energy, and leaf green for a grounded wellness accent. The light background keeps the interface open and readable, while the darker navigation elements give the theme a confident visual anchor. The result is a bold but usable light-mode appearance that feels modern, focused, and active without losing warmth."
+                },
+                "spa": {
+                    "text": "Tinta y Brasa (Claro) usa negro tinta para la estructura, azul real para la claridad, naranja brasa para la energía y verde hoja como acento de bienestar. El fondo claro mantiene la interfaz abierta y legible, mientras que los elementos de navegación oscuros dan al tema un ancla visual segura. El resultado es una apariencia de modo claro audaz pero usable, moderna, enfocada y activa sin perder calidez."
+                },
+                "fil": {
+                    "text": "Ang Tinta at Baga (Maliwanag) ay gumagamit ng itim na tinta para sa istruktura, royal blue para sa linaw, ember orange para sa enerhiya, at leaf green bilang grounded na wellness accent. Pinananatili ng maliwanag na background na bukas at madaling basahin ang interface, habang ang mas madidilim na navigation element ay nagbibigay ng matibay na visual anchor. Nagbibigay ito ng light-mode na anyong matapang ngunit madaling gamitin, moderno, malinaw ang direksyon, at may init."
+                },
+                "kor": {
+                    "text": "잉크와 불씨 (라이트)는 구조감을 위해 잉크 블랙을, 명확함을 위해 로열 블루를, 활력을 위해 엠버 오렌지를, 안정적인 웰니스 포인트를 위해 리프 그린을 사용합니다. 밝은 배경은 인터페이스를 개방적이고 읽기 쉽게 만들며, 어두운 내비게이션 요소는 자신감 있는 시각적 중심을 제공합니다. 그 결과 따뜻함을 잃지 않으면서도 현대적이고 집중감 있으며 활기 있는 라이트 모드가 완성됩니다."
+                }
+            },
+            "type_theme": "APP",
+            "mode_appearance": "LGT",
+            "supported_ecosystem_list": [
+                "WEB",
+                "MOB"
+            ],
+            "status_record_lifecycle": "ACT",
+            "color_config": {
+                "primary_color": "171717",
+                "secondary_color": "2563EB",
+                "accent_color": "F97316",
+                "background_color": "FFFFFF",
+                "surface_color": "F8FAFC",
+                "surface_alt_color": "F1F5F9",
+                "text_color": "111827",
+                "muted_text_color": "6B7280",
+                "inverse_text_color": "FFFFFF",
+                "border_color": "D1D5DB",
+                "divider_color": "E5E7EB",
+                "success_color": "16A34A",
+                "warning_color": "D97706",
+                "danger_color": "DC2626",
+                "info_color": "2563EB",
+                "fyi_color": "0EA5E9"
+            },
+            "typography_config": {
+                "font_family": "Segoe UI",
+                "base_font_size": 10,
+                "heading_font_size": 16,
+                "subheading_font_size": 13,
+                "small_font_size": 9,
+                "line_height": 1.35,
+                "font_weight_normal": 400,
+                "font_weight_medium": 500,
+                "font_weight_bold": 600
+            },
+            "spacing_config": {
+                "page_padding": 16,
+                "panel_padding": 12,
+                "card_padding": 12,
+                "section_gap": 12,
+                "group_gap": 10,
+                "field_gap": 8,
+                "button_gap": 8
+            },
+            "border_config": {
+                "border_radius": 8,
+                "border_radius_small": 4,
+                "border_radius_large": 12,
+                "border_width": 1
+            },
+            "shadow_config": {
+                "card_shadow": "SOFT",
+                "dialog_shadow": "MED",
+                "popover_shadow": "SOFT"
+            },
+            "icon_config": {
+                "icon_style": "OUTLINE",
+                "icon_size": 18,
+                "icon_stroke_width": 2
+            },
+            "is_animated": true,
+            "animation_config": {
+                "duration_short_ms": 120,
+                "duration_medium_ms": 200,
+                "duration_long_ms": 320,
+                "easing_standard": "EASE_OUT",
+                "easing_emphasis": "EASE_IN_OUT",
+                "hover_motion": "SUBTLE",
+                "focus_motion": "RING",
+                "loading_motion": "SPINNER",
+                "transition_style": "FADE",
+                "page_transition_style": "NONE",
+                "dialog_transition_style": "SCALE_FADE",
+                "list_insert_motion": "SLIDE_FADE"
+            },
+            "media_config": {
+                "image_corner_radius": 8,
+                "image_fit_mode": "COVER",
+                "image_placeholder_style": "MUTED",
+                "video_corner_radius": 8,
+                "video_fit_mode": "CONTAIN",
+                "video_control_style": "STANDARD"
+            },
+            "chart_config": {
+                "chart_palette": "INK_AND_EMBER_LIGHT",
+                "grid_line_color": "E5E7EB",
+                "axis_text_color": "6B7280",
+                "positive_color": "16A34A",
+                "negative_color": "DC2626",
+                "neutral_color": "6B7280",
+                "series_color_list": [
+                    "171717",
+                    "2563EB",
+                    "F97316",
+                    "16A34A",
+                    "DC2626"
+                ]
+            },
+            "component_config": {
+                "button_height": 32,
+                "input_height": 30,
+                "combo_box_height": 30,
+                "table_row_height": 28,
+                "table_header_height": 32,
+                "card_min_height": 72,
+                "toolbar_height": 40,
+                "status_bar_height": 24
+            },
+            "is_responsive": true,
+            "is_locked": false,
+            "theme_note": "Bold light theme direction based on black, blue, orange, and green.",
+            "created_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_by_device_id": 1
+        },
+        {
+            "_id": 2,
+            "theme_key": "ink_and_ember_dark",
+            "theme_label": {
+                "eng": {
+                    "text": "Ink & Ember (Dark)"
+                },
+                "spa": {
+                    "text": "Tinta y Brasa (Oscuro)"
+                },
+                "fil": {
+                    "text": "Tinta at Baga (Madilim)"
+                },
+                "kor": {
+                    "text": "잉크와 불씨 (다크)"
+                }
+            },
+            "theme_description": {
+                "eng": {
+                    "text": "Ink & Ember (Dark) places night black and graphite surfaces at the center, then uses electric blue, ember glow, and fresh green to create contrast, movement, and warmth. The palette gives the interface a premium nocturnal tone while keeping actions, links, and status cues easy to notice. It allows an application to feel bold and immersive while remaining readable, practical, and visually disciplined."
+                },
+                "spa": {
+                    "text": "Tinta y Brasa (Oscuro) coloca el negro noche y las superficies grafito en el centro, y usa azul eléctrico, brillo brasa y verde fresco para crear contraste, movimiento y calidez. La paleta da a la interfaz un tono nocturno y premium, manteniendo las acciones, enlaces y señales de estado fáciles de identificar. Permite que una aplicación se sienta audaz e inmersiva sin perder legibilidad, practicidad ni disciplina visual."
+                },
+                "fil": {
+                    "text": "Inilalagay ng Tinta at Baga (Madilim) ang night black at graphite surfaces sa sentro, habang ginagamit ang electric blue, ember glow, at fresh green para sa contrast, galaw, at init. Binibigyan ng palette ang interface ng premium na nocturnal tone habang nananatiling madaling makita ang actions, links, at status cues. Pinapayagan nitong magmukhang matapang at immersive ang application habang nananatiling nababasa, praktikal, at maayos ang visual discipline."
+                },
+                "kor": {
+                    "text": "잉크와 불씨 (다크)는 나이트 블랙과 그래파이트 표면을 중심에 두고, 일렉트릭 블루, 엠버 글로우, 프레시 그린으로 대비와 움직임, 따뜻함을 만듭니다. 이 팔레트는 인터페이스에 프리미엄 야간 톤을 주면서도 동작, 링크, 상태 표시가 쉽게 보이도록 합니다. 애플리케이션이 대담하고 몰입감 있게 느껴지면서도 읽기 쉽고 실용적이며 시각적으로 정돈되도록 합니다."
+                }
+            },
+            "type_theme": "APP",
+            "mode_appearance": "DRK",
+            "supported_ecosystem_list": [
+                "WEB",
+                "MOB"
+            ],
+            "status_record_lifecycle": "ACT",
+            "color_config": {
+                "primary_color": "60A5FA",
+                "secondary_color": "FB923C",
+                "accent_color": "22C55E",
+                "background_color": "000000",
+                "surface_color": "111827",
+                "surface_alt_color": "1F2937",
+                "text_color": "F4F4F5",
+                "muted_text_color": "A1A1AA",
+                "inverse_text_color": "000000",
+                "border_color": "374151",
+                "divider_color": "27272A",
+                "success_color": "22C55E",
+                "warning_color": "F59E0B",
+                "danger_color": "EF4444",
+                "info_color": "38BDF8",
+                "fyi_color": "A78BFA"
+            },
+            "typography_config": {
+                "font_family": "Segoe UI",
+                "base_font_size": 10,
+                "heading_font_size": 16,
+                "subheading_font_size": 13,
+                "small_font_size": 9,
+                "line_height": 1.35,
+                "font_weight_normal": 400,
+                "font_weight_medium": 500,
+                "font_weight_bold": 600
+            },
+            "spacing_config": {
+                "page_padding": 16,
+                "panel_padding": 12,
+                "card_padding": 12,
+                "section_gap": 12,
+                "group_gap": 10,
+                "field_gap": 8,
+                "button_gap": 8
+            },
+            "border_config": {
+                "border_radius": 8,
+                "border_radius_small": 4,
+                "border_radius_large": 12,
+                "border_width": 1
+            },
+            "shadow_config": {
+                "card_shadow": "SOFT",
+                "dialog_shadow": "MED",
+                "popover_shadow": "SOFT"
+            },
+            "icon_config": {
+                "icon_style": "OUTLINE",
+                "icon_size": 18,
+                "icon_stroke_width": 2
+            },
+            "is_animated": true,
+            "animation_config": {
+                "duration_short_ms": 120,
+                "duration_medium_ms": 200,
+                "duration_long_ms": 320,
+                "easing_standard": "EASE_OUT",
+                "easing_emphasis": "EASE_IN_OUT",
+                "hover_motion": "SUBTLE",
+                "focus_motion": "RING",
+                "loading_motion": "SPINNER",
+                "transition_style": "FADE",
+                "page_transition_style": "NONE",
+                "dialog_transition_style": "SCALE_FADE",
+                "list_insert_motion": "SLIDE_FADE"
+            },
+            "media_config": {
+                "image_corner_radius": 8,
+                "image_fit_mode": "COVER",
+                "image_placeholder_style": "MUTED",
+                "video_corner_radius": 8,
+                "video_fit_mode": "CONTAIN",
+                "video_control_style": "STANDARD"
+            },
+            "chart_config": {
+                "chart_palette": "INK_AND_EMBER_DARK",
+                "grid_line_color": "27272A",
+                "axis_text_color": "A1A1AA",
+                "positive_color": "22C55E",
+                "negative_color": "EF4444",
+                "neutral_color": "A1A1AA",
+                "series_color_list": [
+                    "60A5FA",
+                    "FB923C",
+                    "22C55E",
+                    "EF4444",
+                    "A78BFA"
+                ]
+            },
+            "component_config": {
+                "button_height": 32,
+                "input_height": 30,
+                "combo_box_height": 30,
+                "table_row_height": 28,
+                "table_header_height": 32,
+                "card_min_height": 72,
+                "toolbar_height": 40,
+                "status_bar_height": 24
+            },
+            "is_responsive": true,
+            "is_locked": false,
+            "theme_note": "Bold dark theme direction based on black, blue, orange, and green.",
+            "created_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_by_device_id": 1
+        },
+        {
+            "_id": 3,
+            "theme_key": "midnight_harvest_light",
+            "theme_label": {
+                "eng": {
+                    "text": "Midnight Harvest (Light)"
+                },
+                "spa": {
+                    "text": "Cosecha de Medianoche (Claro)"
+                },
+                "fil": {
+                    "text": "Ani sa Hatinggabi (Maliwanag)"
+                },
+                "kor": {
+                    "text": "미드나잇 하베스트 (라이트)"
+                }
+            },
+            "theme_description": {
+                "eng": {
+                    "text": "Midnight Harvest (Light) visualizes a seasonal harvest seen before night fully falls, using pumpkin orange, warm cream, shadow purple, and eerie green to suggest lanterns, autumn fields, and playful mystery. The lighter surfaces keep the interface friendly and readable, while the saturated accents give the theme a festive Halloween character. It allows an application to feel seasonal, spirited, and atmospheric without becoming too dark or difficult to use."
+                },
+                "spa": {
+                    "text": "Cosecha de Medianoche (Claro) visualiza una cosecha estacional antes de que la noche caiga por completo, usando naranja calabaza, crema cálida, púrpura sombra y verde inquietante para sugerir faroles, campos de otoño y misterio juguetón. Las superficies claras mantienen la interfaz amigable y legible, mientras que los acentos saturados dan al tema un carácter festivo de Halloween. Permite que una aplicación se sienta estacional, animada y atmosférica sin volverse demasiado oscura ni difícil de usar."
+                },
+                "fil": {
+                    "text": "Ang Ani sa Hatinggabi (Maliwanag) ay nagpapakita ng seasonal harvest bago tuluyang dumilim ang gabi, gamit ang pumpkin orange, warm cream, shadow purple, at eerie green upang ipahiwatig ang mga parol, taglagas na bukirin, at mapaglarong hiwaga. Pinapanatili ng light surfaces na friendly at madaling basahin ang interface, habang ang saturated accents ay nagbibigay ng festive Halloween character. Pinapayagan nitong maging seasonal, masigla, at atmospheric ang application nang hindi nagiging sobrang madilim o mahirap gamitin."
+                },
+                "kor": {
+                    "text": "미드나잇 하베스트 (라이트)는 밤이 완전히 내려오기 전의 계절 수확을 시각화하며, 펌킨 오렌지, 따뜻한 크림, 섀도 퍼플, 으스스한 그린으로 등불, 가을 들판, 장난스러운 신비감을 표현합니다. 밝은 표면은 인터페이스를 친근하고 읽기 쉽게 유지하고, 강한 포인트 색상은 할로윈의 축제 분위기를 더합니다. 애플리케이션이 너무 어둡거나 사용하기 어렵지 않으면서도 계절감 있고 생동감 있으며 분위기 있게 느껴지도록 합니다."
+                }
+            },
+            "type_theme": "APP",
+            "mode_appearance": "LGT",
+            "supported_ecosystem_list": [
+                "WEB",
+                "MOB"
+            ],
+            "status_record_lifecycle": "ACT",
+            "color_config": {
+                "primary_color": "4C1D95",
+                "secondary_color": "EA580C",
+                "accent_color": "84CC16",
+                "background_color": "FFF7ED",
+                "surface_color": "FFFFFF",
+                "surface_alt_color": "FFEFD5",
+                "text_color": "1F1B24",
+                "muted_text_color": "6B5A4F",
+                "inverse_text_color": "FFFFFF",
+                "border_color": "F7C27C",
+                "divider_color": "FCD9A5",
+                "success_color": "15803D",
+                "warning_color": "EA580C",
+                "danger_color": "B91C1C",
+                "info_color": "7C3AED",
+                "fyi_color": "9333EA"
+            },
+            "typography_config": {
+                "font_family": "Segoe UI",
+                "base_font_size": 10,
+                "heading_font_size": 16,
+                "subheading_font_size": 13,
+                "small_font_size": 9,
+                "line_height": 1.35,
+                "font_weight_normal": 400,
+                "font_weight_medium": 500,
+                "font_weight_bold": 600
+            },
+            "spacing_config": {
+                "page_padding": 16,
+                "panel_padding": 12,
+                "card_padding": 12,
+                "section_gap": 12,
+                "group_gap": 10,
+                "field_gap": 8,
+                "button_gap": 8
+            },
+            "border_config": {
+                "border_radius": 8,
+                "border_radius_small": 4,
+                "border_radius_large": 12,
+                "border_width": 1
+            },
+            "shadow_config": {
+                "card_shadow": "SOFT",
+                "dialog_shadow": "MED",
+                "popover_shadow": "SOFT"
+            },
+            "icon_config": {
+                "icon_style": "OUTLINE",
+                "icon_size": 18,
+                "icon_stroke_width": 2
+            },
+            "is_animated": true,
+            "animation_config": {
+                "duration_short_ms": 120,
+                "duration_medium_ms": 200,
+                "duration_long_ms": 320,
+                "easing_standard": "EASE_OUT",
+                "easing_emphasis": "EASE_IN_OUT",
+                "hover_motion": "SUBTLE",
+                "focus_motion": "RING",
+                "loading_motion": "SPINNER",
+                "transition_style": "FADE",
+                "page_transition_style": "NONE",
+                "dialog_transition_style": "SCALE_FADE",
+                "list_insert_motion": "SLIDE_FADE"
+            },
+            "media_config": {
+                "image_corner_radius": 8,
+                "image_fit_mode": "COVER",
+                "image_placeholder_style": "MUTED",
+                "video_corner_radius": 8,
+                "video_fit_mode": "CONTAIN",
+                "video_control_style": "STANDARD"
+            },
+            "chart_config": {
+                "chart_palette": "MIDNIGHT_HARVEST_LIGHT",
+                "grid_line_color": "FCD9A5",
+                "axis_text_color": "6B5A4F",
+                "positive_color": "15803D",
+                "negative_color": "B91C1C",
+                "neutral_color": "6B5A4F",
+                "series_color_list": [
+                    "4C1D95",
+                    "EA580C",
+                    "84CC16",
+                    "B91C1C",
+                    "9333EA"
+                ]
+            },
+            "component_config": {
+                "button_height": 32,
+                "input_height": 30,
+                "combo_box_height": 30,
+                "table_row_height": 28,
+                "table_header_height": 32,
+                "card_min_height": 72,
+                "toolbar_height": 40,
+                "status_bar_height": 24
+            },
+            "is_responsive": true,
+            "is_locked": false,
+            "theme_note": "Seasonal Halloween light theme direction.",
+            "created_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_by_device_id": 1
+        },
+        {
+            "_id": 4,
+            "theme_key": "midnight_harvest_dark",
+            "theme_label": {
+                "eng": {
+                    "text": "Midnight Harvest (Dark)"
+                },
+                "spa": {
+                    "text": "Cosecha de Medianoche (Oscuro)"
+                },
+                "fil": {
+                    "text": "Ani sa Hatinggabi (Madilim)"
+                },
+                "kor": {
+                    "text": "미드나잇 하베스트 (다크)"
+                }
+            },
+            "theme_description": {
+                "eng": {
+                    "text": "Midnight Harvest (Dark) visualizes a Halloween night market after sunset, using midnight purple, harvest orange, ember gold, and spectral green to suggest lantern light, autumn produce, shadow, and playful suspense. The dark base creates drama and depth, while the warm accents guide attention toward actions, highlights, and seasonal moments. It allows an application to feel festive, mysterious, and cinematic while keeping important interface elements clear and usable."
+                },
+                "spa": {
+                    "text": "Cosecha de Medianoche (Oscuro) visualiza un mercado nocturno de Halloween después del atardecer, usando púrpura medianoche, naranja cosecha, oro brasa y verde espectral para sugerir luz de faroles, productos de otoño, sombra y suspenso juguetón. La base oscura crea drama y profundidad, mientras que los acentos cálidos guían la atención hacia acciones, destacados y momentos estacionales. Permite que una aplicación se sienta festiva, misteriosa y cinematográfica, manteniendo claros y usables los elementos importantes de la interfaz."
+                },
+                "fil": {
+                    "text": "Ang Ani sa Hatinggabi (Madilim) ay nagpapakita ng Halloween night market matapos ang paglubog ng araw, gamit ang midnight purple, harvest orange, ember gold, at spectral green upang ipahiwatig ang ilaw ng parol, ani ng taglagas, anino, at mapaglarong suspense. Lumilikha ang dark base ng drama at lalim, habang ang warm accents ay gumagabay sa pansin papunta sa actions, highlights, at seasonal moments. Pinapayagan nitong maging festive, misteryoso, at cinematic ang application habang malinaw at madaling gamitin pa rin ang mahahalagang interface elements."
+                },
+                "kor": {
+                    "text": "미드나잇 하베스트 (다크)는 해가 진 뒤의 할로윈 야시장을 시각화하며, 미드나잇 퍼플, 하베스트 오렌지, 엠버 골드, 스펙트럴 그린으로 등불, 가을 수확물, 그림자, 장난스러운 긴장감을 표현합니다. 어두운 기반은 드라마와 깊이를 만들고, 따뜻한 포인트 색상은 동작, 강조 요소, 계절적인 순간으로 시선을 이끕니다. 애플리케이션이 축제적이고 신비롭고 영화적인 분위기를 가지면서도 중요한 인터페이스 요소는 명확하고 사용하기 쉽게 유지합니다."
+                }
+            },
+            "type_theme": "APP",
+            "mode_appearance": "DRK",
+            "supported_ecosystem_list": [
+                "WEB",
+                "MOB"
+            ],
+            "status_record_lifecycle": "ACT",
+            "color_config": {
+                "primary_color": "C084FC",
+                "secondary_color": "F97316",
+                "accent_color": "A3E635",
+                "background_color": "0B0610",
+                "surface_color": "1A1023",
+                "surface_alt_color": "24112B",
+                "text_color": "FDF4FF",
+                "muted_text_color": "C4B5FD",
+                "inverse_text_color": "0B0610",
+                "border_color": "4C1D95",
+                "divider_color": "31203D",
+                "success_color": "22C55E",
+                "warning_color": "F59E0B",
+                "danger_color": "F87171",
+                "info_color": "A78BFA",
+                "fyi_color": "F0ABFC"
+            },
+            "typography_config": {
+                "font_family": "Segoe UI",
+                "base_font_size": 10,
+                "heading_font_size": 16,
+                "subheading_font_size": 13,
+                "small_font_size": 9,
+                "line_height": 1.35,
+                "font_weight_normal": 400,
+                "font_weight_medium": 500,
+                "font_weight_bold": 600
+            },
+            "spacing_config": {
+                "page_padding": 16,
+                "panel_padding": 12,
+                "card_padding": 12,
+                "section_gap": 12,
+                "group_gap": 10,
+                "field_gap": 8,
+                "button_gap": 8
+            },
+            "border_config": {
+                "border_radius": 8,
+                "border_radius_small": 4,
+                "border_radius_large": 12,
+                "border_width": 1
+            },
+            "shadow_config": {
+                "card_shadow": "SOFT",
+                "dialog_shadow": "MED",
+                "popover_shadow": "SOFT"
+            },
+            "icon_config": {
+                "icon_style": "OUTLINE",
+                "icon_size": 18,
+                "icon_stroke_width": 2
+            },
+            "is_animated": true,
+            "animation_config": {
+                "duration_short_ms": 120,
+                "duration_medium_ms": 200,
+                "duration_long_ms": 320,
+                "easing_standard": "EASE_OUT",
+                "easing_emphasis": "EASE_IN_OUT",
+                "hover_motion": "SUBTLE",
+                "focus_motion": "RING",
+                "loading_motion": "SPINNER",
+                "transition_style": "FADE",
+                "page_transition_style": "NONE",
+                "dialog_transition_style": "SCALE_FADE",
+                "list_insert_motion": "SLIDE_FADE"
+            },
+            "media_config": {
+                "image_corner_radius": 8,
+                "image_fit_mode": "COVER",
+                "image_placeholder_style": "MUTED",
+                "video_corner_radius": 8,
+                "video_fit_mode": "CONTAIN",
+                "video_control_style": "STANDARD"
+            },
+            "chart_config": {
+                "chart_palette": "MIDNIGHT_HARVEST_DARK",
+                "grid_line_color": "31203D",
+                "axis_text_color": "C4B5FD",
+                "positive_color": "22C55E",
+                "negative_color": "F87171",
+                "neutral_color": "C4B5FD",
+                "series_color_list": [
+                    "C084FC",
+                    "F97316",
+                    "A3E635",
+                    "F87171",
+                    "F0ABFC"
+                ]
+            },
+            "component_config": {
+                "button_height": 32,
+                "input_height": 30,
+                "combo_box_height": 30,
+                "table_row_height": 28,
+                "table_header_height": 32,
+                "card_min_height": 72,
+                "toolbar_height": 40,
+                "status_bar_height": 24
+            },
+            "is_responsive": true,
+            "is_locked": false,
+            "theme_note": "Seasonal Halloween dark theme direction.",
+            "created_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_by_device_id": 1
+        }
+    ]
+}

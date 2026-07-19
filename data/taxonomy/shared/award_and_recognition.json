@@ -1,0 +1,263 @@
+[
+    {
+        "_id": 127,
+        "field_name": "type_award",
+        "field_label": "Award Type",
+        "field_description": "Reusable field template for Award Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "TRO",
+                "option_label": "Trophy",
+                "option_description": "Select Trophy for Award Type."
+            },
+            {
+                "option_code": "CIT",
+                "option_label": "Citation",
+                "option_description": "Select Citation for Award Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medal",
+                "option_description": "Select Medal for Award Type."
+            },
+            {
+                "option_code": "TIT",
+                "option_label": "Title",
+                "option_description": "Select Title for Award Type."
+            },
+            {
+                "option_code": "GRA",
+                "option_label": "Grant",
+                "option_description": "Select Grant for Award Type."
+            },
+            {
+                "option_code": "CER",
+                "option_label": "Certificate",
+                "option_description": "Select Certificate for Award Type."
+            },
+            {
+                "option_code": "PRI",
+                "option_label": "Prize",
+                "option_description": "Select Prize for Award Type."
+            }
+        ]
+    },
+    {
+        "_id": 128,
+        "field_name": "type_award_category",
+        "field_label": "Award Category Type",
+        "field_description": "Reusable field template for Award Category Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ACT",
+                "option_label": "Acting",
+                "option_description": "Select Acting for Award Category Type."
+            },
+            {
+                "option_code": "WRI",
+                "option_label": "Writing",
+                "option_description": "Select Writing for Award Category Type."
+            },
+            {
+                "option_code": "TEC",
+                "option_label": "Technical",
+                "option_description": "Select Technical for Award Category Type."
+            },
+            {
+                "option_code": "LIF",
+                "option_label": "Lifetime",
+                "option_description": "Select Lifetime for Award Category Type."
+            },
+            {
+                "option_code": "MUS",
+                "option_label": "Music",
+                "option_description": "Select Music for Award Category Type."
+            },
+            {
+                "option_code": "DIR",
+                "option_label": "Directing",
+                "option_description": "Select Directing for Award Category Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Production",
+                "option_description": "Select Production for Award Category Type."
+            },
+            {
+                "option_code": "SPE",
+                "option_label": "Special",
+                "option_description": "Select Special for Award Category Type."
+            }
+        ]
+    },
+    {
+        "_id": 129,
+        "field_name": "status_award_result",
+        "field_label": "Award Result Status",
+        "field_description": "Reusable field template for Award Result Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NOM",
+                "option_label": "Nominated",
+                "option_description": "Select Nominated for Award Result Status."
+            },
+            {
+                "option_code": "WON",
+                "option_label": "Won",
+                "option_description": "Select Won for Award Result Status."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Shortlisted",
+                "option_description": "Select Shortlisted for Award Result Status."
+            },
+            {
+                "option_code": "WIT",
+                "option_label": "Withdrawn",
+                "option_description": "Select Withdrawn for Award Result Status."
+            },
+            {
+                "option_code": "DIS",
+                "option_label": "Disqualified",
+                "option_description": "Select Disqualified for Award Result Status."
+            },
+            {
+                "option_code": "PND",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Award Result Status."
+            }
+        ]
+    },
+    {
+        "_id": 130,
+        "field_name": "type_award_body",
+        "field_label": "Award Body Type",
+        "field_description": "Reusable field template for Award Body Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ACA",
+                "option_label": "Academy",
+                "option_description": "Select Academy for Award Body Type."
+            },
+            {
+                "option_code": "FES",
+                "option_label": "Festival",
+                "option_description": "Select Festival for Award Body Type."
+            },
+            {
+                "option_code": "ASS",
+                "option_label": "Association",
+                "option_description": "Select Association for Award Body Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Award Body Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government",
+                "option_description": "Select Government for Award Body Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Company",
+                "option_description": "Select Company for Award Body Type."
+            },
+            {
+                "option_code": "COT",
+                "option_label": "Community",
+                "option_description": "Select Community for Award Body Type."
+            }
+        ]
+    },
+    {
+        "_id": 131,
+        "field_name": "type_award_level",
+        "field_label": "Award Level Type",
+        "field_description": "Reusable field template for Award Level Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOC",
+                "option_label": "Local",
+                "option_description": "Select Local for Award Level Type."
+            },
+            {
+                "option_code": "NAT",
+                "option_label": "National",
+                "option_description": "Select National for Award Level Type."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Regional",
+                "option_description": "Select Regional for Award Level Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "International",
+                "option_description": "Select International for Award Level Type."
+            },
+            {
+                "option_code": "INS",
+                "option_label": "Institutional",
+                "option_description": "Select Institutional for Award Level Type."
+            }
+        ]
+    },
+    {
+        "_id": 132,
+        "field_name": "type_ceremony",
+        "field_label": "Ceremony Type",
+        "field_description": "Reusable field template for Ceremony Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ANN",
+                "option_label": "Annual",
+                "option_description": "Select Annual for Ceremony Type."
+            },
+            {
+                "option_code": "SPE",
+                "option_label": "Special",
+                "option_description": "Select Special for Ceremony Type."
+            },
+            {
+                "option_code": "HON",
+                "option_label": "Honorary",
+                "option_description": "Select Honorary for Ceremony Type."
+            },
+            {
+                "option_code": "VIR",
+                "option_label": "Virtual",
+                "option_description": "Select Virtual for Ceremony Type."
+            },
+            {
+                "option_code": "INP",
+                "option_label": "In-Person",
+                "option_description": "Select In-Person for Ceremony Type."
+            },
+            {
+                "option_code": "HYB",
+                "option_label": "Hybrid",
+                "option_description": "Select Hybrid for Ceremony Type."
+            }
+        ]
+    }
+]

@@ -1,0 +1,113 @@
+[
+  {
+    "area_hierarchy_profile_id": 1,
+    "profile_key": "philippines_standard",
+    "profile_name": {
+      "eng": {
+        "text": "Philippines Standard Administrative Hierarchy"
+      },
+      "fil": {
+        "text": "Pamantayang Hirarkiyang Administratibo ng Pilipinas"
+      },
+      "kor": {
+        "text": "필리핀 표준 행정구역 계층"
+      },
+      "spa": {
+        "text": "Jerarquía administrativa estándar de Filipinas"
+      }
+    },
+    "country_id": 608,
+    "short_description": {
+      "eng": {
+        "text": "Defines the valid administrative hierarchy paths used for Philippine regions, provinces, cities, municipalities, and barangays."
+      },
+      "fil": {
+        "text": "Tinutukoy ang mga wastong landas ng hirarkiyang administratibo para sa mga rehiyon, lalawigan, lungsod, munisipalidad, at barangay ng Pilipinas."
+      },
+      "kor": {
+        "text": "필리핀의 지역, 주, 시, 지방자치단체 및 바랑가이에 사용되는 유효한 행정 계층 경로를 정의합니다."
+      },
+      "spa": {
+        "text": "Define las rutas válidas de la jerarquía administrativa para las regiones, provincias, ciudades, municipios y barangayes de Filipinas."
+      }
+    },
+    "hierarchy_paths": [
+      {
+        "path_key": "province_city",
+        "levels": [
+          {
+            "level": 1,
+            "collection_name": "region_main",
+            "type_area": "REG"
+          },
+          {
+            "level": 2,
+            "collection_name": "province_main",
+            "type_area": "PRV"
+          },
+          {
+            "level": 3,
+            "collection_name": "city_main",
+            "type_area": "CT"
+          },
+          {
+            "level": 4,
+            "collection_name": "barangay_main",
+            "type_area": "BRG"
+          }
+        ]
+      },
+      {
+        "path_key": "province_municipality",
+        "levels": [
+          {
+            "level": 1,
+            "collection_name": "region_main",
+            "type_area": "REG"
+          },
+          {
+            "level": 2,
+            "collection_name": "province_main",
+            "type_area": "PRV"
+          },
+          {
+            "level": 3,
+            "collection_name": "municipality_main",
+            "type_area": "MUN"
+          },
+          {
+            "level": 4,
+            "collection_name": "barangay_main",
+            "type_area": "BRG"
+          }
+        ]
+      },
+      {
+        "path_key": "independent_city",
+        "levels": [
+          {
+            "level": 1,
+            "collection_name": "region_main",
+            "type_area": "REG"
+          },
+          {
+            "level": 2,
+            "collection_name": "city_main",
+            "type_area": "CT"
+          },
+          {
+            "level": 3,
+            "collection_name": "barangay_main",
+            "type_area": "BRG"
+          }
+        ]
+      }
+    ],
+    "validation_rules": {
+      "province_requires_region": true,
+      "municipality_requires_province": true,
+      "barangay_requires_city_or_municipality": true,
+      "city_may_bypass_province": true
+    }
+  }
+]

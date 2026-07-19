@@ -1,0 +1,329 @@
+[
+    {
+        "_id": 120,
+        "field_name": "type_literary_work",
+        "field_label": "Literary Work Type",
+        "field_description": "Reusable field template for Literary Work Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NOV",
+                "option_label": "Novel",
+                "option_description": "Select Novel for Literary Work Type."
+            },
+            {
+                "option_code": "POE",
+                "option_label": "Poem",
+                "option_description": "Select Poem for Literary Work Type."
+            },
+            {
+                "option_code": "ESS",
+                "option_label": "Essay",
+                "option_description": "Select Essay for Literary Work Type."
+            },
+            {
+                "option_code": "PLA",
+                "option_label": "Play",
+                "option_description": "Select Play for Literary Work Type."
+            },
+            {
+                "option_code": "SS",
+                "option_label": "Short Story",
+                "option_description": "Select Short Story for Literary Work Type."
+            },
+            {
+                "option_code": "BIO",
+                "option_label": "Biography",
+                "option_description": "Select Biography for Literary Work Type."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Nonfiction",
+                "option_description": "Select Nonfiction for Literary Work Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Comic",
+                "option_description": "Select Comic for Literary Work Type."
+            }
+        ]
+    },
+    {
+        "_id": 121,
+        "field_name": "type_publication",
+        "field_label": "Publication Type",
+        "field_description": "Reusable field template for Publication Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BK",
+                "option_label": "Book",
+                "option_description": "Select Book for Publication Type."
+            },
+            {
+                "option_code": "MAG",
+                "option_label": "Magazine",
+                "option_description": "Select Magazine for Publication Type."
+            },
+            {
+                "option_code": "JOU",
+                "option_label": "Journal",
+                "option_description": "Select Journal for Publication Type."
+            },
+            {
+                "option_code": "ANT",
+                "option_label": "Anthology",
+                "option_description": "Select Anthology for Publication Type."
+            },
+            {
+                "option_code": "NEW",
+                "option_label": "Newspaper",
+                "option_description": "Select Newspaper for Publication Type."
+            },
+            {
+                "option_code": "WEB",
+                "option_label": "Website",
+                "option_description": "Select Website for Publication Type."
+            },
+            {
+                "option_code": "NET",
+                "option_label": "Newsletter",
+                "option_description": "Select Newsletter for Publication Type."
+            }
+        ]
+    },
+    {
+        "_id": 122,
+        "field_name": "type_author_role",
+        "field_label": "Author Role Type",
+        "field_description": "Reusable field template for Author Role Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AUT",
+                "option_label": "Author",
+                "option_description": "Select Author for Author Role Type."
+            },
+            {
+                "option_code": "EDT",
+                "option_label": "Editor",
+                "option_description": "Select Editor for Author Role Type."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Translator",
+                "option_description": "Select Translator for Author Role Type."
+            },
+            {
+                "option_code": "ILL",
+                "option_label": "Illustrator",
+                "option_description": "Select Illustrator for Author Role Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Contributor",
+                "option_description": "Select Contributor for Author Role Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Compiler",
+                "option_description": "Select Compiler for Author Role Type."
+            },
+            {
+                "option_code": "NAR",
+                "option_label": "Narrator",
+                "option_description": "Select Narrator for Author Role Type."
+            }
+        ]
+    },
+    {
+        "_id": 123,
+        "field_name": "type_edition",
+        "field_label": "Edition Type",
+        "field_description": "Reusable field template for Edition Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FE",
+                "option_label": "First Edition",
+                "option_description": "Select First Edition for Edition Type."
+            },
+            {
+                "option_code": "REV",
+                "option_label": "Revised",
+                "option_description": "Select Revised for Edition Type."
+            },
+            {
+                "option_code": "ABR",
+                "option_label": "Abridged",
+                "option_description": "Select Abridged for Edition Type."
+            },
+            {
+                "option_code": "ANN",
+                "option_label": "Annotated",
+                "option_description": "Select Annotated for Edition Type."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Expanded",
+                "option_description": "Select Expanded for Edition Type."
+            },
+            {
+                "option_code": "CSE",
+                "option_label": "Collector's Edition",
+                "option_description": "Select Collector's Edition for Edition Type."
+            },
+            {
+                "option_code": "DE",
+                "option_label": "Digital Edition",
+                "option_description": "Select Digital Edition for Edition Type."
+            }
+        ]
+    },
+    {
+        "_id": 124,
+        "field_name": "type_reading_status",
+        "field_label": "Reading Status Type",
+        "field_description": "Reusable field template for Reading Status Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "UNR",
+                "option_label": "Unread",
+                "option_description": "Select Unread for Reading Status Type."
+            },
+            {
+                "option_code": "REA",
+                "option_label": "Reading",
+                "option_description": "Select Reading for Reading Status Type."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Completed",
+                "option_description": "Select Completed for Reading Status Type."
+            },
+            {
+                "option_code": "ABO",
+                "option_label": "Abandoned",
+                "option_description": "Select Abandoned for Reading Status Type."
+            },
+            {
+                "option_code": "PSD",
+                "option_label": "Paused",
+                "option_description": "Select Paused for Reading Status Type."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Reference Only",
+                "option_description": "Select Reference Only for Reading Status Type."
+            }
+        ]
+    },
+    {
+        "_id": 125,
+        "field_name": "type_literary_genre",
+        "field_label": "Literary Genre Type",
+        "field_description": "Reusable field template for Literary Genre Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FIC",
+                "option_label": "Fiction",
+                "option_description": "Select Fiction for Literary Genre Type."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Nonfiction",
+                "option_description": "Select Nonfiction for Literary Genre Type."
+            },
+            {
+                "option_code": "FAN",
+                "option_label": "Fantasy",
+                "option_description": "Select Fantasy for Literary Genre Type."
+            },
+            {
+                "option_code": "SF",
+                "option_label": "Science Fiction",
+                "option_description": "Select Science Fiction for Literary Genre Type."
+            },
+            {
+                "option_code": "MYS",
+                "option_label": "Mystery",
+                "option_description": "Select Mystery for Literary Genre Type."
+            },
+            {
+                "option_code": "ROM",
+                "option_label": "Romance",
+                "option_description": "Select Romance for Literary Genre Type."
+            },
+            {
+                "option_code": "HOR",
+                "option_label": "Horror",
+                "option_description": "Select Horror for Literary Genre Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical",
+                "option_description": "Select Historical for Literary Genre Type."
+            },
+            {
+                "option_code": "POE",
+                "option_label": "Poetry",
+                "option_description": "Select Poetry for Literary Genre Type."
+            },
+            {
+                "option_code": "DRA",
+                "option_label": "Drama",
+                "option_description": "Select Drama for Literary Genre Type."
+            }
+        ]
+    },
+    {
+        "_id": 126,
+        "field_name": "type_narrative_pov",
+        "field_label": "Narrative POV Type",
+        "field_description": "Reusable field template for Narrative POV Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FP",
+                "option_label": "First Person",
+                "option_description": "Select First Person for Narrative POV Type."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Second Person",
+                "option_description": "Select Second Person for Narrative POV Type."
+            },
+            {
+                "option_code": "TPL",
+                "option_label": "Third Person Limited",
+                "option_description": "Select Third Person Limited for Narrative POV Type."
+            },
+            {
+                "option_code": "TPO",
+                "option_label": "Third Person Omniscient",
+                "option_description": "Select Third Person Omniscient for Narrative POV Type."
+            },
+            {
+                "option_code": "MP",
+                "option_label": "Multiple POV",
+                "option_description": "Select Multiple POV for Narrative POV Type."
+            }
+        ]
+    }
+]

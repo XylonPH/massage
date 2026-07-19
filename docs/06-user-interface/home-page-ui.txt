@@ -1,5 +1,5 @@
 Title: Massage Nexus Homepage UI
-Version: 1.20
+Version: 1.30
 Date Created: 2026-07-01
 Revision Date: 2026-07-19
 
@@ -192,6 +192,8 @@ Campus Quiz shows a short quiz question connected to Wellness Campus learning. W
 Placement: Right sidebar, usually below the quiz and sponsored placements.
 
 Quote of the Day displays a rotating wellness, relaxation, massage, self-care, or motivational quote from an approved quote collection. The quote should come from a database rather than a plain text file so it can support categories, languages, authors, sources, active dates, seasonal use, and moderation. This section gives the homepage a calmer editorial touch between more functional sections.
+
+The proposed database structure for this feature is the quote_main collection, documented in the PHP-readable structure guide at docs/04-architecture/structure-guide/quote_main.php, with its quote categories defined by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json. The current implementation still renders one temporary hard-coded sample quote; replacing it with quote_main-backed rotation is pending implementation.
 
 --------------------------------------------------------------------------------
 

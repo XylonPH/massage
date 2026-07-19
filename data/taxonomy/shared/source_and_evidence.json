@@ -1,0 +1,337 @@
+[
+    {
+        "_id": 33,
+        "field_name": "type_text_source",
+        "field_label": "Text Source Type",
+        "field_description": "Reusable field template for Text Source Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "M",
+                "option_label": "Manuscript",
+                "option_description": "Select Manuscript for Text Source Type."
+            },
+            {
+                "option_code": "T",
+                "option_label": "Transcript",
+                "option_description": "Select Transcript for Text Source Type."
+            },
+            {
+                "option_code": "S",
+                "option_label": "Subtitle",
+                "option_description": "Select Subtitle for Text Source Type."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Script",
+                "option_description": "Select Script for Text Source Type."
+            },
+            {
+                "option_code": "CAP",
+                "option_label": "Caption",
+                "option_description": "Select Caption for Text Source Type."
+            },
+            {
+                "option_code": "DUB",
+                "option_label": "Dub Script",
+                "option_description": "Select Dub Script for Text Source Type."
+            },
+            {
+                "option_code": "LYR",
+                "option_label": "Lyrics",
+                "option_description": "Select Lyrics for Text Source Type."
+            }
+        ]
+    },
+    {
+        "_id": 66,
+        "field_name": "type_source",
+        "field_label": "Source Type",
+        "field_description": "Reusable field template for Source Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WEB",
+                "option_label": "Website",
+                "option_description": "Select Website for Source Type."
+            },
+            {
+                "option_code": "DOC",
+                "option_label": "Document",
+                "option_description": "Select Document for Source Type."
+            },
+            {
+                "option_code": "IMG",
+                "option_label": "Image",
+                "option_description": "Select Image for Source Type."
+            },
+            {
+                "option_code": "VID",
+                "option_label": "Video",
+                "option_description": "Select Video for Source Type."
+            },
+            {
+                "option_code": "AUD",
+                "option_label": "Audio",
+                "option_description": "Select Audio for Source Type."
+            },
+            {
+                "option_code": "GPS",
+                "option_label": "GPS Trace",
+                "option_description": "Select GPS Trace for Source Type."
+            },
+            {
+                "option_code": "RCT",
+                "option_label": "Receipt",
+                "option_description": "Select Receipt for Source Type."
+            },
+            {
+                "option_code": "TKT",
+                "option_label": "Ticket",
+                "option_description": "Select Ticket for Source Type."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Screenshot",
+                "option_description": "Select Screenshot for Source Type."
+            },
+            {
+                "option_code": "SPR",
+                "option_label": "Spreadsheet Row",
+                "option_description": "Select Spreadsheet Row for Source Type."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Email",
+                "option_description": "Select Email for Source Type."
+            },
+            {
+                "option_code": "SMS",
+                "option_label": "SMS / Message",
+                "option_description": "Select SMS / Message for Source Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "Interview",
+                "option_description": "Select Interview for Source Type."
+            },
+            {
+                "option_code": "BK",
+                "option_label": "Book",
+                "option_description": "Select Book for Source Type."
+            },
+            {
+                "option_code": "ART",
+                "option_label": "Article",
+                "option_description": "Select Article for Source Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Import Record",
+                "option_description": "Select Import Record for Source Type."
+            },
+            {
+                "option_code": "MDT",
+                "option_label": "Media Metadata",
+                "option_description": "Select Media Metadata for Source Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manual Entry",
+                "option_description": "Select Manual Entry for Source Type."
+            },
+            {
+                "option_code": "OBS",
+                "option_label": "Personal Observation",
+                "option_description": "Select Personal Observation for Source Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "External Provider",
+                "option_description": "Select External Provider for Source Type."
+            },
+            {
+                "option_code": "PUB",
+                "option_label": "Public Reference",
+                "option_description": "Select Public Reference for Source Type."
+            },
+            {
+                "option_code": "ORG",
+                "option_label": "Organization Source",
+                "option_description": "Select Organization Source for Source Type."
+            },
+            {
+                "option_code": "DB",
+                "option_label": "Database",
+                "option_description": "Select Database for Source Type."
+            },
+            {
+                "option_code": "API",
+                "option_label": "API",
+                "option_description": "Select API for Source Type."
+            }
+        ]
+    },
+    {
+        "_id": 67,
+        "field_name": "status_source_reliability",
+        "field_label": "Source Reliability Status",
+        "field_description": "Reusable field template for Source Reliability Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Source Reliability Status."
+            },
+            {
+                "option_code": "LOW",
+                "option_label": "Low Reliability",
+                "option_description": "Select Low Reliability for Source Reliability Status."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medium Reliability",
+                "option_description": "Select Medium Reliability for Source Reliability Status."
+            },
+            {
+                "option_code": "HIG",
+                "option_label": "High Reliability",
+                "option_description": "Select High Reliability for Source Reliability Status."
+            },
+            {
+                "option_code": "OFF",
+                "option_label": "Official",
+                "option_description": "Select Official for Source Reliability Status."
+            },
+            {
+                "option_code": "DIS",
+                "option_label": "Disputed",
+                "option_description": "Select Disputed for Source Reliability Status."
+            },
+            {
+                "option_code": "FAL",
+                "option_label": "False / Incorrect",
+                "option_description": "Select False / Incorrect for Source Reliability Status."
+            }
+        ]
+    },
+    {
+        "_id": 68,
+        "field_name": "type_evidence_strength",
+        "field_label": "Evidence Strength Type",
+        "field_description": "Reusable field template for Evidence Strength Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "STR",
+                "option_label": "Strong Evidence",
+                "option_description": "Select Strong Evidence for Evidence Strength Type."
+            },
+            {
+                "option_code": "MOD",
+                "option_label": "Moderate Evidence",
+                "option_description": "Select Moderate Evidence for Evidence Strength Type."
+            },
+            {
+                "option_code": "WEK",
+                "option_label": "Weak Evidence",
+                "option_description": "Select Weak Evidence for Evidence Strength Type."
+            },
+            {
+                "option_code": "CIR",
+                "option_label": "Circumstantial",
+                "option_description": "Select Circumstantial for Evidence Strength Type."
+            },
+            {
+                "option_code": "INF",
+                "option_label": "Inferred",
+                "option_description": "Select Inferred for Evidence Strength Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Evidence Strength Type."
+            }
+        ]
+    },
+    {
+        "_id": 72,
+        "field_name": "type_location_source",
+        "field_label": "Location Source Type",
+        "field_description": "Reusable field template for Location Source Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GPS",
+                "option_label": "GPS",
+                "option_description": "Select GPS for Location Source Type."
+            },
+            {
+                "option_code": "PVM",
+                "option_label": "Photo / Video Metadata",
+                "option_description": "Select Photo / Video Metadata for Location Source Type."
+            },
+            {
+                "option_code": "RCT",
+                "option_label": "Receipt",
+                "option_description": "Select Receipt for Location Source Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manual Entry",
+                "option_description": "Select Manual Entry for Location Source Type."
+            },
+            {
+                "option_code": "MAP",
+                "option_label": "Map Search",
+                "option_description": "Select Map Search for Location Source Type."
+            },
+            {
+                "option_code": "AT",
+                "option_label": "Address Text",
+                "option_description": "Select Address Text for Location Source Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Location History",
+                "option_description": "Select Location History for Location Source Type."
+            },
+            {
+                "option_code": "TKT",
+                "option_label": "Ticket",
+                "option_description": "Select Ticket for Location Source Type."
+            },
+            {
+                "option_code": "MSG",
+                "option_label": "Message / Chat",
+                "option_description": "Select Message / Chat for Location Source Type."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Email",
+                "option_description": "Select Email for Location Source Type."
+            },
+            {
+                "option_code": "CAL",
+                "option_label": "Calendar Event",
+                "option_description": "Select Calendar Event for Location Source Type."
+            },
+            {
+                "option_code": "BNK",
+                "option_label": "Bank / Card Transaction",
+                "option_description": "Select Bank / Card Transaction for Location Source Type."
+            }
+        ]
+    }
+]

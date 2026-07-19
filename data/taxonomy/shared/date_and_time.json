@@ -1,0 +1,294 @@
+[
+    {
+        "_id": 51,
+        "field_name": "day_of_week",
+        "field_label": "Day of Week",
+        "field_description": "Reusable field template for Day of Week values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MON",
+                "option_label": "Monday",
+                "option_description": "Select Monday for Day of Week."
+            },
+            {
+                "option_code": "TUE",
+                "option_label": "Tuesday",
+                "option_description": "Select Tuesday for Day of Week."
+            },
+            {
+                "option_code": "WED",
+                "option_label": "Wednesday",
+                "option_description": "Select Wednesday for Day of Week."
+            },
+            {
+                "option_code": "THU",
+                "option_label": "Thursday",
+                "option_description": "Select Thursday for Day of Week."
+            },
+            {
+                "option_code": "FRI",
+                "option_label": "Friday",
+                "option_description": "Select Friday for Day of Week."
+            },
+            {
+                "option_code": "SAT",
+                "option_label": "Saturday",
+                "option_description": "Select Saturday for Day of Week."
+            },
+            {
+                "option_code": "SUN",
+                "option_label": "Sunday",
+                "option_description": "Select Sunday for Day of Week."
+            }
+        ]
+    },
+    {
+        "_id": 52,
+        "field_name": "day_pattern",
+        "field_label": "Day Pattern",
+        "field_description": "Reusable field template for Day Pattern values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ALL",
+                "option_label": "24/7",
+                "option_description": "Select 24/7 for Day Pattern."
+            },
+            {
+                "option_code": "WDY",
+                "option_label": "Weekdays",
+                "option_description": "Select Weekdays for Day Pattern."
+            },
+            {
+                "option_code": "WEN",
+                "option_label": "Weekends",
+                "option_description": "Select Weekends for Day Pattern."
+            },
+            {
+                "option_code": "MWF",
+                "option_label": "Monday / Wednesday / Friday",
+                "option_description": "Select Monday / Wednesday / Friday for Day Pattern."
+            },
+            {
+                "option_code": "TTH",
+                "option_label": "Tuesday / Thursday",
+                "option_description": "Select Tuesday / Thursday for Day Pattern."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom",
+                "option_description": "Select Custom for Day Pattern."
+            }
+        ]
+    },
+    {
+        "_id": 69,
+        "field_name": "type_date_precision",
+        "field_label": "Date Precision Type",
+        "field_description": "Reusable field template for Date Precision Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "D",
+                "option_label": "Day",
+                "option_description": "Select Day for Date Precision Type."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Month",
+                "option_description": "Select Month for Date Precision Type."
+            },
+            {
+                "option_code": "Y",
+                "option_label": "Year",
+                "option_description": "Select Year for Date Precision Type."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Date Precision Type."
+            }
+        ]
+    },
+    {
+        "_id": 70,
+        "field_name": "type_time_precision",
+        "field_label": "Time Precision Type",
+        "field_description": "Reusable field template for Time Precision Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "S",
+                "option_label": "Second",
+                "option_description": "Select Second for Time Precision Type."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Minute",
+                "option_description": "Select Minute for Time Precision Type."
+            },
+            {
+                "option_code": "H",
+                "option_label": "Hour",
+                "option_description": "Select Hour for Time Precision Type."
+            },
+            {
+                "option_code": "PD",
+                "option_label": "Part of Day",
+                "option_description": "Select Part of Day for Time Precision Type."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Time Precision Type."
+            }
+        ]
+    },
+    {
+        "_id": 71,
+        "field_name": "part_of_day",
+        "field_label": "Part of Day",
+        "field_description": "Reusable field template for Part of Day values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MRN",
+                "option_label": "Morning",
+                "option_description": "Select Morning for Part of Day."
+            },
+            {
+                "option_code": "AFT",
+                "option_label": "Afternoon",
+                "option_description": "Select Afternoon for Part of Day."
+            },
+            {
+                "option_code": "EVE",
+                "option_label": "Evening",
+                "option_description": "Select Evening for Part of Day."
+            },
+            {
+                "option_code": "NGT",
+                "option_label": "Night",
+                "option_description": "Select Night for Part of Day."
+            },
+            {
+                "option_code": "MDN",
+                "option_label": "Midnight",
+                "option_description": "Select Midnight for Part of Day."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Noon",
+                "option_description": "Select Noon for Part of Day."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Part of Day."
+            }
+        ]
+    },
+    {
+        "_id": 144,
+        "field_name": "type_date_qualifier",
+        "field_label": "Date Qualifier Type",
+        "field_description": "Reusable field template for Date Qualifier Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EXA",
+                "option_label": "Exact",
+                "option_description": "Select Exact for Date Qualifier Type."
+            },
+            {
+                "option_code": "APP",
+                "option_label": "Approximate",
+                "option_description": "Select Approximate for Date Qualifier Type."
+            },
+            {
+                "option_code": "BFR",
+                "option_label": "Before",
+                "option_description": "Select Before for Date Qualifier Type."
+            },
+            {
+                "option_code": "AFT",
+                "option_label": "After",
+                "option_description": "Select After for Date Qualifier Type."
+            },
+            {
+                "option_code": "RNG",
+                "option_label": "Range",
+                "option_description": "Select Range for Date Qualifier Type."
+            },
+            {
+                "option_code": "OPS",
+                "option_label": "Open Start",
+                "option_description": "Select Open Start for Date Qualifier Type."
+            },
+            {
+                "option_code": "OPE",
+                "option_label": "Open End",
+                "option_description": "Select Open End for Date Qualifier Type."
+            }
+        ]
+    },
+    {
+        "_id": 145,
+        "field_name": "type_time_qualifier",
+        "field_label": "Time Qualifier Type",
+        "field_description": "Reusable field template for Time Qualifier Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EXA",
+                "option_label": "Exact",
+                "option_description": "Select Exact for Time Qualifier Type."
+            },
+            {
+                "option_code": "APP",
+                "option_label": "Approximate",
+                "option_description": "Select Approximate for Time Qualifier Type."
+            },
+            {
+                "option_code": "BFR",
+                "option_label": "Before",
+                "option_description": "Select Before for Time Qualifier Type."
+            },
+            {
+                "option_code": "AFT",
+                "option_label": "After",
+                "option_description": "Select After for Time Qualifier Type."
+            },
+            {
+                "option_code": "RNG",
+                "option_label": "Range",
+                "option_description": "Select Range for Time Qualifier Type."
+            },
+            {
+                "option_code": "OPS",
+                "option_label": "Open Start",
+                "option_description": "Select Open Start for Time Qualifier Type."
+            },
+            {
+                "option_code": "OPE",
+                "option_label": "Open End",
+                "option_description": "Select Open End for Time Qualifier Type."
+            }
+        ]
+    }
+]

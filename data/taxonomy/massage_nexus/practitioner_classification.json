@@ -1,0 +1,567 @@
+[
+    {
+        "field_name": "type_work_arrangement",
+        "field_label": "Work Arrangement",
+        "selection_rule": "Single-select per professional context",
+        "field_description": "Work arrangement in a particular professional context; it may differ across affiliations. Trainee is not a Work Arrangement; training status belongs to education, credential, learner, or Provider Rank records.",
+        "field_option": [
+            {
+                "option_code": "EMP",
+                "option_label": "Employee",
+                "option_description": "Works as an employee or regular staff member of an organization."
+            },
+            {
+                "option_code": "IND",
+                "option_label": "Independent",
+                "option_description": "Operates independently and controls their own professional practice."
+            },
+            {
+                "option_code": "CTR",
+                "option_label": "Contractor",
+                "option_description": "Provides services through a contract, assignment, agency, or service agreement."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "type_practice_setting",
+        "field_label": "Practice Setting",
+        "selection_rule": "Multi-select",
+        "field_description": "Recurring professional environments, not every place where massage could theoretically occur.",
+        "field_option": [
+            {
+                "option_code": "SP",
+                "option_label": "Spa",
+                "option_description": "Massage spa, day spa, salon spa, hotel spa, or comparable spa setting."
+            },
+            {
+                "option_code": "SL",
+                "option_label": "Salon",
+                "option_description": "Beauty, grooming, nail, or salon establishment offering massage."
+            },
+            {
+                "option_code": "WC",
+                "option_label": "Wellness Center",
+                "option_description": "Broader wellness establishment combining massage with other disciplines."
+            },
+            {
+                "option_code": "PS",
+                "option_label": "Private Studio",
+                "option_description": "Dedicated professional treatment room or independent practice space."
+            },
+            {
+                "option_code": "CL",
+                "option_label": "Clinic",
+                "option_description": "Clinic or health-oriented practice offering massage or bodywork."
+            },
+            {
+                "option_code": "RF",
+                "option_label": "Rehabilitation Facility",
+                "option_description": "Facility focused on rehabilitation, recovery, or restorative care."
+            },
+            {
+                "option_code": "HP",
+                "option_label": "Hospital",
+                "option_description": "Hospital or hospital-operated service environment."
+            },
+            {
+                "option_code": "HT",
+                "option_label": "Hotel",
+                "option_description": "Hotel treatment area, hotel spa, or hotel-operated guest service."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Resort",
+                "option_description": "Resort spa, destination property, or resort-operated service."
+            },
+            {
+                "option_code": "BF",
+                "option_label": "Bathing Facility",
+                "option_description": "Bathhouse, hot-spring facility, thermal bath, hammam, or similar setting."
+            },
+            {
+                "option_code": "FF",
+                "option_label": "Fitness Facility",
+                "option_description": "Gym, fitness center, or health club."
+            },
+            {
+                "option_code": "SF",
+                "option_label": "Sports Facility",
+                "option_description": "Athletic center, sports club, stadium facility, or training venue."
+            },
+            {
+                "option_code": "CS",
+                "option_label": "Corporate Site",
+                "option_description": "Workplace, office, company campus, or employer-sponsored setting."
+            },
+            {
+                "option_code": "EV",
+                "option_label": "Event Site",
+                "option_description": "Convention, expo, fair, private event, pop-up, or organized temporary event."
+            },
+            {
+                "option_code": "CR",
+                "option_label": "Client Residence",
+                "option_description": "Client's house, apartment, condominium, or other residence."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Therapist Residence",
+                "option_description": "Therapist's own residence where clients are received."
+            },
+            {
+                "option_code": "TC",
+                "option_label": "Training Center",
+                "option_description": "Massage school, academy, vocational institution, or supervised training clinic."
+            },
+            {
+                "option_code": "CF",
+                "option_label": "Community Facility",
+                "option_description": "Community center, civic facility, nonprofit venue, or public-service location."
+            },
+            {
+                "option_code": "RC",
+                "option_label": "Residential Care Facility",
+                "option_description": "Senior residence, nursing facility, assisted-living site, or long-term care facility."
+            },
+            {
+                "option_code": "RT",
+                "option_label": "Retreat Center",
+                "option_description": "Wellness, meditation, recovery, or residential retreat setting."
+            },
+            {
+                "option_code": "TH",
+                "option_label": "Transportation Hub",
+                "option_description": "Airport, railway station, bus terminal, or similar passenger facility."
+            },
+            {
+                "option_code": "MF",
+                "option_label": "Maritime Facility",
+                "option_description": "Cruise ship, ferry, passenger vessel, yacht, port facility, or maritime workplace."
+            },
+            {
+                "option_code": "MU",
+                "option_label": "Mobile Treatment Unit",
+                "option_description": "Vehicle, trailer, or transportable purpose-built treatment room."
+            },
+            {
+                "option_code": "OV",
+                "option_label": "Outdoor Venue",
+                "option_description": "Beach, park, campsite, outdoor resort area, or arranged outdoor treatment site."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "position_affiliation",
+        "field_label": "Provider Rank",
+        "selection_rule": "Single-select per establishment or organized-provider affiliation",
+        "field_description": "Rank assigned by an establishment or organized provider; it does not prove credentials or quality. The exact provider title, such as Master Reflexologist, should be preserved separately.",
+        "field_option": [
+            {
+                "option_code": "TRN",
+                "option_label": "Trainee",
+                "option_description": "Provides service under training, practice, or supervised competency development."
+            },
+            {
+                "option_code": "JNR",
+                "option_label": "Junior",
+                "option_description": "Entry-level provider rank formally used by the establishment."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Regular",
+                "option_description": "Normal established provider rank without a senior or specialist designation."
+            },
+            {
+                "option_code": "SEN",
+                "option_label": "Senior",
+                "option_description": "Higher internal rank based on experience, responsibility, demand, or provider policy."
+            },
+            {
+                "option_code": "SPC",
+                "option_label": "Specialist",
+                "option_description": "Provider-designated rank for a recognized specialist service area."
+            },
+            {
+                "option_code": "MST",
+                "option_label": "Master",
+                "option_description": "Highest or advanced provider-designated rank within the establishment's own system."
+            },
+            {
+                "option_code": "VEX",
+                "option_label": "Visiting Expert",
+                "option_description": "Temporarily scheduled expert, trainer, master, or specialist from another location or organization."
+            }
+        ],
+        "classification_note": [
+            "The establishment or authorized provider may submit its own rank.",
+            "The therapist may confirm or dispute the affiliation and rank.",
+            "Master, Specialist, or Visiting Expert does not automatically prove licensure, credential verification, or superior review results.",
+            "Independent therapists normally have no Provider Rank unless an organized provider has formally assigned one."
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "level_therapist_service_market",
+        "field_label": "Therapist Service Market Class",
+        "selection_rule": "Single-select per establishment or independent-practice service context",
+        "field_description": "Market position of a specific therapist service context, not the permanent worth or skill of the person. Massage Nexus assigns or confirms the class; price alone does not determine class. Philippine internal planning reference (directly attributable 60-minute therapist service rate): S usually PHP 2,500 or more; A usually PHP 1,500 to 2,499; B usually PHP 700 to 1,499; C usually PHP 350 to 699; D usually below PHP 350 or primarily short basic services. Other countries and regions require locally reviewed price references rather than direct currency conversion.",
+        "field_option": [
+            {
+                "option_code": "S",
+                "option_label": "Elite",
+                "option_description": "Exceptional premium service context with very high price, personalization, presentation, demand, or specialist positioning."
+            },
+            {
+                "option_code": "A",
+                "option_label": "Premium",
+                "option_description": "Clearly upscale professional service context above ordinary market standards."
+            },
+            {
+                "option_code": "B",
+                "option_label": "Standard",
+                "option_description": "Mainstream professional service with normal expectations for reliability, cleanliness, safety, and competence."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Budget",
+                "option_description": "Affordable professional service with simpler presentation, equipment, or commercial structure."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Basic",
+                "option_description": "Entry-level, trainee, short, express, or minimal service context."
+            }
+        ],
+        "classification_note": [
+            "The field applies to a service context, not permanently to the therapist profile.",
+            "A therapist may have different market classes across a spa, hotel, event, or independent practice.",
+            "Credentials, Provider Rank, ratings, reviews, experience, and market class remain separate."
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "type_specialty_focus",
+        "field_label": "Specialty Focus",
+        "selection_rule": "Multi-select",
+        "field_description": "Service focus areas. Hilot, Thai Massage, Shiatsu, Swedish Massage, Deep Tissue Massage, Oncology Massage, Manual Lymphatic Drainage, Reflexology, Hot Stone Massage, and similar named services belong under service capability rather than Specialty Focus.",
+        "field_option": [
+            {
+                "option_code": "RLX",
+                "option_label": "Relaxation",
+                "option_description": "Focuses on calm, comfort, reduced tension, and restful service."
+            },
+            {
+                "option_code": "MDS",
+                "option_label": "Muscle Discomfort Support",
+                "option_description": "Focuses on muscle tension and discomfort within permitted massage scope."
+            },
+            {
+                "option_code": "DP",
+                "option_label": "Deep Pressure",
+                "option_description": "Focuses on clients preferring sustained, firm, or deeper controlled pressure."
+            },
+            {
+                "option_code": "SR",
+                "option_label": "Sports Recovery",
+                "option_description": "Focuses on exercise fatigue, athletic recovery, and performance support."
+            },
+            {
+                "option_code": "MB",
+                "option_label": "Mobility",
+                "option_description": "Focuses on movement comfort, range of motion, and mobility-oriented bodywork."
+            },
+            {
+                "option_code": "ST",
+                "option_label": "Stretching",
+                "option_description": "Uses assisted or guided stretching as a meaningful service focus."
+            },
+            {
+                "option_code": "STR",
+                "option_label": "Stress Relief",
+                "option_description": "Focuses on physical and mental tension associated with stress or daily strain."
+            },
+            {
+                "option_code": "SL",
+                "option_label": "Sleep Support",
+                "option_description": "Focuses on relaxation-oriented services intended to support rest and sleep readiness."
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Senior Care",
+                "option_description": "Adapts pressure, pace, positioning, communication, and accessibility for older clients."
+            },
+            {
+                "option_code": "PN",
+                "option_label": "Perinatal Support",
+                "option_description": "Focuses on appropriately trained pregnancy and postnatal service."
+            },
+            {
+                "option_code": "RC",
+                "option_label": "Recovery Support",
+                "option_description": "Supports fatigue, exertion, inactivity, travel, or non-acute physical strain."
+            },
+            {
+                "option_code": "WF",
+                "option_label": "Workplace Fatigue",
+                "option_description": "Focuses on occupational strain, desk work, standing, repetition, and commuting fatigue."
+            },
+            {
+                "option_code": "GC",
+                "option_label": "Gentle Care",
+                "option_description": "Focuses on light pressure, slower pacing, cautious handling, and comfort adaptation."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "status_therapist_availability",
+        "field_label": "Availability Status",
+        "selection_rule": "Single-select per applicable context",
+        "field_description": "Current professional availability. Death is a separate life-status fact and is not an Availability Status.",
+        "field_option": [
+            {
+                "option_code": "AV",
+                "option_label": "Available",
+                "option_description": "Actively accepting or providing services under normal conditions."
+            },
+            {
+                "option_code": "LM",
+                "option_label": "Limited Availability",
+                "option_description": "Accepting services only within restricted days, hours, locations, services, or capacity."
+            },
+            {
+                "option_code": "EC",
+                "option_label": "Existing Clients Only",
+                "option_description": "Continuing current client relationships but not accepting new clients."
+            },
+            {
+                "option_code": "TU",
+                "option_label": "Temporarily Unavailable",
+                "option_description": "Not presently accepting or providing services but expected to return."
+            },
+            {
+                "option_code": "IN",
+                "option_label": "Inactive",
+                "option_description": "No confirmed current professional service activity."
+            },
+            {
+                "option_code": "RT",
+                "option_label": "Retired",
+                "option_description": "Has ended professional practice."
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": "Current availability cannot be confirmed."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "mode_therapist_booking",
+        "field_label": "Booking Requirement",
+        "selection_rule": "Single-select per applicable context",
+        "field_description": "Booking requirement for the represented context. On Call is a scheduling arrangement and is not retained in this classification.",
+        "field_option": [
+            {
+                "option_code": "WI",
+                "option_label": "Walk-In Accepted",
+                "option_description": "May accept clients without an advance booking."
+            },
+            {
+                "option_code": "AP",
+                "option_label": "Appointment Preferred",
+                "option_description": "Advance booking is encouraged, but unscheduled service may be accepted."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "Appointment Required",
+                "option_description": "Service must be arranged in advance."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "type_client_access",
+        "field_label": "Client Access",
+        "selection_rule": "Single-select per applicable practice context",
+        "field_description": "Actual access restriction for the represented service context. A therapist may have different Client Access rules at different affiliations or service contexts.",
+        "field_option": [
+            {
+                "option_code": "OA",
+                "option_label": "Open Access",
+                "option_description": "Normally accepts eligible members of the general public."
+            },
+            {
+                "option_code": "MO",
+                "option_label": "Men Only",
+                "option_description": "Accepts only male clients for the represented service context."
+            },
+            {
+                "option_code": "WO",
+                "option_label": "Women Only",
+                "option_description": "Accepts only female clients for the represented service context."
+            },
+            {
+                "option_code": "CO",
+                "option_label": "Couples Only",
+                "option_description": "Accepts only paired or couple bookings."
+            },
+            {
+                "option_code": "MR",
+                "option_label": "Members Only",
+                "option_description": "Serves only registered members of an establishment, club, or program."
+            },
+            {
+                "option_code": "PG",
+                "option_label": "Property Guests Only",
+                "option_description": "Serves only authorized guests of a host property or organization."
+            },
+            {
+                "option_code": "PC",
+                "option_label": "Private Clientele",
+                "option_description": "Accepts only invited, referred, approved, or selectively accepted clients."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "target_client_focus",
+        "field_label": "Client Focus",
+        "selection_rule": "Multi-select",
+        "field_description": "Client Focus does not restrict access unless Client Access says otherwise.",
+        "field_option": [
+            {
+                "option_code": "GP",
+                "option_label": "General Public",
+                "option_description": "Serves a broad clientele rather than one specialized group."
+            },
+            {
+                "option_code": "MN",
+                "option_label": "Men",
+                "option_description": "Has services or experience relevant to male clients."
+            },
+            {
+                "option_code": "WM",
+                "option_label": "Women",
+                "option_description": "Has services or experience relevant to female clients."
+            },
+            {
+                "option_code": "LQ",
+                "option_label": "LGBTQ Community",
+                "option_description": "Explicitly welcomes or focuses on LGBTQ clients and related community needs."
+            },
+            {
+                "option_code": "CP",
+                "option_label": "Couples",
+                "option_description": "Supports couple-oriented sessions, paired services, or couple bookings."
+            },
+            {
+                "option_code": "FM",
+                "option_label": "Families",
+                "option_description": "Supports appropriate family-oriented service arrangements."
+            },
+            {
+                "option_code": "SR",
+                "option_label": "Seniors",
+                "option_description": "Has experience adapting service for older clients."
+            },
+            {
+                "option_code": "PR",
+                "option_label": "Pregnant Clients",
+                "option_description": "Provides appropriately trained and safety-conscious pregnancy service."
+            },
+            {
+                "option_code": "PN",
+                "option_label": "Postnatal Clients",
+                "option_description": "Provides appropriately trained service after childbirth."
+            },
+            {
+                "option_code": "AT",
+                "option_label": "Athletes",
+                "option_description": "Supports sports recovery, training fatigue, mobility, or athletic needs."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Tourists",
+                "option_description": "Is prepared for traveler needs, hotel service, language support, or short-term booking."
+            },
+            {
+                "option_code": "OW",
+                "option_label": "Office Workers",
+                "option_description": "Focuses on workplace stress, occupational strain, repetition, or commuting fatigue."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "status_credential_verification",
+        "field_label": "Credential Verification Status",
+        "selection_rule": "Single-select per credential record",
+        "field_description": "Verification state of one credential record.",
+        "field_option": [
+            {
+                "option_code": "SD",
+                "option_label": "Self-Declared",
+                "option_description": "Credential information is claimed without confirmed supporting evidence."
+            },
+            {
+                "option_code": "SB",
+                "option_label": "Submitted",
+                "option_description": "Supporting information has been submitted and awaits review."
+            },
+            {
+                "option_code": "VF",
+                "option_label": "Verified",
+                "option_description": "Credential has been reviewed and verified under Massage Nexus rules."
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Needs Review",
+                "option_description": "Information is incomplete, conflicting, disputed, or requires additional assessment."
+            },
+            {
+                "option_code": "RJ",
+                "option_label": "Rejected",
+                "option_description": "Submitted credential claim was not accepted after review."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "status_credential_lifecycle",
+        "field_label": "Credential Lifecycle Status",
+        "selection_rule": "Single-select per credential record",
+        "field_description": "Lifecycle state of one credential record. A public profile summary should be derived from individual credential records rather than stored as one conflicting profile-level status.",
+        "field_option": [
+            {
+                "option_code": "AC",
+                "option_label": "Active",
+                "option_description": "Credential is currently valid according to available information."
+            },
+            {
+                "option_code": "EX",
+                "option_label": "Expired",
+                "option_description": "Credential has passed its stated validity period."
+            },
+            {
+                "option_code": "SU",
+                "option_label": "Suspended",
+                "option_description": "Credential has been formally suspended by the issuer or responsible authority."
+            },
+            {
+                "option_code": "RV",
+                "option_label": "Revoked",
+                "option_description": "Credential has been formally withdrawn or cancelled."
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": "Current lifecycle condition cannot be confirmed."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    }
+]

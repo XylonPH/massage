@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.20
+Document Version: 1.40
 Date Created: 2026-07-12
 Revision Date: 2026-07-19
 
@@ -116,6 +116,8 @@ Local usage may vary in requiredness, label, description, help text, placeholder
 
 If the actual data contract differs, create a different specifically named field.
 
+Before creating any new field name, check the field-name index at data/field_index.txt first. It is one compact generated list of every field name known to the taxonomy files and the PHP structure guides, with the places each name is defined, so a name check does not require reading every individual file. Regenerate it with tools/script/build_field_index.php in the same change whenever a taxonomy file or structure guide adds, renames, or removes a field.
+
 6. CORE IDENTITY AND ACCOUNT COLLECTION
 
 - user_main
@@ -217,7 +219,23 @@ Payment collections remain deferred until the payment flow is finalized.
 
 Do not create separate establishment_review, practitioner_review, and product_review collections unless later workflows become fundamentally incompatible.
 
-13. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
+13. EDITORIAL CONTENT AND QUOTE COLLECTIONS
+
+- content_main
+  Article-first editorial content identity, credits, classification, relationships, and publication state. The long article body is not stored here.
+
+- content_body
+  The long article body content referenced by content_main.
+
+- content_revision
+  Revision history for editorial content.
+
+- quote_main
+  Approved quotes for the homepage Quote of the Day section, including multilingual quote text, attribution, categories, display window, review status, and lifecycle. Proposed structure; see the structure guide below.
+
+PHP-readable structure guides for these and other collections are maintained under docs/04-architecture/structure-guide/. The guides record proposed or working field-level structure in reviewable PHP array form; this document remains the authority for database and collection boundaries, and the guides do not by themselves make a structure an accepted decision.
+
+14. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
 
 claim_main - Shared ownership or management claim workflow for approved claimable targets.
 verification_main - Shared verification process and result history.
@@ -230,7 +248,7 @@ AI may assist with classification, comparison, flagging, and recommendations, bu
 
 Restoring an older revision creates a new current revision based on the earlier version. It must not erase intervening history.
 
-14. AUDIT, REWARD, ANALYTICS, AND COUNTER COLLECTIONS
+15. AUDIT, REWARD, ANALYTICS, AND COUNTER COLLECTIONS
 
 - audit_log
   Immutable operational trail for important record, administrative, security, approval, restoration, and system actions.
@@ -249,7 +267,7 @@ Restoring an older revision creates a new current revision based on the earlier 
 
 Audit and reward history must not rely only on current totals or the current state of a record.
 
-15. MEDIA COLLECTIONS
+16. MEDIA COLLECTIONS
 
 - media_image
   Image metadata and target relationships.
@@ -259,7 +277,7 @@ Audit and reward history must not rely only on current totals or the current sta
 
 Large binary media remains in object or file storage.
 
-16. DEFERRED SOCIAL-PUBLISHING COLLECTIONS
+17. DEFERRED SOCIAL-PUBLISHING COLLECTIONS
 
 These are not required for the first website release:
 
@@ -270,7 +288,7 @@ These are not required for the first website release:
 
 Use native scheduling tools first. Add these collections only when Massage Nexus develops a secured web-based social publishing workflow.
 
-17. ARCHIVE POLICY
+18. ARCHIVE POLICY
 
 Do not move an establishment, practitioner, product, article, or other authoritative domain record to archive storage merely because it is closed, inactive, discontinued, retired, deceased, renamed, relocated, or historical.
 
@@ -301,7 +319,7 @@ Owner-facing documentation must clearly state the immediately accessible analyti
 
 The final retention period, archive destination, retrieval process, legal hold, deletion schedule, and owner access policy remain unresolved.
 
-18. CURRENT NON-COLLECTION DECISIONS
+19. CURRENT NON-COLLECTION DECISIONS
 
 The following should normally remain embedded or use shared systems until detailed design proves that a separate collection is necessary:
 - bounded multilingual names and short descriptions;
@@ -331,7 +349,7 @@ The following reuse shared or cross-target collections rather than spa-specific 
 - rewards;
 - analytics.
 
-19. UNRESOLVED COLLECTION QUESTIONS
+20. UNRESOLVED COLLECTION QUESTIONS
 
 - Final organization and franchise relationship model.
 - Whether treatment areas require establishment_treatment_area.

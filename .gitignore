@@ -148,7 +148,9 @@ env/
 *.archive
 *.bson
 
-data/
+# The repository-root data/ area (taxonomy, classifications, common-reference,
+# and theme data) is tracked source data and must NOT be ignored. Only local
+# database-service and backup directories are ignored here.
 local-data/
 database-backups/
 backups/

@@ -1,0 +1,202 @@
+[
+    {
+        "_id": 40,
+        "field_name": "is_favorite",
+        "field_label": "Favorite",
+        "field_description": "Reusable field template for Favorite values.",
+        "type_data": "B",
+        "type_field": "SWT",
+        "type_sql": "BOOLEAN",
+        "is_translatable": true,
+        "field_option": []
+    },
+    {
+        "_id": 41,
+        "field_name": "status_watch",
+        "field_label": "Watch Status",
+        "field_description": "Reusable field template for Watch Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NW",
+                "option_label": "Not Watched",
+                "option_description": "Select Not Watched for Watch Status."
+            },
+            {
+                "option_code": "W",
+                "option_label": "Watching",
+                "option_description": "Select Watching for Watch Status."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Completed",
+                "option_description": "Select Completed for Watch Status."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Incomplete",
+                "option_description": "Select Incomplete for Watch Status."
+            },
+            {
+                "option_code": "P",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Watch Status."
+            },
+            {
+                "option_code": "B",
+                "option_label": "Beginning Only",
+                "option_description": "Select Beginning Only for Watch Status."
+            },
+            {
+                "option_code": "E",
+                "option_label": "Ending Only",
+                "option_description": "Select Ending Only for Watch Status."
+            },
+            {
+                "option_code": "PP",
+                "option_label": "Part by Part",
+                "option_description": "Select Part by Part for Watch Status."
+            },
+            {
+                "option_code": "DRP",
+                "option_label": "Dropped",
+                "option_description": "Select Dropped for Watch Status."
+            },
+            {
+                "option_code": "UC",
+                "option_label": "Uncertain Completion",
+                "option_description": "Select Uncertain Completion for Watch Status."
+            },
+            {
+                "option_code": "UW",
+                "option_label": "Uncertain Watch Status",
+                "option_description": "Select Uncertain Watch Status for Watch Status."
+            }
+        ]
+    },
+    {
+        "_id": 42,
+        "field_name": "watch_scope",
+        "field_label": "Watch Scope",
+        "field_description": "Reusable field template for Watch Scope values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ITE",
+                "option_label": "Item",
+                "option_description": "Select Item for Watch Scope."
+            },
+            {
+                "option_code": "EP",
+                "option_label": "Episode",
+                "option_description": "Select Episode for Watch Scope."
+            },
+            {
+                "option_code": "SEA",
+                "option_label": "Season",
+                "option_description": "Select Season for Watch Scope."
+            },
+            {
+                "option_code": "SER",
+                "option_label": "Series",
+                "option_description": "Select Series for Watch Scope."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Part",
+                "option_description": "Select Part for Watch Scope."
+            }
+        ]
+    },
+    {
+        "_id": 44,
+        "field_name": "status_download",
+        "field_label": "Download Status",
+        "field_description": "Reusable field template for Download Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "N",
+                "option_label": "Not Downloaded",
+                "option_description": "Select Not Downloaded for Download Status."
+            },
+            {
+                "option_code": "Y",
+                "option_label": "Downloaded",
+                "option_description": "Select Downloaded for Download Status."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Incomplete",
+                "option_description": "Select Incomplete for Download Status."
+            },
+            {
+                "option_code": "Q",
+                "option_label": "Queued",
+                "option_description": "Select Queued for Download Status."
+            },
+            {
+                "option_code": "P",
+                "option_label": "To Download",
+                "option_description": "Select To Download for Download Status."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Corrupt",
+                "option_description": "Select Corrupt for Download Status."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Missing",
+                "option_description": "Select Missing for Download Status."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Uncertain",
+                "option_description": "Select Uncertain for Download Status."
+            }
+        ]
+    },
+    {
+        "_id": 45,
+        "field_name": "download_scope",
+        "field_label": "Download Scope",
+        "field_description": "Reusable field template for Download Scope values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ITE",
+                "option_label": "Item",
+                "option_description": "Select Item for Download Scope."
+            },
+            {
+                "option_code": "EP",
+                "option_label": "Episode",
+                "option_description": "Select Episode for Download Scope."
+            },
+            {
+                "option_code": "SEA",
+                "option_label": "Season",
+                "option_description": "Select Season for Download Scope."
+            },
+            {
+                "option_code": "SER",
+                "option_label": "Series",
+                "option_description": "Select Series for Download Scope."
+            },
+            {
+                "option_code": "COL",
+                "option_label": "Collection",
+                "option_description": "Select Collection for Download Scope."
+            }
+        ]
+    }
+]

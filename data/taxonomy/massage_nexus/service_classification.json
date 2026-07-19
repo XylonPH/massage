@@ -1,0 +1,2472 @@
+[
+    {
+        "field_name": "group_service_sector",
+        "field_label": "Service Sector",
+        "selection_rule": "Single-select per Service Domain",
+        "field_description": "The broadest service grouping, comparable to an economic sector. Service Sector, Service Domain, and Service Family form a hierarchy.",
+        "field_option": [
+            {
+                "option_code": "HWC",
+                "option_label": "Health, Wellness and Care Service",
+                "option_description": "Medical, clinical, rehabilitation, mental health, spa, wellness, fitness, and animal-care services."
+            },
+            {
+                "option_code": "PCL",
+                "option_label": "Personal Care and Lifestyle Service",
+                "option_description": "Beauty, grooming, domestic support, family care, lifestyle, spiritual, and intimate wellness services."
+            },
+            {
+                "option_code": "HPC",
+                "option_label": "Home, Property and Construction Service",
+                "option_description": "Construction, trade, repair, cleaning, landscaping, property, and security services."
+            },
+            {
+                "option_code": "MTL",
+                "option_label": "Mobility, Transport and Logistics Service",
+                "option_description": "Vehicle, passenger, freight, roadside, maritime, and aviation services."
+            },
+            {
+                "option_code": "FHE",
+                "option_label": "Food, Hospitality and Events Service",
+                "option_description": "Food preparation, dining, catering, accommodation, travel, and event services."
+            },
+            {
+                "option_code": "BPF",
+                "option_label": "Business, Professional and Financial Service",
+                "option_description": "Accounting, legal, consulting, HR, marketing, financial, real estate, and administrative services."
+            },
+            {
+                "option_code": "TMC",
+                "option_label": "Technology, Media and Communication Service",
+                "option_description": "Software, telecommunications, electronics repair, media production, design, and publishing services."
+            },
+            {
+                "option_code": "ETK",
+                "option_label": "Education, Training and Knowledge Service",
+                "option_description": "Academic, vocational, tutoring, assessment, research, and language services."
+            },
+            {
+                "option_code": "CRS",
+                "option_label": "Culture, Recreation and Sport Service",
+                "option_description": "Arts, performance, recreation, sport, and gaming services."
+            },
+            {
+                "option_code": "PCS",
+                "option_label": "Public, Civic and Safety Service",
+                "option_description": "Government, emergency, nonprofit, social work, and funeral services."
+            },
+            {
+                "option_code": "EIS",
+                "option_label": "Environmental and Infrastructure Service",
+                "option_description": "Utility, water, energy, waste, environmental, and infrastructure operations."
+            },
+            {
+                "option_code": "IAT",
+                "option_label": "Industrial, Agricultural and Technical Service",
+                "option_description": "Manufacturing support, equipment maintenance, agriculture, forestry, fisheries, mining, laboratory, and warehousing services."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "group_service_domain",
+        "field_label": "Service Domain",
+        "selection_rule": "Single-select per Service Family",
+        "field_description": "A mid-level service grouping inside a Service Sector. option_parent_code references the parent group_service_sector code.",
+        "field_option": [
+            {
+                "option_code": "MCC",
+                "option_parent_code": "HWC",
+                "option_label": "Medical and Clinical Care",
+                "option_description": "Regulated medical, clinical, diagnostic, and treatment services."
+            },
+            {
+                "option_code": "RHC",
+                "option_parent_code": "HWC",
+                "option_label": "Rehabilitation and Therapeutic Care",
+                "option_description": "Rehabilitation, physical recovery, therapy, and restorative care."
+            },
+            {
+                "option_code": "MBC",
+                "option_parent_code": "HWC",
+                "option_label": "Mental and Behavioral Care",
+                "option_description": "Mental-health, behavioral, counseling, and psychosocial services."
+            },
+            {
+                "option_code": "SPW",
+                "option_parent_code": "HWC",
+                "option_label": "Spa and Wellness",
+                "option_description": "Massage, bodywork, relaxation, bathing, thermal, and wellness services."
+            },
+            {
+                "option_code": "FPC",
+                "option_parent_code": "HWC",
+                "option_label": "Fitness and Physical Conditioning",
+                "option_description": "Exercise, coaching, sports conditioning, and physical-fitness services."
+            },
+            {
+                "option_code": "AHC",
+                "option_parent_code": "HWC",
+                "option_label": "Animal Health and Care",
+                "option_description": "Veterinary, grooming, boarding, training, and animal-care services."
+            },
+            {
+                "option_code": "BGR",
+                "option_parent_code": "PCL",
+                "option_label": "Beauty and Grooming",
+                "option_description": "Skin, facial, nail, hair, grooming, and beauty services."
+            },
+            {
+                "option_code": "PDS",
+                "option_parent_code": "PCL",
+                "option_label": "Personal and Domestic Support",
+                "option_description": "Household help, personal assistance, errands, and domestic support."
+            },
+            {
+                "option_code": "GCC",
+                "option_parent_code": "PCL",
+                "option_label": "Garment and Clothing Care",
+                "option_description": "Tailoring, alteration, laundry, dry cleaning, and clothing-care services."
+            },
+            {
+                "option_code": "CFC",
+                "option_parent_code": "PCL",
+                "option_label": "Child and Family Care",
+                "option_description": "Childcare, family support, and household-family services."
+            },
+            {
+                "option_code": "SAC",
+                "option_parent_code": "PCL",
+                "option_label": "Senior and Assisted Care",
+                "option_description": "Senior support, assisted living, companion, and daily-care services."
+            },
+            {
+                "option_code": "LPA",
+                "option_parent_code": "PCL",
+                "option_label": "Lifestyle and Personal Assistance",
+                "option_description": "Concierge, personal shopping, styling, organization, and lifestyle support."
+            },
+            {
+                "option_code": "RSV",
+                "option_parent_code": "PCL",
+                "option_label": "Religious and Spiritual Service",
+                "option_description": "Religious, ceremonial, pastoral, and spiritual services."
+            },
+            {
+                "option_code": "ISW",
+                "option_parent_code": "PCL",
+                "option_label": "Intimate and Sexual Wellness",
+                "option_description": "Consensual intimate wellness, sensual bodywork, and sexual-wellness services."
+            },
+            {
+                "option_code": "BCO",
+                "option_parent_code": "HPC",
+                "option_label": "Building and Construction",
+                "option_description": "General construction, renovation, structural, and building work."
+            },
+            {
+                "option_code": "BTS",
+                "option_parent_code": "HPC",
+                "option_label": "Building Trade Service",
+                "option_description": "Carpentry, electrical, plumbing, HVAC, painting, finishing, and related trades."
+            },
+            {
+                "option_code": "HMR",
+                "option_parent_code": "HPC",
+                "option_label": "Home Maintenance and Repair",
+                "option_description": "Household repair, installation, maintenance, and handyman services."
+            },
+            {
+                "option_code": "CLN",
+                "option_parent_code": "HPC",
+                "option_label": "Cleaning and Sanitation",
+                "option_description": "Residential, commercial, specialist cleaning, disinfection, and sanitation."
+            },
+            {
+                "option_code": "LGS",
+                "option_parent_code": "HPC",
+                "option_label": "Landscaping and Grounds",
+                "option_description": "Gardening, landscaping, tree, grounds, and outdoor-property care."
+            },
+            {
+                "option_code": "PMG",
+                "option_parent_code": "HPC",
+                "option_label": "Property Management",
+                "option_description": "Property administration, leasing support, inspection, and facility coordination."
+            },
+            {
+                "option_code": "SEC",
+                "option_parent_code": "HPC",
+                "option_label": "Security Service",
+                "option_description": "Guarding, monitoring, access control, and property-security services."
+            },
+            {
+                "option_code": "VMR",
+                "option_parent_code": "MTL",
+                "option_label": "Vehicle Maintenance and Repair",
+                "option_description": "Automotive, motorcycle, marine, and vehicle repair and maintenance."
+            },
+            {
+                "option_code": "PTR",
+                "option_parent_code": "MTL",
+                "option_label": "Passenger Transport",
+                "option_description": "Land, maritime, and aviation passenger movement."
+            },
+            {
+                "option_code": "FDL",
+                "option_parent_code": "MTL",
+                "option_label": "Freight, Delivery and Logistics",
+                "option_description": "Courier, delivery, cargo, freight, and logistics services."
+            },
+            {
+                "option_code": "RSR",
+                "option_parent_code": "MTL",
+                "option_label": "Roadside and Recovery",
+                "option_description": "Towing, roadside assistance, recovery, and emergency vehicle support."
+            },
+            {
+                "option_code": "VHR",
+                "option_parent_code": "MTL",
+                "option_label": "Vehicle Hire and Rental",
+                "option_description": "Vehicle, driver, fleet, and transport-equipment rental."
+            },
+            {
+                "option_code": "MTS",
+                "option_parent_code": "MTL",
+                "option_label": "Maritime Service",
+                "option_description": "Vessel, port, passenger-ship, and maritime support services."
+            },
+            {
+                "option_code": "AVS",
+                "option_parent_code": "MTL",
+                "option_label": "Aviation Service",
+                "option_description": "Aircraft, airport, charter, ground, and aviation support services."
+            },
+            {
+                "option_code": "FBP",
+                "option_parent_code": "FHE",
+                "option_label": "Food and Beverage Preparation",
+                "option_description": "Cooking, baking, food production, beverage preparation, and meal service."
+            },
+            {
+                "option_code": "DIN",
+                "option_parent_code": "FHE",
+                "option_label": "Dining and Food Service",
+                "option_description": "Restaurant, cafe, food-stall, and customer dining services."
+            },
+            {
+                "option_code": "CAT",
+                "option_parent_code": "FHE",
+                "option_label": "Catering",
+                "option_description": "Event, institutional, private, and mobile catering."
+            },
+            {
+                "option_code": "ACM",
+                "option_parent_code": "FHE",
+                "option_label": "Accommodation",
+                "option_description": "Hotel, resort, lodging, short-stay, and guest accommodation."
+            },
+            {
+                "option_code": "TRV",
+                "option_parent_code": "FHE",
+                "option_label": "Travel and Tourism",
+                "option_description": "Tour, itinerary, guide, ticket, and tourism-support services."
+            },
+            {
+                "option_code": "EVM",
+                "option_parent_code": "FHE",
+                "option_label": "Event Management",
+                "option_description": "Event planning, coordination, production, and support."
+            },
+            {
+                "option_code": "VES",
+                "option_parent_code": "FHE",
+                "option_label": "Venue and Entertainment Service",
+                "option_description": "Venue operation, entertainment booking, and event-experience services."
+            },
+            {
+                "option_code": "ACT",
+                "option_parent_code": "BPF",
+                "option_label": "Accounting and Bookkeeping",
+                "option_description": "Accounting, bookkeeping, payroll, audit support, and financial records."
+            },
+            {
+                "option_code": "LGL",
+                "option_parent_code": "BPF",
+                "option_label": "Legal Service",
+                "option_description": "Legal advice, representation, documentation, and legal support."
+            },
+            {
+                "option_code": "MCS",
+                "option_parent_code": "BPF",
+                "option_label": "Management and Consulting",
+                "option_description": "Strategy, management, operations, and specialist consulting."
+            },
+            {
+                "option_code": "HRR",
+                "option_parent_code": "BPF",
+                "option_label": "Human Resources and Recruitment",
+                "option_description": "Hiring, staffing, HR, training coordination, and workforce services."
+            },
+            {
+                "option_code": "MKA",
+                "option_parent_code": "BPF",
+                "option_label": "Marketing and Advertising",
+                "option_description": "Advertising, promotion, branding, campaign, and market services."
+            },
+            {
+                "option_code": "FNI",
+                "option_parent_code": "BPF",
+                "option_label": "Financial and Insurance Service",
+                "option_description": "Banking support, lending, investment, insurance, and financial intermediation."
+            },
+            {
+                "option_code": "RES",
+                "option_parent_code": "BPF",
+                "option_label": "Real Estate Service",
+                "option_description": "Brokerage, valuation, leasing, sales, and property transactions."
+            },
+            {
+                "option_code": "AOS",
+                "option_parent_code": "BPF",
+                "option_label": "Administrative and Office Support",
+                "option_description": "Secretarial, virtual assistance, document, office, and back-office support."
+            },
+            {
+                "option_code": "SIT",
+                "option_parent_code": "TMC",
+                "option_label": "Software and Information Technology",
+                "option_description": "Software development, hosting, systems, cybersecurity, and IT support."
+            },
+            {
+                "option_code": "TEL",
+                "option_parent_code": "TMC",
+                "option_label": "Telecommunications",
+                "option_description": "Voice, data, internet, network, and communication services."
+            },
+            {
+                "option_code": "ETR",
+                "option_parent_code": "TMC",
+                "option_label": "Electronics and Technical Repair",
+                "option_description": "Consumer electronics, appliance, device, and technical repair."
+            },
+            {
+                "option_code": "MPR",
+                "option_parent_code": "TMC",
+                "option_label": "Media Production",
+                "option_description": "Audio, video, broadcast, animation, and production services."
+            },
+            {
+                "option_code": "DCC",
+                "option_parent_code": "TMC",
+                "option_label": "Design and Creative Communication",
+                "option_description": "Graphic, web, industrial, visual, and communication design."
+            },
+            {
+                "option_code": "PHV",
+                "option_parent_code": "TMC",
+                "option_label": "Photography and Video",
+                "option_description": "Photography, videography, editing, and visual documentation."
+            },
+            {
+                "option_code": "PUB",
+                "option_parent_code": "TMC",
+                "option_label": "Publishing and Content",
+                "option_description": "Writing, editing, publishing, localization, and content services."
+            },
+            {
+                "option_code": "DIS",
+                "option_parent_code": "TMC",
+                "option_label": "Data and Information Service",
+                "option_description": "Data processing, records, analytics, information, and knowledge systems."
+            },
+            {
+                "option_code": "AED",
+                "option_parent_code": "ETK",
+                "option_label": "Academic Education",
+                "option_description": "Formal school, college, university, and academic instruction."
+            },
+            {
+                "option_code": "VET",
+                "option_parent_code": "ETK",
+                "option_label": "Vocational Education and Training",
+                "option_description": "Trade, technical, occupational, and competency-based training."
+            },
+            {
+                "option_code": "TUT",
+                "option_parent_code": "ETK",
+                "option_label": "Tutoring and Coaching",
+                "option_description": "Individual or group academic, skills, and performance coaching."
+            },
+            {
+                "option_code": "ACL",
+                "option_parent_code": "ETK",
+                "option_label": "Assessment, Certification and Licensing",
+                "option_description": "Examination, competency assessment, certification, and licensing support."
+            },
+            {
+                "option_code": "RIN",
+                "option_parent_code": "ETK",
+                "option_label": "Research and Information",
+                "option_description": "Research, library, archival, investigative, and information services."
+            },
+            {
+                "option_code": "LNG",
+                "option_parent_code": "ETK",
+                "option_label": "Language Service",
+                "option_description": "Language teaching, translation, interpretation, and language support."
+            },
+            {
+                "option_code": "ART",
+                "option_parent_code": "CRS",
+                "option_label": "Arts and Cultural Service",
+                "option_description": "Visual art, craft, museum, cultural, and heritage services."
+            },
+            {
+                "option_code": "MUS",
+                "option_parent_code": "CRS",
+                "option_label": "Music and Performance",
+                "option_description": "Music, theater, dance, performance, and live entertainment services."
+            },
+            {
+                "option_code": "REC",
+                "option_parent_code": "CRS",
+                "option_label": "Recreation and Leisure",
+                "option_description": "Leisure, amusement, hobby, outdoor, and recreation services."
+            },
+            {
+                "option_code": "SPS",
+                "option_parent_code": "CRS",
+                "option_label": "Sport Service",
+                "option_description": "Sports instruction, officiating, facility, competition, and athletic service."
+            },
+            {
+                "option_code": "GAM",
+                "option_parent_code": "CRS",
+                "option_label": "Gaming and Interactive Entertainment",
+                "option_description": "Video-game, tabletop, esports, and interactive entertainment services."
+            },
+            {
+                "option_code": "GOV",
+                "option_parent_code": "PCS",
+                "option_label": "Government and Civic Service",
+                "option_description": "Government transactions, licensing, administration, and civic services."
+            },
+            {
+                "option_code": "EMS",
+                "option_parent_code": "PCS",
+                "option_label": "Emergency and Safety Service",
+                "option_description": "Emergency response, rescue, fire, disaster, and public-safety services."
+            },
+            {
+                "option_code": "NCO",
+                "option_parent_code": "PCS",
+                "option_label": "Nonprofit and Community Service",
+                "option_description": "Charity, advocacy, community development, and volunteer services."
+            },
+            {
+                "option_code": "SSW",
+                "option_parent_code": "PCS",
+                "option_label": "Social Work and Support",
+                "option_description": "Social assistance, counseling support, shelter, and protection services."
+            },
+            {
+                "option_code": "FMS",
+                "option_parent_code": "PCS",
+                "option_label": "Funeral and Memorial Service",
+                "option_description": "Funeral, cremation, burial, memorial, and bereavement services."
+            },
+            {
+                "option_code": "UTL",
+                "option_parent_code": "EIS",
+                "option_label": "Utility Service",
+                "option_description": "Electricity, gas, telecommunications utility, and public utility operations."
+            },
+            {
+                "option_code": "WTR",
+                "option_parent_code": "EIS",
+                "option_label": "Water and Sanitation",
+                "option_description": "Water supply, wastewater, sanitation, drainage, and sewer services."
+            },
+            {
+                "option_code": "ENR",
+                "option_parent_code": "EIS",
+                "option_label": "Energy Service",
+                "option_description": "Energy generation, installation, efficiency, and renewable-energy services."
+            },
+            {
+                "option_code": "WST",
+                "option_parent_code": "EIS",
+                "option_label": "Waste and Recycling",
+                "option_description": "Collection, recycling, recovery, disposal, and material diversion."
+            },
+            {
+                "option_code": "ENV",
+                "option_parent_code": "EIS",
+                "option_label": "Environmental Service",
+                "option_description": "Environmental assessment, remediation, conservation, and compliance."
+            },
+            {
+                "option_code": "IFO",
+                "option_parent_code": "EIS",
+                "option_label": "Infrastructure Operations",
+                "option_description": "Road, transit, facility, network, and public-infrastructure operations."
+            },
+            {
+                "option_code": "MFS",
+                "option_parent_code": "IAT",
+                "option_label": "Manufacturing Support",
+                "option_description": "Fabrication, production support, assembly, machining, and industrial services."
+            },
+            {
+                "option_code": "EQM",
+                "option_parent_code": "IAT",
+                "option_label": "Equipment Maintenance",
+                "option_description": "Industrial equipment, machinery, plant, and technical maintenance."
+            },
+            {
+                "option_code": "AGR",
+                "option_parent_code": "IAT",
+                "option_label": "Agricultural Service",
+                "option_description": "Crop, farm, soil, irrigation, and agricultural support."
+            },
+            {
+                "option_code": "FOR",
+                "option_parent_code": "IAT",
+                "option_label": "Forestry Service",
+                "option_description": "Forestry, timber, tree management, and woodland services."
+            },
+            {
+                "option_code": "FSH",
+                "option_parent_code": "IAT",
+                "option_label": "Fisheries Service",
+                "option_description": "Aquaculture, fishing, hatchery, and fisheries support."
+            },
+            {
+                "option_code": "MIN",
+                "option_parent_code": "IAT",
+                "option_label": "Mining and Extraction Service",
+                "option_description": "Mining, quarrying, drilling, and extraction support."
+            },
+            {
+                "option_code": "LBT",
+                "option_parent_code": "IAT",
+                "option_label": "Laboratory and Testing",
+                "option_description": "Laboratory analysis, calibration, inspection, and technical testing."
+            },
+            {
+                "option_code": "WHS",
+                "option_parent_code": "IAT",
+                "option_label": "Warehousing and Industrial Handling",
+                "option_description": "Storage, fulfillment, material handling, and industrial logistics."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "group_service_family",
+        "field_label": "Service Family",
+        "selection_rule": "Single primary Service Family per normalized service",
+        "field_description": "The specific classification level assigned directly to service_main records. The options below are the current Service Families used by Massage Nexus; they are reference taxonomy records under the broader hierarchy rather than the complete list of every service family in the economy. option_sector_code and option_domain_code reference the parent hierarchy codes.",
+        "classification_note": [
+            "The source document presents Service Sector and Service Domain with explicit field names but does not state a field name for the Service Family level; the field name group_service_family is inferred from the documented hierarchy naming pattern and requires confirmation.",
+            "Massage is the primary family when a service is commercially and publicly presented principally as massage.",
+            "Manual Bodywork is used when presenting the service merely as massage would materially misrepresent its method, professional tradition, or client expectation.",
+            "Reflexology is organized around reflex maps or zones and remains distinct from ordinary massage of the same body area.",
+            "Hydrotherapy and Aquatic Bodywork requires water, buoyancy, water pressure, immersion, or aquatic movement to function as a central treatment method.",
+            "Bathing and Wet Wellness centers on bathing, soaking, bathhouse access, or a wet-wellness experience rather than a structured therapeutic water method.",
+            "Thermal and Recovery Wellness centers on heat, cold, compression, or recovery exposure rather than water itself.",
+            "Device-Led Wellness is used when specialized equipment is the principal delivery mechanism and the service is not more accurately a regulated medical or aesthetic procedure.",
+            "Medical Aesthetic Service remains separate when medical supervision, regulated practice, or medical-aesthetic scope is central.",
+            "Massage Nexus may later adopt another existing domain or add a new family record without changing the common hierarchy fields or code length."
+        ],
+        "field_option": [
+            {
+                "option_code": "MAS",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Massage",
+                "option_description": "Hands-on or tool-assisted manipulation presented primarily as massage."
+            },
+            {
+                "option_code": "RFX",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Reflexology",
+                "option_description": "Pressure-based service organized around reflex maps or zones."
+            },
+            {
+                "option_code": "MBW",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Manual Bodywork",
+                "option_description": "Hands-on body-focused work not best represented as ordinary massage."
+            },
+            {
+                "option_code": "STM",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Stretching and Mobility",
+                "option_description": "Assisted stretching, mobility, joint movement, and range-of-motion service."
+            },
+            {
+                "option_code": "HYA",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Hydrotherapy and Aquatic Bodywork",
+                "option_description": "Water, pressure, buoyancy, immersion, or aquatic movement as the central method."
+            },
+            {
+                "option_code": "TRW",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Thermal and Recovery Wellness",
+                "option_description": "Heat, cold, compression, and recovery-focused wellness service."
+            },
+            {
+                "option_code": "BWW",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Bathing and Wet Wellness",
+                "option_description": "Bathing, soaking, bathhouse, wet-wellness, and communal bathing experience."
+            },
+            {
+                "option_code": "DLW",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Device-Led Wellness",
+                "option_description": "Wellness service delivered primarily through specialized equipment or a device."
+            },
+            {
+                "option_code": "MBR",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Mind-Body and Relaxation",
+                "option_description": "Guided relaxation, breathwork, meditation, sound, Reiki, and related non-massage practices."
+            },
+            {
+                "option_code": "WCA",
+                "option_sector_code": "HWC",
+                "option_domain_code": "SPW",
+                "option_label": "Wellness Consultation and Assessment",
+                "option_description": "Wellness intake, evaluation, planning, consultation, and guidance."
+            },
+            {
+                "option_code": "BDT",
+                "option_sector_code": "PCL",
+                "option_domain_code": "BGR",
+                "option_label": "Body Treatment",
+                "option_description": "Scrub, polish, wrap, mask, mud, exfoliation, and comparable body care."
+            },
+            {
+                "option_code": "FSC",
+                "option_sector_code": "PCL",
+                "option_domain_code": "BGR",
+                "option_label": "Facial and Skin Care",
+                "option_description": "Facial cleansing, skin care, facial treatment, and related non-medical service."
+            },
+            {
+                "option_code": "NHF",
+                "option_sector_code": "PCL",
+                "option_domain_code": "BGR",
+                "option_label": "Nail, Hand and Foot Care",
+                "option_description": "Manicure, pedicure, hand spa, foot spa, nail treatment, and related care."
+            },
+            {
+                "option_code": "HSC",
+                "option_sector_code": "PCL",
+                "option_domain_code": "BGR",
+                "option_label": "Hair and Scalp Care",
+                "option_description": "Haircut, styling, hair treatment, scalp care, and salon-based hair service."
+            },
+            {
+                "option_code": "GHR",
+                "option_sector_code": "PCL",
+                "option_domain_code": "BGR",
+                "option_label": "Grooming and Hair Removal",
+                "option_description": "Barbering, shaving, waxing, threading, sugaring, and related grooming."
+            },
+            {
+                "option_code": "MAT",
+                "option_sector_code": "HWC",
+                "option_domain_code": "MCC",
+                "option_label": "Medical Aesthetic Service",
+                "option_description": "Medically supervised or regulated aesthetic procedure."
+            },
+            {
+                "option_code": "RCT",
+                "option_sector_code": "HWC",
+                "option_domain_code": "RHC",
+                "option_label": "Regulated Clinical Treatment",
+                "option_description": "Licensed or regulated clinical, rehabilitation, pelvic-health, or therapeutic treatment."
+            },
+            {
+                "option_code": "SBW",
+                "option_sector_code": "PCL",
+                "option_domain_code": "ISW",
+                "option_label": "Sensual Bodywork",
+                "option_description": "Consensual sensual or erotic bodywork whose primary presentation involves arousal-oriented touch."
+            },
+            {
+                "option_code": "SXW",
+                "option_sector_code": "PCL",
+                "option_domain_code": "ISW",
+                "option_label": "Sexual Wellness Service",
+                "option_description": "Consensual intimate service presented primarily for sexual-wellness education, exploration, or stimulation."
+            },
+            {
+                "option_code": "ADS",
+                "option_sector_code": "PCL",
+                "option_domain_code": "ISW",
+                "option_label": "Adult Sexual Service",
+                "option_description": "Direct adult sexual activity represented for moderation, safety, legal handling, and accurate classification."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_service_alias",
+        "field_label": "Service Alias Type",
+        "selection_rule": "Single-select per alias",
+        "field_description": "Classifies one alias of a normalized service record.",
+        "classification_note": [
+            "A translated display label is dynamic translated content rather than automatically a service alias.",
+            "A provider-specific branded menu name is not a service alias unless it is independently used or recognized beyond that provider."
+        ],
+        "field_option": [
+            {
+                "option_code": "ALT",
+                "option_label": "Alternate Name",
+                "option_description": "Widely used alternative name for the same service."
+            },
+            {
+                "option_code": "RGN",
+                "option_label": "Regional Name",
+                "option_description": "Name primarily associated with a country, region, culture, or market."
+            },
+            {
+                "option_code": "LOC",
+                "option_label": "Local Name",
+                "option_description": "Name used for the service in a particular source language, locality, or linguistic community."
+            },
+            {
+                "option_code": "TRN",
+                "option_label": "Transliteration",
+                "option_description": "Name converted from one writing system to another."
+            },
+            {
+                "option_code": "ABR",
+                "option_label": "Abbreviation",
+                "option_description": "Shortened form or recognized acronym."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical Name",
+                "option_description": "Earlier name retained for history and discovery."
+            },
+            {
+                "option_code": "MIS",
+                "option_label": "Common Misspelling",
+                "option_description": "Frequent misspelling retained only for search and correction."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Deprecated Name",
+                "option_description": "Former label no longer preferred."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_service_relationship",
+        "field_label": "Service Relationship Type",
+        "selection_rule": "One relationship type per connected service pair",
+        "field_description": "Classifies the relationship between two normalized service records. option_inverse_map defines the strict automatic inverse mapping.",
+        "option_inverse_map": {
+            "BRD": "NRW",
+            "NRW": "BRD",
+            "PAR": "CHD",
+            "CHD": "PAR",
+            "EQU": "EQU",
+            "NEQ": "NEQ",
+            "REL": "REL",
+            "CCF": "CCF",
+            "SUP": "SBD",
+            "SBD": "SUP",
+            "PRE": "FOL",
+            "FOL": "PRE",
+            "CLN": "SEN",
+            "SEN": "CLN"
+        },
+        "classification_note": [
+            "Directional inverse relationships must strictly follow option_inverse_map when automatically generated.",
+            "For the CLN and SEN inverse pair: a sensual, sexual-wellness, or adult service pointing to its clinical counterpart uses CLN; a clinical service pointing to its sensual, sexual-wellness, or adult counterpart uses SEN."
+        ],
+        "field_option": [
+            {
+                "option_code": "BRD",
+                "option_label": "Broader",
+                "option_description": "Source service is broader than the connected service."
+            },
+            {
+                "option_code": "NRW",
+                "option_label": "Narrower",
+                "option_description": "Source service is narrower than the connected service."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Parent",
+                "option_description": "Source service is the direct parent of the connected service."
+            },
+            {
+                "option_code": "CHD",
+                "option_label": "Child",
+                "option_description": "Source service is the direct child of the connected service."
+            },
+            {
+                "option_code": "EQU",
+                "option_label": "Equivalent",
+                "option_description": "Both records represent the same service concept."
+            },
+            {
+                "option_code": "NEQ",
+                "option_label": "Near Equivalent",
+                "option_description": "Services overlap substantially but are not fully interchangeable."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Related",
+                "option_description": "Services have a meaningful non-hierarchical relationship."
+            },
+            {
+                "option_code": "CCF",
+                "option_label": "Commonly Confused",
+                "option_description": "Services are frequently mistaken for one another."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Component",
+                "option_description": "Source service may be included as a component of the connected service."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Often Combined",
+                "option_description": "Services are commonly performed or sold together."
+            },
+            {
+                "option_code": "CLN",
+                "option_label": "Clinical Counterpart",
+                "option_description": "Connected service is the regulated or clinical counterpart."
+            },
+            {
+                "option_code": "SEN",
+                "option_label": "Sensitive Counterpart",
+                "option_description": "Connected service is the sensual, sexual-wellness, or adult counterpart."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supersedes",
+                "option_description": "Source service replaces an older normalized service identity."
+            },
+            {
+                "option_code": "SBD",
+                "option_label": "Superseded By",
+                "option_description": "Source service has been replaced by a newer identity."
+            },
+            {
+                "option_code": "MRG",
+                "option_label": "Merged Into",
+                "option_description": "Source record was consolidated into the connected canonical record."
+            },
+            {
+                "option_code": "PRE",
+                "option_label": "Prerequisite For",
+                "option_description": "Source service is required or recommended before the connected service."
+            },
+            {
+                "option_code": "FOL",
+                "option_label": "Follows",
+                "option_description": "Source service naturally follows or is performed after the connected service."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_service_menu_structure",
+        "field_label": "Provider Menu Structure",
+        "selection_rule": "Single-select per establishment_service or practitioner_service document",
+        "field_description": "Classifies the commercial structure of one provider menu item.",
+        "classification_note": [
+            "A Package bundles separately identifiable services, products, facilities, or components.",
+            "A Series repeats substantially similar sessions.",
+            "A Course follows an ordered or progressive program.",
+            "Menu variants may differ by duration, price, body focus, client count, practitioner count, room, location, or another selectable condition.",
+            "Promotions are time-bound commercial rules and belong to promotion records rather than permanent menu identity."
+        ],
+        "field_option": [
+            {
+                "option_code": "SVC",
+                "option_label": "Service Item",
+                "option_description": "One provider-specific service offering."
+            },
+            {
+                "option_code": "CBN",
+                "option_label": "Combination Service",
+                "option_description": "One session blending several normalized services or systems."
+            },
+            {
+                "option_code": "PKG",
+                "option_label": "Package",
+                "option_description": "One purchase containing several separately identifiable components."
+            },
+            {
+                "option_code": "SRS",
+                "option_label": "Series",
+                "option_description": "One purchase containing repeated or substantially similar sessions over time."
+            },
+            {
+                "option_code": "CRS",
+                "option_label": "Course",
+                "option_description": "An ordered or progressive multi-session program whose sessions may develop toward a defined objective."
+            },
+            {
+                "option_code": "ADD",
+                "option_label": "Add-On",
+                "option_description": "Optional supplement attached to another menu item."
+            },
+            {
+                "option_code": "FAC",
+                "option_label": "Facility Access",
+                "option_description": "Paid or included use of a facility with or without treatment."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_massage_basis",
+        "field_label": "Massage Basis",
+        "selection_rule": "Multi-select per massage service",
+        "field_description": "Distinguishes structured systems, cultural traditions, named methods, and services defined mainly by purpose. It supports discovery, filtering, and educational content without replacing the normalized service record in service_main.",
+        "field_option": [
+            {
+                "option_code": "SYS",
+                "option_label": "System",
+                "option_description": "Organized massage method with recognizable principles and session logic."
+            },
+            {
+                "option_code": "TRD",
+                "option_label": "Tradition",
+                "option_description": "Culturally or historically rooted massage or healing practice."
+            },
+            {
+                "option_code": "NMD",
+                "option_label": "Named Method",
+                "option_description": "Recognized named approach not necessarily constituting a complete tradition."
+            },
+            {
+                "option_code": "PUR",
+                "option_label": "Purpose and Approach",
+                "option_description": "Service primarily defined by intended outcome, treatment goal, or philosophical approach rather than a named system or tradition."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "level_massage_pressure",
+        "field_label": "Massage Pressure Level",
+        "selection_rule": "Multi-select where several supported levels apply",
+        "field_description": "Supported massage pressure levels. Selecting several levels represents the supported pressure range.",
+        "classification_note": [
+            "Pressure adaptation to preference, tolerance, feedback, body area, or session need is provider-operational information rather than a pressure level."
+        ],
+        "field_option": [
+            {
+                "option_code": "VLT",
+                "option_label": "Very Light",
+                "option_description": "Minimal controlled pressure for cautious or highly sensitive care."
+            },
+            {
+                "option_code": "LGT",
+                "option_label": "Light",
+                "option_description": "Gentle pressure commonly used for comfort and relaxation."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medium",
+                "option_description": "Moderate pressure between gentle and firm work."
+            },
+            {
+                "option_code": "FRM",
+                "option_label": "Firm",
+                "option_description": "Strong controlled pressure below the provider's deepest range."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Deep",
+                "option_description": "Deepest controlled pressure appropriate to the service and client."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_massage_medium",
+        "field_label": "Massage Medium",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "The generic medium involved in massage contact. A named or branded product is linked through the service-product relationship and Product Classification; it is not a Massage Medium option.",
+        "classification_note": [
+            "Specific carrier oils, ingredients, scents, essential-oil blends, CBD, magnesium, warming agents, cooling agents, and similar formulation details belong to product records or provider add-ons rather than this broad medium field."
+        ],
+        "field_option": [
+            {
+                "option_code": "DRY",
+                "option_label": "Dry",
+                "option_description": "No glide product is used."
+            },
+            {
+                "option_code": "OIL",
+                "option_label": "Oil",
+                "option_description": "Massage oil is the principal medium."
+            },
+            {
+                "option_code": "LOT",
+                "option_label": "Lotion",
+                "option_description": "Lotion is the principal medium."
+            },
+            {
+                "option_code": "CRM",
+                "option_label": "Cream",
+                "option_description": "Cream is the principal medium."
+            },
+            {
+                "option_code": "BLM",
+                "option_label": "Balm",
+                "option_description": "Balm or ointment is used throughout or on selected areas."
+            },
+            {
+                "option_code": "GEL",
+                "option_label": "Gel",
+                "option_description": "Gel is the principal or targeted medium."
+            },
+            {
+                "option_code": "PWD",
+                "option_label": "Powder",
+                "option_description": "Powder supports glide or a traditional method."
+            },
+            {
+                "option_code": "WAT",
+                "option_label": "Water",
+                "option_description": "Water itself is materially involved in treatment contact."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_treatment_support",
+        "field_label": "Treatment Support",
+        "selection_rule": "Multi-select where several supports are normally used",
+        "field_description": "The physical support normally used during treatment. Portability describes service deployment rather than treatment support and is not included in this field.",
+        "classification_note": [
+            "Aquatic characteristics are represented through Service Family, Water Contact Method, and Floatation Support rather than a separate Aquatic Setup option.",
+            "Provider menu items or variants hold the authoritative operational support used for an actual booking."
+        ],
+        "field_option": [
+            {
+                "option_code": "TBL",
+                "option_label": "Treatment Table",
+                "option_description": "Purpose-built table used to support massage or treatment."
+            },
+            {
+                "option_code": "TBD",
+                "option_label": "Treatment Bed",
+                "option_description": "Purpose-built treatment bed or padded treatment platform."
+            },
+            {
+                "option_code": "MAT",
+                "option_label": "Floor Mat",
+                "option_description": "Mat or padded floor support."
+            },
+            {
+                "option_code": "CHR",
+                "option_label": "Treatment Chair",
+                "option_description": "Seated massage or treatment support."
+            },
+            {
+                "option_code": "SBD",
+                "option_label": "Standard Bed",
+                "option_description": "Ordinary sleeping bed used as the treatment support."
+            },
+            {
+                "option_code": "RCL",
+                "option_label": "Recliner",
+                "option_description": "Reclining chair or supported reclined seat."
+            },
+            {
+                "option_code": "FLT",
+                "option_label": "Floatation Support",
+                "option_description": "Float, buoyancy aid, aquatic cradle, or comparable water support."
+            },
+            {
+                "option_code": "SUS",
+                "option_label": "Suspension Support",
+                "option_description": "Hammock, sling, aerial support, or suspended treatment setup."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_client_position",
+        "field_label": "Client Position",
+        "selection_rule": "Multi-select",
+        "field_description": "Actual client positions used during the service. This field contains actual positions only.",
+        "field_option": [
+            {
+                "option_code": "PRN",
+                "option_label": "Prone",
+                "option_description": "Client lies face down."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supine",
+                "option_description": "Client lies face up."
+            },
+            {
+                "option_code": "SDL",
+                "option_label": "Side-Lying",
+                "option_description": "Client lies on one side."
+            },
+            {
+                "option_code": "STD",
+                "option_label": "Seated",
+                "option_description": "Client remains seated."
+            },
+            {
+                "option_code": "RCL",
+                "option_label": "Reclined",
+                "option_description": "Client rests in a reclined or semi-reclined position."
+            },
+            {
+                "option_code": "STN",
+                "option_label": "Standing",
+                "option_description": "Client stands during all or part of the service."
+            },
+            {
+                "option_code": "KNE",
+                "option_label": "Kneeling",
+                "option_description": "Client is supported principally on one or both knees."
+            },
+            {
+                "option_code": "QDP",
+                "option_label": "Quadruped",
+                "option_description": "Client is supported in a hands-and-knees or comparable four-point position."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_client_positioning",
+        "field_label": "Client Positioning Mode",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "How client positioning normally behaves during the service.",
+        "field_option": [
+            {
+                "option_code": "STC",
+                "option_label": "Static Position",
+                "option_description": "The service normally remains in one principal position."
+            },
+            {
+                "option_code": "MUL",
+                "option_label": "Multiple Positions",
+                "option_description": "The service normally changes among two or more defined positions."
+            },
+            {
+                "option_code": "MOV",
+                "option_label": "Movement-Based",
+                "option_description": "Guided, assisted, or active movement is central to positioning."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_client_attire",
+        "field_label": "Client Attire",
+        "selection_rule": "Multi-select where several garments may be used",
+        "field_description": "Client attire normally used during the service.",
+        "field_option": [
+            {
+                "option_code": "REG",
+                "option_label": "Regular Clothing",
+                "option_description": "The client wears normal everyday clothing during the service."
+            },
+            {
+                "option_code": "TGM",
+                "option_label": "Treatment Garment",
+                "option_description": "A loose, traditional, reusable, or purpose-specific garment is used."
+            },
+            {
+                "option_code": "DGM",
+                "option_label": "Disposable Garment",
+                "option_description": "A single-use undergarment, top, spa wrap, or treatment garment is used."
+            },
+            {
+                "option_code": "UWR",
+                "option_label": "Personal Underwear",
+                "option_description": "The client retains their own underwear."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "level_client_undressing",
+        "field_label": "Client Undressing Level",
+        "selection_rule": "Single-select per normal service setup",
+        "field_description": "Level of client undressing in the normal service setup.",
+        "field_option": [
+            {
+                "option_code": "FDR",
+                "option_label": "Fully Dressed",
+                "option_description": "Normal clothing or a complete treatment garment remains in place."
+            },
+            {
+                "option_code": "PUD",
+                "option_label": "Partially Undressed",
+                "option_description": "Clothing is removed only from selected treatment areas."
+            },
+            {
+                "option_code": "FUD",
+                "option_label": "Fully Undressed",
+                "option_description": "The client removes all clothing for the service where lawful, consensual, and appropriate."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_treatment_contact",
+        "field_label": "Treatment Contact",
+        "selection_rule": "Multi-select where several contact arrangements apply",
+        "field_description": "How treatment contact is applied relative to clothing and skin.",
+        "field_option": [
+            {
+                "option_code": "OCL",
+                "option_label": "Over Clothing",
+                "option_description": "Contact is applied through clothing or a treatment garment."
+            },
+            {
+                "option_code": "DSC",
+                "option_label": "Direct Skin Contact",
+                "option_description": "Contact is applied directly to exposed skin."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed Contact",
+                "option_description": "The service intentionally combines over-clothing and direct-skin contact."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_draping",
+        "field_label": "Draping Mode",
+        "selection_rule": "Single-select per normal service setup",
+        "field_description": "Whether and how professional draping is used in the normal service setup. Clothing, undressing, skin contact, and draping do not by themselves determine whether a service is clinical, professional, sensual, or adult.",
+        "field_option": [
+            {
+                "option_code": "USE",
+                "option_label": "Draping Used",
+                "option_description": "Professional draping covers areas not currently being treated."
+            },
+            {
+                "option_code": "OPT",
+                "option_label": "Draping Optional",
+                "option_description": "Draping may be selected according to consent, context, law, and provider policy."
+            },
+            {
+                "option_code": "NUS",
+                "option_label": "Draping Not Used",
+                "option_description": "The service is normally performed without draping in an appropriate lawful and consensual context."
+            },
+            {
+                "option_code": "NRE",
+                "option_label": "Draping Not Required",
+                "option_description": "Clothing, treatment garments, service format, or facility practice makes draping unnecessary."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_draping_item",
+        "field_label": "Draping Item",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "The generic item used for draping. Fiber, material, dimensions, absorbency, construction, reusability, and actual branded items belong to Product Classification.",
+        "field_option": [
+            {
+                "option_code": "SHT",
+                "option_label": "Sheet",
+                "option_description": "A sheet is used as the principal draping item."
+            },
+            {
+                "option_code": "TWL",
+                "option_label": "Towel",
+                "option_description": "One or more towels are used for draping."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blanket",
+                "option_description": "A blanket is used for coverage, warmth, or draping."
+            },
+            {
+                "option_code": "WRP",
+                "option_label": "Wrap",
+                "option_description": "A spa wrap or comparable body wrap is used for draping."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_client_arrangement",
+        "field_label": "Client Arrangement",
+        "selection_rule": "Single-select per menu variant or session",
+        "field_description": "How many clients receive the service together.",
+        "field_option": [
+            {
+                "option_code": "IND",
+                "option_label": "Individual",
+                "option_description": "One client receives the service."
+            },
+            {
+                "option_code": "CPL",
+                "option_label": "Couple",
+                "option_description": "Two clients receive concurrent or paired services."
+            },
+            {
+                "option_code": "GRP",
+                "option_label": "Group",
+                "option_description": "Three or more clients receive an organized service."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_practitioner_arrangement",
+        "field_label": "Practitioner Arrangement",
+        "selection_rule": "Single-select per menu variant or session",
+        "field_description": "How many practitioners deliver the service to one client.",
+        "field_option": [
+            {
+                "option_code": "ONE",
+                "option_label": "Single Practitioner",
+                "option_description": "One practitioner serves one client."
+            },
+            {
+                "option_code": "TWO",
+                "option_label": "Two Practitioners",
+                "option_description": "Two practitioners serve one client."
+            },
+            {
+                "option_code": "TEM",
+                "option_label": "Practitioner Team",
+                "option_description": "More than two practitioners participate."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "group_massage_technique",
+        "field_label": "Massage Technique Group",
+        "selection_rule": "Multi-select per named technique",
+        "field_description": "Broad cross-system physical action grouping for named massage techniques. Technique records use four levels: Technique Framework, Technique Group, Named Technique, and Technique Variation. Technique Framework and Named Technique are reference records rather than fixed field options; see massage_technique_framework.json.",
+        "classification_note": [
+            "Reiki is a normalized non-massage service under Mind-Body and Relaxation. It is not a Massage Technique Framework or Massage Technique Group."
+        ],
+        "field_option": [
+            {
+                "option_code": "GLD",
+                "option_label": "Gliding and Stroking",
+                "option_description": "Continuous sliding or stroking contact."
+            },
+            {
+                "option_code": "KLG",
+                "option_label": "Kneading, Lifting and Grasping",
+                "option_description": "Compression with lifting, squeezing, rolling, or grasping."
+            },
+            {
+                "option_code": "FRI",
+                "option_label": "Friction and Rubbing",
+                "option_description": "Focused rubbing or friction across selected tissue."
+            },
+            {
+                "option_code": "PER",
+                "option_label": "Percussion",
+                "option_description": "Rhythmic striking, tapping, hacking, cupping, or pounding."
+            },
+            {
+                "option_code": "VIB",
+                "option_label": "Vibration and Oscillation",
+                "option_description": "Rapid or rhythmic shaking and oscillating movement."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Compression",
+                "option_description": "Static or rhythmic pressure without required glide."
+            },
+            {
+                "option_code": "PPR",
+                "option_label": "Point Pressure",
+                "option_description": "Focused pressure applied to selected points or pathways."
+            },
+            {
+                "option_code": "STR",
+                "option_label": "Stretching",
+                "option_description": "Assisted or guided lengthening."
+            },
+            {
+                "option_code": "JMO",
+                "option_label": "Joint Mobilization",
+                "option_description": "Controlled passive or assisted joint movement."
+            },
+            {
+                "option_code": "RCK",
+                "option_label": "Rocking",
+                "option_description": "Repetitive rhythmic movement of the body or segment."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Traction",
+                "option_description": "Controlled pulling or lengthening force."
+            },
+            {
+                "option_code": "MYF",
+                "option_label": "Myofascial Work",
+                "option_description": "Sustained or guided work directed toward fascia."
+            },
+            {
+                "option_code": "TPT",
+                "option_label": "Trigger-Point Work",
+                "option_description": "Focused work on localized areas of tenderness or referred discomfort."
+            },
+            {
+                "option_code": "TAS",
+                "option_label": "Tool-Assisted Work",
+                "option_description": "Technique performed with a linked manual tool, product, or instrument."
+            },
+            {
+                "option_code": "THM",
+                "option_label": "Thermal Application",
+                "option_description": "Heat or cold is applied as part of the technique."
+            },
+            {
+                "option_code": "AQM",
+                "option_label": "Aquatic Movement",
+                "option_description": "Technique is performed through water support, buoyancy, or aquatic motion."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_practitioner_contact_body_part",
+        "field_label": "Practitioner Contact Body Part",
+        "selection_rule": "Multi-select per named technique or normalized service where applicable",
+        "field_description": "Identifies the practitioner body part materially used to apply touch, pressure, movement, stimulation, support, or other direct contact during a named technique or service. Sensitive or intimate contact values are valid neutral taxonomy data; public visibility, age gating, moderation, legality, payment handling, and booking eligibility remain separate policy decisions.",
+        "classification_note": [
+            "Selections must follow the documented technique or normalized-service definition. Do not infer contact body parts merely from a suggestive service name.",
+            "This field describes the practitioner's contact body part. The part of the client receiving the service belongs to a separate client body-area or service-target classification."
+        ],
+        "field_option": [
+            {
+                "option_code": "FNG",
+                "option_label": "Finger",
+                "option_description": "One or more fingers are used for contact or manipulation."
+            },
+            {
+                "option_code": "THB",
+                "option_label": "Thumb",
+                "option_description": "The thumb is used as the principal contact body part."
+            },
+            {
+                "option_code": "PLM",
+                "option_label": "Palm",
+                "option_description": "The palm provides broad contact, pressure, or glide."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hand",
+                "option_description": "The whole hand is used without requiring a more specific hand part."
+            },
+            {
+                "option_code": "HDE",
+                "option_label": "Hand Edge",
+                "option_description": "The side or ulnar edge of the hand is used."
+            },
+            {
+                "option_code": "KNU",
+                "option_label": "Knuckle",
+                "option_description": "One or more knuckles are used."
+            },
+            {
+                "option_code": "FST",
+                "option_label": "Fist",
+                "option_description": "A closed or partially closed fist is used."
+            },
+            {
+                "option_code": "WRS",
+                "option_label": "Wrist",
+                "option_description": "The wrist or wrist area is used for contact or pressure."
+            },
+            {
+                "option_code": "FRM",
+                "option_label": "Forearm",
+                "option_description": "The forearm is used for gliding, compression, or pressure."
+            },
+            {
+                "option_code": "ELB",
+                "option_label": "Elbow",
+                "option_description": "The elbow is used for focused or deeper pressure."
+            },
+            {
+                "option_code": "ARM",
+                "option_label": "Arm",
+                "option_description": "The arm is used more broadly than the forearm alone."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Shoulder",
+                "option_description": "The shoulder is used as a contact or pressure area."
+            },
+            {
+                "option_code": "CHS",
+                "option_label": "Chest",
+                "option_description": "The chest is used as part of direct consensual body contact."
+            },
+            {
+                "option_code": "BRS",
+                "option_label": "Breast",
+                "option_description": "The breast is used as part of direct consensual body contact."
+            },
+            {
+                "option_code": "ABD",
+                "option_label": "Abdomen",
+                "option_description": "The abdomen is used as part of direct consensual body contact."
+            },
+            {
+                "option_code": "BCK",
+                "option_label": "Back",
+                "option_description": "The back is used as part of direct consensual body contact."
+            },
+            {
+                "option_code": "HIP",
+                "option_label": "Hip",
+                "option_description": "The hip is used for contact, positioning, or movement."
+            },
+            {
+                "option_code": "BTT",
+                "option_label": "Buttocks",
+                "option_description": "The buttocks are used as part of direct consensual body contact."
+            },
+            {
+                "option_code": "THI",
+                "option_label": "Thigh",
+                "option_description": "The thigh is used for contact, pressure, or body movement."
+            },
+            {
+                "option_code": "KNE",
+                "option_label": "Knee",
+                "option_description": "The knee is used for supported pressure or compression."
+            },
+            {
+                "option_code": "LEG",
+                "option_label": "Leg",
+                "option_description": "The leg is used as a broader contact body part."
+            },
+            {
+                "option_code": "FOT",
+                "option_label": "Foot",
+                "option_description": "The foot is used for pressure, glide, or supported contact."
+            },
+            {
+                "option_code": "HEL",
+                "option_label": "Heel",
+                "option_description": "The heel of the foot is specifically used."
+            },
+            {
+                "option_code": "MTH",
+                "option_label": "Mouth",
+                "option_description": "The mouth is used as part of direct consensual contact."
+            },
+            {
+                "option_code": "LIP",
+                "option_label": "Lips",
+                "option_description": "The lips are specifically used for direct consensual contact."
+            },
+            {
+                "option_code": "TNG",
+                "option_label": "Tongue",
+                "option_description": "The tongue is used as part of direct consensual contact."
+            },
+            {
+                "option_code": "PEN",
+                "option_label": "Penis",
+                "option_description": "The penis is used as part of direct consensual intimate contact."
+            },
+            {
+                "option_code": "VUL",
+                "option_label": "Vulva",
+                "option_description": "The vulva is used as part of direct consensual intimate contact."
+            },
+            {
+                "option_code": "SCT",
+                "option_label": "Scrotum",
+                "option_description": "The scrotum is used as part of direct consensual intimate contact."
+            },
+            {
+                "option_code": "BDY",
+                "option_label": "Whole Body",
+                "option_description": "Broad body-to-body contact is central and cannot be represented accurately by one isolated body part."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_service_product_use",
+        "field_label": "Service Product Use",
+        "selection_rule": "One relationship type per service-to-product-type or service-to-product connection",
+        "field_description": "Records the generic role of a product in a service. Product Classification records the physical item, formulation, material, specifications, brand, version, and actual product identity.",
+        "field_option": [
+            {
+                "option_code": "REQ",
+                "option_label": "Required",
+                "option_description": "The product type is necessary for the defined method or service identity."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Commonly Used",
+                "option_description": "The product type is commonly used but not universally required."
+            },
+            {
+                "option_code": "OPT",
+                "option_label": "Optional",
+                "option_description": "The product type may be selected without changing the service identity."
+            },
+            {
+                "option_code": "ALT",
+                "option_label": "Permitted Alternative",
+                "option_description": "The product type may substitute for another accepted product type."
+            },
+            {
+                "option_code": "ENH",
+                "option_label": "Enhancement",
+                "option_description": "The product adds an optional feature, sensation, or commercial enhancement."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historically Associated",
+                "option_description": "The product type has a documented historical or cultural association with the service."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "target_reflexology",
+        "field_label": "Reflexology Target",
+        "selection_rule": "Multi-select",
+        "field_description": "Body area targeted by a reflexology service. Several selected targets already represent a combined reflexology service; a separate Combination option is unnecessary.",
+        "field_option": [
+            {
+                "option_code": "FOT",
+                "option_label": "Foot",
+                "option_description": "Reflexology focused on the feet."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hand",
+                "option_description": "Reflexology focused on the hands."
+            },
+            {
+                "option_code": "EAR",
+                "option_label": "Ear",
+                "option_description": "Reflexology focused on the ears."
+            },
+            {
+                "option_code": "FAC",
+                "option_label": "Face",
+                "option_description": "Reflexology focused on the face."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "method_water_contact",
+        "field_label": "Water Contact Method",
+        "selection_rule": "Multi-select",
+        "field_description": "How water contacts the client during a water-based service. Water Contact Method does not classify dry-sauna or infrared-sauna exposure.",
+        "field_option": [
+            {
+                "option_code": "IMM",
+                "option_label": "Immersion",
+                "option_description": "Client is partly or fully immersed in water."
+            },
+            {
+                "option_code": "SHR",
+                "option_label": "Shower",
+                "option_description": "Water is delivered through a shower or overhead flow."
+            },
+            {
+                "option_code": "JET",
+                "option_label": "Jet Pressure",
+                "option_description": "Pressurized water jets provide the principal action."
+            },
+            {
+                "option_code": "AQM",
+                "option_label": "Aquatic Movement",
+                "option_description": "Buoyancy and movement in water are central."
+            },
+            {
+                "option_code": "SOA",
+                "option_label": "Soaking",
+                "option_description": "Passive or guided soaking is central."
+            },
+            {
+                "option_code": "WET",
+                "option_label": "Wet Treatment",
+                "option_description": "Water is used directly without full immersion."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "level_water_temperature",
+        "field_label": "Water Temperature Level",
+        "selection_rule": "Multi-select",
+        "field_description": "Water temperature levels used in the service.",
+        "field_option": [
+            {
+                "option_code": "HOT",
+                "option_label": "Hot",
+                "option_description": "Intentionally high-temperature water exposure."
+            },
+            {
+                "option_code": "WRM",
+                "option_label": "Warm",
+                "option_description": "Comfortably warm water below hot treatment level."
+            },
+            {
+                "option_code": "NEU",
+                "option_label": "Neutral",
+                "option_description": "Approximately neutral or body-comfort temperature."
+            },
+            {
+                "option_code": "COL",
+                "option_label": "Cool",
+                "option_description": "Cool water exposure above intense cold level."
+            },
+            {
+                "option_code": "CLD",
+                "option_label": "Cold",
+                "option_description": "Deliberate cold-water exposure."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_temperature_pattern",
+        "field_label": "Temperature Pattern",
+        "selection_rule": "Single-select per service setup",
+        "field_description": "How temperature behaves across the service.",
+        "field_option": [
+            {
+                "option_code": "CST",
+                "option_label": "Constant",
+                "option_description": "One principal temperature range is maintained."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Contrast",
+                "option_description": "Hot and cold exposures alternate or are intentionally combined."
+            },
+            {
+                "option_code": "VAR",
+                "option_label": "Variable",
+                "option_description": "Temperature changes according to the session without a fixed contrast sequence."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "method_thermal_exposure",
+        "field_label": "Thermal Exposure Method",
+        "selection_rule": "Multi-select",
+        "field_description": "Non-water thermal exposure methods. Steam, dry sauna, and infrared sauna remain distinct methods.",
+        "field_option": [
+            {
+                "option_code": "STM",
+                "option_label": "Steam Exposure",
+                "option_description": "Humid heat or vapor exposure is central."
+            },
+            {
+                "option_code": "DSA",
+                "option_label": "Dry Sauna",
+                "option_description": "Heated low-humidity room exposure is central."
+            },
+            {
+                "option_code": "ISA",
+                "option_label": "Infrared Sauna",
+                "option_description": "Infrared radiant heat exposure is central."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_bathing_access",
+        "field_label": "Bathing Access",
+        "selection_rule": "Single-select per bathing offer or facility context",
+        "field_description": "How clients access a bathing facility.",
+        "field_option": [
+            {
+                "option_code": "PVT",
+                "option_label": "Private",
+                "option_description": "Bathing facility is reserved for one booking party."
+            },
+            {
+                "option_code": "SHR",
+                "option_label": "Shared",
+                "option_description": "Several unrelated clients may use the same facility."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Communal",
+                "option_description": "Group bathing is a defining social or cultural format."
+            },
+            {
+                "option_code": "ROT",
+                "option_label": "Rotational",
+                "option_description": "Access is shared through timed or rotating admission."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_body_treatment_action",
+        "field_label": "Body Treatment Action",
+        "selection_rule": "Multi-select",
+        "field_description": "Actions performed during a body treatment.",
+        "field_option": [
+            {
+                "option_code": "CLN",
+                "option_label": "Cleanse",
+                "option_description": "Removes surface soil, residue, or product."
+            },
+            {
+                "option_code": "EXF",
+                "option_label": "Exfoliate",
+                "option_description": "Removes or loosens dead surface skin."
+            },
+            {
+                "option_code": "POL",
+                "option_label": "Polish",
+                "option_description": "Smooths and refines the skin surface."
+            },
+            {
+                "option_code": "MSK",
+                "option_label": "Mask",
+                "option_description": "Applies a treatment layer for a defined period."
+            },
+            {
+                "option_code": "WRP",
+                "option_label": "Wrap",
+                "option_description": "Encloses or covers the body or selected area."
+            },
+            {
+                "option_code": "HYD",
+                "option_label": "Hydrate",
+                "option_description": "Focuses on moisture and skin comfort."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compress",
+                "option_description": "Applies a heated, cooled, herbal, or product-based compress."
+            },
+            {
+                "option_code": "RNS",
+                "option_label": "Rinse",
+                "option_description": "Includes a required rinse or wash stage."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_body_treatment_medium",
+        "field_label": "Body Treatment Medium",
+        "selection_rule": "Multi-select",
+        "field_description": "The generic medium defining a body treatment. Exact ingredients, formulation, allergens, warnings, brand, and product version belong to Product Classification.",
+        "field_option": [
+            {
+                "option_code": "MUD",
+                "option_label": "Mud",
+                "option_description": "Mud is a defining treatment medium."
+            },
+            {
+                "option_code": "CLY",
+                "option_label": "Clay",
+                "option_description": "Clay is a defining treatment medium."
+            },
+            {
+                "option_code": "SLT",
+                "option_label": "Salt",
+                "option_description": "Salt is a defining scrub, soak, polish, or treatment medium."
+            },
+            {
+                "option_code": "SGR",
+                "option_label": "Sugar",
+                "option_description": "Sugar is a defining scrub or polish medium."
+            },
+            {
+                "option_code": "BOT",
+                "option_label": "Botanical",
+                "option_description": "Plant-derived material is a defining treatment medium."
+            },
+            {
+                "option_code": "HRB",
+                "option_label": "Herbal",
+                "option_description": "Herbs or an herbal preparation are materially involved."
+            },
+            {
+                "option_code": "ALG",
+                "option_label": "Algae",
+                "option_description": "Algae is a defining treatment medium."
+            },
+            {
+                "option_code": "SWD",
+                "option_label": "Seaweed",
+                "option_description": "Seaweed is a defining treatment medium."
+            },
+            {
+                "option_code": "MIN",
+                "option_label": "Mineral",
+                "option_description": "A mineral preparation is materially involved."
+            },
+            {
+                "option_code": "CRM",
+                "option_label": "Cream",
+                "option_description": "Cream is a defining treatment medium."
+            },
+            {
+                "option_code": "GEL",
+                "option_label": "Gel",
+                "option_description": "Gel is a defining treatment medium."
+            },
+            {
+                "option_code": "OIL",
+                "option_label": "Oil",
+                "option_description": "Oil is a defining treatment medium."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_skin_care_action",
+        "field_label": "Skin Care Action",
+        "selection_rule": "Multi-select",
+        "field_description": "Actions performed during a facial or skin-care service.",
+        "field_option": [
+            {
+                "option_code": "CLN",
+                "option_label": "Cleanse",
+                "option_description": "Cleanses the skin."
+            },
+            {
+                "option_code": "HYD",
+                "option_label": "Hydrate",
+                "option_description": "Supports moisture and skin comfort."
+            },
+            {
+                "option_code": "EXF",
+                "option_label": "Exfoliate",
+                "option_description": "Removes or loosens dead surface skin."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extract",
+                "option_description": "Includes manual or device-assisted extraction."
+            },
+            {
+                "option_code": "MSK",
+                "option_label": "Mask",
+                "option_description": "Applies a treatment mask for a defined period."
+            },
+            {
+                "option_code": "POL",
+                "option_label": "Polish",
+                "option_description": "Smooths or refines the skin surface."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "target_skin_concern",
+        "field_label": "Skin Concern",
+        "selection_rule": "Multi-select",
+        "field_description": "Skin concerns the service is presented to address.",
+        "field_option": [
+            {
+                "option_code": "ACN",
+                "option_label": "Acne-Prone Skin",
+                "option_description": "Service is presented for acne-prone skin within permitted scope."
+            },
+            {
+                "option_code": "AGE",
+                "option_label": "Age-Related",
+                "option_description": "Service addresses age-related appearance or skin-comfort concerns."
+            },
+            {
+                "option_code": "SEN",
+                "option_label": "Sensitivity",
+                "option_description": "Service is adapted for sensitive or reactive skin."
+            },
+            {
+                "option_code": "PIG",
+                "option_label": "Pigmentation",
+                "option_description": "Service addresses uneven tone or pigmentation concerns."
+            },
+            {
+                "option_code": "TXT",
+                "option_label": "Texture",
+                "option_description": "Service focuses on skin texture and surface refinement."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_skin_care_delivery",
+        "field_label": "Skin Care Delivery",
+        "selection_rule": "Single-select per normal setup",
+        "field_description": "How the skin-care service is principally delivered.",
+        "field_option": [
+            {
+                "option_code": "MAN",
+                "option_label": "Manual",
+                "option_description": "The service is delivered principally through manual methods."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "Device-Assisted",
+                "option_description": "A device materially supports the service."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed Delivery",
+                "option_description": "Manual and device-assisted methods are both material."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "target_nail_care",
+        "field_label": "Nail Care Target",
+        "selection_rule": "Multi-select",
+        "field_description": "Target of a nail, hand, or foot care service.",
+        "field_option": [
+            {
+                "option_code": "HND",
+                "option_label": "Hand",
+                "option_description": "Hand or fingernail service."
+            },
+            {
+                "option_code": "FOT",
+                "option_label": "Foot",
+                "option_description": "Foot or toenail service."
+            },
+            {
+                "option_code": "NAI",
+                "option_label": "Nail",
+                "option_description": "Nail plate, enhancement, or polish-centered service."
+            },
+            {
+                "option_code": "SKN",
+                "option_label": "Skin",
+                "option_description": "Surrounding hand, foot, cuticle, or callus care."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_nail_service_action",
+        "field_label": "Nail Service Action",
+        "selection_rule": "Multi-select",
+        "field_description": "Actions performed during a nail service.",
+        "field_option": [
+            {
+                "option_code": "CLN",
+                "option_label": "Clean",
+                "option_description": "Cleans the nail or surrounding area."
+            },
+            {
+                "option_code": "TRM",
+                "option_label": "Trim",
+                "option_description": "Cuts or shortens nails."
+            },
+            {
+                "option_code": "SHP",
+                "option_label": "Shape",
+                "option_description": "Files or shapes nails."
+            },
+            {
+                "option_code": "CUT",
+                "option_label": "Cuticle Care",
+                "option_description": "Treats or maintains cuticles."
+            },
+            {
+                "option_code": "POL",
+                "option_label": "Polish",
+                "option_description": "Applies ordinary polish."
+            },
+            {
+                "option_code": "GEL",
+                "option_label": "Gel Polish",
+                "option_description": "Applies gel-based polish."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extension",
+                "option_description": "Adds artificial length or enhancement."
+            },
+            {
+                "option_code": "RPR",
+                "option_label": "Repair",
+                "option_description": "Repairs damaged natural or artificial nails."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Removal",
+                "option_description": "Removes polish, gel, extension, or enhancement."
+            },
+            {
+                "option_code": "CAL",
+                "option_label": "Callus Care",
+                "option_description": "Treats or reduces callused skin."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "target_hair_care",
+        "field_label": "Hair and Scalp Care Target",
+        "selection_rule": "Multi-select",
+        "field_description": "Target of a hair and scalp care service. Selecting both Hair and Scalp represents an integrated service; a separate Both option is unnecessary.",
+        "field_option": [
+            {
+                "option_code": "HAR",
+                "option_label": "Hair",
+                "option_description": "Hair length, strand, style, or condition."
+            },
+            {
+                "option_code": "SCP",
+                "option_label": "Scalp",
+                "option_description": "Scalp cleansing, comfort, or treatment."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_hair_service_action",
+        "field_label": "Hair Service Action",
+        "selection_rule": "Multi-select",
+        "field_description": "Actions performed during a hair service.",
+        "field_option": [
+            {
+                "option_code": "CUT",
+                "option_label": "Cut",
+                "option_description": "Cuts or reshapes hair."
+            },
+            {
+                "option_code": "WSH",
+                "option_label": "Wash",
+                "option_description": "Cleanses hair or scalp."
+            },
+            {
+                "option_code": "DRY",
+                "option_label": "Dry",
+                "option_description": "Blow-dries or otherwise dries hair."
+            },
+            {
+                "option_code": "STY",
+                "option_label": "Style",
+                "option_description": "Arranges or styles hair."
+            },
+            {
+                "option_code": "CLR",
+                "option_label": "Color",
+                "option_description": "Colors, tones, highlights, or changes hair color."
+            },
+            {
+                "option_code": "TRT",
+                "option_label": "Treat",
+                "option_description": "Applies a conditioning or corrective treatment."
+            },
+            {
+                "option_code": "STR",
+                "option_label": "Straighten",
+                "option_description": "Chemically or mechanically straightens hair."
+            },
+            {
+                "option_code": "CRL",
+                "option_label": "Curl",
+                "option_description": "Chemically or mechanically curls hair."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extension",
+                "option_description": "Adds hair extensions or comparable enhancement."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "method_hair_removal",
+        "field_label": "Hair Removal Method",
+        "selection_rule": "Multi-select",
+        "field_description": "Method used to remove hair. Barbering is a normalized grooming service rather than a Hair Removal Method; Shaving remains the applicable method when hair is removed with a razor.",
+        "field_option": [
+            {
+                "option_code": "SHV",
+                "option_label": "Shaving",
+                "option_description": "Removes hair using a razor or shaving implement."
+            },
+            {
+                "option_code": "WAX",
+                "option_label": "Waxing",
+                "option_description": "Removes hair using wax."
+            },
+            {
+                "option_code": "THR",
+                "option_label": "Threading",
+                "option_description": "Removes hair using thread."
+            },
+            {
+                "option_code": "SGR",
+                "option_label": "Sugaring",
+                "option_description": "Removes hair using sugar-based paste."
+            },
+            {
+                "option_code": "PLK",
+                "option_label": "Plucking",
+                "option_description": "Removes individual hairs mechanically."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "Device",
+                "option_description": "Uses a non-medical device for hair removal."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_grooming_action",
+        "field_label": "Grooming Action",
+        "selection_rule": "Multi-select",
+        "field_description": "Actions performed during a grooming service.",
+        "field_option": [
+            {
+                "option_code": "TRM",
+                "option_label": "Trim",
+                "option_description": "Shortens or shapes hair or facial hair."
+            },
+            {
+                "option_code": "SHP",
+                "option_label": "Shape",
+                "option_description": "Defines lines, contours, or form."
+            },
+            {
+                "option_code": "SHV",
+                "option_label": "Shave",
+                "option_description": "Removes hair through shaving."
+            },
+            {
+                "option_code": "CLN",
+                "option_label": "Cleanse",
+                "option_description": "Cleans the treated area."
+            },
+            {
+                "option_code": "STY",
+                "option_label": "Style",
+                "option_description": "Arranges hair or facial hair."
+            },
+            {
+                "option_code": "FIN",
+                "option_label": "Finish",
+                "option_description": "Applies finishing, aftercare, or presentation product."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_device_form",
+        "field_label": "Device Form",
+        "selection_rule": "Single-select per principal device",
+        "field_description": "Physical form of the principal device in a device-led wellness service.",
+        "field_option": [
+            {
+                "option_code": "CHR",
+                "option_label": "Treatment Chair",
+                "option_description": "Client uses a specialized device in chair form."
+            },
+            {
+                "option_code": "BED",
+                "option_label": "Treatment Bed",
+                "option_description": "Client uses a specialized device in bed form."
+            },
+            {
+                "option_code": "CHM",
+                "option_label": "Chamber",
+                "option_description": "Client enters or uses an enclosed or semi-enclosed chamber."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Handheld Device",
+                "option_description": "Operator or client uses a handheld powered device."
+            },
+            {
+                "option_code": "WRB",
+                "option_label": "Wearable Device",
+                "option_description": "Device is worn or attached during the session."
+            },
+            {
+                "option_code": "PLT",
+                "option_label": "Platform",
+                "option_description": "Client stands, lies, or moves on a specialized platform."
+            },
+            {
+                "option_code": "POD",
+                "option_label": "Pod",
+                "option_description": "Client uses a compact enclosed or semi-enclosed pod."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_device_deployment",
+        "field_label": "Device Deployment",
+        "selection_rule": "Single-select per service setup",
+        "field_description": "How the device or equipment is deployed for service delivery.",
+        "field_option": [
+            {
+                "option_code": "FIX",
+                "option_label": "Fixed",
+                "option_description": "Equipment is permanently or semi-permanently installed."
+            },
+            {
+                "option_code": "PRT",
+                "option_label": "Portable",
+                "option_description": "Equipment can be transported and assembled for service delivery."
+            },
+            {
+                "option_code": "MOB",
+                "option_label": "Mobile Unit",
+                "option_description": "Equipment is integrated into a mobile facility or service unit."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "mode_guidance_delivery",
+        "field_label": "Guidance Delivery",
+        "selection_rule": "Multi-select",
+        "field_description": "How guidance is delivered in a mind-body service. Mind-Body services use type_client_arrangement for Individual or Group participation.",
+        "field_option": [
+            {
+                "option_code": "LIV",
+                "option_label": "Live Guided",
+                "option_description": "A live facilitator leads the session in real time."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Recorded Guided",
+                "option_description": "Guidance is delivered through recorded media."
+            },
+            {
+                "option_code": "SLF",
+                "option_label": "Self-Directed",
+                "option_description": "Participant proceeds without active facilitation."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_consultation_purpose",
+        "field_label": "Consultation and Assessment Purpose",
+        "selection_rule": "Multi-select",
+        "field_description": "Purpose of a wellness consultation or assessment service.",
+        "field_option": [
+            {
+                "option_code": "INT",
+                "option_label": "Intake",
+                "option_description": "Gathers initial client information before service."
+            },
+            {
+                "option_code": "ASM",
+                "option_label": "Assessment",
+                "option_description": "Evaluates client condition, need, or suitability."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Screening",
+                "option_description": "Checks for contraindications or safety concerns."
+            },
+            {
+                "option_code": "PLN",
+                "option_label": "Planning",
+                "option_description": "Establishes a service or treatment plan."
+            },
+            {
+                "option_code": "EDU",
+                "option_label": "Education",
+                "option_description": "Explains a service, condition, or self-care guidance."
+            },
+            {
+                "option_code": "FUP",
+                "option_label": "Follow-Up",
+                "option_description": "Reviews progress or outcome after a prior service."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Referral",
+                "option_description": "Directs the client toward another appropriate service or provider."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "field_name": "type_service_regulation_requirement",
+        "field_label": "Service Regulation Requirement",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "Regulatory requirement context for a service. Training, credentialing, licensure, and medical oversight may overlap and do not form one universal ordered scale. Every recorded requirement must preserve jurisdiction, source, effective date, scope, and verification context.",
+        "classification_note": [
+            "Jurisdiction-dependent uncertainty belongs to jurisdiction-specific legal or professional review rather than a classification option."
+        ],
+        "field_option": [
+            {
+                "option_code": "NRC",
+                "option_label": "Non-Regulated Consumer",
+                "option_description": "Ordinary consumer service without a specific regulated professional scope in the reviewed context."
+            },
+            {
+                "option_code": "TRN",
+                "option_label": "Training-Controlled",
+                "option_description": "Requires provider training or demonstrated competency under an identified standard or practice context."
+            },
+            {
+                "option_code": "CRD",
+                "option_label": "Credential-Controlled",
+                "option_description": "Requires a defined credential, certification, or recognized competency in the reviewed context."
+            },
+            {
+                "option_code": "LIC",
+                "option_label": "Licensed Professional",
+                "option_description": "Requires a licensed or legally authorized professional."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medical Oversight",
+                "option_description": "Requires medical direction, prescription, supervision, or facility oversight."
+            }
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    }
+]

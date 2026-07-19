@@ -6,6 +6,12 @@ individual entries.
 
 ## Unreleased
 
+- Added the repository `data/` area: Shared Taxonomy field definitions split into grouped JSON
+  files under `data/taxonomy/shared/`, machine-readable Massage Nexus classification data under
+  `data/taxonomy/massage_nexus/`, shared reference datasets under `data/common_reference/`, and
+  theme configuration data under `data/theme/`.
+- Added PHP-readable database structure guides under `docs/04-architecture/structure-guide/`,
+  including a new proposed `quote_main` guide for the homepage Quote of the Day feature.
 - Organized the current project specifications under the repository `docs/` directory.
 - Added repository-wide contributor instructions in `AGENTS.md`.
 - Added the initial public website pages and a temporary sample spa-profile data source.

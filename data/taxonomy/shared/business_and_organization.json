@@ -1,0 +1,495 @@
+[
+    {
+        "_id": 2,
+        "field_name": "type_business_event",
+        "field_label": "Business Event Type",
+        "field_description": "Reusable field template for Business Event Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "UC",
+                "option_label": "Under Construction",
+                "option_description": "Select Under Construction for Business Event Type."
+            },
+            {
+                "option_code": "LD",
+                "option_label": "Lease Signed",
+                "option_description": "Select Lease Signed for Business Event Type."
+            },
+            {
+                "option_code": "LC",
+                "option_label": "License Issued",
+                "option_description": "Select License Issued for Business Event Type."
+            },
+            {
+                "option_code": "SO",
+                "option_label": "Soft Opening",
+                "option_description": "Select Soft Opening for Business Event Type."
+            },
+            {
+                "option_code": "OP",
+                "option_label": "Official Opening",
+                "option_description": "Select Official Opening for Business Event Type."
+            },
+            {
+                "option_code": "ST",
+                "option_label": "Started Operations",
+                "option_description": "Select Started Operations for Business Event Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "Certification Issued",
+                "option_description": "Select Certification Issued for Business Event Type."
+            },
+            {
+                "option_code": "RN",
+                "option_label": "Renovation Started",
+                "option_description": "Select Renovation Started for Business Event Type."
+            },
+            {
+                "option_code": "RC",
+                "option_label": "Renovation Completed",
+                "option_description": "Select Renovation Completed for Business Event Type."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Reopened",
+                "option_description": "Select Reopened for Business Event Type."
+            },
+            {
+                "option_code": "AC",
+                "option_label": "Acquired",
+                "option_description": "Select Acquired for Business Event Type."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Transferred Ownership",
+                "option_description": "Select Transferred Ownership for Business Event Type."
+            },
+            {
+                "option_code": "RE",
+                "option_label": "Relocated",
+                "option_description": "Select Relocated for Business Event Type."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Suspended Operations",
+                "option_description": "Select Suspended Operations for Business Event Type."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Resumed Operations",
+                "option_description": "Select Resumed Operations for Business Event Type."
+            },
+            {
+                "option_code": "CL",
+                "option_label": "Closed",
+                "option_description": "Select Closed for Business Event Type."
+            },
+            {
+                "option_code": "DM",
+                "option_label": "Demolished",
+                "option_description": "Select Demolished for Business Event Type."
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "field_name": "target_audience_business",
+        "field_label": "Business Target Audience",
+        "field_description": "Reusable field template for Business Target Audience values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GEN",
+                "option_label": "General Public",
+                "option_description": "Select General Public for Business Target Audience."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Consumers",
+                "option_description": "Select Consumers for Business Target Audience."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Businesses",
+                "option_description": "Select Businesses for Business Target Audience."
+            },
+            {
+                "option_code": "B2B",
+                "option_label": "Business-to-Business",
+                "option_description": "Select Business-to-Business for Business Target Audience."
+            },
+            {
+                "option_code": "B2C",
+                "option_label": "Business-to-Consumer",
+                "option_description": "Select Business-to-Consumer for Business Target Audience."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government",
+                "option_description": "Select Government for Business Target Audience."
+            },
+            {
+                "option_code": "NGO",
+                "option_label": "Nonprofit / NGO",
+                "option_description": "Select Nonprofit / NGO for Business Target Audience."
+            },
+            {
+                "option_code": "STU",
+                "option_label": "Students",
+                "option_description": "Select Students for Business Target Audience."
+            },
+            {
+                "option_code": "FAM",
+                "option_label": "Families",
+                "option_description": "Select Families for Business Target Audience."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Professionals",
+                "option_description": "Select Professionals for Business Target Audience."
+            },
+            {
+                "option_code": "TRV",
+                "option_label": "Travelers / Tourists",
+                "option_description": "Select Travelers / Tourists for Business Target Audience."
+            },
+            {
+                "option_code": "LOC",
+                "option_label": "Local Community",
+                "option_description": "Select Local Community for Business Target Audience."
+            },
+            {
+                "option_code": "MEM",
+                "option_label": "Members Only",
+                "option_description": "Select Members Only for Business Target Audience."
+            },
+            {
+                "option_code": "VIP",
+                "option_label": "VIP / Premium Customers",
+                "option_description": "Select VIP / Premium Customers for Business Target Audience."
+            }
+        ]
+    },
+    {
+        "_id": 46,
+        "field_name": "status_ownership",
+        "field_label": "Ownership Status",
+        "field_description": "Reusable field template for Ownership Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "OWN",
+                "option_label": "Owned",
+                "option_description": "Select Owned for Ownership Status."
+            },
+            {
+                "option_code": "NOT",
+                "option_label": "Not Owned",
+                "option_description": "Select Not Owned for Ownership Status."
+            },
+            {
+                "option_code": "WIS",
+                "option_label": "Wishlist",
+                "option_description": "Select Wishlist for Ownership Status."
+            },
+            {
+                "option_code": "REN",
+                "option_label": "Rented",
+                "option_description": "Select Rented for Ownership Status."
+            },
+            {
+                "option_code": "BOR",
+                "option_label": "Borrowed",
+                "option_description": "Select Borrowed for Ownership Status."
+            },
+            {
+                "option_code": "LOA",
+                "option_label": "Loaned Out",
+                "option_description": "Select Loaned Out for Ownership Status."
+            },
+            {
+                "option_code": "GIV",
+                "option_label": "Given Away",
+                "option_description": "Select Given Away for Ownership Status."
+            },
+            {
+                "option_code": "LOS",
+                "option_label": "Lost",
+                "option_description": "Select Lost for Ownership Status."
+            },
+            {
+                "option_code": "DMG",
+                "option_label": "Damaged",
+                "option_description": "Select Damaged for Ownership Status."
+            },
+            {
+                "option_code": "MIS",
+                "option_label": "Missing",
+                "option_description": "Select Missing for Ownership Status."
+            },
+            {
+                "option_code": "UNC",
+                "option_label": "Uncertain",
+                "option_description": "Select Uncertain for Ownership Status."
+            }
+        ]
+    },
+    {
+        "_id": 133,
+        "field_name": "type_business_service",
+        "field_label": "Business Service Type",
+        "field_description": "Reusable field template for Business Service Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DIN",
+                "option_label": "Dine-In",
+                "option_description": "Select Dine-In for Business Service Type."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Delivery",
+                "option_description": "Select Delivery for Business Service Type."
+            },
+            {
+                "option_code": "PIC",
+                "option_label": "Pickup",
+                "option_description": "Select Pickup for Business Service Type."
+            },
+            {
+                "option_code": "REP",
+                "option_label": "Repair",
+                "option_description": "Select Repair for Business Service Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Consultation",
+                "option_description": "Select Consultation for Business Service Type."
+            },
+            {
+                "option_code": "MEM",
+                "option_label": "Membership",
+                "option_description": "Select Membership for Business Service Type."
+            },
+            {
+                "option_code": "OS",
+                "option_label": "Online Service",
+                "option_description": "Select Online Service for Business Service Type."
+            },
+            {
+                "option_code": "WAL",
+                "option_label": "Walk-In",
+                "option_description": "Select Walk-In for Business Service Type."
+            }
+        ]
+    },
+    {
+        "_id": 134,
+        "field_name": "type_customer",
+        "field_label": "Customer Type",
+        "field_description": "Reusable field template for Customer Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WAL",
+                "option_label": "Walk-In",
+                "option_description": "Select Walk-In for Customer Type."
+            },
+            {
+                "option_code": "MEM",
+                "option_label": "Member",
+                "option_description": "Select Member for Customer Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subscriber",
+                "option_description": "Select Subscriber for Customer Type."
+            },
+            {
+                "option_code": "COR",
+                "option_label": "Corporate",
+                "option_description": "Select Corporate for Customer Type."
+            },
+            {
+                "option_code": "STU",
+                "option_label": "Student",
+                "option_description": "Select Student for Customer Type."
+            },
+            {
+                "option_code": "SNR",
+                "option_label": "Senior",
+                "option_description": "Select Senior for Customer Type."
+            },
+            {
+                "option_code": "VIP",
+                "option_label": "VIP",
+                "option_description": "Select VIP for Customer Type."
+            },
+            {
+                "option_code": "TOU",
+                "option_label": "Tourist",
+                "option_description": "Select Tourist for Customer Type."
+            }
+        ]
+    },
+    {
+        "_id": 135,
+        "field_name": "type_business_hours",
+        "field_label": "Business Hours Type",
+        "field_description": "Reusable field template for Business Hours Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "REG",
+                "option_label": "Regular",
+                "option_description": "Select Regular for Business Hours Type."
+            },
+            {
+                "option_code": "SEA",
+                "option_label": "Seasonal",
+                "option_description": "Select Seasonal for Business Hours Type."
+            },
+            {
+                "option_code": "247",
+                "option_label": "24/7",
+                "option_description": "Select 24/7 for Business Hours Type."
+            },
+            {
+                "option_code": "AO",
+                "option_label": "Appointment Only",
+                "option_description": "Select Appointment Only for Business Hours Type."
+            },
+            {
+                "option_code": "IRR",
+                "option_label": "Irregular",
+                "option_description": "Select Irregular for Business Hours Type."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Temporary",
+                "option_description": "Select Temporary for Business Hours Type."
+            }
+        ]
+    },
+    {
+        "_id": 136,
+        "field_name": "type_ownership",
+        "field_label": "Ownership Type",
+        "field_description": "Reusable field template for Ownership Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PVT",
+                "option_label": "Private",
+                "option_description": "Select Private for Ownership Type."
+            },
+            {
+                "option_code": "FRA",
+                "option_label": "Franchise",
+                "option_description": "Select Franchise for Ownership Type."
+            },
+            {
+                "option_code": "COO",
+                "option_label": "Cooperative",
+                "option_description": "Select Cooperative for Ownership Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government",
+                "option_description": "Select Government for Ownership Type."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Nonprofit",
+                "option_description": "Select Nonprofit for Ownership Type."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Partnership",
+                "option_description": "Select Partnership for Ownership Type."
+            },
+            {
+                "option_code": "COR",
+                "option_label": "Corporation",
+                "option_description": "Select Corporation for Ownership Type."
+            }
+        ]
+    },
+    {
+        "_id": 181,
+        "field_name": "type_organization",
+        "field_label": "Organization Type",
+        "field_description": "Reusable field template for Organization Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BUS",
+                "option_label": "Business or Company",
+                "option_description": "Select Business or Company for Organization Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government Organization",
+                "option_description": "Select Government Organization for Organization Type."
+            },
+            {
+                "option_code": "EDU",
+                "option_label": "Educational Institution",
+                "option_description": "Select Educational Institution for Organization Type."
+            },
+            {
+                "option_code": "NGO",
+                "option_label": "Nonprofit or NGO",
+                "option_description": "Select Nonprofit or NGO for Organization Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Religious Organization",
+                "option_description": "Select Religious Organization for Organization Type."
+            },
+            {
+                "option_code": "FIN",
+                "option_label": "Financial Institution",
+                "option_description": "Select Financial Institution for Organization Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Healthcare Organization",
+                "option_description": "Select Healthcare Organization for Organization Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Community Organization",
+                "option_description": "Select Community Organization for Organization Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "International Organization",
+                "option_description": "Select International Organization for Organization Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Organization Type."
+            }
+        ]
+    }
+]

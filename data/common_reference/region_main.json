@@ -1,0 +1,2918 @@
+[
+  {
+    "_id": 1,
+    "region_key": "ph_national_capital_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "National Capital Region"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "NCR"
+      }
+    },
+    "region_code": "NCR",
+    "type_region": "CAP",
+    "psgc_code": "1300000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 2,
+    "region_key": "ph_cordillera_administrative_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Cordillera Administrative Region"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "CAR"
+      }
+    },
+    "region_code": "CAR",
+    "type_region": "ADM",
+    "psgc_code": "1400000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 3,
+    "region_key": "ph_ilocos_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Ilocos Region"
+      }
+    },
+    "region_code": "I",
+    "type_region": "ADM",
+    "psgc_code": "0100000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 4,
+    "region_key": "ph_cagayan_valley",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Cagayan Valley"
+      }
+    },
+    "region_code": "II",
+    "type_region": "ADM",
+    "psgc_code": "0200000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 5,
+    "region_key": "ph_central_luzon",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Central Luzon"
+      }
+    },
+    "region_code": "III",
+    "type_region": "ADM",
+    "psgc_code": "0300000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 6,
+    "region_key": "ph_calabarzon",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "CALABARZON"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "CALABARZON"
+      }
+    },
+    "region_code": "IV-A",
+    "type_region": "ADM",
+    "psgc_code": "0400000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 7,
+    "region_key": "ph_mimaropa_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "MIMAROPA Region"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "MIMAROPA"
+      }
+    },
+    "region_code": "MIMAROPA",
+    "type_region": "ADM",
+    "psgc_code": "1700000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 8,
+    "region_key": "ph_bicol_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Bicol Region"
+      }
+    },
+    "region_code": "V",
+    "type_region": "ADM",
+    "psgc_code": "0500000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 9,
+    "region_key": "ph_western_visayas",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Western Visayas"
+      }
+    },
+    "region_code": "VI",
+    "type_region": "ADM",
+    "psgc_code": "0600000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 10,
+    "region_key": "ph_negros_island_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Negros Island Region"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "NIR"
+      }
+    },
+    "region_code": "NIR",
+    "type_region": "ADM",
+    "psgc_code": "1800000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 11,
+    "region_key": "ph_central_visayas",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Central Visayas"
+      }
+    },
+    "region_code": "VII",
+    "type_region": "ADM",
+    "psgc_code": "0700000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 12,
+    "region_key": "ph_eastern_visayas",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Eastern Visayas"
+      }
+    },
+    "region_code": "VIII",
+    "type_region": "ADM",
+    "psgc_code": "0800000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 13,
+    "region_key": "ph_zamboanga_peninsula",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Zamboanga Peninsula"
+      }
+    },
+    "region_code": "IX",
+    "type_region": "ADM",
+    "psgc_code": "0900000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 14,
+    "region_key": "ph_northern_mindanao",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Northern Mindanao"
+      }
+    },
+    "region_code": "X",
+    "type_region": "ADM",
+    "psgc_code": "1000000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 15,
+    "region_key": "ph_davao_region",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Davao Region"
+      }
+    },
+    "region_code": "XI",
+    "type_region": "ADM",
+    "psgc_code": "1100000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 16,
+    "region_key": "ph_soccsksargen",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "SOCCSKSARGEN"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "SOCCSKSARGEN"
+      }
+    },
+    "region_code": "XII",
+    "type_region": "ADM",
+    "psgc_code": "1200000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 17,
+    "region_key": "ph_caraga",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Caraga"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "Caraga"
+      }
+    },
+    "region_code": "XIII",
+    "type_region": "ADM",
+    "psgc_code": "1600000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 18,
+    "region_key": "ph_bangsamoro_autonomous_region_in_muslim_mindanao",
+    "country_id": 608,
+    "region_name": {
+      "eng": {
+        "text": "Bangsamoro Autonomous Region in Muslim Mindanao"
+      }
+    },
+    "region_short_name": {
+      "eng": {
+        "text": "BARMM"
+      }
+    },
+    "region_code": "BARMM",
+    "type_region": "AUT",
+    "psgc_code": "1900000000",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 19,
+    "region_key": "it_piedmont",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Piedmont"
+      }
+    },
+    "region_code": "21",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-21",
+    "istat_code": "01",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 20,
+    "region_key": "it_aosta_valley",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Aosta Valley"
+      }
+    },
+    "region_code": "23",
+    "type_region": "AUT",
+    "iso_3166_2_code": "IT-23",
+    "istat_code": "02",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 21,
+    "region_key": "it_lombardy",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Lombardy"
+      }
+    },
+    "region_code": "25",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-25",
+    "istat_code": "03",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 22,
+    "region_key": "it_trentino_alto_adige_sudtirol",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Trentino-Alto Adige/Südtirol"
+      }
+    },
+    "region_code": "32",
+    "type_region": "AUT",
+    "iso_3166_2_code": "IT-32",
+    "istat_code": "04",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 23,
+    "region_key": "it_veneto",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Veneto"
+      }
+    },
+    "region_code": "34",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-34",
+    "istat_code": "05",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 24,
+    "region_key": "it_friuli_venezia_giulia",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Friuli-Venezia Giulia"
+      }
+    },
+    "region_code": "36",
+    "type_region": "AUT",
+    "iso_3166_2_code": "IT-36",
+    "istat_code": "06",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 25,
+    "region_key": "it_liguria",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Liguria"
+      }
+    },
+    "region_code": "42",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-42",
+    "istat_code": "07",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 26,
+    "region_key": "it_emilia_romagna",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Emilia-Romagna"
+      }
+    },
+    "region_code": "45",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-45",
+    "istat_code": "08",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 27,
+    "region_key": "it_tuscany",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Tuscany"
+      }
+    },
+    "region_code": "52",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-52",
+    "istat_code": "09",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 28,
+    "region_key": "it_umbria",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Umbria"
+      }
+    },
+    "region_code": "55",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-55",
+    "istat_code": "10",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 29,
+    "region_key": "it_marche",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Marche"
+      }
+    },
+    "region_code": "57",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-57",
+    "istat_code": "11",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 30,
+    "region_key": "it_lazio",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Lazio"
+      }
+    },
+    "region_code": "62",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-62",
+    "istat_code": "12",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 31,
+    "region_key": "it_abruzzo",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Abruzzo"
+      }
+    },
+    "region_code": "65",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-65",
+    "istat_code": "13",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 32,
+    "region_key": "it_molise",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Molise"
+      }
+    },
+    "region_code": "67",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-67",
+    "istat_code": "14",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 33,
+    "region_key": "it_campania",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Campania"
+      }
+    },
+    "region_code": "72",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-72",
+    "istat_code": "15",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 34,
+    "region_key": "it_apulia",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Apulia"
+      }
+    },
+    "region_code": "75",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-75",
+    "istat_code": "16",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 35,
+    "region_key": "it_basilicata",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Basilicata"
+      }
+    },
+    "region_code": "77",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-77",
+    "istat_code": "17",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 36,
+    "region_key": "it_calabria",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Calabria"
+      }
+    },
+    "region_code": "78",
+    "type_region": "ADM",
+    "iso_3166_2_code": "IT-78",
+    "istat_code": "18",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 37,
+    "region_key": "it_sicily",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Sicily"
+      }
+    },
+    "region_code": "82",
+    "type_region": "AUT",
+    "iso_3166_2_code": "IT-82",
+    "istat_code": "19",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 38,
+    "region_key": "it_sardinia",
+    "country_id": 380,
+    "region_name": {
+      "eng": {
+        "text": "Sardinia"
+      }
+    },
+    "region_code": "88",
+    "type_region": "AUT",
+    "iso_3166_2_code": "IT-88",
+    "istat_code": "20",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 39,
+    "region_key": "fr_auvergne_rhone_alpes",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Auvergne-Rhône-Alpes"
+      }
+    },
+    "region_code": "ARA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-ARA",
+    "insee_code": "84",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 40,
+    "region_key": "fr_bourgogne_franche_comte",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Bourgogne-Franche-Comté"
+      }
+    },
+    "region_code": "BFC",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-BFC",
+    "insee_code": "27",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 41,
+    "region_key": "fr_brittany",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Brittany"
+      }
+    },
+    "region_code": "BRE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-BRE",
+    "insee_code": "53",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 42,
+    "region_key": "fr_centre_val_de_loire",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Centre-Val de Loire"
+      }
+    },
+    "region_code": "CVL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-CVL",
+    "insee_code": "24",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 43,
+    "region_key": "fr_corsica",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Corsica"
+      }
+    },
+    "region_code": "COR",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-COR",
+    "insee_code": "94",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 44,
+    "region_key": "fr_grand_est",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Grand Est"
+      }
+    },
+    "region_code": "GES",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-GES",
+    "insee_code": "44",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 45,
+    "region_key": "fr_hauts_de_france",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Hauts-de-France"
+      }
+    },
+    "region_code": "HDF",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-HDF",
+    "insee_code": "32",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 46,
+    "region_key": "fr_ile_de_france",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Île-de-France"
+      }
+    },
+    "region_code": "IDF",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-IDF",
+    "insee_code": "11",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 47,
+    "region_key": "fr_normandy",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Normandy"
+      }
+    },
+    "region_code": "NOR",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-NOR",
+    "insee_code": "28",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 48,
+    "region_key": "fr_nouvelle_aquitaine",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Nouvelle-Aquitaine"
+      }
+    },
+    "region_code": "NAQ",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-NAQ",
+    "insee_code": "75",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 49,
+    "region_key": "fr_occitanie",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Occitanie"
+      }
+    },
+    "region_code": "OCC",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-OCC",
+    "insee_code": "76",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 50,
+    "region_key": "fr_pays_de_la_loire",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Pays de la Loire"
+      }
+    },
+    "region_code": "PDL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-PDL",
+    "insee_code": "52",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 51,
+    "region_key": "fr_provence_alpes_cote_dazur",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Provence-Alpes-Côte d'Azur"
+      }
+    },
+    "region_code": "PAC",
+    "type_region": "ADM",
+    "iso_3166_2_code": "FR-PAC",
+    "insee_code": "93",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 52,
+    "region_key": "fr_guadeloupe",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Guadeloupe"
+      }
+    },
+    "region_code": "971",
+    "type_region": "OVR",
+    "iso_3166_2_code": "FR-971",
+    "insee_code": "01",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 53,
+    "region_key": "fr_martinique",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Martinique"
+      }
+    },
+    "region_code": "972",
+    "type_region": "OVR",
+    "iso_3166_2_code": "FR-972",
+    "insee_code": "02",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 54,
+    "region_key": "fr_french_guiana",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "French Guiana"
+      }
+    },
+    "region_code": "973",
+    "type_region": "OVR",
+    "iso_3166_2_code": "FR-973",
+    "insee_code": "03",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 55,
+    "region_key": "fr_reunion",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Réunion"
+      }
+    },
+    "region_code": "974",
+    "type_region": "OVR",
+    "iso_3166_2_code": "FR-974",
+    "insee_code": "04",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 56,
+    "region_key": "fr_mayotte",
+    "country_id": 250,
+    "region_name": {
+      "eng": {
+        "text": "Mayotte"
+      }
+    },
+    "region_code": "976",
+    "type_region": "OVR",
+    "iso_3166_2_code": "FR-976",
+    "insee_code": "06",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 57,
+    "region_key": "gh_greater_accra",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Greater Accra"
+      }
+    },
+    "region_code": "AA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-AA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 58,
+    "region_key": "gh_ahafo",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Ahafo"
+      }
+    },
+    "region_code": "AF",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-AF",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 59,
+    "region_key": "gh_ashanti",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Ashanti"
+      }
+    },
+    "region_code": "AH",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-AH",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 60,
+    "region_key": "gh_bono_east",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Bono East"
+      }
+    },
+    "region_code": "BE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-BE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 61,
+    "region_key": "gh_bono",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Bono"
+      }
+    },
+    "region_code": "BO",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-BO",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 62,
+    "region_key": "gh_central",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Central"
+      }
+    },
+    "region_code": "CP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-CP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 63,
+    "region_key": "gh_eastern",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Eastern"
+      }
+    },
+    "region_code": "EP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-EP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 64,
+    "region_key": "gh_north_east",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "North East"
+      }
+    },
+    "region_code": "NE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-NE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 65,
+    "region_key": "gh_northern",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Northern"
+      }
+    },
+    "region_code": "NP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-NP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 66,
+    "region_key": "gh_oti",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Oti"
+      }
+    },
+    "region_code": "OT",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-OT",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 67,
+    "region_key": "gh_savannah",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Savannah"
+      }
+    },
+    "region_code": "SV",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-SV",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 68,
+    "region_key": "gh_volta",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Volta"
+      }
+    },
+    "region_code": "TV",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-TV",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 69,
+    "region_key": "gh_upper_east",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Upper East"
+      }
+    },
+    "region_code": "UE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-UE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 70,
+    "region_key": "gh_upper_west",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Upper West"
+      }
+    },
+    "region_code": "UW",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-UW",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 71,
+    "region_key": "gh_western_north",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Western North"
+      }
+    },
+    "region_code": "WN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-WN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 72,
+    "region_key": "gh_western",
+    "country_id": 288,
+    "region_name": {
+      "eng": {
+        "text": "Western"
+      }
+    },
+    "region_code": "WP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "GH-WP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 73,
+    "region_key": "tz_arusha",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Arusha"
+      }
+    },
+    "region_code": "01",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-01",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 74,
+    "region_key": "tz_dar_es_salaam",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Dar es Salaam"
+      }
+    },
+    "region_code": "02",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-02",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 75,
+    "region_key": "tz_dodoma",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Dodoma"
+      }
+    },
+    "region_code": "03",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-03",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 76,
+    "region_key": "tz_iringa",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Iringa"
+      }
+    },
+    "region_code": "04",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-04",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 77,
+    "region_key": "tz_kagera",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Kagera"
+      }
+    },
+    "region_code": "05",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-05",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 78,
+    "region_key": "tz_pemba_north",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Pemba North"
+      }
+    },
+    "region_code": "06",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-06",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 79,
+    "region_key": "tz_zanzibar_north",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Zanzibar North"
+      }
+    },
+    "region_code": "07",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-07",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 80,
+    "region_key": "tz_kigoma",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Kigoma"
+      }
+    },
+    "region_code": "08",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-08",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 81,
+    "region_key": "tz_kilimanjaro",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Kilimanjaro"
+      }
+    },
+    "region_code": "09",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-09",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 82,
+    "region_key": "tz_pemba_south",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Pemba South"
+      }
+    },
+    "region_code": "10",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-10",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 83,
+    "region_key": "tz_zanzibar_south",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Zanzibar South"
+      }
+    },
+    "region_code": "11",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-11",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 84,
+    "region_key": "tz_lindi",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Lindi"
+      }
+    },
+    "region_code": "12",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-12",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 85,
+    "region_key": "tz_mara",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Mara"
+      }
+    },
+    "region_code": "13",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-13",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 86,
+    "region_key": "tz_mbeya",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Mbeya"
+      }
+    },
+    "region_code": "14",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-14",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 87,
+    "region_key": "tz_zanzibar_west",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Zanzibar West"
+      }
+    },
+    "region_code": "15",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-15",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 88,
+    "region_key": "tz_morogoro",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Morogoro"
+      }
+    },
+    "region_code": "16",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-16",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 89,
+    "region_key": "tz_mtwara",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Mtwara"
+      }
+    },
+    "region_code": "17",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-17",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 90,
+    "region_key": "tz_mwanza",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Mwanza"
+      }
+    },
+    "region_code": "18",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-18",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 91,
+    "region_key": "tz_coast",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Coast"
+      }
+    },
+    "region_code": "19",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-19",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 92,
+    "region_key": "tz_rukwa",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Rukwa"
+      }
+    },
+    "region_code": "20",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-20",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 93,
+    "region_key": "tz_ruvuma",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Ruvuma"
+      }
+    },
+    "region_code": "21",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-21",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 94,
+    "region_key": "tz_shinyanga",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Shinyanga"
+      }
+    },
+    "region_code": "22",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-22",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 95,
+    "region_key": "tz_singida",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Singida"
+      }
+    },
+    "region_code": "23",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-23",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 96,
+    "region_key": "tz_tabora",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Tabora"
+      }
+    },
+    "region_code": "24",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-24",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 97,
+    "region_key": "tz_tanga",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Tanga"
+      }
+    },
+    "region_code": "25",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-25",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 98,
+    "region_key": "tz_manyara",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Manyara"
+      }
+    },
+    "region_code": "26",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-26",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 99,
+    "region_key": "tz_geita",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Geita"
+      }
+    },
+    "region_code": "27",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-27",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 100,
+    "region_key": "tz_katavi",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Katavi"
+      }
+    },
+    "region_code": "28",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-28",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 101,
+    "region_key": "tz_njombe",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Njombe"
+      }
+    },
+    "region_code": "29",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-29",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 102,
+    "region_key": "tz_simiyu",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Simiyu"
+      }
+    },
+    "region_code": "30",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-30",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 103,
+    "region_key": "tz_songwe",
+    "country_id": 834,
+    "region_name": {
+      "eng": {
+        "text": "Songwe"
+      }
+    },
+    "region_code": "31",
+    "type_region": "ADM",
+    "iso_3166_2_code": "TZ-31",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 104,
+    "region_key": "cl_aysen_del_general_carlos_ibanez_del_campo",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Aysén del General Carlos Ibáñez del Campo"
+      }
+    },
+    "region_code": "AI",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-AI",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 105,
+    "region_key": "cl_antofagasta",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Antofagasta"
+      }
+    },
+    "region_code": "AN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-AN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 106,
+    "region_key": "cl_arica_y_parinacota",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Arica y Parinacota"
+      }
+    },
+    "region_code": "AP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-AP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 107,
+    "region_key": "cl_la_araucania",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "La Araucanía"
+      }
+    },
+    "region_code": "AR",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-AR",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 108,
+    "region_key": "cl_atacama",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Atacama"
+      }
+    },
+    "region_code": "AT",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-AT",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 109,
+    "region_key": "cl_biobio",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Biobío"
+      }
+    },
+    "region_code": "BI",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-BI",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 110,
+    "region_key": "cl_coquimbo",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Coquimbo"
+      }
+    },
+    "region_code": "CO",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-CO",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 111,
+    "region_key": "cl_libertador_general_bernardo_ohiggins",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Libertador General Bernardo O'Higgins"
+      }
+    },
+    "region_code": "LI",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-LI",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 112,
+    "region_key": "cl_los_lagos",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Los Lagos"
+      }
+    },
+    "region_code": "LL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-LL",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 113,
+    "region_key": "cl_los_rios",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Los Ríos"
+      }
+    },
+    "region_code": "LR",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-LR",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 114,
+    "region_key": "cl_magallanes",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Magallanes"
+      }
+    },
+    "region_code": "MA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-MA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 115,
+    "region_key": "cl_maule",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Maule"
+      }
+    },
+    "region_code": "ML",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-ML",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 116,
+    "region_key": "cl_nuble",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Ñuble"
+      }
+    },
+    "region_code": "NB",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-NB",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 117,
+    "region_key": "cl_santiago_metropolitan",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Santiago Metropolitan"
+      }
+    },
+    "region_code": "RM",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-RM",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 118,
+    "region_key": "cl_tarapaca",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Tarapacá"
+      }
+    },
+    "region_code": "TA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-TA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 119,
+    "region_key": "cl_valparaiso",
+    "country_id": 152,
+    "region_name": {
+      "eng": {
+        "text": "Valparaíso"
+      }
+    },
+    "region_code": "VS",
+    "type_region": "ADM",
+    "iso_3166_2_code": "CL-VS",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 120,
+    "region_key": "ma_tanger_tetouan_al_hoceima",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Tanger-Tétouan-Al Hoceïma"
+      }
+    },
+    "region_code": "01",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-01",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 121,
+    "region_key": "ma_loriental",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "L'Oriental"
+      }
+    },
+    "region_code": "02",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-02",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 122,
+    "region_key": "ma_fes_meknes",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Fès-Meknès"
+      }
+    },
+    "region_code": "03",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-03",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 123,
+    "region_key": "ma_rabat_sale_kenitra",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Rabat-Salé-Kénitra"
+      }
+    },
+    "region_code": "04",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-04",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 124,
+    "region_key": "ma_beni_mellal_khenifra",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Béni Mellal-Khénifra"
+      }
+    },
+    "region_code": "05",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-05",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 125,
+    "region_key": "ma_casablanca_settat",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Casablanca-Settat"
+      }
+    },
+    "region_code": "06",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-06",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 126,
+    "region_key": "ma_marrakech_safi",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Marrakech-Safi"
+      }
+    },
+    "region_code": "07",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-07",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 127,
+    "region_key": "ma_draa_tafilalet",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Drâa-Tafilalet"
+      }
+    },
+    "region_code": "08",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-08",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 128,
+    "region_key": "ma_souss_massa",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Souss-Massa"
+      }
+    },
+    "region_code": "09",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-09",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 129,
+    "region_key": "ma_guelmim_oued_noun",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Guelmim-Oued Noun"
+      }
+    },
+    "region_code": "10",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-10",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 130,
+    "region_key": "ma_laayoune_sakia_el_hamra",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Laâyoune-Sakia El Hamra"
+      }
+    },
+    "region_code": "11",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-11",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 131,
+    "region_key": "ma_dakhla_oued_ed_dahab",
+    "country_id": 504,
+    "region_name": {
+      "eng": {
+        "text": "Dakhla-Oued Ed-Dahab"
+      }
+    },
+    "region_code": "12",
+    "type_region": "ADM",
+    "iso_3166_2_code": "MA-12",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 132,
+    "region_key": "sn_diourbel",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Diourbel"
+      }
+    },
+    "region_code": "DB",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-DB",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 133,
+    "region_key": "sn_dakar",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Dakar"
+      }
+    },
+    "region_code": "DK",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-DK",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 134,
+    "region_key": "sn_fatick",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Fatick"
+      }
+    },
+    "region_code": "FK",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-FK",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 135,
+    "region_key": "sn_kaffrine",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Kaffrine"
+      }
+    },
+    "region_code": "KA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-KA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 136,
+    "region_key": "sn_kolda",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Kolda"
+      }
+    },
+    "region_code": "KD",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-KD",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 137,
+    "region_key": "sn_kedougou",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Kédougou"
+      }
+    },
+    "region_code": "KE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-KE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 138,
+    "region_key": "sn_kaolack",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Kaolack"
+      }
+    },
+    "region_code": "KL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-KL",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 139,
+    "region_key": "sn_louga",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Louga"
+      }
+    },
+    "region_code": "LG",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-LG",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 140,
+    "region_key": "sn_matam",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Matam"
+      }
+    },
+    "region_code": "MT",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-MT",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 141,
+    "region_key": "sn_sedhiou",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Sédhiou"
+      }
+    },
+    "region_code": "SE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-SE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 142,
+    "region_key": "sn_saint_louis",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Saint-Louis"
+      }
+    },
+    "region_code": "SL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-SL",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 143,
+    "region_key": "sn_tambacounda",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Tambacounda"
+      }
+    },
+    "region_code": "TC",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-TC",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 144,
+    "region_key": "sn_thies",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Thiès"
+      }
+    },
+    "region_code": "TH",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-TH",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 145,
+    "region_key": "sn_ziguinchor",
+    "country_id": 686,
+    "region_name": {
+      "eng": {
+        "text": "Ziguinchor"
+      }
+    },
+    "region_code": "ZG",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SN-ZG",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 146,
+    "region_key": "na_zambezi",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Zambezi"
+      }
+    },
+    "region_code": "CA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-CA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 147,
+    "region_key": "na_erongo",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Erongo"
+      }
+    },
+    "region_code": "ER",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-ER",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 148,
+    "region_key": "na_hardap",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Hardap"
+      }
+    },
+    "region_code": "HA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-HA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 149,
+    "region_key": "na_karas",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "ǁKaras"
+      }
+    },
+    "region_code": "KA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-KA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 150,
+    "region_key": "na_kavango_east",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Kavango East"
+      }
+    },
+    "region_code": "KE",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-KE",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 151,
+    "region_key": "na_khomas",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Khomas"
+      }
+    },
+    "region_code": "KH",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-KH",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 152,
+    "region_key": "na_kunene",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Kunene"
+      }
+    },
+    "region_code": "KU",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-KU",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 153,
+    "region_key": "na_kavango_west",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Kavango West"
+      }
+    },
+    "region_code": "KW",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-KW",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 154,
+    "region_key": "na_otjozondjupa",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Otjozondjupa"
+      }
+    },
+    "region_code": "OD",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-OD",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 155,
+    "region_key": "na_omaheke",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Omaheke"
+      }
+    },
+    "region_code": "OH",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-OH",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 156,
+    "region_key": "na_oshana",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Oshana"
+      }
+    },
+    "region_code": "ON",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-ON",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 157,
+    "region_key": "na_omusati",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Omusati"
+      }
+    },
+    "region_code": "OS",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-OS",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 158,
+    "region_key": "na_oshikoto",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Oshikoto"
+      }
+    },
+    "region_code": "OT",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-OT",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 159,
+    "region_key": "na_ohangwena",
+    "country_id": 516,
+    "region_name": {
+      "eng": {
+        "text": "Ohangwena"
+      }
+    },
+    "region_code": "OW",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NA-OW",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 160,
+    "region_key": "er_anseba",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Anseba"
+      }
+    },
+    "region_code": "AN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-AN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 161,
+    "region_key": "er_southern_red_sea",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Southern Red Sea"
+      }
+    },
+    "region_code": "DK",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-DK",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 162,
+    "region_key": "er_southern",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Southern"
+      }
+    },
+    "region_code": "DU",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-DU",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 163,
+    "region_key": "er_gash_barka",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Gash-Barka"
+      }
+    },
+    "region_code": "GB",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-GB",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 164,
+    "region_key": "er_central",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Central"
+      }
+    },
+    "region_code": "MA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-MA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 165,
+    "region_key": "er_northern_red_sea",
+    "country_id": 232,
+    "region_name": {
+      "eng": {
+        "text": "Northern Red Sea"
+      }
+    },
+    "region_code": "SK",
+    "type_region": "ADM",
+    "iso_3166_2_code": "ER-SK",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 166,
+    "region_key": "sa_riyadh",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Riyadh"
+      }
+    },
+    "region_code": "01",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-01",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 167,
+    "region_key": "sa_makkah",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Makkah"
+      }
+    },
+    "region_code": "02",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-02",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 168,
+    "region_key": "sa_madinah",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Madinah"
+      }
+    },
+    "region_code": "03",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-03",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 169,
+    "region_key": "sa_eastern_province",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Eastern Province"
+      }
+    },
+    "region_code": "04",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-04",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 170,
+    "region_key": "sa_al_qassim",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Al-Qassim"
+      }
+    },
+    "region_code": "05",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-05",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 171,
+    "region_key": "sa_hail",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Ha'il"
+      }
+    },
+    "region_code": "06",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-06",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 172,
+    "region_key": "sa_tabuk",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Tabuk"
+      }
+    },
+    "region_code": "07",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-07",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 173,
+    "region_key": "sa_northern_borders",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Northern Borders"
+      }
+    },
+    "region_code": "08",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-08",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 174,
+    "region_key": "sa_jazan",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Jazan"
+      }
+    },
+    "region_code": "09",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-09",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 175,
+    "region_key": "sa_najran",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Najran"
+      }
+    },
+    "region_code": "10",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-10",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 176,
+    "region_key": "sa_al_bahah",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Al-Bahah"
+      }
+    },
+    "region_code": "11",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-11",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 177,
+    "region_key": "sa_al_jawf",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Al-Jawf"
+      }
+    },
+    "region_code": "12",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-12",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 178,
+    "region_key": "sa_asir",
+    "country_id": 682,
+    "region_name": {
+      "eng": {
+        "text": "Asir"
+      }
+    },
+    "region_code": "14",
+    "type_region": "ADM",
+    "iso_3166_2_code": "SA-14",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 179,
+    "region_key": "nz_auckland",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Auckland"
+      }
+    },
+    "region_code": "AUK",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-AUK",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 180,
+    "region_key": "nz_bay_of_plenty",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Bay of Plenty"
+      }
+    },
+    "region_code": "BOP",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-BOP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 181,
+    "region_key": "nz_canterbury",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Canterbury"
+      }
+    },
+    "region_code": "CAN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-CAN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 182,
+    "region_key": "nz_gisborne",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Gisborne"
+      }
+    },
+    "region_code": "GIS",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-GIS",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 183,
+    "region_key": "nz_hawkes_bay",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Hawke's Bay"
+      }
+    },
+    "region_code": "HKB",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-HKB",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 184,
+    "region_key": "nz_marlborough",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Marlborough"
+      }
+    },
+    "region_code": "MBH",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-MBH",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 185,
+    "region_key": "nz_manawatu_whanganui",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Manawatū-Whanganui"
+      }
+    },
+    "region_code": "MWT",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-MWT",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 186,
+    "region_key": "nz_nelson",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Nelson"
+      }
+    },
+    "region_code": "NSN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-NSN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 187,
+    "region_key": "nz_northland",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Northland"
+      }
+    },
+    "region_code": "NTL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-NTL",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 188,
+    "region_key": "nz_otago",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Otago"
+      }
+    },
+    "region_code": "OTA",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-OTA",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 189,
+    "region_key": "nz_southland",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Southland"
+      }
+    },
+    "region_code": "STL",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-STL",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 190,
+    "region_key": "nz_tasman",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Tasman"
+      }
+    },
+    "region_code": "TAS",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-TAS",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 191,
+    "region_key": "nz_taranaki",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Taranaki"
+      }
+    },
+    "region_code": "TKI",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-TKI",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 192,
+    "region_key": "nz_greater_wellington",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Greater Wellington"
+      }
+    },
+    "region_code": "WGN",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-WGN",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 193,
+    "region_key": "nz_waikato",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "Waikato"
+      }
+    },
+    "region_code": "WKO",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-WKO",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 194,
+    "region_key": "nz_west_coast",
+    "country_id": 554,
+    "region_name": {
+      "eng": {
+        "text": "West Coast"
+      }
+    },
+    "region_code": "WTC",
+    "type_region": "ADM",
+    "iso_3166_2_code": "NZ-WTC",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 195,
+    "region_key": "pg_highlands_region",
+    "country_id": 598,
+    "region_name": {
+      "eng": {
+        "text": "Highlands Region"
+      }
+    },
+    "region_code": "HIGHLANDS",
+    "type_region": "GRP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 196,
+    "region_key": "pg_islands_region",
+    "country_id": 598,
+    "region_name": {
+      "eng": {
+        "text": "Islands Region"
+      }
+    },
+    "region_code": "ISLANDS",
+    "type_region": "GRP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 197,
+    "region_key": "pg_momase_region",
+    "country_id": 598,
+    "region_name": {
+      "eng": {
+        "text": "Momase Region"
+      }
+    },
+    "region_code": "MOMASE",
+    "type_region": "GRP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 198,
+    "region_key": "pg_southern_region",
+    "country_id": 598,
+    "region_name": {
+      "eng": {
+        "text": "Southern Region"
+      }
+    },
+    "region_code": "SOUTHERN",
+    "type_region": "GRP",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 199,
+    "region_key": "cn_guangxi_zhuang_autonomous_region",
+    "country_id": 156,
+    "region_name": {
+      "eng": {
+        "text": "Guangxi Zhuang Autonomous Region"
+      }
+    },
+    "region_code": "GX",
+    "type_region": "AUT",
+    "iso_3166_2_code": "CN-GX",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 200,
+    "region_key": "cn_inner_mongolia_autonomous_region",
+    "country_id": 156,
+    "region_name": {
+      "eng": {
+        "text": "Inner Mongolia Autonomous Region"
+      }
+    },
+    "region_code": "NM",
+    "type_region": "AUT",
+    "iso_3166_2_code": "CN-NM",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 201,
+    "region_key": "cn_ningxia_hui_autonomous_region",
+    "country_id": 156,
+    "region_name": {
+      "eng": {
+        "text": "Ningxia Hui Autonomous Region"
+      }
+    },
+    "region_code": "NX",
+    "type_region": "AUT",
+    "iso_3166_2_code": "CN-NX",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 202,
+    "region_key": "cn_xinjiang_uyghur_autonomous_region",
+    "country_id": 156,
+    "region_name": {
+      "eng": {
+        "text": "Xinjiang Uyghur Autonomous Region"
+      }
+    },
+    "region_code": "XJ",
+    "type_region": "AUT",
+    "iso_3166_2_code": "CN-XJ",
+    "status_record_lifecycle": "ACT"
+  },
+  {
+    "_id": 203,
+    "region_key": "cn_tibet_autonomous_region",
+    "country_id": 156,
+    "region_name": {
+      "eng": {
+        "text": "Tibet Autonomous Region"
+      }
+    },
+    "region_code": "XZ",
+    "type_region": "AUT",
+    "iso_3166_2_code": "CN-XZ",
+    "status_record_lifecycle": "ACT"
+  }
+]

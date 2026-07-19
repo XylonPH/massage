@@ -1,0 +1,572 @@
+[
+    {
+        "_id": 183,
+        "field_name": "type_dog_breed",
+        "field_label": "Dog Breed Type",
+        "field_description": "Classifies the breed identity type of a dog breed record.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PUR",
+                "option_label": "Purebred",
+                "option_description": "Select Purebred for Dog Breed Type."
+            },
+            {
+                "option_code": "VAR",
+                "option_label": "Breed Variety",
+                "option_description": "Select Breed Variety for Dog Breed Type."
+            },
+            {
+                "option_code": "LAN",
+                "option_label": "Landrace",
+                "option_description": "Select Landrace for Dog Breed Type."
+            },
+            {
+                "option_code": "VIL",
+                "option_label": "Village Dog",
+                "option_description": "Select Village Dog for Dog Breed Type."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed Breed",
+                "option_description": "Select Mixed Breed for Dog Breed Type."
+            },
+            {
+                "option_code": "HYB",
+                "option_label": "Hybrid Breed",
+                "option_description": "Select Hybrid Breed for Dog Breed Type."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "Developing Breed",
+                "option_description": "Select Developing Breed for Dog Breed Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical Breed",
+                "option_description": "Select Historical Breed for Dog Breed Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Dog Breed Type."
+            }
+        ]
+    },
+    {
+        "_id": 184,
+        "field_name": "group_dog_breed",
+        "field_label": "Dog Breed Group",
+        "field_description": "Broad dog breed grouping for general browsing and filtering independent of registry-specific group systems.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HER",
+                "option_label": "Herding",
+                "option_description": "Select Herding for Dog Breed Group."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Working",
+                "option_description": "Select Working for Dog Breed Group."
+            },
+            {
+                "option_code": "SPT",
+                "option_label": "Sporting",
+                "option_description": "Select Sporting for Dog Breed Group."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hound",
+                "option_description": "Select Hound for Dog Breed Group."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terrier",
+                "option_description": "Select Terrier for Dog Breed Group."
+            },
+            {
+                "option_code": "TOY",
+                "option_label": "Toy",
+                "option_description": "Select Toy for Dog Breed Group."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Non-Sporting",
+                "option_description": "Select Non-Sporting for Dog Breed Group."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Companion",
+                "option_description": "Select Companion for Dog Breed Group."
+            },
+            {
+                "option_code": "GUA",
+                "option_label": "Guardian",
+                "option_description": "Select Guardian for Dog Breed Group."
+            },
+            {
+                "option_code": "HNT",
+                "option_label": "Hunting",
+                "option_description": "Select Hunting for Dog Breed Group."
+            },
+            {
+                "option_code": "SCT",
+                "option_label": "Scent",
+                "option_description": "Select Scent for Dog Breed Group."
+            },
+            {
+                "option_code": "SIT",
+                "option_label": "Sighthound",
+                "option_description": "Select Sighthound for Dog Breed Group."
+            },
+            {
+                "option_code": "SPZ",
+                "option_label": "Spitz",
+                "option_description": "Select Spitz for Dog Breed Group."
+            },
+            {
+                "option_code": "PRI",
+                "option_label": "Primitive",
+                "option_description": "Select Primitive for Dog Breed Group."
+            },
+            {
+                "option_code": "NAT",
+                "option_label": "Native",
+                "option_description": "Select Native for Dog Breed Group."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed",
+                "option_description": "Select Mixed for Dog Breed Group."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Dog Breed Group."
+            }
+        ]
+    },
+    {
+        "_id": 185,
+        "field_name": "level_dog_size",
+        "field_label": "Dog Size Level",
+        "field_description": "Ordered dog size level for general breed filtering.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "TOY",
+                "option_label": "Toy",
+                "option_description": "Select Toy for Dog Size Level."
+            },
+            {
+                "option_code": "SML",
+                "option_label": "Small",
+                "option_description": "Select Small for Dog Size Level."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medium",
+                "option_description": "Select Medium for Dog Size Level."
+            },
+            {
+                "option_code": "LRG",
+                "option_label": "Large",
+                "option_description": "Select Large for Dog Size Level."
+            },
+            {
+                "option_code": "GIA",
+                "option_label": "Giant",
+                "option_description": "Select Giant for Dog Size Level."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Dog Size Level."
+            }
+        ]
+    },
+    {
+        "_id": 186,
+        "field_name": "type_dog_coat",
+        "field_label": "Dog Coat Type",
+        "field_description": "General dog coat type for breed filtering and display.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HAI",
+                "option_label": "Hairless",
+                "option_description": "Select Hairless for Dog Coat Type."
+            },
+            {
+                "option_code": "SMO",
+                "option_label": "Smooth",
+                "option_description": "Select Smooth for Dog Coat Type."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Short",
+                "option_description": "Select Short for Dog Coat Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medium",
+                "option_description": "Select Medium for Dog Coat Type."
+            },
+            {
+                "option_code": "LON",
+                "option_label": "Long",
+                "option_description": "Select Long for Dog Coat Type."
+            },
+            {
+                "option_code": "DBL",
+                "option_label": "Double",
+                "option_description": "Select Double for Dog Coat Type."
+            },
+            {
+                "option_code": "WIR",
+                "option_label": "Wire",
+                "option_description": "Select Wire for Dog Coat Type."
+            },
+            {
+                "option_code": "CUR",
+                "option_label": "Curly",
+                "option_description": "Select Curly for Dog Coat Type."
+            },
+            {
+                "option_code": "COR",
+                "option_label": "Corded",
+                "option_description": "Select Corded for Dog Coat Type."
+            },
+            {
+                "option_code": "SIL",
+                "option_label": "Silky",
+                "option_description": "Select Silky for Dog Coat Type."
+            },
+            {
+                "option_code": "WAV",
+                "option_label": "Wavy",
+                "option_description": "Select Wavy for Dog Coat Type."
+            },
+            {
+                "option_code": "ROU",
+                "option_label": "Rough",
+                "option_description": "Select Rough for Dog Coat Type."
+            },
+            {
+                "option_code": "BRO",
+                "option_label": "Broken",
+                "option_description": "Select Broken for Dog Coat Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Dog Coat Type."
+            }
+        ]
+    },
+    {
+        "_id": 187,
+        "field_name": "group_akc_registry",
+        "field_label": "AKC Registry Group",
+        "field_description": "American Kennel Club registry-specific breed group.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SPT",
+                "option_label": "Sporting",
+                "option_description": "Select Sporting for AKC Registry Group."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hound",
+                "option_description": "Select Hound for AKC Registry Group."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Working",
+                "option_description": "Select Working for AKC Registry Group."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terrier",
+                "option_description": "Select Terrier for AKC Registry Group."
+            },
+            {
+                "option_code": "TOY",
+                "option_label": "Toy",
+                "option_description": "Select Toy for AKC Registry Group."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Non-Sporting",
+                "option_description": "Select Non-Sporting for AKC Registry Group."
+            },
+            {
+                "option_code": "HER",
+                "option_label": "Herding",
+                "option_description": "Select Herding for AKC Registry Group."
+            },
+            {
+                "option_code": "MSC",
+                "option_label": "Miscellaneous Class",
+                "option_description": "Select Miscellaneous Class for AKC Registry Group."
+            },
+            {
+                "option_code": "FSS",
+                "option_label": "Foundation Stock Service",
+                "option_description": "Select Foundation Stock Service for AKC Registry Group."
+            }
+        ]
+    },
+    {
+        "_id": 188,
+        "field_name": "group_fci_registry",
+        "field_label": "FCI Registry Group",
+        "field_description": "Fédération Cynologique Internationale registry-specific numbered breed group.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "1",
+                "option_label": "Sheepdogs and Cattledogs",
+                "option_description": "Select Sheepdogs and Cattledogs for FCI Registry Group."
+            },
+            {
+                "option_code": "2",
+                "option_label": "Pinscher, Schnauzer, Molossoid and Swiss Mountain and Cattledogs",
+                "option_description": "Select Pinscher, Schnauzer, Molossoid and Swiss Mountain and Cattledogs for FCI Registry Group."
+            },
+            {
+                "option_code": "3",
+                "option_label": "Terriers",
+                "option_description": "Select Terriers for FCI Registry Group."
+            },
+            {
+                "option_code": "4",
+                "option_label": "Dachshunds",
+                "option_description": "Select Dachshunds for FCI Registry Group."
+            },
+            {
+                "option_code": "5",
+                "option_label": "Spitz and Primitive Types",
+                "option_description": "Select Spitz and Primitive Types for FCI Registry Group."
+            },
+            {
+                "option_code": "6",
+                "option_label": "Scenthounds and Related Breeds",
+                "option_description": "Select Scenthounds and Related Breeds for FCI Registry Group."
+            },
+            {
+                "option_code": "7",
+                "option_label": "Pointing Dogs",
+                "option_description": "Select Pointing Dogs for FCI Registry Group."
+            },
+            {
+                "option_code": "8",
+                "option_label": "Retrievers, Flushing Dogs and Water Dogs",
+                "option_description": "Select Retrievers, Flushing Dogs and Water Dogs for FCI Registry Group."
+            },
+            {
+                "option_code": "9",
+                "option_label": "Companion and Toy Dogs",
+                "option_description": "Select Companion and Toy Dogs for FCI Registry Group."
+            },
+            {
+                "option_code": "10",
+                "option_label": "Sighthounds",
+                "option_description": "Select Sighthounds for FCI Registry Group."
+            }
+        ]
+    },
+    {
+        "_id": 189,
+        "field_name": "section_fci_registry",
+        "field_label": "FCI Registry Section",
+        "field_description": "Fédération Cynologique Internationale registry-specific section number within a group. The number is interpreted together with group_fci_registry.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "1",
+                "option_label": "Section 1",
+                "option_description": "Select Section 1 for FCI Registry Section."
+            },
+            {
+                "option_code": "2",
+                "option_label": "Section 2",
+                "option_description": "Select Section 2 for FCI Registry Section."
+            },
+            {
+                "option_code": "3",
+                "option_label": "Section 3",
+                "option_description": "Select Section 3 for FCI Registry Section."
+            },
+            {
+                "option_code": "4",
+                "option_label": "Section 4",
+                "option_description": "Select Section 4 for FCI Registry Section."
+            }
+        ]
+    },
+    {
+        "_id": 190,
+        "field_name": "group_ukc_registry",
+        "field_label": "UKC Registry Group",
+        "field_description": "United Kennel Club registry-specific breed group.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GUA",
+                "option_label": "Guardian Dog",
+                "option_description": "Select Guardian Dog for UKC Registry Group."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "Scenthound",
+                "option_description": "Select Scenthound for UKC Registry Group."
+            },
+            {
+                "option_code": "SIP",
+                "option_label": "Sighthound and Pariah Dog",
+                "option_description": "Select Sighthound and Pariah Dog for UKC Registry Group."
+            },
+            {
+                "option_code": "GUN",
+                "option_label": "Gun Dog",
+                "option_description": "Select Gun Dog for UKC Registry Group."
+            },
+            {
+                "option_code": "NOR",
+                "option_label": "Northern Breed",
+                "option_description": "Select Northern Breed for UKC Registry Group."
+            },
+            {
+                "option_code": "HER",
+                "option_label": "Herding Dog",
+                "option_description": "Select Herding Dog for UKC Registry Group."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terrier",
+                "option_description": "Select Terrier for UKC Registry Group."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Companion Dog",
+                "option_description": "Select Companion Dog for UKC Registry Group."
+            }
+        ]
+    },
+    {
+        "_id": 191,
+        "field_name": "group_kc_registry",
+        "field_label": "Kennel Club Registry Group",
+        "field_description": "The Kennel Club registry-specific breed group.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GUN",
+                "option_label": "Gundog",
+                "option_description": "Select Gundog for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hound",
+                "option_description": "Select Hound for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "PAS",
+                "option_label": "Pastoral",
+                "option_description": "Select Pastoral for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terrier",
+                "option_description": "Select Terrier for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "TOY",
+                "option_label": "Toy",
+                "option_description": "Select Toy for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "UTL",
+                "option_label": "Utility",
+                "option_description": "Select Utility for Kennel Club Registry Group."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Working",
+                "option_description": "Select Working for Kennel Club Registry Group."
+            }
+        ]
+    },
+    {
+        "_id": 192,
+        "field_name": "group_ckc_registry",
+        "field_label": "CKC Registry Group",
+        "field_description": "Canadian Kennel Club registry-specific breed group.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SPT",
+                "option_label": "Sporting Dogs",
+                "option_description": "Select Sporting Dogs for CKC Registry Group."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Hounds",
+                "option_description": "Select Hounds for CKC Registry Group."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Working Dogs",
+                "option_description": "Select Working Dogs for CKC Registry Group."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terriers",
+                "option_description": "Select Terriers for CKC Registry Group."
+            },
+            {
+                "option_code": "TOY",
+                "option_label": "Toys",
+                "option_description": "Select Toys for CKC Registry Group."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "Non-Sporting Dogs",
+                "option_description": "Select Non-Sporting Dogs for CKC Registry Group."
+            },
+            {
+                "option_code": "HER",
+                "option_label": "Herding Dogs",
+                "option_description": "Select Herding Dogs for CKC Registry Group."
+            },
+            {
+                "option_code": "MSC",
+                "option_label": "Miscellaneous",
+                "option_description": "Select Miscellaneous for CKC Registry Group."
+            }
+        ]
+    }
+]

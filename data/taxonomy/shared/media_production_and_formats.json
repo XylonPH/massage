@@ -1,0 +1,1121 @@
+[
+    {
+        "_id": 27,
+        "field_name": "type_resolution_context",
+        "field_label": "Resolution Context Type",
+        "field_description": "Reusable field template for Resolution Context Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CR",
+                "option_label": "Capture Resolution",
+                "option_description": "Select Capture Resolution for Resolution Context Type."
+            },
+            {
+                "option_code": "PP",
+                "option_label": "Post-Production Resolution",
+                "option_description": "Select Post-Production Resolution for Resolution Context Type."
+            },
+            {
+                "option_code": "SF",
+                "option_label": "Scanned Film Resolution",
+                "option_description": "Select Scanned Film Resolution for Resolution Context Type."
+            },
+            {
+                "option_code": "DR",
+                "option_label": "Distribution Resolution",
+                "option_description": "Select Distribution Resolution for Resolution Context Type."
+            }
+        ]
+    },
+    {
+        "_id": 28,
+        "field_name": "type_production_software",
+        "field_label": "Production Software Type",
+        "field_description": "Reusable field template for Production Software Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SB",
+                "option_label": "Storyboard",
+                "option_description": "Select Storyboard for Production Software Type."
+            },
+            {
+                "option_code": "VA",
+                "option_label": "Video Assist",
+                "option_description": "Select Video Assist for Production Software Type."
+            },
+            {
+                "option_code": "FE",
+                "option_label": "Film Editing",
+                "option_description": "Select Film Editing for Production Software Type."
+            },
+            {
+                "option_code": "FX",
+                "option_label": "Visual Effect",
+                "option_description": "Select Visual Effect for Production Software Type."
+            },
+            {
+                "option_code": "SE",
+                "option_label": "Sound Editing",
+                "option_description": "Select Sound Editing for Production Software Type."
+            },
+            {
+                "option_code": "CM",
+                "option_label": "Color Management",
+                "option_description": "Select Color Management for Production Software Type."
+            },
+            {
+                "option_code": "FS",
+                "option_label": "Finishing System",
+                "option_description": "Select Finishing System for Production Software Type."
+            }
+        ]
+    },
+    {
+        "_id": 29,
+        "field_name": "type_production_hardware",
+        "field_label": "Production Hardware Type",
+        "field_description": "Reusable field template for Production Hardware Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "3DR",
+                "option_label": "3D Rig",
+                "option_description": "Select 3D Rig for Production Hardware Type."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Audio Recorder",
+                "option_description": "Select Audio Recorder for Production Hardware Type."
+            },
+            {
+                "option_code": "CRN",
+                "option_label": "Camera Crane",
+                "option_description": "Select Camera Crane for Production Hardware Type."
+            },
+            {
+                "option_code": "DLY",
+                "option_label": "Camera Dolly",
+                "option_description": "Select Camera Dolly for Production Hardware Type."
+            },
+            {
+                "option_code": "CAM",
+                "option_label": "Camera Make",
+                "option_description": "Select Camera Make for Production Hardware Type."
+            },
+            {
+                "option_code": "CRB",
+                "option_label": "Camera Rig Battery",
+                "option_description": "Select Camera Rig Battery for Production Hardware Type."
+            },
+            {
+                "option_code": "STB",
+                "option_label": "Camera Stabilizer",
+                "option_description": "Select Camera Stabilizer for Production Hardware Type."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Camera Support",
+                "option_description": "Select Camera Support for Production Hardware Type."
+            },
+            {
+                "option_code": "CDR",
+                "option_label": "Digital Recorder",
+                "option_description": "Select Digital Recorder for Production Hardware Type."
+            },
+            {
+                "option_code": "FRC",
+                "option_label": "Film Recorder",
+                "option_description": "Select Film Recorder for Production Hardware Type."
+            },
+            {
+                "option_code": "FSC",
+                "option_label": "Film Scanner",
+                "option_description": "Select Film Scanner for Production Hardware Type."
+            },
+            {
+                "option_code": "ADP",
+                "option_label": "Lens Adapter",
+                "option_description": "Select Lens Adapter for Production Hardware Type."
+            },
+            {
+                "option_code": "CTR",
+                "option_label": "Lens Control",
+                "option_description": "Select Lens Control for Production Hardware Type."
+            },
+            {
+                "option_code": "FTR",
+                "option_label": "Lens Filter",
+                "option_description": "Select Lens Filter for Production Hardware Type."
+            },
+            {
+                "option_code": "LEN",
+                "option_label": "Lens Make",
+                "option_description": "Select Lens Make for Production Hardware Type."
+            },
+            {
+                "option_code": "LGH",
+                "option_label": "Lighting",
+                "option_description": "Select Lighting for Production Hardware Type."
+            },
+            {
+                "option_code": "PPM",
+                "option_label": "Post-Production Monitor",
+                "option_description": "Select Post-Production Monitor for Production Hardware Type."
+            },
+            {
+                "option_code": "SMX",
+                "option_label": "Sound Mixer",
+                "option_description": "Select Sound Mixer for Production Hardware Type."
+            },
+            {
+                "option_code": "MON",
+                "option_label": "Stereo Display",
+                "option_description": "Select Stereo Display for Production Hardware Type."
+            },
+            {
+                "option_code": "VAS",
+                "option_label": "Video Assist",
+                "option_description": "Select Video Assist for Production Hardware Type."
+            }
+        ]
+    },
+    {
+        "_id": 30,
+        "field_name": "type_frame_rate_context",
+        "field_label": "Frame Rate Context Type",
+        "field_description": "Reusable field template for Frame Rate Context Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DIS",
+                "option_label": "Distribution",
+                "option_description": "Select Distribution for Frame Rate Context Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Production",
+                "option_description": "Select Production for Frame Rate Context Type."
+            }
+        ]
+    },
+    {
+        "_id": 31,
+        "field_name": "type_service_location",
+        "field_label": "Service Location Type",
+        "field_description": "Reusable field template for Service Location Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "OS",
+                "option_label": "On Set",
+                "option_description": "Select On Set for Service Location Type."
+            },
+            {
+                "option_code": "NL",
+                "option_label": "Near Location",
+                "option_description": "Select Near Location for Service Location Type."
+            }
+        ]
+    },
+    {
+        "_id": 32,
+        "field_name": "type_media_image",
+        "field_label": "Media Image Type",
+        "field_description": "Reusable field template for Media Image Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PST",
+                "option_label": "Poster",
+                "option_description": "Select Poster for Media Image Type."
+            },
+            {
+                "option_code": "SFR",
+                "option_label": "Still Frame",
+                "option_description": "Select Still Frame for Media Image Type."
+            },
+            {
+                "option_code": "BTS",
+                "option_label": "Behind the Scenes",
+                "option_description": "Select Behind the Scenes for Media Image Type."
+            },
+            {
+                "option_code": "EVN",
+                "option_label": "Event",
+                "option_description": "Select Event for Media Image Type."
+            },
+            {
+                "option_code": "BXT",
+                "option_label": "Box Art",
+                "option_description": "Select Box Art for Media Image Type."
+            },
+            {
+                "option_code": "PRT",
+                "option_label": "Production Art",
+                "option_description": "Select Production Art for Media Image Type."
+            },
+            {
+                "option_code": "SCP",
+                "option_label": "Screen Capture",
+                "option_description": "Select Screen Capture for Media Image Type."
+            },
+            {
+                "option_code": "CLL",
+                "option_label": "Collage",
+                "option_description": "Select Collage for Media Image Type."
+            },
+            {
+                "option_code": "ARW",
+                "option_label": "Artwork",
+                "option_description": "Select Artwork for Media Image Type."
+            },
+            {
+                "option_code": "LOG",
+                "option_label": "Logo",
+                "option_description": "Select Logo for Media Image Type."
+            },
+            {
+                "option_code": "BNR",
+                "option_label": "Banner",
+                "option_description": "Select Banner for Media Image Type."
+            },
+            {
+                "option_code": "THM",
+                "option_label": "Thumbnail",
+                "option_description": "Select Thumbnail for Media Image Type."
+            },
+            {
+                "option_code": "PRM",
+                "option_label": "Promotional Image",
+                "option_description": "Select Promotional Image for Media Image Type."
+            },
+            {
+                "option_code": "KEY",
+                "option_label": "Key Art",
+                "option_description": "Select Key Art for Media Image Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Concept Art",
+                "option_description": "Select Concept Art for Media Image Type."
+            }
+        ]
+    },
+    {
+        "_id": 34,
+        "field_name": "type_camera_view",
+        "field_label": "Camera View Type",
+        "field_description": "Reusable field template for Camera View Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PRS",
+                "option_label": "Perspective",
+                "option_description": "Select Perspective for Camera View Type."
+            },
+            {
+                "option_code": "OTS",
+                "option_label": "Over-the-Shoulder",
+                "option_description": "Select Over-the-Shoulder for Camera View Type."
+            },
+            {
+                "option_code": "POV",
+                "option_label": "Point-of-View",
+                "option_description": "Select Point-of-View for Camera View Type."
+            },
+            {
+                "option_code": "RVT",
+                "option_label": "Reverse Trunk",
+                "option_description": "Select Reverse Trunk for Camera View Type."
+            }
+        ]
+    },
+    {
+        "_id": 35,
+        "field_name": "type_camera_setup",
+        "field_label": "Camera Setup Type",
+        "field_description": "Reusable field template for Camera Setup Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SNC",
+                "option_label": "Single Camera",
+                "option_description": "Select Single Camera for Camera Setup Type."
+            },
+            {
+                "option_code": "MLT",
+                "option_label": "Multicam",
+                "option_description": "Select Multicam for Camera Setup Type."
+            }
+        ]
+    },
+    {
+        "_id": 37,
+        "field_name": "type_image_color_profile",
+        "field_label": "Image Color Profile Type",
+        "field_description": "Reusable field template for Image Color Profile Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BW",
+                "option_label": "Black and White",
+                "option_description": "Select Black and White for Image Color Profile Type."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Sepia",
+                "option_description": "Select Sepia for Image Color Profile Type."
+            },
+            {
+                "option_code": "CL",
+                "option_label": "Color",
+                "option_description": "Select Color for Image Color Profile Type."
+            },
+            {
+                "option_code": "CZ",
+                "option_label": "Colorized",
+                "option_description": "Select Colorized for Image Color Profile Type."
+            },
+            {
+                "option_code": "GRS",
+                "option_label": "Grayscale",
+                "option_description": "Select Grayscale for Image Color Profile Type."
+            },
+            {
+                "option_code": "DUT",
+                "option_label": "Duotone",
+                "option_description": "Select Duotone for Image Color Profile Type."
+            },
+            {
+                "option_code": "INV",
+                "option_label": "Inverted Color",
+                "option_description": "Select Inverted Color for Image Color Profile Type."
+            }
+        ]
+    },
+    {
+        "_id": 53,
+        "field_name": "format_sound",
+        "field_label": "Sound Format",
+        "field_description": "Reusable field template for Sound Format values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MON",
+                "option_label": "Monaural Sound",
+                "option_description": "Select Monaural Sound for Sound Format."
+            },
+            {
+                "option_code": "ST",
+                "option_label": "Stereophonic Sound",
+                "option_description": "Select Stereophonic Sound for Sound Format."
+            },
+            {
+                "option_code": "SIL",
+                "option_label": "Silent",
+                "option_description": "Select Silent for Sound Format."
+            },
+            {
+                "option_code": "DD",
+                "option_label": "Dolby Digital",
+                "option_description": "Select Dolby Digital for Sound Format."
+            },
+            {
+                "option_code": "DOL",
+                "option_label": "Dolby",
+                "option_description": "Select Dolby for Sound Format."
+            },
+            {
+                "option_code": "DSR",
+                "option_label": "Dolby SR",
+                "option_description": "Select Dolby SR for Sound Format."
+            },
+            {
+                "option_code": "DTS",
+                "option_label": "DTS",
+                "option_description": "Select DTS for Sound Format."
+            },
+            {
+                "option_code": "SDD",
+                "option_label": "SDDS",
+                "option_description": "Select SDDS for Sound Format."
+            },
+            {
+                "option_code": "12T",
+                "option_label": "12-Track Digital Sound",
+                "option_description": "Select 12-Track Digital Sound for Sound Format."
+            },
+            {
+                "option_code": "3CS",
+                "option_label": "3 Channel Stereo",
+                "option_description": "Select 3 Channel Stereo for Sound Format."
+            },
+            {
+                "option_code": "4TS",
+                "option_label": "4-Track Stereo",
+                "option_description": "Select 4-Track Stereo for Sound Format."
+            },
+            {
+                "option_code": "6TS",
+                "option_label": "6-Track Stereo",
+                "option_description": "Select 6-Track Stereo for Sound Format."
+            },
+            {
+                "option_code": "7M6",
+                "option_label": "70 mm 6-Track",
+                "option_description": "Select 70 mm 6-Track for Sound Format."
+            },
+            {
+                "option_code": "A11",
+                "option_label": "Auro 11.1",
+                "option_description": "Select Auro 11.1 for Sound Format."
+            },
+            {
+                "option_code": "A91",
+                "option_label": "Auro 9.1",
+                "option_description": "Select Auro 9.1 for Sound Format."
+            },
+            {
+                "option_code": "BSN",
+                "option_label": "Blue Seal Noiseless Recording",
+                "option_description": "Select Blue Seal Noiseless Recording for Sound Format."
+            },
+            {
+                "option_code": "BRD",
+                "option_label": "Broadway Surround",
+                "option_description": "Select Broadway Surround for Sound Format."
+            },
+            {
+                "option_code": "CDS",
+                "option_label": "CDS",
+                "option_description": "Select CDS for Sound Format."
+            },
+            {
+                "option_code": "DAT",
+                "option_label": "Datasat",
+                "option_description": "Select Datasat for Sound Format."
+            },
+            {
+                "option_code": "DC4",
+                "option_label": "D-Cinema 48kHz 5.1",
+                "option_description": "Select D-Cinema 48kHz 5.1 for Sound Format."
+            },
+            {
+                "option_code": "DC1",
+                "option_label": "D-Cinema 48kHz 7.1",
+                "option_description": "Select D-Cinema 48kHz 7.1 for Sound Format."
+            },
+            {
+                "option_code": "DC9",
+                "option_label": "D-Cinema 96kHz 5.1",
+                "option_description": "Select D-Cinema 96kHz 5.1 for Sound Format."
+            },
+            {
+                "option_code": "D1",
+                "option_label": "D-Cinema 96kHz 7.1",
+                "option_description": "Select D-Cinema 96kHz 7.1 for Sound Format."
+            },
+            {
+                "option_code": "ATM",
+                "option_label": "Dolby Atmos",
+                "option_description": "Select Dolby Atmos for Sound Format."
+            },
+            {
+                "option_code": "DDE",
+                "option_label": "Dolby Digital EX",
+                "option_description": "Select Dolby Digital EX for Sound Format."
+            },
+            {
+                "option_code": "DST",
+                "option_label": "Dolby Stereo",
+                "option_description": "Select Dolby Stereo for Sound Format."
+            },
+            {
+                "option_code": "DS7",
+                "option_label": "Dolby Surround 7.1",
+                "option_description": "Select Dolby Surround 7.1 for Sound Format."
+            },
+            {
+                "option_code": "D7M",
+                "option_label": "DTS 70 mm",
+                "option_description": "Select DTS 70 mm for Sound Format."
+            },
+            {
+                "option_code": "DE",
+                "option_label": "DTS-ES",
+                "option_description": "Select DTS-ES for Sound Format."
+            },
+            {
+                "option_code": "I6T",
+                "option_label": "IMAX 6-Track",
+                "option_description": "Select IMAX 6-Track for Sound Format."
+            },
+            {
+                "option_code": "K9T",
+                "option_label": "Kinopanorama 9-Track",
+                "option_description": "Select Kinopanorama 9-Track for Sound Format."
+            },
+            {
+                "option_code": "MAT",
+                "option_label": "Matrix Surround",
+                "option_description": "Select Matrix Surround for Sound Format."
+            },
+            {
+                "option_code": "PRS",
+                "option_label": "Perspecta Stereo",
+                "option_description": "Select Perspecta Stereo for Sound Format."
+            },
+            {
+                "option_code": "QUA",
+                "option_label": "Quadrophonic",
+                "option_description": "Select Quadrophonic for Sound Format."
+            },
+            {
+                "option_code": "QUI",
+                "option_label": "Quintaphonic",
+                "option_description": "Select Quintaphonic for Sound Format."
+            },
+            {
+                "option_code": "SNS",
+                "option_label": "Sensurround",
+                "option_description": "Select Sensurround for Sound Format."
+            },
+            {
+                "option_code": "S3",
+                "option_label": "Sound 360º",
+                "option_description": "Select Sound 360º for Sound Format."
+            },
+            {
+                "option_code": "US",
+                "option_label": "Ultra Stereo",
+                "option_description": "Select Ultra Stereo for Sound Format."
+            },
+            {
+                "option_code": "TL1",
+                "option_label": "TMH Labs 10.2 Channel Sound",
+                "option_description": "Select TMH Labs 10.2 Channel Sound for Sound Format."
+            },
+            {
+                "option_code": "SUR",
+                "option_label": "Surround Sound",
+                "option_description": "Select Surround Sound for Sound Format."
+            }
+        ]
+    },
+    {
+        "_id": 57,
+        "field_name": "format_cinema_process",
+        "field_label": "Cinema Process Format",
+        "field_description": "Reusable field template for Cinema Process Format values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "16M",
+                "option_label": "16mm",
+                "option_description": "Select 16mm for Cinema Process Format."
+            },
+            {
+                "option_code": "ACA",
+                "option_label": "Academy",
+                "option_description": "Select Academy for Cinema Process Format."
+            },
+            {
+                "option_code": "ANA",
+                "option_label": "Anamorphic",
+                "option_description": "Select Anamorphic for Cinema Process Format."
+            },
+            {
+                "option_code": "ARR",
+                "option_label": "Arriscope",
+                "option_description": "Select Arriscope for Cinema Process Format."
+            },
+            {
+                "option_code": "CIN",
+                "option_label": "CinemaScope",
+                "option_description": "Select CinemaScope for Cinema Process Format."
+            },
+            {
+                "option_code": "C5",
+                "option_label": "CinemaScope-55",
+                "option_description": "Select CinemaScope-55 for Cinema Process Format."
+            },
+            {
+                "option_code": "CIA",
+                "option_label": "Cinerama",
+                "option_description": "Select Cinerama for Cinema Process Format."
+            },
+            {
+                "option_code": "CIR",
+                "option_label": "Circarama",
+                "option_description": "Select Circarama for Cinema Process Format."
+            },
+            {
+                "option_code": "CS",
+                "option_label": "Clairmont-Scope",
+                "option_description": "Select Clairmont-Scope for Cinema Process Format."
+            },
+            {
+                "option_code": "D1",
+                "option_label": "Dimension 150",
+                "option_description": "Select Dimension 150 for Cinema Process Format."
+            },
+            {
+                "option_code": "DYA",
+                "option_label": "Dyaliscope",
+                "option_description": "Select Dyaliscope for Cinema Process Format."
+            },
+            {
+                "option_code": "HAW",
+                "option_label": "HawkScope",
+                "option_description": "Select HawkScope for Cinema Process Format."
+            },
+            {
+                "option_code": "IMA",
+                "option_label": "IMAX",
+                "option_description": "Select IMAX for Cinema Process Format."
+            },
+            {
+                "option_code": "JDC",
+                "option_label": "J-D-C Scope",
+                "option_description": "Select J-D-C Scope for Cinema Process Format."
+            },
+            {
+                "option_code": "KIN",
+                "option_label": "Kinopanorama",
+                "option_description": "Select Kinopanorama for Cinema Process Format."
+            },
+            {
+                "option_code": "MAG",
+                "option_label": "Magnascope",
+                "option_description": "Select Magnascope for Cinema Process Format."
+            },
+            {
+                "option_code": "MC6",
+                "option_label": "MGM Camera-65",
+                "option_description": "Select MGM Camera-65 for Cinema Process Format."
+            },
+            {
+                "option_code": "NIP",
+                "option_label": "NipponScope",
+                "option_description": "Select NipponScope for Cinema Process Format."
+            },
+            {
+                "option_code": "OMN",
+                "option_label": "Omnimax",
+                "option_description": "Select Omnimax for Cinema Process Format."
+            },
+            {
+                "option_code": "PAN",
+                "option_label": "Panavision",
+                "option_description": "Select Panavision for Cinema Process Format."
+            },
+            {
+                "option_code": "PAT",
+                "option_label": "Pathescope",
+                "option_description": "Select Pathescope for Cinema Process Format."
+            },
+            {
+                "option_code": "PK",
+                "option_label": "Pathé KOK",
+                "option_description": "Select Pathé KOK for Cinema Process Format."
+            },
+            {
+                "option_code": "POW",
+                "option_label": "Powerscope",
+                "option_description": "Select Powerscope for Cinema Process Format."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Showscan",
+                "option_description": "Select Showscan for Cinema Process Format."
+            },
+            {
+                "option_code": "SPH",
+                "option_label": "Spherical",
+                "option_description": "Select Spherical for Cinema Process Format."
+            },
+            {
+                "option_code": "S1",
+                "option_label": "Super 16",
+                "option_description": "Select Super 16 for Cinema Process Format."
+            },
+            {
+                "option_code": "S3",
+                "option_label": "Super 35",
+                "option_description": "Select Super 35 for Cinema Process Format."
+            },
+            {
+                "option_code": "S8",
+                "option_label": "Super 8",
+                "option_description": "Select Super 8 for Cinema Process Format."
+            },
+            {
+                "option_code": "SP7",
+                "option_label": "Super Panavision 70",
+                "option_description": "Select Super Panavision 70 for Cinema Process Format."
+            },
+            {
+                "option_code": "ST7",
+                "option_label": "Super Technirama 70",
+                "option_description": "Select Super Technirama 70 for Cinema Process Format."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Superscope",
+                "option_description": "Select Superscope for Cinema Process Format."
+            },
+            {
+                "option_code": "S2",
+                "option_label": "Superscope 235",
+                "option_description": "Select Superscope 235 for Cinema Process Format."
+            },
+            {
+                "option_code": "TEC",
+                "option_label": "Technirama",
+                "option_description": "Select Technirama for Cinema Process Format."
+            },
+            {
+                "option_code": "TSC",
+                "option_label": "Techniscope",
+                "option_description": "Select Techniscope for Cinema Process Format."
+            },
+            {
+                "option_code": "TEI",
+                "option_label": "Technovision",
+                "option_description": "Select Technovision for Cinema Process Format."
+            },
+            {
+                "option_code": "TA",
+                "option_label": "Todd-AO",
+                "option_description": "Select Todd-AO for Cinema Process Format."
+            },
+            {
+                "option_code": "TA3",
+                "option_label": "Todd-AO 35",
+                "option_description": "Select Todd-AO 35 for Cinema Process Format."
+            },
+            {
+                "option_code": "TOT",
+                "option_label": "TotalScope",
+                "option_description": "Select TotalScope for Cinema Process Format."
+            },
+            {
+                "option_code": "UP",
+                "option_label": "Ultra Panavision",
+                "option_description": "Select Ultra Panavision for Cinema Process Format."
+            },
+            {
+                "option_code": "UNI",
+                "option_label": "Univisium",
+                "option_description": "Select Univisium for Cinema Process Format."
+            },
+            {
+                "option_code": "VIS",
+                "option_label": "VistaVision",
+                "option_description": "Select VistaVision for Cinema Process Format."
+            }
+        ]
+    },
+    {
+        "_id": 58,
+        "field_name": "format_video_codec",
+        "field_label": "Video Codec Format",
+        "field_description": "Reusable field template for Video Codec Format values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AP",
+                "option_label": "Apple ProRes",
+                "option_description": "Select Apple ProRes for Video Codec Format."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "ARRI RAW",
+                "option_description": "Select ARRI RAW for Video Codec Format."
+            },
+            {
+                "option_code": "AI1",
+                "option_label": "AVC-Intra 100",
+                "option_description": "Select AVC-Intra 100 for Video Codec Format."
+            },
+            {
+                "option_code": "AI5",
+                "option_label": "AVC-Intra 50",
+                "option_description": "Select AVC-Intra 50 for Video Codec Format."
+            },
+            {
+                "option_code": "AIU",
+                "option_label": "AVC-Intra Ultra",
+                "option_description": "Select AVC-Intra Ultra for Video Codec Format."
+            },
+            {
+                "option_code": "AVC",
+                "option_label": "AVCHD",
+                "option_description": "Select AVCHD for Video Codec Format."
+            },
+            {
+                "option_code": "AD",
+                "option_label": "Avid DNxHD",
+                "option_description": "Select Avid DNxHD for Video Codec Format."
+            },
+            {
+                "option_code": "BET",
+                "option_label": "Betacam",
+                "option_description": "Select Betacam for Video Codec Format."
+            },
+            {
+                "option_code": "BS",
+                "option_label": "Betacam SP",
+                "option_description": "Select Betacam SP for Video Codec Format."
+            },
+            {
+                "option_code": "CCR",
+                "option_label": "Canon Cinema RAW",
+                "option_description": "Select Canon Cinema RAW for Video Codec Format."
+            },
+            {
+                "option_code": "CIN",
+                "option_label": "CineForm",
+                "option_description": "Select CineForm for Video Codec Format."
+            },
+            {
+                "option_code": "D5",
+                "option_label": "D5",
+                "option_description": "Select D5 for Video Codec Format."
+            },
+            {
+                "option_code": "DV",
+                "option_label": "DV",
+                "option_description": "Select DV for Video Codec Format."
+            },
+            {
+                "option_code": "D2",
+                "option_label": "DVCPRO 25",
+                "option_description": "Select DVCPRO 25 for Video Codec Format."
+            },
+            {
+                "option_code": "D1H",
+                "option_label": "DVCPRO 100 HD",
+                "option_description": "Select DVCPRO 100 HD for Video Codec Format."
+            },
+            {
+                "option_code": "DV5",
+                "option_label": "DVCPRO 50",
+                "option_description": "Select DVCPRO 50 for Video Codec Format."
+            },
+            {
+                "option_code": "DVC",
+                "option_label": "DVCAM",
+                "option_description": "Select DVCAM for Video Codec Format."
+            },
+            {
+                "option_code": "FR",
+                "option_label": "F65 RAW",
+                "option_description": "Select F65 RAW for Video Codec Format."
+            },
+            {
+                "option_code": "FAR",
+                "option_label": "Fastec RAW",
+                "option_description": "Select Fastec RAW for Video Codec Format."
+            },
+            {
+                "option_code": "FIL",
+                "option_label": "FilmStream",
+                "option_description": "Select FilmStream for Video Codec Format."
+            },
+            {
+                "option_code": "H2",
+                "option_label": "H.264",
+                "option_description": "Select H.264 for Video Codec Format."
+            },
+            {
+                "option_code": "HDC",
+                "option_label": "HDCAM",
+                "option_description": "Select HDCAM for Video Codec Format."
+            },
+            {
+                "option_code": "HS",
+                "option_label": "HDCAM SR",
+                "option_description": "Select HDCAM SR for Video Codec Format."
+            },
+            {
+                "option_code": "HDV",
+                "option_label": "HDV",
+                "option_description": "Select HDV for Video Codec Format."
+            },
+            {
+                "option_code": "M4S",
+                "option_label": "MPEG-4 SSTP",
+                "option_description": "Select MPEG-4 SSTP for Video Codec Format."
+            },
+            {
+                "option_code": "MVC",
+                "option_label": "MVC",
+                "option_description": "Select MVC for Video Codec Format."
+            },
+            {
+                "option_code": "RAW",
+                "option_label": "RAW",
+                "option_description": "Select RAW for Video Codec Format."
+            },
+            {
+                "option_code": "RR",
+                "option_label": "RED RAW",
+                "option_description": "Select RED RAW for Video Codec Format."
+            },
+            {
+                "option_code": "SR",
+                "option_label": "Sony RAW",
+                "option_description": "Select Sony RAW for Video Codec Format."
+            },
+            {
+                "option_code": "SRM",
+                "option_label": "SRMASTER",
+                "option_description": "Select SRMASTER for Video Codec Format."
+            },
+            {
+                "option_code": "UM",
+                "option_label": "U-Matic",
+                "option_description": "Select U-Matic for Video Codec Format."
+            },
+            {
+                "option_code": "UNC",
+                "option_label": "Uncompressed",
+                "option_description": "Select Uncompressed for Video Codec Format."
+            },
+            {
+                "option_code": "XDC",
+                "option_label": "XDCAM",
+                "option_description": "Select XDCAM for Video Codec Format."
+            },
+            {
+                "option_code": "XE",
+                "option_label": "XDCAM EX",
+                "option_description": "Select XDCAM EX for Video Codec Format."
+            }
+        ]
+    },
+    {
+        "_id": 59,
+        "field_name": "format_3d_presentation",
+        "field_label": "3D Presentation Format",
+        "field_description": "Reusable field template for 3D Presentation Format values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DC3",
+                "option_label": "D-Cinema 3D (Digital Cinema)",
+                "option_description": "Select D-Cinema 3D (Digital Cinema) for 3D Presentation Format."
+            },
+            {
+                "option_code": "DD3",
+                "option_label": "Disney Digital 3D",
+                "option_description": "Select Disney Digital 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "D3",
+                "option_label": "Dolby 3D",
+                "option_description": "Select Dolby 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "ID3",
+                "option_label": "IMAX Digital 3D",
+                "option_description": "Select IMAX Digital 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "R3",
+                "option_label": "RealD 3D",
+                "option_description": "Select RealD 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "S3",
+                "option_label": "StereoVision 3D",
+                "option_description": "Select StereoVision 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "T3",
+                "option_label": "Technicolor 3D",
+                "option_description": "Select Technicolor 3D for 3D Presentation Format."
+            },
+            {
+                "option_code": "XDC",
+                "option_label": "XPAND Digital Cinema 3D",
+                "option_description": "Select XPAND Digital Cinema 3D for 3D Presentation Format."
+            }
+        ]
+    },
+    {
+        "_id": 78,
+        "field_name": "type_media_quality",
+        "field_label": "Media Quality Type",
+        "field_description": "Reusable field template for Media Quality Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOW",
+                "option_label": "Low Quality",
+                "option_description": "Select Low Quality for Media Quality Type."
+            },
+            {
+                "option_code": "STD",
+                "option_label": "Standard Quality",
+                "option_description": "Select Standard Quality for Media Quality Type."
+            },
+            {
+                "option_code": "HD",
+                "option_label": "High Definition",
+                "option_description": "Select High Definition for Media Quality Type."
+            },
+            {
+                "option_code": "UHD",
+                "option_label": "Ultra High Definition",
+                "option_description": "Select Ultra High Definition for Media Quality Type."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Remastered",
+                "option_description": "Select Remastered for Media Quality Type."
+            },
+            {
+                "option_code": "DAM",
+                "option_label": "Damaged",
+                "option_description": "Select Damaged for Media Quality Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Media Quality Type."
+            }
+        ]
+    }
+]

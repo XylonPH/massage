@@ -1,0 +1,986 @@
+[
+    {
+        "field_name": "type_product_category",
+        "field_label": "Product Category",
+        "selection_rule": "Single primary category with hierarchical subcategories",
+        "field_description": "Identifies what a product fundamentally is. Gift presentation, retail availability, travel suitability, and aftercare use are Product Use Contexts rather than Product Categories.",
+        "field_option": [
+            {
+                "option_code": "MM",
+                "option_label": "Massage Medium",
+                "option_description": "Oil, lotion, cream, gel, powder, or comparable medium used during massage."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "Aromatherapy Product",
+                "option_description": "Essential oil, fragrance blend, diffuser, inhalation item, or related aromatic product."
+            },
+            {
+                "option_code": "TP",
+                "option_label": "Topical Care Product",
+                "option_description": "Balm, liniment, rub, patch, topical oil, cream, or similar comfort product."
+            },
+            {
+                "option_code": "BS",
+                "option_label": "Body and Skin Care Product",
+                "option_description": "Scrub, polish, mask, wrap product, moisturizer, cleanser, or related body-care item."
+            },
+            {
+                "option_code": "TL",
+                "option_label": "Textile and Linen",
+                "option_description": "Towel, sheet, blanket, robe, wrap, cover, or other treatment textile."
+            },
+            {
+                "option_code": "MT",
+                "option_label": "Manual Massage Tool",
+                "option_description": "Roller, massage ball, gua sha tool, scraping tool, or other non-powered implement."
+            },
+            {
+                "option_code": "TF",
+                "option_label": "Treatment Furniture",
+                "option_description": "Massage table, chair, bed, stool, trolley, or treatment-room furniture."
+            },
+            {
+                "option_code": "PMD",
+                "option_label": "Powered Massage Device",
+                "option_description": "Electrical or battery-powered massage device used manually or independently."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Thermal and Recovery Equipment",
+                "option_description": "Heater, warmer, cold-recovery device, compression system, or related recovery equipment."
+            },
+            {
+                "option_code": "HY",
+                "option_label": "Hydrotherapy Equipment",
+                "option_description": "Water-treatment, aquatic, whirlpool, Vichy, or hydrotherapy equipment."
+            },
+            {
+                "option_code": "OS",
+                "option_label": "Spa Operational Supply",
+                "option_description": "Bowl, dispenser, storage, laundry, presentation, preparation, or routine operational item."
+            },
+            {
+                "option_code": "SH",
+                "option_label": "Sanitation and Hygiene Product",
+                "option_description": "Cleaning, disinfection, sanitation, protective, or personal-hygiene product."
+            },
+            {
+                "option_code": "DS",
+                "option_label": "Disposable Treatment Supply",
+                "option_description": "Single-use cover, applicator, garment, liner, wipe, or treatment consumable."
+            },
+            {
+                "option_code": "UW",
+                "option_label": "Uniform and Workwear",
+                "option_description": "Clothing, footwear, apron, protective wear, or professional garment."
+            },
+            {
+                "option_code": "AM",
+                "option_label": "Ambience Product",
+                "option_description": "Lighting, scent, sound, decorative, comfort, or sensory-environment product."
+            },
+            {
+                "option_code": "FA",
+                "option_label": "Facility Fixture and Accessory",
+                "option_description": "Room fixture, organizer, signage, locker, privacy accessory, or facility-support product."
+            },
+            {
+                "option_code": "ED",
+                "option_label": "Training and Educational Material",
+                "option_description": "Book, chart, model, video, practice item, lesson, or assessment material."
+            },
+            {
+                "option_code": "DG",
+                "option_label": "Digital Product",
+                "option_description": "Software, downloadable template, digital form, application, or other non-physical product."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_massage_medium_form",
+        "field_label": "Massage Medium Form",
+        "selection_rule": "Single-select per product",
+        "field_description": "Physical form of a massage medium product. Balms, liniments, rubs, patches, and comparable concentrated topical preparations remain under TP - Topical Care Product.",
+        "applies_to_category": [
+            "MM"
+        ],
+        "field_option": [
+            {
+                "option_code": "OIL",
+                "option_label": "Oil",
+                "option_description": "Liquid oil formulation intended for massage glide or topical application."
+            },
+            {
+                "option_code": "LOT",
+                "option_label": "Lotion",
+                "option_description": "Emulsion-style lotion intended for massage glide or skin application."
+            },
+            {
+                "option_code": "CRM",
+                "option_label": "Cream",
+                "option_description": "Thicker cream formulation intended for massage or targeted application."
+            },
+            {
+                "option_code": "GEL",
+                "option_label": "Gel",
+                "option_description": "Gel formulation intended for glide, cooling, warming, conductivity, or targeted use."
+            },
+            {
+                "option_code": "PWD",
+                "option_label": "Powder",
+                "option_description": "Powder formulation used for glide, moisture control, or a traditional method."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_massage_oil_base",
+        "field_label": "Massage Oil Base",
+        "selection_rule": "Multi-select where a formulation combines bases",
+        "field_description": "Principal base class of a massage oil. Specific ingredients such as coconut, sweet almond, grapeseed, jojoba, sesame, sunflower, olive, rice bran, and comparable oils belong to structured ingredient records rather than this short base classification. Fragrance, essential-oil blends, warming agents, cooling agents, CBD, magnesium, preservatives, allergens, and claims remain separate product data.",
+        "applies_to_category": [
+            "MM"
+        ],
+        "field_option": [
+            {
+                "option_code": "PFO",
+                "option_label": "Plant-Derived Fixed Oil",
+                "option_description": "Uses one or more non-volatile plant-derived carrier oils as a principal base."
+            },
+            {
+                "option_code": "MIN",
+                "option_label": "Mineral Oil",
+                "option_description": "Uses mineral oil as a principal base."
+            },
+            {
+                "option_code": "SYN",
+                "option_label": "Formulated Emollient Base",
+                "option_description": "Uses synthetic, semi-synthetic, ester, silicone, or comparable formulated emollient ingredients as a principal base."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed Base",
+                "option_description": "Materially combines more than one base class."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_manual_massage_tool",
+        "field_label": "Manual Massage Tool Type",
+        "selection_rule": "Single primary type with optional secondary relationships",
+        "field_description": "Type of a non-powered massage tool. Material, dimensions, texture, shape, weight, temperature tolerance, sanitation method, and intended body area remain category-specific specifications.",
+        "applies_to_category": [
+            "MT"
+        ],
+        "field_option": [
+            {
+                "option_code": "STN",
+                "option_label": "Massage Stone",
+                "option_description": "Stone used manually for pressure, glide, placement, thermal application, or massage."
+            },
+            {
+                "option_code": "BAM",
+                "option_label": "Bamboo Massage Tool",
+                "option_description": "Bamboo implement used for rolling, compression, tapping, glide, or massage manipulation."
+            },
+            {
+                "option_code": "WOD",
+                "option_label": "Wooden Massage Tool",
+                "option_description": "Wooden implement used for pressure, rolling, contouring, or massage manipulation."
+            },
+            {
+                "option_code": "ROL",
+                "option_label": "Massage Roller",
+                "option_description": "Cylindrical, wheel-based, textured, or comparable rolling tool."
+            },
+            {
+                "option_code": "BAL",
+                "option_label": "Massage Ball",
+                "option_description": "Ball-shaped tool used for pressure, release, rolling, or self-care."
+            },
+            {
+                "option_code": "GUA",
+                "option_label": "Gua Sha Tool",
+                "option_description": "Smooth-edged tool associated with gua sha or related scraping and gliding practices."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Scraping Tool",
+                "option_description": "Tool principally designed for scraping or instrument-assisted soft-tissue work."
+            },
+            {
+                "option_code": "CUP",
+                "option_label": "Massage Cup",
+                "option_description": "Manual cup used for suction-based massage, cupping, glide, or localized application."
+            },
+            {
+                "option_code": "HCP",
+                "option_label": "Herbal Compress",
+                "option_description": "Compress bundle containing herbs or another preparation and applied manually."
+            },
+            {
+                "option_code": "STK",
+                "option_label": "Massage Stick",
+                "option_description": "Rod, stick, cane, or comparable elongated manual massage tool."
+            },
+            {
+                "option_code": "ACP",
+                "option_label": "Acupressure Tool",
+                "option_description": "Manual implement designed for focused point pressure."
+            },
+            {
+                "option_code": "HMM",
+                "option_label": "Handheld Manual Massager",
+                "option_description": "Non-powered handheld implement that does not fit a more specific tool type."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_treatment_furniture",
+        "field_label": "Treatment Furniture Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of treatment furniture. A standard household bed may be used operationally during a service, but it does not require its own Massage Nexus treatment-furniture product type unless an actual listed product is relevant.",
+        "applies_to_category": [
+            "TF"
+        ],
+        "field_option": [
+            {
+                "option_code": "MTB",
+                "option_label": "Massage Table",
+                "option_description": "Purpose-built table intended for massage or bodywork."
+            },
+            {
+                "option_code": "TBD",
+                "option_label": "Treatment Bed",
+                "option_description": "Purpose-built treatment bed or padded treatment platform."
+            },
+            {
+                "option_code": "MCH",
+                "option_label": "Massage Chair",
+                "option_description": "Purpose-built chair for seated massage or treatment."
+            },
+            {
+                "option_code": "STL",
+                "option_label": "Practitioner Stool",
+                "option_description": "Stool used by a practitioner during treatment."
+            },
+            {
+                "option_code": "TRY",
+                "option_label": "Treatment Trolley",
+                "option_description": "Mobile trolley used to hold treatment products, tools, or supplies."
+            },
+            {
+                "option_code": "FMT",
+                "option_label": "Floor Mat",
+                "option_description": "Purpose-built padded mat used as treatment support."
+            },
+            {
+                "option_code": "RCL",
+                "option_label": "Treatment Recliner",
+                "option_description": "Reclining chair intended for treatment or supported wellness service."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_powered_massage_device",
+        "field_label": "Powered Massage Device Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of a powered massage device. Power source, motor type, speed, force, attachments, electrical rating, battery, sanitation, and safety remain category-specific specifications.",
+        "applies_to_category": [
+            "PMD"
+        ],
+        "field_option": [
+            {
+                "option_code": "PRC",
+                "option_label": "Percussion Device",
+                "option_description": "Powered device delivering rapid percussive movement."
+            },
+            {
+                "option_code": "VIB",
+                "option_label": "Vibration Device",
+                "option_description": "Powered device delivering vibration or oscillation."
+            },
+            {
+                "option_code": "HND",
+                "option_label": "Handheld Powered Massager",
+                "option_description": "Powered massager designed to be held or guided by a user or practitioner."
+            },
+            {
+                "option_code": "MCH",
+                "option_label": "Powered Massage Chair",
+                "option_description": "Powered chair providing automated or semi-automated massage."
+            },
+            {
+                "option_code": "MBD",
+                "option_label": "Powered Massage Bed",
+                "option_description": "Powered bed or platform providing automated or semi-automated massage."
+            },
+            {
+                "option_code": "FOT",
+                "option_label": "Foot Massager",
+                "option_description": "Powered device principally designed for the feet."
+            },
+            {
+                "option_code": "LEG",
+                "option_label": "Leg Massager",
+                "option_description": "Powered device principally designed for the legs."
+            },
+            {
+                "option_code": "NCK",
+                "option_label": "Neck Massager",
+                "option_description": "Powered device principally designed for the neck or shoulders."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_thermal_recovery_equipment",
+        "field_label": "Thermal and Recovery Equipment Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of thermal or recovery equipment.",
+        "applies_to_category": [
+            "TR"
+        ],
+        "field_option": [
+            {
+                "option_code": "STH",
+                "option_label": "Stone Heater",
+                "option_description": "Equipment used to heat massage stones."
+            },
+            {
+                "option_code": "TWL",
+                "option_label": "Towel Warmer",
+                "option_description": "Equipment used to warm towels or linens."
+            },
+            {
+                "option_code": "OIL",
+                "option_label": "Oil Warmer",
+                "option_description": "Equipment used to warm massage oil or another treatment medium."
+            },
+            {
+                "option_code": "HTP",
+                "option_label": "Heat Pad",
+                "option_description": "Reusable powered or non-powered pad designed to apply heat."
+            },
+            {
+                "option_code": "CLD",
+                "option_label": "Cold Recovery Device",
+                "option_description": "Equipment designed for localized or whole-body cold exposure or recovery."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compression System",
+                "option_description": "Powered or mechanical compression equipment used for recovery or wellness."
+            },
+            {
+                "option_code": "INF",
+                "option_label": "Infrared Equipment",
+                "option_description": "Equipment using infrared radiant heat."
+            },
+            {
+                "option_code": "CRY",
+                "option_label": "Cryotherapy Equipment",
+                "option_description": "Equipment designed for controlled cryotherapy or very-low-temperature exposure."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_hydrotherapy_equipment",
+        "field_label": "Hydrotherapy Equipment Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of hydrotherapy equipment. Capacity, dimensions, water pressure, temperature range, filtration, sanitation, power, and installation remain category-specific specifications.",
+        "applies_to_category": [
+            "HY"
+        ],
+        "field_option": [
+            {
+                "option_code": "VSH",
+                "option_label": "Vichy Shower",
+                "option_description": "Multi-head overhead shower equipment used during wet treatment."
+            },
+            {
+                "option_code": "WHR",
+                "option_label": "Whirlpool",
+                "option_description": "Whirlpool bath or equipment producing circulating water."
+            },
+            {
+                "option_code": "HYB",
+                "option_label": "Hydrotherapy Bath",
+                "option_description": "Purpose-built bath used for hydrotherapy treatment."
+            },
+            {
+                "option_code": "WJT",
+                "option_label": "Water Jet System",
+                "option_description": "Equipment delivering controlled pressurized water jets."
+            },
+            {
+                "option_code": "FLT",
+                "option_label": "Floatation Support",
+                "option_description": "Float, buoyancy aid, aquatic cradle, or comparable support used in water."
+            },
+            {
+                "option_code": "DRY",
+                "option_label": "Dry-Water Massage System",
+                "option_description": "Equipment that applies water-driven pressure without direct client water contact."
+            },
+            {
+                "option_code": "AQM",
+                "option_label": "Aquatic Movement Support",
+                "option_description": "Equipment supporting guided movement, stabilization, or positioning in water."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_textile_linen",
+        "field_label": "Textile and Linen Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of a treatment textile or linen. Fiber composition, weave, dimensions, weight, absorbency, softness, color, care, reusability, and sanitation remain category-specific specifications. Disposable drapes, covers, garments, and liners belong primarily to DS - Disposable Treatment Supply.",
+        "applies_to_category": [
+            "TL"
+        ],
+        "field_option": [
+            {
+                "option_code": "TWL",
+                "option_label": "Towel",
+                "option_description": "Absorbent textile used for drying, draping, treatment, or facility operation."
+            },
+            {
+                "option_code": "FLS",
+                "option_label": "Flat Sheet",
+                "option_description": "Flat sheet used for treatment support, coverage, or draping."
+            },
+            {
+                "option_code": "FTS",
+                "option_label": "Fitted Sheet",
+                "option_description": "Fitted sheet designed for a treatment table, bed, or comparable support."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blanket",
+                "option_description": "Textile used for warmth, comfort, coverage, or draping."
+            },
+            {
+                "option_code": "ROB",
+                "option_label": "Robe",
+                "option_description": "Garment provided for client coverage or facility use."
+            },
+            {
+                "option_code": "WRP",
+                "option_label": "Spa Wrap",
+                "option_description": "Wrap garment or textile used for changing, coverage, treatment, or draping."
+            },
+            {
+                "option_code": "PLC",
+                "option_label": "Pillow Cover",
+                "option_description": "Removable cover for a pillow, bolster, face cradle, or support."
+            },
+            {
+                "option_code": "TBC",
+                "option_label": "Table Cover",
+                "option_description": "Protective or decorative cover used on a treatment table."
+            },
+            {
+                "option_code": "DRP",
+                "option_label": "Reusable Drape",
+                "option_description": "Reusable textile specifically intended for professional draping."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_body_skin_care_product",
+        "field_label": "Body and Skin Care Product Type",
+        "selection_rule": "Single primary type",
+        "field_description": "Type of a body or skin care product. Exact ingredients, concentration, formula, allergens, warnings, storage, preparation, and use instructions remain product-specific data.",
+        "applies_to_category": [
+            "BS"
+        ],
+        "field_option": [
+            {
+                "option_code": "SCR",
+                "option_label": "Scrub Product",
+                "option_description": "Product formulated for body or skin exfoliation."
+            },
+            {
+                "option_code": "POL",
+                "option_label": "Polish Product",
+                "option_description": "Product formulated to smooth or refine the skin surface."
+            },
+            {
+                "option_code": "MSK",
+                "option_label": "Mask Product",
+                "option_description": "Product applied as a treatment layer for a defined period."
+            },
+            {
+                "option_code": "WRP",
+                "option_label": "Wrap Product",
+                "option_description": "Product formulated or prepared for body wrapping."
+            },
+            {
+                "option_code": "MUD",
+                "option_label": "Mud Product",
+                "option_description": "Mud-based body or skin treatment product."
+            },
+            {
+                "option_code": "CLY",
+                "option_label": "Clay Product",
+                "option_description": "Clay-based body or skin treatment product."
+            },
+            {
+                "option_code": "CLN",
+                "option_label": "Cleanser",
+                "option_description": "Product formulated to cleanse the skin."
+            },
+            {
+                "option_code": "MOI",
+                "option_label": "Moisturizer",
+                "option_description": "Product formulated to hydrate or support skin comfort."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compress Preparation",
+                "option_description": "Herbal, mineral, gel, or another preparation intended for a compress."
+            },
+            {
+                "option_code": "ALG",
+                "option_label": "Algae Product",
+                "option_description": "Algae-based body or skin treatment product."
+            },
+            {
+                "option_code": "SWD",
+                "option_label": "Seaweed Product",
+                "option_description": "Seaweed-based body or skin treatment product."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "level_product_grade",
+        "field_label": "Product Grade",
+        "selection_rule": "Single-select",
+        "field_description": "Compares a product only with direct peers in the same category. Product Grade is assigned or confirmed by Massage Nexus and is not freely selected by a seller. Price alone does not determine Product Grade.",
+        "field_option": [
+            {
+                "option_code": "S",
+                "option_label": "Premium",
+                "option_description": "Exceptional materials, formulation, construction, reliability, performance, presentation, or professional suitability within its category."
+            },
+            {
+                "option_code": "A",
+                "option_label": "High",
+                "option_description": "Clearly above ordinary category standards in quality, durability, function, formulation, or professional suitability."
+            },
+            {
+                "option_code": "B",
+                "option_label": "Standard",
+                "option_description": "Dependable mainstream product meeting normal usability and quality expectations for its category."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Budget",
+                "option_description": "Lower-cost product providing acceptable function with simpler materials, features, formulation, durability, or presentation."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Basic",
+                "option_description": "Entry-level or minimal product providing only essential function within its category."
+            }
+        ],
+        "classification_note": [
+            "Compare only direct peers; disposable, reusable, digital, textile, topical, and equipment products are not graded by one identical checklist.",
+            "Use category-relevant evidence such as materials, formulation, construction, durability, safety, performance, warranty, professional suitability, and presentation.",
+            "A lower-grade product may receive an excellent review for value and performance.",
+            "A premium-grade product may receive a poor review when it fails premium expectations.",
+            "Seller claims and price may support review but cannot assign the grade by themselves."
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "scope_product_use",
+        "field_label": "Product Use Context",
+        "selection_rule": "Multi-select",
+        "field_description": "Contexts in which the product is used.",
+        "field_option": [
+            {
+                "option_code": "SP",
+                "option_label": "Spa Use",
+                "option_description": "Used by a spa during treatment, facility operation, or client care."
+            },
+            {
+                "option_code": "TH",
+                "option_label": "Therapist Use",
+                "option_description": "Used by an individual therapist in professional or portable practice."
+            },
+            {
+                "option_code": "HM",
+                "option_label": "Home Care",
+                "option_description": "Used by a consumer for personal or household wellness care."
+            },
+            {
+                "option_code": "AF",
+                "option_label": "Aftercare",
+                "option_description": "Used after treatment or between sessions for follow-through or comfort."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Training",
+                "option_description": "Used for teaching, study, practice, demonstration, or assessment."
+            },
+            {
+                "option_code": "FS",
+                "option_label": "Facility Setup",
+                "option_description": "Used to furnish, equip, organize, or prepare a treatment facility."
+            },
+            {
+                "option_code": "HG",
+                "option_label": "Hygiene",
+                "option_description": "Used for cleaning, sanitation, infection control, or protective handling."
+            },
+            {
+                "option_code": "AM",
+                "option_label": "Ambience",
+                "option_description": "Used to influence scent, light, sound, comfort, or atmosphere."
+            },
+            {
+                "option_code": "RT",
+                "option_label": "Retail",
+                "option_description": "Intended for direct sale to customers."
+            },
+            {
+                "option_code": "GF",
+                "option_label": "Gift",
+                "option_description": "Intended for gifting, recognition, souvenir, or promotional presentation."
+            },
+            {
+                "option_code": "TV",
+                "option_label": "Travel",
+                "option_description": "Intended for portable, compact, mobile, hotel, event, or field use."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_product_characteristic",
+        "field_label": "Product Characteristic",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "General product characteristics. Detailed material, formula, dimension, texture, power, and performance characteristics remain category-specific specifications.",
+        "field_option": [
+            {
+                "option_code": "SC",
+                "option_label": "Scented",
+                "option_description": "Intentionally produces or contains a noticeable scent."
+            },
+            {
+                "option_code": "HT",
+                "option_label": "Heat-Producing",
+                "option_description": "Generates, stores, applies, or relies on heat during intended use."
+            },
+            {
+                "option_code": "EL",
+                "option_label": "Electrical",
+                "option_description": "Requires mains electricity or powered electrical components."
+            },
+            {
+                "option_code": "BP",
+                "option_label": "Battery-Powered",
+                "option_description": "Operates through replaceable or rechargeable batteries."
+            },
+            {
+                "option_code": "SU",
+                "option_label": "Single-Use",
+                "option_description": "Intended to be used once and then discarded."
+            },
+            {
+                "option_code": "RU",
+                "option_label": "Reusable",
+                "option_description": "Designed for repeated use and may require cleaning, maintenance, or replacement parts."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_product_claim",
+        "field_label": "Product Claim",
+        "selection_rule": "Multi-select where declared",
+        "field_description": "Declared product claims. A claim is not automatically verified. Preserve the claimant, certifier, standard, jurisdiction, evidence, and verification result separately.",
+        "field_option": [
+            {
+                "option_code": "VG",
+                "option_label": "Vegan",
+                "option_description": "Declared free from animal-derived ingredients or materials."
+            },
+            {
+                "option_code": "CF",
+                "option_label": "Cruelty-Free",
+                "option_description": "Declared not tested on animals under the stated claim framework."
+            },
+            {
+                "option_code": "OG",
+                "option_label": "Organic",
+                "option_description": "Declared or certified organic under an identified standard."
+            },
+            {
+                "option_code": "DT",
+                "option_label": "Dermatologically Tested",
+                "option_description": "Declared to have undergone dermatological testing."
+            },
+            {
+                "option_code": "HY",
+                "option_label": "Hypoallergenic",
+                "option_description": "Declared as formulated or designed to reduce allergy risk."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_allergen",
+        "field_label": "Allergen and Sensitivity Group",
+        "selection_rule": "Multi-select where applicable",
+        "field_description": "Common spa-product allergen and sensitivity groups. The list does not replace complete ingredient and material records. Absence of an allergen classification does not mean allergen-free.",
+        "field_option": [
+            {
+                "option_code": "PN",
+                "option_label": "Peanut",
+                "option_description": "Contains or may expose the user to peanut-derived material."
+            },
+            {
+                "option_code": "TN",
+                "option_label": "Tree Nut",
+                "option_description": "Contains or may expose the user to tree-nut-derived material."
+            },
+            {
+                "option_code": "CO",
+                "option_label": "Coconut",
+                "option_description": "Contains or may expose the user to coconut-derived material."
+            },
+            {
+                "option_code": "SY",
+                "option_label": "Soy",
+                "option_description": "Contains or may expose the user to soy-derived material."
+            },
+            {
+                "option_code": "WH",
+                "option_label": "Wheat",
+                "option_description": "Contains or may expose the user to wheat-derived material."
+            },
+            {
+                "option_code": "MK",
+                "option_label": "Milk",
+                "option_description": "Contains or may expose the user to milk-derived material."
+            },
+            {
+                "option_code": "EG",
+                "option_label": "Egg",
+                "option_description": "Contains or may expose the user to egg-derived material."
+            },
+            {
+                "option_code": "SF",
+                "option_label": "Shellfish",
+                "option_description": "Contains or may expose the user to shellfish-derived material."
+            },
+            {
+                "option_code": "BP",
+                "option_label": "Bee Product",
+                "option_description": "Contains beeswax, honey, propolis, royal jelly, or another bee-derived material."
+            },
+            {
+                "option_code": "LX",
+                "option_label": "Latex",
+                "option_description": "Contains or may expose the user to natural or synthetic latex."
+            },
+            {
+                "option_code": "FR",
+                "option_label": "Fragrance",
+                "option_description": "Contains fragrance compounds associated with sensitivity concerns."
+            },
+            {
+                "option_code": "EO",
+                "option_label": "Essential Oil",
+                "option_description": "Contains one or more essential oils requiring specific ingredient identification."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_product_warning",
+        "field_label": "Product Warning",
+        "selection_rule": "Multi-select",
+        "field_description": "Product warnings. Warnings preserve manufacturer, regulator, editorial, and verified safety sources separately.",
+        "field_option": [
+            {
+                "option_code": "SI",
+                "option_label": "Skin Irritation Risk",
+                "option_description": "May irritate skin through sensitivity, strength, concentration, or prolonged contact."
+            },
+            {
+                "option_code": "PS",
+                "option_label": "Photosensitivity Risk",
+                "option_description": "May increase sensitivity to sunlight or ultraviolet exposure."
+            },
+            {
+                "option_code": "HT",
+                "option_label": "Heat Risk",
+                "option_description": "May cause burns, overheating, or unsafe temperature exposure."
+            },
+            {
+                "option_code": "EL",
+                "option_label": "Electrical Risk",
+                "option_description": "Requires electrical, charging, wiring, or moisture-safety precautions."
+            },
+            {
+                "option_code": "FL",
+                "option_label": "Flammability Risk",
+                "option_description": "Requires controlled storage and use away from ignition sources."
+            },
+            {
+                "option_code": "PG",
+                "option_label": "Pregnancy Caution",
+                "option_description": "May require avoidance, adaptation, or professional guidance during pregnancy."
+            },
+            {
+                "option_code": "MC",
+                "option_label": "Medical Condition Caution",
+                "option_description": "May be unsuitable for particular conditions, medications, injuries, or implanted devices."
+            },
+            {
+                "option_code": "PU",
+                "option_label": "Professional Use Only",
+                "option_description": "Requires trained operation or application because of strength, complexity, or risk."
+            },
+            {
+                "option_code": "SN",
+                "option_label": "Sanitation Required",
+                "option_description": "Requires cleaning, disinfection, sterilization, or controlled reuse."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "status_product_lifecycle",
+        "field_label": "Product Lifecycle Status",
+        "selection_rule": "Single-select",
+        "field_description": "Market and lifecycle status of a product identity.",
+        "field_option": [
+            {
+                "option_code": "CU",
+                "option_label": "Current",
+                "option_description": "Presently produced, sold, or recognized as the active version."
+            },
+            {
+                "option_code": "DS",
+                "option_label": "Discontinued",
+                "option_description": "No longer produced or normally offered by the responsible manufacturer or publisher."
+            },
+            {
+                "option_code": "RC",
+                "option_label": "Recalled",
+                "option_description": "Formally withdrawn because of safety, quality, regulatory, or manufacturing concerns."
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": "Current market or lifecycle status cannot be confirmed."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "type_product_version_relationship",
+        "field_label": "Product Version Relationship",
+        "selection_rule": "One relationship type per connected product-version pair",
+        "field_description": "Relationship between connected product versions. A product may have several relationships; Previous is therefore derived from its connection to a later version rather than stored as a competing lifecycle status.",
+        "field_option": [
+            {
+                "option_code": "RP",
+                "option_label": "Replaces",
+                "option_description": "The source version replaces the connected earlier version."
+            },
+            {
+                "option_code": "RF",
+                "option_label": "Reformulated From",
+                "option_description": "Formula, ingredients, materials, function, or performance changed substantially."
+            },
+            {
+                "option_code": "PK",
+                "option_label": "Repackaged From",
+                "option_description": "Packaging, container, label, quantity presentation, or external presentation changed."
+            },
+            {
+                "option_code": "RN",
+                "option_label": "Renamed From",
+                "option_description": "Product continues under a different name, brand, or model designation."
+            },
+            {
+                "option_code": "SB",
+                "option_label": "Superseded By",
+                "option_description": "The source version has been replaced by the connected later version."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "status_product_authenticity",
+        "field_label": "Product Authenticity Status",
+        "selection_rule": "Single-select",
+        "field_description": "Authenticity status is separate from lifecycle, version, moderation, review rating, and seller conduct.",
+        "field_option": [
+            {
+                "option_code": "VA",
+                "option_label": "Verified Authentic",
+                "option_description": "Authenticity has been confirmed through accepted evidence."
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unverified",
+                "option_description": "Authenticity has not been confirmed."
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Suspected Counterfeit",
+                "option_description": "Available evidence creates a credible counterfeit concern."
+            },
+            {
+                "option_code": "CC",
+                "option_label": "Confirmed Counterfeit",
+                "option_description": "Product has been confirmed as counterfeit or unauthorized."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    },
+    {
+        "field_name": "status_product_moderation",
+        "field_label": "Product Moderation Status",
+        "selection_rule": "Single-select",
+        "field_description": "Moderation status of the product record.",
+        "field_option": [
+            {
+                "option_code": "AC",
+                "option_label": "Active",
+                "option_description": "No current moderation restriction prevents normal platform use."
+            },
+            {
+                "option_code": "UR",
+                "option_label": "Under Review",
+                "option_description": "Product record is being reviewed for policy, safety, authenticity, identity, or evidence concerns."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Restricted",
+                "option_description": "Visibility, interaction, recommendation, or commercial use is limited."
+            },
+            {
+                "option_code": "RM",
+                "option_label": "Removed",
+                "option_description": "Product record is removed from normal platform use under moderation policy."
+            }
+        ],
+        "source_document": "docs/05-directory/product-classification.txt"
+    }
+]

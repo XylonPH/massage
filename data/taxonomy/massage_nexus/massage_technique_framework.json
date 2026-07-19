@@ -1,0 +1,108 @@
+[
+    {
+        "framework_code": "CWM",
+        "framework_label": "Classical Western Massage",
+        "framework_description": "Classical Western massage technique framework. Technique Framework and Named Technique are reference records rather than fixed field options.",
+        "named_technique": [
+            {
+                "technique_code": "EFF",
+                "technique_label": "Effleurage",
+                "technique_group_code": [
+                    "GLD"
+                ],
+                "technique_description": "Gliding or stroking movement.",
+                "technique_variation_note": "Common variations include superficial, deep, long, short, circular, or regional Effleurage."
+            },
+            {
+                "technique_code": "PET",
+                "technique_label": "Petrissage",
+                "technique_group_code": [
+                    "KLG"
+                ],
+                "technique_description": "Kneading, lifting, squeezing, rolling, or grasping.",
+                "technique_variation_note": "Common variations include kneading, lifting, wringing, picking up, or skin rolling."
+            },
+            {
+                "technique_code": "FRI",
+                "technique_label": "Friction",
+                "technique_group_code": [
+                    "FRI"
+                ],
+                "technique_description": "Focused rubbing or friction work.",
+                "technique_variation_note": "Common variations include circular, transverse, or cross-fiber Friction."
+            },
+            {
+                "technique_code": "TAP",
+                "technique_label": "Tapotement",
+                "technique_group_code": [
+                    "PER"
+                ],
+                "technique_description": "Rhythmic percussion.",
+                "technique_variation_note": "Common variations include tapping, hacking, cupping, beating, or pounding."
+            },
+            {
+                "technique_code": "VIB",
+                "technique_label": "Vibration",
+                "technique_group_code": [
+                    "VIB"
+                ],
+                "technique_description": "Vibration or shaking.",
+                "technique_variation_note": "Common variations include fine vibration, coarse vibration, or shaking."
+            }
+        ],
+        "framework_note": [],
+        "source_document": "docs/05-directory/service-classification.txt"
+    },
+    {
+        "framework_code": "HLT",
+        "framework_label": "Hilot Wellness Massage",
+        "framework_description": "Hilot wellness massage technique framework. Hilot retains its Filipino terminology and is not relabeled merely as Effleurage, Petrissage, or Acupressure.",
+        "named_technique": [
+            {
+                "technique_code": "HGD",
+                "technique_label": "Hagod",
+                "technique_group_code": [
+                    "GLD"
+                ],
+                "technique_description": "Long deep stroke."
+            },
+            {
+                "technique_code": "HPL",
+                "technique_label": "Haplos",
+                "technique_group_code": [
+                    "GLD"
+                ],
+                "technique_description": "Short light stroke."
+            },
+            {
+                "technique_code": "PND",
+                "technique_label": "Pindot",
+                "technique_group_code": [
+                    "PPR"
+                ],
+                "technique_description": "One-finger press."
+            },
+            {
+                "technique_code": "PSL",
+                "technique_label": "Pisil",
+                "technique_group_code": [
+                    "COM",
+                    "PPR"
+                ],
+                "technique_description": "Press using two or more fingers."
+            },
+            {
+                "technique_code": "PGA",
+                "technique_label": "Piga",
+                "technique_group_code": [
+                    "KLG"
+                ],
+                "technique_description": "Grasping technique included in the recognized Hilot range where applicable."
+            }
+        ],
+        "framework_note": [
+            "The Hilot framework may also preserve sourced information about: pre-Hilot procedure; hand scanning or palpation; Hilot pulse reading; Hilot thermal reading or init-lamig; leaf-based assessment procedures; Hilot pressure areas; customized pressure; pressure duration and direction; use of hands and fingers according to area, rhythm, frequency, and pressure."
+        ],
+        "source_document": "docs/05-directory/service-classification.txt"
+    }
+]

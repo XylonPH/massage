@@ -1,0 +1,186 @@
+[
+    {
+        "_id": 26,
+        "field_name": "part_of_speech",
+        "field_label": "Part of Speech",
+        "field_description": "Reusable field template for Part of Speech values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "N",
+                "option_label": "Noun",
+                "option_description": "Select Noun for Part of Speech."
+            },
+            {
+                "option_code": "V",
+                "option_label": "Verb",
+                "option_description": "Select Verb for Part of Speech."
+            },
+            {
+                "option_code": "AJ",
+                "option_label": "Adjective",
+                "option_description": "Select Adjective for Part of Speech."
+            },
+            {
+                "option_code": "AV",
+                "option_label": "Adverb",
+                "option_description": "Select Adverb for Part of Speech."
+            },
+            {
+                "option_code": "PN",
+                "option_label": "Pronoun",
+                "option_description": "Select Pronoun for Part of Speech."
+            },
+            {
+                "option_code": "PP",
+                "option_label": "Preposition",
+                "option_description": "Select Preposition for Part of Speech."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Conjunction",
+                "option_description": "Select Conjunction for Part of Speech."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Determiner",
+                "option_description": "Select Determiner for Part of Speech."
+            },
+            {
+                "option_code": "E",
+                "option_label": "Exclamation",
+                "option_description": "Select Exclamation for Part of Speech."
+            }
+        ]
+    },
+    {
+        "_id": 49,
+        "field_name": "method_translation",
+        "field_label": "Translation Method",
+        "field_description": "Reusable field template for Translation Method values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HUM",
+                "option_label": "Human Translation",
+                "option_description": "Select Human Translation for Translation Method."
+            },
+            {
+                "option_code": "AI",
+                "option_label": "AI Translation",
+                "option_description": "Select AI Translation for Translation Method."
+            },
+            {
+                "option_code": "MT",
+                "option_label": "Machine Translation",
+                "option_description": "Select Machine Translation for Translation Method."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Imported Translation",
+                "option_description": "Select Imported Translation for Translation Method."
+            },
+            {
+                "option_code": "MIG",
+                "option_label": "Migrated Translation",
+                "option_description": "Select Migrated Translation for Translation Method."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Translation Method."
+            }
+        ]
+    },
+    {
+        "_id": 172,
+        "field_name": "type_language",
+        "field_label": "Language Type",
+        "field_description": "Reusable field template for Language Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LIV",
+                "option_label": "Living Language",
+                "option_description": "Select Living Language for Language Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extinct Language",
+                "option_description": "Select Extinct Language for Language Type."
+            },
+            {
+                "option_code": "ANC",
+                "option_label": "Ancient Language",
+                "option_description": "Select Ancient Language for Language Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical Language",
+                "option_description": "Select Historical Language for Language Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Constructed Language",
+                "option_description": "Select Constructed Language for Language Type."
+            },
+            {
+                "option_code": "SIG",
+                "option_label": "Sign Language",
+                "option_description": "Select Sign Language for Language Type."
+            },
+            {
+                "option_code": "SOC",
+                "option_label": "Sociolect",
+                "option_description": "Select Sociolect for Language Type."
+            },
+            {
+                "option_code": "LST",
+                "option_label": "Localization Style",
+                "option_description": "Select Localization Style for Language Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Language Type."
+            }
+        ]
+    },
+    {
+        "_id": 173,
+        "field_name": "type_language_scope",
+        "field_label": "Language Scope Type",
+        "field_description": "Reusable field template for Language Scope Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "IND",
+                "option_label": "Individual Language",
+                "option_description": "Select Individual Language for Language Scope Type."
+            },
+            {
+                "option_code": "MAC",
+                "option_label": "Macrolanguage",
+                "option_description": "Select Macrolanguage for Language Scope Type."
+            },
+            {
+                "option_code": "SPC",
+                "option_label": "Special Code",
+                "option_description": "Select Special Code for Language Scope Type."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom or Non-ISO Entry",
+                "option_description": "Select Custom or Non-ISO Entry for Language Scope Type."
+            }
+        ]
+    }
+]

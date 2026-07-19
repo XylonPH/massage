@@ -1,0 +1,505 @@
+[
+    {
+        "_id": 87,
+        "field_name": "type_trip_purpose",
+        "field_label": "Trip Purpose Type",
+        "field_description": "Reusable field template for Trip Purpose Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WRK",
+                "option_label": "Work",
+                "option_description": "Select Work for Trip Purpose Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Trip Purpose Type."
+            },
+            {
+                "option_code": "PER",
+                "option_label": "Personal",
+                "option_description": "Select Personal for Trip Purpose Type."
+            },
+            {
+                "option_code": "FAM",
+                "option_label": "Family",
+                "option_description": "Select Family for Trip Purpose Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medical",
+                "option_description": "Select Medical for Trip Purpose Type."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Shopping",
+                "option_description": "Select Shopping for Trip Purpose Type."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Errand",
+                "option_description": "Select Errand for Trip Purpose Type."
+            },
+            {
+                "option_code": "LEI",
+                "option_label": "Leisure",
+                "option_description": "Select Leisure for Trip Purpose Type."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Travel",
+                "option_description": "Select Travel for Trip Purpose Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Religious",
+                "option_description": "Select Religious for Trip Purpose Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Trip Purpose Type."
+            }
+        ]
+    },
+    {
+        "_id": 88,
+        "field_name": "type_route_segment",
+        "field_label": "Route Segment Type",
+        "field_description": "Reusable field template for Route Segment Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CMV",
+                "option_label": "Continuous Movement",
+                "option_description": "Select Continuous Movement for Route Segment Type."
+            },
+            {
+                "option_code": "STI",
+                "option_label": "Stationary Interval",
+                "option_description": "Select Stationary Interval for Route Segment Type."
+            },
+            {
+                "option_code": "GAP",
+                "option_label": "Recording Gap",
+                "option_description": "Select Recording Gap for Route Segment Type."
+            },
+            {
+                "option_code": "MDC",
+                "option_label": "Mode Change",
+                "option_description": "Select Mode Change for Route Segment Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manually Drawn",
+                "option_description": "Select Manually Drawn for Route Segment Type."
+            },
+            {
+                "option_code": "INF",
+                "option_label": "Inferred",
+                "option_description": "Select Inferred for Route Segment Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Imported",
+                "option_description": "Select Imported for Route Segment Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Provider Route",
+                "option_description": "Select Provider Route for Route Segment Type."
+            }
+        ]
+    },
+    {
+        "_id": 150,
+        "field_name": "type_transport_mode",
+        "field_label": "Transport Mode Type",
+        "field_description": "Reusable field template for Transport Mode Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WLK",
+                "option_label": "Walking",
+                "option_description": "Select Walking for Transport Mode Type."
+            },
+            {
+                "option_code": "BIK",
+                "option_label": "Cycling",
+                "option_description": "Select Cycling for Transport Mode Type."
+            },
+            {
+                "option_code": "MCV",
+                "option_label": "Motor Vehicle",
+                "option_description": "Select Motor Vehicle for Transport Mode Type."
+            },
+            {
+                "option_code": "RAL",
+                "option_label": "Rail",
+                "option_description": "Select Rail for Transport Mode Type."
+            },
+            {
+                "option_code": "WTR",
+                "option_label": "Water",
+                "option_description": "Select Water for Transport Mode Type."
+            },
+            {
+                "option_code": "AIR",
+                "option_label": "Air",
+                "option_description": "Select Air for Transport Mode Type."
+            },
+            {
+                "option_code": "ANM",
+                "option_label": "Animal-Powered",
+                "option_description": "Select Animal-Powered for Transport Mode Type."
+            },
+            {
+                "option_code": "MOB",
+                "option_label": "Mobility Device",
+                "option_description": "Select Mobility Device for Transport Mode Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Transport Mode Type."
+            }
+        ]
+    },
+    {
+        "_id": 151,
+        "field_name": "type_transport_service",
+        "field_label": "Transport Service Type",
+        "field_description": "Reusable field template for Transport Service Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SCD",
+                "option_label": "Scheduled Transit",
+                "option_description": "Select Scheduled Transit for Transport Service Type."
+            },
+            {
+                "option_code": "TAX",
+                "option_label": "Taxi",
+                "option_description": "Select Taxi for Transport Service Type."
+            },
+            {
+                "option_code": "RHL",
+                "option_label": "Ride-Hailing",
+                "option_description": "Select Ride-Hailing for Transport Service Type."
+            },
+            {
+                "option_code": "SHT",
+                "option_label": "Shuttle",
+                "option_description": "Select Shuttle for Transport Service Type."
+            },
+            {
+                "option_code": "CHT",
+                "option_label": "Charter",
+                "option_description": "Select Charter for Transport Service Type."
+            },
+            {
+                "option_code": "RNT",
+                "option_label": "Rental",
+                "option_description": "Select Rental for Transport Service Type."
+            },
+            {
+                "option_code": "SCL",
+                "option_label": "School Service",
+                "option_description": "Select School Service for Transport Service Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Company Service",
+                "option_description": "Select Company Service for Transport Service Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Transport Service Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Transport Service Type."
+            }
+        ]
+    },
+    {
+        "_id": 152,
+        "field_name": "type_vehicle",
+        "field_label": "Vehicle Type",
+        "field_description": "Reusable field template for Vehicle Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BIK",
+                "option_label": "Bicycle",
+                "option_description": "Select Bicycle for Vehicle Type."
+            },
+            {
+                "option_code": "MCY",
+                "option_label": "Motorcycle",
+                "option_description": "Select Motorcycle for Vehicle Type."
+            },
+            {
+                "option_code": "TRY",
+                "option_label": "Tricycle",
+                "option_description": "Select Tricycle for Vehicle Type."
+            },
+            {
+                "option_code": "PDC",
+                "option_label": "Pedicab",
+                "option_description": "Select Pedicab for Vehicle Type."
+            },
+            {
+                "option_code": "SED",
+                "option_label": "Sedan",
+                "option_description": "Select Sedan for Vehicle Type."
+            },
+            {
+                "option_code": "HAT",
+                "option_label": "Hatchback",
+                "option_description": "Select Hatchback for Vehicle Type."
+            },
+            {
+                "option_code": "SUV",
+                "option_label": "Sport Utility Vehicle",
+                "option_description": "Select Sport Utility Vehicle for Vehicle Type."
+            },
+            {
+                "option_code": "VAN",
+                "option_label": "Van",
+                "option_description": "Select Van for Vehicle Type."
+            },
+            {
+                "option_code": "JEP",
+                "option_label": "Jeepney",
+                "option_description": "Select Jeepney for Vehicle Type."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Bus",
+                "option_description": "Select Bus for Vehicle Type."
+            },
+            {
+                "option_code": "MNB",
+                "option_label": "Minibus",
+                "option_description": "Select Minibus for Vehicle Type."
+            },
+            {
+                "option_code": "TRN",
+                "option_label": "Train",
+                "option_description": "Select Train for Vehicle Type."
+            },
+            {
+                "option_code": "TRM",
+                "option_label": "Tram",
+                "option_description": "Select Tram for Vehicle Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subway",
+                "option_description": "Select Subway for Vehicle Type."
+            },
+            {
+                "option_code": "AIR",
+                "option_label": "Aircraft",
+                "option_description": "Select Aircraft for Vehicle Type."
+            },
+            {
+                "option_code": "HEL",
+                "option_label": "Helicopter",
+                "option_description": "Select Helicopter for Vehicle Type."
+            },
+            {
+                "option_code": "BOT",
+                "option_label": "Boat",
+                "option_description": "Select Boat for Vehicle Type."
+            },
+            {
+                "option_code": "FER",
+                "option_label": "Ferry",
+                "option_description": "Select Ferry for Vehicle Type."
+            },
+            {
+                "option_code": "SHP",
+                "option_label": "Ship",
+                "option_description": "Select Ship for Vehicle Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Vehicle Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Vehicle Type."
+            }
+        ]
+    },
+    {
+        "_id": 153,
+        "field_name": "type_trip_stop_role",
+        "field_label": "Trip Stop Role Type",
+        "field_description": "Reusable field template for Trip Stop Role Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ORG",
+                "option_label": "Origin",
+                "option_description": "Select Origin for Trip Stop Role Type."
+            },
+            {
+                "option_code": "DST",
+                "option_label": "Destination",
+                "option_description": "Select Destination for Trip Stop Role Type."
+            },
+            {
+                "option_code": "IST",
+                "option_label": "Intermediate Stop",
+                "option_description": "Select Intermediate Stop for Trip Stop Role Type."
+            },
+            {
+                "option_code": "TRF",
+                "option_label": "Transfer",
+                "option_description": "Select Transfer for Trip Stop Role Type."
+            },
+            {
+                "option_code": "STO",
+                "option_label": "Stopover",
+                "option_description": "Select Stopover for Trip Stop Role Type."
+            },
+            {
+                "option_code": "WPT",
+                "option_label": "Waypoint",
+                "option_description": "Select Waypoint for Trip Stop Role Type."
+            },
+            {
+                "option_code": "RTP",
+                "option_label": "Return Point",
+                "option_description": "Select Return Point for Trip Stop Role Type."
+            },
+            {
+                "option_code": "PUP",
+                "option_label": "Pickup Point",
+                "option_description": "Select Pickup Point for Trip Stop Role Type."
+            },
+            {
+                "option_code": "DRP",
+                "option_label": "Drop-Off Point",
+                "option_description": "Select Drop-Off Point for Trip Stop Role Type."
+            }
+        ]
+    },
+    {
+        "_id": 165,
+        "field_name": "type_transport_access",
+        "field_label": "Transport Access Type",
+        "field_description": "Reusable field template for Transport Access Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PVT",
+                "option_label": "Private",
+                "option_description": "Select Private for Transport Access Type."
+            },
+            {
+                "option_code": "PUB",
+                "option_label": "Public",
+                "option_description": "Select Public for Transport Access Type."
+            },
+            {
+                "option_code": "SHR",
+                "option_label": "Shared",
+                "option_description": "Select Shared for Transport Access Type."
+            },
+            {
+                "option_code": "HIR",
+                "option_label": "Commercial Hire",
+                "option_description": "Select Commercial Hire for Transport Access Type."
+            },
+            {
+                "option_code": "ORG",
+                "option_label": "Organization-Provided",
+                "option_description": "Select Organization-Provided for Transport Access Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Transport Access Type."
+            }
+        ]
+    },
+    {
+        "_id": 166,
+        "field_name": "type_transport_person_role",
+        "field_label": "Transportation Personnel Role Type",
+        "field_description": "Reusable field template for Transportation Personnel Role Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DRV",
+                "option_label": "Driver",
+                "option_description": "Select Driver for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Conductor",
+                "option_description": "Select Conductor for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "CRW",
+                "option_label": "Crew",
+                "option_description": "Select Crew for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "OPR",
+                "option_label": "Operator",
+                "option_description": "Select Operator for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "DSP",
+                "option_label": "Dispatcher",
+                "option_description": "Select Dispatcher for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "GDE",
+                "option_label": "Guide",
+                "option_description": "Select Guide for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "ATT",
+                "option_label": "Attendant",
+                "option_description": "Select Attendant for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Transportation Personnel Role Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Transportation Personnel Role Type."
+            }
+        ]
+    }
+]

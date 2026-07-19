@@ -1,0 +1,1106 @@
+[
+    {
+        "_id": 54,
+        "field_name": "type_location",
+        "field_label": "Location Type",
+        "field_description": "Reusable field template for Location Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AR",
+                "option_label": "Autonomous Republic",
+                "option_description": "Select Autonomous Republic for Location Type."
+            },
+            {
+                "option_code": "BNR",
+                "option_label": "Banner",
+                "option_description": "Select Banner for Location Type."
+            },
+            {
+                "option_code": "BLO",
+                "option_label": "Block",
+                "option_description": "Select Block for Location Type."
+            },
+            {
+                "option_code": "BOR",
+                "option_label": "Borough",
+                "option_description": "Select Borough for Location Type."
+            },
+            {
+                "option_code": "CHI",
+                "option_label": "Chiefdom",
+                "option_description": "Select Chiefdom for Location Type."
+            },
+            {
+                "option_code": "CIR",
+                "option_label": "Circle",
+                "option_description": "Select Circle for Location Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "City",
+                "option_description": "Select City for Location Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Commune",
+                "option_description": "Select Commune for Location Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Constituency",
+                "option_description": "Select Constituency for Location Type."
+            },
+            {
+                "option_code": "CEN",
+                "option_label": "Continent",
+                "option_description": "Select Continent for Location Type."
+            },
+            {
+                "option_code": "CTR",
+                "option_label": "Country",
+                "option_description": "Select Country for Location Type."
+            },
+            {
+                "option_code": "CNT",
+                "option_label": "County",
+                "option_description": "Select County for Location Type."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Department",
+                "option_description": "Select Department for Location Type."
+            },
+            {
+                "option_code": "DIM",
+                "option_label": "Dimension",
+                "option_description": "Select Dimension for Location Type."
+            },
+            {
+                "option_code": "DST",
+                "option_label": "District",
+                "option_description": "Select District for Location Type."
+            },
+            {
+                "option_code": "DPO",
+                "option_label": "District Public Office",
+                "option_description": "Select District Public Office for Location Type."
+            },
+            {
+                "option_code": "DIV",
+                "option_label": "Division",
+                "option_description": "Select Division for Location Type."
+            },
+            {
+                "option_code": "EMI",
+                "option_label": "Emirate",
+                "option_description": "Select Emirate for Location Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Governorate",
+                "option_description": "Select Governorate for Location Type."
+            },
+            {
+                "option_code": "ISL",
+                "option_label": "Island",
+                "option_description": "Select Island for Location Type."
+            },
+            {
+                "option_code": "IG",
+                "option_label": "Island Group",
+                "option_description": "Select Island Group for Location Type."
+            },
+            {
+                "option_code": "LEA",
+                "option_label": "League",
+                "option_description": "Select League for Location Type."
+            },
+            {
+                "option_code": "LGA",
+                "option_label": "Local Government Area",
+                "option_description": "Select Local Government Area for Location Type."
+            },
+            {
+                "option_code": "MUN",
+                "option_label": "Municipality",
+                "option_description": "Select Municipality for Location Type."
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Natural Region",
+                "option_description": "Select Natural Region for Location Type."
+            },
+            {
+                "option_code": "NBR",
+                "option_label": "Neighborhood",
+                "option_description": "Select Neighborhood for Location Type."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Parish",
+                "option_description": "Select Parish for Location Type."
+            },
+            {
+                "option_code": "PLA",
+                "option_label": "Planet",
+                "option_description": "Select Planet for Location Type."
+            },
+            {
+                "option_code": "PFC",
+                "option_label": "Prefecture",
+                "option_description": "Select Prefecture for Location Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Province",
+                "option_description": "Select Province for Location Type."
+            },
+            {
+                "option_code": "QUA",
+                "option_label": "Quarter",
+                "option_description": "Select Quarter for Location Type."
+            },
+            {
+                "option_code": "REY",
+                "option_label": "Regency",
+                "option_description": "Select Regency for Location Type."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Region",
+                "option_description": "Select Region for Location Type."
+            },
+            {
+                "option_code": "REP",
+                "option_label": "Republic",
+                "option_description": "Select Republic for Location Type."
+            },
+            {
+                "option_code": "SEC",
+                "option_label": "Section",
+                "option_description": "Select Section for Location Type."
+            },
+            {
+                "option_code": "SER",
+                "option_label": "Sector",
+                "option_description": "Select Sector for Location Type."
+            },
+            {
+                "option_code": "SET",
+                "option_label": "Settlement",
+                "option_description": "Select Settlement for Location Type."
+            },
+            {
+                "option_code": "SHE",
+                "option_label": "Sheading",
+                "option_description": "Select Sheading for Location Type."
+            },
+            {
+                "option_code": "SB",
+                "option_label": "Small Borough",
+                "option_description": "Select Small Borough for Location Type."
+            },
+            {
+                "option_code": "STA",
+                "option_label": "State",
+                "option_description": "Select State for Location Type."
+            },
+            {
+                "option_code": "SD",
+                "option_label": "Sub-District",
+                "option_description": "Select Sub-District for Location Type."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Sub-Prefecture",
+                "option_description": "Select Sub-Prefecture for Location Type."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Territory",
+                "option_description": "Select Territory for Location Type."
+            },
+            {
+                "option_code": "TOW",
+                "option_label": "Town",
+                "option_description": "Select Town for Location Type."
+            },
+            {
+                "option_code": "TOP",
+                "option_label": "Township",
+                "option_description": "Select Township for Location Type."
+            },
+            {
+                "option_code": "UNI",
+                "option_label": "Universe",
+                "option_description": "Select Universe for Location Type."
+            },
+            {
+                "option_code": "VIL",
+                "option_label": "Village",
+                "option_description": "Select Village for Location Type."
+            },
+            {
+                "option_code": "VG",
+                "option_label": "Village Group",
+                "option_description": "Select Village Group for Location Type."
+            },
+            {
+                "option_code": "WRD",
+                "option_label": "Ward",
+                "option_description": "Select Ward for Location Type."
+            },
+            {
+                "option_code": "ZON",
+                "option_label": "Zone",
+                "option_description": "Select Zone for Location Type."
+            },
+            {
+                "option_code": "ADR",
+                "option_label": "Address",
+                "option_description": "Select Address for Location Type."
+            },
+            {
+                "option_code": "BLD",
+                "option_label": "Building",
+                "option_description": "Select Building for Location Type."
+            },
+            {
+                "option_code": "FLR",
+                "option_label": "Floor",
+                "option_description": "Select Floor for Location Type."
+            },
+            {
+                "option_code": "ROM",
+                "option_label": "Room",
+                "option_description": "Select Room for Location Type."
+            },
+            {
+                "option_code": "BRG",
+                "option_label": "Barangay",
+                "option_description": "Select Barangay for Location Type."
+            },
+            {
+                "option_code": "ST",
+                "option_label": "Street",
+                "option_description": "Select Street for Location Type."
+            },
+            {
+                "option_code": "RD",
+                "option_label": "Road",
+                "option_description": "Select Road for Location Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subdivision",
+                "option_description": "Select Subdivision for Location Type."
+            },
+            {
+                "option_code": "SIT",
+                "option_label": "Sitio",
+                "option_description": "Select Sitio for Location Type."
+            },
+            {
+                "option_code": "PRK",
+                "option_label": "Purok",
+                "option_description": "Select Purok for Location Type."
+            },
+            {
+                "option_code": "HAM",
+                "option_label": "Hamlet",
+                "option_description": "Select Hamlet for Location Type."
+            },
+            {
+                "option_code": "MTA",
+                "option_label": "Metro Area",
+                "option_description": "Select Metro Area for Location Type."
+            },
+            {
+                "option_code": "SAR",
+                "option_label": "Special Administrative Region",
+                "option_description": "Select Special Administrative Region for Location Type."
+            }
+        ]
+    },
+    {
+        "_id": 55,
+        "field_name": "type_region",
+        "field_label": "Region Type",
+        "field_description": "Reusable field template for Region Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ADM",
+                "option_label": "Administrative Region",
+                "option_description": "Select Administrative Region for Region Type."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Autonomous Region",
+                "option_description": "Select Autonomous Region for Region Type."
+            },
+            {
+                "option_code": "CAP",
+                "option_label": "Capital Region",
+                "option_description": "Select Capital Region for Region Type."
+            },
+            {
+                "option_code": "OVR",
+                "option_label": "Overseas Region",
+                "option_description": "Select Overseas Region for Region Type."
+            },
+            {
+                "option_code": "RST",
+                "option_label": "Regional State",
+                "option_description": "Select Regional State for Region Type."
+            },
+            {
+                "option_code": "PLN",
+                "option_label": "Planning Region",
+                "option_description": "Select Planning Region for Region Type."
+            },
+            {
+                "option_code": "GRP",
+                "option_label": "Region Grouping",
+                "option_description": "Select Region Grouping for Region Type."
+            },
+            {
+                "option_code": "SAR",
+                "option_label": "Special Administrative Region",
+                "option_description": "Select Special Administrative Region for Region Type."
+            }
+        ]
+    },
+    {
+        "_id": 146,
+        "field_name": "type_street",
+        "field_label": "Street or Thoroughfare Type",
+        "field_description": "Reusable field template for Street or Thoroughfare Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ST",
+                "option_label": "Street",
+                "option_description": "Select Street for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "RD",
+                "option_label": "Road",
+                "option_description": "Select Road for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "AVE",
+                "option_label": "Avenue",
+                "option_description": "Select Avenue for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "BLV",
+                "option_label": "Boulevard",
+                "option_description": "Select Boulevard for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "HWY",
+                "option_label": "Highway",
+                "option_description": "Select Highway for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Expressway",
+                "option_description": "Select Expressway for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "LN",
+                "option_label": "Lane",
+                "option_description": "Select Lane for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "ALY",
+                "option_label": "Alley",
+                "option_description": "Select Alley for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "DR",
+                "option_label": "Drive",
+                "option_description": "Select Drive for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "WAY",
+                "option_label": "Way",
+                "option_description": "Select Way for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "SRD",
+                "option_label": "Service Road",
+                "option_description": "Select Service Road for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "PKW",
+                "option_label": "Parkway",
+                "option_description": "Select Parkway for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "Court",
+                "option_description": "Select Court for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "CIR",
+                "option_label": "Circle",
+                "option_description": "Select Circle for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Terrace",
+                "option_description": "Select Terrace for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "CRS",
+                "option_label": "Crescent",
+                "option_description": "Select Crescent for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "PTH",
+                "option_label": "Path",
+                "option_description": "Select Path for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "TRL",
+                "option_label": "Trail",
+                "option_description": "Select Trail for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "CSW",
+                "option_label": "Causeway",
+                "option_description": "Select Causeway for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "ESP",
+                "option_label": "Esplanade",
+                "option_description": "Select Esplanade for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Street or Thoroughfare Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Street or Thoroughfare Type."
+            }
+        ]
+    },
+    {
+        "_id": 154,
+        "field_name": "type_area",
+        "field_label": "Geographic Area Type",
+        "field_description": "Reusable field template for Geographic Area Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CTY",
+                "option_label": "Country",
+                "option_description": "Select Country for Geographic Area Type."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Territory",
+                "option_description": "Select Territory for Geographic Area Type."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Region",
+                "option_description": "Select Region for Geographic Area Type."
+            },
+            {
+                "option_code": "STA",
+                "option_label": "State",
+                "option_description": "Select State for Geographic Area Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Province",
+                "option_description": "Select Province for Geographic Area Type."
+            },
+            {
+                "option_code": "CNT",
+                "option_label": "County",
+                "option_description": "Select County for Geographic Area Type."
+            },
+            {
+                "option_code": "PFC",
+                "option_label": "Prefecture",
+                "option_description": "Select Prefecture for Geographic Area Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "City",
+                "option_description": "Select City for Geographic Area Type."
+            },
+            {
+                "option_code": "MUN",
+                "option_label": "Municipality",
+                "option_description": "Select Municipality for Geographic Area Type."
+            },
+            {
+                "option_code": "DST",
+                "option_label": "District",
+                "option_description": "Select District for Geographic Area Type."
+            },
+            {
+                "option_code": "BRG",
+                "option_label": "Barangay",
+                "option_description": "Select Barangay for Geographic Area Type."
+            },
+            {
+                "option_code": "WRD",
+                "option_label": "Ward",
+                "option_description": "Select Ward for Geographic Area Type."
+            },
+            {
+                "option_code": "VIL",
+                "option_label": "Village",
+                "option_description": "Select Village for Geographic Area Type."
+            },
+            {
+                "option_code": "NBR",
+                "option_label": "Neighborhood",
+                "option_description": "Select Neighborhood for Geographic Area Type."
+            },
+            {
+                "option_code": "ISL",
+                "option_label": "Island",
+                "option_description": "Select Island for Geographic Area Type."
+            },
+            {
+                "option_code": "MTA",
+                "option_label": "Metro Area",
+                "option_description": "Select Metro Area for Geographic Area Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subdivision",
+                "option_description": "Select Subdivision for Geographic Area Type."
+            },
+            {
+                "option_code": "SIT",
+                "option_label": "Sitio",
+                "option_description": "Select Sitio for Geographic Area Type."
+            },
+            {
+                "option_code": "PRK",
+                "option_label": "Purok",
+                "option_description": "Select Purok for Geographic Area Type."
+            },
+            {
+                "option_code": "HAM",
+                "option_label": "Hamlet",
+                "option_description": "Select Hamlet for Geographic Area Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Geographic Area Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Geographic Area Type."
+            }
+        ]
+    },
+    {
+        "_id": 169,
+        "field_name": "type_boundary_semantics",
+        "field_label": "Boundary Semantics Type",
+        "field_description": "Reusable field template for Boundary Semantics Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ACT",
+                "option_label": "Actual Boundary",
+                "option_description": "Select Actual Boundary for Boundary Semantics Type."
+            },
+            {
+                "option_code": "APP",
+                "option_label": "Approximate Extent",
+                "option_description": "Select Approximate Extent for Boundary Semantics Type."
+            },
+            {
+                "option_code": "DET",
+                "option_label": "Detection Boundary",
+                "option_description": "Select Detection Boundary for Boundary Semantics Type."
+            },
+            {
+                "option_code": "VPT",
+                "option_label": "Viewport",
+                "option_description": "Select Viewport for Boundary Semantics Type."
+            },
+            {
+                "option_code": "BOX",
+                "option_label": "Bounding Box",
+                "option_description": "Select Bounding Box for Boundary Semantics Type."
+            },
+            {
+                "option_code": "HUL",
+                "option_label": "Suggested Hull",
+                "option_description": "Select Suggested Hull for Boundary Semantics Type."
+            },
+            {
+                "option_code": "PCV",
+                "option_label": "Provider Coverage",
+                "option_description": "Select Provider Coverage for Boundary Semantics Type."
+            }
+        ]
+    },
+    {
+        "_id": 170,
+        "field_name": "type_boundary_method",
+        "field_label": "Boundary Creation Method Type",
+        "field_description": "Reusable field template for Boundary Creation Method Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "RAD",
+                "option_label": "Center and Radius",
+                "option_description": "Select Center and Radius for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "DRW",
+                "option_label": "Drawn Polygon",
+                "option_description": "Select Drawn Polygon for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "PTS",
+                "option_label": "Recorded Points",
+                "option_description": "Select Recorded Points for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "PER",
+                "option_label": "Recorded Perimeter",
+                "option_description": "Select Recorded Perimeter for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Imported Geometry",
+                "option_description": "Select Imported Geometry for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "CLU",
+                "option_label": "Learned Cluster",
+                "option_description": "Select Learned Cluster for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "HUL",
+                "option_label": "Suggested Hull",
+                "option_description": "Select Suggested Hull for Boundary Creation Method Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Provider Geometry",
+                "option_description": "Select Provider Geometry for Boundary Creation Method Type."
+            }
+        ]
+    },
+    {
+        "_id": 171,
+        "field_name": "type_geocode_method",
+        "field_label": "Geocode Method Type",
+        "field_description": "Reusable field template for Geocode Method Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GPS",
+                "option_label": "GPS Observation",
+                "option_description": "Select GPS Observation for Geocode Method Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manual Placement",
+                "option_description": "Select Manual Placement for Geocode Method Type."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Automatic Geocoding",
+                "option_description": "Select Automatic Geocoding for Geocode Method Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Imported Coordinates",
+                "option_description": "Select Imported Coordinates for Geocode Method Type."
+            },
+            {
+                "option_code": "OFF",
+                "option_label": "Official Dataset",
+                "option_description": "Select Official Dataset for Geocode Method Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "External Provider",
+                "option_description": "Select External Provider for Geocode Method Type."
+            }
+        ]
+    },
+    {
+        "_id": 174,
+        "field_name": "type_reality_status",
+        "field_label": "Reality Status Type",
+        "field_description": "Reusable field template for Reality Status Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "REA",
+                "option_label": "Real",
+                "option_description": "Select Real for Reality Status Type."
+            },
+            {
+                "option_code": "DIS",
+                "option_label": "Disputed",
+                "option_description": "Select Disputed for Reality Status Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical",
+                "option_description": "Select Historical for Reality Status Type."
+            },
+            {
+                "option_code": "LEG",
+                "option_label": "Legendary",
+                "option_description": "Select Legendary for Reality Status Type."
+            },
+            {
+                "option_code": "MYT",
+                "option_label": "Mythological",
+                "option_description": "Select Mythological for Reality Status Type."
+            },
+            {
+                "option_code": "FIC",
+                "option_label": "Fictional",
+                "option_description": "Select Fictional for Reality Status Type."
+            },
+            {
+                "option_code": "HYP",
+                "option_label": "Hypothetical",
+                "option_description": "Select Hypothetical for Reality Status Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Reality Status Type."
+            }
+        ]
+    },
+    {
+        "_id": 175,
+        "field_name": "type_territory_status",
+        "field_label": "Territory Status Type",
+        "field_description": "Reusable field template for Territory Status Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SOV",
+                "option_label": "Sovereign State",
+                "option_description": "Select Sovereign State for Territory Status Type."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Dependency",
+                "option_description": "Select Dependency for Territory Status Type."
+            },
+            {
+                "option_code": "SPT",
+                "option_label": "Special Territory",
+                "option_description": "Select Special Territory for Territory Status Type."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Autonomous Territory",
+                "option_description": "Select Autonomous Territory for Territory Status Type."
+            },
+            {
+                "option_code": "DIS",
+                "option_label": "Disputed Territory",
+                "option_description": "Select Disputed Territory for Territory Status Type."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Partially Recognized",
+                "option_description": "Select Partially Recognized for Territory Status Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical Territory",
+                "option_description": "Select Historical Territory for Territory Status Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Territory Status Type."
+            }
+        ]
+    },
+    {
+        "_id": 176,
+        "field_name": "type_government",
+        "field_label": "Government Type",
+        "field_description": "Reusable field template for Government Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PRS",
+                "option_label": "Presidential Republic",
+                "option_description": "Select Presidential Republic for Government Type."
+            },
+            {
+                "option_code": "PAR",
+                "option_label": "Parliamentary Republic",
+                "option_description": "Select Parliamentary Republic for Government Type."
+            },
+            {
+                "option_code": "SPR",
+                "option_label": "Semi-Presidential Republic",
+                "option_description": "Select Semi-Presidential Republic for Government Type."
+            },
+            {
+                "option_code": "CMO",
+                "option_label": "Constitutional Monarchy",
+                "option_description": "Select Constitutional Monarchy for Government Type."
+            },
+            {
+                "option_code": "AMO",
+                "option_label": "Absolute Monarchy",
+                "option_description": "Select Absolute Monarchy for Government Type."
+            },
+            {
+                "option_code": "ONE",
+                "option_label": "One-Party State",
+                "option_description": "Select One-Party State for Government Type."
+            },
+            {
+                "option_code": "MIL",
+                "option_label": "Military Government",
+                "option_description": "Select Military Government for Government Type."
+            },
+            {
+                "option_code": "THE",
+                "option_label": "Theocracy",
+                "option_description": "Select Theocracy for Government Type."
+            },
+            {
+                "option_code": "TRN",
+                "option_label": "Transitional Government",
+                "option_description": "Select Transitional Government for Government Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Government Type."
+            }
+        ]
+    },
+    {
+        "_id": 177,
+        "field_name": "type_state_structure",
+        "field_label": "State Structure Type",
+        "field_description": "Reusable field template for State Structure Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "UNI",
+                "option_label": "Unitary",
+                "option_description": "Select Unitary for State Structure Type."
+            },
+            {
+                "option_code": "FED",
+                "option_label": "Federal",
+                "option_description": "Select Federal for State Structure Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Confederation",
+                "option_description": "Select Confederation for State Structure Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for State Structure Type."
+            }
+        ]
+    },
+    {
+        "_id": 178,
+        "field_name": "type_legislature_structure",
+        "field_label": "Legislature Structure Type",
+        "field_description": "Reusable field template for Legislature Structure Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "UNI",
+                "option_label": "Unicameral",
+                "option_description": "Select Unicameral for Legislature Structure Type."
+            },
+            {
+                "option_code": "BIC",
+                "option_label": "Bicameral",
+                "option_description": "Select Bicameral for Legislature Structure Type."
+            },
+            {
+                "option_code": "TRI",
+                "option_label": "Tricameral",
+                "option_description": "Select Tricameral for Legislature Structure Type."
+            },
+            {
+                "option_code": "MUL",
+                "option_label": "Multicameral",
+                "option_description": "Select Multicameral for Legislature Structure Type."
+            },
+            {
+                "option_code": "NON",
+                "option_label": "No Legislature",
+                "option_description": "Select No Legislature for Legislature Structure Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Legislature Structure Type."
+            }
+        ]
+    },
+    {
+        "_id": 179,
+        "field_name": "type_capital",
+        "field_label": "Capital Type",
+        "field_description": "Reusable field template for Capital Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NAT",
+                "option_label": "National Capital",
+                "option_description": "Select National Capital for Capital Type."
+            },
+            {
+                "option_code": "ADM",
+                "option_label": "Administrative Capital",
+                "option_description": "Select Administrative Capital for Capital Type."
+            },
+            {
+                "option_code": "EXE",
+                "option_label": "Executive Capital",
+                "option_description": "Select Executive Capital for Capital Type."
+            },
+            {
+                "option_code": "LEG",
+                "option_label": "Legislative Capital",
+                "option_description": "Select Legislative Capital for Capital Type."
+            },
+            {
+                "option_code": "JUD",
+                "option_label": "Judicial Capital",
+                "option_description": "Select Judicial Capital for Capital Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Constitutional Capital",
+                "option_description": "Select Constitutional Capital for Capital Type."
+            },
+            {
+                "option_code": "DFC",
+                "option_label": "De Facto Capital",
+                "option_description": "Select De Facto Capital for Capital Type."
+            },
+            {
+                "option_code": "HIS",
+                "option_label": "Historical Capital",
+                "option_description": "Select Historical Capital for Capital Type."
+            }
+        ]
+    },
+    {
+        "_id": 182,
+        "field_name": "status_recognition",
+        "field_label": "Recognition Status",
+        "field_description": "Reusable field template for recognition status values in registry, standard, and similar recognition contexts.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "REC",
+                "option_label": "Recognized",
+                "option_description": "Select Recognized for Recognition Status."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Provisionally Recognized",
+                "option_description": "Select Provisionally Recognized for Recognition Status."
+            },
+            {
+                "option_code": "CND",
+                "option_label": "Candidate",
+                "option_description": "Select Candidate for Recognition Status."
+            },
+            {
+                "option_code": "FND",
+                "option_label": "Foundation",
+                "option_description": "Select Foundation for Recognition Status."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "In Development",
+                "option_description": "Select In Development for Recognition Status."
+            },
+            {
+                "option_code": "UNR",
+                "option_label": "Unrecognized",
+                "option_description": "Select Unrecognized for Recognition Status."
+            },
+            {
+                "option_code": "WDN",
+                "option_label": "Withdrawn",
+                "option_description": "Select Withdrawn for Recognition Status."
+            },
+            {
+                "option_code": "RET",
+                "option_label": "Retired",
+                "option_description": "Select Retired for Recognition Status."
+            },
+            {
+                "option_code": "DIS",
+                "option_label": "Disputed",
+                "option_description": "Select Disputed for Recognition Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Recognition Status."
+            }
+        ]
+    }
+]

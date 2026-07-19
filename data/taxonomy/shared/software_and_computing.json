@@ -1,0 +1,380 @@
+[
+    {
+        "_id": 81,
+        "field_name": "status_account",
+        "field_label": "Account Status",
+        "field_description": "Reusable field template for Account Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PND",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Account Status."
+            },
+            {
+                "option_code": "ACT",
+                "option_label": "Active",
+                "option_description": "Select Active for Account Status."
+            },
+            {
+                "option_code": "INA",
+                "option_label": "Inactive",
+                "option_description": "Select Inactive for Account Status."
+            },
+            {
+                "option_code": "SUS",
+                "option_label": "Suspended",
+                "option_description": "Select Suspended for Account Status."
+            },
+            {
+                "option_code": "BAN",
+                "option_label": "Banned",
+                "option_description": "Select Banned for Account Status."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Deleted",
+                "option_description": "Select Deleted for Account Status."
+            },
+            {
+                "option_code": "TST",
+                "option_label": "Test Account",
+                "option_description": "Select Test Account for Account Status."
+            }
+        ]
+    },
+    {
+        "_id": 101,
+        "field_name": "type_software",
+        "field_label": "Software Type",
+        "field_description": "Reusable field template for Software Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DES",
+                "option_label": "Desktop",
+                "option_description": "Select Desktop for Software Type."
+            },
+            {
+                "option_code": "WEB",
+                "option_label": "Web",
+                "option_description": "Select Web for Software Type."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Mobile",
+                "option_description": "Select Mobile for Software Type."
+            },
+            {
+                "option_code": "CLI",
+                "option_label": "CLI",
+                "option_description": "Select CLI for Software Type."
+            },
+            {
+                "option_code": "LIB",
+                "option_label": "Library",
+                "option_description": "Select Library for Software Type."
+            },
+            {
+                "option_code": "PLU",
+                "option_label": "Plugin",
+                "option_description": "Select Plugin for Software Type."
+            },
+            {
+                "option_code": "SER",
+                "option_label": "Service",
+                "option_description": "Select Service for Software Type."
+            },
+            {
+                "option_code": "GAM",
+                "option_label": "Game",
+                "option_description": "Select Game for Software Type."
+            },
+            {
+                "option_code": "UTI",
+                "option_label": "Utility",
+                "option_description": "Select Utility for Software Type."
+            }
+        ]
+    },
+    {
+        "_id": 102,
+        "field_name": "type_license",
+        "field_label": "License Type",
+        "field_description": "Reusable field template for License Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FRE",
+                "option_label": "Free",
+                "option_description": "Select Free for License Type."
+            },
+            {
+                "option_code": "PAI",
+                "option_label": "Paid",
+                "option_description": "Select Paid for License Type."
+            },
+            {
+                "option_code": "OS",
+                "option_label": "Open Source",
+                "option_description": "Select Open Source for License Type."
+            },
+            {
+                "option_code": "TRI",
+                "option_label": "Trial",
+                "option_description": "Select Trial for License Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subscription",
+                "option_description": "Select Subscription for License Type."
+            },
+            {
+                "option_code": "FRM",
+                "option_label": "Freemium",
+                "option_description": "Select Freemium for License Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Proprietary",
+                "option_description": "Select Proprietary for License Type."
+            },
+            {
+                "option_code": "PD",
+                "option_label": "Public Domain",
+                "option_description": "Select Public Domain for License Type."
+            }
+        ]
+    },
+    {
+        "_id": 103,
+        "field_name": "status_installation",
+        "field_label": "Installation Status",
+        "field_description": "Reusable field template for Installation Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "INS",
+                "option_label": "Installed",
+                "option_description": "Select Installed for Installation Status."
+            },
+            {
+                "option_code": "POR",
+                "option_label": "Portable",
+                "option_description": "Select Portable for Installation Status."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Removed",
+                "option_description": "Select Removed for Installation Status."
+            },
+            {
+                "option_code": "BRO",
+                "option_label": "Broken",
+                "option_description": "Select Broken for Installation Status."
+            },
+            {
+                "option_code": "PI",
+                "option_label": "Pending Install",
+                "option_description": "Select Pending Install for Installation Status."
+            },
+            {
+                "option_code": "UR",
+                "option_label": "Update Required",
+                "option_description": "Select Update Required for Installation Status."
+            }
+        ]
+    },
+    {
+        "_id": 104,
+        "field_name": "type_platform",
+        "field_label": "Platform Type",
+        "field_description": "Reusable field template for Platform Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WIN",
+                "option_label": "Windows",
+                "option_description": "Select Windows for Platform Type."
+            },
+            {
+                "option_code": "LIN",
+                "option_label": "Linux",
+                "option_description": "Select Linux for Platform Type."
+            },
+            {
+                "option_code": "MAC",
+                "option_label": "macOS",
+                "option_description": "Select macOS for Platform Type."
+            },
+            {
+                "option_code": "ROI",
+                "option_label": "Android",
+                "option_description": "Select Android for Platform Type."
+            },
+            {
+                "option_code": "IOS",
+                "option_label": "iOS",
+                "option_description": "Select iOS for Platform Type."
+            },
+            {
+                "option_code": "WEB",
+                "option_label": "Web",
+                "option_description": "Select Web for Platform Type."
+            },
+            {
+                "option_code": "CP",
+                "option_label": "Cross-Platform",
+                "option_description": "Select Cross-Platform for Platform Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Platform Type."
+            }
+        ]
+    },
+    {
+        "_id": 105,
+        "field_name": "type_software_role",
+        "field_label": "Software Role Type",
+        "field_description": "Reusable field template for Software Role Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EDT",
+                "option_label": "Editor",
+                "option_description": "Select Editor for Software Role Type."
+            },
+            {
+                "option_code": "VIE",
+                "option_label": "Viewer",
+                "option_description": "Select Viewer for Software Role Type."
+            },
+            {
+                "option_code": "UTI",
+                "option_label": "Utility",
+                "option_description": "Select Utility for Software Role Type."
+            },
+            {
+                "option_code": "DB",
+                "option_label": "Database",
+                "option_description": "Select Database for Software Role Type."
+            },
+            {
+                "option_code": "IDE",
+                "option_label": "IDE",
+                "option_description": "Select IDE for Software Role Type."
+            },
+            {
+                "option_code": "BRO",
+                "option_label": "Browser",
+                "option_description": "Select Browser for Software Role Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Communication",
+                "option_description": "Select Communication for Software Role Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Media",
+                "option_description": "Select Media for Software Role Type."
+            },
+            {
+                "option_code": "SEC",
+                "option_label": "Security",
+                "option_description": "Select Security for Software Role Type."
+            }
+        ]
+    },
+    {
+        "_id": 106,
+        "field_name": "status_update",
+        "field_label": "Update Status",
+        "field_description": "Reusable field template for Update Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CUR",
+                "option_label": "Current",
+                "option_description": "Select Current for Update Status."
+            },
+            {
+                "option_code": "OUT",
+                "option_label": "Outdated",
+                "option_description": "Select Outdated for Update Status."
+            },
+            {
+                "option_code": "UNS",
+                "option_label": "Unsupported",
+                "option_description": "Select Unsupported for Update Status."
+            },
+            {
+                "option_code": "BET",
+                "option_label": "Beta",
+                "option_description": "Select Beta for Update Status."
+            },
+            {
+                "option_code": "UA",
+                "option_label": "Update Available",
+                "option_description": "Select Update Available for Update Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Update Status."
+            }
+        ]
+    },
+    {
+        "_id": 107,
+        "field_name": "type_account_requirement",
+        "field_label": "Account Requirement Type",
+        "field_description": "Reusable field template for Account Requirement Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NA",
+                "option_label": "No Account",
+                "option_description": "Select No Account for Account Requirement Type."
+            },
+            {
+                "option_code": "OA",
+                "option_label": "Optional Account",
+                "option_description": "Select Optional Account for Account Requirement Type."
+            },
+            {
+                "option_code": "RA",
+                "option_label": "Required Account",
+                "option_description": "Select Required Account for Account Requirement Type."
+            },
+            {
+                "option_code": "PA",
+                "option_label": "Paid Account",
+                "option_description": "Select Paid Account for Account Requirement Type."
+            },
+            {
+                "option_code": "EA",
+                "option_label": "Enterprise Account",
+                "option_description": "Select Enterprise Account for Account Requirement Type."
+            }
+        ]
+    }
+]

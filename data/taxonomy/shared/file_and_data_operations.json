@@ -1,0 +1,608 @@
+[
+    {
+        "_id": 14,
+        "field_name": "status_file",
+        "field_label": "File Status",
+        "field_description": "Reusable field template for File Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "A",
+                "option_label": "Active",
+                "option_description": "Select Active for File Status."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Corrupt",
+                "option_description": "Select Corrupt for File Status."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Moved",
+                "option_description": "Select Moved for File Status."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Deleted",
+                "option_description": "Select Deleted for File Status."
+            },
+            {
+                "option_code": "MIS",
+                "option_label": "Missing",
+                "option_description": "Select Missing for File Status."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archived",
+                "option_description": "Select Archived for File Status."
+            },
+            {
+                "option_code": "REN",
+                "option_label": "Renamed",
+                "option_description": "Select Renamed for File Status."
+            },
+            {
+                "option_code": "REP",
+                "option_label": "Replaced",
+                "option_description": "Select Replaced for File Status."
+            },
+            {
+                "option_code": "DUP",
+                "option_label": "Duplicate",
+                "option_description": "Select Duplicate for File Status."
+            },
+            {
+                "option_code": "QUA",
+                "option_label": "Quarantined",
+                "option_description": "Select Quarantined for File Status."
+            }
+        ]
+    },
+    {
+        "_id": 15,
+        "field_name": "status_import",
+        "field_label": "Import Status",
+        "field_description": "Reusable field template for Import Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PND",
+                "option_label": "Pending Import",
+                "option_description": "Select Pending Import for Import Status."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Imported",
+                "option_description": "Select Imported for Import Status."
+            },
+            {
+                "option_code": "SKP",
+                "option_label": "Skipped",
+                "option_description": "Select Skipped for Import Status."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Import Error",
+                "option_description": "Select Import Error for Import Status."
+            },
+            {
+                "option_code": "DUP",
+                "option_label": "Duplicate Found",
+                "option_description": "Select Duplicate Found for Import Status."
+            },
+            {
+                "option_code": "MAP",
+                "option_label": "Mapped",
+                "option_description": "Select Mapped for Import Status."
+            },
+            {
+                "option_code": "REV",
+                "option_label": "Needs Review",
+                "option_description": "Select Needs Review for Import Status."
+            }
+        ]
+    },
+    {
+        "_id": 16,
+        "field_name": "status_link",
+        "field_label": "Link Status",
+        "field_description": "Reusable field template for Link Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AC",
+                "option_label": "Active",
+                "option_description": "Select Active for Link Status."
+            },
+            {
+                "option_code": "MR",
+                "option_label": "Membership Required",
+                "option_description": "Select Membership Required for Link Status."
+            },
+            {
+                "option_code": "LG",
+                "option_label": "Login Required",
+                "option_description": "Select Login Required for Link Status."
+            },
+            {
+                "option_code": "AO",
+                "option_label": "Administrators Only",
+                "option_description": "Select Administrators Only for Link Status."
+            },
+            {
+                "option_code": "EO",
+                "option_label": "Editors Only",
+                "option_description": "Select Editors Only for Link Status."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Registered Users Only",
+                "option_description": "Select Registered Users Only for Link Status."
+            },
+            {
+                "option_code": "PR",
+                "option_label": "Private / Restricted",
+                "option_description": "Select Private / Restricted for Link Status."
+            },
+            {
+                "option_code": "RD",
+                "option_label": "Redirected",
+                "option_description": "Select Redirected for Link Status."
+            },
+            {
+                "option_code": "CP",
+                "option_label": "Cached Page Available",
+                "option_description": "Select Cached Page Available for Link Status."
+            },
+            {
+                "option_code": "DM",
+                "option_label": "Dormant",
+                "option_description": "Select Dormant for Link Status."
+            },
+            {
+                "option_code": "PF",
+                "option_label": "Page Not Found",
+                "option_description": "Select Page Not Found for Link Status."
+            },
+            {
+                "option_code": "GN",
+                "option_label": "Gone",
+                "option_description": "Select Gone for Link Status."
+            },
+            {
+                "option_code": "UC",
+                "option_label": "Under Construction",
+                "option_description": "Select Under Construction for Link Status."
+            },
+            {
+                "option_code": "UM",
+                "option_label": "Under Maintenance",
+                "option_description": "Select Under Maintenance for Link Status."
+            },
+            {
+                "option_code": "TS",
+                "option_label": "Temporarily Suspended",
+                "option_description": "Select Temporarily Suspended for Link Status."
+            },
+            {
+                "option_code": "BN",
+                "option_label": "Banned",
+                "option_description": "Select Banned for Link Status."
+            },
+            {
+                "option_code": "SE",
+                "option_label": "Server Error",
+                "option_description": "Select Server Error for Link Status."
+            },
+            {
+                "option_code": "FB",
+                "option_label": "Forbidden",
+                "option_description": "Select Forbidden for Link Status."
+            },
+            {
+                "option_code": "IV",
+                "option_label": "Invalid",
+                "option_description": "Select Invalid for Link Status."
+            },
+            {
+                "option_code": "PAY",
+                "option_label": "Paywalled",
+                "option_description": "Select Paywalled for Link Status."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archived Copy Available",
+                "option_description": "Select Archived Copy Available for Link Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Link Status."
+            }
+        ]
+    },
+    {
+        "_id": 24,
+        "field_name": "type_file_date",
+        "field_label": "File Date Type",
+        "field_description": "Reusable field template for File Date Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "R",
+                "option_label": "Recorded",
+                "option_description": "Select Recorded for File Date Type."
+            },
+            {
+                "option_code": "E",
+                "option_label": "Encoded",
+                "option_description": "Select Encoded for File Date Type."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Created",
+                "option_description": "Select Created for File Date Type."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Modified",
+                "option_description": "Select Modified for File Date Type."
+            },
+            {
+                "option_code": "A",
+                "option_label": "Accessed",
+                "option_description": "Select Accessed for File Date Type."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Imported",
+                "option_description": "Select Imported for File Date Type."
+            },
+            {
+                "option_code": "S",
+                "option_label": "Scanned",
+                "option_description": "Select Scanned for File Date Type."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "Archived",
+                "option_description": "Select Archived for File Date Type."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Deleted",
+                "option_description": "Select Deleted for File Date Type."
+            }
+        ]
+    },
+    {
+        "_id": 62,
+        "field_name": "status_sync",
+        "field_label": "Synchronization Status",
+        "field_description": "Reusable field template for Synchronization Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NS",
+                "option_label": "Not Synchronized",
+                "option_description": "Select Not Synchronized for Synchronization Status."
+            },
+            {
+                "option_code": "PND",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Synchronization Status."
+            },
+            {
+                "option_code": "IPR",
+                "option_label": "In Progress",
+                "option_description": "Select In Progress for Synchronization Status."
+            },
+            {
+                "option_code": "SNC",
+                "option_label": "Synchronized",
+                "option_description": "Select Synchronized for Synchronization Status."
+            },
+            {
+                "option_code": "PSD",
+                "option_label": "Paused",
+                "option_description": "Select Paused for Synchronization Status."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blocked",
+                "option_description": "Select Blocked for Synchronization Status."
+            },
+            {
+                "option_code": "CFL",
+                "option_label": "Conflict",
+                "option_description": "Select Conflict for Synchronization Status."
+            },
+            {
+                "option_code": "FLD",
+                "option_label": "Failed",
+                "option_description": "Select Failed for Synchronization Status."
+            }
+        ]
+    },
+    {
+        "_id": 75,
+        "field_name": "type_file_storage",
+        "field_label": "File Storage Type",
+        "field_description": "Reusable field template for File Storage Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOC",
+                "option_label": "Local",
+                "option_description": "Select Local for File Storage Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "External",
+                "option_description": "Select External for File Storage Type."
+            },
+            {
+                "option_code": "CLD",
+                "option_label": "Cloud",
+                "option_description": "Select Cloud for File Storage Type."
+            },
+            {
+                "option_code": "URL",
+                "option_label": "Web URL",
+                "option_description": "Select Web URL for File Storage Type."
+            },
+            {
+                "option_code": "NAS",
+                "option_label": "Network Storage",
+                "option_description": "Select Network Storage for File Storage Type."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archive",
+                "option_description": "Select Archive for File Storage Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for File Storage Type."
+            }
+        ]
+    },
+    {
+        "_id": 76,
+        "field_name": "status_backup",
+        "field_label": "Backup Status",
+        "field_description": "Reusable field template for Backup Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NB",
+                "option_label": "Not Backed Up",
+                "option_description": "Select Not Backed Up for Backup Status."
+            },
+            {
+                "option_code": "BK",
+                "option_label": "Backed Up",
+                "option_description": "Select Backed Up for Backup Status."
+            },
+            {
+                "option_code": "PND",
+                "option_label": "Pending Backup",
+                "option_description": "Select Pending Backup for Backup Status."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Backup Error",
+                "option_description": "Select Backup Error for Backup Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Backup Status."
+            }
+        ]
+    },
+    {
+        "_id": 77,
+        "field_name": "type_hash_algorithm",
+        "field_label": "Hash Algorithm Type",
+        "field_description": "Reusable field template for Hash Algorithm Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MD5",
+                "option_label": "MD5",
+                "option_description": "Select MD5 for Hash Algorithm Type."
+            },
+            {
+                "option_code": "S1",
+                "option_label": "SHA-1",
+                "option_description": "Select SHA-1 for Hash Algorithm Type."
+            },
+            {
+                "option_code": "S2",
+                "option_label": "SHA-256",
+                "option_description": "Select SHA-256 for Hash Algorithm Type."
+            },
+            {
+                "option_code": "S5",
+                "option_label": "SHA-512",
+                "option_description": "Select SHA-512 for Hash Algorithm Type."
+            }
+        ]
+    },
+    {
+        "_id": 79,
+        "field_name": "type_import_source",
+        "field_label": "Import Source Type",
+        "field_description": "Reusable field template for Import Source Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CSV",
+                "option_label": "CSV",
+                "option_description": "Select CSV for Import Source Type."
+            },
+            {
+                "option_code": "XLS",
+                "option_label": "Excel",
+                "option_description": "Select Excel for Import Source Type."
+            },
+            {
+                "option_code": "JSO",
+                "option_label": "JSON",
+                "option_description": "Select JSON for Import Source Type."
+            },
+            {
+                "option_code": "XML",
+                "option_label": "XML",
+                "option_description": "Select XML for Import Source Type."
+            },
+            {
+                "option_code": "SQL",
+                "option_label": "SQL Dump",
+                "option_description": "Select SQL Dump for Import Source Type."
+            },
+            {
+                "option_code": "TXT",
+                "option_label": "Text File",
+                "option_description": "Select Text File for Import Source Type."
+            },
+            {
+                "option_code": "ZIP",
+                "option_label": "Archive",
+                "option_description": "Select Archive for Import Source Type."
+            },
+            {
+                "option_code": "API",
+                "option_label": "API",
+                "option_description": "Select API for Import Source Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manual Entry",
+                "option_description": "Select Manual Entry for Import Source Type."
+            },
+            {
+                "option_code": "GPX",
+                "option_label": "GPS Exchange File",
+                "option_description": "Select GPS Exchange File for Import Source Type."
+            },
+            {
+                "option_code": "KML",
+                "option_label": "KML File",
+                "option_description": "Select KML File for Import Source Type."
+            },
+            {
+                "option_code": "GEO",
+                "option_label": "GeoJSON File",
+                "option_description": "Select GeoJSON File for Import Source Type."
+            },
+            {
+                "option_code": "IMG",
+                "option_label": "Image Metadata",
+                "option_description": "Select Image Metadata for Import Source Type."
+            },
+            {
+                "option_code": "PDF",
+                "option_label": "PDF",
+                "option_description": "Select PDF for Import Source Type."
+            },
+            {
+                "option_code": "HTM",
+                "option_label": "HTML File",
+                "option_description": "Select HTML File for Import Source Type."
+            }
+        ]
+    },
+    {
+        "_id": 80,
+        "field_name": "status_export",
+        "field_label": "Export Status",
+        "field_description": "Reusable field template for Export Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PND",
+                "option_label": "Pending Export",
+                "option_description": "Select Pending Export for Export Status."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Exported",
+                "option_description": "Select Exported for Export Status."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Export Error",
+                "option_description": "Select Export Error for Export Status."
+            },
+            {
+                "option_code": "SKP",
+                "option_label": "Skipped",
+                "option_description": "Select Skipped for Export Status."
+            },
+            {
+                "option_code": "REV",
+                "option_label": "Needs Review",
+                "option_description": "Select Needs Review for Export Status."
+            }
+        ]
+    },
+    {
+        "_id": 143,
+        "field_name": "type_sync_scope",
+        "field_label": "Synchronization Scope Type",
+        "field_description": "Reusable field template for Synchronization Scope Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOC",
+                "option_label": "Local Only",
+                "option_description": "Select Local Only for Synchronization Scope Type."
+            },
+            {
+                "option_code": "ELI",
+                "option_label": "Sync Eligible",
+                "option_description": "Select Sync Eligible for Synchronization Scope Type."
+            },
+            {
+                "option_code": "SCP",
+                "option_label": "Synchronized Copy",
+                "option_description": "Select Synchronized Copy for Synchronization Scope Type."
+            },
+            {
+                "option_code": "CLR",
+                "option_label": "Cloud Reference",
+                "option_description": "Select Cloud Reference for Synchronization Scope Type."
+            },
+            {
+                "option_code": "CLO",
+                "option_label": "Cloud-Only Operational",
+                "option_description": "Select Cloud-Only Operational for Synchronization Scope Type."
+            }
+        ]
+    }
+]

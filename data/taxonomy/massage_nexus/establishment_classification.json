@@ -1,0 +1,619 @@
+[
+    {
+        "field_name": "type_spa",
+        "field_label": "Spa Type",
+        "selection_rule": "Single-select",
+        "field_description": "Identifies the establishment's primary identity; actual services describe additional offerings.",
+        "field_option": [
+            {
+                "option_code": "MS",
+                "option_label": "Massage Spa",
+                "option_description": "Establishment primarily centered on massage services."
+            },
+            {
+                "option_code": "DY",
+                "option_label": "Day Spa",
+                "option_description": "Non-residential spa offering treatments completed within one visit."
+            },
+            {
+                "option_code": "SL",
+                "option_label": "Salon Spa",
+                "option_description": "Salon or grooming business with a meaningful spa and wellness operation."
+            },
+            {
+                "option_code": "NL",
+                "option_label": "Nail Spa",
+                "option_description": "Nail-focused establishment also offering hand, foot, or related spa services."
+            },
+            {
+                "option_code": "BT",
+                "option_label": "Beauty Spa",
+                "option_description": "Beauty-focused spa offering facial, skin, body, slimming, or related treatments."
+            },
+            {
+                "option_code": "RF",
+                "option_label": "Reflexology Center",
+                "option_description": "Establishment primarily centered on reflexology and related pressure-based services."
+            },
+            {
+                "option_code": "BH",
+                "option_label": "Bathhouse",
+                "option_description": "Communal or facility-based bathing and relaxation establishment."
+            },
+            {
+                "option_code": "HY",
+                "option_label": "Hydrotherapy Spa",
+                "option_description": "Spa primarily centered on water-based treatment or hydrotherapy equipment."
+            },
+            {
+                "option_code": "WC",
+                "option_label": "Wellness Center",
+                "option_description": "Broader establishment combining massage with several wellness disciplines or programs."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Specialty Wellness Facility",
+                "option_description": "Establishment centered on a distinctive wellness system, format, or technology."
+            },
+            {
+                "option_code": "MD",
+                "option_label": "Medical Spa",
+                "option_description": "Spa providing medically supervised or regulated aesthetic and wellness procedures."
+            },
+            {
+                "option_code": "HT",
+                "option_label": "Hotel Spa",
+                "option_description": "Spa situated within or directly operated as part of a hotel."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Resort Spa",
+                "option_description": "Spa situated within or directly operated as part of a resort."
+            },
+            {
+                "option_code": "DT",
+                "option_label": "Destination Spa",
+                "option_description": "Wellness destination that is itself a principal reason for travel or an extended stay."
+            },
+            {
+                "option_code": "HP",
+                "option_label": "Home Service Provider",
+                "option_description": "Organized provider primarily sending therapists to clients rather than serving a public branch."
+            },
+            {
+                "option_code": "MB",
+                "option_label": "Mobile Spa",
+                "option_description": "Portable spa operation designed to serve changing venues with deployable equipment and staff."
+            },
+            {
+                "option_code": "TC",
+                "option_label": "Training Clinic",
+                "option_description": "Supervised client-service facility connected to massage or wellness training."
+            },
+            {
+                "option_code": "HS",
+                "option_label": "Hot Spring Bathing Facility",
+                "option_description": "Bathing establishment centered on natural or geothermally heated water."
+            }
+        ],
+        "classification_note": [
+            "A conventional spa that also offers home service keeps its normal Spa Type and uses Home Service under Service Delivery Mode.",
+            "Mobile Spa is reserved for an operation whose identity is genuinely portable, not merely any spa that accepts off-site bookings.",
+            "Regional terms such as Onsen may be retained as aliases or descriptive terminology without replacing the normalized label."
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "level_spa_market",
+        "field_label": "Spa Market Class",
+        "selection_rule": "Single-select",
+        "field_description": "Comparison context for the establishment. Market Class does not determine rating, verification, price, or quality by itself. Price alone never determines class. Philippine internal planning reference (typical standard 60-minute individual massage): S usually PHP 2,500 or more; A usually PHP 1,500 to 2,499; B usually PHP 700 to 1,499; C usually PHP 350 to 699; D usually below PHP 350 or primarily short basic services. Other markets require locally reviewed thresholds.",
+        "field_option": [
+            {
+                "option_code": "S",
+                "option_label": "Luxury",
+                "option_description": "Elite, highly refined spa experience with substantial premium facilities, privacy, service flow, and presentation."
+            },
+            {
+                "option_code": "A",
+                "option_label": "Premium",
+                "option_description": "Clearly upscale spa experience above ordinary professional standards."
+            },
+            {
+                "option_code": "B",
+                "option_label": "Standard",
+                "option_description": "Dependable mainstream professional spa with appropriate cleanliness, safety, privacy, and organization."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Budget",
+                "option_description": "Affordable spa with simpler facilities and presentation but normal expectations for safety, respect, honesty, and value."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Basic",
+                "option_description": "Minimal or entry-level establishment focused on essential, short, shared, or limited-amenity service."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "type_physical_setting",
+        "field_label": "Physical Setting",
+        "selection_rule": "Single-select",
+        "field_description": "Physical premises context of the establishment. Physical Setting may remain unselected when a Home Service Provider or Mobile Spa has no suitable fixed service premises.",
+        "field_option": [
+            {
+                "option_code": "ST",
+                "option_label": "Standalone Storefront",
+                "option_description": "Dedicated street-level or freestanding premises."
+            },
+            {
+                "option_code": "CU",
+                "option_label": "Commercial Unit",
+                "option_description": "Unit inside a commercial building, retail strip, or business complex."
+            },
+            {
+                "option_code": "ML",
+                "option_label": "Mall",
+                "option_description": "Premises inside a shopping mall or major retail center."
+            },
+            {
+                "option_code": "HT",
+                "option_label": "Hotel",
+                "option_description": "Premises physically located within a hotel property."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Resort",
+                "option_description": "Premises physically located within a resort property."
+            },
+            {
+                "option_code": "RU",
+                "option_label": "Residential Unit",
+                "option_description": "Spa operating from a property organized or classified as residential."
+            },
+            {
+                "option_code": "OR",
+                "option_label": "Owner Residence",
+                "option_description": "Business receiving clients directly in the owner's or operator's home."
+            },
+            {
+                "option_code": "OB",
+                "option_label": "Office Building",
+                "option_description": "Premises inside a building primarily used for offices."
+            },
+            {
+                "option_code": "CS",
+                "option_label": "Corporate Site",
+                "option_description": "Premises inside a company campus, headquarters, or private organizational site."
+            },
+            {
+                "option_code": "EV",
+                "option_label": "Event Site",
+                "option_description": "Temporary location used specifically for an organized event."
+            },
+            {
+                "option_code": "PU",
+                "option_label": "Pop-Up Site",
+                "option_description": "Temporary commercial location operating for a limited run."
+            },
+            {
+                "option_code": "HC",
+                "option_label": "Healthcare Facility",
+                "option_description": "Premises inside a clinic, rehabilitation, medical, or healthcare property."
+            },
+            {
+                "option_code": "FT",
+                "option_label": "Fitness Facility",
+                "option_description": "Premises inside a gym, sports club, or fitness center."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Training Center",
+                "option_description": "Premises inside a school, academy, vocational center, or training facility."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "mode_service_delivery",
+        "field_label": "Service Delivery Mode",
+        "selection_rule": "Multi-select",
+        "field_description": "How the establishment delivers services relative to its premises.",
+        "field_option": [
+            {
+                "option_code": "OS",
+                "option_label": "On-Site Service",
+                "option_description": "Clients receive service at provider-controlled premises."
+            },
+            {
+                "option_code": "HM",
+                "option_label": "Home Service",
+                "option_description": "Service is delivered at a client's residence."
+            },
+            {
+                "option_code": "HR",
+                "option_label": "Hotel Room Service",
+                "option_description": "Service is delivered inside guest lodging."
+            },
+            {
+                "option_code": "CP",
+                "option_label": "Corporate Service",
+                "option_description": "Service is delivered through a workplace or employer arrangement."
+            },
+            {
+                "option_code": "EV",
+                "option_label": "Event Service",
+                "option_description": "Service is delivered for an organized event or temporary function."
+            },
+            {
+                "option_code": "MB",
+                "option_label": "Mobile Service",
+                "option_description": "Provider can deploy portable equipment and personnel to changing locations."
+            },
+            {
+                "option_code": "PA",
+                "option_label": "Provider-Arranged Off-Site",
+                "option_description": "Provider delivers service at an off-site location it selects or arranges that does not fit a more specific off-site code."
+            }
+        ],
+        "classification_note": [
+            "Mobile Service describes portable capability and may be selected with Home Service, Hotel Room Service, Corporate Service, or Event Service.",
+            "Provider-Arranged Off-Site is a catch-all off-site delivery context, not a Spa Type. Use Home Service, Hotel Room Service, Corporate Service, or Event Service instead whenever the booking actually fits one of those more specific codes; reserve Provider-Arranged Off-Site for an off-site arrangement that does not."
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "mode_access",
+        "field_label": "Access Model",
+        "selection_rule": "Single-select",
+        "field_description": "How clients ordinarily gain access to service. Membership, property-guest, referral, invitation, and clientele restrictions belong under Client Access rather than Access Model.",
+        "field_option": [
+            {
+                "option_code": "WI",
+                "option_label": "Walk-In",
+                "option_description": "Clients are normally accepted without prior booking."
+            },
+            {
+                "option_code": "AP",
+                "option_label": "Appointment Preferred",
+                "option_description": "Advance booking is encouraged, but walk-ins may be accepted."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "Appointment Required",
+                "option_description": "Service must normally be arranged before arrival."
+            },
+            {
+                "option_code": "EA",
+                "option_label": "Event Access",
+                "option_description": "Service is available only through a particular event or scheduled engagement."
+            },
+            {
+                "option_code": "RE",
+                "option_label": "Restricted Entry",
+                "option_description": "Entry follows a special rule not fully represented by ordinary booking access."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "type_operation_model",
+        "field_label": "Operation Model",
+        "selection_rule": "Single-select",
+        "field_description": "How the establishment is operated. A marketplace relationship, directory listing, or booking partnership does not by itself determine Operation Model.",
+        "field_option": [
+            {
+                "option_code": "IN",
+                "option_label": "Independent Operation",
+                "option_description": "Standalone business not operating as a branch, franchise, department, collective, or managed network."
+            },
+            {
+                "option_code": "OB",
+                "option_label": "Owner-Operated Branch",
+                "option_description": "Branch directly owned and operated by the brand or organization owner."
+            },
+            {
+                "option_code": "FR",
+                "option_label": "Franchise-Operated Branch",
+                "option_description": "Branch operated by a franchise holder under another brand's system."
+            },
+            {
+                "option_code": "HO",
+                "option_label": "Hotel-Operated",
+                "option_description": "Spa directly managed as part of a hotel organization."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Resort-Operated",
+                "option_description": "Spa directly managed as part of a resort organization."
+            },
+            {
+                "option_code": "CL",
+                "option_label": "Clinic-Operated",
+                "option_description": "Spa or massage service directly managed by a clinic or healthcare organization."
+            },
+            {
+                "option_code": "TC",
+                "option_label": "Training-Center-Operated",
+                "option_description": "Client-service operation directly managed by a school or training institution."
+            },
+            {
+                "option_code": "CO",
+                "option_label": "Therapist Collective",
+                "option_description": "Therapists operating under a shared identity or coordinated service arrangement."
+            },
+            {
+                "option_code": "HN",
+                "option_label": "Home Service Network",
+                "option_description": "Managed group coordinating several therapists for off-site bookings."
+            },
+            {
+                "option_code": "TM",
+                "option_label": "Temporary Operation",
+                "option_description": "Seasonal, experimental, event-based, or limited-run operation."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Shared Practice Facility",
+                "option_description": "Facility renting rooms, stations, equipment, or shared support to independent providers."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "status_establishment",
+        "field_label": "Establishment Status",
+        "selection_rule": "Single-select",
+        "field_description": "Describes real-world operation, not record lifecycle or moderation.",
+        "field_option": [
+            {
+                "option_code": "PO",
+                "option_label": "Pre-Opening",
+                "option_description": "Announced or being prepared but not yet serving the public."
+            },
+            {
+                "option_code": "SO",
+                "option_label": "Soft Opening",
+                "option_description": "Serving clients in a limited or trial operating phase."
+            },
+            {
+                "option_code": "OP",
+                "option_label": "Operating",
+                "option_description": "Conducting normal or substantially normal operations."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Restricted Operation",
+                "option_description": "Operating with limited access, services, hours, facilities, clientele, or capacity."
+            },
+            {
+                "option_code": "TC",
+                "option_label": "Temporarily Closed",
+                "option_description": "Not currently serving clients but expected or reported to reopen."
+            },
+            {
+                "option_code": "UR",
+                "option_label": "Under Renovation",
+                "option_description": "Closed or partly operating because of renovation or repair."
+            },
+            {
+                "option_code": "SU",
+                "option_label": "Suspended Operation",
+                "option_description": "Operations stopped for regulatory, legal, safety, administrative, or internal reasons."
+            },
+            {
+                "option_code": "RL",
+                "option_label": "Relocated",
+                "option_description": "No longer operating at the listed location and may continue through another location."
+            },
+            {
+                "option_code": "PC",
+                "option_label": "Permanently Closed",
+                "option_description": "Permanently stopped operating at the listed location."
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": "Current real-world operating condition cannot be confirmed."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "type_treatment_area",
+        "field_label": "Treatment Area Type",
+        "selection_rule": "Single-select per treatment area",
+        "field_description": "Structural type of one treatment area. VIP designation, equipment, wet-treatment capability, and accessibility features are separate properties.",
+        "field_option": [
+            {
+                "option_code": "ER",
+                "option_label": "Enclosed Room",
+                "option_description": "Space fully enclosed by permanent walls and normally entered through a door."
+            },
+            {
+                "option_code": "PA",
+                "option_label": "Partitioned Area",
+                "option_description": "Station separated by curtains, screens, dividers, or partial walls."
+            },
+            {
+                "option_code": "OA",
+                "option_label": "Open Area",
+                "option_description": "Station with little structural separation from surrounding activity."
+            },
+            {
+                "option_code": "PS",
+                "option_label": "Portable Setup",
+                "option_description": "Temporary area created with portable beds, chairs, mats, screens, or equipment."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "level_treatment_privacy",
+        "field_label": "Treatment Privacy Level",
+        "selection_rule": "Single-select per treatment area",
+        "field_description": "Privacy level of one treatment area.",
+        "field_option": [
+            {
+                "option_code": "PV",
+                "option_label": "Private",
+                "option_description": "Strong visual and physical separation for one booking party."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Semi-Private",
+                "option_description": "Partial separation with possible sound transfer, shared access, or nearby activity."
+            },
+            {
+                "option_code": "SH",
+                "option_label": "Shared",
+                "option_description": "Several unrelated clients or treatment stations use the same room or area."
+            },
+            {
+                "option_code": "OP",
+                "option_label": "Open",
+                "option_description": "Little or no meaningful privacy separation."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "type_treatment_capacity",
+        "field_label": "Treatment Area Capacity",
+        "selection_rule": "Single-select per treatment area",
+        "field_description": "Designed client capacity of one treatment area.",
+        "field_option": [
+            {
+                "option_code": "I",
+                "option_label": "Individual",
+                "option_description": "Designed primarily for one client at a time."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Couple",
+                "option_description": "Designed primarily for two clients receiving service together."
+            },
+            {
+                "option_code": "G",
+                "option_label": "Group",
+                "option_description": "Designed for three or more clients or several treatment stations."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "type_client_access",
+        "field_label": "Client Access",
+        "selection_rule": "Single-select",
+        "field_description": "Describes an actual access restriction. It must not be inferred from marketing style, therapist gender, LGBTQ focus, nudity policy, or adult-service assumptions.",
+        "field_option": [
+            {
+                "option_code": "OA",
+                "option_label": "Open Access",
+                "option_description": "Normally accepts eligible members of the general public."
+            },
+            {
+                "option_code": "MO",
+                "option_label": "Men Only",
+                "option_description": "Access is restricted to male clients."
+            },
+            {
+                "option_code": "WO",
+                "option_label": "Women Only",
+                "option_description": "Access is restricted to female clients."
+            },
+            {
+                "option_code": "CO",
+                "option_label": "Couples Only",
+                "option_description": "Access is restricted to paired or couple bookings."
+            },
+            {
+                "option_code": "MR",
+                "option_label": "Members Only",
+                "option_description": "Access is restricted to registered members."
+            },
+            {
+                "option_code": "PG",
+                "option_label": "Property Guests Only",
+                "option_description": "Access is restricted to authorized guests of a host property or organization."
+            },
+            {
+                "option_code": "PC",
+                "option_label": "Private Clientele",
+                "option_description": "Access is limited to invited, referred, approved, or selectively accepted clients."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "target_client_focus",
+        "field_label": "Client Focus",
+        "selection_rule": "Multi-select",
+        "field_description": "Describes intentional service relevance and does not restrict access unless Client Access says otherwise.",
+        "field_option": [
+            {
+                "option_code": "GP",
+                "option_label": "General Public",
+                "option_description": "Designed for a broad clientele rather than a specialized group."
+            },
+            {
+                "option_code": "MN",
+                "option_label": "Men",
+                "option_description": "Intentionally develops services, facilities, or expertise relevant to male clients."
+            },
+            {
+                "option_code": "WM",
+                "option_label": "Women",
+                "option_description": "Intentionally develops services, facilities, or expertise relevant to female clients."
+            },
+            {
+                "option_code": "LQ",
+                "option_label": "LGBTQ Community",
+                "option_description": "Explicitly welcomes or focuses on LGBTQ clients and related community needs."
+            },
+            {
+                "option_code": "CP",
+                "option_label": "Couples",
+                "option_description": "Offers spaces, packages, or experiences designed for couples."
+            },
+            {
+                "option_code": "FM",
+                "option_label": "Families",
+                "option_description": "Accommodates family-oriented visits or service arrangements."
+            },
+            {
+                "option_code": "SR",
+                "option_label": "Seniors",
+                "option_description": "Provides facilities or services designed with older clients in mind."
+            },
+            {
+                "option_code": "PR",
+                "option_label": "Pregnant Clients",
+                "option_description": "Provides appropriately trained and safety-conscious pregnancy services."
+            },
+            {
+                "option_code": "PN",
+                "option_label": "Postnatal Clients",
+                "option_description": "Provides services intended for clients after childbirth."
+            },
+            {
+                "option_code": "AT",
+                "option_label": "Athletes",
+                "option_description": "Supports sports recovery, mobility, training fatigue, or performance needs."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "Tourists",
+                "option_description": "Is prepared for travelers through location, language, booking, or visitor support."
+            },
+            {
+                "option_code": "OW",
+                "option_label": "Office Workers",
+                "option_description": "Supports workplace stress, occupational strain, sitting, standing, or commuting fatigue."
+            }
+        ],
+        "source_document": "docs/05-directory/spa-classification.txt"
+    }
+]

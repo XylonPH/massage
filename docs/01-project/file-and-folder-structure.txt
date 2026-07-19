@@ -1,5 +1,5 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 1.50
+Document Version: 1.70
 Date Created: 2026-07-16
 Revision Date: 2026-07-19
 
@@ -122,6 +122,15 @@ massage/
 |   +-- event/
 |   +-- media/
 |
++-- data/
+|   +-- taxonomy/
+|   |   +-- shared/
+|   |   +-- massage_nexus/
+|   |
+|   +-- common_reference/
+|   +-- theme/
+|   +-- field_index.txt
+|
 +-- docs/
 |   +-- 01-project/
 |   +-- 02-governance/
@@ -195,11 +204,32 @@ Contains shared localization keys, locale mappings, and exchange formats. It doe
 contracts/event/
 Contains shared event or webhook definitions.
 
+data/
+Contains machine-readable repository source data that supports development, validation, import, seeding, and build processes. These files are not part of the Azure runtime deployment package, which is built from apps/web/ only, and they must never be placed under apps/web/public/.
+
+data/taxonomy/shared/
+Contains the Shared Taxonomy reusable field definitions, split into semantically grouped JSON files. Each file is a flat JSON array of field-definition records preserving the original record shape, so files can be concatenated or imported directly. The record source is the Zenith Shared Taxonomy export; groupings are organizational and do not change record content.
+
+data/taxonomy/massage_nexus/
+Contains machine-readable Massage Nexus classification data generated from the classification documents under docs/05-directory/ (service, establishment, practitioner, product), plus content-side classification records and massage-technique framework reference records. The classification documents remain the authoritative source; when a classification document changes, regenerate or update the matching JSON file in the same change. Each record carries a source_document path back to its authority.
+
+data/common_reference/
+Contains shared reference datasets (country, currency, language, region, time zone, area hierarchy profile, dog breed, neural agent) preserved in their import-compatible top-level JSON shape. Shared Project Standards section 12 currently approves language_main, currency_main, country_main, and time_zone_main as common_reference collections; the additional datasets stored here await separate approval before database import. These may later be imported into massage_main; no separate common-reference service or database is created.
+
+data/theme/
+Contains theme/configuration data such as theme_main.json (Ink & Ember and other theme definitions). Theme data is configuration, not taxonomy, and is not automatically converted into CSS or Tailwind configuration.
+
+data/field_index.txt
+Generated compact index of every known field name and where each is defined (taxonomy files and PHP structure guides). Check this file first before creating any new field name so the check does not require reading every individual file. Regenerate it with tools/script/build_field_index.php whenever a taxonomy file or structure guide adds, renames, or removes a field; do not edit it by hand.
+
 docs/
 Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.
 
+docs/04-architecture/structure-guide/
+Contains PHP-readable database structure guides (field_main.php, theme_main.php, content_main.php, content_body.php, content_revision.php, media_image.php, media_video.php, dog_breed_main.php, quote_main.php). These are human- and AI-readable documentation artifacts kept in PHP array form for review; they are not runtime application code, not seed files, and not migrations, and they must not be placed in production application PHP directories merely because they use PHP syntax.
+
 tools/
-Contains project-maintenance scripts. Application runtime code does not belong here.
+Contains project-maintenance scripts. Application runtime code does not belong here. The first active script is tools/script/build_field_index.php, which regenerates data/field_index.txt.
 
 .github/
 Contains GitHub automation, issue forms, pull-request templates, and workflow files.
@@ -209,6 +239,8 @@ Contains GitHub automation, issue forms, pull-request templates, and workflow fi
 ================================================================================
 
 Folders are numbered for logical browsing order; this numbering is a Massage Nexus-specific choice, not a Shared Project Standards requirement. Individual document filenames inside each folder stay unnumbered and unversioned per the Documentation Writing and Management Standard (lowercase, dash-separated, .txt). Only the topic folder gets a number.
+
+Exception: the PHP-readable database structure guides under docs/04-architecture/structure-guide/ use snake_case .php filenames because each filename is the technical collection name it documents (for example quote_main.php documents the quote_main collection). They remain unversioned in the filename; version notes live inside each file.
 
 docs/
 |
@@ -240,6 +272,16 @@ docs/
 |   +-- cache-and-temporary-data-strategy.txt
 |   +-- database-structure.txt
 |   +-- technology-stack.txt
+|   +-- structure-guide/
+|       +-- content_body.php
+|       +-- content_main.php
+|       +-- content_revision.php
+|       +-- dog_breed_main.php
+|       +-- field_main.php
+|       +-- media_image.php
+|       +-- media_video.php
+|       +-- quote_main.php
+|       +-- theme_main.php
 |
 +-- 05-directory/
 |   +-- product-classification.txt
@@ -772,11 +814,11 @@ apps/web/resources/views/livewire/
 
 Real profile routes remain available for SEO:
 
-/spa/{spa-slug}
-/spa/{spa-slug}/service
-/spa/{spa-slug}/therapist
-/spa/{spa-slug}/contact
-/spa/{spa-slug}/review
+/spa/{establishment_slug}
+/spa/{establishment_slug}/service
+/spa/{establishment_slug}/therapist
+/spa/{establishment_slug}/contact
+/spa/{establishment_slug}/review
 
 Directly opening any route returns a complete server-rendered page.
 

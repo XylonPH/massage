@@ -1,0 +1,6194 @@
+[
+  {
+    "time_zone_id": 1,
+    "time_zone_name": "Africa/Abidjan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Abidjan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 384
+      }
+    ],
+    "aliases": [
+      "Africa/Timbuktu",
+      "Iceland"
+    ]
+  },
+  {
+    "time_zone_id": 2,
+    "time_zone_name": "Africa/Accra",
+    "time_zone_label": {
+      "eng": {
+        "text": "Accra Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 288
+      }
+    ]
+  },
+  {
+    "time_zone_id": 3,
+    "time_zone_name": "Africa/Addis_Ababa",
+    "time_zone_label": {
+      "eng": {
+        "text": "Addis Ababa Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 231
+      }
+    ]
+  },
+  {
+    "time_zone_id": 4,
+    "time_zone_name": "Africa/Algiers",
+    "time_zone_label": {
+      "eng": {
+        "text": "Algiers Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 12
+      }
+    ]
+  },
+  {
+    "time_zone_id": 5,
+    "time_zone_name": "Africa/Asmara",
+    "time_zone_label": {
+      "eng": {
+        "text": "Asmara Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 232
+      }
+    ]
+  },
+  {
+    "time_zone_id": 6,
+    "time_zone_name": "Africa/Bamako",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bamako Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 466
+      }
+    ]
+  },
+  {
+    "time_zone_id": 7,
+    "time_zone_name": "Africa/Bangui",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bangui Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 140
+      }
+    ]
+  },
+  {
+    "time_zone_id": 8,
+    "time_zone_name": "Africa/Banjul",
+    "time_zone_label": {
+      "eng": {
+        "text": "Banjul Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 270
+      }
+    ]
+  },
+  {
+    "time_zone_id": 9,
+    "time_zone_name": "Africa/Bissau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bissau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 624
+      }
+    ]
+  },
+  {
+    "time_zone_id": 10,
+    "time_zone_name": "Africa/Blantyre",
+    "time_zone_label": {
+      "eng": {
+        "text": "Blantyre Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 454
+      }
+    ]
+  },
+  {
+    "time_zone_id": 11,
+    "time_zone_name": "Africa/Brazzaville",
+    "time_zone_label": {
+      "eng": {
+        "text": "Brazzaville Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 178
+      }
+    ]
+  },
+  {
+    "time_zone_id": 12,
+    "time_zone_name": "Africa/Bujumbura",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bujumbura Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 108
+      }
+    ]
+  },
+  {
+    "time_zone_id": 13,
+    "time_zone_name": "Africa/Cairo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cairo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 818
+      }
+    ],
+    "aliases": [
+      "Egypt"
+    ]
+  },
+  {
+    "time_zone_id": 14,
+    "time_zone_name": "Africa/Casablanca",
+    "time_zone_label": {
+      "eng": {
+        "text": "Casablanca Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 504
+      }
+    ]
+  },
+  {
+    "time_zone_id": 15,
+    "time_zone_name": "Africa/Ceuta",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ceuta Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 724
+      }
+    ]
+  },
+  {
+    "time_zone_id": 16,
+    "time_zone_name": "Africa/Conakry",
+    "time_zone_label": {
+      "eng": {
+        "text": "Conakry Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 324
+      }
+    ]
+  },
+  {
+    "time_zone_id": 17,
+    "time_zone_name": "Africa/Dakar",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dakar Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 686
+      }
+    ]
+  },
+  {
+    "time_zone_id": 18,
+    "time_zone_name": "Africa/Dar_es_Salaam",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dar es Salaam Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 834
+      }
+    ]
+  },
+  {
+    "time_zone_id": 19,
+    "time_zone_name": "Africa/Djibouti",
+    "time_zone_label": {
+      "eng": {
+        "text": "Djibouti Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 262
+      }
+    ]
+  },
+  {
+    "time_zone_id": 20,
+    "time_zone_name": "Africa/Douala",
+    "time_zone_label": {
+      "eng": {
+        "text": "Douala Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 120
+      }
+    ]
+  },
+  {
+    "time_zone_id": 21,
+    "time_zone_name": "Africa/El_Aaiun",
+    "time_zone_label": {
+      "eng": {
+        "text": "El Aaiun Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 732
+      }
+    ]
+  },
+  {
+    "time_zone_id": 22,
+    "time_zone_name": "Africa/Freetown",
+    "time_zone_label": {
+      "eng": {
+        "text": "Freetown Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 694
+      }
+    ]
+  },
+  {
+    "time_zone_id": 23,
+    "time_zone_name": "Africa/Gaborone",
+    "time_zone_label": {
+      "eng": {
+        "text": "Gaborone Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 72
+      }
+    ]
+  },
+  {
+    "time_zone_id": 24,
+    "time_zone_name": "Africa/Harare",
+    "time_zone_label": {
+      "eng": {
+        "text": "Harare Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 716
+      }
+    ]
+  },
+  {
+    "time_zone_id": 25,
+    "time_zone_name": "Africa/Johannesburg",
+    "time_zone_label": {
+      "eng": {
+        "text": "Johannesburg Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 710
+      }
+    ]
+  },
+  {
+    "time_zone_id": 26,
+    "time_zone_name": "Africa/Juba",
+    "time_zone_label": {
+      "eng": {
+        "text": "Juba Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 728
+      }
+    ]
+  },
+  {
+    "time_zone_id": 27,
+    "time_zone_name": "Africa/Kampala",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kampala Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 800
+      }
+    ]
+  },
+  {
+    "time_zone_id": 28,
+    "time_zone_name": "Africa/Khartoum",
+    "time_zone_label": {
+      "eng": {
+        "text": "Khartoum Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 729
+      }
+    ]
+  },
+  {
+    "time_zone_id": 29,
+    "time_zone_name": "Africa/Kigali",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kigali Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 646
+      }
+    ]
+  },
+  {
+    "time_zone_id": 30,
+    "time_zone_name": "Africa/Kinshasa",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kinshasa Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 180
+      }
+    ]
+  },
+  {
+    "time_zone_id": 31,
+    "time_zone_name": "Africa/Lagos",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lagos Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 566
+      }
+    ]
+  },
+  {
+    "time_zone_id": 32,
+    "time_zone_name": "Africa/Libreville",
+    "time_zone_label": {
+      "eng": {
+        "text": "Libreville Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 266
+      }
+    ]
+  },
+  {
+    "time_zone_id": 33,
+    "time_zone_name": "Africa/Lome",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lome Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 768
+      }
+    ]
+  },
+  {
+    "time_zone_id": 34,
+    "time_zone_name": "Africa/Luanda",
+    "time_zone_label": {
+      "eng": {
+        "text": "Luanda Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 24
+      }
+    ]
+  },
+  {
+    "time_zone_id": 35,
+    "time_zone_name": "Africa/Lubumbashi",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lubumbashi Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 180
+      }
+    ]
+  },
+  {
+    "time_zone_id": 36,
+    "time_zone_name": "Africa/Lusaka",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lusaka Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 894
+      }
+    ]
+  },
+  {
+    "time_zone_id": 37,
+    "time_zone_name": "Africa/Malabo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Malabo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 226
+      }
+    ]
+  },
+  {
+    "time_zone_id": 38,
+    "time_zone_name": "Africa/Maputo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Maputo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 508
+      }
+    ]
+  },
+  {
+    "time_zone_id": 39,
+    "time_zone_name": "Africa/Maseru",
+    "time_zone_label": {
+      "eng": {
+        "text": "Maseru Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 426
+      }
+    ]
+  },
+  {
+    "time_zone_id": 40,
+    "time_zone_name": "Africa/Mbabane",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mbabane Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 748
+      }
+    ]
+  },
+  {
+    "time_zone_id": 41,
+    "time_zone_name": "Africa/Mogadishu",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mogadishu Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 706
+      }
+    ]
+  },
+  {
+    "time_zone_id": 42,
+    "time_zone_name": "Africa/Monrovia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Monrovia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 430
+      }
+    ]
+  },
+  {
+    "time_zone_id": 43,
+    "time_zone_name": "Africa/Nairobi",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nairobi Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 404
+      }
+    ],
+    "aliases": [
+      "Africa/Asmera"
+    ]
+  },
+  {
+    "time_zone_id": 44,
+    "time_zone_name": "Africa/Ndjamena",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ndjamena Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 148
+      }
+    ]
+  },
+  {
+    "time_zone_id": 45,
+    "time_zone_name": "Africa/Niamey",
+    "time_zone_label": {
+      "eng": {
+        "text": "Niamey Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 562
+      }
+    ]
+  },
+  {
+    "time_zone_id": 46,
+    "time_zone_name": "Africa/Nouakchott",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nouakchott Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 478
+      }
+    ]
+  },
+  {
+    "time_zone_id": 47,
+    "time_zone_name": "Africa/Ouagadougou",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ouagadougou Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 854
+      }
+    ]
+  },
+  {
+    "time_zone_id": 48,
+    "time_zone_name": "Africa/Porto-Novo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Porto-Novo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 204
+      }
+    ]
+  },
+  {
+    "time_zone_id": 49,
+    "time_zone_name": "Africa/Sao_Tome",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sao Tome Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 678
+      }
+    ]
+  },
+  {
+    "time_zone_id": 50,
+    "time_zone_name": "Africa/Tripoli",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tripoli Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 434
+      }
+    ],
+    "aliases": [
+      "Libya"
+    ]
+  },
+  {
+    "time_zone_id": 51,
+    "time_zone_name": "Africa/Tunis",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tunis Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 788
+      }
+    ]
+  },
+  {
+    "time_zone_id": 52,
+    "time_zone_name": "Africa/Windhoek",
+    "time_zone_label": {
+      "eng": {
+        "text": "Windhoek Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 516
+      }
+    ]
+  },
+  {
+    "time_zone_id": 53,
+    "time_zone_name": "America/Adak",
+    "time_zone_label": {
+      "eng": {
+        "text": "Adak Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "America/Atka",
+      "US/Aleutian"
+    ]
+  },
+  {
+    "time_zone_id": 54,
+    "time_zone_name": "America/Anchorage",
+    "time_zone_label": {
+      "eng": {
+        "text": "Anchorage Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "US/Alaska"
+    ]
+  },
+  {
+    "time_zone_id": 55,
+    "time_zone_name": "America/Anguilla",
+    "time_zone_label": {
+      "eng": {
+        "text": "Anguilla Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 660
+      }
+    ]
+  },
+  {
+    "time_zone_id": 56,
+    "time_zone_name": "America/Antigua",
+    "time_zone_label": {
+      "eng": {
+        "text": "Antigua Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 28
+      }
+    ]
+  },
+  {
+    "time_zone_id": 57,
+    "time_zone_name": "America/Araguaina",
+    "time_zone_label": {
+      "eng": {
+        "text": "Araguaina Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 58,
+    "time_zone_name": "America/Argentina/Buenos_Aires",
+    "time_zone_label": {
+      "eng": {
+        "text": "Buenos Aires Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ],
+    "aliases": [
+      "America/Buenos_Aires"
+    ]
+  },
+  {
+    "time_zone_id": 59,
+    "time_zone_name": "America/Argentina/Catamarca",
+    "time_zone_label": {
+      "eng": {
+        "text": "Catamarca Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ],
+    "aliases": [
+      "America/Argentina/ComodRivadavia",
+      "America/Catamarca"
+    ]
+  },
+  {
+    "time_zone_id": 60,
+    "time_zone_name": "America/Argentina/Cordoba",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cordoba Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ],
+    "aliases": [
+      "America/Cordoba",
+      "America/Rosario"
+    ]
+  },
+  {
+    "time_zone_id": 61,
+    "time_zone_name": "America/Argentina/Jujuy",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jujuy Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ],
+    "aliases": [
+      "America/Jujuy"
+    ]
+  },
+  {
+    "time_zone_id": 62,
+    "time_zone_name": "America/Argentina/La_Rioja",
+    "time_zone_label": {
+      "eng": {
+        "text": "La Rioja Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 63,
+    "time_zone_name": "America/Argentina/Mendoza",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mendoza Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ],
+    "aliases": [
+      "America/Mendoza"
+    ]
+  },
+  {
+    "time_zone_id": 64,
+    "time_zone_name": "America/Argentina/Rio_Gallegos",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rio Gallegos Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 65,
+    "time_zone_name": "America/Argentina/Salta",
+    "time_zone_label": {
+      "eng": {
+        "text": "Salta Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 66,
+    "time_zone_name": "America/Argentina/San_Juan",
+    "time_zone_label": {
+      "eng": {
+        "text": "San Juan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 67,
+    "time_zone_name": "America/Argentina/San_Luis",
+    "time_zone_label": {
+      "eng": {
+        "text": "San Luis Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 68,
+    "time_zone_name": "America/Argentina/Tucuman",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tucuman Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 69,
+    "time_zone_name": "America/Argentina/Ushuaia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ushuaia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "time_zone_id": 70,
+    "time_zone_name": "America/Aruba",
+    "time_zone_label": {
+      "eng": {
+        "text": "Aruba Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 533
+      }
+    ]
+  },
+  {
+    "time_zone_id": 71,
+    "time_zone_name": "America/Asuncion",
+    "time_zone_label": {
+      "eng": {
+        "text": "Asuncion Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 600
+      }
+    ]
+  },
+  {
+    "time_zone_id": 72,
+    "time_zone_name": "America/Atikokan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Atikokan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 73,
+    "time_zone_name": "America/Bahia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bahia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 74,
+    "time_zone_name": "America/Bahia_Banderas",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bahia Banderas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 75,
+    "time_zone_name": "America/Barbados",
+    "time_zone_label": {
+      "eng": {
+        "text": "Barbados Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 52
+      }
+    ]
+  },
+  {
+    "time_zone_id": 76,
+    "time_zone_name": "America/Belem",
+    "time_zone_label": {
+      "eng": {
+        "text": "Belem Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 77,
+    "time_zone_name": "America/Belize",
+    "time_zone_label": {
+      "eng": {
+        "text": "Belize Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 84
+      }
+    ]
+  },
+  {
+    "time_zone_id": 78,
+    "time_zone_name": "America/Blanc-Sablon",
+    "time_zone_label": {
+      "eng": {
+        "text": "Blanc-Sablon Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 79,
+    "time_zone_name": "America/Boa_Vista",
+    "time_zone_label": {
+      "eng": {
+        "text": "Boa Vista Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 80,
+    "time_zone_name": "America/Bogota",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bogota Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 170
+      }
+    ]
+  },
+  {
+    "time_zone_id": 81,
+    "time_zone_name": "America/Boise",
+    "time_zone_label": {
+      "eng": {
+        "text": "Boise Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 82,
+    "time_zone_name": "America/Cambridge_Bay",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cambridge Bay Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 83,
+    "time_zone_name": "America/Campo_Grande",
+    "time_zone_label": {
+      "eng": {
+        "text": "Campo Grande Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 84,
+    "time_zone_name": "America/Cancun",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cancun Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 85,
+    "time_zone_name": "America/Caracas",
+    "time_zone_label": {
+      "eng": {
+        "text": "Caracas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 862
+      }
+    ]
+  },
+  {
+    "time_zone_id": 86,
+    "time_zone_name": "America/Cayenne",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cayenne Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 254
+      }
+    ]
+  },
+  {
+    "time_zone_id": 87,
+    "time_zone_name": "America/Cayman",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cayman Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 136
+      }
+    ]
+  },
+  {
+    "time_zone_id": 88,
+    "time_zone_name": "America/Chicago",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chicago Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "CST6CDT",
+      "US/Central"
+    ]
+  },
+  {
+    "time_zone_id": 89,
+    "time_zone_name": "America/Chihuahua",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chihuahua Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 90,
+    "time_zone_name": "America/Ciudad_Juarez",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ciudad Juarez Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 91,
+    "time_zone_name": "America/Costa_Rica",
+    "time_zone_label": {
+      "eng": {
+        "text": "Costa Rica Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 188
+      }
+    ]
+  },
+  {
+    "time_zone_id": 92,
+    "time_zone_name": "America/Coyhaique",
+    "time_zone_label": {
+      "eng": {
+        "text": "Coyhaique Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 152
+      }
+    ]
+  },
+  {
+    "time_zone_id": 93,
+    "time_zone_name": "America/Creston",
+    "time_zone_label": {
+      "eng": {
+        "text": "Creston Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 94,
+    "time_zone_name": "America/Cuiaba",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cuiaba Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 95,
+    "time_zone_name": "America/Curacao",
+    "time_zone_label": {
+      "eng": {
+        "text": "Curacao Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 531
+      }
+    ]
+  },
+  {
+    "time_zone_id": 96,
+    "time_zone_name": "America/Danmarkshavn",
+    "time_zone_label": {
+      "eng": {
+        "text": "Danmarkshavn Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 304
+      }
+    ]
+  },
+  {
+    "time_zone_id": 97,
+    "time_zone_name": "America/Dawson",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dawson Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 98,
+    "time_zone_name": "America/Dawson_Creek",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dawson Creek Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 99,
+    "time_zone_name": "America/Denver",
+    "time_zone_label": {
+      "eng": {
+        "text": "Denver Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "America/Shiprock",
+      "MST7MDT",
+      "Navajo",
+      "US/Mountain"
+    ]
+  },
+  {
+    "time_zone_id": 100,
+    "time_zone_name": "America/Detroit",
+    "time_zone_label": {
+      "eng": {
+        "text": "Detroit Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "US/Michigan"
+    ]
+  },
+  {
+    "time_zone_id": 101,
+    "time_zone_name": "America/Dominica",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dominica Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 212
+      }
+    ]
+  },
+  {
+    "time_zone_id": 102,
+    "time_zone_name": "America/Edmonton",
+    "time_zone_label": {
+      "eng": {
+        "text": "Edmonton Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "America/Yellowknife",
+      "Canada/Mountain"
+    ]
+  },
+  {
+    "time_zone_id": 103,
+    "time_zone_name": "America/Eirunepe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Eirunepe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 104,
+    "time_zone_name": "America/El_Salvador",
+    "time_zone_label": {
+      "eng": {
+        "text": "El Salvador Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 222
+      }
+    ]
+  },
+  {
+    "time_zone_id": 105,
+    "time_zone_name": "America/Fort_Nelson",
+    "time_zone_label": {
+      "eng": {
+        "text": "Fort Nelson Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 106,
+    "time_zone_name": "America/Fortaleza",
+    "time_zone_label": {
+      "eng": {
+        "text": "Fortaleza Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 107,
+    "time_zone_name": "America/Glace_Bay",
+    "time_zone_label": {
+      "eng": {
+        "text": "Glace Bay Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 108,
+    "time_zone_name": "America/Goose_Bay",
+    "time_zone_label": {
+      "eng": {
+        "text": "Goose Bay Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 109,
+    "time_zone_name": "America/Grand_Turk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Grand Turk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 796
+      }
+    ]
+  },
+  {
+    "time_zone_id": 110,
+    "time_zone_name": "America/Grenada",
+    "time_zone_label": {
+      "eng": {
+        "text": "Grenada Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 308
+      }
+    ]
+  },
+  {
+    "time_zone_id": 111,
+    "time_zone_name": "America/Guadeloupe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guadeloupe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 312
+      }
+    ]
+  },
+  {
+    "time_zone_id": 112,
+    "time_zone_name": "America/Guatemala",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guatemala Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 320
+      }
+    ]
+  },
+  {
+    "time_zone_id": 113,
+    "time_zone_name": "America/Guayaquil",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guayaquil Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 218
+      }
+    ]
+  },
+  {
+    "time_zone_id": 114,
+    "time_zone_name": "America/Guyana",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guyana Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 328
+      }
+    ]
+  },
+  {
+    "time_zone_id": 115,
+    "time_zone_name": "America/Halifax",
+    "time_zone_label": {
+      "eng": {
+        "text": "Halifax Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "Canada/Atlantic"
+    ]
+  },
+  {
+    "time_zone_id": 116,
+    "time_zone_name": "America/Havana",
+    "time_zone_label": {
+      "eng": {
+        "text": "Havana Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 192
+      }
+    ],
+    "aliases": [
+      "Cuba"
+    ]
+  },
+  {
+    "time_zone_id": 117,
+    "time_zone_name": "America/Hermosillo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Hermosillo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 118,
+    "time_zone_name": "America/Indiana/Indianapolis",
+    "time_zone_label": {
+      "eng": {
+        "text": "Indianapolis Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "America/Fort_Wayne",
+      "America/Indianapolis",
+      "US/East-Indiana"
+    ]
+  },
+  {
+    "time_zone_id": 119,
+    "time_zone_name": "America/Indiana/Knox",
+    "time_zone_label": {
+      "eng": {
+        "text": "Knox Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "America/Knox_IN",
+      "US/Indiana-Starke"
+    ]
+  },
+  {
+    "time_zone_id": 120,
+    "time_zone_name": "America/Indiana/Marengo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Marengo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 121,
+    "time_zone_name": "America/Indiana/Petersburg",
+    "time_zone_label": {
+      "eng": {
+        "text": "Petersburg Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 122,
+    "time_zone_name": "America/Indiana/Tell_City",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tell City Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 123,
+    "time_zone_name": "America/Indiana/Vevay",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vevay Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 124,
+    "time_zone_name": "America/Indiana/Vincennes",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vincennes Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 125,
+    "time_zone_name": "America/Indiana/Winamac",
+    "time_zone_label": {
+      "eng": {
+        "text": "Winamac Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 126,
+    "time_zone_name": "America/Inuvik",
+    "time_zone_label": {
+      "eng": {
+        "text": "Inuvik Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 127,
+    "time_zone_name": "America/Iqaluit",
+    "time_zone_label": {
+      "eng": {
+        "text": "Iqaluit Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "America/Pangnirtung"
+    ]
+  },
+  {
+    "time_zone_id": 128,
+    "time_zone_name": "America/Jamaica",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jamaica Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 388
+      }
+    ],
+    "aliases": [
+      "Jamaica"
+    ]
+  },
+  {
+    "time_zone_id": 129,
+    "time_zone_name": "America/Juneau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Juneau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 130,
+    "time_zone_name": "America/Kentucky/Louisville",
+    "time_zone_label": {
+      "eng": {
+        "text": "Louisville Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "America/Louisville"
+    ]
+  },
+  {
+    "time_zone_id": 131,
+    "time_zone_name": "America/Kentucky/Monticello",
+    "time_zone_label": {
+      "eng": {
+        "text": "Monticello Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 132,
+    "time_zone_name": "America/Kralendijk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kralendijk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 535
+      }
+    ]
+  },
+  {
+    "time_zone_id": 133,
+    "time_zone_name": "America/La_Paz",
+    "time_zone_label": {
+      "eng": {
+        "text": "La Paz Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 68
+      }
+    ]
+  },
+  {
+    "time_zone_id": 134,
+    "time_zone_name": "America/Lima",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lima Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 604
+      }
+    ]
+  },
+  {
+    "time_zone_id": 135,
+    "time_zone_name": "America/Los_Angeles",
+    "time_zone_label": {
+      "eng": {
+        "text": "Los Angeles Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "PST8PDT",
+      "US/Pacific"
+    ]
+  },
+  {
+    "time_zone_id": 136,
+    "time_zone_name": "America/Lower_Princes",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lower Princes Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 534
+      }
+    ]
+  },
+  {
+    "time_zone_id": 137,
+    "time_zone_name": "America/Maceio",
+    "time_zone_label": {
+      "eng": {
+        "text": "Maceio Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 138,
+    "time_zone_name": "America/Managua",
+    "time_zone_label": {
+      "eng": {
+        "text": "Managua Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 558
+      }
+    ]
+  },
+  {
+    "time_zone_id": 139,
+    "time_zone_name": "America/Manaus",
+    "time_zone_label": {
+      "eng": {
+        "text": "Manaus Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ],
+    "aliases": [
+      "Brazil/West"
+    ]
+  },
+  {
+    "time_zone_id": 140,
+    "time_zone_name": "America/Marigot",
+    "time_zone_label": {
+      "eng": {
+        "text": "Marigot Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 663
+      }
+    ]
+  },
+  {
+    "time_zone_id": 141,
+    "time_zone_name": "America/Martinique",
+    "time_zone_label": {
+      "eng": {
+        "text": "Martinique Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 474
+      }
+    ]
+  },
+  {
+    "time_zone_id": 142,
+    "time_zone_name": "America/Matamoros",
+    "time_zone_label": {
+      "eng": {
+        "text": "Matamoros Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 143,
+    "time_zone_name": "America/Mazatlan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mazatlan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ],
+    "aliases": [
+      "Mexico/BajaSur"
+    ]
+  },
+  {
+    "time_zone_id": 144,
+    "time_zone_name": "America/Menominee",
+    "time_zone_label": {
+      "eng": {
+        "text": "Menominee Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 145,
+    "time_zone_name": "America/Merida",
+    "time_zone_label": {
+      "eng": {
+        "text": "Merida Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 146,
+    "time_zone_name": "America/Metlakatla",
+    "time_zone_label": {
+      "eng": {
+        "text": "Metlakatla Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 147,
+    "time_zone_name": "America/Mexico_City",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mexico City Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ],
+    "aliases": [
+      "Mexico/General"
+    ]
+  },
+  {
+    "time_zone_id": 148,
+    "time_zone_name": "America/Miquelon",
+    "time_zone_label": {
+      "eng": {
+        "text": "Miquelon Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 666
+      }
+    ]
+  },
+  {
+    "time_zone_id": 149,
+    "time_zone_name": "America/Moncton",
+    "time_zone_label": {
+      "eng": {
+        "text": "Moncton Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 150,
+    "time_zone_name": "America/Monterrey",
+    "time_zone_label": {
+      "eng": {
+        "text": "Monterrey Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 151,
+    "time_zone_name": "America/Montevideo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Montevideo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 858
+      }
+    ]
+  },
+  {
+    "time_zone_id": 152,
+    "time_zone_name": "America/Montserrat",
+    "time_zone_label": {
+      "eng": {
+        "text": "Montserrat Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 500
+      }
+    ]
+  },
+  {
+    "time_zone_id": 153,
+    "time_zone_name": "America/Nassau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nassau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 44
+      }
+    ]
+  },
+  {
+    "time_zone_id": 154,
+    "time_zone_name": "America/New_York",
+    "time_zone_label": {
+      "eng": {
+        "text": "New York Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "EST5EDT",
+      "US/Eastern"
+    ]
+  },
+  {
+    "time_zone_id": 155,
+    "time_zone_name": "America/Nome",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nome Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 156,
+    "time_zone_name": "America/Noronha",
+    "time_zone_label": {
+      "eng": {
+        "text": "Noronha Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ],
+    "aliases": [
+      "Brazil/DeNoronha"
+    ]
+  },
+  {
+    "time_zone_id": 157,
+    "time_zone_name": "America/North_Dakota/Beulah",
+    "time_zone_label": {
+      "eng": {
+        "text": "Beulah Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 158,
+    "time_zone_name": "America/North_Dakota/Center",
+    "time_zone_label": {
+      "eng": {
+        "text": "Center Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 159,
+    "time_zone_name": "America/North_Dakota/New_Salem",
+    "time_zone_label": {
+      "eng": {
+        "text": "New Salem Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 160,
+    "time_zone_name": "America/Nuuk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nuuk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 304
+      }
+    ],
+    "aliases": [
+      "America/Godthab"
+    ]
+  },
+  {
+    "time_zone_id": 161,
+    "time_zone_name": "America/Ojinaga",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ojinaga Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "time_zone_id": 162,
+    "time_zone_name": "America/Panama",
+    "time_zone_label": {
+      "eng": {
+        "text": "Panama Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 591
+      }
+    ],
+    "aliases": [
+      "America/Coral_Harbour",
+      "EST"
+    ]
+  },
+  {
+    "time_zone_id": 163,
+    "time_zone_name": "America/Paramaribo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Paramaribo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 740
+      }
+    ]
+  },
+  {
+    "time_zone_id": 164,
+    "time_zone_name": "America/Phoenix",
+    "time_zone_label": {
+      "eng": {
+        "text": "Phoenix Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "MST",
+      "US/Arizona"
+    ]
+  },
+  {
+    "time_zone_id": 165,
+    "time_zone_name": "America/Port-au-Prince",
+    "time_zone_label": {
+      "eng": {
+        "text": "Port-au-Prince Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 332
+      }
+    ]
+  },
+  {
+    "time_zone_id": 166,
+    "time_zone_name": "America/Port_of_Spain",
+    "time_zone_label": {
+      "eng": {
+        "text": "Port of Spain Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 780
+      }
+    ]
+  },
+  {
+    "time_zone_id": 167,
+    "time_zone_name": "America/Porto_Velho",
+    "time_zone_label": {
+      "eng": {
+        "text": "Porto Velho Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 168,
+    "time_zone_name": "America/Puerto_Rico",
+    "time_zone_label": {
+      "eng": {
+        "text": "Puerto Rico Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 630
+      }
+    ],
+    "aliases": [
+      "America/Virgin"
+    ]
+  },
+  {
+    "time_zone_id": 169,
+    "time_zone_name": "America/Punta_Arenas",
+    "time_zone_label": {
+      "eng": {
+        "text": "Punta Arenas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 152
+      }
+    ]
+  },
+  {
+    "time_zone_id": 170,
+    "time_zone_name": "America/Rankin_Inlet",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rankin Inlet Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 171,
+    "time_zone_name": "America/Recife",
+    "time_zone_label": {
+      "eng": {
+        "text": "Recife Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 172,
+    "time_zone_name": "America/Regina",
+    "time_zone_label": {
+      "eng": {
+        "text": "Regina Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "Canada/Saskatchewan"
+    ]
+  },
+  {
+    "time_zone_id": 173,
+    "time_zone_name": "America/Resolute",
+    "time_zone_label": {
+      "eng": {
+        "text": "Resolute Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 174,
+    "time_zone_name": "America/Rio_Branco",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rio Branco Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ],
+    "aliases": [
+      "America/Porto_Acre",
+      "Brazil/Acre"
+    ]
+  },
+  {
+    "time_zone_id": 175,
+    "time_zone_name": "America/Santarem",
+    "time_zone_label": {
+      "eng": {
+        "text": "Santarem Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "time_zone_id": 176,
+    "time_zone_name": "America/Santiago",
+    "time_zone_label": {
+      "eng": {
+        "text": "Santiago Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 152
+      }
+    ],
+    "aliases": [
+      "Chile/Continental"
+    ]
+  },
+  {
+    "time_zone_id": 177,
+    "time_zone_name": "America/Santo_Domingo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Santo Domingo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 214
+      }
+    ]
+  },
+  {
+    "time_zone_id": 178,
+    "time_zone_name": "America/Sao_Paulo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sao Paulo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 76
+      }
+    ],
+    "aliases": [
+      "Brazil/East"
+    ]
+  },
+  {
+    "time_zone_id": 179,
+    "time_zone_name": "America/Scoresbysund",
+    "time_zone_label": {
+      "eng": {
+        "text": "Scoresbysund Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 304
+      }
+    ]
+  },
+  {
+    "time_zone_id": 180,
+    "time_zone_name": "America/Sitka",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sitka Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 181,
+    "time_zone_name": "America/St_Barthelemy",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Barthelemy Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 652
+      }
+    ]
+  },
+  {
+    "time_zone_id": 182,
+    "time_zone_name": "America/St_Johns",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Johns Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "Canada/Newfoundland"
+    ]
+  },
+  {
+    "time_zone_id": 183,
+    "time_zone_name": "America/St_Kitts",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Kitts Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 659
+      }
+    ]
+  },
+  {
+    "time_zone_id": 184,
+    "time_zone_name": "America/St_Lucia",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Lucia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 662
+      }
+    ]
+  },
+  {
+    "time_zone_id": 185,
+    "time_zone_name": "America/St_Thomas",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Thomas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 850
+      }
+    ]
+  },
+  {
+    "time_zone_id": 186,
+    "time_zone_name": "America/St_Vincent",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Vincent Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 670
+      }
+    ]
+  },
+  {
+    "time_zone_id": 187,
+    "time_zone_name": "America/Swift_Current",
+    "time_zone_label": {
+      "eng": {
+        "text": "Swift Current Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "time_zone_id": 188,
+    "time_zone_name": "America/Tegucigalpa",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tegucigalpa Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 340
+      }
+    ]
+  },
+  {
+    "time_zone_id": 189,
+    "time_zone_name": "America/Thule",
+    "time_zone_label": {
+      "eng": {
+        "text": "Thule Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 304
+      }
+    ]
+  },
+  {
+    "time_zone_id": 190,
+    "time_zone_name": "America/Tijuana",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tijuana Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 484
+      }
+    ],
+    "aliases": [
+      "America/Ensenada",
+      "America/Santa_Isabel",
+      "Mexico/BajaNorte"
+    ]
+  },
+  {
+    "time_zone_id": 191,
+    "time_zone_name": "America/Toronto",
+    "time_zone_label": {
+      "eng": {
+        "text": "Toronto Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "America/Montreal",
+      "America/Nipigon",
+      "America/Thunder_Bay",
+      "Canada/Eastern"
+    ]
+  },
+  {
+    "time_zone_id": 192,
+    "time_zone_name": "America/Tortola",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tortola Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 92
+      }
+    ]
+  },
+  {
+    "time_zone_id": 193,
+    "time_zone_name": "America/Vancouver",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vancouver Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "Canada/Pacific"
+    ]
+  },
+  {
+    "time_zone_id": 194,
+    "time_zone_name": "America/Whitehorse",
+    "time_zone_label": {
+      "eng": {
+        "text": "Whitehorse Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "Canada/Yukon"
+    ]
+  },
+  {
+    "time_zone_id": 195,
+    "time_zone_name": "America/Winnipeg",
+    "time_zone_label": {
+      "eng": {
+        "text": "Winnipeg Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 124
+      }
+    ],
+    "aliases": [
+      "America/Rainy_River",
+      "Canada/Central"
+    ]
+  },
+  {
+    "time_zone_id": 196,
+    "time_zone_name": "America/Yakutat",
+    "time_zone_label": {
+      "eng": {
+        "text": "Yakutat Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "time_zone_id": 197,
+    "time_zone_name": "Antarctica/Casey",
+    "time_zone_label": {
+      "eng": {
+        "text": "Casey Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 198,
+    "time_zone_name": "Antarctica/Davis",
+    "time_zone_label": {
+      "eng": {
+        "text": "Davis Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 199,
+    "time_zone_name": "Antarctica/DumontDUrville",
+    "time_zone_label": {
+      "eng": {
+        "text": "DumontDUrville Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 200,
+    "time_zone_name": "Antarctica/Macquarie",
+    "time_zone_label": {
+      "eng": {
+        "text": "Macquarie Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ]
+  },
+  {
+    "time_zone_id": 201,
+    "time_zone_name": "Antarctica/Mawson",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mawson Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 202,
+    "time_zone_name": "Antarctica/McMurdo",
+    "time_zone_label": {
+      "eng": {
+        "text": "McMurdo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 203,
+    "time_zone_name": "Antarctica/Palmer",
+    "time_zone_label": {
+      "eng": {
+        "text": "Palmer Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 204,
+    "time_zone_name": "Antarctica/Rothera",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rothera Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 205,
+    "time_zone_name": "Antarctica/Syowa",
+    "time_zone_label": {
+      "eng": {
+        "text": "Syowa Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 206,
+    "time_zone_name": "Antarctica/Troll",
+    "time_zone_label": {
+      "eng": {
+        "text": "Troll Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 207,
+    "time_zone_name": "Antarctica/Vostok",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vostok Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "time_zone_id": 208,
+    "time_zone_name": "Arctic/Longyearbyen",
+    "time_zone_label": {
+      "eng": {
+        "text": "Longyearbyen Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 744
+      }
+    ]
+  },
+  {
+    "time_zone_id": 209,
+    "time_zone_name": "Asia/Aden",
+    "time_zone_label": {
+      "eng": {
+        "text": "Aden Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 887
+      }
+    ]
+  },
+  {
+    "time_zone_id": 210,
+    "time_zone_name": "Asia/Almaty",
+    "time_zone_label": {
+      "eng": {
+        "text": "Almaty Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 211,
+    "time_zone_name": "Asia/Amman",
+    "time_zone_label": {
+      "eng": {
+        "text": "Amman Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 400
+      }
+    ]
+  },
+  {
+    "time_zone_id": 212,
+    "time_zone_name": "Asia/Anadyr",
+    "time_zone_label": {
+      "eng": {
+        "text": "Anadyr Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 213,
+    "time_zone_name": "Asia/Aqtau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Aqtau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 214,
+    "time_zone_name": "Asia/Aqtobe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Aqtobe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 215,
+    "time_zone_name": "Asia/Ashgabat",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ashgabat Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 795
+      }
+    ],
+    "aliases": [
+      "Asia/Ashkhabad"
+    ]
+  },
+  {
+    "time_zone_id": 216,
+    "time_zone_name": "Asia/Atyrau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Atyrau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 217,
+    "time_zone_name": "Asia/Baghdad",
+    "time_zone_label": {
+      "eng": {
+        "text": "Baghdad Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 368
+      }
+    ]
+  },
+  {
+    "time_zone_id": 218,
+    "time_zone_name": "Asia/Bahrain",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bahrain Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 48
+      }
+    ]
+  },
+  {
+    "time_zone_id": 219,
+    "time_zone_name": "Asia/Baku",
+    "time_zone_label": {
+      "eng": {
+        "text": "Baku Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 31
+      }
+    ]
+  },
+  {
+    "time_zone_id": 220,
+    "time_zone_name": "Asia/Bangkok",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bangkok Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 764
+      }
+    ]
+  },
+  {
+    "time_zone_id": 221,
+    "time_zone_name": "Asia/Barnaul",
+    "time_zone_label": {
+      "eng": {
+        "text": "Barnaul Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 222,
+    "time_zone_name": "Asia/Beirut",
+    "time_zone_label": {
+      "eng": {
+        "text": "Beirut Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 422
+      }
+    ]
+  },
+  {
+    "time_zone_id": 223,
+    "time_zone_name": "Asia/Bishkek",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bishkek Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 417
+      }
+    ]
+  },
+  {
+    "time_zone_id": 224,
+    "time_zone_name": "Asia/Brunei",
+    "time_zone_label": {
+      "eng": {
+        "text": "Brunei Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 96
+      }
+    ]
+  },
+  {
+    "time_zone_id": 225,
+    "time_zone_name": "Asia/Chita",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chita Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 226,
+    "time_zone_name": "Asia/Colombo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Colombo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 144
+      }
+    ]
+  },
+  {
+    "time_zone_id": 227,
+    "time_zone_name": "Asia/Damascus",
+    "time_zone_label": {
+      "eng": {
+        "text": "Damascus Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 760
+      }
+    ]
+  },
+  {
+    "time_zone_id": 228,
+    "time_zone_name": "Asia/Dhaka",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dhaka Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 50
+      }
+    ],
+    "aliases": [
+      "Asia/Dacca"
+    ]
+  },
+  {
+    "time_zone_id": 229,
+    "time_zone_name": "Asia/Dili",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dili Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 626
+      }
+    ]
+  },
+  {
+    "time_zone_id": 230,
+    "time_zone_name": "Asia/Dubai",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dubai Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 784
+      }
+    ]
+  },
+  {
+    "time_zone_id": 231,
+    "time_zone_name": "Asia/Dushanbe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dushanbe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 762
+      }
+    ]
+  },
+  {
+    "time_zone_id": 232,
+    "time_zone_name": "Asia/Famagusta",
+    "time_zone_label": {
+      "eng": {
+        "text": "Famagusta Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 196
+      }
+    ]
+  },
+  {
+    "time_zone_id": 233,
+    "time_zone_name": "Asia/Gaza",
+    "time_zone_label": {
+      "eng": {
+        "text": "Gaza Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 275
+      }
+    ]
+  },
+  {
+    "time_zone_id": 234,
+    "time_zone_name": "Asia/Hebron",
+    "time_zone_label": {
+      "eng": {
+        "text": "Hebron Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 275
+      }
+    ]
+  },
+  {
+    "time_zone_id": 235,
+    "time_zone_name": "Asia/Ho_Chi_Minh",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ho Chi Minh Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 704
+      }
+    ],
+    "aliases": [
+      "Asia/Saigon"
+    ]
+  },
+  {
+    "time_zone_id": 236,
+    "time_zone_name": "Asia/Hong_Kong",
+    "time_zone_label": {
+      "eng": {
+        "text": "Hong Kong Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 344
+      }
+    ],
+    "aliases": [
+      "Hongkong"
+    ]
+  },
+  {
+    "time_zone_id": 237,
+    "time_zone_name": "Asia/Hovd",
+    "time_zone_label": {
+      "eng": {
+        "text": "Hovd Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 496
+      }
+    ]
+  },
+  {
+    "time_zone_id": 238,
+    "time_zone_name": "Asia/Irkutsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Irkutsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 239,
+    "time_zone_name": "Asia/Jakarta",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jakarta Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 360
+      }
+    ]
+  },
+  {
+    "time_zone_id": 240,
+    "time_zone_name": "Asia/Jayapura",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jayapura Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 360
+      }
+    ]
+  },
+  {
+    "time_zone_id": 241,
+    "time_zone_name": "Asia/Jerusalem",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jerusalem Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 376
+      }
+    ],
+    "aliases": [
+      "Asia/Tel_Aviv",
+      "Israel"
+    ]
+  },
+  {
+    "time_zone_id": 242,
+    "time_zone_name": "Asia/Kabul",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kabul Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 4
+      }
+    ]
+  },
+  {
+    "time_zone_id": 243,
+    "time_zone_name": "Asia/Kamchatka",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kamchatka Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 244,
+    "time_zone_name": "Asia/Karachi",
+    "time_zone_label": {
+      "eng": {
+        "text": "Karachi Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 586
+      }
+    ]
+  },
+  {
+    "time_zone_id": 245,
+    "time_zone_name": "Asia/Kathmandu",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kathmandu Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 524
+      }
+    ],
+    "aliases": [
+      "Asia/Katmandu"
+    ]
+  },
+  {
+    "time_zone_id": 246,
+    "time_zone_name": "Asia/Khandyga",
+    "time_zone_label": {
+      "eng": {
+        "text": "Khandyga Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 247,
+    "time_zone_name": "Asia/Kolkata",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kolkata Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 356
+      }
+    ],
+    "aliases": [
+      "Asia/Calcutta"
+    ]
+  },
+  {
+    "time_zone_id": 248,
+    "time_zone_name": "Asia/Krasnoyarsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Krasnoyarsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 249,
+    "time_zone_name": "Asia/Kuala_Lumpur",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kuala Lumpur Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 458
+      }
+    ]
+  },
+  {
+    "time_zone_id": 250,
+    "time_zone_name": "Asia/Kuching",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kuching Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 458
+      }
+    ]
+  },
+  {
+    "time_zone_id": 251,
+    "time_zone_name": "Asia/Kuwait",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kuwait Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 414
+      }
+    ]
+  },
+  {
+    "time_zone_id": 252,
+    "time_zone_name": "Asia/Macau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Macau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 446
+      }
+    ],
+    "aliases": [
+      "Asia/Macao"
+    ]
+  },
+  {
+    "time_zone_id": 253,
+    "time_zone_name": "Asia/Magadan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Magadan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 254,
+    "time_zone_name": "Asia/Makassar",
+    "time_zone_label": {
+      "eng": {
+        "text": "Makassar Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 360
+      }
+    ],
+    "aliases": [
+      "Asia/Ujung_Pandang"
+    ]
+  },
+  {
+    "time_zone_id": 255,
+    "time_zone_name": "Asia/Manila",
+    "time_zone_label": {
+      "eng": {
+        "text": "Manila Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 608
+      }
+    ]
+  },
+  {
+    "time_zone_id": 256,
+    "time_zone_name": "Asia/Muscat",
+    "time_zone_label": {
+      "eng": {
+        "text": "Muscat Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 512
+      }
+    ]
+  },
+  {
+    "time_zone_id": 257,
+    "time_zone_name": "Asia/Nicosia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nicosia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 196
+      }
+    ],
+    "aliases": [
+      "Europe/Nicosia"
+    ]
+  },
+  {
+    "time_zone_id": 258,
+    "time_zone_name": "Asia/Novokuznetsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Novokuznetsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 259,
+    "time_zone_name": "Asia/Novosibirsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Novosibirsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 260,
+    "time_zone_name": "Asia/Omsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Omsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 261,
+    "time_zone_name": "Asia/Oral",
+    "time_zone_label": {
+      "eng": {
+        "text": "Oral Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 262,
+    "time_zone_name": "Asia/Phnom_Penh",
+    "time_zone_label": {
+      "eng": {
+        "text": "Phnom Penh Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 116
+      }
+    ]
+  },
+  {
+    "time_zone_id": 263,
+    "time_zone_name": "Asia/Pontianak",
+    "time_zone_label": {
+      "eng": {
+        "text": "Pontianak Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 360
+      }
+    ]
+  },
+  {
+    "time_zone_id": 264,
+    "time_zone_name": "Asia/Pyongyang",
+    "time_zone_label": {
+      "eng": {
+        "text": "Pyongyang Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 408
+      }
+    ]
+  },
+  {
+    "time_zone_id": 265,
+    "time_zone_name": "Asia/Qatar",
+    "time_zone_label": {
+      "eng": {
+        "text": "Qatar Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 634
+      }
+    ]
+  },
+  {
+    "time_zone_id": 266,
+    "time_zone_name": "Asia/Qostanay",
+    "time_zone_label": {
+      "eng": {
+        "text": "Qostanay Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 267,
+    "time_zone_name": "Asia/Qyzylorda",
+    "time_zone_label": {
+      "eng": {
+        "text": "Qyzylorda Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "time_zone_id": 268,
+    "time_zone_name": "Asia/Riyadh",
+    "time_zone_label": {
+      "eng": {
+        "text": "Riyadh Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 682
+      }
+    ]
+  },
+  {
+    "time_zone_id": 269,
+    "time_zone_name": "Asia/Sakhalin",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sakhalin Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 270,
+    "time_zone_name": "Asia/Samarkand",
+    "time_zone_label": {
+      "eng": {
+        "text": "Samarkand Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 860
+      }
+    ]
+  },
+  {
+    "time_zone_id": 271,
+    "time_zone_name": "Asia/Seoul",
+    "time_zone_label": {
+      "eng": {
+        "text": "Seoul Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 410
+      }
+    ],
+    "aliases": [
+      "ROK"
+    ]
+  },
+  {
+    "time_zone_id": 272,
+    "time_zone_name": "Asia/Shanghai",
+    "time_zone_label": {
+      "eng": {
+        "text": "Shanghai Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 156
+      }
+    ],
+    "aliases": [
+      "Asia/Chongqing",
+      "Asia/Chungking",
+      "Asia/Harbin",
+      "PRC"
+    ]
+  },
+  {
+    "time_zone_id": 273,
+    "time_zone_name": "Asia/Singapore",
+    "time_zone_label": {
+      "eng": {
+        "text": "Singapore Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 702
+      }
+    ],
+    "aliases": [
+      "Singapore"
+    ]
+  },
+  {
+    "time_zone_id": 274,
+    "time_zone_name": "Asia/Srednekolymsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Srednekolymsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 275,
+    "time_zone_name": "Asia/Taipei",
+    "time_zone_label": {
+      "eng": {
+        "text": "Taipei Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 158
+      }
+    ],
+    "aliases": [
+      "ROC"
+    ]
+  },
+  {
+    "time_zone_id": 276,
+    "time_zone_name": "Asia/Tashkent",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tashkent Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 860
+      }
+    ]
+  },
+  {
+    "time_zone_id": 277,
+    "time_zone_name": "Asia/Tbilisi",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tbilisi Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 268
+      }
+    ]
+  },
+  {
+    "time_zone_id": 278,
+    "time_zone_name": "Asia/Tehran",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tehran Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 364
+      }
+    ],
+    "aliases": [
+      "Iran"
+    ]
+  },
+  {
+    "time_zone_id": 279,
+    "time_zone_name": "Asia/Thimphu",
+    "time_zone_label": {
+      "eng": {
+        "text": "Thimphu Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 64
+      }
+    ],
+    "aliases": [
+      "Asia/Thimbu"
+    ]
+  },
+  {
+    "time_zone_id": 280,
+    "time_zone_name": "Asia/Tokyo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tokyo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 392
+      }
+    ],
+    "aliases": [
+      "Japan"
+    ]
+  },
+  {
+    "time_zone_id": 281,
+    "time_zone_name": "Asia/Tomsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tomsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 282,
+    "time_zone_name": "Asia/Ulaanbaatar",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ulaanbaatar Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 496
+      }
+    ],
+    "aliases": [
+      "Asia/Choibalsan",
+      "Asia/Ulan_Bator"
+    ]
+  },
+  {
+    "time_zone_id": 283,
+    "time_zone_name": "Asia/Urumqi",
+    "time_zone_label": {
+      "eng": {
+        "text": "Urumqi Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 156
+      }
+    ],
+    "aliases": [
+      "Asia/Kashgar"
+    ]
+  },
+  {
+    "time_zone_id": 284,
+    "time_zone_name": "Asia/Ust-Nera",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ust-Nera Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 285,
+    "time_zone_name": "Asia/Vientiane",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vientiane Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 418
+      }
+    ]
+  },
+  {
+    "time_zone_id": 286,
+    "time_zone_name": "Asia/Vladivostok",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vladivostok Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 287,
+    "time_zone_name": "Asia/Yakutsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Yakutsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 288,
+    "time_zone_name": "Asia/Yangon",
+    "time_zone_label": {
+      "eng": {
+        "text": "Yangon Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 104
+      }
+    ],
+    "aliases": [
+      "Asia/Rangoon"
+    ]
+  },
+  {
+    "time_zone_id": 289,
+    "time_zone_name": "Asia/Yekaterinburg",
+    "time_zone_label": {
+      "eng": {
+        "text": "Yekaterinburg Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 290,
+    "time_zone_name": "Asia/Yerevan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Yerevan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 51
+      }
+    ]
+  },
+  {
+    "time_zone_id": 291,
+    "time_zone_name": "Atlantic/Azores",
+    "time_zone_label": {
+      "eng": {
+        "text": "Azores Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 620
+      }
+    ]
+  },
+  {
+    "time_zone_id": 292,
+    "time_zone_name": "Atlantic/Bermuda",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bermuda Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 60
+      }
+    ]
+  },
+  {
+    "time_zone_id": 293,
+    "time_zone_name": "Atlantic/Canary",
+    "time_zone_label": {
+      "eng": {
+        "text": "Canary Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 724
+      }
+    ]
+  },
+  {
+    "time_zone_id": 294,
+    "time_zone_name": "Atlantic/Cape_Verde",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cape Verde Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 132
+      }
+    ]
+  },
+  {
+    "time_zone_id": 295,
+    "time_zone_name": "Atlantic/Faroe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Faroe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 234
+      }
+    ],
+    "aliases": [
+      "Atlantic/Faeroe"
+    ]
+  },
+  {
+    "time_zone_id": 296,
+    "time_zone_name": "Atlantic/Madeira",
+    "time_zone_label": {
+      "eng": {
+        "text": "Madeira Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 620
+      }
+    ]
+  },
+  {
+    "time_zone_id": 297,
+    "time_zone_name": "Atlantic/Reykjavik",
+    "time_zone_label": {
+      "eng": {
+        "text": "Reykjavik Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 352
+      }
+    ]
+  },
+  {
+    "time_zone_id": 298,
+    "time_zone_name": "Atlantic/South_Georgia",
+    "time_zone_label": {
+      "eng": {
+        "text": "South Georgia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 239
+      }
+    ]
+  },
+  {
+    "time_zone_id": 299,
+    "time_zone_name": "Atlantic/St_Helena",
+    "time_zone_label": {
+      "eng": {
+        "text": "St Helena Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 654
+      }
+    ]
+  },
+  {
+    "time_zone_id": 300,
+    "time_zone_name": "Atlantic/Stanley",
+    "time_zone_label": {
+      "eng": {
+        "text": "Stanley Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 238
+      }
+    ]
+  },
+  {
+    "time_zone_id": 301,
+    "time_zone_name": "Australia/Adelaide",
+    "time_zone_label": {
+      "eng": {
+        "text": "Adelaide Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/South"
+    ]
+  },
+  {
+    "time_zone_id": 302,
+    "time_zone_name": "Australia/Brisbane",
+    "time_zone_label": {
+      "eng": {
+        "text": "Brisbane Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/Queensland"
+    ]
+  },
+  {
+    "time_zone_id": 303,
+    "time_zone_name": "Australia/Broken_Hill",
+    "time_zone_label": {
+      "eng": {
+        "text": "Broken Hill Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/Yancowinna"
+    ]
+  },
+  {
+    "time_zone_id": 304,
+    "time_zone_name": "Australia/Darwin",
+    "time_zone_label": {
+      "eng": {
+        "text": "Darwin Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/North"
+    ]
+  },
+  {
+    "time_zone_id": 305,
+    "time_zone_name": "Australia/Eucla",
+    "time_zone_label": {
+      "eng": {
+        "text": "Eucla Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ]
+  },
+  {
+    "time_zone_id": 306,
+    "time_zone_name": "Australia/Hobart",
+    "time_zone_label": {
+      "eng": {
+        "text": "Hobart Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/Currie",
+      "Australia/Tasmania"
+    ]
+  },
+  {
+    "time_zone_id": 307,
+    "time_zone_name": "Australia/Lindeman",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lindeman Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ]
+  },
+  {
+    "time_zone_id": 308,
+    "time_zone_name": "Australia/Lord_Howe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lord Howe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/LHI"
+    ]
+  },
+  {
+    "time_zone_id": 309,
+    "time_zone_name": "Australia/Melbourne",
+    "time_zone_label": {
+      "eng": {
+        "text": "Melbourne Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/Victoria"
+    ]
+  },
+  {
+    "time_zone_id": 310,
+    "time_zone_name": "Australia/Perth",
+    "time_zone_label": {
+      "eng": {
+        "text": "Perth Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/West"
+    ]
+  },
+  {
+    "time_zone_id": 311,
+    "time_zone_name": "Australia/Sydney",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sydney Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 36
+      }
+    ],
+    "aliases": [
+      "Australia/ACT",
+      "Australia/Canberra",
+      "Australia/NSW"
+    ]
+  },
+  {
+    "time_zone_id": 312,
+    "time_zone_name": "Etc/UTC",
+    "time_zone_label": {
+      "eng": {
+        "text": "Coordinated Universal Time"
+      }
+    },
+    "abbreviation": "UTC",
+    "standard_utc_offset_minute": 0,
+    "is_fixed_offset": true,
+    "aliases": [
+      "Etc/UCT",
+      "Etc/Universal",
+      "Etc/Zulu",
+      "UCT",
+      "UTC",
+      "Universal",
+      "Zulu"
+    ]
+  },
+  {
+    "time_zone_id": 313,
+    "time_zone_name": "Europe/Amsterdam",
+    "time_zone_label": {
+      "eng": {
+        "text": "Amsterdam Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 528
+      }
+    ]
+  },
+  {
+    "time_zone_id": 314,
+    "time_zone_name": "Europe/Andorra",
+    "time_zone_label": {
+      "eng": {
+        "text": "Andorra Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 20
+      }
+    ]
+  },
+  {
+    "time_zone_id": 315,
+    "time_zone_name": "Europe/Astrakhan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Astrakhan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 316,
+    "time_zone_name": "Europe/Athens",
+    "time_zone_label": {
+      "eng": {
+        "text": "Athens Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 300
+      }
+    ],
+    "aliases": [
+      "EET"
+    ]
+  },
+  {
+    "time_zone_id": 317,
+    "time_zone_name": "Europe/Belgrade",
+    "time_zone_label": {
+      "eng": {
+        "text": "Belgrade Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 688
+      }
+    ]
+  },
+  {
+    "time_zone_id": 318,
+    "time_zone_name": "Europe/Berlin",
+    "time_zone_label": {
+      "eng": {
+        "text": "Berlin Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 276
+      }
+    ],
+    "aliases": [
+      "Atlantic/Jan_Mayen"
+    ]
+  },
+  {
+    "time_zone_id": 319,
+    "time_zone_name": "Europe/Bratislava",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bratislava Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 703
+      }
+    ]
+  },
+  {
+    "time_zone_id": 320,
+    "time_zone_name": "Europe/Brussels",
+    "time_zone_label": {
+      "eng": {
+        "text": "Brussels Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 56
+      }
+    ],
+    "aliases": [
+      "CET",
+      "MET"
+    ]
+  },
+  {
+    "time_zone_id": 321,
+    "time_zone_name": "Europe/Bucharest",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bucharest Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 642
+      }
+    ]
+  },
+  {
+    "time_zone_id": 322,
+    "time_zone_name": "Europe/Budapest",
+    "time_zone_label": {
+      "eng": {
+        "text": "Budapest Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 348
+      }
+    ]
+  },
+  {
+    "time_zone_id": 323,
+    "time_zone_name": "Europe/Busingen",
+    "time_zone_label": {
+      "eng": {
+        "text": "Busingen Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 276
+      }
+    ]
+  },
+  {
+    "time_zone_id": 324,
+    "time_zone_name": "Europe/Chisinau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chisinau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 498
+      }
+    ],
+    "aliases": [
+      "Europe/Tiraspol"
+    ]
+  },
+  {
+    "time_zone_id": 325,
+    "time_zone_name": "Europe/Copenhagen",
+    "time_zone_label": {
+      "eng": {
+        "text": "Copenhagen Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 208
+      }
+    ]
+  },
+  {
+    "time_zone_id": 326,
+    "time_zone_name": "Europe/Dublin",
+    "time_zone_label": {
+      "eng": {
+        "text": "Dublin Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 372
+      }
+    ],
+    "aliases": [
+      "Eire"
+    ]
+  },
+  {
+    "time_zone_id": 327,
+    "time_zone_name": "Europe/Gibraltar",
+    "time_zone_label": {
+      "eng": {
+        "text": "Gibraltar Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 292
+      }
+    ]
+  },
+  {
+    "time_zone_id": 328,
+    "time_zone_name": "Europe/Guernsey",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guernsey Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 831
+      }
+    ]
+  },
+  {
+    "time_zone_id": 329,
+    "time_zone_name": "Europe/Helsinki",
+    "time_zone_label": {
+      "eng": {
+        "text": "Helsinki Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 246
+      }
+    ]
+  },
+  {
+    "time_zone_id": 330,
+    "time_zone_name": "Europe/Isle_of_Man",
+    "time_zone_label": {
+      "eng": {
+        "text": "Isle of Man Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 833
+      }
+    ]
+  },
+  {
+    "time_zone_id": 331,
+    "time_zone_name": "Europe/Istanbul",
+    "time_zone_label": {
+      "eng": {
+        "text": "Istanbul Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 792
+      }
+    ],
+    "aliases": [
+      "Asia/Istanbul",
+      "Turkey"
+    ]
+  },
+  {
+    "time_zone_id": 332,
+    "time_zone_name": "Europe/Jersey",
+    "time_zone_label": {
+      "eng": {
+        "text": "Jersey Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 832
+      }
+    ]
+  },
+  {
+    "time_zone_id": 333,
+    "time_zone_name": "Europe/Kaliningrad",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kaliningrad Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 334,
+    "time_zone_name": "Europe/Kirov",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kirov Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 335,
+    "time_zone_name": "Europe/Kyiv",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kyiv Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 804
+      }
+    ],
+    "aliases": [
+      "Europe/Kiev",
+      "Europe/Uzhgorod",
+      "Europe/Zaporozhye"
+    ]
+  },
+  {
+    "time_zone_id": 336,
+    "time_zone_name": "Europe/Lisbon",
+    "time_zone_label": {
+      "eng": {
+        "text": "Lisbon Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 620
+      }
+    ],
+    "aliases": [
+      "Portugal",
+      "WET"
+    ]
+  },
+  {
+    "time_zone_id": 337,
+    "time_zone_name": "Europe/Ljubljana",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ljubljana Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 705
+      }
+    ]
+  },
+  {
+    "time_zone_id": 338,
+    "time_zone_name": "Europe/London",
+    "time_zone_label": {
+      "eng": {
+        "text": "London Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 826
+      }
+    ],
+    "aliases": [
+      "Europe/Belfast",
+      "GB",
+      "GB-Eire"
+    ]
+  },
+  {
+    "time_zone_id": 339,
+    "time_zone_name": "Europe/Luxembourg",
+    "time_zone_label": {
+      "eng": {
+        "text": "Luxembourg Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 442
+      }
+    ]
+  },
+  {
+    "time_zone_id": 340,
+    "time_zone_name": "Europe/Madrid",
+    "time_zone_label": {
+      "eng": {
+        "text": "Madrid Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 724
+      }
+    ]
+  },
+  {
+    "time_zone_id": 341,
+    "time_zone_name": "Europe/Malta",
+    "time_zone_label": {
+      "eng": {
+        "text": "Malta Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 470
+      }
+    ]
+  },
+  {
+    "time_zone_id": 342,
+    "time_zone_name": "Europe/Mariehamn",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mariehamn Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 248
+      }
+    ]
+  },
+  {
+    "time_zone_id": 343,
+    "time_zone_name": "Europe/Minsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Minsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 112
+      }
+    ]
+  },
+  {
+    "time_zone_id": 344,
+    "time_zone_name": "Europe/Monaco",
+    "time_zone_label": {
+      "eng": {
+        "text": "Monaco Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 492
+      }
+    ]
+  },
+  {
+    "time_zone_id": 345,
+    "time_zone_name": "Europe/Moscow",
+    "time_zone_label": {
+      "eng": {
+        "text": "Moscow Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ],
+    "aliases": [
+      "W-SU"
+    ]
+  },
+  {
+    "time_zone_id": 346,
+    "time_zone_name": "Europe/Oslo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Oslo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 578
+      }
+    ]
+  },
+  {
+    "time_zone_id": 347,
+    "time_zone_name": "Europe/Paris",
+    "time_zone_label": {
+      "eng": {
+        "text": "Paris Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 250
+      }
+    ]
+  },
+  {
+    "time_zone_id": 348,
+    "time_zone_name": "Europe/Podgorica",
+    "time_zone_label": {
+      "eng": {
+        "text": "Podgorica Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 499
+      }
+    ]
+  },
+  {
+    "time_zone_id": 349,
+    "time_zone_name": "Europe/Prague",
+    "time_zone_label": {
+      "eng": {
+        "text": "Prague Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 203
+      }
+    ]
+  },
+  {
+    "time_zone_id": 350,
+    "time_zone_name": "Europe/Riga",
+    "time_zone_label": {
+      "eng": {
+        "text": "Riga Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 428
+      }
+    ]
+  },
+  {
+    "time_zone_id": 351,
+    "time_zone_name": "Europe/Rome",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rome Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 380
+      }
+    ]
+  },
+  {
+    "time_zone_id": 352,
+    "time_zone_name": "Europe/Samara",
+    "time_zone_label": {
+      "eng": {
+        "text": "Samara Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 353,
+    "time_zone_name": "Europe/San_Marino",
+    "time_zone_label": {
+      "eng": {
+        "text": "San Marino Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 674
+      }
+    ]
+  },
+  {
+    "time_zone_id": 354,
+    "time_zone_name": "Europe/Sarajevo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sarajevo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 70
+      }
+    ]
+  },
+  {
+    "time_zone_id": 355,
+    "time_zone_name": "Europe/Saratov",
+    "time_zone_label": {
+      "eng": {
+        "text": "Saratov Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 356,
+    "time_zone_name": "Europe/Simferopol",
+    "time_zone_label": {
+      "eng": {
+        "text": "Simferopol Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 804
+      }
+    ]
+  },
+  {
+    "time_zone_id": 357,
+    "time_zone_name": "Europe/Skopje",
+    "time_zone_label": {
+      "eng": {
+        "text": "Skopje Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 807
+      }
+    ]
+  },
+  {
+    "time_zone_id": 358,
+    "time_zone_name": "Europe/Sofia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Sofia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 100
+      }
+    ]
+  },
+  {
+    "time_zone_id": 359,
+    "time_zone_name": "Europe/Stockholm",
+    "time_zone_label": {
+      "eng": {
+        "text": "Stockholm Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 752
+      }
+    ]
+  },
+  {
+    "time_zone_id": 360,
+    "time_zone_name": "Europe/Tallinn",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tallinn Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 233
+      }
+    ]
+  },
+  {
+    "time_zone_id": 361,
+    "time_zone_name": "Europe/Tirane",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tirane Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 8
+      }
+    ]
+  },
+  {
+    "time_zone_id": 362,
+    "time_zone_name": "Europe/Ulyanovsk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Ulyanovsk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 363,
+    "time_zone_name": "Europe/Vaduz",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vaduz Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 438
+      }
+    ]
+  },
+  {
+    "time_zone_id": 364,
+    "time_zone_name": "Europe/Vatican",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vatican Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 336
+      }
+    ]
+  },
+  {
+    "time_zone_id": 365,
+    "time_zone_name": "Europe/Vienna",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vienna Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 40
+      }
+    ]
+  },
+  {
+    "time_zone_id": 366,
+    "time_zone_name": "Europe/Vilnius",
+    "time_zone_label": {
+      "eng": {
+        "text": "Vilnius Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 440
+      }
+    ]
+  },
+  {
+    "time_zone_id": 367,
+    "time_zone_name": "Europe/Volgograd",
+    "time_zone_label": {
+      "eng": {
+        "text": "Volgograd Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "time_zone_id": 368,
+    "time_zone_name": "Europe/Warsaw",
+    "time_zone_label": {
+      "eng": {
+        "text": "Warsaw Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 616
+      }
+    ],
+    "aliases": [
+      "Poland"
+    ]
+  },
+  {
+    "time_zone_id": 369,
+    "time_zone_name": "Europe/Zagreb",
+    "time_zone_label": {
+      "eng": {
+        "text": "Zagreb Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 191
+      }
+    ]
+  },
+  {
+    "time_zone_id": 370,
+    "time_zone_name": "Europe/Zurich",
+    "time_zone_label": {
+      "eng": {
+        "text": "Zurich Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 756
+      }
+    ]
+  },
+  {
+    "time_zone_id": 371,
+    "time_zone_name": "Indian/Antananarivo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Antananarivo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 450
+      }
+    ]
+  },
+  {
+    "time_zone_id": 372,
+    "time_zone_name": "Indian/Chagos",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chagos Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 86
+      }
+    ]
+  },
+  {
+    "time_zone_id": 373,
+    "time_zone_name": "Indian/Christmas",
+    "time_zone_label": {
+      "eng": {
+        "text": "Christmas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 162
+      }
+    ]
+  },
+  {
+    "time_zone_id": 374,
+    "time_zone_name": "Indian/Cocos",
+    "time_zone_label": {
+      "eng": {
+        "text": "Cocos Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 166
+      }
+    ]
+  },
+  {
+    "time_zone_id": 375,
+    "time_zone_name": "Indian/Comoro",
+    "time_zone_label": {
+      "eng": {
+        "text": "Comoro Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 174
+      }
+    ]
+  },
+  {
+    "time_zone_id": 376,
+    "time_zone_name": "Indian/Kerguelen",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kerguelen Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 260
+      }
+    ]
+  },
+  {
+    "time_zone_id": 377,
+    "time_zone_name": "Indian/Mahe",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mahe Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 690
+      }
+    ]
+  },
+  {
+    "time_zone_id": 378,
+    "time_zone_name": "Indian/Maldives",
+    "time_zone_label": {
+      "eng": {
+        "text": "Maldives Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 462
+      }
+    ]
+  },
+  {
+    "time_zone_id": 379,
+    "time_zone_name": "Indian/Mauritius",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mauritius Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 480
+      }
+    ]
+  },
+  {
+    "time_zone_id": 380,
+    "time_zone_name": "Indian/Mayotte",
+    "time_zone_label": {
+      "eng": {
+        "text": "Mayotte Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 175
+      }
+    ]
+  },
+  {
+    "time_zone_id": 381,
+    "time_zone_name": "Indian/Reunion",
+    "time_zone_label": {
+      "eng": {
+        "text": "Reunion Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 638
+      }
+    ]
+  },
+  {
+    "time_zone_id": 382,
+    "time_zone_name": "Pacific/Apia",
+    "time_zone_label": {
+      "eng": {
+        "text": "Apia Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 882
+      }
+    ]
+  },
+  {
+    "time_zone_id": 383,
+    "time_zone_name": "Pacific/Auckland",
+    "time_zone_label": {
+      "eng": {
+        "text": "Auckland Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 554
+      }
+    ],
+    "aliases": [
+      "Antarctica/South_Pole",
+      "NZ"
+    ]
+  },
+  {
+    "time_zone_id": 384,
+    "time_zone_name": "Pacific/Bougainville",
+    "time_zone_label": {
+      "eng": {
+        "text": "Bougainville Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 598
+      }
+    ]
+  },
+  {
+    "time_zone_id": 385,
+    "time_zone_name": "Pacific/Chatham",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chatham Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 554
+      }
+    ],
+    "aliases": [
+      "NZ-CHAT"
+    ]
+  },
+  {
+    "time_zone_id": 386,
+    "time_zone_name": "Pacific/Chuuk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Chuuk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 583
+      }
+    ]
+  },
+  {
+    "time_zone_id": 387,
+    "time_zone_name": "Pacific/Easter",
+    "time_zone_label": {
+      "eng": {
+        "text": "Easter Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 152
+      }
+    ],
+    "aliases": [
+      "Chile/EasterIsland"
+    ]
+  },
+  {
+    "time_zone_id": 388,
+    "time_zone_name": "Pacific/Efate",
+    "time_zone_label": {
+      "eng": {
+        "text": "Efate Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 548
+      }
+    ]
+  },
+  {
+    "time_zone_id": 389,
+    "time_zone_name": "Pacific/Fakaofo",
+    "time_zone_label": {
+      "eng": {
+        "text": "Fakaofo Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 772
+      }
+    ]
+  },
+  {
+    "time_zone_id": 390,
+    "time_zone_name": "Pacific/Fiji",
+    "time_zone_label": {
+      "eng": {
+        "text": "Fiji Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 242
+      }
+    ]
+  },
+  {
+    "time_zone_id": 391,
+    "time_zone_name": "Pacific/Funafuti",
+    "time_zone_label": {
+      "eng": {
+        "text": "Funafuti Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 798
+      }
+    ]
+  },
+  {
+    "time_zone_id": 392,
+    "time_zone_name": "Pacific/Galapagos",
+    "time_zone_label": {
+      "eng": {
+        "text": "Galapagos Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 218
+      }
+    ]
+  },
+  {
+    "time_zone_id": 393,
+    "time_zone_name": "Pacific/Gambier",
+    "time_zone_label": {
+      "eng": {
+        "text": "Gambier Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 258
+      }
+    ]
+  },
+  {
+    "time_zone_id": 394,
+    "time_zone_name": "Pacific/Guadalcanal",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guadalcanal Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 90
+      }
+    ],
+    "aliases": [
+      "Pacific/Ponape"
+    ]
+  },
+  {
+    "time_zone_id": 395,
+    "time_zone_name": "Pacific/Guam",
+    "time_zone_label": {
+      "eng": {
+        "text": "Guam Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 316
+      }
+    ]
+  },
+  {
+    "time_zone_id": 396,
+    "time_zone_name": "Pacific/Honolulu",
+    "time_zone_label": {
+      "eng": {
+        "text": "Honolulu Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 840
+      }
+    ],
+    "aliases": [
+      "HST",
+      "Pacific/Johnston",
+      "US/Hawaii"
+    ]
+  },
+  {
+    "time_zone_id": 397,
+    "time_zone_name": "Pacific/Kanton",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kanton Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 296
+      }
+    ],
+    "aliases": [
+      "Pacific/Enderbury"
+    ]
+  },
+  {
+    "time_zone_id": 398,
+    "time_zone_name": "Pacific/Kiritimati",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kiritimati Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 296
+      }
+    ]
+  },
+  {
+    "time_zone_id": 399,
+    "time_zone_name": "Pacific/Kosrae",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kosrae Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 583
+      }
+    ]
+  },
+  {
+    "time_zone_id": 400,
+    "time_zone_name": "Pacific/Kwajalein",
+    "time_zone_label": {
+      "eng": {
+        "text": "Kwajalein Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 584
+      }
+    ],
+    "aliases": [
+      "Kwajalein"
+    ]
+  },
+  {
+    "time_zone_id": 401,
+    "time_zone_name": "Pacific/Majuro",
+    "time_zone_label": {
+      "eng": {
+        "text": "Majuro Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 584
+      }
+    ]
+  },
+  {
+    "time_zone_id": 402,
+    "time_zone_name": "Pacific/Marquesas",
+    "time_zone_label": {
+      "eng": {
+        "text": "Marquesas Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 258
+      }
+    ]
+  },
+  {
+    "time_zone_id": 403,
+    "time_zone_name": "Pacific/Midway",
+    "time_zone_label": {
+      "eng": {
+        "text": "Midway Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 581
+      }
+    ]
+  },
+  {
+    "time_zone_id": 404,
+    "time_zone_name": "Pacific/Nauru",
+    "time_zone_label": {
+      "eng": {
+        "text": "Nauru Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 520
+      }
+    ]
+  },
+  {
+    "time_zone_id": 405,
+    "time_zone_name": "Pacific/Niue",
+    "time_zone_label": {
+      "eng": {
+        "text": "Niue Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 570
+      }
+    ]
+  },
+  {
+    "time_zone_id": 406,
+    "time_zone_name": "Pacific/Norfolk",
+    "time_zone_label": {
+      "eng": {
+        "text": "Norfolk Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 574
+      }
+    ]
+  },
+  {
+    "time_zone_id": 407,
+    "time_zone_name": "Pacific/Noumea",
+    "time_zone_label": {
+      "eng": {
+        "text": "Noumea Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 540
+      }
+    ]
+  },
+  {
+    "time_zone_id": 408,
+    "time_zone_name": "Pacific/Pago_Pago",
+    "time_zone_label": {
+      "eng": {
+        "text": "Pago Pago Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 16
+      }
+    ],
+    "aliases": [
+      "Pacific/Samoa",
+      "US/Samoa"
+    ]
+  },
+  {
+    "time_zone_id": 409,
+    "time_zone_name": "Pacific/Palau",
+    "time_zone_label": {
+      "eng": {
+        "text": "Palau Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 585
+      }
+    ]
+  },
+  {
+    "time_zone_id": 410,
+    "time_zone_name": "Pacific/Pitcairn",
+    "time_zone_label": {
+      "eng": {
+        "text": "Pitcairn Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 612
+      }
+    ]
+  },
+  {
+    "time_zone_id": 411,
+    "time_zone_name": "Pacific/Pohnpei",
+    "time_zone_label": {
+      "eng": {
+        "text": "Pohnpei Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 583
+      }
+    ]
+  },
+  {
+    "time_zone_id": 412,
+    "time_zone_name": "Pacific/Port_Moresby",
+    "time_zone_label": {
+      "eng": {
+        "text": "Port Moresby Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 598
+      }
+    ],
+    "aliases": [
+      "Pacific/Truk",
+      "Pacific/Yap"
+    ]
+  },
+  {
+    "time_zone_id": 413,
+    "time_zone_name": "Pacific/Rarotonga",
+    "time_zone_label": {
+      "eng": {
+        "text": "Rarotonga Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 184
+      }
+    ]
+  },
+  {
+    "time_zone_id": 414,
+    "time_zone_name": "Pacific/Saipan",
+    "time_zone_label": {
+      "eng": {
+        "text": "Saipan Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 580
+      }
+    ]
+  },
+  {
+    "time_zone_id": 415,
+    "time_zone_name": "Pacific/Tahiti",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tahiti Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 258
+      }
+    ]
+  },
+  {
+    "time_zone_id": 416,
+    "time_zone_name": "Pacific/Tarawa",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tarawa Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 296
+      }
+    ]
+  },
+  {
+    "time_zone_id": 417,
+    "time_zone_name": "Pacific/Tongatapu",
+    "time_zone_label": {
+      "eng": {
+        "text": "Tongatapu Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 776
+      }
+    ]
+  },
+  {
+    "time_zone_id": 418,
+    "time_zone_name": "Pacific/Wake",
+    "time_zone_label": {
+      "eng": {
+        "text": "Wake Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 581
+      }
+    ]
+  },
+  {
+    "time_zone_id": 419,
+    "time_zone_name": "Pacific/Wallis",
+    "time_zone_label": {
+      "eng": {
+        "text": "Wallis Time"
+      }
+    },
+    "countries": [
+      {
+        "country_id": 876
+      }
+    ]
+  }
+]

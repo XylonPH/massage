@@ -13,12 +13,22 @@ are defined in `AGENTS.md`.
 massage/
 |-- apps/
 |   `-- web/          Laravel web application
+|-- assets/
+|   `-- source/       Editable master artwork and media sources
+|-- data/             Machine-readable source data (not deployed)
+|   |-- taxonomy/     Shared taxonomy and Massage Nexus classification data
+|   |-- common_reference/  Shared reference datasets
+|   `-- theme/        Theme configuration data
 |-- docs/             Current project specifications
 |-- AGENTS.md         Repository-wide contributor instructions
 |-- CHANGELOG.md      Accepted technical changes
 |-- README.md         Repository introduction and setup
 `-- .gitignore        Repository ignore rules
 ```
+
+The `data/` area supports development, validation, import, and seeding. It is not part of the
+deployable web application; the Azure deployment package is built from `apps/web/` only, and
+data or documentation files must never be placed under `apps/web/public/`.
 
 Future mobile, desktop, shared-contract, source-asset, and project-tool directories are created
 only after their scope and technology are accepted. The intended desktop application path is

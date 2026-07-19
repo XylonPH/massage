@@ -1,0 +1,631 @@
+[
+    {
+        "_id": 199,
+        "field_name": "type_database_provider",
+        "field_label": "Database Provider Type",
+        "field_description": "Classifies the provider, hosting environment, or local package that supplies or hosts a database account. Add new providers deliberately through taxonomy governance instead of using a catch-all option.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOC",
+                "option_label": "Localhost",
+                "option_description": "Local or personal machine database host."
+            },
+            {
+                "option_code": "AZR",
+                "option_label": "Microsoft Azure",
+                "option_description": "Microsoft Azure database provider."
+            },
+            {
+                "option_code": "AWS",
+                "option_label": "Amazon Web Services",
+                "option_description": "Amazon Web Services database provider."
+            },
+            {
+                "option_code": "GCP",
+                "option_label": "Google Cloud",
+                "option_description": "Google Cloud database provider."
+            },
+            {
+                "option_code": "MGA",
+                "option_label": "MongoDB Atlas",
+                "option_description": "MongoDB Atlas database provider."
+            },
+            {
+                "option_code": "FBS",
+                "option_label": "Firebase",
+                "option_description": "Firebase database provider."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supabase",
+                "option_description": "Supabase database provider."
+            },
+            {
+                "option_code": "DIG",
+                "option_label": "DigitalOcean",
+                "option_description": "DigitalOcean database provider."
+            },
+            {
+                "option_code": "HST",
+                "option_label": "Hostinger",
+                "option_description": "Hostinger database provider."
+            },
+            {
+                "option_code": "CPL",
+                "option_label": "cPanel Hosting",
+                "option_description": "cPanel-based hosting provider."
+            },
+            {
+                "option_code": "XAM",
+                "option_label": "XAMPP",
+                "option_description": "Local XAMPP environment."
+            },
+            {
+                "option_code": "WMP",
+                "option_label": "WampServer",
+                "option_description": "Local WampServer environment."
+            },
+            {
+                "option_code": "LAR",
+                "option_label": "Laragon",
+                "option_description": "Local Laragon environment."
+            }
+        ]
+    },
+    {
+        "_id": 200,
+        "field_name": "type_database_engine",
+        "field_label": "Database Engine Type",
+        "field_description": "Classifies the actual database or storage engine used by a database record. Cloud providers such as Azure, AWS, and Google Cloud are providers, not engines.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MYSQL",
+                "option_label": "MySQL",
+                "option_description": "MySQL database engine."
+            },
+            {
+                "option_code": "MARIADB",
+                "option_label": "MariaDB",
+                "option_description": "MariaDB database engine."
+            },
+            {
+                "option_code": "PGSQL",
+                "option_label": "PostgreSQL",
+                "option_description": "PostgreSQL database engine."
+            },
+            {
+                "option_code": "MSSQL",
+                "option_label": "Microsoft SQL Server",
+                "option_description": "Microsoft SQL Server database engine."
+            },
+            {
+                "option_code": "SQLITE",
+                "option_label": "SQLite",
+                "option_description": "SQLite database engine."
+            },
+            {
+                "option_code": "ORACLE",
+                "option_label": "Oracle Database",
+                "option_description": "Oracle Database engine."
+            },
+            {
+                "option_code": "DB2",
+                "option_label": "IBM Db2",
+                "option_description": "IBM Db2 database engine."
+            },
+            {
+                "option_code": "MONGODB",
+                "option_label": "MongoDB",
+                "option_description": "MongoDB document database engine."
+            },
+            {
+                "option_code": "COSMOS",
+                "option_label": "Azure Cosmos DB",
+                "option_description": "Azure Cosmos DB database engine/service family."
+            },
+            {
+                "option_code": "DOCDB",
+                "option_label": "DocumentDB",
+                "option_description": "DocumentDB-compatible document database engine or service."
+            },
+            {
+                "option_code": "DYNAMO",
+                "option_label": "Amazon DynamoDB",
+                "option_description": "Amazon DynamoDB NoSQL database service."
+            },
+            {
+                "option_code": "FSTORE",
+                "option_label": "Firestore",
+                "option_description": "Firestore document database service."
+            },
+            {
+                "option_code": "BTABLE",
+                "option_label": "Bigtable",
+                "option_description": "Bigtable wide-column database service."
+            },
+            {
+                "option_code": "SPANNER",
+                "option_label": "Spanner",
+                "option_description": "Google Cloud Spanner distributed SQL database service."
+            },
+            {
+                "option_code": "LITEDB",
+                "option_label": "LiteDB",
+                "option_description": "LiteDB embedded document database engine."
+            },
+            {
+                "option_code": "REDIS",
+                "option_label": "Redis",
+                "option_description": "Redis key-value store."
+            },
+            {
+                "option_code": "JSON",
+                "option_label": "JSON File",
+                "option_description": "JSON file storage."
+            },
+            {
+                "option_code": "CSV",
+                "option_label": "CSV File",
+                "option_description": "CSV file storage."
+            }
+        ]
+    },
+    {
+        "_id": 201,
+        "field_name": "type_database_service",
+        "field_label": "Database Service Type",
+        "field_description": "Classifies the specific hosted, managed, or local database service. The user interface should filter service options using the selected database provider and database engine when possible.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOCAL",
+                "option_label": "Local Database",
+                "option_description": "Local or self-hosted database service."
+            },
+            {
+                "option_code": "XAMPP",
+                "option_label": "XAMPP",
+                "option_description": "XAMPP local database stack."
+            },
+            {
+                "option_code": "WAMP",
+                "option_label": "WampServer",
+                "option_description": "WampServer local database stack."
+            },
+            {
+                "option_code": "LARAGON",
+                "option_label": "Laragon",
+                "option_description": "Laragon local database stack."
+            },
+            {
+                "option_code": "CPANEL",
+                "option_label": "cPanel Database",
+                "option_description": "cPanel-managed database service."
+            },
+            {
+                "option_code": "AZR_SQL",
+                "option_label": "Azure SQL Database",
+                "option_description": "Microsoft Azure SQL Database service."
+            },
+            {
+                "option_code": "AZR_MI",
+                "option_label": "Azure SQL Managed Instance",
+                "option_description": "Microsoft Azure SQL Managed Instance service."
+            },
+            {
+                "option_code": "AZR_MYSQL",
+                "option_label": "Azure Database for MySQL",
+                "option_description": "Microsoft Azure managed MySQL service."
+            },
+            {
+                "option_code": "AZR_PGSQL",
+                "option_label": "Azure Database for PostgreSQL",
+                "option_description": "Microsoft Azure managed PostgreSQL service."
+            },
+            {
+                "option_code": "AZR_COSMOS",
+                "option_label": "Azure Cosmos DB",
+                "option_description": "Microsoft Azure Cosmos DB service."
+            },
+            {
+                "option_code": "AZR_REDIS",
+                "option_label": "Azure Managed Redis",
+                "option_description": "Microsoft Azure managed Redis service."
+            },
+            {
+                "option_code": "AWS_RDS",
+                "option_label": "Amazon RDS",
+                "option_description": "Amazon Relational Database Service."
+            },
+            {
+                "option_code": "AWS_AURORA",
+                "option_label": "Amazon Aurora",
+                "option_description": "Amazon Aurora relational database service."
+            },
+            {
+                "option_code": "AWS_DYNAMO",
+                "option_label": "Amazon DynamoDB",
+                "option_description": "Amazon DynamoDB service."
+            },
+            {
+                "option_code": "AWS_DOCDB",
+                "option_label": "Amazon DocumentDB",
+                "option_description": "Amazon DocumentDB service."
+            },
+            {
+                "option_code": "AWS_REDSHIFT",
+                "option_label": "Amazon Redshift",
+                "option_description": "Amazon Redshift data warehouse service."
+            },
+            {
+                "option_code": "AWS_ELASTICACHE",
+                "option_label": "Amazon ElastiCache",
+                "option_description": "Amazon ElastiCache service."
+            },
+            {
+                "option_code": "GCP_SQL",
+                "option_label": "Cloud SQL",
+                "option_description": "Google Cloud SQL service."
+            },
+            {
+                "option_code": "GCP_ALLOY",
+                "option_label": "AlloyDB",
+                "option_description": "Google Cloud AlloyDB service."
+            },
+            {
+                "option_code": "GCP_SPANNER",
+                "option_label": "Spanner",
+                "option_description": "Google Cloud Spanner service."
+            },
+            {
+                "option_code": "GCP_BIGTABLE",
+                "option_label": "Bigtable",
+                "option_description": "Google Cloud Bigtable service."
+            },
+            {
+                "option_code": "GCP_FIRESTORE",
+                "option_label": "Firestore",
+                "option_description": "Google Cloud Firestore service."
+            },
+            {
+                "option_code": "GCP_MEMSTORE",
+                "option_label": "Memorystore",
+                "option_description": "Google Cloud Memorystore service."
+            },
+            {
+                "option_code": "MGA_ATLAS",
+                "option_label": "MongoDB Atlas",
+                "option_description": "MongoDB Atlas hosted database service."
+            },
+            {
+                "option_code": "SUP_DB",
+                "option_label": "Supabase Database",
+                "option_description": "Supabase managed database service."
+            },
+            {
+                "option_code": "DIG_DB",
+                "option_label": "DigitalOcean Managed Database",
+                "option_description": "DigitalOcean managed database service."
+            },
+            {
+                "option_code": "HST_DB",
+                "option_label": "Hostinger Database",
+                "option_description": "Hostinger hosted database service."
+            }
+        ]
+    },
+    {
+        "_id": 202,
+        "field_name": "type_database_purpose",
+        "field_label": "Database Purpose Type",
+        "field_description": "Classifies what a database is primarily used for, such as main application storage, test data, audit logs, reference data, identity, backup, archive, search, or analytics.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MAIN",
+                "option_label": "Main",
+                "option_description": "Main application database."
+            },
+            {
+                "option_code": "TEST",
+                "option_label": "Test",
+                "option_description": "Test database."
+            },
+            {
+                "option_code": "AUD",
+                "option_label": "Audit",
+                "option_description": "Audit database."
+            },
+            {
+                "option_code": "LOG",
+                "option_label": "Log",
+                "option_description": "Logging database."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Reference",
+                "option_description": "Reference-data database."
+            },
+            {
+                "option_code": "IDN",
+                "option_label": "Identity",
+                "option_description": "Identity or account database."
+            },
+            {
+                "option_code": "BKP",
+                "option_label": "Backup",
+                "option_description": "Backup database."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archive",
+                "option_description": "Archive database."
+            },
+            {
+                "option_code": "CACHE",
+                "option_label": "Cache",
+                "option_description": "Cache database."
+            },
+            {
+                "option_code": "SEARCH",
+                "option_label": "Search",
+                "option_description": "Search database."
+            },
+            {
+                "option_code": "ANL",
+                "option_label": "Analytics",
+                "option_description": "Analytics database."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Temporary",
+                "option_description": "Temporary database."
+            }
+        ]
+    },
+    {
+        "_id": 203,
+        "field_name": "type_environment",
+        "field_label": "Environment Type",
+        "field_description": "Classifies the environment or deployment context for a database, service, generated output, or configuration target.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DEV",
+                "option_label": "Development",
+                "option_description": "Development environment."
+            },
+            {
+                "option_code": "TEST",
+                "option_label": "Test",
+                "option_description": "Test environment."
+            },
+            {
+                "option_code": "STG",
+                "option_label": "Staging",
+                "option_description": "Staging environment."
+            },
+            {
+                "option_code": "PROD",
+                "option_label": "Production",
+                "option_description": "Production environment."
+            },
+            {
+                "option_code": "LOCAL",
+                "option_label": "Local",
+                "option_description": "Local environment."
+            },
+            {
+                "option_code": "REMOTE",
+                "option_label": "Remote",
+                "option_description": "Remote environment."
+            },
+            {
+                "option_code": "SANDBOX",
+                "option_label": "Sandbox",
+                "option_description": "Sandbox environment."
+            },
+            {
+                "option_code": "DEMO",
+                "option_label": "Demo",
+                "option_description": "Demo environment."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archive",
+                "option_description": "Archive environment."
+            }
+        ]
+    },
+    {
+        "_id": 204,
+        "field_name": "type_database_usage",
+        "field_label": "Database Usage Type",
+        "field_description": "Classifies how a project uses a selected database in project_main.database_list.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MAIN",
+                "option_label": "Main",
+                "option_description": "Primary project database usage."
+            },
+            {
+                "option_code": "TEST",
+                "option_label": "Test",
+                "option_description": "Project uses this database for testing."
+            },
+            {
+                "option_code": "AUD",
+                "option_label": "Audit",
+                "option_description": "Project uses this database for audit records."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Reference",
+                "option_description": "Project uses this database as a reference-data source."
+            },
+            {
+                "option_code": "IDN",
+                "option_label": "Identity",
+                "option_description": "Project uses this database for identity or account data."
+            },
+            {
+                "option_code": "BKP",
+                "option_label": "Backup",
+                "option_description": "Project uses this database as a backup source or target."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archive",
+                "option_description": "Project uses this database for archive records."
+            },
+            {
+                "option_code": "LOG",
+                "option_label": "Log",
+                "option_description": "Project uses this database for logs."
+            },
+            {
+                "option_code": "CACHE",
+                "option_label": "Cache",
+                "option_description": "Project uses this database as a cache."
+            },
+            {
+                "option_code": "SEARCH",
+                "option_label": "Search",
+                "option_description": "Project uses this database for search support."
+            },
+            {
+                "option_code": "ANL",
+                "option_label": "Analytics",
+                "option_description": "Project uses this database for analytics."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Temporary",
+                "option_description": "Project uses this database for temporary work."
+            }
+        ]
+    },
+    {
+        "_id": 205,
+        "field_name": "type_index",
+        "field_label": "Index Type",
+        "field_description": "Classifies the overall kind of collection or table index, such as standard, compound, text, geospatial, TTL, or wildcard.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "STD",
+                "option_label": "Standard",
+                "option_description": "Standard single-field or regular index."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compound",
+                "option_description": "Compound index using multiple fields."
+            },
+            {
+                "option_code": "TXT",
+                "option_label": "Text",
+                "option_description": "Text-search index."
+            },
+            {
+                "option_code": "GEO",
+                "option_label": "Geospatial",
+                "option_description": "Geospatial index."
+            },
+            {
+                "option_code": "TTL",
+                "option_label": "Time To Live",
+                "option_description": "TTL index for automatic expiration."
+            },
+            {
+                "option_code": "WLD",
+                "option_label": "Wildcard",
+                "option_description": "Wildcard index."
+            }
+        ]
+    },
+    {
+        "_id": 206,
+        "field_name": "type_index_mode",
+        "field_label": "Index Mode Type",
+        "field_description": "Classifies how an individual field participates in an index, such as ascending, descending, text, 2dsphere, or hashed.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ASC",
+                "option_label": "Ascending",
+                "option_description": "Indexes the field in ascending order."
+            },
+            {
+                "option_code": "DES",
+                "option_label": "Descending",
+                "option_description": "Indexes the field in descending order."
+            },
+            {
+                "option_code": "TXT",
+                "option_label": "Text",
+                "option_description": "Indexes the field as text."
+            },
+            {
+                "option_code": "2DS",
+                "option_label": "2D Sphere",
+                "option_description": "Indexes the field as a 2dsphere geospatial value."
+            },
+            {
+                "option_code": "HSH",
+                "option_label": "Hashed",
+                "option_description": "Indexes the field using a hash mode."
+            }
+        ]
+    },
+    {
+        "_id": 207,
+        "field_name": "type_relationship_cardinality",
+        "field_label": "Relationship Cardinality Type",
+        "field_description": "Classifies the cardinality of a managed structural relationship between collections or fields.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "OTO",
+                "option_label": "One to One",
+                "option_description": "One source record relates to one target record."
+            },
+            {
+                "option_code": "OTM",
+                "option_label": "One to Many",
+                "option_description": "One source record relates to many target records."
+            },
+            {
+                "option_code": "MTO",
+                "option_label": "Many to One",
+                "option_description": "Many source records relate to one target record."
+            },
+            {
+                "option_code": "MTM",
+                "option_label": "Many to Many",
+                "option_description": "Many source records relate to many target records."
+            }
+        ]
+    }
+]

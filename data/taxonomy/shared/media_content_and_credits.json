@@ -1,0 +1,830 @@
+[
+    {
+        "_id": 7,
+        "field_name": "target_audience_media",
+        "field_label": "Media Target Audience",
+        "field_description": "Reusable field template for Media Target Audience values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GA",
+                "option_label": "General Audience",
+                "option_description": "Select General Audience for Media Target Audience."
+            },
+            {
+                "option_code": "CHD",
+                "option_label": "Children",
+                "option_description": "Select Children for Media Target Audience."
+            },
+            {
+                "option_code": "FAM",
+                "option_label": "Family",
+                "option_description": "Select Family for Media Target Audience."
+            },
+            {
+                "option_code": "TWN",
+                "option_label": "Tween",
+                "option_description": "Select Tween for Media Target Audience."
+            },
+            {
+                "option_code": "TEE",
+                "option_label": "Teen",
+                "option_description": "Select Teen for Media Target Audience."
+            },
+            {
+                "option_code": "YA",
+                "option_label": "Young Adult",
+                "option_description": "Select Young Adult for Media Target Audience."
+            },
+            {
+                "option_code": "ADT",
+                "option_label": "Adult",
+                "option_description": "Select Adult for Media Target Audience."
+            },
+            {
+                "option_code": "SNR",
+                "option_label": "Senior",
+                "option_description": "Select Senior for Media Target Audience."
+            },
+            {
+                "option_code": "COU",
+                "option_label": "Couples",
+                "option_description": "Select Couples for Media Target Audience."
+            },
+            {
+                "option_code": "LA",
+                "option_label": "LGBTQ+ Audience",
+                "option_description": "Select LGBTQ+ Audience for Media Target Audience."
+            },
+            {
+                "option_code": "NIC",
+                "option_label": "Niche Audience",
+                "option_description": "Select Niche Audience for Media Target Audience."
+            },
+            {
+                "option_code": "FAN",
+                "option_label": "Fans",
+                "option_description": "Select Fans for Media Target Audience."
+            },
+            {
+                "option_code": "CRI",
+                "option_label": "Critics",
+                "option_description": "Select Critics for Media Target Audience."
+            },
+            {
+                "option_code": "EDU",
+                "option_label": "Educational Audience",
+                "option_description": "Select Educational Audience for Media Target Audience."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Professional / Industry Audience",
+                "option_description": "Select Professional / Industry Audience for Media Target Audience."
+            }
+        ]
+    },
+    {
+        "_id": 17,
+        "field_name": "type_episode_content",
+        "field_label": "Episode Content Type",
+        "field_description": "Reusable field template for Episode Content Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "REC",
+                "option_label": "Episode Recap",
+                "option_description": "Select Episode Recap for Episode Content Type."
+            },
+            {
+                "option_code": "CLP",
+                "option_label": "Video Clip",
+                "option_description": "Select Video Clip for Episode Content Type."
+            },
+            {
+                "option_code": "PRE",
+                "option_label": "Preview",
+                "option_description": "Select Preview for Episode Content Type."
+            },
+            {
+                "option_code": "TRL",
+                "option_label": "Trailer",
+                "option_description": "Select Trailer for Episode Content Type."
+            },
+            {
+                "option_code": "BTS",
+                "option_label": "Behind the Scenes",
+                "option_description": "Select Behind the Scenes for Episode Content Type."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Deleted Scene",
+                "option_description": "Select Deleted Scene for Episode Content Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extended Scene",
+                "option_description": "Select Extended Scene for Episode Content Type."
+            }
+        ]
+    },
+    {
+        "_id": 18,
+        "field_name": "type_credit_appearance",
+        "field_label": "Credit Appearance Type",
+        "field_description": "Reusable field template for Credit Appearance Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "REG",
+                "option_label": "Regular Appearance",
+                "option_description": "Select Regular Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Recurring Appearance",
+                "option_description": "Select Recurring Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "GST",
+                "option_label": "Guest Appearance",
+                "option_description": "Select Guest Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "SGS",
+                "option_label": "Special Guest Star",
+                "option_description": "Select Special Guest Star for Credit Appearance Type."
+            },
+            {
+                "option_code": "NG",
+                "option_label": "Notable Guest",
+                "option_description": "Select Notable Guest for Credit Appearance Type."
+            },
+            {
+                "option_code": "NC",
+                "option_label": "Notable Character",
+                "option_description": "Select Notable Character for Credit Appearance Type."
+            },
+            {
+                "option_code": "NSC",
+                "option_label": "Non-Speaking Character",
+                "option_description": "Select Non-Speaking Character for Credit Appearance Type."
+            },
+            {
+                "option_code": "UA",
+                "option_label": "Cameo Appearance",
+                "option_description": "Select Cameo Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "VOI",
+                "option_label": "Voice Appearance",
+                "option_description": "Select Voice Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archival Appearance",
+                "option_description": "Select Archival Appearance for Credit Appearance Type."
+            },
+            {
+                "option_code": "UNC",
+                "option_label": "Uncredited Appearance",
+                "option_description": "Select Uncredited Appearance for Credit Appearance Type."
+            }
+        ]
+    },
+    {
+        "_id": 19,
+        "field_name": "type_interview",
+        "field_label": "Interview Type",
+        "field_description": "Reusable field template for Interview Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LI",
+                "option_label": "Live Interview",
+                "option_description": "Select Live Interview for Interview Type."
+            },
+            {
+                "option_code": "PI",
+                "option_label": "Phone Interview",
+                "option_description": "Select Phone Interview for Interview Type."
+            },
+            {
+                "option_code": "VI",
+                "option_label": "Video Interview",
+                "option_description": "Select Video Interview for Interview Type."
+            },
+            {
+                "option_code": "AI",
+                "option_label": "Audio Interview",
+                "option_description": "Select Audio Interview for Interview Type."
+            },
+            {
+                "option_code": "WI",
+                "option_label": "Written Interview",
+                "option_description": "Select Written Interview for Interview Type."
+            },
+            {
+                "option_code": "RI",
+                "option_label": "Radio Interview",
+                "option_description": "Select Radio Interview for Interview Type."
+            },
+            {
+                "option_code": "PRI",
+                "option_label": "Press Interview",
+                "option_description": "Select Press Interview for Interview Type."
+            }
+        ]
+    },
+    {
+        "_id": 20,
+        "field_name": "type_performance_context",
+        "field_label": "Performance Context Type",
+        "field_description": "Reusable field template for Performance Context Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LP",
+                "option_label": "Live Performance",
+                "option_description": "Select Live Performance for Performance Context Type."
+            },
+            {
+                "option_code": "RP",
+                "option_label": "Recorded Performance",
+                "option_description": "Select Recorded Performance for Performance Context Type."
+            },
+            {
+                "option_code": "MV",
+                "option_label": "Music Video Performance",
+                "option_description": "Select Music Video Performance for Performance Context Type."
+            },
+            {
+                "option_code": "STG",
+                "option_label": "Stage Performance",
+                "option_description": "Select Stage Performance for Performance Context Type."
+            },
+            {
+                "option_code": "AP",
+                "option_label": "Archival Performance",
+                "option_description": "Select Archival Performance for Performance Context Type."
+            }
+        ]
+    },
+    {
+        "_id": 25,
+        "field_name": "type_series_program",
+        "field_label": "Series Program Type",
+        "field_description": "Reusable field template for Series Program Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AS",
+                "option_label": "Award Show",
+                "option_description": "Select Award Show for Series Program Type."
+            },
+            {
+                "option_code": "DS",
+                "option_label": "Documentary",
+                "option_description": "Select Documentary for Series Program Type."
+            },
+            {
+                "option_code": "GS",
+                "option_label": "Game Show",
+                "option_description": "Select Game Show for Series Program Type."
+            },
+            {
+                "option_code": "MS",
+                "option_label": "Mini-Series",
+                "option_description": "Select Mini-Series for Series Program Type."
+            },
+            {
+                "option_code": "NP",
+                "option_label": "News",
+                "option_description": "Select News for Series Program Type."
+            },
+            {
+                "option_code": "RS",
+                "option_label": "Reality",
+                "option_description": "Select Reality for Series Program Type."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Sports",
+                "option_description": "Select Sports for Series Program Type."
+            },
+            {
+                "option_code": "TS",
+                "option_label": "Talk Show",
+                "option_description": "Select Talk Show for Series Program Type."
+            },
+            {
+                "option_code": "VS",
+                "option_label": "Variety",
+                "option_description": "Select Variety for Series Program Type."
+            },
+            {
+                "option_code": "DR",
+                "option_label": "Drama Series",
+                "option_description": "Select Drama Series for Series Program Type."
+            },
+            {
+                "option_code": "CO",
+                "option_label": "Comedy Series",
+                "option_description": "Select Comedy Series for Series Program Type."
+            },
+            {
+                "option_code": "AN",
+                "option_label": "Animation",
+                "option_description": "Select Animation for Series Program Type."
+            },
+            {
+                "option_code": "ED",
+                "option_label": "Educational",
+                "option_description": "Select Educational for Series Program Type."
+            },
+            {
+                "option_code": "RL",
+                "option_label": "Religious Program",
+                "option_description": "Select Religious Program for Series Program Type."
+            },
+            {
+                "option_code": "CH",
+                "option_label": "Children's Program",
+                "option_description": "Select Children's Program for Series Program Type."
+            }
+        ]
+    },
+    {
+        "_id": 56,
+        "field_name": "type_trivia",
+        "field_label": "Trivia Type",
+        "field_description": "Reusable field template for Trivia Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "GEN",
+                "option_label": "General",
+                "option_description": "Select General for Trivia Type."
+            },
+            {
+                "option_code": "AV",
+                "option_label": "Alternate Version",
+                "option_description": "Select Alternate Version for Trivia Type."
+            },
+            {
+                "option_code": "CC",
+                "option_label": "Cast and Crew",
+                "option_description": "Select Cast and Crew for Trivia Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Competitor",
+                "option_description": "Select Competitor for Trivia Type."
+            },
+            {
+                "option_code": "COS",
+                "option_label": "Composition",
+                "option_description": "Select Composition for Trivia Type."
+            },
+            {
+                "option_code": "ETY",
+                "option_label": "Etymology",
+                "option_description": "Select Etymology for Trivia Type."
+            },
+            {
+                "option_code": "LOC",
+                "option_label": "Location",
+                "option_description": "Select Location for Trivia Type."
+            },
+            {
+                "option_code": "POL",
+                "option_label": "Political",
+                "option_description": "Select Political for Trivia Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Production",
+                "option_description": "Select Production for Trivia Type."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Reference",
+                "option_description": "Select Reference for Trivia Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "Schedule",
+                "option_description": "Select Schedule for Trivia Type."
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Supplementary Credit",
+                "option_description": "Select Supplementary Credit for Trivia Type."
+            },
+            {
+                "option_code": "TIM",
+                "option_label": "Timeline",
+                "option_description": "Select Timeline for Trivia Type."
+            },
+            {
+                "option_code": "TR",
+                "option_label": "TV Rating",
+                "option_description": "Select TV Rating for Trivia Type."
+            },
+            {
+                "option_code": "TS",
+                "option_label": "TV Station",
+                "option_description": "Select TV Station for Trivia Type."
+            },
+            {
+                "option_code": "UNI",
+                "option_label": "Uniqueness",
+                "option_description": "Select Uniqueness for Trivia Type."
+            },
+            {
+                "option_code": "BTS",
+                "option_label": "Behind the Scenes",
+                "option_description": "Select Behind the Scenes for Trivia Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Continuity",
+                "option_description": "Select Continuity for Trivia Type."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Deleted Scene",
+                "option_description": "Select Deleted Scene for Trivia Type."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "Development",
+                "option_description": "Select Development for Trivia Type."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Error",
+                "option_description": "Select Error for Trivia Type."
+            },
+            {
+                "option_code": "INS",
+                "option_label": "Inspiration",
+                "option_description": "Select Inspiration for Trivia Type."
+            },
+            {
+                "option_code": "LEG",
+                "option_label": "Legal",
+                "option_description": "Select Legal for Trivia Type."
+            },
+            {
+                "option_code": "MAR",
+                "option_label": "Marketing",
+                "option_description": "Select Marketing for Trivia Type."
+            },
+            {
+                "option_code": "MUS",
+                "option_label": "Music",
+                "option_description": "Select Music for Trivia Type."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Reception",
+                "option_description": "Select Reception for Trivia Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Release",
+                "option_description": "Select Release for Trivia Type."
+            },
+            {
+                "option_code": "TEC",
+                "option_label": "Technical",
+                "option_description": "Select Technical for Trivia Type."
+            },
+            {
+                "option_code": "WT",
+                "option_label": "Working Title",
+                "option_description": "Select Working Title for Trivia Type."
+            }
+        ]
+    },
+    {
+        "_id": 91,
+        "field_name": "type_title",
+        "field_label": "Title Type",
+        "field_description": "Reusable field template for Title Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MOV",
+                "option_label": "Movie",
+                "option_description": "Select Movie for Title Type."
+            },
+            {
+                "option_code": "TS",
+                "option_label": "TV Series",
+                "option_description": "Select TV Series for Title Type."
+            },
+            {
+                "option_code": "EP",
+                "option_label": "Episode",
+                "option_description": "Select Episode for Title Type."
+            },
+            {
+                "option_code": "SPE",
+                "option_label": "Special",
+                "option_description": "Select Special for Title Type."
+            },
+            {
+                "option_code": "SHO",
+                "option_label": "Short",
+                "option_description": "Select Short for Title Type."
+            },
+            {
+                "option_code": "DS",
+                "option_label": "Documentary",
+                "option_description": "Select Documentary for Title Type."
+            },
+            {
+                "option_code": "WS",
+                "option_label": "Web Series",
+                "option_description": "Select Web Series for Title Type."
+            },
+            {
+                "option_code": "MS",
+                "option_label": "Mini-Series",
+                "option_description": "Select Mini-Series for Title Type."
+            }
+        ]
+    },
+    {
+        "_id": 92,
+        "field_name": "type_story_arc",
+        "field_label": "Story Arc Type",
+        "field_description": "Reusable field template for Story Arc Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MA",
+                "option_label": "Main Arc",
+                "option_description": "Select Main Arc for Story Arc Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subplot",
+                "option_description": "Select Subplot for Story Arc Type."
+            },
+            {
+                "option_code": "FIL",
+                "option_label": "Filler",
+                "option_description": "Select Filler for Story Arc Type."
+            },
+            {
+                "option_code": "CRO",
+                "option_label": "Crossover",
+                "option_description": "Select Crossover for Story Arc Type."
+            },
+            {
+                "option_code": "FLA",
+                "option_label": "Flashback",
+                "option_description": "Select Flashback for Story Arc Type."
+            },
+            {
+                "option_code": "STA",
+                "option_label": "Standalone",
+                "option_description": "Select Standalone for Story Arc Type."
+            }
+        ]
+    },
+    {
+        "_id": 93,
+        "field_name": "type_cast_role",
+        "field_label": "Cast Role Type",
+        "field_description": "Reusable field template for Cast Role Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "MAI",
+                "option_label": "Main",
+                "option_description": "Select Main for Cast Role Type."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Recurring",
+                "option_description": "Select Recurring for Cast Role Type."
+            },
+            {
+                "option_code": "GUE",
+                "option_label": "Guest",
+                "option_description": "Select Guest for Cast Role Type."
+            },
+            {
+                "option_code": "CAM",
+                "option_label": "Cameo",
+                "option_description": "Select Cameo for Cast Role Type."
+            },
+            {
+                "option_code": "VOI",
+                "option_label": "Voice",
+                "option_description": "Select Voice for Cast Role Type."
+            },
+            {
+                "option_code": "AF",
+                "option_label": "Archive Footage",
+                "option_description": "Select Archive Footage for Cast Role Type."
+            },
+            {
+                "option_code": "UNC",
+                "option_label": "Uncredited",
+                "option_description": "Select Uncredited for Cast Role Type."
+            }
+        ]
+    },
+    {
+        "_id": 94,
+        "field_name": "type_crew_role_group",
+        "field_label": "Crew Role Group Type",
+        "field_description": "Reusable field template for Crew Role Group Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "WRI",
+                "option_label": "Writing",
+                "option_description": "Select Writing for Crew Role Group Type."
+            },
+            {
+                "option_code": "DIR",
+                "option_label": "Directing",
+                "option_description": "Select Directing for Crew Role Group Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Production",
+                "option_description": "Select Production for Crew Role Group Type."
+            },
+            {
+                "option_code": "CAM",
+                "option_label": "Camera",
+                "option_description": "Select Camera for Crew Role Group Type."
+            },
+            {
+                "option_code": "SOU",
+                "option_label": "Sound",
+                "option_description": "Select Sound for Crew Role Group Type."
+            },
+            {
+                "option_code": "EDI",
+                "option_label": "Editing",
+                "option_description": "Select Editing for Crew Role Group Type."
+            },
+            {
+                "option_code": "VE",
+                "option_label": "Visual Effects",
+                "option_description": "Select Visual Effects for Crew Role Group Type."
+            },
+            {
+                "option_code": "ART",
+                "option_label": "Art",
+                "option_description": "Select Art for Crew Role Group Type."
+            },
+            {
+                "option_code": "MUS",
+                "option_label": "Music",
+                "option_description": "Select Music for Crew Role Group Type."
+            },
+            {
+                "option_code": "COS",
+                "option_label": "Costume",
+                "option_description": "Select Costume for Crew Role Group Type."
+            },
+            {
+                "option_code": "MAK",
+                "option_label": "Makeup",
+                "option_description": "Select Makeup for Crew Role Group Type."
+            }
+        ]
+    },
+    {
+        "_id": 95,
+        "field_name": "type_media_version",
+        "field_label": "Media Version Type",
+        "field_description": "Reusable field template for Media Version Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "THE",
+                "option_label": "Theatrical",
+                "option_description": "Select Theatrical for Media Version Type."
+            },
+            {
+                "option_code": "DSC",
+                "option_label": "Director's Cut",
+                "option_description": "Select Director's Cut for Media Version Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Extended",
+                "option_description": "Select Extended for Media Version Type."
+            },
+            {
+                "option_code": "CEN",
+                "option_label": "Censored",
+                "option_description": "Select Censored for Media Version Type."
+            },
+            {
+                "option_code": "RES",
+                "option_label": "Restored",
+                "option_description": "Select Restored for Media Version Type."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Remastered",
+                "option_description": "Select Remastered for Media Version Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "International",
+                "option_description": "Select International for Media Version Type."
+            },
+            {
+                "option_code": "BRO",
+                "option_label": "Broadcast",
+                "option_description": "Select Broadcast for Media Version Type."
+            },
+            {
+                "option_code": "STR",
+                "option_label": "Streaming",
+                "option_description": "Select Streaming for Media Version Type."
+            }
+        ]
+    },
+    {
+        "_id": 96,
+        "field_name": "type_release_region",
+        "field_label": "Release Region Type",
+        "field_description": "Reusable field template for Release Region Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LOC",
+                "option_label": "Local",
+                "option_description": "Select Local for Release Region Type."
+            },
+            {
+                "option_code": "NAT",
+                "option_label": "National",
+                "option_description": "Select National for Release Region Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "International",
+                "option_description": "Select International for Release Region Type."
+            },
+            {
+                "option_code": "FES",
+                "option_label": "Festival",
+                "option_description": "Select Festival for Release Region Type."
+            },
+            {
+                "option_code": "STR",
+                "option_label": "Streaming",
+                "option_description": "Select Streaming for Release Region Type."
+            },
+            {
+                "option_code": "BRO",
+                "option_label": "Broadcast",
+                "option_description": "Select Broadcast for Release Region Type."
+            },
+            {
+                "option_code": "HV",
+                "option_label": "Home Video",
+                "option_description": "Select Home Video for Release Region Type."
+            }
+        ]
+    }
+]

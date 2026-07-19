@@ -1,0 +1,65 @@
+[
+    {
+        "field_name": "type_quote_category",
+        "field_label": "Quote Category",
+        "selection_rule": "Multi-select per quote record",
+        "field_description": "Editorial category of a homepage Quote of the Day record, used for rotation, filtering, and seasonal selection. The option list follows the quote themes named in docs/06-user-interface/home-page-ui.txt section 20 (wellness, relaxation, massage, self-care, motivational). Proposed with the quote_main structure guide; not yet an accepted decision.",
+        "field_option": [
+            {
+                "option_code": "WEL",
+                "option_label": "Wellness",
+                "option_description": "General wellness, health, and balanced-living quotes."
+            },
+            {
+                "option_code": "RLX",
+                "option_label": "Relaxation",
+                "option_description": "Calm, rest, and relaxation quotes."
+            },
+            {
+                "option_code": "MSG",
+                "option_label": "Massage",
+                "option_description": "Quotes about massage, touch, and bodywork."
+            },
+            {
+                "option_code": "SLF",
+                "option_label": "Self-Care",
+                "option_description": "Self-care and personal-restoration quotes."
+            },
+            {
+                "option_code": "MOT",
+                "option_label": "Motivational",
+                "option_description": "Motivational and encouraging quotes."
+            }
+        ],
+        "source_document": "docs/04-architecture/structure-guide/quote_main.php"
+    },
+    {
+        "field_name": "type_record_note",
+        "field_label": "Record Note Type",
+        "selection_rule": "Single-select per embedded record note",
+        "field_description": "Classifies one embedded internal record note. The option codes and meanings are taken from the record_note embedded structure defined in the content_main structure guide and reused by quote_main; this record centralizes that enumeration so it is not defined only inside PHP structure guides.",
+        "field_option": [
+            {
+                "option_code": "ED",
+                "option_label": "Editorial",
+                "option_description": "Editorial note for editors preparing or maintaining the record."
+            },
+            {
+                "option_code": "RV",
+                "option_label": "Review",
+                "option_description": "Review note recorded during editorial or approval review."
+            },
+            {
+                "option_code": "AD",
+                "option_label": "Admin",
+                "option_description": "Administrative note about record handling."
+            },
+            {
+                "option_code": "CR",
+                "option_label": "Correction",
+                "option_description": "Note documenting a correction to the record."
+            }
+        ],
+        "source_document": "docs/04-architecture/structure-guide/content_main.php"
+    }
+]

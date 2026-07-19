@@ -1,0 +1,4424 @@
+[
+  {
+    "currency_id": 1,
+    "iso_4217_code": "AED",
+    "currency_name": {
+      "eng": {
+        "text": "UAE Dirham"
+      },
+      "fil": {
+        "text": "Dirham ng UAE"
+      },
+      "kor": {
+        "text": "아랍에미리트 디르함"
+      },
+      "spa": {
+        "text": "Dírham de los Emiratos Árabes Unidos"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 784
+      }
+    ]
+  },
+  {
+    "currency_id": 2,
+    "iso_4217_code": "AFN",
+    "currency_name": {
+      "eng": {
+        "text": "Afghani"
+      },
+      "fil": {
+        "text": "Afghan Afghani"
+      },
+      "kor": {
+        "text": "아프가니스탄 아프가니"
+      },
+      "spa": {
+        "text": "Afgani afgano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 4
+      }
+    ]
+  },
+  {
+    "currency_id": 3,
+    "iso_4217_code": "ALL",
+    "currency_name": {
+      "eng": {
+        "text": "Lek"
+      },
+      "fil": {
+        "text": "Lek ng Albania"
+      },
+      "kor": {
+        "text": "알바니아 레크"
+      },
+      "spa": {
+        "text": "Lek albanés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 8
+      }
+    ]
+  },
+  {
+    "currency_id": 4,
+    "iso_4217_code": "AMD",
+    "currency_name": {
+      "eng": {
+        "text": "Armenian Dram"
+      },
+      "fil": {
+        "text": "Armenian dram"
+      },
+      "kor": {
+        "text": "아르메니아 드람"
+      },
+      "spa": {
+        "text": "Dram armenio"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 51
+      }
+    ]
+  },
+  {
+    "currency_id": 5,
+    "iso_4217_code": "AOA",
+    "currency_name": {
+      "eng": {
+        "text": "Kwanza"
+      },
+      "fil": {
+        "text": "Angolan kwanza"
+      },
+      "kor": {
+        "text": "앙골라 콴자"
+      },
+      "spa": {
+        "text": "Kuanza angoleño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 24
+      }
+    ]
+  },
+  {
+    "currency_id": 6,
+    "iso_4217_code": "ARS",
+    "currency_name": {
+      "eng": {
+        "text": "Argentine Peso"
+      },
+      "fil": {
+        "text": "Piso ng Argentina"
+      },
+      "kor": {
+        "text": "아르헨티나 페소"
+      },
+      "spa": {
+        "text": "Peso argentino"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 32
+      }
+    ]
+  },
+  {
+    "currency_id": 7,
+    "iso_4217_code": "AUD",
+    "currency_name": {
+      "eng": {
+        "text": "Australian Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Australya"
+      },
+      "kor": {
+        "text": "호주 달러"
+      },
+      "spa": {
+        "text": "Dólar australiano"
+      }
+    },
+    "symbol": "A$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 36
+      },
+      {
+        "country_id": 162
+      },
+      {
+        "country_id": 166
+      },
+      {
+        "country_id": 296
+      },
+      {
+        "country_id": 334
+      },
+      {
+        "country_id": 520
+      },
+      {
+        "country_id": 574
+      },
+      {
+        "country_id": 798
+      }
+    ]
+  },
+  {
+    "currency_id": 8,
+    "iso_4217_code": "AWG",
+    "currency_name": {
+      "eng": {
+        "text": "Aruban Florin"
+      },
+      "fil": {
+        "text": "Florin ng Aruba"
+      },
+      "kor": {
+        "text": "아루바 플로린"
+      },
+      "spa": {
+        "text": "Florín arubeño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 533
+      }
+    ]
+  },
+  {
+    "currency_id": 9,
+    "iso_4217_code": "AZN",
+    "currency_name": {
+      "eng": {
+        "text": "Azerbaijan Manat"
+      },
+      "fil": {
+        "text": "Azerbaijani manat"
+      },
+      "kor": {
+        "text": "아제르바이잔 마나트"
+      },
+      "spa": {
+        "text": "Manat azerbaiyano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 31
+      }
+    ]
+  },
+  {
+    "currency_id": 10,
+    "iso_4217_code": "BAM",
+    "currency_name": {
+      "eng": {
+        "text": "Convertible Mark"
+      },
+      "fil": {
+        "text": "Bosnia-Herzegovina convertible mark"
+      },
+      "kor": {
+        "text": "보스니아-헤르체고비나 태환 마르크"
+      },
+      "spa": {
+        "text": "Marco convertible de Bosnia y Herzegovina"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 70
+      }
+    ]
+  },
+  {
+    "currency_id": 11,
+    "iso_4217_code": "BBD",
+    "currency_name": {
+      "eng": {
+        "text": "Barbados Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Barbados"
+      },
+      "kor": {
+        "text": "바베이도스 달러"
+      },
+      "spa": {
+        "text": "Dólar barbadense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 52
+      }
+    ]
+  },
+  {
+    "currency_id": 12,
+    "iso_4217_code": "BDT",
+    "currency_name": {
+      "eng": {
+        "text": "Taka"
+      },
+      "fil": {
+        "text": "Bangladeshi taka"
+      },
+      "kor": {
+        "text": "방글라데시 타카"
+      },
+      "spa": {
+        "text": "Taka bangladesí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 50
+      }
+    ]
+  },
+  {
+    "currency_id": 13,
+    "iso_4217_code": "BHD",
+    "currency_name": {
+      "eng": {
+        "text": "Bahraini Dinar"
+      },
+      "fil": {
+        "text": "Bahraini dinar"
+      },
+      "kor": {
+        "text": "바레인 디나르"
+      },
+      "spa": {
+        "text": "Dinar bareiní"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 48
+      }
+    ]
+  },
+  {
+    "currency_id": 14,
+    "iso_4217_code": "BIF",
+    "currency_name": {
+      "eng": {
+        "text": "Burundi Franc"
+      },
+      "fil": {
+        "text": "Burundian franc"
+      },
+      "kor": {
+        "text": "부룬디 프랑"
+      },
+      "spa": {
+        "text": "Franco burundés"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 108
+      }
+    ]
+  },
+  {
+    "currency_id": 15,
+    "iso_4217_code": "BMD",
+    "currency_name": {
+      "eng": {
+        "text": "Bermudian Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Bermuda"
+      },
+      "kor": {
+        "text": "버뮤다 달러"
+      },
+      "spa": {
+        "text": "Dólar bermudeño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 60
+      }
+    ]
+  },
+  {
+    "currency_id": 16,
+    "iso_4217_code": "BND",
+    "currency_name": {
+      "eng": {
+        "text": "Brunei Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Brunei"
+      },
+      "kor": {
+        "text": "부루나이 달러"
+      },
+      "spa": {
+        "text": "Dólar bruneano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 96
+      }
+    ]
+  },
+  {
+    "currency_id": 17,
+    "iso_4217_code": "BOB",
+    "currency_name": {
+      "eng": {
+        "text": "Boliviano"
+      },
+      "fil": {
+        "text": "Boliviano ng Bolivia"
+      },
+      "kor": {
+        "text": "볼리비아 볼리비아노"
+      },
+      "spa": {
+        "text": "Boliviano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 68
+      }
+    ]
+  },
+  {
+    "currency_id": 18,
+    "iso_4217_code": "BOV",
+    "currency_name": {
+      "eng": {
+        "text": "Mvdol"
+      },
+      "kor": {
+        "text": "볼리비아노 Mvdol(기금)"
+      },
+      "spa": {
+        "text": "MVDOL boliviano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 68
+      }
+    ]
+  },
+  {
+    "currency_id": 19,
+    "iso_4217_code": "BRL",
+    "currency_name": {
+      "eng": {
+        "text": "Brazilian Real"
+      },
+      "fil": {
+        "text": "Real ng Brazil"
+      },
+      "kor": {
+        "text": "브라질 레알"
+      },
+      "spa": {
+        "text": "Real brasileño"
+      }
+    },
+    "symbol": "R$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 76
+      }
+    ]
+  },
+  {
+    "currency_id": 20,
+    "iso_4217_code": "BSD",
+    "currency_name": {
+      "eng": {
+        "text": "Bahamian Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Bahamas"
+      },
+      "kor": {
+        "text": "바하마 달러"
+      },
+      "spa": {
+        "text": "Dólar bahameño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 44
+      }
+    ]
+  },
+  {
+    "currency_id": 21,
+    "iso_4217_code": "BTN",
+    "currency_name": {
+      "eng": {
+        "text": "Ngultrum"
+      },
+      "fil": {
+        "text": "Bhutanese ngultrum"
+      },
+      "kor": {
+        "text": "부탄 눌투눔"
+      },
+      "spa": {
+        "text": "Gultrum butanés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 64
+      }
+    ]
+  },
+  {
+    "currency_id": 22,
+    "iso_4217_code": "BWP",
+    "currency_name": {
+      "eng": {
+        "text": "Pula"
+      },
+      "fil": {
+        "text": "Botswanan pula"
+      },
+      "kor": {
+        "text": "보츠와나 풀라"
+      },
+      "spa": {
+        "text": "Pula botsuano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 72
+      }
+    ]
+  },
+  {
+    "currency_id": 23,
+    "iso_4217_code": "BYN",
+    "currency_name": {
+      "eng": {
+        "text": "Belarusian Ruble"
+      },
+      "fil": {
+        "text": "Ruble ng Belarus"
+      },
+      "kor": {
+        "text": "벨라루스 루블"
+      },
+      "spa": {
+        "text": "Rublo bielorruso"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 112
+      }
+    ]
+  },
+  {
+    "currency_id": 24,
+    "iso_4217_code": "BZD",
+    "currency_name": {
+      "eng": {
+        "text": "Belize Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Belize"
+      },
+      "kor": {
+        "text": "벨리즈 달러"
+      },
+      "spa": {
+        "text": "Dólar beliceño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 84
+      }
+    ]
+  },
+  {
+    "currency_id": 25,
+    "iso_4217_code": "CAD",
+    "currency_name": {
+      "eng": {
+        "text": "Canadian Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Canada"
+      },
+      "kor": {
+        "text": "캐나다 달러"
+      },
+      "spa": {
+        "text": "Dólar canadiense"
+      }
+    },
+    "symbol": "CA$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 124
+      }
+    ]
+  },
+  {
+    "currency_id": 26,
+    "iso_4217_code": "CDF",
+    "currency_name": {
+      "eng": {
+        "text": "Congolese Franc"
+      },
+      "fil": {
+        "text": "Congolese franc"
+      },
+      "kor": {
+        "text": "콩고 프랑"
+      },
+      "spa": {
+        "text": "Franco congoleño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 180
+      }
+    ]
+  },
+  {
+    "currency_id": 27,
+    "iso_4217_code": "CHE",
+    "currency_name": {
+      "eng": {
+        "text": "WIR Euro"
+      },
+      "kor": {
+        "text": "유로 (WIR)"
+      },
+      "spa": {
+        "text": "Euro WIR"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 756
+      }
+    ]
+  },
+  {
+    "currency_id": 28,
+    "iso_4217_code": "CHF",
+    "currency_name": {
+      "eng": {
+        "text": "Swiss Franc"
+      },
+      "fil": {
+        "text": "Swiss franc"
+      },
+      "kor": {
+        "text": "스위스 프랑"
+      },
+      "spa": {
+        "text": "Franco suizo"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 438
+      },
+      {
+        "country_id": 756
+      }
+    ]
+  },
+  {
+    "currency_id": 29,
+    "iso_4217_code": "CHW",
+    "currency_name": {
+      "eng": {
+        "text": "WIR Franc"
+      },
+      "kor": {
+        "text": "프랑 (WIR)"
+      },
+      "spa": {
+        "text": "Franco WIR"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 756
+      }
+    ]
+  },
+  {
+    "currency_id": 30,
+    "iso_4217_code": "CLF",
+    "currency_name": {
+      "eng": {
+        "text": "Unidad de Fomento"
+      },
+      "kor": {
+        "text": "칠레 (UF)"
+      },
+      "spa": {
+        "text": "Unidad de fomento chilena"
+      }
+    },
+    "minor_unit_scale": 4,
+    "issuing_countries": [
+      {
+        "country_id": 152
+      }
+    ]
+  },
+  {
+    "currency_id": 31,
+    "iso_4217_code": "CLP",
+    "currency_name": {
+      "eng": {
+        "text": "Chilean Peso"
+      },
+      "fil": {
+        "text": "Piso ng Chile"
+      },
+      "kor": {
+        "text": "칠레 페소"
+      },
+      "spa": {
+        "text": "Peso chileno"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 152
+      }
+    ]
+  },
+  {
+    "currency_id": 32,
+    "iso_4217_code": "CNY",
+    "currency_name": {
+      "eng": {
+        "text": "Yuan Renminbi"
+      },
+      "fil": {
+        "text": "Chinese yuan"
+      },
+      "kor": {
+        "text": "중국 위안화"
+      },
+      "spa": {
+        "text": "Yuan renminbi"
+      }
+    },
+    "symbol": "CN¥",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 156
+      }
+    ]
+  },
+  {
+    "currency_id": 33,
+    "iso_4217_code": "COP",
+    "currency_name": {
+      "eng": {
+        "text": "Colombian Peso"
+      },
+      "fil": {
+        "text": "Piso ng Colombia"
+      },
+      "kor": {
+        "text": "콜롬비아 페소"
+      },
+      "spa": {
+        "text": "Peso colombiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 170
+      }
+    ]
+  },
+  {
+    "currency_id": 34,
+    "iso_4217_code": "COU",
+    "currency_name": {
+      "eng": {
+        "text": "Unidad de Valor Real"
+      },
+      "kor": {
+        "text": "콜롬비아 실가 단위"
+      },
+      "spa": {
+        "text": "Unidad de valor real"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 170
+      }
+    ]
+  },
+  {
+    "currency_id": 35,
+    "iso_4217_code": "CRC",
+    "currency_name": {
+      "eng": {
+        "text": "Costa Rican Colon"
+      },
+      "fil": {
+        "text": "Colón ng Costa Rica"
+      },
+      "kor": {
+        "text": "코스타리카 콜론"
+      },
+      "spa": {
+        "text": "Colón costarricense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 188
+      }
+    ]
+  },
+  {
+    "currency_id": 36,
+    "iso_4217_code": "CUC",
+    "currency_name": {
+      "eng": {
+        "text": "Peso Convertible"
+      },
+      "fil": {
+        "text": "Convertible na piso ng Cuba"
+      },
+      "kor": {
+        "text": "쿠바 태환 페소"
+      },
+      "spa": {
+        "text": "Peso cubano convertible"
+      }
+    },
+    "minor_unit_scale": 2
+  },
+  {
+    "currency_id": 37,
+    "iso_4217_code": "CUP",
+    "currency_name": {
+      "eng": {
+        "text": "Cuban Peso"
+      },
+      "fil": {
+        "text": "Piso ng Cuba"
+      },
+      "kor": {
+        "text": "쿠바 페소"
+      },
+      "spa": {
+        "text": "Peso cubano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 192
+      }
+    ]
+  },
+  {
+    "currency_id": 38,
+    "iso_4217_code": "CVE",
+    "currency_name": {
+      "eng": {
+        "text": "Cabo Verde Escudo"
+      },
+      "fil": {
+        "text": "Cape Verdean escudo"
+      },
+      "kor": {
+        "text": "카보베르데 에스쿠도"
+      },
+      "spa": {
+        "text": "Escudo de Cabo Verde"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 132
+      }
+    ]
+  },
+  {
+    "currency_id": 39,
+    "iso_4217_code": "CZK",
+    "currency_name": {
+      "eng": {
+        "text": "Czech Koruna"
+      },
+      "fil": {
+        "text": "Koruna ng Czech Republic"
+      },
+      "kor": {
+        "text": "체코 코루나"
+      },
+      "spa": {
+        "text": "Corona checa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 203
+      }
+    ]
+  },
+  {
+    "currency_id": 40,
+    "iso_4217_code": "DJF",
+    "currency_name": {
+      "eng": {
+        "text": "Djibouti Franc"
+      },
+      "fil": {
+        "text": "Djiboutian franc"
+      },
+      "kor": {
+        "text": "지부티 프랑"
+      },
+      "spa": {
+        "text": "Franco yibutiano"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 262
+      }
+    ]
+  },
+  {
+    "currency_id": 41,
+    "iso_4217_code": "DKK",
+    "currency_name": {
+      "eng": {
+        "text": "Danish Krone"
+      },
+      "fil": {
+        "text": "Danish krone"
+      },
+      "kor": {
+        "text": "덴마크 크로네"
+      },
+      "spa": {
+        "text": "Corona danesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 208
+      },
+      {
+        "country_id": 234
+      },
+      {
+        "country_id": 304
+      }
+    ]
+  },
+  {
+    "currency_id": 42,
+    "iso_4217_code": "DOP",
+    "currency_name": {
+      "eng": {
+        "text": "Dominican Peso"
+      },
+      "fil": {
+        "text": "Piso ng Dominican"
+      },
+      "kor": {
+        "text": "도미니카 페소"
+      },
+      "spa": {
+        "text": "Peso dominicano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 214
+      }
+    ]
+  },
+  {
+    "currency_id": 43,
+    "iso_4217_code": "DZD",
+    "currency_name": {
+      "eng": {
+        "text": "Algerian Dinar"
+      },
+      "fil": {
+        "text": "Dinar ng Algeria"
+      },
+      "kor": {
+        "text": "알제리 디나르"
+      },
+      "spa": {
+        "text": "Dinar argelino"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 12
+      }
+    ]
+  },
+  {
+    "currency_id": 44,
+    "iso_4217_code": "EGP",
+    "currency_name": {
+      "eng": {
+        "text": "Egyptian Pound"
+      },
+      "fil": {
+        "text": "Pound ng Egypt"
+      },
+      "kor": {
+        "text": "이집트 파운드"
+      },
+      "spa": {
+        "text": "Libra egipcia"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 818
+      }
+    ]
+  },
+  {
+    "currency_id": 45,
+    "iso_4217_code": "ERN",
+    "currency_name": {
+      "eng": {
+        "text": "Nakfa"
+      },
+      "fil": {
+        "text": "Eritrean nakfa"
+      },
+      "kor": {
+        "text": "에리트리아 나크파"
+      },
+      "spa": {
+        "text": "Nakfa eritreo"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 232
+      }
+    ]
+  },
+  {
+    "currency_id": 46,
+    "iso_4217_code": "ETB",
+    "currency_name": {
+      "eng": {
+        "text": "Ethiopian Birr"
+      },
+      "fil": {
+        "text": "Ethiopian birr"
+      },
+      "kor": {
+        "text": "에티오피아 비르"
+      },
+      "spa": {
+        "text": "Bir etíope"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 231
+      }
+    ]
+  },
+  {
+    "currency_id": 47,
+    "iso_4217_code": "EUR",
+    "currency_name": {
+      "eng": {
+        "text": "Euro"
+      },
+      "fil": {
+        "text": "Euro"
+      },
+      "kor": {
+        "text": "유로"
+      },
+      "spa": {
+        "text": "Euro"
+      }
+    },
+    "symbol": "€",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 20
+      },
+      {
+        "country_id": 40
+      },
+      {
+        "country_id": 56
+      },
+      {
+        "country_id": 100
+      },
+      {
+        "country_id": 175
+      },
+      {
+        "country_id": 191
+      },
+      {
+        "country_id": 196
+      },
+      {
+        "country_id": 233
+      },
+      {
+        "country_id": 246
+      },
+      {
+        "country_id": 248
+      },
+      {
+        "country_id": 250
+      },
+      {
+        "country_id": 254
+      },
+      {
+        "country_id": 260
+      },
+      {
+        "country_id": 276
+      },
+      {
+        "country_id": 300
+      },
+      {
+        "country_id": 312
+      },
+      {
+        "country_id": 336
+      },
+      {
+        "country_id": 372
+      },
+      {
+        "country_id": 380
+      },
+      {
+        "country_id": 428
+      },
+      {
+        "country_id": 440
+      },
+      {
+        "country_id": 442
+      },
+      {
+        "country_id": 470
+      },
+      {
+        "country_id": 474
+      },
+      {
+        "country_id": 492
+      },
+      {
+        "country_id": 499
+      },
+      {
+        "country_id": 528
+      },
+      {
+        "country_id": 620
+      },
+      {
+        "country_id": 638
+      },
+      {
+        "country_id": 652
+      },
+      {
+        "country_id": 663
+      },
+      {
+        "country_id": 666
+      },
+      {
+        "country_id": 674
+      },
+      {
+        "country_id": 703
+      },
+      {
+        "country_id": 705
+      },
+      {
+        "country_id": 724
+      }
+    ]
+  },
+  {
+    "currency_id": 48,
+    "iso_4217_code": "FJD",
+    "currency_name": {
+      "eng": {
+        "text": "Fiji Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Fiji"
+      },
+      "kor": {
+        "text": "피지 달러"
+      },
+      "spa": {
+        "text": "Dólar fiyiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 242
+      }
+    ]
+  },
+  {
+    "currency_id": 49,
+    "iso_4217_code": "FKP",
+    "currency_name": {
+      "eng": {
+        "text": "Falkland Islands Pound"
+      },
+      "fil": {
+        "text": "Pound ng Falkland Islands"
+      },
+      "kor": {
+        "text": "포클랜드제도 파운드"
+      },
+      "spa": {
+        "text": "Libra malvinense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 238
+      }
+    ]
+  },
+  {
+    "currency_id": 50,
+    "iso_4217_code": "GBP",
+    "currency_name": {
+      "eng": {
+        "text": "Pound Sterling"
+      },
+      "fil": {
+        "text": "British pound"
+      },
+      "kor": {
+        "text": "영국 파운드"
+      },
+      "spa": {
+        "text": "Libra esterlina"
+      }
+    },
+    "symbol": "£",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 239
+      },
+      {
+        "country_id": 826
+      },
+      {
+        "country_id": 831
+      },
+      {
+        "country_id": 832
+      },
+      {
+        "country_id": 833
+      }
+    ]
+  },
+  {
+    "currency_id": 51,
+    "iso_4217_code": "GEL",
+    "currency_name": {
+      "eng": {
+        "text": "Lari"
+      },
+      "fil": {
+        "text": "Georgian lari"
+      },
+      "kor": {
+        "text": "조지아 라리"
+      },
+      "spa": {
+        "text": "Lari georgiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 268
+      }
+    ]
+  },
+  {
+    "currency_id": 52,
+    "iso_4217_code": "GHS",
+    "currency_name": {
+      "eng": {
+        "text": "Ghana Cedi"
+      },
+      "fil": {
+        "text": "Ghanaian cedi"
+      },
+      "kor": {
+        "text": "가나 세디"
+      },
+      "spa": {
+        "text": "Cedi ghanés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 288
+      }
+    ]
+  },
+  {
+    "currency_id": 53,
+    "iso_4217_code": "GIP",
+    "currency_name": {
+      "eng": {
+        "text": "Gibraltar Pound"
+      },
+      "fil": {
+        "text": "Pound ng Gibraltar"
+      },
+      "kor": {
+        "text": "지브롤터 파운드"
+      },
+      "spa": {
+        "text": "Libra gibraltareña"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 292
+      }
+    ]
+  },
+  {
+    "currency_id": 54,
+    "iso_4217_code": "GMD",
+    "currency_name": {
+      "eng": {
+        "text": "Dalasi"
+      },
+      "fil": {
+        "text": "Gambian dalasi"
+      },
+      "kor": {
+        "text": "감비아 달라시"
+      },
+      "spa": {
+        "text": "Dalasi gambiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 270
+      }
+    ]
+  },
+  {
+    "currency_id": 55,
+    "iso_4217_code": "GNF",
+    "currency_name": {
+      "eng": {
+        "text": "Guinean Franc"
+      },
+      "fil": {
+        "text": "Guinean franc"
+      },
+      "kor": {
+        "text": "기니 프랑"
+      },
+      "spa": {
+        "text": "Franco guineano"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 324
+      }
+    ]
+  },
+  {
+    "currency_id": 56,
+    "iso_4217_code": "GTQ",
+    "currency_name": {
+      "eng": {
+        "text": "Quetzal"
+      },
+      "fil": {
+        "text": "Quetzal ng Guatemala"
+      },
+      "kor": {
+        "text": "과테말라 케트살"
+      },
+      "spa": {
+        "text": "Quetzal guatemalteco"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 320
+      }
+    ]
+  },
+  {
+    "currency_id": 57,
+    "iso_4217_code": "GYD",
+    "currency_name": {
+      "eng": {
+        "text": "Guyana Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Guyanese"
+      },
+      "kor": {
+        "text": "가이아나 달러"
+      },
+      "spa": {
+        "text": "Dólar guyanés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 328
+      }
+    ]
+  },
+  {
+    "currency_id": 58,
+    "iso_4217_code": "HKD",
+    "currency_name": {
+      "eng": {
+        "text": "Hong Kong Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Hong Kong"
+      },
+      "kor": {
+        "text": "홍콩 달러"
+      },
+      "spa": {
+        "text": "Dólar hongkonés"
+      }
+    },
+    "symbol": "HK$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 344
+      }
+    ]
+  },
+  {
+    "currency_id": 59,
+    "iso_4217_code": "HNL",
+    "currency_name": {
+      "eng": {
+        "text": "Lempira"
+      },
+      "fil": {
+        "text": "Lempira ng Honduras"
+      },
+      "kor": {
+        "text": "온두라스 렘피라"
+      },
+      "spa": {
+        "text": "Lempira hondureño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 340
+      }
+    ]
+  },
+  {
+    "currency_id": 60,
+    "iso_4217_code": "HTG",
+    "currency_name": {
+      "eng": {
+        "text": "Gourde"
+      },
+      "fil": {
+        "text": "Gourde ng Haiti"
+      },
+      "kor": {
+        "text": "아이티 구르드"
+      },
+      "spa": {
+        "text": "Gurde haitiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 332
+      }
+    ]
+  },
+  {
+    "currency_id": 61,
+    "iso_4217_code": "HUF",
+    "currency_name": {
+      "eng": {
+        "text": "Forint"
+      },
+      "fil": {
+        "text": "Forint ng Hungary"
+      },
+      "kor": {
+        "text": "헝가리 포린트"
+      },
+      "spa": {
+        "text": "Forinto húngaro"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 348
+      }
+    ]
+  },
+  {
+    "currency_id": 62,
+    "iso_4217_code": "IDR",
+    "currency_name": {
+      "eng": {
+        "text": "Rupiah"
+      },
+      "fil": {
+        "text": "Indonesian rupiah"
+      },
+      "kor": {
+        "text": "인도네시아 루피아"
+      },
+      "spa": {
+        "text": "Rupia indonesia"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 360
+      }
+    ]
+  },
+  {
+    "currency_id": 63,
+    "iso_4217_code": "ILS",
+    "currency_name": {
+      "eng": {
+        "text": "New Israeli Sheqel"
+      },
+      "fil": {
+        "text": "New shekel ng Israel"
+      },
+      "kor": {
+        "text": "이스라엘 신권 세켈"
+      },
+      "spa": {
+        "text": "Nuevo séquel israelí"
+      }
+    },
+    "symbol": "₪",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 275
+      },
+      {
+        "country_id": 376
+      }
+    ]
+  },
+  {
+    "currency_id": 64,
+    "iso_4217_code": "INR",
+    "currency_name": {
+      "eng": {
+        "text": "Indian Rupee"
+      },
+      "fil": {
+        "text": "Indian rupee"
+      },
+      "kor": {
+        "text": "인도 루피"
+      },
+      "spa": {
+        "text": "Rupia india"
+      }
+    },
+    "symbol": "₹",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 64
+      },
+      {
+        "country_id": 356
+      }
+    ]
+  },
+  {
+    "currency_id": 65,
+    "iso_4217_code": "IQD",
+    "currency_name": {
+      "eng": {
+        "text": "Iraqi Dinar"
+      },
+      "fil": {
+        "text": "Iraqi dinar"
+      },
+      "kor": {
+        "text": "이라크 디나르"
+      },
+      "spa": {
+        "text": "Dinar iraquí"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 368
+      }
+    ]
+  },
+  {
+    "currency_id": 66,
+    "iso_4217_code": "IRR",
+    "currency_name": {
+      "eng": {
+        "text": "Iranian Rial"
+      },
+      "fil": {
+        "text": "Iranian rial"
+      },
+      "kor": {
+        "text": "이란 리얄"
+      },
+      "spa": {
+        "text": "Rial iraní"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 364
+      }
+    ]
+  },
+  {
+    "currency_id": 67,
+    "iso_4217_code": "ISK",
+    "currency_name": {
+      "eng": {
+        "text": "Iceland Krona"
+      },
+      "fil": {
+        "text": "Icelandic króna"
+      },
+      "kor": {
+        "text": "아이슬란드 크로나"
+      },
+      "spa": {
+        "text": "Corona islandesa"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 352
+      }
+    ]
+  },
+  {
+    "currency_id": 68,
+    "iso_4217_code": "JMD",
+    "currency_name": {
+      "eng": {
+        "text": "Jamaican Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Jamaica"
+      },
+      "kor": {
+        "text": "자메이카 달러"
+      },
+      "spa": {
+        "text": "Dólar jamaicano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 388
+      }
+    ]
+  },
+  {
+    "currency_id": 69,
+    "iso_4217_code": "JOD",
+    "currency_name": {
+      "eng": {
+        "text": "Jordanian Dinar"
+      },
+      "fil": {
+        "text": "Jordanian dinar"
+      },
+      "kor": {
+        "text": "요르단 디나르"
+      },
+      "spa": {
+        "text": "Dinar jordano"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 275
+      },
+      {
+        "country_id": 400
+      }
+    ]
+  },
+  {
+    "currency_id": 70,
+    "iso_4217_code": "JPY",
+    "currency_name": {
+      "eng": {
+        "text": "Yen"
+      },
+      "fil": {
+        "text": "Japanese yen"
+      },
+      "kor": {
+        "text": "일본 엔화"
+      },
+      "spa": {
+        "text": "Yen japonés"
+      }
+    },
+    "symbol": "¥",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 392
+      }
+    ]
+  },
+  {
+    "currency_id": 71,
+    "iso_4217_code": "KES",
+    "currency_name": {
+      "eng": {
+        "text": "Kenyan Shilling"
+      },
+      "fil": {
+        "text": "Kenyan shilling"
+      },
+      "kor": {
+        "text": "케냐 실링"
+      },
+      "spa": {
+        "text": "Chelín keniano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 404
+      }
+    ]
+  },
+  {
+    "currency_id": 72,
+    "iso_4217_code": "KGS",
+    "currency_name": {
+      "eng": {
+        "text": "Som"
+      },
+      "fil": {
+        "text": "Kyrgystani som"
+      },
+      "kor": {
+        "text": "키르기스스탄 솜"
+      },
+      "spa": {
+        "text": "Som kirguís"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 417
+      }
+    ]
+  },
+  {
+    "currency_id": 73,
+    "iso_4217_code": "KHR",
+    "currency_name": {
+      "eng": {
+        "text": "Riel"
+      },
+      "fil": {
+        "text": "Cambodian riel"
+      },
+      "kor": {
+        "text": "캄보디아 리엘"
+      },
+      "spa": {
+        "text": "Riel camboyano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 116
+      }
+    ]
+  },
+  {
+    "currency_id": 74,
+    "iso_4217_code": "KMF",
+    "currency_name": {
+      "eng": {
+        "text": "Comorian Franc"
+      },
+      "fil": {
+        "text": "Comorian franc"
+      },
+      "kor": {
+        "text": "코모르 프랑"
+      },
+      "spa": {
+        "text": "Franco comorense"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 174
+      }
+    ]
+  },
+  {
+    "currency_id": 75,
+    "iso_4217_code": "KPW",
+    "currency_name": {
+      "eng": {
+        "text": "North Korean Won"
+      },
+      "fil": {
+        "text": "Won ng Hilagang Korea"
+      },
+      "kor": {
+        "text": "조선 민주주의 인민 공화국 원"
+      },
+      "spa": {
+        "text": "Won norcoreano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 408
+      }
+    ]
+  },
+  {
+    "currency_id": 76,
+    "iso_4217_code": "KRW",
+    "currency_name": {
+      "eng": {
+        "text": "Won"
+      },
+      "fil": {
+        "text": "Won ng Timog Korea"
+      },
+      "kor": {
+        "text": "대한민국 원"
+      },
+      "spa": {
+        "text": "Won surcoreano"
+      }
+    },
+    "symbol": "₩",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 410
+      }
+    ]
+  },
+  {
+    "currency_id": 77,
+    "iso_4217_code": "KWD",
+    "currency_name": {
+      "eng": {
+        "text": "Kuwaiti Dinar"
+      },
+      "fil": {
+        "text": "Kuwaiti dinar"
+      },
+      "kor": {
+        "text": "쿠웨이트 디나르"
+      },
+      "spa": {
+        "text": "Dinar kuwaití"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 414
+      }
+    ]
+  },
+  {
+    "currency_id": 78,
+    "iso_4217_code": "KYD",
+    "currency_name": {
+      "eng": {
+        "text": "Cayman Islands Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Cayman Islands"
+      },
+      "kor": {
+        "text": "케이맨 제도 달러"
+      },
+      "spa": {
+        "text": "Dólar de las Islas Caimán"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 136
+      }
+    ]
+  },
+  {
+    "currency_id": 79,
+    "iso_4217_code": "KZT",
+    "currency_name": {
+      "eng": {
+        "text": "Tenge"
+      },
+      "fil": {
+        "text": "Kazakhstani tenge"
+      },
+      "kor": {
+        "text": "카자흐스탄 텡게"
+      },
+      "spa": {
+        "text": "Tengue kazajo"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 398
+      }
+    ]
+  },
+  {
+    "currency_id": 80,
+    "iso_4217_code": "LAK",
+    "currency_name": {
+      "eng": {
+        "text": "Lao Kip"
+      },
+      "fil": {
+        "text": "Laotian kip"
+      },
+      "kor": {
+        "text": "라오스 키프"
+      },
+      "spa": {
+        "text": "Kip laosiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 418
+      }
+    ]
+  },
+  {
+    "currency_id": 81,
+    "iso_4217_code": "LBP",
+    "currency_name": {
+      "eng": {
+        "text": "Lebanese Pound"
+      },
+      "fil": {
+        "text": "Pound ng Lebanon"
+      },
+      "kor": {
+        "text": "레바논 파운드"
+      },
+      "spa": {
+        "text": "Libra libanesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 422
+      }
+    ]
+  },
+  {
+    "currency_id": 82,
+    "iso_4217_code": "LKR",
+    "currency_name": {
+      "eng": {
+        "text": "Sri Lanka Rupee"
+      },
+      "fil": {
+        "text": "Sri Lankan rupee"
+      },
+      "kor": {
+        "text": "스리랑카 루피"
+      },
+      "spa": {
+        "text": "Rupia esrilanquesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 144
+      }
+    ]
+  },
+  {
+    "currency_id": 83,
+    "iso_4217_code": "LRD",
+    "currency_name": {
+      "eng": {
+        "text": "Liberian Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Liberia"
+      },
+      "kor": {
+        "text": "라이베리아 달러"
+      },
+      "spa": {
+        "text": "Dólar liberiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 430
+      }
+    ]
+  },
+  {
+    "currency_id": 84,
+    "iso_4217_code": "LSL",
+    "currency_name": {
+      "eng": {
+        "text": "Loti"
+      },
+      "fil": {
+        "text": "Lesotho loti"
+      },
+      "kor": {
+        "text": "레소토 로티"
+      },
+      "spa": {
+        "text": "Loti lesotense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 426
+      }
+    ]
+  },
+  {
+    "currency_id": 85,
+    "iso_4217_code": "LYD",
+    "currency_name": {
+      "eng": {
+        "text": "Libyan Dinar"
+      },
+      "fil": {
+        "text": "Dinar ng Libya"
+      },
+      "kor": {
+        "text": "리비아 디나르"
+      },
+      "spa": {
+        "text": "Dinar libio"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 434
+      }
+    ]
+  },
+  {
+    "currency_id": 86,
+    "iso_4217_code": "MAD",
+    "currency_name": {
+      "eng": {
+        "text": "Moroccan Dirham"
+      },
+      "fil": {
+        "text": "Moroccan dirham"
+      },
+      "kor": {
+        "text": "모로코 디르함"
+      },
+      "spa": {
+        "text": "Dírham marroquí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 504
+      },
+      {
+        "country_id": 732
+      }
+    ]
+  },
+  {
+    "currency_id": 87,
+    "iso_4217_code": "MDL",
+    "currency_name": {
+      "eng": {
+        "text": "Moldovan Leu"
+      },
+      "fil": {
+        "text": "Leu ng Moldova"
+      },
+      "kor": {
+        "text": "몰도바 레이"
+      },
+      "spa": {
+        "text": "Leu moldavo"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 498
+      }
+    ]
+  },
+  {
+    "currency_id": 88,
+    "iso_4217_code": "MGA",
+    "currency_name": {
+      "eng": {
+        "text": "Malagasy Ariary"
+      },
+      "fil": {
+        "text": "Malagasy Ariary"
+      },
+      "kor": {
+        "text": "마다가스카르 아리아리"
+      },
+      "spa": {
+        "text": "Ariari malgache"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 450
+      }
+    ]
+  },
+  {
+    "currency_id": 89,
+    "iso_4217_code": "MKD",
+    "currency_name": {
+      "eng": {
+        "text": "Denar"
+      },
+      "fil": {
+        "text": "Denar ng North Macedonia"
+      },
+      "kor": {
+        "text": "마케도니아 디나르"
+      },
+      "spa": {
+        "text": "Dinar macedonio"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 807
+      }
+    ]
+  },
+  {
+    "currency_id": 90,
+    "iso_4217_code": "MMK",
+    "currency_name": {
+      "eng": {
+        "text": "Kyat"
+      },
+      "fil": {
+        "text": "Myanmar kyat"
+      },
+      "kor": {
+        "text": "미얀마 키얏"
+      },
+      "spa": {
+        "text": "Kiat de Myanmar"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 104
+      }
+    ]
+  },
+  {
+    "currency_id": 91,
+    "iso_4217_code": "MNT",
+    "currency_name": {
+      "eng": {
+        "text": "Tugrik"
+      },
+      "fil": {
+        "text": "Mongolian tugrik"
+      },
+      "kor": {
+        "text": "몽골 투그릭"
+      },
+      "spa": {
+        "text": "Tugrik mongol"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 496
+      }
+    ]
+  },
+  {
+    "currency_id": 92,
+    "iso_4217_code": "MOP",
+    "currency_name": {
+      "eng": {
+        "text": "Pataca"
+      },
+      "fil": {
+        "text": "Macanese pataca"
+      },
+      "kor": {
+        "text": "마카오 파타카"
+      },
+      "spa": {
+        "text": "Pataca macaense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 446
+      }
+    ]
+  },
+  {
+    "currency_id": 93,
+    "iso_4217_code": "MRU",
+    "currency_name": {
+      "eng": {
+        "text": "Ouguiya"
+      },
+      "fil": {
+        "text": "Mauritanian ouguiya"
+      },
+      "kor": {
+        "text": "모리타니 우기야"
+      },
+      "spa": {
+        "text": "Uguiya mauritano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 478
+      }
+    ]
+  },
+  {
+    "currency_id": 94,
+    "iso_4217_code": "MUR",
+    "currency_name": {
+      "eng": {
+        "text": "Mauritius Rupee"
+      },
+      "fil": {
+        "text": "Mauritian rupee"
+      },
+      "kor": {
+        "text": "모리셔스 루피"
+      },
+      "spa": {
+        "text": "Rupia mauriciana"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 480
+      }
+    ]
+  },
+  {
+    "currency_id": 95,
+    "iso_4217_code": "MVR",
+    "currency_name": {
+      "eng": {
+        "text": "Rufiyaa"
+      },
+      "fil": {
+        "text": "Maldivian rufiyaa"
+      },
+      "kor": {
+        "text": "몰디브 제도 루피아"
+      },
+      "spa": {
+        "text": "Rufiya maldiva"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 462
+      }
+    ]
+  },
+  {
+    "currency_id": 96,
+    "iso_4217_code": "MWK",
+    "currency_name": {
+      "eng": {
+        "text": "Malawi Kwacha"
+      },
+      "fil": {
+        "text": "Malawian Kwacha"
+      },
+      "kor": {
+        "text": "말라위 콰차"
+      },
+      "spa": {
+        "text": "Kuacha malauí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 454
+      }
+    ]
+  },
+  {
+    "currency_id": 97,
+    "iso_4217_code": "MXN",
+    "currency_name": {
+      "eng": {
+        "text": "Mexican Peso"
+      },
+      "fil": {
+        "text": "Piso ng Mexico"
+      },
+      "kor": {
+        "text": "멕시코 페소"
+      },
+      "spa": {
+        "text": "Peso mexicano"
+      }
+    },
+    "symbol": "MX$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "currency_id": 98,
+    "iso_4217_code": "MXV",
+    "currency_name": {
+      "eng": {
+        "text": "Mexican Unidad de Inversion (UDI)"
+      },
+      "kor": {
+        "text": "멕시코 (UDI)"
+      },
+      "spa": {
+        "text": "Unidad de inversión (UDI) mexicana"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 484
+      }
+    ]
+  },
+  {
+    "currency_id": 99,
+    "iso_4217_code": "MYR",
+    "currency_name": {
+      "eng": {
+        "text": "Malaysian Ringgit"
+      },
+      "fil": {
+        "text": "Malaysian ringgit"
+      },
+      "kor": {
+        "text": "말레이시아 링깃"
+      },
+      "spa": {
+        "text": "Ringit malasio"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 458
+      }
+    ]
+  },
+  {
+    "currency_id": 100,
+    "iso_4217_code": "MZN",
+    "currency_name": {
+      "eng": {
+        "text": "Mozambique Metical"
+      },
+      "fil": {
+        "text": "Mozambican metical"
+      },
+      "kor": {
+        "text": "모잠비크 메티칼"
+      },
+      "spa": {
+        "text": "Metical mozambiqueño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 508
+      }
+    ]
+  },
+  {
+    "currency_id": 101,
+    "iso_4217_code": "NAD",
+    "currency_name": {
+      "eng": {
+        "text": "Namibia Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Namibia"
+      },
+      "kor": {
+        "text": "나미비아 달러"
+      },
+      "spa": {
+        "text": "Dólar namibio"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 516
+      }
+    ]
+  },
+  {
+    "currency_id": 102,
+    "iso_4217_code": "NGN",
+    "currency_name": {
+      "eng": {
+        "text": "Naira"
+      },
+      "fil": {
+        "text": "Nigerian naira"
+      },
+      "kor": {
+        "text": "나이지리아 나이라"
+      },
+      "spa": {
+        "text": "Naira nigeriano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 566
+      }
+    ]
+  },
+  {
+    "currency_id": 103,
+    "iso_4217_code": "NIO",
+    "currency_name": {
+      "eng": {
+        "text": "Cordoba Oro"
+      },
+      "fil": {
+        "text": "Córdoba ng Nicaragua"
+      },
+      "kor": {
+        "text": "니카라과 코르도바"
+      },
+      "spa": {
+        "text": "Córdoba oro"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 558
+      }
+    ]
+  },
+  {
+    "currency_id": 104,
+    "iso_4217_code": "NOK",
+    "currency_name": {
+      "eng": {
+        "text": "Norwegian Krone"
+      },
+      "fil": {
+        "text": "Norwegian krone"
+      },
+      "kor": {
+        "text": "노르웨이 크로네"
+      },
+      "spa": {
+        "text": "Corona noruega"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 74
+      },
+      {
+        "country_id": 578
+      },
+      {
+        "country_id": 744
+      }
+    ]
+  },
+  {
+    "currency_id": 105,
+    "iso_4217_code": "NPR",
+    "currency_name": {
+      "eng": {
+        "text": "Nepalese Rupee"
+      },
+      "fil": {
+        "text": "Nepalese rupee"
+      },
+      "kor": {
+        "text": "네팔 루피"
+      },
+      "spa": {
+        "text": "Rupia nepalí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 524
+      }
+    ]
+  },
+  {
+    "currency_id": 106,
+    "iso_4217_code": "NZD",
+    "currency_name": {
+      "eng": {
+        "text": "New Zealand Dollar"
+      },
+      "fil": {
+        "text": "Dolyares ng New Zealand"
+      },
+      "kor": {
+        "text": "뉴질랜드 달러"
+      },
+      "spa": {
+        "text": "Dólar neozelandés"
+      }
+    },
+    "symbol": "NZ$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 184
+      },
+      {
+        "country_id": 554
+      },
+      {
+        "country_id": 570
+      },
+      {
+        "country_id": 612
+      },
+      {
+        "country_id": 772
+      }
+    ]
+  },
+  {
+    "currency_id": 107,
+    "iso_4217_code": "OMR",
+    "currency_name": {
+      "eng": {
+        "text": "Rial Omani"
+      },
+      "fil": {
+        "text": "Omani rial"
+      },
+      "kor": {
+        "text": "오만 리알"
+      },
+      "spa": {
+        "text": "Rial omaní"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 512
+      }
+    ]
+  },
+  {
+    "currency_id": 108,
+    "iso_4217_code": "PAB",
+    "currency_name": {
+      "eng": {
+        "text": "Balboa"
+      },
+      "fil": {
+        "text": "Balboa ng Panama"
+      },
+      "kor": {
+        "text": "파나마 발보아"
+      },
+      "spa": {
+        "text": "Balboa panameño"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 591
+      }
+    ]
+  },
+  {
+    "currency_id": 109,
+    "iso_4217_code": "PEN",
+    "currency_name": {
+      "eng": {
+        "text": "Sol"
+      },
+      "fil": {
+        "text": "Peruvian sol"
+      },
+      "kor": {
+        "text": "페루 솔"
+      },
+      "spa": {
+        "text": "Sol peruano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 604
+      }
+    ]
+  },
+  {
+    "currency_id": 110,
+    "iso_4217_code": "PGK",
+    "currency_name": {
+      "eng": {
+        "text": "Kina"
+      },
+      "fil": {
+        "text": "Papua New Guinean kina"
+      },
+      "kor": {
+        "text": "파푸아뉴기니 키나"
+      },
+      "spa": {
+        "text": "Kina papú"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 598
+      }
+    ]
+  },
+  {
+    "currency_id": 111,
+    "iso_4217_code": "PHP",
+    "currency_name": {
+      "eng": {
+        "text": "Philippine Peso"
+      },
+      "fil": {
+        "text": "Piso ng Pilipinas"
+      },
+      "kor": {
+        "text": "필리핀 페소"
+      },
+      "spa": {
+        "text": "Peso filipino"
+      }
+    },
+    "symbol": "₱",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 608
+      }
+    ]
+  },
+  {
+    "currency_id": 112,
+    "iso_4217_code": "PKR",
+    "currency_name": {
+      "eng": {
+        "text": "Pakistan Rupee"
+      },
+      "fil": {
+        "text": "Pakistani rupee"
+      },
+      "kor": {
+        "text": "파키스탄 루피"
+      },
+      "spa": {
+        "text": "Rupia pakistaní"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 586
+      }
+    ]
+  },
+  {
+    "currency_id": 113,
+    "iso_4217_code": "PLN",
+    "currency_name": {
+      "eng": {
+        "text": "Zloty"
+      },
+      "fil": {
+        "text": "Zloty ng Poland"
+      },
+      "kor": {
+        "text": "폴란드 즈워티"
+      },
+      "spa": {
+        "text": "Esloti polaco"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 616
+      }
+    ]
+  },
+  {
+    "currency_id": 114,
+    "iso_4217_code": "PYG",
+    "currency_name": {
+      "eng": {
+        "text": "Guarani"
+      },
+      "fil": {
+        "text": "Paraguayan guarani"
+      },
+      "kor": {
+        "text": "파라과이 과라니"
+      },
+      "spa": {
+        "text": "Guaraní paraguayo"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 600
+      }
+    ]
+  },
+  {
+    "currency_id": 115,
+    "iso_4217_code": "QAR",
+    "currency_name": {
+      "eng": {
+        "text": "Qatari Rial"
+      },
+      "fil": {
+        "text": "Qatari rial"
+      },
+      "kor": {
+        "text": "카타르 리얄"
+      },
+      "spa": {
+        "text": "Rial catarí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 634
+      }
+    ]
+  },
+  {
+    "currency_id": 116,
+    "iso_4217_code": "RON",
+    "currency_name": {
+      "eng": {
+        "text": "Romanian Leu"
+      },
+      "fil": {
+        "text": "Leu ng Romania"
+      },
+      "kor": {
+        "text": "루마니아 레우"
+      },
+      "spa": {
+        "text": "Leu rumano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 642
+      }
+    ]
+  },
+  {
+    "currency_id": 117,
+    "iso_4217_code": "RSD",
+    "currency_name": {
+      "eng": {
+        "text": "Serbian Dinar"
+      },
+      "fil": {
+        "text": "Dinar ng Serbia"
+      },
+      "kor": {
+        "text": "세르비아 디나르"
+      },
+      "spa": {
+        "text": "Dinar serbio"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 688
+      }
+    ]
+  },
+  {
+    "currency_id": 118,
+    "iso_4217_code": "RUB",
+    "currency_name": {
+      "eng": {
+        "text": "Russian Ruble"
+      },
+      "fil": {
+        "text": "Ruble ng Russia"
+      },
+      "kor": {
+        "text": "러시아 루블"
+      },
+      "spa": {
+        "text": "Rublo ruso"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 643
+      }
+    ]
+  },
+  {
+    "currency_id": 119,
+    "iso_4217_code": "RWF",
+    "currency_name": {
+      "eng": {
+        "text": "Rwanda Franc"
+      },
+      "fil": {
+        "text": "Rwandan franc"
+      },
+      "kor": {
+        "text": "르완다 프랑"
+      },
+      "spa": {
+        "text": "Franco ruandés"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 646
+      }
+    ]
+  },
+  {
+    "currency_id": 120,
+    "iso_4217_code": "SAR",
+    "currency_name": {
+      "eng": {
+        "text": "Saudi Riyal"
+      },
+      "fil": {
+        "text": "Saudi riyal"
+      },
+      "kor": {
+        "text": "사우디아라비아 리얄"
+      },
+      "spa": {
+        "text": "Rial saudí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 682
+      }
+    ]
+  },
+  {
+    "currency_id": 121,
+    "iso_4217_code": "SBD",
+    "currency_name": {
+      "eng": {
+        "text": "Solomon Islands Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Solomon Islands"
+      },
+      "kor": {
+        "text": "솔로몬 제도 달러"
+      },
+      "spa": {
+        "text": "Dólar salomonense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 90
+      }
+    ]
+  },
+  {
+    "currency_id": 122,
+    "iso_4217_code": "SCR",
+    "currency_name": {
+      "eng": {
+        "text": "Seychelles Rupee"
+      },
+      "fil": {
+        "text": "Seychellois rupee"
+      },
+      "kor": {
+        "text": "세이셸 루피"
+      },
+      "spa": {
+        "text": "Rupia seychellense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 690
+      }
+    ]
+  },
+  {
+    "currency_id": 123,
+    "iso_4217_code": "SDG",
+    "currency_name": {
+      "eng": {
+        "text": "Sudanese Pound"
+      },
+      "fil": {
+        "text": "Pound ng Sudan"
+      },
+      "kor": {
+        "text": "수단 파운드"
+      },
+      "spa": {
+        "text": "Libra sudanesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 729
+      }
+    ]
+  },
+  {
+    "currency_id": 124,
+    "iso_4217_code": "SEK",
+    "currency_name": {
+      "eng": {
+        "text": "Swedish Krona"
+      },
+      "fil": {
+        "text": "Swedish krona"
+      },
+      "kor": {
+        "text": "스웨덴 크로나"
+      },
+      "spa": {
+        "text": "Corona sueca"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 752
+      }
+    ]
+  },
+  {
+    "currency_id": 125,
+    "iso_4217_code": "SGD",
+    "currency_name": {
+      "eng": {
+        "text": "Singapore Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Singapore"
+      },
+      "kor": {
+        "text": "싱가포르 달러"
+      },
+      "spa": {
+        "text": "Dólar singapurense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 702
+      }
+    ]
+  },
+  {
+    "currency_id": 126,
+    "iso_4217_code": "SHP",
+    "currency_name": {
+      "eng": {
+        "text": "Saint Helena Pound"
+      },
+      "fil": {
+        "text": "Saint Helena pound"
+      },
+      "kor": {
+        "text": "세인트헬레나 파운드"
+      },
+      "spa": {
+        "text": "Libra de Santa Elena"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 654
+      }
+    ]
+  },
+  {
+    "currency_id": 127,
+    "iso_4217_code": "SLE",
+    "currency_name": {
+      "eng": {
+        "text": "Leone"
+      },
+      "fil": {
+        "text": "Sierra Leonean leone"
+      },
+      "kor": {
+        "text": "시에라리온 리온"
+      },
+      "spa": {
+        "text": "Leona sierraleonesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 694
+      }
+    ]
+  },
+  {
+    "currency_id": 128,
+    "iso_4217_code": "SOS",
+    "currency_name": {
+      "eng": {
+        "text": "Somali Shilling"
+      },
+      "fil": {
+        "text": "Somali shilling"
+      },
+      "kor": {
+        "text": "소말리아 실링"
+      },
+      "spa": {
+        "text": "Chelín somalí"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 706
+      }
+    ]
+  },
+  {
+    "currency_id": 129,
+    "iso_4217_code": "SRD",
+    "currency_name": {
+      "eng": {
+        "text": "Surinam Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Suriname"
+      },
+      "kor": {
+        "text": "수리남 달러"
+      },
+      "spa": {
+        "text": "Dólar surinamés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 740
+      }
+    ]
+  },
+  {
+    "currency_id": 130,
+    "iso_4217_code": "SSP",
+    "currency_name": {
+      "eng": {
+        "text": "South Sudanese Pound"
+      },
+      "fil": {
+        "text": "Pound ng Timog Sudan"
+      },
+      "kor": {
+        "text": "남수단 파운드"
+      },
+      "spa": {
+        "text": "Libra sursudanesa"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 728
+      }
+    ]
+  },
+  {
+    "currency_id": 131,
+    "iso_4217_code": "STN",
+    "currency_name": {
+      "eng": {
+        "text": "Dobra"
+      },
+      "fil": {
+        "text": "São Tomé & Príncipe dobra"
+      },
+      "kor": {
+        "text": "상투메 프린시페 도브라"
+      },
+      "spa": {
+        "text": "Dobra santotomense"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 678
+      }
+    ]
+  },
+  {
+    "currency_id": 132,
+    "iso_4217_code": "SVC",
+    "currency_name": {
+      "eng": {
+        "text": "El Salvador Colon"
+      },
+      "kor": {
+        "text": "엘살바도르 콜론"
+      },
+      "spa": {
+        "text": "Colón salvadoreño"
+      }
+    },
+    "minor_unit_scale": 2
+  },
+  {
+    "currency_id": 133,
+    "iso_4217_code": "SYP",
+    "currency_name": {
+      "eng": {
+        "text": "Syrian Pound"
+      },
+      "fil": {
+        "text": "Syrian pound"
+      },
+      "kor": {
+        "text": "시리아 파운드"
+      },
+      "spa": {
+        "text": "Libra siria"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 760
+      }
+    ]
+  },
+  {
+    "currency_id": 134,
+    "iso_4217_code": "SZL",
+    "currency_name": {
+      "eng": {
+        "text": "Lilangeni"
+      },
+      "fil": {
+        "text": "Swazi lilangeni"
+      },
+      "kor": {
+        "text": "스와질란드 릴랑게니"
+      },
+      "spa": {
+        "text": "Lilangeni esuatiní"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 748
+      }
+    ]
+  },
+  {
+    "currency_id": 135,
+    "iso_4217_code": "THB",
+    "currency_name": {
+      "eng": {
+        "text": "Baht"
+      },
+      "fil": {
+        "text": "Thai baht"
+      },
+      "kor": {
+        "text": "태국 바트"
+      },
+      "spa": {
+        "text": "Bat tailandés"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 764
+      }
+    ]
+  },
+  {
+    "currency_id": 136,
+    "iso_4217_code": "TJS",
+    "currency_name": {
+      "eng": {
+        "text": "Somoni"
+      },
+      "fil": {
+        "text": "Tajikistani somoni"
+      },
+      "kor": {
+        "text": "타지키스탄 소모니"
+      },
+      "spa": {
+        "text": "Somoni tayiko"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 762
+      }
+    ]
+  },
+  {
+    "currency_id": 137,
+    "iso_4217_code": "TMT",
+    "currency_name": {
+      "eng": {
+        "text": "Turkmenistan New Manat"
+      },
+      "fil": {
+        "text": "Turkmenistani manat"
+      },
+      "kor": {
+        "text": "투르크메니스탄 마나트"
+      },
+      "spa": {
+        "text": "Manat turcomano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 795
+      }
+    ]
+  },
+  {
+    "currency_id": 138,
+    "iso_4217_code": "TND",
+    "currency_name": {
+      "eng": {
+        "text": "Tunisian Dinar"
+      },
+      "fil": {
+        "text": "Tunisian dinar"
+      },
+      "kor": {
+        "text": "튀니지 디나르"
+      },
+      "spa": {
+        "text": "Dinar tunecino"
+      }
+    },
+    "minor_unit_scale": 3,
+    "issuing_countries": [
+      {
+        "country_id": 788
+      }
+    ]
+  },
+  {
+    "currency_id": 139,
+    "iso_4217_code": "TOP",
+    "currency_name": {
+      "eng": {
+        "text": "Pa’anga"
+      },
+      "fil": {
+        "text": "Tongan paʻanga"
+      },
+      "kor": {
+        "text": "통가 파앙가"
+      },
+      "spa": {
+        "text": "Paanga tongano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 776
+      }
+    ]
+  },
+  {
+    "currency_id": 140,
+    "iso_4217_code": "TRY",
+    "currency_name": {
+      "eng": {
+        "text": "Turkish Lira"
+      },
+      "fil": {
+        "text": "Turkish lira"
+      },
+      "kor": {
+        "text": "튀르키예 리라"
+      },
+      "spa": {
+        "text": "Lira turca"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 792
+      }
+    ]
+  },
+  {
+    "currency_id": 141,
+    "iso_4217_code": "TTD",
+    "currency_name": {
+      "eng": {
+        "text": "Trinidad and Tobago Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Trinidad and Tobago"
+      },
+      "kor": {
+        "text": "트리니다드 토바고 달러"
+      },
+      "spa": {
+        "text": "Dólar de Trinidad y Tobago"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 780
+      }
+    ]
+  },
+  {
+    "currency_id": 142,
+    "iso_4217_code": "TWD",
+    "currency_name": {
+      "eng": {
+        "text": "New Taiwan Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng New Taiwan"
+      },
+      "kor": {
+        "text": "신 타이완 달러"
+      },
+      "spa": {
+        "text": "Nuevo dólar taiwanés"
+      }
+    },
+    "symbol": "NT$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 158
+      }
+    ]
+  },
+  {
+    "currency_id": 143,
+    "iso_4217_code": "TZS",
+    "currency_name": {
+      "eng": {
+        "text": "Tanzanian Shilling"
+      },
+      "fil": {
+        "text": "Tanzanian shilling"
+      },
+      "kor": {
+        "text": "탄자니아 실링"
+      },
+      "spa": {
+        "text": "Chelín tanzano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 834
+      }
+    ]
+  },
+  {
+    "currency_id": 144,
+    "iso_4217_code": "UAH",
+    "currency_name": {
+      "eng": {
+        "text": "Hryvnia"
+      },
+      "fil": {
+        "text": "Hryvnia ng Ukraine"
+      },
+      "kor": {
+        "text": "우크라이나 그리브나"
+      },
+      "spa": {
+        "text": "Grivna ucraniana"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 804
+      }
+    ]
+  },
+  {
+    "currency_id": 145,
+    "iso_4217_code": "UGX",
+    "currency_name": {
+      "eng": {
+        "text": "Uganda Shilling"
+      },
+      "fil": {
+        "text": "Ugandan shilling"
+      },
+      "kor": {
+        "text": "우간다 실링"
+      },
+      "spa": {
+        "text": "Chelín ugandés"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 800
+      }
+    ]
+  },
+  {
+    "currency_id": 146,
+    "iso_4217_code": "USD",
+    "currency_name": {
+      "eng": {
+        "text": "US Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng US"
+      },
+      "kor": {
+        "text": "미국 달러"
+      },
+      "spa": {
+        "text": "Dólar estadounidense"
+      }
+    },
+    "symbol": "$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 16
+      },
+      {
+        "country_id": 86
+      },
+      {
+        "country_id": 92
+      },
+      {
+        "country_id": 218
+      },
+      {
+        "country_id": 222
+      },
+      {
+        "country_id": 316
+      },
+      {
+        "country_id": 332
+      },
+      {
+        "country_id": 535
+      },
+      {
+        "country_id": 580
+      },
+      {
+        "country_id": 581
+      },
+      {
+        "country_id": 583
+      },
+      {
+        "country_id": 584
+      },
+      {
+        "country_id": 585
+      },
+      {
+        "country_id": 591
+      },
+      {
+        "country_id": 626
+      },
+      {
+        "country_id": 630
+      },
+      {
+        "country_id": 716
+      },
+      {
+        "country_id": 796
+      },
+      {
+        "country_id": 840
+      },
+      {
+        "country_id": 850
+      }
+    ]
+  },
+  {
+    "currency_id": 147,
+    "iso_4217_code": "USN",
+    "currency_name": {
+      "eng": {
+        "text": "US Dollar (Next day)"
+      },
+      "kor": {
+        "text": "미국 달러(다음날)"
+      },
+      "spa": {
+        "text": "Dólar estadounidense (día siguiente)"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 840
+      }
+    ]
+  },
+  {
+    "currency_id": 148,
+    "iso_4217_code": "UYI",
+    "currency_name": {
+      "eng": {
+        "text": "Uruguay Peso en Unidades Indexadas (UI)"
+      },
+      "kor": {
+        "text": "우루과이 페소 (UI)"
+      },
+      "spa": {
+        "text": "Peso uruguayo en unidades indexadas"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 858
+      }
+    ]
+  },
+  {
+    "currency_id": 149,
+    "iso_4217_code": "UYU",
+    "currency_name": {
+      "eng": {
+        "text": "Peso Uruguayo"
+      },
+      "fil": {
+        "text": "Piso ng Uruguay"
+      },
+      "kor": {
+        "text": "우루과이 페소"
+      },
+      "spa": {
+        "text": "Peso uruguayo"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 858
+      }
+    ]
+  },
+  {
+    "currency_id": 150,
+    "iso_4217_code": "UYW",
+    "currency_name": {
+      "eng": {
+        "text": "Unidad Previsional"
+      },
+      "spa": {
+        "text": "Unidad previsional uruguayo"
+      }
+    },
+    "minor_unit_scale": 4,
+    "issuing_countries": [
+      {
+        "country_id": 858
+      }
+    ]
+  },
+  {
+    "currency_id": 151,
+    "iso_4217_code": "UZS",
+    "currency_name": {
+      "eng": {
+        "text": "Uzbekistan Sum"
+      },
+      "fil": {
+        "text": "Uzbekistan som"
+      },
+      "kor": {
+        "text": "우즈베키스탄 숨"
+      },
+      "spa": {
+        "text": "Sum uzbeko"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 860
+      }
+    ]
+  },
+  {
+    "currency_id": 152,
+    "iso_4217_code": "VED",
+    "currency_name": {
+      "eng": {
+        "text": "Bolívar Soberano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 862
+      }
+    ]
+  },
+  {
+    "currency_id": 153,
+    "iso_4217_code": "VES",
+    "currency_name": {
+      "eng": {
+        "text": "Bolívar Soberano"
+      },
+      "fil": {
+        "text": "Bolívar ng Venezuela"
+      },
+      "kor": {
+        "text": "베네수엘라 볼리바르"
+      },
+      "spa": {
+        "text": "Bolívar venezolano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 862
+      }
+    ]
+  },
+  {
+    "currency_id": 154,
+    "iso_4217_code": "VND",
+    "currency_name": {
+      "eng": {
+        "text": "Dong"
+      },
+      "fil": {
+        "text": "Vietnamese dong"
+      },
+      "kor": {
+        "text": "베트남 동"
+      },
+      "spa": {
+        "text": "Dong vietnamita"
+      }
+    },
+    "symbol": "₫",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 704
+      }
+    ]
+  },
+  {
+    "currency_id": 155,
+    "iso_4217_code": "VUV",
+    "currency_name": {
+      "eng": {
+        "text": "Vatu"
+      },
+      "fil": {
+        "text": "Vanuatu vatu"
+      },
+      "kor": {
+        "text": "바누아투 바투"
+      },
+      "spa": {
+        "text": "Vatu vanuatense"
+      }
+    },
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 548
+      }
+    ]
+  },
+  {
+    "currency_id": 156,
+    "iso_4217_code": "WST",
+    "currency_name": {
+      "eng": {
+        "text": "Tala"
+      },
+      "fil": {
+        "text": "Samoan tala"
+      },
+      "kor": {
+        "text": "서 사모아 탈라"
+      },
+      "spa": {
+        "text": "Tala samoano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 882
+      }
+    ]
+  },
+  {
+    "currency_id": 157,
+    "iso_4217_code": "XAD",
+    "currency_name": {
+      "eng": {
+        "text": "Arab Accounting Dinar"
+      }
+    },
+    "minor_unit_scale": 2
+  },
+  {
+    "currency_id": 158,
+    "iso_4217_code": "XAF",
+    "currency_name": {
+      "eng": {
+        "text": "CFA Franc BEAC"
+      },
+      "fil": {
+        "text": "CFA franc BEAC"
+      },
+      "kor": {
+        "text": "중앙아프리카 CFA 프랑"
+      },
+      "spa": {
+        "text": "Franco CFA de África Central"
+      }
+    },
+    "symbol": "FCFA",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 120
+      },
+      {
+        "country_id": 140
+      },
+      {
+        "country_id": 148
+      },
+      {
+        "country_id": 178
+      },
+      {
+        "country_id": 226
+      },
+      {
+        "country_id": 266
+      }
+    ]
+  },
+  {
+    "currency_id": 159,
+    "iso_4217_code": "XAG",
+    "currency_name": {
+      "eng": {
+        "text": "Silver"
+      },
+      "kor": {
+        "text": "은화"
+      },
+      "spa": {
+        "text": "Plata"
+      }
+    }
+  },
+  {
+    "currency_id": 160,
+    "iso_4217_code": "XAU",
+    "currency_name": {
+      "eng": {
+        "text": "Gold"
+      },
+      "kor": {
+        "text": "금"
+      },
+      "spa": {
+        "text": "Oro"
+      }
+    }
+  },
+  {
+    "currency_id": 161,
+    "iso_4217_code": "XBA",
+    "currency_name": {
+      "eng": {
+        "text": "Bond Markets Unit European Composite Unit (EURCO)"
+      },
+      "kor": {
+        "text": "유르코 (유럽 회계 단위)"
+      },
+      "spa": {
+        "text": "Unidad compuesta europea"
+      }
+    }
+  },
+  {
+    "currency_id": 162,
+    "iso_4217_code": "XBB",
+    "currency_name": {
+      "eng": {
+        "text": "Bond Markets Unit European Monetary Unit (E.M.U.-6)"
+      },
+      "kor": {
+        "text": "유럽 통화 동맹"
+      },
+      "spa": {
+        "text": "Unidad monetaria europea"
+      }
+    }
+  },
+  {
+    "currency_id": 163,
+    "iso_4217_code": "XBC",
+    "currency_name": {
+      "eng": {
+        "text": "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)"
+      },
+      "kor": {
+        "text": "유럽 계산 단위 (XBC)"
+      },
+      "spa": {
+        "text": "Unidad de cuenta europea (XBC)"
+      }
+    }
+  },
+  {
+    "currency_id": 164,
+    "iso_4217_code": "XBD",
+    "currency_name": {
+      "eng": {
+        "text": "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)"
+      },
+      "kor": {
+        "text": "유럽 계산 단위 (XBD)"
+      },
+      "spa": {
+        "text": "Unidad de cuenta europea (XBD)"
+      }
+    }
+  },
+  {
+    "currency_id": 165,
+    "iso_4217_code": "XCD",
+    "currency_name": {
+      "eng": {
+        "text": "East Caribbean Dollar"
+      },
+      "fil": {
+        "text": "Dolyar ng Silangang Caribbean"
+      },
+      "kor": {
+        "text": "동카리브 달러"
+      },
+      "spa": {
+        "text": "Dólar del Caribe Oriental"
+      }
+    },
+    "symbol": "EC$",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 28
+      },
+      {
+        "country_id": 212
+      },
+      {
+        "country_id": 308
+      },
+      {
+        "country_id": 500
+      },
+      {
+        "country_id": 659
+      },
+      {
+        "country_id": 660
+      },
+      {
+        "country_id": 662
+      },
+      {
+        "country_id": 670
+      }
+    ]
+  },
+  {
+    "currency_id": 166,
+    "iso_4217_code": "XCG",
+    "currency_name": {
+      "eng": {
+        "text": "Caribbean Guilder"
+      },
+      "spa": {
+        "text": "Florín caribeño"
+      }
+    },
+    "symbol": "Cg.",
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 531
+      },
+      {
+        "country_id": 534
+      }
+    ]
+  },
+  {
+    "currency_id": 167,
+    "iso_4217_code": "XDR",
+    "currency_name": {
+      "eng": {
+        "text": "SDR (Special Drawing Right)"
+      },
+      "kor": {
+        "text": "특별인출권"
+      },
+      "spa": {
+        "text": "Derechos especiales de giro"
+      }
+    }
+  },
+  {
+    "currency_id": 168,
+    "iso_4217_code": "XOF",
+    "currency_name": {
+      "eng": {
+        "text": "CFA Franc BCEAO"
+      },
+      "fil": {
+        "text": "CFA franc ng Kanlurang Africa"
+      },
+      "kor": {
+        "text": "서아프리카 CFA 프랑"
+      },
+      "spa": {
+        "text": "Franco CFA de África Occidental"
+      }
+    },
+    "symbol": "F CFA",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 204
+      },
+      {
+        "country_id": 384
+      },
+      {
+        "country_id": 466
+      },
+      {
+        "country_id": 562
+      },
+      {
+        "country_id": 624
+      },
+      {
+        "country_id": 686
+      },
+      {
+        "country_id": 768
+      },
+      {
+        "country_id": 854
+      }
+    ]
+  },
+  {
+    "currency_id": 169,
+    "iso_4217_code": "XPD",
+    "currency_name": {
+      "eng": {
+        "text": "Palladium"
+      },
+      "kor": {
+        "text": "팔라듐"
+      },
+      "spa": {
+        "text": "Paladio"
+      }
+    }
+  },
+  {
+    "currency_id": 170,
+    "iso_4217_code": "XPF",
+    "currency_name": {
+      "eng": {
+        "text": "CFP Franc"
+      },
+      "fil": {
+        "text": "CFP franc"
+      },
+      "kor": {
+        "text": "CFP 프랑"
+      },
+      "spa": {
+        "text": "Franco CFP"
+      }
+    },
+    "symbol": "CFPF",
+    "minor_unit_scale": 0,
+    "issuing_countries": [
+      {
+        "country_id": 258
+      },
+      {
+        "country_id": 540
+      },
+      {
+        "country_id": 876
+      }
+    ]
+  },
+  {
+    "currency_id": 171,
+    "iso_4217_code": "XPT",
+    "currency_name": {
+      "eng": {
+        "text": "Platinum"
+      },
+      "kor": {
+        "text": "백금"
+      },
+      "spa": {
+        "text": "Platino"
+      }
+    }
+  },
+  {
+    "currency_id": 172,
+    "iso_4217_code": "XSU",
+    "currency_name": {
+      "eng": {
+        "text": "Sucre"
+      }
+    }
+  },
+  {
+    "currency_id": 173,
+    "iso_4217_code": "XTS",
+    "currency_name": {
+      "eng": {
+        "text": "Codes specifically reserved for testing purposes"
+      },
+      "kor": {
+        "text": "테스트 통화 코드"
+      },
+      "spa": {
+        "text": "Código reservado para pruebas"
+      }
+    }
+  },
+  {
+    "currency_id": 174,
+    "iso_4217_code": "XUA",
+    "currency_name": {
+      "eng": {
+        "text": "ADB Unit of Account"
+      }
+    }
+  },
+  {
+    "currency_id": 175,
+    "iso_4217_code": "XXX",
+    "currency_name": {
+      "eng": {
+        "text": "The codes assigned for transactions where no currency is involved"
+      },
+      "fil": {
+        "text": "(hindi kilalang unit ng currency)"
+      },
+      "kor": {
+        "text": "(알 수 없는 통화 단위)"
+      },
+      "spa": {
+        "text": "(moneda desconocida)"
+      }
+    },
+    "issuing_countries": [
+      {
+        "country_id": 10
+      }
+    ]
+  },
+  {
+    "currency_id": 176,
+    "iso_4217_code": "YER",
+    "currency_name": {
+      "eng": {
+        "text": "Yemeni Rial"
+      },
+      "fil": {
+        "text": "Yemeni rial"
+      },
+      "kor": {
+        "text": "예멘 리알"
+      },
+      "spa": {
+        "text": "Rial yemení"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 887
+      }
+    ]
+  },
+  {
+    "currency_id": 177,
+    "iso_4217_code": "ZAR",
+    "currency_name": {
+      "eng": {
+        "text": "Rand"
+      },
+      "fil": {
+        "text": "Rand ng Timog Africa"
+      },
+      "kor": {
+        "text": "남아프리카 랜드"
+      },
+      "spa": {
+        "text": "Rand sudafricano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 426
+      },
+      {
+        "country_id": 516
+      },
+      {
+        "country_id": 710
+      }
+    ]
+  },
+  {
+    "currency_id": 178,
+    "iso_4217_code": "ZMW",
+    "currency_name": {
+      "eng": {
+        "text": "Zambian Kwacha"
+      },
+      "fil": {
+        "text": "Zambian kwacha"
+      },
+      "kor": {
+        "text": "잠비아 콰차"
+      },
+      "spa": {
+        "text": "Kuacha zambiano"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 894
+      }
+    ]
+  },
+  {
+    "currency_id": 179,
+    "iso_4217_code": "ZWG",
+    "currency_name": {
+      "eng": {
+        "text": "Zimbabwe Gold"
+      }
+    },
+    "minor_unit_scale": 2,
+    "issuing_countries": [
+      {
+        "country_id": 716
+      }
+    ]
+  }
+]

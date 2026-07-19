@@ -1,8 +1,8 @@
 Brand and Visual Identity
 =========================
-Document Version: 1.60
+Document Version: 1.70
 Date Created: 2026-07-01
-Revision Date: 2026-07-15
+Revision Date: 2026-07-19
 
 
 About the Logo
@@ -22,7 +22,7 @@ Ink & Ember was chosen as the visual theme because it gives Massage Nexus a stro
 
 The theme supports wellness through controlled green accents, which suggest balance, care, recovery, and natural calm. Together, the colors create a modern massage and wellness platform that feels bold but not aggressive, calm but not boring, and premium without feeling unreachable. Ink & Ember helps Massage Nexus stand out as a serious digital platform while still keeping the warmth and comfort expected from a spa and massage-related brand.
 
-Specifications for Ink & Ember at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\zenith_main\theme_main v1.01.json
+Specifications for Ink & Ember are stored in the repository at data/theme/theme_main.json, with the matching PHP-readable structure guide at docs/04-architecture/structure-guide/theme_main.php. The original planning export remains at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\zenith_main\theme_main v1.01.json; the repository copy is the working reference.
 
 
 Brand Footer Strip

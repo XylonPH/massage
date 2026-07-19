@@ -1,0 +1,826 @@
+[
+    {
+        "_id": 4,
+        "field_name": "orientation_sexual",
+        "field_label": "Sexual Orientation",
+        "field_description": "Reusable field template for Sexual Orientation values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HET",
+                "option_label": "Heterosexual",
+                "option_description": "Select Heterosexual for Sexual Orientation."
+            },
+            {
+                "option_code": "GAY",
+                "option_label": "Gay",
+                "option_description": "Select Gay for Sexual Orientation."
+            },
+            {
+                "option_code": "LES",
+                "option_label": "Lesbian",
+                "option_description": "Select Lesbian for Sexual Orientation."
+            },
+            {
+                "option_code": "BI",
+                "option_label": "Bisexual",
+                "option_description": "Select Bisexual for Sexual Orientation."
+            },
+            {
+                "option_code": "PAN",
+                "option_label": "Pansexual",
+                "option_description": "Select Pansexual for Sexual Orientation."
+            },
+            {
+                "option_code": "ASE",
+                "option_label": "Asexual",
+                "option_description": "Select Asexual for Sexual Orientation."
+            },
+            {
+                "option_code": "QUE",
+                "option_label": "Queer",
+                "option_description": "Select Queer for Sexual Orientation."
+            },
+            {
+                "option_code": "QST",
+                "option_label": "Questioning",
+                "option_description": "Select Questioning for Sexual Orientation."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Sexual Orientation."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Sexual Orientation."
+            },
+            {
+                "option_code": "PNA",
+                "option_label": "Prefer Not to Answer",
+                "option_description": "Select Prefer Not to Answer for Sexual Orientation."
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "field_name": "gender_identity",
+        "field_label": "Gender Identity",
+        "field_description": "Reusable field template for Gender Identity values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "M",
+                "option_label": "Male",
+                "option_description": "Select Male for Gender Identity."
+            },
+            {
+                "option_code": "F",
+                "option_label": "Female",
+                "option_description": "Select Female for Gender Identity."
+            },
+            {
+                "option_code": "NB",
+                "option_label": "Non-binary",
+                "option_description": "Select Non-binary for Gender Identity."
+            },
+            {
+                "option_code": "TM",
+                "option_label": "Transgender Man",
+                "option_description": "Select Transgender Man for Gender Identity."
+            },
+            {
+                "option_code": "TW",
+                "option_label": "Transgender Woman",
+                "option_description": "Select Transgender Woman for Gender Identity."
+            },
+            {
+                "option_code": "GQ",
+                "option_label": "Genderqueer",
+                "option_description": "Select Genderqueer for Gender Identity."
+            },
+            {
+                "option_code": "AG",
+                "option_label": "Agender",
+                "option_description": "Select Agender for Gender Identity."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Gender Identity."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Gender Identity."
+            },
+            {
+                "option_code": "PNA",
+                "option_label": "Prefer Not to Answer",
+                "option_description": "Select Prefer Not to Answer for Gender Identity."
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "field_name": "gender_character",
+        "field_label": "Character Gender",
+        "field_description": "Reusable field template for Character Gender values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "M",
+                "option_label": "Male",
+                "option_description": "Select Male for Character Gender."
+            },
+            {
+                "option_code": "F",
+                "option_label": "Female",
+                "option_description": "Select Female for Character Gender."
+            },
+            {
+                "option_code": "G",
+                "option_label": "Group",
+                "option_description": "Select Group for Character Gender."
+            },
+            {
+                "option_code": "N",
+                "option_label": "Neutral",
+                "option_description": "Select Neutral for Character Gender."
+            },
+            {
+                "option_code": "NB",
+                "option_label": "Non-binary",
+                "option_description": "Select Non-binary for Character Gender."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Character Gender."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Character Gender."
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "field_name": "status_contact_channel",
+        "field_label": "Contact Channel Status",
+        "field_description": "Reusable field template for Contact Channel Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AC",
+                "option_label": "Active",
+                "option_description": "Select Active for Contact Channel Status."
+            },
+            {
+                "option_code": "FW",
+                "option_label": "Forwarding",
+                "option_description": "Select Forwarding for Contact Channel Status."
+            },
+            {
+                "option_code": "AR",
+                "option_label": "Auto-Reply / Answering Machine",
+                "option_description": "Select Auto-Reply / Answering Machine for Contact Channel Status."
+            },
+            {
+                "option_code": "NR",
+                "option_label": "No Response",
+                "option_description": "Select No Response for Contact Channel Status."
+            },
+            {
+                "option_code": "DR",
+                "option_label": "Dropped",
+                "option_description": "Select Dropped for Contact Channel Status."
+            },
+            {
+                "option_code": "FK",
+                "option_label": "Fake",
+                "option_description": "Select Fake for Contact Channel Status."
+            },
+            {
+                "option_code": "NE",
+                "option_label": "Does Not Exist",
+                "option_description": "Select Does Not Exist for Contact Channel Status."
+            },
+            {
+                "option_code": "DO",
+                "option_label": "Different Owner",
+                "option_description": "Select Different Owner for Contact Channel Status."
+            },
+            {
+                "option_code": "SP",
+                "option_label": "Spam",
+                "option_description": "Select Spam for Contact Channel Status."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blocked",
+                "option_description": "Select Blocked for Contact Channel Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Contact Channel Status."
+            }
+        ]
+    },
+    {
+        "_id": 21,
+        "field_name": "type_life_event",
+        "field_label": "Life Event Type",
+        "field_description": "Reusable field template for Life Event Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "B",
+                "option_label": "Birth Date",
+                "option_description": "Select Birth Date for Life Event Type."
+            },
+            {
+                "option_code": "FM",
+                "option_label": "First Meetup",
+                "option_description": "Select First Meetup for Life Event Type."
+            },
+            {
+                "option_code": "FD",
+                "option_label": "First Date",
+                "option_description": "Select First Date for Life Event Type."
+            },
+            {
+                "option_code": "FK",
+                "option_label": "First Kiss",
+                "option_description": "Select First Kiss for Life Event Type."
+            },
+            {
+                "option_code": "FS",
+                "option_label": "First Sex",
+                "option_description": "Select First Sex for Life Event Type."
+            },
+            {
+                "option_code": "BU",
+                "option_label": "Breakup",
+                "option_description": "Select Breakup for Life Event Type."
+            },
+            {
+                "option_code": "EN",
+                "option_label": "Engagement",
+                "option_description": "Select Engagement for Life Event Type."
+            },
+            {
+                "option_code": "LM",
+                "option_label": "Law Marriage",
+                "option_description": "Select Law Marriage for Life Event Type."
+            },
+            {
+                "option_code": "CM",
+                "option_label": "Church Marriage",
+                "option_description": "Select Church Marriage for Life Event Type."
+            },
+            {
+                "option_code": "DV",
+                "option_label": "Divorce",
+                "option_description": "Select Divorce for Life Event Type."
+            },
+            {
+                "option_code": "AN",
+                "option_label": "Annulment",
+                "option_description": "Select Annulment for Life Event Type."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Death",
+                "option_description": "Select Death for Life Event Type."
+            },
+            {
+                "option_code": "GRD",
+                "option_label": "Graduation",
+                "option_description": "Select Graduation for Life Event Type."
+            },
+            {
+                "option_code": "MOV",
+                "option_label": "Moved Residence",
+                "option_description": "Select Moved Residence for Life Event Type."
+            },
+            {
+                "option_code": "JOB",
+                "option_label": "Started Job",
+                "option_description": "Select Started Job for Life Event Type."
+            }
+        ]
+    },
+    {
+        "_id": 22,
+        "field_name": "type_event_relationship",
+        "field_label": "Relationship Event Type",
+        "field_description": "Classifies a personal or social relationship event, such as first meetup, first date, breakup, marriage, or divorce. Do not use this field for technical database relationships.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FM",
+                "option_label": "First Meetup",
+                "option_description": "Select First Meetup for Relationship Event Type."
+            },
+            {
+                "option_code": "FD",
+                "option_label": "First Date",
+                "option_description": "Select First Date for Relationship Event Type."
+            },
+            {
+                "option_code": "FK",
+                "option_label": "First Kiss",
+                "option_description": "Select First Kiss for Relationship Event Type."
+            },
+            {
+                "option_code": "FS",
+                "option_label": "First Sex",
+                "option_description": "Select First Sex for Relationship Event Type."
+            },
+            {
+                "option_code": "BU",
+                "option_label": "Breakup",
+                "option_description": "Select Breakup for Relationship Event Type."
+            },
+            {
+                "option_code": "EN",
+                "option_label": "Engagement",
+                "option_description": "Select Engagement for Relationship Event Type."
+            },
+            {
+                "option_code": "LM",
+                "option_label": "Law Marriage",
+                "option_description": "Select Law Marriage for Relationship Event Type."
+            },
+            {
+                "option_code": "CM",
+                "option_label": "Church Marriage",
+                "option_description": "Select Church Marriage for Relationship Event Type."
+            },
+            {
+                "option_code": "DV",
+                "option_label": "Divorce",
+                "option_description": "Select Divorce for Relationship Event Type."
+            },
+            {
+                "option_code": "AN",
+                "option_label": "Annulment",
+                "option_description": "Select Annulment for Relationship Event Type."
+            }
+        ]
+    },
+    {
+        "_id": 23,
+        "field_name": "type_contact_event",
+        "field_label": "Contact Event Type",
+        "field_description": "Reusable field template for Contact Event Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "R",
+                "option_label": "Registered",
+                "option_description": "Select Registered for Contact Event Type."
+            },
+            {
+                "option_code": "A",
+                "option_label": "Activated",
+                "option_description": "Select Activated for Contact Event Type."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Deactivated",
+                "option_description": "Select Deactivated for Contact Event Type."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Deleted",
+                "option_description": "Select Deleted for Contact Event Type."
+            },
+            {
+                "option_code": "V",
+                "option_label": "Verified",
+                "option_description": "Select Verified for Contact Event Type."
+            },
+            {
+                "option_code": "S",
+                "option_label": "Suspended",
+                "option_description": "Select Suspended for Contact Event Type."
+            },
+            {
+                "option_code": "RA",
+                "option_label": "Reactivated",
+                "option_description": "Select Reactivated for Contact Event Type."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Merged",
+                "option_description": "Select Merged for Contact Event Type."
+            }
+        ]
+    },
+    {
+        "_id": 38,
+        "field_name": "type_contact_number",
+        "field_label": "Contact Number Type",
+        "field_description": "Reusable field template for Contact Number Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "M",
+                "option_label": "Mobile",
+                "option_description": "Select Mobile for Contact Number Type."
+            },
+            {
+                "option_code": "L",
+                "option_label": "Landline",
+                "option_description": "Select Landline for Contact Number Type."
+            },
+            {
+                "option_code": "F",
+                "option_label": "Facsimile",
+                "option_description": "Select Facsimile for Contact Number Type."
+            },
+            {
+                "option_code": "P",
+                "option_label": "Pager",
+                "option_description": "Select Pager for Contact Number Type."
+            },
+            {
+                "option_code": "VOI",
+                "option_label": "VoIP",
+                "option_description": "Select VoIP for Contact Number Type."
+            },
+            {
+                "option_code": "TOL",
+                "option_label": "Toll-Free",
+                "option_description": "Select Toll-Free for Contact Number Type."
+            },
+            {
+                "option_code": "HOT",
+                "option_label": "Hotline",
+                "option_description": "Select Hotline for Contact Number Type."
+            }
+        ]
+    },
+    {
+        "_id": 73,
+        "field_name": "type_contact_channel",
+        "field_label": "Contact Channel Type",
+        "field_description": "Reusable field template for Contact Channel Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EML",
+                "option_label": "Email",
+                "option_description": "Select Email for Contact Channel Type."
+            },
+            {
+                "option_code": "PHN",
+                "option_label": "Phone",
+                "option_description": "Select Phone for Contact Channel Type."
+            },
+            {
+                "option_code": "SMS",
+                "option_label": "SMS",
+                "option_description": "Select SMS for Contact Channel Type."
+            },
+            {
+                "option_code": "WEB",
+                "option_label": "Website",
+                "option_description": "Select Website for Contact Channel Type."
+            },
+            {
+                "option_code": "SOC",
+                "option_label": "Social Media",
+                "option_description": "Select Social Media for Contact Channel Type."
+            },
+            {
+                "option_code": "MSG",
+                "option_label": "Messaging App",
+                "option_description": "Select Messaging App for Contact Channel Type."
+            },
+            {
+                "option_code": "ADR",
+                "option_label": "Address",
+                "option_description": "Select Address for Contact Channel Type."
+            },
+            {
+                "option_code": "FAX",
+                "option_label": "Fax",
+                "option_description": "Select Fax for Contact Channel Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Contact Channel Type."
+            }
+        ]
+    },
+    {
+        "_id": 74,
+        "field_name": "type_person_role_context",
+        "field_label": "Person Role Context Type",
+        "field_description": "Reusable field template for Person Role Context Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "OWN",
+                "option_label": "Owner",
+                "option_description": "Select Owner for Person Role Context Type."
+            },
+            {
+                "option_code": "CRT",
+                "option_label": "Creator",
+                "option_description": "Select Creator for Person Role Context Type."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Author",
+                "option_description": "Select Author for Person Role Context Type."
+            },
+            {
+                "option_code": "EDT",
+                "option_label": "Editor",
+                "option_description": "Select Editor for Person Role Context Type."
+            },
+            {
+                "option_code": "DRV",
+                "option_label": "Driver",
+                "option_description": "Select Driver for Person Role Context Type."
+            },
+            {
+                "option_code": "CND",
+                "option_label": "Conductor",
+                "option_description": "Select Conductor for Person Role Context Type."
+            },
+            {
+                "option_code": "TCH",
+                "option_label": "Teacher",
+                "option_description": "Select Teacher for Person Role Context Type."
+            },
+            {
+                "option_code": "STU",
+                "option_label": "Student",
+                "option_description": "Select Student for Person Role Context Type."
+            },
+            {
+                "option_code": "CLT",
+                "option_label": "Client",
+                "option_description": "Select Client for Person Role Context Type."
+            },
+            {
+                "option_code": "EMP",
+                "option_label": "Employee",
+                "option_description": "Select Employee for Person Role Context Type."
+            },
+            {
+                "option_code": "MGR",
+                "option_label": "Manager",
+                "option_description": "Select Manager for Person Role Context Type."
+            },
+            {
+                "option_code": "REP",
+                "option_label": "Representative",
+                "option_description": "Select Representative for Person Role Context Type."
+            },
+            {
+                "option_code": "WIT",
+                "option_label": "Witness",
+                "option_description": "Select Witness for Person Role Context Type."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Companion",
+                "option_description": "Select Companion for Person Role Context Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Person Role Context Type."
+            }
+        ]
+    },
+    {
+        "_id": 97,
+        "field_name": "type_contact",
+        "field_label": "Contact Type",
+        "field_description": "Reusable field template for Contact Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PER",
+                "option_label": "Person",
+                "option_description": "Select Person for Contact Type."
+            },
+            {
+                "option_code": "COM",
+                "option_label": "Company",
+                "option_description": "Select Company for Contact Type."
+            },
+            {
+                "option_code": "ORG",
+                "option_label": "Organization",
+                "option_description": "Select Organization for Contact Type."
+            },
+            {
+                "option_code": "HOU",
+                "option_label": "Household",
+                "option_description": "Select Household for Contact Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government Office",
+                "option_description": "Select Government Office for Contact Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Contact Type."
+            },
+            {
+                "option_code": "RO",
+                "option_label": "Religious Organization",
+                "option_description": "Select Religious Organization for Contact Type."
+            }
+        ]
+    },
+    {
+        "_id": 98,
+        "field_name": "type_person_relationship",
+        "field_label": "Person Relationship Type",
+        "field_description": "Classifies a personal or social relationship between people or roles, such as family, friend, classmate, coworker, or similar human relationship categories. Do not use this field for technical database relationships.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FAM",
+                "option_label": "Family",
+                "option_description": "Select Family for Relationship Type."
+            },
+            {
+                "option_code": "FRI",
+                "option_label": "Friend",
+                "option_description": "Select Friend for Relationship Type."
+            },
+            {
+                "option_code": "CLA",
+                "option_label": "Classmate",
+                "option_description": "Select Classmate for Relationship Type."
+            },
+            {
+                "option_code": "COW",
+                "option_label": "Coworker",
+                "option_description": "Select Coworker for Relationship Type."
+            },
+            {
+                "option_code": "CLT",
+                "option_label": "Client",
+                "option_description": "Select Client for Relationship Type."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supplier",
+                "option_description": "Select Supplier for Relationship Type."
+            },
+            {
+                "option_code": "NEI",
+                "option_label": "Neighbor",
+                "option_description": "Select Neighbor for Relationship Type."
+            },
+            {
+                "option_code": "ACQ",
+                "option_label": "Acquaintance",
+                "option_description": "Select Acquaintance for Relationship Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Professional",
+                "option_description": "Select Professional for Relationship Type."
+            }
+        ]
+    },
+    {
+        "_id": 99,
+        "field_name": "type_name_variant",
+        "field_label": "Name Variant Type",
+        "field_description": "Reusable field template for Name Variant Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LN",
+                "option_label": "Legal Name",
+                "option_description": "Select Legal Name for Name Variant Type."
+            },
+            {
+                "option_code": "NIC",
+                "option_label": "Nickname",
+                "option_description": "Select Nickname for Name Variant Type."
+            },
+            {
+                "option_code": "SN",
+                "option_label": "Screen Name",
+                "option_description": "Select Screen Name for Name Variant Type."
+            },
+            {
+                "option_code": "FN",
+                "option_label": "Former Name",
+                "option_description": "Select Former Name for Name Variant Type."
+            },
+            {
+                "option_code": "MN",
+                "option_label": "Maiden Name",
+                "option_description": "Select Maiden Name for Name Variant Type."
+            },
+            {
+                "option_code": "STN",
+                "option_label": "Stage Name",
+                "option_description": "Select Stage Name for Name Variant Type."
+            },
+            {
+                "option_code": "ALI",
+                "option_label": "Alias",
+                "option_description": "Select Alias for Name Variant Type."
+            }
+        ]
+    },
+    {
+        "_id": 100,
+        "field_name": "type_contact_group",
+        "field_label": "Contact Group Type",
+        "field_description": "Reusable field template for Contact Group Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PER",
+                "option_label": "Personal",
+                "option_description": "Select Personal for Contact Group Type."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Business",
+                "option_description": "Select Business for Contact Group Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Contact Group Type."
+            },
+            {
+                "option_code": "CHU",
+                "option_label": "Church",
+                "option_description": "Select Church for Contact Group Type."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supplier",
+                "option_description": "Select Supplier for Contact Group Type."
+            },
+            {
+                "option_code": "CLT",
+                "option_label": "Client",
+                "option_description": "Select Client for Contact Group Type."
+            },
+            {
+                "option_code": "FAM",
+                "option_label": "Family",
+                "option_description": "Select Family for Contact Group Type."
+            },
+            {
+                "option_code": "EME",
+                "option_label": "Emergency",
+                "option_description": "Select Emergency for Contact Group Type."
+            }
+        ]
+    }
+]

@@ -3876,7 +3876,7 @@ complete a website feature.
 ================================================================================
 
 [ ] Create the initial authoritative collections, indexes, constraints, and audit records
-[ ] Create the initial reference and taxonomy datasets
+[~] Create the initial reference and taxonomy datasets
 [ ] Create initial Mandaluyong and Metro Manila records
 [ ] Verify active, closed, moved, renamed, disputed, and historical records
 [ ] Conduct field visits, interviews, provider outreach, and source checks

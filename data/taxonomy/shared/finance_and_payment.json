@@ -1,0 +1,695 @@
+[
+    {
+        "_id": 90,
+        "field_name": "type_receipt_source",
+        "field_label": "Receipt Source Type",
+        "field_description": "Reusable field template for Receipt Source Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PR",
+                "option_label": "Paper Receipt",
+                "option_description": "Select Paper Receipt for Receipt Source Type."
+            },
+            {
+                "option_code": "DR",
+                "option_label": "Digital Receipt",
+                "option_description": "Select Digital Receipt for Receipt Source Type."
+            },
+            {
+                "option_code": "SMS",
+                "option_label": "SMS",
+                "option_description": "Select SMS for Receipt Source Type."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Email",
+                "option_description": "Select Email for Receipt Source Type."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Screenshot",
+                "option_description": "Select Screenshot for Receipt Source Type."
+            },
+            {
+                "option_code": "PHO",
+                "option_label": "Photo",
+                "option_description": "Select Photo for Receipt Source Type."
+            },
+            {
+                "option_code": "MAN",
+                "option_label": "Manual Entry",
+                "option_description": "Select Manual Entry for Receipt Source Type."
+            }
+        ]
+    },
+    {
+        "_id": 112,
+        "field_name": "type_transaction",
+        "field_label": "Transaction Type",
+        "field_description": "Reusable field template for Transaction Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "INC",
+                "option_label": "Income",
+                "option_description": "Select Income for Transaction Type."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Expense",
+                "option_description": "Select Expense for Transaction Type."
+            },
+            {
+                "option_code": "TRF",
+                "option_label": "Transfer",
+                "option_description": "Select Transfer for Transaction Type."
+            },
+            {
+                "option_code": "ADJ",
+                "option_label": "Adjustment",
+                "option_description": "Select Adjustment for Transaction Type."
+            },
+            {
+                "option_code": "RFD",
+                "option_label": "Refund",
+                "option_description": "Select Refund for Transaction Type."
+            },
+            {
+                "option_code": "FEE",
+                "option_label": "Fee",
+                "option_description": "Select Fee for Transaction Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "Interest",
+                "option_description": "Select Interest for Transaction Type."
+            }
+        ]
+    },
+    {
+        "_id": 113,
+        "field_name": "type_payment_method",
+        "field_label": "Payment Method Type",
+        "field_description": "Reusable field template for Payment Method Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CSH",
+                "option_label": "Cash",
+                "option_description": "Select Cash for Payment Method Type."
+            },
+            {
+                "option_code": "CC",
+                "option_label": "Credit Card",
+                "option_description": "Select Credit Card for Payment Method Type."
+            },
+            {
+                "option_code": "DC",
+                "option_label": "Debit Card",
+                "option_description": "Select Debit Card for Payment Method Type."
+            },
+            {
+                "option_code": "BTR",
+                "option_label": "Bank Transfer",
+                "option_description": "Select Bank Transfer for Payment Method Type."
+            },
+            {
+                "option_code": "EWL",
+                "option_label": "E-Wallet",
+                "option_description": "Select E-Wallet for Payment Method Type."
+            },
+            {
+                "option_code": "CHK",
+                "option_label": "Check",
+                "option_description": "Select Check for Payment Method Type."
+            },
+            {
+                "option_code": "VCH",
+                "option_label": "Voucher",
+                "option_description": "Select Voucher for Payment Method Type."
+            },
+            {
+                "option_code": "SVC",
+                "option_label": "Stored-Value Card",
+                "option_description": "Select Stored-Value Card for Payment Method Type."
+            },
+            {
+                "option_code": "TRC",
+                "option_label": "Transit Card",
+                "option_description": "Select Transit Card for Payment Method Type."
+            },
+            {
+                "option_code": "QRP",
+                "option_label": "QR Payment",
+                "option_description": "Select QR Payment for Payment Method Type."
+            },
+            {
+                "option_code": "MOB",
+                "option_label": "Mobile Payment",
+                "option_description": "Select Mobile Payment for Payment Method Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Payment Method Type."
+            }
+        ]
+    },
+    {
+        "_id": 114,
+        "field_name": "type_account_finance",
+        "field_label": "Finance Account Type",
+        "field_description": "Reusable field template for Finance Account Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CSH",
+                "option_label": "Cash",
+                "option_description": "Select Cash for Finance Account Type."
+            },
+            {
+                "option_code": "BAN",
+                "option_label": "Bank",
+                "option_description": "Select Bank for Finance Account Type."
+            },
+            {
+                "option_code": "CC",
+                "option_label": "Credit Card",
+                "option_description": "Select Credit Card for Finance Account Type."
+            },
+            {
+                "option_code": "LOA",
+                "option_label": "Loan",
+                "option_description": "Select Loan for Finance Account Type."
+            },
+            {
+                "option_code": "INV",
+                "option_label": "Investment",
+                "option_description": "Select Investment for Finance Account Type."
+            },
+            {
+                "option_code": "EWL",
+                "option_label": "E-Wallet",
+                "option_description": "Select E-Wallet for Finance Account Type."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Receivable",
+                "option_description": "Select Receivable for Finance Account Type."
+            },
+            {
+                "option_code": "PAY",
+                "option_label": "Payable",
+                "option_description": "Select Payable for Finance Account Type."
+            }
+        ]
+    },
+    {
+        "_id": 115,
+        "field_name": "type_expense",
+        "field_label": "Expense Type",
+        "field_description": "Reusable field template for Expense Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FOO",
+                "option_label": "Food",
+                "option_description": "Select Food for Expense Type."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Transport",
+                "option_description": "Select Transport for Expense Type."
+            },
+            {
+                "option_code": "UTI",
+                "option_label": "Utilities",
+                "option_description": "Select Utilities for Expense Type."
+            },
+            {
+                "option_code": "REN",
+                "option_label": "Rent",
+                "option_description": "Select Rent for Expense Type."
+            },
+            {
+                "option_code": "MED",
+                "option_label": "Medical",
+                "option_description": "Select Medical for Expense Type."
+            },
+            {
+                "option_code": "EDU",
+                "option_label": "Education",
+                "option_description": "Select Education for Expense Type."
+            },
+            {
+                "option_code": "ENT",
+                "option_label": "Entertainment",
+                "option_description": "Select Entertainment for Expense Type."
+            },
+            {
+                "option_code": "CLO",
+                "option_label": "Clothing",
+                "option_description": "Select Clothing for Expense Type."
+            },
+            {
+                "option_code": "DEB",
+                "option_label": "Debt",
+                "option_description": "Select Debt for Expense Type."
+            },
+            {
+                "option_code": "DON",
+                "option_label": "Donation",
+                "option_description": "Select Donation for Expense Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Expense Type."
+            }
+        ]
+    },
+    {
+        "_id": 116,
+        "field_name": "type_income",
+        "field_label": "Income Type",
+        "field_description": "Reusable field template for Income Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SAL",
+                "option_label": "Salary",
+                "option_description": "Select Salary for Income Type."
+            },
+            {
+                "option_code": "FRE",
+                "option_label": "Freelance",
+                "option_description": "Select Freelance for Income Type."
+            },
+            {
+                "option_code": "RNT",
+                "option_label": "Rental",
+                "option_description": "Select Rental for Income Type."
+            },
+            {
+                "option_code": "GIF",
+                "option_label": "Gift",
+                "option_description": "Select Gift for Income Type."
+            },
+            {
+                "option_code": "RFD",
+                "option_label": "Refund",
+                "option_description": "Select Refund for Income Type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "Interest",
+                "option_description": "Select Interest for Income Type."
+            },
+            {
+                "option_code": "DIV",
+                "option_label": "Dividend",
+                "option_description": "Select Dividend for Income Type."
+            },
+            {
+                "option_code": "SAE",
+                "option_label": "Sale",
+                "option_description": "Select Sale for Income Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Income Type."
+            }
+        ]
+    },
+    {
+        "_id": 117,
+        "field_name": "status_payment",
+        "field_label": "Payment Status",
+        "field_description": "Reusable field template for Payment Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PND",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Payment Status."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Authorized",
+                "option_description": "Select Authorized for Payment Status."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Completed",
+                "option_description": "Select Completed for Payment Status."
+            },
+            {
+                "option_code": "FLD",
+                "option_label": "Failed",
+                "option_description": "Select Failed for Payment Status."
+            },
+            {
+                "option_code": "CAN",
+                "option_label": "Cancelled",
+                "option_description": "Select Cancelled for Payment Status."
+            },
+            {
+                "option_code": "VOI",
+                "option_label": "Voided",
+                "option_description": "Select Voided for Payment Status."
+            },
+            {
+                "option_code": "PPD",
+                "option_label": "Partially Paid",
+                "option_description": "Select Partially Paid for Payment Status."
+            },
+            {
+                "option_code": "RFD",
+                "option_label": "Refunded",
+                "option_description": "Select Refunded for Payment Status."
+            },
+            {
+                "option_code": "PRF",
+                "option_label": "Partially Refunded",
+                "option_description": "Select Partially Refunded for Payment Status."
+            },
+            {
+                "option_code": "OVD",
+                "option_label": "Overdue",
+                "option_description": "Select Overdue for Payment Status."
+            }
+        ]
+    },
+    {
+        "_id": 118,
+        "field_name": "type_budget_period",
+        "field_label": "Budget Period Type",
+        "field_description": "Reusable field template for Budget Period Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DAI",
+                "option_label": "Daily",
+                "option_description": "Select Daily for Budget Period Type."
+            },
+            {
+                "option_code": "WEE",
+                "option_label": "Weekly",
+                "option_description": "Select Weekly for Budget Period Type."
+            },
+            {
+                "option_code": "MON",
+                "option_label": "Monthly",
+                "option_description": "Select Monthly for Budget Period Type."
+            },
+            {
+                "option_code": "QUA",
+                "option_label": "Quarterly",
+                "option_description": "Select Quarterly for Budget Period Type."
+            },
+            {
+                "option_code": "YEA",
+                "option_label": "Yearly",
+                "option_description": "Select Yearly for Budget Period Type."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom",
+                "option_description": "Select Custom for Budget Period Type."
+            }
+        ]
+    },
+    {
+        "_id": 119,
+        "field_name": "type_financial_document",
+        "field_label": "Financial Document Type",
+        "field_description": "Reusable field template for Financial Document Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "RCT",
+                "option_label": "Receipt",
+                "option_description": "Select Receipt for Financial Document Type."
+            },
+            {
+                "option_code": "INV",
+                "option_label": "Invoice",
+                "option_description": "Select Invoice for Financial Document Type."
+            },
+            {
+                "option_code": "STM",
+                "option_label": "Statement",
+                "option_description": "Select Statement for Financial Document Type."
+            },
+            {
+                "option_code": "PAY",
+                "option_label": "Payslip",
+                "option_description": "Select Payslip for Financial Document Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Contract",
+                "option_description": "Select Contract for Financial Document Type."
+            },
+            {
+                "option_code": "QUO",
+                "option_label": "Quotation",
+                "option_description": "Select Quotation for Financial Document Type."
+            },
+            {
+                "option_code": "TD",
+                "option_label": "Tax Document",
+                "option_description": "Select Tax Document for Financial Document Type."
+            }
+        ]
+    },
+    {
+        "_id": 162,
+        "field_name": "type_payment_context",
+        "field_label": "Payment Context Type",
+        "field_description": "Reusable field template for Payment Context Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "APP",
+                "option_label": "In Application",
+                "option_description": "Select In Application for Payment Context Type."
+            },
+            {
+                "option_code": "VEH",
+                "option_label": "On Vehicle",
+                "option_description": "Select On Vehicle for Payment Context Type."
+            },
+            {
+                "option_code": "CTR",
+                "option_label": "At Counter",
+                "option_description": "Select At Counter for Payment Context Type."
+            },
+            {
+                "option_code": "TRM",
+                "option_label": "At Terminal",
+                "option_description": "Select At Terminal for Payment Context Type."
+            },
+            {
+                "option_code": "ONL",
+                "option_label": "Online",
+                "option_description": "Select Online for Payment Context Type."
+            },
+            {
+                "option_code": "AUT",
+                "option_label": "Automatic",
+                "option_description": "Select Automatic for Payment Context Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Payment Context Type."
+            }
+        ]
+    },
+    {
+        "_id": 163,
+        "field_name": "type_cost_adjustment",
+        "field_label": "Cost Adjustment Type",
+        "field_description": "Reusable field template for Cost Adjustment Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DSC",
+                "option_label": "Discount",
+                "option_description": "Select Discount for Cost Adjustment Type."
+            },
+            {
+                "option_code": "TIP",
+                "option_label": "Tip",
+                "option_description": "Select Tip for Cost Adjustment Type."
+            },
+            {
+                "option_code": "SUR",
+                "option_label": "Surcharge",
+                "option_description": "Select Surcharge for Cost Adjustment Type."
+            },
+            {
+                "option_code": "TOL",
+                "option_label": "Toll",
+                "option_description": "Select Toll for Cost Adjustment Type."
+            },
+            {
+                "option_code": "BKF",
+                "option_label": "Booking Fee",
+                "option_description": "Select Booking Fee for Cost Adjustment Type."
+            },
+            {
+                "option_code": "PLF",
+                "option_label": "Platform Fee",
+                "option_description": "Select Platform Fee for Cost Adjustment Type."
+            },
+            {
+                "option_code": "TAX",
+                "option_label": "Tax",
+                "option_description": "Select Tax for Cost Adjustment Type."
+            },
+            {
+                "option_code": "RFD",
+                "option_label": "Refund",
+                "option_description": "Select Refund for Cost Adjustment Type."
+            },
+            {
+                "option_code": "MSC",
+                "option_label": "Miscellaneous",
+                "option_description": "Select Miscellaneous for Cost Adjustment Type."
+            }
+        ]
+    },
+    {
+        "_id": 164,
+        "field_name": "type_document_kind",
+        "field_label": "Supporting Document Kind",
+        "field_description": "Reusable field template for Supporting Document Kind values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "RCT",
+                "option_label": "Receipt",
+                "option_description": "Select Receipt for Supporting Document Kind."
+            },
+            {
+                "option_code": "TKT",
+                "option_label": "Ticket",
+                "option_description": "Select Ticket for Supporting Document Kind."
+            },
+            {
+                "option_code": "SCR",
+                "option_label": "Transaction Screenshot",
+                "option_description": "Select Transaction Screenshot for Supporting Document Kind."
+            },
+            {
+                "option_code": "BKG",
+                "option_label": "Booking Confirmation",
+                "option_description": "Select Booking Confirmation for Supporting Document Kind."
+            },
+            {
+                "option_code": "INV",
+                "option_label": "Invoice",
+                "option_description": "Select Invoice for Supporting Document Kind."
+            },
+            {
+                "option_code": "PAS",
+                "option_label": "Pass",
+                "option_description": "Select Pass for Supporting Document Kind."
+            },
+            {
+                "option_code": "STM",
+                "option_label": "Statement",
+                "option_description": "Select Statement for Supporting Document Kind."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Supporting Document Kind."
+            }
+        ]
+    },
+    {
+        "_id": 180,
+        "field_name": "type_payment_provider",
+        "field_label": "Payment Provider Type",
+        "field_description": "Reusable field template for Payment Provider Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BNK",
+                "option_label": "Bank",
+                "option_description": "Select Bank for Payment Provider Type."
+            },
+            {
+                "option_code": "WAL",
+                "option_label": "Digital Wallet",
+                "option_description": "Select Digital Wallet for Payment Provider Type."
+            },
+            {
+                "option_code": "CRD",
+                "option_label": "Card Network",
+                "option_description": "Select Card Network for Payment Provider Type."
+            },
+            {
+                "option_code": "GAT",
+                "option_label": "Payment Gateway",
+                "option_description": "Select Payment Gateway for Payment Provider Type."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Remittance Service",
+                "option_description": "Select Remittance Service for Payment Provider Type."
+            },
+            {
+                "option_code": "MNO",
+                "option_label": "Mobile Network Operator",
+                "option_description": "Select Mobile Network Operator for Payment Provider Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government Payment Service",
+                "option_description": "Select Government Payment Service for Payment Provider Type."
+            },
+            {
+                "option_code": "CRY",
+                "option_label": "Cryptocurrency Payment Service",
+                "option_description": "Select Cryptocurrency Payment Service for Payment Provider Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Payment Provider Type."
+            }
+        ]
+    }
+]

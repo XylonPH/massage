@@ -1,0 +1,642 @@
+[
+    {
+        "_id": 86,
+        "field_name": "type_place_visit",
+        "field_label": "Place Visit Type",
+        "field_description": "Reusable field template for Place Visit Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "STA",
+                "option_label": "Stay",
+                "option_description": "Select Stay for Place Visit Type."
+            },
+            {
+                "option_code": "PAS",
+                "option_label": "Pass-By",
+                "option_description": "Select Pass-By for Place Visit Type."
+            },
+            {
+                "option_code": "APP",
+                "option_label": "Appointment",
+                "option_description": "Select Appointment for Place Visit Type."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Errand",
+                "option_description": "Select Errand for Place Visit Type."
+            },
+            {
+                "option_code": "TS",
+                "option_label": "Trip Stop",
+                "option_description": "Select Trip Stop for Place Visit Type."
+            },
+            {
+                "option_code": "TRF",
+                "option_label": "Transfer",
+                "option_description": "Select Transfer for Place Visit Type."
+            },
+            {
+                "option_code": "STO",
+                "option_label": "Stopover",
+                "option_description": "Select Stopover for Place Visit Type."
+            }
+        ]
+    },
+    {
+        "_id": 89,
+        "field_name": "type_place_memory",
+        "field_label": "Place Memory Type",
+        "field_description": "Reusable field template for Place Memory Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EVN",
+                "option_label": "Event",
+                "option_description": "Select Event for Place Memory Type."
+            },
+            {
+                "option_code": "MEA",
+                "option_label": "Meal",
+                "option_description": "Select Meal for Place Memory Type."
+            },
+            {
+                "option_code": "PUR",
+                "option_label": "Purchase",
+                "option_description": "Select Purchase for Place Memory Type."
+            },
+            {
+                "option_code": "MEE",
+                "option_label": "Meeting",
+                "option_description": "Select Meeting for Place Memory Type."
+            },
+            {
+                "option_code": "ACT",
+                "option_label": "Activity",
+                "option_description": "Select Activity for Place Memory Type."
+            },
+            {
+                "option_code": "VIS",
+                "option_label": "Visit",
+                "option_description": "Select Visit for Place Memory Type."
+            },
+            {
+                "option_code": "INC",
+                "option_label": "Incident",
+                "option_description": "Select Incident for Place Memory Type."
+            },
+            {
+                "option_code": "MEM",
+                "option_label": "Memory",
+                "option_description": "Select Memory for Place Memory Type."
+            }
+        ]
+    },
+    {
+        "_id": 155,
+        "field_name": "type_place_category",
+        "field_label": "Place Category Type",
+        "field_description": "Reusable field template for Place Category Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "RES",
+                "option_label": "Residence",
+                "option_description": "Select Residence for Place Category Type."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Business",
+                "option_description": "Select Business for Place Category Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Place Category Type."
+            },
+            {
+                "option_code": "STA",
+                "option_label": "Station",
+                "option_description": "Select Station for Place Category Type."
+            },
+            {
+                "option_code": "APT",
+                "option_label": "Airport",
+                "option_description": "Select Airport for Place Category Type."
+            },
+            {
+                "option_code": "TRM",
+                "option_label": "Terminal",
+                "option_description": "Select Terminal for Place Category Type."
+            },
+            {
+                "option_code": "PRK",
+                "option_label": "Park",
+                "option_description": "Select Park for Place Category Type."
+            },
+            {
+                "option_code": "GOV",
+                "option_label": "Government Office",
+                "option_description": "Select Government Office for Place Category Type."
+            },
+            {
+                "option_code": "HLT",
+                "option_label": "Healthcare Facility",
+                "option_description": "Select Healthcare Facility for Place Category Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Religious Place",
+                "option_description": "Select Religious Place for Place Category Type."
+            },
+            {
+                "option_code": "MAL",
+                "option_label": "Shopping Mall",
+                "option_description": "Select Shopping Mall for Place Category Type."
+            },
+            {
+                "option_code": "RST",
+                "option_label": "Restaurant",
+                "option_description": "Select Restaurant for Place Category Type."
+            },
+            {
+                "option_code": "ACC",
+                "option_label": "Accommodation",
+                "option_description": "Select Accommodation for Place Category Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Workplace",
+                "option_description": "Select Workplace for Place Category Type."
+            },
+            {
+                "option_code": "LMK",
+                "option_label": "Landmark",
+                "option_description": "Select Landmark for Place Category Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Place Category Type."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Place Category Type."
+            }
+        ]
+    },
+    {
+        "_id": 156,
+        "field_name": "type_place_zone",
+        "field_label": "Place Zone Type",
+        "field_description": "Reusable field template for Place Zone Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BLD",
+                "option_label": "Building",
+                "option_description": "Select Building for Place Zone Type."
+            },
+            {
+                "option_code": "FLR",
+                "option_label": "Floor",
+                "option_description": "Select Floor for Place Zone Type."
+            },
+            {
+                "option_code": "ROM",
+                "option_label": "Room",
+                "option_description": "Select Room for Place Zone Type."
+            },
+            {
+                "option_code": "WNG",
+                "option_label": "Wing",
+                "option_description": "Select Wing for Place Zone Type."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Department",
+                "option_description": "Select Department for Place Zone Type."
+            },
+            {
+                "option_code": "PLT",
+                "option_label": "Platform",
+                "option_description": "Select Platform for Place Zone Type."
+            },
+            {
+                "option_code": "GAT",
+                "option_label": "Gate Area",
+                "option_description": "Select Gate Area for Place Zone Type."
+            },
+            {
+                "option_code": "PRK",
+                "option_label": "Parking Area",
+                "option_description": "Select Parking Area for Place Zone Type."
+            },
+            {
+                "option_code": "GRD",
+                "option_label": "Grounds",
+                "option_description": "Select Grounds for Place Zone Type."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Concourse",
+                "option_description": "Select Concourse for Place Zone Type."
+            },
+            {
+                "option_code": "ZON",
+                "option_label": "Zone",
+                "option_description": "Select Zone for Place Zone Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Place Zone Type."
+            }
+        ]
+    },
+    {
+        "_id": 157,
+        "field_name": "type_place_access_point",
+        "field_label": "Place Access Point Type",
+        "field_description": "Reusable field template for Place Access Point Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ENT",
+                "option_label": "Entrance",
+                "option_description": "Select Entrance for Place Access Point Type."
+            },
+            {
+                "option_code": "EXT",
+                "option_label": "Exit",
+                "option_description": "Select Exit for Place Access Point Type."
+            },
+            {
+                "option_code": "GAT",
+                "option_label": "Gate",
+                "option_description": "Select Gate for Place Access Point Type."
+            },
+            {
+                "option_code": "PUP",
+                "option_label": "Pickup Point",
+                "option_description": "Select Pickup Point for Place Access Point Type."
+            },
+            {
+                "option_code": "DRP",
+                "option_label": "Drop-Off Point",
+                "option_description": "Select Drop-Off Point for Place Access Point Type."
+            },
+            {
+                "option_code": "ACC",
+                "option_label": "Access Point",
+                "option_description": "Select Access Point for Place Access Point Type."
+            },
+            {
+                "option_code": "EME",
+                "option_label": "Emergency Exit",
+                "option_description": "Select Emergency Exit for Place Access Point Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Place Access Point Type."
+            }
+        ]
+    },
+    {
+        "_id": 158,
+        "field_name": "type_place_relationship",
+        "field_label": "Place Relationship Type",
+        "field_description": "Reusable field template for Place Relationship Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "INS",
+                "option_label": "Inside",
+                "option_description": "Select Inside for Place Relationship Type."
+            },
+            {
+                "option_code": "PRT",
+                "option_label": "Part Of",
+                "option_description": "Select Part Of for Place Relationship Type."
+            },
+            {
+                "option_code": "ADJ",
+                "option_label": "Adjacent To",
+                "option_description": "Select Adjacent To for Place Relationship Type."
+            },
+            {
+                "option_code": "BRN",
+                "option_label": "Branch Location Of",
+                "option_description": "Select Branch Location Of for Place Relationship Type."
+            },
+            {
+                "option_code": "TRM",
+                "option_label": "Terminal Of",
+                "option_description": "Select Terminal Of for Place Relationship Type."
+            },
+            {
+                "option_code": "SON",
+                "option_label": "Station On",
+                "option_description": "Select Station On for Place Relationship Type."
+            },
+            {
+                "option_code": "NER",
+                "option_label": "Near",
+                "option_description": "Select Near for Place Relationship Type."
+            },
+            {
+                "option_code": "SAM",
+                "option_label": "Same As",
+                "option_description": "Select Same As for Place Relationship Type."
+            },
+            {
+                "option_code": "RPL",
+                "option_label": "Replaced By",
+                "option_description": "Select Replaced By for Place Relationship Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Place Relationship Type."
+            }
+        ]
+    },
+    {
+        "_id": 159,
+        "field_name": "type_place_usage",
+        "field_label": "Place Usage Type",
+        "field_description": "Reusable field template for Place Usage Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HOM",
+                "option_label": "Home",
+                "option_description": "Select Home for Place Usage Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Work",
+                "option_description": "Select Work for Place Usage Type."
+            },
+            {
+                "option_code": "STD",
+                "option_label": "Study",
+                "option_description": "Select Study for Place Usage Type."
+            },
+            {
+                "option_code": "FRQ",
+                "option_label": "Frequent Destination",
+                "option_description": "Select Frequent Destination for Place Usage Type."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Temporary",
+                "option_description": "Select Temporary for Place Usage Type."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Business",
+                "option_description": "Select Business for Place Usage Type."
+            },
+            {
+                "option_code": "PER",
+                "option_label": "Personal",
+                "option_description": "Select Personal for Place Usage Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Place Usage Type."
+            }
+        ]
+    },
+    {
+        "_id": 160,
+        "field_name": "type_address_usage",
+        "field_label": "Address Usage Type",
+        "field_description": "Reusable field template for Address Usage Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HOM",
+                "option_label": "Home",
+                "option_description": "Select Home for Address Usage Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Work",
+                "option_description": "Select Work for Address Usage Type."
+            },
+            {
+                "option_code": "BIL",
+                "option_label": "Billing",
+                "option_description": "Select Billing for Address Usage Type."
+            },
+            {
+                "option_code": "SHP",
+                "option_label": "Shipping",
+                "option_description": "Select Shipping for Address Usage Type."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Temporary",
+                "option_description": "Select Temporary for Address Usage Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Previous",
+                "option_description": "Select Previous for Address Usage Type."
+            },
+            {
+                "option_code": "BUS",
+                "option_label": "Business",
+                "option_description": "Select Business for Address Usage Type."
+            }
+        ]
+    },
+    {
+        "_id": 161,
+        "field_name": "type_address_component",
+        "field_label": "Address Component Type",
+        "field_description": "Reusable field template for Address Component Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BLD",
+                "option_label": "Building",
+                "option_description": "Select Building for Address Component Type."
+            },
+            {
+                "option_code": "UNT",
+                "option_label": "Unit",
+                "option_description": "Select Unit for Address Component Type."
+            },
+            {
+                "option_code": "FLR",
+                "option_label": "Floor",
+                "option_description": "Select Floor for Address Component Type."
+            },
+            {
+                "option_code": "SNO",
+                "option_label": "Street Number",
+                "option_description": "Select Street Number for Address Component Type."
+            },
+            {
+                "option_code": "ST",
+                "option_label": "Street",
+                "option_description": "Select Street for Address Component Type."
+            },
+            {
+                "option_code": "SUB",
+                "option_label": "Subdivision",
+                "option_description": "Select Subdivision for Address Component Type."
+            },
+            {
+                "option_code": "NBR",
+                "option_label": "Neighborhood",
+                "option_description": "Select Neighborhood for Address Component Type."
+            },
+            {
+                "option_code": "BRG",
+                "option_label": "Barangay",
+                "option_description": "Select Barangay for Address Component Type."
+            },
+            {
+                "option_code": "DST",
+                "option_label": "District",
+                "option_description": "Select District for Address Component Type."
+            },
+            {
+                "option_code": "WRD",
+                "option_label": "Ward",
+                "option_description": "Select Ward for Address Component Type."
+            },
+            {
+                "option_code": "MUN",
+                "option_label": "Municipality",
+                "option_description": "Select Municipality for Address Component Type."
+            },
+            {
+                "option_code": "CT",
+                "option_label": "City",
+                "option_description": "Select City for Address Component Type."
+            },
+            {
+                "option_code": "CNT",
+                "option_label": "County",
+                "option_description": "Select County for Address Component Type."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Province",
+                "option_description": "Select Province for Address Component Type."
+            },
+            {
+                "option_code": "STA",
+                "option_label": "State",
+                "option_description": "Select State for Address Component Type."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Region",
+                "option_description": "Select Region for Address Component Type."
+            },
+            {
+                "option_code": "PST",
+                "option_label": "Postal Code",
+                "option_description": "Select Postal Code for Address Component Type."
+            },
+            {
+                "option_code": "CTR",
+                "option_label": "Country",
+                "option_description": "Select Country for Address Component Type."
+            },
+            {
+                "option_code": "TER",
+                "option_label": "Territory",
+                "option_description": "Select Territory for Address Component Type."
+            },
+            {
+                "option_code": "ISL",
+                "option_label": "Island",
+                "option_description": "Select Island for Address Component Type."
+            },
+            {
+                "option_code": "FRM",
+                "option_label": "Freeform",
+                "option_description": "Select Freeform for Address Component Type."
+            }
+        ]
+    },
+    {
+        "_id": 167,
+        "field_name": "type_organization_place_relationship",
+        "field_label": "Organization-Place Relationship Type",
+        "field_description": "Reusable field template for Organization-Place Relationship Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BRN",
+                "option_label": "Branch Location",
+                "option_description": "Select Branch Location for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "CAM",
+                "option_label": "Campus",
+                "option_description": "Select Campus for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "OFF",
+                "option_label": "Office Location",
+                "option_description": "Select Office Location for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "OPL",
+                "option_label": "Operated Location",
+                "option_description": "Select Operated Location for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "HQR",
+                "option_label": "Headquarters",
+                "option_description": "Select Headquarters for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "FAC",
+                "option_label": "Facility",
+                "option_description": "Select Facility for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "SVC",
+                "option_label": "Service Location",
+                "option_description": "Select Service Location for Organization-Place Relationship Type."
+            },
+            {
+                "option_code": "OTH",
+                "option_label": "Other",
+                "option_description": "Select Other for Organization-Place Relationship Type."
+            }
+        ]
+    }
+]

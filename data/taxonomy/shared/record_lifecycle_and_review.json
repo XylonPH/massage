@@ -1,0 +1,562 @@
+[
+    {
+        "_id": 1,
+        "field_name": "status_agreement",
+        "field_label": "Agreement Status",
+        "field_description": "Reusable field template for Agreement Status values.",
+        "type_field": "RGP",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "Y",
+                "option_label": "Agree",
+                "option_description": "Select Agree for Agreement Status."
+            },
+            {
+                "option_code": "B",
+                "option_label": "Neutral",
+                "option_description": "Select Neutral for Agreement Status."
+            },
+            {
+                "option_code": "N",
+                "option_label": "Disagree",
+                "option_description": "Select Disagree for Agreement Status."
+            }
+        ]
+    },
+    {
+        "_id": 39,
+        "field_name": "status_record_completion",
+        "field_label": "Record Completion Status",
+        "field_description": "Reusable field template for Record Completion Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "C",
+                "option_label": "Complete",
+                "option_description": "Select Complete for Record Completion Status."
+            },
+            {
+                "option_code": "P",
+                "option_label": "Partial",
+                "option_description": "Select Partial for Record Completion Status."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Incomplete",
+                "option_description": "Select Incomplete for Record Completion Status."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Record Completion Status."
+            },
+            {
+                "option_code": "N",
+                "option_label": "Not Applicable",
+                "option_description": "Select Not Applicable for Record Completion Status."
+            }
+        ]
+    },
+    {
+        "_id": 43,
+        "field_name": "level_nsfw",
+        "field_label": "NSFW Level",
+        "field_description": "Classifies the NSFW or sensitive-content level of a record or field. The default is N, meaning None.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "N",
+                "option_label": "None",
+                "option_description": "Select None for NSFW Level."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Mild",
+                "option_description": "Select Mild for NSFW Level."
+            },
+            {
+                "option_code": "S",
+                "option_label": "Sensitive",
+                "option_description": "Select Sensitive for NSFW Level."
+            },
+            {
+                "option_code": "E",
+                "option_label": "Explicit",
+                "option_description": "Select Explicit for NSFW Level."
+            }
+        ]
+    },
+    {
+        "_id": 50,
+        "field_name": "visibility_scope",
+        "field_label": "Visibility Scope",
+        "field_description": "Classifies the visibility boundary for a record or field. The default is INH, meaning the value inherits from its parent context unless explicitly overridden.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "INH",
+                "option_label": "Inherit",
+                "option_description": "Select Inherit for Visibility Scope."
+            },
+            {
+                "option_code": "PUB",
+                "option_label": "Public",
+                "option_description": "Select Public for Visibility Scope."
+            },
+            {
+                "option_code": "UNL",
+                "option_label": "Unlisted",
+                "option_description": "Select Unlisted for Visibility Scope."
+            },
+            {
+                "option_code": "PRV",
+                "option_label": "Private",
+                "option_description": "Select Private for Visibility Scope."
+            },
+            {
+                "option_code": "FRD",
+                "option_label": "Friends",
+                "option_description": "Select Friends for Visibility Scope."
+            },
+            {
+                "option_code": "GRP",
+                "option_label": "Group",
+                "option_description": "Select Group for Visibility Scope."
+            },
+            {
+                "option_code": "ROL",
+                "option_label": "Role-Based",
+                "option_description": "Select Role-Based for Visibility Scope."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom",
+                "option_description": "Select Custom for Visibility Scope."
+            }
+        ]
+    },
+    {
+        "_id": 60,
+        "field_name": "status_record_lifecycle",
+        "field_label": "Record Lifecycle Status",
+        "field_description": "Classifies the lifecycle status of a record, such as draft, active, inactive, archived, deleted, merged, duplicate, error, or unknown. The default is ACT.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "default_value": "ACT",
+        "field_option": [
+            {
+                "option_code": "DRA",
+                "option_label": "Draft",
+                "option_description": "Select Draft for Record Lifecycle Status."
+            },
+            {
+                "option_code": "ACT",
+                "option_label": "Active",
+                "option_description": "Select Active for Record Lifecycle Status."
+            },
+            {
+                "option_code": "INA",
+                "option_label": "Inactive",
+                "option_description": "Select Inactive for Record Lifecycle Status."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archived",
+                "option_description": "Select Archived for Record Lifecycle Status."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Deleted",
+                "option_description": "Select Deleted for Record Lifecycle Status."
+            },
+            {
+                "option_code": "MRG",
+                "option_label": "Merged",
+                "option_description": "Select Merged for Record Lifecycle Status."
+            },
+            {
+                "option_code": "DUP",
+                "option_label": "Duplicate",
+                "option_description": "Select Duplicate for Record Lifecycle Status."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Error",
+                "option_description": "Select Error for Record Lifecycle Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Record Lifecycle Status."
+            }
+        ]
+    },
+    {
+        "_id": 61,
+        "field_name": "status_review",
+        "field_label": "Review Status",
+        "field_description": "Reusable field template for Review Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NR",
+                "option_label": "Not Reviewed",
+                "option_description": "Select Not Reviewed for Review Status."
+            },
+            {
+                "option_code": "PND",
+                "option_label": "Pending",
+                "option_description": "Select Pending for Review Status."
+            },
+            {
+                "option_code": "APR",
+                "option_label": "Approved",
+                "option_description": "Select Approved for Review Status."
+            },
+            {
+                "option_code": "REJ",
+                "option_label": "Rejected",
+                "option_description": "Select Rejected for Review Status."
+            },
+            {
+                "option_code": "DEF",
+                "option_label": "Deferred",
+                "option_description": "Select Deferred for Review Status."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Superseded",
+                "option_description": "Select Superseded for Review Status."
+            },
+            {
+                "option_code": "REV",
+                "option_label": "Needs Revision",
+                "option_description": "Select Needs Revision for Review Status."
+            },
+            {
+                "option_code": "ESC",
+                "option_label": "Escalated",
+                "option_description": "Select Escalated for Review Status."
+            }
+        ]
+    },
+    {
+        "_id": 63,
+        "field_name": "level_confidence",
+        "field_label": "Confidence Level",
+        "field_description": "Reusable field template for Confidence Level values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "H",
+                "option_label": "High",
+                "option_description": "Select High for Confidence Level."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Medium",
+                "option_description": "Select Medium for Confidence Level."
+            },
+            {
+                "option_code": "L",
+                "option_label": "Low",
+                "option_description": "Select Low for Confidence Level."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Confidence Level."
+            }
+        ]
+    },
+    {
+        "_id": 64,
+        "field_name": "level_priority",
+        "field_label": "Priority Level",
+        "field_description": "Reusable field template for Priority Level values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "L",
+                "option_label": "Low",
+                "option_description": "Select Low for Priority Level."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Medium",
+                "option_description": "Select Medium for Priority Level."
+            },
+            {
+                "option_code": "H",
+                "option_label": "High",
+                "option_description": "Select High for Priority Level."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Urgent",
+                "option_description": "Select Urgent for Priority Level."
+            }
+        ]
+    },
+    {
+        "_id": 65,
+        "field_name": "level_severity",
+        "field_label": "Severity Level",
+        "field_description": "Reusable field template for Severity Level values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "I",
+                "option_label": "Info",
+                "option_description": "Select Info for Severity Level."
+            },
+            {
+                "option_code": "L",
+                "option_label": "Low",
+                "option_description": "Select Low for Severity Level."
+            },
+            {
+                "option_code": "M",
+                "option_label": "Medium",
+                "option_description": "Select Medium for Severity Level."
+            },
+            {
+                "option_code": "H",
+                "option_label": "High",
+                "option_description": "Select High for Severity Level."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Critical",
+                "option_description": "Select Critical for Severity Level."
+            }
+        ]
+    },
+    {
+        "_id": 82,
+        "field_name": "level_access",
+        "field_label": "Access Level",
+        "field_description": "Classifies the access level required for a record or field. CUS means access is restricted to explicitly selected users or user groups.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PUB",
+                "option_label": "Public",
+                "option_description": "Select Public for Access Level."
+            },
+            {
+                "option_code": "USR",
+                "option_label": "User",
+                "option_description": "Select User for Access Level."
+            },
+            {
+                "option_code": "EDT",
+                "option_label": "Editor",
+                "option_description": "Select Editor for Access Level."
+            },
+            {
+                "option_code": "MOD",
+                "option_label": "Moderator",
+                "option_description": "Select Moderator for Access Level."
+            },
+            {
+                "option_code": "ADM",
+                "option_label": "Administrator",
+                "option_description": "Select Administrator for Access Level."
+            },
+            {
+                "option_code": "OWN",
+                "option_label": "Owner",
+                "option_description": "Select Owner for Access Level."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom",
+                "option_description": "Select Custom for Access Level."
+            }
+        ]
+    },
+    {
+        "_id": 147,
+        "field_name": "status_verification",
+        "field_label": "Verification Status",
+        "field_description": "Reusable field template for Verification Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "V",
+                "option_label": "Verified",
+                "option_description": "Select Verified for Verification Status."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supported",
+                "option_description": "Select Supported for Verification Status."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Unverified",
+                "option_description": "Select Unverified for Verification Status."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Disputed",
+                "option_description": "Select Disputed for Verification Status."
+            }
+        ]
+    },
+    {
+        "_id": 148,
+        "field_name": "status_user_confirmation",
+        "field_label": "User Confirmation Status",
+        "field_description": "Reusable field template for User Confirmation Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "NC",
+                "option_label": "Not Confirmed",
+                "option_description": "Select Not Confirmed for User Confirmation Status."
+            },
+            {
+                "option_code": "CFM",
+                "option_label": "Confirmed",
+                "option_description": "Select Confirmed for User Confirmation Status."
+            },
+            {
+                "option_code": "REJ",
+                "option_label": "Rejected",
+                "option_description": "Select Rejected for User Confirmation Status."
+            },
+            {
+                "option_code": "DEF",
+                "option_label": "Deferred",
+                "option_description": "Select Deferred for User Confirmation Status."
+            },
+            {
+                "option_code": "N",
+                "option_label": "Not Applicable",
+                "option_description": "Select Not Applicable for User Confirmation Status."
+            }
+        ]
+    },
+    {
+        "_id": 149,
+        "field_name": "status_source_agreement",
+        "field_label": "Source Agreement Status",
+        "field_description": "Reusable field template for Source Agreement Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AGR",
+                "option_label": "Agreement",
+                "option_description": "Select Agreement for Source Agreement Status."
+            },
+            {
+                "option_code": "MIX",
+                "option_label": "Mixed",
+                "option_description": "Select Mixed for Source Agreement Status."
+            },
+            {
+                "option_code": "CFL",
+                "option_label": "Conflicting",
+                "option_description": "Select Conflicting for Source Agreement Status."
+            },
+            {
+                "option_code": "INS",
+                "option_label": "Insufficient",
+                "option_description": "Select Insufficient for Source Agreement Status."
+            },
+            {
+                "option_code": "UNK",
+                "option_label": "Unknown",
+                "option_description": "Select Unknown for Source Agreement Status."
+            }
+        ]
+    },
+    {
+        "_id": 168,
+        "field_name": "type_reference_change",
+        "field_label": "Reference Change Type",
+        "field_description": "Reusable field template for Reference Change Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CRT",
+                "option_label": "Create",
+                "option_description": "Select Create for Reference Change Type."
+            },
+            {
+                "option_code": "UPD",
+                "option_label": "Update",
+                "option_description": "Select Update for Reference Change Type."
+            },
+            {
+                "option_code": "REN",
+                "option_label": "Rename",
+                "option_description": "Select Rename for Reference Change Type."
+            },
+            {
+                "option_code": "DEP",
+                "option_label": "Deprecate",
+                "option_description": "Select Deprecate for Reference Change Type."
+            },
+            {
+                "option_code": "REA",
+                "option_label": "Reactivate",
+                "option_description": "Select Reactivate for Reference Change Type."
+            },
+            {
+                "option_code": "MRG",
+                "option_label": "Merge",
+                "option_description": "Select Merge for Reference Change Type."
+            },
+            {
+                "option_code": "SPL",
+                "option_label": "Split",
+                "option_description": "Select Split for Reference Change Type."
+            },
+            {
+                "option_code": "RDR",
+                "option_label": "Redirect",
+                "option_description": "Select Redirect for Reference Change Type."
+            },
+            {
+                "option_code": "DEL",
+                "option_label": "Delete",
+                "option_description": "Select Delete for Reference Change Type."
+            },
+            {
+                "option_code": "PRG",
+                "option_label": "Purge",
+                "option_description": "Select Purge for Reference Change Type."
+            }
+        ]
+    }
+]

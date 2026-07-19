@@ -1,0 +1,585 @@
+[
+    {
+        "_id": 83,
+        "field_name": "status_task",
+        "field_label": "Task Status",
+        "field_description": "Reusable field template for Task Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "TOD",
+                "option_label": "To Do",
+                "option_description": "Select To Do for Task Status."
+            },
+            {
+                "option_code": "INP",
+                "option_label": "In Progress",
+                "option_description": "Select In Progress for Task Status."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blocked",
+                "option_description": "Select Blocked for Task Status."
+            },
+            {
+                "option_code": "REV",
+                "option_label": "In Review",
+                "option_description": "Select In Review for Task Status."
+            },
+            {
+                "option_code": "DON",
+                "option_label": "Done",
+                "option_description": "Select Done for Task Status."
+            },
+            {
+                "option_code": "CAN",
+                "option_label": "Cancelled",
+                "option_description": "Select Cancelled for Task Status."
+            },
+            {
+                "option_code": "DEF",
+                "option_label": "Deferred",
+                "option_description": "Select Deferred for Task Status."
+            }
+        ]
+    },
+    {
+        "_id": 84,
+        "field_name": "type_task_dependency",
+        "field_label": "Task Dependency Type",
+        "field_description": "Reusable field template for Task Dependency Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "FS",
+                "option_label": "Finish-to-Start",
+                "option_description": "Select Finish-to-Start for Task Dependency Type."
+            },
+            {
+                "option_code": "SS",
+                "option_label": "Start-to-Start",
+                "option_description": "Select Start-to-Start for Task Dependency Type."
+            },
+            {
+                "option_code": "FF",
+                "option_label": "Finish-to-Finish",
+                "option_description": "Select Finish-to-Finish for Task Dependency Type."
+            },
+            {
+                "option_code": "SF",
+                "option_label": "Start-to-Finish",
+                "option_description": "Select Start-to-Finish for Task Dependency Type."
+            },
+            {
+                "option_code": "BLK",
+                "option_label": "Blocking",
+                "option_description": "Select Blocking for Task Dependency Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Related",
+                "option_description": "Select Related for Task Dependency Type."
+            }
+        ]
+    },
+    {
+        "_id": 85,
+        "field_name": "type_project_phase",
+        "field_label": "Project Phase Type",
+        "field_description": "Reusable field template for Project Phase Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PLN",
+                "option_label": "Planning",
+                "option_description": "Select Planning for Project Phase Type."
+            },
+            {
+                "option_code": "DSN",
+                "option_label": "Design",
+                "option_description": "Select Design for Project Phase Type."
+            },
+            {
+                "option_code": "DEV",
+                "option_label": "Development",
+                "option_description": "Select Development for Project Phase Type."
+            },
+            {
+                "option_code": "TST",
+                "option_label": "Testing",
+                "option_description": "Select Testing for Project Phase Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Release",
+                "option_description": "Select Release for Project Phase Type."
+            },
+            {
+                "option_code": "MNT",
+                "option_label": "Maintenance",
+                "option_description": "Select Maintenance for Project Phase Type."
+            },
+            {
+                "option_code": "ARC",
+                "option_label": "Archive",
+                "option_description": "Select Archive for Project Phase Type."
+            }
+        ]
+    },
+    {
+        "_id": 108,
+        "field_name": "type_task",
+        "field_label": "Task Type",
+        "field_description": "Reusable field template for Task Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ERR",
+                "option_label": "Errand",
+                "option_description": "Select Errand for Task Type."
+            },
+            {
+                "option_code": "CHO",
+                "option_label": "Chore",
+                "option_description": "Select Chore for Task Type."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Project",
+                "option_description": "Select Project for Task Type."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Reminder",
+                "option_description": "Select Reminder for Task Type."
+            },
+            {
+                "option_code": "APP",
+                "option_label": "Appointment",
+                "option_description": "Select Appointment for Task Type."
+            },
+            {
+                "option_code": "MNT",
+                "option_label": "Maintenance",
+                "option_description": "Select Maintenance for Task Type."
+            },
+            {
+                "option_code": "STD",
+                "option_label": "Study",
+                "option_description": "Select Study for Task Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Work",
+                "option_description": "Select Work for Task Type."
+            }
+        ]
+    },
+    {
+        "_id": 109,
+        "field_name": "type_goal",
+        "field_label": "Goal Type",
+        "field_description": "Reusable field template for Goal Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "HEA",
+                "option_label": "Health",
+                "option_description": "Select Health for Goal Type."
+            },
+            {
+                "option_code": "FIN",
+                "option_label": "Finance",
+                "option_description": "Select Finance for Goal Type."
+            },
+            {
+                "option_code": "LEA",
+                "option_label": "Learning",
+                "option_description": "Select Learning for Goal Type."
+            },
+            {
+                "option_code": "HOM",
+                "option_label": "Home",
+                "option_description": "Select Home for Goal Type."
+            },
+            {
+                "option_code": "CAR",
+                "option_label": "Career",
+                "option_description": "Select Career for Goal Type."
+            },
+            {
+                "option_code": "FAM",
+                "option_label": "Family",
+                "option_description": "Select Family for Goal Type."
+            },
+            {
+                "option_code": "SPI",
+                "option_label": "Spiritual",
+                "option_description": "Select Spiritual for Goal Type."
+            },
+            {
+                "option_code": "CRE",
+                "option_label": "Creative",
+                "option_description": "Select Creative for Goal Type."
+            }
+        ]
+    },
+    {
+        "_id": 110,
+        "field_name": "type_routine",
+        "field_label": "Routine Type",
+        "field_description": "Reusable field template for Routine Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DAI",
+                "option_label": "Daily",
+                "option_description": "Select Daily for Routine Type."
+            },
+            {
+                "option_code": "WEE",
+                "option_label": "Weekly",
+                "option_description": "Select Weekly for Routine Type."
+            },
+            {
+                "option_code": "MON",
+                "option_label": "Monthly",
+                "option_description": "Select Monthly for Routine Type."
+            },
+            {
+                "option_code": "YEA",
+                "option_label": "Yearly",
+                "option_description": "Select Yearly for Routine Type."
+            },
+            {
+                "option_code": "SEA",
+                "option_label": "Seasonal",
+                "option_description": "Select Seasonal for Routine Type."
+            },
+            {
+                "option_code": "ASN",
+                "option_label": "As Needed",
+                "option_description": "Select As Needed for Routine Type."
+            }
+        ]
+    },
+    {
+        "_id": 111,
+        "field_name": "type_journal_entry",
+        "field_label": "Journal Entry Type",
+        "field_description": "Reusable field template for Journal Entry Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DIA",
+                "option_label": "Diary",
+                "option_description": "Select Diary for Journal Entry Type."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Reflection",
+                "option_description": "Select Reflection for Journal Entry Type."
+            },
+            {
+                "option_code": "IDE",
+                "option_label": "Idea",
+                "option_description": "Select Idea for Journal Entry Type."
+            },
+            {
+                "option_code": "LOG",
+                "option_label": "Log",
+                "option_description": "Select Log for Journal Entry Type."
+            },
+            {
+                "option_code": "GRA",
+                "option_label": "Gratitude",
+                "option_description": "Select Gratitude for Journal Entry Type."
+            },
+            {
+                "option_code": "DRE",
+                "option_label": "Dream",
+                "option_description": "Select Dream for Journal Entry Type."
+            },
+            {
+                "option_code": "MEM",
+                "option_label": "Memory",
+                "option_description": "Select Memory for Journal Entry Type."
+            }
+        ]
+    },
+    {
+        "_id": 137,
+        "field_name": "type_activity",
+        "field_label": "Activity Type",
+        "field_description": "Reusable field template for Activity Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EXE",
+                "option_label": "Exercise",
+                "option_description": "Select Exercise for Activity Type."
+            },
+            {
+                "option_code": "STD",
+                "option_label": "Study",
+                "option_description": "Select Study for Activity Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Work",
+                "option_description": "Select Work for Activity Type."
+            },
+            {
+                "option_code": "HOB",
+                "option_label": "Hobby",
+                "option_description": "Select Hobby for Activity Type."
+            },
+            {
+                "option_code": "SOC",
+                "option_label": "Social",
+                "option_description": "Select Social for Activity Type."
+            },
+            {
+                "option_code": "ERR",
+                "option_label": "Errand",
+                "option_description": "Select Errand for Activity Type."
+            },
+            {
+                "option_code": "RES",
+                "option_label": "Rest",
+                "option_description": "Select Rest for Activity Type."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Travel",
+                "option_description": "Select Travel for Activity Type."
+            },
+            {
+                "option_code": "REL",
+                "option_label": "Religious",
+                "option_description": "Select Religious for Activity Type."
+            }
+        ]
+    },
+    {
+        "_id": 138,
+        "field_name": "type_activity_intensity",
+        "field_label": "Activity Intensity Type",
+        "field_description": "Reusable field template for Activity Intensity Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "LIG",
+                "option_label": "Light",
+                "option_description": "Select Light for Activity Intensity Type."
+            },
+            {
+                "option_code": "MOD",
+                "option_label": "Moderate",
+                "option_description": "Select Moderate for Activity Intensity Type."
+            },
+            {
+                "option_code": "HEA",
+                "option_label": "Heavy",
+                "option_description": "Select Heavy for Activity Intensity Type."
+            },
+            {
+                "option_code": "VH",
+                "option_label": "Very Heavy",
+                "option_description": "Select Very Heavy for Activity Intensity Type."
+            }
+        ]
+    },
+    {
+        "_id": 139,
+        "field_name": "type_activity_location",
+        "field_label": "Activity Location Type",
+        "field_description": "Reusable field template for Activity Location Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "IND",
+                "option_label": "Indoor",
+                "option_description": "Select Indoor for Activity Location Type."
+            },
+            {
+                "option_code": "OUT",
+                "option_label": "Outdoor",
+                "option_description": "Select Outdoor for Activity Location Type."
+            },
+            {
+                "option_code": "HOM",
+                "option_label": "Home",
+                "option_description": "Select Home for Activity Location Type."
+            },
+            {
+                "option_code": "WRK",
+                "option_label": "Workplace",
+                "option_description": "Select Workplace for Activity Location Type."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "School",
+                "option_description": "Select School for Activity Location Type."
+            },
+            {
+                "option_code": "GYM",
+                "option_label": "Gym",
+                "option_description": "Select Gym for Activity Location Type."
+            },
+            {
+                "option_code": "PP",
+                "option_label": "Public Place",
+                "option_description": "Select Public Place for Activity Location Type."
+            }
+        ]
+    },
+    {
+        "_id": 140,
+        "field_name": "status_activity",
+        "field_label": "Activity Status",
+        "field_description": "Reusable field template for Activity Status values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PLA",
+                "option_label": "Planned",
+                "option_description": "Select Planned for Activity Status."
+            },
+            {
+                "option_code": "ONG",
+                "option_label": "Ongoing",
+                "option_description": "Select Ongoing for Activity Status."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Completed",
+                "option_description": "Select Completed for Activity Status."
+            },
+            {
+                "option_code": "SKP",
+                "option_label": "Skipped",
+                "option_description": "Select Skipped for Activity Status."
+            },
+            {
+                "option_code": "CAN",
+                "option_label": "Cancelled",
+                "option_description": "Select Cancelled for Activity Status."
+            },
+            {
+                "option_code": "RES",
+                "option_label": "Rescheduled",
+                "option_description": "Select Rescheduled for Activity Status."
+            }
+        ]
+    },
+    {
+        "_id": 141,
+        "field_name": "type_participation",
+        "field_label": "Participation Type",
+        "field_description": "Reusable field template for Participation Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "SOL",
+                "option_label": "Solo",
+                "option_description": "Select Solo for Participation Type."
+            },
+            {
+                "option_code": "G",
+                "option_label": "Group",
+                "option_description": "Select Group for Participation Type."
+            },
+            {
+                "option_code": "SUP",
+                "option_label": "Supervised",
+                "option_description": "Select Supervised for Participation Type."
+            },
+            {
+                "option_code": "ASS",
+                "option_label": "Assisted",
+                "option_description": "Select Assisted for Participation Type."
+            },
+            {
+                "option_code": "REM",
+                "option_label": "Remote",
+                "option_description": "Select Remote for Participation Type."
+            },
+            {
+                "option_code": "INP",
+                "option_label": "In Person",
+                "option_description": "Select In Person for Participation Type."
+            }
+        ]
+    },
+    {
+        "_id": 142,
+        "field_name": "type_activity_result",
+        "field_label": "Activity Result Type",
+        "field_description": "Reusable field template for Activity Result Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "CMP",
+                "option_label": "Completed",
+                "option_description": "Select Completed for Activity Result Type."
+            },
+            {
+                "option_code": "P",
+                "option_label": "Partial",
+                "option_description": "Select Partial for Activity Result Type."
+            },
+            {
+                "option_code": "FLD",
+                "option_label": "Failed",
+                "option_description": "Select Failed for Activity Result Type."
+            },
+            {
+                "option_code": "RES",
+                "option_label": "Rescheduled",
+                "option_description": "Select Rescheduled for Activity Result Type."
+            },
+            {
+                "option_code": "CAN",
+                "option_label": "Cancelled",
+                "option_description": "Select Cancelled for Activity Result Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Improved",
+                "option_description": "Select Improved for Activity Result Type."
+            },
+            {
+                "option_code": "MAI",
+                "option_label": "Maintained",
+                "option_description": "Select Maintained for Activity Result Type."
+            }
+        ]
+    }
+]

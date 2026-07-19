@@ -1,0 +1,1372 @@
+[
+    {
+        "_id": 12,
+        "field_name": "type_data",
+        "field_label": "Data Type",
+        "field_description": "Classifies the general runtime value shape of a field, such as string, integer, boolean, array, object, binary, or null. Used by validation, form generation, import/export, and database mapping.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "default_value": "S",
+        "field_option": [
+            {
+                "option_code": "B",
+                "option_label": "Boolean",
+                "option_description": "Select Boolean for Data Type."
+            },
+            {
+                "option_code": "I",
+                "option_label": "Integer",
+                "option_description": "Select Integer for Data Type."
+            },
+            {
+                "option_code": "F",
+                "option_label": "Float",
+                "option_description": "Select Float for Data Type."
+            },
+            {
+                "option_code": "S",
+                "option_label": "String",
+                "option_description": "Select String for Data Type."
+            },
+            {
+                "option_code": "A",
+                "option_label": "Array",
+                "option_description": "Select Array for Data Type."
+            },
+            {
+                "option_code": "O",
+                "option_label": "Object",
+                "option_description": "Select Object for Data Type."
+            },
+            {
+                "option_code": "C",
+                "option_label": "Callable",
+                "option_description": "Select Callable for Data Type."
+            },
+            {
+                "option_code": "R",
+                "option_label": "Resource",
+                "option_description": "Select Resource for Data Type."
+            },
+            {
+                "option_code": "N",
+                "option_label": "Null",
+                "option_description": "Select Null for Data Type."
+            },
+            {
+                "option_code": "Y",
+                "option_label": "Binary",
+                "option_description": "Select Binary for Data Type."
+            },
+            {
+                "option_code": "H",
+                "option_label": "Hexadecimal",
+                "option_description": "Select Hexadecimal for Data Type."
+            }
+        ]
+    },
+    {
+        "_id": 13,
+        "field_name": "constraint_text_input",
+        "field_label": "Text Input Constraint",
+        "field_description": "Lists validation constraints that determine whether a text value is acceptable. This field may be stored as an array when multiple constraints apply. Cleanup or normalization behavior belongs in type_input_cleanup instead.",
+        "type_field": "CHK",
+        "type_sql": "SET",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ALP",
+                "option_label": "Alphabetic Only",
+                "option_description": "Allows alphabetic letters only."
+            },
+            {
+                "option_code": "ALU",
+                "option_label": "Uppercase Letters Only",
+                "option_description": "Allows uppercase letters only."
+            },
+            {
+                "option_code": "ALL",
+                "option_label": "Lowercase Letters Only",
+                "option_description": "Allows lowercase letters only."
+            },
+            {
+                "option_code": "ANO",
+                "option_label": "Alphanumeric Only",
+                "option_description": "Allows letters and numbers only."
+            },
+            {
+                "option_code": "ADO",
+                "option_label": "Alphanumeric and Dash Only",
+                "option_description": "Allows letters, numbers, and dashes only."
+            },
+            {
+                "option_code": "AUO",
+                "option_label": "Alphanumeric and Underscore Only",
+                "option_description": "Allows letters, numbers, and underscores only."
+            },
+            {
+                "option_code": "ADS",
+                "option_label": "Alphanumeric, Dash, and Underscore Only",
+                "option_description": "Allows letters, numbers, dashes, and underscores only."
+            },
+            {
+                "option_code": "NUM",
+                "option_label": "Numeric Characters Only",
+                "option_description": "Allows numeric characters only."
+            },
+            {
+                "option_code": "DEC",
+                "option_label": "Decimal Number Only",
+                "option_description": "Allows a decimal-number text value."
+            },
+            {
+                "option_code": "SLG",
+                "option_label": "Slug Format",
+                "option_description": "Requires a URL-safe slug-style value."
+            },
+            {
+                "option_code": "COD",
+                "option_label": "Code Format",
+                "option_description": "Requires a compact code-style value."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "Special Characters Required",
+                "option_description": "Requires at least one special character."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Email Format",
+                "option_description": "Requires a valid email-address format."
+            },
+            {
+                "option_code": "URL",
+                "option_label": "URL Format",
+                "option_description": "Requires a valid URL format."
+            },
+            {
+                "option_code": "PHN",
+                "option_label": "Phone Number Format",
+                "option_description": "Requires a valid phone-number format."
+            },
+            {
+                "option_code": "IP",
+                "option_label": "IP Address Format",
+                "option_description": "Requires a valid IP address format."
+            },
+            {
+                "option_code": "IP4",
+                "option_label": "IPv4 Address Format",
+                "option_description": "Requires a valid IPv4 address format."
+            },
+            {
+                "option_code": "IP6",
+                "option_label": "IPv6 Address Format",
+                "option_description": "Requires a valid IPv6 address format."
+            },
+            {
+                "option_code": "UUID",
+                "option_label": "UUID Format",
+                "option_description": "Requires a valid UUID format."
+            },
+            {
+                "option_code": "HEX",
+                "option_label": "Hexadecimal Characters Only",
+                "option_description": "Allows hexadecimal characters only."
+            },
+            {
+                "option_code": "BIN",
+                "option_label": "Binary Characters Only",
+                "option_description": "Allows binary characters only."
+            },
+            {
+                "option_code": "JSON",
+                "option_label": "JSON Text",
+                "option_description": "Requires valid JSON text."
+            },
+            {
+                "option_code": "XML",
+                "option_label": "XML Text",
+                "option_description": "Requires valid XML text."
+            },
+            {
+                "option_code": "YAML",
+                "option_label": "YAML Text",
+                "option_description": "Requires valid YAML text."
+            },
+            {
+                "option_code": "CSV",
+                "option_label": "CSV Text",
+                "option_description": "Requires valid CSV text."
+            },
+            {
+                "option_code": "NOS",
+                "option_label": "No Spaces",
+                "option_description": "Rejects values containing spaces."
+            },
+            {
+                "option_code": "NOL",
+                "option_label": "No Line Breaks",
+                "option_description": "Rejects values containing line breaks."
+            }
+        ]
+    },
+    {
+        "_id": 36,
+        "field_name": "mode_display_layout",
+        "field_label": "Display Layout Mode",
+        "field_description": "Reusable field template for Display Layout Mode values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "DEF",
+                "option_label": "Inherited",
+                "option_description": "Select Inherited for Display Layout Mode."
+            },
+            {
+                "option_code": "LST",
+                "option_label": "List",
+                "option_description": "Select List for Display Layout Mode."
+            },
+            {
+                "option_code": "TBL",
+                "option_label": "Tabular",
+                "option_description": "Select Tabular for Display Layout Mode."
+            },
+            {
+                "option_code": "DTL",
+                "option_label": "Detail",
+                "option_description": "Select Detail for Display Layout Mode."
+            },
+            {
+                "option_code": "CNT",
+                "option_label": "Content",
+                "option_description": "Select Content for Display Layout Mode."
+            },
+            {
+                "option_code": "THM",
+                "option_label": "Thumbnail",
+                "option_description": "Select Thumbnail for Display Layout Mode."
+            },
+            {
+                "option_code": "PCT",
+                "option_label": "Picture",
+                "option_description": "Select Picture for Display Layout Mode."
+            },
+            {
+                "option_code": "CLL",
+                "option_label": "Collage",
+                "option_description": "Select Collage for Display Layout Mode."
+            },
+            {
+                "option_code": "VDO",
+                "option_label": "Video",
+                "option_description": "Select Video for Display Layout Mode."
+            },
+            {
+                "option_code": "CLN",
+                "option_label": "Calendar",
+                "option_description": "Select Calendar for Display Layout Mode."
+            },
+            {
+                "option_code": "GRP",
+                "option_label": "Graph",
+                "option_description": "Select Graph for Display Layout Mode."
+            }
+        ]
+    },
+    {
+        "_id": 47,
+        "field_name": "mode_crud",
+        "field_label": "CRUD Mode",
+        "field_description": "Reusable field template for CRUD Mode values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "C",
+                "option_label": "Create",
+                "option_description": "Select Create for CRUD Mode."
+            },
+            {
+                "option_code": "R",
+                "option_label": "Retrieve",
+                "option_description": "Select Retrieve for CRUD Mode."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Update",
+                "option_description": "Select Update for CRUD Mode."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Delete",
+                "option_description": "Select Delete for CRUD Mode."
+            }
+        ]
+    },
+    {
+        "_id": 48,
+        "field_name": "type_operation",
+        "field_label": "Operation Type",
+        "field_description": "Reusable field template for Operation Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "C",
+                "option_label": "Create",
+                "option_description": "Select Create for Operation Type."
+            },
+            {
+                "option_code": "R",
+                "option_label": "Retrieve / View",
+                "option_description": "Select Retrieve / View for Operation Type."
+            },
+            {
+                "option_code": "U",
+                "option_label": "Update / Edit",
+                "option_description": "Select Update / Edit for Operation Type."
+            },
+            {
+                "option_code": "D",
+                "option_label": "Delete",
+                "option_description": "Select Delete for Operation Type."
+            },
+            {
+                "option_code": "VRF",
+                "option_label": "Verify",
+                "option_description": "Select Verify for Operation Type."
+            },
+            {
+                "option_code": "RST",
+                "option_label": "Restore",
+                "option_description": "Select Restore for Operation Type."
+            },
+            {
+                "option_code": "MRG",
+                "option_label": "Merge",
+                "option_description": "Select Merge for Operation Type."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compare",
+                "option_description": "Select Compare for Operation Type."
+            },
+            {
+                "option_code": "SRC",
+                "option_label": "Search",
+                "option_description": "Select Search for Operation Type."
+            },
+            {
+                "option_code": "FLT",
+                "option_label": "Filter",
+                "option_description": "Select Filter for Operation Type."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Import",
+                "option_description": "Select Import for Operation Type."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Export",
+                "option_description": "Select Export for Operation Type."
+            },
+            {
+                "option_code": "TRN",
+                "option_label": "Translate",
+                "option_description": "Select Translate for Operation Type."
+            },
+            {
+                "option_code": "RVW",
+                "option_label": "Review",
+                "option_description": "Select Review for Operation Type."
+            },
+            {
+                "option_code": "APR",
+                "option_label": "Approve",
+                "option_description": "Select Approve for Operation Type."
+            },
+            {
+                "option_code": "REJ",
+                "option_label": "Reject",
+                "option_description": "Select Reject for Operation Type."
+            },
+            {
+                "option_code": "PUB",
+                "option_label": "Publish",
+                "option_description": "Select Publish for Operation Type."
+            },
+            {
+                "option_code": "GEN",
+                "option_label": "Generate",
+                "option_description": "Select Generate for Operation Type."
+            },
+            {
+                "option_code": "CAL",
+                "option_label": "Calculate",
+                "option_description": "Select Calculate for Operation Type."
+            },
+            {
+                "option_code": "RCL",
+                "option_label": "Recolor",
+                "option_description": "Select Recolor for Operation Type."
+            },
+            {
+                "option_code": "CFG",
+                "option_label": "Configure",
+                "option_description": "Select Configure for Operation Type."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom",
+                "option_description": "Select Custom for Operation Type."
+            }
+        ]
+    },
+    {
+        "_id": 193,
+        "field_name": "format_text",
+        "field_label": "Text Format",
+        "field_description": "Classifies the stored representation format of a text field, especially for text areas, rich-text editors, code editors, import/export fields, and generated validation.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "default_value": "TXT",
+        "field_option": [
+            {
+                "option_code": "TXT",
+                "option_label": "Plain Text",
+                "option_description": "Plain unformatted text."
+            },
+            {
+                "option_code": "HTML",
+                "option_label": "HTML",
+                "option_description": "HTML markup text."
+            },
+            {
+                "option_code": "MD",
+                "option_label": "Markdown",
+                "option_description": "Markdown formatted text."
+            },
+            {
+                "option_code": "BBC",
+                "option_label": "BBCode",
+                "option_description": "BBCode formatted text."
+            },
+            {
+                "option_code": "JSON",
+                "option_label": "JSON",
+                "option_description": "JSON document text."
+            },
+            {
+                "option_code": "XML",
+                "option_label": "XML",
+                "option_description": "XML document text."
+            },
+            {
+                "option_code": "YAML",
+                "option_label": "YAML",
+                "option_description": "YAML document text."
+            },
+            {
+                "option_code": "CSV",
+                "option_label": "CSV",
+                "option_description": "CSV text."
+            }
+        ]
+    },
+    {
+        "_id": 194,
+        "field_name": "type_input_cleanup",
+        "field_label": "Input Cleanup Type",
+        "field_description": "Classifies cleanup or normalization operations that may be applied before saving a field value. These options alter input; they are separate from validation constraints that only accept or reject input.",
+        "type_field": "CHK",
+        "type_sql": "SET",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "TRM",
+                "option_label": "Trim Spaces",
+                "option_description": "Remove leading and trailing spaces before saving."
+            },
+            {
+                "option_code": "NMS",
+                "option_label": "Normalize Multiple Spaces",
+                "option_description": "Collapse repeated internal spaces according to the cleanup implementation."
+            },
+            {
+                "option_code": "UPR",
+                "option_label": "Convert to Uppercase",
+                "option_description": "Convert text to uppercase before saving."
+            },
+            {
+                "option_code": "LWR",
+                "option_label": "Convert to Lowercase",
+                "option_description": "Convert text to lowercase before saving."
+            },
+            {
+                "option_code": "TIT",
+                "option_label": "Convert to Title Case",
+                "option_description": "Convert text to title case only when language-aware title-casing rules are available or the user explicitly confirms the preview."
+            },
+            {
+                "option_code": "SLG",
+                "option_label": "Generate Slug",
+                "option_description": "Generate a URL-safe slug value."
+            },
+            {
+                "option_code": "SNK",
+                "option_label": "Generate Snake Case",
+                "option_description": "Generate a snake_case value."
+            },
+            {
+                "option_code": "KBB",
+                "option_label": "Generate Kebab Case",
+                "option_description": "Generate a kebab-case value."
+            },
+            {
+                "option_code": "VER",
+                "option_label": "Normalize Version Number",
+                "option_description": "Normalize version-like input to the approved version-number format."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Normalize Email",
+                "option_description": "Normalize email-address input where safe."
+            },
+            {
+                "option_code": "URL",
+                "option_label": "Normalize URL",
+                "option_description": "Normalize URL input where safe."
+            },
+            {
+                "option_code": "PHN",
+                "option_label": "Normalize Phone Number",
+                "option_description": "Normalize phone-number input where safe."
+            },
+            {
+                "option_code": "NFC",
+                "option_label": "Unicode NFC Normalization",
+                "option_description": "Normalize Unicode text using NFC normalization."
+            },
+            {
+                "option_code": "NFD",
+                "option_label": "Unicode NFD Normalization",
+                "option_description": "Normalize Unicode text using NFD normalization."
+            }
+        ]
+    },
+    {
+        "_id": 195,
+        "field_name": "type_field",
+        "field_label": "Field Control Type",
+        "field_description": "Classifies the user-interface control or display component normally used for a field in forms, generated screens, or schema-aware editors.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "default_value": "TXT",
+        "field_option": [
+            {
+                "option_code": "BTN",
+                "option_label": "Button",
+                "option_description": "Clickable element that performs an action when activated."
+            },
+            {
+                "option_code": "BTG",
+                "option_label": "Button Group",
+                "option_description": "Group of buttons presented together."
+            },
+            {
+                "option_code": "CLB",
+                "option_label": "Calendar",
+                "option_description": "Calendar control for selecting or viewing dates."
+            },
+            {
+                "option_code": "CHK",
+                "option_label": "Checkbox",
+                "option_description": "Checkbox control for boolean or option selection."
+            },
+            {
+                "option_code": "CLR",
+                "option_label": "Color Picker",
+                "option_description": "Control for selecting a color."
+            },
+            {
+                "option_code": "CMB",
+                "option_label": "Combo Box",
+                "option_description": "Drop-down list combined with editable text input."
+            },
+            {
+                "option_code": "DTS",
+                "option_label": "Date and Time Picker",
+                "option_description": "Control for selecting date and time together."
+            },
+            {
+                "option_code": "DTI",
+                "option_label": "Date Input",
+                "option_description": "Input control for entering dates."
+            },
+            {
+                "option_code": "DTP",
+                "option_label": "Date Picker",
+                "option_description": "Control for selecting a date from a calendar."
+            },
+            {
+                "option_code": "DDL",
+                "option_label": "Drop Down List",
+                "option_description": "Drop-down list for selecting one option."
+            },
+            {
+                "option_code": "EML",
+                "option_label": "Email",
+                "option_description": "Input control for email addresses."
+            },
+            {
+                "option_code": "FLE",
+                "option_label": "File",
+                "option_description": "Control for selecting or uploading a file."
+            },
+            {
+                "option_code": "GNT",
+                "option_label": "Gantt",
+                "option_description": "Gantt chart control for schedules."
+            },
+            {
+                "option_code": "GRD",
+                "option_label": "Grid",
+                "option_description": "Table-like control for rows and columns."
+            },
+            {
+                "option_code": "HDN",
+                "option_label": "Hidden",
+                "option_description": "Hidden field not visible to the user."
+            },
+            {
+                "option_code": "IMG",
+                "option_label": "Image",
+                "option_description": "Image selection, upload, or display control."
+            },
+            {
+                "option_code": "LBX",
+                "option_label": "List Box",
+                "option_description": "List box control for selectable items."
+            },
+            {
+                "option_code": "LBL",
+                "option_label": "Label",
+                "option_description": "Display-only label."
+            },
+            {
+                "option_code": "LNK",
+                "option_label": "Link",
+                "option_description": "Link control or link display field."
+            },
+            {
+                "option_code": "LVW",
+                "option_label": "List View",
+                "option_description": "List-view control for item collections."
+            },
+            {
+                "option_code": "MAP",
+                "option_label": "Map",
+                "option_description": "Map or spatial display control."
+            },
+            {
+                "option_code": "NMB",
+                "option_label": "Numeric Text Box",
+                "option_description": "Input control for numeric values."
+            },
+            {
+                "option_code": "PBR",
+                "option_label": "Panel Bar",
+                "option_description": "Control with collapsible panels."
+            },
+            {
+                "option_code": "PWD",
+                "option_label": "Password",
+                "option_description": "Input control for passwords or secret text."
+            },
+            {
+                "option_code": "PVG",
+                "option_label": "Pivot Grid",
+                "option_description": "Data-analysis pivot grid control."
+            },
+            {
+                "option_code": "REF",
+                "option_label": "Reference Picker",
+                "option_description": "Control for selecting a referenced record."
+            },
+            {
+                "option_code": "RGP",
+                "option_label": "Radio Group",
+                "option_description": "Grouped radio-button options."
+            },
+            {
+                "option_code": "RTE",
+                "option_label": "Rich Text Editor",
+                "option_description": "Rich text editor control."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "Scheduler",
+                "option_description": "Scheduling or appointment control."
+            },
+            {
+                "option_code": "SLD",
+                "option_label": "Slider",
+                "option_description": "Slider control for selecting a value within a range."
+            },
+            {
+                "option_code": "SRT",
+                "option_label": "Sortable",
+                "option_description": "Sortable item control."
+            },
+            {
+                "option_code": "SWT",
+                "option_label": "Switch",
+                "option_description": "Binary switch control."
+            },
+            {
+                "option_code": "TAG",
+                "option_label": "Tag Picker",
+                "option_description": "Control for selecting or entering tags."
+            },
+            {
+                "option_code": "TEL",
+                "option_label": "Telephone",
+                "option_description": "Input control for telephone numbers."
+            },
+            {
+                "option_code": "TXT",
+                "option_label": "Text Box",
+                "option_description": "Single-line text input."
+            },
+            {
+                "option_code": "TXA",
+                "option_label": "Text Area",
+                "option_description": "Multi-line plain text input."
+            },
+            {
+                "option_code": "TMI",
+                "option_label": "Time Input",
+                "option_description": "Input control for entering time values."
+            },
+            {
+                "option_code": "TMP",
+                "option_label": "Time Picker",
+                "option_description": "Control for selecting a time value."
+            },
+            {
+                "option_code": "TRL",
+                "option_label": "Tree List",
+                "option_description": "Hierarchical tree-list control."
+            },
+            {
+                "option_code": "TRV",
+                "option_label": "Tree View",
+                "option_description": "Hierarchical tree-view control."
+            },
+            {
+                "option_code": "URL",
+                "option_label": "URL",
+                "option_description": "Input control for URL values."
+            },
+            {
+                "option_code": "JSE",
+                "option_label": "JSON Editor",
+                "option_description": "Editor for JSON content."
+            },
+            {
+                "option_code": "COD",
+                "option_label": "Code Editor",
+                "option_description": "Editor for source code or structured code-like text."
+            }
+        ]
+    },
+    {
+        "_id": 196,
+        "field_name": "type_sql",
+        "field_label": "SQL Type",
+        "field_description": "Classifies an optional SQL storage type suggestion used by SQL generators such as MySQL, MariaDB, PostgreSQL, Microsoft SQL Server, and other relational targets. It does not replace type_data.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "BIGINT",
+                "option_label": "BIGINT",
+                "option_description": "64-bit signed integer SQL type."
+            },
+            {
+                "option_code": "BINARY",
+                "option_label": "BINARY",
+                "option_description": "Fixed-length binary SQL type."
+            },
+            {
+                "option_code": "BIT",
+                "option_label": "BIT",
+                "option_description": "Bit-field SQL type."
+            },
+            {
+                "option_code": "BLOB",
+                "option_label": "BLOB",
+                "option_description": "Binary Large Object SQL type."
+            },
+            {
+                "option_code": "BOOLEAN",
+                "option_label": "BOOLEAN",
+                "option_description": "Boolean true/false SQL type."
+            },
+            {
+                "option_code": "CHAR",
+                "option_label": "CHAR",
+                "option_description": "Fixed-length character SQL type."
+            },
+            {
+                "option_code": "DATE",
+                "option_label": "DATE",
+                "option_description": "Date SQL type."
+            },
+            {
+                "option_code": "DATETIME",
+                "option_label": "DATETIME",
+                "option_description": "Date-and-time SQL type."
+            },
+            {
+                "option_code": "DECIMAL",
+                "option_label": "DECIMAL",
+                "option_description": "Fixed-point decimal SQL type."
+            },
+            {
+                "option_code": "DOUBLE",
+                "option_label": "DOUBLE",
+                "option_description": "Double-precision floating-point SQL type."
+            },
+            {
+                "option_code": "ENUM",
+                "option_label": "ENUM",
+                "option_description": "Enumeration SQL type."
+            },
+            {
+                "option_code": "FLOAT",
+                "option_label": "FLOAT",
+                "option_description": "Floating-point SQL type."
+            },
+            {
+                "option_code": "GEOMETRY",
+                "option_label": "GEOMETRY",
+                "option_description": "Spatial geometry SQL type."
+            },
+            {
+                "option_code": "GEOMETRYCOLLECTION",
+                "option_label": "GEOMETRYCOLLECTION",
+                "option_description": "Spatial geometry collection SQL type."
+            },
+            {
+                "option_code": "INT",
+                "option_label": "INT",
+                "option_description": "32-bit signed integer SQL type."
+            },
+            {
+                "option_code": "JSON",
+                "option_label": "JSON",
+                "option_description": "JSON document SQL type."
+            },
+            {
+                "option_code": "LINESTRING",
+                "option_label": "LINESTRING",
+                "option_description": "Spatial line string SQL type."
+            },
+            {
+                "option_code": "LONGBLOB",
+                "option_label": "LONGBLOB",
+                "option_description": "Large binary object SQL type."
+            },
+            {
+                "option_code": "LONGTEXT",
+                "option_label": "LONGTEXT",
+                "option_description": "Long text SQL type."
+            },
+            {
+                "option_code": "MEDIUMBLOB",
+                "option_label": "MEDIUMBLOB",
+                "option_description": "Medium binary object SQL type."
+            },
+            {
+                "option_code": "MEDIUMINT",
+                "option_label": "MEDIUMINT",
+                "option_description": "Medium integer SQL type."
+            },
+            {
+                "option_code": "MEDIUMTEXT",
+                "option_label": "MEDIUMTEXT",
+                "option_description": "Medium text SQL type."
+            },
+            {
+                "option_code": "MULTILINESTRING",
+                "option_label": "MULTILINESTRING",
+                "option_description": "Spatial multi-line string SQL type."
+            },
+            {
+                "option_code": "MULTIPOINT",
+                "option_label": "MULTIPOINT",
+                "option_description": "Spatial multipoint SQL type."
+            },
+            {
+                "option_code": "MULTIPOLYGON",
+                "option_label": "MULTIPOLYGON",
+                "option_description": "Spatial multipolygon SQL type."
+            },
+            {
+                "option_code": "NCHAR",
+                "option_label": "NCHAR",
+                "option_description": "Fixed-length Unicode character SQL type."
+            },
+            {
+                "option_code": "NVARCHAR",
+                "option_label": "NVARCHAR",
+                "option_description": "Variable-length Unicode character SQL type."
+            },
+            {
+                "option_code": "POINT",
+                "option_label": "POINT",
+                "option_description": "Spatial point SQL type."
+            },
+            {
+                "option_code": "POLYGON",
+                "option_label": "POLYGON",
+                "option_description": "Spatial polygon SQL type."
+            },
+            {
+                "option_code": "REAL",
+                "option_label": "REAL",
+                "option_description": "Single-precision floating-point SQL type."
+            },
+            {
+                "option_code": "SERIAL",
+                "option_label": "SERIAL",
+                "option_description": "Auto-incrementing integer SQL type."
+            },
+            {
+                "option_code": "SET",
+                "option_label": "SET",
+                "option_description": "SQL set type for multiple allowed values."
+            },
+            {
+                "option_code": "SMALLINT",
+                "option_label": "SMALLINT",
+                "option_description": "16-bit signed integer SQL type."
+            },
+            {
+                "option_code": "TEXT",
+                "option_label": "TEXT",
+                "option_description": "Text SQL type."
+            },
+            {
+                "option_code": "TIME",
+                "option_label": "TIME",
+                "option_description": "Time SQL type."
+            },
+            {
+                "option_code": "TIMESTAMP",
+                "option_label": "TIMESTAMP",
+                "option_description": "Timestamp SQL type."
+            },
+            {
+                "option_code": "TINYBLOB",
+                "option_label": "TINYBLOB",
+                "option_description": "Small binary object SQL type."
+            },
+            {
+                "option_code": "TINYINT",
+                "option_label": "TINYINT",
+                "option_description": "8-bit signed integer SQL type."
+            },
+            {
+                "option_code": "TINYTEXT",
+                "option_label": "TINYTEXT",
+                "option_description": "Small text SQL type."
+            },
+            {
+                "option_code": "UUID",
+                "option_label": "UUID",
+                "option_description": "UUID SQL type or UUID storage suggestion."
+            },
+            {
+                "option_code": "VARBINARY",
+                "option_label": "VARBINARY",
+                "option_description": "Variable-length binary SQL type."
+            },
+            {
+                "option_code": "VARCHAR",
+                "option_label": "VARCHAR",
+                "option_description": "Variable-length character SQL type."
+            },
+            {
+                "option_code": "YEAR",
+                "option_label": "YEAR",
+                "option_description": "Year SQL type."
+            }
+        ]
+    },
+    {
+        "_id": 197,
+        "field_name": "type_validation_rule",
+        "field_label": "Validation Rule Type",
+        "field_description": "Classifies advanced validation rules used for conditional, cross-field, cross-collection, regular-expression, API, or custom validation. Ordinary required, length, number, option, and text-constraint rules should remain top-level field properties.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "AF",
+                "option_label": "After Field",
+                "option_description": "Requires this value to be after another field value."
+            },
+            {
+                "option_code": "BF",
+                "option_label": "Before Field",
+                "option_description": "Requires this value to be before another field value."
+            },
+            {
+                "option_code": "EQ",
+                "option_label": "Equal to Field",
+                "option_description": "Requires this value to equal another field value."
+            },
+            {
+                "option_code": "NE",
+                "option_label": "Not Equal to Field",
+                "option_description": "Requires this value to differ from another field value."
+            },
+            {
+                "option_code": "GT",
+                "option_label": "Greater Than Field",
+                "option_description": "Requires this value to be greater than another field value."
+            },
+            {
+                "option_code": "LT",
+                "option_label": "Less Than Field",
+                "option_description": "Requires this value to be less than another field value."
+            },
+            {
+                "option_code": "GTE",
+                "option_label": "Greater Than or Equal to Field",
+                "option_description": "Requires this value to be greater than or equal to another field value."
+            },
+            {
+                "option_code": "LTE",
+                "option_label": "Less Than or Equal to Field",
+                "option_description": "Requires this value to be less than or equal to another field value."
+            },
+            {
+                "option_code": "RW",
+                "option_label": "Required When",
+                "option_description": "Requires this field only when a condition is met."
+            },
+            {
+                "option_code": "RX",
+                "option_label": "Regular Expression",
+                "option_description": "Validates this value using a regular expression."
+            },
+            {
+                "option_code": "UNQ",
+                "option_label": "Unique in Collection",
+                "option_description": "Requires this value to be unique within a collection or configured scope."
+            },
+            {
+                "option_code": "EXS",
+                "option_label": "Exists in Collection",
+                "option_description": "Requires this value to exist in another collection or lookup source."
+            },
+            {
+                "option_code": "NEX",
+                "option_label": "Must Not Exist in Collection",
+                "option_description": "Requires this value not to exist in another collection or lookup source."
+            },
+            {
+                "option_code": "API",
+                "option_label": "API Check",
+                "option_description": "Validates this value through an API or external check."
+            },
+            {
+                "option_code": "CUS",
+                "option_label": "Custom Rule",
+                "option_description": "Uses a custom validation rule defined by the project or generator profile."
+            }
+        ]
+    },
+    {
+        "_id": 198,
+        "field_name": "operator_filter",
+        "field_label": "Filter Operator",
+        "field_description": "Classifies comparison operators used in filter rules, reference picker filters, imports, search screens, and generated query helpers.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "EQ",
+                "option_label": "Equals",
+                "option_description": "Matches values equal to the filter value."
+            },
+            {
+                "option_code": "NE",
+                "option_label": "Not Equals",
+                "option_description": "Matches values not equal to the filter value."
+            },
+            {
+                "option_code": "GT",
+                "option_label": "Greater Than",
+                "option_description": "Matches values greater than the filter value."
+            },
+            {
+                "option_code": "GTE",
+                "option_label": "Greater Than or Equal",
+                "option_description": "Matches values greater than or equal to the filter value."
+            },
+            {
+                "option_code": "LT",
+                "option_label": "Less Than",
+                "option_description": "Matches values less than the filter value."
+            },
+            {
+                "option_code": "LTE",
+                "option_label": "Less Than or Equal",
+                "option_description": "Matches values less than or equal to the filter value."
+            },
+            {
+                "option_code": "CON",
+                "option_label": "Contains",
+                "option_description": "Matches values containing the filter value."
+            },
+            {
+                "option_code": "NCON",
+                "option_label": "Does Not Contain",
+                "option_description": "Matches values not containing the filter value."
+            },
+            {
+                "option_code": "IN",
+                "option_label": "In List",
+                "option_description": "Matches values contained in a list."
+            },
+            {
+                "option_code": "NIN",
+                "option_label": "Not In List",
+                "option_description": "Matches values not contained in a list."
+            },
+            {
+                "option_code": "EMP",
+                "option_label": "Is Empty",
+                "option_description": "Matches empty or missing values."
+            },
+            {
+                "option_code": "NEMP",
+                "option_label": "Is Not Empty",
+                "option_description": "Matches non-empty values."
+            },
+            {
+                "option_code": "BTW",
+                "option_label": "Between",
+                "option_description": "Matches values between two boundary values."
+            },
+            {
+                "option_code": "STW",
+                "option_label": "Starts With",
+                "option_description": "Matches text values that start with the filter value."
+            },
+            {
+                "option_code": "ENW",
+                "option_label": "Ends With",
+                "option_description": "Matches text values that end with the filter value."
+            },
+            {
+                "option_code": "RX",
+                "option_label": "Regular Expression",
+                "option_description": "Matches values using a regular expression."
+            }
+        ]
+    },
+    {
+        "_id": 208,
+        "field_name": "type_form",
+        "field_label": "Form Type",
+        "field_description": "Reusable field template for Form Type values.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "ENT",
+                "option_label": "Entry Form",
+                "option_description": "Form used to create or enter a new record."
+            },
+            {
+                "option_code": "EDT",
+                "option_label": "Edit Form",
+                "option_description": "Form used to update an existing record."
+            },
+            {
+                "option_code": "CLN",
+                "option_label": "Clone Form",
+                "option_description": "Form used to create a new record from an existing record."
+            },
+            {
+                "option_code": "SPL",
+                "option_label": "Split Form",
+                "option_description": "Form used to split one record or value into multiple records or values."
+            },
+            {
+                "option_code": "MRG",
+                "option_label": "Merge Form",
+                "option_description": "Form used to combine one record with another record."
+            },
+            {
+                "option_code": "BAD",
+                "option_label": "Bulk Add Form",
+                "option_description": "Form used to create multiple records or fields at once."
+            },
+            {
+                "option_code": "BED",
+                "option_label": "Bulk Edit Form",
+                "option_description": "Form used to update multiple records or fields at once."
+            },
+            {
+                "option_code": "SEA",
+                "option_label": "Search Form",
+                "option_description": "Form used to search for records or fields."
+            },
+            {
+                "option_code": "FIL",
+                "option_label": "Filter Form",
+                "option_description": "Form used to narrow records by selected criteria."
+            },
+            {
+                "option_code": "CMP",
+                "option_label": "Compare Form",
+                "option_description": "Form used to compare records, fields, or values."
+            },
+            {
+                "option_code": "MAT",
+                "option_label": "Match Form",
+                "option_description": "Form used to match records or values against possible candidates."
+            },
+            {
+                "option_code": "REC",
+                "option_label": "Reconciliation Form",
+                "option_description": "Form used to reconcile conflicting or unmatched data."
+            },
+            {
+                "option_code": "IMP",
+                "option_label": "Import Form",
+                "option_description": "Form used to import data from an external source."
+            },
+            {
+                "option_code": "EXP",
+                "option_label": "Export Form",
+                "option_description": "Form used to export data to another format or destination."
+            },
+            {
+                "option_code": "UPL",
+                "option_label": "Upload Form",
+                "option_description": "Form used to upload files or submitted content."
+            },
+            {
+                "option_code": "MIG",
+                "option_label": "Migration Form",
+                "option_description": "Form used to move or transform data during migration."
+            },
+            {
+                "option_code": "MAP",
+                "option_label": "Mapping Form",
+                "option_description": "Form used to map fields, columns, or values between structures."
+            },
+            {
+                "option_code": "CNV",
+                "option_label": "Conversion Form",
+                "option_description": "Form used to convert data from one shape, unit, or format to another."
+            },
+            {
+                "option_code": "CAL",
+                "option_label": "Calculation Form",
+                "option_description": "Form used to calculate values from entered or selected data."
+            },
+            {
+                "option_code": "TRA",
+                "option_label": "Translation Form",
+                "option_description": "Form used to enter, review, or manage translations."
+            },
+            {
+                "option_code": "GEN",
+                "option_label": "Generation Form",
+                "option_description": "Form used to configure or run generated output."
+            },
+            {
+                "option_code": "REG",
+                "option_label": "Registration Form",
+                "option_description": "Form used to register a user, account, or entity."
+            },
+            {
+                "option_code": "LOG",
+                "option_label": "Login Form",
+                "option_description": "Form used to sign in to an account or secured area."
+            },
+            {
+                "option_code": "PRO",
+                "option_label": "Profile Form",
+                "option_description": "Form used to view or manage profile information."
+            },
+            {
+                "option_code": "CFG",
+                "option_label": "Configuration Form",
+                "option_description": "Form used to manage settings or configuration values."
+            },
+            {
+                "option_code": "SCH",
+                "option_label": "Schedule Form",
+                "option_description": "Form used to plan dates, times, or recurring events."
+            },
+            {
+                "option_code": "BOK",
+                "option_label": "Booking Form",
+                "option_description": "Form used to reserve a time, place, service, or resource."
+            },
+            {
+                "option_code": "SUR",
+                "option_label": "Survey Form",
+                "option_description": "Form used to collect answers, observations, or feedback."
+            },
+            {
+                "option_code": "REQ",
+                "option_label": "Request Form",
+                "option_description": "Form used to submit a request for action, approval, or service."
+            },
+            {
+                "option_code": "INV",
+                "option_label": "Invitation Form",
+                "option_description": "Form used to invite a person or entity to participate."
+            },
+            {
+                "option_code": "WIZ",
+                "option_label": "Wizard Form",
+                "option_description": "Form used to guide a user through a multi-step process."
+            },
+            {
+                "option_code": "SIG",
+                "option_label": "Signature Form",
+                "option_description": "Form used to capture or confirm a signature."
+            },
+            {
+                "option_code": "OTP",
+                "option_label": "OTP Verification Form",
+                "option_description": "Form used to verify a one-time password or code."
+            }
+        ]
+    }
+]
