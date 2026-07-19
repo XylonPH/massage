@@ -4,7 +4,7 @@ Massage Nexus Review Writing Guide
 Field            | Value
 -----------------+-----------------------------------
 Title            | Massage Nexus Review Writing Guide
-Document Version | 1.71
+Document Version | 1.72
 Date Created     | 2026-07-05
 Revision Date    | 2026-07-20
 
@@ -629,6 +629,11 @@ Examples:
 - a product owner, seller, distributor, or sponsor should not review their own product as a neutral customer.
 
 Connected parties may respond, disclose, clarify, provide official information, or participate through approved owner/practitioner/product-owner tools.
+
+The Rating System separately permits a disclosed low-weight self or connected rating. That rating
+does not authorize a connected party to publish a neutral-customer review, conceal the
+relationship, receive rating rewards, or bypass the connected-signal cap. Official responses,
+private self-assessment, connected ratings, and customer reviews remain separate actions.
 
 They should not fake neutral customer reviews, inflate their own ratings, or use alternate accounts to manipulate review scores, comments, helpful votes, or reputation signals.
 

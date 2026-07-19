@@ -1,7 +1,7 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.40
+Document Version: 0.50
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description:
 This document defines the general authenticated User Workspace for Massage Nexus and the
 relationship between the shared network account, Massage Nexus membership, personal client
@@ -687,7 +687,10 @@ The workspace should explain:
 - edit permission;
 - current status.
 
-A user should not be able to rate their own managed record where conflict rules prohibit it.
+A user may rate their own managed record only through the disclosed low-weight self-rating path
+defined by the Rating System. The workspace must apply the recorded connection, show that the
+rating is not a neutral customer rating, and prevent rewards, Reputation, rating milestones,
+Trusted Rater credit, badges, awards, score unlocking, or bypass of the connected-signal cap.
 
 ================================================================================
 19. DISCUSSIONS AND COMMENTS

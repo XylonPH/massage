@@ -1,21 +1,17 @@
 Title: Massage Nexus Product Profile Guide
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-15
-Revision Date: 2026-07-15
-Status: Internal Planning Reference
+Revision Date: 2026-07-20
+Document Description: Defines the public purpose, content, presentation, seller relationships, safety information, management boundaries, and lifecycle of a Massage Nexus product profile. It distinguishes the normalized public product record from seller offers, advertisements, inventory records, brand websites, and database schema.
 
 Related Documents:
-- Massage Nexus - 03 - Features v1.80
-- Massage Nexus - 05 - Massage and Service Classification v1.10
-- Massage Nexus - 10 - Product Classification v1.30
-- Massage Nexus - Site Structure Map v0.60
-- Massage Nexus - Review Writing v1.70
-- Massage Nexus - Rating System v1.10
-- Massage Nexus - Reputation System v1.70
-
-DOCUMENT DESCRIPTION
---------------------
-This document defines the purpose, public content, layout direction, management boundaries, lifecycle rules, seller relationships, safety presentation, and future workspace direction of a Massage Nexus product profile.
+- docs/01-project/features.txt
+- docs/01-project/site-structure-map.txt
+- docs/05-directory/product-classification.txt
+- docs/05-directory/service-classification.txt
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/09-content/review-writing.txt
 
 The product profile is the normalized public record used for discovery, comparison, specifications, versions, variants, sellers, prices, availability, safety information, reviews, ratings, corrections, and product history. It is not a seller listing, advertisement, inventory record, brand website, or database schema.
 
@@ -583,7 +579,7 @@ Brands, manufacturers, developers, publishers, sellers, affiliates, spas, therap
 
 They should not receive points, Embers, Inklings, reputation, or ranking influence through:
 
-- self-review or self-rating;
+- self-review or undisclosed or manipulative self-rating;
 - artificial votes;
 - undisclosed sponsored promotion;
 - repeated reward-seeking corrections;
@@ -591,6 +587,10 @@ They should not receive points, Embers, Inklings, reputation, or ranking influen
 - reacting to their own official responses.
 
 Official specifications, safety notices, offer updates, brand responses, and legitimate corrections may remain allowed when clearly labeled and unrewarded.
+
+The Rating System permits a disclosed, low-weight self or connected product rating. It cannot
+unlock an official score, bypass the connected-signal cap, masquerade as an independent customer
+rating, or earn rewards, Reputation, rating milestones, Trusted Rater credit, badges, or awards.
 
 Disclose:
 

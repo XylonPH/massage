@@ -1,17 +1,19 @@
-Massage Nexus Rating System
-===========================
+Title: Massage Nexus Rating System
+Document Version: 1.30
+Date Created: 2026-07-09
+Revision Date: 2026-07-20
+Document Description: Defines Massage Nexus target ratings, content reactions, eligibility, anonymity, experience context, weighted scoring, public summaries, abuse controls, rating milestones, and connections to reviews, reputation, rewards, search, and future awards.
 
-Field            | Value
------------------+----------------------------
-Title            | Massage Nexus Rating System
-Document Version | 1.21
-Date Created     | 2026-07-09
-Revision Date    | 2026-07-20
-
-Document Description
---------------------
-
-This document defines the working Massage Nexus rating system for spas, therapists, products, content reactions, session ratings, reward handling, weighted scoring, rating milestones, reputation-weight connection, rating visual assets, and future award connections.
+Related Documents:
+- docs/05-directory/product-profile.txt
+- docs/05-directory/spa-profile.txt
+- docs/05-directory/therapist-profile.txt
+- docs/08-community/reputation-system.txt
+- docs/08-community/user-rewards-and-gamification.txt
+- docs/09-content/review-writing.txt
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/14-research/data-research-provenance-and-field-verification-system.txt
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
 
 This document is separate from the Review Writing guide. A review is written experience content. A rating is the score or reaction connected to a target.
 
@@ -53,9 +55,14 @@ The following targets use thumbs up and thumbs down only:
 - media upload;
 - translation.
 
-These are content reaction ratings. They are not 1 to 10 scores.
+These are content reaction ratings. They are not 1 to 10 scores. The public question is Helpful?
+with Helpful and Not Helpful choices; thumb icons may support the control but do not replace its
+accessible text label.
 
-A thumbs up or thumbs down means the user found the content useful, helpful, relevant, interesting, fair, accurate, enjoyable, or not.
+Helpful means the content assisted the user in understanding, deciding, or completing the task for
+which it was presented. Not Helpful does not by itself mean false, abusive, unsafe, or deserving of
+moderation. A user may optionally provide a private reason. Reporting false, abusive, unsafe, or
+policy-violating content remains a separate action.
 
 Not Included as Rateable Items for Now
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -86,12 +93,16 @@ When someone rates a review with thumbs up or thumbs down, they are rating the r
 
 That content rating may later affect the Review Author’s reputation, but the rating itself is not the same as reputation.
 
+A single Not Helpful reaction must not directly create a reputation penalty. Reputation uses
+weighted, capped, cohort-aware, abuse-checked patterns and confirmed moderation outcomes according
+to the Reputation System.
+
 When someone rates a spa, therapist, or product, they are rating the target, not automatically rating the owner, seller, or business account personally.
 
 Rating Visibility and Anonymity
 -------------------------------
 
-Ratings are anonymous publicly.
+Standalone registered-user ratings are anonymous publicly by default.
 
 This means:
 
@@ -104,6 +115,21 @@ This means:
 - admins and authorized moderators may see rating records internally when needed.
 
 Anonymous public display does not mean anonymous to the system.
+
+Exceptions and Privacy Controls
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- a review-linked rating follows the public byline or anonymous-publication choice of the review;
+- an editorial rating is attributed to Massage Nexus or the approved editorial identity rather
+  than presented as an anonymous ordinary-user rating;
+- a self-rating or connected-party rating is internally labeled as connected, but the public must
+  not expose a staff member or other connected person through a small identifiable breakdown;
+- provider dashboards use delayed or time-bucketed summaries and minimum cohort sizes before
+  showing filtered results;
+- exact rating timestamps, booking identifiers, client attributes, and small service slices must
+  not allow a provider to infer the rater;
+- private rating identity and audit history require purpose-limited access, audit logging, and the
+  approved retention, objection, restriction, and erasure or blocking rules.
 
 1 to 10 Rating Modes
 --------------------
@@ -120,7 +146,8 @@ It is faster to submit but less useful than a criteria rating.
 Criteria Rating
 ~~~~~~~~~~~~~~~
 
-A criteria rating uses five 1 to 10 scores.
+A criteria rating offers five target-specific 1 to 10 criteria. A user may select Not Observed or
+Not Applicable rather than guessing.
 
 It provides richer data, supports fairer scoring, and can support future category-based awards.
 
@@ -129,12 +156,20 @@ For official scoring, a criteria rating should count more strongly than a simple
 Completeness Weight
 ~~~~~~~~~~~~~~~~~~~
 
-Rating Mode     | Completeness Weight
-----------------+--------------------
-Criteria rating | 1.00
-Simple rating   | 0.60
+Rating Mode             | Completeness Weight
+------------------------+--------------------
+Five answered criteria  | 1.00
+Four answered criteria  | 0.80
+Three answered criteria | 0.60
+Simple rating           | 0.60
 
-If both simple and criteria data exist for the same target and same user period, criteria data should be preferred.
+A submission with fewer than three answered criteria is treated as a simple rating only when the
+user supplies an explicit overall score; otherwise it remains incomplete and does not affect the
+official score. Each public criterion summary must show its own eligible response count.
+
+If simple and criteria data exist for the same experience and source, eligible criteria data is
+preferred. User-period selection across different experiences follows the deterministic rules in
+User-Period Rating.
 
 Spa Rating Criteria
 -------------------
@@ -170,6 +205,10 @@ Reliability     | Punctuality, focus, consistency, preparedness, and not repeate
 
 Therapist ratings should focus on the therapist, not the spa environment.
 
+Pressure may be Not Applicable for a service where pressure is not a meaningful dimension.
+Reliability should evaluate matters reasonably attributable to the therapist rather than a delay,
+handoff, or scheduling failure controlled by the establishment.
+
 Product Rating Criteria
 -----------------------
 
@@ -186,6 +225,10 @@ Value         | Whether the product is worth the price.
 Product criteria must work across many product types, including oils, tools, chairs, towels, uniforms, massage equipment, spa accessories, and senior-care or wellness-related items.
 
 Product ratings do not normally decay over time. If a product significantly changes, it should be treated as a new product or product version.
+
+Safety, Privacy, and Professionalism scores are experience opinions rather than moderation or
+legal findings. A low score may offer a separate private report action, but it must not
+automatically publish an accusation, declare a product unsafe, or trigger a disciplinary finding.
 
 1 to 10 Rating Scale Labels
 ---------------------------
@@ -212,7 +255,15 @@ The label does not replace the numeric score. Public display may show both, such
 Code block (text):
     8 / 10 — Strong
 
-For criteria ratings, each criterion receives a 1 to 10 numeric score. The overall event score may display the matching label after averaging or rounding according to the public display rule.
+For criteria ratings, each answered criterion receives a 1 to 10 numeric score. The overall event
+score is the arithmetic mean of answered criteria. Not Observed and Not Applicable do not enter the
+numerator or denominator.
+
+Integer labels describe integer submissions. When a decimal event or public score uses a label,
+round the score to the nearest integer using half-up rounding only for label selection. Preserve
+and display the decimal score separately so the label does not imply false precision. Localization
+must preserve the numeric meaning and must not silently make 5 or 6 the neutral point; the
+mathematical midpoint of a 1-to-10 scale is 5.5.
 
 
 
@@ -243,7 +294,9 @@ Registered Users
 
 Registered users may rate.
 
-New registered users may rate, but their ratings may have lower weight or stronger screening until they build trust.
+New registered users may rate and may receive stronger screening until they build trust. Their
+documented Reputation Level supplies T_i. Do not apply an undocumented additional weight merely
+because the account is new; any future account-age factor requires an explicit formula revision.
 
 Editorial and Review Correspondents
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -253,7 +306,9 @@ Editorial ratings and Review Correspondent ratings may carry higher weight becau
 Owners, Therapists, Sellers, and Connected Parties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Connected parties may rate their own connected record, but the rating should have very low official weight.
+Connected parties may rate their own connected record. Self-rating is an accepted Massage Nexus
+feature, but it is a disclosed connected signal rather than a neutral customer rating and receives
+very low official weight.
 
 This allows engagement without allowing self-promotion to control the official score.
 
@@ -264,7 +319,19 @@ Examples:
 - a seller or product owner may rate their own product;
 - a connected staff member may rate a spa they are attached to.
 
-However, their ratings should be clearly treated as connected or self-interested signals in the scoring system.
+Rules for self and connected ratings:
+
+- the relationship is recorded and the applicable Connection Modifier is mandatory;
+- a self or connected rating cannot unlock an official public score by itself or satisfy the
+  independent-rater threshold;
+- it may contribute its bounded XCES weight after the public-score threshold is satisfied;
+- it earns no Nexus Points, Embers, Inklings, rating milestone, Trusted Rater eligibility,
+  Reputation gain, award eligibility, or other participation reward;
+- it must not masquerade as an independent customer review or rating;
+- alternate-account self-rating, concealed relationships, coordinated staff rating, and coercion
+  remain manipulation and may invalidate the rating;
+- an official response, factual correction, private self-assessment, and public self-rating remain
+  separate actions.
 
 Actor and Connection Weights
 ----------------------------
@@ -286,11 +353,15 @@ Unconnected user                               | 1.00
 Connected staff                                | 0.15
 Owner / self-rating                            | 0.05
 
-User reputation may modify the normal registered user weight later.
+User Reputation modifies the normal registered-user trust factor only through T_i as defined below.
 
 Editorial rating should remain the strongest ordinary rating type.
 
 Connected staff and owner/self ratings should not unlock a public official score by themselves.
+
+Former ownership, employment, contractor, seller, sponsor, family, household, and other material
+relationships require disclosure and a separately approved connection rule. When connection is
+unknown or under review, the rating does not receive the Unconnected User modifier by default.
 
 Reputation Weight
 -----------------
@@ -310,7 +381,17 @@ Reputation Level | Label         | XCES Trust Weight
 
 Editorial rating / Review Correspondent rating remains stronger than ordinary user reputation weight.
 
+For an editorial or Review Correspondent rating, T_i is 1.00. Editorial quality control is
+represented by A_i rather than multiplied again through the contributor's personal Reputation.
+The Connection Modifier still applies when an editorial actor has a material relationship to the
+target.
+
 If a user has a reputation status modifier such as Under Review, Limited, Frozen, or Restricted, the effective trust weight may be paused, reduced, disabled, or temporarily forced lower according to the Reputation System document.
+
+The ordinary user's T_i is captured when the rating becomes active so later Reputation gains do
+not retroactively amplify old ratings. A later moderation restriction, confirmed manipulation, or
+account invalidation may reduce or disable earlier influence through an audited recalculation.
+Rating-derived Reputation from an event must never increase that same event's captured T_i.
 
 Source Weight
 -------------
@@ -320,31 +401,50 @@ A rating source affects how strongly the rating should count.
 Working source weights:
 
 Rating Source                                       | Source Weight
-----------------------------------------------------+----------------------------------------------
-Massage Nexus confirmed paid booking/session        | 1.25
+----------------------------------------------------+-------------
+Massage Nexus verified completed booking/session    | 1.25
 Review-linked rating                                | 1.00
 Confirmed external or on-site visit                 | 1.00
 Direct profile rating not tied to a visit or review | 0.75
 User-entered manual history rating                  | 0.50
-Spa or therapist self-recorded internal history     | 0.00 for rewards; scoring rules to be limited
+Unknown or unresolved source classification         | Not score-eligible until resolved
 
 A user-entered manual history rating may be useful for the user’s personal history, but it should have lower official weight unless verified.
 
-A spa or therapist manually encoding their own record should not create rewards and should not become a strong official rating signal.
+Every score-eligible spa, therapist, or product rating requires the user to attest to a relevant
+real experience or product use. Direct Profile Rating means the experience is not tied to a
+verified visit, booking, or review; it does not authorize rating solely from profile appearance,
+price, identity, photographs, reputation, or disagreement with another person's review.
+
+A spa or therapist manually encoding their own record should not create rewards and should not become a strong official rating signal. An allowed self-rating uses the applicable experience source weight together with the Owner / Self-Rating Connection Modifier; it does not receive a special high-trust source.
+
+Payment is not the trust fact. A free, prepaid, package, loyalty, insurance-supported, promotional,
+or otherwise non-cash session may use the verified completed-session source when completion and
+the rater-to-experience relationship are verified. A payment record without completed service does
+not qualify.
 
 Recency Weight
 --------------
 
 Spa and therapist quality can change over time. A spa may improve cleanliness, staffing, management, service flow, or facilities. A therapist may improve skill, communication, consistency, or professionalism.
 
-For spa and therapist ratings, use recency weight.
+For spa and therapist ratings, use a smooth recency weight based on the experience-completion
+instant rather than submission or edit time.
 
-Age of Rating   | Recency Weight
-----------------+---------------
-0 to 83 days    | 1.00
-84 to 166 days  | 0.75
-167 to 365 days | 0.50
-Over 365 days   | 0.25
+Recency anchors:
+
+Age of Experience | Recency Weight
+------------------+---------------
+0 days            | 1.00
+83 days           | 0.75
+166 days          | 0.50
+365 days           | 0.25
+Over 365 days     | 0.25
+
+Linearly interpolate between anchors. This avoids an abrupt score change at a band boundary.
+A manual-history rating must preserve the claimed experience date. If the experience date cannot
+be reasonably established, it receives the manual-history source weight and the minimum recency
+weight rather than appearing recent. Editing a rating does not refresh recency.
 
 Product ratings use:
 
@@ -357,20 +457,19 @@ The 83-Day Rating Cycle
 
 Massage Nexus uses an 83-day cycle for spa and therapist rating freshness, reward eligibility, and user-period aggregation.
 
-The 83-day cycle is not a monthly reset date. It is a rolling cycle.
+The 83-day cycle is a rolling separation interval of exactly 83 × 24 hours evaluated from UTC
+experience-completion instants. It is not a monthly, quarterly, platform-wide, or first-rating-
+anchored reset. Historical user-period summaries remain eligible with recency decay; the interval
+prevents one user from creating two active summaries for the same target less than 83 days apart.
 
 Explanation for Spa Owners and Therapists
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Massage Nexus uses an 83-day rating cycle because spa and therapist quality can change over time, but not usually overnight.
 
-Eighty-three days is close to a three-month service period, but one week shorter than 90 days. That makes it long enough to reduce repeated rating abuse and short enough to let real service improvements appear within the year.
-
-It is also intentionally not a neat 30-, 60-, or 90-day cycle. This makes reward farming less predictable and helps avoid concentrating user behavior and system workload around obvious monthly or quarterly reset dates.
-
-Short version:
-
-    Eighty-three days is close to three months, but less predictable than a calendar month or quarter. It gives real service improvements time to show while making repeated rating abuse harder.
+Eighty-three days is close to three months: long enough to limit repeated influence and short
+enough to reflect several genuine experiences in a year. Because the interval is rolling, it does
+not create one platform-wide reset. Abuse controls must not depend on secrecy or unpredictability.
 
 Xylon Calibrated Experience Score
 ---------------------------------
@@ -385,7 +484,9 @@ Short code:
 Code block (text):
     XCES
 
-XCES is intended to be reusable across Massage Nexus and other Xylon projects where experience-based ratings need to account for trust, source, recency, completeness, role, and connection.
+XCES is currently governed for Massage Nexus. Reuse in another Xylon project requires a separately
+approved shared specification and project-specific calibration rather than copying these weights
+unchanged.
 
 It is most useful for service or experience-based targets such as spas, therapists, restaurants, service providers, locations, and similar real-world experiences.
 
@@ -397,7 +498,7 @@ Rating Event Score
 For a criteria rating:
 
 Code block (text):
-    rᵢ = average of submitted criteria scores
+    rᵢ = sum of answered criterion scores ÷ number of answered criteria
 
 For a spa rating:
 
@@ -438,26 +539,71 @@ Cᵢ     | completeness weight
 Rᵢ     | recency weight
 Kᵢ     | connection weight
 
-If a factor is not applicable, use 1.00 by default.
+Use 1.00 only when the specification explicitly defines a factor as not applicable. Missing,
+unknown, conflicting, or unresolved source, connection, eligibility, or moderation information
+must not silently receive full weight.
+
+Before weight calculation, a rating must be active, attributable to an authenticated eligible
+account, attached to one valid target and experience context, within the allowed numeric range,
+and not rejected, revoked, superseded, quarantined, duplicate, or invalidated for abuse. A rating
+that fails eligibility receives no official weight but may remain in restricted audit history when
+lawfully necessary.
+
+Factor Evaluation and Versioning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- r_i and C_i come from the active rating revision; edits retain prior revisions for the approved
+  audit period and do not create a new experience;
+- A_i and ordinary-user T_i are captured when the event first becomes Active;
+- S_i may change through audited experience verification, reversal, or source correction;
+- K_i may change when a material relationship is discovered, corrected, started, or ended under
+  the applicable connection policy;
+- R_i is recalculated from the preserved experience-completion instant at the summary as-of time;
+- moderation and eligibility may reduce weight to zero and later restore it after an approved
+  reversal;
+- every summary retains the scoring-formula version, prior version, as-of instant, and rebuild
+  reason needed to reproduce the result.
 
 Official XCES Formula
 ~~~~~~~~~~~~~~~~~~~~~
 
+First calculate the eligible weighted mean:
+
 Code block (text):
-    XCES = Σ(rᵢ × wᵢ) ÷ Σ(wᵢ)
+    M = Σ(rᵢ × wᵢ) ÷ Σ(wᵢ)
+
+Then apply a confidence prior:
+
+Code block (text):
+    XCES = (Σ(rᵢ × wᵢ) + (m × P)) ÷ (Σ(wᵢ) + m)
+
+Where:
+
+Symbol | Meaning
+-------+--------------------------------------------------------------------------
+M      | Eligible weighted mean before confidence adjustment.
+P      | Current target-family prior mean; use 5.50 until a governed prior exists.
+m      | Prior strength; current working value is 5.00 effective weight units.
+
+The prior must be versioned and computed from an eligible representative independent population rather than
+changed opportunistically for one target. A prior change triggers an audited summary rebuild.
+The public must not display a prior-only score. If Σ(w_i) is zero, the result is Not Enough Ratings
+rather than division by zero.
 
 Readable version:
 
-    Multiply every rating by its weight, add the weighted ratings together, then divide by the total weight.
+    Weight eligible ratings, combine them with a small target-family prior, and let observed
+    independent experience progressively outweigh that prior as effective signal grows.
 
 User-Period Rating
 ------------------
 
-To prevent one user from overpowering a spa or therapist score through repeated ratings, one user should contribute only one aggregated rating per target per 83-day cycle.
+To prevent one user from overpowering a spa or therapist score through repeated ratings, one user
+contributes no more than one active user-period rating per target in any rolling 83-day span.
 
 This is called a user-period rating.
 
-Within the same 83-day cycle, a user may have:
+Across rating history, a user may have:
 
 - direct profile rating;
 - review-linked rating;
@@ -465,24 +611,42 @@ Within the same 83-day cycle, a user may have:
 - confirmed external/on-site visit rating;
 - user-entered manual history rating.
 
-The system should combine these into one user-period rating before the target’s public XCES is computed.
+The system resolves them deterministically before public XCES is computed:
 
-To combine them, the user-period rating takes the score and the source weight ($S_i$) of the highest-priority source that the user submitted during that 83-day cycle. Lower-priority ratings are archived for audit logs but excluded from active XCES calculations.
+1. Exclude ineligible, revoked, superseded, rejected, quarantined, and duplicate events.
+2. Group records representing the same experience. Prefer an eligible criteria rating over a
+   simple rating for that same experience; prefer the strongest verified source when duplicate
+   records represent that same experience.
+3. Sort the remaining experience ratings from newest to oldest by experience-completion instant.
+4. Select the newest rating as a user-period rating, then suppress other ratings for that user and
+   target whose experience instant is less than 83 × 24 hours before the selected rating.
+5. Repeat step 4 with the newest remaining unsuppressed rating until no events remain. This creates
+   a sequence of historical user-period ratings separated by at least 83 days.
+6. If experience instants tie, select the strongest source, then the highest completeness, then
+   the latest original submission instant, then the lowest stable rating-event identifier.
+7. Use each selected event's score and applicable factor snapshots for its user-period rating.
+   Suppressed events remain excluded from XCES without being destroyed.
+
+If the selected event is later revoked or invalidated, recompute the user-period rating from the
+remaining eligible events. Editing, deleting, revoking, or resubmitting must not reset the
+experience date or create another reward.
 
 Priority Within a User-Period
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The strongest sources should influence the user-period rating more than weaker sources.
 
-Suggested priority:
+Source priority used only for same-experience or exact-time tie resolution:
 
-1. Massage Nexus confirmed booking/session rating;
+1. Massage Nexus verified completed booking/session rating;
 2. review-linked rating;
 3. confirmed external or on-site visit rating;
 4. direct profile rating;
 5. user-entered manual history rating.
 
-This avoids counting one active user as several full-power votes in the same cycle.
+This limits one user to roughly four active summaries per year while allowing historical experience
+to decay rather than disappear. Source strength affects the selected event's weight rather than
+permanently overriding a newer experience.
 
 Session and Booking Ratings
 ---------------------------
@@ -500,25 +664,42 @@ A completed freelance therapist booking may produce:
 
 A booking/session rating is tied to a real service event and may feed the target’s user-period rating.
 
+Rating Experience Context
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each target rating preserves, when applicable:
+
+- stable target identifier and target type;
+- establishment branch, professional context, or product version;
+- normalized service and provider menu item;
+- therapist when known and permitted;
+- price and currency context;
+- experience-completion, original-submission, and last-edit instants;
+- booking, session, review, or external-visit evidence reference;
+- source, verification, disclosure, connection, moderation, and eligibility states;
+- rating mode, answered criteria, Not Observed or Not Applicable selections, and overall score;
+- factor snapshots and scoring-formula version.
+
+Public context must remain privacy-preserving. Exact booking, client, payment, intake, or private
+location details do not become public rating metadata.
+
 Booking and Session Reward Rule
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Session ratings may earn rewards only when they come from a real qualifying activity.
+Session ratings may earn rewards only when they come from a real qualifying activity and pass the
+reward, moderation, duplicate, and abuse checks in User Rewards and Gamification.
 
-Working rules:
-
-Rating Type                                         | Reward Eligibility
-----------------------------------------------------+----------------------------------------------------------
-Massage Nexus confirmed paid booking/session rating | Small reward allowed
-Confirmed external/on-site visit rating             | Smaller reward allowed if evidence or confirmation exists
-User-entered personal history rating                | No reward by default
-Spa/therapist manually encoded own record           | No reward
+Reward eligibility and amounts are authoritative only in
+docs/08-community/user-rewards-and-gamification.txt. This document does not duplicate the reward
+table. Self, connected, manual-history, revoked, invalidated, quarantined, duplicate, and
+reward-period repeat ratings do not earn rating rewards unless the rewards specification records a
+narrow explicit exception; self-rating has no such exception.
 
 Same-day cap:
 
 Code block (text):
-    Same user + same spa + same calendar day = one rewarded spa session rating only.
-    Same user + same therapist + same calendar day = one rewarded therapist session rating only.
+    Same user + same spa + same UTC reward-ledger day = one rewarded spa session rating only.
+    Same user + same therapist + same UTC reward-ledger day = one rewarded therapist session rating only.
 
 A user may still submit additional ratings if the system allows it, but the additional same-target same-day ratings do not earn additional rewards.
 
@@ -530,7 +711,7 @@ Users may change or revoke their own ratings.
 Rules:
 
 - only the active rating should affect the current score;
-- private history should be kept for audit and abuse detection;
+- restricted prior history may be retained for the approved audit and abuse-detection period;
 - changing a rating should not create repeat rewards;
 - deleting or revoking and then re-rating should not create repeat rewards within the active reward period;
 - spa and therapist rating reward eligibility may refresh after a new valid 83-day cycle and a new experience;
@@ -539,20 +720,42 @@ Rules:
 Public Score Display
 --------------------
 
-A public official score should display when there is enough eligible rating signal.
+A public official score should display only when there is enough independent eligible rating
+signal. Connected influence is applied only after this threshold is satisfied.
 
 Working display rule:
 
-Display the official score if either condition is met:
+Display a public XCES when both conditions are met:
 
-- at least one editorial rating exists; or
-- at least five regular non-connected user ratings exist.
+- at least five distinct independent users have an active eligible user-period rating; and
+- their combined effective weight before the confidence prior is at least 3.00.
+
+One or more editorial ratings may display a separately labeled Editorial Score before the XCES
+threshold is met. Editorial signal does not masquerade as an independent community consensus or
+unlock the official score by itself.
+
+Re-evaluate the threshold after revocation, moderation, expiration, connection correction, merge,
+or rebuild. If it is no longer satisfied, hide the public XCES, stop applying connected influence,
+and return to Not Enough Ratings while preserving the eligible history.
 
 Do not unlock the public score using only:
 
 - owner/self-ratings;
 - connected staff ratings;
 - unverified internal history entries.
+
+After unlocking, the combined effective weight of all current self and connected-party ratings is
+capped at the lower of:
+
+Code block (text):
+    10 percent of current independent effective weight
+    0.50 effective weight units
+
+Apply proportional scaling when connected signal exceeds the cap. This preserves allowed
+self-rating while preventing a large staff or ownership group from overpowering independent
+experience. Apply the cap to connected w_i values before the XCES numerator and denominator are
+calculated, and store both uncapped and effective connected weight for restricted audit and
+explainability.
 
 Before the threshold is reached, display:
 
@@ -563,13 +766,26 @@ Recommended public display:
 
 Code block (text):
     8.3 / 10
-    Based on 27 ratings
+    Based on 27 active independent user-period ratings
+    Provisional
+
+Display Provisional until at least 20 distinct independent users and 15.00 independent effective
+weight units exist. A provisional score may appear on a profile but must not
+outrank mature scores solely by its point estimate or qualify a target for a received-rating award.
+
+When connected ratings contribute, disclose Includes Low-Weight Connected Signals without
+revealing a person through an unsafe small breakdown. Public summaries should also show rating
+distribution, freshness, criteria-specific response counts, and verified-experience proportion
+when cohort size permits.
 
 Display Precision Rule
 ~~~~~~~~~~~~~~~~~~~~~~
 
-- Public display score: Display rounded to exactly one decimal place (e.g., 8.3 / 10).
-- Internal score calculation: Store and compute ratings with full floating-point precision (or at least two decimal places) to preserve accurate ranking and prevent ranking ties.
+- Public display score: round half-up to exactly one decimal place, for example 8.3 / 10.
+- Internal score calculation: use deterministic fixed-decimal arithmetic with at least six decimal
+  places. Do not use binary floating-point behavior as the scoring contract.
+- Ranking tie-breaks must use approved confidence, effective signal, freshness, and stable final
+  identifiers rather than hidden extra display decimals alone.
 
 Rating Summaries and System Performance
 ---------------------------------------
@@ -592,18 +808,25 @@ Possible summary layers:
 Computation Schedule
 ~~~~~~~~~~~~~~~~~~~~
 
-Working schedule:
+Current public summaries update incrementally after an eligible rating state change. A scheduled
+UTC reconciliation verifies stored summaries against eligible source records and applies recency
+changes. Historical summaries are created only when required by an approved report or feature.
+
+Working reconciliation schedule:
 
 Summary         | Computation Timing
 ----------------+-------------------------------------------------------------
-Daily summary   | Every midnight for the previous day
-Weekly summary  | Every Monday for the previous Monday to Sunday
-Monthly summary | Every first day of the month for the previous calendar month
-Yearly summary  | Every January 1 for the previous calendar year
+Current summary | Event-driven update plus nightly UTC reconciliation
+Daily summary   | After the previous UTC day closes, when required
+Weekly summary  | Every Monday UTC for the previous Monday to Sunday, when required
+Monthly summary | First UTC day of the month for the previous calendar month, when required
+Yearly summary  | January 1 UTC for the previous calendar year, when required
 
 Do not use the 23rd-of-the-month rule.
 
-Do not include admin-triggered recalculation in this version.
+Provide an authorized, audited, idempotent rebuild operation for formula changes, restored or
+corrected records, target merges or splits, prior changes, moderation reversals, and summary
+recovery. It must support dry-run comparison and must not silently rewrite raw rating history.
 
 Raw, Editorial, Recent, and Official Scores
 -------------------------------------------
@@ -647,74 +870,22 @@ The visual direction should remain:
 - not star-based;
 - not dependent on generated image text.
 
-The current visual score labels used in the asset set are:
-
-Score | Visual Label
-------+-------------
-1     | Fractured
-2     | Dim
-3     | Low
-4     | Uneven
-5     | Fair
-6     | Promising
-7     | Good
-8     | Strong
-9     | Excellent
-10    | Signature
-
-These assets are UI presentation assets. They do not change the XCES formula or the criteria-rating structure.
+The asset set uses the accepted 1-to-10 labels defined earlier in this document. Presentation
+assets do not change the XCES formula or criteria-rating structure.
 
 
 Rating Rewards
 --------------
 
-Rating rewards should remain smaller than full reviews, articles, major profile contributions, or rich media contributions.
+User Rewards and Gamification is the sole authority for rating reward amounts, verified-
+experience bonuses, daily and periodic caps, and reward-ledger behavior. Rating reward values must
+not be duplicated here.
 
-However, Embers and Inklings should feel gratifying. They may use larger visible numbers than Nexus Points because their spending costs can scale upward.
-
-Working reward structure:
-
-Action                                                  | Nexus Points | Embers | Inklings
---------------------------------------------------------+--------------+--------+---------
-Thumbs up/down content rating                           | 1            | 10     | 5
-Simple 1 to 10 rating                                   | 5            | 50     | 20
-Criteria-based rating                                   | 10           | 100    | 40
-Confirmed Massage Nexus booking/session criteria rating | 5            | 50     | 20
-Confirmed external/on-site criteria rating              | 3            | 30     | 10
-User-entered manual history rating                      | 0            | 0      | 0
-Spa/therapist self-recorded rating                      | 0            | 0      | 0
-
-Open Question: Booking/Session Reward Ordering
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The Confirmed Massage Nexus booking/session criteria rating and Confirmed external/on-site
-criteria rating rows pay less than the generic Criteria-based rating row above, even though the
-Source Weight table treats a confirmed booking/session as the highest-trust rating source (1.25)
-and an unverified direct profile rating as lower (0.75). Whether the booking/session and
-external-visit rows are meant to stack as a bonus on top of the base criteria-based reward, or
-intentionally replace it at a lower amount, is unresolved and listed under Deferred Decisions.
-This same reward table also appears in User Rewards and Gamification and must be kept identical
-until this is resolved.
-
-Daily Cap for Thumbs Up / Down Rewards
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For thumbs up/down ratings, only the first 25 rewarded actions per day should earn rewards.
-
-After the 25th rewarded thumbs up/down action, the user may continue rating, but no additional Nexus Points, Embers, or Inklings should be awarded that day.
-
-No Repeat Reward Farming
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-No repeated rewards should be granted for:
-
-- changing a rating;
-- revoking a rating and rating again;
-- rating the same target repeatedly inside the same reward period;
-- creating fake bookings;
-- self-rating;
-- staff-coordinated manipulation;
-- rating only to farm rewards.
+This system supplies eligibility facts to the reward ledger. It must prevent repeat rewards for
+editing, revoking and resubmitting, repeat target activity inside the reward period, duplicate or
+fake experiences, alternate accounts, self or connected ratings, invalidated ratings, and
+reward-farming behavior. A scoring weight does not imply reward eligibility, and reward receipt
+does not increase rating weight.
 
 Rating Abuse Prevention
 -----------------------
@@ -732,6 +903,10 @@ Possible abuse patterns include:
 - suspicious exact matching with editorial ratings;
 - rating without real experience;
 - rating competitors unfairly.
+- provider coercion, retaliation, or incentives tied to a required score;
+- copying a visible editorial or public criterion score rather than giving an independent rating;
+- changing experience dates to refresh recency or rewards;
+- concealing a current or former material connection.
 
 Controls include:
 
@@ -747,93 +922,27 @@ Controls include:
 - private audit history;
 - moderation and abuse detection.
 
+Rating State, Moderation, and Appeal
+------------------------------------
+
+Scoring distinguishes at least Draft, Active, Quarantined, Revoked by User, Rejected, Superseded,
+and Invalidated states. Only Active eligible ratings affect XCES. Providers may report suspected
+fraud or factual context without seeing private rater identity or automatically removing a
+negative score. Users may challenge an invalidation or connection classification. Material
+moderation reversals trigger an audited user-period and target-summary rebuild.
+
+The platform preserves the reason, actor, time, evidence reference, and appeal result for a state
+change. Retention remains limited to the approved fraud, safety, legal, support, and audit purpose;
+private history is not retained indefinitely merely because it may be useful.
+
 Rating Badges
 -------------
 
-Rating badges should use the cross-project milestone system called Anchored Milestone Sequence.
-
-Anchored Milestone Sequence
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-AMS is defined in User Rewards and Gamification. This section only sets the two rating-specific
-milestone sequences.
-
-Criteria Rating AMS
-~~~~~~~~~~~~~~~~~~~
-
-Criteria rating badges use:
-
-Code block (text):
-    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
-
-Explanation:
-
-- 1 rewards the first meaningful action;
-- 10 and 20 serve as starting milestone anchors;
-- 30 = 10 + 20;
-- 50 = 20 + 30;
-- 80 = 30 + 50;
-- 130 = 50 + 80.
-
-Criteria rating badge families:
-
-- overall criteria rating milestones;
-- spa criteria rating milestones;
-- therapist criteria rating milestones;
-- product criteria rating milestones.
-
-Examples:
-
-- First Spa Rating;
-- 10 Spa Ratings;
-- 20 Spa Ratings;
-- 50 Spa Ratings;
-- First Therapist Rating;
-- 10 Therapist Ratings;
-- First Product Rating;
-- 10 Product Ratings.
-
-Criteria rating badges should count criteria-based ratings, not simple ratings.
-
-Thumbs Up / Down AMS
-~~~~~~~~~~~~~~~~~~~~
-
-Thumbs up/down rating badges use a higher sequence because these actions are easier.
-
-Code block (text):
-    1, 10, 50, 100, 150, 250, 400, 650, 1050...
-
-Explanation:
-
-- 1 and 10 are early engagement anchors;
-- 50 and 100 are higher starting anchors;
-- 150 = 50 + 100;
-- 250 = 100 + 150;
-- 400 = 150 + 250;
-- 650 = 250 + 400;
-- 1050 = 400 + 650.
-
-Thumbs up/down badge families:
-
-- Article Rater;
-- Review Rater;
-- News Rater;
-- Guide Rater;
-- Comic Rater;
-- Comment Rater;
-- Discussion Rater;
-- Media Rater;
-- Translation Rater.
-
-Examples:
-
-- First Article Rating;
-- 10 Article Ratings;
-- 50 Article Ratings;
-- First Review Rating;
-- 10 Review Ratings;
-- First Comment Rating;
-- 50 Comment Ratings.
+User Rewards and Gamification owns Anchored Milestone Sequence values, badge families, and badge
+rewards. This system supplies eligible rating counts. Criteria milestones count eligible
+independent criteria ratings, not simple, self, connected, revoked, invalidated, quarantined,
+duplicate, or reward-farming ratings. Content-reaction milestones count only eligible retained
+Helpful or Not Helpful actions after applicable abuse and daily-cap rules.
 
 Trusted Rater Badge
 -------------------
@@ -845,7 +954,8 @@ It should not be based on article votes, comment votes, media ratings, translati
 Working eligibility:
 
 - at least 30 eligible spa/therapist criteria ratings;
-- at least 12 ratings overlap with editorial-rated targets;
+- at least 12 ratings overlap with later eligible editorial or sufficiently mature independent
+  consensus targets;
 - no active abuse, spam, or manipulation flags;
 - average alignment score of at least 80 percent.
 
@@ -858,9 +968,15 @@ Code block (text):
     difference = absolute(user_criterion_score - editorial_criterion_score)
     criterion_alignment = max(0, 1 - (difference / 4))
 
-Then average all criterion alignments.
+Then average all eligible criterion alignments.
 
 Only criteria-based ratings are eligible for alignment scoring. Simple 1-to-10 ratings are completely excluded from alignment calculations.
+
+Also exclude self and connected ratings, ratings submitted after the comparison criterion was
+shown to that user when independent judgment cannot be established, targets without sufficient
+comparison confidence, and comparison ratings later overturned or materially corrected. Use a
+leave-one-out consensus so the user's own rating never helps create the benchmark used to judge
+that rating.
 
 Example:
 
@@ -870,14 +986,24 @@ Code block (text):
     Difference: 1
     Alignment = 1 - (1 / 4) = 0.75
 
-Exact matching is not always ideal. If a user matches editorial ratings too perfectly too often, that may be suspicious and should be reviewed.
+Exact matching is not always ideal. If a user matches visible editorial or consensus ratings too
+perfectly too often, that may be suspicious and should be reviewed.
 
-The Trusted Rater formula may be refined later if badge-specific requirements require adjustment.
+Alignment measures calibration to a later trusted reference, not objective truth. Trusted Rater
+eligibility must also consider reversal rate, target diversity, rating distribution, connection
+history, and manipulation findings. The badge is cosmetic evidence of an eligibility milestone;
+it does not itself increase XCES weight or grant permission. The formula may be refined later if
+badge-specific validation requires adjustment.
 
 Rating Effects on Search and Browse
 -----------------------------------
 
 Ratings should affect search and browse ranking, but should not fully control it.
+
+Only a score meeting the approved ranking-confidence threshold may contribute as a positive
+organic ranking signal. Not Enough Ratings and provisional scores must not be treated as low
+quality, and a provisional high point estimate must not outrank a mature score solely because it
+is numerically higher.
 
 XCES may become one ranking input alongside:
 
@@ -892,6 +1018,10 @@ XCES may become one ranking input alongside:
 - random discovery rotation.
 
 The exact search and browse ranking formula should be defined separately.
+
+Sponsored or promoted placement must use a separately labeled placement lane or explicit
+sponsorship treatment. Payment must not alter XCES, confidence, organic rating order, rating
+eligibility, or public rating labels.
 
 Rating Effects on Reputation
 ----------------------------
@@ -909,10 +1039,31 @@ The exact reputation formula should be defined in the Reputation documentation.
 
 Spa, therapist, and product target ratings should not automatically become personal reputation for owners or sellers, although they may later affect profile trust, badges, awards, or business standing.
 
+Target Lifecycle, Context, and Versioning
+-----------------------------------------
+
+- a rating remains attached to the exact establishment branch, therapist identity, professional
+  context, or product version represented by the experience;
+- relocation, ownership change, therapist disaffiliation, service-context change, reformulation,
+  or product revision does not silently rewrite rating context;
+- a material product change creates or connects a distinct product version. Version ratings may
+  have a separately governed parent-product rollup, but must not be transferred silently;
+- target merges, splits, mistaken-identity corrections, and unmerges require relationship review
+  before a rating moves or contributes to a new summary;
+- a closed, retired, historical, or removed target may preserve eligible historical ratings while
+  clearly identifying the represented period and disabling new activity when appropriate;
+- suppression or erasure of public target information may also require rating delisting or de-
+  identification without treating every restricted audit dependency as publicly displayable.
+
 Awards and Received-Rating Badges
 ---------------------------------
 
 Spas and therapists may later receive badges or awards based on ratings.
+
+Received-rating badges and awards require mature non-provisional signal, minimum independent
+experience and freshness, abuse and connection review, and an approved eligibility period. Self
+and connected ratings do not satisfy award thresholds or nomination eligibility even though their
+bounded weight may contribute to an already-unlocked XCES.
 
 Possible future examples:
 
@@ -936,11 +1087,10 @@ Deferred Decisions
 The following should be discussed or finalized later:
 
 - rating abuse detection details;
-- whether booking/session and external-visit criteria-rating rewards stack on top of the base
-  criteria-based reward or replace it, given the source-weight hierarchy ranks confirmed
-  sessions highest;
 - product/shop/seller connection rules;
-- whether product ratings need versioning rules;
+- empirical calibration of the target-family prior, prior strength, public threshold, provisional
+  threshold, recency anchors, and connected-signal cap before production use;
+- final content-reaction wording, negative-reaction explanation flow, and reward-abuse controls;
 - search and browse ranking formula;
 - booking process and payment flow;
 - manual history and visit-history structure;
@@ -951,4 +1101,29 @@ The following should be discussed or finalized later:
 - dashboard display for user rating history;
 - owner/therapist dashboard display of anonymous rating summaries;
 - API and database implementation of XCES and AMS;
-- how XCES may be reused in other Xylon projects.
+- whether XCES should move to a separately governed shared specification before reuse in another
+  Xylon project.
+
+Implementation Acceptance Cases
+-------------------------------
+
+Before production use, automated and independently reviewed examples must verify:
+
+- no eligible weight and all-zero eligible weight return Not Enough Ratings without division by
+  zero;
+- five independent ratings below the effective-weight threshold do not unlock XCES;
+- one editorial rating displays only the labeled Editorial Score before XCES unlocks;
+- allowed self-ratings retain bounded low influence, never unlock a score, and never earn rewards,
+  Reputation, Trusted Rater credit, milestones, badges, or awards;
+- excess connected signal is proportionally capped;
+- the rolling selection sequence preserves at least 83 days between one user's active summaries,
+  and revocation restores the correct previously suppressed event;
+- editing or resubmitting does not refresh experience recency or rewards;
+- Not Observed and Not Applicable criteria do not enter an event average;
+- confidence-prior, fixed-decimal, half-up display, and stable tie-break calculations are
+  deterministic across supported runtimes;
+- recency interpolation is continuous at 83, 166, and 365 days;
+- target merge, split, unmerge, product-version change, moderation reversal, and prior-version
+  change rebuild the correct summaries without rewriting raw history;
+- provider-facing cohorts, timestamps, and filters do not reveal an anonymous rater;
+- repeated, duplicate, alternate-account, connected, and reward-replay attempts fail safely.

@@ -4,7 +4,7 @@ Massage Nexus User Rewards, Gamification, Ranks, and Roles
 Field            | Value
 -----------------+-----------------------------------------------------------
 Title            | Massage Nexus User Rewards, Gamification, Ranks, and Roles
-Document Version | 1.61
+Document Version | 1.70
 Date Created     | 2026-07-07
 Revision Date    | 2026-07-20
 
@@ -297,7 +297,9 @@ Simple ratings may count less than criteria ratings in XCES because they provide
 Criteria-Based Rating
 ~~~~~~~~~~~~~~~~~~~~~
 
-A criteria rating uses the full five-rating criteria for spa, therapist, or product.
+A criteria rating answers at least three eligible target criteria for a spa, therapist, or product.
+Not Observed and Not Applicable answers follow the Rating System and do not reduce a reward merely
+because the criterion could not be judged honestly.
 
 Working reward:
 
@@ -305,30 +307,37 @@ Action                | Nexus Points | Embers | Inklings
 ----------------------+--------------+--------+---------
 Criteria-based rating | 10           | 100    | 40
 
-Criteria-based ratings should count toward rating milestone badges.
+Criteria-based ratings count toward rating milestone badges only when the Rating System marks them
+eligible and independent. Self, connected, revoked, invalidated, quarantined, duplicate, and
+reward-farming ratings do not count.
 
 Booking and Session Rating Rewards
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Booking/session ratings may be rewarded when they are tied to a real completed activity.
+Booking/session ratings may receive one verified-experience bonus when tied to a real completed
+activity. The bonus stacks once with the applicable simple or criteria base reward; it does not
+replace the base reward with a lower amount.
 
 Working reward direction:
 
-Rating Source                                                | Nexus Points | Embers | Inklings
--------------------------------------------------------------+--------------+--------+---------
-Massage Nexus confirmed paid booking/session criteria rating | 5            | 50     | 20
-Confirmed external/on-site visit criteria rating             | 3            | 30     | 10
-User-entered personal history rating                         | 0            | 0      | 0
-Spa/therapist manually encoded own record                    | 0            | 0      | 0
+Rating Source or Condition                              | Nexus Points | Embers | Inklings
+--------------------------------------------------------+--------------+--------+---------
+Massage Nexus verified completed-experience bonus       | +2           | +20    | +10
+Confirmed external/on-site experience bonus             | +1           | +10    | +5
+User-entered personal history rating                     | 0            | 0      | 0
+Self or connected rating                                 | 0            | 0      | 0
+Revoked, invalidated, quarantined, or duplicate rating   | 0            | 0      | 0
 
 Same-day cap:
 
-- same user + same spa + same calendar day = one rewarded spa session rating only;
-- same user + same therapist + same calendar day = one rewarded therapist session rating only.
+- same user + same spa + same UTC reward-ledger day = one rewarded spa session rating only;
+- same user + same therapist + same UTC reward-ledger day = one rewarded therapist session rating only.
 
 The user may still rate additional valid sessions, but the extra same-day ratings should not earn extra rewards for the same target.
 
-Open question: these booking/session rewards are lower than the flat Criteria-Based Rating reward above, even though Rating System ranks a confirmed booking/session as the highest-trust rating source. Whether these rows stack on top of the base criteria-based reward or intentionally replace it at a lower amount is unresolved in Rating System's Deferred Decisions and must be kept identical here until resolved.
+The reward ledger records the qualifying experience and base-rating reward independently so an
+edit, revocation, source upgrade, duplicate import, or resubmission cannot replay either reward.
+Payment is not required when a completed experience is otherwise verified under the Rating System.
 
 Repeat Rating Rule
 ~~~~~~~~~~~~~~~~~~

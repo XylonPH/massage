@@ -4,9 +4,9 @@ Massage Nexus Reputation System
 Field            | Value
 -----------------+--------------------------------
 Title            | Massage Nexus Reputation System
-Document Version | 1.70
+Document Version | 1.80
 Date Created     | 2026-07-07
-Revision Date    | 2026-07-09
+Revision Date    | 2026-07-20
 
 Document Description
 --------------------
@@ -134,6 +134,8 @@ Reputation should not increase from:
 - having many badges alone;
 - booking alone without meaningful review, rating, or verified experience signal;
 - popularity alone without quality or trust controls.
+- self or connected ratings, even when the Rating System permits their bounded XCES influence;
+- receiving a Trusted Rater badge by itself.
 
 Helpful Votes and Community Reactions
 -------------------------------------
@@ -351,6 +353,9 @@ Reputation and XCES Rating Weight
 
 Reputation affects the trust weight used in XCES for user ratings. It should not make normal user ratings stronger than editorial ratings.
 
+Only eligible independent rating behavior may create Rating Trust. Self and connected ratings do
+not increase Reputation, Trusted Rater calibration, rating milestones, or award eligibility.
+
 Reputation Level | Label         | XCES Trust Weight
 -----------------+---------------+------------------
 1                | Unsettled     | 0.50
@@ -363,6 +368,12 @@ Reputation Level | Label         | XCES Trust Weight
 8                | Nexus Pillar  | 1.50
 
 Editorial rating weight remains stronger than ordinary user reputation weight.
+
+The Rating System captures the applicable ordinary-user trust weight when a rating becomes
+active. Reputation earned later does not retroactively amplify that rating, and rating-derived
+Reputation from an event cannot increase the same event's captured trust weight. Confirmed
+moderation restrictions or manipulation may still reduce or disable historical influence through
+an audited recalculation.
 
 Inactivity and Freshness
 ------------------------
