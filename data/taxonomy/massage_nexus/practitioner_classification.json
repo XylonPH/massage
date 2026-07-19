@@ -319,7 +319,7 @@
         "field_name": "status_therapist_availability",
         "field_label": "Availability Status",
         "selection_rule": "Single-select per applicable context",
-        "field_description": "Current professional availability. Death is a separate life-status fact and is not an Availability Status.",
+        "field_description": "Current acceptance or provision of service in an applicable professional context. Professional practice status and person life status are separate.",
         "field_option": [
             {
                 "option_code": "AV",
@@ -342,9 +342,28 @@
                 "option_description": "Not presently accepting or providing services but expected to return."
             },
             {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": "Current availability cannot be confirmed."
+            }
+        ],
+        "source_document": "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "field_name": "status_therapist_practice",
+        "field_label": "Professional Practice Status",
+        "selection_rule": "Single-select per therapist",
+        "field_description": "Overall current professional practice status, separate from service-context availability, person life status, profile claim, moderation, verification, and record lifecycle.",
+        "field_option": [
+            {
+                "option_code": "AC",
+                "option_label": "Active",
+                "option_description": "Has confirmed current professional practice in at least one context."
+            },
+            {
                 "option_code": "IN",
                 "option_label": "Inactive",
-                "option_description": "No confirmed current professional service activity."
+                "option_description": "Has no confirmed current professional service activity but has not confirmed retirement."
             },
             {
                 "option_code": "RT",
@@ -354,7 +373,7 @@
             {
                 "option_code": "UN",
                 "option_label": "Unknown",
-                "option_description": "Current availability cannot be confirmed."
+                "option_description": "Current professional practice cannot be confirmed."
             }
         ],
         "source_document": "docs/05-directory/therapist-classification.txt"

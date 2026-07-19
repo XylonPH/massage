@@ -1,35 +1,35 @@
 Title: Massage Nexus Therapist Profile Guide
-Document Version: 0.50
+Document Version: 0.60
 Date Created: 2026-07-14
-Revision Date: 2026-07-19
-Status: Internal Planning Reference
+Revision Date: 2026-07-20
+Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, privacy, and lifecycle of a Massage Nexus therapist profile. It distinguishes the public professional record from the user account, professional-context relationships, Therapist Workspace, booking engine, and branded website.
 
 Related Documents:
-- Massage Nexus - 03 - Features v1.90
-- Massage Nexus - 05 - Service Classification v2.00
-- Massage Nexus - 06 - Service Profile v0.20
-- Massage Nexus - 07 - Spa Classification v1.40
-- Massage Nexus - 08 - Spa Profile v0.30
-- Massage Nexus - 09 - Therapist Classification v1.30
-- Massage Nexus - 18 - Site Structure Map v1.80
-- Massage Nexus - 21 - User Workspace v0.20
-- Massage Nexus - 31 - Booking and Appointment System v1.00
-- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
-- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
-- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
-- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
-- Massage Nexus - Branded Portal v0.10
-- Massage Nexus - Review Writing v1.70
-- Massage Nexus - Rating System v1.10
-- Massage Nexus - Reputation System v1.70
+- docs/01-project/features.txt
+- docs/01-project/site-structure-map.txt
+- docs/02-governance/edit-system.txt
+- docs/05-directory/service-profile.txt
+- docs/05-directory/spa-profile.txt
+- docs/05-directory/therapist-classification.txt
+- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/09-content/review-writing.txt
+- docs/11-workspaces/therapist-workspace.txt
+- docs/11-workspaces/user-workspace.txt
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/12-booking/client-intake-consent-privacy-and-eligibility.txt
+- docs/12-booking/payment-cancellation-refund-payout-and-financial-documents.txt
+- docs/12-booking/provider-scheduling-resource-and-walk-in-management.txt
+- docs/13-localization/language-strategy.txt
+- docs/13-localization/translation-system.txt
+- docs/14-research/data-research-provenance-and-field-verification-system.txt
+- docs/15-business/branded-portal.txt
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
 
-DOCUMENT DESCRIPTION
---------------------
-This document defines the purpose, public content, layout direction, management boundaries, lifecycle rules, privacy rules, and future workspace direction of a Massage Nexus therapist profile.
+The therapist profile is the normalized public professional record used for discovery, services, affiliations, prices, availability, booking enablement, credentials, reviews, ratings, corrections, and professional history. It connects to, but remains distinct from, the therapist's user account, professional-context relationship records, private workspace, booking records, and branded website.
 
-The therapist profile is the normalized professional record used for discovery, services, affiliations, prices, availability, booking, credentials, reviews, ratings, corrections, and professional history. It is separate from the therapist's user account, establishment relationships, and branded website.
-
-This is not public documentation, a database schema, field catalog, credential schema, form specification, or scheduling specification. Detailed classification definitions remain in Therapist Classification.
+This is not public documentation, a database schema, field catalog, credential schema, form specification, scheduling specification, or complete workspace specification. Detailed classifications, booking behavior, private operations, provenance, and privacy requirements remain in their authoritative related documents.
 
 ================================================================================
 1. PROFILE PURPOSE AND BOUNDARIES
@@ -66,7 +66,8 @@ Stable Identity and Public Username
 - the therapist profile uses a stable therapist identifier and public profile slug whether claimed or unclaimed;
 - a claimed therapist may connect a user account and may receive or choose an approved public username;
 - username is not the database matching key and must not be used to create a second therapist record;
-- establishments connect the existing therapist profile by stable identity, invitation, claim, or reviewed matching.
+- establishments may propose a relationship to the existing therapist profile through stable identity, an affiliation invitation, or reviewed matching;
+- an establishment relationship proposal is not a claim to the therapist profile.
 
 No establishment owns the therapist's complete identity merely because the therapist works there.
 
@@ -83,12 +84,22 @@ Show when available:
 - short professional summary;
 - primary current location or service-area summary;
 - overall availability summary;
-- claim and identity-verification labels;
-- rating summary and review count;
-- starting price or price range with context;
+- separate claim, identity-verification, and booking-enablement labels;
+- official rating summary, rating count, and review count as separate facts;
+- starting price or price range with professional context, currency, representative duration,
+  material fee limitations, and last-confirmed date;
 - principal affiliation or independent-practice summary.
 
 Do not display one permanent Provider Rank or Therapist Service Market Class in the header when several professional contexts differ. Use a concise summary such as Prices and service level vary by location.
+
+Principal affiliation means a therapist-selected or transparently derived current professional
+context. It must not be inferred from sponsorship, advertising spend, rating, price, or
+establishment preference. When no principal context is established, show a neutral multi-context
+summary rather than selecting one silently.
+
+Claim, identity, contact, affiliation, credential, location, and booking verification are separate
+facets. Do not present one blanket Verified Therapist badge that implies every profile fact or
+professional claim has been verified.
 
 B. Primary Actions
 
@@ -103,6 +114,11 @@ B. Primary Actions
 - Report.
 
 Get Directions should appear only for an approved public practice location.
+
+Book appears only when at least one professional context is booking-enabled for the selected
+service. Contact, inquiry, external-booking, and affiliated-establishment actions must identify
+their destination and must not imply direct therapist contact or confirmed availability when that
+has not been established.
 
 C. Main Sections or Tabs
 
@@ -119,6 +135,17 @@ C. Main Sections or Tabs
 11. About, Verification, and Sources
 
 Empty sections may be hidden or replaced by a concise invitation to contribute information.
+
+D. Accessibility and Localization
+
+- tabs and actions must remain keyboard accessible and use meaningful headings and labels;
+- availability, claim, credential, rating, and booking states must not rely on color alone;
+- meaningful images require approved alternative text or an equivalent accessible description;
+- maps and directions require a non-map text alternative;
+- translated biographies, titles, and source-derived content remain connected to the original
+  language and identify machine translation when required;
+- safety-critical, consent, eligibility, payment, and policy text follows the high-risk translation
+  requirements in the Language Strategy and Translation System.
 
 ================================================================================
 3. IDENTITY, PUBLIC NAME, AND PRIVACY
@@ -144,19 +171,36 @@ The public profile should not normally display:
 
 Age or age range should appear only after a separate product decision and informed consent.
 
-A therapist may use the public occupational label Massage Therapist without implying that every credential, license, specialty, or identity claim has been verified. Verification details must be displayed separately.
+Public occupational titles, regulated-service claims, and booking eligibility must follow the
+rules of the applicable jurisdiction. Claiming a profile or declaring a capability does not
+authorize a protected title, licensed activity, medical claim, or regulated practice. Credential,
+license, scope, jurisdiction, and verification details must be displayed separately and only to
+the extent permitted and necessary.
+
+Unclaimed and Third-Party-Created Profiles
+------------------------------------------
+An unclaimed profile requires a documented lawful processing basis, source provenance, data
+minimization, appropriate notice, and accessible correction, objection, restriction, erasure or
+blocking, safety-suppression, and appeal routes. Public availability of a fact does not remove
+these obligations.
+
+An unclaimed profile must not expose a private contact channel, exact private location, identity
+evidence, or unsupported sensitive inference. Search indexing, cache removal, route redirection,
+and third-party delisting must be considered when a profile is suppressed or an applicable data-
+subject request is approved.
 
 ================================================================================
 4. CLASSIFICATION SUMMARY
 ================================================================================
 
-The profile may summarize classifications from Therapist Classification v1.30:
+The profile may summarize classifications from docs/05-directory/therapist-classification.txt:
 
 Therapist-Level or Broad Summary
 - Practice Settings;
 - Specialty Focus;
 - Client Focus;
 - credential summary derived from individual credential records;
+- Professional Practice Status;
 - general availability summary.
 
 Professional-Context Information
@@ -174,10 +218,13 @@ Important boundaries:
 
 - Work Arrangement may differ across affiliations.
 - Provider Rank is assigned by an establishment or organized provider.
-- Exact titles such as Master Reflexologist or Visiting Japanese Master should be preserved separately.
+- Exact titles such as Master Reflexologist or Visiting Master Therapist should be preserved separately.
 - Therapist Service Market Class describes one commercial service context and is assigned or confirmed by Massage Nexus.
 - A therapist may be Standard at one establishment and Premium in independent practice.
 - Ratings, credentials, provider rank, price, experience, and market class remain separate facts.
+- Professional Practice Status describes whether the person is currently practicing, inactive,
+  retired, or unknown. Availability Status describes whether a service context is accepting or
+  providing services. Person life status remains separate from both.
 
 ================================================================================
 5. SERVICES, CAPABILITIES, SPECIALTIES, AND PRICING
@@ -213,6 +260,12 @@ Capability does not automatically mean:
 
 The therapist's own commercial menu and an establishment's menu remain separate. Price belongs to the specific offering or affiliation context.
 
+Pressure, body-area competence, practitioner contact body parts, attire, undressing, treatment
+contact, and draping are service- or offering-level facts rather than unrestricted personal
+traits. Display them only in the relevant normalized service or booking context, with appropriate
+moderation and age, privacy, safety, consent, and localization controls. Do not infer them from
+photos, suggestive names, reviews, or free text.
+
 ================================================================================
 6. AFFILIATIONS, WORK ARRANGEMENTS, RANK, AND MARKET CLASS
 ================================================================================
@@ -246,7 +299,9 @@ A therapist may have several current or historical professional contexts:
 Each context may show:
 
 - organization or establishment;
-- current, past, temporary, or reported relationship;
+- relationship lifecycle, such as pending, active, temporary, or ended;
+- separate confirmation state, such as submitted, therapist-confirmed, independently verified,
+  disputed, or rejected;
 - Work Arrangement: Employee, Independent, or Contractor;
 - public role;
 - exact provider title;
@@ -264,9 +319,19 @@ Provider Rank may be Trainee, Junior, Regular, Senior, Specialist, Master, or Vi
 
 The establishment may submit its title and rank. The therapist may confirm or dispute it. Massage Nexus may moderate misleading titles.
 
+Relationship lifecycle and confirmation state answer different questions and must not be combined
+into one ambiguous status. A temporary relationship may be confirmed; a reported current
+relationship may remain unconfirmed or disputed.
+
 The therapist must actively confirm an affiliation before it is eligible for display on the establishment's public roster; a submitted but unconfirmed affiliation must not appear publicly as though it were active. An active disaffiliation or dispute must immediately remove the therapist from that establishment's public roster and availability pools rather than waiting for a moderation pass. This prevents an establishment from presenting a "ghost roster" of therapists who have left or never confirmed the relationship; see docs/05-directory/spa-profile.txt section 6.
 
-Disaffiliation Booking Workflow: When a therapist disaffiliates from or disputes a relationship with an establishment, any existing pending or confirmed bookings through that establishment must immediately enter a resolution workflow (e.g., reassign to another available therapist at the establishment, cancel the booking, or transition to the therapist's independent practice by mutual agreement of all parties).
+Disaffiliation Booking Workflow: When a therapist disaffiliates from or disputes a relationship
+with an establishment, stop new bookings and assignments for that context immediately. Existing
+pending or confirmed bookings enter the governed resolution workflow. A therapist-specific
+booking must not be silently reassigned. Reassignment, cancellation, refund, or transition to an
+independent practice requires the notices, permissions, client choice, price and policy snapshots,
+privacy controls, and mutual agreement applicable to that booking. Former provider access to
+client and intake information ends when no longer necessary or authorized.
 
 A freelance therapist uses an Independent Practice context. Provider Rank is normally not applicable, but service market class, prices, service areas, availability, and booking rules may still be recorded.
 
@@ -281,9 +346,16 @@ Availability Status:
 - Limited Availability;
 - Existing Clients Only;
 - Temporarily Unavailable;
+- Unknown.
+
+Professional Practice Status:
+- Active;
 - Inactive;
 - Retired;
 - Unknown.
+
+Availability applies per relevant professional context. Professional Practice Status applies to
+the therapist's overall current practice. Neither status is a person life-status field.
 
 Booking Requirement:
 - Walk-In Accepted;
@@ -292,6 +364,10 @@ Booking Requirement:
 
 Claim and Booking Boundary
 --------------------------
+The public profile exposes booking enablement and safe summaries. The Booking and Appointment
+System owns booking modes, selection, confirmation, intake, scheduling, resources, price
+calculation, policy snapshots, payment, cancellation, and completion behavior.
+
 An unclaimed therapist profile may support:
 - Personal Appointment Plan;
 - Personal Service History;
@@ -338,8 +414,17 @@ The client may still select:
 - multilingual note;
 - payment or deposit option.
 
-When booking through an affiliated establishment, therapist selection may be Required,
-Preferred, Provider Selects, No Preference, or Select Later according to establishment policy.
+Direct practitioner_service booking uses Specific Therapist Required unless the client explicitly
+leaves the direct-therapist flow. If the user chooses an establishment-first service instead, the
+establishment may offer Specific Therapist Required, Specific Therapist Preferred, Provider
+Selects Therapist, No Preference, or Select Later according to its policy. Any change that permits
+a substitute therapist must be clear before confirmation and must receive the client's explicit
+choice.
+
+Only professional contexts that offer the selected service and satisfy current affiliation,
+location, client-access, credential or scope, booking, schedule, resource, and travel requirements
+may be shown as bookable. Selecting a different context must recalculate and redisplay the
+applicable service, price, fees, policies, availability, and booking mode before confirmation.
 
 Capability and Commercial Offering
 ----------------------------------
@@ -361,38 +446,21 @@ An affiliated establishment controls its provider-side rule set for that context
 A privacy-preserving automated result may block an incompatible request before sensitive detail
 is disclosed to the therapist.
 
-Possible outcomes:
-- Eligible;
-- Eligible with Adaptation;
-- Disclosure Required;
-- Manual Review;
-- Referral Recommended;
-- Ineligible;
-- Answer Required;
-- Uncertain.
+Eligibility outcomes and their meaning are governed by the Client Intake, Consent, Privacy and
+Eligibility specification and must not be redefined by the profile.
 
 The assigned therapist receives only minimum necessary private intake during the permitted
-disclosure window. Intake does not become a permanently browseable client health profile.
+disclosure window. Intake does not become a permanently browsable client health profile.
 
-The client remains able to view submitted information. Signed snapshots use amendments instead
-of silent editing.
+The client remains able to view retained submitted information subject to applicable access,
+safety, legal, and retention limits. Signed snapshots use amendments instead of silent editing.
 
 Home and Mobile Safety
 ----------------------
-Home, hotel, event, and mobile booking may require:
-- verified contact;
-- service address;
-- building access;
-- safe workspace;
-- occupants;
-- pets;
-- parking and toll;
-- treatment support;
-- equipment;
-- arrival and departure check-in;
-- emergency contact where justified;
-- unsafe-location cancellation;
-- travel fee and time.
+Home, hotel, event, and mobile booking may require verified contact, a service address, safe-
+workspace information, access and travel details, equipment or treatment support, arrival and
+departure check-in, and an emergency contact where justified. These are collected privately
+through the booking and safety workflow rather than published on the profile.
 
 The therapist's private residence and habitual travel pattern remain protected.
 
@@ -416,27 +484,11 @@ travel patterns.
 
 Payment, Cancellation, and Completion
 -------------------------------------
-The therapist may configure:
-- pay on site;
-- direct payment;
-- bank transfer or external e-wallet;
-- fixed or percentage deposit;
-- full prepayment later;
-- cancellation;
-- no-show;
-- travel-started and provider-arrived rules;
-- refund;
-- rescheduling.
-
-After completion, the system may create:
-- private satisfaction survey;
-- rating invitation;
-- review invitation;
-- tip;
-- loyalty event;
-- Massage Nexus reward event;
-- compensation or provider-finance event where affiliated;
-- rebooking option.
+The public profile may summarize accepted payment methods, deposit or prepayment requirements,
+cancellation and rescheduling limitations, and whether online payment is enabled. The accepted
+booking retains the authoritative price and policy snapshots. Detailed payment, refund, payout,
+compensation, finance, and completion events remain governed by their booking and finance
+specifications.
 
 Provider loyalty, platform rewards, public ratings, public reviews, booking risk, and Reputation
 remain separate.
@@ -454,6 +506,10 @@ The profile may show:
 - city, district, province, travel radius, or supported zones;
 - home, hotel, corporate, event, maritime, or mobile service;
 - travel fees or restrictions;
+- supported spoken or signed languages and communication methods, with source and proficiency
+  context when known;
+- specific accessibility features, adaptations, and known limitations for each public practice
+  location or delivery context;
 - approved business contact methods.
 
 For home and mobile service:
@@ -472,6 +528,16 @@ The therapist chooses which public contact channels are allowed:
 - external booking link;
 - affiliated establishment contact.
 
+Each action must identify whether the client is contacting the therapist, an independent practice,
+an affiliated establishment, or an external booking provider. A verified telephone, email, social
+account, or website verifies that channel only; it does not verify identity, affiliation,
+credentials, availability, or booking authority.
+
+Accessibility must use specific known features and limitations rather than a generic Accessible
+label. Unknown or unconfirmed information must not be presented as No. A therapist's own
+disability, health information, or accommodation needs remain private unless the therapist gives
+specific informed consent for public disclosure.
+
 ================================================================================
 9. EXPERIENCE, EDUCATION, AND CREDENTIALS
 ================================================================================
@@ -480,11 +546,13 @@ Each credential should retain:
 
 - credential type and name;
 - issuer;
+- issuing jurisdiction and scope where applicable;
 - issue date;
 - expiry date where applicable;
 - supporting evidence;
 - Credential Verification Status;
 - Credential Lifecycle Status;
+- verification method and last verification date;
 - public-redaction rules;
 - source and review history.
 
@@ -512,6 +580,14 @@ The public summary should be derived from individual records, for example:
 
 A single conflicting profile-level credential status should not replace the underlying records.
 
+Supporting evidence and identity-matching material are private by default. A public credential
+image, identifier, holder name, signature, address, or other document detail requires a lawful
+purpose, publication permission where required, data minimization, and redaction. Rejected,
+disputed, or review-pending evidence must not automatically publish as an adverse professional
+claim. Public wording must distinguish verified active credentials from submitted, self-declared,
+expired, suspended, revoked, unknown, or otherwise unverified claims without overstating the
+issuer's authority or geographic scope.
+
 Other professional information may include:
 
 - education and training;
@@ -525,6 +601,10 @@ Other professional information may include:
 - public portfolio.
 
 Credentials support trust but do not automatically establish service quality, Provider Rank, or Therapist Service Market Class.
+
+Experience summaries should preserve their basis, source, and relevant dates. Do not calculate or
+display a precise number of years from an uncertain start date, ignore material gaps silently, or
+present self-declared experience as independently verified.
 
 ================================================================================
 10. MEDIA AND PUBLIC DOCUMENTS
@@ -540,6 +620,10 @@ Public media may include:
 - public credential images;
 - approved promotional media.
 
+Public media metadata should preserve, when relevant, the owner or uploader, source, permitted-
+use basis, represented professional context, capture or publication date, caption, accessible
+alternative text, language, moderation state, and last-confirmed date.
+
 Use a neutral placeholder when no approved photo exists.
 
 Media must not:
@@ -552,6 +636,11 @@ Media must not:
 - present unsafe conduct as professional practice.
 
 An establishment may propose media only with appropriate permission. The therapist may request removal or replacement.
+
+Photographs may support a human-reviewed duplicate investigation but must never be the sole merge
+evidence. Automated facial recognition or biometric matching requires a separate approved legal,
+privacy, security, bias, retention, and consent decision and is not authorized by this profile
+guide.
 
 ================================================================================
 11. REVIEWS, RATINGS, TRUST, AND RELATED CONTENT
@@ -575,28 +664,85 @@ The profile may include:
 - promotions;
 - similar therapists.
 
-Reviews should preserve the service, professional context, price, location, disclosure, and date when available. A review of one affiliation should not automatically describe every context in which the therapist works.
+Reviews and rating events should preserve the service, professional context, price, location,
+disclosure, and date when available. A review of one affiliation must not be presented as a review
+of every context in which the therapist works.
 
-Context-Specific Ratings: A rating or review earned at one affiliated establishment (e.g., a Standard market class setting) must be clearly attributed to that context. It must not be improperly aggregated into a single universal score that misrepresents the therapist's capability or service level in a different context (e.g., Premium independent practice).
+The primary therapist rating is the official therapist-target score governed by the Rating System.
+Eligible rating events from multiple professional contexts may contribute to that score because
+therapist criteria focus on the therapist rather than the establishment environment. The interface
+must retain and expose context attribution and may provide context filters or breakdowns. A
+therapist-wide rating must not be described as a rating of an establishment, price tier, Provider
+Rank, Therapist Service Market Class, credential, or every commercial promise made in each
+context. A context breakdown must not be labeled an official score unless the Rating System
+defines it as one.
+
+The public summary must show rating count separately from review count and identify the official
+score type and material limitations. Editorial reviews, user reviews, private satisfaction,
+content reactions, Reputation, and the official rating remain separate signals.
 
 ================================================================================
-12. CREATION, CLAIM, EDITING, AND PERMISSIONS
+12. SOURCES, VERIFICATION, AND FRESHNESS
 ================================================================================
 
-Public Visitor
-- view, save, follow, share, compare, report, review, rate, and suggest corrections when allowed.
+The profile must preserve field-level evidence and freshness according to
+docs/14-research/data-research-provenance-and-field-verification-system.txt and
+docs/02-governance/edit-system.txt.
 
-Registered Contributor
-- propose a profile, correction, translation, media, source, credential information, duplicate report, or merge request.
+Relevant properties may include:
+
+- source type, title, link, document, image, interview, or evidence reference;
+- source date and observation date;
+- contributor or researcher;
+- verification method and verifier;
+- confidence and verification status;
+- last checked and last confirmed dates;
+- conflicting observations and dispute state;
+- field language and translation context;
+- public explanation when useful and safe.
+
+Verification is faceted. The platform may independently verify public identity, authorized claim,
+contact channel, affiliation, location or service area, service capability, menu and price,
+credential, schedule source, booking configuration, payment readiness, or payout readiness. No one
+facet automatically verifies another.
+
+A claimed profile is not necessarily current; an unclaimed profile is not necessarily inaccurate;
+a verified contact does not prove professional identity or booking authority; and a credential
+must not be represented beyond its issuer, jurisdiction, scope, and validity.
+
+Freshness expectations vary by field. Availability, affiliations, contact channels, prices,
+promotions, service menus, credentials with expiry, and booking enablement normally require more
+recent confirmation than former names, education, or historical affiliations. Conflicting sources
+must remain reviewable and must not be silently resolved by selecting the most convenient value.
+
+================================================================================
+13. CREATION, CLAIM, EDITING, AND PERMISSIONS
+================================================================================
+
+Public Visitor or Guest
+- view, share, compare, report, and suggest corrections when allowed;
+- must authenticate before saving, following, reviewing, rating, or performing another action
+  reserved for a registered user.
+
+Registered User or Contributor
+- save, follow, review, and rate when eligible under the applicable community rules;
+- propose a profile, correction, translation, media, source, credential information, duplicate
+  report, or merge request.
 
 Claimed Therapist
 - manage approved identity, biography, contact choices, services, independent prices, availability, service areas, credentials, media, and affiliation responses;
 - confirm or dispute provider titles and ranks;
 - submit evidence relating to service market class;
 - request correction, merge, inactivity, retirement, or removal review;
-- cannot erase the complete public history.
+- cannot directly rewrite audit history, but may exercise applicable correction, objection,
+  restriction, erasure or blocking, safety-suppression, and appeal rights.
 
-Claim-Lock and Impersonation Prevention: An establishment owner or manager must never be permitted to claim a therapist's profile on their behalf. Profile claims must be authenticated directly against the therapist's individual user account. This prevents establishments from "locking" therapists out of their own professional identity or impersonating them to retain bookings and client relationships.
+Claim-Lock and Impersonation Prevention: An establishment role grants no authority to claim
+another person's therapist profile. A person who is both an establishment representative and the
+therapist may claim their own profile only through the individual therapist identity-verification
+workflow. Profile claims must authenticate the claimant's individual user account and verify the
+person-to-profile relationship. This prevents establishments from locking therapists out of their
+professional identity or impersonating them to retain bookings and client relationships.
 
 Authorized Establishment Owner or Manager
 - manage only the relationship to that establishment;
@@ -610,7 +756,7 @@ Administrator
 - add, edit, translate, restore, merge, soft-delete, and perform approved cleanup after dependency and safety checks.
 
 ================================================================================
-13. DUPLICATES, MERGE, INACTIVITY, AND LIFECYCLE
+14. DUPLICATES, MERGE, INACTIVITY, AND LIFECYCLE
 ================================================================================
 
 Duplicate review should compare:
@@ -635,23 +781,40 @@ A merge should:
 - redirect or connect the old route when appropriate;
 - preserve identity, contributions, revisions, and audit history;
 - review each affiliation, credential, review, service, booking, media, and source before transfer;
-- stop new activity on the merged record.
+- stop new activity on the merged record;
+- retain enough restricted evidence and audit history to support correction, appeal, and an
+  approved unmerge or recovery when a mistaken identity decision is discovered;
+- avoid redirecting an old public route when it would expose a sensitive former name, preserve a
+  false association, defeat an approved suppression, or create another privacy or safety risk.
 
-Availability and life status remain separate:
+Professional availability, practice status, person life status, and record lifecycle remain
+separate:
 
-- Temporarily Unavailable, Inactive, or Retired may preserve the public profile.
-- Deceased belongs to separate life-status handling and may use a respectful legacy presentation.
+- Temporarily Unavailable is an Availability Status.
+- Active, Inactive, Retired, and Unknown are Professional Practice Status values.
+- Deceased belongs to separate restricted person life-status handling and may use a respectful
+  legacy presentation only after appropriate evidence, review, notification or representation,
+  and appeal handling. Do not publish a cause of death through this status.
 - Soft deletion is reserved for invalid, fraudulent, duplicate, unsafe, test, unlawfully published, or otherwise unsuitable records.
 
 Hard deletion requires privacy, legal, safety, audit, retention, and dependency review.
 
 Contribution history should retain a limited target snapshot and indicate merge, removal, restoration, or replacement.
 
+A retained audit or dependency record does not require continued public display. Approved
+correction, objection, erasure or blocking, safety-suppression, and legal requests may restrict,
+delist, de-identify, or remove public information while preserving only records that remain
+lawfully necessary.
+
 ================================================================================
-14. CONFLICT OF INTEREST, SAFETY, AND SENSITIVE CONTENT
+15. CONFLICT OF INTEREST, SAFETY, AND SENSITIVE CONTENT
 ================================================================================
 
-A therapist and affiliated representatives should not earn points, Embers, Inklings, reputation, or ranking influence through self-review, self-rating, vote manipulation, artificial engagement, or reward-seeking corrections.
+A therapist and affiliated representatives must not receive points, Embers, Inklings, Reputation,
+or other rewards for self-review, self-rating, vote manipulation, artificial engagement, or
+reward-seeking corrections. Any connected-party rating permitted by the Rating System must be
+identified as connected, receive only the official influence defined there, and remain subject to
+conflict-of-interest and abuse controls. Manipulation remains prohibited.
 
 Official responses, credential submissions, affiliation confirmations, title or rank corrections, and schedule updates may remain allowed when clearly labeled and unrewarded.
 
@@ -670,57 +833,28 @@ The profile must not infer adult or sexual services from:
 
 Safety reports, misconduct allegations, legal complaints, precise private location, identity evidence, client medical data, and disciplinary information require restricted moderation workflows. Unverified accusations should not publish automatically.
 
+Publication of substantiated disciplinary or legal information requires an authoritative source,
+scope and jurisdiction review, necessity and proportionality review, appropriate notice and
+response opportunity, correction and appeal handling, and careful distinction among allegation,
+pending proceeding, finding, sanction, reversal, and expiry. Open or private investigations must
+not be exposed merely because a report exists.
+
 Professional-boundary guidance and report actions may be shown without turning the profile into an accusation page.
 
 ================================================================================
-15. THERAPIST WORKSPACE
+16. THERAPIST WORKSPACE
 ================================================================================
 
 The Therapist Workspace is a permission-aware context inside the general User Workspace.
 Every therapist user remains a client in Personal context.
 
-Early workspace areas may include:
-- public identity and biography;
-- claimed user-account link and approved public username;
-- services, capabilities, prices, and independent menu;
-- Specialty Focus and Client Focus;
-- practice settings and service areas;
-- availability and booking requirements;
-- affiliations, Work Arrangements, titles, and Provider Ranks;
-- service-market evidence;
-- credentials and verification submissions;
-- media and public documents;
-- notifications;
-- claims and correction responses;
-- Personal client bookings and history;
-- professional-context booking requests;
-- provider policies;
-- intake template and eligibility rules for independent practice;
-- assigned private-intake access;
-- schedule and external calendar connection;
-- home-service travel settings;
-- walk-in recording where applicable;
-- payment status and manual payment;
-- cancellation and no-show handling;
-- private satisfaction feedback;
-- provider loyalty where independently offered;
-- basic booking, service, revenue, and client-return analytics.
-
-Later modules may include:
-- synchronized multi-provider calendars;
-- advanced booking and payments;
-- waitlist;
-- resource reservation;
-- route and travel optimization;
-- private documents;
-- payout;
-- income, commission, tips, and compensation records;
-- invoices, receipts, and payment statements;
-- expenses and tax-oriented exports;
-- social-media publishing;
-- Branded Portal;
-- custom domain;
-- white-label presentation.
+The public profile specification governs what may appear publicly and what each public state or
+action must mean. docs/11-workspaces/therapist-workspace.txt governs private editing interfaces,
+delegation, affiliations, credentials, schedules, bookings, messages, private documents,
+analytics, payments, finance, and later professional tools. The workspace may update permitted
+profile information but must not silently control independent reviews, official ratings,
+community contributions, universal Service identity, editorial content, or accepted source
+history.
 
 A therapist employed by a spa may see assigned booking and compensation information without
 receiving owner-level finance, payroll, tax, or unrelated-client access.
@@ -729,7 +863,7 @@ The first public therapist profile should not wait for later financial, scheduli
 or portal modules.
 
 ================================================================================
-16. IMPLEMENTATION PRIORITIES AND OPEN ITEMS
+17. IMPLEMENTATION PRIORITIES AND OPEN ITEMS
 ================================================================================
 
 Initial Public Priority
@@ -743,41 +877,40 @@ Initial Public Priority
 - market context;
 - price;
 - availability summary;
+- Professional Practice Status;
 - service area;
 - credentials;
 - media;
 - reviews;
 - ratings;
+- field-level source, freshness, dispute, claim, and verification context;
 - booking-enablement label;
+- correction, report, privacy-request, and suppression routes;
+- accessible and localized presentation;
 - basic actions.
 
-Early Workspace
-- claim and user-account link;
-- independent menu;
-- affiliation confirmation;
-- rank dispute;
-- availability;
-- Inquiry Only and Request Approval;
-- policy and intake configuration;
-- basic schedule;
-- home-service area;
-- credentials;
-- media;
-- notifications;
-- analytics.
+Workspace, transactional, finance, portal, and operational dependency order belongs in the
+Roadmap and the authoritative workspace, booking, finance, and Branded Portal specifications. A
+public therapist profile must not depend on later payment, payout, compensation, synchronized
+calendar, route optimization, accounting, custom-domain, or white-label modules.
 
-Later Transactional and Operational Work
-- instant booking;
-- calendar synchronization;
-- waitlist;
-- online payment;
-- refund;
-- payout;
-- therapist compensation;
-- provider finance;
-- loyalty;
-- route optimization;
-- accounting export.
+Minimum Acceptance Invariants
+-----------------------------
+- an unclaimed profile cannot create a confirmed Massage Nexus reservation or collect payment;
+- direct practitioner_service booking keeps the selected therapist unless the client explicitly
+  chooses another flow;
+- changing professional context refreshes the eligible service, price, fee, policy, availability,
+  and booking presentation before confirmation;
+- an unconfirmed or actively disputed affiliation does not appear on the establishment's public
+  roster or enter its availability pool;
+- a private residence, private contact channel, identity evidence, sensitive intake, client
+  identity, or detailed travel pattern never appears through the public profile;
+- claim, identity, contact, affiliation, credential, location, booking, and payment verification
+  are not collapsed into one global verified state;
+- guests cannot submit official ratings, and rating count remains distinct from review count;
+- profile suppression can remove public display and indexing without requiring deletion of every
+  lawfully necessary restricted audit or dependency record;
+- accessibility and state meaning remain available without color, pointer, image, or map use.
 
 Current working decisions:
 - therapist profile identity is independent of employment;
@@ -786,6 +919,8 @@ Current working decisions:
 - direct practitioner booking does not ask the client to choose another therapist;
 - the client may still choose professional context and delivery location;
 - practitioner_capability remains separate from practitioner_service and availability;
+- therapist-wide official rating may use eligible events from several contexts while preserving
+  visible context attribution and avoiding market-class implications;
 - sensitive intake access is minimum, assigned, time-limited, and audited;
 - a therapist remains a client by default in Personal workspace context.
 
@@ -793,12 +928,16 @@ Open items requiring later legal, implementation, or market validation:
 - public username policy and uniqueness rules;
 - final identity and claim verification;
 - public-name and legal-name rules;
+- country- and locality-specific occupational-title, credential, regulated-service, advertising,
+  client-access, and disciplinary-publication rules;
 - live schedule detail;
 - credential redaction;
 - public age policy;
 - provider versus therapist control of shared booking data;
+- final primary-affiliation selection and profile-summary aggregation rules;
+- profile search indexing, cache removal, suppression, and delisting implementation;
+- policy for minors or legally represented trainees;
 - payment-gateway and payout implementation;
 - country-specific invoice and tax support;
 - exact intake-retention rules;
 - premium workspace and Branded Portal limits.
-

@@ -1,24 +1,18 @@
 Title: Massage Nexus Therapist Workspace
-Document Version: 0.20
+Document Version: 0.30
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
-Status: Internal Planning Draft
+Revision Date: 2026-07-20
+Document Description: Defines the permission-aware private workspace used by therapists and practitioners to manage professional profile information, services, affiliations, credentials, availability, bookings, privacy, messages, verification, analytics, and professional settings within the general Massage Nexus User Workspace.
 
 Related Documents:
-- Massage Nexus - 09 - Therapist Profile v0.20
-- Massage Nexus - 08 - Therapist Classification v1.30
-- Massage Nexus - 18 - Site Structure Map v1.70
-- Massage Nexus - 19 - Edit System v0.10
-- Massage Nexus - 20 - Translation System v0.10
-- Massage Nexus - 21 - User Workspace v0.10
+- docs/01-project/site-structure-map.txt
+- docs/02-governance/edit-system.txt
+- docs/05-directory/therapist-profile.txt
+- docs/05-directory/therapist-classification.txt
+- docs/11-workspaces/user-workspace.txt
 - docs/11-workspaces/operator-workspace.txt
-- Shared Project Standards v2.60
-
-DOCUMENT DESCRIPTION
---------------------
-This document defines the private workspace used by therapists and practitioners represented in Massage Nexus.
-
-The workspace supports professional profile information, privacy, service capabilities, direct service offerings, establishment affiliations, credentials, availability, service areas, media, reviews, bookings, messages, verification, analytics, and professional settings.
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/13-localization/translation-system.txt
 
 The Therapist Workspace is part of /workspace and uses the same account, permission, revision, translation, and security systems as the rest of Massage Nexus.
 
@@ -388,12 +382,17 @@ Possible route:
 
 /workspace/listing/therapist/{therapist-id}/availability
 
-Profile availability statuses may include:
+Professional-context Availability Status may include:
 
 - Available;
 - Limited Availability;
 - Existing Clients Only;
 - Temporarily Unavailable;
+- Unknown.
+
+Therapist-level Professional Practice Status may include:
+
+- Active;
 - Inactive;
 - Retired;
 - Unknown.

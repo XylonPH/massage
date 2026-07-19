@@ -1,11 +1,8 @@
-Document Title: Massage Nexus: Therapist Classification
-Document Version: 1.35
+Title: Massage Nexus Therapist Classification
+Document Version: 1.40
 Date Created: 2026-07-11
-Revision Date: 2026-07-15
-
-DOCUMENT DESCRIPTION
---------------------
-This document defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus. It includes recommended snake_case field names, stable option codes, concise labels, and internal descriptions.
+Revision Date: 2026-07-20
+Document Description: Defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus, including recommended snake_case field names, stable option codes, labels, and internal descriptions.
 
 This is a compact taxonomy reference, not public documentation, a database schema, a therapist-profile specification, a credential schema, or a scheduling system. Some fields apply to the therapist generally; Work Arrangement, Provider Rank, Therapist Service Market Class, Client Access, and Booking Requirement may instead apply to a specific establishment affiliation or independent-practice context.
 
@@ -14,6 +11,10 @@ GENERAL RULES
 - Use Therapist as the public Massage Nexus term.
 - Do not create one broad Therapist Type field that mixes profession, work arrangement, specialty, service, technique, and training status.
 - Work Arrangement and Provider Rank describe a particular professional context and may differ across affiliations.
+- Availability Status describes acceptance or provision of service in an applicable professional
+  context. Professional Practice Status describes the therapist's overall current practice.
+- Person life status and record lifecycle remain separate from both availability and professional
+  practice status.
 - Provider Rank records a rank assigned by an establishment or organized provider; it does not prove credentials or quality.
 - Therapist Service Market Class describes the market position of a specific therapist service context, not the permanent worth or skill of the person.
 - Exact provider-specific rank titles may be preserved separately from the normalized Provider Rank.
@@ -173,14 +174,38 @@ AV   | Available              | Actively accepting or providing services under n
 LM   | Limited Availability   | Accepting services only within restricted days, hours, locations, services, or capacity.
 EC   | Existing Clients Only  | Continuing current client relationships but not accepting new clients.
 TU   | Temporarily Unavailable| Not presently accepting or providing services but expected to return.
-IN   | Inactive               | No confirmed current professional service activity.
-RT   | Retired                | Has ended professional practice.
 UN   | Unknown                | Current availability cannot be confirmed.
 
-Death is a separate life-status fact and is not an Availability Status.
+Inactive and Retired describe overall professional practice rather than availability in one
+service context. Death is a separate person life-status fact. None of these belong in Availability
+Status.
 
 ================================================================================
-7. BOOKING REQUIREMENT
+7. PROFESSIONAL PRACTICE STATUS
+================================================================================
+
+Field Name: status_therapist_practice
+Field Label: Professional Practice Status
+Selection: Single-select per therapist
+
+Code | Label    | Description
+-----|----------|------------------------------------------------------------
+AC   | Active   | Has confirmed current professional practice in at least one context.
+IN   | Inactive | Has no confirmed current professional service activity but has not confirmed retirement.
+RT   | Retired  | Has ended professional practice.
+UN   | Unknown  | Current professional practice cannot be confirmed.
+
+Rules
+-----
+- Stale availability, an empty schedule, temporary unavailability, or one ended affiliation does
+  not by itself prove Inactive or Retired.
+- Retired may preserve a historical public profile and may later return to Active after appropriate
+  confirmation.
+- Professional Practice Status is separate from person life status, profile claim, moderation,
+  verification, and record lifecycle.
+
+================================================================================
+8. BOOKING REQUIREMENT
 ================================================================================
 
 Field Name: mode_therapist_booking
@@ -196,7 +221,7 @@ AR   | Appointment Required  | Service must be arranged in advance.
 On Call is a scheduling arrangement and is not retained in this classification document.
 
 ================================================================================
-8. CLIENT ACCESS
+9. CLIENT ACCESS
 ================================================================================
 
 Field Name: type_client_access
@@ -216,7 +241,7 @@ PC   | Private Clientele    | Accepts only invited, referred, approved, or selec
 A therapist may have different Client Access rules at different affiliations or service contexts.
 
 ================================================================================
-9. CLIENT FOCUS
+10. CLIENT FOCUS
 ================================================================================
 
 Field Name: target_client_focus
@@ -241,7 +266,7 @@ OW   | Office Workers    | Focuses on workplace stress, occupational strain, rep
 Client Focus does not restrict access unless Client Access says otherwise.
 
 ================================================================================
-10. CREDENTIAL VERIFICATION STATUS
+11. CREDENTIAL VERIFICATION STATUS
 ================================================================================
 
 Field Name: status_credential_verification
@@ -257,7 +282,7 @@ NR   | Needs Review  | Information is incomplete, conflicting, disputed, or requ
 RJ   | Rejected      | Submitted credential claim was not accepted after review.
 
 ================================================================================
-11. CREDENTIAL LIFECYCLE STATUS
+12. CREDENTIAL LIFECYCLE STATUS
 ================================================================================
 
 Field Name: status_credential_lifecycle

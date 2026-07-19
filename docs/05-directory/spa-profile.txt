@@ -1,7 +1,7 @@
 Title: Massage Nexus Spa Profile Guide
-Document Version: 0.60
+Document Version: 0.70
 Date Created: 2026-07-14
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, and lifecycle of a Massage Nexus spa profile. It distinguishes the public establishment record from the Operator Workspace, Branded Portal, organization record, booking engine, and private operational data.
 
 Related Documents:
@@ -397,9 +397,10 @@ Live availability may be shown only when the booking system has confirmed all re
 therapist, resource, location, travel, capacity, preparation, sanitation, and cleanup constraints.
 
 Public availability should distinguish descriptive profile status from live schedule-derived
-states. Available, Limited Availability, Existing Clients Only, Temporarily Unavailable,
-Inactive, Retired, and Unknown remain profile-level summaries. On Duty, Fully Booked Today,
-queue position, and next slot are derived operational data.
+states. Available, Limited Availability, Existing Clients Only, Temporarily Unavailable, and
+Unknown are service-context Availability Status values. Active, Inactive, Retired, and Unknown
+are therapist-level Professional Practice Status values. On Duty, Fully Booked Today, queue
+position, and next slot are derived operational data.
 
 Eligibility and Private Intake Boundary
 ---------------------------------------

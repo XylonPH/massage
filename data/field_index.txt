@@ -204,6 +204,7 @@ status_source_reliability
 status_sync
 status_task
 status_therapist_availability
+status_therapist_practice
 status_update
 status_user_confirmation
 status_verification
