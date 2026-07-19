@@ -1,0 +1,362 @@
+Title: Massage Nexus Payment, Cancellation, Refund, Payout and Financial Documents
+Document Version: 0.10
+Date Created: 2026-07-17
+Revision Date: 2026-07-17
+Status: Internal Planning Reference
+Shared Standard Reference: Shared Project Standards v2.60
+
+Related Documents:
+- Massage Nexus - 05 - Service Classification v2.00
+- Massage Nexus - 06 - Service Profile v0.20
+- Massage Nexus - 07 - Spa Profile v0.10
+- Massage Nexus - 09 - Therapist Profile v0.10
+- Massage Nexus - 11 - Product Classification v1.40
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+- Massage Nexus - User Rewards and Gamification v1.60
+- Massage Nexus - Translation System v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working commercial flow connected to Massage Nexus booking: price quotation, deposits, full payment, manual payment, platform fees, commission, cancellation, no-show handling, refunds, payouts, tips, disputes, and financial documents.
+
+The document plans complete capability while permitting staged implementation. It does not provide country-specific tax or legal advice.
+
+================================================================================
+1. PAYMENT MODES
+================================================================================
+
+Field Name: type_booking_payment_mode
+Field Label: Booking Payment Mode
+Selection: Multi-select permitted by provider
+
+Code | Label                         | Description
+-----|-------------------------------|------------------------------------------------------------
+ONS  | Pay On Site                   | Client pays at the provider location.
+DIR  | Pay Provider Directly         | Client pays the provider through an external method.
+DEP  | Deposit Through Massage Nexus | Client pays a required deposit through an approved gateway.
+FUL  | Full Payment Through Massage Nexus | Client pays the full amount through an approved gateway.
+EXT  | External Online Payment       | Provider supplies an external payment link or reference.
+CSH  | Cash Collection               | Authorized person collects cash under a recorded workflow.
+BNK  | Bank Transfer                 | Client transfers to an approved account and provides reference.
+EWL  | External E-Wallet             | Client pays through an approved external e-wallet.
+CRD  | Card Payment                  | Approved gateway processes card payment.
+MNL  | Manual Payment Record         | Provider records an externally completed payment.
+
+Payment mode does not itself confirm the booking. The provider configuration defines whether payment is required before confirmation.
+
+================================================================================
+2. PAYMENT REQUIREMENT
+================================================================================
+
+Field Name: type_payment_requirement
+Field Label: Payment Requirement
+Selection: Single-select per quote or booking
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+NON  | No Advance Payment  | Payment is due later.
+FIX  | Fixed Deposit       | A fixed amount is required.
+PCT  | Percentage Deposit  | A percentage of the eligible total is required.
+FUL  | Full Prepayment     | Full payment is required before confirmation.
+AUT  | Provider Determines | Provider chooses after reviewing the request.
+RSK  | Risk-Based Deposit  | Deposit is required by approved booking-risk rules.
+
+Deposit computation must specify eligible subtotal, taxes, travel fee, discounts, product upgrades, rounding, minimum, maximum, and currency.
+
+================================================================================
+3. PRICE BREAKDOWN
+================================================================================
+
+A quote or confirmed booking may contain:
+- service subtotal;
+- participant subtotal;
+- duration adjustment;
+- product upgrade;
+- add-on;
+- facility access;
+- travel fee;
+- parking or toll;
+- equipment fee;
+- late-night surcharge;
+- group discount;
+- promo;
+- voucher;
+- loyalty redemption;
+- tax;
+- Massage Nexus client booking fee;
+- provider-funded platform commission;
+- tip;
+- total;
+- amount due now;
+- remaining balance.
+
+The client must see a known total or clearly labeled estimate, what may still change, who may change it, and acceptance deadline.
+
+Provider public menu price must not be silently increased.
+
+================================================================================
+4. PLATFORM REVENUE MODELS
+================================================================================
+
+Field Name: type_platform_booking_revenue
+Field Label: Platform Booking Revenue Model
+Selection: Multi-select by provider plan or transaction
+
+Code | Label                       | Description
+-----|-----------------------------|------------------------------------------------------------
+SUB  | Subscription                | Provider pays a recurring plan.
+COM  | Provider Commission         | Massage Nexus deducts a disclosed percentage or amount from provider proceeds.
+CBF  | Client Booking Fee          | Client pays a separately disclosed booking fee.
+FLT  | Flat Provider Fee           | Provider pays a fixed fee per eligible booking.
+HYB  | Hybrid                      | Combination of subscription and transaction fee.
+NON  | No Platform Fee             | Booking is offered without transaction revenue under applicable plan.
+MAN  | Manual Commercial Agreement | Individually agreed commercial arrangement.
+
+Provider-funded commission example:
+- service price: PHP 1,000;
+- platform commission: PHP 80;
+- provider proceeds: PHP 920.
+
+Client booking-fee example:
+- service price: PHP 1,000;
+- client booking fee: PHP 40;
+- provider service proceeds: PHP 1,000.
+
+The interface must not disguise a platform fee as the provider's service price.
+
+================================================================================
+5. MANUAL AND OFFLINE PAYMENT
+================================================================================
+
+Massage Nexus may support manually recorded payment before full gateway automation.
+
+Manual methods may include cash paid at provider, bank transfer, external e-wallet, payment link, authorized Massage Nexus representative collection, provider-to-platform settlement, and platform-to-provider settlement.
+
+Required controls:
+- amount;
+- currency;
+- payer;
+- recipient;
+- method;
+- reference;
+- proof;
+- received_at;
+- recorded_by;
+- verified_by;
+- verification status;
+- discrepancy;
+- audit history.
+
+Manual collection by Massage Nexus staff or representatives requires authorization, numbered acknowledgment, custody rules, deposit deadline, reconciliation, loss and incident procedure, and separation of collector and verifier where practical.
+
+================================================================================
+6. CANCELLATION POLICY
+================================================================================
+
+Provider policy may define free cancellation deadline, late cancellation fee, non-refundable deposit, rescheduling allowance, rescheduling count, client no-show, provider cancellation, therapist already traveling, therapist already arrived, supplies prepared, room reserved, group partial cancellation, compassionate exception, weather or force majeure, refund method, and refund processing time.
+
+Field Name: type_cancellation_actor
+Field Label: Cancellation Actor
+Selection: Single-select per cancellation
+
+Code | Label         | Description
+-----|---------------|------------------------------------------------------------
+CLI  | Client        | Client or booking party cancels.
+PRO  | Provider      | Establishment, therapist, or authorized staff cancels.
+SYS  | System        | System cancels because of expiry, invalid payment, conflict, or enforcement.
+MUT  | Mutual        | Client and provider mutually agree.
+FOR  | Force Majeure | Cancellation is attributed to an approved uncontrollable event.
+
+Field Name: type_cancellation_timing
+Field Label: Cancellation Timing
+Selection: Single-select
+
+Code | Label              | Description
+-----|--------------------|------------------------------------------------------------
+FRE  | Within Free Window | Cancellation occurs before the penalty deadline.
+LAT  | Late Cancellation  | Cancellation occurs after the free window.
+TRV  | Travel Started     | Off-site provider travel already began.
+ARR  | Provider Arrived   | Provider reached the service location.
+CHK  | After Check-In     | Client checked in or provider began intake.
+IPR  | During Service     | Service already began.
+NSH  | No-Show            | Party did not attend or appear under policy.
+
+A booking stores the accepted policy snapshot.
+
+================================================================================
+7. REFUND OUTCOME
+================================================================================
+
+Field Name: status_refund_outcome
+Field Label: Refund Outcome
+Selection: Single-select per refund decision
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+FLL  | Full Refund       | Full eligible amount is returned.
+PRT  | Partial Refund    | Part of the amount is returned.
+CRD  | Booking Credit    | Amount becomes credit for another eligible booking.
+RSC  | Rescheduled       | Amount remains attached to a replacement schedule.
+NON  | No Refund         | Policy or reviewed outcome provides no refund.
+PND  | Pending Review    | Refund requires review.
+DEN  | Denied            | Refund request was reviewed and denied.
+CHB  | Chargeback        | Payment was reversed through payment provider.
+MAN  | Manual Settlement | Parties resolved outside automated refund flow.
+
+Refund record preserves requested amount, approved amount, reason, policy reference, actor, approval, method, gateway reference, processed_at, expected arrival, and dispute relationship.
+
+================================================================================
+8. PROVIDER CANCELLATION AND FAILURE
+================================================================================
+
+Provider cancellation may trigger full refund, client booking-fee refund, alternative therapist, alternative branch, reschedule, travel reimbursement under policy, apology credit, internal reliability signal, notification, and incident review.
+
+Provider no-show must not be treated the same as ordinary provider cancellation.
+Repeated provider failure may affect booking enablement, verification, platform privileges, payout hold, internal risk, public operational statistics where policy allows, and moderation.
+
+================================================================================
+9. TIPS
+================================================================================
+
+Tip remains separate from service price, tax, service charge, platform fee, and therapist compensation.
+
+Field Name: type_tip_method
+Field Label: Tip Method
+Selection: Single-select
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+MNP  | Through Massage Nexus | Tip is processed through the platform.
+CSH  | Cash                  | Tip is paid directly in cash.
+DIR  | Direct Electronic     | Tip is paid directly through another electronic method.
+POL  | Pooled                | Tip is placed in a provider-managed pool.
+UNK  | Unspecified           | Tip was recorded but method is not known.
+
+Tip record may include amount, currency, payer, intended recipient, actual recipient, pooled status, provider confirmation, therapist confirmation, client confirmation, payment transaction, tax or payroll classification, and dispute.
+
+================================================================================
+10. PAYOUTS
+================================================================================
+
+A platform-handled payment may produce provider payout.
+
+Payout calculation may include collected amount, refunded amount, chargeback, provider-funded commission, processing fee, client booking fee treatment, tax withholding where applicable, reserve, adjustment, tip routing, and net payout.
+
+Field Name: status_payout
+Field Label: Payout Status
+Selection: Single-select
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+PND  | Pending    | Payout has not entered processing.
+HLD  | On Hold    | Verification, dispute, reserve, or risk prevents release.
+SCH  | Scheduled  | Payout is scheduled.
+PRC  | Processing | Payout was submitted.
+PAD  | Paid       | Payout completed.
+FLD  | Failed     | Payout failed.
+RTN  | Returned   | Payout was returned.
+CAN  | Cancelled  | Payout was cancelled.
+MAN  | Manual     | Settlement occurs through approved manual process.
+
+Payout access requires financial permission separate from ordinary booking permission.
+
+================================================================================
+11. WALLET AND STORED BALANCE
+================================================================================
+
+A Massage Nexus stored-value wallet is not part of initial implementation.
+
+Complete planning decision:
+- external payment provider is preferred first;
+- booking credits may exist without becoming freely transferable stored money;
+- provider credits, refunds, gift cards, and promotional balances remain separately classified;
+- a future wallet requires dedicated legal, security, fraud, reconciliation, account-recovery, dormant-balance, and regulatory review.
+
+Do not simulate a wallet by storing unexplained monetary balances in the user profile.
+
+================================================================================
+12. FINANCIAL DOCUMENT TYPES
+================================================================================
+
+Field Name: type_financial_document
+Field Label: Financial Document Type
+Selection: Single-select
+
+Code | Label                  | Description
+-----|------------------------|------------------------------------------------------------
+QTE  | Price Quote            | Proposed price requiring acceptance.
+BCF  | Booking Confirmation   | Appointment confirmation and booking summary.
+DEP  | Deposit Acknowledgment | Records receipt or recognition of deposit.
+PAY  | Payment Acknowledgment | Records payment without necessarily serving as tax invoice.
+INV  | Provider Invoice       | Provider-issued sales or tax invoice under configured jurisdiction.
+RCT  | Payment Receipt        | Receipt or gateway acknowledgment for payment processing.
+RFD  | Refund Document        | Records refunded amount and method.
+PYO  | Payout Statement       | Shows platform-to-provider settlement.
+CMP  | Compensation Statement| Shows therapist compensation from eligible service events.
+STM  | Account Statement      | Period summary of eligible transactions.
+CRN  | Credit Note            | Records approved reduction or credit under applicable accounting rules.
+
+Financial document stores issuer, recipient, provider legal identity, tax profile, booking, transaction, document number, jurisdiction, currency, line items, tax, total, language, template, issue date, status, PDF or printable rendition, and correction relationship.
+
+================================================================================
+13. COUNTRY-SPECIFIC INVOICE CONFIGURATION
+================================================================================
+
+Massage Nexus should not claim that one global template is legally valid everywhere.
+
+Provider tax configuration may include legal name, trade name, registered address, tax identifier, branch, tax status, invoice authorization or numbering, currency, required labels, required footer, tax rates, exemptions, document sequence, digital or printed rules, retention, and issuing role.
+
+Customization may change logo, accent, optional fields, paper size, printer format, language, and optional footer. It must not remove required jurisdictional information.
+
+A payment-gateway receipt is not automatically the provider's tax invoice.
+
+================================================================================
+14. PRINT AND PDF FORMATS
+================================================================================
+
+Supported output may include A4, Letter, thermal receipt width, compact booking slip, provider-defined preprinted form alignment, PDF, browser print, supported printer, email attachment, and secure download.
+
+Template configuration must preserve readable line items, currency, provider, client or payer, booking, issue date, document number, status, legal fields, page count, and duplicate or reprint label.
+
+================================================================================
+15. DISPUTES AND CHARGEBACKS
+================================================================================
+
+Dispute may concern wrong amount, duplicate charge, provider cancellation, no-show disagreement, service not delivered, unauthorized payment, refund delay, tip dispute, commission, payout, or manual collection.
+
+The dispute record links booking, payment, refund, policy, messages, evidence, provider response, client response, decision, appeal, chargeback, moderation, and audit.
+
+================================================================================
+16. PREMIUM FEATURE BOUNDARY
+================================================================================
+
+Possible provider premium features include instant confirmation, online payment, custom invoice branding, advanced cancellation automation, payout reports, multiple tax profiles, multi-branch finance, therapist compensation automation, accounting export, and automated reconciliation.
+
+Basic booking confirmation and transparent pricing should not be intentionally crippled merely to force premium purchase.
+
+================================================================================
+17. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial:
+- pay on site;
+- direct external payment instructions;
+- manual deposit record;
+- quote;
+- accepted cancellation policy;
+- payment status;
+- printable booking confirmation.
+
+Later:
+- approved payment gateway;
+- deposit;
+- full payment;
+- refund;
+- payout;
+- tip;
+- provider invoice;
+- platform commission;
+- reconciliation;
+- multi-country templates.

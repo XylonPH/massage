@@ -1,0 +1,760 @@
+Title: Massage Nexus Privacy Notice and Data Protection Requirements
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Privacy Requirements Draft
+Publication Status: Not approved for public use
+Authority: Planning reference pending final data inventory, controller details, retention schedule, and qualified review
+Shared Standard Version: 2.60
+
+DOCUMENT PURPOSE
+----------------
+This document defines the data-protection architecture and the content required in the
+future public Massage Nexus Privacy Notice.
+
+It is not yet the final public notice.
+
+Before publication, insert:
+- exact personal information controller;
+- Data Protection Officer or privacy contact;
+- legal and business address;
+- final processors and vendors;
+- final purposes and lawful bases;
+- exact retention periods;
+- international-transfer arrangements;
+- data-subject request procedure;
+- complaint and escalation channels;
+- launch jurisdictions;
+- effective date and version.
+
+================================================================================
+1. PRIVACY PRINCIPLES
+================================================================================
+
+Massage Nexus should follow:
+- transparency;
+- legitimate purpose;
+- proportionality;
+- data minimization;
+- purpose limitation;
+- accuracy;
+- privacy by design and by default;
+- security appropriate to risk;
+- restricted access;
+- retention limitation;
+- accountability;
+- user control;
+- protection of sensitive personal information;
+- documented incident response.
+
+Consent is not the only possible basis for processing. The final notice must identify the
+appropriate basis for each purpose and must not ask for unnecessary consent when another
+lawful basis applies.
+
+When consent is used, it must be specific, informed, freely given, demonstrable, and
+withdrawable where applicable.
+
+================================================================================
+2. CONTROLLER AND NETWORK ACCOUNT STRUCTURE
+================================================================================
+
+The final notice must explain:
+- who controls the shared network account;
+- who controls Massage Nexus site-membership data;
+- whether one legal entity controls both;
+- whether future network sites act as the same controller, joint controllers, or separate
+  controllers;
+- which universal settings are reused;
+- which data remains site-specific;
+- whether enforcement or fraud information may be shared across participating sites.
+
+Registering through Massage Nexus creates:
+- a shared network account; and
+- a Massage Nexus membership.
+
+It does not automatically create public profiles on every future network site.
+
+Universal information may include:
+- username;
+- verified contacts;
+- security credentials;
+- language;
+- time zone;
+- universal avatar;
+- security events and account recovery information.
+
+Massage Nexus-specific information may include:
+- public profile;
+- massage preferences;
+- bookings;
+- service history;
+- reviews;
+- contributions;
+- rewards;
+- provider roles;
+- mature-content preference;
+- Massage Nexus restrictions.
+
+================================================================================
+3. DATA CATEGORIES
+================================================================================
+
+3.1 Registration and Identity Data
+- username;
+- date of birth;
+- age-eligibility result;
+- public display name when provided;
+- private legal identity when needed for a specific verified function;
+- account and membership statuses;
+- policy-acceptance records.
+
+3.2 Contact Data
+- email address;
+- email-verification status;
+- mobile number when added;
+- mobile-verification status;
+- contact-change history where justified;
+- communication preferences.
+
+3.3 Authentication and Security Data
+- password hash, never plaintext password;
+- external identity-provider identifiers;
+- passkey public credential information;
+- TOTP configuration data protected appropriately;
+- recovery-code verifiers;
+- session and device records;
+- login times;
+- failed attempts;
+- approximate IP and network information;
+- risk signals;
+- security-event and recovery history;
+- administrative security actions.
+
+Massage Nexus does not need the user's biometric template for passkeys. Face, fingerprint,
+or device-PIN verification remains with the device or authenticator.
+
+3.4 Profile and Preference Data
+- avatar and cover references;
+- biography;
+- profile visibility;
+- languages;
+- time zone;
+- regional formats;
+- accessibility settings;
+- interests;
+- notification settings;
+- saved and followed items;
+- blocked users;
+- public and private profile fields.
+
+3.5 Location Data
+- general home or preferred search area;
+- manually entered location;
+- location permission state;
+- approximate or precise device location only when an approved feature requires it;
+- booking, service, delivery, or provider location;
+- map and route interactions where logged.
+
+Precise location should not be collected during basic registration.
+
+3.6 Booking and Service Data
+- booking party and participants;
+- selected services;
+- provider;
+- therapist preference;
+- date and time;
+- delivery context;
+- booking status;
+- communications;
+- cancellation;
+- payment status;
+- loyalty and post-service actions.
+
+3.7 Sensitive Intake and Consent Data
+- health-related intake;
+- contraindications;
+- injury or condition information;
+- medication or allergy information where requested;
+- pregnancy information where relevant;
+- accessibility and assistance needs;
+- guardian or support-person information where applicable;
+- service consent;
+- body-area, draping, contact, and boundary preferences.
+
+Sensitive intake must remain separate from ordinary profile, booking, analytics, and public
+content. Access must be limited to authorized persons for an approved time and purpose.
+
+3.8 Content and Community Data
+- reviews;
+- ratings;
+- discussions;
+- comments;
+- corrections;
+- contributions;
+- moderation history;
+- reports;
+- appeals;
+- translations;
+- sources;
+- reaction and reputation activity.
+
+3.9 Media and Document Data
+- images;
+- videos;
+- animated profile media;
+- captions;
+- accessibility text;
+- technical metadata;
+- moderation and NSFW classification;
+- storage and processing metadata;
+- ownership, release, or consent evidence where required.
+
+3.10 Communication Data
+- messages;
+- notifications;
+- support requests;
+- provider inquiries;
+- security notices;
+- email and SMS delivery records;
+- communication preferences.
+
+3.11 Payment and Commerce Data
+- amount;
+- currency;
+- booking or order reference;
+- payment-provider token or reference;
+- payment status;
+- refund;
+- chargeback;
+- payout;
+- tax and financial-document information;
+- limited fraud signals.
+
+Avoid storing full payment-card details. Use approved payment-provider tokenization.
+
+3.12 Provider and Professional Data
+- business identity;
+- practitioner identity;
+- qualifications;
+- claims and verification evidence;
+- affiliations;
+- roles;
+- permissions;
+- schedules;
+- financial and payout information;
+- managed records;
+- professional moderation and dispute history.
+
+3.13 Technical and Usage Data
+- browser and device type;
+- operating-system family;
+- application version;
+- request logs;
+- security logs;
+- error identifiers;
+- cookie and session data;
+- performance;
+- page and feature use;
+- search and interaction history where approved;
+- referral and campaign information.
+
+3.14 AI and Translation Data
+- prompt or input sent to an approved AI provider;
+- output;
+- provider;
+- purpose;
+- human-review status;
+- translation source and output;
+- retention and opt-out controls where applicable.
+
+Do not send private intake, secrets, payment credentials, or restricted information to a
+general AI provider without an accepted, necessary, protected processing arrangement.
+
+================================================================================
+4. PURPOSES OF PROCESSING
+================================================================================
+
+Purposes may include:
+- create and secure an account;
+- verify eligibility and contacts;
+- provide shared network settings;
+- activate Massage Nexus membership;
+- personalize language, time zone, accessibility, and content;
+- provide directory and discovery features;
+- process bookings;
+- support provider operations;
+- provide reviews, ratings, discussions, and contributions;
+- manage claims and verification;
+- process payments and refunds;
+- send operational, verification, booking, and security communications;
+- provide support;
+- prevent fraud, impersonation, abuse, and unauthorized access;
+- moderate content;
+- meet legal obligations;
+- preserve evidence and resolve disputes;
+- measure performance and improve the service;
+- provide approved AI, search, and translation functions;
+- maintain backups and business continuity;
+- enforce Terms and policies.
+
+The final notice must map each data category and purpose to an appropriate lawful basis.
+
+================================================================================
+5. REQUIRED, OPTIONAL, AND INFERRED DATA
+================================================================================
+
+The interface should label:
+- required registration data;
+- optional profile data;
+- required booking data;
+- optional booking preferences;
+- sensitive intake;
+- automatically suggested settings;
+- inferred or derived results;
+- public information;
+- private information.
+
+Browser language and time zone may be suggested automatically, but users must be able to
+change them.
+
+Location permission must be contextual and optional unless a selected function genuinely
+cannot operate without it. A manual alternative should be provided when practical.
+
+================================================================================
+6. PUBLIC AND PRIVATE DATA
+================================================================================
+
+Public by design may include:
+- username;
+- approved display name;
+- public avatar;
+- public biography;
+- published reviews and contributions;
+- public provider affiliations;
+- selected public badges and reputation information.
+
+Private by default includes:
+- email;
+- mobile number;
+- date of birth;
+- password hash;
+- passkeys;
+- recovery information;
+- active sessions;
+- precise location;
+- saved items;
+- most history;
+- booking details;
+- intake;
+- private messages;
+- payment and payout information;
+- security logs;
+- identity evidence.
+
+A field is not public merely because it is stored in a public-profile document. Server-side
+authorization and explicit visibility rules are required.
+
+================================================================================
+7. EMAIL, SMS, AND NOTIFICATIONS
+================================================================================
+
+Operational messages may include:
+- verification;
+- password reset;
+- security alert;
+- booking confirmation;
+- cancellation;
+- refund;
+- provider response;
+- policy update;
+- account action.
+
+Marketing communication requires separate handling and an appropriate basis.
+
+Security notices may not be fully disabled.
+
+Local development may use:
+- Laravel log mail;
+- Mailpit or another local-only mail catcher;
+- development-only OTP logging.
+
+Production email may use Azure Communication Services Email or another approved provider.
+Production SMS requires a separately approved provider, sending identity, country coverage,
+cost, consent, rate-limit, and abuse plan.
+
+The notice must identify provider categories and material processing.
+
+================================================================================
+8. COOKIES AND SIMILAR TECHNOLOGIES
+================================================================================
+
+The final notice or separate cookie notice must explain:
+- essential session cookies;
+- remember-me cookies;
+- security cookies;
+- preference cookies;
+- analytics;
+- advertising or campaign cookies if introduced;
+- third-party embeds;
+- consent choices where required;
+- retention;
+- how to withdraw or change choices.
+
+Essential authentication and security cookies should not be presented as optional when the
+requested service cannot operate without them.
+
+Do not introduce advertising trackers merely because the application can support them.
+
+================================================================================
+9. SHARING AND PROCESSORS
+================================================================================
+
+Potential recipient or processor categories:
+- cloud hosting;
+- object storage;
+- email and SMS;
+- social identity providers;
+- payment processors;
+- maps and geolocation;
+- search services;
+- analytics;
+- content delivery and security;
+- customer support;
+- moderation;
+- AI and translation providers;
+- professional advisers;
+- government or law-enforcement recipients when legally required;
+- establishments, therapists, sellers, or booking participants as required for the selected
+  transaction.
+
+The final notice must:
+- identify important named providers where appropriate;
+- explain the purpose;
+- limit provider access;
+- use contracts and security controls;
+- prohibit unauthorized secondary use;
+- document subprocessors;
+- review provider changes.
+
+Massage Nexus must not sell personal data to advertisers.
+
+Personalized advertising, data brokerage, or cross-site tracking requires a separate
+explicit decision and privacy review before introduction.
+
+================================================================================
+10. INTERNATIONAL AND CROSS-BORDER PROCESSING
+================================================================================
+
+Cloud, communication, identity, AI, payment, and support providers may process information
+outside the Philippines.
+
+Before production:
+- map storage and processing locations;
+- identify applicable transfer requirements;
+- use approved contractual and organizational safeguards;
+- assess recipient-country and provider risk;
+- disclose material cross-border processing;
+- preserve user rights;
+- document provider and subprocessor locations where required.
+
+================================================================================
+11. RETENTION
+================================================================================
+
+Create a formal retention schedule before public launch.
+
+The schedule must separately cover:
+- abandoned registrations;
+- unverified accounts;
+- verification and reset tokens;
+- active and expired sessions;
+- login and security logs;
+- account records;
+- policy-acceptance evidence;
+- public profile;
+- deleted profile;
+- booking and financial records;
+- intake and consent;
+- messages;
+- reviews and contributions;
+- moderation evidence;
+- provider claims and verification;
+- media originals and derivatives;
+- backups;
+- support records;
+- legal holds;
+- analytics.
+
+Retention should be based on:
+- service need;
+- legal obligation;
+- contract;
+- security;
+- dispute;
+- fraud prevention;
+- accounting;
+- user expectations;
+- data sensitivity.
+
+Do not retain everything indefinitely.
+
+Deletion may mean:
+- delete;
+- anonymize;
+- detach from the account;
+- restrict;
+- archive under legal hold;
+- expire from backups according to backup rotation.
+
+The final notice must explain important exceptions to deletion.
+
+================================================================================
+12. DATA-SUBJECT RIGHTS
+================================================================================
+
+The final notice must explain applicable rights, which may include:
+- information;
+- access;
+- correction;
+- objection;
+- erasure or blocking;
+- withdrawal of consent where consent is the basis;
+- data portability where applicable;
+- complaint;
+- damages and other rights provided by law;
+- review of certain automated decisions where applicable.
+
+Provide:
+- request method;
+- identity-verification process;
+- expected response process;
+- authorized-agent procedure;
+- exceptions;
+- appeal or complaint route;
+- National Privacy Commission complaint information where appropriate.
+
+Do not require more identity data than reasonably necessary to verify a request.
+
+================================================================================
+13. CHILDREN AND AGE
+================================================================================
+
+Massage Nexus membership is 18+.
+
+The public notice should state:
+- ordinary public content may be viewed without registration;
+- the platform does not knowingly activate Massage Nexus membership for a person under 18;
+- an age-ineligible registration is rejected;
+- a correction process exists for an entered birth date;
+- future network sites may have different age and guardian rules;
+- child-oriented services in the directory do not mean a child can create a Massage Nexus
+  account.
+
+If a future site permits minors, create a separate child and guardian privacy specification
+before launch.
+
+================================================================================
+14. ACCOUNT SECURITY AND BIOMETRICS
+================================================================================
+
+Passwords are stored as one-way hashes.
+
+Massage Nexus should support passkeys rather than storing facial or fingerprint templates.
+
+The notice should clarify:
+- device biometric verification remains on the user's device or authenticator;
+- Massage Nexus receives public-key credential information and authentication results;
+- the platform does not receive the raw fingerprint or face template from standard WebAuthn
+  passkeys.
+
+Mobile numbers are vulnerable to recycling and SIM swap. SMS is not the sole recovery
+method.
+
+================================================================================
+15. LOCATION PRIVACY
+================================================================================
+
+Location controls should distinguish:
+- manually selected area;
+- approximate location;
+- precise location;
+- booking or service address;
+- provider location;
+- background location;
+- imported location.
+
+Initial web registration must not require precise location.
+
+The notice and interface should explain:
+- when location is collected;
+- whether it is one-time or continuous;
+- how long it is retained;
+- who receives it;
+- how to revoke permission;
+- how to use a manual alternative.
+
+Massage Nexus does not initially require background location tracking.
+
+================================================================================
+16. SENSITIVE INTAKE
+================================================================================
+
+Sensitive client intake requires stricter rules:
+- separate storage or access boundary;
+- minimum necessary questions;
+- service-specific purpose;
+- assigned therapist access only when necessary;
+- limited receptionist and owner visibility;
+- time-limited access;
+- no ordinary marketing use;
+- no public exposure;
+- no cross-provider client-history exposure;
+- retention and deletion rules;
+- audit where appropriate;
+- protected export;
+- careful translation;
+- no unreviewed AI diagnosis or eligibility decision.
+
+Eligibility rejection should disclose only the minimum necessary result to the provider.
+
+================================================================================
+17. MEDIA, ANIMATED AVATARS, AND PEOPLE DEPICTED
+================================================================================
+
+Uploaded images and videos may contain personal data.
+
+Requirements:
+- confirm uploader rights;
+- obtain consent or releases where required;
+- provide reporting and removal processes;
+- remove unnecessary location metadata where appropriate;
+- classify NSFW level;
+- moderate;
+- create safe thumbnails;
+- protect originals;
+- handle faces and identifiable persons carefully;
+- comply with the separate NSFW policy.
+
+Public avatars and cover images must not be NSFW.
+
+Animated avatars:
+- are optional;
+- require transcoding and moderation;
+- must have a poster image;
+- must support reduced motion;
+- must not expose bystanders or private settings without authority.
+
+================================================================================
+18. AI, PROFILING, AND AUTOMATED PROCESSING
+================================================================================
+
+Before an AI or profiling system processes personal data:
+- document purpose;
+- identify data;
+- assess necessity;
+- assess risk;
+- identify provider and transfer;
+- define human review;
+- prevent unauthorized training or reuse;
+- define retention;
+- provide notice and controls where required;
+- conduct privacy impact assessment when appropriate;
+- register automated decision-making or profiling where legally required.
+
+AI may assist moderation, translation, classification, search, or support. It must not:
+- expose private intake;
+- infer sensitive identity unnecessarily;
+- make an unreviewed high-impact decision;
+- permanently ban a person without required human process;
+- diagnose a user.
+
+================================================================================
+19. SECURITY INCIDENTS AND BREACHES
+================================================================================
+
+Massage Nexus must:
+- document security incidents and personal data breaches;
+- maintain an incident register;
+- investigate;
+- contain and remediate;
+- assess notification duties;
+- notify the National Privacy Commission and affected persons when legally required;
+- preserve evidence;
+- submit required reports;
+- learn from incidents;
+- avoid misleading silence.
+
+The public notice should explain how users may report a privacy or security concern.
+
+================================================================================
+20. PRIVACY GOVERNANCE
+================================================================================
+
+Before public launch:
+- identify the personal information controller;
+- designate the appropriate privacy or DPO function;
+- determine NPC registration obligations;
+- register required data processing systems and automated decision-making or profiling;
+- complete data inventory and flow maps;
+- conduct privacy impact assessments;
+- maintain processing records;
+- approve retention schedule;
+- approve incident procedure;
+- approve data-subject request procedure;
+- approve vendor contracts;
+- train authorized personnel;
+- separate development, test, and production data;
+- prohibit real personal data in ordinary automated tests.
+
+================================================================================
+21. NOTICE DESIGN
+================================================================================
+
+The public Privacy Notice should be:
+- readable;
+- layered;
+- available from registration;
+- available without logging in;
+- mobile friendly;
+- accessible;
+- versioned;
+- translated according to the accepted language plan;
+- specific about what, how, and why data is collected;
+- accompanied by contextual notices near sensitive collection.
+
+Do not hide important information inside one enormous legal paragraph.
+
+================================================================================
+22. PUBLICATION READINESS CHECKLIST
+================================================================================
+
+- controller and DPO details finalized;
+- exact data inventory completed;
+- data-flow map completed;
+- lawful-basis map completed;
+- vendor and processor list completed;
+- international-transfer review completed;
+- retention schedule completed;
+- data-subject request workflow implemented;
+- account deletion behavior implemented;
+- breach response implemented;
+- cookie inventory completed;
+- AI and profiling inventory completed;
+- location behavior completed;
+- sensitive-intake controls tested;
+- NSFW controls tested;
+- final Privacy Notice reviewed;
+- versioned acknowledgment implemented;
+- prior versions archived.
+
+================================================================================
+23. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+- Republic Act No. 10173, Data Privacy Act of 2012.
+- Implementing Rules and Regulations of the Data Privacy Act.
+- National Privacy Commission guidance on consent, data-subject rights, privacy notices,
+  privacy impact assessments, privacy engineering, child-oriented transparency, cross-border
+  transfers, registration, breach management, and annual security incident reporting.
+- W3C Web Authentication guidance for passkeys.
+- Applicable launch-market privacy and consumer-protection laws.

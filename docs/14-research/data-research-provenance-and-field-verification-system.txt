@@ -1,0 +1,879 @@
+Title: Massage Nexus Data Research Provenance and Field Verification System
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 03 - Features v2.40
+- Massage Nexus - 15 - Language Strategy v0.30
+- Massage Nexus - 18 - Site Structure Map v1.90
+- Massage Nexus - 21 - User Workspace v0.30
+- Massage Nexus - Analytics Statistics and Measurement System v0.10
+- Massage Nexus - 02 - AI-Assisted Development Workflow v1.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
+- Current Service, Spa, Therapist, Product, Review, Rating, Reputation, and Contribution documents
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines how Massage Nexus discovers, researches, sources, verifies, updates,
+disputes, and publishes data about spas, massage establishments, therapists, services,
+products, sellers, locations, social accounts, and related records.
+
+Massage Nexus should become more useful than a copied map directory by preserving:
+- field-level sources;
+- direct observations;
+- interviews;
+- current menus and prices;
+- missing businesses;
+- former names and locations;
+- confidence;
+- contradictions;
+- last checked and last verified dates.
+
+A map listing is a lead, not the authority.
+
+================================================================================
+1. RESEARCH GOALS
+================================================================================
+
+- find establishments and therapists missing from major maps;
+- identify closed, moved, renamed, or reopened businesses;
+- preserve current and historical evidence;
+- document exact services, prices, facilities, and policies;
+- support local on-site research;
+- support trusted remote contributors;
+- distinguish observed, reported, and verified facts;
+- create transparent freshness;
+- support global expansion by city and market;
+- avoid illegal or unethical scraping;
+- avoid exposing private residential information;
+- create research tasks and quality analytics.
+
+================================================================================
+2. RESEARCH UNIT
+================================================================================
+
+Do not treat an entire country as one research task.
+
+Use:
+
+Country
+-> priority metropolitan area or tourism region
+-> city or municipality
+-> district, neighborhood, landmark, or locality
+-> establishment, therapist, service, or other target
+-> field-level observations.
+
+A useful, current Bangkok or Mandaluyong dataset is better than thousands of shallow,
+unverified national records.
+
+================================================================================
+3. INITIAL GEOGRAPHIC PRIORITY
+================================================================================
+
+3.1 Philippines
+
+Start:
+- Mandaluyong City;
+- neighboring Metro Manila cities;
+- wider Metro Manila;
+- major Philippine cities and tourism destinations;
+- regional expansion through contributors.
+
+Advantages:
+- on-site visits;
+- interviews;
+- direct menu and price photography;
+- businesses absent from maps;
+- local terminology;
+- former names;
+- branch knowledge;
+- accessibility and facility observations.
+
+3.2 First International Research
+
+Thailand:
+- Bangkok;
+- Phuket;
+- Chiang Mai;
+- Pattaya;
+- Hua Hin;
+- Koh Samui.
+
+Indonesia:
+- Bali, including Ubud, Seminyak, Canggu, Nusa Dua, Kuta, and Denpasar;
+- Jakarta;
+- Yogyakarta;
+- Bandung;
+- Surabaya.
+
+United States:
+City pilots rather than national ingestion.
+Possible pilots:
+- Las Vegas;
+- New York City;
+- Los Angeles;
+- Miami;
+- Honolulu;
+- Orlando;
+- Scottsdale or Phoenix.
+
+United Arab Emirates:
+- Dubai;
+- Abu Dhabi.
+
+Vietnam:
+- Ho Chi Minh City;
+- Hanoi;
+- Da Nang;
+- Hoi An;
+- Nha Trang;
+- Phu Quoc.
+
+Japan:
+- Tokyo;
+- later selected onsen, hotel, urban relaxation, and massage markets.
+
+3.3 Later Markets
+
+- United Kingdom;
+- Australia;
+- Canada;
+- Singapore;
+- South Korea;
+- Spain;
+- Mexico;
+- China with a separate local-platform strategy;
+- India with multilingual regional planning;
+- Germany, France, Italy, Austria, and Switzerland;
+- other markets supported by evidence and contributor capacity.
+
+Country order may change when a reliable local contributor joins, a provider partnership
+supplies data, user demand appears, the language becomes ready, a market has unusually high
+data value, or legal or technical constraints change.
+
+================================================================================
+4. COUNTRY AND CITY PRIORITY SCORE
+================================================================================
+
+Possible dimensions:
+- online addressable audience;
+- massage and spa market relevance;
+- establishment density;
+- wellness tourism;
+- user search demand;
+- provider online presence;
+- data gaps;
+- language readiness;
+- contributor availability;
+- legal and research feasibility;
+- cost;
+- ability to verify;
+- commercial potential;
+- strategic proximity.
+
+The score guides work. It does not replace editorial judgment.
+
+Publish methodology when a public ranking is shown.
+
+================================================================================
+5. SOURCE TYPES
+================================================================================
+
+Possible source types:
+- on-site visit;
+- direct interview;
+- direct telephone confirmation;
+- direct email or message;
+- official website;
+- official social account;
+- menu or price sheet;
+- business permit or official registry;
+- licensing or credential registry;
+- professional association;
+- hotel or resort website;
+- school or training institution;
+- approved booking platform;
+- map service;
+- local directory;
+- government tourism source;
+- news;
+- archival source;
+- user contribution;
+- trusted correspondent;
+- provider claim evidence;
+- photograph;
+- video;
+- receipt;
+- public advertisement;
+- historical document;
+- partner import;
+- AI-discovered lead pending review.
+
+No source type is automatically correct in every case.
+
+================================================================================
+6. MAPS ARE LEADS
+================================================================================
+
+Google Maps and other map services are useful for discovering possible businesses, locating
+approximate addresses, finding photos, public reviews, phone numbers, websites, and nearby
+businesses.
+
+They are not sufficient proof of:
+- current operation;
+- exact name;
+- current hours;
+- current price;
+- service availability;
+- branch relationship;
+- therapist affiliation;
+- exact map point;
+- legitimacy;
+- closure;
+- nonexistence.
+
+Absence from a map does not prove that a spa does not exist.
+
+Presence on a map does not prove that it remains open.
+
+Massage Nexus should preserve its own evidence and freshness.
+
+================================================================================
+7. FIELD-LEVEL OBSERVATIONS
+================================================================================
+
+A fact observation may contain:
+- target;
+- field;
+- value;
+- normalized value;
+- source;
+- source type;
+- source URL or evidence reference;
+- observed date;
+- received date;
+- verified date;
+- researcher;
+- verification method;
+- confidence;
+- status;
+- locale;
+- geographic context;
+- note;
+- superseded observation;
+- dispute;
+- privacy class.
+
+Example:
+
+Field:
+operating_status
+
+Value:
+active
+
+Source:
+direct visit
+
+Observed:
+2026-07-18
+
+Confidence:
+high
+
+This permits one profile to contain hours verified directly, price photographed on-site,
+address from an official page, map point community corrected, and social account provider
+confirmed.
+
+================================================================================
+8. STATUS
+================================================================================
+
+Research item statuses:
+- lead;
+- queued;
+- assigned;
+- in_research;
+- needs_source;
+- needs_contact;
+- needs_visit;
+- submitted;
+- under_review;
+- verified;
+- partially_verified;
+- disputed;
+- stale;
+- rejected;
+- merged;
+- closed;
+- archived.
+
+Fact statuses:
+- reported;
+- observed;
+- source_supported;
+- directly_confirmed;
+- contradicted;
+- stale;
+- withdrawn;
+- superseded;
+- unknown.
+
+Do not present "unknown" as "no."
+
+================================================================================
+9. CONFIDENCE
+================================================================================
+
+Possible confidence:
+- unknown;
+- low;
+- medium;
+- high;
+- direct.
+
+Confidence is based on evidence, freshness, source independence, and contradiction.
+
+It is not based only on contributor reputation, number of copied websites, AI confidence, map
+popularity, or social follower count.
+
+Several websites may all copy the same outdated source.
+
+================================================================================
+10. FRESHNESS
+================================================================================
+
+Different fields age at different rates.
+
+Often fast-changing:
+- hours;
+- phone;
+- price;
+- therapist roster;
+- promotion;
+- social account;
+- booking availability.
+
+Moderate:
+- facilities;
+- services;
+- management;
+- branch relationship.
+
+Slow:
+- origin;
+- building location;
+- historical name;
+- normalized service identity.
+
+Each field may have:
+- observed_at;
+- verified_at;
+- review_due_at;
+- stale_at.
+
+The interface may display:
+- last directly verified;
+- last provider confirmed;
+- last community checked;
+- price last checked;
+- hours last checked.
+
+Do not use one profile-level "updated" date to imply every field is current.
+
+================================================================================
+11. CONTRADICTIONS
+================================================================================
+
+When sources conflict:
+- preserve both observations;
+- identify dates;
+- compare source authority;
+- contact provider if appropriate;
+- request local verification;
+- avoid silent overwrite;
+- publish the safest qualified statement;
+- mark disputed or uncertain;
+- retain resolution history.
+
+Example:
+Official page says open 24 hours.
+Recent direct visit finds the door closed at 2:00 a.m.
+The record should preserve both and request verification rather than choose automatically.
+
+================================================================================
+12. DIRECT VISIT AND INTERVIEW
+================================================================================
+
+Field research may collect:
+- current name;
+- former name;
+- exact location;
+- landmark;
+- hours;
+- contacts;
+- menu;
+- price;
+- facilities;
+- room setup;
+- accessibility;
+- therapist count;
+- accepted payment;
+- booking;
+- service policies;
+- photos;
+- interview notes;
+- permission;
+- visit date.
+
+Researchers must:
+- identify themselves honestly when required;
+- respect no-photography rules;
+- obtain permission for identifiable staff interviews and private interiors;
+- avoid interrupting treatment;
+- avoid covert recording;
+- protect client privacy;
+- distinguish observation from opinion;
+- retain original field notes;
+- label uncertain facts.
+
+A review visit and a factual research visit may overlap, but their evidence and editorial
+purposes remain distinct.
+
+================================================================================
+13. REMOTE RESEARCH
+================================================================================
+
+Remote research may use:
+- official website;
+- official social accounts;
+- direct message;
+- telephone;
+- email;
+- local contact;
+- public registry;
+- tourism source;
+- booking page;
+- map;
+- archived page;
+- public menu.
+
+Remote research should:
+- record access date;
+- capture source title and relevant evidence;
+- avoid copying copyrighted material unnecessarily;
+- use facts rather than republish entire descriptions;
+- respect terms and access controls;
+- avoid high-volume prohibited scraping;
+- identify machine translation;
+- preserve original language.
+
+================================================================================
+14. SOCIAL MEDIA RESEARCH
+================================================================================
+
+Track social accounts separately from profiles.
+
+Observation:
+- platform;
+- handle;
+- URL;
+- account type;
+- official status;
+- platform verification;
+- Massage Nexus verification;
+- follower count;
+- following count;
+- posts where available;
+- massage-related content proportion when assessed;
+- engagement observation;
+- observed date;
+- source;
+- notes.
+
+Follower counts change. Never store them as timeless facts.
+
+Avoid:
+"world's most popular therapist."
+
+Prefer:
+"Most followed on Instagram among tracked licensed massage therapists as of the observation
+date."
+
+The platform should not infer professional quality from followers alone.
+
+================================================================================
+15. THERAPIST RESEARCH
+================================================================================
+
+Therapist research requires stronger identity care.
+
+Possible evidence:
+- direct claim;
+- establishment affiliation;
+- professional page;
+- credential;
+- training;
+- public interview;
+- official schedule;
+- competition or award;
+- public social account.
+
+Do not:
+- create a public therapist identity from a private personal profile without a justified
+  public-interest and privacy basis;
+- expose residence;
+- expose private phone;
+- merge people only because names match;
+- claim a credential without evidence;
+- treat a spa roster photo as permanent employment.
+
+Stable therapist identity must survive employment changes without creating duplicates.
+
+================================================================================
+16. PROVIDER CLAIM AND CORRECTION
+================================================================================
+
+A provider may:
+- claim;
+- verify contact;
+- submit documents;
+- correct facts;
+- dispute;
+- provide current menu;
+- provide official media;
+- identify former names;
+- confirm closure or move.
+
+Claim does not automatically erase community evidence.
+
+Provider-supplied claims remain sourced and may require verification.
+
+A provider cannot secretly remove a lawful critical review or historical fact merely by
+claiming the profile.
+
+================================================================================
+17. USER AND CORRESPONDENT CONTRIBUTION
+================================================================================
+
+Research tasks may ask:
+- Is this spa open?
+- Photograph current menu with permission.
+- Confirm hours.
+- Verify map pin.
+- Add missing establishment.
+- Identify former name.
+- Confirm wheelchair access.
+- Confirm accepted payment.
+- Confirm social account.
+- Confirm whether therapist still works there.
+
+Roles:
+- ordinary contributor;
+- trusted contributor;
+- correspondent;
+- translator;
+- editor;
+- verifier;
+- moderator;
+- administrator.
+
+Rewards:
+- only for approved useful work;
+- no raw volume reward;
+- no self-approval;
+- conflict-of-interest disclosure;
+- reversal for fraud or duplicate work.
+
+================================================================================
+18. AI RESEARCH
+================================================================================
+
+AI may:
+- discover leads;
+- summarize sources;
+- extract candidate facts;
+- compare sources;
+- translate;
+- suggest duplicates;
+- flag stale records;
+- prepare assignments.
+
+AI may not:
+- mark a business active without evidence;
+- invent an interview;
+- invent an on-site visit;
+- fabricate a menu, price, address, therapist, or source;
+- bypass blocked access;
+- scrape prohibited content;
+- expose private location;
+- publish a serious allegation automatically.
+
+Every AI-extracted fact remains tied to the source and review state.
+
+================================================================================
+19. CRAWLERS AND DATA ACCESS
+================================================================================
+
+Massage Nexus prefers:
+- public discovery;
+- citation;
+- referral;
+- controlled access;
+- licensed APIs;
+- protection from unrestricted bulk reuse.
+
+Possible production direction:
+- permit approved search crawlers on public pages;
+- permit approved AI search crawlers when citation and referrals are useful;
+- block training crawlers where separate supported controls exist and the final policy opts
+  out;
+- block workspace, account, message, booking, intake, moderation, research evidence, and
+  restricted media;
+- use noindex where necessary;
+- rate-limit abusive automation;
+- provide an approved API later.
+
+Robots directives are not security. Malicious scrapers may ignore them.
+
+Do not expose complete high-value datasets solely for crawling. Public pages may provide
+useful summaries while full comparisons, live filters, verification history, booking,
+community, and contributor tools remain on Massage Nexus.
+
+================================================================================
+20. COPYRIGHT, TERMS, AND ETHICS
+================================================================================
+
+Researchers must:
+- collect facts lawfully;
+- avoid copying entire copyrighted descriptions;
+- quote sparingly and attribute when appropriate;
+- respect website terms;
+- respect robots and rate limits;
+- use APIs when required;
+- avoid bypassing authentication or paywalls;
+- avoid collecting unnecessary personal data;
+- protect minors;
+- protect private homes and contact details;
+- avoid harassment;
+- correct errors;
+- identify sponsorship or conflict.
+
+Publicly available does not automatically mean unrestricted for every use.
+
+================================================================================
+21. PUBLIC PROFILE PRESENTATION
+================================================================================
+
+Possible labels:
+- confirmed active;
+- provider confirmed;
+- directly visited;
+- community checked;
+- official source;
+- map source;
+- user reported;
+- disputed;
+- information may be outdated;
+- price last checked;
+- hours last checked;
+- social followers last observed.
+
+Possible source page:
+- methodology;
+- sources;
+- revision;
+- correction history;
+- last verified.
+
+Sensitive evidence remains private.
+
+================================================================================
+22. RESEARCH WORKSPACE
+================================================================================
+
+Routes:
+/workspace/research
+/workspace/research/dashboard
+/workspace/research/assignment
+/workspace/research/lead
+/workspace/research/visit
+/workspace/research/interview
+/workspace/research/source
+/workspace/research/evidence
+/workspace/research/observation
+/workspace/research/verification
+/workspace/research/contradiction
+/workspace/research/stale
+/workspace/research/social
+/workspace/research/country
+/workspace/research/city
+/workspace/research/district
+/workspace/research/coverage
+/workspace/research/import
+/workspace/research/export
+/workspace/research/history
+/workspace/research/methodology
+
+Existing correspondent routes may link to the same research system rather than duplicate
+records.
+
+================================================================================
+23. PUBLIC RESEARCH ROUTES
+================================================================================
+
+/research
+/research/methodology
+/research/source
+/research/verification
+/research/freshness
+/research/coverage
+/research/country
+/research/country/{country-slug}
+/research/city
+/research/city/{city-slug}
+/research/contribute
+/research/correction
+/research/correspondent
+
+Public pages must not expose private evidence, research contact details, internal confidence
+notes, or security information.
+
+================================================================================
+24. ANALYTICS
+================================================================================
+
+Measure:
+- records by geography;
+- verified fields;
+- stale fields;
+- source mix;
+- direct visits;
+- provider confirmations;
+- contradictions;
+- correction turnaround;
+- contributor approval;
+- social coverage;
+- menu coverage;
+- price freshness;
+- city coverage;
+- research cost;
+- research demand.
+
+Coverage is not market size.
+
+A low count may mean few businesses, incomplete research, difficult sources, a language gap,
+a recent market, or intentionally narrow scope.
+
+================================================================================
+25. CONCEPTUAL DATA RESPONSIBILITIES
+================================================================================
+
+Possible conceptual records:
+- research_source;
+- research_evidence;
+- research_observation;
+- research_assignment;
+- research_visit;
+- research_interview;
+- research_contradiction;
+- research_verification;
+- research_coverage_snapshot;
+- social_account;
+- social_observation;
+- source_import;
+- research_audit.
+
+Final collection names and embedding belong in database design.
+
+================================================================================
+26. TESTING
+================================================================================
+
+Test:
+- source required;
+- observation date;
+- stale calculation;
+- field-level provenance;
+- conflicting observations;
+- public source label;
+- private evidence;
+- contributor permission;
+- provider claim;
+- social follower observation;
+- geography;
+- duplicate lead;
+- map absence not treated as closure;
+- unknown not treated as no;
+- AI extraction remains draft;
+- export permission;
+- public coverage does not expose private information.
+
+================================================================================
+27. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+1. source registry;
+2. observation and evidence;
+3. freshness;
+4. verification;
+5. contradiction;
+6. research assignment;
+7. Mandaluyong field workflow;
+8. Metro Manila coverage;
+9. social account and observation;
+10. public methodology and freshness labels;
+11. contributor and correspondent workflow;
+12. country and city scoring;
+13. remote international pilots;
+14. AI-assisted research with review;
+15. controlled import and API.
+
+================================================================================
+28. ACCEPTED DIRECTIONS
+================================================================================
+
+- Philippines is the first and deepest market.
+- Mandaluyong enables direct field research.
+- Global expansion is city-first, not shallow country-wide ingestion.
+- Thailand and Indonesia are the first strong international research tracks.
+- United States, UAE, Vietnam, and Japan follow through pilots.
+- Maps are leads, not the sole authority.
+- Absence from Google Maps does not prove nonexistence.
+- Facts keep their own sources and dates.
+- Contradictory evidence is preserved.
+- Social follower counts are dated observations.
+- AI produces leads and candidate facts, not automatic verification.
+- Public search referral may be allowed while bulk reuse is controlled.
+- Research must respect privacy, copyright, terms, and access rules.
+- Coverage statistics do not claim a complete census.
+
+================================================================================
+29. OPEN DECISIONS
+================================================================================
+
+- exact confidence scoring;
+- stale intervals by field;
+- evidence storage;
+- provider correction response time;
+- researcher identity visibility;
+- expense reimbursement;
+- contributor rewards;
+- official country-priority formula;
+- approved map and directory sources;
+- scraping and API approvals;
+- first United States pilot city;
+- first professional social-metric data provider;
+- public source-detail depth.
+
+================================================================================
+30. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+Before each market launch, recheck current wellness market data, internet-use and digital
+market data, local business and licensing rules, privacy and mapping rules, official crawler
+and search documentation, source-site terms, professional associations, and local language
+terminology.

@@ -1,0 +1,179 @@
+Title: Massage Nexus Data Research Resources
+Document Version: 1.20
+Date Created: 2026-06-29
+Revision Date: 2026-07-18
+Status: Internal Research Reference
+
+DOCUMENT PURPOSE
+----------------
+This document lists places and tools that may provide research leads, public evidence,
+terminology, market context, regulations, credentials, user discussions, media, and industry
+data relevant to Massage Nexus.
+
+A resource is a starting point, not automatic proof. Record the source, access date,
+observation date, relevant evidence, and verification status. Respect privacy, copyright,
+platform rules, access controls, and applicable law.
+
+================================================================================
+1. SOCIAL MEDIA AND COMMUNITY RESEARCH
+================================================================================
+
+1. X Search
+Type: Social-media search
+URL: https://x.com/search?q=massage%20spa%20philippines
+Research Use: Find promotions, therapist mentions, customer reactions, trending spa names,
+informal reviews, service terminology, and recent public discussions.
+
+2. r/Philippines
+Type: Reddit community
+URL: https://www.reddit.com/r/Philippines/
+Research Use: Find local discussions about massage establishments, recommendations, pricing,
+safety concerns, suspicious businesses, and customer language.
+
+3. r/AskPH
+Type: Reddit community
+URL: https://www.reddit.com/r/AskPH/
+Research Use: Find direct recommendation questions, service expectations, common concerns,
+and information users seek before visiting a spa.
+
+4. r/CasualPH
+Type: Reddit community
+URL: https://www.reddit.com/r/CasualPH/
+Research Use: Find casual recommendations, personal experiences, questions about specific
+places, and local wording around legitimacy and service boundaries.
+
+5. r/adultingph
+Type: Reddit community
+URL: https://www.reddit.com/r/adultingph/
+Research Use: Find practical wellness and self-care discussions involving affordability,
+cleanliness, comfort, stress relief, and ordinary customer needs.
+
+6. r/Philippines_Expats
+Type: Reddit community
+URL: https://www.reddit.com/r/Philippines_Expats/
+Research Use: Find foreign-resident and visitor expectations, facility descriptions,
+tourism-oriented questions, package details, and non-local evaluation criteria.
+
+7. YouTube Search
+Type: Video-platform search
+URL: https://www.youtube.com/results?search_query=massage+spa+philippines
+Research Use: Find spa tours, facility walkthroughs, reviews, service demonstrations,
+therapist presentations, and video-content formats.
+
+8. TikTok Search
+Type: Short-form video search
+URL: https://www.tiktok.com/search?q=massage%20spa%20philippines
+Research Use: Find viral spa content, current promotions, customer reactions, service
+demonstrations, visual trends, and younger-user terminology.
+
+9. Instagram Search
+Type: Social-media search
+URL: https://www.instagram.com/explore/search/keyword/?q=massage%20spa%20philippines
+Research Use: Find branding, menus, promotional graphics, interior images, therapist
+presentation, hashtags, locations, and visual-content patterns.
+
+10. LinkedIn Search
+Type: Professional-network search
+URL: https://www.linkedin.com/search/results/all/?keywords=spa%20wellness%20massage%20philippines
+Research Use: Find spa operators, wellness companies, therapists, owners, training centers,
+industry professionals, employment history, and organizational relationships.
+
+================================================================================
+2. GOVERNMENT, REGULATION, ACCREDITATION, AND TRAINING
+================================================================================
+
+11. Philippine Department of Tourism
+Type: Government and tourism authority
+URL: https://www.tourism.gov.ph/
+Research Use: Research tourism policy, wellness-tourism positioning, accreditation context,
+hospitality programs, and tourism-related spa categories.
+
+12. DOT Accreditation
+Type: Government accreditation resource
+URL: https://www.lovethephilippines.travel/accreditations/online/1/tabs
+Research Use: Research accredited establishments, minimum standards, official business
+signals, and possible Massage Nexus verification fields.
+
+13. DOH Administrative Order No. 2010-0034
+Type: Government regulation
+URL: https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/10/48707
+Research Use: Research massage-therapist licensing definitions, credential requirements,
+professional scope, and distinctions between licensed and unverified providers.
+
+14. DTI eCommerce FAQs
+Type: Government and ecommerce reference
+URL: https://ecommerce.dti.gov.ph/faqs/
+Research Use: Research online-business obligations, seller rules, ecommerce requirements, and
+future paid listings, vouchers, shops, or transactions.
+
+15. TESDA
+Type: Training and certification reference
+URL: https://www.tesda.gov.ph/
+Research Use: Research massage training, competency standards, qualifications, certification,
+training providers, and therapist credential fields.
+
+================================================================================
+3. SEARCH, TREND, AND NEWS MONITORING
+================================================================================
+
+16. Google Trends
+Type: Search-interest research tool
+URL: https://trends.google.com/
+Research Use: Compare interest in massage, spa, hilot, ventosa, Swedish massage, home massage,
+wellness spa, city names, brands, and seasonal demand.
+
+17. Philippine News Search for Massage and Spa Issues
+Type: News-search resource
+URL: https://news.google.com/search?q=massage%20spa%20Philippines
+Research Use: Monitor openings, closures, raids, safety issues, licensing, labor concerns,
+wellness trends, policy changes, and public-reputation risks.
+
+================================================================================
+4. INDUSTRY ASSOCIATIONS AND MARKET RESEARCH
+================================================================================
+
+18. International Spa Association
+Type: Spa-industry association
+URL: https://experienceispa.com/
+Research Use: Research spa-industry terminology, business categories, service standards,
+operations, professional positioning, and industry publications.
+
+19. Global Wellness Institute
+Type: Wellness-industry research organization
+URL: https://globalwellnessinstitute.org/
+Research Use: Research wellness-economy categories, wellness tourism, spa-market reports,
+industry terminology, and high-level classification.
+
+20. Spa and Wellness Association of Africa
+Type: Industry association
+URL Status: Verification required
+Original Combined-File URL: https://globalwellnessinstitute.org/
+Research Use: The original entry's URL duplicated the Global Wellness Institute and did not
+verify the named association. Do not use this record until the correct official source is
+confirmed.
+
+================================================================================
+5. RESEARCH HANDLING RULES
+================================================================================
+
+For each useful finding, record:
+- resource name;
+- exact page or post URL;
+- target record;
+- fact or observation;
+- publication or observation date;
+- access date;
+- original language;
+- screenshot, archive, or evidence reference where permitted;
+- confidence;
+- verification status;
+- conflicting source;
+- researcher notes.
+
+Do not treat:
+- a social-media claim as verified fact;
+- a follower count as permanent;
+- a map listing as proof that a business is active;
+- absence from search as proof that a business does not exist;
+- a copied directory description as an independent source;
+- an AI summary as the original evidence.

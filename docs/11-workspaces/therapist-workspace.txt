@@ -1,0 +1,869 @@
+Title: Massage Nexus Therapist Workspace
+Document Version: 0.20
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 09 - Therapist Profile v0.20
+- Massage Nexus - 08 - Therapist Classification v1.30
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 20 - Translation System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- docs/11-workspaces/operator-workspace.txt
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the private workspace used by therapists and practitioners represented in Massage Nexus.
+
+The workspace supports professional profile information, privacy, service capabilities, direct service offerings, establishment affiliations, credentials, availability, service areas, media, reviews, bookings, messages, verification, analytics, and professional settings.
+
+The Therapist Workspace is part of /workspace and uses the same account, permission, revision, translation, and security systems as the rest of Massage Nexus.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Therapist Workspace should:
+
+- let a therapist manage approved professional information;
+- preserve separation between private identity and public professional identity;
+- separate capability from direct commercial offerings;
+- support several establishment affiliations;
+- support independent practice;
+- support schedule and availability;
+- protect home addresses and private contact details;
+- support credential submission and verification;
+- support secure media controls;
+- support review responses;
+- support multilingual profile content;
+- support future booking and mobile use;
+- prevent an establishment from owning or silently rewriting a therapist's universal identity.
+
+================================================================================
+2. POSSIBLE USERS
+================================================================================
+
+- spa-based therapist;
+- freelance therapist;
+- independent practitioner;
+- home-service therapist;
+- mobile therapist;
+- trainee;
+- visiting expert;
+- practitioner represented through several establishments;
+- therapist assistant with delegated permission;
+- agency or manager with limited delegated permission.
+
+The public module may use Therapist as the familiar label while internal models may use Practitioner where broader coverage is needed.
+
+================================================================================
+3. WORKSPACE ACCESS AND CONTEXT
+================================================================================
+
+Primary routes:
+
+/workspace/listing/therapist
+/workspace/listing/therapist/{therapist-id}
+
+Possible later shortcut:
+
+/workspace/therapist
+
+The context switcher may show:
+
+- personal account;
+- professional therapist profile;
+- independent practice;
+- one establishment affiliation;
+- another establishment affiliation;
+- editorial or contributor role.
+
+================================================================================
+4. DASHBOARD
+================================================================================
+
+Possible dashboard cards:
+
+- profile completeness;
+- claim status;
+- verification status;
+- availability today;
+- upcoming booking;
+- pending affiliation;
+- credential expiring;
+- unread inquiry;
+- new review;
+- media status;
+- profile views;
+- saved draft;
+- assigned task;
+- policy alert.
+
+The dashboard should not reveal private data to unauthorized assistants or establishment staff.
+
+================================================================================
+5. PUBLIC PROFESSIONAL PROFILE
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/profile
+
+Possible fields:
+
+- public name;
+- professional name;
+- public slug;
+- profile image;
+- cover image;
+- short biography;
+- full biography;
+- languages;
+- work arrangement;
+- practice settings;
+- specialty focus;
+- public client access;
+- target client focus;
+- booking mode;
+- availability status;
+- public professional statement;
+- safety and boundary statement;
+- translations.
+
+A therapist may use a professional name when allowed by policy.
+
+Private legal identity remains separate.
+
+================================================================================
+6. PRIVATE IDENTITY
+================================================================================
+
+Private identity may include:
+
+- legal name;
+- birth date where required;
+- verified email;
+- verified phone;
+- private address;
+- identification documents;
+- emergency contact;
+- payment identity;
+- tax information.
+
+Private identity is not automatically visible to:
+
+- public users;
+- establishments;
+- advertisers;
+- other therapists.
+
+Access is limited by purpose and permission.
+
+================================================================================
+7. CLAIMING THE PROFILE
+================================================================================
+
+Possible claim process:
+
+1. therapist identifies the public profile;
+2. therapist verifies account contact;
+3. therapist submits proof;
+4. verifier reviews the claim;
+5. conflicts are resolved;
+6. selected management permissions are granted;
+7. claim status remains recorded.
+
+Claiming the profile does not allow removal of independent reviews or historical affiliations.
+
+================================================================================
+8. SERVICE CAPABILITIES
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/service
+
+Capability means the therapist can perform a normalized Service.
+
+Possible fields:
+
+- Service;
+- skill context where approved;
+- source;
+- training;
+- experience;
+- verification;
+- active status;
+- restriction;
+- date added;
+- last-confirmed date;
+- public visibility;
+- internal note.
+
+Capability is not the same as:
+
+- current booking availability;
+- direct commercial offering;
+- establishment menu eligibility;
+- credential;
+- quality guarantee.
+
+================================================================================
+9. DIRECT SERVICE OFFERINGS
+================================================================================
+
+Independent practitioners may create practitioner_service records.
+
+Possible fields:
+
+- original service name;
+- mapped normalized Service;
+- description;
+- duration;
+- price;
+- currency;
+- service-delivery mode;
+- service area;
+- location;
+- add-on;
+- package;
+- participant arrangement;
+- availability;
+- booking mode;
+- last-confirmed date;
+- translation.
+
+A spa-based therapist should not duplicate the establishment's menu as personal offerings unless the therapist also offers the service independently.
+
+================================================================================
+10. ESTABLISHMENT AFFILIATIONS
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/spa
+
+Possible affiliation information:
+
+- establishment;
+- branch;
+- start date;
+- end date;
+- current status;
+- work arrangement;
+- provider-assigned title;
+- provider-assigned rank;
+- context-specific Market Class;
+- schedule;
+- public visibility;
+- source;
+- therapist confirmation;
+- establishment confirmation;
+- dispute.
+
+The therapist may:
+
+- confirm;
+- dispute;
+- request correction;
+- end;
+- hide selected non-required details;
+- request removal of a false affiliation.
+
+Historical affiliations may remain when properly sourced.
+
+================================================================================
+11. PROVIDER TITLE AND RANK
+================================================================================
+
+Possible provider-assigned titles or ranks:
+
+- Trainee;
+- Junior;
+- Regular;
+- Senior;
+- Specialist;
+- Master;
+- Visiting Expert;
+- exact provider title.
+
+The workspace should explain that provider rank:
+
+- applies in a specific establishment context;
+- is not automatically a credential;
+- is not a universal quality score;
+- may be confirmed or disputed by the therapist.
+
+================================================================================
+12. CREDENTIALS
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/credential
+
+Possible credential types:
+
+- national certificate;
+- license;
+- professional certification;
+- training certificate;
+- school certificate;
+- workshop;
+- membership;
+- insurance;
+- traditional lineage evidence;
+- continuing education.
+
+Credential fields may include:
+
+- name;
+- issuer;
+- country;
+- credential number;
+- issue date;
+- expiry;
+- scope;
+- document;
+- verification status;
+- lifecycle;
+- public visibility;
+- source;
+- note.
+
+Credential documents remain private unless a safe public version is approved.
+
+================================================================================
+13. CREDENTIAL VERIFICATION
+================================================================================
+
+Possible verification statuses:
+
+- Self-Declared;
+- Submitted;
+- Verified;
+- Needs Review;
+- Rejected.
+
+Possible lifecycle statuses:
+
+- Active;
+- Expired;
+- Suspended;
+- Revoked;
+- Unknown.
+
+The public page must not imply that Massage Nexus guarantees professional competence merely because a document exists.
+
+================================================================================
+14. SCHEDULE
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/schedule
+
+Possible schedule contexts:
+
+- establishment shift;
+- independent availability;
+- home service;
+- event;
+- temporary assignment;
+- recurring schedule;
+- exception;
+- leave;
+- blackout.
+
+A therapist should see which establishment or practice owns each schedule entry.
+
+================================================================================
+15. AVAILABILITY
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/availability
+
+Profile availability statuses may include:
+
+- Available;
+- Limited Availability;
+- Existing Clients Only;
+- Temporarily Unavailable;
+- Inactive;
+- Retired;
+- Unknown.
+
+Operational states may include:
+
+- available now;
+- available today;
+- available by appointment;
+- fully booked;
+- on leave.
+
+Public display should not expose unnecessary private schedule details.
+
+================================================================================
+16. SERVICE AREA
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/service-area
+
+Possible area types:
+
+- city;
+- district;
+- radius;
+- selected barangay;
+- hotel;
+- office;
+- event;
+- home service;
+- travel-fee zone.
+
+A private home address should not be exposed merely because the therapist offers home service.
+
+================================================================================
+17. CONTACT AND INQUIRY
+================================================================================
+
+Possible contact methods:
+
+- Massage Nexus message;
+- booking request;
+- public phone;
+- public email;
+- website;
+- social account;
+- establishment contact;
+- external booking link.
+
+Each method may have:
+
+- public visibility;
+- active status;
+- verification;
+- preferred use;
+- available hours.
+
+================================================================================
+18. MEDIA
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/media
+
+Possible media:
+
+- profile photo;
+- cover photo;
+- professional photo;
+- work setting;
+- service demonstration;
+- certificate preview;
+- introduction video;
+- portfolio;
+- educational content.
+
+Visibility options may include:
+
+- Public;
+- Members Only;
+- Selected Users;
+- Establishment Only;
+- Moderator Only;
+- Private.
+
+Restricted media must be protected by server authorization.
+
+A hidden image must not expose its direct storage path in JavaScript.
+
+================================================================================
+19. MEDIA CONSENT AND PERMISSION
+================================================================================
+
+Media may require:
+
+- therapist consent;
+- photographer permission;
+- client consent;
+- establishment permission;
+- copyright;
+- source;
+- AI label;
+- expiry or removal request.
+
+A therapist should be able to request restriction or removal of media falsely attributed to them.
+
+================================================================================
+20. REVIEWS AND OFFICIAL RESPONSES
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/response
+
+The therapist may:
+
+- view reviews;
+- filter by establishment or Service;
+- draft a response;
+- publish an official response;
+- report abuse;
+- request factual correction;
+- view response history.
+
+The therapist may not:
+
+- edit review text;
+- alter ratings;
+- discover unauthorized reviewer identity;
+- threaten or pressure reviewers;
+- remove a valid negative review.
+
+================================================================================
+21. BOOKINGS
+================================================================================
+
+Possible route:
+
+/workspace/listing/therapist/{therapist-id}/booking
+
+Possible functions:
+
+- view request;
+- accept;
+- decline;
+- suggest time;
+- see assigned establishment;
+- see Service;
+- see approved client notes;
+- confirm arrival;
+- complete;
+- cancel;
+- report issue.
+
+Booking access should show only information needed to provide the service.
+
+Sensitive intake information requires stronger protection.
+
+================================================================================
+22. CALENDAR
+================================================================================
+
+Possible calendar sources:
+
+- personal availability;
+- establishment shift;
+- independent booking;
+- event;
+- external calendar.
+
+The system should help avoid conflicts while preserving private details between organizations.
+
+One establishment should not automatically see a therapist's unrelated independent appointments or another establishment's schedule details.
+
+================================================================================
+23. CLIENT NOTES
+================================================================================
+
+Possible later professional notes:
+
+- preference;
+- pressure preference;
+- focus area;
+- contraindication;
+- follow-up;
+- treatment note;
+- SOAP note where appropriate.
+
+These are highly sensitive.
+
+Access should be limited by:
+
+- legal basis;
+- practitioner relationship;
+- establishment policy;
+- client consent;
+- retention;
+- audit.
+
+Client notes are not part of the first public-profile implementation.
+
+================================================================================
+24. PROMOTIONS
+================================================================================
+
+An independent therapist may manage:
+
+- service promotion;
+- schedule-based offer;
+- package;
+- first-visit offer;
+- home-service offer;
+- event offer.
+
+Affiliated therapists may participate in establishment promotions without owning the promotion record.
+
+================================================================================
+25. ANALYTICS
+================================================================================
+
+Possible metrics:
+
+- profile views;
+- search appearances;
+- Service interest;
+- booking inquiries;
+- contact clicks;
+- saves;
+- follows;
+- review trends;
+- response rate;
+- promotion performance;
+- language;
+- location interest.
+
+Analytics should not reveal private user identities unnecessarily.
+
+================================================================================
+26. TRANSLATION
+================================================================================
+
+The therapist may provide or review:
+
+- biography translation;
+- service-description translation;
+- boundary-statement translation;
+- public-response translation;
+- promotion translation.
+
+Translation follows the shared Translation System.
+
+================================================================================
+27. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- draft biography;
+- improve service wording;
+- suggest translation;
+- summarize profile completeness;
+- draft a professional response;
+- organize availability;
+- generate alt text;
+- explain analytics.
+
+AI must not:
+
+- invent credentials;
+- invent experience;
+- claim medical authority;
+- create false affiliation;
+- publish private information;
+- send messages without permission;
+- approve itself.
+
+================================================================================
+28. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+
+- claim approved;
+- affiliation invitation;
+- affiliation changed;
+- credential expiring;
+- verification requested;
+- new review;
+- response published;
+- booking request;
+- booking change;
+- schedule conflict;
+- media report;
+- private-message request;
+- profile correction;
+- policy warning.
+
+================================================================================
+29. PRIVACY
+================================================================================
+
+Therapist privacy controls may cover:
+
+- legal name;
+- public name;
+- exact address;
+- phone;
+- email;
+- schedule detail;
+- establishment history;
+- media;
+- credential number;
+- client communication;
+- direct booking.
+
+The system should explain what the public, establishments, clients, and moderators can see.
+
+================================================================================
+30. SAFETY
+================================================================================
+
+Possible safety tools:
+
+- block user;
+- report harassment;
+- report impersonation;
+- report false profile;
+- restrict messaging;
+- emergency support information;
+- suspicious-booking warning;
+- location privacy;
+- selected-user media;
+- boundary statement.
+
+================================================================================
+31. DELEGATED ACCESS
+================================================================================
+
+A therapist may authorize:
+
+- assistant;
+- manager;
+- agency;
+- establishment representative.
+
+Delegated permissions may include:
+
+- profile wording;
+- schedule;
+- media;
+- booking;
+- messages;
+- analytics.
+
+Delegates should not receive private identity or credential documents unless explicitly required.
+
+================================================================================
+32. AUDIT AND HISTORY
+================================================================================
+
+The workspace should preserve:
+
+- profile changes;
+- affiliation changes;
+- capability changes;
+- credential changes;
+- media visibility;
+- booking actions;
+- delegated access;
+- API actions;
+- review responses.
+
+================================================================================
+33. SECURITY
+================================================================================
+
+The workspace must:
+
+- require authentication;
+- verify therapist-specific permission;
+- protect private identity;
+- protect restricted media;
+- separate establishment access;
+- require recent authentication for sensitive changes;
+- log high-risk actions;
+- prevent API token abuse;
+- avoid exposing direct storage paths.
+
+================================================================================
+34. MOBILE USE
+================================================================================
+
+A future Flutter application may prioritize:
+
+- availability;
+- schedule;
+- booking request;
+- messages;
+- notifications;
+- quick media upload;
+- profile status;
+- credential-expiry alert.
+
+Complex profile editing may remain web-first initially.
+
+================================================================================
+35. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+- claim;
+- public profile;
+- capability;
+- affiliation;
+- credential;
+- availability;
+- service area;
+- contact;
+- media visibility;
+- review response.
+
+Phase 2
+- independent practitioner_service;
+- schedule;
+- messages;
+- analytics;
+- delegated access;
+- Partner API support.
+
+Phase 3
+- booking;
+- calendar sync;
+- client notes;
+- payments;
+- mobile management;
+- advanced privacy.
+
+================================================================================
+36. CURRENT WORKING DECISIONS
+================================================================================
+
+- Therapist Workspace is part of /workspace.
+- Public professional identity and private legal identity remain separate.
+- Capability is separate from direct commercial offering.
+- Establishment affiliation is contextual and may be confirmed or disputed.
+- Provider rank is not a universal credential or quality score.
+- The therapist controls approved professional information.
+- Establishments control their own schedules and menu eligibility, not the therapist's universal identity.
+- Restricted media uses server-side authorization.
+- One therapist may have several professional contexts.
+- Booking and sensitive client notes are later-stage systems.
+
+================================================================================
+37. OPEN DECISIONS
+================================================================================
+
+- public use of Therapist versus Practitioner;
+- exact claim proof;
+- independent-practice representation;
+- therapist-assistant permissions;
+- credential public display;
+- affiliation confirmation;
+- schedule privacy between establishments;
+- service-area privacy;
+- response policy;
+- home-service safety;
+- client-note legal requirements;
+- payment and payout;
+- subscription plans;
+- mobile launch scope.

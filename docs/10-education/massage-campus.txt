@@ -1,0 +1,632 @@
+Massage Nexus - Massage Campus
+Document Version: 0.10
+Date Created: 2026-07-14
+Revision Date: 2026-07-14
+
+DOCUMENT PURPOSE
+----------------
+This document records the early product direction for Massage Campus, a future learning and institution-support area within Massage Nexus.
+
+Massage Campus may eventually serve individual learners, instructors, assessors, massage schools, vocational training providers, wellness educators, and institutions that need structured online learning, classroom support, practical assessment, learner records, certificates, reports, and branded public portals.
+
+This is not a final feature specification, database schema, accreditation policy, legal interpretation, or immediate development commitment. It preserves the concept without allowing it to displace the current Massage Nexus priorities of establishment profiles, therapist profiles, articles, reviews, ratings, discovery, and core public browsing.
+
+================================================================================
+1. PRODUCT CONCEPT
+================================================================================
+
+Massage Campus is a future learning environment connected to Massage Nexus.
+
+It may support two complementary uses:
+
+1. Massage Nexus learning content
+   Massage Nexus may publish its own lessons, glossaries, knowledge checks, quizzes, practical guides, videos, learning paths, and completion records.
+
+2. Institution-supported learning
+   Registered schools, training centers, instructors, or other approved organizations may use the platform to organize learners, courses, classes, attendance, practical activities, assessments, grades, certificates, documents, and reports.
+
+Massage Campus should not be limited to one national training system. The platform is global and must allow jurisdiction-specific institutions, identifiers, requirements, credentials, terminology, and reporting practices.
+
+================================================================================
+2. SUBJECT SCOPE
+================================================================================
+
+The initial subject direction may include:
+
+- massage fundamentals;
+- massage modalities and techniques;
+- anatomy and physiology appropriate to the course level;
+- body mechanics;
+- hygiene and infection-control practices;
+- client communication;
+- professional conduct;
+- contraindication awareness;
+- spa operations;
+- therapist self-care;
+- reflexology;
+- bodywork;
+- wellness service knowledge;
+- client safety;
+- practical service preparation;
+- related business and workplace skills.
+
+Adjacent subjects may be included only when they fit Massage Nexus and are presented responsibly.
+
+Regulated professions, medical practice, physical therapy, diagnosis, treatment claims, and jurisdiction-specific professional credentials require separate legal, professional, and editorial review. Massage Campus must not imply that a short online course authorizes a learner to perform regulated work.
+
+================================================================================
+3. PRIORITY AND DELIVERY PHASES
+================================================================================
+
+Massage Campus is not part of the immediate Massage Nexus MVP.
+
+The recommended future sequence is:
+
+Phase 1 — Public Learning
+
+- lessons;
+- articles and explainers;
+- glossary terms;
+- short videos and media;
+- learning paths;
+- low-stakes knowledge checks;
+- quizzes;
+- progress tracking;
+- bookmarks and saved lessons;
+- ordinary certificates of completion;
+- links to related Massage Nexus articles, services, spas, therapists, and resources.
+
+Phase 2 — Institution and Classroom Tools
+
+- institution profile;
+- instructor profile;
+- learner profile;
+- course and program setup;
+- class, batch, or cohort management;
+- enrollment;
+- admission or enrollment requirements;
+- learner documents;
+- schedules;
+- attendance;
+- assignments;
+- grades;
+- announcements;
+- instructor notes;
+- learner status;
+- institution reports;
+- spreadsheet export;
+- certificate issuance;
+- staff permissions.
+
+Phase 3 — Practical Training and Assessment
+
+- practical activity records;
+- supervised practice hours;
+- demonstration checklists;
+- assessor rubrics;
+- observed performance;
+- body-mechanics checks;
+- hygiene and safety checks;
+- client-communication assessment;
+- oral questioning;
+- instructor or assessor sign-off;
+- in-person or live practical assessment;
+- practical remediation and reassessment;
+- evidence attachments where appropriate.
+
+Phase 4 — Institution Branded Portals
+
+- branded institution page;
+- institution subdomain;
+- optional custom domain;
+- configurable course catalogue;
+- enrollment pages;
+- learner and instructor access;
+- certificate verification;
+- institution-specific theme;
+- reduced or retained Massage Nexus attribution according to the commercial plan.
+
+The Branded Portal system is documented separately. Massage Campus should consume that shared capability rather than building a second unrelated custom-domain system.
+
+================================================================================
+4. LEARNING MODEL
+================================================================================
+
+Massage Campus should support several types of learning activity.
+
+Learning Content
+
+- lesson;
+- topic;
+- module;
+- course;
+- program;
+- learning path;
+- glossary term;
+- reading;
+- video;
+- image or diagram;
+- downloadable resource;
+- reference link.
+
+Learning Activity
+
+- knowledge check;
+- quiz;
+- assignment;
+- reflection;
+- discussion;
+- demonstration;
+- supervised practice;
+- attendance requirement;
+- practical assessment;
+- oral assessment;
+- final assessment.
+
+Progress
+
+Progress may be tracked at the level of:
+
+- lesson;
+- module;
+- course;
+- learning path;
+- class or cohort;
+- program.
+
+Completion should not be based only on opening a page. Depending on the course, completion may require lesson review, quiz performance, attendance, assignment submission, practical activity, instructor approval, or a combination of requirements.
+
+================================================================================
+5. USER AND INSTITUTION ROLES
+================================================================================
+
+Potential context-specific roles include:
+
+Learner or Student
+- enrolls in courses;
+- views lessons;
+- completes activities;
+- takes quizzes;
+- submits assignments;
+- reviews progress;
+- receives feedback;
+- accesses certificates and records.
+
+Instructor or Teacher
+- manages assigned classes;
+- publishes or selects learning materials;
+- records attendance;
+- reviews assignments;
+- records grades;
+- provides feedback;
+- evaluates practical work;
+- recommends completion or remediation.
+
+Assessor
+- conducts or records formal practical assessment;
+- completes approved rubrics;
+- verifies identity and evidence when required;
+- records assessment outcome;
+- signs or validates assessment records according to institution rules.
+
+Institution Administrator
+- manages the institution profile;
+- invites staff;
+- assigns permissions;
+- manages learners;
+- creates classes and programs;
+- configures requirements;
+- reviews reports;
+- manages institution branding and portal settings;
+- manages certificate templates and verification settings where permitted.
+
+Content Contributor or Editor
+- prepares learning content;
+- updates lessons;
+- maintains glossary terms;
+- reviews media and references;
+- submits content for approval.
+
+Massage Nexus Moderator or Administrator
+- manages platform rules;
+- handles abuse and content reports;
+- reviews institution eligibility where required;
+- manages system-wide settings;
+- protects certificate and verification integrity;
+- audits activity according to platform policy.
+
+These are workspace access contexts, not separate public top-level account systems. One person may hold different roles for different institutions or courses.
+
+================================================================================
+6. INSTITUTION MODEL
+================================================================================
+
+A participating organization may be a:
+
+- massage school;
+- vocational training provider;
+- academy;
+- college or university unit;
+- continuing-education provider;
+- spa with an internal training program;
+- therapist collective offering approved training;
+- professional association;
+- independent instructor operating an approved program;
+- other wellness training organization accepted by Massage Nexus.
+
+An institution profile does not automatically create a spa listing.
+
+A school may operate a public-facing Training Clinic, but the clinic should be represented and classified separately when it actually provides supervised services to clients. The relationship among the institution, its training program, and any real service establishment must remain clear.
+
+Potential institution profile areas include:
+
+- institution name;
+- short description;
+- location and service area;
+- contact information;
+- public website and social links;
+- programs and courses;
+- instructors;
+- admission or enrollment information;
+- delivery mode;
+- facilities;
+- practical-training availability;
+- accreditation or recognition statements;
+- external identifiers;
+- policies;
+- learner support;
+- media;
+- announcements;
+- certificate verification;
+- branded portal information.
+
+Claims involving accreditation, government recognition, licensure, regulated credentials, or professional authority must be verified under the relevant jurisdiction. Massage Nexus should not infer official recognition from an institution's name or uploaded logo.
+
+================================================================================
+7. LEARNER RECORDS AND EXTERNAL IDENTIFIERS
+================================================================================
+
+Institutions may need to store or reference local learner identifiers.
+
+Examples may include:
+
+- institution student number;
+- enrollment number;
+- class or batch number;
+- external government learner identifier;
+- external certification identifier;
+- external assessment identifier.
+
+A country-specific identifier must not become the universal learner identity model for the whole platform.
+
+The system should distinguish among:
+
+- Massage Nexus user identity;
+- institution-specific learner identity;
+- institution-specific student number;
+- jurisdiction-specific external identifier;
+- certificate or assessment reference number.
+
+Sensitive learner records require permission controls, privacy rules, retention rules, audit history, and jurisdiction-specific review before implementation.
+
+================================================================================
+8. CERTIFICATES, CERTIFICATION, AND CREDENTIALS
+================================================================================
+
+Massage Campus must use careful terminology.
+
+Certificate of Completion
+
+A record that a learner completed the defined requirements of a Massage Campus or institution course. It does not automatically prove professional competency, government recognition, licensure, or authority to practice.
+
+Institution-Issued Certificate
+
+A certificate issued under the name and rules of a participating school, training provider, instructor, or organization. The issuing institution remains responsible for the meaning and legitimacy of the certificate.
+
+Practical Competency Record
+
+A record showing that defined practical tasks were observed and assessed. Its significance depends on the assessor, institution, assessment method, and applicable professional or regulatory rules.
+
+External or Regulated Credential
+
+A credential issued, recognized, or governed by an outside authority. Massage Nexus may record or link to it when appropriate, but should not recreate, rename, or imply that it issued the external credential.
+
+Certificate verification may later include:
+
+- unique certificate code;
+- verification page;
+- learner name subject to privacy settings;
+- issuing organization;
+- course or program;
+- completion date;
+- status;
+- revocation or correction status;
+- digital signature or other integrity control;
+- printable or downloadable certificate.
+
+Exact security, identity, legal, and anti-fraud requirements remain deferred.
+
+================================================================================
+9. QUIZ AND ASSESSMENT INTEGRITY
+================================================================================
+
+No quiz system should be described as impossible to cheat.
+
+For ordinary low-stakes learning, possible controls include:
+
+- randomized question order;
+- randomized answer order;
+- question pools;
+- attempt limits;
+- time limits where appropriate;
+- delayed answer review;
+- different question sets;
+- explanations after completion;
+- minimum passing score;
+- remediation before another attempt.
+
+For higher-stakes evaluation, stronger measures may include:
+
+- identity confirmation;
+- supervised testing;
+- oral questioning;
+- live demonstration;
+- practical assessment;
+- assessor observation;
+- evidence review;
+- instructor sign-off;
+- on-site examination;
+- audit history.
+
+Online quizzes can support knowledge review. They cannot replace hands-on learning when the skill depends on pressure, touch, body mechanics, positioning, safety, communication, or supervised physical performance.
+
+================================================================================
+10. PRACTICAL LEARNING
+================================================================================
+
+Massage training includes skills that cannot be judged reliably through reading or video alone.
+
+Practical learning may require:
+
+- in-person instruction;
+- guided demonstration;
+- supervised practice;
+- feedback on pressure and technique;
+- posture and body-mechanics correction;
+- sanitation and preparation checks;
+- draping and privacy practice;
+- communication with a practice client;
+- time-limited practical performance;
+- assessor observation.
+
+Massage Campus may organize and document these activities, but the digital platform should not claim that software alone can confirm physical competency.
+
+Possible delivery combinations include:
+
+- fully online theory course;
+- online theory plus live virtual instruction;
+- online theory plus local in-person practical session;
+- school-managed classroom and clinic training;
+- hybrid program;
+- institution-recorded external practical assessment.
+
+================================================================================
+11. REPORTING AND EXPORT
+================================================================================
+
+Institutions may need reports for internal administration or submission to outside systems.
+
+Possible reports include:
+
+- learner roster;
+- enrollment status;
+- attendance;
+- grades;
+- assessment outcomes;
+- practical hours;
+- course completion;
+- certificate issuance;
+- instructor workload;
+- class or cohort summary;
+- missing requirements;
+- learner progress;
+- institution activity.
+
+Export may later support:
+
+- spreadsheet;
+- CSV;
+- PDF;
+- printable report;
+- institution-defined template.
+
+Exports should assist institutions without assuming that one format satisfies every regulator, school, or country.
+
+================================================================================
+12. WORKSPACE DIRECTION
+================================================================================
+
+Massage Campus should use the unified Massage Nexus workspace with permission-based views.
+
+Potential workspace areas include:
+
+- Campus home;
+- institution;
+- instructor;
+- learner;
+- course;
+- program;
+- class or cohort;
+- enrollment;
+- schedule;
+- attendance;
+- lesson;
+- quiz;
+- assignment;
+- assessment;
+- practical activity;
+- grade;
+- certificate;
+- report;
+- media;
+- notification;
+- portal settings;
+- audit history.
+
+The workspace remains a Massage Nexus management environment even when the public institution website uses a custom brand or custom domain.
+
+================================================================================
+13. MULTILINGUAL AND GLOBAL DIRECTION
+================================================================================
+
+Massage Campus is intended for global use.
+
+The platform should allow:
+
+- interface language;
+- content language;
+- course language;
+- institution-preferred terminology;
+- translated or localized learning materials;
+- jurisdiction-specific requirements;
+- local date, number, and grading formats;
+- country-specific external identifiers.
+
+Learning content should not be translated mechanically when terminology, safety guidance, professional scope, or assessment expectations differ by jurisdiction.
+
+A translated course should identify who reviewed or approved the localization when the material affects safety, professional practice, or formal assessment.
+
+================================================================================
+14. ACCESSIBILITY AND LEARNER SUPPORT
+================================================================================
+
+Future planning should consider:
+
+- captions and transcripts;
+- readable text;
+- keyboard access;
+- screen-reader compatibility;
+- image alternative text;
+- downloadable references;
+- low-bandwidth options;
+- mobile-friendly lessons;
+- adjustable playback speed;
+- clear progress indicators;
+- retake and remediation support;
+- instructor feedback;
+- learner support contacts.
+
+Accessibility should be part of the learning design, not an optional final decoration.
+
+================================================================================
+15. BRANDED PORTAL RELATIONSHIP
+================================================================================
+
+Massage Campus institutions may later use the shared Branded Portal capability.
+
+Possible public presentation levels include:
+
+- normal institution profile inside Massage Nexus;
+- branded Massage Nexus subdomain;
+- custom domain;
+- white-label or reduced-attribution portal under a paid plan.
+
+The branded public portal may show:
+
+- institution branding;
+- programs;
+- courses;
+- instructors;
+- enrollment information;
+- announcements;
+- contact information;
+- learner login;
+- certificate verification.
+
+Institution administration, records, permissions, grading, assessment, and reports remain inside the secured Massage Nexus workspace.
+
+================================================================================
+16. COMMERCIAL POSSIBILITIES
+================================================================================
+
+Potential future revenue may include:
+
+- paid courses;
+- subscription learning plans;
+- institution plans;
+- instructor tools;
+- learner management;
+- assessment tools;
+- certificate services;
+- branded subdomains;
+- custom domains;
+- white-label portals;
+- storage or media allowances;
+- analytics and reporting;
+- premium support.
+
+No commercial model is approved by this concept document.
+
+================================================================================
+17. CURRENT BOUNDARIES
+================================================================================
+
+Massage Campus should not initially become:
+
+- a replacement for every country's education system;
+- a universal government credentialing authority;
+- a promise that online study alone proves massage competency;
+- a medical education platform;
+- a physical-therapy licensing platform;
+- an automatic accreditation service;
+- a reason to delay the core Massage Nexus directory and content launch.
+
+The immediate Massage Nexus focus remains discovery and content:
+
+- spa and establishment profiles;
+- therapist profiles;
+- services;
+- articles;
+- reviews;
+- ratings;
+- media;
+- search and browsing;
+- basic contribution and verification workflows.
+
+================================================================================
+18. DEFERRED DECISIONS
+================================================================================
+
+The following remain open:
+
+- final public and workspace routes;
+- institution naming and entity model;
+- course, module, lesson, class, and program data structures;
+- learner and institution permission model;
+- certificate format and verification method;
+- practical-assessment workflow;
+- assessment security;
+- external-identifier storage;
+- grading systems;
+- attendance rules;
+- enrollment and payment flow;
+- content-authoring workflow;
+- institution eligibility and verification;
+- regulatory and jurisdiction-specific policy;
+- privacy and retention rules;
+- custom-domain pricing;
+- white-label limits;
+- integration with external learning systems;
+- whether Massage Nexus creates its own instructors or relies mainly on partners;
+- launch sequence and development schedule.
+
+CURRENT DECISION SUMMARY
+------------------------
+- Massage Campus is a valuable major future module, not an immediate MVP feature.
+- It may support both public self-directed learning and institution-managed education.
+- Hands-on massage competency requires practical learning and human assessment.
+- Certificates of completion must not be confused with regulated credentials.
+- Schools and training institutions may later use learner, instructor, class, assessment, reporting, and export tools.
+- Country-specific learner identifiers remain external or jurisdiction-specific references.
+- The unified Massage Nexus workspace should support learner, instructor, assessor, and institution-administrator views.
+- Branded institution portals should use the shared Branded Portal system.

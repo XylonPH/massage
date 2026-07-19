@@ -1,0 +1,370 @@
+Title: Massage Nexus Provider Scheduling, Resource and Walk-In Management
+Document Version: 0.10
+Date Created: 2026-07-17
+Revision Date: 2026-07-17
+Status: Internal Planning Reference
+Shared Standard Reference: Shared Project Standards v2.60
+
+Related Documents:
+- Massage Nexus - 05 - Service Classification v2.00
+- Massage Nexus - 06 - Service Profile v0.20
+- Massage Nexus - 07 - Spa Profile v0.10
+- Massage Nexus - 09 - Therapist Profile v0.10
+- Massage Nexus - 11 - Product Classification v1.40
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+- Massage Nexus - User Rewards and Gamification v1.60
+- Massage Nexus - Translation System v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines provider availability, therapist scheduling, resource reservation, travel handling, group assignment, waitlist, queue, walk-in, recurring session, and calendar integration for Massage Nexus.
+
+================================================================================
+1. SCHEDULING PRINCIPLE
+================================================================================
+
+A time slot is available only when all required components are available.
+
+Possible required components:
+- provider or branch;
+- therapist;
+- service capability;
+- treatment room;
+- treatment support;
+- device;
+- facility;
+- product or consumable stock where enforced;
+- vehicle;
+- travel time;
+- preparation time;
+- cleanup time;
+- staff capacity;
+- participant capacity.
+
+The booking engine must not confirm from therapist availability alone when another required resource is unavailable.
+
+================================================================================
+2. AVAILABILITY SOURCES
+================================================================================
+
+Field Name: type_availability_source
+Field Label: Availability Source
+Selection: One source per rule or event
+
+Code | Label              | Description
+-----|--------------------|------------------------------------------------------------
+REG  | Recurring Rule     | Weekly or repeating availability.
+EXC  | Schedule Exception | One-time opening, closure, or changed hours.
+BKG  | Confirmed Booking  | Existing booking consumes capacity.
+BLK  | Manual Block       | Authorized staff blocks time.
+EXT  | External Calendar  | Availability is synchronized from another calendar.
+WLK  | Walk-In Queue      | Capacity is affected by current walk-in demand.
+TRV  | Travel             | Off-site travel consumes therapist or vehicle time.
+BRK  | Break              | Scheduled break consumes availability.
+LVE  | Leave              | Therapist or staff leave.
+MNT  | Maintenance        | Room, facility, or equipment is unavailable.
+
+================================================================================
+3. PROVIDER RESOURCE TYPE
+================================================================================
+
+Field Name: type_provider_resource
+Field Label: Provider Resource Type
+Selection: Single-select per resource
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+THR  | Therapist         | Practitioner assigned to deliver a service.
+ROM  | Treatment Room    | Private, shared, couple, wet, or specialized room.
+STA  | Treatment Station | Chair, bed, mat, booth, or station within a shared area.
+SUP  | Treatment Support | Table, bed, chair, mat, floatation support, or comparable support.
+DEV  | Device            | Powered or specialized device required for a service.
+FAC  | Facility          | Sauna, steam room, bath, shower, pool, lounge, or other facility.
+VEH  | Vehicle           | Vehicle used for home, hotel, event, or provider-arranged transport.
+STF  | Staff Role        | Receptionist, assistant, attendant, chaperone, or another required role.
+EQP  | Equipment Set     | Portable or grouped equipment reserved as one resource.
+GRP  | Group Capacity    | Capacity limit for class, room, bath, or group service.
+
+Resource record may include provider, branch, label, capacity, supported services, supported setup, location, sanitation buffer, preparation buffer, status, availability, maintenance, and access permission.
+
+================================================================================
+4. SCHEDULE RULES
+================================================================================
+
+Recurring availability may define day of week, start and end, time zone, effective date, expiry, branch, therapist, service, delivery context, capacity, break, minimum notice, maximum advance booking, slot interval, cleanup, and travel buffer.
+
+Field Name: type_schedule_exception
+Field Label: Schedule Exception Type
+Selection: Single-select
+
+Code | Label           | Description
+-----|-----------------|------------------------------------------------------------
+OPN  | Special Opening | Availability is added outside normal schedule.
+CLS  | Closure         | Availability is removed.
+CHG  | Changed Hours   | Normal hours are replaced.
+CAP  | Capacity Change | Capacity is temporarily changed.
+TRV  | Travel Block    | Time is reserved for travel.
+MNT  | Maintenance     | Resource is unavailable for maintenance.
+LVE  | Leave           | Therapist or staff is unavailable.
+EVT  | Event Schedule  | Special event or temporary-service schedule applies.
+
+================================================================================
+5. RESOURCE RESERVATION
+================================================================================
+
+Every confirmed service line may reserve one or more resources.
+
+Reservation fields:
+- booking_id;
+- service_line_id;
+- resource_id;
+- participant_id;
+- start_at;
+- end_at;
+- preparation_start_at;
+- cleanup_end_at;
+- capacity units;
+- status;
+- hold expiry;
+- conflict key;
+- source;
+- override reason.
+
+Temporary holds prevent double booking while provider reviews, client accepts quote, payment is pending, or group assignment is completed.
+
+================================================================================
+6. GROUP THERAPIST ASSIGNMENT
+================================================================================
+
+For each participant:
+- required therapist capability;
+- selection mode;
+- acceptable alternatives;
+- concurrent or sequential timing;
+- room;
+- service support;
+- language;
+- access rule;
+- duration;
+- buffer.
+
+The system warns when one therapist is assigned to overlapping participants, duration differs from reservation, couple booking lacks capacity, therapist preference cannot be met, therapist lacks capability or credential, travel creates impossible transition, or assignment violates break or workload rule.
+
+================================================================================
+7. WALK-IN SESSION
+================================================================================
+
+Walk-in may be created for registered user, invited guest, provider-local customer, anonymous client, or client who declines optional information.
+
+Field Name: type_walk_in_identity
+Field Label: Walk-In Identity Mode
+Selection: Single-select
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+USR  | Registered User       | Linked Massage Nexus account.
+GST  | Guest Contact         | Limited guest identity with contact.
+LOC  | Provider-Local Client | Provider maintains local customer identity.
+ANM  | Anonymous             | No personal identity is retained beyond required operational fields.
+DCL  | Information Declined  | Client declined optional identity information.
+
+Minimum walk-in record:
+- provider;
+- branch;
+- service;
+- arrival time;
+- queue status;
+- participant count;
+- therapist;
+- amount;
+- payment status;
+- required intake;
+- consent;
+- completion.
+
+Staff must not infer nationality, gender identity, ethnicity, skin complexion, health status, or other sensitive traits. Ask only when relevant and leave unselected when not supplied.
+
+================================================================================
+8. QUEUE
+================================================================================
+
+Field Name: status_queue
+Field Label: Queue Status
+Selection: Single-select
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+WAI  | Waiting    | Client is waiting.
+CAL  | Called     | Client was called or notified.
+CHK  | Check-In   | Intake or preparation began.
+ASN  | Assigned   | Therapist and resources are assigned.
+SRV  | In Service | Service began.
+SKP  | Skipped    | Client temporarily yielded position.
+LFT  | Left       | Client left before service.
+CAN  | Cancelled  | Queue entry was cancelled.
+CMP  | Completed  | Service completed.
+
+Queue may estimate position, waiting time, therapist, station, service duration, and delay reason. Queue estimates are not guaranteed appointment times.
+
+================================================================================
+9. SIMPLIFIED EXPRESS WORKFLOW
+================================================================================
+
+Express providers may use service, participant count, high-priority eligibility questions, therapist or station, start, duration, amount, payment, consent, and completion.
+
+Simplified workflow does not remove required eligibility, age or guardian rule, provider access policy, sanitation, consent, or incident handling.
+
+================================================================================
+10. WAITLIST
+================================================================================
+
+Waitlist request may specify provider, branch, service, therapist required or preferred, date, time range, duration, participant count, delivery context, maximum price, notification channel, and offer expiry.
+
+Field Name: status_waitlist
+Field Label: Waitlist Status
+Selection: Single-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+ACT  | Active      | Request is waiting.
+MAT  | Match Found | Compatible opening was found.
+OFR  | Offer Sent  | Time-limited offer was sent.
+ACC  | Accepted    | Client accepted.
+EXP  | Expired     | Offer or waitlist expired.
+CAN  | Cancelled   | Client or provider cancelled.
+FUL  | Fulfilled   | Booking was created.
+PAU  | Paused      | Client temporarily paused matching.
+
+Waitlist acceptance still runs eligibility, policy, and payment checks.
+
+================================================================================
+11. DELIVERY CONTEXT
+================================================================================
+
+Field Name: type_service_delivery_context
+Field Label: Service Delivery Context
+Selection: Single-select per service line
+
+Code | Label                      | Description
+-----|----------------------------|------------------------------------------------------------
+ONS  | Provider Premises          | Service occurs at provider's normal treatment location.
+HOM  | Client Home                | Service occurs at client's residence.
+HTL  | Hotel or Accommodation     | Service occurs in hotel, resort room, or lodging.
+COR  | Corporate or Workplace     | Service occurs at a workplace.
+EVT  | Event                      | Service occurs at an event or temporary venue.
+MOB  | Mobile Facility            | Service occurs in a mobile treatment facility.
+TRN  | Training Clinic            | Service occurs in supervised training setting.
+HCF  | Healthcare Facility        | Service occurs in a healthcare setting.
+PAO  | Provider-Arranged Off-Site | Client checks in at one provider-controlled location and is transported or directed to another treatment site.
+
+Provider-Arranged Off-Site requires check-in address, treatment-address disclosure policy, transport, travel time, fee, return arrangement, accessibility, safety contact, and client consent.
+
+It is a delivery context, not a Spa Type.
+
+================================================================================
+12. HOME AND HOTEL SERVICE LOGISTICS
+================================================================================
+
+Collect only what is needed:
+- service address;
+- landmark;
+- building access;
+- room or unit;
+- parking;
+- toll;
+- stairs or elevator;
+- pets;
+- occupants;
+- safe workspace;
+- treatment support supplied by provider or client;
+- linens;
+- water or power requirement;
+- therapist travel;
+- arrival contact;
+- emergency contact where justified.
+
+Address may remain hidden until required confirmation stage and is visible only to assigned authorized provider roles.
+
+================================================================================
+13. TRAVEL FEE AND TIME
+================================================================================
+
+Travel calculation may use fixed zone, city, distance, provider-defined boundary, vehicle, parking, toll, time of day, number of therapists, equipment transport, and return travel.
+
+Travel time consumes therapist and vehicle schedule. A booking must not be confirmed when travel creates an impossible transition.
+
+================================================================================
+14. SERIES AND COURSE SCHEDULING
+================================================================================
+
+Series means repeated or substantially similar sessions.
+Course means ordered or progressive program.
+
+Support parent booking or enrollment, individual session records, package balance, therapist continuity, rescheduling per session, expiry, missed session, substitution, price snapshot, policy snapshot, progress, and completion.
+
+Future sessions are bookings, not manual history records.
+
+================================================================================
+15. EXTERNAL CALENDAR AND BOOKING INTEGRATION
+================================================================================
+
+Possible integrations include provider calendar, therapist work calendar, third-party booking system, Google Calendar, Microsoft calendar, iCalendar feed, partner API, and webhook.
+
+Integration must preserve external identifier, source, synchronization direction, last sync, conflict, private-title masking, time zone, deletion behavior, and manual override.
+
+Sensitive intake is never exported to a generic calendar description.
+
+================================================================================
+16. TIME ZONES
+================================================================================
+
+Store absolute timestamp plus IANA time zone.
+Display provider local time, client local time when different, time-zone name, date change warning, and daylight-saving change where applicable.
+
+================================================================================
+17. STAFF PERMISSIONS
+================================================================================
+
+Possible permissions:
+- view schedule;
+- create manual booking;
+- edit booking;
+- assign therapist;
+- reserve resource;
+- manage queue;
+- view limited intake outcome;
+- access assigned intake detail;
+- collect payment;
+- cancel;
+- override conflict;
+- manage schedule;
+- manage resource;
+- export.
+
+Override actions require reason and audit.
+
+================================================================================
+18. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial:
+- recurring provider hours;
+- therapist availability;
+- booking hold;
+- room or station;
+- manual assignment;
+- walk-in;
+- queue;
+- conflict warning.
+
+Later:
+- resource engine;
+- travel;
+- group optimization;
+- waitlist;
+- external sync;
+- recurring series or course;
+- mobile check-in;
+- provider-arranged off-site transport.

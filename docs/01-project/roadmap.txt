@@ -1,0 +1,651 @@
+Title: Massage Nexus Roadmap
+Document Version: 1.40
+Date Created: 2026-07-16
+Revision Date: 2026-07-18
+Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
+
+================================================================================
+1. ROADMAP RULES
+================================================================================
+
+- The Roadmap answers what must be built before what, what each major phase produces, and what
+  conditions permit a release.
+- The Features document preserves the complete feature and subfeature inventory.
+- The Simple Checklist preserves completion status for planning, setup, features, releases,
+  and operations.
+- A phase may contain work for several later releases when the work creates a shared foundation.
+- A release may omit nonessential features without deleting them from the planned platform.
+- No public release bypasses security, privacy, data integrity, policy, backup, recovery,
+  accessibility, moderation, and Support gates.
+- Campus, surveys, quizzes, workspaces, comics, News, and other large systems may begin with a
+  useful foundation and expand in later releases; they must not disappear into one vague future
+  line.
+- Each international market receives its own data, language, policy, moderation, Support, and
+  operational readiness gate.
+
+Current position:
+Massage Nexus has extensive planning and a working local Laravel environment. No public
+website feature is currently treated as implemented. The immediate work remains documentation
+consolidation, recoverable version control, MongoDB application integration, localization,
+account and policy foundations, and internal data operations.
+
+================================================================================
+PHASE 0. PROJECT DEFINITION, BRAND, AND PLANNING FOUNDATION
+CURRENT STATE: STABLE ENOUGH
+================================================================================
+
+Purpose:
+Establish the identity and broad intended system before implementation.
+
+Established foundations:
+- project name, domain, audience, mission, and global direction;
+- public website concept and major directory modules;
+- logo, Ink & Ember theme, homepage direction, and identity materials;
+- Neural Agents, Nexus Cast, mascots, and The Resting Leaf;
+- Articles, Reviews, News, Ratings, Reputation, rewards, and content direction;
+- service, spa, therapist, and product classifications;
+- Booking, User Workspace, Support, Comments, Discussions, analytics, research, language,
+  monetization, marketing, maintenance, testing, GitHub, cache, and application planning;
+- local PHP, Apache, Laravel, SQLite, and MongoDB environment.
+
+Exit:
+The project has enough accepted scope to move from broad brainstorming to controlled sources
+of truth, build order, implementation, testing, and releases.
+
+================================================================================
+PHASE 1. DOCUMENTATION CONSOLIDATION AND AI CONTEXT GOVERNANCE
+CURRENT STATE: CURRENT
+================================================================================
+
+Purpose:
+Prevent lost detail, contradictory files, unnecessary AI context, and accidental revival of
+superseded decisions.
+
+Major work:
+- preserve the Features document as the complete working feature inventory;
+- preserve the Simple Checklist as the complete categorical completion tracker;
+- preserve the Roadmap as the dependency and release map;
+- finalize the Documentation Writing and Management Standard;
+- review all current specifications for contradiction and duplicate concepts;
+- identify one authoritative current file per subject;
+- refactor Shared Project Standards into a small core and focused topic files;
+- create semantic repository documentation folders;
+- create a lightweight manifest;
+- create root and scoped AI instructions;
+- create focused task packets and acceptance criteria;
+- archive superseded active files;
+- resolve duplicate numbers and inconsistent names;
+- preserve Working Notes and AI handoffs outside ordinary authoritative specifications.
+
+MILESTONE 1 — DOCUMENTATION CONTROL
+
+Passes when:
+- a person or coding agent can locate the correct authority for a task;
+- no current implementation depends on a known superseded file;
+- the detailed feature inventory remains intact;
+- broad AI instructions do not require reading the entire documentation archive;
+- rejected or replaced decisions are not silently reintroduced.
+
+No public release occurs here.
+
+================================================================================
+PHASE 2. RECOVERABLE REPOSITORY AND TECHNICAL BASELINE
+CURRENT STATE: CURRENT
+================================================================================
+
+Purpose:
+Make every technical change recoverable, testable, and reproducible.
+
+Major work:
+- verify Git initialization and remote;
+- review, commit, and push the clean Laravel baseline;
+- exclude secrets, uploads, logs, dependencies, and local configuration;
+- add focused tests and automated checks;
+- select and prove the Laravel-compatible MongoDB integration;
+- prove create, read, update, delete, indexes, uniqueness, and accepted transaction behavior;
+- prepare Azure DocumentDB compatibility;
+- configure development, testing, staging, and production;
+- configure public, private, restricted, quarantine, and temporary storage;
+- configure frontend build, queues, scheduler, logging, mail, search, media, cache, and backup;
+- provide production-safe errors and reduce unnecessary technology disclosure;
+- test clean restoration.
+
+MILESTONE 2 — DEVELOPMENT BASELINE
+
+Passes when:
+- a clean clone restores and runs;
+- targeted tests run;
+- MongoDB application operations work;
+- no secret is tracked;
+- failed work can be reverted;
+- backup and restoration procedures are credible;
+- production settings do not expose stack traces or unnecessary internal technology.
+
+================================================================================
+PHASE 3. ACCOUNT, LANGUAGE, LEGAL, PRIVACY, SECURITY, AND ACCESSIBILITY
+CURRENT STATE: AFTER MILESTONE 2
+================================================================================
+
+Purpose:
+Create the conditions required before public registration, user-generated content, or private
+workspaces.
+
+Account and membership:
+- shared network identity;
+- Massage Nexus membership and 18+ eligibility;
+- public browsing without registration;
+- registration, username rules, email verification, login, recovery, sessions, and devices;
+- Argon2id password hashing;
+- TOTP, recovery codes, and passkeys after normal authentication is stable;
+- public User Profile separated from private User Workspace;
+- roles and permissions for user, provider, therapist, seller, advertiser, contributor,
+  researcher, translator, editor, Support, moderator, and administrator.
+
+Language and translation:
+- English source and fallback;
+- Filipino and approved Taglish presentation;
+- initial local and international language registry;
+- semantic interface keys;
+- locale and regional preferences;
+- original-language preservation;
+- translation records, revision, cache, and on-demand translation;
+- stronger review for legal, privacy, security, payment, intake, consent, eligibility, and
+  safety translation.
+
+Legal, privacy, security, and accessibility:
+- public Terms, Privacy Notice, Community Guidelines, Account Policy, and applicable NSFW policy;
+- exact policy version and locale acceptance;
+- privacy rights, retention, deletion, export, and correction;
+- secure media, authorization, audit, rate limits, incident reporting, and account recovery;
+- screen-reader, keyboard, contrast, scalable text, caption, error, form, and non-visual
+  workflow foundations.
+
+MILESTONE 3 — ACCOUNT AND POLICY ALPHA
+
+Passes when:
+- test accounts can register, verify, sign in, recover, and revoke sessions;
+- unverified or ineligible accounts cannot enter normal member workflows;
+- required policy acceptance is recorded;
+- critical account pages work in the activated languages;
+- privacy, authorization, accessibility, and production-error tests pass.
+
+This milestone remains internal.
+
+================================================================================
+PHASE 4. INTERNAL DATA, TAXONOMY, RESEARCH, TRANSLATION, AND ADMINISTRATION
+CURRENT STATE: AFTER MILESTONE 3
+================================================================================
+
+Purpose:
+Allow Massage Nexus to create and maintain trustworthy records before presenting a broad public
+directory.
+
+Core data:
+- Service, Spa, Therapist, Product, Seller, location, area, language, currency, and reference
+  foundations;
+- normalized services separated from provider menu items and therapist capabilities;
+- status, history, move, rename, closure, dispute, duplicate, merge, and archival behavior;
+- media, source, translation, revision, and audit relationships.
+
+Research and provenance:
+- source registry;
+- field-level source, observation date, verification date, freshness, confidence, contradiction,
+  permission, and revision;
+- direct visit, interview, provider confirmation, official sources, websites, social accounts,
+  map leads, menus, prices, historical evidence, and community tips;
+- correspondent and researcher assignments;
+- evidence redaction;
+- public methodology and coverage measurement;
+- AI candidate extraction without automatic verification.
+
+Internal workspaces:
+- Administrator Workspace;
+- Taxonomy and Data Workspace;
+- Researcher and Correspondent Workspaces;
+- Translator Workspace;
+- Editor and Steward Workspaces;
+- Media Workspace;
+- initial Moderator and Support-agent controls;
+- restricted evidence and high-impact audit.
+
+MILESTONE 4 — INTERNAL OPERATIONS ALPHA
+
+Passes when:
+- authorized internal users can create and maintain core records;
+- every important public fact can retain provenance and freshness;
+- translations retain source revision and review state;
+- duplicate, correction, merge, closure, and history workflows work;
+- private evidence does not appear in public representations;
+- initial Mandaluyong and Metro Manila data can support real search and profile testing.
+
+================================================================================
+PHASE 5. PUBLIC WEBSITE, DIRECTORY, SEARCH, MAPS, AND PROFILES
+CURRENT STATE: AFTER INTERNAL OPERATIONS ALPHA
+================================================================================
+
+Purpose:
+Make Massage Nexus useful as a public discovery website before requiring booking or commercial
+provider participation.
+
+Public website:
+- responsive homepage;
+- navigation, footer, campaigns, public status, Help, policies, and language selection;
+- canonical public routes, sitemaps, structured data, social previews, crawler controls, and
+  private-route exclusion;
+- performance, cache, accessibility, and production-safe behavior.
+
+Discovery:
+- directories;
+- Guided Browsing;
+- Smart Search and Filters;
+- nearby and location browsing;
+- Maps and Directions;
+- Comparison;
+- recommendations;
+- saved search foundation;
+- recently viewed and related records;
+- public correction routes.
+
+Profiles:
+- Service Profiles;
+- Spa and Establishment Profiles;
+- Therapist Profiles;
+- Product Profiles;
+- Seller Profiles;
+- branches, locations, service areas, hours, contact, facilities, menus, prices, media, status,
+  trust, source, and historical information.
+
+RELEASE 0.1 — PRIVATE DIRECTORY ALPHA
+
+Audience:
+The owner, invited users, known providers, contributors, researchers, and testers.
+
+Gate:
+- public pages work on supported browsers and screen sizes;
+- initial local search is useful;
+- no placeholder or uncertain information appears as verified truth;
+- source, freshness, status, and correction routes work;
+- public Help, policies, security, privacy, accessibility, localization, backup, and rollback
+  checks pass.
+
+================================================================================
+PHASE 6. EDITORIAL CONTENT, NEWS, CAMPUS FOUNDATION, QUIZZES, SURVEYS, AND BRAND CONTENT
+CURRENT STATE: BUILDS WITH PHASE 5 AND EXPANDS AFTER RELEASE 0.1
+================================================================================
+
+Purpose:
+Make Massage Nexus a continuing knowledge, learning, reporting, and brand platform rather than
+only a directory.
+
+Editorial content:
+- Articles and Resources;
+- guides, glossaries, downloads, series, and related-record links;
+- content editing, revisions, sources, media, reactions, and translations;
+- reading-duration and accessibility handling.
+
+News:
+- standard News, briefs, breaking and developing stories;
+- local provider opening, closure, move, and rename reporting;
+- regulation, safety, research, business, event, product, and technology News;
+- reporter, editor, sources, response requests, corrections, updates, retractions, conflicts,
+  and sponsorship labels.
+
+Massage Campus foundation:
+- Campus homepage and catalog;
+- subject areas, courses, modules, lessons, guides, glossaries, and learning paths;
+- instructor or author records;
+- progress, saves, Discussions, Comments, translations, and accessibility;
+- initial quizzes, knowledge checks, attempts, feedback, completion signals, and badges;
+- explicit separation from government licenses and professional credentials.
+
+Surveys, polls, and feedback:
+- user, provider, therapist, contributor, advertiser, accessibility, Support, booking, and
+  maintenance surveys;
+- article, News, Campus, Discussion, and campaign polls;
+- sampling, consent, anonymity, incentives, anti-manipulation, analysis, and public-methodology
+  controls.
+
+Brand and frequent content:
+- The Resting Leaf;
+- mascots and Nexus Cast;
+- Neural Agent editorial use;
+- newsletters and digests;
+- initial Relaxation Room experiences where operationally manageable.
+
+MILESTONE 5 — INTERNAL CONTENT AND CAMPUS ALPHA
+
+Passes when:
+- content can be drafted, reviewed, translated, scheduled, published, corrected, and archived;
+- News can preserve sources and material updates;
+- Campus lessons and quizzes preserve progress without claiming false credentials;
+- surveys and polls preserve purpose, privacy, and methodology;
+- daily or regular content can be prepared without bypassing editorial review.
+
+================================================================================
+PHASE 7. USERS, COMMUNITY, REPUTATION, MODERATION, AND SUPPORT
+CURRENT STATE: AFTER RELEASE 0.1
+================================================================================
+
+Purpose:
+Allow verified members to participate without weakening data reliability, safety, or privacy.
+
+User experience:
+- public User Profiles;
+- private User Workspace;
+- saves, lists, follows, reminders, Notifications, preferences, and personal analytics;
+- private service history, receipts, budgets, loyalty, and exports.
+
+Community:
+- Reviews;
+- criteria Ratings and content reactions;
+- Comments;
+- Discussions and Community Q&A;
+- Messaging and approved chat;
+- Contributions and Corrections;
+- translation on demand;
+- mentions, replies, role labels, subscriptions, blocks, mute, and reporting;
+- Reputation, limited rewards, badges, ranks, and anti-farming controls.
+
+Moderation and trust:
+- verification and trust labels;
+- moderation queues;
+- spam, manipulation, harassment, doxxing, impersonation, NSFW, solicitation, and safety controls;
+- evidence, warnings, restrictions, removals, appeals, and transparency;
+- staff and private-person identity protection.
+
+Support:
+- public Support Center and knowledge base;
+- AI answers for current documented questions;
+- private tickets;
+- complaints;
+- technical problems and bug reports;
+- advertiser and provider Support;
+- privacy, security, accessibility, and moderation escalation;
+- owner decision queue;
+- sanitized GitHub Issue conversion for confirmed development work;
+- Support analytics and repeated-question improvement.
+
+RELEASE 0.2 — PUBLIC DIRECTORY AND COMMUNITY BETA
+
+Audience:
+The public, initially concentrated in Mandaluyong, Metro Manila, and selected Philippine areas.
+
+Gate:
+- user-generated content has moderation, reporting, and appeal coverage;
+- Reviews, Ratings, Comments, Discussions, Corrections, and Support remain distinct;
+- account deletion, privacy rights, security reporting, and Support escalation work;
+- data freshness and public correction routes are visible;
+- community participation does not expose private booking or Support information;
+- the directory is useful enough that public promotion does not lead mainly to empty results.
+
+================================================================================
+PHASE 8. CLAIMING, PROVIDER PARTICIPATION, AND ROLE-SPECIFIC WORKSPACES
+CURRENT STATE: AFTER COMMUNITY BETA
+================================================================================
+
+Purpose:
+Let legitimate providers and professionals maintain their presence and operations without
+buying control over community truth.
+
+Claiming and verification:
+- owner, representative, therapist, seller, school, and organization claim workflows;
+- evidence review, ownership change, former representative, dispute, suspension, and revocation;
+- free correction and claim path;
+- verification scope clearly explained.
+
+Professional and commercial workspaces:
+- Therapist Workspace;
+- Operator, Reception, Manager, Finance, and Owner Workspaces;
+- Seller Workspace;
+- Advertiser Workspace;
+- Contributor, Correspondent, Researcher, Translator, and Editor Workspaces;
+- Support Agent, Moderator, Privacy, Security, and Administrator Workspaces;
+- multi-branch and multi-entity controls.
+
+Provider capabilities:
+- profile, menus, prices, staff, schedules, facilities, media, responses, promotions, announcements,
+  analytics, roles, permissions, exports, and Support;
+- provider-stated information separated from independently verified information;
+- community history and lawful criticism preserved;
+- audit and high-impact confirmation.
+
+RELEASE 0.3 — PROVIDER AND WORKSPACE BETA
+
+Gate:
+- claims and role permissions work;
+- provider actions cannot erase community history or buy verification;
+- professional workspaces expose only authorized records;
+- advertiser tools cannot alter organic trust;
+- provider and advertiser Support is operational;
+- claim, billing, content, and role disputes have escalation and appeal.
+
+================================================================================
+PHASE 9. BOOKING, SCHEDULING, INTAKE, PAYMENTS, AND PROVIDER OPERATIONS
+CURRENT STATE: AFTER PROVIDER BETA
+================================================================================
+
+Purpose:
+Allow claimed and configured providers to receive and manage reliable appointments.
+
+Booking modes:
+- Personal Appointment Plan;
+- unconfirmed inquiry;
+- external booking reference;
+- provider-approved request;
+- reserved appointment;
+- paid reservation;
+- provider-created booking;
+- imported appointment;
+- walk-in.
+
+Booking structure:
+- booking party and multiple participants;
+- service lines, durations, therapist choice, products, prices, and completion;
+- group, dependent, guardian, caregiver, and accessibility handling;
+- multilingual structured preferences;
+- separate private intake, eligibility, consent, disclosure, amendment, retention, and audit.
+
+Operations:
+- provider and therapist schedules;
+- rooms, tables, equipment, travel, breaks, queues, waitlists, and walk-ins;
+- assignment, hold, conflict, reschedule, cancellation, no-show, and rebooking;
+- calendar synchronization and privacy-safe reminders;
+- provider loyalty, packages, memberships, and passes;
+- post-service private feedback.
+
+Financial flow:
+- deposits, full payment, discounts, taxes, fees, refunds, disputes, chargebacks, tips, payouts,
+  compensation, reconciliation, and financial documents;
+- transparent platform revenue;
+- no confirmed platform payment for an unclaimed provider;
+- Support for failed bookings, payments, refunds, and privacy concerns.
+
+RELEASE 0.4 — BOOKING BETA
+
+Gate:
+- only claimed and enabled providers receive confirmed platform bookings;
+- double-booking, authorization, privacy, and failure tests pass;
+- private intake is segregated and time-limited;
+- payments, refunds, tips, payouts, and compensation reconcile;
+- client and provider Support can resolve booking failures;
+- a limited provider group completes real end-to-end test bookings.
+
+================================================================================
+PHASE 10. COMMERCE, PREMIUM PLANS, ADVERTISING, AND COMMERCIAL OPERATIONS
+CURRENT STATE: AFTER BOOKING BETA
+================================================================================
+
+Purpose:
+Create sustainable revenue without turning Massage Nexus into a pay-to-trust directory.
+
+Commercial systems:
+- provider subscriptions and premium tools;
+- seller offers, checkout, fulfillment, returns, and disputes where supported;
+- promotions, vouchers, gift cards, memberships, and passes;
+- booking or transaction fees where approved;
+- advertiser campaigns, creative assets, targeting boundaries, invoices, and performance;
+- sponsored content, sponsorships, affiliates, referrals, and branded series;
+- AI allowances or Ember spending where approved;
+- research reports, data products, API plans, events, training, jobs, and Branded Portals where
+  separately approved.
+
+Non-negotiable boundaries:
+- payment cannot buy verification;
+- payment cannot remove lawful criticism;
+- payment cannot alter Ratings or Reviews;
+- sponsored results are labeled;
+- organic search and editorial judgment remain distinct;
+- private user data is not sold to advertisers;
+- refunds, tax, accounting, and Support responsibilities are operational.
+
+RELEASE 1.0 — COMMERCIAL WEB RELEASE
+
+Gate:
+- the free directory and community remain useful;
+- monetization labels and entitlement boundaries are clear;
+- payment, invoice, refund, accounting, and advertiser Support work;
+- content, research, moderation, Support, security, backup, and maintenance cadences are staffed
+  or reliably automated;
+- operational dashboards detect commercial and technical failures.
+
+================================================================================
+PHASE 11. ADVANCED CAMPUS, RELAXATION, EVENTS, AWARDS, AND BRAND EXPERIENCES
+CURRENT STATE: EXPANDS AFTER THE CORE WEB IS RELIABLE
+================================================================================
+
+Purpose:
+Deepen learning, community, and brand experiences without delaying the core public platform.
+
+Advanced Campus:
+- fuller course catalog;
+- instructor, school, and professional-organization participation;
+- richer assessments, scenario questions, practical reviews, prerequisites, and learning paths;
+- contributor, correspondent, translator, moderator, provider, and Support training;
+- Campus analytics, certificates of completion, downloads, and Discussions;
+- strict separation from official licensing unless an authorized institution provides it.
+
+Community and brand:
+- larger survey and longitudinal-feedback programs;
+- live or scheduled Relaxation Rooms;
+- events, conferences, workshops, and community activities;
+- awards, nominations, judging, eligibility, and transparent methodology;
+- The Resting Leaf story arcs and culturally adapted series;
+- mascots, Nexus Cast, and Neural Agent experiences;
+- public campaigns, seasonal quests, and platform challenges;
+- Branded Portals and organization learning surfaces.
+
+Each experience receives its own moderation, accessibility, privacy, rights, and operational
+readiness before expansion.
+
+================================================================================
+PHASE 12. FIRST-PARTY API, MOBILE APPLICATION, DESKTOP APPLICATION, AND PARTNERS
+CURRENT STATE: AFTER THE WEB CONTRACT IS STABLE
+================================================================================
+
+Purpose:
+Reuse the same server rules across additional clients instead of rebuilding business logic.
+
+API:
+- First-Party App API;
+- scoped Partner API;
+- approved Public API;
+- authentication, authorization, rate limits, versioning, audit, documentation, and revocation;
+- no direct client connection to the production database.
+
+Mobile:
+- nearby discovery;
+- camera and field research;
+- QR and barcode;
+- push Notifications;
+- passkeys and biometric local unlock;
+- secure device storage;
+- offline drafts and synchronization;
+- booking reminders, check-in, and portable provider operations;
+- store distribution, updates, crash reporting, permissions, and accessibility.
+
+Desktop:
+- high-volume research;
+- translation;
+- media;
+- Support;
+- moderation;
+- bulk import and export;
+- multi-window work;
+- encrypted offline workspace;
+- signed updates;
+- no uncontrolled production database replica.
+
+RELEASE 1.1 — MOBILE PUBLIC RELEASE
+
+Gate:
+Store, permission, privacy, offline, synchronization, notification, accessibility, security,
+upgrade, and account-switching tests pass.
+
+RELEASE 1.2 — DESKTOP OPERATIONS RELEASE
+
+Gate:
+Signed installation and updates, encrypted local storage, controlled imports and exports,
+synchronization, remote revocation, cleanup, and recovery tests pass.
+
+================================================================================
+PHASE 13. GLOBAL DATA AND MARKET EXPANSION
+CURRENT STATE: AFTER REPEATABLE PHILIPPINE OPERATION
+================================================================================
+
+Purpose:
+Expand where Massage Nexus can maintain useful, current, culturally understandable coverage.
+
+Market readiness:
+- priority city, district, tourism region, or provider cluster;
+- local sources, providers, contributors, correspondents, and research partners;
+- language and terminology readiness;
+- local law, policy, age, NSFW, payment, advertising, and privacy review;
+- local moderation and Support;
+- local search, map, address, payment, and communication compatibility;
+- sufficient profile and content density;
+- local editorial, News, Campus, survey, and campaign context;
+- data freshness and historical maintenance.
+
+Possible priority markets remain subject to evidence and readiness. A country is not described
+as covered merely because a small number of profiles were imported.
+
+Each market receives:
+- Internal Research Alpha;
+- Private Local Directory Alpha;
+- Public Local Beta;
+- provider and booking expansion only after claim, Support, payment, and policy readiness.
+
+================================================================================
+PHASE 14. CONTINUOUS OPERATIONS, MAINTENANCE, AND PRODUCT REVIEW
+CURRENT STATE: BEGINS WITH THE FIRST PUBLIC RELEASE
+================================================================================
+
+Daily and frequent operation:
+- Articles and The Resting Leaf according to quality and backlog;
+- News when a timely verified development exists;
+- social publishing, newsletters, campaigns, and provider outreach;
+- moderation, Support, ticket triage, research, Corrections, and translation;
+- scheduled jobs, cache refresh, search refresh, media processing, reminders, and backups.
+
+Measurement:
+- daily operational aggregates;
+- weekly and monthly reports;
+- eligible public Statistics with methodology and privacy thresholds;
+- content, search, booking, provider, Support, moderation, research, translation, commercial,
+  performance, security, and reliability monitoring.
+
+Technical maintenance:
+- PHP, Laravel, package, server, database, browser, mobile, desktop, API, and integration updates;
+- vulnerability handling;
+- backups and restore tests;
+- performance, cache, queue, email, payment, search, and storage monitoring;
+- refactoring when code, tests, documentation, or AI instructions become difficult to maintain.
+
+Product maintenance:
+- periodic user, provider, therapist, advertiser, accessibility, and Support surveys;
+- feature-priority review;
+- retirement, redesign, narrowing, or replacement of low-value features;
+- separate focused planning and release gates for major new capabilities.
+
+Maintenance does not freeze development. It prevents new work from damaging the reliability,
+clarity, and usefulness already achieved.

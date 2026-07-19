@@ -1,0 +1,1539 @@
+Title: Massage Nexus User Workspace
+Document Version: 0.30
+Date Created: 2026-07-16
+Revision Date: 2026-07-18
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - Account Identity Registration and Authentication System v0.10
+- Massage Nexus - Terms of Use Requirements v0.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
+- Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
+- Massage Nexus - Analytics Statistics and Measurement System v0.10
+- Massage Nexus - Data Research Provenance and Field Verification System v0.10
+- Massage Nexus - 15 - Language Strategy v0.30
+- Massage Nexus - 20 - Translation System v0.20
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 20 - Translation System v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- Massage Nexus - 23 - Advertiser and Sponsor Workspace v0.10
+- Massage Nexus - 31 - Booking and Appointment System v1.00
+- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
+- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
+- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
+- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
+- Massage Nexus - 07 - Reputation System v1.70
+- Shared Project Standards v2.60
+
+Consolidation Note:
+This v0.20 document incorporates and supersedes:
+- Massage Nexus - 35 - Client Service History Analytics and Data Portability v0.10
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the general authenticated User Workspace for Massage Nexus and the relationship between the shared network account, Massage Nexus membership, personal client context, professional contexts, language, security, research, translation, analytics, and content-access preferences.
+
+Every registered user is considered a client by default. Therapist, establishment operator,
+seller, contributor, advertiser, editor, moderator, and administrator capabilities are
+additional roles or managed contexts attached to that same user account.
+
+This document also includes the complete Client Service History, analytics, budgeting,
+data-portability, import, export, and therapist-identity-portability direction formerly stored
+in a separate planning document.
+
+The workspace begins at /workspace. It is one permission-aware system rather than several unrelated websites for members, therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators.
+
+A user sees only the areas and actions available to that account and its current context.
+
+
+Version History
+---------------
+- v0.30 (2026-07-18): Added shared network account and site-membership boundaries, 18+ Massage
+  Nexus eligibility, verification-before-login, protected username and policy acceptance
+  references, sessions, passkeys, recovery codes, universal and site-specific language
+  settings, NSFW preferences, branded and animated avatar direction, Research Workspace,
+  Translation Workspace, governed analytics, and new routes.
+- v0.20 (2026-07-17): Consolidated client service history, analytics, budgeting, import,
+  export, and user-as-client default.
+
+================================================================================
+0. SHARED NETWORK ACCOUNT AND MASSAGE NEXUS MEMBERSHIP
+================================================================================
+
+The authenticated identity is designed for a future network of sites.
+
+Universal account may contain:
+- username;
+- credentials;
+- verified contacts;
+- external identities;
+- universal language and time zone;
+- universal avatar;
+- security settings;
+- sessions;
+- passkeys;
+- recovery.
+
+Massage Nexus membership contains:
+- 18+ eligibility;
+- Massage Nexus Terms acceptance;
+- Privacy acknowledgment;
+- site roles;
+- site profile;
+- site preferences;
+- site restrictions;
+- NSFW preference;
+- Massage Nexus notifications and activity.
+
+Registering through Massage Nexus does not automatically publish a profile or activate
+membership on another future site.
+
+An unverified account cannot enter the normal User Workspace or use member functions.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The User Workspace should:
+
+- give every registered user one clear private home;
+- treat every user as a client by default while allowing additional professional and operational roles;
+- preserve one cross-provider booking and service history for the user;
+- adapt to the user's permissions and managed records;
+- keep personal activity organized;
+- support profile, privacy, language, security, and notification settings;
+- support saved items, follows, reviews, ratings, contributions, and bookings;
+- support multiple roles without requiring several accounts;
+- support multiple establishments or professional affiliations;
+- remain usable on desktop and mobile browsers;
+- become the basis for future mobile application features;
+- avoid exposing private information through public routes.
+
+================================================================================
+2. ONE ACCOUNT, SEVERAL CONTEXTS
+================================================================================
+
+One user may be:
+
+- client or ordinary member by default;
+- reviewer;
+- contributor;
+- correspondent;
+- therapist;
+- establishment owner;
+- establishment manager;
+- seller;
+- advertiser;
+- translator;
+- editor;
+- moderator;
+- administrator.
+
+The workspace should not force the user to sign in separately for each role.
+
+The interface may provide a context switcher.
+
+Examples:
+
+Personal
+The Resting Leaf
+Independent Therapist Practice
+Massage Nexus Editorial
+Advertising Organization
+
+Changing context changes available navigation and managed records. It does not change the person's account identity.
+
+================================================================================
+3. WORKSPACE ROOT
+================================================================================
+
+Primary route:
+
+/workspace
+
+Suggested default:
+
+/workspace/home
+
+The home page may show:
+
+- greeting;
+- current context;
+- important alerts;
+- upcoming booking;
+- pending task;
+- unread notification;
+- message summary;
+- contribution status;
+- managed-profile status;
+- recent activity;
+- saved item;
+- reputation summary;
+- quick actions.
+
+The dashboard should not display every possible card to every user.
+
+================================================================================
+4. NAVIGATION MODEL
+================================================================================
+
+Navigation groups may include:
+
+Personal
+- Home;
+- Profile;
+- Identity;
+- Settings;
+- Security;
+- Privacy;
+- Language;
+- Accessibility.
+
+Activity
+- Notifications;
+- Messages;
+- Saved;
+- Following;
+- Service History;
+- Booking History;
+- Budget and Analytics;
+- Reviews;
+- Ratings;
+- Discussions;
+- Media.
+
+Participation
+- Contributions;
+- Claims;
+- Verification;
+- Badges;
+- Reputation;
+- Points;
+- Embers;
+- Inklings.
+
+Appointments
+- Booking;
+- Calendar;
+- Payment;
+- Refund.
+
+Managed Work
+- Listings;
+- Services;
+- Products;
+- Promotions;
+- Editorial;
+- Advertising;
+- Analytics.
+
+Administration
+Shown only when authorized.
+
+================================================================================
+5. PERSONAL PROFILE
+================================================================================
+
+Routes:
+
+/workspace/profile
+/workspace/profile/public
+/workspace/profile/avatar
+/workspace/profile/cover
+/workspace/profile/bio
+/workspace/profile/privacy
+/workspace/profile/activity
+
+Possible fields:
+
+- display name;
+- public slug;
+- avatar;
+- cover image;
+- biography;
+- public role labels;
+- languages;
+- location visibility;
+- website and social links;
+- public activity preference;
+- message preference;
+- pronouns where voluntarily provided;
+- profile visibility.
+
+The public User Profile remains at:
+
+/user/{user-slug}
+
+The private workspace should clearly show which fields are public.
+
+================================================================================
+6. IDENTITY, CONTACT, REGISTRATION, AND MEMBERSHIP
+================================================================================
+
+Routes:
+
+/workspace/identity
+/workspace/identity/username
+/workspace/identity/display-name
+/workspace/identity/birth-date
+/workspace/identity/email
+/workspace/identity/phone
+/workspace/identity/external-identity
+/workspace/identity/verification
+/workspace/identity/membership
+/workspace/identity/policy-acceptance
+
+Rules:
+- username is lowercase letters and numbers only;
+- username begins with a letter;
+- protected authority and brand families are prohibited;
+- date of birth is private and not ordinarily self-editable;
+- Massage Nexus membership is 18+;
+- email verification is required before normal login;
+- phone is optional and is not the sole recovery method;
+- public display identity is separate from private identity;
+- social identities are linked by stable provider identifiers;
+- sensitive changes require recent authentication and audit.
+
+The workspace may show universal account information and Massage Nexus membership information
+in separate sections.
+
+================================================================================
+7. SETTINGS
+================================================================================
+
+Routes:
+
+/workspace/setting
+/workspace/setting/account
+/workspace/setting/security
+/workspace/setting/privacy
+/workspace/setting/language
+/workspace/setting/theme
+/workspace/setting/notification
+/workspace/setting/accessibility
+/workspace/setting/deletion
+
+Settings may include:
+
+- interface language;
+- content language;
+- translation display;
+- theme;
+- text size;
+- contrast;
+- time zone;
+- date format;
+- time format;
+- currency preference;
+- notification channels;
+- message permissions;
+- profile visibility;
+- activity visibility;
+- data personalization;
+- location permission;
+- account deletion.
+
+================================================================================
+8. SECURITY
+================================================================================
+
+Routes:
+
+/workspace/security
+/workspace/security/password
+/workspace/security/session
+/workspace/security/device
+/workspace/security/two-factor
+/workspace/security/passkey
+/workspace/security/recovery-code
+/workspace/security/login-history
+/workspace/security/security-event
+
+Features:
+- Argon2id password change;
+- compromised-password protection;
+- active sessions;
+- revoke one or all other sessions;
+- remembered-device review;
+- login history;
+- suspicious-login warning;
+- TOTP;
+- recovery codes;
+- passkeys through WebAuthn;
+- recent authentication for sensitive actions;
+- security notifications.
+
+Massage Nexus does not store its own fingerprint or facial-recognition template. Device
+biometrics are used through passkeys.
+
+================================================================================
+9. PRIVACY
+================================================================================
+
+Privacy controls may apply to:
+
+- public profile;
+- activity;
+- reviews;
+- saved items;
+- following;
+- contact details;
+- messages;
+- media;
+- bookings;
+- location;
+- therapist availability;
+- selected-user content.
+
+The workspace should explain who can see each setting.
+
+Private records must be protected by server authorization, not merely hidden from navigation.
+
+================================================================================
+10. LANGUAGE AND TRANSLATION
+================================================================================
+
+Routes:
+
+/workspace/language
+/workspace/language/interface
+/workspace/language/content
+/workspace/language/conversation
+/workspace/language/submission
+/workspace/language/translation
+/workspace/language/format
+/workspace/language/site-override
+
+Universal settings:
+- interface language;
+- fallback language;
+- time zone;
+- regional format.
+
+Massage Nexus settings:
+- content language;
+- conversation translation;
+- submission language;
+- original-and-translation display;
+- Filipino Taglish style;
+- site-specific override.
+
+Discussions and comments are translated on request rather than into every language
+automatically.
+
+Authorized translators may see:
+/workspace/translation
+
+================================================================================
+11. THEME AND ACCESSIBILITY
+================================================================================
+
+Theme settings may include:
+
+- light;
+- dark;
+- system;
+- approved visual variants.
+
+Accessibility settings may include:
+
+- text size;
+- contrast;
+- reduced motion;
+- captions;
+- transcript preference;
+- keyboard-help display;
+- simplified layout;
+- screen-reader notes where useful.
+
+Accessibility must not depend only on personal settings. The default interface must already be accessible.
+
+
+================================================================================
+11A. AVATAR AND PROFILE MEDIA
+================================================================================
+
+Default avatars:
+- branded Massage Nexus assets;
+- non-gendered;
+- not a generic gray silhouette;
+- assigned deterministically by account identifier.
+
+Uploaded avatar:
+- references a media record;
+- does not store a permanent raw storage URL;
+- is moderated;
+- must remain ordinary public content.
+
+Animated avatar:
+- future;
+- short;
+- muted;
+- looping;
+- poster image;
+- reduced-motion fallback;
+- transcoded and moderated.
+
+NSFW avatars and cover images are prohibited.
+
+================================================================================
+11B. MATURE AND NSFW CONTENT PREFERENCE
+================================================================================
+
+Routes may include:
+/workspace/privacy/content
+/workspace/privacy/mature-content
+/workspace/privacy/nsfw
+
+Rules:
+- hidden by default;
+- active verified adult membership required;
+- explicit opt-in;
+- safe warnings;
+- no lock-screen or notification leakage;
+- public browsing remains ordinary-content safe;
+- self-declared birth date is not necessarily strong age assurance.
+
+================================================================================
+12. NOTIFICATIONS
+================================================================================
+
+Routes:
+
+/workspace/notification
+/workspace/notification/all
+/workspace/notification/booking
+/workspace/notification/review
+/workspace/notification/contribution
+/workspace/notification/claim
+/workspace/notification/verification
+/workspace/notification/promo
+/workspace/notification/system
+/workspace/notification/security
+
+Users may control:
+
+- website notification;
+- email;
+- SMS;
+- push;
+- quiet hours;
+- category;
+- digest frequency.
+
+Security notices may not be fully disabled.
+
+================================================================================
+13. MESSAGES
+================================================================================
+
+Routes:
+
+/workspace/message
+/workspace/message/inbox
+/workspace/message/sent
+/workspace/message/archive
+/workspace/message/spa
+/workspace/message/therapist
+/workspace/message/seller
+/workspace/message/support
+/workspace/message/report
+
+Messaging should support:
+
+- thread;
+- participant;
+- context;
+- attachment;
+- block;
+- report;
+- archive;
+- moderation;
+- spam control.
+
+The system should not expose a private email or phone number merely because messaging is allowed.
+
+================================================================================
+14. SAVED ITEMS
+================================================================================
+
+Routes:
+
+/workspace/saved
+/workspace/saved/spa
+/workspace/saved/therapist
+/workspace/saved/service
+/workspace/saved/product
+/workspace/saved/seller
+/workspace/saved/article
+/workspace/saved/review
+/workspace/saved/promo
+/workspace/saved/search
+
+Saved items are private by default.
+
+Possible actions:
+
+- folder or collection;
+- note;
+- remove;
+- compare;
+- share selected collection later;
+- receive update.
+
+================================================================================
+15. FOLLOWING
+================================================================================
+
+Routes:
+
+/workspace/following
+/workspace/following/spa
+/workspace/following/therapist
+/workspace/following/seller
+/workspace/following/user
+/workspace/following/article
+/workspace/following/service
+
+Following may generate notifications for:
+
+- new article;
+- schedule update;
+- promotion;
+- service update;
+- new location;
+- major profile correction.
+
+Users should control update categories.
+
+================================================================================
+16. HISTORY
+================================================================================
+
+Every user is a client by default and may maintain one private cross-provider service history,
+regardless of whether the same account is also a therapist, operator, seller, contributor,
+advertiser, editor, moderator, or administrator.
+
+Routes:
+
+/workspace/history
+/workspace/history/view
+/workspace/history/search
+/workspace/history/booking
+/workspace/history/service
+/workspace/history/session
+/workspace/history/manual
+/workspace/history/import
+/workspace/history/export
+/workspace/history/budget
+/workspace/history/analytics
+/workspace/history/review
+/workspace/history/rating
+/workspace/history/reward
+
+History may include:
+
+- recently viewed;
+- searches;
+- Massage Nexus bookings;
+- provider-recorded walk-ins;
+- client-recorded past services;
+- imported service history;
+- spending and budget records;
+- reviews;
+- ratings;
+- rewards;
+- account activity.
+
+Provider visibility remains limited to records involving that provider or records the user
+explicitly shares. A provider does not gain access to the user's history with other providers.
+
+Users may clear selected non-essential history subject to payment, tax, dispute, security,
+consent, privacy, and legal retention requirements.
+
+Detailed Client Service History, analytics, import, export, confirmation, and portability rules
+are defined in Sections 38 through 52 of this document.
+
+================================================================================
+17. REVIEWS
+================================================================================
+
+Routes:
+
+/workspace/review
+/workspace/review/my
+/workspace/review/draft
+/workspace/review/submitted
+/workspace/review/published
+/workspace/review/rejected
+/workspace/review/received
+/workspace/review/response
+/workspace/review/report
+/workspace/review/revision
+
+Users may:
+
+- start review;
+- save draft;
+- preview;
+- submit;
+- revise according to policy;
+- see moderation status;
+- respond when authorized;
+- report;
+- view history.
+
+Review editing follows the Edit System.
+
+================================================================================
+18. RATINGS
+================================================================================
+
+Routes:
+
+/workspace/rating
+/workspace/rating/my
+/workspace/rating/spa
+/workspace/rating/therapist
+/workspace/rating/product
+/workspace/rating/content-reaction
+/workspace/rating/history
+
+The workspace should explain:
+
+- target;
+- criteria;
+- date;
+- review relationship;
+- edit permission;
+- current status.
+
+A user should not be able to rate their own managed record where conflict rules prohibit it.
+
+================================================================================
+19. DISCUSSIONS AND COMMENTS
+================================================================================
+
+Workspace tools may include:
+
+- own discussions;
+- own comments;
+- replies;
+- followed threads;
+- drafts;
+- reports;
+- moderation status.
+
+Possible route:
+
+/workspace/discussion
+
+This route should be added to the Site Structure Map if accepted.
+
+================================================================================
+20. CONTRIBUTIONS
+================================================================================
+
+Routes:
+
+/workspace/contribution
+/workspace/contribution/new-listing
+/workspace/contribution/edit
+/workspace/contribution/correction
+/workspace/contribution/photo
+/workspace/contribution/video
+/workspace/contribution/service
+/workspace/contribution/hour
+/workspace/contribution/contact
+/workspace/contribution/location
+/workspace/contribution/closure
+/workspace/contribution/duplicate
+/workspace/contribution/source
+/workspace/contribution/translation
+/workspace/contribution/report
+/workspace/contribution/status
+/workspace/contribution/history
+
+The contributor should see:
+
+- draft;
+- submitted;
+- under review;
+- needs information;
+- approved;
+- rejected;
+- merged;
+- credit;
+- reputation result.
+
+================================================================================
+21. CLAIMS AND VERIFICATION
+================================================================================
+
+Routes:
+
+/workspace/claim
+/workspace/verification
+
+Users may:
+
+- claim a profile;
+- upload private proof;
+- verify contact;
+- submit credential;
+- respond to a request;
+- see decision;
+- appeal where allowed.
+
+Private documents remain outside public storage.
+
+================================================================================
+22. MEDIA
+================================================================================
+
+Routes:
+
+/workspace/media
+/workspace/media/upload
+/workspace/media/image
+/workspace/media/video
+/workspace/media/document
+/workspace/media/pending
+/workspace/media/approved
+/workspace/media/rejected
+/workspace/media/flagged
+/workspace/media/permission
+
+Users may see:
+
+- own uploads;
+- managed-record uploads;
+- visibility;
+- moderation;
+- source;
+- permission;
+- AI label;
+- replacement history;
+- removal request.
+
+Restricted media must not reveal its storage path to unauthorized users.
+
+================================================================================
+23. BOOKING
+================================================================================
+
+Routes:
+
+/workspace/booking
+/workspace/booking/request
+/workspace/booking/upcoming
+/workspace/booking/past
+/workspace/booking/cancelled
+/workspace/booking/rescheduled
+/workspace/booking/pending
+/workspace/booking/approved
+/workspace/booking/rejected
+/workspace/booking/session
+/workspace/booking/payment
+/workspace/booking/deposit
+/workspace/booking/refund
+/workspace/booking/reminder
+
+Booking is governed by Massage Nexus - 31 - Booking and Appointment System v1.00.
+
+The Personal context shows the user's bookings as a client by default. Provider, therapist, or
+operator booking-management tools appear only in an authorized managed context.
+
+Initial implementation may show only personal appointment plans, external booking links,
+inquiry status, or request-and-approval booking before live scheduling and payment are enabled.
+
+================================================================================
+24. CALENDAR
+================================================================================
+
+Routes:
+
+/workspace/calendar
+/workspace/calendar/my
+/workspace/calendar/availability
+/workspace/calendar/sync
+/workspace/calendar/export
+
+Possible uses:
+
+- booking events;
+- reminders;
+- therapist availability;
+- establishment schedule;
+- calendar integration.
+
+================================================================================
+25. REPUTATION AND REWARDS
+================================================================================
+
+Routes:
+
+/workspace/badge
+/workspace/reputation
+/workspace/point
+/workspace/ember
+/workspace/inkling
+
+The workspace may show:
+
+- balance;
+- history;
+- source;
+- progress;
+- available badges;
+- reputation categories;
+- penalties;
+- dispute.
+
+AI use may later spend Embers after clear confirmation.
+
+
+================================================================================
+25A. RESEARCH AND CORRESPONDENT WORK
+================================================================================
+
+Routes:
+/workspace/research
+/workspace/research/assignment
+/workspace/research/lead
+/workspace/research/visit
+/workspace/research/interview
+/workspace/research/source
+/workspace/research/evidence
+/workspace/research/observation
+/workspace/research/verification
+/workspace/research/contradiction
+/workspace/research/stale
+/workspace/research/social
+/workspace/research/country
+/workspace/research/city
+/workspace/research/coverage
+/workspace/research/history
+
+Access depends on role and assignment.
+
+Private evidence, interview contact, residential location, and internal confidence notes remain
+protected.
+
+================================================================================
+25B. TRANSLATION WORK
+================================================================================
+
+Routes:
+/workspace/translation
+/workspace/translation/assigned
+/workspace/translation/missing
+/workspace/translation/draft
+/workspace/translation/review
+/workspace/translation/stale
+/workspace/translation/published
+/workspace/translation/glossary
+/workspace/translation/coverage
+/workspace/translation/import
+/workspace/translation/export
+
+Community translators submit suggestions. They do not directly publish.
+
+================================================================================
+25C. ANALYTICS
+================================================================================
+
+Routes:
+/workspace/analytics
+/workspace/analytics/personal
+/workspace/analytics/provider
+/workspace/analytics/profile
+/workspace/analytics/search
+/workspace/analytics/social
+/workspace/analytics/research
+/workspace/analytics/translation
+/workspace/analytics/referral
+/workspace/analytics/export
+
+Personal analytics are private.
+Provider analytics are permission-bound.
+Research and translation analytics show coverage and quality.
+Public statistics are aggregated separately.
+
+================================================================================
+26. MANAGED RECORDS
+================================================================================
+
+Routes:
+
+/workspace/listing
+/workspace/service
+/workspace/product
+/workspace/seller
+/workspace/promo
+
+A person sees managed records only when authorized.
+
+Examples:
+
+- establishment;
+- therapist profile;
+- independent practice;
+- seller;
+- product offer;
+- promotion;
+- article assignment.
+
+Management permissions may vary by record and context.
+
+================================================================================
+27. OWNER AND THERAPIST CONTEXTS
+================================================================================
+
+An establishment operator may see:
+
+- official profile;
+- services;
+- prices;
+- therapists;
+- hours;
+- facilities;
+- media;
+- bookings;
+- responses;
+- promotions;
+- analytics.
+
+A therapist may see:
+
+- professional profile;
+- capabilities;
+- direct services;
+- affiliations;
+- credentials;
+- schedule;
+- availability;
+- media;
+- bookings;
+- reviews;
+- analytics.
+
+These are permission-aware views inside the User Workspace.
+
+================================================================================
+28. ADVERTISING CONTEXT
+================================================================================
+
+Authorized advertisers and sponsors may see:
+
+- organization;
+- campaign;
+- creative;
+- placement;
+- sponsorship;
+- budget;
+- invoice;
+- analytics;
+- approval;
+- policy.
+
+Detailed behavior is defined in the Advertiser and Sponsor Workspace document.
+
+================================================================================
+29. EDITORIAL AND MODERATION CONTEXT
+================================================================================
+
+Authorized users may see:
+
+- assigned article;
+- translation;
+- correction queue;
+- media review;
+- moderation report;
+- verification request.
+
+The workspace should show only the queues and actions allowed by permission.
+
+================================================================================
+30. DATA EXPORT AND ACCOUNT DELETION
+================================================================================
+
+Users may request:
+
+- account data export;
+- content export where supported;
+- account deletion;
+- correction of personal data;
+- consent withdrawal where applicable.
+
+Deletion may be delayed or limited by:
+
+- legal retention;
+- transaction record;
+- fraud prevention;
+- public contribution attribution rules;
+- active dispute.
+
+The system should explain the result.
+
+================================================================================
+31. WORKSPACE SEARCH
+================================================================================
+
+The workspace may provide private search across:
+
+- own activity;
+- managed records;
+- messages;
+- contributions;
+- bookings;
+- media;
+- notifications.
+
+Private search results must respect authorization.
+
+================================================================================
+32. MOBILE BEHAVIOR
+================================================================================
+
+The web workspace should be responsive.
+
+Future Flutter app may implement selected areas first:
+
+- home;
+- notifications;
+- saved;
+- booking;
+- messages;
+- managed availability.
+
+The mobile app uses the same server permissions and API.
+
+================================================================================
+33. EMPTY STATES AND GUIDANCE
+================================================================================
+
+A user with no data should receive a useful explanation.
+
+Examples:
+
+- No saved spas yet.
+- You have not submitted a contribution.
+- No upcoming booking.
+- This account does not manage an establishment.
+- Complete your profile.
+
+Do not show blank tables without explanation.
+
+================================================================================
+34. SECURITY
+================================================================================
+
+The workspace must:
+
+- require authentication;
+- check record permission;
+- protect private media;
+- avoid exposing sequential identifiers where unnecessary;
+- require recent authentication for sensitive changes;
+- log high-risk actions;
+- rate-limit abuse-prone actions;
+- prevent cross-account access;
+- protect API calls.
+
+Navigation visibility is not a substitute for server authorization.
+
+================================================================================
+35. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+- localization foundation;
+- registration;
+- email verification;
+- login and recovery;
+- workspace home;
+- profile;
+- identity;
+- settings;
+- security;
+- language;
+- privacy;
+- default avatar;
+- policy acceptance.
+
+Phase 2
+- saved and following;
+- contributions;
+- research;
+- translation;
+- reviews;
+- ratings;
+- media;
+- claims;
+- verification;
+- managed Service access;
+- basic analytics.
+
+Phase 3
+- managed establishment and therapist areas;
+- messages;
+- advanced moderation;
+- TOTP and passkeys;
+- social login;
+- booking and calendar;
+- payments;
+- advertiser context;
+- mobile coverage.
+
+================================================================================
+36. CURRENT WORKING DECISIONS
+================================================================================
+
+- /workspace is the single authenticated workspace root.
+- Role-specific areas are permission-aware views, not separate websites.
+- One account may hold several roles and contexts.
+- Every user is considered a client by default.
+- Client identity and service history remain available in Personal context even when the user also holds professional or administrative roles.
+- Private information is not exposed merely because a workspace page exists.
+- Workspace actions use the shared Edit System.
+- Managed-record permission is checked per record.
+- Public profile and private identity remain separate.
+- Mobile clients use the same backend permission system.
+- The workspace should show only relevant navigation and cards.
+
+================================================================================
+37. OPEN DECISIONS
+================================================================================
+
+- final workspace navigation;
+- context-switcher design;
+- first-release workspace modules;
+- dashboard card priorities;
+- exact public profile privacy settings;
+- message retention;
+- saved collection sharing;
+- first implemented Booking stage;
+- payment integration;
+- exact data export format;
+- account deletion grace period;
+- support-ticket integration;
+- mobile workspace scope;
+- workspace search technology.
+
+================================================================================
+38. USER AS CLIENT BY DEFAULT
+================================================================================
+
+Every registered Massage Nexus user is a client by default.
+
+This means the account may:
+- create Personal Appointment Plans;
+- submit eligible booking requests;
+- receive provider confirmations;
+- maintain private service history;
+- record manual past visits;
+- import and export eligible personal records;
+- view spending and service analytics;
+- maintain reusable booking preferences;
+- receive provider loyalty and Massage Nexus rewards;
+- submit ratings and reviews;
+- add professional, business, contributor, or administrative roles later.
+
+Client is not an exclusive role. A therapist remains a client when booking for themselves.
+An establishment owner remains a client in Personal context. An administrator remains a client
+outside administrative actions.
+
+Professional and managed contexts must not replace or erase the user's Personal client context.
+
+================================================================================
+39. HISTORY TYPES
+================================================================================
+
+Field Name: type_service_history_source
+Field Label: Service History Source
+Selection: Single-select per history record
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+MNB  | Massage Nexus Booking    | Derived from a Massage Nexus booking.
+WLK  | Provider Walk-In         | Provider created a completed walk-in session.
+EXT  | Confirmed External Visit | External service event confirmed through evidence or provider confirmation.
+MAN  | Client Manual History    | Client privately records a past service.
+IMP  | Imported History         | Client imports historical data from another file or service.
+PRV  | Provider Legacy Import   | Provider imports prior booking or service records.
+API  | Partner System           | Approved partner supplies the record.
+
+Manual and imported history must be past-dated. A future appointment belongs to Booking.
+
+================================================================================
+40. HISTORY CONFIDENCE
+================================================================================
+
+Field Name: status_history_confirmation
+Field Label: Service History Confirmation
+Selection: Single-select
+
+Code | Label                   | Description
+-----|-------------------------|------------------------------------------------------------
+CNF  | Massage Nexus Confirmed | Completed booking or provider-confirmed walk-in.
+PRV  | Provider Confirmed      | Provider confirmed an external or legacy record.
+EVD  | Evidence Supported      | Client supplied accepted evidence.
+USR  | User Recorded           | Client entered history without external confirmation.
+IMP  | Imported Unverified     | Imported record has not been confirmed.
+DSP  | Disputed                | Provider, client, or platform disputes the record.
+WDR  | Withdrawn               | Client withdrew the private record.
+
+Public rating weight, rewards, and provider analytics may differ by confirmation status.
+
+================================================================================
+41. CLIENT HISTORY CONTENT
+================================================================================
+
+A client history record may include:
+- date;
+- provider;
+- branch;
+- therapist;
+- normalized Service;
+- provider menu name;
+- duration;
+- delivery context;
+- amount;
+- currency;
+- discount;
+- tip;
+- payment method;
+- pressure;
+- body focus;
+- product;
+- private note;
+- rating;
+- review;
+- evidence;
+- source;
+- confirmation;
+- booking reference.
+
+Private history should not automatically expose intake details. The client may link a separate personal wellness note that remains private.
+
+================================================================================
+42. PROVIDER VISIBILITY
+================================================================================
+
+A provider may view:
+- bookings involving that provider;
+- walk-ins entered by that provider;
+- provider-confirmed legacy records under that provider;
+- client-shared history specifically authorized for the current service.
+
+A provider may not view:
+- client history with another provider;
+- private imported records;
+- unrelated spending;
+- unrelated intake;
+- cross-provider cancellation history;
+- client notes not shared.
+
+An unclaimed profile receives no client identity or history access.
+
+Anonymous aggregate may state:
+"12 users privately recorded a past visit."
+
+Aggregate rules:
+- minimum count threshold;
+- no names;
+- no therapist;
+- no exact date;
+- no health data;
+- no private notes;
+- clearly labeled user-recorded and not provider-confirmed;
+- opt-out where required.
+
+================================================================================
+43. CLIENT ANALYTICS
+================================================================================
+
+Possible client reports:
+- monthly massage and wellness spending;
+- yearly spending;
+- provider distribution;
+- service distribution;
+- average cost;
+- total duration;
+- visits per month;
+- tips;
+- travel fees;
+- discounts;
+- booking cancellation count;
+- completed series;
+- loyalty progress;
+- rating and review activity;
+- language and location pattern.
+
+Budget categories may include service, product, travel, tip, booking fee, tax, refund, and credit.
+
+Client analytics are private by default.
+
+================================================================================
+44. PROVIDER ANALYTICS
+================================================================================
+
+Provider analytics may include booking count, completion, cancellation, no-show, revenue from eligible recorded events, average booking value, service demand, therapist demand, product upgrade, language, lead time, repeat client, walk-in versus advance, home service, group size, resource utilization, and waitlist conversion.
+
+Provider analytics must not reveal unrelated client history or sealed intake.
+
+================================================================================
+45. THERAPIST PORTABILITY
+================================================================================
+
+A therapist profile is independent of one establishment.
+
+Claimed therapist identity may use:
+- stable therapist profile ID;
+- unique public username or slug;
+- verified user-account link.
+
+An establishment adds or invites the existing therapist profile. It must not create a duplicate merely because the therapist changed employment.
+
+Therapist history may distinguish current affiliation, former affiliation, independent work, contractor, trainee, and temporary assignment.
+
+Provider booking data remains with provider and client according to policy. Therapist public identity, credentials, capabilities, reviews, and approved portable professional information remain connected to the therapist profile.
+
+================================================================================
+46. IMPORT
+================================================================================
+
+Supported imports may include CSV, spreadsheet, JSON, calendar, booking-system export, provider ledger, and client personal notes.
+
+Import stages:
+- upload;
+- detect columns;
+- map fields;
+- preview;
+- duplicate detection;
+- validation;
+- date restriction;
+- provider matching;
+- therapist matching;
+- Service normalization;
+- privacy classification;
+- confirmation level;
+- commit;
+- audit.
+
+Imported future dates are redirected to Booking or rejected as history.
+Uncertain provider or therapist matches remain unlinked until resolved.
+
+================================================================================
+47. EXPORT
+================================================================================
+
+Client export may include booking history, manual history, spending, ratings, reviews, loyalty, consent list, and shared intake summary where legally permitted.
+
+Provider export may include provider bookings, walk-ins, sales events, therapist assignments, loyalty, payouts, compensation, and approved client contact under policy.
+
+Formats:
+- CSV;
+- JSON;
+- PDF summary;
+- printable report;
+- calendar;
+- accounting export later.
+
+Sensitive intake requires separate authorization and must not be mixed into a normal booking export.
+
+================================================================================
+48. CORRECTION AND DISPUTE
+================================================================================
+
+A client may correct private manual record, imported mapping, note, product, price, or therapist link.
+
+A confirmed provider record requires correction request, provider response, evidence, amendment, and audit.
+
+Historical records are not silently overwritten when original fact matters. Use amendment or correction history.
+
+================================================================================
+49. DELETION, RETENTION, AND ANONYMIZATION
+================================================================================
+
+Private manual history may be deleted by the client unless legal or security hold applies.
+
+Confirmed booking deletion follows provider, payment, tax, dispute, privacy, and platform retention rules.
+
+Analytics may retain anonymized aggregates after personal deletion where allowed.
+
+Provider-local import requires lawful basis and notice; Massage Nexus must not assume all legacy data may be uploaded.
+
+================================================================================
+50. PERSONAL DEFAULTS VERSUS HISTORY
+================================================================================
+
+Client booking defaults are current reusable settings. Service History records past events. They are not the same.
+
+A past pressure selection may be offered as suggestion but must not automatically become permanent preference without client action.
+
+Time-sensitive health intake is not copied into Service History.
+
+================================================================================
+51. MARKETING AND PLATFORM VALUE
+================================================================================
+
+User-as-client value:
+- one history across many providers;
+- budgeting;
+- portable preferences;
+- multilingual records;
+- reviews and ratings;
+- provider switching without losing personal history.
+
+Therapist value:
+- public identity survives employment change;
+- capabilities and credentials remain portable;
+- direct and affiliated work can coexist.
+
+Provider value:
+- analytics;
+- repeat-client understanding within provider scope;
+- walk-in digitization;
+- legacy import;
+- loyalty;
+- finance feed.
+
+================================================================================
+52. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial:
+- manual past history;
+- confirmed booking history;
+- private spending total;
+- CSV export;
+- provider visibility boundary.
+
+Later:
+- import mapping;
+- provider legacy import;
+- advanced analytics;
+- duplicate matching;
+- therapist portability tools;
+- anonymized unclaimed-profile aggregates.
+
+================================================================================
+V0.30 ACCEPTED ADDITIONS
+================================================================================
+
+- The shared network account is separate from Massage Nexus membership.
+- Universal language, time zone, avatar, contact, and security settings may be reused.
+- Massage Nexus membership is 18+.
+- Public browsing does not require membership.
+- Email verification is required before normal login and workspace use.
+- Session, device, TOTP, recovery-code, and passkey management belong in Security.
+- Default avatars are branded and non-gendered.
+- Animated avatars are future media features.
+- NSFW content is hidden by default and avatars remain ordinary public content.
+- Research, Translation, and Analytics are permission-aware workspace areas.
+- Social follower counts are dated observations, not permanent popularity facts.

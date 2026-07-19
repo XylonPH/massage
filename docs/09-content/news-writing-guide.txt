@@ -1,0 +1,707 @@
+Title: Massage Nexus News Writing Guide
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines how Massage Nexus researches, writes, edits, updates, corrects, translates, labels, and publishes timely news about the platform, massage, spas, therapists, wellness businesses, regulation, research, events, products, and related communities. It distinguishes News from Articles, announcements, opinion, sponsored content, Reviews, and unverified social-media claims.
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+Massage Nexus News gives readers timely, attributable, understandable information that affects
+massage and spa discovery, providers, therapists, consumers, contributors, and the wider
+wellness industry.
+
+News should answer:
+- What happened?
+- Who is affected?
+- Where and when did it happen?
+- What is confirmed?
+- What remains uncertain?
+- Why does it matter to Massage Nexus readers?
+- What should readers watch or do next?
+
+News is not written merely to fill a daily quota. A story must have a timely development,
+credible evidence, or meaningful public value.
+
+================================================================================
+2. NEWS, ARTICLE, ANNOUNCEMENT, AND OPINION
+================================================================================
+
+News:
+Reports a timely development using current sources and attribution.
+
+Article or Guide:
+Explains a topic whose usefulness does not depend mainly on a new event.
+
+Platform Announcement:
+Communicates an official Massage Nexus decision, release, campaign, outage, policy change, or
+event. It must be labeled as an official announcement rather than independent reporting.
+
+Press Release:
+A statement supplied by an organization. Massage Nexus may summarize or quote it as a source,
+but the release itself is not automatically verified news.
+
+Analysis:
+Explains likely meaning, patterns, or consequences beyond the basic confirmed facts. It must be
+labeled.
+
+Opinion or Editorial:
+Presents an argued viewpoint. It must be labeled and must not imitate neutral reporting.
+
+Review:
+Describes and evaluates an experience, provider, or product. A Review is not News even when it
+mentions a recent visit.
+
+Sponsored Content:
+Commercially supported material with prominent disclosure. Sponsorship never changes an
+advertisement or press release into independent News.
+
+================================================================================
+3. NEWS SCOPE
+================================================================================
+
+Possible News areas:
+- Massage Nexus platform developments;
+- new, closed, moved, renamed, or substantially changed spas;
+- therapist and professional developments with legitimate public relevance;
+- service, safety, professional-boundary, and consumer developments;
+- laws, regulations, licensing, taxation, and government programs;
+- public-health or safety advisories related to massage and wellness;
+- research and published studies;
+- spa, hospitality, tourism, and wellness business developments;
+- products, recalls, standards, and significant launches;
+- events, conferences, training, and awards;
+- professional associations and schools;
+- labor, accessibility, inclusion, and community issues;
+- technology affecting discovery, booking, privacy, or provider operation;
+- market and social-media developments supported by clear methodology;
+- corrections to widely circulated false or outdated information.
+
+Private gossip, rumors, ordinary personal drama, and unsupported accusations are not News.
+
+================================================================================
+4. NEWSWORTHINESS
+================================================================================
+
+A candidate story is stronger when it has one or more of the following:
+- direct effect on users or providers;
+- safety or public-interest value;
+- meaningful local relevance;
+- significant change;
+- verified opening, closure, move, or service change;
+- legal, regulatory, or policy consequence;
+- strong original reporting;
+- reliable new data;
+- unusual but relevant development;
+- accountable public figure or organization;
+- continuing story with a material update;
+- clear connection to massage, spas, wellness, bodywork, products, or Massage Nexus.
+
+Do not publish a weak rewrite of a press release merely because it is new.
+
+================================================================================
+5. SOURCE STANDARD
+================================================================================
+
+Current News requires current research.
+
+Prefer:
+1. direct observation or interview;
+2. official primary source;
+3. official provider or organization statement;
+4. public record;
+5. original research or dataset;
+6. reputable news organization;
+7. recognized professional or academic source;
+8. clearly identified secondary source.
+
+Maps, social posts, directories, advertisements, and AI summaries are leads rather than
+automatic proof.
+
+For consequential claims:
+- seek more than one independent source when practical;
+- contact the affected person or organization for response;
+- preserve the exact source and access date;
+- distinguish what was observed from what was stated;
+- identify missing confirmation.
+
+Never invent:
+- a source;
+- interview;
+- quotation;
+- visit;
+- opening or closure;
+- price;
+- credential;
+- official statement;
+- response;
+- date;
+- statistic.
+
+================================================================================
+6. ATTRIBUTION AND QUOTATIONS
+================================================================================
+
+Attribute factual claims close to the claim.
+
+Use quotations only when the exact wording matters. Paraphrase accurately and do not alter the
+speaker's meaning.
+
+Identify:
+- speaker;
+- role;
+- organization;
+- date or context;
+- method of interview when relevant.
+
+Do not use an anonymous source merely for convenience.
+
+Anonymous sourcing requires:
+- a legitimate risk or public-interest reason;
+- editor approval;
+- knowledge of the source's identity internally;
+- explanation of why anonymity was granted;
+- corroboration where possible.
+
+Off-the-record, background, and embargo terms must be agreed before information is supplied.
+Massage Nexus should not retroactively promise terms it did not accept.
+
+================================================================================
+7. ORIGINAL REPORTING
+================================================================================
+
+Original reporting may include:
+- field visit;
+- interview;
+- telephone or email confirmation;
+- official-document review;
+- photo or video documentation;
+- menu or price observation;
+- event coverage;
+- data analysis;
+- public-record search;
+- community tip followed by verification.
+
+Preserve:
+- reporter;
+- assignment;
+- observation time;
+- source;
+- evidence;
+- consent;
+- publication permission;
+- contradiction;
+- editor decision.
+
+Do not identify private clients, residential locations, minors, or vulnerable people without a
+clear lawful and ethical reason.
+
+================================================================================
+8. STORY STRUCTURE
+================================================================================
+
+A standard News story may contain:
+
+Headline
+Clear, specific, and factual. Avoid clickbait, unsupported certainty, and unnecessary
+sensational language.
+
+Short Description or Deck
+One or two sentences explaining the central development.
+
+Dateline or Location
+Use when location is material.
+
+Publication and Update Time
+Show the original publication time and the latest material update time.
+
+Lead
+State the most important confirmed development and why it matters.
+
+Body
+Provide confirmed details, chronology, attribution, response, context, and practical
+consequence.
+
+What Remains Unclear
+Identify unresolved facts when the uncertainty matters.
+
+Related Records
+Link relevant Service, Spa, Therapist, Product, Seller, Article, Review, Discussion, Support,
+or policy pages.
+
+Sources
+List the material sources actually used.
+
+Correction or Update Note
+Use when facts materially change after publication.
+
+Not every story needs every visible heading. The information must still be present where
+relevant.
+
+================================================================================
+9. WRITING STYLE
+================================================================================
+
+News writing should be:
+- direct;
+- specific;
+- attributable;
+- chronological when sequence matters;
+- readable to a general audience;
+- restrained about uncertainty;
+- clear about local context;
+- free from promotional filler.
+
+Use active voice where natural.
+
+Avoid:
+- announcing rumor as fact;
+- dramatic adjectives unsupported by evidence;
+- vague phrases such as “people are saying”;
+- presenting an organization's claim as Massage Nexus's conclusion;
+- copying press-release language;
+- filler history unrelated to the development;
+- leading with Massage Nexus branding when the real story is elsewhere;
+- treating popularity as importance.
+
+Technical, legal, medical, or regulatory terminology should be explained only as much as the
+reader needs.
+
+================================================================================
+10. LENGTH
+================================================================================
+
+Brief update:
+Approximately 200 to 500 words.
+
+Standard News story:
+Approximately 500 to 1,000 words.
+
+Reported local or industry story:
+Approximately 900 to 1,800 words.
+
+Investigation, data story, or substantial analysis:
+Approximately 1,500 to 3,000 words when the evidence justifies it.
+
+Live or developing story:
+Several timestamped updates rather than repeated near-duplicate articles.
+
+Length follows the evidence and reader need. Do not pad a simple update into a long feature.
+
+================================================================================
+11. BREAKING AND DEVELOPING NEWS
+================================================================================
+
+Breaking News is used only when immediate public attention is justified.
+
+Possible uses:
+- significant outage;
+- urgent safety advisory;
+- major closure affecting current bookings;
+- serious public-policy change;
+- credible incident with immediate consequence;
+- time-sensitive correction to dangerous misinformation.
+
+Rules:
+- publish only confirmed minimum facts;
+- identify uncertainty;
+- timestamp each material update;
+- do not speculate;
+- link later background rather than continuously expanding the opening alert;
+- remove the Breaking label when urgency ends;
+- preserve the final coherent version.
+
+A developing story should be updated when facts materially change, not for minor wording.
+
+================================================================================
+12. OPENINGS, CLOSURES, MOVES, AND PROVIDER NEWS
+================================================================================
+
+A provider opening, closure, move, rename, or ownership change may be both a profile update and a
+News story.
+
+Publish News when:
+- the development has public interest beyond the record correction;
+- a known provider materially changes;
+- several branches are affected;
+- bookings or vouchers are affected;
+- the change reveals a wider market pattern;
+- original reporting adds useful context.
+
+The profile carries the structured status. The News story explains the development.
+
+Do not publish “now open” based only on a newly created social page or map listing. Confirm the
+operating state and observation date.
+
+================================================================================
+13. PEOPLE, CREDENTIALS, AND ALLEGATIONS
+================================================================================
+
+News about therapists, staff, owners, or other people requires a legitimate public-interest
+basis.
+
+Protect:
+- private identity;
+- home address;
+- family information;
+- health information;
+- nonpublic employment details;
+- minors;
+- victims and vulnerable people.
+
+For allegations:
+- identify the evidence;
+- seek response;
+- use precise language such as alleged, reported, charged, found, or convicted correctly;
+- distinguish civil, administrative, professional, and criminal processes;
+- do not imply guilt from a complaint alone;
+- consult the appropriate editor or legal reviewer for serious risk.
+
+Public discussion is not a substitute for reporting or due process.
+
+================================================================================
+14. HEALTH, SAFETY, AND SCIENCE
+================================================================================
+
+Health and science News requires strong sourcing.
+
+Prefer:
+- original research;
+- recognized journals;
+- official health agencies;
+- professional organizations;
+- qualified experts;
+- systematic reviews.
+
+State:
+- study type;
+- sample or scope where relevant;
+- limitation;
+- whether the finding applies directly to massage or only suggests a connection;
+- whether evidence is preliminary.
+
+Do not claim that massage cures a condition merely because one study reported an association or
+short-term effect.
+
+Urgent safety guidance should link to official advice and clarify when professional medical
+care is appropriate.
+
+================================================================================
+15. DATA AND STATISTICS NEWS
+================================================================================
+
+A data story must define:
+- metric;
+- period;
+- geography;
+- source;
+- coverage;
+- exclusions;
+- revision;
+- methodology;
+- privacy threshold.
+
+Distinguish:
+- Massage Nexus research coverage;
+- observed listings;
+- verified active providers;
+- estimates;
+- official market totals;
+- social-platform observations.
+
+Do not claim that Massage Nexus has counted an entire market when the dataset reflects only
+available research.
+
+Charts and rankings must preserve the same definitions used in the story.
+
+================================================================================
+16. SOCIAL MEDIA AND USER SUBMISSIONS
+================================================================================
+
+Social posts and user tips may identify a story but do not verify it.
+
+Before publication:
+- confirm the account;
+- preserve the original post and date where allowed;
+- check whether the content is satire, old, edited, or taken out of context;
+- contact the relevant party;
+- obtain permission for private material;
+- avoid exposing usernames unnecessarily.
+
+A viral claim is not automatically newsworthy or true.
+
+User-submitted photos, videos, or messages require rights, privacy, authenticity, and safety
+review.
+
+================================================================================
+17. CORRECTIONS, UPDATES, RETRACTIONS, AND REMOVAL
+================================================================================
+
+Minor correction:
+Fix spelling, formatting, or an error that does not change meaning. A visible note is optional
+unless transparency requires it.
+
+Material correction:
+Correct a factual error that changes understanding. Add a visible correction note explaining
+what changed.
+
+Update:
+Add newly confirmed information without implying the earlier version was wrong. Show the
+material update time and note.
+
+Retraction:
+Use when the central claim cannot be supported or the story is fundamentally unreliable.
+Preserve an appropriate public notice rather than silently deleting the record.
+
+Removal:
+Use only for a strong legal, privacy, safety, duplication, or publication reason. Preserve the
+internal record and public explanation where appropriate.
+
+Do not silently rewrite a consequential error.
+
+================================================================================
+18. MEDIA
+================================================================================
+
+News media may include:
+- original photographs;
+- documents;
+- maps;
+- screenshots;
+- charts;
+- interview audio;
+- video;
+- approved source imagery.
+
+Each item needs:
+- source;
+- creator;
+- rights;
+- date;
+- location where relevant;
+- caption;
+- alternative text;
+- editing or AI label;
+- NSFW level;
+- people and privacy review.
+
+Do not use an unrelated generic spa image in a way that implies it shows the reported provider
+or event.
+
+Generated illustration must be labeled and must not imitate evidence.
+
+================================================================================
+19. AI USE
+================================================================================
+
+AI may assist with:
+- story leads;
+- source discovery;
+- transcript organization;
+- chronology;
+- headline options;
+- draft structure;
+- translation drafts;
+- summarization;
+- duplicate detection;
+- copy editing;
+- source comparison;
+- metadata;
+- social variants.
+
+AI must not:
+- invent facts, quotations, sources, interviews, or responses;
+- replace current web research;
+- publish without editorial review;
+- create realistic evidence;
+- decide a serious allegation;
+- copy protected reporting;
+- translate a high-risk story without the required review;
+- turn uncertainty into certainty.
+
+The reporter and editor remain accountable for the published story.
+
+================================================================================
+20. MULTILINGUAL NEWS
+================================================================================
+
+Preserve the source-language story and source revision.
+
+A translated News story records:
+- target locale;
+- translation method;
+- translator or reviewer;
+- source revision;
+- publication time;
+- stale status after a material source update.
+
+Headlines, quotations, names, legal terms, and local terminology require careful review.
+
+Machine translation may support speed but must not silently publish high-risk legal, safety,
+health, financial, or allegation wording without qualified review.
+
+A culturally adapted News explanation may add local context, but it must not change the
+confirmed facts.
+
+================================================================================
+21. SPONSORED, AFFILIATE, AND COMMERCIAL MATERIAL
+================================================================================
+
+Clearly label:
+- Sponsored;
+- Advertisement;
+- Partner Content;
+- Affiliate Link;
+- Official Provider Statement;
+- Massage Nexus Announcement.
+
+A sponsor may not:
+- approve independent reporting;
+- suppress material criticism;
+- buy a favorable conclusion;
+- access private reader data;
+- convert an advertisement into unlabeled News;
+- control corrections or safety warnings.
+
+Commercial relationships relevant to a story must be disclosed.
+
+================================================================================
+22. PUBLICATION WORKFLOW
+================================================================================
+
+1. identify the candidate story;
+2. assess newsworthiness and risk;
+3. create the source record;
+4. research and verify;
+5. request response where needed;
+6. draft;
+7. fact-check names, dates, numbers, quotations, links, and status;
+8. review legal, privacy, safety, NSFW, and conflict concerns;
+9. edit headline, deck, body, metadata, and media;
+10. approve;
+11. publish;
+12. distribute;
+13. monitor for corrections and material updates;
+14. archive evidence and final source revision.
+
+Urgency may shorten the workflow but must not remove verification, attribution, and correction
+responsibility.
+
+================================================================================
+23. NEWS METADATA
+================================================================================
+
+A News record may include:
+- identifier;
+- headline;
+- slug;
+- short description;
+- news category;
+- story type;
+- location;
+- original language;
+- publication time;
+- update time;
+- event time;
+- status;
+- urgency;
+- author;
+- reporter;
+- editor;
+- fact checker;
+- sources;
+- related records;
+- tags;
+- target audiences;
+- media;
+- NSFW level;
+- sponsorship disclosure;
+- correction or retraction state;
+- reading duration;
+- translation state;
+- canonical source revision.
+
+Database fields are finalized separately.
+
+================================================================================
+24. NEWS CATEGORIES
+================================================================================
+
+Initial categories:
+- Massage Nexus;
+- Spa and Establishment;
+- Therapist and Profession;
+- Service and Practice;
+- Safety and Consumer Protection;
+- Law, Regulation, and Government;
+- Research and Science;
+- Business and Market;
+- Tourism and Hospitality;
+- Product and Equipment;
+- Training and Education;
+- Event and Conference;
+- Accessibility and Community;
+- Technology and Platform;
+- Correction and Fact Check.
+
+Categories should remain broad enough to be useful and must not multiply merely to label one
+story.
+
+================================================================================
+25. COMPLETED NEWS OUTPUT
+================================================================================
+
+A requested completed News story should normally be delivered as a UTF-8 text file containing:
+
+Title:
+Story Type:
+News Category:
+Short Description:
+Original Language:
+Location:
+Publication Time:
+Update Time:
+Author or Reporter:
+Editor:
+NSFW Level:
+Sponsorship or Conflict Disclosure:
+Related Massage Nexus Records:
+Visual Direction:
+News Body:
+Correction or Update Note:
+Sources:
+
+Do not claim a publication time, interview, source, or editorial approval that did not occur.
+
+================================================================================
+26. QUALITY REVIEW
+================================================================================
+
+Before approval, confirm:
+- the development is actually timely;
+- the central claim is supported;
+- headline and lead match the evidence;
+- dates, names, prices, quantities, and quotations are correct;
+- source attribution is close to the claim;
+- the affected party received a reasonable opportunity to respond when required;
+- uncertainty is visible;
+- News, analysis, opinion, announcement, and sponsorship are labeled correctly;
+- media does not imply false evidence;
+- privacy and safety are protected;
+- the story adds value beyond a copied press release;
+- correction and update monitoring are assigned.
+
+================================================================================
+27. CURRENT DIRECTIONS
+================================================================================
+
+- News remains separate from Articles, Reviews, announcements, opinion, and sponsored content.
+- Current stories require current research and source preservation.
+- Social posts, maps, advertisements, and AI summaries are leads rather than proof.
+- The first paragraph states the most important confirmed development.
+- Developing stories use material timestamped updates.
+- Material errors receive visible corrections.
+- AI assists research organization and writing but never invents reporting.
+- High-risk stories receive stronger factual, legal, privacy, safety, and translation review.
+- Provider profile status and News coverage may be linked but remain separate records.

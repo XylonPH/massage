@@ -1,0 +1,553 @@
+Title: Massage Nexus Cache and Temporary Data Strategy
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines how Massage Nexus uses application, query, page, API, translation, media, session, rate-limit, search, analytics, support, mobile, and desktop caches to improve speed and resilience without making stale data authoritative or leaking private information.
+
+Related Documents:
+- Massage Nexus Technology Stack
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Privacy Notice and Data Protection Requirements
+- Massage Nexus Translation System
+- Massage Nexus Analytics Statistics and Measurement System
+- Massage Nexus Data Research Provenance and Field Verification System
+- Massage Nexus Mobile Application
+- Massage Nexus Web Application
+- Massage Nexus Desktop Application
+
+================================================================================
+1. PRINCIPLES
+================================================================================
+
+- Cache is temporary and replaceable.
+- Authoritative records remain in their designated data store.
+- Cache failure must not corrupt authoritative data.
+- Cache keys include locale, permission, revision, target, and environment where relevant.
+- Public and private representations use different keys.
+- Important changes use explicit invalidation.
+- Time-to-live is a safety limit, not the only consistency method.
+- Secrets, passwords, recovery codes, full payment data, and unprotected intake are not cached.
+- Cache stampede and retry storms are controlled.
+- Hit rate, latency, size, errors, and stale responses are monitored.
+
+================================================================================
+2. CACHE AREAS
+================================================================================
+
+Possible areas:
+- configuration;
+- routes;
+- compiled views;
+- application objects;
+- public profile summaries;
+- directories and filters;
+- taxonomy and references;
+- language resources;
+- translation results;
+- search results;
+- external API responses;
+- analytics aggregates;
+- media derivatives;
+- AI results;
+- support knowledge;
+- rate limits;
+- locks;
+- sessions where configured;
+- mobile offline data;
+- desktop local data.
+
+Do not use one undifferentiated cache namespace.
+
+================================================================================
+3. CACHE KEYS
+================================================================================
+
+A key may include:
+- environment;
+- application;
+- capability;
+- target type;
+- target identifier;
+- representation;
+- locale;
+- audience or permission class;
+- source revision;
+- filter hash;
+- page or cursor;
+- schema version.
+
+Example concept:
+
+massage_nexus:production:spa:profile:{spa_id}:public:{locale}:{revision}
+
+Do not include raw personal data in key text.
+
+Keys must be deterministic, bounded, collision-resistant, and versionable.
+
+================================================================================
+4. PUBLIC PROFILE AND DIRECTORY CACHE
+================================================================================
+
+Cache eligible:
+- public spa summary;
+- therapist summary;
+- service description;
+- product summary;
+- directory result;
+- public counts;
+- public media metadata.
+
+Invalidate or version when:
+- profile data changes;
+- publication changes;
+- claim or verification changes;
+- source revision changes;
+- visibility or NSFW changes;
+- merge or deletion occurs;
+- translation changes.
+
+Never serve a public representation to a private workspace request.
+
+================================================================================
+5. PRIVATE AND PERMISSIONED CACHE
+================================================================================
+
+Private cache includes:
+- account or provider scope;
+- authorization revision;
+- target membership;
+- short lifetime;
+- encryption where appropriate.
+
+Avoid caching:
+- private messages;
+- intake;
+- identity evidence;
+- payment details;
+- moderation evidence;
+- security events.
+
+When private caching is necessary:
+- isolate keys;
+- invalidate on permission change;
+- prevent public CDN storage;
+- test cross-account denial.
+
+================================================================================
+6. TAXONOMY AND REFERENCE CACHE
+================================================================================
+
+Cache:
+- languages;
+- countries;
+- currencies;
+- service hierarchy;
+- classification definitions;
+- status labels;
+- public policy labels;
+- feature configuration.
+
+Use a reference revision.
+
+Invalidate after publication, alias changes, translation changes, deprecation, or relationship
+changes.
+
+================================================================================
+7. TRANSLATION CACHE
+================================================================================
+
+On-demand translation cache key includes:
+- content identifier;
+- source revision;
+- source locale;
+- target locale;
+- provider;
+- model version;
+- glossary version;
+- safety classification.
+
+Invalidate or mark stale when:
+- source changes;
+- translation is corrected;
+- glossary changes materially;
+- content visibility changes;
+- provider result is withdrawn.
+
+Display AI-translated labeling and Show Original where required.
+
+Do not translate every target language in advance.
+
+================================================================================
+8. SEARCH CACHE
+================================================================================
+
+Cache selected:
+- common public queries;
+- directory facets;
+- location counts;
+- suggestions;
+- expensive aggregate filters.
+
+Key includes:
+- normalized query;
+- locale;
+- location;
+- filters;
+- sort;
+- page or cursor;
+- visibility revision.
+
+Use short lifetimes for availability, prices, rosters, booking, and promotions.
+
+Personalized results require private scope or no shared caching.
+
+================================================================================
+9. EXTERNAL SERVICE CACHE
+================================================================================
+
+Possible sources:
+- maps;
+- geocoding;
+- currency;
+- social observations;
+- payment reference data;
+- search;
+- AI;
+- licensed APIs.
+
+Requirements:
+- follow provider storage terms;
+- preserve source and retrieval date;
+- distinguish external data from Massage Nexus verification;
+- handle expiry and failure;
+- avoid indefinite retention;
+- do not present stale external data as current.
+
+================================================================================
+10. AI AND SUPPORT KNOWLEDGE CACHE
+================================================================================
+
+Reusable AI output may include:
+- approved translation;
+- approved summary;
+- embedding;
+- duplicate candidate;
+- support answer template;
+- classification signal.
+
+Key includes:
+- prompt or task version;
+- input revision;
+- provider;
+- model;
+- output schema;
+- locale;
+- safety policy.
+
+Do not reuse an account-specific support answer across users when account context, permissions,
+policy version, or private data differs.
+
+Support knowledge cache invalidates after:
+- feature change;
+- policy change;
+- article revision;
+- incident-status change;
+- translation revision.
+
+================================================================================
+11. ANALYTICS CACHE
+================================================================================
+
+Cache:
+- daily aggregates;
+- weekly snapshots;
+- monthly snapshots;
+- public statistics;
+- provider dashboards;
+- research coverage;
+- translation coverage.
+
+Identify:
+- computed time;
+- period;
+- partial state;
+- next refresh;
+- metric version.
+
+Public statistics preserve privacy thresholds.
+
+================================================================================
+12. MEDIA AND CDN CACHE
+================================================================================
+
+Eligible:
+- thumbnails;
+- resized public images;
+- poster frames;
+- approved video derivatives;
+- public documents;
+- public avatars;
+- static assets.
+
+Key includes content hash, transformation, size, format, revision, and access class.
+
+Private or restricted media requires:
+- authorized or signed access;
+- short-lived URLs;
+- protected storage;
+- purge on visibility change;
+- no ordinary public CDN caching.
+
+Deleted or reclassified media must purge derivatives.
+
+================================================================================
+13. HTTP CACHE
+================================================================================
+
+Public static assets may use long-lived immutable caching when filenames include content hashes.
+
+Public dynamic pages may use:
+- short browser cache;
+- server cache;
+- CDN cache;
+- safe stale-while-revalidate.
+
+Do not publicly cache:
+- account;
+- booking detail;
+- ticket;
+- provider operations;
+- message;
+- intake;
+- payment;
+- security;
+- moderation.
+
+Set explicit cache headers.
+
+================================================================================
+14. SESSION, RATE LIMIT, AND LOCK DATA
+================================================================================
+
+Temporary stores may hold:
+- sessions;
+- one-time state;
+- rate-limit counters;
+- distributed locks;
+- job uniqueness;
+- verification state.
+
+Requirements:
+- explicit expiry;
+- safe tokens;
+- revocation;
+- atomic operations where required;
+- separation from ordinary content cache;
+- safe failure behavior.
+
+================================================================================
+15. MOBILE OFFLINE CACHE
+================================================================================
+
+Mobile may cache:
+- recently viewed public profiles;
+- saved summaries;
+- search history with permission;
+- draft contributions;
+- approved downloaded content;
+- research assignments;
+- encrypted account preferences;
+- queued offline actions.
+
+Requirements:
+- device encryption;
+- account separation;
+- logout cleanup;
+- revision synchronization;
+- conflict handling;
+- storage limit;
+- clear-cache control;
+- no uncontrolled permanent restricted content.
+
+Offline states:
+- pending;
+- syncing;
+- failed;
+- conflict;
+- completed.
+
+================================================================================
+16. DESKTOP LOCAL CACHE
+================================================================================
+
+Desktop may cache:
+- administrative working sets;
+- research assignments;
+- translation packages;
+- approved exports;
+- media derivatives;
+- queued edits;
+- search indexes;
+- local logs.
+
+Requirements:
+- user-specific storage;
+- encryption for sensitive data;
+- explicit workspace folder;
+- synchronization;
+- conflict handling;
+- cleanup;
+- no uncontrolled production database copy.
+
+================================================================================
+17. INVALIDATION
+================================================================================
+
+Methods:
+- direct deletion;
+- tag or group invalidation;
+- revisioned keys;
+- event-driven invalidation;
+- TTL;
+- namespace version;
+- CDN purge.
+
+Use event-driven or revisioned invalidation for:
+- publication;
+- visibility;
+- permission;
+- policy;
+- verification;
+- profile changes;
+- translation;
+- merge;
+- deletion.
+
+Use TTL-only behavior only where temporary staleness is explicitly acceptable.
+
+================================================================================
+18. STAMPEDE AND CONCURRENCY
+================================================================================
+
+Use:
+- locks;
+- single-flight;
+- jittered expiry;
+- background refresh;
+- stale-while-revalidate;
+- queued regeneration;
+- request coalescing.
+
+Do not allow many requests to trigger the same AI call, search build, or profile aggregation.
+
+================================================================================
+19. FAILURE BEHAVIOR
+================================================================================
+
+When cache fails:
+- fall back to authoritative data where safe;
+- degrade nonessential features;
+- preserve writes;
+- maintain authorization;
+- avoid stale private data;
+- alert operations;
+- prevent retry storms.
+
+When the authoritative service fails:
+- serve stale public data only when policy permits;
+- label time-sensitive limitations;
+- reject unsafe writes;
+- queue safe actions;
+- show service status.
+
+================================================================================
+20. RETENTION AND USER CONTROL
+================================================================================
+
+Cache expires.
+
+Provide controls where useful:
+- clear local cache;
+- clear search history;
+- remove downloaded content;
+- clear offline drafts with warning;
+- manage storage use.
+
+Deletion workflows purge or age out cache.
+
+Backups are not caches.
+
+================================================================================
+21. OBSERVABILITY
+================================================================================
+
+Measure:
+- hit and miss;
+- latency;
+- size;
+- eviction;
+- stale response;
+- invalidation failure;
+- regeneration;
+- lock contention;
+- CDN behavior;
+- AI cost saved;
+- translation cache hit;
+- memory and storage use.
+
+Do not log sensitive cached values.
+
+================================================================================
+22. TESTING
+================================================================================
+
+Test:
+- key scope;
+- locale;
+- permission;
+- revision;
+- invalidation;
+- TTL;
+- stampede;
+- failure fallback;
+- cross-account isolation;
+- NSFW visibility;
+- deletion purge;
+- translation stale behavior;
+- media access;
+- mobile logout cleanup;
+- offline conflict;
+- external-provider rules;
+- analytics privacy threshold.
+
+================================================================================
+23. IMPLEMENTATION ORDER
+================================================================================
+
+1. framework and compiled caches;
+2. application cache abstraction;
+3. reference and taxonomy cache;
+4. public profile and directory cache;
+5. invalidation events;
+6. translation cache;
+7. analytics cache;
+8. media and CDN cache;
+9. external API cache;
+10. AI and support knowledge cache;
+11. mobile and desktop local cache;
+12. advanced observability.
+
+================================================================================
+24. CURRENT DIRECTIONS
+================================================================================
+
+- Treat cache as temporary.
+- Keep authoritative data outside cache.
+- Scope by locale, permission, revision, and target.
+- Separate public and private representations.
+- Cache on-demand translations by source revision.
+- Use explicit invalidation for important changes.
+- Apply strict rules to private, restricted, ticket, intake, payment, and security data.
+- Support mobile and desktop local cache with cleanup and synchronization.
+- Protect expensive work from stampede.
+- Monitor effectiveness and failure.

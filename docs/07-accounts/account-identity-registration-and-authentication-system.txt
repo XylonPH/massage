@@ -1,0 +1,994 @@
+Title: Massage Nexus Account Identity Registration and Authentication System
+Document Version: 1.20
+Date Created: 2026-07-18
+Revision Date: 2026-07-19
+
+DOCUMENT PURPOSE
+----------------
+This document defines the accepted account, identity, registration, verification, login,
+recovery, session, external-provider, mobile-number, passkey, preference, and avatar
+direction for Massage Nexus.
+
+It is an implementation specification and planning authority. It is not a public Terms of
+Use document, Privacy Notice, database schema, route map, or completed interface design.
+
+================================================================================
+1. ACCOUNT ARCHITECTURE
+================================================================================
+
+1.1 Shared Network Account
+
+Massage Nexus is the first active website in a planned network of sites. Authentication
+should therefore be designed so that one person can eventually use the same account for
+Massage Nexus, Place Trace, People Atlas, Telebisyon.net, and other approved network sites.
+
+The shared network account may contain:
+- global username;
+- password credential;
+- linked external identities;
+- verified email addresses;
+- verified mobile numbers;
+- preferred interface language;
+- fallback language;
+- time zone;
+- regional formatting preferences;
+- universal avatar or identity media;
+- security settings;
+- passkeys;
+- two-factor authenticators;
+- recovery codes;
+- active sessions and recognized devices;
+- account-level security history.
+
+1.2 Site Membership
+
+A network account does not automatically create a public profile or active membership on
+every network site.
+
+Registration through Massage Nexus creates:
+1. one shared network account; and
+2. one Massage Nexus site membership.
+
+A future visit to another network site may reuse universal settings, but the user must still:
+- satisfy that site's age and eligibility rules;
+- accept that site's current Terms of Use;
+- acknowledge that site's current Privacy Notice;
+- create or activate that site's membership;
+- configure genuinely site-specific preferences.
+
+1.3 Universal and Site-Specific Settings
+
+Universal settings should not be repeatedly requested by every network site unless a user
+chooses to override them:
+- interface language;
+- fallback language;
+- time zone;
+- regional date, time, and number formatting;
+- universal avatar;
+- verified contacts;
+- core security settings.
+
+Massage Nexus-specific settings remain separate:
+- massage and wellness interests;
+- preferred service types;
+- booking preferences;
+- review and community preferences;
+- NSFW or mature-content preference;
+- Massage Nexus notifications;
+- Massage Nexus public profile;
+- Massage Nexus roles, restrictions, and membership status.
+
+1.4 Public Access Without Registration
+
+Registration is not required to:
+- read ordinary public articles;
+- browse the public directory;
+- view ordinary public profiles;
+- use public search and discovery features;
+- read other content explicitly classified as public.
+
+An active account is required for personal or participatory features such as:
+- saving and following;
+- personalized recommendations;
+- gamification and rewards;
+- contributions and corrections;
+- discussions and comments;
+- booking;
+- ratings and reviews;
+- uploads;
+- messaging;
+- profile claims;
+- provider operations;
+- mature or NSFW access where policy permits it.
+
+================================================================================
+2. MASSAGE NEXUS ELIGIBILITY
+================================================================================
+
+2.1 Minimum Age
+
+Massage Nexus membership is restricted to persons who are at least 18 years old.
+
+A person under 18:
+- may view ordinary public Massage Nexus content;
+- may not create or activate a Massage Nexus membership;
+- may not enter the User Workspace;
+- may not book, review, rate, upload, contribute, message, or access member-only content.
+
+This is a Massage Nexus rule. It is not automatically the age rule for every future network
+site. A future shared network account system may allow a minor to use an eligible site such
+as Place Trace or Telebisyon.net while remaining ineligible for Massage Nexus.
+
+2.2 Birth Date
+
+Date of birth is required for Massage Nexus registration.
+
+Rules:
+- store the date of birth, not a permanently stored numeric age;
+- calculate current age whenever eligibility must be checked;
+- keep the date of birth private by default;
+- do not show it on the public profile unless a future explicit policy permits a different
+  birthday-only presentation;
+- do not permit ordinary self-service editing after registration;
+- allow correction only through an authenticated, support-mediated process;
+- require evidence or additional verification when appropriate;
+- record the correction and previous value in a protected audit history;
+- re-evaluate eligibility after a correction.
+
+A self-declared date of birth supports ordinary age eligibility. It is not equivalent to
+government-identity age verification or stronger age assurance.
+
+================================================================================
+3. INITIAL REGISTRATION DATA
+================================================================================
+
+Required during the first implementation:
+- username;
+- email address;
+- password;
+- password confirmation;
+- date of birth;
+- acceptance of the current Massage Nexus Terms of Use;
+- acknowledgment of the current Massage Nexus Privacy Notice.
+
+Not required during initial registration:
+- legal name;
+- public display name;
+- gender;
+- mobile number;
+- profile photograph;
+- exact home address;
+- precise location permission;
+- biography;
+- massage preferences;
+- marketing consent.
+
+Marketing email and promotional SMS consent must be separate, optional, and unchecked by
+default. They must not be bundled into required Terms acceptance.
+
+================================================================================
+4. USERNAME POLICY
+================================================================================
+
+4.1 Format
+
+A username must:
+- contain only lowercase English letters a-z and digits 0-9;
+- begin with a letter;
+- contain no spaces;
+- contain no dash;
+- contain no underscore;
+- contain no period or other symbol;
+- be at least 4 characters;
+- be no more than 30 characters;
+- be unique after normalization.
+
+Validation pattern:
+
+^[a-z][a-z0-9]{3,29}$
+
+The server is authoritative. The browser may convert input to lowercase for convenience,
+but server validation must repeat normalization and uniqueness checks.
+
+4.2 Accepted Examples
+
+xylon
+xylon2026
+massagefan7
+
+4.3 Rejected Format Examples
+
+Xylon
+7xylon
+xylon_reyes
+xylon-reyes
+xylon.reyes
+xylon reyes
+
+4.4 Protected and Reserved Username Families
+
+Users may not register names that imply platform authority, ownership, administration,
+moderation, security, billing, legal authority, official brand status, or system operation.
+
+Protected families include, but are not limited to:
+- admin, admins, administrator, administrators, administration;
+- mod, mods, moderator, moderators, moderation;
+- support, supports, supporter when likely to imply official support, helpdesk, help;
+- staff, staffs, team, official, officials;
+- system, systems, root, superuser;
+- webmaster, webmasters, postmaster, postmasters;
+- security, abuse, privacy, legal, billing, payment;
+- account, accounts, login, signin, signup, register;
+- api, mail, email, www;
+- massagenexus, nexus, and approved brand variations;
+- official department names;
+- founder, owner, operator, and similar authority terms when misleading;
+- names reserved for official Neural Agents, mascots, platform characters, or service
+  accounts;
+- names of future network sites and their official departments;
+- current and reserved route keywords.
+
+4.5 Protected-Family Matching
+
+The protection check must not be limited to exact strings.
+
+The system should use a maintained protected-name registry containing:
+- canonical singular root;
+- explicit plural forms;
+- common abbreviations;
+- common misspellings;
+- common leetspeak substitutions;
+- authority-related prefixes and suffixes;
+- numeric suffix patterns;
+- brand combinations.
+
+Examples that must be rejected:
+- admin;
+- admins;
+- admin1;
+- admin123;
+- adm1n;
+- administrator;
+- administrators;
+- moderator;
+- moderators;
+- mod123;
+- support;
+- supports;
+- support123;
+- officialsupport;
+- supportmassagenexus;
+- massagenexussupport;
+- massagenexusofficial;
+- supp0rt.
+
+For high-risk authority and brand roots, a name may be rejected when it begins with, ends
+with, contains, or is a clear derivation of the protected family. A false positive may be
+resolved through a controlled support review, but ordinary registration must fail safely.
+
+4.6 Reservation and Release
+
+A reserved username may be:
+- permanently reserved;
+- reserved for a platform-owned account;
+- temporarily held during registration;
+- released after an abandoned registration period;
+- blocked after abuse, impersonation, or deletion;
+- retained after account deletion to prevent impersonation.
+
+Username-change rules, history, redirects, and cooldown periods remain to be specified
+before self-service username changes are enabled.
+
+================================================================================
+5. PASSWORD POLICY
+================================================================================
+
+5.1 Accepted Password Requirements
+
+Password minimum length:
+15 characters
+
+Password maximum length:
+128 characters
+
+Allowed:
+- lowercase letters;
+- uppercase letters;
+- numbers;
+- symbols;
+- spaces;
+- password-manager-generated values;
+- long passphrases.
+
+Massage Nexus will not require every password to contain one lowercase letter, one
+uppercase letter, one number, and one symbol. Length, compromised-password rejection,
+rate limiting, secure hashing, multifactor authentication, and passkeys provide a stronger
+and more usable baseline than predictable composition rules.
+
+5.2 Rejected Passwords
+
+Reject a password when it:
+- appears in an approved compromised-password source;
+- is extremely common;
+- equals or substantially reproduces the username;
+- equals or substantially reproduces the email address;
+- contains only simple repetition or a trivial sequence;
+- uses an obvious Massage Nexus password pattern;
+- uses a protected administrative term as the entire or obvious password;
+- fails the minimum length;
+- exceeds the supported maximum;
+- cannot be safely normalized and processed.
+
+Examples of obvious rejected patterns:
+- massagenexus;
+- massagenexus123;
+- MassageNexus2026!;
+- passwordpassword;
+- adminpassword;
+- aaaaaaaaaaaaaaa;
+- 123456789012345.
+
+Do not reject a strong passphrase merely because it contains an ordinary dictionary word
+such as massage, leaf, spa, or wellness.
+
+5.3 Strength Indicator
+
+Registration and password-change screens should display a JavaScript strength indicator.
+
+Rules:
+- it is advisory and immediate;
+- it must not be the authoritative validator;
+- the server repeats all validation;
+- it should explain weaknesses without revealing protected blocklist details;
+- it should not encourage predictable substitutions merely to change a color;
+- it should work with pasted password-manager values;
+- it should not prevent password managers or browser autofill.
+
+5.4 Password Storage
+
+Passwords must never be stored in plaintext and must never be reversibly encrypted.
+
+Use Laravel's password-hashing facilities with Argon2id as the accepted direction.
+
+Conceptual environment setting:
+
+HASH_DRIVER=argon2id
+
+The stored value is a one-way Argon2id hash. The hash may be moved from local MongoDB to
+Azure DocumentDB without recovering the original password.
+
+The application must use framework hashing and verification functions. It must not create
+a custom password-hashing or encryption algorithm.
+
+5.5 Rehashing
+
+After a successful login, the application may rehash the password when the approved
+Argon2id settings have changed. Rehashing must use the submitted password only during
+that authenticated login and must never require decrypting a stored value.
+
+================================================================================
+6. REGISTRATION AND EMAIL VERIFICATION FLOW
+================================================================================
+
+Accepted flow:
+
+1. User opens the full registration page.
+2. User enters required registration fields.
+3. Server validates age, username, protected-name rules, email, password, and current
+   required policy versions.
+4. Account is created with pending_email_verification status.
+5. Verification email is sent.
+6. User is not granted normal login or User Workspace access.
+7. User opens the signed, expiring verification link.
+8. Email is marked verified.
+9. Massage Nexus membership becomes active when all eligibility requirements are met.
+10. User may then log in normally.
+11. Optional onboarding follows after first successful login.
+
+Unverified users may only:
+- view public content;
+- see a verification-required message;
+- resend a verification message subject to rate limits;
+- change an unverified email through a controlled flow;
+- abandon registration;
+- contact support.
+
+Unverified users may not:
+- enter the User Workspace;
+- book;
+- save or follow;
+- review or rate;
+- contribute;
+- upload;
+- message;
+- earn rewards;
+- access mature or NSFW content;
+- claim or manage a profile;
+- use any other authenticated-member function.
+
+================================================================================
+7. LOGIN
+================================================================================
+
+Initial login identifier:
+Username or email address
+
+Initial authentication:
+Password
+
+The login interface must use standard HTML username and password fields so browsers and
+password managers can offer credential storage and autofill.
+
+The application must not create its own plaintext "save password" feature.
+
+Login options:
+- Remember me;
+- Forgot password;
+- Resend verification email when the account remains pending.
+
+The login process must:
+- normalize the username;
+- avoid revealing whether a particular username or email exists unnecessarily;
+- rate-limit attempts;
+- protect against credential stuffing;
+- reject inactive, locked, suspended, deleted, and unverified accounts according to status;
+- record meaningful security events;
+- trigger reauthentication for high-risk actions.
+
+================================================================================
+8. ACCOUNT STATUSES
+================================================================================
+
+Working account statuses:
+- pending_email_verification;
+- active;
+- locked_security;
+- suspended;
+- restricted;
+- deletion_pending;
+- deleted;
+- archived_security_hold.
+
+Working Massage Nexus membership statuses:
+- pending_eligibility;
+- active;
+- age_ineligible;
+- restricted;
+- suspended;
+- terminated;
+- deletion_pending;
+- closed.
+
+Account status and site-membership status are separate. A person may eventually retain a
+valid network account while being ineligible or suspended on Massage Nexus.
+
+================================================================================
+9. PASSWORD RECOVERY AND CONTACT CHANGES
+================================================================================
+
+9.1 Password Recovery
+
+Initial recovery method:
+Verified email
+
+Recovery links must:
+- be signed or securely tokenized;
+- expire;
+- be single-use;
+- be rate-limited;
+- invalidate or supersede earlier tokens when appropriate;
+- avoid exposing whether an email exists;
+- trigger a security notification after a successful reset;
+- allow revocation of other active sessions.
+
+SMS must not be the sole recovery method.
+
+9.2 Email Change
+
+Changing a verified email should require:
+- recent password, passkey, or approved reauthentication;
+- verification of the new email;
+- notification to the old verified email;
+- a security hold or additional review for suspicious changes;
+- preservation of protected audit history;
+- careful handling when the old address is unavailable.
+
+9.3 Mobile Number
+
+A mobile number is optional during the initial implementation.
+
+Before a number can be used:
+- normalize it to international E.164 form;
+- send a one-time verification code;
+- store only an appropriately protected verifier or hash for the code;
+- expire the code;
+- limit attempts and resend frequency;
+- mark the number verified only after successful confirmation.
+
+Mobile number risks include:
+- SIM swap;
+- recycled numbers;
+- loss of the device or SIM;
+- carrier delay;
+- international delivery limitations;
+- cost and sender-registration requirements.
+
+Possession of a recycled or newly acquired number must never automatically grant access to
+an existing account.
+
+Changing a verified number should require:
+- recent password or passkey confirmation;
+- confirmation through a verified email or another strong authenticator;
+- verification of the new number;
+- notification to the old number and verified email where possible;
+- revocation of the old number;
+- temporary limits on high-risk actions;
+- a security-history record.
+
+Preferred strong recovery and second-factor methods:
+1. passkey;
+2. TOTP authenticator;
+3. recovery codes;
+4. verified email;
+5. controlled support recovery;
+6. SMS only as a weaker fallback when approved.
+
+================================================================================
+10. SESSION AND DEVICE MANAGEMENT
+================================================================================
+
+The User Workspace should provide:
+- current session;
+- active session list;
+- approximate device and browser information;
+- approximate login location where appropriate;
+- session creation time;
+- last activity;
+- log out one session;
+- log out all other sessions;
+- mark a device unrecognized;
+- security alert history.
+
+Session identifiers must be random and meaningless.
+
+Production cookies should be:
+- Secure;
+- HttpOnly;
+- SameSite according to the accepted flow;
+- scoped narrowly;
+- regenerated after authentication and privilege changes.
+
+Remember-me behavior must:
+- use a revocable token;
+- not store the password;
+- have a defined lifetime;
+- be revocable from session management;
+- be invalidated after sensitive security changes where appropriate.
+
+================================================================================
+11. MULTIFACTOR AUTHENTICATION AND PASSKEYS
+================================================================================
+
+11.1 TOTP
+
+Planned stronger authentication:
+- time-based one-time password through an authenticator application;
+- recovery codes;
+- confirmation before activation;
+- recent authentication before changing or disabling it;
+- security notification when enabled, reset, or disabled.
+
+11.2 Passkeys
+
+Passkeys are the accepted direction for facial-recognition, fingerprint, Windows Hello,
+Face ID, Touch ID, device PIN, and hardware-key login.
+
+Massage Nexus must not build or store its own facial-recognition templates or fingerprint
+database.
+
+With WebAuthn passkeys:
+- biometric verification remains on the user's device or authenticator;
+- Massage Nexus stores public-key credential information, not the user's biometric;
+- each credential is scoped to the approved relying-party domain;
+- users may name, view, and revoke passkeys;
+- recovery must not rely on one device alone.
+
+11.3 High-Risk Actions
+
+Recent authentication may be required for:
+- changing password;
+- changing primary email or mobile number;
+- changing date of birth through support;
+- disabling MFA;
+- deleting the account;
+- viewing recovery codes;
+- changing payout or financial details;
+- accessing especially sensitive records;
+- assigning privileged roles.
+
+================================================================================
+12. EXTERNAL IDENTITY PROVIDERS
+================================================================================
+
+Future priority:
+1. Google;
+2. Apple;
+3. Microsoft;
+4. Facebook;
+5. passkey-first and passwordless options;
+6. email magic link where approved;
+7. mobile-number OTP where approved;
+8. X only if access, cost, policy, and user demand justify it;
+9. regional providers such as LINE, Kakao, or WeChat only when target-market need justifies
+   them.
+
+A social identity provider does not replace Massage Nexus requirements.
+
+After first-time external sign-in, the user may still need to:
+- choose an available compliant username;
+- enter date of birth;
+- satisfy Massage Nexus age eligibility;
+- accept the current Terms of Use;
+- acknowledge the current Privacy Notice;
+- confirm missing contact information;
+- configure site membership.
+
+External identities must use the provider's stable subject identifier. Do not rely only on
+email text.
+
+Accounts must not be merged automatically merely because two providers return the same
+email address. Linking requires authenticated proof of control over both identities or a
+controlled recovery process.
+
+Microsoft Entra External ID is a future customer-identity option to evaluate before the
+second network site or production federation is finalized. Initial local implementation may
+use Laravel authentication while preserving the architecture needed for later federation.
+
+================================================================================
+13. LANGUAGE, TIME ZONE, LOCATION, AND ONBOARDING
+================================================================================
+
+13.1 Automatic Suggestions
+
+The system may suggest:
+- interface language from browser preferences;
+- English when the preferred browser language is unsupported;
+- time zone from the browser or device;
+- regional formats from locale.
+
+All automatically determined values must remain editable.
+
+13.2 Preference Inheritance
+
+Universal language and time-zone preferences should be inherited by participating network
+sites unless the user creates a site-specific override.
+
+13.3 Location
+
+Do not request precise location permission during basic registration.
+
+Request location only:
+- when the user invokes a nearby-search feature;
+- when the user explicitly configures local discovery;
+- when a booking or delivery flow genuinely needs it;
+- with a clear explanation and an alternative manual location method.
+
+General home city or preferred search area may be requested during optional onboarding.
+
+13.4 Optional Onboarding
+
+After verification and first login, optional onboarding may ask for:
+- display name;
+- general location;
+- interface and content languages;
+- notification preferences;
+- accessibility preferences;
+- Massage Nexus interests;
+- mature-content preference, subject to the NSFW policy.
+
+Skipping optional onboarding must not block ordinary account use.
+
+================================================================================
+14. GENDER AND PUBLIC IDENTITY
+================================================================================
+
+Gender is not required for registration.
+
+Gender:
+- must not determine account eligibility;
+- must not determine the default avatar;
+- may be added later as an optional, privacy-controlled profile field;
+- must not automatically become public;
+- must not be inferred from name, avatar, provider account, or external identity.
+
+Public display identity and private legal or recovery identity remain separate.
+
+================================================================================
+15. DEFAULT AVATAR AND USER MEDIA
+================================================================================
+
+15.1 Default Avatar
+
+Do not use a generic gray human silhouette.
+
+Create a set of distinctive Massage Nexus default avatars based on approved brand elements,
+such as:
+- Resting Leaf abstractions;
+- leaf-and-ember combinations;
+- massage-stone forms;
+- Ink and Ember geometric wellness marks;
+- other non-gendered approved visual identities.
+
+Assign the default deterministically from an account identifier so that the same account
+continues to receive the same default unless changed.
+
+Store a default-avatar key rather than duplicating a file for each user.
+
+Proposed source location:
+apps/web/resources/images/avatar/default/
+
+15.2 Uploaded Avatar
+
+During development, uploaded media may use Laravel-controlled local storage.
+
+In production, user media is planned for Azure Blob Storage or another approved object
+storage provider.
+
+The main account or profile should reference a media record by identifier rather than store
+a permanent raw storage URL.
+
+The media record should own:
+- storage provider;
+- container or logical area;
+- object key;
+- media type;
+- dimensions;
+- duration;
+- file size;
+- crop information;
+- poster image;
+- processing state;
+- moderation state;
+- NSFW classification;
+- accessibility text;
+- ownership and consent records where needed.
+
+15.3 Animated Avatar
+
+A short moving profile image is a planned differentiating feature, not an initial
+registration requirement.
+
+Future baseline:
+- short duration;
+- looping;
+- no audible audio;
+- poster image;
+- reduced-motion fallback;
+- strict size and format limits;
+- server-side transcoding;
+- malware and content checks;
+- moderation;
+- public avatars remain subject to the NSFW policy.
+
+NSFW avatars and cover images are not permitted because they appear in broad, incidental,
+or public contexts. Restricted user media, when allowed, belongs in an explicitly restricted
+media area rather than the avatar surface.
+
+================================================================================
+16. INTERFACE DIRECTION
+================================================================================
+
+Use full pages for:
+- registration;
+- login;
+- email verification;
+- forgot password;
+- reset password;
+- account recovery;
+- policy acceptance;
+- passkey and MFA management.
+
+Possible routes:
+- /register
+- /login
+- /forgot-password
+- /reset-password
+- /verify-email
+- /complete-profile
+
+A login modal may later appear when a public visitor attempts a protected action, but the
+full flow must remain available through direct pages.
+
+Desktop direction:
+- branded visual panel or background;
+- centered or split-layout form;
+- readable, calm, accessible design;
+- clear password and username rules;
+- no unnecessary fields.
+
+Mobile direction:
+- full-screen responsive form;
+- password-manager compatibility;
+- large controls;
+- clear error messages;
+- no horizontal scrolling.
+
+================================================================================
+17. LARAVEL IMPLEMENTATION DIRECTION
+================================================================================
+
+Current environment:
+- Laravel Framework 13.20.0;
+- PHP 8.5.8;
+- MongoDB PHP extension 2.3.3;
+- MongoDB application package: mongodb/laravel-mongodb 5.8.2, connected to the massage_main
+  database (see Technology Stack section 3 for the full integration record).
+
+Implementation decision: ordinary authentication (registration, email verification, login,
+logout, remember me) was built directly on Laravel's native Auth guard, RateLimiter, and
+signed-URL facilities, using a MongoDB-backed App\Models\User (via MongoDB\Laravel\Auth\User)
+as the Authenticatable model. Laravel Fortify was not installed for this scope: Fortify's main
+contribution is ready-made controllers and routes, and Massage Nexus already required fully
+custom branded controllers and views, so adding Fortify would mean immediately overriding its
+actions rather than reusing them. Fortify remains the candidate direction for TOTP and passkey
+support later in the implementation order (section 20, items 18-19), where its action classes
+have more to offer than a hand-rolled equivalent.
+
+The four conditions below gated the start of this work. All four are now satisfied for the
+ordinary-authentication scope implemented so far:
+- this specification is accepted (the user directed implementation to begin);
+- MongoDB integration is selected and tested (see Technology Stack v1.90);
+- account and membership record boundaries are accepted for the initial embedded user_main
+  scope described in section 18 below;
+- Terms and Privacy requirements are ready for versioned acceptance (draft placeholder pages
+  at /legal/terms and /legal/privacy with a tracked version string in config/legal.php, pending
+  real legal text).
+
+Password recovery is implemented through Laravel's password broker with MongoDB-backed,
+hashed, expiring, single-use tokens. Delivery is limited to verified email addresses, public
+request responses remain generic, request and reset endpoints are rate-limited, the complete
+project password policy is reapplied, remember tokens rotate, and a security notification is
+sent after a successful reset.
+
+Session/device management beyond remember-token rotation and logout, TOTP, recovery codes,
+passkeys, and external identity providers remain unimplemented, matching their later position
+in the section 20 implementation order.
+
+================================================================================
+18. CONCEPTUAL RECORD RESPONSIBILITIES
+================================================================================
+
+These are conceptual responsibilities, not final collection names:
+
+Network account:
+- global identity and lifecycle.
+
+Credential:
+- password hash and credential state.
+
+External identity:
+- provider, stable provider subject, linking state.
+
+Contact:
+- email or mobile number and verification state.
+
+Site membership:
+- Massage Nexus eligibility, status, roles, and policy acceptance.
+
+Profile:
+- public Massage Nexus identity and visibility-controlled information.
+
+Preference:
+- universal and site-specific settings.
+
+Session and device:
+- active authentication sessions and recognized devices.
+
+Passkey:
+- WebAuthn public credential information.
+
+Security event:
+- login, reset, contact change, MFA, passkey, recovery, and administrative action history.
+
+Media asset:
+- avatar, cover, image, video, processing, storage, and moderation metadata.
+
+Policy acceptance:
+- document type, version, site, locale, date and time, and approved evidence metadata.
+
+================================================================================
+19. TESTING REQUIREMENTS
+================================================================================
+
+Required test areas:
+- username normalization;
+- username uniqueness;
+- every protected family and variant;
+- plural, number-suffixed, and leetspeak protected names;
+- age boundary and date calculations;
+- invalid and future birth dates;
+- password length;
+- compromised and project-specific password rejection;
+- password hashing and rehashing;
+- pending verification restrictions;
+- expired, reused, and tampered verification links;
+- login by username and email;
+- generic login and recovery responses;
+- rate limiting;
+- session regeneration;
+- remember-me revocation;
+- reset-token expiry;
+- external-identity linking conflicts;
+- account and membership status enforcement;
+- language and time-zone fallback;
+- access-control tests for every authenticated feature;
+- passkey and MFA recovery paths when implemented;
+- mobile-number change and recycled-number protections when implemented.
+
+================================================================================
+20. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+1. Accept the account, policy, privacy, and security specifications.
+2. Select and prove Laravel-to-MongoDB integration.
+3. Define minimal account, credential, contact, membership, acceptance, and security records.
+4. Install and configure Fortify.
+5. Build custom registration.
+6. Implement protected usernames.
+7. Implement Argon2id password hashing and password policy.
+8. Implement age eligibility.
+9. Implement versioned Terms acceptance and Privacy acknowledgment.
+10. Implement email verification.
+11. Prevent login and workspace access until verification.
+12. Implement username-or-email login and logout.
+13. Implement remember me.
+14. Implement password recovery.
+15. Implement session and device management.
+16. Add the branded default avatar.
+17. Add optional onboarding.
+18. Add TOTP and recovery codes.
+19. Add passkeys.
+20. Add external identity providers after ordinary authentication is stable.
+21. Add optional mobile verification only after provider, cost, region, and recovery rules are
+    approved.
+
+================================================================================
+21. ACCEPTED DECISIONS SUMMARY
+================================================================================
+
+- One shared network account may support several sites.
+- Registering through Massage Nexus creates a Massage Nexus membership, not automatic public
+  memberships on every future site.
+- Universal language, time-zone, avatar, contact, and security settings can be reused.
+- Massage Nexus membership is 18+.
+- Public browsing does not require registration.
+- Username uses lowercase letters and numbers only, begins with a letter, and has no symbols,
+  dash, or underscore.
+- Protected authority and brand families include plural, numeric, abbreviated, misspelled,
+  and deceptive variants.
+- support123 and similar authority-appearing names are prohibited.
+- Passwords use length and blocklist controls rather than mandatory character-category rules.
+- Passwords are hashed with Argon2id and are never stored plaintext or reversibly encrypted.
+- Email is required initially.
+- An unverified user cannot log in normally or use any member function.
+- Mobile number is optional and is not the sole recovery method.
+- Remember me and revocable session management are required.
+- Facial recognition and fingerprints should be used through passkeys, not a Massage Nexus
+  biometric database.
+- Gender is optional and does not choose the avatar.
+- Default avatars are branded, non-gendered Massage Nexus assets.
+- User media references a media record rather than a permanent raw storage URL.
+- Animated avatars are planned after secure media processing exists.
+- NSFW avatars are prohibited; restricted media belongs in controlled content areas.
+
+================================================================================
+22. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+- NIST Special Publication 800-63B, current Digital Identity Guidelines.
+- Laravel 13 documentation for Authentication, Fortify, Hashing, Validation, Password Reset,
+  Email Verification, Sessions, CSRF, and Rate Limiting.
+- W3C Web Authentication Level 3.
+- Microsoft Entra External ID customer identity documentation.
+- Azure Communication Services Email and SMS documentation.
+- Philippine Data Privacy Act of 2012 and National Privacy Commission guidance.

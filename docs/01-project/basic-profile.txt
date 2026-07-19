@@ -1,0 +1,80 @@
+Massage Nexus Basic Profile
+===========================
+
+Document Version: 1.50
+Date Created: 2026-06-29
+Revision Date: 2026-07-04
+
+Project Identity
+----------------
+
+Project Name: Massage Nexus
+Owner: Xylon Reyes
+
+Classification: Public Directory and Knowledge-Base Applications
+
+Categories:
+- Massage & Spa
+- Health and Wellness
+- Spa Directory
+- Therapist Directory
+- Health and Wellness Content and Resource
+
+Brand Lines
+-----------
+
+Slogan 1: Find Your Next Great Massage. (current)
+Slogan 2: Discover. Book. Relax. (future)
+Tagline: The leading platform for massage, wellness, and connection.
+
+Descriptions
+------------
+
+Micro Description: Massage Nexus helps people discover spas, therapists, massage services, reviews, discussions, and wellness resources in one searchable platform.
+
+Short Description: Massage Nexus is a massage and wellness discovery platform for finding spas, therapists, services, reviews, discussions, media, and booking information. It helps users understand what a spa or therapist offers while giving businesses and practitioners a way to be discovered, updated, reviewed, and eventually booked.
+
+Full Description
+~~~~~~~~~~~~~~~~
+
+Massage Nexus is a global massage and wellness discovery platform designed to organize information about spas, massage establishments, therapists, services, reviews, discussions, media, articles, booking options, and wellness-related products. It begins with information that can realistically be gathered, researched, verified, and maintained during the early stages, but the long-term direction is to support spa and therapist listings from many places around the world.
+
+The platform is not intended to be a simple promotional directory or a paid advertising board. It aims to become a useful public reference where users can discover what exists, compare services, understand facilities and amenities, read reviews, participate in discussions, view media, follow spas or therapists, and eventually book services when booking is supported. Listings may include active, closed, historical, unclaimed, claimed, verified, disputed, premium, budget, luxury, and gray-area establishments, but the platform itself should present information responsibly, transparently, and with clear source, verification, moderation, and safety labels.
+
+For spa owners, therapists, contributors, and editors, Massage Nexus may eventually provide tools for claiming profiles, updating information, posting promos, managing availability, receiving booking inquiries, responding to reviews, uploading media, monitoring analytics, and improving public visibility.
+
+Objective, Mission, and Vision
+------------------------------
+
+Objective: To build a structured and searchable platform that collects, organizes, explains, reviews, and connects massage-related information, services, businesses, therapists, users, and wellness resources.
+
+Mission: To help people discover, compare, understand, review, and book massage and wellness services by providing organized, transparent, and useful information about spas, therapists, services, facilities, experiences, and related resources.
+
+Vision: To become a leading global massage and wellness discovery platform where users, therapists, spas, and wellness businesses can connect through reliable information, practical tools, honest reviews, meaningful discussions, and responsible booking support.
+
+Audience and Geographic Direction
+---------------------------------
+
+Target Users: Massage and spa enthusiasts, spa owners and managers, massage therapists, wellness practitioners, wellness product sellers and advertisers.
+
+Initial Geographic Focus: Massage Nexus is global in concept, but its early coverage will naturally begin with areas where information can be more easily gathered, checked, visited, and maintained, such as Mandaluyong, Metro Manila, and nearby Philippine locations.
+
+Long-Term Geographic Direction: The long-term direction is to support spa, therapist, wellness, and massage-related information from many cities, countries, and regions around the world.
+
+Project Dates
+-------------
+
+Date Properly Documented: June 29, 2026
+Target Launch Date: July 11, 2026
+Spa Day: August 8, 2026 (campaign, recurring after)
+
+Observance Dates
+----------------
+
+- New Year: January 1
+- Valentines Day: February 14
+- Easter Sunday: Between March 22 and April 25 (first Sunday following the first ecclesiastical full moon that occurs on or after March 21)
+- Global Wellness Day: 2nd Saturday of June
+- World Massage Day: July 11
+- Halloween: October 31
+- Christmas: December 25

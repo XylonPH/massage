@@ -1,0 +1,503 @@
+Document Title: Massage Nexus: Product Classification
+Document Version: 1.40
+Date Created: 2026-07-11
+Revision Date: 2026-07-17
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the controlled fields and option sets used to classify massage, spa, wellness, therapist, training, and related products in Massage Nexus. It includes recommended snake_case field names, stable option codes, concise labels, and internal descriptions.
+
+This is a compact taxonomy reference, not public documentation, a database schema, a product-profile specification, a seller model, an inventory system, or a universal specification engine. Product categories are hierarchical, while detailed specifications remain category-specific. Labels may be translated later without changing their stable option codes.
+
+GENERAL RULES
+-------------
+- Product Category identifies what a product fundamentally is.
+- Product Grade compares a product only with direct peers in the same category.
+- Product Grade is assigned or confirmed by Massage Nexus and is not freely selected by a seller.
+- Price alone does not determine Product Grade.
+- Product Use Context is multi-select.
+- Ingredients, materials, dimensions, formula, capacity, electrical requirements, and other detailed specifications remain category-specific.
+- Product claims require a source and verification context.
+- Lifecycle, version relationship, authenticity, moderation, seller offer, and recommendation are separate concepts.
+- Unconfirmed classifications remain unselected and may be explained through a separate internal note.
+
+================================================================================
+1. PRODUCT CATEGORY
+================================================================================
+
+Field Name: type_product_category
+Field Label: Product Category
+Selection: Single primary category with hierarchical subcategories
+
+Code | Label                              | Description
+-----|------------------------------------|------------------------------------------------------------
+MM   | Massage Medium                     | Oil, lotion, cream, gel, powder, or comparable medium used during massage.
+AR   | Aromatherapy Product               | Essential oil, fragrance blend, diffuser, inhalation item, or related aromatic product.
+TP   | Topical Care Product               | Balm, liniment, rub, patch, topical oil, cream, or similar comfort product.
+BS   | Body and Skin Care Product         | Scrub, polish, mask, wrap product, moisturizer, cleanser, or related body-care item.
+TL   | Textile and Linen                  | Towel, sheet, blanket, robe, wrap, cover, or other treatment textile.
+MT   | Manual Massage Tool                | Roller, massage ball, gua sha tool, scraping tool, or other non-powered implement.
+TF   | Treatment Furniture                | Massage table, chair, bed, stool, trolley, or treatment-room furniture.
+PMD  | Powered Massage Device             | Electrical or battery-powered massage device used manually or independently.
+TR   | Thermal and Recovery Equipment     | Heater, warmer, cold-recovery device, compression system, or related recovery equipment.
+HY   | Hydrotherapy Equipment             | Water-treatment, aquatic, whirlpool, Vichy, or hydrotherapy equipment.
+OS   | Spa Operational Supply             | Bowl, dispenser, storage, laundry, presentation, preparation, or routine operational item.
+SH   | Sanitation and Hygiene Product     | Cleaning, disinfection, sanitation, protective, or personal-hygiene product.
+DS   | Disposable Treatment Supply        | Single-use cover, applicator, garment, liner, wipe, or treatment consumable.
+UW   | Uniform and Workwear               | Clothing, footwear, apron, protective wear, or professional garment.
+AM   | Ambience Product                   | Lighting, scent, sound, decorative, comfort, or sensory-environment product.
+FA   | Facility Fixture and Accessory     | Room fixture, organizer, signage, locker, privacy accessory, or facility-support product.
+ED   | Training and Educational Material  | Book, chart, model, video, practice item, lesson, or assessment material.
+DG   | Digital Product                    | Software, downloadable template, digital form, application, or other non-physical product.
+
+Gift presentation, retail availability, travel suitability, and aftercare use are Product Use Contexts rather than Product Categories.
+
+================================================================================
+2. SERVICE AND PRODUCT CLASSIFICATION BOUNDARY
+================================================================================
+
+Service Classification describes what happens during a service, how it is performed, and the generic service-defining characteristics involved.
+
+Product Classification describes the physical item, material, formulation, equipment, consumable, textile, tool, device, or branded product used to deliver, support, enhance, or follow the service.
+
+Examples:
+- Service Classification records Oil as the Massage Medium; Product Classification records the exact oil type, ingredients, formula, brand, size, and version.
+- Service Classification records Towel as a Draping Item; Product Classification records the towel type, fiber, dimensions, construction, absorbency, and actual product.
+- Service Classification records Tool-Assisted Work; Product Classification identifies Bamboo Massage Tool, Massage Stone, Massage Cup, or another controlled tool type.
+- Service Classification records Mud as a Body Treatment Medium; Product Classification records the actual mud product, formula, ingredients, warnings, and brand.
+
+The service-to-product relationship records whether a product type or product is Required, Commonly Used, Optional, a Permitted Alternative, an Enhancement, or Historically Associated.
+
+A Product Category or Product Type does not prove that every service of a named tradition uses that product. For example, Bamboo Massage Tool exists as a product type, but Lomi Lomi must not automatically be classified as bamboo-assisted unless the particular method or provider offering documents that use.
+
+================================================================================
+3. MASSAGE MEDIUM FORM
+================================================================================
+
+Field Name: type_massage_medium_form
+Field Label: Massage Medium Form
+Selection: Single-select per product
+
+Applies primarily to:
+MM - Massage Medium
+
+Code | Label   | Description
+-----|---------|------------------------------------------------------------
+OIL  | Oil     | Liquid oil formulation intended for massage glide or topical application.
+LOT  | Lotion  | Emulsion-style lotion intended for massage glide or skin application.
+CRM  | Cream   | Thicker cream formulation intended for massage or targeted application.
+GEL  | Gel     | Gel formulation intended for glide, cooling, warming, conductivity, or targeted use.
+PWD  | Powder  | Powder formulation used for glide, moisture control, or a traditional method.
+
+Balms, liniments, rubs, patches, and comparable concentrated topical preparations remain under TP - Topical Care Product.
+
+================================================================================
+4. MASSAGE OIL BASE
+================================================================================
+
+Field Name: type_massage_oil_base
+Field Label: Massage Oil Base
+Selection: Multi-select where a formulation combines bases
+
+Applies primarily to:
+MM - Massage Medium where type_massage_medium_form is OIL
+
+Code | Label                      | Description
+-----|----------------------------|------------------------------------------------------------
+PFO  | Plant-Derived Fixed Oil    | Uses one or more non-volatile plant-derived carrier oils as a principal base.
+MIN  | Mineral Oil                | Uses mineral oil as a principal base.
+SYN  | Formulated Emollient Base  | Uses synthetic, semi-synthetic, ester, silicone, or comparable formulated emollient ingredients as a principal base.
+MIX  | Mixed Base                 | Materially combines more than one base class.
+
+Specific ingredients such as coconut, sweet almond, grapeseed, jojoba, sesame, sunflower, olive, rice bran, and comparable oils belong to structured ingredient records rather than this short base classification.
+
+Fragrance, essential-oil blends, warming agents, cooling agents, CBD, magnesium, preservatives, allergens, and claims remain separate product data.
+
+================================================================================
+5. MANUAL MASSAGE TOOL TYPE
+================================================================================
+
+Field Name: type_manual_massage_tool
+Field Label: Manual Massage Tool Type
+Selection: Single primary type with optional secondary relationships
+
+Applies primarily to:
+MT - Manual Massage Tool
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+STN  | Massage Stone            | Stone used manually for pressure, glide, placement, thermal application, or massage.
+BAM  | Bamboo Massage Tool      | Bamboo implement used for rolling, compression, tapping, glide, or massage manipulation.
+WOD  | Wooden Massage Tool      | Wooden implement used for pressure, rolling, contouring, or massage manipulation.
+ROL  | Massage Roller           | Cylindrical, wheel-based, textured, or comparable rolling tool.
+BAL  | Massage Ball             | Ball-shaped tool used for pressure, release, rolling, or self-care.
+GUA  | Gua Sha Tool             | Smooth-edged tool associated with gua sha or related scraping and gliding practices.
+SCR  | Scraping Tool            | Tool principally designed for scraping or instrument-assisted soft-tissue work.
+CUP  | Massage Cup              | Manual cup used for suction-based massage, cupping, glide, or localized application.
+HCP  | Herbal Compress          | Compress bundle containing herbs or another preparation and applied manually.
+STK  | Massage Stick            | Rod, stick, cane, or comparable elongated manual massage tool.
+ACP  | Acupressure Tool         | Manual implement designed for focused point pressure.
+HMM  | Handheld Manual Massager | Non-powered handheld implement that does not fit a more specific tool type.
+
+Material, dimensions, texture, shape, weight, temperature tolerance, sanitation method, and intended body area remain category-specific specifications.
+
+================================================================================
+6. TREATMENT FURNITURE TYPE
+================================================================================
+
+Field Name: type_treatment_furniture
+Field Label: Treatment Furniture Type
+Selection: Single primary type
+
+Applies primarily to:
+TF - Treatment Furniture
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+MTB  | Massage Table    | Purpose-built table intended for massage or bodywork.
+TBD  | Treatment Bed    | Purpose-built treatment bed or padded treatment platform.
+MCH  | Massage Chair    | Purpose-built chair for seated massage or treatment.
+STL  | Practitioner Stool | Stool used by a practitioner during treatment.
+TRY  | Treatment Trolley | Mobile trolley used to hold treatment products, tools, or supplies.
+FMT  | Floor Mat        | Purpose-built padded mat used as treatment support.
+RCL  | Treatment Recliner | Reclining chair intended for treatment or supported wellness service.
+
+A standard household bed may be used operationally during a service, but it does not require its own Massage Nexus treatment-furniture product type unless an actual listed product is relevant.
+
+================================================================================
+7. POWERED MASSAGE DEVICE TYPE
+================================================================================
+
+Field Name: type_powered_massage_device
+Field Label: Powered Massage Device Type
+Selection: Single primary type
+
+Applies primarily to:
+PMD - Powered Massage Device
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+PRC  | Percussion Device        | Powered device delivering rapid percussive movement.
+VIB  | Vibration Device         | Powered device delivering vibration or oscillation.
+HND  | Handheld Powered Massager | Powered massager designed to be held or guided by a user or practitioner.
+MCH  | Powered Massage Chair    | Powered chair providing automated or semi-automated massage.
+MBD  | Powered Massage Bed      | Powered bed or platform providing automated or semi-automated massage.
+FOT  | Foot Massager            | Powered device principally designed for the feet.
+LEG  | Leg Massager             | Powered device principally designed for the legs.
+NCK  | Neck Massager            | Powered device principally designed for the neck or shoulders.
+
+Power source, motor type, speed, force, attachments, electrical rating, battery, sanitation, and safety remain category-specific specifications.
+
+================================================================================
+8. THERMAL AND RECOVERY EQUIPMENT TYPE
+================================================================================
+
+Field Name: type_thermal_recovery_equipment
+Field Label: Thermal and Recovery Equipment Type
+Selection: Single primary type
+
+Applies primarily to:
+TR - Thermal and Recovery Equipment
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+STH  | Stone Heater        | Equipment used to heat massage stones.
+TWL  | Towel Warmer       | Equipment used to warm towels or linens.
+OIL  | Oil Warmer         | Equipment used to warm massage oil or another treatment medium.
+HTP  | Heat Pad           | Reusable powered or non-powered pad designed to apply heat.
+CLD  | Cold Recovery Device | Equipment designed for localized or whole-body cold exposure or recovery.
+CMP  | Compression System | Powered or mechanical compression equipment used for recovery or wellness.
+INF  | Infrared Equipment | Equipment using infrared radiant heat.
+CRY  | Cryotherapy Equipment | Equipment designed for controlled cryotherapy or very-low-temperature exposure.
+
+================================================================================
+9. HYDROTHERAPY EQUIPMENT TYPE
+================================================================================
+
+Field Name: type_hydrotherapy_equipment
+Field Label: Hydrotherapy Equipment Type
+Selection: Single primary type
+
+Applies primarily to:
+HY - Hydrotherapy Equipment
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+VSH  | Vichy Shower             | Multi-head overhead shower equipment used during wet treatment.
+WHR  | Whirlpool                | Whirlpool bath or equipment producing circulating water.
+HYB  | Hydrotherapy Bath        | Purpose-built bath used for hydrotherapy treatment.
+WJT  | Water Jet System         | Equipment delivering controlled pressurized water jets.
+FLT  | Floatation Support       | Float, buoyancy aid, aquatic cradle, or comparable support used in water.
+DRY  | Dry-Water Massage System | Equipment that applies water-driven pressure without direct client water contact.
+AQM  | Aquatic Movement Support | Equipment supporting guided movement, stabilization, or positioning in water.
+
+Capacity, dimensions, water pressure, temperature range, filtration, sanitation, power, and installation remain category-specific specifications.
+
+================================================================================
+10. TEXTILE AND LINEN TYPE
+================================================================================
+
+Field Name: type_textile_linen
+Field Label: Textile and Linen Type
+Selection: Single primary type
+
+Applies primarily to:
+TL - Textile and Linen
+
+Code | Label          | Description
+-----|----------------|------------------------------------------------------------
+TWL  | Towel          | Absorbent textile used for drying, draping, treatment, or facility operation.
+FLS  | Flat Sheet     | Flat sheet used for treatment support, coverage, or draping.
+FTS  | Fitted Sheet   | Fitted sheet designed for a treatment table, bed, or comparable support.
+BLK  | Blanket        | Textile used for warmth, comfort, coverage, or draping.
+ROB  | Robe           | Garment provided for client coverage or facility use.
+WRP  | Spa Wrap       | Wrap garment or textile used for changing, coverage, treatment, or draping.
+PLC  | Pillow Cover   | Removable cover for a pillow, bolster, face cradle, or support.
+TBC  | Table Cover    | Protective or decorative cover used on a treatment table.
+DRP  | Reusable Drape | Reusable textile specifically intended for professional draping.
+
+Fiber composition, weave, dimensions, weight, absorbency, softness, color, care, reusability, and sanitation remain category-specific specifications.
+Disposable drapes, covers, garments, and liners belong primarily to DS - Disposable Treatment Supply.
+
+================================================================================
+11. BODY AND SKIN CARE PRODUCT TYPE
+================================================================================
+
+Field Name: type_body_skin_care_product
+Field Label: Body and Skin Care Product Type
+Selection: Single primary type
+
+Applies primarily to:
+BS - Body and Skin Care Product
+
+Code | Label              | Description
+-----|--------------------|------------------------------------------------------------
+SCR  | Scrub Product      | Product formulated for body or skin exfoliation.
+POL  | Polish Product     | Product formulated to smooth or refine the skin surface.
+MSK  | Mask Product       | Product applied as a treatment layer for a defined period.
+WRP  | Wrap Product       | Product formulated or prepared for body wrapping.
+MUD  | Mud Product        | Mud-based body or skin treatment product.
+CLY  | Clay Product       | Clay-based body or skin treatment product.
+CLN  | Cleanser           | Product formulated to cleanse the skin.
+MOI  | Moisturizer        | Product formulated to hydrate or support skin comfort.
+CMP  | Compress Preparation | Herbal, mineral, gel, or another preparation intended for a compress.
+ALG  | Algae Product      | Algae-based body or skin treatment product.
+SWD  | Seaweed Product    | Seaweed-based body or skin treatment product.
+
+Exact ingredients, concentration, formula, allergens, warnings, storage, preparation, and use instructions remain product-specific data.
+
+================================================================================
+12. PRODUCT GRADE
+================================================================================
+
+Field Name: level_product_grade
+Field Label: Product Grade
+Selection: Single-select
+
+Code | Label    | Description
+-----|----------|--------------------------------------------------------------
+S    | Premium  | Exceptional materials, formulation, construction, reliability, performance, presentation, or professional suitability within its category.
+A    | High     | Clearly above ordinary category standards in quality, durability, function, formulation, or professional suitability.
+B    | Standard | Dependable mainstream product meeting normal usability and quality expectations for its category.
+C    | Budget   | Lower-cost product providing acceptable function with simpler materials, features, formulation, durability, or presentation.
+D    | Basic    | Entry-level or minimal product providing only essential function within its category.
+
+Assignment Rules
+----------------
+- Compare only direct peers; disposable, reusable, digital, textile, topical, and equipment products are not graded by one identical checklist.
+- Use category-relevant evidence such as materials, formulation, construction, durability, safety, performance, warranty, professional suitability, and presentation.
+- A lower-grade product may receive an excellent review for value and performance.
+- A premium-grade product may receive a poor review when it fails premium expectations.
+- Seller claims and price may support review but cannot assign the grade by themselves.
+
+================================================================================
+13. PRODUCT USE CONTEXT
+================================================================================
+
+Field Name: scope_product_use
+Field Label: Product Use Context
+Selection: Multi-select
+
+Code | Label          | Description
+-----|----------------|------------------------------------------------------------
+SP   | Spa Use        | Used by a spa during treatment, facility operation, or client care.
+TH   | Therapist Use  | Used by an individual therapist in professional or portable practice.
+HM   | Home Care      | Used by a consumer for personal or household wellness care.
+AF   | Aftercare      | Used after treatment or between sessions for follow-through or comfort.
+TR   | Training       | Used for teaching, study, practice, demonstration, or assessment.
+FS   | Facility Setup | Used to furnish, equip, organize, or prepare a treatment facility.
+HG   | Hygiene        | Used for cleaning, sanitation, infection control, or protective handling.
+AM   | Ambience       | Used to influence scent, light, sound, comfort, or atmosphere.
+RT   | Retail         | Intended for direct sale to customers.
+GF   | Gift           | Intended for gifting, recognition, souvenir, or promotional presentation.
+TV   | Travel         | Intended for portable, compact, mobile, hotel, event, or field use.
+
+================================================================================
+14. PRODUCT CHARACTERISTIC
+================================================================================
+
+Field Name: type_product_characteristic
+Field Label: Product Characteristic
+Selection: Multi-select where applicable
+
+Code | Label           | Description
+-----|-----------------|------------------------------------------------------------
+SC   | Scented         | Intentionally produces or contains a noticeable scent.
+HT   | Heat-Producing  | Generates, stores, applies, or relies on heat during intended use.
+EL   | Electrical      | Requires mains electricity or powered electrical components.
+BP   | Battery-Powered | Operates through replaceable or rechargeable batteries.
+SU   | Single-Use      | Intended to be used once and then discarded.
+RU   | Reusable        | Designed for repeated use and may require cleaning, maintenance, or replacement parts.
+
+Detailed material, formula, dimension, texture, power, and performance characteristics remain category-specific specifications.
+
+================================================================================
+15. PRODUCT CLAIM
+================================================================================
+
+Field Name: type_product_claim
+Field Label: Product Claim
+Selection: Multi-select where declared
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+VG   | Vegan                    | Declared free from animal-derived ingredients or materials.
+CF   | Cruelty-Free             | Declared not tested on animals under the stated claim framework.
+OG   | Organic                  | Declared or certified organic under an identified standard.
+DT   | Dermatologically Tested  | Declared to have undergone dermatological testing.
+HY   | Hypoallergenic           | Declared as formulated or designed to reduce allergy risk.
+
+A claim is not automatically verified. Preserve the claimant, certifier, standard, jurisdiction, evidence, and verification result separately.
+
+================================================================================
+16. ALLERGEN AND SENSITIVITY GROUP
+================================================================================
+
+Field Name: type_allergen
+Field Label: Allergen and Sensitivity Group
+Selection: Multi-select where applicable
+
+Code | Label         | Description
+-----|---------------|------------------------------------------------------------
+PN   | Peanut        | Contains or may expose the user to peanut-derived material.
+TN   | Tree Nut      | Contains or may expose the user to tree-nut-derived material.
+CO   | Coconut       | Contains or may expose the user to coconut-derived material.
+SY   | Soy           | Contains or may expose the user to soy-derived material.
+WH   | Wheat         | Contains or may expose the user to wheat-derived material.
+MK   | Milk          | Contains or may expose the user to milk-derived material.
+EG   | Egg           | Contains or may expose the user to egg-derived material.
+SF   | Shellfish     | Contains or may expose the user to shellfish-derived material.
+BP   | Bee Product   | Contains beeswax, honey, propolis, royal jelly, or another bee-derived material.
+LX   | Latex         | Contains or may expose the user to natural or synthetic latex.
+FR   | Fragrance     | Contains fragrance compounds associated with sensitivity concerns.
+EO   | Essential Oil | Contains one or more essential oils requiring specific ingredient identification.
+
+The list supports common spa-product concerns but does not replace complete ingredient and material records. Absence of an allergen classification does not mean allergen-free.
+
+================================================================================
+17. PRODUCT WARNING
+================================================================================
+
+Field Name: type_product_warning
+Field Label: Product Warning
+Selection: Multi-select
+
+Code | Label                     | Description
+-----|---------------------------|------------------------------------------------------------
+SI   | Skin Irritation Risk      | May irritate skin through sensitivity, strength, concentration, or prolonged contact.
+PS   | Photosensitivity Risk     | May increase sensitivity to sunlight or ultraviolet exposure.
+HT   | Heat Risk                 | May cause burns, overheating, or unsafe temperature exposure.
+EL   | Electrical Risk           | Requires electrical, charging, wiring, or moisture-safety precautions.
+FL   | Flammability Risk         | Requires controlled storage and use away from ignition sources.
+PG   | Pregnancy Caution         | May require avoidance, adaptation, or professional guidance during pregnancy.
+MC   | Medical Condition Caution | May be unsuitable for particular conditions, medications, injuries, or implanted devices.
+PU   | Professional Use Only     | Requires trained operation or application because of strength, complexity, or risk.
+SN   | Sanitation Required       | Requires cleaning, disinfection, sterilization, or controlled reuse.
+
+Warnings preserve manufacturer, regulator, editorial, and verified safety sources separately.
+
+================================================================================
+18. PRODUCT LIFECYCLE STATUS
+================================================================================
+
+Field Name: status_product_lifecycle
+Field Label: Product Lifecycle Status
+Selection: Single-select
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+CU   | Current      | Presently produced, sold, or recognized as the active version.
+DS   | Discontinued | No longer produced or normally offered by the responsible manufacturer or publisher.
+RC   | Recalled     | Formally withdrawn because of safety, quality, regulatory, or manufacturing concerns.
+UN   | Unknown      | Current market or lifecycle status cannot be confirmed.
+
+================================================================================
+19. PRODUCT VERSION RELATIONSHIP
+================================================================================
+
+Field Name: type_product_version_relationship
+Field Label: Product Version Relationship
+Selection: One relationship type per connected product-version pair
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+RP   | Replaces          | The source version replaces the connected earlier version.
+RF   | Reformulated From | Formula, ingredients, materials, function, or performance changed substantially.
+PK   | Repackaged From   | Packaging, container, label, quantity presentation, or external presentation changed.
+RN   | Renamed From      | Product continues under a different name, brand, or model designation.
+SB   | Superseded By     | The source version has been replaced by the connected later version.
+
+A product may have several relationships; Previous is therefore derived from its connection to a later version rather than stored as a competing lifecycle status.
+
+================================================================================
+20. PRODUCT AUTHENTICITY STATUS
+================================================================================
+
+Field Name: status_product_authenticity
+Field Label: Product Authenticity Status
+Selection: Single-select
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+VA   | Verified Authentic    | Authenticity has been confirmed through accepted evidence.
+UN   | Unverified            | Authenticity has not been confirmed.
+SC   | Suspected Counterfeit | Available evidence creates a credible counterfeit concern.
+CC   | Confirmed Counterfeit | Product has been confirmed as counterfeit or unauthorized.
+
+Authenticity status is separate from lifecycle, version, moderation, review rating, and seller conduct.
+
+================================================================================
+21. PRODUCT MODERATION STATUS
+================================================================================
+
+Field Name: status_product_moderation
+Field Label: Product Moderation Status
+Selection: Single-select
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+AC   | Active       | No current moderation restriction prevents normal platform use.
+UR   | Under Review | Product record is being reviewed for policy, safety, authenticity, identity, or evidence concerns.
+RS   | Restricted   | Visibility, interaction, recommendation, or commercial use is limited.
+RM   | Removed      | Product record is removed from normal platform use under moderation policy.
+
+================================================================================
+22. PRODUCT IDENTITY BOUNDARIES
+================================================================================
+
+* Product - the stable commercial or published product identity.
+* Product Version - a materially distinct formulation, construction, design, or release of the product.
+* Variant - a selectable difference such as scent, color, size, volume, model, or package quantity that does not necessarily create a new product identity.
+* Seller Offer - a seller-specific price, availability, shipping, inventory, affiliate, or commercial listing.
+* Bundle - several products or variants sold together.
+* Seller relationship, recommendation, sponsorship, affiliate link, editorial mention, and availability are not Product Categories.
+
+================================================================================
+23. FUTURE PRODUCT TAXONOMY WORK
+================================================================================
+
+- Additional product types should be added only when they represent meaningful, reusable distinctions.
+- Category-specific specifications remain separate from Product Type.
+- Actual ingredient, material, formulation, dimension, electrical, sanitation, and performance structures require Product Profile and Database Structure work.
+- Service Classification must link to Product Types or actual Product records rather than duplicate this taxonomy.
+- A product's presence in the taxonomy does not imply endorsement, safety, legality, or suitability for every user or service.

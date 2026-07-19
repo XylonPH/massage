@@ -1,0 +1,1684 @@
+Title: Massage Nexus Fictional World Guide
+Document Version: 1.80
+Date Created: 2026-07-03
+Revision Date: 2026-07-15
+
+DOCUMENT DESCRIPTION
+
+This document defines the fictional visual and story world used by Massage Nexus through The Resting Leaf and the Nexus Cast. It covers the recurring setting, character roles and tiers, continuity, comic direction, comedy standards, visual production standards, language and cultural direction, branded page layout, canonical visual-reference control, anti-drift production rules, working content_comic data direction, topic-planning direction, and the external prompt-file system used for production.
+
+The Resting Leaf is an in-universe fictional spa and recurring comic setting. The Nexus Cast are fictional human characters used inside the comic and, when appropriate, as recurring visual models for Massage Nexus social-media posts, advertisements, demonstrations, onboarding scenes, mockups, presentation images, commercials, and other spa- or wellness-related media.
+
+This document is broader than a comic-only guide, but it does not define a final database schema. Collection names, properties, indexes, validations, institution systems, and branded-portal architecture must be finalized in their appropriate technical documentation.
+
+COMIC FEATURE DESCRIPTION
+
+The Resting Leaf is a recurring six-panel slice-of-life comic feature created for Massage Nexus. It is primarily an entertainment and comic-relief feature built around character chemistry, workplace situations, misunderstandings, ordinary life, and expressive visual humor.
+
+Most comics take place inside the fictional Resting Leaf spa, but stories may occasionally move outside the spa when the situation requires it. Possible outside settings include nearby streets, cafés, homes, shops, transport, delivery routes, malls, parks, events, or other places connected to the characters' lives.
+
+The comic may involve massage, spa visits, wellness, work, clients, staff problems, social media, commuting, food, technology, money, relationships, family, neighborhood life, holidays, deliveries, plants, and other ordinary or unusual situations. A strip does not need to teach a massage or wellness lesson to be valid.
+
+Explicit teaching, onboarding, reminders, quizzes, and short educational explanations belong primarily to Massage Campus and the Massage Nexus mascots. The Resting Leaf may still communicate useful information when it arises naturally from the joke, story, or character interaction, but the comic should not read like an instructional pamphlet.
+
+The comic is designed to support Comic of the Day or another frequent publication format. Most strips should be understandable on their own. Occasional multi-part stories, recurring jokes, short arcs, seasonal stories, and continuing character developments are allowed.
+
+CORE STORY DIRECTION
+
+The default story model is a short workplace or slice-of-life situation that reaches a clear comic payoff within six panels.
+
+A normal six-panel rhythm may use:
+
+1. setup;
+2. ordinary situation;
+3. problem, interruption, or misunderstanding;
+4. reaction;
+5. escalation;
+6. punchline, reversal, or warm comic ending.
+
+This is a flexible rhythm rather than a rigid formula. A strip may use visual comedy, awkward silence, a delayed reaction, a recurring joke, or a nonverbal final panel when that works better.
+
+Most strips should remain standalone. Connected strips may use labels such as Part 1, Part 2, or another story-arc marker in the individual title when readers need to know that the story continues. A visible episode number is not required.
+
+COMEDY STANDARD
+
+The Resting Leaf should feel like a workplace sitcom compressed into six panels, not a spa advertisement with speech balloons. The comic should be entertaining even when the reader learns nothing instructional from it.
+
+Before image generation, identify the main comic mechanism. Useful mechanisms include:
+
+- misunderstanding;
+- contradiction;
+- escalation;
+- reversal;
+- delayed realization;
+- visual surprise;
+- character hypocrisy;
+- deadpan response;
+- social embarrassment;
+- awkward silence;
+- ordinary behavior taken too far;
+- one character's personality colliding with another character's expectations.
+
+A strip does not need a loud joke in every panel. Setup and reaction panels may be quiet. The final panel should still provide a clear payoff, reversal, revealing expression, or satisfying comic beat.
+
+Characters should not behave like permanently cheerful brand ambassadors. They may look tired, irritated, suspicious, embarrassed, confused, unimpressed, alarmed, bored, awkward, offended, delighted, defeated, or silently judgmental when the story requires it. Attractive characters are allowed to look unprepared or foolish during a joke.
+
+The script should be checked as plain text before the artwork is created. A visually polished page must not be accepted when the joke itself is weak, stiff, confusing, or dependent on a caption explaining why it is funny.
+
+OCCASIONAL RUNNING GAGS
+
+Running gags are optional story devices, not mandatory character behaviors. A character profile may describe a broad humor range, but it must not cause the same joke, reaction, entrance, phrase, or failure to appear automatically.
+
+Specific running-gag ideas should be maintained in a separate topic bank rather than embedded as permanent instructions in this guide. The planning process should avoid repeating the same gag in nearby strips, especially across the first batch of episodes. A recurring joke should return only when the context is fresh, the repetition has a new variation, or the recurrence itself creates a deliberate payoff.
+
+Ordinary one-time situations should remain the default. The comic must not reduce a character to one repeated joke.
+
+CURRENT INFORMATION RULE
+
+When a comic depends on current weather, public events, holidays, schedules, prices, laws, advisories, outages, transport conditions, or other changing information, verify the relevant facts before scripting the episode.
+
+Keep temporary research and event-specific terminology inside that episode's planning notes. Do not expand one weather example, holiday, or current-event discussion into a large permanent rule for the entire fictional world. Use accurate terminology, and do not invent official advisories, closures, safety instructions, or factual claims.
+
+LANGUAGE AND CULTURAL DIRECTION
+
+Primary and Canonical Edition
+
+The primary original and canonical language of The Resting Leaf is natural Metro Manila Taglish.
+
+Dialogue should sound like ordinary conversation among adults in Metro Manila. Characters may switch between English and Tagalog according to personality, emotion, familiarity, social position, work setting, and the situation. Dialogue may use local rhythm, polite particles, casual speech, expressive reactions, and character-specific phrasing.
+
+The dialogue should be composed directly as Taglish. It should not be drafted in English and translated word for word into Tagalog. Formal Filipino should be used only when a character, announcement, document, joke, or deliberate contrast requires it.
+
+Natural Taglish Quality Check
+
+Before publication, read every line aloud and check:
+
+- whether the word order sounds natural;
+- whether the amount of English and Tagalog fits the speaker;
+- whether po, opo, and other polite forms are used naturally;
+- whether the emotional reaction sounds spontaneous rather than written;
+- whether the line is short enough for a speech balloon;
+- whether the same character would genuinely use that expression;
+- whether names, pronouns, and balloon ownership are correct;
+- whether the punchline still works without explanation.
+
+Awkward constructions that resemble literal translation, textbook Filipino, or foreign-accented Tagalog should be rewritten. A deliberately unusual way of speaking is allowed only when it belongs to an established character, visitor, formal announcement, or intentional joke.
+
+Future Language Adaptation
+
+The Taglish edition should be produced and stabilized first. English, Spanish, Korean, Cebuano, Japanese, Thai, Chinese, or other versions are future localized editions, not automatic simultaneous translations.
+
+Localized editions should keep:
+
+- the same Nexus Cast;
+- the same Resting Leaf identity and surrounding story world;
+- the same established character identities and continuity;
+- the same series title unless a later branding decision deliberately localizes its presentation.
+
+The broad premise may remain similar, but dialogue, joke timing, honorifics, etiquette, slang, embarrassment, workplace assumptions, holiday references, food, and other cultural details may be rewritten so the comic works naturally for the intended audience. A joke should not be preserved literally when the target culture would not find it natural or funny.
+
+AI may assist with a localized draft, but a fluent native or culturally knowledgeable reviewer should approve it before publication. The user is not expected to judge humor in every language without qualified review.
+
+The proper name The Resting Leaf remains the default international name. A localized subtitle or explanatory label may be considered later without creating a new cast or a separate fictional spa.
+
+A separate cultural_context database property is not required at this stage. Language belongs under language_id. Cultural adaptation remains an editorial and localization responsibility unless later database design establishes a genuine need for additional structured data.
+
+PURPOSE OF THE NEXUS CAST
+
+The Nexus Cast are recurring fictional human characters. They are separate from:
+
+- Neural Agents;
+- mascots;
+- real Massage Nexus users;
+- real practitioners;
+- real business owners;
+- sponsors;
+- actual Massage Nexus platform staff.
+
+They do not provide the written authorial voice of articles, comments, reviews, or chat responses. Their primary function is visual and narrative continuity across comics, social media, advertisements, commercials, demonstrations, mockups, onboarding scenes, and other appropriate Massage Nexus media.
+
+Cast Tiers for The Resting Leaf Comic
+
+Core Spa Cast
+
+These characters normally work at The Resting Leaf and form the central workplace cast:
+
+- Enzo Villaluz — therapist;
+- Iris Montoya — therapist;
+- Gavin Lorico — receptionist;
+- Lara Castillo — spa manager.
+
+A possible second female therapist who can work and banter with Iris remains deferred. She must be intentionally designed before use and must have a distinct role, personality, visual identity, humor function, and relationship to the existing cast.
+
+Frequent Client Cast
+
+These characters are recognizable regular clients and may appear frequently without becoming spa employees:
+
+- Caleb Rivera;
+- Mika Torres.
+
+Caleb and Mika remain among the most reusable visual models for Massage Nexus campaigns, commercials, social-media posts, client-experience scenes, and general promotional media. Their frequent use outside the comic does not require them to appear in every strip.
+
+Recurring Supporting Cast
+
+These characters belong to the wider recurring social world but are not part of the central workplace staff:
+
+- Javi Mercado — Sugod Express delivery rider;
+- Rina Salcedo — plant vendor.
+
+Javi and Rina may appear when useful and may be absent for many consecutive stories. Their occupations provide familiar story opportunities but do not restrict every appearance.
+
+Possible Future Supporting Role
+
+A recurring security guard remains a possibility, not an approved character. If introduced, the preferred initial direction is a guard assigned to the building, commercial property, or surrounding site rather than a direct employee of The Resting Leaf. This would allow stories involving entrances, closing time, parking, suspicious noises, deliveries, lost items, and neighborhood incidents. The character should be created only when several story ideas prove the role is useful.
+
+Main Reusable Visual Cast Outside the Comic
+
+The following six characters remain the default human visual models for general Massage Nexus media when their established role or appearance fits the scene:
+
+- Enzo Villaluz;
+- Iris Montoya;
+- Caleb Rivera;
+- Mika Torres;
+- Gavin Lorico;
+- Lara Castillo.
+
+They may be used for:
+
+- social-media posts;
+- commercial and campaign visuals;
+- massage or spa demonstration scenes;
+- client-experience scenes;
+- establishment mockups;
+- onboarding visuals;
+- service scenarios;
+- reception and management scenes;
+- uniform modeling;
+- presentation images;
+- general lifestyle or wellness visuals.
+
+Their use outside the comic must not imply that Massage Nexus operates a spa or directly employs therapists, receptionists, or spa managers. They remain fictional visual models inside staged or clearly illustrative content.
+
+Platonic Cast Relationship Direction
+
+Relationships among the currently established Nexus Cast remain platonic in The Resting Leaf comics. Do not ship the core cast with one another, manufacture romantic tension, create jealousy triangles, or turn ordinary friendship and workplace chemistry into an implied couple storyline.
+
+The cast may show friendship, affection, protectiveness, teasing, admiration, embarrassment, or emotional closeness without romance. If a future romantic storyline is ever considered, it should involve a deliberately introduced outside character and must be approved before it becomes canon.
+
+CAST USAGE PER COMIC
+
+The existence of eight established recurring characters does not mean all eight must appear in every comic.
+
+The preferred visible cast size is:
+
+- one to three characters for most strips;
+- four characters when the joke genuinely needs them;
+- five or six only for occasional larger scenes;
+- all established characters only in rare event or ensemble stories.
+
+A normal workplace strip may focus only on the core spa staff. Caleb and Mika should appear as frequent clients when the premise needs them, not because every comic must contain promotional models. Javi and Rina should remain occasional supporting presences.
+
+Recurring Ensemble Logic
+
+A listed role describes the character's normal identity in the world. It does not mean the character may appear only while actively performing that job.
+
+Javi may deliver spa supplies, food, documents, decorations, or an incorrect package. He may also visit, wait, shelter from weather, gossip, help, get stranded, attend an event, or simply happen to be nearby. The supplier or store involved does not need a name unless it becomes a recurring setting or story element.
+
+Rina may maintain plants, visit the cast, attend gatherings, wait for someone, provide neighborhood information, become caught in an unusual situation, or simply spend time within the recurring social circle.
+
+Caleb and Mika are clients, but they also have lives, interests, friendships, work, errands, and activities beyond receiving massage services. They may join demonstrations, ask questions, visit socially, attend an event, or appear outside the spa.
+
+Role Identity and Deliberate Role Exploration
+
+Role consistency prevents accidental image-generation mistakes. It does not prohibit deliberate story development.
+
+For example, Caleb may intentionally ask Enzo to teach him a basic technique, join a supervised demonstration, or temporarily attempt something outside his normal role. Such a story is valid when the script clearly establishes what is happening.
+
+The rule is:
+
+- do not accidentally turn a client into a therapist;
+- do not accidentally turn Javi or Rina into Resting Leaf employees;
+- do allow deliberate learning, role-play, temporary assistance, costume use, dreams, misunderstandings, or story-specific role changes when they are explained by the comic.
+
+Guest and Background Characters
+
+Unnamed customers, passersby, suppliers, pedestrians, event guests, grocery employees, neighbors, and other temporary people may appear without becoming part of the recurring cast.
+
+When they are not important to the joke, they may be shown through:
+
+- back views;
+- silhouettes;
+- cropped framing;
+- obscured or partial faces;
+- distant figures;
+- hands, arms, or other non-identifying details;
+- non-speaking background activity.
+
+A guest who receives meaningful dialogue, is shown with a recognizable face, or is intended to recur should be intentionally designed and approved before regular use.
+
+Do not invent an additional therapist, receptionist, manager, rider, vendor, guard, client, or other recurring role-bearing character inside a generated strip and then treat that person as canon.
+
+Outside Locations
+
+The characters may occasionally appear in a grocery store, supermarket, supply shop, mall, café, restaurant, convenience store, transport setting, team-building venue, park, event, neighborhood street, or home.
+
+A temporary location does not require a new fictional world, business name, logo, full floor plan, or permanent profile. Keep it unnamed when the name has no story value. Build a recurring location only after repeated stories demonstrate that it deserves continuity.
+
+The accidental additional therapist from an earlier sample generation is not canon.
+
+COMIC DRAWING STYLE
+
+Official Style Name
+
+The official production label is:
+
+Modern Slice-of-Life Digital Comic with semi-realistic Western comic linework and warm editorial coloring.
+
+Definition
+
+Modern Slice-of-Life Digital Comic describes the everyday, character-driven storytelling, contemporary webcomic readability, and grounded adult setting.
+
+Semi-realistic Western comic linework means:
+
+- clearly drawn ink contours rather than photographic rendering;
+- believable adult anatomy and facial structure;
+- simplified but recognizable features;
+- confident contour lines and selective interior detail;
+- expressive brows, eyes, mouths, hands, posture, and silhouettes;
+- no anime facial construction, manga shorthand, chibi proportions, or superhero exaggeration.
+
+Warm editorial coloring means:
+
+- warm, controlled color harmony;
+- polished magazine-illustration or graphic-editorial finish;
+- soft ambient warmth from wood, skin, lighting, plants, and interior surfaces;
+- restrained cel shading combined with subtle painterly texture;
+- enough contrast for speech balloons and expressions to remain readable;
+- illustrated atmosphere without cinematic photographic bokeh or luxury-advertisement gloss.
+
+The comic must look clearly illustrated rather than like a photograph processed through a weak drawing filter.
+
+Use:
+
+- clean and visible line art;
+- warm, controlled colors;
+- expressive adult faces;
+- readable body language;
+- realistic-but-softened proportions;
+- lightly exaggerated comic reactions;
+- controlled digital shading;
+- illustrated rather than photographic textures;
+- clear foreground and background separation;
+- recognizable character silhouettes;
+- movement marks, reaction marks, or simplified effects when useful.
+
+Avoid:
+
+- photorealistic rendering;
+- realistic skin pores;
+- cinematic photographic bokeh;
+- anime;
+- manga;
+- chibi;
+- superhero anatomy;
+- children's-cartoon styling;
+- generic corporate illustration;
+- identical attractive faces;
+- excessive luxury-advertisement styling.
+
+The characters should remain adults and should look believable within a Filipino slice-of-life workplace comedy. Expressions and poses may be subtle or exaggerated according to the joke without redesigning the character.
+
+Acting, Expressions, and Poses
+
+Character reference images preserve identity; they do not prescribe the pose or facial expression for every comic appearance. Do not repeatedly copy crossed arms, a peace sign, a presentation smile, or another cast-sheet pose simply because it appears in the reference.
+
+For every panel, define the character's acting state separately. Useful acting choices include:
+
+- deadpan stillness;
+- delayed side-eye;
+- forced customer-service politeness;
+- panic hidden behind a smile;
+- visible exhaustion;
+- contained irritation;
+- suspicious silence;
+- embarrassment;
+- disbelief;
+- dramatic overreaction;
+- physical discomfort;
+- relief;
+- smug satisfaction;
+- mischievous anticipation;
+- genuine fear;
+- quiet amusement.
+
+Not every visible character should smile. Characters should look at the person, object, or event that currently holds their attention rather than posing toward the viewer.
+
+ELASTIC COMIC EXAGGERATION AND SYMBOLIC REACTION EFFECTS
+
+The official style remains Modern Slice-of-Life Digital Comic with semi-realistic Western comic linework and warm editorial coloring. The comic may temporarily depart from normal anatomy, scale, or facial proportion when a joke benefits from clear visual exaggeration.
+
+Permitted temporary comic effects include:
+
+- eyes becoming unusually large during shock, panic, disbelief, pleading, or excitement;
+- heart-shaped, star-shaped, spiral, blank, narrowed, or sparkling eyes when the emotion is clear;
+- a character's head or body becoming temporarily larger to show anger, authority, excitement, fear, or comic intimidation;
+- a character appearing very small to show embarrassment, defeat, guilt, or feeling ignored;
+- steam, smoke puffs, storm clouds, flames, sparks, anger marks, impact bursts, sweat drops, hearts, stars, or similar symbolic effects around the head or body;
+- speed lines, repeated limbs, dust clouds, stretched poses, motion smears, and exaggerated leaning when someone runs or moves quickly;
+- squash-and-stretch poses during slips, jumps, impacts, sudden stops, or physical comedy;
+- simplified backgrounds, color bursts, spotlight effects, or symbolic voids during a strong reaction;
+- a temporary looming or giant-scale composition when the panel clearly communicates that the effect is emotional or symbolic rather than literal.
+
+These effects are collectively described as elastic comic exaggeration and symbolic reaction effects.
+
+They should be used when they strengthen the joke, not in every panel. A quiet deadpan face may be funnier than an oversized reaction. The amount of exaggeration should depend on the character and situation.
+
+The overall series must not become chibi, anime, manga, or children's-cartoon art. A temporary compact or distorted reaction drawing is allowed inside an otherwise consistent Western digital-comic style, but the character must remain recognizable through hairstyle, clothing, color, facial anchors, and role.
+
+When a panel uses impossible scale or anatomy symbolically, the composition should make that clear through reaction marks, simplified perspective, or a stylized background. The next ordinary panel should return the character to normal proportions unless the joke intentionally continues.
+
+An exploding-head effect means a harmless cartoon burst, smoke cloud, flame, or symbolic anger effect. It must not be rendered as gore, injury, or literal bodily destruction.
+
+STANDARD SIX-PANEL PAGE DESIGN
+
+Page Format
+
+- Aspect Ratio: 3:2 landscape
+- Recommended Master Size: 2400 × 1600 pixels
+- Acceptable Generation Size When Model Output Is Limited: 1536 × 1024 pixels
+- Panel Arrangement: three columns by two rows
+- Reading Order: left to right across the upper row, then left to right across the lower row
+- Panel Sequence: Panels 1, 2, and 3 on the upper row; Panels 4, 5, and 6 on the lower row
+- Panel Shape: rectangular with subtly softened corners
+- Outer Page Background: warm off-white
+- Panel Border: solid dark charcoal
+- Gutters: clean warm off-white spacing
+- Default Layout: stable and regular rather than tilted or experimental
+- Visible Panel Numbers: 1 through 6, one number per panel
+
+Recommended Measurements at 2400 × 1600 Pixels
+
+- Panel Border Thickness: approximately 5 to 7 pixels
+- Panel Corner Radius: approximately 10 to 14 pixels
+- Gutter Width: approximately 20 to 28 pixels
+- Outer Page Margin: approximately 36 to 48 pixels
+
+These measurements may be proportionally adjusted for other output sizes. The landscape format gives each panel enough horizontal space for character interaction, readable dialogue, background action, and the branded header and footer.
+
+Irregular panels, borderless sequences, inset panels, or special layouts may be used only when the story clearly benefits from them. The normal production format remains three columns by two rows.
+
+Panel Numbering
+
+Standard strips should visibly number the panels from 1 to 6.
+
+Use a small, consistent number box near the upper-left or lower-left corner of each panel. The selected position should remain consistent throughout the page and should not cover faces, dialogue, or important action. Panel numbers help readers follow the intended sequence and make production review easier.
+
+A special experimental layout may omit panel numbers only when explicitly approved.
+
+Visible Header
+
+The comic image should contain:
+
+- The Resting Leaf logo or series title;
+- the individual comic title.
+
+Do not place a visible episode number or publication date in the standard comic image.
+
+A story-arc label such as Part 1 or Part 2 may be included in the comic title when necessary for continuity.
+
+Standard Massage Nexus Footer Strip
+
+The preferred standard comic footer is the branded Massage Nexus footer strip used in the accepted sample direction. It should contain:
+
+- the official Massage Nexus logo or logo-with-title at the left;
+- the tagline The leading platform for massage, wellness, and connection.;
+- the copyright line © 2026. MassageNexus.com;
+- the short visual phrase Discover. Book. Relax.;
+- controlled Ink & Ember accent bars or equivalent brand detail.
+
+Do not include:
+
+- social-media handles;
+- social-media icons;
+- a Follow Us block;
+- QR codes;
+- account names;
+- unrelated promotional calls to action.
+
+Because image generation may distort the Massage Nexus logo, wordmark, tagline, or exact typography, the generated footer may be treated as a layout placeholder and corrected manually before publication. Footer composition should nevertheless remain consistent from strip to strip so that manual replacement is predictable.
+
+A simplified footer using only © 2026. MassageNexus.com may be used for a deliberately compact derivative image, but the full-page standard strip should use the branded footer unless a later decision changes it.
+
+Dialogue, Lettering, and Logo Fidelity
+
+The six-panel script and exact dialogue must be finalized before image generation. Two production modes are allowed:
+
+1. Pre-lettered generation: the generator attempts to place the approved final dialogue in the correct balloons. This reduces manual work but requires careful checking of spelling, punctuation, Taglish naturalness, balloon order, and speaker ownership.
+2. Manual lettering mode: the generator creates empty balloons or clear lettering spaces, and the dialogue is added later in an image editor. This is more reliable when exact text is essential or generated text repeatedly fails.
+
+Pre-lettered generation may be the practical default for ordinary production attempts. Manual correction remains the fallback.
+
+Do not allow:
+
+- placeholder words;
+- rewritten dialogue not found in the approved script;
+- balloons pointing to the wrong speaker;
+- captions that invent new facts;
+- corrupted names or role labels;
+- distorted official logos in the final published file.
+
+Exact logos and brand typography should be replaced manually when the generated version is inaccurate.
+
+THE SETTING
+
+Spa Name: The Resting Leaf
+
+The Resting Leaf is a fictional urban spa and recurring story environment. The original concept was a neighborhood spa. The current environment artwork appears more polished and premium than that original idea, but it remains the accepted visual reference rather than being discarded.
+
+Future comic scenes should keep the spa's exact market class visually ambiguous unless a story specifically needs to establish it.
+
+The setting may use:
+
+- soft neutral walls;
+- warm wood;
+- indoor plants;
+- muted green accents;
+- clean reception counters;
+- comfortable waiting chairs;
+- folded towels;
+- massage-room doors;
+- stone textures;
+- glass elements;
+- warm lighting;
+- modest decorative details;
+- functional staff and service areas.
+
+The comic should not repeatedly emphasize grand architecture, hotel-level luxury, or expensive resort imagery. It may show ordinary treatment rooms, corridors, staff areas, storage spaces, reception corners, break areas, wet areas, restrooms, consultation spaces, outside streets, and nearby businesses.
+
+Background continuity is desirable but does not need to reproduce the floor plan perfectly in every panel. Character identity and story clarity take priority over exact architectural repetition.
+
+Physical and Spatial Continuity
+
+Comic simplification is allowed, but the scene must still obey understandable physical space.
+
+Critical spatial rules:
+
+- floors must remain at a consistent level;
+- counters, tables, beds, chairs, and doors must have plausible heights;
+- characters must not appear to stand on a counter, sink into the floor, or suddenly become much shorter or taller without a deliberate visual gag;
+- umbrellas, mops, plants, furniture, and other props must not pass through floors, walls, bodies, or counters;
+- an object removed from one panel should disappear only after a visible or understandable action;
+- wet clothing, towels, puddles, and umbrellas must follow the same time sequence;
+- open umbrellas should not normally be used indoors unless the story intentionally explains the behavior;
+- an escort scene should place the umbrella outside or at the doorway, not open in the middle of the spa;
+- massage equipment, face cradles, towels, draping, clothing, and body position must remain consistent during one continuous treatment scene.
+
+For recurring rooms, preserve major visual anchors when visible:
+
+- entrance location;
+- reception counter position;
+- logo wall or signage;
+- major doors and corridor direction;
+- waiting chairs;
+- treatment bed orientation;
+- large windows;
+- plant clusters or other recognizable fixtures.
+
+Minor decoration, small objects, plant placement, wall art, and background detail may vary when the change does not confuse the location or interrupt the joke.
+
+Before generation, each panel should have a simple spatial-blocking note identifying where each character stands or sits, what surface they interact with, and which direction they face.
+
+THE RESTING LEAF VISUAL IDENTITY
+
+The Resting Leaf is an in-universe fictional spa used for comics, cast scenes, mockups, demo content, social-media visuals, and selected staged educational or explanatory scenes.
+
+The Resting Leaf logo uses a leaf-focused mark with green and gold tones. It may appear on the exterior wall, reception backdrop, signage, comic title cards, and in-world printed materials. It must remain visually separate from the official Massage Nexus platform logo.
+
+The current environment design includes:
+
+- exterior façade;
+- reception area;
+- massage area;
+- wet area;
+- consultation or foot-wash area;
+- restroom or changing area;
+- linen and storage area;
+- corridor transition;
+- staff or service area;
+- top-view floor plan.
+
+The environment design is a recurring visual reference, not an inflexible architectural blueprint. A comic may simplify, crop, rearrange, or omit background elements when required by the panel composition, image-generation limitations, or comic timing.
+
+Visual references are located at:
+
+- C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\the resting leaf
+- The Resting Leaf logo, title, and slogan (20260704).png
+- The Resting Leaf environment design (20260704).png
+
+SUGOD EXPRESS
+
+Sugod Express is the fictional in-universe delivery service connected to Javi Mercado. It is not a Massage Nexus operational service and must not be presented as an actual feature or business operated by Massage Nexus.
+
+Sugod Express supports:
+
+- delivery interruptions;
+- product-delivery jokes;
+- outside-world humor;
+- neighborhood scenes;
+- wellness-finds situations;
+- stories where spa life intersects with street or community life.
+
+The Sugod Express logo uses a fast red motion mark with bold black and red lettering. It does not need to follow the Ink & Ember palette because it belongs to a separate fictional company inside the comic world.
+
+When Javi appears as a delivery rider, the currently approved Sugod Express visual reference and wardrobe reference take precedence over newly generated variations. A later generated uniform should not silently replace the accepted design.
+
+Sugod Express visual references are located at:
+
+- C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\the resting leaf
+- Sugo Expresss logo and title (20260704).png
+
+NEXUS CAST PROFILES
+
+1. Enzo Villaluz
+
+Gender: Male
+Role: Male Therapist
+Exact Birthdate: 1998-05-14
+
+Personality: Enzo is calm, physically capable, patient, professional, and quietly warm. His calmness is not emptiness. He notices details, understands more than he says, and can become unexpectedly playful when he knows the people around him well. He prefers practical action over dramatic speeches, but he is capable of teasing, participating in a prank, or using perfect timing to make a situation worse in a funny way.
+
+Comic Function: Enzo is often the stabilizing character in a chaotic scene. He can also become the surprise source of chaos because people assume he will always behave responsibly.
+
+Humor Style: Deadpan replies, quiet physical comedy, literal practical observations, delayed reactions, low-key teasing, and the occasional perfectly timed scare or prank. His best jokes often come from saying something sensible while everyone else is panicking, or from doing something mischievous without changing his calm expression.
+
+Speech and Banter: Enzo normally speaks in short, natural Taglish sentences. He does not over-explain. With Iris, he can trade dry professional banter. With Caleb, he often responds to drama with practical advice or amused restraint. With Gavin, he may watch the panic before offering the obvious solution.
+
+Reaction Range: Calm focus, restrained amusement, mild confusion, quiet concern, exhausted patience, subtle smugness, sudden playfulness, or a rare dramatic reaction when the situation finally exceeds his tolerance.
+
+Role Flexibility: Enzo is a therapist, but stories may also show him off duty, at home, commuting, eating with the cast, helping with practical problems, joining jokes, or teaching basic concepts in a clearly explained situation.
+
+Visual Description: Enzo is an adult Filipino man with a masculine but approachable face, medium tan skin, thick dark hair, and a fit athletic therapist body. His face should combine athletic confidence with boy-next-door warmth: defined jawline, friendly eyes, straight brows, balanced nose, calm mouth, and a relaxed neutral expression. His body should look strong from physical work rather than bodybuilding: broad shoulders, toned arms, defined chest and back, tapered waist, strong legs, and natural body proportions. He can have tasteful light-to-moderate body hair on the chest, arms, and legs, with subtle facial stubble. He should look handsome, grounded, capable, and professional, not intimidating or overly glamorous.
+
+2. Iris Montoya
+
+Gender: Female
+Role: Female Therapist
+Exact Birthdate: 1993-10-02
+
+Personality: Iris is confident, caring, practical, observant, and gently strict. She is comfortable correcting people, but she is not permanently composed or immune to fear, embarrassment, annoyance, curiosity, or silliness. She can be responsible at work and still become competitive, startled, superstitious, or caught in an irrational moment when the story needs it.
+
+Comic Function: Iris is the competent realist who exposes nonsense, but she can also become funnier when something bypasses her normal confidence. Her authority works best when contrasted with a private weakness, an awkward surprise, or another character refusing to follow obvious advice.
+
+Humor Style: Dry therapist humor, friendly-ate correction, practical scolding, precise side-eye, controlled sarcasm, escalating disbelief, and occasional loss of composure. She can deliver the final devastating line or become the person trying hardest not to scream.
+
+Speech and Banter: Iris uses natural Taglish with confident pacing. She may use po professionally with clients, switch to direct casual speech with coworkers, and become faster or more Filipino-dominant when irritated or frightened. She works well in banter with Enzo, Lara, Rina, and Mika.
+
+Reaction Range: Knowing amusement, calm correction, irritated disbelief, professional concern, embarrassment, competitive energy, genuine fear, exasperation, or a sudden loud reaction that contrasts with her usual control.
+
+Role Flexibility: Iris remains a therapist, but she may appear in stories unrelated to massage, including meals, errands, blackouts, staff gatherings, neighborhood events, travel, friendships, or personal problems.
+
+Visual Description: Iris is an adult Filipina woman with a graceful face, warm medium complexion, expressive eyes, and long dark hair with soft balayage highlights. She should look beautiful but grounded, with a balanced feminine figure that is toned but not overly muscular. Her presence should feel capable, warm, and practical. Her face should have soft but confident features: observant eyes, shaped brows, smooth cheekbones, calm lips, and a neutral or slightly knowing expression. Her body should communicate a therapist’s physical capability through good posture, toned arms, balanced shoulders, and healthy natural proportions. She should look reassuring, mature, polished, and approachable.
+
+3. Caleb Rivera
+
+Gender: Male
+Role: Male Client
+Civilian Job: BPO Operations Supervisor
+Exact Birthdate: 2001-02-11
+
+Personality: Caleb is overworked, expressive, dramatic, stubborn, image-aware, and secretly soft. He tries to appear composed and capable, but stress, pride, curiosity, and physical discomfort quickly reveal what he is actually feeling. He can be vain without being cruel, brave until something small frightens him, and determined to prove a point long after the point has stopped mattering.
+
+Comic Function: Caleb is a flexible client-side point of view and a frequent escalation engine. His confidence creates problems; his body, schedule, or facial expression usually exposes the truth.
+
+Humor Style: Denial humor, exaggerated pain reactions, office-stress comedy, overconfidence, dramatic bargaining, attempts to save face, accidental sensuality, and enthusiastic participation in things he does not fully understand.
+
+Speech and Banter: Caleb uses conversational Taglish with modern office and BPO vocabulary. He may sound confident at first, become increasingly defensive, then switch to blunt Tagalog when caught. He works well with Enzo's calmness, Gavin's nervous service style, Mika's social awareness, and Lara's refusal to entertain nonsense.
+
+Reaction Range: False confidence, visible exhaustion, panic, competitiveness, embarrassment, wounded pride, attention-seeking charm, relief, dramatic suffering, or delighted surprise.
+
+Role Flexibility: Caleb remains a client by identity. He may deliberately ask to learn massage, participate in a supervised demonstration, imitate a technique badly, help during an unusual situation, or appear in stories completely outside the spa. Such changes must be explained by the script and must not be accidental role replacement.
+
+Visual Description: Caleb is a very good-looking Filipino man in his mid-20s with a presentation-friendly, social-media-ready appearance. He should have a lean athletic swimmer-like build, broad shoulders, trim waist, lightly tanned skin, thick slightly wavy black hair with volume, neat light stubble, and visible but tasteful body hair on the chest, abdomen, arms, and legs. His face should be handsome and camera-friendly but distinct from Enzo: more polished, slightly more fashionable, with a defined jawline, expressive eyes, and a calm neutral expression for reference images. His body should be attractive and fit without looking like a bodybuilder.
+
+4. Mika Torres
+
+Gender: Female
+Role: Female Client
+Civilian Job: Freelance Social Media Manager
+Exact Birthdate: 2000-09-18
+
+Personality: Mika is busy, stylish, curious, quick-thinking, slightly impatient, and socially perceptive. She notices presentation and online reactions, but she is not limited to being a social-media stereotype. She can be practical, affectionate, sarcastic, anxious, competitive, or unexpectedly sensible depending on the situation.
+
+Comic Function: Mika turns ordinary events into questions of presentation, timing, messaging, embarrassment, or what people will think. She can also be the first person to notice the absurd detail everyone else ignored.
+
+Humor Style: Work-life chaos, self-aware social-media jokes, rapid overthinking, accidental oversharing, reaction comedy, reputation-management panic, and the mismatch between how something looks online and what is actually happening.
+
+Speech and Banter: Mika uses contemporary Metro Manila Taglish, short expressive reactions, and occasional online vocabulary without sounding like a constant caption generator. She can banter naturally with Caleb, Iris, Gavin, and Lara.
+
+Reaction Range: Curiosity, excitement, impatience, embarrassment, suspicious analysis, delighted discovery, annoyance, panic over presentation, warm concern, or silent judgment.
+
+Role Flexibility: Mika remains a client, not a therapist. She may help with social-media work, participate in a staged demonstration, visit friends at the spa, attend events, or appear in personal-life stories. She should not perform professional massage unless a deliberate future storyline clearly establishes training or supervised learning.
+
+Visual Description: Mika is a very beautiful Filipina woman in her mid-20s with a visually striking, social-media-presentational look. She should have a feminine fit build with elegant curves, healthy toned physique, warm medium skin tone, oval-to-heart-shaped face, soft refined features, expressive eyes, and long dark brown hair with subtle balayage highlights. She should look polished, camera-friendly, and stylish without looking artificial. Her face should feel warm, attractive, and expressive, with a neutral reference expression that can later become playful, annoyed, surprised, or dramatic in comics.
+
+5. Gavin Lorico
+
+Gender: Male
+Role: Receptionist
+Exact Birthdate: 1999-01-30
+
+Personality: Gavin is friendly, organized, talkative, service-minded, imaginative, and easily flustered. He sincerely wants everyone to be comfortable, which makes him vulnerable to impossible requests, overlapping instructions, and his own attempts to fix too many things at once. Outside the front desk, he may be more opinionated, playful, dramatic, or confident than clients usually see.
+
+Comic Function: Gavin is the front-desk chaos magnet, information hub, and bridge between clients, staff, deliveries, calls, and unexpected visitors.
+
+Humor Style: Nervous politeness, internal buffering, customer-service improvisation, over-apologizing, increasingly complicated solutions, misunderstood instructions, and a face that reveals the panic his words are trying to hide.
+
+Speech and Banter: Gavin uses polite Taglish with clients and more relaxed speech with the cast. His sentences may become faster and more fragmented as pressure rises. Lara's calm questions, Javi's interruptions, and Caleb's requests can push him into comic overload.
+
+Reaction Range: Professional smile, concealed panic, sudden hope, confusion, embarrassment, eager helpfulness, exhausted surrender, surprise, or rare assertiveness.
+
+Role Flexibility: Gavin remains the receptionist, but he may appear off duty, at events, on errands, in staff gatherings, or in stories where he is not behind a counter.
+
+Visual Description: Gavin is a handsome young adult Filipino man with a polished, approachable appearance suited for a receptionist. He should have a lean-to-average build, medium height proportions, medium-light brown Filipino complexion, angular oval face, neat brows, straight nose, gentle jawline, tidy short dark hair with a soft side part, clean-shaven face, and minimal body hair. He should look distinct from Enzo and Caleb by being less muscular, cleaner, smoother, more front-desk polished, and more expressive. His expression in reference images should be neutral, but his face should be capable of quick smiles, panic, confusion, and polite customer-service charm in comics.
+
+6. Lara Castillo
+
+Gender: Female
+Role: Spa Manager
+Exact Birthdate: 1989-08-27
+
+Personality: Lara is composed, sharp, business-minded, elegant, protective of standards, and quietly intimidating when needed. She is fair and practical, but she is not an emotionless authority figure. She can become competitive, amused, protective, tired, petty, embarrassed, or unexpectedly sentimental when the story moves outside formal management.
+
+Comic Function: Lara is the authority anchor and consequence-delivery system. Her entrance can end chaos, reveal that she already knows everything, or create a new problem when she makes an unexpectedly personal decision.
+
+Humor Style: Polished sarcasm, manager exhaustion, controlled understatement, devastating one-sentence corrections, silent judgment, strategic pauses, and moments when her perfect composure finally cracks.
+
+Speech and Banter: Lara speaks clearly and economically. Her Taglish is polished but natural, not formal for its own sake. She may use a person's full name when annoyed. She works well against Gavin's panic, Caleb's confidence, Mika's presentation logic, and Javi or Rina's disregard for workplace hierarchy.
+
+Reaction Range: Still-faced disapproval, restrained amusement, suspicion, managerial concern, exhausted patience, surprise, embarrassment, quiet pride, protectiveness, or a rare uncontrolled reaction.
+
+Role Flexibility: Lara remains the spa manager, but she may appear at home, at social events, during errands, in neighborhood situations, or as a normal friend whose managerial authority does not automatically control everyone.
+
+Visual Description: Lara is an adult Filipina woman with a poised and attractive look, average-to-curvy build, confident posture, medium Filipino complexion, defined cheekbones, elegant oval face, expressive eyes, softly shaped brows, and shoulder-length dark brown hair with warm caramel balayage highlights. She should look mature, capable, polished, and charismatic, with a strong managerial presence. Her body should look natural, healthy, and graceful rather than overly slim or overly glamorous. Her face should communicate authority, intelligence, and calm control, even when expressionless.
+
+7. Javi Mercado
+
+Gender: Male
+Role: Delivery Rider
+Exact Birthdate: 1996-04-05
+
+Personality: Javi is energetic, street-smart, fast-talking, helpful, adaptable, and nosy in a fun way. He enjoys being included, reacts quickly, and treats unfamiliar situations as invitations rather than barriers. He is not part of the Resting Leaf staff, but he can feel socially embedded in the group.
+
+Comic Function: Javi brings outside information, neighborhood energy, interruptions, shortcuts, rumors, weather, transport problems, and unexpected solutions into the spa world. He can also appear simply because he has become part of the recurring ensemble.
+
+Humor Style: Side comments, delivery-rider chismis, street-level observations, playful interruption, confident misinformation, physical entrance comedy, overheard conversations, and acting as though he belongs in every situation.
+
+Speech and Banter: Javi uses fast, casual Taglish with neighborhood phrasing and an easy familiarity that may ignore professional boundaries. He can banter with everyone, particularly Gavin, Lara, Rina, and Enzo.
+
+Reaction Range: Grinning confidence, raised-eyebrow suspicion, mock innocence, excitement, fear disguised as a joke, offended pride, curiosity, exhaustion, or triumphant satisfaction after an improvised solution.
+
+Role Flexibility: Javi remains a delivery rider, but he does not need to be delivering something whenever he appears. He may shelter at the spa, visit friends, join a meal, attend an event, help during a blackout, become stranded, or appear after hours. His convenient presence may occasionally be acknowledged as a joke, but it should not become an automatic repeated device.
+
+Visual Description: Javi is an adult Filipino man in his late 20s to early 30s with a rugged, street-smart look. He should have a compact wiry active build, strong legs, lean functional body, deeper tan sun-exposed complexion, angular face with a rugged edge, lively eyes, sharper nose, short black slightly tousled hair, noticeable light stubble or short beard, and visible arm, chest, back, and leg hair. He should look distinct from the polished male characters: less groomed, more real-world, more sun-exposed, and more physically active from riding around the city. His expression can be neutral for reference images, but he should be easy to imagine with a grin, raised eyebrow, or chismis-ready side glance.
+
+8. Rina Salcedo
+
+Gender: Female
+Role: Plant Vendor
+Exact Birthdate: 1992-11-21
+
+Personality: Rina is warm, earthy, blunt, nurturing, cheerful, socially fearless, and slightly mischievous. She gives advice whether or not anyone requested it, treats the spa like familiar territory, and can move from motherly concern to delighted gossip without warning. She is not only a plant-joke machine; she may also be superstitious, practical, dramatic, protective, or unexpectedly brave.
+
+Comic Function: Rina connects the spa to neighborhood and community life. She can provide blunt outside perspective, join the emotional side of a scene, intensify fear or gossip, or say the obvious thing the staff are too polite to say.
+
+Humor Style: Tita and vendor humor, plant metaphors, unsolicited advice, cheerful teasing, folk beliefs, blunt kindness, social confidence, and treating absurd events as completely normal.
+
+Speech and Banter: Rina uses relaxed Taglish and Filipino conversational rhythm. She may use affectionate or familiar forms of address, switch quickly into advice mode, and speak as though she has known everyone longer than the story has established.
+
+Reaction Range: Warm amusement, loud laughter, concern, suspicion, theatrical fear, delighted gossip, offended dignity, practical focus, or motherly command.
+
+Role Flexibility: Rina remains a plant vendor, but she may be at the spa without making a sale. She may maintain plants, visit the cast, attend gatherings, shelter from weather, stay late, participate in a blackout scene, or simply be present because she is part of the recurring social circle.
+
+Visual Description: Rina is an adult Filipina woman in her early to mid-30s with a warm morena complexion, round to softly oval face, kind eyes, soft cheeks, thick dark hair with a slightly wavy or naturally textured look, and an earthy approachable presence. Her body should be soft-natural, healthy, and real rather than glamorous or model-like. She should look nurturing, grounded, cheerful, and memorable, with a friendly face that can shift into blunt teasing or motherly concern. She should be distinct from the other female cast members by being less polished, less fashion-focused, and more community-rooted.
+
+GROUP DIFFERENTIATION
+
+- Enzo Villaluz is the athletic but approachable male therapist.
+- Iris Montoya is the capable, grounded, gently strict female therapist.
+- Caleb Rivera is the polished, attractive, overworked male client.
+- Mika Torres is the stylish, social-media-aware female client with balayage highlights.
+- Gavin Lorico is the clean, expressive, polished receptionist.
+- Lara Castillo is the mature, commanding spa manager with caramel balayage.
+- Javi Mercado is the rugged, hairy, sun-exposed delivery rider.
+- Rina Salcedo is the earthy, soft-natural, warm plant vendor.
+
+The visual distinctions are mandatory. Iris, Mika, and Lara must not collapse into the same face. Enzo, Caleb, Gavin, and Javi must remain recognizably different in facial structure, body type, grooming, wardrobe, posture, and expression.
+
+VISUAL REFERENCE AND IDENTITY CONSISTENCY RULES
+
+Existing Canonical Assets
+
+Approved individual character references already exist in several forms, including realistic body references, comic-style references, front and back views, corrected faces, and detailed wardrobe or uniform boards.
+
+Do not require the project to recreate those assets merely to begin a new comic.
+
+The best currently approved version of each visible character controls. A deliberately corrected reference approved by the user takes precedence over older versions and over any later accidental generation.
+
+Reference Saturation and Recency Drift
+
+Do not claim that the image model has a fixed verified memory limit such as four, five, or six references. However, treat the following practical risks as real:
+
+- too many character references competing in one request;
+- several versions of the same face;
+- realistic and comic references competing without a clear purpose;
+- a full-cast sheet competing with individual references;
+- detailed wardrobe boards competing with a newly generated incorrect costume;
+- later generated images receiving more visual influence merely because they are recent;
+- repeated full-page edits gradually redesigning the cast.
+
+More references do not automatically produce more fidelity.
+
+When too many visual instructions compete, the generator may simplify, merge, substitute, average, or ignore details. This can cause faces to converge, uniforms to migrate between characters, supporting cast members to replace core cast members, or corrected errors to reappear.
+
+Canonical Reference Packet
+
+Each comic should use a compact canonical reference packet selected after the visible cast is known.
+
+For each visible character, normally select:
+
+- one approved identity reference;
+- one exact wardrobe or uniform reference when the clothing matters;
+- one body or build reference only when the silhouette cannot be understood from the identity reference.
+
+Also select:
+
+- one environment reference when the room or location matters;
+- one comic-style reference when needed;
+- official logo and footer assets.
+
+Do not attach every historical file.
+
+Do not attach several competing versions of the same face or uniform.
+
+Do not attach all eight cast members to a comic that uses only two or three.
+
+Body and Underwear References
+
+Existing underwear or minimally clothed body references may remain useful for preserving body shape and proportions, but they are not required for every ordinary clothed scene.
+
+Use them only when:
+
+- the character's body silhouette has repeatedly drifted;
+- the scene requires clothing that reveals or depends on the body form;
+- a massage, changing, wet-area, fitness, or other approved scene genuinely needs the anatomical proportion reference.
+
+Do not add them merely because they exist.
+
+Non-Generative Character Contact Sheets
+
+When several separate files for one character are difficult to manage, a single canonical character contact sheet may be assembled manually from the already approved images.
+
+A contact sheet may include:
+
+- face close-up;
+- front or three-quarter identity view;
+- full-body silhouette;
+- uniform front;
+- uniform back;
+- critical accessories.
+
+This contact sheet should be a non-generative layout using the existing approved pixels. It must not redraw, beautify, average, or reinterpret the character. It can reduce attachment count without spending image-generation credits.
+
+Full-Cast Generation Limitation
+
+A generated image containing all eight named characters has repeatedly caused:
+
+- duplicated faces;
+- characters resembling one another;
+- names attached to the wrong person;
+- missing characters;
+- role swaps;
+- altered uniforms;
+- facial redesign;
+- character identity drift.
+
+A full-cast image may exist as an archival or presentation asset.
+
+It is not the authoritative production reference for exact faces, bodies, or uniforms.
+
+The Cast Sheet Generation Prompt remains available only for presentation work. It is deprecated as a method for redefining or preserving canonical identity.
+
+A manually assembled full-cast board made from accepted individual images is preferable when an authoritative lineup is needed.
+
+Authority of Visual References
+
+Use the following visual authority order:
+
+1. current approved individual identity reference;
+2. current approved uniform or wardrobe reference;
+3. approved body or build reference when necessary;
+4. approved environment reference;
+5. approved comic-style reference;
+6. full-cast presentation sheet;
+7. older generated drafts.
+
+When generated output differs from the accepted visual reference:
+
+- the accepted reference controls;
+- the written character profile supports the reference;
+- the generated variation does not become canon automatically.
+
+Do not interpret an accidental hairstyle, face, costume, body type, skin tone, or role change as a redesign.
+
+Panel Cast Matrix
+
+Before full-page generation, create a panel cast matrix.
+
+For each panel, list:
+
+- characters who must appear;
+- established characters who must not appear;
+- role and wardrobe for each visible character;
+- time and lighting state.
+
+This matrix is mandatory when:
+
+- four or more established characters appear across the page;
+- a supporting character appears only in a late panel;
+- two characters have similar gender, build, hair, or clothing;
+- a decorative header includes cast portraits;
+- a previous attempt substituted one character for another.
+
+A character present in a header portrait does not gain permission to appear inside a story panel.
+
+If Javi appears only in Panel 6, Panels 1 through 5 must explicitly exclude Javi.
+
+Visual Lock Matrix
+
+For each visible character, record a compact immutable fingerprint:
+
+- role;
+- approved identity reference;
+- facial and grooming anchors;
+- body silhouette;
+- exact wardrobe reference;
+- panels in which the character appears;
+- panels in which the character is absent.
+
+Do not duplicate the entire biography or fabric specification inside the generation prompt. Use the references for fine detail and list only the features that prevent identity or wardrobe substitution.
+
+Wardrobe Lock
+
+Wardrobe is character-specific.
+
+- Enzo Villaluz uses the accepted male therapist wardrobe reference.
+- Iris Montoya uses the accepted female therapist wardrobe reference.
+- Caleb Rivera uses scene-appropriate civilian clothing and is not staff.
+- Mika Torres uses scene-appropriate civilian clothing and is not staff.
+- Gavin Lorico uses the accepted receptionist reference.
+- Lara Castillo uses the accepted manager reference.
+- Javi Mercado uses the accepted Sugod Express rider reference.
+- Rina Salcedo uses earthy plant-vendor casual wear.
+
+A uniform approved for one character must not migrate to another character.
+
+The same character's uniform must remain identical across a continuous scene unless the script shows a change.
+
+Reference Pose Rule
+
+Use references to preserve identity, build, grooming, and wardrobe.
+
+Do not copy the reference pose unless the panel requires it.
+
+Javi does not need to make a peace sign whenever he appears. Lara does not need to cross her arms in every scene. Enzo and Iris must act within the story rather than hold cast-sheet poses.
+
+Generative Edit Drift
+
+A generative image edit is not equivalent to editing layers in Photoshop or another graphics application.
+
+Even when the instruction names one local change, the model may reinterpret:
+
+- untouched faces;
+- uniforms;
+- panel casting;
+- furniture;
+- room architecture;
+- lighting;
+- text;
+- decorative details.
+
+Repeated full-page edits may therefore fix one error while creating several new errors.
+
+The latest edited image must not automatically become the new character reference.
+
+Correction Method Priority
+
+Use this order after a page has been generated:
+
+1. non-generative manual correction;
+2. one isolated targeted generative correction;
+3. clean full-page regeneration from the canonical packet.
+
+Prefer manual or deterministic correction for:
+
+- dialogue lettering;
+- logo replacement;
+- footer replacement;
+- clock faces or digital times;
+- small dots, lines, borders, and decorative marks;
+- color grading;
+- crop and alignment;
+- panel numbers;
+- signs and labels when editable.
+
+Use a targeted generative correction only when the defect is isolated and does not require the model to reinterpret several characters.
+
+Do not chain repeated broad full-page generative edits.
+
+As a project default, allow no more than one targeted generative correction from the first page. If another broad correction is needed, perform a clean reset unless the user explicitly chooses otherwise.
+
+Clean Reset Rule
+
+A clean reset means:
+
+- retain the approved script and planning text;
+- return to the original approved character and wardrobe references;
+- exclude drifted generations from character authority;
+- use the latest approved panel cast and visual lock matrices;
+- generate a fresh full page rather than editing the distorted page again.
+
+The user prefers a complete first-pass page rather than routine panel-by-panel generation. Panel-by-panel generation remains an optional fallback, not the default production method.
+
+CHARACTER CANON AND CONTINUITY
+
+The characters have lives beyond the physical spa. A comic may establish new information about:
+
+- pets;
+- relatives;
+- friendships;
+- relationships;
+- previous employment;
+- education;
+- hobbies;
+- food preferences;
+- recurring possessions;
+- personal habits;
+- homes;
+- neighborhoods;
+- transportation;
+- past events;
+- ongoing problems;
+- temporary injuries or situations.
+
+A fact revealed in a published comic becomes part of continuity when it is presented as true rather than as a joke, lie, dream, misunderstanding, rumor, or uncertain claim.
+
+Newly established facts must be preserved so that pets, relatives, relationships, preferences, possessions, or past events do not disappear or contradict future stories without explanation.
+
+Stable Profile and Published Canon
+
+The cast reference should separate:
+
+- stable profile information established before publication;
+- published canon information first established in a released comic;
+- temporary continuity information that lasts only for a limited story;
+- uncertain or disputed information that a character claimed but the story did not confirm.
+
+Cast Reference Storage
+
+A maintained JSON reference file is sufficient for the Nexus Cast at the current project stage. The working filename is:
+
+nexus_cast.json
+
+The file may contain stable character keys used by comic production and by cast_key_list in content_comic. These keys are controlled internal references stored in the project JSON file. They are not yet a database taxonomy and not database record identifiers.
+
+A dedicated database collection for the Nexus Cast is not currently required because the cast is small, fixed, editorially controlled, and rarely changed.
+
+A future cast collection may be reconsidered if the website later needs public character profile pages, searchable character records, automated character timelines, relationship browsing, cast administration, or other database-driven features. If that happens, cast_key_list may later be replaced or supplemented by cast_id_list.
+
+Story Bible Meaning and Current Decision
+
+A story bible is a continuity reference containing the fictional world's rules, recurring locations, character relationships, established facts, running jokes, story arcs, and details that later stories should not contradict.
+
+A separate story-bible file is not required now. This document together with nexus_cast.json already performs that function. A separate file should be created only if the amount of story continuity becomes too large or complicated for the current references.
+
+COMIC PRODUCTION WORKFLOW
+
+Production Modes
+
+The process must remain practical for one person managing articles, research, listings, reviews, outreach, development, and other Massage Nexus work.
+
+Two production modes are allowed:
+
+1. Quick Production Mode
+
+The user gives a topic, situation, or rough idea. The assistant performs the story, comedy, Taglish, cast, continuity, reference, and generation-risk checks internally.
+
+When the user asks for creation in the same request, the assistant may proceed after those checks without forcing the user to review a long planning form.
+
+2. Review-First Mode
+
+The assistant presents the six-panel plan, dialogue, panel cast matrix, visual lock matrix, continuity lock, and compact reference packet before generation.
+
+Use this when:
+
+- the user explicitly asks to plan first;
+- the comic introduces major canon;
+- the joke is sensitive;
+- exact timing or spatial continuity is important;
+- four or more characters are used;
+- previous attempts have suffered identity or wardrobe drift.
+
+The detailed planning template is a production tool, not a mandatory burden for every strip.
+
+Preferred Generation Strategy
+
+The user's preferred default is one complete six-panel page in the first approved generation.
+
+Do not automatically require six separately generated panels.
+
+Support a strong full-page first pass by:
+
+- using the smallest cast that preserves the joke;
+- selecting only necessary references;
+- locking panel occupancy;
+- locking wardrobe by character;
+- simplifying risky body and furniture interactions;
+- using readable exact-time displays;
+- removing unnecessary header decoration;
+- identifying high-risk details before generation.
+
+If the first-pass plan is too complex, simplify the plan before spending image credits rather than relying on many corrective generations afterward.
+
+1. Verify Current Information When Needed
+
+When an episode depends on changing facts, verify only the facts needed for that story and keep temporary research in the episode plan.
+
+2. Select the Story and Comic Mechanism
+
+Choose the situation, mechanism, required cast, setting, and final payoff.
+
+Confirm that the joke works as plain text before art generation.
+
+3. Limit and Assign the Cast
+
+Use one to three characters when practical.
+
+Add more only when the joke genuinely requires them.
+
+Create a panel cast matrix that lists required and forbidden established characters in every panel.
+
+4. Check Character and Story Continuity
+
+Review stable profiles, published canon, connected stories, and temporary continuity.
+
+Distinguish deliberate role exploration from accidental role swapping.
+
+5. Write and Test the Six-Panel Script
+
+For each panel, define:
+
+- visible characters;
+- spatial blocking;
+- gaze;
+- action;
+- expression;
+- dialogue;
+- balloon ownership;
+- time and lighting;
+- important props;
+- continuity change.
+
+Confirm that setup, escalation, and payoff are visually understandable.
+
+6. Perform the Natural Taglish Check
+
+Read every line aloud.
+
+Rewrite stiff, translated, overly formal, or unnatural phrasing.
+
+Keep dialogue short enough for the panel and appropriate to the speaker.
+
+7. Lock Visual Continuity
+
+Lock:
+
+- character identity;
+- wardrobe;
+- hairstyle and facial hair;
+- relative height;
+- props;
+- exact time;
+- weather;
+- wet or dry state;
+- room anchors;
+- furniture and floor levels;
+- object positions;
+- temporary injuries or conditions.
+
+8. Prepare Spatial Blocking
+
+State where each character stands, sits, lies, enters, exits, and looks.
+
+Identify any risk of a body passing through a table, counter, chair, floor, wall, door, or another person.
+
+9. Build the Visual Lock Matrix
+
+For each visible character, record the compact identity and wardrobe fingerprint needed for generation.
+
+Do not copy full biographies into the image prompt.
+
+10. Select the Compact Canonical Reference Packet
+
+Use only the strongest current references for the visible scene.
+
+Do not attach all eight cast references automatically.
+
+Do not attach several conflicting versions of the same face or uniform.
+
+A full-cast sheet is secondary and presentation-only.
+
+11. Choose the Lettering Mode
+
+Choose:
+
+- pre-lettered generation using the approved exact text; or
+- editable balloons and manual lettering.
+
+Pre-lettered generation may remain the practical default when dialogue is short. Manual correction remains the reliability fallback.
+
+12. Perform the First-Pass Generation Preflight
+
+Before generation, confirm:
+
+- every panel has an approved cast list;
+- every visible character has one identity reference;
+- every work-role character has the correct uniform reference;
+- no unrelated reference is attached;
+- exact times are readable;
+- blocking is physically possible;
+- header and footer contain no invented text;
+- final panel visibly supports the payoff.
+
+13. Generate One Complete Page
+
+Generate the complete three-column by two-row page from the approved packet.
+
+Do not use a drifted previous page as character authority.
+
+14. Review Identity, Uniform, Role, and Geometry
+
+Check:
+
+- faces;
+- body types;
+- skin tones;
+- hairstyles;
+- facial hair;
+- character substitutions;
+- uniforms;
+- roles;
+- panel occupancy;
+- furniture intersections;
+- floor and counter levels;
+- exact times;
+- room anchors;
+- props;
+- expressions.
+
+15. Review Dialogue and Branding
+
+Check:
+
+- exact Taglish;
+- spelling and punctuation;
+- speaker ownership;
+- balloon tails;
+- title;
+- Resting Leaf branding;
+- Massage Nexus footer;
+- absence of social-media information and invented slogans.
+
+16. Choose the Correct Correction Method
+
+Use manual correction for deterministic graphic details.
+
+Use one targeted generative correction only for an isolated visual defect.
+
+If the page has several identity, uniform, role, or architecture errors, stop the edit chain and perform a clean reset.
+
+17. Prepare Publication Metadata
+
+Prepare comic_title, comic_slug, short_description, language_id, alternative_text, caption, comic_transcript when retained, tags, NSFW level, cast references, status, and scheduling or publication timestamp.
+
+18. Preserve New Canon
+
+Update nexus_cast.json only when a published strip deliberately establishes a new permanent, temporary, or uncertain fact.
+
+Accidental generated details never become canon.
+
+WORKING COMIC TOPIC CALENDAR DIRECTION
+
+The Resting Leaf should maintain a lightweight working topic calendar similar in purpose to the Massage Nexus article topic calendar.
+
+The calendar is a planning tool, not a permanent publication record. It may organize upcoming strips by intended release date, working title, premise, characters, location, status, current-event research requirement, and continuity note.
+
+Recommended planning fields are:
+
+- intended release date;
+- working comic title;
+- topic or premise;
+- primary characters;
+- location;
+- status such as idea, planning, approved, generated, revised, scheduled, published, or deferred;
+- whether current-event verification is required;
+- continuity or canon note;
+- recent-use check when the idea relies on a recurring gag or familiar comic device.
+
+When a strip is published, its actual publication timestamp belongs in content_comic.published_at. The working calendar may then mark the item as published or move it to a separate published-comic tracker.
+
+The first confirmed Resting Leaf story plan is Grand Opening. Its title, script, joke, cast, dialogue, and continuity plan are approved in the dedicated production thread. Its final artwork is not yet approved, and its exact release date remains to be assigned through the working calendar.
+
+Future topic suggestions and release dates should be planned separately after this document revision rather than embedded as an unreviewed permanent list.
+
+PRODUCTION QUALITY CHECKLIST
+
+Before publication, confirm:
+
+- the comic uses the official Modern Slice-of-Life Digital Comic with semi-realistic Western comic linework and warm editorial coloring style;
+- the comic has exactly six panels unless an explicit exception was approved;
+- panels are visibly numbered 1 through 6;
+- panel reading order is clear;
+- a compact canonical reference packet was selected before generation;
+- no several competing versions of the same face or uniform were used;
+- the panel cast matrix was followed and forbidden characters do not appear;
+- a decorative header portrait did not cause a character to enter an unauthorized panel;
+- every staff or rider character wears the exact approved wardrobe in every relevant panel;
+- no client, receptionist, manager, rider, or vendor was silently reassigned to another role;
+- story-critical clock or time displays show the approved time clearly;
+- the page was not chained from a drifted generation as character authority;
+- the title is correct;
+- no visible episode number is present;
+- no visible publication date is present;
+- the branded Massage Nexus footer follows the approved standard layout;
+- no social-media handles, icons, Follow Us block, or QR code appears in the footer;
+- the copyright line reads © 2026. MassageNexus.com;
+- distorted official logos or wordmarks have been corrected manually;
+- the dialogue sounds natural when read aloud in Metro Manila Taglish;
+- the dialogue is not a literal or awkward translation;
+- the joke has a clear comic mechanism and payoff;
+- the comic does not read like forced instruction or a promotional brochure;
+- all visible characters match their accepted references;
+- every character remains in the established role unless a deliberate and clearly explained storyline temporarily explores another activity;
+- deliberate learning, assistance, role-play, dream, or costume situations are visually explained rather than appearing as accidental role swaps;
+- no unapproved therapist, receptionist, manager, or other recurring staff character appears;
+- the core spa cast, frequent clients, and supporting cast are used according to the story rather than forced into every strip;
+- no romantic pairing or implied shipping is introduced among the established Nexus Cast;
+- background guests remain secondary and non-recurring unless intentionally designed;
+- no two characters have collapsed into the same face;
+- reference poses have not been copied mechanically;
+- expressions suit the moment and the cast is not smiling without reason;
+- wardrobe remains consistent through continuous scenes;
+- towels, draping, underwear, face cradles, and massage props remain consistent;
+- umbrellas and wet-weather props behave logically;
+- no umbrella, mop, plant, limb, or furniture passes through the floor, wall, counter, or another object;
+- character scale, floor level, counter height, and furniture geometry remain plausible;
+- room anchors remain recognizable across panels;
+- minor background changes do not confuse the location;
+- speech balloons point to the correct speakers;
+- generated placeholder text has been removed;
+- current-event terminology has been verified when relevant;
+- the setting supports the story without unnecessarily emphasizing luxury;
+- alternative text describes the visual sequence;
+- newly established character facts have been identified for continuity;
+- accidental generation details have not been added to canon.
+
+SAMPLE GENERATION REVIEW AND PRODUCTION LESSONS
+
+The early sample strips and Grand Opening generations are production tests unless a final page is explicitly approved for publication.
+
+The Grand Opening story currently has an approved title, script, joke, cast, dialogue, and continuity plan. Its final artwork is not yet approved.
+
+Useful directions observed:
+
+- the three-column by two-row landscape format works;
+- visible panel numbers improve reading order and review;
+- the branded header and Massage Nexus footer can provide a strong identity;
+- pre-lettered dialogue may be usable when short and carefully checked;
+- varied expressions create a more convincing workplace comedy;
+- explicit clock targets can be improved when they are large and clearly requested;
+- an isolated geometry defect may sometimes be repaired.
+
+Grand Opening production failures revealed a more important limitation:
+
+- repairing one area through a full-page generative edit may alter unrelated areas;
+- Enzo may be replaced by Javi in a panel where Javi does not belong;
+- Gavin's already accepted receptionist uniform may be redesigned even when no change was requested;
+- Lara's wardrobe may migrate toward another role;
+- Enzo's uniform may be corrected in some panels but not others;
+- faces may drift farther from the approved cast after repeated generations;
+- a hallucinated body-and-table intersection may be fixed while another identity or wardrobe error appears;
+- later edits may treat a previous generation's mistake as the new visual pattern.
+
+The problem is not solved by adding every available reference to every request. Too many references and competing versions can increase confusion.
+
+The production response is:
+
+- plan a strong first pass;
+- use a compact canonical reference packet;
+- lock cast per panel;
+- lock wardrobe by character;
+- keep decorative header portraits optional;
+- prefer manual deterministic correction;
+- avoid repeated full-page generative editing;
+- perform a clean reset when identity drift appears.
+
+Problems that must not be repeated:
+
+- visible episode numbers or publication dates;
+- invented header subtitles or promotional slogans;
+- social-media information in the standard footer;
+- distorted official logos treated as final;
+- clients or outside characters being changed into staff;
+- one established character replacing another;
+- an unnamed generated therapist being treated as established staff;
+- props disappearing;
+- clothing, underwear, towels, or equipment changing without cause;
+- cast-sheet poses copied mechanically;
+- constant smiling;
+- impossible floor, counter, table, chair, or body geometry;
+- room changes that make one continuous location look unrelated;
+- dialogue that sounds mechanically translated;
+- a weak or unexplained payoff.
+
+None of the accidental faces, role changes, uniforms, unidentified characters, generated dialogue, or events from failed generations become canon.
+
+WORKING MEDIA AND DATA DIRECTION
+
+Current Collection Decision
+
+The current working collection name is:
+
+content_comic
+
+This replaces the earlier tentative comic_main direction. It is singular, uses snake_case, and may be renamed later if a broader content architecture creates a better reason.
+
+The following are not required:
+
+- series_key;
+- comic_key;
+- content_style;
+- comic_format;
+- thumbnail_media_image_id;
+- a separate comic_panel collection.
+
+The Resting Leaf is currently the only comic series, so series_key adds no useful distinction. comic_title and comic_slug provide the content title and public slug. conversational Taglish is the normal editorial direction rather than a variable content_style value. The format is currently the standard six-panel comic, so comic_format should be added only if the platform later supports meaningfully different comic formats.
+
+Current Working content_comic Properties
+
+The following property direction is accepted for continued planning:
+
+_id
+comic_title
+comic_slug
+short_description
+language_id
+cast_key_list
+alternative_text
+caption
+comic_transcript
+tag_list
+level_nsfw
+status_publication
+scheduled_at
+published_at
+created_at
+updated_at
+record_note
+
+Property Notes
+
+comic_title
+
+The individual title of the comic strip. The Resting Leaf remains the visible series title and does not need to be repeated as series_key.
+
+comic_slug
+
+The public URL-safe slug used by the comic detail route.
+
+short_description
+
+A concise description used for previews, cards, search results, or sharing.
+
+language_id
+
+References the language used by the published comic version. The exact language-reference implementation will be discussed separately.
+
+cast_key_list
+
+Stores the stable keys of recurring Nexus Cast members appearing in the strip. The keys currently come from nexus_cast.json. This is a controlled project reference, not yet a database taxonomy. Generic unnamed background extras do not need cast keys.
+
+alternative_text
+
+Describes the meaningful visual sequence for accessibility. It should not merely repeat the caption.
+
+caption
+
+A concise public caption or supporting text shown with the comic when needed.
+
+comic_transcript
+
+Optional readable text containing the final dialogue and relevant captions. It supports accessibility, search, correction, and future language adaptation without creating separate panel records. A detailed panel-by-panel production script is not required after publication.
+
+tag_list
+
+Working tag values for discovery. Final tag storage and controlled-value behavior should follow the project database design.
+
+level_nsfw
+
+The content-sensitivity level for the complete comic.
+
+status_publication
+
+The publication lifecycle state, such as draft, scheduled, published, archived, or another later approved status.
+
+scheduled_at
+
+Used only while the comic is scheduled for future release. It records the intended publication moment.
+
+When the comic is actually published:
+
+- write the actual publication moment to published_at;
+- remove or unset scheduled_at from the MongoDB document rather than keeping an obsolete scheduled value;
+- retain created_at because the creation moment remains historically different from scheduling and publication.
+
+published_at
+
+Records the actual publication moment. It may differ from created_at and from the former scheduled_at value.
+
+created_at
+
+Records when the comic record was created.
+
+updated_at
+
+Records the most recent meaningful update to the record.
+
+record_note
+
+Stores internal notes according to the wider project record-note direction.
+
+Timestamp Direction
+
+Exact moments use the *_at naming direction from Shared Project Standards v2.60. Timestamps should be stored unambiguously, normally in UTC, and displayed in the relevant user or publication time zone.
+
+No Separate Panel Collection
+
+comic_panel is removed from the current direction.
+
+Panel information means the planning material for each panel: visual action, expression, dialogue, balloon placement, and continuity. This information is useful during production but does not need six separate database documents.
+
+The default post-publication direction is:
+
+- retain the finished comic image;
+- retain the final dialogue through comic_transcript when useful;
+- retain alternative_text and caption;
+- do not retain a mandatory structured panel script in the database;
+- keep detailed planning notes only in the working chat or source file when they remain useful.
+
+Public Route and Comic of the Day Direction
+
+The current public route direction is:
+
+/comic
+/comic/{comic-slug}
+
+/comic is the archive or browsing destination. /comic/{comic-slug} is the individual comic page.
+
+Comic of the Day is a homepage or comic-area presentation choice, not a separate collection and not a separate comic type. The exact card layout, archive pagination, previous-next navigation, and homepage placement remain UI decisions.
+
+Image Storage and Media Relationship
+
+The comic is always published as an image-based work, but the binary image should still be stored in Azure Blob Storage rather than inside the MongoDB document.
+
+The final relationship between content_comic and media_image remains under discussion.
+
+Current architectural recommendation:
+
+- content_comic stores editorial and publication information;
+- media_image stores technical file information, Azure Blob location, dimensions, format, file size, processing history, and thumbnail or derivative handling;
+- content_comic references one media_image_id;
+- do not add thumbnail_media_image_id because the media system already handles thumbnail information;
+- alternative_text, caption, and comic_transcript may remain in content_comic because they describe the published comic context.
+
+A one-to-one relationship does not by itself make media_image unnecessary. Embedding all image properties directly in content_comic would duplicate the media system and make later processing, replacement, rights, derivatives, and storage management less consistent.
+
+This recommendation is not yet a final user decision. If content_comic later owns the technical image properties directly, the required storage, format, dimension, file-size, derivative, and thumbnail fields must be defined explicitly.
+
+Current Master Export Direction
+
+- Master aspect ratio: 3:2 landscape
+- Recommended master dimensions: 2400 × 1600 pixels
+- Acceptable generation dimensions when model output is limited: 1536 × 1024 pixels
+- Master file format: PNG
+- Recommended web derivative: WebP generated from the approved PNG master
+- Thumbnail handling: through the selected media system rather than a duplicate content_comic thumbnail field
+
+The PNG master should be retained for quality and later manual logo, footer, dialogue, or lettering correction.
+
+COMIC NAMING, PANEL NUMBERING, HEADER, AND FOOTER RULE
+
+Use The Resting Leaf as the main series title.
+
+Each strip may have its own individual comic title.
+
+The standard visible comic image should show:
+
+- The Resting Leaf logo or series title;
+- the individual comic title;
+- visible panel numbers 1 through 6;
+- the approved branded Massage Nexus footer strip.
+
+The standard visible comic image should not show:
+
+- an episode number;
+- a publication date;
+- social-media handles or icons;
+- a Follow Us block;
+- a QR code.
+
+A multi-part story may identify its sequence through Part 1, Part 2, or similar wording in the title when necessary.
+
+The preferred footer contains the Massage Nexus logo or wordmark, the platform tagline, © 2026. MassageNexus.com, Discover. Book. Relax., and controlled Ink & Ember accents. Exact brand assets may be replaced manually when generated inaccurately.
+
+PROMPT FILE SYSTEM
+
+Reusable prompts are maintained as separate UTF-8 plain-text files rather than embedded in this project guide.
+
+Recommended Folder
+
+C:\Users\Xylon\OneDrive\Documents\text\Plain Text\2 - project\Massage Nexus\prompt\The Resting Leaf
+
+The folder name prompt remains singular to match the project's general preference for singular technical and organizational names. The Resting Leaf subfolder keeps comic prompts separate from article, review, media, coding, and other future Massage Nexus prompts.
+
+Current Prompt Files
+
+1. Massage Nexus - The Resting Leaf - Thread Starter Prompt v1.10.txt
+   Starts a clean production thread using a compact reference strategy, current individual references, and an anti-drift revision policy.
+
+2. Massage Nexus - The Resting Leaf - Comic Planning Prompt v1.10.txt
+   Converts a topic into an approved story and compact one-pass generation packet containing the panel cast matrix, visual lock matrix, continuity lock, and required reference list.
+
+3. Massage Nexus - The Resting Leaf - Comic Image Generation Prompt v1.10.txt
+   Produces one complete three-column by two-row page from the approved canonical packet and treats panel occupancy, identity, and uniforms as hard constraints.
+
+4. Massage Nexus - The Resting Leaf - Cast Sheet Generation Prompt v1.10.txt
+   Creates a presentation sheet only. A generated cast sheet does not replace approved individual character or wardrobe references. A manually assembled composite is preferred when authoritative identity preservation is required.
+
+5. Massage Nexus - The Resting Leaf - Existing Comic Revision Prompt v1.00.txt
+   Historical prompt for revising an existing page. It should not be used for repeated broad full-page generative edits. It remains pending a separate revision or replacement.
+
+Prompt Versioning
+
+Prompt files use document-specific versions. Updating this guide does not automatically change every prompt version.
+
+When a prompt changes, preserve the prior version through OneDrive history, Git, archive, or another approved method.
+
+The latest Massage Nexus Fictional World Guide remains the controlling written reference.
+
+Prompt files should reference the guide rather than duplicate every character biography and long-term project decision.
+
+The image-generation prompt should receive only the compact approved information required for the current comic.
+
+DOCUMENT BOUNDARIES AND DEFERRED ITEMS
+
+The following technical matters belong in later database or platform documentation rather than being finalized in this fictional-world guide:
+
+- whether content_comic references media_image_id or directly owns all technical image properties;
+- the exact language-reference structure behind language_id;
+- final controlled values for status_publication, level_nsfw, and tag storage;
+- whether cast keys remain JSON references permanently or later become database identifiers;
+- archive pagination, previous-next navigation, and homepage presentation for Comic of the Day.
+
+The following character additions remain deliberately deferred:
+
+- a distinct second female therapist who can work and banter with Iris;
+- a recurring building or property security guard;
+- any recurring guest client, supplier, neighbor, relative, or romantic interest.
+
+No accidental generated character becomes canon.
+
+Specific running-gag ideas belong in a separate topic bank and must remain occasional. Event-specific weather research, holiday details, and temporary outside-location information belong in individual episode plans rather than permanent world rules.
+
+Current settled directions include:
+
+- document scope: the wider Massage Nexus fictional visual and story world, not comics alone;
+- central Resting Leaf workplace cast: Enzo, Iris, Gavin, and Lara;
+- frequent client cast: Caleb and Mika;
+- recurring supporting cast: Javi and Rina;
+- established cast relationships in the comic: platonic;
+- unnamed background guests: allowed when visually secondary and non-speaking;
+- temporary outside locations: allowed without naming or fully developing them;
+- canonical active edition: natural Metro Manila Taglish;
+- future localized editions: same cast and setting, culturally adapted, and reviewed by a fluent or culturally knowledgeable person before publication;
+- collection name: content_comic for now;
+- comic_panel: not used;
+- series_key: not used;
+- comic_key: not used;
+- comic_format: not used while the standard remains six panels;
+- content_style: not used while natural Taglish remains the standard dialogue direction;
+- public routes: /comic and /comic/{comic-slug};
+- detailed panel records: not required after publication;
+- separate story-bible file: not required at the current continuity scale;
+- lettering software: no specific software is mandated;
+- standard page: 3:2 landscape with three columns and two rows;
+- recommended master size: 2400 × 1600 pixels;
+- acceptable image-generation size: 1536 × 1024 pixels;
+- master file direction: PNG, with a WebP web derivative recommended;
+- preferred image-production method: one complete full-page first generation after approval;
+- panel-by-panel image generation: optional fallback only, not the default;
+- per-comic reference strategy: compact packet using only visible characters and required wardrobe or environment assets;
+- generated full-cast sheets: presentation references only, not canonical identity or uniform authorities;
+- repeated broad full-page generative edits: avoided because they create identity and wardrobe drift;
+- default correction limit: one isolated targeted generative correction before a clean reset is preferred;
+- Grand Opening: approved story plan, but final artwork not yet approved;
+- reusable production prompts: maintained as separate files in the prompt folder.

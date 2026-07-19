@@ -1,0 +1,976 @@
+Title: Massage Nexus Operator Workspace
+Document Version: 0.20
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Document Description: Defines the private, permission-aware Operator Workspace used by authorized people to manage one or more establishment profiles, branches, public business information, services, staff relationships, media, booking operations, verification, documents, and analytics without controlling independent community or editorial content.
+
+Related Documents:
+- docs/02-governance/edit-system.txt
+- docs/05-directory/spa-profile.txt
+- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/12-booking/provider-scheduling-resource-and-walk-in-management.txt
+- docs/14-research/data-research-provenance-and-field-verification-system.txt
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
+
+The accepted workspace name is Operator Workspace. Operator is the broad functional term for an
+authorized person using it; the person may be a legal owner, branch manager, franchise operator,
+hotel or resort representative, administrator, receptionist, marketing staff member, finance
+staff member, agency representative, or another authorized participant.
+
+The workspace supports official business information, branches, services, prices, therapists, facilities, hours, contact details, media, promotions, bookings, messages, reviews, analytics, verification, documents, staff access, and operational settings.
+
+The workspace is part of /workspace. It is not a separate website and does not require a separate account from the user's ordinary Massage Nexus account.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Operator Workspace should:
+
+- allow authorized establishment representatives to manage official information;
+- support one establishment or several branches;
+- support owners, managers, staff, and agencies through permissions;
+- separate provider-controlled information from community and editorial information;
+- preserve edit history and sources;
+- protect private business documents;
+- support multilingual profile content;
+- support service, price, therapist, and availability management;
+- support secure media visibility;
+- support booking and inquiry operations when available;
+- provide analytics and task reminders;
+- prevent one operator from accessing another establishment without permission.
+
+================================================================================
+2. POSSIBLE OPERATOR TYPES
+================================================================================
+
+- Legal Owner
+- Business Operator
+- Branch Manager
+- Franchisee
+- Franchisor Representative
+- Hotel or Resort Representative
+- Clinic or Wellness-Center Representative
+- Receptionist
+- Marketing Staff
+- Human Resources or Staff Coordinator
+- Finance Staff
+- Agency Representative
+- External Booking Integrator
+
+One person may hold several permission groups.
+
+================================================================================
+3. WORKSPACE ACCESS AND CONTEXT
+================================================================================
+
+Primary route family:
+
+/workspace/listing/spa
+/workspace/listing/spa/{spa-id}
+
+Possible later shortcut:
+
+/workspace/establishment
+
+The context switcher may allow the user to move among:
+
+- personal account;
+- one establishment;
+- another branch;
+- independent therapist practice;
+- seller organization;
+- advertising organization.
+
+Changing context changes available records and actions. It does not change the user's account identity.
+
+================================================================================
+4. DASHBOARD
+================================================================================
+
+The establishment dashboard may show:
+
+- profile completeness;
+- verification status;
+- claim status;
+- current establishment status;
+- today's operating hours;
+- upcoming bookings;
+- unread inquiries;
+- pending review responses;
+- pending media review;
+- expiring promotions;
+- stale price warnings;
+- therapist availability summary;
+- unverified contact details;
+- analytics summary;
+- recent changes;
+- assigned tasks;
+- system alerts.
+
+Only information related to the current establishment should appear.
+
+================================================================================
+5. PROFILE MANAGEMENT
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/profile
+
+Possible sections:
+
+- official business name;
+- public name;
+- former name;
+- short description;
+- full description;
+- Spa Type;
+- Market Class;
+- operation type;
+- service-delivery mode;
+- access mode;
+- client access;
+- target client focus;
+- establishment status;
+- opening date;
+- closure date;
+- relocation;
+- branch relationship;
+- franchise or organization relationship;
+- source;
+- public notes;
+- internal notes;
+- translations.
+
+Provider-controlled fields remain separate from:
+
+- public reviews;
+- ratings;
+- community history;
+- editorial notes;
+- warnings;
+- moderation decisions.
+
+================================================================================
+6. BRANCH AND ORGANIZATION MANAGEMENT
+================================================================================
+
+Possible functions:
+
+- add a branch;
+- connect an existing branch;
+- define branch relationships;
+- identify head office;
+- assign a branch manager;
+- copy approved shared settings;
+- compare branch data;
+- manage shared branding;
+- manage local contact details;
+- manage local hours;
+- manage branch status;
+- close or relocate a branch;
+- view branch analytics.
+
+A branch should remain its own establishment record when it has a separate public location or operating identity.
+
+================================================================================
+7. LOCATION AND ADDRESS
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/location
+
+Possible fields:
+
+- country;
+- region;
+- province;
+- city;
+- district;
+- barangay;
+- street address;
+- building;
+- floor;
+- unit;
+- landmark;
+- latitude;
+- longitude;
+- service area;
+- parking;
+- transit;
+- accessibility;
+- directions;
+- map visibility.
+
+Home-based or restricted-entry establishments may show only limited public location details.
+
+================================================================================
+8. CONTACT INFORMATION
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/contact
+
+Possible contact items:
+
+- telephone;
+- mobile;
+- email;
+- website;
+- booking link;
+- Facebook;
+- Instagram;
+- TikTok;
+- X;
+- messaging application;
+- external marketplace page.
+
+Each contact item may have:
+
+- type;
+- label;
+- value;
+- public visibility;
+- verification;
+- primary status;
+- active status;
+- last-confirmed date;
+- source;
+- internal note.
+
+================================================================================
+9. OPERATING HOURS
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/hour
+
+Possible functions:
+
+- ordinary weekly hours;
+- split hours;
+- overnight hours;
+- holiday hours;
+- temporary closure;
+- appointment-only day;
+- last booking time;
+- last walk-in time;
+- special event hours;
+- branch-specific hours;
+- effective date;
+- end date.
+
+The workspace should warn about:
+
+- overlapping hours;
+- impossible time ranges;
+- missing timezone;
+- stale holiday schedules;
+- conflicts with establishment status.
+
+================================================================================
+10. SERVICES AND MENU ITEMS
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/service
+
+The establishment menu uses establishment_service records.
+
+Possible fields:
+
+- original menu name;
+- mapped normalized Service;
+- description;
+- duration;
+- price;
+- currency;
+- tax inclusion;
+- active status;
+- availability;
+- booking method;
+- service-delivery mode;
+- room or facility;
+- eligible therapist;
+- client restrictions;
+- add-on relationship;
+- package relationship;
+- promotion relationship;
+- last-confirmed date;
+- source;
+- translation.
+
+Menu structures:
+
+- Service Item
+- Combination Service
+- Package
+- Add-On
+- Facility Access
+
+The establishment may preserve branded wording while mapping the item to normalized Services.
+
+================================================================================
+11. PRICING
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/price
+
+Possible price types:
+
+- ordinary price;
+- member price;
+- package price;
+- home-service price;
+- hotel-room price;
+- peak price;
+- off-peak price;
+- first-visit price;
+- promotional price;
+- custom quote.
+
+Price records may contain:
+
+- amount;
+- currency;
+- duration;
+- inclusions;
+- conditions;
+- effective date;
+- end date;
+- tax;
+- last-confirmed date.
+
+Expired promotional prices must not overwrite the ordinary menu price.
+
+================================================================================
+12. THERAPIST AND STAFF MANAGEMENT
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/therapist
+
+Possible functions:
+
+- invite therapist;
+- request affiliation;
+- approve affiliation;
+- end affiliation;
+- assign branch;
+- assign provider title or rank;
+- connect service capability;
+- connect service eligibility;
+- manage public visibility;
+- manage schedule;
+- manage availability;
+- record former affiliation;
+- view credential status.
+
+The establishment does not own the therapist's universal identity.
+
+The establishment may manage only establishment-specific information such as:
+
+- affiliation;
+- branch;
+- schedule;
+- menu eligibility;
+- provider title;
+- employment or contract context;
+- public staff listing.
+
+The therapist should be able to confirm or dispute the affiliation.
+
+================================================================================
+13. STAFF ACCESS AND PERMISSIONS
+================================================================================
+
+Possible permission groups:
+
+Establishment Owner
+Broad establishment authority.
+
+Branch Manager
+Broad authority for one branch.
+
+Reception
+Booking, inquiry, schedule, and selected contact access.
+
+Service Manager
+Service menu and price access.
+
+Therapist Coordinator
+Affiliation, schedule, and availability access.
+
+Media Manager
+Gallery and promotional media access.
+
+Marketing Manager
+Description, announcements, promotions, and analytics.
+
+Finance Manager
+Invoices, payments, payouts, and selected financial access.
+
+Review Responder
+May publish official responses.
+
+Read-Only Analyst
+May view analytics without editing.
+
+Permissions should be assigned per establishment or branch.
+
+================================================================================
+14. FACILITIES AND AMENITIES
+================================================================================
+
+Possible routes:
+
+/workspace/listing/spa/{spa-id}/facility
+/workspace/listing/spa/{spa-id}/amenity
+
+Possible information:
+
+- treatment rooms;
+- private rooms;
+- couple rooms;
+- shared areas;
+- shower;
+- locker;
+- sauna;
+- steam room;
+- bath;
+- hydrotherapy;
+- waiting area;
+- parking;
+- wheelchair access;
+- elevator;
+- air conditioning;
+- restroom;
+- beverage;
+- Wi-Fi;
+- accessibility support.
+
+Each item may include:
+
+- availability;
+- quantity;
+- public description;
+- restriction;
+- image;
+- last-confirmed date.
+
+================================================================================
+15. MEDIA
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/media
+
+Possible media:
+
+- logo;
+- cover image;
+- exterior;
+- reception;
+- room;
+- facility;
+- service;
+- menu image;
+- staff group;
+- video;
+- virtual tour;
+- document.
+
+Media fields may include:
+
+- caption;
+- alt text;
+- source;
+- permission;
+- copyright;
+- date;
+- location;
+- AI-use label;
+- visibility;
+- moderation status;
+- order;
+- featured status.
+
+Private staff or internal-operation media must not become public accidentally.
+
+================================================================================
+16. REVIEWS AND OFFICIAL RESPONSES
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/response
+
+Operators may:
+
+- view public reviews;
+- filter by service or date;
+- view criteria summaries;
+- publish an official response;
+- save response drafts;
+- report abuse;
+- request correction of factual business information;
+- view response history.
+
+Operators may not:
+
+- edit the reviewer's text;
+- remove criticism merely because it is negative;
+- alter the rating;
+- discover an anonymous reviewer's identity through unauthorized data;
+- pressure a reviewer to change a review.
+
+================================================================================
+17. DISCUSSIONS AND QUESTIONS
+================================================================================
+
+Operators may answer public questions about:
+
+- operating hours;
+- service availability;
+- facilities;
+- booking process;
+- accessibility;
+- location;
+- public policy.
+
+Official replies should be clearly identified.
+
+================================================================================
+18. BOOKING MANAGEMENT
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/booking
+
+Possible functions:
+
+- booking request queue;
+- approve;
+- reject;
+- suggest a new time;
+- assign therapist;
+- assign room;
+- record deposit;
+- check in;
+- complete;
+- cancel;
+- mark no-show;
+- refund;
+- message client;
+- add internal note.
+
+Booking is a later-stage feature.
+
+The first release may use:
+
+- booking inquiry;
+- external booking link;
+- manual contact;
+- general availability note.
+
+================================================================================
+19. CALENDAR AND AVAILABILITY
+================================================================================
+
+Possible functions:
+
+- establishment calendar;
+- therapist calendar;
+- room calendar;
+- service availability;
+- blackout date;
+- special hours;
+- external calendar sync;
+- waitlist;
+- last-minute opening.
+
+Calendar access may differ by staff permission.
+
+================================================================================
+20. PROMOTIONS
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/promo
+
+Possible fields:
+
+- title;
+- description;
+- service;
+- product;
+- branch;
+- therapist;
+- start date;
+- end date;
+- price;
+- discount;
+- code;
+- terms;
+- client eligibility;
+- usage limit;
+- media;
+- approval;
+- status;
+- analytics.
+
+Promotions remain separate from ordinary Service identity and ordinary prices.
+
+================================================================================
+21. VOUCHERS AND GIFT CARDS
+================================================================================
+
+Possible functions:
+
+- create voucher;
+- create gift card;
+- define amount;
+- expiration;
+- redemption rules;
+- branch eligibility;
+- transferability;
+- balance;
+- status;
+- redemption history.
+
+These are later-stage commerce functions.
+
+================================================================================
+22. ANNOUNCEMENTS
+================================================================================
+
+Possible announcements:
+
+- holiday hours;
+- renovation;
+- relocation;
+- new branch;
+- new therapist;
+- service launch;
+- temporary closure;
+- event;
+- policy change.
+
+Announcements should have:
+
+- audience;
+- start date;
+- end date;
+- language;
+- status;
+- public visibility.
+
+================================================================================
+23. CLAIM AND VERIFICATION
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/verification
+
+Possible verification areas:
+
+- business identity;
+- contact;
+- location;
+- representative authority;
+- permit;
+- registration;
+- media;
+- service information;
+- branch relationship.
+
+Private evidence remains restricted.
+
+Verification may expire or require renewal.
+
+================================================================================
+24. PRIVATE DOCUMENTS
+================================================================================
+
+Possible documents:
+
+- business registration;
+- permit;
+- franchise agreement;
+- authorization letter;
+- insurance;
+- tax document;
+- contract;
+- invoice;
+- verification proof.
+
+Document fields may include:
+
+- type;
+- issuer;
+- issue date;
+- expiry;
+- visibility;
+- verification;
+- secure storage;
+- access history.
+
+================================================================================
+25. ANALYTICS
+================================================================================
+
+Possible route:
+
+/workspace/listing/spa/{spa-id}/analytics
+
+Possible metrics:
+
+- profile views;
+- search appearances;
+- contact clicks;
+- direction clicks;
+- website clicks;
+- booking inquiries;
+- saves;
+- follows;
+- review trends;
+- service interest;
+- promotion performance;
+- media engagement;
+- location interest;
+- language usage.
+
+Analytics should distinguish organic and sponsored activity.
+
+================================================================================
+26. EXPORT
+================================================================================
+
+Operators may export approved information such as:
+
+- service menu;
+- price list;
+- booking summary;
+- analytics;
+- therapist schedule;
+- public profile data.
+
+Private exports should use protected delivery and expire.
+
+================================================================================
+27. PARTNER API
+================================================================================
+
+Approved operators may use the Partner API for:
+
+- hours;
+- availability;
+- selected prices;
+- booking status;
+- selected services;
+- selected media;
+- webhook;
+- analytics.
+
+API access should have:
+
+- client;
+- scope;
+- quota;
+- rate limit;
+- audit;
+- revocation.
+
+================================================================================
+28. MULTILINGUAL CONTENT
+================================================================================
+
+Operators may provide:
+
+- original description;
+- translated description;
+- translated menu wording;
+- translated announcements;
+- translated promotion terms.
+
+Translations follow the Translation System.
+
+The workspace should warn when a translation becomes stale after the source changes.
+
+================================================================================
+29. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- draft descriptions;
+- organize menu wording;
+- generate alt text;
+- suggest translations;
+- summarize analytics;
+- identify missing profile information;
+- suggest FAQ answers;
+- draft review responses.
+
+AI must not:
+
+- invent facilities;
+- invent prices;
+- invent credentials;
+- publish without permission;
+- create misleading claims;
+- answer serious complaints without review.
+
+================================================================================
+30. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+
+- claim approved;
+- verification expiring;
+- profile correction submitted;
+- new review;
+- new inquiry;
+- booking request;
+- booking cancellation;
+- media rejected;
+- promotion expiring;
+- stale price;
+- therapist affiliation changed;
+- staff invitation;
+- API error;
+- policy warning.
+
+================================================================================
+31. AUDIT AND HISTORY
+================================================================================
+
+The workspace should preserve:
+
+- who changed information;
+- what changed;
+- when;
+- source;
+- approval;
+- API client;
+- previous value;
+- reason.
+
+High-risk actions should require a reason.
+
+================================================================================
+32. SECURITY
+================================================================================
+
+The workspace must:
+
+- require authentication;
+- check establishment-specific permission;
+- protect documents;
+- protect restricted media;
+- prevent cross-branch access;
+- require recent authentication for sensitive changes;
+- rate-limit abuse;
+- log high-risk actions;
+- hide secrets;
+- prevent unauthorized API use.
+
+================================================================================
+33. MOBILE USE
+================================================================================
+
+A future mobile application may first support:
+
+- dashboard;
+- hours;
+- availability;
+- booking queue;
+- messages;
+- notifications;
+- quick media upload;
+- promotion status.
+
+Complex data administration may remain web-first.
+
+================================================================================
+34. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+- establishment context;
+- official profile;
+- contact;
+- location;
+- hours;
+- services;
+- prices;
+- media;
+- staff permission;
+- review response;
+- verification status.
+
+Phase 2
+- therapist affiliation;
+- facilities;
+- promotions;
+- analytics;
+- messages;
+- external booking link;
+- Partner API foundation.
+
+Phase 3
+- complete booking;
+- calendar;
+- payments;
+- gift cards;
+- vouchers;
+- advanced operations;
+- mobile management.
+
+================================================================================
+35. CURRENT WORKING DECISIONS
+================================================================================
+
+- Operator Workspace is the accepted workspace name, and Operator is its broad functional role.
+- The workspace supports owners, managers, and authorized staff.
+- It is part of the single /workspace system.
+- Establishment-specific permission is required.
+- The establishment controls official provider information, not independent reviews or universal Service identity.
+- establishment_service stores exact provider menu items.
+- Therapist universal identity remains separate from establishment affiliation.
+- Private documents and restricted media remain server-protected.
+- Direct edits still create revision and audit history.
+- Booking and commerce may be introduced in stages.
+
+================================================================================
+36. OPEN DECISIONS
+================================================================================
+
+- whether /workspace/establishment becomes an accepted shortcut;
+- staff permission presets;
+- branch inheritance rules;
+- franchise management;
+- operator-response policy;
+- booking release stage;
+- financial access;
+- commission tracking;
+- therapist affiliation confirmation;
+- document retention;
+- Partner API scope;
+- operator subscription plans;
+- analytics export limits.

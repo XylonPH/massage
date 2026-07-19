@@ -1,0 +1,1297 @@
+Title: Massage Nexus File and Folder Structure
+Document Version: 1.50
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
+
+Confirmed repository information:
+- local repository path: C:\code\multiplatform\massage
+- repository root folder name: massage
+- GitHub repository: https://github.com/XylonPH/massage
+- local PHP installation path: C:\php
+- Laravel framework (v13.20.0) is initialized under apps/web/ and integrated with MongoDB.
+
+It is deliberately expanded so human and AI contributors know where new work belongs before creating arbitrary files or oversized all-purpose files. Empty folders do not all need to be created immediately, but new files must follow this structure unless an accepted decision updates this document.
+
+================================================================================
+1. STRUCTURAL PRINCIPLES
+================================================================================
+
+1. One Git monorepository contains shared documentation, contracts, source assets, and separately buildable applications.
+
+2. Different programming languages may coexist because each application has its own folder, dependency files, commands, tests, and releases.
+
+3. The Laravel installation lives under apps/web/, not in the repository root.
+
+4. The future Flutter application lives under apps/mobile/.
+
+5. The Massage Nexus Desktop Application lives under apps/desktop/ when desktop implementation
+begins. It is a general desktop application, not an administration-only dashboard. Features
+remain permission-aware, so authorized administrative tools may still appear within it.
+
+6. Shared decisions, API contracts, taxonomy contracts, localization keys, and brand sources exist once at the repository root.
+
+7. Only apps/web/public/ is directly exposed by the web server.
+
+8. Private files, secrets, planning documents, source code, and editable brand masters never belong under a public web directory.
+
+9. A file should have one clear main responsibility.
+
+10. AI contributors must search the existing structure before creating a new folder or a second competing implementation.
+
+11. Refactored code replaces the earlier code in its correct location. Do not create folders named old, new, refactored, final, latest, or fixed for source code. Git preserves earlier versions.
+
+12. Temporary work belongs only in approved temporary locations and must be removed or consolidated after acceptance.
+
+================================================================================
+2. FILE-SIZE AND SPLITTING RULES
+================================================================================
+
+These thresholds apply to ordinary hand-written application code, not project documentation.
+Documentation follows docs/02-governance/documentation-writing-and-management-standard.txt.
+
+Target size for ordinary hand-written code:
+Under 250 lines where practical
+
+Review for splitting:
+300 to 400 lines
+
+Requires a brief reason during task or code review, not a separate implementation-note file:
+More than 500 lines
+
+These are review thresholds, not automatic failure rules. A cohesive file may remain longer when
+splitting would obscure its purpose, duplicate state, or make the code harder to follow. Generated
+files, localization catalogs, configuration data, migrations, tests, and narrowly focused reference
+files may also legitimately be longer.
+
+Split a file early when it contains several independent concerns, such as:
+- page layout and database queries;
+- profile header and all profile tabs;
+- unrelated forms;
+- unrelated API resources;
+- several large tables;
+- several independent JavaScript features;
+- several business operations;
+- authorization and business logic;
+- rich-text editor configuration and unrelated page behavior.
+
+Do not split merely to create dozens of tiny files with no meaningful responsibility. A useful file has a precise name and a clear reason to exist.
+
+The purpose of this rule is to reduce the amount of unrelated code that a human or AI contributor
+must read for a focused change. Split by responsibility and dependency boundary, not merely by line
+count. A refactoring must preserve behavior and place the extracted logic under a precise name.
+
+================================================================================
+3. REPOSITORY ROOT
+================================================================================
+
+massage/
+|
++-- apps/
+|   +-- web/
+|   +-- mobile/
+|   +-- desktop/
+|
++-- assets/
+|   +-- source/
+|   |   +-- brand/
+|   |   +-- icon/
+|   |   +-- illustration/
+|   |   +-- mascot/
+|   |   +-- template/
+|   |   +-- audio/
+|   |   +-- video/
+|   |   +-- font-reference/
+|   |
+|   +-- export/
+|       +-- web/
+|       +-- mobile/
+|       +-- desktop/
+|       +-- print/
+|       +-- social/
+|
++-- contracts/
+|   +-- api/
+|   |   +-- openapi/
+|   |   +-- schema/
+|   |   +-- example/
+|   |
+|   +-- taxonomy/
+|   +-- localization/
+|   +-- event/
+|   +-- media/
+|
++-- docs/
+|   +-- 01-project/
+|   +-- 02-governance/
+|   +-- 03-brand/
+|   +-- 04-architecture/
+|   +-- 05-directory/
+|   +-- 06-user-interface/
+|   +-- 07-accounts/
+|   +-- 08-community/
+|   +-- 09-content/
+|   +-- 10-education/
+|   +-- 11-workspaces/
+|   +-- 12-booking/
+|   +-- 13-localization/
+|   +-- 14-research/
+|   +-- 15-business/
+|   +-- 16-operations/
+|   +-- 17-platforms/
+|   +-- 18-policy/
+|   +-- 19-reference/
+|   +-- archive/ (not yet created)
+|
+|   See section 5 for the full file listing per folder.
+|
++-- tools/
+|   +-- script/
+|   +-- validation/
+|   +-- import/
+|   +-- export/
+|   +-- migration/
+|   +-- media/
+|
++-- .github/
+|   +-- workflows/
+|   +-- ISSUE_TEMPLATE/
+|   +-- pull_request_template.md
+|
++-- AGENTS.md
++-- CHANGELOG.md
++-- README.md
++-- .editorconfig
++-- .gitattributes
++-- .gitignore
+
+The repository root is not a Laravel project. The Laravel project begins at apps/web/.
+
+No LICENSE file is added until a licensing decision is explicitly accepted. The current private proprietary repository may remain without a public software license.
+
+================================================================================
+4. SHARED ROOT FOLDERS
+================================================================================
+
+apps/
+Contains separately buildable applications.
+
+assets/source/
+Contains editable master artwork and media sources. Examples include Illustrator files, original PNG references, layered design files, source audio, and source video. These are not automatically deployed.
+
+assets/export/
+Contains approved exports prepared for specific uses. Website copies are still placed under the web application's resources when needed.
+
+contracts/api/
+Contains the agreed API contract shared by Laravel, Flutter, and any later desktop client.
+
+contracts/taxonomy/
+Contains machine-readable shared taxonomy contracts or schemas when several applications need to understand the same stable values.
+
+contracts/localization/
+Contains shared localization keys, locale mappings, and exchange formats. It does not replace each application's native translation files.
+
+contracts/event/
+Contains shared event or webhook definitions.
+
+docs/
+Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.
+
+tools/
+Contains project-maintenance scripts. Application runtime code does not belong here.
+
+.github/
+Contains GitHub automation, issue forms, pull-request templates, and workflow files.
+
+================================================================================
+5. DOCUMENTATION STRUCTURE
+================================================================================
+
+Folders are numbered for logical browsing order; this numbering is a Massage Nexus-specific choice, not a Shared Project Standards requirement. Individual document filenames inside each folder stay unnumbered and unversioned per the Documentation Writing and Management Standard (lowercase, dash-separated, .txt). Only the topic folder gets a number.
+
+docs/
+|
++-- 01-project/
+|   +-- basic-profile.txt
+|   +-- features.txt
+|   +-- file-and-folder-structure.txt
+|   +-- roadmap.txt
+|   +-- simple-checklist.txt
+|   +-- site-structure-map.txt
+|
++-- 02-governance/
+|   +-- ai-assisted-development-workflow.txt
+|   +-- documentation-writing-and-management-standard.txt
+|   +-- edit-system.txt
+|   +-- github-development-and-repository-operations.txt
+|   +-- shared-project-standards.txt
+|   +-- testing-and-quality-assurance-strategy.txt
+|
++-- 03-brand/
+|   +-- brand-and-visual-identity.txt
+|   +-- commercial-design-and-production.txt
+|   +-- mascots.txt
+|   +-- neural-agents.txt
+|   +-- uniforms.txt
+|
++-- 04-architecture/
+|   +-- api-system.txt
+|   +-- cache-and-temporary-data-strategy.txt
+|   +-- database-structure.txt
+|   +-- technology-stack.txt
+|
++-- 05-directory/
+|   +-- product-classification.txt
+|   +-- product-profile.txt
+|   +-- service-classification.txt
+|   +-- service-profile.txt
+|   +-- spa-classification.txt
+|   +-- spa-profile.txt
+|   +-- therapist-classification.txt
+|   +-- therapist-profile.txt
+|
++-- 06-user-interface/
+|   +-- admin-workspace-ui.txt
+|   +-- home-page-ui.txt
+|   +-- spa-profile-ui.txt
+|
++-- 07-accounts/
+|   +-- account-identity-registration-and-authentication-system.txt
+|
++-- 08-community/
+|   +-- comment-system.txt
+|   +-- discussion-system.txt
+|   +-- rating-system.txt
+|   +-- reputation-system.txt
+|   +-- user-rewards-and-gamification.txt
+|
++-- 09-content/
+|   +-- article-writing.txt
+|   +-- news-writing-guide.txt
+|   +-- review-writing.txt
+|   +-- the-resting-leaf.txt
+|
++-- 10-education/
+|   +-- massage-campus.txt
+|
++-- 11-workspaces/
+|   +-- admin-workspace.txt
+|   +-- advertiser-sponsor-workspace.txt
+|   +-- operator-workspace.txt
+|   +-- seller-workspace.txt
+|   +-- therapist-workspace.txt
+|   +-- user-workspace.txt
+|
++-- 12-booking/
+|   +-- booking-and-appointment-system.txt
+|   +-- client-intake-consent-privacy-and-eligibility.txt
+|   +-- payment-cancellation-refund-payout-and-financial-documents.txt
+|   +-- provider-finance-therapist-compensation-and-booking-accounting.txt
+|   +-- provider-scheduling-resource-and-walk-in-management.txt
+|
++-- 13-localization/
+|   +-- language-strategy.txt
+|   +-- translation-system.txt
+|
++-- 14-research/
+|   +-- analytics-statistics-and-measurement-system.txt
+|   +-- data-research-provenance-and-field-verification-system.txt
+|
++-- 15-business/
+|   +-- branded-portal.txt
+|   +-- marketing-strategy.txt
+|   +-- monetization-strategy.txt
+|
++-- 16-operations/
+|   +-- maintenance-and-continuous-operations.txt
+|   +-- support-and-ticketing-system.txt
+|
++-- 17-platforms/
+|   +-- desktop-application.txt
+|   +-- mobile-application.txt
+|   +-- web-application.txt
+|
++-- 18-policy/
+|   +-- nsfw-mature-and-restricted-content-policy.txt
+|   +-- privacy-notice-and-data-protection-requirements.txt
+|   +-- security-architecture-and-information-disclosure-policy.txt
+|   +-- terms-of-use-requirements.txt
+|
++-- 19-reference/
+|   +-- comparable-platforms.txt
+|   +-- data-research-resources.txt
+|
++-- archive/ (not yet created)
+
+This list reflects the documents that exist today. New documents are added to whichever numbered folder matches their topic, following the existing file-naming pattern; a folder is not limited to only the files shown above. docs/archive/ is deliberately unnumbered: it is a lifecycle bucket for superseded documents, not a topic, and does not need to sort alongside the numbered topic folders.
+
+Tracking-document boundaries:
+
+CHANGELOG.md
+Accepted technical changes at the repository root. Not yet created. It is not a diary of every failed attempt.
+
+docs/01-project/roadmap.txt
+Major planned stages and milestone status.
+
+docs/01-project/simple-checklist.txt
+Shorter actionable tasks and completion marks.
+
+Release notes, a decision log, and per-feature implementation records do not have dedicated files yet. When one becomes genuinely useful, place it in the numbered folder matching its topic (a project-wide decision log or release-note file belongs in docs/01-project/, alongside roadmap.txt and simple-checklist.txt) rather than inventing a new top-level folder for it.
+
+docs/archive/
+Superseded documents retained only when historical reference is useful. Archived files are not current authority. Not yet created; create it only when a document is actually being superseded and retained for reference.
+
+================================================================================
+6. LARAVEL WEB APPLICATION ROOT
+================================================================================
+
+apps/web/
+|
++-- app/
++-- bootstrap/
++-- config/
++-- database/
++-- lang/
++-- public/
++-- resources/
++-- routes/
++-- storage/
++-- tests/
++-- vendor/
++-- node_modules/
+|
++-- artisan
++-- composer.json
++-- composer.lock
++-- package.json
++-- package-lock.json
++-- phpunit.xml
++-- vite.config.js
++-- .env
++-- .env.example
++-- .gitignore
+
+vendor/ and node_modules/ are installed dependency folders. Do not edit them manually and do not commit them.
+
+================================================================================
+7. APP FOLDER
+================================================================================
+
+apps/web/app/
+|
++-- Actions/
+|   +-- Article/
+|   +-- Authentication/
+|   +-- Booking/
+|   +-- Finance/
+|   +-- Loyalty/
+|   +-- Payment/
+|   +-- Scheduling/
+|   +-- Contribution/
+|   +-- Establishment/
+|   +-- Media/
+|   +-- Product/
+|   +-- Review/
+|   +-- Service/
+|   +-- Taxonomy/
+|   +-- Therapist/
+|   +-- Translation/
+|   +-- Verification/
+|
++-- Console/
+|   +-- Commands/
+|
++-- Data/
+|   +-- Article/
+|   +-- Booking/
+|   +-- Finance/
+|   +-- Loyalty/
+|   +-- Payment/
+|   +-- Scheduling/
+|   +-- Establishment/
+|   +-- Media/
+|   +-- Product/
+|   +-- Review/
+|   +-- Service/
+|   +-- Therapist/
+|
++-- Enums/
++-- Events/
++-- Exceptions/
++-- Filament/
+|   +-- Pages/
+|   +-- Resources/
+|   +-- Widgets/
++-- Http/
++-- Jobs/
++-- Listeners/
++-- Livewire/
++-- Models/
++-- Notifications/
++-- Policies/
++-- Providers/
++-- Repositories/
++-- Rules/
++-- Services/
++-- Support/
++-- ValueObjects/
+
+Actions/
+Contains one clearly named operation, such as PublishArticle, CreateBooking, MergeService, or ApproveContribution. Use an Action when a single task is called from more than one interface or deserves isolated testing.
+
+Console/
+Contains terminal commands used by developers, scheduled jobs, or operations staff.
+
+Data/
+Contains temporary, labeled packages of information passed between parts of the program. A Data object is not automatically a database record.
+
+Enums/
+Contains small technical fixed choices that rarely change. Multilingual expandable taxonomies do not normally belong here.
+
+Events/
+Represents something that happened, such as BookingConfirmed or ArticlePublished.
+
+Listeners/
+Responds to an Event, such as sending a notification after a booking is confirmed.
+
+Exceptions/
+Contains project-specific errors that need clearer handling.
+
+Filament/
+Contains administration resources, custom pages, and dashboard widgets used by the browser-based workspace.
+
+Http/
+Contains website and API request handling.
+
+Jobs/
+Contains background work, such as media processing, email delivery, search indexing, or AI summary preparation.
+
+Livewire/
+Contains server-driven interactive pages and components.
+
+Models/
+Represents records stored in MongoDB or Azure DocumentDB.
+
+Notifications/
+Defines notices sent through website, email, SMS, or push channels.
+
+Policies/
+Answers whether a particular user may perform an action on a particular record.
+
+Providers/
+Starts or registers application services and framework behavior.
+
+Repositories/
+Contains repeated or complicated data-reading and data-saving operations. A Repository is like a librarian that knows how to find records. It is not required for every simple Model query.
+
+Rules/
+Contains reusable validation checks that Laravel's ordinary validation rules cannot express clearly.
+
+Services/
+Contains larger reusable business or integration work, such as booking coordination, media delivery, moderation, AI calls, and search.
+
+Support/
+Contains small reusable tools shared across several modules, such as money formatting, identifier generation, HTML sanitization, or date handling. It must not become a miscellaneous dumping folder.
+
+ValueObjects/
+Contains small meaningful values with their own rules, such as Money, DateRange, GeoPoint, or LanguageCode, when justified.
+
+================================================================================
+8. HTTP STRUCTURE
+================================================================================
+
+apps/web/app/Http/
+|
++-- Controllers/
+|   +-- Web/
+|   |   +-- Public/
+|   |   +-- Workspace/
+|   |   +-- Admin/
+|   |
+|   +-- Api/
+|   |   +-- V1/
+|   |       +-- App/
+|   |       +-- Partner/
+|   |       +-- Public/
+|   |
+|   +-- Media/
+|
++-- Middleware/
+|
++-- Requests/
+|   +-- Api/
+|   +-- Article/
+|   +-- Booking/
+|   +-- Contribution/
+|   +-- Establishment/
+|   +-- Media/
+|   +-- Product/
+|   +-- Review/
+|   +-- Service/
+|   +-- Therapist/
+|   +-- Translation/
+|   +-- Verification/
+|
++-- Resources/
+    +-- Api/
+        +-- V1/
+            +-- App/
+            +-- Partner/
+            +-- Public/
+
+Controllers/
+Receives a request and returns a response. Controllers should be thin. They should not contain entire business workflows.
+
+Middleware/
+Checks broad request conditions before the Controller or Livewire action continues. Examples include login, active account, language selection, workspace access, rate limiting, and API authentication.
+
+Requests/
+Checks submitted values, such as required fields, valid ratings, allowed file types, dates, and taxonomy codes.
+
+Resources/
+Turns Models or prepared data into controlled JSON for APIs. These are not image resources.
+
+Media Controllers/
+Deliver public, private, or restricted files according to storage and authorization rules.
+
+================================================================================
+9. MODELS
+================================================================================
+
+apps/web/app/Models/
+|
++-- Article/
++-- Booking/
++-- Finance/
++-- Loyalty/
++-- Payment/
++-- Scheduling/
++-- Contribution/
++-- Establishment/
++-- Identity/
++-- Language/
++-- Media/
++-- Product/
++-- Promotion/
++-- Reputation/
++-- Review/
++-- Service/
++-- Taxonomy/
++-- Therapist/
++-- User/ (simple models like User.php can also reside directly under app/Models/)
++-- Verification/
+
+Example model locations:
+
+app/Models/Service/Service.php
+app/Models/Establishment/Establishment.php
+app/Models/Therapist/Therapist.php
+app/Models/Product/Product.php
+app/Models/Media/Media.php
+app/Models/Review/Review.php
+
+A folder may contain the primary Model and closely related embedded-document or relationship Models. Avoid one enormous Models folder once the project grows.
+
+================================================================================
+10. ACTIONS, SERVICES, AND REPOSITORIES
+================================================================================
+
+Example request flow:
+
+Public or API request
+  -> Controller or Livewire page
+  -> Action
+  -> Service
+  -> Repository or Model
+  -> Database or external system
+
+Not every request requires every layer.
+
+Example:
+
+CreateBooking Action
+- receives CreateBookingData;
+- asks BookingService to apply booking rules;
+- uses repositories or Models to read schedules and save the booking;
+- sends an Event;
+- a Listener sends notifications.
+
+Repository meaning:
+A repository is a place where things are stored or collected. In Git, the whole project is a repository. In application code, a Repository class is a focused place for complicated record access.
+
+Use a Repository when:
+- the same complex query appears repeatedly;
+- document-store query logic becomes difficult to read;
+- search can use different backends;
+- testing benefits from replacing a data source;
+- a feature reads several collections in a consistent way.
+
+Do not create a Repository merely to wrap one simple Model call.
+
+================================================================================
+11. SERVICES
+================================================================================
+
+apps/web/app/Services/
+|
++-- Ai/
+|   +-- Client/
+|   +-- Prompt/
+|   +-- Moderation/
+|   +-- Translation/
+|   +-- Usage/
+|
++-- Article/
++-- Authentication/
++-- Booking/
++-- Finance/
++-- Loyalty/
++-- Payment/
++-- Scheduling/
++-- Content/
++-- Contribution/
++-- Establishment/
++-- Localization/
++-- Media/
++-- Moderation/
++-- Notification/
++-- Product/
++-- Promotion/
++-- Reputation/
++-- Review/
++-- Search/
++-- ServiceCatalog/
++-- Taxonomy/
++-- Therapist/
++-- Verification/
+
+app/Services/ is PHP application code. It is different from the public Service module and service_main records.
+
+Booking-related service folders may contain focused coordinators such as:
+- Booking/BookingCoordinator.php
+- Booking/EligibilityService.php
+- Booking/BookingTranslationService.php
+- Scheduling/AvailabilityService.php
+- Scheduling/ResourceReservationService.php
+- Payment/BookingPaymentService.php
+- Loyalty/BookingRewardEventService.php
+- Finance/TherapistCompensationService.php
+
+Private intake authorization and retention logic must not be hidden inside ordinary page components.
+
+================================================================================
+12. SUPPORT
+================================================================================
+
+apps/web/app/Support/
+|
++-- Concerns/
++-- Formatting/
++-- Identifier/
++-- Sanitization/
++-- Time/
++-- Validation/
++-- Demo/
+
+Examples:
+
+Support/Formatting/MoneyFormatter.php
+Formats 1500 PHP as a localized display such as PHP 1,500 or the approved currency style.
+
+Support/Identifier/OpaqueIdentifierGenerator.php
+Creates the approved cryptographically random 16-character base62 internal record identifier.
+MongoDB collections use this value as _id, and related records use the same value in their
+concept-specific *_id references. It replaces counter-based sequential identity.
+
+Internal identifier, public slug, and human reference number remain separate:
+- establishment_main._id is the stable random internal identifier;
+- establishment_slug is the readable public route value, such as lotus-wellness-spa;
+- a booking, ticket, invoice, or other human-facing reference number is created separately only
+  when the feature requires one.
+
+The public spa route may use /spa/{establishment_slug}. APIs and imports may use _id or the
+relationship name establishment_id when stable record identity is required. An establishment
+title is not an identifier and must not be used to decide uniqueness.
+
+Support/Sanitization/HtmlSanitizer.php
+Cleans rich HTML before public display.
+
+Support/Time/Clock.php
+Provides a consistent current-time source for tests and runtime logic.
+
+Support/Concerns/HasPublicSlug.php
+Contains a narrowly reusable behavior used by several Models.
+
+A Support item must be small, reused by several modules, and precisely named. Business logic for one feature stays in that feature's Action or Service folder.
+
+Support/Demo/
+This is the approved temporary location described in Structural Principle 12 (temporary work). Use it only for static, clearly fictional, render-time placeholder content that stands in for a feature's real data layer before the matching Model, Repository, or Service exists, such as Support/Demo/SampleContent.php for the public homepage and spa profile pages before establishment_main and related MongoDB collections exist. A Support/Demo/ class must not be reused as the eventual real data source; delete it and update the calling Controllers or Livewire pages once the real Model-backed data path is built. Do not add unrelated reusable utilities to Support/Demo/.
+
+================================================================================
+13. LIVEWIRE, BLADE, AND PAGE NAVIGATION
+================================================================================
+
+apps/web/app/Livewire/
+|
++-- Pages/
+|   +-- Public/
+|   |   +-- Article/
+|   |   +-- Establishment/
+|   |   +-- Product/
+|   |   +-- Review/
+|   |   +-- Service/
+|   |   +-- Therapist/
+|   |
+|   +-- Workspace/
+|   +-- Admin/
+|
++-- Components/
+|   +-- Editor/
+|   +-- Filter/
+|   +-- Form/
+|   +-- Gallery/
+|   +-- Map/
+|   +-- Media/
+|   +-- Navigation/
+|   +-- Rating/
+|   +-- Table/
+|
++-- Forms/
+
+Matching views:
+
+apps/web/resources/views/livewire/
+|
++-- pages/
+|   +-- public/
+|   +-- workspace/
+|   +-- admin/
+|
++-- components/
+
+Real profile routes remain available for SEO:
+
+/spa/{spa-slug}
+/spa/{spa-slug}/service
+/spa/{spa-slug}/therapist
+/spa/{spa-slug}/contact
+/spa/{spa-slug}/review
+
+Directly opening any route returns a complete server-rendered page.
+
+When the user is already on the profile, Livewire navigation may request the next route in the background and replace the page area without a traditional full browser refresh. Heavy maps, galleries, or review lists may load lazily.
+
+Example structure:
+
+app/Livewire/Pages/Public/Establishment/
+- OverviewPage.php
+- ServicePage.php
+- TherapistPage.php
+- ContactPage.php
+- ReviewPage.php
+
+resources/views/livewire/pages/public/establishment/
+- overview-page.blade.php
+- service-page.blade.php
+- therapist-page.blade.php
+- contact-page.blade.php
+- review-page.blade.php
+
+Shared header and navigation remain separate components rather than being repeated in every page.
+
+================================================================================
+14. FRONTEND RESOURCES
+================================================================================
+
+apps/web/resources/
+|
++-- css/
+|   +-- app.css
+|   +-- component/
+|   +-- feature/
+|   +-- layout/
+|   +-- page/
+|
++-- images/
+|   +-- brand/
+|   +-- icon/
+|   +-- illustration/
+|   +-- placeholder/
+|   +-- social/
+|
++-- js/
+|   +-- app.js
+|   +-- bootstrap.js
+|   +-- core/
+|   +-- component/
+|   +-- editor/
+|   +-- feature/
+|   |   +-- article/
+|   |   +-- booking/
+|   |   +-- comparison/
+|   |   +-- establishment/
+|   |   +-- gallery/
+|   |   +-- map/
+|   |   +-- product/
+|   |   +-- review/
+|   |   +-- service/
+|   |   +-- therapist/
+|   +-- integration/
+|   +-- utility/
+|
++-- prompt/
+|   +-- article/
+|   +-- classification/
+|   +-- moderation/
+|   +-- summary/
+|   +-- translation/
+|
++-- views/
+    +-- layouts/
+    +-- components/
+    +-- livewire/
+    +-- emails/
+    +-- errors/
+    +-- partials/
+
+CSS and JavaScript source files remain under resources/. Vite produces browser-ready output under public/build/. Do not manually edit public/build/.
+
+Official website logo:
+resources/images/brand/massage-nexus-logo.svg
+
+Raster fallback:
+resources/images/brand/massage-nexus-logo.png
+
+Editable Illustrator source:
+repository-root/assets/source/brand/massage-nexus-logo-master.ai
+
+================================================================================
+15. ROUTES
+================================================================================
+
+apps/web/routes/
+|
++-- web.php
++-- api.php
++-- console.php
+|
++-- web/
+|   +-- public.php
+|   +-- workspace.php
+|   +-- booking.php
+|   +-- admin.php
+|
++-- api/
+    +-- v1/
+        +-- app.php
+        +-- partner.php
+        +-- public.php
+
+web.php and api.php are entry files that load the smaller route groups. They should not become giant files containing every route in the platform.
+
+================================================================================
+16. DATABASE AND SEED DATA
+================================================================================
+
+apps/web/database/
+|
++-- factories/
++-- migrations/
++-- seeders/
+    +-- Development/
+    +-- Taxonomy/
+    +-- Test/
+
+Machine-readable source data used by seeders may live under:
+
+apps/web/resources/data/
+|
++-- taxonomy/
++-- seed/
++-- locale/
++-- neural-agent/
+
+Development, test, staging, and production data remain separate.
+
+Do not use production personal data as ordinary development seed data.
+
+================================================================================
+17. LOCALIZATION
+================================================================================
+
+apps/web/lang/
+|
++-- eng/
+|   +-- action.php
+|   +-- authentication.php
+|   +-- error.php
+|   +-- navigation.php
+|   +-- pagination.php
+|   +-- validation.php
+|   +-- service.php
+|   +-- establishment.php
+|   +-- therapist.php
+|   +-- product.php
+|   +-- workspace.php
+|   +-- booking.php
+|   +-- intake.php
+|   +-- payment.php
+|   +-- loyalty.php
+|   +-- finance.php
+|
++-- fil/
+
+Only active locales need full folders immediately. To avoid confusion and duplication, Tagalog (tl) and Taglish are deprecated; the project uses the standard 3-letter ISO codes (e.g., 'eng' for English, 'fil' for Filipino) for all language resources.
+
+Static interface text belongs in these files:
+- menus;
+- buttons;
+- errors;
+- validation;
+- confirmation messages;
+- emails;
+- notifications;
+- workspace labels.
+
+Dynamic content belongs in the database:
+- articles;
+- reviews;
+- profile descriptions;
+- service descriptions;
+- taxonomy labels;
+- media captions;
+- provider descriptions.
+
+Shared localization keys and mapping rules belong under contracts/localization/. Flutter may use generated or mapped Dart localization files while preserving the same conceptual keys.
+
+================================================================================
+18. STORAGE
+================================================================================
+
+apps/web/storage/
+|
++-- app/
+|   +-- public/
+|   +-- private/
+|   |   +-- credential/
+|   |   +-- verification/
+|   |   +-- identity/
+|   |   +-- contract/
+|   |   +-- booking/
+|   |   +-- intake/
+|   |   +-- consent/
+|   |   +-- payment/
+|   |   +-- payout/
+|   |   +-- compensation/
+|   |   +-- invoice/
+|   |   +-- moderation/
+|   |   +-- import/
+|   |
+|   +-- restricted/
+|   +-- quarantine/
+|   +-- temporary/
+|
++-- framework/
++-- logs/
+
+Public files may be linked through Laravel's approved public-storage mechanism.
+
+Private, restricted, quarantine, and temporary files must not be linked into public/storage.
+
+================================================================================
+19. PRIVATE AND RESTRICTED MEDIA DELIVERY
+================================================================================
+
+Suggested code:
+
+app/Http/Controllers/Media/
+- ShowPublicMediaController.php
+- ShowPrivateMediaController.php
+- ShowRestrictedMediaController.php
+
+app/Policies/
+- MediaPolicy.php
+
+app/Services/Media/
+- PublicMediaService.php
+- PrivateMediaService.php
+- RestrictedMediaService.php
+- TemporaryMediaUrlService.php
+
+The browser must not receive a private file location before authorization.
+
+Correct flow:
+
+1. Browser requests a protected media record.
+2. Laravel identifies the user or API client.
+3. MediaPolicy checks permission.
+4. Laravel streams the file or creates a short-lived protected URL.
+5. Unauthorized users receive a denied response.
+6. Sensitive access may be recorded.
+
+Do not:
+- put the original under public/;
+- hide it only with CSS;
+- place the real URL behind a lock overlay;
+- expose the path in JavaScript;
+- depend only on unpredictable filenames;
+- allow directory browsing;
+- cache restricted content publicly.
+
+================================================================================
+20. TESTS
+================================================================================
+
+apps/web/tests/
+|
++-- Feature/
+|   +-- Api/
+|   +-- Public/
+|   +-- Security/
+|   +-- Workspace/
+|   +-- Booking/
+|   +-- Intake/
+|   +-- Payment/
+|   +-- Loyalty/
+|
++-- Integration/
+|   +-- Booking/
+|   +-- Scheduling/
+|   +-- Payment/
+|   +-- Finance/
+|
++-- Unit/
+    +-- Booking/
+    +-- Eligibility/
+    +-- Scheduling/
+    +-- Payment/
+    +-- Loyalty/
+    +-- Finance/
+
+Feature tests:
+Routes, authentication, authorization, complete workflows, rendered pages, and API behavior.
+
+Integration tests:
+Database, search, storage, external provider, and multi-component behavior.
+
+Unit tests:
+Small isolated Actions, Services, Rules, formatters, and Value Objects.
+
+Security tests should include:
+- private-media access;
+- sealed booking-intake access;
+- time-limited therapist disclosure;
+- provider cross-client and cross-provider history denial;
+- eligibility rejection without sensitive provider disclosure;
+- payment, refund, payout, and compensation permissions;
+- role and permission boundaries;
+- API token scopes;
+- unsafe rich HTML;
+- predictable identifier attempts;
+- unauthorized record modification.
+
+================================================================================
+21. FLUTTER MOBILE APPLICATION
+================================================================================
+
+apps/mobile/
+|
++-- lib/
+|   +-- app/
+|   +-- core/
+|   |   +-- api/
+|   |   +-- authentication/
+|   |   +-- localization/
+|   |   +-- navigation/
+|   |   +-- storage/
+|   |   +-- theme/
+|   |
+|   +-- feature/
+|   |   +-- booking/
+|   |   +-- directory/
+|   |   +-- establishment/
+|   |   +-- media/
+|   |   +-- notification/
+|   |   +-- product/
+|   |   +-- review/
+|   |   +-- service/
+|   |   +-- therapist/
+|   |   +-- workspace/
+|   |
+|   +-- shared/
+|   |   +-- component/
+|   |   +-- model/
+|   |   +-- utility/
+|   |
+|   +-- main.dart
+|
++-- assets/
+|   +-- image/
+|   +-- icon/
+|   +-- localization/
+|
++-- test/
++-- integration_test/
++-- android/
++-- ios/
++-- web/
++-- windows/
++-- pubspec.yaml
++-- pubspec.lock
+
+Flutter uses Dart for most application code. Android and iOS folders may contain native code when operating-system features require it.
+
+The mobile application consumes the First-Party App API. It does not connect directly to Azure DocumentDB.
+
+================================================================================
+22. DESKTOP APPLICATION
+================================================================================
+
+apps/desktop/
+
+The accepted application location is apps/desktop/. Create its codebase when desktop implementation
+begins rather than reserving an administration-only application under another name.
+
+The Desktop Application is a general Massage Nexus client. It may provide ordinary user,
+therapist, operator, editorial, moderation, or administrative capabilities according to the
+signed-in person's permissions. It is not named or structured as an admin dashboard.
+
+A desktop application is justified only by requirements such as:
+- substantial offline work;
+- local hardware integration;
+- special bulk local-file processing;
+- workflows that cannot be handled well in a browser.
+
+If started, it receives its own dependency files, tests, and source structure while continuing to use shared contracts and the Laravel API.
+
+================================================================================
+23. API CONTRACTS
+================================================================================
+
+contracts/api/
+|
++-- openapi/
+|   +-- massage-nexus-v1.yaml
+|
++-- schema/
++-- example/
+
+The OpenAPI contract defines:
+- endpoint;
+- request;
+- response;
+- authentication;
+- authorization scope;
+- error format;
+- version;
+- example.
+
+Laravel implements the contract. Flutter and future clients consume it.
+
+Do not copy separate unofficial endpoint descriptions into each application.
+
+================================================================================
+24. SECRETS AND GIT IGNORE
+================================================================================
+
+Local secrets:
+apps/web/.env
+
+Committed template:
+apps/web/.env.example
+
+Possible entries:
+APP_KEY=
+MONGODB_URI=
+AZURE_DOCUMENTDB_CONNECTION_STRING=
+AZURE_STORAGE_CONNECTION_STRING=
+OPENAI_API_KEY=
+MAIL_PASSWORD=
+
+Never commit:
+- .env;
+- production keys;
+- passwords;
+- connection strings;
+- private certificates;
+- signing keys;
+- user uploads;
+- private documents;
+- database dumps;
+- logs;
+- local dependency folders;
+- built temporary output.
+
+Root and application .gitignore rules should cover at least:
+
+.env
+.env.*
+!.env.example
+vendor/
+node_modules/
+public/build/
+public/hot
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/app/private/*
+storage/app/restricted/*
+storage/app/quarantine/*
+storage/app/temporary/*
+storage/app/public/*
+*.key
+*.pem
+*.p12
+*.pfx
+*.dump
+*.backup
+*.bak
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.idea/
+.phpunit.result.cache
+
+Shared editor settings may be committed only when useful to all contributors and free of private paths or secrets.
+
+================================================================================
+25. AI FILE-PLACEMENT RULES
+================================================================================
+
+Before creating a file, an AI contributor must:
+
+1. Search for an existing file with the same responsibility.
+2. Read the nearest relevant README, AGENTS.md instruction, and planning document.
+3. Use the existing feature folder.
+4. Extend a current component when the responsibility is truly the same.
+5. Split an oversized file when responsibilities are different.
+6. Avoid duplicate versions such as FeatureNew, FeatureFinal, FeatureFixed, or FeatureV2 unless formal versioning requires them.
+7. Update tests and documentation with accepted behavior.
+8. Remove unused imports, dead code, abandoned components, and temporary debugging output.
+9. Consolidate active implementation notes before marking a feature complete.
+10. Never create a new top-level folder without updating this document or receiving an explicit accepted decision.
+
+================================================================================
+26. INITIAL REPOSITORY SETUP ORDER
+================================================================================
+
+1. Use the confirmed repository root at C:\code\multiplatform\massage.
+2. Initialize local Git in that folder.
+3. Keep the existing README.md and .gitignore, then add AGENTS.md and shared standards.
+4. Add docs/, contracts/, assets/, and tools/.
+5. Add accepted planning documents.
+6. Add source brand assets.
+7. Create apps/web/ through the approved Laravel installation process.
+8. Commit the clean Laravel baseline.
+9. Add localization, API, storage, and feature foundations.
+10. Add taxonomy machine-readable source data.
+11. Add tests before large feature implementation.
+12. Keep apps/mobile/ and apps/desktop/ unscaffolded until implementation of each accepted
+    application begins.
+
+Connect the local repository to https://github.com/XylonPH/massage after local Git is initialized. AI modification should not begin before a recoverable baseline commit exists.

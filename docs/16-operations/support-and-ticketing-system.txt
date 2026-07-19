@@ -1,0 +1,663 @@
+Title: Massage Nexus Support and Ticketing System
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines the public Support Center, AI-assisted help, ticket intake, complaints, technical-problem reporting, advertiser and paying-provider support, escalation, privacy, and conversion of confirmed defects into internal development work.
+
+Related Documents:
+- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus Maintenance and Continuous Operations
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Privacy Notice and Data Protection Requirements
+- Massage Nexus User Workspace
+- Massage Nexus GitHub Development and Repository Operations
+- Massage Nexus Testing and Quality Assurance Strategy
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+The Support System helps:
+- visitors understand site functionality;
+- users resolve account, profile, review, discussion, language, privacy, and booking questions;
+- contributors submit and track corrections;
+- providers and therapists manage claims and profiles;
+- advertisers and paying customers receive campaign, billing, and account support;
+- people report bugs, complaints, abuse, security concerns, and accessibility problems;
+- staff identify recurring questions, documentation gaps, and defects.
+
+Support is separate from public Discussions, Reviews, private Messages, emergency services,
+formal legal representation, and medical advice.
+
+================================================================================
+2. PUBLIC AND WORKSPACE ROUTES
+================================================================================
+
+Public:
+/support
+/support/search
+/support/article/{article-slug}
+/support/contact
+/support/ticket
+/support/technical-problem
+/support/bug
+/support/account
+/support/provider
+/support/advertiser
+/support/billing
+/support/booking
+/support/payment
+/support/content
+/support/moderation
+/support/privacy
+/support/security
+/support/accessibility
+/support/translation
+/support/data-correction
+/support/status
+
+Authenticated:
+/workspace/support
+/workspace/support/ticket
+/workspace/support/ticket/{ticket-reference}
+/workspace/support/draft
+/workspace/support/closed
+/workspace/support/attachment
+
+Specialized:
+/workspace/provider/support
+/workspace/advertiser/support
+/workspace/support-agent
+/workspace/support-agent/queue
+/workspace/support-agent/escalation
+/workspace/support-agent/knowledge
+/workspace/support-agent/report
+
+Public references must not reveal private ticket identifiers, internal issue numbers, security
+evidence, or staff notes.
+
+================================================================================
+3. SUPPORT CENTER
+================================================================================
+
+The Support Center contains:
+- searchable guidance;
+- task-based help articles;
+- frequently asked questions;
+- account and security guidance;
+- provider and advertiser guidance;
+- booking and payment guidance;
+- data correction and profile claim guidance;
+- accessibility and language guidance;
+- known service status;
+- contact and ticket forms;
+- escalation routes.
+
+Guidance is:
+- public where safe;
+- multilingual according to readiness;
+- versioned by source revision;
+- reviewed after product changes;
+- linked from the affected feature.
+
+Examples:
+- How to add a spa;
+- How to claim a profile;
+- How to report incorrect hours;
+- How to change a password;
+- How advertisers view campaign statistics;
+- How to request billing review.
+
+================================================================================
+4. AI SUPPORT ASSISTANT
+================================================================================
+
+The AI Support Assistant uses:
+- approved public support articles;
+- approved policy explanations;
+- user-visible feature documentation;
+- current service-status information;
+- authorized account context;
+- provider or advertiser plan details visible to the requester;
+- approved troubleshooting procedures.
+
+Process:
+1. identify intent;
+2. determine requester context and authorization;
+3. search approved current knowledge;
+4. answer directly when confidence is sufficient;
+5. ask only necessary clarifying questions;
+6. provide steps and links;
+7. state limitations honestly;
+8. create or escalate a ticket when action or human judgment is needed;
+9. summarize the conversation into the ticket.
+
+AI must not:
+- invent functionality;
+- promise refund, credit, ranking, verification, restoration, or campaign performance;
+- reveal private data without authorization;
+- expose internal technology or security details;
+- provide legal or medical conclusions;
+- close serious complaints automatically;
+- mark a bug fixed without verified deployment.
+
+================================================================================
+5. AI SELF-SERVICE OR ESCALATION
+================================================================================
+
+AI may answer without a human when:
+- approved guidance covers the question;
+- the answer is informational;
+- no sensitive account action is required;
+- no financial adjustment is requested;
+- no serious complaint, safety, privacy, security, or moderation issue is involved;
+- no policy discretion is required.
+
+Examples:
+- How do I add a spa?
+- How do I translate a comment?
+- Where do I see saved providers?
+- What image formats are accepted?
+- Where do I see campaign statistics?
+
+Create or escalate a ticket when:
+- documented steps fail;
+- a bug or technical problem is reported;
+- account ownership is disputed;
+- data needs manual correction;
+- a provider claim needs review;
+- billing, refund, chargeback, or credit needs action;
+- an advertisement is rejected or disputed;
+- content or moderation is contested;
+- harassment, exploitation, doxxing, fraud, or prohibited content is reported;
+- a privacy or security request is made;
+- current documentation does not cover the issue;
+- AI confidence is insufficient.
+
+================================================================================
+6. ESCALATION LEVELS
+================================================================================
+
+Level 0: Automated Information
+- FAQ;
+- feature guidance;
+- public status;
+- basic troubleshooting.
+
+Level 1: General Support
+- ordinary account questions;
+- basic provider assistance;
+- non-sensitive data correction;
+- basic advertiser guidance.
+
+Level 2: Specialist Support
+- billing;
+- campaign;
+- booking;
+- payment;
+- provider verification;
+- technical investigation;
+- translation;
+- accessibility;
+- complex correction.
+
+Level 3: Trust, Safety, Privacy, or Security
+- harassment;
+- exploitation;
+- minors;
+- doxxing;
+- account takeover;
+- identity dispute;
+- privacy request;
+- serious moderation appeal;
+- security report;
+- payment fraud.
+
+Level 4: Owner or Authorized Decision
+Required when:
+- a new policy precedent is created;
+- a major commercial settlement or exception is requested;
+- a permanent platform-wide decision is required;
+- significant legal or reputational risk exists;
+- pricing, scope, or public commitments may change;
+- no approved rule authorizes a lower-level decision.
+
+Owner escalation contains a concise decision summary, relevant evidence, risk, options, and
+requested action rather than an unorganized transcript.
+
+================================================================================
+7. TICKET CATEGORIES
+================================================================================
+
+Suggested categories:
+- general_question;
+- account_access;
+- registration;
+- email_verification;
+- password_recovery;
+- security;
+- privacy_request;
+- profile_claim;
+- data_correction;
+- provider_workspace;
+- therapist_profile;
+- advertiser_account;
+- campaign;
+- billing;
+- invoice;
+- refund;
+- booking;
+- payment;
+- content;
+- review;
+- comment;
+- discussion;
+- moderation;
+- appeal;
+- translation;
+- accessibility;
+- technical_problem;
+- bug_report;
+- performance;
+- mobile_application;
+- web_application;
+- desktop_application;
+- API;
+- partnership;
+- legal_notice;
+- other_triaged.
+
+Other is intake-only and must be reclassified.
+
+================================================================================
+8. TICKET RECORD
+================================================================================
+
+A ticket may contain:
+- private identifier;
+- public reference;
+- requester;
+- requester context;
+- category and subcategory;
+- subject;
+- description;
+- affected feature or record;
+- platform and application version;
+- browser, device, and operating system where relevant;
+- locale and time zone;
+- occurrence time;
+- reproduction steps;
+- expected and actual result;
+- attachments;
+- severity and priority;
+- status;
+- queue and assigned agent;
+- AI summary and confidence;
+- related knowledge article;
+- related internal development issue;
+- internal notes;
+- requester-visible messages;
+- response target;
+- resolution;
+- dates;
+- reopen count;
+- satisfaction;
+- privacy and retention class.
+
+Attachments are scanned, access-controlled, and retained only as needed.
+
+================================================================================
+9. STATUS
+================================================================================
+
+Possible statuses:
+- draft;
+- submitted;
+- awaiting_triage;
+- awaiting_requester;
+- in_progress;
+- awaiting_specialist;
+- awaiting_provider;
+- awaiting_external_service;
+- escalated;
+- resolved;
+- closed;
+- reopened;
+- duplicate;
+- spam;
+- withdrawn.
+
+Resolved means a solution or decision was provided.
+Closed means the ticket lifecycle is complete.
+
+AI sending an answer does not automatically close a ticket.
+
+================================================================================
+10. PRIORITY
+================================================================================
+
+Critical:
+- active compromise;
+- privacy breach;
+- data corruption;
+- payment duplication;
+- outage;
+- immediate-danger prohibited content;
+- privileged account takeover.
+
+High:
+- core workflow unavailable;
+- advertiser spending incorrectly;
+- paid provider cannot use paid operations;
+- booking or payment failure;
+- serious harassment or impersonation;
+- major accessibility blocker.
+
+Normal:
+- functionality question;
+- isolated bug with workaround;
+- data correction;
+- campaign setup question;
+- translation or display issue.
+
+Low:
+- suggestion;
+- cosmetic defect;
+- wording;
+- low-impact inconsistency.
+
+Paying status may affect response targets but never lowers safety priority for non-paying
+users.
+
+================================================================================
+11. ADVERTISER AND PAYING-CUSTOMER SUPPORT
+================================================================================
+
+Paid support may provide:
+- defined response targets;
+- onboarding;
+- campaign setup guidance;
+- billing and invoice help;
+- promotion-review explanation;
+- statistics interpretation;
+- integration support;
+- role assistance;
+- service-credit review under policy;
+- scheduled consultation for eligible plans.
+
+Paid support does not provide:
+- positive reviews;
+- hidden ranking changes;
+- removal of lawful criticism;
+- false verification;
+- private user data;
+- safety-policy exceptions;
+- guaranteed campaign results.
+
+Entitlements must be documented and visible.
+
+================================================================================
+12. COMPLAINT HANDLING
+================================================================================
+
+Complaint types:
+- service;
+- provider;
+- therapist or staff;
+- advertiser;
+- support conduct;
+- moderation;
+- billing;
+- discrimination or accessibility;
+- privacy;
+- content;
+- platform conduct.
+
+Process:
+1. acknowledge;
+2. identify requested outcome;
+3. classify urgency and sensitivity;
+4. preserve evidence;
+5. separate fact from opinion;
+6. avoid retaliation;
+7. assign an impartial reviewer where needed;
+8. gather records;
+9. provide updates;
+10. decide under current policy;
+11. explain the result;
+12. provide appeal or escalation;
+13. record systemic improvement.
+
+Do not promise confidentiality beyond what the process can provide.
+Do not disclose the complainant unnecessarily.
+
+================================================================================
+13. TECHNICAL PROBLEMS AND BUGS
+================================================================================
+
+Request:
+- platform;
+- page or feature;
+- date and time;
+- steps;
+- expected result;
+- actual result;
+- screenshot or recording where safe;
+- browser, device, and version where relevant;
+- repeatability;
+- public error reference;
+- urgency and impact.
+
+Triage:
+1. search known issues and guidance;
+2. reproduce with safe data;
+3. check status and logs;
+4. identify guidance, configuration, data, external service, or software defect;
+5. provide workaround;
+6. create or link internal development work;
+7. inform requester without exposing internals;
+8. verify fix;
+9. close or monitor.
+
+A support ticket is not automatically a GitHub Issue.
+
+Create a private GitHub Issue when:
+- a reproducible defect exists;
+- technical investigation requires development;
+- an accepted feature request needs work;
+- refactoring is required;
+- documentation or tests must change with code.
+
+Only necessary sanitized support data enters GitHub.
+
+================================================================================
+14. SECURITY AND PRIVACY
+================================================================================
+
+Security reports:
+- use a dedicated restricted route;
+- bypass public discussion;
+- preserve evidence;
+- never create a public Issue automatically;
+- receive urgent review;
+- follow coordinated disclosure when adopted.
+
+Privacy requests:
+- may include access, correction, deletion, restriction, objection, withdrawal, portability,
+  and complaint;
+- receive process guidance from AI;
+- require approved identity and legal workflow for final action;
+- must not request excessive identity evidence.
+
+================================================================================
+15. KNOWLEDGE BASE
+================================================================================
+
+Knowledge sources:
+- public Help Center;
+- public policies;
+- approved provider and advertiser guides;
+- current known-issue notices;
+- internal support procedures;
+- restricted specialist guidance.
+
+Each article may record:
+- title;
+- audience;
+- task;
+- source revision;
+- feature;
+- locale;
+- review date;
+- public or restricted visibility;
+- AI-answer eligibility;
+- related ticket categories.
+
+Recurring questions trigger:
+- guidance revision;
+- interface improvement;
+- validation improvement;
+- bug fix;
+- automation;
+- policy clarification.
+
+AI answers only from approved current knowledge.
+
+================================================================================
+16. AUTOMATION
+================================================================================
+
+Possible automation:
+- category suggestion;
+- duplicate detection;
+- knowledge recommendation;
+- language detection;
+- severity suggestion;
+- missing-information prompt;
+- AI draft response;
+- escalation suggestion;
+- sanitized issue draft;
+- response reminders;
+- stale-ticket reminders;
+- satisfaction survey;
+- recurring-problem report;
+- documentation-gap report.
+
+Automation must not:
+- downgrade urgent reports because of sentiment;
+- close tickets solely because they resemble an FAQ;
+- create public issues from private tickets;
+- expose requester data;
+- send irreversible financial or moderation decisions without authorization.
+
+================================================================================
+17. RESPONSE TARGETS
+================================================================================
+
+Suggested initial targets:
+- critical safety or security: immediate acknowledgment and urgent human review;
+- high-impact paid-service failure: same operating day where possible;
+- ordinary paid support: one operating day;
+- ordinary user support: two operating days;
+- low-priority suggestion: acknowledgment without guaranteed personal response.
+
+Do not publish targets until staffing and monitoring can support them.
+
+================================================================================
+18. ANALYTICS
+================================================================================
+
+Measure:
+- volume;
+- category;
+- severity;
+- language;
+- first response;
+- resolution;
+- reopening;
+- escalation;
+- AI-only resolution;
+- AI-to-human handoff;
+- knowledge use;
+- repeated question;
+- bug conversion;
+- satisfaction;
+- paid-plan response performance;
+- backlog.
+
+Do not optimize AI-only resolution by avoiding necessary escalation.
+
+================================================================================
+19. RETENTION AND ACCESS
+================================================================================
+
+Restricted categories include:
+- security;
+- privacy;
+- identity;
+- payment;
+- legal;
+- exploitation;
+- confidential advertiser matters.
+
+Retention depends on support purpose, contract, accounting, dispute, security, and legal
+requirements.
+
+Attachments are not retained indefinitely merely because they were submitted.
+
+================================================================================
+20. TESTING
+================================================================================
+
+Test:
+- ticket creation;
+- public reference;
+- authorization;
+- attachment access;
+- AI retrieval;
+- confidence threshold;
+- escalation;
+- owner routing;
+- paid entitlement;
+- complaint;
+- issue conversion;
+- redaction;
+- security restriction;
+- duplicate detection;
+- notifications;
+- response target;
+- reopening;
+- retention;
+- multilingual guidance;
+- accessibility.
+
+================================================================================
+21. IMPLEMENTATION ORDER
+================================================================================
+
+1. public Support Center;
+2. searchable knowledge base;
+3. contact and ticket intake;
+4. authenticated ticket history;
+5. category and queue;
+6. support-agent workspace;
+7. complaint and technical workflows;
+8. advertiser and provider support;
+9. AI retrieval and draft answers;
+10. controlled AI self-service;
+11. GitHub issue conversion;
+12. analytics;
+13. advanced automation.
+
+================================================================================
+22. CURRENT DIRECTIONS
+================================================================================
+
+- Provide a public Support Center and authenticated ticket system.
+- Use AI for repeated questions and documented feature guidance.
+- Escalate unresolved, sensitive, financial, policy, safety, privacy, security, moderation,
+  complaint, and technical matters.
+- Route precedent-setting decisions to the owner or another authorized decision-maker.
+- Convert confirmed defects into sanitized private GitHub Issues.
+- Give paying advertisers and providers defined support without overriding trust and safety.
+- Use recurring questions to improve guidance and software.

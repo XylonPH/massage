@@ -1,0 +1,2135 @@
+Title: Massage Nexus Marketing Strategy
+Document Version: 1.00
+Date Created: 2026-07-16
+Revision Date: 2026-07-18
+Status: Internal Planning Draft
+Document Description: Combined marketing strategy preserving the accepted requirements of the Marketing and Social Media System and the Marketing and Growth Strategy.
+
+SOURCE DOCUMENTS
+----------------
+- Massage Nexus - 27 - Marketing and Social Media System v0.10.txt (Document Version 0.10; Date Created 2026-07-16; Revision Date 2026-07-16; Status Internal Planning Draft)
+- Massage Nexus - Marketing - Marketing and Growth Strategy v0.10.txt (Document Version 0.10; Date Created 2026-07-18; Revision Date 2026-07-18)
+
+No whole section was exactly duplicated between the two sources. Their complementary scopes are retained below. No direct contradiction requiring removal was identified; each source's open decisions remain preserved in its respective part.
+
+================================================================================
+PART I — MARKETING AND SOCIAL MEDIA SYSTEM
+================================================================================
+
+Related Documents:
+- Massage Nexus - 01 - Basic Profile v1.50
+- Massage Nexus - 03 - Features v1.90
+- Massage Nexus - 04 - Article Writing v1.90
+- Massage Nexus - 08 - Brand and Visual Identity v1.50
+- Massage Nexus - 09 - The Resting Leaf v1.20
+- Massage Nexus - 10 - Mascots v1.20
+- Massage Nexus - 13 - Home Page UI v1.00
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 23 - Advertiser and Sponsor Workspace v0.10
+- Massage Nexus - 29 - News Writing Guide v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working marketing and social media system for Massage Nexus.
+
+It covers brand communication, social accounts, content planning, campaigns, platform announcements, organic posts, paid promotion, partnerships, community interaction, content approval, publishing, analytics, archive, accessibility, security, and AI assistance.
+
+Marketing explains and promotes Massage Nexus. It must not secretly control organic ratings, verification, moderation, reviews, or editorial conclusions.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Marketing and Social Media System should:
+
+- make Massage Nexus recognizable;
+- explain what the platform does;
+- attract users, contributors, establishments, therapists, sellers, advertisers, and partners;
+- direct audiences toward useful website pages;
+- support launches, campaigns, events, articles, comics, profiles, and promotions;
+- preserve a consistent visual and editorial identity;
+- separate organic, editorial, sponsored, and official announcements;
+- support several languages and cultural contexts;
+- measure results without collecting unnecessary private data;
+- prevent account loss, impersonation, and unsafe posting;
+- keep reusable assets and post history organized;
+- allow AI assistance without allowing uncontrolled automatic publishing.
+
+================================================================================
+2. MARKETING BOUNDARIES
+================================================================================
+
+Marketing may promote:
+
+- Massage Nexus as a platform;
+- Services;
+- establishment profiles;
+- therapist profiles;
+- Product profiles;
+- articles;
+- news;
+- reviews;
+- comics;
+- mascots;
+- Massage Campus;
+- Relaxation Rooms;
+- events;
+- campaigns;
+- community participation;
+- approved partners;
+- clearly labeled sponsored content.
+
+Marketing must not:
+
+- purchase or fabricate ratings;
+- hide valid negative reviews;
+- claim verification that does not exist;
+- present paid placement as organic ranking;
+- invent user activity;
+- invent business information;
+- expose private contact or identity information;
+- imply that Massage Nexus directly operates a spa when it does not;
+- imply that fictional characters are real employees or providers;
+- publish serious accusations without editorial and legal review;
+- use copyrighted media without permission.
+
+================================================================================
+3. BRAND FOUNDATION
+================================================================================
+
+Brand Name:
+Massage Nexus
+
+Primary Domain:
+MassageNexus.com
+
+Current Slogan:
+Find Your Next Great Massage.
+
+Future Booking-Oriented Slogan:
+Discover. Book. Relax.
+
+Tagline:
+The leading platform for massage, wellness, and connection.
+
+Primary Theme:
+Ink & Ember
+
+Brand qualities:
+
+- useful;
+- organized;
+- modern;
+- warm;
+- bold;
+- trustworthy;
+- inclusive;
+- curious;
+- professional;
+- not overly corporate;
+- not a generic soft spa brand.
+
+Marketing should balance:
+
+- Ink: structure, clarity, trust, information;
+- Ember: warmth, action, personality, energy;
+- Leaf: recovery, wellness, calm, nature;
+- Nexus: discovery, connection, relationships, platform breadth.
+
+================================================================================
+4. ACCOUNT INVENTORY
+================================================================================
+
+Maintain an internal account inventory for every official account.
+
+Possible platforms:
+
+- Facebook;
+- Instagram;
+- X;
+- TikTok;
+- YouTube;
+- LinkedIn;
+- Threads;
+- Pinterest;
+- Reddit where appropriate;
+- newsletter platform;
+- Google Business Profile if later applicable;
+- app-store developer accounts;
+- other approved regional platforms.
+
+Account inventory fields:
+
+- platform;
+- account name;
+- handle;
+- profile URL;
+- account purpose;
+- public status;
+- owner;
+- administrators;
+- recovery email;
+- recovery phone;
+- two-factor method;
+- creation date;
+- last access review;
+- verified status;
+- notes.
+
+Passwords and recovery codes must not be stored in this document or ordinary project files.
+
+================================================================================
+5. ACCOUNT ROLES
+================================================================================
+
+Possible roles:
+
+Account Owner
+Controls the official account and recovery.
+
+Social Media Manager
+Plans and publishes approved content.
+
+Content Planner
+Creates calendars and campaign plans.
+
+Copywriter
+Drafts post text.
+
+Designer
+Creates approved images and layouts.
+
+Video Editor
+Creates short and long videos.
+
+Community Manager
+Replies, moderates, and escalates.
+
+Analyst
+Reviews performance.
+
+Advertising Manager
+Handles paid campaigns.
+
+Approver
+Approves sensitive or important posts.
+
+Technical Administrator
+Manages integrations and publishing tools.
+
+One person may hold several roles during early operation, but permissions should remain conceptually separate.
+
+================================================================================
+6. ACCOUNT SECURITY
+================================================================================
+
+Every official account should use:
+
+- unique password;
+- password manager;
+- two-factor authentication;
+- controlled recovery email;
+- controlled recovery phone;
+- named administrators;
+- removal of former administrators;
+- periodic access review;
+- backup recovery method;
+- documented ownership;
+- phishing awareness;
+- login alerts where available.
+
+Do not share passwords through:
+
+- chat;
+- email;
+- plain-text documentation;
+- source code;
+- social drafts;
+- screenshots;
+- public issue trackers.
+
+When a team member leaves or loses authority:
+
+- remove access;
+- rotate shared secrets;
+- review scheduled posts;
+- review connected applications;
+- review recovery methods;
+- record the change.
+
+================================================================================
+7. SOCIAL MEDIA VOICE
+================================================================================
+
+The general Massage Nexus voice should be:
+
+- clear;
+- useful;
+- human;
+- confident;
+- curious;
+- respectful;
+- occasionally witty;
+- not fake-cheerful;
+- not overly formal;
+- not full of empty marketing claims.
+
+The exact voice may change by content type.
+
+Platform Announcement:
+Clear and official.
+
+Educational Post:
+Helpful and easy to understand.
+
+Article Promotion:
+Interesting but honest.
+
+Review Promotion:
+Experience-focused and balanced.
+
+The Resting Leaf:
+Natural Taglish and character-driven.
+
+Mascot Post:
+Friendly and playful.
+
+Neural Agent Post:
+Uses the approved Agent's voice while remaining suitable for the platform.
+
+Safety Post:
+Direct, calm, and careful.
+
+Partner Post:
+Professional and clearly disclosed.
+
+================================================================================
+8. CHARACTER AND PERSONA USE
+================================================================================
+
+Neural Agents:
+
+- may write or assist with articles and posts;
+- may provide recurring voice;
+- must be identified when presented as an AI or platform persona;
+- must not be represented as human staff.
+
+Nexus Cast:
+
+- are fictional human characters used for visual storytelling;
+- may appear in staged promotional scenes;
+- must not imply real employment, real credentials, or real service delivery.
+
+Mascots:
+
+- are non-human brand characters;
+- may appear in onboarding, rewards, campaigns, empty states, and playful posts.
+
+The Resting Leaf:
+
+- is an in-universe fictional spa;
+- may be used for comics and illustrative scenarios;
+- must not be presented as a real operating establishment.
+
+================================================================================
+9. CONTENT PILLARS
+================================================================================
+
+Recommended content pillars:
+
+1. Platform and Community
+- launches;
+- new features;
+- milestones;
+- contributor stories;
+- behind-the-scenes work.
+
+2. Service Discovery and Education
+- Service explanations;
+- comparisons;
+- what to expect;
+- safety;
+- etiquette.
+
+3. Establishment Discovery
+- new profiles;
+- updated profiles;
+- local discovery;
+- facilities;
+- verified information.
+
+4. Therapist Discovery
+- professional profiles;
+- credentials;
+- service capabilities;
+- availability;
+- career stories.
+
+5. Products and Wellness Finds
+- Product profiles;
+- oils;
+- tools;
+- linens;
+- equipment;
+- aftercare.
+
+6. Articles and News
+- article promotion;
+- news summaries;
+- practical guides;
+- platform announcements.
+
+7. Reviews and Community
+- review excerpts;
+- discussion prompts;
+- polls;
+- questions;
+- contributor highlights.
+
+8. The Resting Leaf
+- comic strips;
+- cast moments;
+- seasonal stories;
+- short videos.
+
+9. Mascots and Gamification
+- achievements;
+- badges;
+- campaigns;
+- onboarding;
+- Easter eggs.
+
+10. Events and Observances
+- World Massage Day;
+- Spa Day;
+- Global Wellness Day;
+- seasonal campaigns;
+- local events.
+
+11. Business and Professional Support
+- operator guidance;
+- therapist career guidance;
+- seller guidance;
+- marketing education;
+- profile-completion tips.
+
+12. Safety and Trust
+- boundaries;
+- reporting;
+- verification;
+- privacy;
+- scams;
+- misleading claims.
+
+================================================================================
+10. POST TYPES
+================================================================================
+
+Possible post types:
+
+- announcement;
+- article card;
+- news card;
+- Service explainer;
+- profile spotlight;
+- review excerpt;
+- quote card;
+- carousel;
+- infographic;
+- short video;
+- long video;
+- story;
+- poll;
+- quiz;
+- discussion prompt;
+- live session;
+- event reminder;
+- campaign launch;
+- behind-the-scenes post;
+- comic;
+- mascot reaction;
+- user contribution highlight;
+- sponsored post;
+- partner post;
+- correction notice;
+- service interruption notice.
+
+Each post should have one main purpose.
+
+================================================================================
+11. PLATFORM-SPECIFIC ADAPTATION
+================================================================================
+
+Do not publish the exact same post everywhere without review.
+
+Facebook:
+- community discussion;
+- longer captions;
+- events;
+- article links;
+- local discovery.
+
+Instagram:
+- strong visual;
+- carousel;
+- Reel;
+- Story;
+- concise caption;
+- profile discovery.
+
+TikTok:
+- short video;
+- education;
+- character content;
+- trends used carefully;
+- clear captions.
+
+YouTube:
+- explainers;
+- interviews;
+- commercials;
+- long-form video;
+- Shorts.
+
+X:
+- short updates;
+- links;
+- live commentary;
+- support notices;
+- threads.
+
+LinkedIn:
+- business development;
+- platform milestones;
+- partnerships;
+- industry commentary;
+- professional resources.
+
+Pinterest:
+- infographics;
+- wellness guides;
+- visual lists;
+- evergreen articles.
+
+The website remains the main source of truth. Social posts should link to the canonical Massage Nexus page when appropriate.
+
+================================================================================
+12. CONTENT CALENDAR
+================================================================================
+
+The content calendar may contain:
+
+- campaign;
+- content pillar;
+- topic;
+- working title;
+- platform;
+- format;
+- target audience;
+- language;
+- Neural Agent or character;
+- asset;
+- caption;
+- call to action;
+- link;
+- scheduled date;
+- scheduled time;
+- timezone;
+- owner;
+- reviewer;
+- approval status;
+- publication status;
+- performance;
+- reuse date;
+- notes.
+
+Status may include:
+
+- Idea;
+- Planned;
+- Drafting;
+- Designing;
+- Under Review;
+- Approved;
+- Scheduled;
+- Published;
+- Paused;
+- Cancelled;
+- Archived.
+
+================================================================================
+13. CONTENT WORKFLOW
+================================================================================
+
+Recommended workflow:
+
+1. idea;
+2. purpose and target audience;
+3. choose platform and format;
+4. check related website content;
+5. draft caption and visual direction;
+6. create or select media;
+7. verify names, links, dates, prices, and claims;
+8. accessibility review;
+9. brand review;
+10. disclosure review;
+11. approval;
+12. scheduling;
+13. publication;
+14. community monitoring;
+15. performance review;
+16. archive or reuse.
+
+Urgent safety or service notices may use a faster approved workflow.
+
+================================================================================
+14. CAPTION STRUCTURE
+================================================================================
+
+A post may contain:
+
+- opening line;
+- useful context;
+- main information;
+- call to action;
+- disclosure;
+- link;
+- hashtags;
+- accessibility note where needed.
+
+Avoid:
+
+- excessive hashtags;
+- fake urgency;
+- vague calls to action;
+- misleading question bait;
+- unsupported superlatives;
+- repetitive emoji;
+- copying the article's entire introduction.
+
+================================================================================
+15. HASHTAGS AND TAGGING
+================================================================================
+
+Hashtags may support:
+
+- brand;
+- topic;
+- location;
+- event;
+- campaign;
+- Service;
+- profession;
+- wellness interest.
+
+Maintain an approved hashtag list.
+
+Possible brand hashtags:
+
+- #MassageNexus
+- #FindYourNextGreatMassage
+- campaign-specific tags.
+
+Do not tag people or businesses merely to attract attention when the post is unrelated.
+
+Do not imply partnership through tagging alone.
+
+================================================================================
+16. LINKS AND TRACKING
+================================================================================
+
+Use the canonical Massage Nexus URL.
+
+Optional campaign parameters may identify:
+
+- platform;
+- campaign;
+- content;
+- creative;
+- language.
+
+Tracking should not expose private information.
+
+Shortened links should be controlled and trustworthy.
+
+Broken or redirected links should be reviewed.
+
+================================================================================
+17. VISUAL ASSET SYSTEM
+================================================================================
+
+Source assets belong in the approved source-asset archive.
+
+Website-ready or social exports should use approved export folders.
+
+Possible asset groups:
+
+- brand;
+- article;
+- news;
+- Service;
+- establishment;
+- therapist;
+- Product;
+- campaign;
+- comic;
+- mascot;
+- Neural Agent;
+- sponsor;
+- event;
+- template.
+
+Asset metadata may include:
+
+- title;
+- file name;
+- version;
+- source;
+- creator;
+- editor;
+- copyright;
+- permission;
+- AI-use label;
+- platform;
+- aspect ratio;
+- dimensions;
+- alt text;
+- caption;
+- publication date;
+- related content;
+- archive status.
+
+================================================================================
+18. IMAGE AND VIDEO FORMATS
+================================================================================
+
+Common social aspect ratios may include:
+
+- square;
+- portrait;
+- landscape;
+- vertical video;
+- horizontal video;
+- Story format;
+- platform-specific banner.
+
+Create the master at a sufficient resolution, then export platform-specific versions.
+
+Do not stretch one image into every shape.
+
+Text inside images should remain limited and readable.
+
+Important information should also appear in the caption or linked page.
+
+================================================================================
+19. ACCESSIBILITY
+================================================================================
+
+Social content should support:
+
+- alt text;
+- captions;
+- transcript;
+- readable contrast;
+- readable text size;
+- no harmful flashing;
+- clear language;
+- meaningful link text;
+- information not communicated by color alone.
+
+Videos with spoken content should have captions.
+
+Important audio should have a transcript when practical.
+
+Hashtags should use readable capitalization where helpful.
+
+================================================================================
+20. MULTILINGUAL SOCIAL CONTENT
+================================================================================
+
+Possible approaches:
+
+- separate posts by language;
+- one bilingual post;
+- original-language post with translated summary;
+- language-specific account later;
+- language-specific website link.
+
+Avoid stuffing several full translations into one unreadable caption.
+
+Language choice should consider:
+
+- audience;
+- platform;
+- cultural context;
+- campaign;
+- source content;
+- available moderation.
+
+The Resting Leaf remains naturally Taglish unless a culturally adapted version is intentionally created.
+
+================================================================================
+21. COMMUNITY MANAGEMENT
+================================================================================
+
+Community managers may:
+
+- answer questions;
+- thank users;
+- direct users to support;
+- correct misinformation;
+- moderate comments;
+- identify useful feedback;
+- escalate safety concerns;
+- invite discussion;
+- record recurring questions.
+
+Replies should not:
+
+- reveal private account data;
+- diagnose medical conditions;
+- promise unavailable features;
+- argue aggressively;
+- delete criticism merely because it is negative;
+- represent an AI persona as a real employee.
+
+================================================================================
+22. COMMENT MODERATION
+================================================================================
+
+Possible actions:
+
+- leave visible;
+- reply;
+- hide where platform rules permit;
+- remove;
+- report to platform;
+- block account;
+- escalate;
+- preserve evidence.
+
+Moderation reasons may include:
+
+- spam;
+- harassment;
+- threat;
+- impersonation;
+- explicit solicitation;
+- doxxing;
+- fraud;
+- dangerous misinformation;
+- copyright violation;
+- unrelated repetition.
+
+A negative opinion is not automatically a moderation violation.
+
+================================================================================
+23. SOCIAL LISTENING
+================================================================================
+
+Monitor:
+
+- Massage Nexus name;
+- domain;
+- campaign hashtags;
+- major feature names;
+- impersonation;
+- broken links;
+- common complaints;
+- misinformation;
+- safety reports;
+- notable praise;
+- partnership interest.
+
+Social listening should not become invasive monitoring of private individuals.
+
+================================================================================
+24. USER-GENERATED CONTENT
+================================================================================
+
+Before reposting user content, confirm:
+
+- permission;
+- ownership;
+- identifiable people;
+- location;
+- minors;
+- sensitive information;
+- caption accuracy;
+- requested credit;
+- removal process.
+
+A public post does not always mean the user granted permission for commercial reuse.
+
+================================================================================
+25. INFLUENCERS, AMBASSADORS, AND PARTNERS
+================================================================================
+
+Possible relationships:
+
+- Brand Ambassador;
+- Correspondent;
+- Creator Partner;
+- Establishment Partner;
+- Therapist Partner;
+- Product Partner;
+- Event Partner;
+- Sponsor.
+
+Requirements may include:
+
+- written agreement;
+- disclosure;
+- content boundaries;
+- deliverables;
+- payment or in-kind benefit;
+- usage rights;
+- reporting;
+- safety;
+- termination.
+
+Complimentary services must be disclosed when relevant to reviews or endorsements.
+
+================================================================================
+26. ORGANIC, EDITORIAL, AND PAID DISTINCTION
+================================================================================
+
+Organic:
+Chosen by normal editorial or platform relevance without payment.
+
+Editorial:
+Produced or selected through Massage Nexus editorial judgment.
+
+Sponsored:
+Paid or supported by an advertiser or sponsor.
+
+Partner:
+Created with an approved partner relationship.
+
+Affiliate:
+May generate commission through a tracked commercial link.
+
+These labels must remain visible and understandable.
+
+================================================================================
+27. PAID SOCIAL ADVERTISING
+================================================================================
+
+Paid campaigns may support:
+
+- awareness;
+- website traffic;
+- profile discovery;
+- newsletter signup;
+- app launch;
+- event registration;
+- advertiser campaign;
+- recruitment of contributors or providers.
+
+Paid targeting should avoid prohibited sensitive profiling.
+
+Campaigns should define:
+
+- objective;
+- audience;
+- geography;
+- language;
+- budget;
+- creative;
+- landing page;
+- schedule;
+- disclosure;
+- measurement;
+- stop condition.
+
+The Advertiser and Sponsor Workspace governs third-party campaigns.
+
+================================================================================
+28. CAMPAIGN SYSTEM
+================================================================================
+
+A campaign may include:
+
+- name;
+- purpose;
+- target audience;
+- message;
+- visual direction;
+- channels;
+- content series;
+- event;
+- landing page;
+- hashtag;
+- budget;
+- partner;
+- sponsor;
+- start;
+- end;
+- owner;
+- approval;
+- analytics;
+- final report.
+
+Possible campaigns:
+
+- World Massage Day;
+- Spa Day;
+- launch;
+- city-directory expansion;
+- Service education;
+- safety awareness;
+- contributor recruitment;
+- therapist profile completion;
+- establishment verification;
+- product discovery;
+- The Resting Leaf season;
+- Massage Campus launch.
+
+================================================================================
+29. NEWSLETTER
+================================================================================
+
+The newsletter may include:
+
+- latest articles;
+- news;
+- new profiles;
+- updated profiles;
+- Service explainers;
+- reviews;
+- promotions;
+- comics;
+- events;
+- community activity;
+- sponsored placement.
+
+Users should control subscription and frequency.
+
+Marketing email must support unsubscribe and applicable consent requirements.
+
+================================================================================
+30. PRESS AND PUBLIC RELATIONS
+================================================================================
+
+Possible materials:
+
+- company profile;
+- founder bio;
+- press release;
+- media kit;
+- logo pack;
+- screenshots;
+- fact sheet;
+- campaign brief;
+- contact information;
+- approved quotation.
+
+A press release is promotional communication. It is not automatically independent news.
+
+================================================================================
+31. CRISIS AND CORRECTION COMMUNICATION
+================================================================================
+
+Possible issues:
+
+- account compromise;
+- data incident;
+- false rumor;
+- impersonation;
+- major outage;
+- harmful content;
+- partner misconduct;
+- incorrect post;
+- unsafe event.
+
+Response should:
+
+1. verify the issue;
+2. preserve evidence;
+3. stop scheduled posts if needed;
+4. assign one spokesperson;
+5. publish accurate information;
+6. avoid speculation;
+7. correct visibly;
+8. update as facts change;
+9. archive the final communication.
+
+Deleting a wrong post without explanation may be insufficient when many users already saw it.
+
+================================================================================
+32. ANALYTICS
+================================================================================
+
+Possible metrics:
+
+- reach;
+- impression;
+- follower growth;
+- engagement;
+- link click;
+- website session;
+- signup;
+- save;
+- share;
+- comment;
+- video completion;
+- newsletter signup;
+- profile view;
+- contribution;
+- booking inquiry;
+- campaign cost;
+- conversion.
+
+Metrics should connect to a purpose.
+
+Follower count alone is not a complete measure of success.
+
+================================================================================
+33. REPORTING
+================================================================================
+
+A campaign report may include:
+
+- objective;
+- period;
+- channels;
+- published items;
+- best-performing content;
+- weak-performing content;
+- website result;
+- cost;
+- audience;
+- comments and feedback;
+- lessons;
+- recommended next action.
+
+Reports should not hide poor results.
+
+================================================================================
+34. ARCHIVE
+================================================================================
+
+Preserve:
+
+- final caption;
+- published asset;
+- platform;
+- URL;
+- date;
+- campaign;
+- approval;
+- performance summary;
+- correction;
+- takedown reason.
+
+Do not preserve unnecessary user private data merely for marketing history.
+
+================================================================================
+35. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- brainstorm posts;
+- draft captions;
+- adapt tone;
+- suggest headlines;
+- generate alt text;
+- prepare translations;
+- summarize analytics;
+- detect repeated content;
+- suggest calendar balance;
+- prepare image prompts;
+- create first-draft videos or graphics.
+
+AI must not:
+
+- publish automatically without permission;
+- fabricate results;
+- invent partnerships;
+- impersonate a human employee;
+- copy a living creator's work deceptively;
+- create undisclosed testimonials;
+- expose private data;
+- approve its own sensitive campaign.
+
+AI-created or edited media should use the appropriate AI label where required.
+
+================================================================================
+36. AUTOMATION
+================================================================================
+
+Possible future automation:
+
+- scheduled publishing;
+- approved cross-posting;
+- link validation;
+- asset resizing;
+- caption reminders;
+- analytics import;
+- comment alerts;
+- account security alerts;
+- campaign expiration;
+- newsletter assembly.
+
+Automation must not publish unreviewed sensitive content.
+
+================================================================================
+37. FILE AND FOLDER DIRECTION
+================================================================================
+
+Possible repository locations:
+
+docs/marketing/
+docs/social-media/
+docs/campaign/
+assets/source/social/
+assets/export/social/
+apps/web/resources/images/social/
+tools/social/
+
+Possible database-managed records:
+
+- social_account;
+- content_calendar;
+- social_post;
+- campaign;
+- social_asset;
+- social_publication;
+- social_metric;
+- partnership;
+- influencer_relationship.
+
+Final collection names remain subject to Database Structure decisions.
+
+================================================================================
+38. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1:
+- official account inventory;
+- security review;
+- brand templates;
+- content pillars;
+- basic calendar;
+- manual publishing;
+- link tracking;
+- post archive;
+- basic analytics.
+
+Phase 2:
+- campaign records;
+- approval workflow;
+- multilingual planning;
+- newsletter;
+- social listening;
+- community management queue;
+- approved scheduling.
+
+Phase 3:
+- platform integrations;
+- automated analytics;
+- cross-posting;
+- advanced paid campaigns;
+- partner reporting;
+- AI assistance inside the workspace.
+
+================================================================================
+39. CURRENT WORKING DECISIONS
+================================================================================
+
+- The website remains the main source of truth.
+- Social media supports discovery and communication rather than replacing the directory.
+- Organic, editorial, partner, affiliate, and sponsored content remain distinct.
+- Neural Agents, Nexus Cast, mascots, and real people must not be confused.
+- AI may assist but may not publish sensitive content without approval.
+- Account security and ownership must be documented.
+- Marketing cannot alter independent ratings, reviews, verification, or moderation.
+- The first system should use manual controlled publishing before heavy automation.
+- Accessible captions, alt text, and transcripts are part of normal content production.
+
+================================================================================
+40. OPEN DECISIONS
+================================================================================
+
+- final social platforms;
+- exact account handles;
+- account ownership structure;
+- first social media manager;
+- publication frequency;
+- formal approval levels;
+- paid campaign budget;
+- newsletter provider;
+- social scheduling tool;
+- link-tracking format;
+- influencer policy;
+- affiliate policy;
+- crisis spokesperson;
+- language-specific accounts;
+- exact AI disclosure rules;
+- retention of social analytics;
+- first major launch campaign.
+
+================================================================================
+PART II — MARKETING AND GROWTH STRATEGY
+================================================================================
+
+Source Document Description: Defines how Massage Nexus attracts users, spas, therapists, contributors, partners, and advertisers through content, search, social media, field research, community participation, provider outreach, partnerships, public relations, email, paid campaigns, localization, and measurable growth.
+
+Related Documents:
+- Massage Nexus Brand and Visual Identity
+- Massage Nexus Article Writing
+- Massage Nexus Review Writing
+- Massage Nexus The Resting Leaf
+- Massage Nexus Language Strategy
+- Massage Nexus Translation System
+- Massage Nexus Data Research Provenance and Field Verification System
+- Massage Nexus Analytics Statistics and Measurement System
+- Massage Nexus Monetization Strategy
+- Massage Nexus Maintenance and Continuous Operations
+
+================================================================================
+1. POSITIONING
+================================================================================
+
+Massage Nexus is a massage, spa, wellness, and bodywork discovery platform designed to provide
+richer, more current, more structured, and more transparent information than ordinary map
+listings or generic search results.
+
+Primary positioning:
+Find your next great massage.
+
+Differentiators:
+- detailed service and provider information;
+- field research;
+- establishments missing from major maps;
+- source and freshness information;
+- reviews and lived experiences;
+- multilingual access;
+- provider and therapist profiles;
+- comparison;
+- community contributions;
+- booking and operational features later;
+- Massage Nexus original articles, comics, and media.
+
+Marketing should not promise complete global coverage before it exists.
+
+================================================================================
+2. AUDIENCES
+================================================================================
+
+Consumers:
+- people searching for massage or spa services;
+- local residents;
+- commuters and workers;
+- tourists;
+- wellness consumers;
+- people with specific service, facility, access, or budget needs.
+
+Providers:
+- spa owners and managers;
+- independent therapists;
+- home-service providers;
+- wellness centers;
+- resorts and hotels;
+- training schools;
+- sellers;
+- professional associations.
+
+Contributors:
+- reviewers;
+- local researchers;
+- correspondents;
+- translators;
+- photographers;
+- editors;
+- community moderators.
+
+Partners:
+- tourism organizations;
+- wellness brands;
+- payment and booking services;
+- professional organizations;
+- schools;
+- media;
+- advertisers;
+- technology partners.
+
+Each audience needs a distinct message and call to action.
+
+================================================================================
+3. MARKET ORDER
+================================================================================
+
+Primary launch:
+- Mandaluyong City;
+- Metro Manila;
+- wider Philippines.
+
+First international research and marketing pilots:
+- Thailand;
+- Indonesia;
+- selected United States city;
+- United Arab Emirates;
+- Vietnam;
+- Japan.
+
+Marketing follows data readiness.
+
+Do not market a localized country experience before:
+- the language is usable;
+- directory coverage is useful;
+- public guidance exists;
+- reporting and moderation work;
+- local terminology is reviewed;
+- provider and contributor outreach is possible.
+
+================================================================================
+4. MARKETING OBJECTIVES
+================================================================================
+
+- build brand awareness;
+- drive qualified website visits;
+- increase directory use;
+- increase account registration and verification;
+- attract provider claims;
+- attract therapists;
+- attract contributors and correspondents;
+- build review and discussion activity;
+- build newsletter subscribers;
+- increase booking use when available;
+- support monetization;
+- create trust;
+- establish Massage Nexus as a source cited by users, media, search engines, and AI search.
+
+Growth must not depend on spam, fake engagement, misleading rankings, or low-quality
+machine-generated pages.
+
+================================================================================
+5. OWNED CHANNELS
+================================================================================
+
+Primary owned channels:
+- MassageNexus.com;
+- articles;
+- profiles and directories;
+- The Resting Leaf and other comics;
+- newsletter;
+- email;
+- public research and statistics;
+- Help Center and public guidance;
+- provider and contributor workspaces;
+- future mobile application;
+- future API and partner portals.
+
+The website is the main destination.
+
+Social platforms distribute and amplify content but should not become the only place where
+Massage Nexus’s audience can be reached.
+
+================================================================================
+6. SOCIAL MEDIA CHANNELS
+================================================================================
+
+Primary:
+- Facebook;
+- Instagram;
+- TikTok;
+- YouTube.
+
+Secondary:
+- X;
+- Threads;
+- LinkedIn.
+
+Community participation:
+- Reddit;
+- relevant public forums;
+- professional communities;
+- local community groups where participation is allowed.
+
+Messaging and provider outreach:
+- Facebook Messenger;
+- email;
+- Viber where appropriate in the Philippines;
+- WhatsApp for markets where it is commonly used;
+- approved business messaging tools later.
+
+Platform role:
+
+Facebook
+- local discovery;
+- community;
+- articles;
+- provider features;
+- groups;
+- events;
+- longer captions;
+- Messenger.
+
+Instagram
+- visual identity;
+- spa interiors;
+- therapist and provider features;
+- carousel guides;
+- Reels;
+- comics;
+- Stories.
+
+TikTok
+- short discovery;
+- educational clips;
+- myths;
+- field research;
+- quick spa features;
+- comic animation;
+- trends used carefully.
+
+YouTube
+- spa walkthroughs;
+- interviews;
+- long-form explainers;
+- documentaries;
+- reviews;
+- service education;
+- Shorts.
+
+X
+- news;
+- updates;
+- research findings;
+- discussion;
+- real-time industry monitoring;
+- public support where appropriate.
+
+Threads
+- conversational updates;
+- community;
+- article excerpts;
+- behind-the-scenes work.
+
+LinkedIn
+- provider acquisition;
+- industry research;
+- professional partnerships;
+- jobs;
+- business and technology updates.
+
+Reddit and forums
+- genuine participation;
+- research;
+- answering questions;
+- feedback;
+- no spam or disguised advertising.
+
+Do not create an account merely to reserve a handle unless account security and future
+maintenance are planned.
+
+================================================================================
+7. CONTENT PILLARS
+================================================================================
+
+1. Discovery
+- spa profiles;
+- therapist profiles;
+- city guides;
+- service guides;
+- new and missing establishments.
+
+2. Education
+- massage types;
+- expectations;
+- etiquette;
+- safety;
+- boundaries;
+- accessibility;
+- pricing;
+- booking.
+
+3. Experience
+- reviews;
+- visits;
+- interviews;
+- customer stories;
+- provider stories.
+
+4. Research and Data
+- last verified;
+- map gaps;
+- market statistics;
+- social observations;
+- trends;
+- methodology.
+
+5. Community
+- discussions;
+- contributor work;
+- corrections;
+- questions;
+- polls;
+- surveys.
+
+6. Entertainment
+- The Resting Leaf;
+- comics;
+- relatable wellness humor;
+- character content;
+- short videos.
+
+7. Provider Value
+- business guidance;
+- profile claims;
+- menu quality;
+- digital presence;
+- booking operations;
+- marketing;
+- reputation.
+
+8. Products and Wellness
+- massage tools;
+- spa supplies;
+- product education;
+- seller features;
+- affiliate content where disclosed.
+
+================================================================================
+8. CONTENT CADENCE
+================================================================================
+
+After the content system and backlog are stable:
+
+Daily:
+- at least one article;
+- at least one comic;
+- social posts adapted to each primary platform;
+- Stories or short updates where useful;
+- replies and moderation.
+
+Weekly:
+- three to five short videos;
+- one longer video or substantial visual feature when capacity permits;
+- one research or statistics update;
+- one provider or therapist feature;
+- one contributor or community feature;
+- one email digest after newsletter launch;
+- one survey, poll, or question when useful.
+
+Monthly:
+- editorial theme;
+- city or service campaign;
+- public statistics summary;
+- provider acquisition campaign;
+- partnership outreach;
+- performance review.
+
+Maintain a rolling content backlog. Do not lower publication quality to satisfy frequency.
+
+================================================================================
+9. CONTENT REPURPOSING
+================================================================================
+
+One article may produce:
+- Facebook post;
+- Instagram carousel;
+- TikTok or Reel;
+- YouTube Short;
+- X thread;
+- Threads post;
+- newsletter excerpt;
+- infographic;
+- poll;
+- comic reference;
+- translated version.
+
+One field visit may produce:
+- profile update;
+- review;
+- menu and price update;
+- photo set;
+- short video;
+- interview;
+- research note;
+- social post;
+- city guide update.
+
+Repurposing must preserve:
+- source;
+- factual accuracy;
+- consent;
+- NSFW level;
+- sponsorship disclosure;
+- original context.
+
+================================================================================
+10. SEARCH AND DISCOVERY MARKETING
+================================================================================
+
+Search growth should use:
+- useful public profiles;
+- city pages;
+- service pages;
+- articles;
+- current data;
+- multilingual metadata;
+- aliases and local terminology;
+- structured data where appropriate;
+- internal links;
+- clear canonical and alternate-language pages;
+- public research methodology;
+- source and freshness indicators.
+
+Do not create:
+- thin city pages;
+- copied provider descriptions;
+- mass machine-translated pages without review;
+- fabricated reviews;
+- doorway pages;
+- misleading “best” rankings;
+- pages claiming complete coverage without evidence.
+
+Zero-result searches and internal search demand should guide new research and content.
+
+================================================================================
+11. LOCAL AND FIELD MARKETING
+================================================================================
+
+Philippine launch tactics:
+- visit and document local spas;
+- invite providers to claim profiles;
+- provide QR cards or stickers linking to profiles;
+- partner with local establishments;
+- interview therapists and owners;
+- produce Mandaluyong and Metro Manila guides;
+- engage local Facebook groups appropriately;
+- work with local contributors;
+- attend wellness and tourism events;
+- create location-specific press stories;
+- support missing establishments not found on maps.
+
+Field marketing should create genuine data value, not merely promotional photographs.
+
+================================================================================
+12. PROVIDER ACQUISITION
+================================================================================
+
+Provider message:
+- maintain accurate information;
+- reach users searching for the exact service;
+- respond to reviews;
+- show menus, facilities, and policies;
+- receive research corrections;
+- use booking and operational tools later;
+- access analytics;
+- translate profiles;
+- promote transparently.
+
+Acquisition methods:
+- direct email;
+- Messenger;
+- telephone;
+- on-site introduction;
+- professional associations;
+- schools;
+- tourism partners;
+- referral;
+- provider webinars;
+- profile-claim campaigns;
+- free onboarding period;
+- city-by-city outreach.
+
+Do not threaten providers with incomplete or negative profiles to force payment.
+
+================================================================================
+13. THERAPIST AND CONTRIBUTOR ACQUISITION
+================================================================================
+
+Therapist message:
+- stable professional identity;
+- service capability;
+- affiliations;
+- credentials;
+- media;
+- reviews;
+- independent services;
+- professional visibility.
+
+Contributor message:
+- add missing establishments;
+- correct outdated information;
+- translate;
+- document facilities;
+- verify hours and menus;
+- write reviews;
+- contribute photographs;
+- earn appropriate recognition and rewards.
+
+Trust and quality matter more than raw contribution count.
+
+================================================================================
+14. PARTNERSHIPS
+================================================================================
+
+Possible partners:
+- spa and wellness associations;
+- tourism offices;
+- hotel and resort groups;
+- massage schools;
+- professional associations;
+- wellness events;
+- travel publications;
+- local communities;
+- payment and booking providers;
+- product brands;
+- accessibility organizations;
+- universities and researchers.
+
+Partnership types:
+- data contribution;
+- provider onboarding;
+- co-produced guide;
+- research;
+- event;
+- sponsorship;
+- training;
+- referral;
+- API;
+- community campaign.
+
+Partnership does not guarantee favorable reviews, rankings, or verification.
+
+================================================================================
+15. EMAIL AND NEWSLETTER
+================================================================================
+
+Email categories:
+- account and security;
+- booking and transaction;
+- followed provider or service updates;
+- weekly digest;
+- city and service recommendations;
+- contributor assignments;
+- provider operations;
+- promotions with consent;
+- surveys.
+
+Newsletter content:
+- new articles;
+- comic highlights;
+- new and updated profiles;
+- research findings;
+- city guides;
+- community discussions;
+- provider spotlight;
+- upcoming events;
+- public statistics.
+
+Marketing email consent remains separate from required operational email.
+
+================================================================================
+16. PUBLIC RELATIONS
+================================================================================
+
+Possible stories:
+- launch;
+- missing spa data;
+- field research;
+- new city coverage;
+- unusual market findings;
+- accessibility;
+- safety and trust;
+- Filipino massage culture;
+- global massage trends;
+- provider digital readiness;
+- research reports;
+- original statistics;
+- The Resting Leaf and creative work.
+
+Maintain:
+- press page;
+- concise project description;
+- logo assets;
+- founder or operator information when ready;
+- media contact;
+- fact sheet;
+- approved screenshots;
+- correction process.
+
+Do not disclose internal technology or security details unnecessarily.
+
+================================================================================
+17. PAID MARKETING
+================================================================================
+
+Possible channels:
+- search advertising;
+- Facebook and Instagram advertising;
+- TikTok advertising;
+- YouTube advertising;
+- sponsored newsletters;
+- local publisher partnerships;
+- event sponsorship;
+- creator partnerships.
+
+Start with small measurable tests.
+
+Campaign requirements:
+- objective;
+- audience;
+- geography;
+- creative;
+- landing page;
+- budget;
+- conversion;
+- privacy review;
+- frequency limit;
+- end date;
+- post-campaign analysis.
+
+Avoid sensitive targeting based on private health, intake, NSFW, message, or precise-location
+data.
+
+Paid marketing should not compensate for an incomplete product or weak local data.
+
+================================================================================
+18. CREATOR AND INFLUENCER MARKETING
+================================================================================
+
+Possible partners:
+- massage educators;
+- therapists;
+- spa reviewers;
+- wellness creators;
+- travel creators;
+- local community creators;
+- accessibility advocates;
+- tourism creators.
+
+Requirements:
+- disclose payment or free service;
+- preserve honest opinion;
+- confirm permission for filming;
+- protect clients and staff;
+- avoid unsupported medical claims;
+- avoid sexualized or deceptive presentation;
+- identify reused footage;
+- measure qualified referral and conversion rather than follower count alone.
+
+Follower count is not the only selection criterion.
+
+Consider:
+- audience relevance;
+- engagement;
+- trust;
+- location;
+- content quality;
+- massage-related content;
+- disclosure history;
+- safety.
+
+================================================================================
+19. MULTILINGUAL MARKETING
+================================================================================
+
+English is the source and fallback.
+
+Initial local marketing:
+- English;
+- Filipino;
+- approved Taglish style.
+
+Later:
+- Cebuano;
+- Hiligaynon;
+- international languages according to data and market readiness.
+
+Localization includes:
+- wording;
+- examples;
+- prices;
+- cultural expectations;
+- local services;
+- platform choice;
+- campaign timing;
+- legal disclosure;
+- visual context.
+
+Do not translate one campaign literally into every market.
+
+High-risk claims and promotions require human review.
+
+================================================================================
+20. AI-ASSISTED MARKETING
+================================================================================
+
+AI may assist with:
+- content ideas;
+- campaign plans;
+- caption variants;
+- translation drafts;
+- image and video prompts;
+- editing;
+- content repurposing;
+- audience-question analysis;
+- scheduling;
+- newsletter summaries;
+- ad variations;
+- analytics summaries;
+- survey analysis.
+
+AI must not automatically publish:
+- legal claims;
+- medical claims;
+- safety-critical advice;
+- crisis communication;
+- allegations;
+- provider endorsements;
+- sponsorship without disclosure;
+- culturally sensitive translation without review.
+
+Maintain a human approval workflow and cost controls.
+
+================================================================================
+21. COMMUNITY AND REPUTATION
+================================================================================
+
+Marketing participation must not become spam.
+
+Rules:
+- disclose affiliation;
+- answer questions genuinely;
+- link only when useful;
+- do not create fake community accounts;
+- do not fabricate reviews;
+- do not buy followers;
+- do not coordinate harassment;
+- do not remove criticism merely because it is negative;
+- correct misinformation;
+- respond calmly;
+- escalate safety and legal issues.
+
+Create a crisis and correction process for:
+- inaccurate publication;
+- provider dispute;
+- social backlash;
+- account compromise;
+- offensive translation;
+- unsafe content;
+- data breach;
+- failed promotion.
+
+================================================================================
+22. MEASUREMENT
+================================================================================
+
+Measure:
+- website visits;
+- search referrals;
+- AI search referrals;
+- social referrals;
+- direct visits;
+- newsletter growth;
+- registrations;
+- verification;
+- provider claims;
+- contributor activation;
+- profile views;
+- saves;
+- follows;
+- review contribution;
+- booking conversion later;
+- campaign cost;
+- customer acquisition cost;
+- provider acquisition cost;
+- content performance;
+- video completion;
+- engagement;
+- email open and click;
+- retention;
+- paid conversion;
+- survey awareness and trust.
+
+Separate:
+- crawler requests;
+- human visits;
+- social impressions;
+- qualified website actions;
+- paid conversion.
+
+Do not optimize solely for followers or impressions.
+
+================================================================================
+23. LAUNCH SEQUENCE
+================================================================================
+
+Pre-Launch:
+- secure accounts and handles;
+- establish brand templates;
+- prepare backlog;
+- seed Philippine data;
+- recruit early providers and contributors;
+- create email list;
+- prepare launch story;
+- test landing pages;
+- establish analytics.
+
+Private Alpha:
+- invite known users and providers;
+- gather structured feedback;
+- correct data;
+- test content cadence;
+- test moderation;
+- create testimonials only with permission.
+
+Limited Public Beta:
+- focus on Mandaluyong and Metro Manila;
+- publish useful local guides;
+- run provider claim campaign;
+- begin daily article and comic cadence when backlog is ready;
+- begin regular newsletter;
+- seek local press and community partners.
+
+Growth:
+- expand Philippine cities;
+- localize;
+- add international pilots;
+- introduce paid campaigns;
+- align monetization with proven value.
+
+================================================================================
+24. CURRENT DIRECTIONS
+================================================================================
+
+- The website is the primary destination.
+- Facebook, Instagram, TikTok, and YouTube are primary social channels.
+- X, Threads, and LinkedIn are secondary channels.
+- Reddit and forums are for genuine participation, not spam.
+- Publish at least one article and one comic daily after the workflow and backlog are stable.
+- Repurpose content across platforms with platform-specific adaptation.
+- Build a rolling content backlog.
+- Market the Philippines first, beginning with Mandaluyong and Metro Manila.
+- Marketing expansion follows language and data readiness.
+- Field research is both a data advantage and a marketing advantage.
+- Provider acquisition must not use coercion.
+- Paid promotion and creator partnerships require disclosure.
+- AI may assist production but does not replace factual, legal, safety, and cultural review.
+- Measure qualified website and platform actions, not follower count alone.
+
+================================================================================
+25. OPEN DECISIONS
+================================================================================
+
+- final public launch date;
+- final social handles;
+- initial platform staffing;
+- exact daily social cadence;
+- first newsletter schedule;
+- launch campaign theme;
+- provider claim offer;
+- first paid campaign;
+- creator partnership budget;
+- initial referral program;
+- first international marketing pilot;
+- marketing asset-management system;
+- public relations contact;
+- crisis communication owner.

@@ -1,0 +1,375 @@
+Title: Massage Nexus Client Intake, Consent, Privacy and Eligibility
+Document Version: 0.10
+Date Created: 2026-07-17
+Revision Date: 2026-07-17
+Status: Internal Planning Reference
+Shared Standard Reference: Shared Project Standards v2.60
+
+Related Documents:
+- Massage Nexus - 05 - Service Classification v2.00
+- Massage Nexus - 06 - Service Profile v0.20
+- Massage Nexus - 07 - Spa Profile v0.10
+- Massage Nexus - 09 - Therapist Profile v0.10
+- Massage Nexus - 11 - Product Classification v1.40
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+- Massage Nexus - User Rewards and Gamification v1.60
+- Massage Nexus - Translation System v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the private intake, eligibility, consent, access, retention, translation, printing, and safety-information direction for Massage Nexus bookings and walk-in sessions.
+
+The system helps providers identify whether a requested service may proceed, needs adaptation, requires clarification, or should be declined. It does not convert an ordinary massage therapist or spa into a medical clinic and must not imply diagnosis or treatment outside documented professional scope.
+
+================================================================================
+1. SEPARATE DATA AREAS
+================================================================================
+
+Ordinary booking data:
+- provider;
+- service;
+- schedule;
+- participant;
+- therapist;
+- price;
+- policies;
+- contact.
+
+Preference data:
+- pressure;
+- focus area;
+- avoid area;
+- products;
+- attire;
+- draping;
+- conversation;
+- accessibility.
+
+Private intake data:
+- pregnancy;
+- illness;
+- skin integrity;
+- injury;
+- surgery;
+- medication-related caution;
+- intoxication or impaired consent;
+- allergies;
+- current symptoms;
+- other sensitive suitability information.
+
+Provider observation:
+- answers confirmed;
+- measurement;
+- visible concern;
+- adaptation;
+- acceptance or decline;
+- referral note;
+- signature.
+
+These areas must not be collapsed into one unrestricted booking document.
+
+================================================================================
+2. ELIGIBILITY BEFORE PROVIDER DISCLOSURE
+================================================================================
+
+A provider may configure structured eligibility rules.
+
+Examples:
+- provider does not accept pregnant clients for this service;
+- provider accepts pregnancy only with an approved service or condition;
+- provider does not accept clients with active fever or contagious symptoms;
+- provider does not perform a service over active skin lesions;
+- provider requires manual review after recent surgery;
+- provider requires a guardian for a minor;
+- provider or facility is limited to a permitted client access group;
+- service requires a particular professional credential or referral.
+
+Field Name: status_booking_eligibility
+Field Label: Booking Eligibility Result
+Selection: Single-select per participant service line
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+ELG  | Eligible                 | Request may proceed under configured rules.
+ADP  | Eligible with Adaptation | Request may proceed with a permitted modification.
+DSC  | Disclosure Required      | Minimum necessary information must be shared with an authorized provider role.
+REV  | Manual Review            | Authorized provider review is required before submission or confirmation.
+RFR  | Referral Recommended     | Provider cannot accept under ordinary workflow and recommends another service or professional.
+INE  | Ineligible               | Request cannot proceed for the selected provider, service, or context.
+ANS  | Answer Required          | Required eligibility question was not answered.
+UNS  | Uncertain                | Available answers do not support a reliable automated result.
+
+Privacy-preserving rejection:
+- required answers are evaluated through the authorized eligibility service;
+- when the result is Ineligible, the booking is not submitted to the provider;
+- the provider receives no booking and no sensitive reason;
+- the client receives a clear but minimally revealing explanation and may be offered alternatives;
+- an internal audit records the rule result without exposing unnecessary health detail to the provider.
+
+Example:
+"This provider cannot accept the selected service under the information supplied. Your sensitive answer was not sent to the provider."
+
+================================================================================
+3. ELIGIBILITY RULE STRUCTURE
+================================================================================
+
+A rule may specify provider, branch, service, service variant, delivery context, client access group, intake question, accepted answer, outcome, alternative service, message, language, effective date, expiry date, legal or professional source, reviewer, and verification status.
+
+Rules must be enforced server-side. The browser may provide immediate guidance, but client-side logic alone is insufficient.
+
+Rules must not silently discriminate based on irrelevant identity. Client demographic or sex-related access rules should be used only where establishment, facility, service, privacy arrangement, safety policy, or applicable law legitimately requires them.
+
+================================================================================
+4. CLIENT ACCESS AND DEMOGRAPHIC COMPATIBILITY
+================================================================================
+
+Field Name: type_client_access_requirement
+Field Label: Client Access Requirement
+Selection: Multi-select where applicable
+
+Code | Label                        | Description
+-----|------------------------------|------------------------------------------------------------
+ALL  | Open to All Eligible Clients | No additional client-group restriction.
+MEN  | Men Only                     | Provider, facility, or service accepts men only under documented access policy.
+WMN  | Women Only                   | Provider, facility, or service accepts women only under documented access policy.
+ADT  | Adults Only                  | Service or facility is limited to adults.
+MIN  | Minors with Guardian         | Minors are accepted only with guardian requirements.
+GST  | Registered Guests Only       | Access is limited to registered hotel, resort, club, or facility guests.
+MBR  | Members Only                 | Active membership is required.
+REF  | Referral Required            | Approved referral or professional recommendation is required.
+INV  | Invitation or Approval       | Provider approval is required before access.
+
+Client access compatibility should use only the minimum field necessary for the rule. It must not expose the client's broader identity profile to the provider when only an eligibility result is needed.
+
+================================================================================
+5. INTAKE QUESTION RESPONSE
+================================================================================
+
+Field Name: type_intake_answer
+Field Label: Intake Answer
+Selection: Single-select per structured question
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+YES  | Yes               | Statement applies.
+NO   | No                | Statement does not apply.
+UNS  | Unsure            | Client cannot confidently answer.
+DCL  | Prefer Not to Say | Client declines to provide the answer.
+NAP  | Not Applicable    | Question does not apply in the current context.
+TXT  | Explained in Note | Client provides contextual free text.
+
+A provider may configure Unsure or Prefer Not to Say to allow, require clarification, require manual review, or block the selected service. The client must know the consequence before submission.
+
+================================================================================
+6. INTAKE TOPIC GROUPS
+================================================================================
+
+Field Name: group_intake_topic
+Field Label: Intake Topic Group
+Selection: One group per question
+
+Code | Label                           | Description
+-----|---------------------------------|------------------------------------------------------------
+PRG  | Pregnancy and Postpartum        | Pregnancy, possible pregnancy, postpartum status, or adaptation.
+ILL  | Current Illness and Infection   | Fever, flu-like symptoms, contagious condition, or general unwellness.
+SKN  | Skin Integrity                  | Lesion, rash, wound, burn, infection, recent tattoo, or skin concern.
+INJ  | Injury and Surgery              | Recent injury, surgery, fracture, sprain, or recovery restriction.
+MSK  | Musculoskeletal Condition       | Bone, joint, muscle, mobility, or structural concern.
+CVR  | Cardiovascular and Circulatory  | Blood-clot, circulation, cardiovascular, swelling, or pressure-related concern.
+NEU  | Neurological                    | Numbness, altered sensation, seizure history, or neurological concern.
+MED  | Medication and Medical Advice   | Medication, medical restriction, professional advice, or relevant treatment.
+ALG  | Allergy and Sensitivity         | Product, fragrance, ingredient, latex, textile, or environmental sensitivity.
+IMP  | Intoxication and Impairment     | Alcohol, drug, medication, or another condition affecting safety or consent.
+NUT  | Meal and Hydration Timing       | Recent meal, fasting, hydration, or timing relevant to comfort.
+ACC  | Accessibility and Support       | Mobility, communication, sensory, caregiver, transfer, or accessibility need.
+AGE  | Age and Guardian                | Age, guardian consent, guardian presence, or dependent-client handling.
+OTH  | Additional Safety Information   | Provider-approved safety question that does not fit another group.
+
+The list organizes questions. It does not establish diagnoses.
+
+================================================================================
+7. REUSABLE DEFAULTS AND PER-BOOKING CONFIRMATION
+================================================================================
+
+Reusable client preferences may include pressure, focus and avoid areas, preferred medium, fragrance sensitivity, conversation preference, attire and draping preference, accessibility needs, language, and therapist-selection preference.
+
+Time-sensitive intake must be reconfirmed, including current fever, active skin lesion, intoxication, recent recreational-drug use affecting safety, recent injury or surgery, pregnancy status when relevant, medication change, recent meal, or current unusual pain, numbness, or swelling.
+
+Every booking displays saved date, last confirmed date, expiry or reconfirmation requirement, Change, and Confirm No Change.
+
+A stale default must never silently answer a time-sensitive safety question.
+
+================================================================================
+8. PROVIDER INTAKE AND OBSERVATIONS
+================================================================================
+
+Authorized staff may record intake reviewed, answer clarified, client statement, visible concern, affected area, agreed adaptation, service accepted, service changed, service postponed, service declined, referral, measurement, client signature, practitioner signature, and witness.
+
+Field Name: type_provider_intake_outcome
+Field Label: Provider Intake Outcome
+Selection: Single-select
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+ACP  | Accepted          | Service proceeds as requested.
+ADP  | Adapted           | Service proceeds with documented modification.
+CHG  | Service Changed   | Client accepts a different service.
+PST  | Postponed         | Service is deferred.
+DCL  | Declined          | Provider does not perform the service.
+RFR  | Referred          | Client is directed to another provider or professional.
+STP  | Stopped at Intake | Check-in or intake ends before service begins.
+
+Blood pressure, pulse, temperature, or another measurement is optional and provider-configured. The system should not encourage collection without equipment, training, scope, need, and privacy controls.
+
+================================================================================
+9. ROLE-BASED ACCESS
+================================================================================
+
+Client
+- may view submitted answers and consent snapshots;
+- cannot alter a signed historical snapshot;
+- may add an amendment or correction;
+- may revoke future reuse where allowed;
+- may download or request deletion subject to retention rules.
+
+Receptionist
+- sees booking logistics and eligibility result;
+- sees only the minimum prompt needed for check-in;
+- does not automatically see full sensitive history.
+
+Spa owner or general operator
+- sees aggregate and operational status;
+- does not automatically see detailed sensitive intake;
+- may configure templates and retention policy through authorized privacy permission.
+
+Assigned therapist
+- sees the minimum necessary intake and preferences for the assigned participant;
+- access begins at a provider-defined point before service;
+- access expires after the service and documentation window;
+- later access requires authorized reason.
+
+Administrator
+- technical access is restricted, audited, and used only for approved support, security, legal, or incident reasons.
+
+The client should not be locked out of their own information. They may be prevented from editing a signed snapshot, but they retain the right to see what they submitted unless an exceptional legal restriction applies.
+
+================================================================================
+10. TIME-LIMITED DISCLOSURE
+================================================================================
+
+Field Name: status_sensitive_disclosure
+Field Label: Sensitive Disclosure Status
+Selection: Single-select
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+SEA  | Sealed           | Data exists but is not visible to provider staff.
+ELG  | Eligibility Only | Only the eligibility result is visible.
+REL  | Released         | Minimum necessary detail is visible to authorized roles.
+EXP  | Access Expired   | Routine provider access ended.
+LGL  | Legal Hold       | Deletion or access rules are controlled by a documented hold.
+DEL  | Deleted          | Data was deleted according to policy.
+ANO  | Anonymized       | Identifying detail was removed while approved aggregate remains.
+
+Possible release window:
+- after provider acceptance;
+- after therapist assignment;
+- a configured number of hours before service;
+- at check-in;
+- until a configured period after completion.
+
+================================================================================
+11. PROVIDER RETENTION POLICY
+================================================================================
+
+Every booking-enabled provider must choose or accept a retention policy allowed by Massage Nexus and applicable jurisdiction.
+
+Retention may differ for ordinary booking contact, private intake, signed consent, payment record, tax invoice, incident report, minor or guardian record, and clinical or regulated service.
+
+Providers must agree not to disclose private information outside authorized purpose, use intake for marketing, browse unrelated client history, copy data into uncontrolled personal devices or chats, or retain local copies beyond policy.
+
+================================================================================
+12. CONSENT
+================================================================================
+
+Field Name: type_consent
+Field Label: Consent Type
+Selection: One type per consent record
+
+Code | Label                     | Description
+-----|---------------------------|------------------------------------------------------------
+BKG  | Booking Terms             | Client accepts booking workflow and provider terms.
+PRV  | Privacy and Disclosure    | Client acknowledges collection, purpose, access, and retention.
+TRT  | Treatment Consent         | Client consents to selected service within documented scope.
+BDY  | Body-Area Consent         | Client approves or excludes specified body areas.
+DRP  | Draping and Attire        | Client acknowledges agreed attire, undressing, and draping.
+PRD  | Product Use               | Client accepts provider or client-supplied product use.
+GRD  | Guardian Consent          | Authorized guardian consents for a minor or dependent.
+HOM  | Home-Service Access       | Client accepts entry, address, occupant, and home-service terms.
+TRN  | Transport                 | Client accepts provider-arranged transport or off-site movement.
+PAY  | Payment and Cancellation  | Client accepts price, deposit, refund, and cancellation policy.
+TRA  | Translation Acknowledgment| Client acknowledges use and limits of automatic translation.
+MED  | Media Consent             | Client separately consents to photography, recording, or media use.
+
+Consent may be withdrawn during a service where ongoing consent applies.
+
+================================================================================
+13. PRINTING, SIGNATURE, AND PAPER WORKFLOW
+================================================================================
+
+Supported outputs include blank intake form, prefilled intake form, consent form, provider observation sheet, combined booking and intake summary, amendment form, and incident attachment.
+
+Supported execution includes digital signature, typed acknowledgment, checkbox plus recent authentication, stylus signature, paper signature, scanned or photographed signed paper, and witness signature.
+
+Every signed version stores form version, policy version, language, answer snapshot, signature method, signed_at, signer, witness, source device, uploaded copy, hash, and amendment list.
+
+A signature documents disclosure and consent. It does not automatically eliminate provider responsibility or excuse negligent, unsafe, unlawful, or out-of-scope conduct.
+
+================================================================================
+14. TRANSLATION OF INTAKE
+================================================================================
+
+Structured intake questions use approved translations. Free-text safety notes display both original and translation.
+
+Safety-critical translation rules:
+- original text remains visible;
+- automatic translation is labeled;
+- provider may request clarification;
+- client may approve a translation;
+- an interpreter may be recorded;
+- uncertain translation may force Manual Review;
+- automatic translation alone must not produce a diagnosis.
+
+================================================================================
+15. PRIVACY-PRESERVING ANALYTICS
+================================================================================
+
+Approved aggregates may count eligibility rejections, common requested adaptations, form completion, language use, provider response time, cancellation after eligibility, and intake question abandonment.
+
+Analytics must not expose identifiable health answers, rare conditions linked to a person, therapist access history to unauthorized operators, cross-provider client intake, or client identity in benchmark reports.
+
+================================================================================
+16. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial:
+- provider intake template;
+- required questions;
+- eligibility outcome;
+- sealed private answer store;
+- client view;
+- assigned therapist limited access;
+- consent snapshot;
+- print or PDF.
+
+Later:
+- rule engine;
+- provider-specific alternatives;
+- translated free text;
+- time-limited access;
+- measurement records;
+- guardian workflows;
+- incident hold;
+- advanced anonymized analytics.

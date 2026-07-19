@@ -1,0 +1,800 @@
+Title: Massage Nexus Spa Profile Guide
+Document Version: 0.60
+Date Created: 2026-07-14
+Revision Date: 2026-07-19
+Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, and lifecycle of a Massage Nexus spa profile. It distinguishes the public establishment record from the Operator Workspace, Branded Portal, organization record, booking engine, and private operational data.
+
+Related Documents:
+- docs/01-project/features.txt
+- docs/01-project/site-structure-map.txt
+- docs/02-governance/edit-system.txt
+- docs/04-architecture/database-structure.txt
+- docs/05-directory/service-classification.txt
+- docs/05-directory/service-profile.txt
+- docs/05-directory/spa-classification.txt
+- docs/05-directory/therapist-classification.txt
+- docs/05-directory/therapist-profile.txt
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/09-content/review-writing.txt
+- docs/11-workspaces/operator-workspace.txt
+- docs/11-workspaces/user-workspace.txt
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/12-booking/client-intake-consent-privacy-and-eligibility.txt
+- docs/12-booking/payment-cancellation-refund-payout-and-financial-documents.txt
+- docs/12-booking/provider-finance-therapist-compensation-and-booking-accounting.txt
+- docs/12-booking/provider-scheduling-resource-and-walk-in-management.txt
+- docs/13-localization/language-strategy.txt
+- docs/13-localization/translation-system.txt
+- docs/14-research/data-research-provenance-and-field-verification-system.txt
+- docs/15-business/branded-portal.txt
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
+
+The spa profile is the normalized public record used for discovery, comparison, services, prices, therapists, facilities, booking enablement, reviews, ratings, corrections, and establishment history. It is not a branded website, database schema, field catalog, form specification, or public help document. Detailed classification definitions remain in Spa Classification.
+
+================================================================================
+1. PROFILE PURPOSE AND BOUNDARIES
+================================================================================
+
+A spa profile should answer:
+
+- What is the establishment and what kind of spa is it?
+- Where is it and is it operating?
+- What services, prices, packages, and add-ons are offered?
+- Which therapists work there and what do they provide there?
+- What facilities, amenities, treatment areas, access rules, and delivery modes are available?
+- How can a client contact, visit, or book it?
+- What do clients say about it?
+- How current, verified, or disputed is the information?
+- Has it opened, moved, changed name, merged, closed, or been removed?
+
+The profile should remain useful even when the establishment has no website, incomplete media, no direct booking integration, or little online information.
+
+A closed or relocated real establishment may remain visible when the record still prevents confusion or preserves useful history. Closure alone is not a deletion reason.
+
+The following remain separate:
+
+Public Spa Profile
+- normalized discovery and comparison record inside Massage Nexus.
+
+Operator Workspace
+- private area for authorized profile, staff, booking, document, analytics, and operational work.
+
+Branded Portal
+- optional customizable public website or domain using approved Massage Nexus data.
+
+Organization Record
+- legal entity, brand owner, operator, school, hotel, resort, franchise, or network that may control or relate to several establishments.
+
+Profile identity and branch boundary:
+
+- one spa profile normally represents one distinct public establishment or operational location;
+- separate branches with different locations, hours, menus, resources, or operating identities receive separate profiles;
+- branch profiles may connect to one shared brand, organization, franchise, hotel, resort, clinic, school, or network record;
+- reviews, ratings, hours, prices, availability, media, and verification must remain attached to the establishment they actually describe;
+- an organization-level summary must not silently combine branch facts into one establishment profile;
+- a mobile, home-service, event, or other provider without public premises may still have one operational profile when it has a distinct service identity and service area;
+- several brands sharing an address are not automatically one establishment;
+- several counters or departments at one property may share a profile only when they operate as one public service identity with materially shared hours, menu, management, and booking context.
+
+================================================================================
+2. RECOMMENDED PUBLIC PAGE LAYOUT
+================================================================================
+
+A. Identity Header
+
+Show when available:
+
+- official or commonly used spa name;
+- logo, cover image, or fallback image;
+- short description;
+- location summary;
+- establishment status;
+- current open, closed, or hours-unknown state;
+- claim and verification labels;
+- Spa Type;
+- Spa Market Class;
+- key price indication;
+- rating summary and review count;
+- sponsored label when applicable.
+
+Classification labels should remain concise and link to explanations rather than repeating the classification document.
+
+B. Primary Actions
+
+- Book;
+- Contact;
+- Get Directions;
+- Save;
+- Follow;
+- Share;
+- Compare;
+- Suggest a Correction;
+- Report.
+
+A compact mobile action bar may keep the most important actions visible.
+
+C. Main Sections or Tabs
+
+1. Overview
+2. Services and Prices
+3. Therapists and Staff
+4. Availability and Booking
+5. Facilities and Amenities
+6. Treatment Areas
+7. Gallery and Public Documents
+8. Reviews and Ratings
+9. Promotions and Updates
+10. Location and Directions
+11. About, Verification, and Sources
+
+Empty sections may be hidden or replaced by a concise request for information.
+
+================================================================================
+3. IDENTITY, CLASSIFICATION, AND STATUS
+================================================================================
+
+The profile may show:
+
+- official business name;
+- public operating name;
+- former name;
+- alternate name;
+- transliteration or translated explanation;
+- branch or organization relationship;
+- establishment status;
+- Spa Type;
+- Spa Market Class;
+- Physical Setting;
+- Service Delivery Mode, including Provider-Arranged Off-Site where applicable;
+- Access Model;
+- Operation Model;
+- Client Access;
+- Client Focus;
+- claim, verification, moderation, and source context.
+
+Classification follows docs/05-directory/spa-classification.txt.
+
+Important boundaries:
+
+- Spa Type is the establishment's primary identity; additional activity is shown through actual services and facilities.
+- Spa Market Class is comparison context, not a rating or automatic quality judgment.
+- Establishment Status describes real-world operation.
+- Claim, verification, moderation, sponsorship, record lifecycle, and website plan are separate.
+- Price references may be localized by country or market and should not be treated as universal currency conversions.
+
+The public interface must not collapse the following independent states into one generic Active,
+Verified, or Open label:
+
+- Establishment Status: the real-world operating state defined by Spa Classification;
+- Open-Now State: a schedule-derived result such as Open, Closed, Opens Later, Closing Soon,
+  Appointment Only, or Hours Unknown;
+- Profile Lifecycle: draft, published, merged, redirected, restricted, archived, or removed;
+- Moderation State: normal, pending review, limited, quarantined, disputed, or actioned;
+- Claim State: unclaimed, claim pending, claimed, disputed, or claim removed;
+- Verification Facets: independently verified identity, location, contact, hours, menu, business,
+  professional, or booking requirements;
+- Booking State: unavailable, inquiry only, request approval, instant confirmation, external
+  booking, walk-in, waitlist, suspended, or unknown;
+- Sponsorship State: organic or sponsored presentation.
+
+Establishment Status takes precedence over ordinary weekly hours when the establishment is
+temporarily closed, relocated, permanently closed, or suspended. Hours Unknown must not be
+displayed as Closed. Claiming a profile must not be presented as proof that every field is current
+or independently verified.
+
+================================================================================
+4. OPERATING HOURS AND OPEN-NOW STATE
+================================================================================
+
+Public hours may include:
+
+- ordinary weekly hours for each day;
+- more than one opening interval in one day;
+- overnight intervals that end on the following calendar day;
+- appointment-only periods;
+- walk-in hours;
+- last-booking or last-entry time when supplied;
+- service-, department-, facility-, or delivery-mode-specific hours when they materially differ;
+- branch-specific hours;
+- holiday, event, renovation, emergency, and other dated exceptions;
+- temporary closure or restricted-operation periods;
+- effective start and end dates;
+- the establishment's applicable time zone;
+- source, verification state, and last-confirmed date.
+
+Open-now calculations must use the establishment's local time zone, current dated exceptions,
+and establishment status. They must support split and overnight hours without treating the
+interval after midnight as belonging to the wrong day.
+
+Public wording must distinguish:
+
+- Open Now;
+- Closed Now;
+- Opens Later;
+- Closing Soon;
+- Appointment Only;
+- Hours Vary;
+- Temporarily Closed;
+- Restricted Operation;
+- Hours Unconfirmed;
+- Hours Unknown.
+
+Unknown, incomplete, stale, or conflicting hours must not be converted into a confident open or
+closed result. The profile may show the original provider wording and a visible last-confirmed
+date while a correction or verification review is pending.
+
+Detailed editing, exception handling, resources, and staff scheduling belong to
+docs/11-workspaces/operator-workspace.txt and
+docs/12-booking/provider-scheduling-resource-and-walk-in-management.txt.
+
+================================================================================
+5. SERVICES, MENU ITEMS, PRICING, AND PROMOTIONS
+================================================================================
+
+The profile should preserve the establishment's actual commercial menu while connecting supported items to normalized services.
+
+A menu item may include:
+
+- exact provider menu name;
+- provider description;
+- normalized service mapping;
+- duration or selectable durations;
+- price or price range;
+- currency and price basis;
+- whether tax and mandatory fees are included;
+- starting-at, fixed, range, quote-required, member, visitor, package, or promotional context;
+- package or add-on relationship;
+- included tools, products, facilities, or stages;
+- included and selectable massage media or products;
+- paid product upgrades;
+- client-supplied-item policy;
+- eligible therapists;
+- booking restrictions;
+- eligibility, intake, and consent requirements;
+- delivery context;
+- current availability;
+- promotion or price validity period;
+- source and last-confirmed date.
+
+Important distinctions:
+
+- A normalized service describes what the service is.
+- A provider menu item describes how the spa sells it.
+- A package contains several identifiable components.
+- A combination service blends several services in one session.
+- An add-on supplements another item.
+- Price belongs to the commercial offering, not the universal normalized service.
+- An uncertain branded or creative name should remain unmapped rather than guessed.
+- A displayed platform, booking, travel, product, therapist, service, gratuity, tax, or other fee
+  must be identified separately when it is not already included in the displayed price.
+- Optional gratuity must not be represented as a mandatory price component.
+- Converted currency is an estimate unless the provider actually accepts and prices in that
+  currency.
+
+The public profile may display outdated or uncertain prices only with a visible last-confirmed date and appropriate wording.
+
+A promotion may include its exact offer, eligible branch, service or package, public and member
+conditions, booking channel, redemption rule, start and end time, quantity or capacity limit,
+exclusions, applicable price components, and source. Expired promotions must leave active
+discovery and booking surfaces. Sponsored placement must be labeled independently from the
+truth, value, or verification of the offer.
+
+================================================================================
+6. THERAPISTS AND STAFF
+================================================================================
+
+Public therapist cards may show, with appropriate consent:
+
+- public name;
+- approved photo or neutral placeholder;
+- role;
+- exact establishment title;
+- normalized Provider Rank;
+- services available through this establishment;
+- Specialty Focus when relevant;
+- Therapist Service Market Class for this establishment context;
+- therapist-specific price or surcharge;
+- Availability Status;
+- Booking Requirement;
+- link to the therapist's Massage Nexus profile.
+
+Provider Rank is assigned by the establishment or organized provider and may include Trainee, Junior, Regular, Senior, Specialist, Master, or Visiting Expert. The exact title, such as Master Reflexologist, should be preserved separately.
+
+Therapist Service Market Class applies to the therapist's service context at this establishment. It is assigned or confirmed by Massage Nexus and does not permanently rank the therapist across all workplaces.
+
+A spa owner or manager may manage factual information connected to the establishment, including:
+
+- affiliation;
+- work arrangement;
+- provider title and rank;
+- assigned services;
+- schedule;
+- therapist-specific pricing;
+- booking eligibility;
+- public roster status.
+
+The therapist must actively confirm the relationship before their card is displayed on the public spa roster. The therapist may correct, limit, or dispute the relationship. To prevent "ghost rosters" (marketplace abuse), any active disaffiliation or dispute immediately hides the therapist from the public profile and availability pools. The spa does not control the therapist's independent identity, unrelated affiliations, private credentials, or entire profile.
+
+Internal employment, payroll, leave reasons, disciplinary notes, and personal contact details must not be exposed publicly.
+
+================================================================================
+7. PUBLIC AVAILABILITY AND BOOKING PRESENTATION
+================================================================================
+
+The profile presents whether and how the establishment can currently receive an inquiry, booking
+request, confirmed reservation, external booking, walk-in, or waitlist request. The booking engine,
+private intake, payment, provider scheduling, and post-service systems remain governed by the
+authoritative documents in docs/12-booking/.
+
+A. Unclaimed Establishment
+
+An unclaimed profile may support:
+- Personal Appointment Plan in the user's private workspace;
+- Personal Service History;
+- an unconfirmed inquiry through independently verified public contact information;
+- Invite Provider to Claim.
+
+It must not support:
+- live availability;
+- provider acceptance;
+- therapist reservation;
+- payment collection;
+- a statement that the appointment is confirmed.
+
+Required notice:
+"This provider has not claimed or configured booking through Massage Nexus. This entry is not
+a confirmed appointment unless the provider confirms it directly."
+
+B. Claimed but Not Fully Booking-Verified
+
+A claimed establishment may enable Inquiry Only or Request Approval after:
+- authorized owner or manager linkage;
+- verified provider contact;
+- booking policy configuration;
+- staff permissions;
+- service and price review.
+
+Online payment and provider payout remain disabled until the required business, identity,
+financial, tax, policy, and payout configuration is complete.
+
+C. Claimed and Booking-Configured
+
+The establishment may support:
+- Inquiry Only;
+- Request Approval;
+- Instant Confirmation;
+- approved External Booking;
+- Walk-In recording;
+- Waitlist;
+- Provider Manual Booking from phone, chat, paper, or another source.
+
+The public profile may present:
+
+- eligible menu items and selectable durations;
+- available delivery contexts and service locations;
+- therapist-selection modes;
+- group-booking support;
+- next available time or availability summary when safely derived;
+- inquiry, approval, confirmation, external booking, walk-in, and waitlist modes;
+- deposit, prepayment, direct-payment, or pay-on-site requirements;
+- a concise indication that intake, eligibility, consent, policy, age, guardian, accessibility,
+  or other requirements apply;
+- the last time live availability was updated when it is not calculated in real time.
+
+Therapist selection may support:
+- Specific Therapist Required;
+- Specific Therapist Preferred;
+- Provider Selects Therapist;
+- No Preference;
+- Select Later.
+
+The establishment decides which selection modes are available per menu item or booking context.
+
+The profile must not imply that a time is reservable merely because the establishment is open.
+Live availability may be shown only when the booking system has confirmed all required provider,
+therapist, resource, location, travel, capacity, preparation, sanitation, and cleanup constraints.
+
+Public availability should distinguish descriptive profile status from live schedule-derived
+states. Available, Limited Availability, Existing Clients Only, Temporarily Unavailable,
+Inactive, Retired, and Unknown remain profile-level summaries. On Duty, Fully Booked Today,
+queue position, and next slot are derived operational data.
+
+Eligibility and Private Intake Boundary
+---------------------------------------
+The public profile may disclose that eligibility screening, private intake, consent, or manual
+review is required, but it must not expose a person's answers or infer a sensitive condition.
+Sensitive intake remains in the private-intake system under minimum-necessary, time-limited,
+role-aware access. Data must be encrypted in transit and at rest. Administrative access is
+restricted, justified, audited, and available only for approved support, security, legal, or
+incident handling. Detailed rules belong to
+docs/12-booking/client-intake-consent-privacy-and-eligibility.txt and the approved security and
+privacy specifications.
+
+Multilingual Booking Boundary
+-----------------------------
+The initial Philippine-market booking interface supports approved English (eng) and Filipino
+(fil) resources. Additional languages may be activated only when booking, consent, privacy,
+policy, eligibility, and safety translations satisfy the high-risk translation requirements in
+docs/13-localization/language-strategy.txt and docs/13-localization/translation-system.txt.
+
+Free-text notes preserve the original text and language. Any translation must identify its target
+language and method, remain connected to the original, and display an appropriate warning when
+machine generated. A safety-critical translation must not silently replace the original.
+
+The profile may display concise cancellation, deposit, payment, arrival, and external-booking
+notices, but the accepted booking must preserve the authoritative policy and price snapshots.
+Booking documents, walk-in identity handling, payment records, refunds, payouts, loyalty,
+rewards, aftercare, finance, and compensation are governed by their respective booking,
+workspace, and community specifications rather than this profile guide.
+
+================================================================================
+8. FACILITIES, AMENITIES, ACCESSIBILITY, AND TREATMENT AREAS
+================================================================================
+
+The profile may show:
+
+- reception and waiting area;
+- showers;
+- lockers;
+- sauna, steam, bathing, pool, or recovery facilities;
+- refreshments;
+- parking;
+- accessibility features;
+- accepted payment methods;
+- languages supported;
+- house rules;
+- preparation guidance;
+- equipment and treatment surfaces.
+
+Accessibility must be represented through specific known features and limitations rather than
+one generic Accessible value. Relevant public information may include:
+
+- step-free or ramped entrance;
+- doorway and corridor access;
+- lift or elevator access;
+- accessible reception, toilet, shower, changing, and treatment areas;
+- accessible parking or drop-off;
+- treatment-surface transfer considerations;
+- mobility, visual, hearing, communication, or language assistance;
+- service-animal policy where relevant and lawful;
+- advance-notice or companion requirements;
+- known barriers or unavailable features;
+- source and last-confirmed date.
+
+Unknown accessibility information must remain Unknown or Not Confirmed rather than being treated
+as No. Marketing language such as accessible, senior-friendly, or disability-friendly must not
+replace the specific features a visitor needs to assess access.
+
+Each repeatable treatment area may show:
+
+- Treatment Area Type: Enclosed Room, Partitioned Area, Open Area, or Portable Setup;
+- Treatment Privacy Level: Private, Semi-Private, Shared, or Open;
+- Treatment Area Capacity: Individual, Couple, or Group;
+- treatment supports and equipment;
+- scheduling-resource identity where bookable;
+- wet-treatment capability;
+- accessibility features;
+- optional VIP designation;
+- approved photos.
+
+VIP designation, room name, equipment, and accessibility are additional properties rather than substitutes for area type, privacy, or capacity.
+
+================================================================================
+9. LOCATION, ACCESS, AND CONTACT
+================================================================================
+
+The location area may show:
+
+- map pin;
+- public address;
+- building, mall, floor, unit, or entrance instruction;
+- nearby landmark;
+- parking;
+- public transit;
+- directions action;
+- service area for off-site delivery;
+- address language and script when relevant;
+- local time zone;
+- coordinate or geocode confidence when internally available;
+- location correction history when useful.
+
+The pin should represent the actual usable entrance or destination when possible.
+
+For Owner Residence, Residential Unit, home-service, or privacy-sensitive operations:
+
+- exact address visibility must follow consent and safety policy;
+- approximate area may be shown instead;
+- private residential information should not be exposed merely because it exists internally.
+
+Public contact should favor business channels:
+
+- business telephone;
+- business email;
+- Massage Nexus messaging;
+- official website;
+- approved social accounts;
+- external booking link.
+
+Each public contact channel may carry its purpose, normalized value, public display form,
+verification state, source, and last-confirmed date. A verified telephone or email confirms that
+channel; it does not by itself verify the establishment's legal identity, location, menu, hours,
+or booking authority.
+
+Map and direction presentation must distinguish an exact verified entrance, an approximate pin,
+a service-area center, and a privacy-reduced location. Map-provider attribution and usage must
+follow the applicable provider terms. A third-party map listing is evidence, not automatic proof
+that the establishment remains open or that every displayed fact is current.
+
+================================================================================
+10. MEDIA AND PUBLIC DOCUMENTS
+================================================================================
+
+Public media may include:
+
+- logo and cover;
+- exterior and entrance;
+- reception;
+- treatment areas;
+- facilities;
+- service demonstrations;
+- menu and price images;
+- videos;
+- promotions;
+- approved public documents.
+
+Public media metadata should preserve when relevant:
+
+- owner, uploader, source, license, or permitted-use basis;
+- consent or release evidence;
+- represented branch and area;
+- capture or publication date;
+- caption and accessible alternative text;
+- language;
+- content warning or sensitivity classification;
+- ordering and primary-image role;
+- moderation and verification state;
+- last-confirmed date.
+
+Media must not:
+
+- expose clients or staff without permission;
+- show sensitive treatment areas improperly;
+- reveal private records;
+- misrepresent another location;
+- imply services not actually offered;
+- conceal material differences between branches.
+
+Uploaded media must pass the moderation and publication checks appropriate to its source, risk,
+content, contributor trust, and intended visibility. High-risk, disputed, sensitive, apparently
+misattributed, or machine-flagged media enters a quarantine or manual-review queue. Automated
+analysis is not required for every file when approved metadata, checksum, source, or risk-based
+review provides a safer and proportionate workflow.
+
+Public permits, certificates, menus, and other documents must be checked for authority, branch,
+scope, issue or expiry date, and permitted publication. Personal addresses, private telephone
+numbers, identifiers, signatures, account information, and other unnecessary private data must
+be redacted. Watermarking may be applied when appropriate but does not replace authorization,
+redaction, or verification.
+
+Private documents belong in the workspace with explicit access levels and retention rules.
+
+================================================================================
+11. REVIEWS, RATINGS, TRUST, AND RELATED CONTENT
+================================================================================
+
+The profile may include:
+
+- review summary;
+- overall and criteria ratings;
+- editorial reviews;
+- user reviews;
+- owner responses;
+- discussions;
+- corrections;
+- verification and source notes;
+- last meaningful update;
+- similar spas;
+- related therapists;
+- related services;
+- related articles;
+- promotions, vouchers, and gift cards.
+
+Reviews and ratings should preserve the reviewed visit, service, price, therapist, disclosure, and market context when available.
+
+An establishment's Spa Market Class provides review context but must never alter the rating automatically.
+
+The displayed official rating must follow docs/08-community/rating-system.txt, including its
+approved weighted-score method, eligibility, source, recency, moderation, and abuse controls. It
+must not be presented as an unexplained arithmetic average. The interface should identify the
+rating count, applicable establishment or branch, score type, and material limitations. Editorial
+reviews, user reviews, content reactions, private satisfaction feedback, reputation, and the
+official rating remain distinct signals.
+
+================================================================================
+12. SOURCES, VERIFICATION, AND FRESHNESS
+================================================================================
+
+The profile must preserve field-level evidence and freshness according to
+docs/14-research/data-research-provenance-and-field-verification-system.txt and
+docs/02-governance/edit-system.txt.
+
+Relevant properties may include:
+
+- source type, title, link, document, image, interview, or evidence reference;
+- source date and observation date;
+- contributor or researcher;
+- verification method and verifier;
+- confidence;
+- verification status;
+- last checked and last confirmed dates;
+- conflicting observations;
+- field language and translation context;
+- public explanation when useful and safe.
+
+Verification is faceted. The platform may independently verify:
+
+- public identity or operating name;
+- organization or branch relationship;
+- physical location or service area;
+- telephone, email, website, social account, or booking channel;
+- ordinary and exception hours;
+- services, menu, prices, promotions, and facilities;
+- business, professional, permit, or credential evidence;
+- authorized claim relationship;
+- booking, payment, or payout readiness.
+
+No one facet automatically verifies the others. A claimed profile is not necessarily current; an
+unclaimed profile is not necessarily inaccurate; a business-channel verification is not a legal-
+identity verification; and a permit or certificate must not be represented beyond its actual
+authority, branch, scope, or validity period.
+
+Freshness expectations vary by field. Hours, operating status, contact channels, prices,
+promotions, roster relationships, and booking availability normally require more recent evidence
+than historical names or establishment history. Conflicting sources should remain reviewable and
+must not be silently resolved by selecting the most convenient value.
+
+================================================================================
+13. CREATION, CLAIM, EDITING, AND PERMISSIONS
+================================================================================
+
+Public Visitor
+- view, save, follow, share, compare, report, review, rate, and suggest corrections when allowed.
+
+Registered Contributor
+- propose a profile, correction, translation, media, source, duplicate report, or merge request.
+
+Claimed Owner or Authorized Manager
+- manage approved establishment information, services, prices, hours, media, booking, facilities, staff relationships, and provider ranks;
+- submit evidence for Therapist Service Market Class;
+- request renaming, relocation, closure, merge, or correction;
+- cannot erase the public record directly.
+
+Listed Therapist or Staff Member
+- manage permitted parts of their own public relationship;
+- confirm or dispute title, rank, services, schedule, price, or affiliation.
+
+Editor or Moderator
+- review contributions, claims, corrections, translations, ranks, classification evidence, duplicate reports, and sensitive changes according to permission.
+
+Administrator
+- add, edit, translate, restore, merge, soft-delete, and perform approved cleanup after warnings and dependency checks.
+
+================================================================================
+14. DUPLICATES, RELOCATION, MERGE, AND LIFECYCLE
+================================================================================
+
+Duplicate review should compare:
+
+- current and former names;
+- address and map;
+- phone and contact channels;
+- branch identity;
+- ownership or claim evidence;
+- photos and menus;
+- operating period;
+- whether the records represent separate branches, relocation, or renaming.
+
+A merge should:
+
+- select one surviving canonical profile;
+- remove the duplicate from normal discovery;
+- redirect or connect the old route when appropriate;
+- preserve identity, contributions, revisions, and audit history;
+- review each relationship before transfer;
+- stop new booking, rating, reward, claim, and contribution activity on the merged record.
+
+Connections requiring review include therapists, staff, services, prices, reviews, ratings, media, bookings, claims, reports, saves, translations, promotions, articles, discussions, analytics, and audit records.
+
+A real permanently closed or relocated establishment normally remains a visible historical profile. Soft deletion is reserved for invalid, fraudulent, duplicate, test, unsafe, unlawfully published, or otherwise unsuitable records.
+
+Hard deletion requires retention, legal, privacy, safety, audit, and dependency review.
+
+Contribution history should retain a target-name snapshot and indicate whether the profile was merged, removed, restored, or replaced.
+
+================================================================================
+15. CONFLICT OF INTEREST AND PRIVACY
+================================================================================
+
+Owners, managers, staff, and affiliated therapists should not receive points, Embers, Inklings, reputation, or ranking influence for manipulating their own establishment through reviews, ratings, votes, artificial engagement, or reward-seeking corrections.
+
+Official updates, owner responses, staff confirmations, provider-rank submissions, and legitimate corrections may remain allowed when clearly labeled and unrewarded.
+
+Private information includes:
+
+- personal contact details;
+- home address;
+- government identifiers;
+- salary and commission;
+- payroll and tax records;
+- leave reasons;
+- medical details;
+- disciplinary records;
+- private contracts and identity evidence.
+
+A person should not become publicly listed merely because they exist in an internal staff roster.
+
+================================================================================
+16. OPERATOR WORKSPACE RELATIONSHIP
+================================================================================
+
+The Operator Workspace is the permission-aware private context through which authorized owners,
+managers, branch managers, receptionists, media staff, finance staff, therapists, and other
+approved people manage establishment information and operations. Its authoritative specification
+is docs/11-workspaces/operator-workspace.txt.
+
+This profile guide governs what may appear publicly and what public profile behavior must mean.
+The Operator Workspace governs editing interfaces, branch administration, staff permissions,
+private documents, operational queues, booking management, schedules, payments, analytics, and
+other private tools.
+
+The workspace may update provider-controlled profile information, but it must not silently control
+independent reviews, official ratings, community contributions, universal Service identity,
+editorial content, or accepted source history. Direct provider edits remain subject to applicable
+validation, provenance, revision, moderation, and audit rules.
+
+Reception, therapist, manager, finance, and owner permissions remain separate. Public-profile
+delivery must not depend on later finance, payroll, inventory, custom-domain, or other advanced
+workspace modules.
+
+================================================================================
+17. MINIMUM PROFILE COVERAGE AND OPEN ITEMS
+================================================================================
+
+Minimum useful public coverage:
+- identity;
+- classification;
+- establishment and lifecycle status;
+- location;
+- contact;
+- hours;
+- services;
+- prices;
+- therapists;
+- facilities and accessibility;
+- media;
+- reviews;
+- ratings;
+- source, freshness, claim, and verification context;
+- booking-enablement label;
+- basic actions.
+
+Current working decisions:
+- direct Massage Nexus reservation requires a claimed and configured provider;
+- unclaimed profiles may support private planning, history, invitation to claim, and clearly
+  unconfirmed contact inquiry only;
+- booking applies to approved Massage Nexus services, not massage alone;
+- provider menu price must not be silently increased by an undisclosed platform fee;
+- Provider-Arranged Off-Site is a delivery context, not a Spa Type;
+- one distinct branch or operating location normally has one public profile;
+- claim, verification, moderation, lifecycle, establishment status, open-now state, booking state,
+  and sponsorship remain independent.
+
+Open items requiring later legal, implementation, or market validation:
+- live schedule detail shown publicly;
+- Branded Portal limits;
+- public analytics and rankings;
+- public confidence and freshness wording by field type;
+- market-specific rules for permit and certificate display;
+- final profile completeness measurement and missing-information prompts.

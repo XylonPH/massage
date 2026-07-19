@@ -1,0 +1,927 @@
+Massage Nexus Rating System
+===========================
+
+Field            | Value
+-----------------+----------------------------
+Title            | Massage Nexus Rating System
+Document Version | 1.10
+Date Created     | 2026-07-09
+Revision Date    | 2026-07-09
+
+Document Description
+--------------------
+
+This document defines the working Massage Nexus rating system for spas, therapists, products, content reactions, session ratings, reward handling, weighted scoring, rating milestones, reputation-weight connection, rating visual assets, and future award connections.
+
+This document is separate from the Review Writing guide. A review is written experience content. A rating is the score or reaction connected to a target.
+
+Core Principle
+--------------
+
+Massage Nexus ratings should help users understand quality without allowing simple popularity, self-promotion, spam, or repeated voting to dominate the result.
+
+The system should support quick reactions, detailed experience ratings, editorial ratings, booking/session ratings, public score summaries, and future award calculations while keeping the public display understandable.
+
+Rating Families
+---------------
+
+Massage Nexus uses two main rating families.
+
+1 to 10 Ratings
+~~~~~~~~~~~~~~~
+
+The following targets use a 1 to 10 rating system:
+
+- spa;
+- therapist;
+- product.
+
+These are the serious quality ratings. They may affect official scores, profile display, browse/search ranking, future awards, badges, and reputation-related systems.
+
+Thumbs Up / Thumbs Down Ratings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following targets use thumbs up and thumbs down only:
+
+- article;
+- review;
+- news;
+- guide;
+- comic or comic strip;
+- comment;
+- discussion thread;
+- media upload;
+- translation.
+
+These are content reaction ratings. They are not 1 to 10 scores.
+
+A thumbs up or thumbs down means the user found the content useful, helpful, relevant, interesting, fair, accurate, enjoyable, or not.
+
+Not Included as Rateable Items for Now
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following should not be treated as normal rateable items in this version:
+
+- profile correction;
+- service listing;
+- factual contribution;
+- submitted establishment information;
+- submitted therapist information;
+- submitted product information.
+
+These are contributions that may need verification, approval, or contribution scoring, but not public thumbs up/down rating in this version.
+
+Rating, Review, and Reputation
+------------------------------
+
+These should remain separate.
+
+Concept    | Meaning
+-----------+-----------------------------------------------------------------------------------------------------------
+Rating     | The score or reaction given by a user, editor, correspondent, owner, or system-supported actor.
+Review     | A written experience-based evaluation.
+Reputation | A long-term trust signal affected by ratings, helpfulness, moderation, behavior, and contribution quality.
+
+When someone rates a review with thumbs up or thumbs down, they are rating the review content.
+
+That content rating may later affect the Review Author’s reputation, but the rating itself is not the same as reputation.
+
+When someone rates a spa, therapist, or product, they are rating the target, not automatically rating the owner, seller, or business account personally.
+
+Rating Visibility and Anonymity
+-------------------------------
+
+Ratings are anonymous publicly.
+
+This means:
+
+- the public should not see who rated;
+- spa owners should not see who rated their spa;
+- therapists should not see who rated them;
+- sellers or product owners should not see who rated their product;
+- authors should not see exactly who rated their content;
+- users can see their own rating history;
+- admins and authorized moderators may see rating records internally when needed.
+
+Anonymous public display does not mean anonymous to the system.
+
+1 to 10 Rating Modes
+--------------------
+
+Spa, therapist, and product ratings may use either a simple rating or a criteria rating.
+
+Simple Rating
+~~~~~~~~~~~~~
+
+A simple rating is one overall score from 1 to 10.
+
+It is faster to submit but less useful than a criteria rating.
+
+Criteria Rating
+~~~~~~~~~~~~~~~
+
+A criteria rating uses five 1 to 10 scores.
+
+It provides richer data, supports fairer scoring, and can support future category-based awards.
+
+For official scoring, a criteria rating should count more strongly than a simple rating.
+
+Completeness Weight
+~~~~~~~~~~~~~~~~~~~
+
+Rating Mode     | Completeness Weight
+----------------+--------------------
+Criteria rating | 1.00
+Simple rating   | 0.60
+
+If both simple and criteria data exist for the same target and same user period, criteria data should be preferred.
+
+Spa Rating Criteria
+-------------------
+
+Spa ratings use five criteria.
+
+Criterion   | Meaning
+------------+-------------------------------------------------------------------------------------------------------------------
+Cleanliness | Hygiene, linens, smell, bathroom condition, visible sanitation, and general physical cleanliness.
+Comfort     | Ambience, room setup, noise, temperature, relaxation, and how easy it is to settle into the experience.
+Privacy     | Room separation, discretion, draping-related environment, safety, and whether the client feels properly protected.
+Service     | Reception, booking, waiting, handoff, staff handling, organization, and overall service flow.
+Value       | Whether the experience fits the price, class, service promise, and user expectation.
+
+Use Service, not “Service Flow.”
+
+Spa criteria are for spa or massage-establishment experience. They should not be used as generic criteria for all establishments in every future project. A restaurant, clinic, hotel, or different business type may need its own criteria.
+
+Therapist Rating Criteria
+-------------------------
+
+Therapist ratings use five criteria.
+
+These criteria apply to both spa-employed therapists and freelance therapists.
+
+Criterion       | Meaning
+----------------+------------------------------------------------------------------------------------------------------------------
+Technique       | Massage skill, bodywork quality, flow, and ability to perform the intended service.
+Pressure        | Pressure control, adjustment, sensitivity, and ability to respond to the client’s requested intensity.
+Professionalism | Hygiene, boundaries, presentation, respect, and appropriate conduct.
+Communication   | Listening, checking in, explaining when needed, and understanding the client’s requests.
+Reliability     | Punctuality, focus, consistency, preparedness, and not repeatedly leaving, delaying, or interrupting the session.
+
+Therapist ratings should focus on the therapist, not the spa environment.
+
+Product Rating Criteria
+-----------------------
+
+Product ratings use five criteria.
+
+Criterion     | Meaning
+--------------+--------------------------------------------------------------------------------------
+Quality       | Material, build, formulation, durability, consistency, and general product condition.
+Effectiveness | Whether the product does what it claims or is expected to do.
+Safety        | Skin or body comfort, irritation risk, stability, safe use, and user confidence.
+Usability     | Ease of use, practicality, handling, fit, packaging, and convenience.
+Value         | Whether the product is worth the price.
+
+Product criteria must work across many product types, including oils, tools, chairs, towels, uniforms, massage equipment, spa accessories, and senior-care or wellness-related items.
+
+Product ratings do not normally decay over time. If a product significantly changes, it should be treated as a new product or product version.
+
+1 to 10 Rating Scale Labels
+---------------------------
+
+Massage Nexus uses a 1 to 10 rating scale for spa, therapist, and product ratings. The score should remain numeric first, but each number may also have a short label for interface display, explanation, filters, visual assets, and public-facing interpretation.
+
+The current accepted rating labels are:
+
+Score | Label     | General Meaning
+------+-----------+---------------------------------------------------------------------------------------------------
+1     | Fractured | Very poor, broken, unsafe, misleading, or deeply unsatisfactory.
+2     | Dim       | Poor and clearly below acceptable expectations.
+3     | Low       | Weak, disappointing, or seriously lacking.
+4     | Uneven    | Mixed but leaning negative; some acceptable parts, but too many problems.
+5     | Fair      | Acceptable but ordinary, limited, or not especially recommendable.
+6     | Promising | Some good qualities, but still needs improvement or consistency.
+7     | Good      | Solid, useful, and generally positive.
+8     | Strong    | Clearly good, reliable, and worth considering.
+9     | Excellent | Very high quality with only minor issues, if any.
+10    | Signature | Exceptional, memorable, and strongly representative of the best experience expected for its class.
+
+The label does not replace the numeric score. Public display may show both, such as:
+
+Code block (text):
+    8 / 10 — Strong
+
+For criteria ratings, each criterion receives a 1 to 10 numeric score. The overall event score may display the matching label after averaging or rounding according to the public display rule.
+
+
+
+No Thumbs Up / Down for Spa, Therapist, or Product
+--------------------------------------------------
+
+Spa, therapist, and product targets should not have thumbs up/down as their main rating system.
+
+They should use:
+
+- simple 1 to 10 rating; or
+- criteria-based 1 to 10 rating.
+
+Optional “would recommend” voting is not part of this version.
+
+Who Can Rate
+------------
+
+Guests
+~~~~~~
+
+Guests should not be allowed to submit official ratings.
+
+Guests may browse ratings and may later have temporary analytics interactions, but guest activity should not affect official scores.
+
+Registered Users
+~~~~~~~~~~~~~~~~
+
+Registered users may rate.
+
+New registered users may rate, but their ratings may have lower weight or stronger screening until they build trust.
+
+Editorial and Review Correspondents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Editorial ratings and Review Correspondent ratings may carry higher weight because they are more structured and are expected to follow platform standards.
+
+Owners, Therapists, Sellers, and Connected Parties
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Connected parties may rate their own connected record, but the rating should have very low official weight.
+
+This allows engagement without allowing self-promotion to control the official score.
+
+Examples:
+
+- a spa owner may rate their own spa;
+- a therapist may rate their own therapist profile;
+- a seller or product owner may rate their own product;
+- a connected staff member may rate a spa they are attached to.
+
+However, their ratings should be clearly treated as connected or self-interested signals in the scoring system.
+
+Actor and Connection Weights
+----------------------------
+
+Working starting weights:
+
+Actor / Relationship                           | Weight
+-----------------------------------------------+-------
+Editorial rating / Review Correspondent rating | 2.00
+Normal registered user                         | 1.00
+Connected staff                                | 0.15
+Owner / self-rating                            | 0.05
+
+User reputation may modify the normal registered user weight later.
+
+Editorial rating should remain the strongest ordinary rating type.
+
+Connected staff and owner/self ratings should not unlock a public official score by themselves.
+
+Reputation Weight
+-----------------
+
+Normal registered-user rating weight increases or decreases based on the user’s Reputation Level. Reputation affects the trust weight used in XCES, but it should not make normal user ratings stronger than editorial ratings.
+
+Reputation Level | Label         | XCES Trust Weight
+-----------------+---------------+------------------
+1                | Unsettled     | 0.50
+2                | Warming Up    | 0.75
+3                | Balanced      | 1.00
+4                | Grounded      | 1.10
+5                | Steady Hands  | 1.20
+6                | Trusted Touch | 1.30
+7                | Guiding Hand  | 1.40
+8                | Nexus Pillar  | 1.50
+
+Editorial rating / Review Correspondent rating remains stronger than ordinary user reputation weight.
+
+If a user has a reputation status modifier such as Under Review, Limited, Frozen, or Restricted, the effective trust weight may be paused, reduced, disabled, or temporarily forced lower according to the Reputation System document.
+
+Source Weight
+-------------
+
+A rating source affects how strongly the rating should count.
+
+Working source weights:
+
+Rating Source                                       | Source Weight
+----------------------------------------------------+----------------------------------------------
+Massage Nexus confirmed paid booking/session        | 1.25
+Review-linked rating                                | 1.00
+Confirmed external or on-site visit                 | 1.00
+Direct profile rating not tied to a visit or review | 0.75
+User-entered manual history rating                  | 0.50
+Spa or therapist self-recorded internal history     | 0.00 for rewards; scoring rules to be limited
+
+A user-entered manual history rating may be useful for the user’s personal history, but it should have lower official weight unless verified.
+
+A spa or therapist manually encoding their own record should not create rewards and should not become a strong official rating signal.
+
+Recency Weight
+--------------
+
+Spa and therapist quality can change over time. A spa may improve cleanliness, staffing, management, service flow, or facilities. A therapist may improve skill, communication, consistency, or professionalism.
+
+For spa and therapist ratings, use recency weight.
+
+Age of Rating   | Recency Weight
+----------------+---------------
+0 to 83 days    | 1.00
+84 to 166 days  | 0.75
+167 to 365 days | 0.50
+Over 365 days   | 0.25
+
+Product ratings use:
+
+Product Rating         | Recency Weight
+-----------------------+---------------
+Default product rating | 1.00
+
+The 83-Day Rating Cycle
+-----------------------
+
+Massage Nexus uses an 83-day cycle for spa and therapist rating freshness, reward eligibility, and user-period aggregation.
+
+The 83-day cycle is not a monthly reset date. It is a rolling cycle.
+
+Explanation for Spa Owners and Therapists
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Massage Nexus uses an 83-day rating cycle because spa and therapist quality can change over time, but not usually overnight.
+
+Eighty-three days is close to a three-month service period, but one week shorter than 90 days. That makes it long enough to reduce repeated rating abuse and short enough to let real service improvements appear within the year.
+
+It is also intentionally not a neat 30-, 60-, or 90-day cycle. This makes reward farming less predictable and helps avoid concentrating user behavior and system workload around obvious monthly or quarterly reset dates.
+
+Short version:
+
+    Eighty-three days is close to three months, but less predictable than a calendar month or quarter. It gives real service improvements time to show while making repeated rating abuse harder.
+
+Xylon Calibrated Experience Score
+---------------------------------
+
+The official weighted rating formula is called:
+
+Code block (text):
+    Xylon Calibrated Experience Score
+
+Short code:
+
+Code block (text):
+    XCES
+
+XCES is intended to be reusable across Massage Nexus and other Xylon projects where experience-based ratings need to account for trust, source, recency, completeness, role, and connection.
+
+It is most useful for service or experience-based targets such as spas, therapists, restaurants, service providers, locations, and similar real-world experiences.
+
+Product ratings may use a modified XCES without recency decay.
+
+Rating Event Score
+~~~~~~~~~~~~~~~~~~
+
+For a criteria rating:
+
+Code block (text):
+    rᵢ = average of submitted criteria scores
+
+For a spa rating:
+
+Code block (text):
+    rᵢ = (Cleanliness + Comfort + Privacy + Service + Value) ÷ 5
+
+For a therapist rating:
+
+Code block (text):
+    rᵢ = (Technique + Pressure + Professionalism + Communication + Reliability) ÷ 5
+
+For a product rating:
+
+Code block (text):
+    rᵢ = (Quality + Effectiveness + Safety + Usability + Value) ÷ 5
+
+For a simple rating:
+
+Code block (text):
+    rᵢ = submitted overall score
+
+Rating Event Weight
+~~~~~~~~~~~~~~~~~~~
+
+The rating event weight is:
+
+Code block (text):
+    wᵢ = Aᵢ × Tᵢ × Sᵢ × Cᵢ × Rᵢ × Kᵢ
+
+Where:
+
+Symbol | Meaning
+-------+---------------------------
+Aᵢ     | actor or role weight
+Tᵢ     | trust or reputation weight
+Sᵢ     | source weight
+Cᵢ     | completeness weight
+Rᵢ     | recency weight
+Kᵢ     | connection weight
+
+If a factor is not applicable, use 1.00 by default.
+
+Official XCES Formula
+~~~~~~~~~~~~~~~~~~~~~
+
+Code block (text):
+    XCES = Σ(rᵢ × wᵢ) ÷ Σ(wᵢ)
+
+Readable version:
+
+    Multiply every rating by its weight, add the weighted ratings together, then divide by the total weight.
+
+User-Period Rating
+------------------
+
+To prevent one user from overpowering a spa or therapist score through repeated ratings, one user should contribute only one aggregated rating per target per 83-day cycle.
+
+This is called a user-period rating.
+
+Within the same 83-day cycle, a user may have:
+
+- direct profile rating;
+- review-linked rating;
+- completed booking/session rating;
+- confirmed external/on-site visit rating;
+- user-entered manual history rating.
+
+The system should combine these into one user-period rating before the target’s public XCES is computed.
+
+Priority Within a User-Period
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The strongest sources should influence the user-period rating more than weaker sources.
+
+Suggested priority:
+
+1. Massage Nexus confirmed booking/session rating;
+2. review-linked rating;
+3. confirmed external or on-site visit rating;
+4. direct profile rating;
+5. user-entered manual history rating.
+
+This avoids counting one active user as several full-power votes in the same cycle.
+
+Session and Booking Ratings
+---------------------------
+
+Completed booking or session ratings should be supported.
+
+A completed spa booking may produce:
+
+- a spa rating;
+- a therapist rating, if the therapist is known.
+
+A completed freelance therapist booking may produce:
+
+- a therapist rating.
+
+A booking/session rating is tied to a real service event and may feed the target’s user-period rating.
+
+Booking and Session Reward Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Session ratings may earn rewards only when they come from a real qualifying activity.
+
+Working rules:
+
+Rating Type                                         | Reward Eligibility
+----------------------------------------------------+----------------------------------------------------------
+Massage Nexus confirmed paid booking/session rating | Small reward allowed
+Confirmed external/on-site visit rating             | Smaller reward allowed if evidence or confirmation exists
+User-entered personal history rating                | No reward by default
+Spa/therapist manually encoded own record           | No reward
+
+Same-day cap:
+
+Code block (text):
+    Same user + same spa + same calendar day = one rewarded spa session rating only.
+    Same user + same therapist + same calendar day = one rewarded therapist session rating only.
+
+A user may still submit additional ratings if the system allows it, but the additional same-target same-day ratings do not earn additional rewards.
+
+Rating Changes, Deletion, and Revocation
+----------------------------------------
+
+Users may change or revoke their own ratings.
+
+Rules:
+
+- only the active rating should affect the current score;
+- private history should be kept for audit and abuse detection;
+- changing a rating should not create repeat rewards;
+- deleting or revoking and then re-rating should not create repeat rewards within the active reward period;
+- spa and therapist rating reward eligibility may refresh after a new valid 83-day cycle and a new experience;
+- product ratings normally do not refresh unless the product or product version changes.
+
+Public Score Display
+--------------------
+
+A public official score should display when there is enough eligible rating signal.
+
+Working display rule:
+
+Display the official score if either condition is met:
+
+- at least one editorial rating exists; or
+- at least five regular non-connected user ratings exist.
+
+Do not unlock the public score using only:
+
+- owner/self-ratings;
+- connected staff ratings;
+- unverified internal history entries.
+
+Before the threshold is reached, display:
+
+Code block (text):
+    Not enough ratings yet.
+
+Recommended public display:
+
+Code block (text):
+    8.3 / 10
+    Based on 27 ratings
+
+Rating Summaries and System Performance
+---------------------------------------
+
+The site should not recompute ratings from all raw records on every page load.
+
+Use stored summaries.
+
+Possible summary layers:
+
+- rating event records;
+- user-period rating summaries;
+- daily rating summaries;
+- weekly rating summaries;
+- monthly rating summaries;
+- yearly rating summaries;
+- current public rating summary;
+- criteria-specific summaries.
+
+Computation Schedule
+~~~~~~~~~~~~~~~~~~~~
+
+Working schedule:
+
+Summary         | Computation Timing
+----------------+-------------------------------------------------------------
+Daily summary   | Every midnight for the previous day
+Weekly summary  | Every Monday for the previous Monday to Sunday
+Monthly summary | Every first day of the month for the previous calendar month
+Yearly summary  | Every January 1 for the previous calendar year
+
+Do not use the 23rd-of-the-month rule.
+
+Do not include admin-triggered recalculation in this version.
+
+Raw, Editorial, Recent, and Official Scores
+-------------------------------------------
+
+These terms may be useful internally.
+
+Score Type      | Meaning
+----------------+-----------------------------------------------------------
+Raw average     | Simple average with no weighting.
+Editorial score | Score from editorial or Review Correspondent ratings only.
+Recent average  | Score from recent ratings only.
+Official score  | Public XCES score using the weighted formula.
+
+For public display, show the official score first.
+
+Other score types may be internal, analytical, or future-facing.
+
+Rating Visual Asset Direction
+-----------------------------
+
+Massage Nexus rating visuals should not use a normal star-rating system.
+
+The current asset direction uses a connected pulse / nexus node visual language. This connects the rating interface to the Massage Nexus identity of linked experiences, trust signals, and service quality rather than generic stars.
+
+The rating asset system includes:
+
+- square rating token assets for compact score display;
+- horizontal rating pill assets for profile cards, review cards, and rating summaries;
+- CSS rating components for live UI use;
+- rating choice controls for selecting 1 to 10;
+- a rating meter for public score summaries;
+- transparent SVG asset backgrounds for use in light and dark mode.
+
+The visual direction should remain:
+
+- professional;
+- readable;
+- scalable;
+- CSS/SVG-friendly;
+- not fantasy-styled;
+- not star-based;
+- not dependent on generated image text.
+
+The current visual score labels used in the asset set are:
+
+Score | Visual Label
+------+-------------
+1     | Fractured
+2     | Dim
+3     | Low
+4     | Uneven
+5     | Fair
+6     | Promising
+7     | Good
+8     | Strong
+9     | Excellent
+10    | Signature
+
+These assets are UI presentation assets. They do not change the XCES formula or the criteria-rating structure.
+
+
+Rating Rewards
+--------------
+
+Rating rewards should remain smaller than full reviews, articles, major profile contributions, or rich media contributions.
+
+However, Embers and Inklings should feel gratifying. They may use larger visible numbers than Nexus Points because their spending costs can scale upward.
+
+Working reward structure:
+
+Action                                                  | Nexus Points | Embers | Inklings
+--------------------------------------------------------+--------------+--------+---------
+Thumbs up/down content rating                           | 1            | 10     | 5
+Simple 1 to 10 rating                                   | 5            | 50     | 20
+Criteria-based rating                                   | 10           | 100    | 40
+Confirmed Massage Nexus booking/session criteria rating | 5            | 50     | 20
+Confirmed external/on-site criteria rating              | 3            | 30     | 10
+User-entered manual history rating                      | 0            | 0      | 0
+Spa/therapist self-recorded rating                      | 0            | 0      | 0
+
+Daily Cap for Thumbs Up / Down Rewards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For thumbs up/down ratings, only the first 25 rewarded actions per day should earn rewards.
+
+After the 25th rewarded thumbs up/down action, the user may continue rating, but no additional Nexus Points, Embers, or Inklings should be awarded that day.
+
+No Repeat Reward Farming
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+No repeated rewards should be granted for:
+
+- changing a rating;
+- revoking a rating and rating again;
+- rating the same target repeatedly inside the same reward period;
+- creating fake bookings;
+- self-rating;
+- staff-coordinated manipulation;
+- rating only to farm rewards.
+
+Rating Abuse Prevention
+-----------------------
+
+Possible abuse patterns include:
+
+- owners asking staff to rate;
+- fake accounts;
+- fake bookings;
+- repeated same-day ratings;
+- coordinated rating campaigns;
+- self-rating with alternate accounts;
+- low-effort thumbs up/down farming;
+- product seller manipulation;
+- suspicious exact matching with editorial ratings;
+- rating without real experience;
+- rating competitors unfairly.
+
+Controls include:
+
+- registered-user requirement;
+- actor and connection weights;
+- reputation weights;
+- source weights;
+- recency weights;
+- same-day session reward cap;
+- user-period aggregation;
+- public display threshold;
+- daily reward cap for content reactions;
+- private audit history;
+- moderation and abuse detection.
+
+Rating Badges
+-------------
+
+Rating badges should use the cross-project milestone system called Anchored Milestone Sequence.
+
+Anchored Milestone Sequence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Short code:
+
+Code block (text):
+    AMS
+
+AMS is a reusable milestone progression system for badges, rewards, achievement thresholds, contribution progress, and other gamified systems across Massage Nexus and other projects.
+
+An AMS starts with one or more engagement anchors, then continues using a generalized Fibonacci-style progression where later milestones are produced by adding the two previous milestone values.
+
+Criteria Rating AMS
+~~~~~~~~~~~~~~~~~~~
+
+Criteria rating badges use:
+
+Code block (text):
+    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
+
+Explanation:
+
+- 1 rewards the first meaningful action;
+- 10 and 20 serve as starting milestone anchors;
+- 30 = 10 + 20;
+- 50 = 20 + 30;
+- 80 = 30 + 50;
+- 130 = 50 + 80.
+
+Criteria rating badge families:
+
+- overall criteria rating milestones;
+- spa criteria rating milestones;
+- therapist criteria rating milestones;
+- product criteria rating milestones.
+
+Examples:
+
+- First Spa Rating;
+- 10 Spa Ratings;
+- 20 Spa Ratings;
+- 50 Spa Ratings;
+- First Therapist Rating;
+- 10 Therapist Ratings;
+- First Product Rating;
+- 10 Product Ratings.
+
+Criteria rating badges should count criteria-based ratings, not simple ratings.
+
+Thumbs Up / Down AMS
+~~~~~~~~~~~~~~~~~~~~
+
+Thumbs up/down rating badges use a higher sequence because these actions are easier.
+
+Code block (text):
+    1, 10, 50, 100, 150, 250, 400, 650, 1050...
+
+Explanation:
+
+- 1 and 10 are early engagement anchors;
+- 50 and 100 are higher starting anchors;
+- 150 = 50 + 100;
+- 250 = 100 + 150;
+- 400 = 150 + 250;
+- 650 = 250 + 400;
+- 1050 = 400 + 650.
+
+Thumbs up/down badge families:
+
+- Article Rater;
+- Review Rater;
+- News Rater;
+- Guide Rater;
+- Comic Rater;
+- Comment Rater;
+- Discussion Rater;
+- Media Rater;
+- Translation Rater.
+
+Examples:
+
+- First Article Rating;
+- 10 Article Ratings;
+- 50 Article Ratings;
+- First Review Rating;
+- 10 Review Ratings;
+- First Comment Rating;
+- 50 Comment Ratings.
+
+Trusted Rater Badge
+-------------------
+
+The Trusted Rater badge should apply mainly to spa and therapist criteria ratings.
+
+It should not be based on article votes, comment votes, media ratings, translations, or product ratings in this version.
+
+Working eligibility:
+
+- at least 30 eligible spa/therapist criteria ratings;
+- at least 12 ratings overlap with editorial-rated targets;
+- no active abuse, spam, or manipulation flags;
+- average alignment score of at least 80 percent.
+
+Alignment Formula
+~~~~~~~~~~~~~~~~~
+
+For each shared criterion:
+
+Code block (text):
+    difference = absolute(user_criterion_score - editorial_criterion_score)
+    criterion_alignment = max(0, 1 - (difference / 4))
+
+Then average all criterion alignments.
+
+Example:
+
+Code block (text):
+    Editorial Cleanliness: 9
+    User Cleanliness: 8
+    Difference: 1
+    Alignment = 1 - (1 / 4) = 0.75
+
+Exact matching is not always ideal. If a user matches editorial ratings too perfectly too often, that may be suspicious and should be reviewed.
+
+The Trusted Rater formula may be refined later if badge-specific requirements require adjustment.
+
+Rating Effects on Search and Browse
+-----------------------------------
+
+Ratings should affect search and browse ranking, but should not fully control it.
+
+XCES may become one ranking input alongside:
+
+- service match;
+- location match;
+- profile completeness;
+- availability or open status;
+- review count;
+- recent activity;
+- verified information;
+- sponsorship or promoted placement, clearly labeled;
+- random discovery rotation.
+
+The exact search and browse ranking formula should be defined separately.
+
+Rating Effects on Reputation
+----------------------------
+
+Content ratings may affect the author’s reputation.
+
+Examples:
+
+- thumbs up on an article may help the author;
+- thumbs down on a review may hurt or reduce the review author’s reputation effect;
+- useful review ratings may help Review Authors over time;
+- shared content with multiple authors should share reputation effects.
+
+The exact reputation formula should be defined in the Reputation documentation.
+
+Spa, therapist, and product target ratings should not automatically become personal reputation for owners or sellers, although they may later affect profile trust, badges, awards, or business standing.
+
+Awards and Received-Rating Badges
+---------------------------------
+
+Spas and therapists may later receive badges or awards based on ratings.
+
+Possible future examples:
+
+- Highly Rated Spa;
+- Top Rated Spa;
+- Rising Spa;
+- Client Favorite;
+- Top Rated Therapist;
+- Rising Therapist;
+- Trusted Therapist;
+- Massage Nexus Award Nominee;
+- Massage Nexus Award Winner.
+
+Products do not need the same received-rating badge system in this version.
+
+The award system should be documented separately.
+
+Deferred Decisions
+------------------
+
+The following should be discussed or finalized later:
+
+- rating abuse detection details;
+- product/shop/seller connection rules;
+- whether product ratings need versioning rules;
+- search and browse ranking formula;
+- booking process and payment flow;
+- manual history and visit-history structure;
+- badge icon style and visual templates;
+- received-rating badges for spas and therapists;
+- awards system and yearly/quarterly recognition;
+- rating-related public documentation;
+- dashboard display for user rating history;
+- owner/therapist dashboard display of anonymous rating summaries;
+- API and database implementation of XCES and AMS;
+- how XCES may be reused in other Xylon projects.

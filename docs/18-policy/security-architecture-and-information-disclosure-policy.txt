@@ -1,0 +1,757 @@
+Title: Massage Nexus Security Architecture and Information Disclosure Policy
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Security Specification
+Publication Status: Internal; a separate limited public security page may be created later
+Authority: Current accepted security direction
+Shared Standard Version: 2.60
+
+DOCUMENT PURPOSE
+----------------
+This document defines the security baseline for Massage Nexus, including the user's explicit
+preference that ordinary visitors and attackers should not be told which database engine,
+server framework, programming language, web server, package versions, internal paths, or
+hosting details Massage Nexus uses.
+
+Technology minimization is a useful hardening measure, but it is not the primary security
+control. The system must remain secure even when an attacker guesses or fingerprints parts
+of the stack.
+
+RELATED DOCUMENTS
+-----------------
+- Massage Nexus Technology Stack v1.80
+- Massage Nexus File and Folder Structure v1.10
+- Massage Nexus Account Identity Registration and Authentication System v0.10
+- Massage Nexus Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus Terms of Use Requirements v0.10
+- Massage Nexus NSFW Mature and Restricted Content Policy v0.10
+- Shared Project Standards v2.60
+
+================================================================================
+1. SECURITY OBJECTIVES
+================================================================================
+
+Protect:
+- account credentials;
+- verified contacts;
+- date of birth;
+- sessions and passkeys;
+- private profiles and settings;
+- precise location;
+- bookings;
+- sensitive intake and consent;
+- messages;
+- payment and payout information;
+- provider records;
+- moderation evidence;
+- source code;
+- secrets;
+- infrastructure;
+- backups;
+- logs;
+- availability and integrity.
+
+Security goals:
+- confidentiality;
+- integrity;
+- availability;
+- accountability;
+- least privilege;
+- privacy by design;
+- recoverability;
+- safe failure;
+- defense in depth.
+
+================================================================================
+2. TECHNOLOGY INFORMATION DISCLOSURE
+================================================================================
+
+2.1 Public Disclosure Rule
+
+Ordinary public pages, error responses, headers, source comments, generated assets, API
+errors, documentation, robots files, and support responses should not unnecessarily reveal:
+- PHP;
+- Laravel;
+- Apache;
+- MongoDB;
+- Azure DocumentDB;
+- SQLite;
+- exact versions;
+- operating system;
+- compiler;
+- extension versions;
+- internal directory paths;
+- local drive letters;
+- repository paths;
+- database names;
+- collection names;
+- connection ports;
+- environment names;
+- package lists;
+- stack traces;
+- source-map paths;
+- cloud resource names;
+- storage container names;
+- secret-reference names;
+- internal hostnames.
+
+The public may be told broad service categories when required for transparency, such as:
+- cloud hosting provider category;
+- email processor;
+- payment processor;
+- identity provider;
+- object-storage processor.
+
+The public Privacy Notice may name processors when necessary without exposing internal
+configuration or exploitable detail.
+
+2.2 Disclosure Classification
+
+PUBLIC:
+- approved public security contact;
+- high-level account-security features;
+- supported passkeys or MFA;
+- general privacy and incident commitments;
+- status information;
+- named processors where transparency requires it.
+
+INTERNAL:
+- application architecture;
+- framework and language;
+- database engine;
+- package inventory;
+- ordinary configuration;
+- deployment diagrams;
+- non-secret resource names.
+
+RESTRICTED:
+- exact versions;
+- internal paths;
+- server and database topology;
+- access-control architecture;
+- firewall rules;
+- security test results;
+- incident details;
+- unpatched vulnerability details;
+- backup locations;
+- administrative endpoints.
+
+SECRET:
+- passwords;
+- API keys;
+- private keys;
+- signing keys;
+- database credentials;
+- connection strings;
+- recovery secrets;
+- token-signing material;
+- production environment files;
+- encryption keys.
+
+2.3 Security Is Not Obscurity
+
+Removing version banners and framework clues can reduce easy targeting and information
+leakage. It does not replace:
+- patching;
+- authorization;
+- secure coding;
+- encryption;
+- testing;
+- monitoring;
+- incident response;
+- backups;
+- least privilege.
+
+Assume a capable attacker may still identify parts of the technology.
+
+================================================================================
+3. PRODUCTION ERROR HANDLING
+================================================================================
+
+Production requirements:
+- APP_DEBUG=false or equivalent;
+- no public stack trace;
+- no SQL or database error text;
+- no collection or table name in public errors;
+- no internal path;
+- no source-code snippet;
+- no environment variable name;
+- no secret;
+- no request credential;
+- no raw exception message;
+- no package version;
+- no server banner in the page body.
+
+Public error response:
+- generic human-readable message;
+- opaque error or correlation identifier;
+- safe support guidance;
+- correct HTTP status;
+- no exploitable detail.
+
+Detailed diagnostics:
+- protected server log;
+- restricted monitoring system;
+- redacted as necessary;
+- access-controlled;
+- retention-limited.
+
+The Laravel development error page seen locally must never be displayed in production.
+
+================================================================================
+4. HTTP AND SERVER HARDENING
+================================================================================
+
+Requirements:
+- HTTPS for all production pages and APIs;
+- redirect HTTP to HTTPS;
+- modern TLS configuration;
+- secure cookies;
+- HSTS after HTTPS is stable;
+- appropriate Content-Security-Policy;
+- frame-ancestors or equivalent clickjacking protection;
+- X-Content-Type-Options;
+- Referrer-Policy;
+- Permissions-Policy;
+- careful CORS;
+- no directory listing;
+- no public phpinfo page;
+- no backup or source files under the document root;
+- no .env access;
+- no vendor or storage-private access;
+- document root restricted to apps/web/public;
+- remove or minimize X-Powered-By;
+- minimize Server header detail where supported;
+- hide exact versions;
+- prevent MIME sniffing;
+- disable unsafe HTTP methods unless required;
+- rate-limit sensitive endpoints.
+
+Only approved public assets belong under the public document root.
+
+================================================================================
+5. SECRETS AND CONFIGURATION
+================================================================================
+
+Secrets must not be:
+- committed to Git;
+- placed in documentation;
+- written into prompts;
+- placed in JavaScript;
+- placed in public HTML;
+- logged;
+- stored in taxonomy;
+- stored in source assets;
+- copied into issue text;
+- sent to a general AI assistant;
+- stored in public database records.
+
+Development:
+- local .env;
+- local secure credential storage where appropriate.
+
+Production:
+- Azure App Service settings;
+- Azure Key Vault where appropriate;
+- managed identity where supported;
+- restricted deployment access.
+
+Maintain:
+- secret inventory;
+- owner;
+- purpose;
+- creation date;
+- rotation plan;
+- revocation procedure;
+- incident procedure.
+
+Use separate secrets for:
+- development;
+- test;
+- staging;
+- production.
+
+================================================================================
+6. AUTHENTICATION SECURITY
+================================================================================
+
+Requirements:
+- Argon2id password hashing;
+- no plaintext or reversible password storage;
+- 15-character minimum;
+- compromised-password rejection;
+- protected usernames;
+- email verification before normal login;
+- rate-limited login and recovery;
+- generic account-existence responses;
+- session regeneration after login;
+- reauthentication for sensitive actions;
+- remember-me revocation;
+- session and device management;
+- TOTP and recovery codes;
+- passkeys;
+- external-identity linking safeguards;
+- security notification for important changes.
+
+No custom facial-recognition or fingerprint database.
+
+Passkeys use device-local biometric or PIN verification and store public credential
+information only.
+
+================================================================================
+7. MOBILE NUMBER SECURITY
+================================================================================
+
+Mobile numbers:
+- are optional initially;
+- must be verified;
+- must use normalized international form;
+- must not be the sole account identifier;
+- must not be the sole recovery method;
+- must not be the preferred second factor.
+
+Protect against:
+- SIM swap;
+- recycled numbers;
+- unauthorized porting;
+- device loss;
+- OTP interception;
+- brute force;
+- repeated resend abuse.
+
+Sensitive number changes require:
+- recent strong authentication;
+- verified-email or passkey confirmation;
+- new-number verification;
+- old-contact notification where possible;
+- temporary high-risk-action hold;
+- security log.
+
+================================================================================
+8. AUTHORIZATION
+================================================================================
+
+Every protected request must enforce:
+- authenticated account;
+- active Massage Nexus membership;
+- required verification;
+- role;
+- permission;
+- record relationship;
+- current context;
+- data sensitivity;
+- status;
+- jurisdiction or age gate where applicable.
+
+Hiding a button is not authorization.
+
+Server-side policies must prevent:
+- cross-account access;
+- cross-provider access;
+- unauthorized intake access;
+- unauthorized staff access;
+- public access to private media;
+- privilege escalation;
+- insecure direct object references;
+- predictable record enumeration.
+
+Use opaque application-controlled identifiers and authoritative uniqueness constraints.
+
+================================================================================
+9. SESSION SECURITY
+================================================================================
+
+Requirements:
+- cryptographically secure session identifiers;
+- session identifiers contain no user or system information;
+- Secure, HttpOnly, and appropriate SameSite cookies;
+- defined idle and absolute lifetimes;
+- rotation after login and privilege changes;
+- logout invalidation;
+- revoke other sessions;
+- invalidate after password reset or critical recovery where appropriate;
+- protect against fixation;
+- protect against CSRF;
+- do not put session identifiers in URLs;
+- prevent sensitive caching;
+- avoid exposing private content in browser history or shared previews where practical.
+
+================================================================================
+10. INPUT AND APPLICATION SECURITY
+================================================================================
+
+All input is untrusted.
+
+Requirements:
+- server-side validation;
+- output encoding;
+- CSRF protection;
+- XSS prevention;
+- SQL and NoSQL injection prevention;
+- parameterized or framework-safe database operations;
+- command-injection prevention;
+- path traversal prevention;
+- SSRF protection;
+- safe URL handling;
+- safe redirects;
+- safe deserialization;
+- file-name normalization;
+- mass-assignment controls;
+- request-size limits;
+- pagination limits;
+- rate limits;
+- abuse limits;
+- concurrency and duplicate-action controls;
+- idempotency for important payment and booking actions.
+
+Do not expose raw database query languages through public APIs.
+
+================================================================================
+11. API SECURITY
+================================================================================
+
+Requirements:
+- HTTPS only;
+- explicit API versioning;
+- scoped tokens;
+- record authorization;
+- token expiry and revocation;
+- no long-lived unrestricted partner key;
+- rate limits;
+- input limits;
+- schema validation;
+- safe errors;
+- audit;
+- replay protection where needed;
+- webhook signatures;
+- idempotency;
+- separate first-party, partner, and public access;
+- no direct client connection to the production database.
+
+Do not reveal database or framework details through API metadata.
+
+================================================================================
+12. FILE, IMAGE, VIDEO, AND DOCUMENT SECURITY
+================================================================================
+
+Upload flow:
+1. receive into quarantine;
+2. enforce size and count limits;
+3. verify actual media type rather than trust extension;
+4. normalize file name;
+5. scan or inspect;
+6. decode and re-encode where appropriate;
+7. remove dangerous metadata where appropriate;
+8. transcode video;
+9. generate safe derivatives;
+10. classify privacy and NSFW level;
+11. moderate;
+12. move to approved public, private, or restricted storage;
+13. record ownership and access.
+
+Requirements:
+- no executable upload;
+- no user-controlled server path;
+- no public original private-storage path;
+- random or opaque object keys;
+- protected download authorization;
+- short-lived protected URLs where used;
+- no directory listing;
+- quarantine cleanup;
+- decompression-bomb protection;
+- image dimension limits;
+- video duration limits;
+- animated-avatar limits;
+- poster image;
+- reduced-motion fallback;
+- audit for restricted-media access where justified.
+
+================================================================================
+13. DATA SECURITY
+================================================================================
+
+Requirements:
+- encryption in transit;
+- provider-supported encryption at rest;
+- stronger field or application protection for selected highly sensitive values when
+  justified;
+- least-privilege database accounts;
+- no public database listener;
+- network restrictions;
+- separate development and production data;
+- no real personal data in automated tests;
+- secure backup;
+- restore testing;
+- data-integrity checks;
+- protected exports;
+- deletion and retention controls;
+- audit of sensitive access;
+- no direct database access from mobile or browser clients.
+
+Sensitive intake must have stricter access and retention than ordinary booking data.
+
+================================================================================
+14. LOGGING AND AUDIT
+================================================================================
+
+Log:
+- successful and failed authentication where proportionate;
+- verification and recovery;
+- password, email, mobile, MFA, and passkey changes;
+- session revocation;
+- privileged role changes;
+- protected-data access where justified;
+- moderation and policy actions;
+- provider claim and verification;
+- payment and refund state changes;
+- security incidents;
+- configuration and deployment changes.
+
+Do not log:
+- plaintext password;
+- OTP;
+- recovery code;
+- full session token;
+- private key;
+- API secret;
+- full payment card;
+- unnecessary sensitive intake;
+- full message body by default;
+- excessive personal data.
+
+Logs should:
+- be time synchronized;
+- use correlation identifiers;
+- be protected from ordinary users;
+- have defined retention;
+- support incident investigation;
+- avoid becoming a second uncontrolled personal-data database.
+
+================================================================================
+15. DEPENDENCY AND SUPPLY-CHAIN SECURITY
+================================================================================
+
+Requirements:
+- Composer and npm lock files committed;
+- dependencies from approved sources;
+- package integrity checks;
+- vulnerability audit;
+- timely security updates;
+- compatibility testing;
+- no abandoned package without review;
+- minimal package installation;
+- no production development tools;
+- no secret in build output;
+- inspect install scripts;
+- review AI-generated dependency changes;
+- maintain software-component inventory internally;
+- do not publish exact component inventory unnecessarily.
+
+Laravel, PHP, Apache, MongoDB drivers, extensions, JavaScript packages, and future services
+must be patched based on risk and compatibility.
+
+================================================================================
+16. DEVELOPMENT, TEST, STAGING, AND PRODUCTION
+================================================================================
+
+Keep environments separate.
+
+Development may:
+- show detailed errors locally;
+- use local email capture;
+- use test OTP;
+- use local MongoDB;
+- use synthetic data.
+
+Production must:
+- disable debugging;
+- use production secrets;
+- use HTTPS;
+- use production email;
+- prohibit test bypasses;
+- prohibit default credentials;
+- prohibit local path leakage;
+- prohibit development admin tools;
+- protect logs;
+- use reviewed deployment.
+
+Do not copy a production database into a developer machine without an approved protected
+process.
+
+================================================================================
+17. BACKUP AND RECOVERY
+================================================================================
+
+Define:
+- authoritative data source;
+- backup frequency;
+- encryption;
+- access;
+- off-site or independent copy;
+- retention;
+- restore procedure;
+- restore testing;
+- ransomware resilience;
+- key recovery;
+- deletion behavior;
+- media backup;
+- documentation and code backup;
+- incident recovery priorities.
+
+GitHub is not a backup for runtime databases or user uploads.
+
+================================================================================
+18. MONITORING AND AVAILABILITY
+================================================================================
+
+Monitor:
+- error rate;
+- failed logins;
+- credential stuffing;
+- unusual recovery;
+- session anomalies;
+- rate-limit events;
+- privilege changes;
+- upload failures;
+- malware detections;
+- queue failure;
+- database connectivity;
+- storage capacity;
+- payment anomalies;
+- unusual export;
+- service health.
+
+Protect against:
+- denial of service;
+- resource exhaustion;
+- queue flooding;
+- expensive search abuse;
+- upload flooding;
+- registration spam;
+- verification resend abuse;
+- scraping and enumeration.
+
+================================================================================
+19. INCIDENT AND BREACH RESPONSE
+================================================================================
+
+Maintain a documented response process:
+1. detect;
+2. triage;
+3. contain;
+4. preserve evidence;
+5. eradicate;
+6. recover;
+7. assess personal-data impact;
+8. assess notification duties;
+9. notify affected users and authorities when required;
+10. document;
+11. submit required incident reports;
+12. perform post-incident improvement.
+
+All security incidents and personal data breaches must be documented according to applicable
+National Privacy Commission requirements.
+
+The response plan should identify:
+- incident lead;
+- privacy or DPO role;
+- technical lead;
+- legal contact;
+- communications lead;
+- provider contacts;
+- evidence location;
+- escalation criteria;
+- notification templates;
+- recovery authority.
+
+================================================================================
+20. RESPONSIBLE SECURITY DISCLOSURE
+================================================================================
+
+Create a limited public security page or security.txt later containing:
+- approved contact;
+- preferred report method;
+- encryption key if used;
+- response expectations;
+- safe-harbor terms only after legal review;
+- prohibited testing;
+- disclosure coordination.
+
+Do not publish:
+- internal architecture;
+- exact software versions;
+- database topology;
+- credentials;
+- unpatched vulnerability details;
+- private incident evidence.
+
+A good-faith report must be distinguished from extortion, data theft, service disruption,
+privacy violation, or public exploitation.
+
+================================================================================
+21. AI-ASSISTED DEVELOPMENT SECURITY
+================================================================================
+
+AI coding agents:
+- receive only necessary files;
+- do not receive production secrets;
+- do not receive real sensitive user data;
+- work from a recoverable Git state;
+- use a branch or controlled worktree;
+- must not weaken tests;
+- must not disable authorization;
+- must not install unapproved packages silently;
+- must not expose internal technology in public pages;
+- must not change privacy or security policy without explicit approval;
+- must run security, secret, and private-path checks;
+- must report unresolved risks;
+- require human review before production deployment.
+
+Generated code and generated tests are untrusted until reviewed.
+
+================================================================================
+22. PRE-LAUNCH SECURITY GATES
+================================================================================
+
+- production debug disabled;
+- HTTPS enabled;
+- safe error pages tested;
+- headers reviewed;
+- server and framework banners minimized;
+- public paths scanned;
+- .env inaccessible;
+- source maps reviewed;
+- secrets scanned;
+- account flow tested;
+- protected usernames tested;
+- verification enforcement tested;
+- authorization tested;
+- session controls tested;
+- password reset tested;
+- MFA and passkey recovery tested when enabled;
+- upload pipeline tested;
+- private and restricted media tested;
+- NSFW controls tested;
+- database not publicly accessible;
+- backup and restore tested;
+- logging and monitoring active;
+- dependency audit clean or risk accepted;
+- privacy impact assessment completed;
+- breach response exercised;
+- incident and privacy contacts active;
+- penetration or focused security testing completed according to risk.
+
+================================================================================
+23. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+- OWASP Application Security Verification Standard and Cheat Sheet Series.
+- OWASP Web Security Testing Guide, including framework and server fingerprinting and stack
+  trace testing.
+- OWASP guidance for HTTP security headers, sessions, authentication, file uploads, REST,
+  logging, CSRF, XSS, and secrets.
+- NIST Special Publication 800-63B.
+- Laravel 13 security-relevant documentation.
+- Philippine Data Privacy Act, National Privacy Commission security and breach guidance.
+- W3C Web Authentication.

@@ -1,0 +1,512 @@
+Title: Massage Nexus GitHub Development and Repository Operations
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines how Massage Nexus uses private GitHub repositories, Issues, Projects, Pull Requests, Actions, Releases, Pages, repository documentation, support-to-development conversion, access control, and custom domains without exposing private code or support data.
+
+Related Documents:
+- Massage Nexus Documentation Writing and Management Standard
+- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus Support and Ticketing System
+- Massage Nexus Testing and Quality Assurance Strategy
+- Massage Nexus Maintenance and Continuous Operations
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Roadmap
+- Massage Nexus Simple Checklist
+
+================================================================================
+1. ROLE OF GITHUB
+================================================================================
+
+GitHub is used for:
+- source control;
+- repository history;
+- branches;
+- Issues;
+- Pull Requests;
+- Projects;
+- Actions;
+- releases;
+- automated tests;
+- code review;
+- repository documentation;
+- approved static public pages.
+
+GitHub is not:
+- the public Support Center;
+- the Massage Nexus community Discussion System;
+- the ticket database;
+- the production database;
+- the uploaded-media store;
+- the private evidence store.
+
+================================================================================
+2. REPOSITORY MODEL
+================================================================================
+
+The main repository is private.
+
+It contains:
+- application source;
+- tests;
+- configuration templates;
+- repository documentation;
+- shared contracts;
+- approved tools.
+
+It excludes:
+- secrets;
+- production data;
+- support evidence;
+- private user content;
+- payment data;
+- confidential advertiser material.
+
+Create additional repositories only when access, release, deployment, ownership, or licensing
+boundaries justify them.
+
+Possible later repositories:
+- public static documentation;
+- mobile application;
+- desktop application;
+- shared contracts;
+- open-source component;
+- infrastructure.
+
+================================================================================
+3. PRIVATE REPOSITORY RULES
+================================================================================
+
+- Use individual accounts and least privilege.
+- Do not share credentials.
+- Protect the default branch.
+- Review collaborator access.
+- Remove access promptly.
+- Store secrets in approved secret facilities.
+- Keep secrets out of commits, Issues, Pull Requests, logs, artifacts, and documentation.
+- Keep private support and research evidence outside ordinary development records.
+- Review Pages, Releases, Actions artifacts, and logs separately because private source does
+  not guarantee that published outputs are private.
+
+================================================================================
+4. BRANCHES AND COMMITS
+================================================================================
+
+main:
+- stable;
+- deployable;
+- protected.
+
+Use short-lived focused branches.
+
+Examples:
+feature/account-registration
+fix/email-verification-loop
+docs/support-system
+refactor/booking-scheduling
+
+Commits:
+- represent one coherent change;
+- use clear imperative messages;
+- include tests and relevant documentation when behavior changes;
+- avoid unrelated formatting;
+- remain reversible.
+
+Preferred messages:
+Add protected username validation
+Fix stale translation detection
+Document support escalation workflow
+
+Avoid:
+update
+changes
+fix stuff
+final final
+
+================================================================================
+5. ISSUES
+================================================================================
+
+A GitHub Issue is an internal development or maintenance work item.
+
+Use Issues for:
+- confirmed bugs;
+- accepted features;
+- technical investigation;
+- refactoring;
+- security remediation through a restricted process;
+- documentation work;
+- dependency upgrades;
+- test gaps;
+- performance work;
+- maintenance tasks.
+
+A support ticket is not automatically an Issue.
+
+Issue content should contain:
+- concise title;
+- problem;
+- affected capability;
+- safe reproduction;
+- expected behavior;
+- actual behavior;
+- acceptance criteria;
+- severity or priority;
+- governing specification;
+- related tests;
+- dependencies;
+- labels;
+- milestone or Project field when used.
+
+Do not include:
+- names;
+- private messages;
+- payment details;
+- private addresses;
+- confidential advertiser information;
+- security-sensitive exploit details;
+- raw production logs.
+
+================================================================================
+6. ISSUE FORMS
+================================================================================
+
+Possible private issue forms:
+- Bug;
+- Feature;
+- Documentation;
+- Refactoring;
+- Security Remediation;
+- Dependency Upgrade;
+- Performance;
+- Accessibility;
+- Translation;
+- Research Tooling;
+- Maintenance.
+
+Issue forms guide completeness without forcing irrelevant fields.
+
+Public users submit through Massage Nexus Support, not directly into the private repository.
+
+================================================================================
+7. GITHUB PROJECTS
+================================================================================
+
+GitHub Projects organizes Issues, Pull Requests, and draft planning items.
+
+Project views may be:
+- table;
+- board;
+- roadmap.
+
+Issue:
+The specific work item.
+
+Project:
+The planning and tracking view across work items.
+
+Suggested Project fields:
+- status;
+- priority;
+- capability;
+- work type;
+- platform;
+- release;
+- start date;
+- target date;
+- size;
+- blocked by;
+- owner;
+- user impact.
+
+Suggested views:
+- Current Work;
+- Backlog;
+- Roadmap;
+- Bugs;
+- Documentation;
+- Web;
+- Mobile;
+- Desktop;
+- Maintenance;
+- Release Readiness.
+
+Do not manually duplicate the complete long-term Roadmap inside GitHub Projects. Projects
+tracks current executable work and near-term planning.
+
+================================================================================
+8. PULL REQUESTS
+================================================================================
+
+A Pull Request should state:
+- objective;
+- linked Issue;
+- changed behavior;
+- affected capabilities;
+- tests;
+- migration;
+- security and privacy impact;
+- localization impact;
+- screenshots where useful;
+- limitations;
+- rollback.
+
+AI may draft a Pull Request but must not claim tests passed without execution.
+
+Merge only after required checks and review.
+
+================================================================================
+9. GITHUB ACTIONS
+================================================================================
+
+Actions may run:
+- tests;
+- linting;
+- formatting checks;
+- static analysis;
+- dependency review;
+- security scans;
+- build;
+- documentation checks;
+- translation coverage;
+- deployment;
+- scheduled maintenance;
+- release packaging.
+
+Rules:
+- review third-party actions;
+- use least-privilege permissions;
+- protect secrets;
+- avoid printing confidential data;
+- separate pull-request and deployment permissions;
+- require approval for protected production environments;
+- control artifact retention;
+- monitor usage and cost;
+- keep workflows focused.
+
+================================================================================
+10. RELEASES
+================================================================================
+
+Releases may preserve:
+- version tag;
+- release notes;
+- migration note;
+- known issues;
+- approved downloadable artifacts;
+- checksums;
+- rollback reference.
+
+Do not attach:
+- secrets;
+- private configuration;
+- user data;
+- internal evidence;
+- proprietary artifacts not intended for distribution.
+
+Repository versioning and public product versioning may be related but remain distinct.
+
+================================================================================
+11. REPOSITORY DOCUMENTATION
+================================================================================
+
+Stable internal documentation:
+- uses semantic folders;
+- removes OneDrive planning number and filename version;
+- keeps Document Version inside the file;
+- remains plain text unless another format has a specific purpose;
+- is routed through lightweight references or a manifest.
+
+Possible folders:
+docs/governance
+docs/capability
+docs/domain
+docs/experience
+docs/architecture
+docs/policy
+docs/research
+docs/implementation
+docs/release
+
+Working Notes and AI Chat Handoffs normally remain outside the repository.
+
+================================================================================
+12. GITHUB PAGES
+================================================================================
+
+GitHub Pages hosts static HTML, CSS, JavaScript, and generated static content.
+
+Suitable:
+- public developer information;
+- public API documentation later;
+- approved static technical documentation;
+- open-source component page;
+- static release or status information.
+
+Not suitable:
+- the Laravel application;
+- private account workspace;
+- ticket system;
+- database-driven directory;
+- authenticated support;
+- confidential documentation.
+
+Possible custom subdomains:
+developers.massagenexus.com
+docs.massagenexus.com
+status.massagenexus.com
+
+git.massagenexus.com is less clear unless the page specifically concerns source-development
+access.
+
+================================================================================
+13. PRIVATE SOURCE AND PUBLIC PAGE OPTIONS
+================================================================================
+
+Option A: Separate Public Pages Repository
+- keep the application repository private;
+- create a public repository containing only approved static page source;
+- use GitHub Pages on GitHub Free;
+- maintain clear separation from private application code.
+
+Option B: Private Repository as Pages Source
+- requires a GitHub plan that supports Pages from private repositories;
+- the ordinary Pages site remains publicly accessible;
+- published output must contain only approved public material.
+
+Option C: Main Massage Nexus Website
+- build Support, Help, policies, dynamic documentation, and authenticated areas inside the
+  Laravel application;
+- use the main localization, account, analytics, and security systems.
+
+Option D: Another Static Host
+- deploy approved static files to another provider;
+- keep the main repository private;
+- route an approved subdomain to that host.
+
+The normal public Support Center belongs in Massage Nexus, not GitHub Pages.
+
+================================================================================
+14. CUSTOM DOMAIN
+================================================================================
+
+A Pages site can use a Massage Nexus domain or subdomain.
+
+Process:
+- configure the custom domain in Pages settings;
+- verify domain ownership;
+- configure DNS;
+- enable HTTPS;
+- test redirects and certificate;
+- monitor ownership and configuration.
+
+Secure the Pages custom-domain setting before pointing DNS to reduce takeover risk.
+
+================================================================================
+15. WIKI AND GITHUB DISCUSSIONS
+================================================================================
+
+GitHub Wiki:
+- optional developer-facing documentation;
+- not the authoritative public Help Center;
+- may be avoided to prevent duplication.
+
+GitHub Discussions:
+- optional developer or collaborator conversation;
+- not the Massage Nexus Discussion System;
+- not the support ticket system;
+- not suitable for private customer, advertiser, or provider cases.
+
+================================================================================
+16. SUPPORT-TO-ISSUE WORKFLOW
+================================================================================
+
+1. requester submits a support ticket;
+2. AI or support answers documented questions;
+3. support reproduces or verifies a technical problem;
+4. private information is removed;
+5. a private Issue is created;
+6. capability, priority, and acceptance criteria are assigned;
+7. branch and Pull Request link to the Issue;
+8. tests verify the fix;
+9. deployment is monitored;
+10. support informs the requester;
+11. ticket closes after verified resolution.
+
+The requester does not need GitHub access.
+
+================================================================================
+17. SECURITY WORK
+================================================================================
+
+Do not create ordinary public Issues for active vulnerabilities.
+
+Use:
+- private security reporting;
+- restricted support ticket;
+- private advisory or restricted Issue;
+- controlled remediation branch;
+- coordinated disclosure where adopted.
+
+Never place secrets, personal data, production logs, or exploit details in a public page.
+
+================================================================================
+18. AI AND GITHUB
+================================================================================
+
+AI may:
+- draft sanitized Issues;
+- propose labels and acceptance criteria;
+- create focused branches;
+- generate tests;
+- draft Pull Requests;
+- summarize Actions failures;
+- update repository documentation;
+- identify stale Issues;
+- suggest Project organization.
+
+AI must:
+- preserve privacy;
+- follow repository instructions;
+- read only relevant documents;
+- avoid closing Issues without evidence;
+- avoid merging without required checks;
+- avoid weakening tests;
+- avoid exposing private repository content publicly;
+- maintain recoverable Git state.
+
+================================================================================
+19. ACCESS AND CONTINUITY
+================================================================================
+
+Review:
+- repository access;
+- Project access;
+- Actions environment access;
+- package and release permissions;
+- Pages configuration;
+- security alert access.
+
+GitHub source history is not the only backup.
+
+Maintain:
+- local clone;
+- remote repository;
+- protected default branch;
+- separate database and media backups;
+- domain and deployment records;
+- recovery instructions.
+
+================================================================================
+20. CURRENT DIRECTIONS
+================================================================================
+
+- Keep the main repository private.
+- Use Issues for internal development work, not public support.
+- Use Projects as table, board, and roadmap views over Issues and Pull Requests.
+- Use Pull Requests and Actions for reviewed, tested changes.
+- Keep ordinary Support, community Discussions, and Comments inside Massage Nexus.
+- Use a separate public repository for a free public GitHub Pages site when needed.
+- Use a clear subdomain such as developers.massagenexus.com or docs.massagenexus.com.
+- Do not assume a Pages site is private because its source repository is private.
+- Convert support bugs into sanitized private Issues after triage.

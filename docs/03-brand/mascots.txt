@@ -1,0 +1,140 @@
+Massage Nexus Mascots
+=====================
+
+Document Version: 1.20
+Date Created: 2026-06-30
+Revision Date: 2026-07-07
+
+Document Description
+--------------------
+
+This document defines the mascot group for Massage Nexus. These mascots are non-human brand characters used for visual identity, onboarding, gamification, badges, seasonal campaigns, Easter eggs, comics, user rewards, empty states, and playful platform interactions. They are separate from Neural Agents, Nexus Cast characters, real users, practitioners, owners, sponsors, and staff roles.
+
+The mascot group currently includes one anchor mascot and seven supporting mascots. Their personalities and visual descriptions are working concepts and may be refined later when the final mascot art style, color system, gamification system, and user interface placement are finalized.
+
+Mascot List
+-----------
+
+1. Nexus (anchor)
+2. Embi
+3. Leafy
+4. Luna
+5. Olli
+6. Stoni
+7. Tovi
+8. Yanta
+
+Mascot Profiles
+---------------
+
+1. Nexus
+~~~~~~~~
+
+Mascot Role: Anchor mascot
+Core Theme: Connection, discovery, guidance, platform identity
+
+Personality:
+Nexus is curious, bright, observant, and helpful. It acts like the main guide of Massage Nexus, gently pointing users toward spas, practitioners, services, articles, rewards, and hidden surprises. Nexus should feel friendly and clever without becoming too childish. It can be playful in mascot interactions, but it should still feel like the central symbol of the platform.
+
+Visual Description:
+Nexus should look like a small connected wellness creature made from soft rounded shapes, subtle node-like details, and a flowing body line inspired by the Massage Nexus logo. It may have a glowing orange accent shaped like a small ember or crossing point, with dark ink-like outlines and calm green or blue secondary accents. The design should feel modern, clean, mascot-friendly, and recognizable even as a small icon.
+
+2. Embi
+~~~~~~~
+
+Mascot Role: Energy and reward mascot
+Core Theme: Embers, motivation, activity, gamification rewards
+
+Personality:
+Embi is energetic, encouraging, excitable, and slightly competitive. It celebrates milestones, points, streaks, challenges, and earned rewards. Embi should feel like the mascot that appears when a user earns Embers, completes a task, joins an event, or discovers an Easter egg. It is cheerful and fiery, but not aggressive.
+
+Visual Description:
+Embi should resemble a small living ember or flame with rounded edges, glowing orange and warm yellow highlights, and tiny expressive eyes. It can have a dark ink outline or small charcoal base to connect it to the Ink & Ember theme. Embi should be simple enough for badges, reward pop-ups, loading animations, and small gamification icons.
+
+3. Leafy
+~~~~~~~~
+
+Mascot Role: Wellness and recovery mascot
+Core Theme: Nature, care, rest, gentle healing
+
+Personality:
+Leafy is calm, nurturing, soft-spoken, and reassuring. It represents rest, recovery, balance, aftercare, and wellness habits. Leafy should appear in gentle guidance, self-care reminders, breathing prompts, recovery tips, and relaxing interface moments. It should feel kind and grounded, not overly magical or childish.
+
+Visual Description:
+Leafy should look like a small leaf-shaped companion with a soft face, rounded stem-like limbs, and gentle green tones. It may have a slight curl or folded-leaf silhouette to make it feel cozy. The design should use sage green, leaf green, and cream accents, with a calm spa-like expression.
+
+4. Luna
+~~~~~~~
+
+Mascot Role: Sleep, night, and relaxation mascot
+Core Theme: Sleep, calm, quiet, evening rest
+
+Personality:
+Luna is dreamy, quiet, thoughtful, and comforting. It appears around nighttime routines, sleep hygiene, Relaxation Rooms, meditation-like moments, low-stimulation spaces, and decompression features. Luna should feel peaceful and slightly mysterious, but still friendly and accessible.
+
+Visual Description:
+Luna should resemble a small moon-like character with soft crescent shapes, gentle eyes, and muted blue, lavender, cream, or silver tones. It may have a tiny sleep cap, star accents, or floating glow details, but the design should stay clean and not overly fantasy-heavy.
+
+5. Olli
+~~~~~~~
+
+Mascot Role: Oils, products, and tools mascot
+Core Theme: Massage oils, balms, products, home wellness tools
+
+Personality:
+Olli is practical, neat, curious, and a little fussy about details. It likes labels, textures, ingredients, product comparisons, and proper use of oils or tools. Olli can guide users through product discovery, aftercare items, massage oils, balms, towels, and home wellness supplies. It should feel helpful and tidy rather than salesy.
+
+Visual Description:
+Olli should look like a small oil drop or balm-drop mascot with a glossy but soft shape. Its color may use amber, honey, olive, or warm cream tones. It can have a tiny label-like marking, cap-like detail, or small shine highlight. The design should be suitable for product cards, shop prompts, oil guides, and wellness finds.
+
+6. Stoni
+~~~~~~~~
+
+Mascot Role: Pressure, recovery, and grounding mascot
+Core Theme: Hot stone massage, strength, grounding, body recovery
+
+Personality:
+Stoni is steady, grounded, patient, and dependable. It represents pressure control, deep rest, hot stone treatments, recovery, and body support. Stoni should not be overly serious; it can have a dry, calm humor and a slow but reliable presence. It works well in recovery tips, pressure guidance, body mechanics, and wellness reminders.
+
+Visual Description:
+Stoni should look like a smooth rounded stone with a warm spa-stone surface, gentle facial features, and subtle heat-glow accents. Its colors may include charcoal, warm gray, basalt, soft brown, and ember-orange highlights. It should look solid, compact, and comforting, not harsh or heavy.
+
+7. Tovi
+~~~~~~~
+
+Mascot Role: Comfort and service-experience mascot
+Core Theme: Towels, linens, hygiene, comfort, spa readiness
+
+Personality:
+Tovi is tidy, cheerful, organized, and service-minded. It cares about clean towels, fresh linens, preparation, hygiene, comfort, and small details that make a spa visit feel safe and pleasant. Tovi can appear in etiquette tips, hygiene reminders, packing/checklist moments, and “what to expect” guides.
+
+Visual Description:
+Tovi should resemble a small folded towel or soft linen bundle with a face, rounded corners, and cozy texture. It may use white, cream, pale blue, or warm beige tones with small stitched details. The design should look clean, soft, and welcoming, with a spa-fresh appearance.
+
+8. Yanta
+~~~~~~~~
+
+Mascot Role: Balance, patterns, and mindful focus mascot
+Core Theme: Centering, pattern, ritual, reflection, wellness focus
+
+Personality:
+Yanta is thoughtful, focused, symbolic, and slightly mystical without becoming religious or too esoteric. It represents inner balance, mindful pauses, wellness rituals, pattern recognition, and reflective platform moments. Yanta can appear in quizzes, deeper guides, relaxation prompts, and hidden symbolic rewards.
+
+Visual Description:
+Yanta should look like a small geometric wellness charm or floating patterned companion inspired by calm mandala-like symmetry, but simplified for brand use. It may use deep blue, gold, green, cream, and ink-line accents. The design should feel balanced, elegant, and mysterious while staying friendly and non-intimidating.
+
+General Mascot Direction
+------------------------
+
+The Massage Nexus mascots should feel modern, clean, warm, and platform-friendly. They should be simple enough for icons, stickers, badges, small animations, Easter eggs, onboarding screens, reward pop-ups, and mobile UI moments.
+
+They should not look like random cartoon animals unless intentionally redesigned later. Their forms should connect to massage, wellness, rest, bodywork, discovery, products, trust, or the Ink & Ember identity.
+
+Open Questions
+--------------
+
+- Final mascot art style
+- Final mascot color palette
+- Whether each mascot gets a full-body, icon, sticker, and animated version
+- Whether mascots appear in the public website, Workspace, mobile app, or all areas
+- How mascots connect to Embers, Ink Drops, badges, story tiles, and The Resting Leaf gamification

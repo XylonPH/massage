@@ -1,0 +1,58 @@
+<?php
+
+return [
+    'breadcrumb_home' => 'Home',
+    'breadcrumb_spas' => 'Spas',
+
+    'tab_overview' => 'Overview',
+    'tab_services' => 'Services & Rates',
+    'tab_therapists' => 'Therapists',
+    'tab_facilities' => 'Facilities',
+    'tab_reviews' => 'Reviews',
+    'tab_location' => 'Location',
+    'tab_about' => 'About',
+
+    'about_title' => 'About :name',
+    'popular_services' => 'Popular Services',
+    'view_all_services' => 'View all services',
+    'minutes' => ':count mins',
+    'therapists_title' => 'Therapists & Staff',
+    'facilities_title' => 'Facilities & Amenities',
+    'treatment_areas_title' => 'Treatment Areas',
+    'location_title' => 'Location & Directions',
+    'nearby_landmarks' => 'Nearby Landmarks',
+    'view_on_map' => 'View on Map',
+    'walk_time' => ':minutes mins walk',
+    'reviews_title' => 'Reviews & Ratings',
+    'what_people_love' => 'What people love',
+    'view_all_reviews' => 'View all reviews',
+    'verification_title' => 'Verification & Sources',
+    'last_confirmed' => 'Information last confirmed :date',
+    'claimed_listing' => 'Claimed listing',
+    'managed_by_owner' => 'This profile is managed by the business owner.',
+
+    'book_title' => 'Book an Appointment',
+    'select_service' => 'Select a Service',
+    'choose_service' => 'Choose a service',
+    'select_date' => 'Select Date',
+    'select_time' => 'Select Time',
+    'book_note' => "You'll be asked to log in or sign up.",
+    'booking_mode_request' => 'Requests are confirmed by the spa within a few hours.',
+
+    'price_range' => 'Price range',
+    'per_session' => 'per session',
+    'area_private' => 'Private',
+    'area_semi_private' => 'Semi-Private',
+    'area_capacity_individual' => 'Individual',
+    'area_capacity_couple' => 'Couple',
+    'area_capacity_group' => 'Group',
+
+    'amenity_available' => 'Available',
+    'amenity_accepted' => 'Accepted',
+
+    'gift_certificates' => 'Gift Certificates',
+    'resorts_relaxation' => 'Resorts & Relaxation',
+    'home_service_available' => 'Home Service Available',
+    'view_all_photos' => 'View all photos (:count)',
+    'photo_gallery' => 'Photo gallery',
+];

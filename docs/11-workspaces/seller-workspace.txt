@@ -1,0 +1,1001 @@
+Title: Massage Nexus Seller Workspace
+Document Version: 0.10
+Date Created: 2026-07-16
+Revision Date: 2026-07-16
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 11 - Product Profile v0.10
+- Massage Nexus - 10 - Product Classification v1.30
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 20 - Translation System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- Massage Nexus - 23 - Advertiser and Sponsor Workspace v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the private workspace used by sellers represented in Massage Nexus.
+
+The Seller Workspace supports seller identity, product offers, prices, availability, fulfillment, media, promotions, reviews, verification, analytics, documents, staff permissions, orders, and future commerce functions.
+
+A Product Profile represents a stable commercial product identity. A Seller Offer represents that seller's price, availability, condition, fulfillment, and commercial terms.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Seller Workspace should:
+
+- let authorized sellers manage their public seller information;
+- connect seller offers to normalized Product records;
+- preserve Product identity separately from seller-specific information;
+- support several stores, branches, channels, or warehouses;
+- support price and availability updates;
+- support media, promotions, and analytics;
+- support verification and private documents;
+- support staff permissions;
+- prevent sellers from changing independent Product reviews or universal Product identity without review;
+- support future checkout without requiring full commerce in the first release.
+
+================================================================================
+2. POSSIBLE SELLER TYPES
+================================================================================
+
+- manufacturer;
+- brand owner;
+- official distributor;
+- wholesaler;
+- retailer;
+- marketplace seller;
+- spa selling products;
+- therapist selling products;
+- equipment supplier;
+- educational-material seller;
+- affiliate seller;
+- service provider selling gift items;
+- agency representative.
+
+Possible internal users:
+
+- organization owner;
+- store manager;
+- catalog manager;
+- inventory manager;
+- fulfillment staff;
+- customer service;
+- marketing staff;
+- finance staff;
+- analyst.
+
+================================================================================
+3. WORKSPACE ACCESS AND CONTEXT
+================================================================================
+
+Primary routes:
+
+/workspace/seller
+/workspace/product
+
+Possible seller context:
+
+/workspace/seller/{seller-id}
+
+The context switcher may show:
+
+- personal account;
+- seller organization;
+- establishment;
+- therapist practice;
+- advertising organization.
+
+================================================================================
+4. DASHBOARD
+================================================================================
+
+Possible dashboard cards:
+
+- seller verification;
+- profile completeness;
+- active offers;
+- out-of-stock offers;
+- stale price;
+- pending Product mapping;
+- rejected media;
+- new review;
+- inquiry;
+- pending order;
+- promotion expiring;
+- invoice;
+- analytics summary;
+- policy warning;
+- assigned task.
+
+The dashboard should adapt to whether direct commerce is enabled.
+
+================================================================================
+5. SELLER PROFILE
+================================================================================
+
+Possible route:
+
+/workspace/seller/profile
+
+Possible fields:
+
+- legal business name;
+- public seller name;
+- Seller Type;
+- short description;
+- full description;
+- website;
+- public contact;
+- social account;
+- location;
+- fulfillment area;
+- pickup location;
+- shipping method;
+- return summary;
+- verification;
+- status;
+- translation.
+
+Private billing and verification details remain hidden.
+
+================================================================================
+6. STORE, BRANCH, AND CHANNEL
+================================================================================
+
+A seller may operate through:
+
+- physical store;
+- online store;
+- marketplace account;
+- establishment counter;
+- warehouse;
+- mobile selling;
+- event booth;
+- pickup point.
+
+Possible functions:
+
+- add location;
+- connect branch;
+- set fulfillment method;
+- assign manager;
+- set local stock;
+- set local price;
+- set pickup hours;
+- close or archive location.
+
+================================================================================
+7. PRODUCT IDENTITY BOUNDARY
+================================================================================
+
+Product Profile owns:
+
+- stable Product identity;
+- brand;
+- category;
+- version;
+- variant;
+- ingredients or materials;
+- general specifications;
+- claims;
+- warnings;
+- authenticity context;
+- related Services.
+
+Seller Offer owns:
+
+- seller;
+- price;
+- currency;
+- stock;
+- availability;
+- condition;
+- fulfillment;
+- shipping;
+- pickup;
+- discount;
+- affiliate link;
+- seller SKU;
+- seller terms;
+- last-confirmed date.
+
+A seller should not create a duplicate Product merely to enter a different price.
+
+================================================================================
+8. PRODUCT OFFER MANAGEMENT
+================================================================================
+
+Possible routes:
+
+/workspace/product/list
+/workspace/product/create
+/workspace/product/edit
+/workspace/product/price
+/workspace/product/inventory
+/workspace/product/seller
+
+Possible offer fields:
+
+- Product;
+- Product Version;
+- Variant;
+- seller SKU;
+- condition;
+- price;
+- compare-at price;
+- currency;
+- tax;
+- stock status;
+- quantity;
+- minimum order;
+- maximum order;
+- fulfillment;
+- shipping fee;
+- pickup;
+- delivery time;
+- warranty;
+- return terms;
+- seller URL;
+- active status;
+- last-confirmed date;
+- source.
+
+================================================================================
+9. PRODUCT MAPPING
+================================================================================
+
+When a seller lists an offer, the system should:
+
+1. search for an existing Product;
+2. select the correct version and variant;
+3. connect the Seller Offer;
+4. propose a new Product only when no matching identity exists;
+5. submit uncertain mappings for review.
+
+AI may suggest a match, but should not create duplicate Products automatically without validation.
+
+================================================================================
+10. PRODUCT CREATION REQUEST
+================================================================================
+
+A seller may propose a new Product record.
+
+The proposal may include:
+
+- brand;
+- Product name;
+- category;
+- images;
+- version;
+- variant;
+- barcode;
+- model;
+- size;
+- ingredients;
+- materials;
+- warnings;
+- official source;
+- manufacturer page.
+
+The universal Product record may require editorial or data review before approval.
+
+================================================================================
+11. INVENTORY
+================================================================================
+
+Possible stock statuses:
+
+- In Stock;
+- Low Stock;
+- Out of Stock;
+- Preorder;
+- Backorder;
+- Made to Order;
+- Discontinued by Seller;
+- Unknown.
+
+Inventory may be:
+
+- manual;
+- imported;
+- API-synced;
+- branch-specific;
+- warehouse-specific.
+
+The first release may support only public availability status rather than complete inventory quantities.
+
+================================================================================
+12. PRICING
+================================================================================
+
+Possible price types:
+
+- ordinary;
+- sale;
+- member;
+- wholesale;
+- bundle;
+- promotional;
+- subscription;
+- quote.
+
+Price records may include:
+
+- amount;
+- currency;
+- tax;
+- effective date;
+- end date;
+- conditions;
+- minimum quantity;
+- last-confirmed date.
+
+Expired sale prices must not replace the ordinary price.
+
+================================================================================
+13. VERSIONS AND VARIANTS
+================================================================================
+
+Product Version:
+A materially distinct formulation, construction, design, or release.
+
+Variant:
+Size, scent, color, volume, package quantity, model, or another approved option.
+
+Seller Offer:
+The seller-specific commercial listing.
+
+The Seller Workspace should help prevent these concepts from being mixed.
+
+================================================================================
+14. BUNDLES
+================================================================================
+
+A bundle contains several Products or Variants sold together.
+
+Possible fields:
+
+- bundle name;
+- component;
+- quantity;
+- price;
+- savings;
+- condition;
+- availability;
+- date range;
+- image;
+- terms.
+
+A bundle does not replace the identity of its component Products.
+
+================================================================================
+15. MEDIA
+================================================================================
+
+Possible routes:
+
+/workspace/product/gallery
+/workspace/media/product
+
+Possible media:
+
+- Product image;
+- packaging;
+- label;
+- ingredient list;
+- specification sheet;
+- demonstration;
+- official advertisement;
+- seller photo;
+- certificate;
+- safety document.
+
+Media fields may include:
+
+- source;
+- permission;
+- copyright;
+- official status;
+- seller status;
+- AI-use label;
+- caption;
+- alt text;
+- order;
+- visibility;
+- moderation.
+
+================================================================================
+16. PRODUCT INFORMATION AND CLAIMS
+================================================================================
+
+A seller may submit:
+
+- description;
+- use;
+- instructions;
+- specifications;
+- materials;
+- ingredients;
+- warnings;
+- storage;
+- warranty.
+
+Claims may require:
+
+- manufacturer source;
+- certification;
+- test;
+- regulator;
+- approved document.
+
+A seller cannot mark a claim as verified merely because it appears in marketing copy.
+
+================================================================================
+17. AUTHENTICITY
+================================================================================
+
+Possible authenticity states:
+
+- Verified Authentic;
+- Unverified;
+- Suspected Counterfeit;
+- Confirmed Counterfeit.
+
+The seller may provide:
+
+- official distributor proof;
+- purchase source;
+- invoice;
+- authorization;
+- serial or batch information;
+- manufacturer confirmation.
+
+The seller cannot assign its own final authenticity status.
+
+================================================================================
+18. LIFECYCLE
+================================================================================
+
+Possible Product lifecycle statuses:
+
+- Current;
+- Discontinued;
+- Recalled;
+- Unknown.
+
+Possible Seller Offer statuses:
+
+- Draft;
+- Active;
+- Paused;
+- Out of Stock;
+- Ended;
+- Removed;
+- Under Review.
+
+A discontinued Product may still have remaining Seller Offers.
+
+A recalled Product requires prominent handling and may block new sales.
+
+================================================================================
+19. FULFILLMENT
+================================================================================
+
+Possible fulfillment methods:
+
+- ship;
+- same-day delivery;
+- scheduled delivery;
+- store pickup;
+- establishment pickup;
+- therapist delivery;
+- digital delivery;
+- external seller website;
+- marketplace link.
+
+Fulfillment fields may include:
+
+- area;
+- fee;
+- minimum order;
+- estimated time;
+- carrier;
+- tracking;
+- restriction.
+
+================================================================================
+20. SHIPPING
+================================================================================
+
+Possible information:
+
+- shipping origin;
+- service area;
+- shipping method;
+- courier;
+- estimated delivery;
+- fee;
+- free-shipping threshold;
+- restricted item;
+- packaging;
+- tracking.
+
+The first release may display seller-provided shipping information without operating full logistics.
+
+================================================================================
+21. RETURNS, REFUNDS, AND WARRANTY
+================================================================================
+
+Possible fields:
+
+- return window;
+- return condition;
+- excluded item;
+- refund method;
+- restocking fee;
+- warranty duration;
+- warranty provider;
+- claim process;
+- contact.
+
+Seller terms must be clear and may require review for misleading or unlawful wording.
+
+================================================================================
+22. PRODUCT REVIEWS AND SELLER RESPONSES
+================================================================================
+
+A Product review evaluates the Product.
+
+A seller response may:
+
+- clarify version;
+- clarify usage;
+- respond to shipping or packaging concerns;
+- acknowledge a problem;
+- explain a recall or correction;
+- provide support information.
+
+A seller may not:
+
+- edit the review;
+- alter the rating;
+- remove criticism merely because it is negative;
+- identify an anonymous reviewer through unauthorized data;
+- pressure the reviewer.
+
+Seller performance reviews may later be considered separately from Product reviews.
+
+================================================================================
+23. QUESTIONS AND ANSWERS
+================================================================================
+
+Sellers may answer:
+
+- size question;
+- compatibility;
+- ingredient question;
+- stock;
+- shipping;
+- warranty;
+- official-source question;
+- Product version;
+- usage instructions.
+
+Official seller replies should be identified.
+
+Health or safety answers may require evidence or specialist review.
+
+================================================================================
+24. PROMOTIONS
+================================================================================
+
+Possible routes:
+
+/workspace/promo
+/workspace/product/promo
+
+Possible promotion fields:
+
+- title;
+- Product;
+- Variant;
+- Seller Offer;
+- start date;
+- end date;
+- discount;
+- sale price;
+- code;
+- usage limit;
+- bundle;
+- eligibility;
+- media;
+- terms;
+- status;
+- analytics.
+
+Promotions remain separate from the ordinary price.
+
+================================================================================
+25. ADVERTISING AND SPONSORSHIP
+================================================================================
+
+The seller may use the Advertiser and Sponsor Workspace to create:
+
+- sponsored Product placement;
+- seller campaign;
+- sponsored article;
+- Product launch;
+- newsletter placement;
+- sponsored listing.
+
+Advertising remains clearly labeled and cannot alter organic reviews, ratings, authenticity, or verification.
+
+================================================================================
+26. ORDERS
+================================================================================
+
+Possible later routes:
+
+/workspace/seller/order
+/workspace/seller/order/pending
+/workspace/seller/order/processing
+/workspace/seller/order/shipped
+/workspace/seller/order/completed
+/workspace/seller/order/cancelled
+/workspace/seller/order/refund
+
+Possible functions:
+
+- accept order;
+- prepare;
+- ship;
+- add tracking;
+- complete;
+- cancel;
+- refund;
+- message buyer;
+- print packing slip;
+- export.
+
+Full commerce is a later-stage feature.
+
+================================================================================
+27. PAYMENTS AND PAYOUTS
+================================================================================
+
+Possible seller financial areas:
+
+- order payment;
+- platform fee;
+- tax;
+- refund;
+- payout;
+- payout account;
+- invoice;
+- statement.
+
+Changing payout details should require recent authentication and strong verification.
+
+================================================================================
+28. SELLER DOCUMENTS
+================================================================================
+
+Private documents may include:
+
+- business registration;
+- tax document;
+- distributor authorization;
+- manufacturer authorization;
+- invoice;
+- import document;
+- safety certificate;
+- authenticity evidence;
+- contract;
+- payout verification.
+
+Documents remain in private storage with controlled access.
+
+================================================================================
+29. SELLER VERIFICATION
+================================================================================
+
+Possible verification scopes:
+
+- identity;
+- business;
+- contact;
+- location;
+- website;
+- brand ownership;
+- official distributor;
+- authorized reseller;
+- payout identity.
+
+Public verification should identify scope and date without exposing private evidence.
+
+================================================================================
+30. STAFF ACCESS AND PERMISSIONS
+================================================================================
+
+Possible permission groups:
+
+Seller Owner
+Broad seller authority.
+
+Catalog Manager
+Products, mappings, and descriptions.
+
+Price Manager
+Prices and promotions.
+
+Inventory Manager
+Availability and quantity.
+
+Fulfillment Staff
+Orders, shipping, and pickup.
+
+Customer Service
+Messages, questions, and returns.
+
+Marketing Manager
+Media, promotions, and advertising.
+
+Finance Manager
+Invoices, payments, and payouts.
+
+Analyst
+Read-only analytics.
+
+Permissions should be assigned per seller organization, branch, store, or warehouse.
+
+================================================================================
+31. IMPORT AND BULK UPDATE
+================================================================================
+
+Possible imports:
+
+- Product Offers;
+- price;
+- stock;
+- shipping;
+- barcode;
+- seller SKU;
+- branch availability.
+
+Import should provide:
+
+- template;
+- validation;
+- preview;
+- Product mapping;
+- duplicate detection;
+- dry run;
+- error report;
+- confirmation;
+- batch history.
+
+Bulk update should not silently create duplicate Products.
+
+================================================================================
+32. PARTNER API
+================================================================================
+
+Possible Partner API functions:
+
+- offer create or update;
+- price update;
+- stock update;
+- order read;
+- order status;
+- shipping update;
+- Product mapping;
+- webhook;
+- analytics.
+
+API access requires:
+
+- approved client;
+- scope;
+- quota;
+- rate limit;
+- audit;
+- revocation.
+
+================================================================================
+33. ANALYTICS
+================================================================================
+
+Possible metrics:
+
+- Seller Profile views;
+- Product impressions;
+- Offer clicks;
+- external seller clicks;
+- saves;
+- follows;
+- conversion;
+- inquiry;
+- order;
+- return;
+- promotion performance;
+- search appearance;
+- language;
+- location;
+- sponsored versus organic activity.
+
+Analytics should not reveal private buyer identities unnecessarily.
+
+================================================================================
+34. TRANSLATION
+================================================================================
+
+The seller may provide or review:
+
+- Seller Profile translation;
+- Product description translation;
+- offer wording;
+- shipping information;
+- return terms;
+- promotion wording.
+
+Translation follows the shared Translation System.
+
+High-risk warnings and legal terms require stronger review.
+
+================================================================================
+35. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- suggest Product mapping;
+- draft Seller Profile wording;
+- generate alt text;
+- translate descriptions;
+- identify incomplete offer fields;
+- summarize analytics;
+- flag suspicious claims;
+- compare Product versions.
+
+AI must not:
+
+- invent specifications;
+- invent safety claims;
+- assign final authenticity;
+- publish without permission;
+- create duplicate Products automatically;
+- change prices without authorization.
+
+================================================================================
+36. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+
+- Seller claim approved;
+- verification expiring;
+- Product mapping approved;
+- Product mapping rejected;
+- stale price;
+- low stock;
+- out of stock;
+- new review;
+- question received;
+- order received;
+- payment received;
+- return requested;
+- promotion expiring;
+- media rejected;
+- policy warning;
+- API failure.
+
+================================================================================
+37. SECURITY
+================================================================================
+
+The workspace must:
+
+- require authentication;
+- check seller-specific permission;
+- protect business and payout documents;
+- protect private exports;
+- prevent cross-seller access;
+- require recent authentication for payout changes;
+- log high-risk actions;
+- secure API credentials;
+- prevent direct storage-path exposure;
+- rate-limit imports and abusive requests.
+
+================================================================================
+38. MOBILE USE
+================================================================================
+
+A future mobile application may prioritize:
+
+- dashboard;
+- stock status;
+- price update;
+- order status;
+- message;
+- notification;
+- quick Product photo;
+- promotion status.
+
+Complex catalog mapping may remain web-first.
+
+================================================================================
+39. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+- Seller Profile;
+- verification status;
+- Product mapping;
+- Seller Offer;
+- price;
+- availability;
+- media;
+- staff permission;
+- review response;
+- analytics foundation.
+
+Phase 2
+- bulk import;
+- promotions;
+- questions;
+- Partner API;
+- advanced stock;
+- shipping;
+- return and warranty information.
+
+Phase 3
+- checkout;
+- orders;
+- payments;
+- payouts;
+- fulfillment;
+- mobile management;
+- advanced seller analytics.
+
+================================================================================
+40. CURRENT WORKING DECISIONS
+================================================================================
+
+- Seller Workspace is part of /workspace.
+- Product identity remains separate from Seller Offer.
+- A seller may propose a Product but does not automatically control the universal Product record.
+- Seller prices and stock remain seller-specific.
+- Authenticity status requires evidence and controlled review.
+- Advertising does not alter organic Product ratings or verification.
+- Staff access is permission-based.
+- Private business and payout documents remain protected.
+- Full commerce may be introduced after Product discovery is stable.
+- AI may suggest mappings but may not automatically create duplicate Products.
+
+================================================================================
+41. OPEN DECISIONS
+================================================================================
+
+- exact Seller Type taxonomy;
+- seller claim process;
+- Product creation approval;
+- seller-performance review;
+- marketplace integration;
+- first commerce release;
+- payment gateway;
+- payout schedule;
+- tax handling;
+- returns policy;
+- shipping integration;
+- inventory quantity visibility;
+- affiliate-link rules;
+- official reseller verification;
+- seller subscription plans;
+- bulk import limits;
+- Partner API scope.

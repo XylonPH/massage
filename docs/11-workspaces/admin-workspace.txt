@@ -1,0 +1,1426 @@
+Title: Massage Nexus Admin Workspace
+Document Version: 0.40
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
+
+Related Documents:
+- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/02-governance/edit-system.txt
+- docs/16-operations/support-and-ticketing-system.txt
+- docs/14-research/analytics-statistics-and-measurement-system.txt
+- docs/02-governance/ai-assisted-development-workflow.txt
+- docs/02-governance/testing-and-quality-assurance-strategy.txt
+- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/nsfw-mature-and-restricted-content-policy.txt
+- docs/04-architecture/cache-and-temporary-data-strategy.txt
+- docs/13-localization/translation-system.txt
+- docs/06-user-interface/admin-workspace-ui.txt
+
+The Admin Workspace is part of /workspace and is shown only through permissions. It should not rely on an unprotected /admin shortcut. It brings together data administration, moderation, verification, editorial management, user access, taxonomy, media, integrations, system operations, analytics, audit, and support.
+
+This document defines administrative capabilities, workflow boundaries, states, decisions, and safeguards. Screen layout, components, responsive behavior, and detailed interaction patterns are defined in Massage Nexus Admin Workspace User Interface.
+
+Administrator does not mean that every administrator receives every permission.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Admin Workspace should:
+
+- provide safe structured control of platform operations;
+- separate high-risk actions from ordinary editing;
+- give each administrator only necessary access;
+- preserve audit history;
+- manage queues and exceptions;
+- support bulk work without enabling accidental mass damage;
+- avoid direct uncontrolled database editing;
+- support editors, moderators, verifiers, support staff, and technical administrators;
+- provide clear system health and operational status;
+- keep public editorial trust separate from advertising influence.
+
+================================================================================
+2. ACCESS MODEL
+================================================================================
+
+Possible administrative participants:
+
+Founder
+Highest project decision authority. This does not create an unaudited technical bypass or exempt the Founder from high-risk safeguards.
+
+Platform Administrator
+Broad platform management.
+
+Data Administrator
+Structured record and taxonomy management.
+
+Editorial Administrator
+Articles, Service content, help, and publication.
+
+Moderation Administrator
+Reports, abuse, appeals, and content enforcement.
+
+Verification Administrator
+Claims, credentials, documents, and trust signals.
+
+User Access Administrator
+Accounts, roles, permissions, and security support.
+
+System Administrator
+Jobs, storage, integrations, configuration, backup, and maintenance.
+
+Advertising Administrator
+Campaign, creative, placement, invoice, and sponsor review.
+
+Support Administrator
+Tickets, user assistance, escalation, and account recovery.
+
+A person may have several permission groups. Access should be explicit.
+
+2.1 Case-Scoped Participants
+
+Two participants referenced elsewhere in this document (see section 3) are not Admin Workspace
+administrator roles and are intentionally lighter-weight than the participants listed above:
+
+Steward
+Defined authoritatively in docs/02-governance/edit-system.txt. May maintain assigned unclaimed
+or community-managed records; authority is limited to assigned record types or areas rather than
+a broad permission group.
+
+Translator
+A person assigned to translate specific content or interface strings within their assigned
+language and content scope, per docs/13-localization/translation-system.txt. Translator access
+does not by itself grant Editorial Administrator publication authority; translated content still
+requires the applicable editorial or interface approval before publication (see section 15 and
+section 16).
+
+Both participants receive Standard Security Panel access scoped to their assigned records or
+language rather than general Editorial Administrator access.
+
+================================================================================
+3. ROUTE DIRECTION
+================================================================================
+
+Administrative areas remain under:
+
+/workspace
+
+Administrative routes use permission-scoped panels. Route separation alone does not isolate authentication. Where risk requires stronger isolation, panels use separately configured authentication contexts, cookie names, guards, session rotation, idle and absolute lifetimes, step-up authentication, and middleware enforcement.
+
+- Standard Security Panel (/workspace/editorial, /workspace/advertising, /workspace/analytics)
+  Access for Editorial Administrator and Advertising Administrator, plus the case-scoped Translator and Steward participants (see section 2). Requires verified email.
+- Medium Security Panel (/workspace/moderation, /workspace/verification, /workspace/support, /workspace/database)
+  Access for Moderation Administrator, Verification Administrator, Support Administrator, and Data Administrator. Media previews are redacted by default.
+- Critical Security Panel (/workspace/system, /workspace/api, /workspace/audit)
+  Access for Founder, System Administrator, and User Access Administrator. Multi-Factor Authentication (MFA), recent step-up authentication, shorter session limits, and stronger device or network controls are enforced. IP allowlisting may be used where operationally supportable, but it is not the only protection and requires an audited recovery path. /workspace/api is included here because it manages credentials, scopes, and secret rotation; /workspace/audit is included because it is the read-only viewer for append-only audit events (see section 29).
+
+Platform Administrator is a broad role rather than a single-panel role: per section 37 ("Permissions are more important than broad role names"), a Platform Administrator's actual panel access is determined by which specific permissions are granted, which may span Standard, Medium, and Critical panels at once. Do not treat holding the Platform Administrator title as automatic access to every panel.
+
+Raw technical tools within /workspace/database (see section 6) require Critical-tier controls even though ordinary structured editing in that route is Medium-tier.
+
+Relevant routes:
+
+/workspace/editorial
+/workspace/moderation
+/workspace/verification
+/workspace/database
+/workspace/system
+/workspace/api
+/workspace/support
+/workspace/audit
+/workspace/advertising
+/workspace/analytics
+
+Do not depend on:
+
+/admin
+
+A person without permission receives no access even if they know the route. Routing uses centralized binding for the approved opaque 16-character base-62 application identifier. Database-engine identifiers are not exposed as a general public or administrative route contract. A separately documented compatibility rule is required before accepting any legacy identifier format.
+
+================================================================================
+4. ADMIN HOME
+================================================================================
+
+Possible dashboard areas:
+
+- system alert;
+- failed job;
+- moderation queue;
+- verification backlog;
+- claim backlog;
+- data-quality warning;
+- pending publication;
+- translation backlog;
+- API error;
+- storage warning;
+- security alert;
+- support escalation;
+- advertising approval;
+- backup status;
+- recent high-risk action;
+- quick action.
+
+Dashboard cards should link to actionable queues.
+
+4.1 Unified Administrative Work Queue
+-------------------------------------
+
+The Admin Workspace uses one permission-filtered queue framework for work requiring human review. It does not combine all records into one collection or allow every administrator to see every queue.
+
+Queue categories may include:
+
+- new spa or establishment submission;
+- spa or establishment correction;
+- new therapist submission;
+- therapist correction;
+- Product, Seller, and Service submission;
+- taxonomy suggestion;
+- pending or reported Review;
+- reported Comment, Discussion, Message, or media;
+- Article and News editorial review;
+- translation review;
+- profile claim;
+- credential and verification review;
+- user report and appeal;
+- Support escalation;
+- advertising approval;
+- data-quality and provenance exception;
+- failed import, integration, or automated job;
+- high-risk action awaiting second approval.
+
+Every queue item should expose only information allowed by the administrator's effective permission and case scope. A queue item may contain:
+
+- queue and case identifier;
+- item type and target record;
+- submitter or system source;
+- submission date and last activity;
+- priority, risk, and privacy class;
+- status;
+- assignment and assignment expiry;
+- due date or response target;
+- current and proposed values;
+- evidence and provenance;
+- duplicate or related-record candidates;
+- policy and validation warnings;
+- prior decisions and appeals;
+- public preview where applicable.
+
+Common queue actions may include:
+
+- assign or release;
+- approve;
+- approve selected fields;
+- reject;
+- request changes or more evidence;
+- merge or link duplicate work;
+- defer;
+- escalate;
+- transfer to another queue;
+- preserve evidence;
+- add an internal note;
+- notify the submitter;
+- reopen or begin an appeal.
+
+Queue processing must prevent silent simultaneous decisions. Assignment leases, optimistic locking, or another approved concurrency control should detect when another administrator has changed or completed the item.
+
+Each domain specification remains authoritative for what may be approved. The common queue framework owns assignment, status, evidence presentation, decision recording, notification, escalation, and audit behavior.
+
+================================================================================
+5. GLOBAL SEARCH AND RECORD LOOKUP
+================================================================================
+
+Administrators may need to find:
+
+- user;
+- Service;
+- establishment;
+- therapist;
+- product;
+- seller;
+- article;
+- review;
+- media;
+- contribution;
+- claim;
+- verification;
+- report;
+- API client;
+- campaign;
+- audit entry.
+
+Search results must respect administrator permissions. A support worker should not automatically see private credential documents.
+
+================================================================================
+6. DATA ADMINISTRATION
+================================================================================
+
+Routes:
+
+/workspace/database
+/workspace/database/service
+/workspace/database/spa
+/workspace/database/therapist
+/workspace/database/product
+/workspace/database/seller
+/workspace/database/promo
+/workspace/database/user
+/workspace/database/content
+/workspace/database/article
+/workspace/database/review
+/workspace/database/media
+/workspace/database/contribution
+/workspace/database/claim
+/workspace/database/verification
+/workspace/database/report
+/workspace/database/taxonomy
+/workspace/database/location
+/workspace/database/language
+/workspace/database/theme
+/workspace/database/role
+/workspace/database/permission
+/workspace/database/audit
+/workspace/database/import
+/workspace/database/export
+/workspace/database/cleanup
+/workspace/database/merge
+/workspace/database/archive
+
+The interface should use structured forms rather than exposing raw database editing to ordinary administrators.
+
+Raw technical tools, if ever provided, should be restricted to specialized system administrators.
+
+================================================================================
+7. SERVICE AND TAXONOMY MANAGEMENT
+================================================================================
+
+Administrators may manage:
+
+- Service Sector;
+- Service Domain;
+- Service Family;
+- normalized Services;
+- aliases;
+- relationships;
+- technique frameworks;
+- family-specific classifications;
+- lifecycle;
+- source;
+- merge;
+- translation.
+
+Taxonomy changes should show:
+
+- usage count;
+- affected filters;
+- affected records;
+- affected API contract;
+- affected translations;
+- replacement option;
+- warning before retirement.
+
+================================================================================
+8. ESTABLISHMENT, THERAPIST, PRODUCT, AND SELLER MANAGEMENT
+================================================================================
+
+Administrative tools may support:
+
+- create;
+- edit;
+- review correction;
+- merge;
+- close;
+- relocate;
+- rename;
+- dispute;
+- restore;
+- archive;
+- source;
+- verify;
+- restrict;
+- assign steward.
+
+Administrators should not casually overwrite provider-supplied information without preserving the previous value and reason.
+
+Submission review must distinguish:
+
+- a completely new record;
+- a proposed change to an existing record;
+- a provider-submitted change;
+- an ordinary user contribution;
+- an internal research or steward update;
+- a claimed or unclaimed profile;
+- a duplicate candidate;
+- a closure, relocation, or rename;
+- a disputed ownership, affiliation, or credential claim.
+
+The review view should provide:
+
+- current and proposed values side by side;
+- field-level source and last-verified information;
+- conflicts between submitted and existing evidence;
+- duplicate candidates;
+- map and location comparison where relevant;
+- protected evidence separated from public information;
+- policy, privacy, and validation warnings;
+- public-profile preview;
+- field-by-field approval or rejection;
+- required decision reason;
+- resulting revision and audit relationship.
+
+Approval, verification, and claim authority are separate decisions. Approving an address, opening hour, menu item, or profile correction does not automatically verify the complete profile or grant the submitter management permission.
+
+Merge and relocation tools must preserve aliases, redirects, relationships, contributions, reviews, provenance, and audit history according to the affected capability specifications.
+
+================================================================================
+9. USER MANAGEMENT
+================================================================================
+
+Possible functions:
+
+- find user;
+- view account status;
+- view public profile;
+- see roles and permissions;
+- review security events;
+- verify contact;
+- suspend;
+- restrict;
+- restore;
+- merge duplicate accounts where lawful and safe;
+- handle deletion request;
+- export account data;
+- manage support case.
+
+Administrators should not:
+
+- view a user's password;
+- receive reusable authentication secrets;
+- silently sign in as the user without audit;
+- expose unrelated private activity.
+
+================================================================================
+10. ROLE AND PERMISSION MANAGEMENT
+================================================================================
+
+Routes:
+
+/workspace/system/role
+/workspace/system/permission
+
+The interface should support:
+
+- role;
+- permission;
+- assignment;
+- context;
+- effective date;
+- expiry;
+- reason;
+- approver;
+- audit.
+
+Context may be:
+
+- global;
+- one establishment;
+- one therapist;
+- one seller;
+- one language;
+- one editorial category;
+- one geographic area.
+
+High-risk permissions should be granted separately.
+
+10.1 Access Governance
+----------------------
+
+Administrative authorization is deny by default.
+
+Requirements:
+
+- no shared administrator account;
+- no self-granting of privileged access;
+- no self-approval where a second approver is required;
+- separation of ordinary editing, moderation, verification, finance, user access, and system operations;
+- temporary or just-in-time access where permanent privilege is unnecessary;
+- effective and expiry dates for temporary assignments;
+- reason and approver for every privileged assignment;
+- periodic access review;
+- immediate offboarding and session revocation when authority ends;
+- recusal for conflicts of interest;
+- separate treatment of human administrators, service accounts, and automated jobs;
+- an audited, time-limited break-glass process for emergencies.
+
+Privilege changes rotate or revoke affected sessions as required. The system should notify the affected administrator and security owner of high-risk grants, revocations, and unusual use.
+
+Effective permission is calculated from account status, Massage Nexus membership status, role, direct permission, context, record relationship, time limit, security state, and any active restriction. Hiding navigation is not authorization.
+
+================================================================================
+11. VIEW-AS AND SUPPORT ACCESS
+================================================================================
+
+A limited View-As feature may help support staff understand a user's interface.
+
+Rules:
+
+- no password access;
+- strictly Read-Only session (impersonators must never execute write queries, bookings, or password updates on behalf of the user);
+- visible banner;
+- no hidden impersonation;
+- action restrictions;
+- reason required;
+- time limit;
+- audit entry;
+- user notification by default, with a recorded security or legal exception when notice must be delayed or omitted;
+- no access to highly sensitive records unless separately authorized.
+
+View-As should show permission results without creating an ordinary reusable user session.
+
+Read-only behavior must be enforced by the authorization and data-access layers, not only by disabled interface controls. View-As must deny state-changing requests, bookings, Messages, exports, password and MFA changes, payout changes, API credential creation, and protected downloads outside the approved support-case scope.
+
+Starting, extending, and ending View-As should be visible to the support worker. The session must end automatically at expiry, privilege loss, account-security change, or explicit termination.
+
+================================================================================
+12. MODERATION
+================================================================================
+
+Routes:
+
+/workspace/moderation
+/workspace/moderation/queue
+/workspace/moderation/review
+/workspace/moderation/rating
+/workspace/moderation/comment
+/workspace/moderation/chat
+/workspace/moderation/media
+/workspace/moderation/user
+/workspace/moderation/profile
+/workspace/moderation/listing
+/workspace/moderation/report
+/workspace/moderation/safety
+/workspace/moderation/spam
+/workspace/moderation/abuse
+/workspace/moderation/dispute
+/workspace/moderation/appeal
+/workspace/moderation/nsfw
+/workspace/moderation/ai-flag
+/workspace/moderation/log
+
+Moderation decisions may include:
+
+- no action;
+- request edit;
+- label;
+- limit visibility;
+- remove content;
+- restrict account;
+- suspend;
+- escalate;
+- refer to legal or safety process.
+
+Serious actions should preserve evidence, reason, reviewer, and appeal path where appropriate.
+
+Review moderation should show, according to permission:
+
+- the Review and affected profile;
+- publication and report status;
+- reviewer relationship and disclosed conflict;
+- related booking or visit signal where lawfully available;
+- duplicate, spam, or coordinated-activity indicators;
+- promotional or irrelevant content indicators;
+- harassment, personal information, allegation, medical claim, and NSFW warnings;
+- provider response;
+- prior moderation and appeal history;
+- protected evidence separated from public content.
+
+Review-specific decisions may include:
+
+- publish unchanged;
+- publish with an approved redaction that does not alter the Review's meaning;
+- request revision;
+- apply a disclosure or warning label;
+- limit distribution;
+- remove a prohibited portion;
+- reject or remove;
+- preserve for investigation;
+- escalate;
+- restore after appeal.
+
+Moderators do not change a rating merely because a provider disputes it. Rating adjustment or invalidation follows the Rating System, fraud, and moderation rules and must preserve the original event and decision reason.
+
+Comment, Discussion, Message, and media moderation should use the same case and decision framework while applying their own authoritative content rules.
+
+Moderation queues must implement exposure shielding. Potential NSFW content is blurred or replaced with a safe placeholder by default and requires a deliberate accessible Reveal action with a warning. Hover alone must never reveal it. Reveal behavior must work with keyboard and touch input, avoid unsafe screen-reader output, and support access audit where justified.
+
+================================================================================
+13. VERIFICATION
+================================================================================
+
+Routes:
+
+/workspace/verification
+/workspace/verification/profile
+/workspace/verification/spa
+/workspace/verification/therapist
+/workspace/verification/seller
+/workspace/verification/product
+/workspace/verification/business
+/workspace/verification/contact
+/workspace/verification/document
+/workspace/verification/claim
+/workspace/verification/media
+/workspace/verification/credential
+/workspace/verification/source
+/workspace/verification/history
+
+Private evidence should be shown only to authorized verifiers.
+
+Public output should show only the approved trust signal, scope, date, and limitations.
+
+================================================================================
+14. CLAIM MANAGEMENT
+================================================================================
+
+Claim tools may support:
+
+- claimant;
+- target profile;
+- proof;
+- contact verification;
+- organization relationship;
+- status;
+- reviewer;
+- conflict;
+- decision;
+- appeal;
+- expiry.
+
+Approving a claim grants selected permissions. It does not transfer ownership of public reviews, ratings, or universal Service information.
+
+================================================================================
+15. EDITORIAL MANAGEMENT
+================================================================================
+
+Routes:
+
+/workspace/editorial
+/workspace/editorial/dashboard
+/workspace/editorial/content
+/workspace/editorial/article
+/workspace/editorial/news
+/workspace/editorial/category
+/workspace/editorial/tag
+/workspace/editorial/author
+/workspace/editorial/neural-agent
+/workspace/editorial/calendar
+/workspace/editorial/draft
+/workspace/editorial/revision
+/workspace/editorial/review
+/workspace/editorial/approval
+/workspace/editorial/published
+/workspace/editorial/archive
+
+Editorial administrators may manage:
+
+- assignment;
+- draft;
+- review;
+- source;
+- author;
+- translator;
+- media;
+- publication;
+- revision;
+- correction;
+- archive.
+
+Sponsored content must remain labeled.
+
+Editorial review should show:
+
+- content type and intended audience;
+- author, assigned editor, reviewer, and translator;
+- source list and claims requiring verification;
+- revision comparison;
+- copyright and media permission status;
+- AI-assistance record and required label;
+- sponsor, affiliate, or commercial disclosure;
+- medical, legal, safety, privacy, or reputational warning;
+- translation and source-revision status;
+- accessibility completeness, including alt text, captions, and transcript where applicable;
+- public preview, metadata, and social preview;
+- publication schedule;
+- correction, retraction, and archive history.
+
+Editorial decisions may include:
+
+- return to author;
+- request source verification;
+- request legal, medical, safety, or policy review;
+- approve selected changes;
+- approve publication;
+- schedule;
+- correct;
+- retract;
+- archive.
+
+Publication requires all mandatory approvals for the content risk. A publication action must not silently approve unresolved source, copyright, sponsorship, translation, or accessibility requirements.
+
+================================================================================
+16. TRANSLATION ADMINISTRATION
+================================================================================
+
+Possible functions:
+
+- activate language;
+- assign translator;
+- manage glossary;
+- review stale translations;
+- approve interface wording;
+- review legal translation;
+- manage fallback;
+- monitor coverage;
+- compare source and target;
+- publish;
+- archive.
+
+Administrators should see translation coverage by:
+
+- language;
+- content type;
+- status;
+- source age;
+- risk.
+
+Translation completeness checks should include:
+
+- missing interface key or content unit;
+- untranslated or unchanged source text;
+- source revision newer than the translation;
+- placeholder and variable parity;
+- pluralization and grammatical variant coverage;
+- approved glossary and protected-term compliance;
+- unsupported markup or formatting difference;
+- route, metadata, alt-text, caption, and transcript coverage;
+- fallback behavior;
+- locale-specific date, time, number, currency, and address behavior;
+- human-review requirement;
+- legal, payment, consent, safety, security, privacy, and NSFW review status.
+
+Coverage should distinguish Draft, Machine Draft, Human Review Required, Reviewed, Approved, Published, Stale, Rejected, and Archived. A language is not release-ready merely because every key contains text.
+
+The interface should report completeness by language, feature, content type, source revision, risk, and release requirement. Publishing a changed source should mark affected translations stale according to the Translation System.
+
+================================================================================
+17. MEDIA ADMINISTRATION
+================================================================================
+
+Routes:
+
+/workspace/media
+/workspace/moderation/media
+/workspace/verification/media
+
+Administrative media functions:
+
+- review upload;
+- inspect source;
+- inspect permission;
+- set visibility;
+- classify sensitive content;
+- assign AI label;
+- reject;
+- replace;
+- archive;
+- remove;
+- restore;
+- detect duplicate;
+- process quality issue.
+
+New media remains in private quarantine until validation, scanning, processing, classification, and required review are complete. Flagged or reported public media is immediately denied by the authorization layer and moved or reclassified into approved private or restricted storage. The system must also revoke or expire protected URLs, purge public CDN and derivative caches, disable unsafe derivatives, and preserve evidence or legal holds where required.
+
+Private originals remain protected.
+
+Quarantine behavior must not depend on a local filesystem path or ACL change. It must work with the approved object-storage and delivery architecture. Every original, derivative, preview, transcript, caption, and poster image remains linked so a visibility or deletion decision can be applied consistently.
+
+================================================================================
+18. ADVERTISING AND SPONSORSHIP ADMINISTRATION
+================================================================================
+
+Administrative tools may include:
+
+- organization approval;
+- advertiser verification;
+- sponsor verification;
+- campaign review;
+- creative review;
+- placement review;
+- disclosure;
+- invoice;
+- payment status;
+- policy enforcement;
+- analytics validation;
+- refund or credit;
+- suspension.
+
+Advertising cannot alter organic ratings, verification, or editorial conclusions.
+
+================================================================================
+19. API, INTEGRATION, USAGE, QUOTA, AND COST MANAGEMENT
+================================================================================
+
+Routes:
+
+/workspace/api
+/workspace/api/key
+/workspace/api/client
+/workspace/api/scope
+/workspace/api/quota
+/workspace/api/rate-limit
+/workspace/api/log
+/workspace/api/webhook
+/workspace/api/integration
+/workspace/api/documentation
+
+Functions:
+
+- register client;
+- issue credential;
+- revoke credential;
+- set scope;
+- set quota;
+- review logs;
+- rotate secret;
+- test webhook;
+- block abuse;
+- view contract version.
+
+Secrets should be shown only at creation or controlled rotation.
+
+19.1 Third-Party Service Operations
+-----------------------------------
+
+The workspace must separately manage services consumed by Massage Nexus. Possible service categories include:
+
+- AI model and embedding providers;
+- maps, places, geocoding, directions, and distance services;
+- email;
+- SMS;
+- push notification;
+- payment and payout;
+- identity or credential verification;
+- search;
+- object storage and CDN;
+- image and video processing;
+- translation;
+- analytics;
+- monitoring and error reporting.
+
+For each configured provider or service, authorized administrators should be able to see:
+
+- service and provider;
+- environment;
+- operational status;
+- enabled capabilities, models, or endpoints;
+- request, success, failure, and retry counts;
+- quota used, quota remaining, and reset period;
+- rate-limit status;
+- token, character, message, storage, bandwidth, or other billable usage unit;
+- estimated cost, approved budget, and forecast;
+- cost by capability, application, market, organization, or approved internal dimension;
+- latency and error rate;
+- credential age and rotation status without revealing the secret;
+- recent incidents;
+- fallback or degraded-mode availability;
+- last successful health check.
+
+Controls may include:
+
+- warning threshold;
+- hard usage or spending limit where supported;
+- per-capability, per-user, per-organization, or per-market quota;
+- approved model or endpoint restriction;
+- emergency disable;
+- fallback provider;
+- approved model downgrade;
+- retry and circuit-breaker control;
+- alert routing;
+- maintenance note.
+
+Provider controls must not expose credentials, raw private prompts, complete private responses, payment secrets, or unnecessary personal data. Usage records follow privacy, security, retention, and audit rules.
+
+AI usage should distinguish input, cached input, output, image, audio, tool, embedding, and other billable units supported by the provider. Maps usage should distinguish map loads, places search, details, geocoding, routes, distance, and other enabled billable endpoints. Cost reporting must not assume every provider uses the same quota model.
+
+Credential rotation, service disablement, quota changes, provider switching, and budget-limit changes are high-risk actions when they can interrupt production or change data processing.
+
+================================================================================
+20. SYSTEM MANAGEMENT
+================================================================================
+
+Routes:
+
+/workspace/system
+/workspace/system/setting
+/workspace/system/language
+/workspace/system/theme
+/workspace/system/accessibility
+/workspace/system/security
+/workspace/system/role
+/workspace/system/permission
+/workspace/system/notification
+/workspace/system/email
+/workspace/system/sms
+/workspace/system/push
+/workspace/system/storage
+/workspace/system/search-index
+/workspace/system/cache
+/workspace/system/scheduler
+/workspace/system/job
+/workspace/system/log
+/workspace/system/audit
+/workspace/system/backup
+/workspace/system/restore
+/workspace/system/maintenance
+/workspace/system/lock-mode
+
+System settings should be divided by area.
+
+Do not create one giant settings form.
+
+================================================================================
+21. JOB AND QUEUE MANAGEMENT
+================================================================================
+
+Administrators may view:
+
+- queued;
+- running;
+- failed;
+- retried;
+- cancelled;
+- completed.
+
+Job types may include:
+
+- email;
+- notification;
+- media processing;
+- search indexing;
+- import;
+- export;
+- translation;
+- AI;
+- report;
+- backup.
+
+Retry should be safe and should avoid duplicate effects.
+
+Job records should include an opaque job or batch identifier, capability, redacted parameters, initiator, status, attempt count, idempotency information, correlation identifier, schedule, start and completion time, timeout, result summary, and failure classification. Administrators should be able to cancel only jobs whose cancellation semantics are safe. Exhausted failures move to an explicit failed or dead-letter state instead of retrying indefinitely.
+
+================================================================================
+22. LOGS
+================================================================================
+
+Possible logs:
+
+- application;
+- security;
+- authentication;
+- authorization;
+- API;
+- webhook;
+- job;
+- storage;
+- moderation;
+- verification;
+- payment;
+- AI usage;
+- system change.
+
+Logs should:
+
+- avoid secrets;
+- avoid unnecessary private data;
+- have retention rules;
+- support search;
+- support export for authorized investigation;
+- distinguish user error from system error.
+
+================================================================================
+23. BACKUP AND RESTORE
+================================================================================
+
+Administrative view may show:
+
+- last backup;
+- result;
+- storage;
+- encryption;
+- retention;
+- restore test;
+- next schedule;
+- failure.
+
+Restore should not be a casual one-click action.
+
+It may require:
+
+- high-risk permission;
+- recent authentication;
+- reason;
+- second approval;
+- maintenance mode;
+- tested procedure.
+
+================================================================================
+24. MAINTENANCE AND LOCK MODES
+================================================================================
+
+Possible modes:
+
+Normal
+Platform operates normally.
+
+Read Only
+Public reading continues, but selected changes are blocked.
+
+Maintenance
+Most public access is temporarily unavailable.
+
+Registration Lock
+New registration is blocked.
+
+Booking Lock
+Booking changes are blocked.
+
+Upload Lock
+New uploads are blocked.
+
+Emergency Security Lock
+Selected sensitive operations stop immediately.
+
+The system should show an appropriate public and workspace message.
+
+Because the system operates on horizontally scaled multi-instance environments, lock state and maintenance modes must be persisted in a shared MongoDB lock collection or distributed cache (like Redis), rather than a local file-based lock.
+
+================================================================================
+25. IMPORT AND EXPORT
+================================================================================
+
+Import should provide:
+
+- file validation;
+- preview;
+- mapping;
+- duplicate detection;
+- dry run;
+- error report;
+- confirmation;
+- batch identifier;
+- rollback strategy.
+
+Import also requires permission checks, size and row limits, actual file-type validation, malware and archive-bomb protection, encoding validation, spreadsheet-formula injection protection, per-record authorization, idempotency, bounded batches, resumability where useful, and retention limits for source files and error reports.
+
+Export should provide:
+
+- scope;
+- permission;
+- format;
+- reason;
+- audit;
+- expiry;
+- protection.
+
+Private data exports should use protected delivery.
+
+Protected exports should be encrypted where appropriate, delivered through short-lived authorized links, excluded from public storage and caches, logged when sensitive, and deleted automatically after the approved retention period. Export generation must recheck permission and scope rather than trusting interface filters.
+
+================================================================================
+26. BULK ACTIONS
+================================================================================
+
+Bulk actions may include:
+
+- add taxonomy;
+- change status;
+- assign steward;
+- archive;
+- export;
+- reindex;
+- request verification;
+- send notification.
+
+Bulk actions should show:
+
+- selected count;
+- affected record type;
+- preview;
+- irreversible warning;
+- partial failure;
+- final result.
+
+High-risk bulk actions may require second approval.
+
+Bulk actions must apply authorization to every affected record, use bounded batches, prevent duplicate execution, remain resumable where appropriate, support cancellation only at safe boundaries, and produce a per-record result. A partial failure must never be reported as complete success. Rollback may use restoration or compensating actions when direct reversal is unsafe.
+
+================================================================================
+27. ANALYTICS
+================================================================================
+
+Routes:
+
+/workspace/analytics
+
+Administrative analytics may cover:
+
+- platform activity;
+- content;
+- search;
+- profile views;
+- contribution;
+- moderation;
+- verification;
+- booking;
+- advertising;
+- system performance.
+
+Analytics should not expose private individual behavior without a legitimate purpose and permission.
+
+Administrative analytics must use the metric definitions, privacy classes, aggregation rules, minimum group thresholds, staff and bot exclusions, retention limits, and export controls defined by the Analytics Statistics and Measurement System. Person-level drill-down is not a general analytics feature and requires a separately authorized operational, fraud, privacy, or security purpose.
+
+================================================================================
+28. SUPPORT
+================================================================================
+
+Routes:
+
+/workspace/support
+/workspace/support/ticket
+/workspace/support/inbox
+/workspace/support/bug
+/workspace/support/feature-request
+/workspace/support/contact
+/workspace/support/feedback
+/workspace/support/escalation
+/workspace/support/history
+
+Support tools may connect:
+
+- user;
+- record;
+- booking;
+- payment;
+- claim;
+- report;
+- technical issue.
+
+Private access should remain limited to the case.
+
+================================================================================
+29. AUDIT
+================================================================================
+
+Routes:
+
+/workspace/audit
+/workspace/audit/activity
+/workspace/audit/login
+/workspace/audit/record-change
+/workspace/audit/moderation
+/workspace/audit/verification
+/workspace/audit/payment
+/workspace/audit/api
+/workspace/audit/system
+
+Audit entries should be strictly append-only. Audit writing and audit viewing use separate access principals: an append-only writer may create events but cannot update, delete, or browse them, while an authorized read-only viewer may search and export permitted events but cannot alter them. Ordinary application, Founder, and administrator sessions do not receive update or delete access to audit events.
+
+The audit system should add tamper-evidence or immutable retention where risk requires it. Time synchronization, correlation identifiers, redaction, retention, backup, export protection, and access auditing apply. Operational logs, security events, record revision history, case history, and immutable audit events remain distinct even when they are linked.
+
+They may record:
+
+- actor;
+- action;
+- target;
+- date;
+- result;
+- reason;
+- permission;
+- source application;
+- related revision;
+- related support or moderation case;
+- correlation identifier;
+- security or privacy classification;
+- approval relationship;
+- originating request or job identifier.
+
+================================================================================
+30. HIGH-RISK ACTIONS
+================================================================================
+
+Examples:
+
+- permanent deletion;
+- restore backup;
+- change global permission;
+- issue administrator role;
+- expose private media;
+- approve disputed ownership;
+- revoke verification;
+- suspend high-profile account;
+- edit legal policy;
+- change payment destination;
+- rotate production secret;
+- run destructive bulk action.
+
+Possible safeguards:
+
+- recent authentication (step-up TOTP/password check immediately prior to execution);
+- dual-control/two-person approval rules for highly critical actions (like raw database dumps, credential promotions, or secret rotation);
+- explicit confirmation;
+- typed reason;
+- second approver;
+- delayed execution;
+- notification;
+- audit;
+- rollback where possible.
+
+When two-person approval is required, the requester cannot approve their own action and the approver must hold the required permission independently. Approval expires after the defined period or when the proposed action changes. Execution must revalidate permission, current state, and approval immediately before applying the action.
+
+================================================================================
+31. AI ASSISTANCE
+================================================================================
+
+AI may help administrators:
+
+- summarize queue;
+- detect duplicates;
+- suggest taxonomy;
+- compare revisions;
+- detect missing source;
+- triage reports;
+- suggest translation;
+- identify unusual activity;
+- explain failed jobs.
+
+AI should not independently:
+
+- permanently ban;
+- publish accusation;
+- verify identity;
+- approve credential;
+- change payment;
+- expose private data;
+- destroy records.
+
+AI-assisted administrative features must:
+
+- minimize and redact private or restricted input;
+- use only providers approved for the information's privacy and security class;
+- treat submitted content and retrieved evidence as untrusted data, not instructions;
+- resist prompt injection and malicious embedded content;
+- avoid sending private intake, credentials, payment data, identity evidence, or restricted media to a general provider;
+- identify the generated suggestion and relevant source context;
+- preserve human review and the final human decision;
+- record accepted AI-assisted outcomes where accountability requires it;
+- apply usage, quota, cost, timeout, and provider-failure controls;
+- provide a safe manual workflow when AI is unavailable.
+
+An AI flag, score, or summary is not evidence by itself and must not silently determine queue priority, verification, moderation, payment, or access.
+
+================================================================================
+32. INTERFACE ORGANIZATION
+================================================================================
+
+Use separate pages and components for:
+
+- dashboard;
+- queue;
+- record detail;
+- comparison;
+- review;
+- bulk action;
+- audit;
+- settings.
+
+Avoid one huge administration page containing every system.
+
+Large tables should support:
+
+- filter;
+- search;
+- sort;
+- pagination;
+- saved view;
+- column preference;
+- export according to permission.
+
+Detailed navigation, page anatomy, components, responsive behavior, states, and interaction rules follow Massage Nexus Admin Workspace User Interface.
+
+================================================================================
+33. ACCESSIBILITY, LOCALIZATION, AND OPERATOR SAFETY
+================================================================================
+
+The Admin Workspace must meet the same interface and accessibility baseline as the public application. Administrative density does not justify inaccessible controls.
+
+Requirements include:
+
+- complete keyboard operation;
+- visible focus;
+- semantic headings, landmarks, labels, tables, and dialogs;
+- screen-reader-safe status and validation messages;
+- no hover-only action or disclosure;
+- contrast and non-color status indicators;
+- reduced-motion behavior;
+- accessible charts and text alternatives;
+- captions, transcripts, and safe media warnings where relevant;
+- preserved focus after modal, queue, and bulk actions;
+- confirmation near the risky action;
+- locale-aware date, time, number, currency, address, and time-zone display;
+- consistent display of both local time and canonical time where operational ambiguity matters.
+
+Administrators should be able to choose interface language without changing the source language of reviewed content. Source and translated content must be clearly distinguished.
+
+Reviewers exposed to disturbing, abusive, or explicit material should have safe previews, deliberate reveal, exposure preferences, rotation or workload controls where practical, and access to escalation procedures.
+
+================================================================================
+34. INCIDENT RESPONSE
+================================================================================
+
+The Admin Workspace should support, but not replace, the approved incident-response runbook.
+
+Minimum incident workflow:
+
+1. detect or receive report;
+2. create incident and assign severity;
+3. assign incident commander or responsible owner;
+4. preserve relevant evidence and correlation identifiers;
+5. contain affected access, credential, integration, content, or operation;
+6. assess privacy, security, legal, payment, safety, and availability impact;
+7. notify approved internal and external parties;
+8. recover and validate service;
+9. monitor for recurrence;
+10. complete post-incident review and tracked corrective actions.
+
+Incident controls may revoke sessions, disable integrations, rotate credentials, restrict media, activate a lock mode, pause jobs, or preserve legal holds according to permission. The interface must not expose sensitive incident details to unauthorized administrators.
+
+================================================================================
+35. TESTING AND ACCEPTANCE
+================================================================================
+
+Administrative capabilities require positive and negative tests.
+
+Test at minimum:
+
+- permission matrix and deny-by-default behavior;
+- context, record relationship, expiry, and restriction enforcement;
+- self-grant and self-approval denial;
+- privilege escalation and insecure direct-object access;
+- session rotation, step-up authentication, CSRF, and timeout;
+- View-As write, export, credential, payment, booking, and protected-download denial;
+- queue assignment concurrency and stale-decision detection;
+- field-level approval, revision, conflict, and rollback relationships;
+- moderation evidence protection and appeal;
+- restricted-media placeholder, deliberate reveal, protected delivery, and cache denial;
+- translation completeness, placeholder parity, stale-source detection, and fallback;
+- API and provider quota, budget, alert, disable, and degraded-mode behavior;
+- audit append-only writing, read-only viewing, redaction, and access audit;
+- import validation, dry run, partial failure, and rollback;
+- export authorization, protected expiry, and deletion;
+- bulk idempotency, bounded batches, cancellation, and per-record results;
+- job retry, duplicate-effect prevention, timeout, and exhausted failure;
+- maintenance and lock propagation across instances;
+- backup status and restore procedure in an approved isolated environment;
+- privacy aggregation and analytics thresholds;
+- accessibility, keyboard, screen reader, focus, contrast, touch, and reduced motion;
+- localization and time-zone behavior;
+- safe error messages and correlation identifiers.
+
+Use synthetic data and fake external providers. Tests created with the feature are not the only proof of correctness; manually verify high-risk and user-facing flows where needed.
+
+================================================================================
+36. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Foundation Phase
+- administrator membership and account status enforcement;
+- MFA, session security, step-up authentication, and recovery controls;
+- permission catalogue, scoped roles, access review, and break-glass controls;
+- append-only audit writer and read-only audit viewer;
+- common case and queue framework;
+- secure media and evidence access;
+- notification and high-risk approval foundation.
+
+Phase 1
+- admin home;
+- unified work queue;
+- basic user lookup;
+- Support and read-only View-As foundation;
+- Service and taxonomy management;
+- contribution and directory-submission review;
+- media review.
+
+Phase 2
+- moderation;
+- verification;
+- claims;
+- editorial;
+- translation;
+- import and export;
+- system jobs;
+- provider usage, quota, cost, and health monitoring.
+
+Phase 3
+- API clients;
+- advertising;
+- advanced analytics;
+- backup interface;
+- advanced bulk tools;
+- AI assistance;
+- incident-response controls and advanced system operations.
+
+================================================================================
+37. CURRENT WORKING DECISIONS
+================================================================================
+
+- Administration remains inside /workspace.
+- No unprotected /admin shortcut is required.
+- Permissions are more important than broad role names.
+- High-risk actions receive stronger safeguards.
+- Structured forms are preferred over raw database editing.
+- Audit history is required.
+- Advertising cannot control organic editorial or trust systems.
+- AI assists but does not make final high-impact decisions.
+- Private documents and media remain permission-protected.
+- Large administration areas are split into focused modules.
+- The Admin Workspace contains operational queues and decisions, not only login and access configuration.
+- Approval, verification, claim authority, publication, and permission grant remain separate decisions.
+- One common queue framework supports domain-specific workflows without replacing their authoritative rules.
+- Third-party API, AI, maps, communication, storage, search, and processing usage require health, quota, budget, and cost visibility.
+- Administrative UI behavior is defined separately in Massage Nexus Admin Workspace User Interface.
+
+================================================================================
+38. OPEN DECISIONS
+================================================================================
+
+- exact administrator roles;
+- which actions require two-person approval;
+- View-As implementation;
+- audit retention;
+- log retention;
+- raw database access policy;
+- support access boundaries;
+- backup provider and schedule;
+- incident-response owner, severity matrix, and notification rules;
+- administrator notification rules;
+- data export approval;
+- legal request handling;
+- final Filament customization;
+- emergency lock authority;
+- final permission catalogue and access matrix;
+- exact common queue statuses and service targets;
+- network and IP restriction policy by environment and administrator type;
+- provider-specific quota, budget, and hard-limit values;
+- final dashboard card and navigation priority;
+- recovery objectives and restore-test schedule.

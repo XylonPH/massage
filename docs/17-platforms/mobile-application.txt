@@ -1,0 +1,356 @@
+Title: Massage Nexus Mobile Application
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines the native mobile application, including mobile-exclusive capabilities, mobile-enhanced workflows, shared features, offline behavior, device integration, notifications, security, privacy, accessibility, and boundaries with the web and desktop applications.
+
+Related Documents:
+- Massage Nexus Web Application
+- Massage Nexus Desktop Application
+- Massage Nexus First-Party App API
+- Massage Nexus Cache and Temporary Data Strategy
+- Massage Nexus User Workspace
+- Massage Nexus Booking and Appointment System
+- Massage Nexus Data Research Provenance and Field Verification System
+- Massage Nexus Security Architecture and Information Disclosure Policy
+
+================================================================================
+1. PURPOSE AND SHARED RULES
+================================================================================
+
+The mobile application provides:
+- location-aware discovery;
+- portable booking and communication;
+- field research and contribution;
+- personal history;
+- secure account access;
+- camera, notification, biometric, passkey, and offline integration.
+
+It uses the same server-side account, permissions, taxonomy, reviews, ratings, research,
+booking, moderation, and policy rules as web.
+
+It never connects directly to the production database.
+
+Shared features include public discovery, profiles, search, articles, Reviews, Comments,
+Discussions, booking, support, contribution, translation, analytics, and role-based workspaces.
+
+================================================================================
+2. MOBILE-EXCLUSIVE CAPABILITIES
+================================================================================
+
+Mobile-exclusive or device-dependent:
+- push notifications;
+- device passkeys;
+- biometric local unlock;
+- camera capture;
+- photo and video upload;
+- QR and barcode scanning;
+- precise and approximate location with permission;
+- optional background location for approved features;
+- geofenced reminders where approved;
+- native share sheet;
+- calendar integration;
+- map-navigation handoff;
+- deep links and app links;
+- offline drafts;
+- offline research assignments;
+- local notification reminders;
+- secure device storage;
+- haptic feedback;
+- mobile wallet passes later where approved.
+
+Necessary tasks must have an accessible alternative when a device feature is unavailable.
+
+================================================================================
+3. MOBILE-ENHANCED DISCOVERY
+================================================================================
+
+Enhanced:
+- nearby providers;
+- current-location search;
+- open-now view;
+- walking and travel context;
+- map and list switching;
+- one-handed filters;
+- voice search where supported;
+- quick directions;
+- low-bandwidth mode;
+- saved nearby places.
+
+Location:
+- is optional;
+- is requested at point of use;
+- explains purpose;
+- supports manual location;
+- supports approximate location;
+- is not used for unrelated advertising;
+- may be revoked.
+
+================================================================================
+4. FIELD RESEARCH AND CONTRIBUTION
+================================================================================
+
+Mobile tools:
+- capture storefront;
+- capture menu and price;
+- scan printed information;
+- record visit date;
+- confirm map point;
+- record accessibility;
+- verify hours;
+- add field note;
+- upload evidence;
+- complete assignment;
+- save offline;
+- synchronize later;
+- voice-dictate notes.
+
+Requirements:
+- obtain permission where needed;
+- protect clients and staff;
+- remove unnecessary metadata;
+- separate public media from private evidence;
+- preserve original capture;
+- show upload and verification state;
+- avoid covert recording.
+
+AI may organize notes and extract candidate facts. The contributor reviews before submission.
+
+================================================================================
+5. BOOKING AND PERSONAL USE
+================================================================================
+
+Mobile-enhanced booking:
+- quick rebook;
+- push confirmation;
+- reminder;
+- calendar addition;
+- live status;
+- queue and waitlist update;
+- arrival check-in;
+- QR check-in later;
+- secure payment handoff;
+- cancellation warning;
+- portable booking communication.
+
+Personal area:
+- recent services;
+- spending and visit summaries;
+- receipts;
+- booking history;
+- saved providers;
+- loyalty;
+- reminders;
+- manual history;
+- approved offline summaries.
+
+Sensitive details do not appear in lock-screen previews, widgets, or unprotected cache.
+
+================================================================================
+6. OFFLINE BEHAVIOR
+================================================================================
+
+Offline-capable:
+- recently viewed public profiles;
+- saved summaries;
+- approved downloaded articles;
+- draft Reviews;
+- draft Comments and Discussions;
+- research assignments;
+- field evidence pending upload;
+- selected personal history;
+- queued Corrections.
+
+States:
+- local draft;
+- pending sync;
+- syncing;
+- failed;
+- conflict;
+- completed.
+
+Server rules remain authoritative after synchronization.
+
+================================================================================
+7. NOTIFICATIONS
+================================================================================
+
+Categories:
+- account and security;
+- booking;
+- messages;
+- Comments and Discussions;
+- followed records;
+- Support;
+- provider operations;
+- research assignments;
+- moderation;
+- marketing with consent.
+
+Users control categories.
+
+Security and transactional notices remain separate from marketing.
+
+Previews protect:
+- NSFW;
+- intake;
+- private provider information;
+- blocked-user context;
+- support and complaint information.
+
+================================================================================
+8. DEVICE SECURITY AND PERMISSIONS
+================================================================================
+
+Security:
+- system passkeys;
+- biometric local unlock;
+- encrypted secure storage;
+- short-lived tokens;
+- protected refresh tokens;
+- device registration;
+- remote session revocation;
+- automatic lock where appropriate;
+- account-specific cache cleanup.
+
+Massage Nexus does not store biometric templates.
+
+Possible permissions:
+- notifications;
+- location;
+- camera;
+- microphone;
+- photos and video;
+- calendar;
+- contacts only for a specific approved feature.
+
+Request permission at point of use, explain purpose, support denial, and avoid coercion.
+
+================================================================================
+9. ACCESSIBILITY
+================================================================================
+
+Support:
+- screen readers;
+- scalable text;
+- switch and keyboard access where supported;
+- contrast;
+- reduced motion;
+- captions;
+- touch-target size;
+- clear permission explanations;
+- accessible map alternatives;
+- non-gesture alternatives.
+
+================================================================================
+10. ROLE WORKSPACES
+================================================================================
+
+User:
+- discovery;
+- history;
+- booking;
+- contribution;
+- community;
+- Support.
+
+Therapist:
+- profile;
+- availability;
+- assigned booking;
+- communication;
+- field updates;
+- analytics.
+
+Provider staff:
+- queue;
+- check-in;
+- schedule;
+- booking;
+- service status;
+- media capture;
+- limited operations.
+
+Owner or manager:
+- dashboards;
+- approvals;
+- staff;
+- campaigns;
+- urgent controls.
+
+Complex bulk administration may direct to web or desktop.
+
+================================================================================
+11. NOT PRIORITIZED ON MOBILE
+================================================================================
+
+Mobile does not prioritize:
+- large taxonomy editing;
+- bulk imports;
+- complex multi-column analytics;
+- mass moderation;
+- large document comparison;
+- repository administration;
+- infrastructure configuration;
+- detailed financial reconciliation;
+- large media-library organization.
+
+Mobile provides summary or urgent action while web or desktop provides full tools.
+
+================================================================================
+12. DISTRIBUTION, ANALYTICS, AND TESTING
+================================================================================
+
+Distribution:
+- Google Play;
+- Apple App Store;
+- approved testing channels.
+
+Maintain signing, store declarations, permissions, staged rollout, crash reporting, release
+notes, and minimum operating-system support.
+
+Measure:
+- installation;
+- active use;
+- crash;
+- startup;
+- permission use;
+- search;
+- contribution;
+- booking;
+- notifications;
+- offline sync;
+- update adoption;
+- battery and data impact.
+
+Test:
+- Android and iOS;
+- screen sizes;
+- low bandwidth;
+- offline;
+- synchronization;
+- deep links;
+- push;
+- passkeys;
+- biometrics;
+- permissions;
+- camera;
+- location denial;
+- accessibility;
+- update;
+- logout cleanup;
+- account switching;
+- NSFW privacy;
+- booking reminders.
+
+================================================================================
+13. CURRENT DIRECTIONS
+================================================================================
+
+- Mobile uses the same server API, permissions, and business rules as web.
+- Device-specific strengths are camera, location, push, passkeys, biometrics, QR, calendar,
+  secure storage, sharing, and offline work.
+- Mobile enhances nearby discovery, booking, field research, and quick contribution.
+- Location is optional and purpose-limited.
+- Offline actions show synchronization state.
+- Mobile does not replace complex web and desktop administration.

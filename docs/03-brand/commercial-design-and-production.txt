@@ -1,0 +1,880 @@
+MASSAGE NEXUS - COMMERCIAL DESIGN AND PRODUCTION
+Document Version: 1.10
+Date Created: 2026-07-13
+Revision Date: 2026-07-13
+
+DOCUMENT DESCRIPTION
+
+This document defines the evolving design, creative-development, production, music, editing, testing, and review process for Massage Nexus commercials.
+
+It is not limited to one advertisement and is not merely an AI prompt collection. It is intended to be updated as new Massage Nexus commercials are conceived, produced, revised, shortened, expanded, abandoned, or replaced.
+
+Detailed prompts are included because they preserve production intent and may be reused when recreating scenes through different tools. However, the larger purpose of this document is to guide how Massage Nexus commercials should be designed and made.
+
+The current commercial concept, Find Relief After Work, is an early draft and production experiment. It is not a final commercial and should not be treated as a permanent template for all future Massage Nexus advertising.
+
+DOCUMENT PURPOSE
+
+This document should help Massage Nexus:
+
+- develop clear commercial concepts before spending production credits;
+- preserve cast, wardrobe, setting, visual, and brand continuity;
+- compare AI video tools and traditional editing methods;
+- document failed approaches and prevent repeated credit waste;
+- create and manage background music;
+- assemble multiple generated clips into a coherent commercial;
+- separate generated footage from final branding and typography;
+- support later commercials with different concepts, durations, audiences, and campaign goals;
+- maintain a reusable record of prompts, workflows, production decisions, and lessons learned.
+
+CURRENT DRAFT COMMERCIAL
+
+Title: Find Relief After Work
+Status: Draft production experiment
+Current estimated duration: approximately 50 to 53 seconds before later trimming or extension
+Current structure: five short generated scenes plus a manually assembled brand ending
+Current music length: approximately 1 minute and 20 seconds, to be trimmed or adapted during editing
+
+This commercial may later be:
+
+- retained as a full-length version;
+- shortened to approximately 30 seconds;
+- expanded with additional scenes;
+- re-edited using only the strongest generated shots;
+- recreated with another AI video system;
+- partially replaced with manually animated still images or live-action footage;
+- abandoned in favor of a stronger commercial concept.
+
+OVERALL CONCEPT OF THE CURRENT DRAFT
+
+Two unrelated office workers finish tiring workdays in separate locations. They independently discover MassageNexus.com, prepare for separate appointments, arrive at the same urban spa, confirm separate bookings, and proceed to their own massage sessions.
+
+The draft is intended to show Massage Nexus as a discovery and booking platform that connects people with massage and wellness services. It must not imply that Massage Nexus is the spa itself.
+
+The two clients are strangers. They are not a couple, do not share a booking, and should not be shown behaving romantically.
+
+COMMERCIAL DESIGN STRATEGY
+
+The preferred strategy for this and future commercials is:
+
+1. Define the commercial objective, audience, emotional arc, duration, and final call to action before generating scenes.
+2. Break the commercial into short independent production units.
+3. Create or approve one strong visual reference for every recurring character.
+4. Create one approved starter image per scene rather than using a multi-panel storyboard as a video source.
+5. Generate scenes separately so a failed clip does not force the entire commercial to be regenerated.
+6. Keep official logos, titles, slogans, website addresses, and exact typography out of generative video whenever possible.
+7. Add final branding manually in Adobe Premiere Pro, Filmora, After Effects, or another reliable editor.
+8. Use hard editorial cuts for major wardrobe or location changes instead of asking AI to morph between incompatible states.
+9. Test a new AI tool on one difficult scene before committing substantial credits.
+10. Preserve all accepted clips locally and maintain a scene-by-scene production record.
+
+WHY GROK SHOULD NOT REMAIN THE DEFAULT VIDEO TOOL
+
+The first production attempt relied heavily on Grok for both the commercial scenes and the logo animation. This consumed more than half of the available credits and required hours of repeated work from morning into the afternoon.
+
+The results were inconsistent and often failed to follow essential instructions. Problems included:
+
+- changing faces between scenes;
+- confusing Caleb, Gavin, and Enzo;
+- altering hairstyles and clothing;
+- making characters interact across separate split-screen locations;
+- morphing towels into clothing;
+- showing people showering while apparently dressed;
+- treating the spa reception as a hotel check-in;
+- inventing dialogue, surnames, room stays, and unrelated hotel details;
+- making the two strangers behave like a couple;
+- duplicating or transforming tea cups and locker keys;
+- changing the official logo structure;
+- reproducing a checkerboard background as visible artwork;
+- generating text and logos inaccurately;
+- producing clips that were technically usable only after substantial compromise.
+
+Grok may still be used selectively when a specific shot works, but it should not be assumed to be the primary production system for future commercials. Continuing with the same workflow would risk further wasted time and credits.
+
+ALTERNATIVE AI VIDEO TOOLS TO TEST
+
+The following systems should be tested in a controlled manner using one difficult scene before committing to a full commercial:
+
+Runway
+A strong first alternative for reference-based character and visual consistency. It may be suitable for separate commercial shots with controlled image-to-video generation and repeatable style.
+
+Kling
+A strong candidate for cinematic image-to-video generation, realistic motion, and longer short-form shots. It should be tested carefully for object consistency, character identity, and unwanted dialogue.
+
+Luma Dream Machine
+Useful for cinematic movement, start-frame and end-frame control, shot extension, and transitions. It may be especially useful for arrival, corridor, and brand-transition scenes.
+
+Adobe Firefly Video
+Worth testing because the commercial may be edited in Adobe Premiere Pro. An Adobe-centered workflow may simplify generation, editing, asset management, and commercial-use review.
+
+Google Flow or Veo
+May be tested for scene consistency and cinematic realism, although watermark, access, pricing, and output restrictions must be checked before relying on it.
+
+Higgsfield
+May be useful for camera motion, commercial-style framing, and stylized short-form advertising. It should be evaluated for character consistency and whether it can preserve exact reference identities.
+
+Magnific
+More relevant to enhancement, image refinement, and certain motion workflows than to complete commercial generation. It may help improve source images or selected frames before animation.
+
+Controlled live-action plus AI modification
+A different strategy is to record simple blocking with real stand-ins, then use video-to-video tools to modify setting, wardrobe, lighting, or character appearance while preserving natural timing and object interaction. This may be more reliable than generating all movement from nothing.
+
+The final choice should be based on actual test results, not marketing claims. The main criteria are:
+
+- face and hairstyle consistency;
+- wardrobe continuity;
+- realistic hands and object handling;
+- ability to preserve scene layout;
+- silent performance without invented dialogue;
+- reliable image-to-video control;
+- ability to produce usable commercial-length clips;
+- pricing and credit efficiency;
+- export quality and watermark policy.
+
+BACKGROUND MUSIC PRODUCTION THROUGH SUNO
+
+The background music for the current draft was created through Suno using its advanced song-generation mode with instrumental output.
+
+The short Sound mode was not suitable because it generated only very short effects and one-shots, usually several seconds long. The advanced instrumental mode was therefore used instead.
+
+Current music record:
+
+Song Title: Find Relief After Work
+
+Short Description:
+A modern instrumental commercial track that moves from busy after-work energy into warmth, calm, and physical relief.
+
+Caption:
+From office pressure to a calmer state of mind.
+
+Theme:
+Transition from workday stress to massage, comfort, and relaxation.
+
+Occasion:
+Background music for the Massage Nexus draft commercial, Find Relief After Work.
+
+Mood:
+Energetic, modern, focused, warm, calming, optimistic, polished.
+
+Genre:
+Electronic Pop, Ambient Pop, Corporate Wellness
+
+Music Style:
+Instrumental commercial soundtrack with a brisk urban opening and gradual transition into warmth and relaxation. Use tight electronic drums, muted percussion, soft bass pulses, clean keyboard plucks, and subtle typing-like rhythmic accents. Gradually introduce warm synth pads, electric piano, restrained clean guitar, and soft marimba-like tones. Maintain forward movement throughout, then soften into a calm, optimistic final section with a clean resolved ending. The generated result may exceed the commercial duration and can be trimmed during editing.
+
+Excluded Style:
+Vocals, spoken word, chanting, aggressive EDM, trap, lo-fi, orchestral epic, cinematic trailer, jazz, acoustic folk, meditation drone, bamboo flute, singing bowls, mystical spa music, tropical resort music, elevator music, sentimental piano ballad, comedy music.
+
+Voice Source:
+None
+
+Voice Gender:
+Not applicable
+
+Lyrics Mode:
+Instrumental
+
+Language:
+Not applicable
+
+Weirdness Level:
+18%
+
+Style Influence Level:
+82%
+
+Audio Level:
+To be adjusted during editing and final mix.
+
+Suno Version Number:
+To be filled in from the generated track record.
+
+Suno URL:
+To be filled in from the generated track record.
+
+Date Created:
+2026-07-13
+
+Status:
+Generated and retained for editing
+
+Published:
+No
+
+Cover File:
+Find Relief After Work cover image created in 1:1 and 9:16 aspect ratios.
+
+CURRENT MUSIC RESULT
+
+The generated instrumental is approximately 1 minute and 20 seconds long.
+
+This is acceptable and should be retained. The final commercial duration is not yet fixed, so the longer track provides flexibility. The music may later be:
+
+- trimmed to approximately 50 to 53 seconds;
+- edited down to approximately 30 seconds;
+- extended with a longer commercial;
+- faded, rearranged, or cut around scene transitions;
+- used for multiple versions of the same commercial;
+- retained as a standalone instrumental track.
+
+Music should be edited to the picture rather than forcing the picture to match the full track.
+
+SUNO EXTENSION STYLE
+
+When extending an existing Suno instrumental, use:
+
+Music Style:
+Continue the existing instrumental seamlessly with the same tempo, key, instrumentation, rhythm, and production. Gradually reduce the busy electronic pulse, bring forward warmer synth pads, electric piano, restrained clean guitar, and soft marimba-like accents, then build toward a polished, uplifting final section with a clear resolved ending. Keep it modern, smooth, professional, and relaxing without becoming slow or sleepy.
+
+Excluded Style:
+Vocals, spoken word, chanting, abrupt genre change, key change, tempo change, aggressive EDM, trap, orchestral epic, cinematic trailer, lo-fi, jazz, acoustic folk, meditation drone, bamboo flute, singing bowls, mystical spa music, tropical resort music, elevator music, comedy music, fade-out ending.
+
+LOGO ANIMATION STRATEGY
+
+The final Massage Nexus logo animation should not rely on an AI system to redraw the logo.
+
+The logo must remain an immutable official asset. The safest method is to animate the actual approved logo file through:
+
+- opacity reveals;
+- masks;
+- light sweeps;
+- glow layers;
+- position movement;
+- scale changes;
+- line tracing applied over the original asset;
+- manually created text animation.
+
+Preferred final motion:
+
+1. Begin with the official logo centered or slightly left of center on a dark abstract background.
+2. Reveal the logo using restrained light tracing, opacity, or glow.
+3. Hold briefly.
+4. Move the complete logo smoothly to the left.
+5. Reveal the words Massage Nexus on the right.
+6. Reveal the slogan Find Your Next Great Massage. below.
+7. Hold the final composition long enough to read.
+
+The logo should not be broken apart, redesigned, rotated in three dimensions, or rebuilt from newly generated pieces.
+
+The dark abstract logo image should use:
+
+- deep navy to near-black background;
+- restrained blue, ember-orange, and leaf-green light accents;
+- clean negative space;
+- no checkerboard pattern;
+- no generated wordmark unless manually verified;
+- no extra nodes, leaves, spokes, or symbols.
+
+EDITING AND ASSEMBLY
+
+Adobe Premiere Pro is the preferred editor if available. Filmora is also acceptable. CapCut is optional and not required.
+
+The current draft uses five generated clips:
+
+00:00-00:10
+Office stress and discovery.
+
+00:10-00:20
+Shower, change, and leave.
+
+00:20-00:30
+Approach and enter the spa.
+
+00:30-00:40
+Separate appointment confirmation at reception.
+
+00:40-00:50
+Therapist escort and massage.
+
+Final section
+Massage Nexus logo, brand name, and slogan.
+
+The exact duration is flexible. Bad frames should be trimmed, and strong moments may be extended. The commercial does not need to remain exactly 50 seconds.
+
+HOW TO COMBINE THE CLIPS IN ADOBE PREMIERE PRO
+
+1. Create a sequence matching the source clips.
+2. Import all generated clips, the official logo, dark abstract background, Suno instrumental, cover artwork, and any sound effects.
+3. Place clips in story order on the primary video track.
+4. Trim bad openings, duplicated frames, awkward pauses, or unstable endings.
+5. Use hard cuts for wardrobe and location changes.
+6. Use short dissolves only where the visual flow benefits.
+7. Apply color correction so office, home, street, reception, and treatment scenes feel intentionally related.
+8. Place the Suno instrumental beneath the entire edit.
+9. Cut or remix the music to match the final picture length.
+10. Lower the music slightly under important environmental sound effects.
+11. Build the final logo animation manually with the official logo asset.
+12. Add the brand name and slogan as editor-created text, not AI-generated text.
+13. Hold the final brand frame for at least three seconds.
+14. Export a high-quality master before creating shorter versions or social-media crops.
+
+HOW TO COMBINE THE CLIPS IN FILMORA
+
+1. Create a project matching the source resolution and aspect ratio.
+2. Import and arrange the five clips.
+3. Trim unstable or incorrect sections.
+4. Use hard cuts for major state changes.
+5. Match color and brightness across scenes.
+6. Add the Suno instrumental and align its strongest sections with the commercial.
+7. Add environmental effects sparingly.
+8. Create the end card with the official logo and manual text layers.
+9. Export a high-quality H.264 master.
+10. Create shorter cuts only after saving the full master project.
+
+POSSIBLE COMMERCIAL VERSIONS
+
+The current footage and music can support several later outputs:
+
+Full draft:
+Approximately 50 to 60 seconds.
+
+Extended version:
+Up to approximately 80 seconds if additional context or slower pacing is retained.
+
+Standard online commercial:
+Approximately 30 seconds using only the strongest moments.
+
+Short social commercial:
+Approximately 15 seconds with a simplified discovery-to-relief structure.
+
+Logo bumper:
+Approximately 5 to 10 seconds using only the brand animation.
+
+Silent display version:
+Visual edit with captions or on-screen text for muted playback.
+
+Future versions should be edited from a stable master rather than regenerated from scratch.
+
+CURRENT PRODUCTION RECORD
+
+The current draft has produced:
+
+- a five-part commercial concept;
+- multiple scene images and video attempts;
+- a dark abstract Massage Nexus logo background;
+- a draft logo-animation concept;
+- a Suno instrumental approximately 1 minute and 20 seconds long;
+- a square cover image for Find Relief After Work;
+- a 9:16 cover version;
+- detailed prompts preserving the intended scene continuity;
+- a clear record of Grok failures and production risks.
+
+The commercial itself remains unfinished and should be treated as a draft production study.
+
+DETAILED CURRENT DRAFT PROMPTS
+
+VISUAL CONTINUITY
+
+Mika Torres
+- Adult Filipina or Southeast Asian woman in her late twenties.
+- Petite, slim build.
+- Warm medium-tan complexion.
+- Soft heart-shaped face.
+- Almond-shaped dark eyes.
+- Short dark-brown bob with straight bangs.
+- Her hair must never become long.
+
+Mika office wardrobe
+- Light beige tailored blazer.
+- Taupe square-neck sleeveless blouse.
+- Ivory tailored trousers.
+- Nude low block heels.
+- Tan leather shoulder bag.
+
+Mika fresh wardrobe after shower
+- Fitted cream square-neck top.
+- Light beige open kimono-style cardigan.
+- Ivory tailored trousers.
+- Nude low block heels.
+- Tan leather shoulder bag.
+
+Mika spa wardrobe
+- Closed knee-length beige spa robe.
+- Robe securely tied at the waist.
+
+Caleb Rivera
+- Adult Filipino or Southeast Asian man in his mid-to-late twenties.
+- Lean athletic swimmer-like build with broad shoulders and a trim waist.
+- Lightly tanned or medium-tan complexion.
+- Thick short black curls with faded sides.
+- Neat light beard and moustache.
+- Distinct from Enzo and Gavin.
+- Black wristwatch in all clothed scenes.
+
+Caleb office wardrobe
+- White long-sleeved button-down shirt.
+- Sleeves rolled to the forearms.
+- Charcoal tailored trousers.
+- Black leather belt.
+- Black office shoes.
+- Black wristwatch.
+
+Caleb fresh wardrobe after shower
+- Fitted light-taupe long-sleeved Henley shirt.
+- Dark olive or dark brown tailored casual trousers.
+- Brown casual shoes.
+- Black wristwatch.
+
+Caleb spa wardrobe
+- Beige waffle-textured spa robe.
+- Robe securely tied at the waist.
+
+Gavin Lorico
+- Adult Filipino or Southeast Asian man in his twenties.
+- Slim-to-average build.
+- Clean-shaven.
+- Neat straight black hair with a controlled side part.
+- Navy short-sleeved receptionist uniform with subtle orange piping.
+- Dark trousers and polished black shoes.
+- Must not look like Caleb.
+
+Enzo Villaluz
+- Adult Filipino or Southeast Asian man.
+- Tall, broad, muscular therapist build.
+- Square jaw.
+- Short wavy black hair.
+- Light stubble.
+- Sleeveless navy therapist top with orange piping.
+- Black professional shorts and dark athletic shoes.
+- Must not look like Caleb.
+
+Iris Montoya
+- Adult Filipina or Southeast Asian woman.
+- Athletic build.
+- Long wavy dark-brown hair with restrained highlights.
+- Navy therapist tunic and professional shorts with orange piping.
+- Clean black shoes.
+- Must not look like Mika.
+
+BRANDED SPLIT-SCREEN DIVIDER
+
+Use the same divider in all split-screen scenes:
+
+- One slim diagonal deep-navy central band.
+- One thin ember-orange line along the left edge.
+- One thin leaf-green line along the right edge.
+- It should be narrow and elegant.
+- It must not become a wide blue wedge.
+- It should not be vertical, black-only, blue-only, or shaped like a physical wall.
+- It is an editing device. Characters on opposite sides cannot see each other.
+
+MASTER CONTINUITY IMAGE PROMPT
+
+Create a highly photorealistic full-body studio continuity portrait for a professional live-action commercial. Show exactly five fictional Filipino or Southeast Asian adults standing separately in one straight line against a seamless light-gray or white studio background. Use clean professional studio lighting, realistic skin texture, accurate anatomy, realistic hands, and natural body proportions. This is a casting and wardrobe reference image, not a poster, storyboard, illustration, or advertisement.
+
+The five people must look clearly different from one another. They must not appear related and must not share the same face.
+
+From left to right:
+
+Enzo Villaluz: a tall, broad, muscular Filipino or Southeast Asian man in his early thirties, square jaw, short wavy black hair, light stubble, wearing a sleeveless navy therapist top with subtle orange piping, black professional shorts, and dark athletic shoes.
+
+Iris Montoya: an attractive athletic Filipino or Southeast Asian woman in her late twenties or early thirties, angular oval face, pronounced cheekbones, long wavy dark-brown hair, wearing a navy professional therapist tunic and matching professional shorts with subtle orange piping and clean black shoes.
+
+Mika Torres: a beautiful petite Filipino or Southeast Asian woman in her late twenties, warm medium-tan complexion, soft heart-shaped face, almond-shaped dark eyes, short dark-brown bob with straight bangs, wearing a fitted cream square-neck top, light beige open kimono-style cardigan, ivory tailored trousers, nude low block heels, and carrying a tan leather shoulder bag.
+
+Caleb Rivera: a handsome athletic Filipino or Southeast Asian man in his mid-to-late twenties, lightly tanned complexion, longer oval face, thick short black curls with faded sides, neatly trimmed beard and moustache, wearing a fitted light-taupe long-sleeved Henley shirt, dark olive tailored casual trousers, brown casual shoes, and a black wristwatch.
+
+Gavin Lorico: a clean-shaven Filipino or Southeast Asian man in his twenties, slim-to-average build, neat straight black hair with a controlled side part, wearing a navy short-sleeved receptionist uniform with subtle orange piping, dark trousers, and polished black shoes.
+
+All five stand in relaxed neutral poses facing the camera. Keep their entire bodies visible from head to toe. They are not touching. No text, names, labels, logos, borders, decorative layout, or background objects.
+
+CLIP 1 - OFFICE STRESS AND DISCOVERY
+
+Starter image prompt
+
+Create a highly photorealistic cinematic starter frame for the first scene of a professional Massage Nexus commercial in 3:2 landscape format.
+
+Use the attached continuity reference only to preserve the exact facial identities, body types, skin tones, hairstyles, and ages of Mika Torres and Caleb Rivera. Do not display or copy the studio background or lineup.
+
+Create a genuine split-screen composition showing two completely separate modern offices at the end of the workday.
+
+Left side: Mika Torres sits at her own office desk wearing her exact office wardrobe: light beige tailored blazer, taupe square-neck sleeveless blouse, ivory tailored trousers, and nude low block heels. Her short dark-brown bob and straight bangs remain unchanged. A black smartphone rests clearly on the desk beside her. She gently rubs the left side of her neck and looks naturally tired after an ordinary workday, not elderly, ill, devastated, or severely distressed.
+
+Right side: Caleb Rivera sits in a different office wearing his exact office wardrobe: white long-sleeved button-down shirt with sleeves rolled to the forearms, charcoal tailored trousers, black leather belt, black office shoes, and black wristwatch. A laptop sits open in front of him. He rubs one shoulder and lightly presses his temple, showing normal end-of-day fatigue.
+
+The two offices are separate locations. Mika and Caleb cannot see one another. Neither person looks toward the divider or toward the other person.
+
+Separate the two scenes with the slim branded diagonal divider: deep navy in the center, a thin ember-orange line on its left edge, and a thin leaf-green line on its right edge.
+
+Use believable evening office lighting, natural skin, realistic hands, realistic desks, and shallow cinematic depth of field.
+
+No text, logo, captions, storyboard appearance, or additional people.
+
+Video prompt
+
+Generate a new highly photorealistic live-action commercial sequence from the attached cinematic starter frame. The attached image is the first frame of the video, not a poster or storyboard. Animate the people and environments naturally. Do not pan across a still image.
+
+Duration: exactly 10 seconds.
+Format: 720p, 3:2 landscape.
+No spoken dialogue, voice-over, or visible speaking.
+
+Preserve Mika Torres and Caleb Rivera exactly as shown. Keep their faces, hairstyles, body types, office clothing, desk objects, and separate office locations unchanged.
+
+0:00-0:02
+Mika gently rubs her neck and exhales. Caleb rolls one shoulder and lightly rubs his temple. Their fatigue is subtle and realistic.
+
+0:02-0:04
+Mika reaches for the black smartphone on her desk and looks down at it. Caleb lowers his hand, places both hands near his laptop, and looks at his own screen. Do not show the contents of either physical device screen.
+
+0:04-0:07
+Gradually soften and blur both office backgrounds while keeping the branded diagonal divider visible. Place one large clean rounded-corner input box in the center foreground, spanning the split screen. The box has a white surface, subtle soft shadow, and thin deep-navy border.
+
+Type the exact text from left to right, one character at a time, with a blinking cursor:
+
+MassageNexus.com
+
+Do not add a search icon, browser frame, slogan, second box, or unrelated text.
+
+Mika and Caleb remain softly blurred and continue looking only at their own devices. They must not look at each other.
+
+0:07-0:10
+The input box softly fades away. Both offices return to normal focus. Mika makes one deliberate tap on her phone. Caleb makes one deliberate mouse click or keyboard confirmation. Their expressions shift from tired to quietly relieved and decisive.
+
+Natural sound effects: quiet office ambience, soft chair movement, phone tap, light keyboard typing, and one mouse click.
+
+Optional background music: subtle modern rhythmic percussion without vocals.
+
+CLIP 2 - SHOWER, CHANGE, AND LEAVE
+
+Starter image prompt
+
+Create a highly photorealistic cinematic starter frame for the second scene of the same commercial in 3:2 landscape format.
+
+Use the attached continuity reference only to preserve the exact identities, ages, skin tones, body types, and hairstyles of Mika Torres and Caleb Rivera.
+
+Create a tasteful split screen showing two completely separate modern home bathrooms.
+
+Left side: Mika Torres showers alone in her own bathroom. Frame her from the shoulders upward or upper chest upward. Her short bob and straight bangs are wet and naturally resting around her face. Water flows over her hair, neck, and shoulders. Use modest framing, steam, and angle so no intimate areas are visible.
+
+Right side: Caleb Rivera showers alone in his own bathroom. Frame him from the shoulders upward or upper chest upward. His short tight curls are wet. Water flows over his hair, neck, and shoulders. Use modest framing so no intimate areas are visible.
+
+They are in different homes. They cannot see one another and do not look toward the divider.
+
+Use the same slim branded diagonal divider.
+
+The bathrooms should be clean, modern, realistic, and visibly different from each other. Use warm practical lighting, believable water droplets, realistic wet skin, and subtle steam.
+
+No clothes, trousers, shirts, underwear, towels, shoes, necklaces, watches, bags, sauna, text, logo, extra people, or storyboard appearance.
+
+Video prompt
+
+Generate a highly photorealistic live-action commercial sequence from the attached starter frame.
+
+Duration: exactly 10 seconds.
+Format: 720p, 3:2 landscape.
+No dialogue, voice-over, or visible speaking.
+
+Preserve Mika and Caleb exactly as shown. Keep them in separate homes and preserve the branded divider.
+
+0:00-0:04
+Both shower separately. Mika rinses her neck and shoulders. Caleb briefly runs water over his hair and shoulders. Keep movement natural and modest.
+
+At 0:04, use a clean hard editorial cut. Do not morph the shower into the next state.
+
+0:04-0:06
+Show both separately in their dressing areas, properly covered in closed beige bathrobes. Their hair is damp. Mika gently towels the ends of her short bob. Caleb dries his hair with a separate towel. They are no longer inside the shower.
+
+At 0:06, use another clean hard editorial cut. Do not animate clothes appearing.
+
+0:06-0:10
+Both are now fully dressed in their exact fresh smart-casual outfits.
+
+Mika wears:
+- fitted cream square-neck top;
+- light beige open kimono-style cardigan;
+- ivory tailored trousers;
+- nude low block heels;
+- tan leather shoulder bag.
+
+Caleb wears:
+- fitted light-taupe long-sleeved Henley shirt;
+- dark olive or dark brown tailored casual trousers;
+- brown casual shoes;
+- black wristwatch.
+
+Mika adjusts her shoulder-bag strap. Caleb checks his wristwatch and picks up his keys. Both prepare to leave their separate homes.
+
+Natural sound effects: shower water, towel movement, clothing rustle, bag strap movement, keys lightly jingling, and a door latch near the end.
+
+Never show office clothes after the shower. Never morph towels into clothes. Never show them showering in clothing.
+
+CLIP 3 - APPROACHING THE SPA
+
+Starter image prompt
+
+Create a highly photorealistic cinematic starter frame for the third scene in 3:2 landscape format.
+
+Preserve Mika Torres and Caleb Rivera exactly as shown in the attached reference.
+
+Create a split-screen evening exterior showing both approaching the same warm urban spa from opposite directions.
+
+Left side: Mika walks toward the spa wearing her exact fresh outfit: fitted cream square-neck top, light beige open kimono-style cardigan, ivory tailored trousers, nude low block heels, and tan leather shoulder bag.
+
+Right side: Caleb walks toward the spa wearing his exact fresh outfit: fitted light-taupe long-sleeved Henley shirt, dark olive or dark brown tailored casual trousers, brown casual shoes, and black wristwatch.
+
+The spa is a believable urban establishment with dark wood, stone textures, indoor plants, glass doors, and warm amber lighting. It is polished and inviting but not a hotel, resort, destination spa, mansion, or luxury retreat.
+
+Do not prominently show the spa name.
+
+Use the same slim branded diagonal divider.
+
+Mika and Caleb cannot see one another yet. Neither looks across the divider.
+
+No text, logos, other people, or storyboard appearance.
+
+Video prompt
+
+Generate a highly photorealistic live-action commercial sequence from the attached starter frame.
+
+Duration: exactly 10 seconds.
+Format: 720p, 3:2 landscape.
+No dialogue or voice-over.
+
+Preserve Mika and Caleb’s exact faces, hairstyles, body types, clothes, shoes, bag, and watch.
+
+0:00-0:05
+Mika and Caleb walk toward the same spa entrance from opposite directions while remaining in separate split-screen views. Their pace is natural. They do not look toward each other.
+
+0:05-0:08
+Both reach the glass entrance doors. The branded diagonal divider gradually becomes narrower while they move toward the same physical lobby.
+
+0:08-0:09
+The divider disappears completely. The image becomes one continuous live-action frame inside the spa entrance.
+
+Only after the divider disappears may they briefly notice one another. They exchange one small polite nod or quick friendly smile. They do not stop, flirt, hold hands, or behave like a couple.
+
+0:09-0:10
+Both turn naturally toward the reception desk and continue walking.
+
+Natural sound effects: evening city ambience, footsteps, glass-door movement, and a subtle entry chime.
+
+Do not jump to a sauna, locker room, massage room, or departure scene.
+
+CLIP 4 - RECEPTION CONFIRMATION
+
+Starter image prompt
+
+Create a highly photorealistic cinematic starter frame for the fourth scene in 3:2 landscape format.
+
+Preserve Mika Torres, Caleb Rivera, and Gavin Lorico exactly from the attached continuity reference.
+
+Create one continuous shared frame inside a warm professional urban-spa reception area.
+
+Mika stands on the left side of the counter wearing her exact fresh smart-casual outfit and carrying her tan leather shoulder bag.
+
+Caleb stands beside her with respectful personal space, wearing his exact light-taupe Henley shirt, dark trousers, brown shoes, and black wristwatch.
+
+Gavin stands behind the counter wearing his exact navy receptionist uniform with subtle orange piping. He holds a tablet angled toward himself so no interface is visible.
+
+Place exactly two small tea cups and exactly two wooden locker-key fobs on the counter. The cups and keys are separate and clearly visible. Do not place them in anyone’s hands yet.
+
+Use warm dark wood, amber lighting, stone accents, indoor plants, and a modest professional front desk. The space should feel approachable and believable, not like a hotel or resort.
+
+No split screen, text, visible spa name, logos, additional employees, or storyboard appearance.
+
+Video prompt
+
+Use the attached reception image as the exact opening frame and visual reference. Generate a single continuous 10-second photorealistic cinematic video in 3:2 landscape format.
+
+This scene takes place inside a professional urban massage-spa reception, not a hotel, resort, condominium, restaurant, or overnight accommodation. The two customers are independent strangers with separate massage appointments. They did not arrive together, are not a couple, do not know one another, and do not share a reservation.
+
+Preserve the exact faces, ages, skin tones, hairstyles, body proportions, clothing, counter layout, tablet, two tea cups, and two wooden locker-key fobs.
+
+The tablet screen remains turned toward Gavin and unreadable.
+
+Do not show luggage, suitcases, room-number boards, hotel room cards, bellhops, overnight bags, beds, elevators, concierge signage, passports, identification documents, hotel registration forms, or references to rooms, nights, stays, surnames, or checkout.
+
+0:00-0:02
+Gavin looks down at the tablet and silently verifies two separate massage appointments. Mika waits on the left. Caleb waits beside her with respectful personal space. Both face Gavin, not each other.
+
+0:02-0:05
+Gavin gives a small professional nod, places the tablet down, and makes a welcoming open-hand gesture toward the tea and locker keys. His mouth remains closed. No speaking or lip movement suggesting dialogue.
+
+0:05-0:08
+Mika independently reaches for the locker key nearest her. Caleb independently reaches for the other locker key. They do not reach for the same object. Their hands do not touch. The objects remain solid and physically consistent.
+
+0:08-0:10
+Each customer acknowledges the tea with a small appreciative nod. Gavin gestures toward the interior corridor or two separate changing-room directions. The customers prepare to proceed separately.
+
+Relationship rules:
+- They do not speak to each other.
+- They do not exchange names.
+- They do not look romantically at each other.
+- They do not flirt, touch, hold hands, lean together, or behave like a couple.
+- They do not share a booking.
+- They are not checking in under a surname.
+- They are not staying overnight.
+
+Audio:
+Absolutely no dialogue, speech, narration, voice-over, whispered words, or audible names.
+No subtitles, captions, speech bubbles, or written dialogue.
+Use only quiet spa ambience, a gentle tablet tap, faint ceramic movement, soft wooden key-fob contact, and low room tone.
+
+Use restrained camera movement, realistic hands, stable objects, natural blinking, subtle breathing, realistic skin, and believable clothing motion.
+
+Do not create a montage, split screen, hotel scene, changing-room scene, sauna scene, massage-room scene, time jump, text, logo, extra customer, or extra employee.
+
+CLIP 5 - THERAPIST ESCORT AND MASSAGE
+
+Starter image prompt
+
+Create a highly photorealistic cinematic starter frame for the fifth and final scene in 3:2 landscape format.
+
+Preserve the exact identities of Mika Torres, Caleb Rivera, Enzo Villaluz, and Iris Montoya from the attached reference.
+
+Create a split screen inside two separate spa corridors.
+
+Left side: Mika wears a closed knee-length beige spa robe tied securely at the waist. Her short bob and straight bangs remain unchanged. Enzo, the tall muscular male therapist in a sleeveless navy therapist uniform with orange piping and black shorts, stands slightly ahead and gestures professionally toward a treatment-room doorway.
+
+Right side: Caleb wears a beige waffle-textured spa robe tied securely at the waist. Iris, the female therapist with long wavy dark-brown hair and a navy therapist uniform with orange piping, stands slightly ahead and gestures professionally toward a different treatment-room doorway.
+
+The two therapist-client pairs are in separate corridors. No touching, arm-linking, flirtation, or romantic interaction.
+
+Use the same slim branded diagonal divider.
+
+Use warm wood, soft amber corridor lighting, clean treatment-room doors, subtle plants, and a professional spa atmosphere.
+
+No text, logo, extra characters, or storyboard appearance.
+
+Video prompt
+
+Generate the final highly photorealistic live-action commercial sequence from the attached starter frame.
+
+Duration: exactly 10 seconds.
+Format: 720p, 3:2 landscape.
+No dialogue or voice-over.
+
+Preserve Mika, Caleb, Enzo, and Iris exactly as shown. Keep the robes, therapist uniforms, hairstyles, body types, and left-right assignments unchanged.
+
+0:00-0:03
+Enzo professionally guides Mika toward the left treatment room while Iris guides Caleb toward the right treatment room. The clients walk independently. The therapists do not hold their arms or behave romantically.
+
+At 0:03, use a clean hard editorial cut.
+
+0:03-0:06
+Show two separate treatment rooms in a balanced split screen. Mika and Caleb are already lying face down on separate massage tables, properly and modestly draped with clean beige sheets. Only the upper back and shoulder areas needed for massage are accessible. Enzo stands beside Mika’s table. Iris stands beside Caleb’s table.
+
+0:06-0:08
+Use a tasteful top view or elevated three-quarter view. Both therapists begin slow professional shoulder and upper-back massage movements. Hands and anatomy remain realistic.
+
+0:08-0:10
+Gradually soften and darken the massage footage into a clean solid deep-navy end card. Leave a large empty centered safe area for the official Massage Nexus logo and text to be added during editing.
+
+Do not generate words, logos, captions, or the phrase “fade to black.”
+
+Natural sound effects: soft corridor footsteps, quiet door movement, subtle linen movement, and calm spa-room ambience.
+
+LOGO BACKGROUND IMAGE PROMPT
+
+Create a widescreen 16:9 brand frame using the attached official Massage Nexus logo as the visual reference.
+
+Use a deep navy to near-black abstract background with restrained flowing light streaks and subtle Ink & Ember accents: deep navy, ember orange, controlled blue, and leaf green.
+
+Place the official logo on the left side at a medium-large size, leaving generous clean negative space on the right for the brand name and slogan to be added later.
+
+The logo must remain recognizable and faithful to the official design:
+- black supporting hand;
+- deep navy outer arc;
+- flowing navy body-like curve;
+- orange dotted accent line;
+- central orange ring;
+- connected black, navy, orange, and green nodes;
+- green curved line;
+- two green leaves.
+
+Do not add text, a wordmark, slogan, website, watermark, checkerboard transparency, extra leaves, extra nodes, extra spokes, particles, smoke, or clutter.
+
+The background should feel premium, modern, abstract, calm, and digital rather than like a spa interior. Use controlled glow and depth without making the logo look metallic, embossed, or heavily three-dimensional.
+
+LOGO ANIMATION CONCEPT
+
+The logo animation is intended as a separate 10-second branding piece and may also be used as the final section of the commercial.
+
+Animation sequence:
+- Begin with the logo centered or slightly left of center on a dark abstract background.
+- Reveal it through restrained light tracing, opacity, and glow.
+- Shift it smoothly to the left.
+- Reveal the brand name on the right:
+  Massage Nexus
+- Reveal the slogan below:
+  Find Your Next Great Massage.
+- Hold the final composition long enough to read.
+
+LOGO ANIMATION VIDEO PROMPT
+
+Use the attached widescreen Massage Nexus logo image as the exact visual reference and opening identity source.
+
+Create a 10-second polished logo animation in widescreen landscape format on the same dark abstract background. Do not use transparency or checkerboard patterns.
+
+Preserve the logo’s recognizable structure. Do not redesign, redraw, simplify, rotate, stretch, recolor, or replace it. Do not add extra leaves, nodes, spokes, circles, or symbols.
+
+0:00-0:02.5
+Begin with the logo centered against the dark abstract background. Reveal it through elegant opacity, subtle light tracing, and restrained glow. Do not disassemble it or rebuild it into a different design.
+
+0:02.5-0:04.5
+The logo completes its reveal and holds briefly. A soft polished highlight may pass across it.
+
+0:04.5-0:06.0
+The logo shifts smoothly toward the left side, leaving negative space on the right. The move is controlled and cinematic, with no bounce.
+
+0:06.0-0:08.0
+Reveal the exact brand name on the right, letter by letter or through a clean horizontal mask:
+
+Massage Nexus
+
+Use a modern, highly readable type treatment. Do not misspell the name.
+
+0:08.0-0:09.0
+Reveal the exact slogan below the brand name:
+
+Find Your Next Great Massage.
+
+The slogan is smaller and secondary.
+
+0:09.0-0:10.0
+Hold the complete composition:
+- logo on the left;
+- Massage Nexus on the right;
+- Find Your Next Great Massage. below;
+- dark abstract background;
+- no additional text.
+
+No dialogue, narration, or vocals. Use only a soft airy reveal, refined tonal pulse, and one clean finishing chime.
+
+FUTURE DOCUMENT USE
+
+When a new Massage Nexus commercial is developed, add a separate section containing:
+
+- commercial title;
+- version or campaign name;
+- objective;
+- target audience;
+- intended platform;
+- duration;
+- concept;
+- emotional arc;
+- visual style;
+- cast and continuity;
+- scene list;
+- image prompts;
+- video prompts;
+- music information;
+- editing strategy;
+- final branding;
+- production tools;
+- test results;
+- cost or credit observations;
+- accepted output;
+- rejected output;
+- unresolved issues;
+- final status.
+
+Do not replace the current draft merely because a new commercial is created. Preserve earlier experiments when their lessons, prompts, or production assets remain useful.
+
+NEXT PRODUCTION DECISION
+
+The next step should not be another large Grok generation attempt.
+
+The practical next step is to review the existing clips, identify which shots are usable, and make a rough edit in Adobe Premiere Pro or Filmora using the Suno instrumental. After the rough cut reveals the true weaknesses, regenerate only the scenes that materially damage the commercial.
+
+At the same time, test one difficult scene through one or two alternative AI video systems. The replacement production tool should be chosen based on actual continuity, movement, cost, and editability rather than familiarity.

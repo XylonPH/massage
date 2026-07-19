@@ -1,0 +1,1139 @@
+Massage Nexus: Service Classification
+Document Version: 2.00
+Date Created: 2026-07-11
+Revision Date: 2026-07-17
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the controlled hierarchy and family-specific taxonomies used to classify services in Massage Nexus.
+The hierarchy is broad enough to support service records beyond massage, spa, beauty, and wellness without renaming the common fields later.
+
+Massage Nexus currently adopts and displays the sectors, domains, and families relevant to its product scope.
+Unrelated services such as carpentry, plumbing, tailoring, repair, transport, and professional services can use the same hierarchy in another project or a later approved expansion.
+
+This document defines classification fields and controlled options. It does not contain the catalog of actual named services.
+Thai Massage, Swedish Massage, Manicure, Haircut, Body Scrub, Carpentry, and Garment Alteration are examples of service records in service_main, not option values inside this document.
+
+This is not public documentation, a complete database schema, a provider menu, a price table, a booking specification, or a training manual.
+
+GENERAL RULES
+-------------
+- Technical field names use English snake_case.
+- Controlled option codes use stable uppercase codes, normally three characters for hierarchy records.
+- Labels, translations, icons, and public slugs may change without changing stable codes.
+- Option codes are unique within their field namespace. The same three-character code may appear in unrelated fields with different meanings; because this document defines many closely related wellness fields, exports, logs, and reports should always pair a code with its field_name to avoid ambiguity (for example, COM means Compression in group_massage_technique but Communal in mode_bathing_access).
+- Service Sector, Service Domain, and Service Family form a hierarchy.
+- A normalized service has one primary Service Family.
+- Cross-family meaning is represented through service relationships, not several competing primary families.
+- For services that appear to belong equally to two families, select the family that represents the primary commercial presentation or client expectation. Use service relationships to link to the secondary family. If equal representation is undeniable, use the "Proposed Service" workflow to request a new hybrid family or clarify existing boundaries.
+- Named services are service_main records with independent descriptions, aliases, relationships, media, sources, and lifecycle.
+- Provider menu names, prices, durations, packages, add-ons, and availability belong to establishment_service or practitioner_service.
+- Classification does not automatically establish legality, safety, scientific support, credentialing, public visibility, or review quality. Where the platform uses these stable codes to drive hard content filters, age gates, payment-gateway compliance, or access restrictions, the controlling policy and application rules must be enforced server-side. The interface may explain or reflect those rules but must not be the sole enforcement mechanism.
+- Unsupported values remain unselected and may be explained through an internal note.
+- Do not use Other as a routine option. If an existing classification is insufficient, providers must use the "Proposed Service" workflow ticket to request a new catalog record.
+
+================================================================================
+1. SERVICE HIERARCHY
+================================================================================
+
+Service Sector
+The broadest grouping, comparable to an economic sector.
+
+Service Domain
+A mid-level grouping inside a Service Sector.
+
+Service Family
+The specific classification used for a normalized service record. This is the level Massage Nexus assigns directly to service_main records.
+
+Normalized Service
+A reusable service concept shared across establishments and practitioners.
+
+================================================================================
+2. SERVICE SECTOR
+================================================================================
+
+Field Name: group_service_sector
+Field Label: Service Sector
+Selection: Single-select per Service Domain
+
+Code | Label                                  | Description
+-----|----------------------------------------|------------------------------------------------------------
+HWC  | Health, Wellness and Care Service       | Medical, clinical, rehabilitation, mental health, spa, wellness, fitness, and animal-care services.
+PCL  | Personal Care and Lifestyle Service      | Beauty, grooming, domestic support, family care, lifestyle, spiritual, and intimate wellness services.
+HPC  | Home, Property and Construction Service  | Construction, trade, repair, cleaning, landscaping, property, and security services.
+MTL  | Mobility, Transport and Logistics Service | Vehicle, passenger, freight, roadside, maritime, and aviation services.
+FHE  | Food, Hospitality and Events Service      | Food preparation, dining, catering, accommodation, travel, and event services.
+BPF  | Business, Professional and Financial Service | Accounting, legal, consulting, HR, marketing, financial, real estate, and administrative services.
+TMC  | Technology, Media and Communication Service | Software, telecommunications, electronics repair, media production, design, and publishing services.
+ETK  | Education, Training and Knowledge Service | Academic, vocational, tutoring, assessment, research, and language services.
+CRS  | Culture, Recreation and Sport Service     | Arts, performance, recreation, sport, and gaming services.
+PCS  | Public, Civic and Safety Service          | Government, emergency, nonprofit, social work, and funeral services.
+EIS  | Environmental and Infrastructure Service  | Utility, water, energy, waste, environmental, and infrastructure operations.
+IAT  | Industrial, Agricultural and Technical Service | Manufacturing support, equipment maintenance, agriculture, forestry, fisheries, mining, laboratory, and warehousing services.
+
+================================================================================
+3. SERVICE DOMAIN
+================================================================================
+
+Field Name: group_service_domain
+Field Label: Service Domain
+Selection: Single-select per Service Family
+
+Code | Parent | Label                                   | Description
+-----|--------|-------------------------------------------|------------------------------------------------------------
+MCC  | HWC    | Medical and Clinical Care               | Regulated medical, clinical, diagnostic, and treatment services.
+RHC  | HWC    | Rehabilitation and Therapeutic Care     | Rehabilitation, physical recovery, therapy, and restorative care.
+MBC  | HWC    | Mental and Behavioral Care              | Mental-health, behavioral, counseling, and psychosocial services.
+SPW  | HWC    | Spa and Wellness                        | Massage, bodywork, relaxation, bathing, thermal, and wellness services.
+FPC  | HWC    | Fitness and Physical Conditioning       | Exercise, coaching, sports conditioning, and physical-fitness services.
+AHC  | HWC    | Animal Health and Care                  | Veterinary, grooming, boarding, training, and animal-care services.
+
+BGR  | PCL    | Beauty and Grooming                     | Skin, facial, nail, hair, grooming, and beauty services.
+PDS  | PCL    | Personal and Domestic Support           | Household help, personal assistance, errands, and domestic support.
+GCC  | PCL    | Garment and Clothing Care               | Tailoring, alteration, laundry, dry cleaning, and clothing-care services.
+CFC  | PCL    | Child and Family Care                   | Childcare, family support, and household-family services.
+SAC  | PCL    | Senior and Assisted Care                | Senior support, assisted living, companion, and daily-care services.
+LPA  | PCL    | Lifestyle and Personal Assistance       | Concierge, personal shopping, styling, organization, and lifestyle support.
+RSV  | PCL    | Religious and Spiritual Service         | Religious, ceremonial, pastoral, and spiritual services.
+ISW  | PCL    | Intimate and Sexual Wellness            | Consensual intimate wellness, sensual bodywork, and sexual-wellness services.
+
+BCO  | HPC    | Building and Construction               | General construction, renovation, structural, and building work.
+BTS  | HPC    | Building Trade Service                  | Carpentry, electrical, plumbing, HVAC, painting, finishing, and related trades.
+HMR  | HPC    | Home Maintenance and Repair             | Household repair, installation, maintenance, and handyman services.
+CLN  | HPC    | Cleaning and Sanitation                 | Residential, commercial, specialist cleaning, disinfection, and sanitation.
+LGS  | HPC    | Landscaping and Grounds                 | Gardening, landscaping, tree, grounds, and outdoor-property care.
+PMG  | HPC    | Property Management                     | Property administration, leasing support, inspection, and facility coordination.
+SEC  | HPC    | Security Service                        | Guarding, monitoring, access control, and property-security services.
+
+VMR  | MTL    | Vehicle Maintenance and Repair          | Automotive, motorcycle, marine, and vehicle repair and maintenance.
+PTR  | MTL    | Passenger Transport                     | Land, maritime, and aviation passenger movement.
+FDL  | MTL    | Freight, Delivery and Logistics         | Courier, delivery, cargo, freight, and logistics services.
+RSR  | MTL    | Roadside and Recovery                   | Towing, roadside assistance, recovery, and emergency vehicle support.
+VHR  | MTL    | Vehicle Hire and Rental                 | Vehicle, driver, fleet, and transport-equipment rental.
+MTS  | MTL    | Maritime Service                        | Vessel, port, passenger-ship, and maritime support services.
+AVS  | MTL    | Aviation Service                        | Aircraft, airport, charter, ground, and aviation support services.
+
+FBP  | FHE    | Food and Beverage Preparation           | Cooking, baking, food production, beverage preparation, and meal service.
+DIN  | FHE    | Dining and Food Service                 | Restaurant, cafe, food-stall, and customer dining services.
+CAT  | FHE    | Catering                                | Event, institutional, private, and mobile catering.
+ACM  | FHE    | Accommodation                           | Hotel, resort, lodging, short-stay, and guest accommodation.
+TRV  | FHE    | Travel and Tourism                      | Tour, itinerary, guide, ticket, and tourism-support services.
+EVM  | FHE    | Event Management                        | Event planning, coordination, production, and support.
+VES  | FHE    | Venue and Entertainment Service         | Venue operation, entertainment booking, and event-experience services.
+
+ACT  | BPF    | Accounting and Bookkeeping              | Accounting, bookkeeping, payroll, audit support, and financial records.
+LGL  | BPF    | Legal Service                           | Legal advice, representation, documentation, and legal support.
+MCS  | BPF    | Management and Consulting               | Strategy, management, operations, and specialist consulting.
+HRR  | BPF    | Human Resources and Recruitment         | Hiring, staffing, HR, training coordination, and workforce services.
+MKA  | BPF    | Marketing and Advertising               | Advertising, promotion, branding, campaign, and market services.
+FNI  | BPF    | Financial and Insurance Service         | Banking support, lending, investment, insurance, and financial intermediation.
+RES  | BPF    | Real Estate Service                     | Brokerage, valuation, leasing, sales, and property transactions.
+AOS  | BPF    | Administrative and Office Support       | Secretarial, virtual assistance, document, office, and back-office support.
+
+SIT  | TMC    | Software and Information Technology     | Software development, hosting, systems, cybersecurity, and IT support.
+TEL  | TMC    | Telecommunications                      | Voice, data, internet, network, and communication services.
+ETR  | TMC    | Electronics and Technical Repair        | Consumer electronics, appliance, device, and technical repair.
+MPR  | TMC    | Media Production                        | Audio, video, broadcast, animation, and production services.
+DCC  | TMC    | Design and Creative Communication       | Graphic, web, industrial, visual, and communication design.
+PHV  | TMC    | Photography and Video                   | Photography, videography, editing, and visual documentation.
+PUB  | TMC    | Publishing and Content                  | Writing, editing, publishing, localization, and content services.
+DIS  | TMC    | Data and Information Service            | Data processing, records, analytics, information, and knowledge systems.
+
+AED  | ETK    | Academic Education                      | Formal school, college, university, and academic instruction.
+VET  | ETK    | Vocational Education and Training       | Trade, technical, occupational, and competency-based training.
+TUT  | ETK    | Tutoring and Coaching                   | Individual or group academic, skills, and performance coaching.
+ACL  | ETK    | Assessment, Certification and Licensing | Examination, competency assessment, certification, and licensing support.
+RIN  | ETK    | Research and Information                | Research, library, archival, investigative, and information services.
+LNG  | ETK    | Language Service                        | Language teaching, translation, interpretation, and language support.
+
+ART  | CRS    | Arts and Cultural Service               | Visual art, craft, museum, cultural, and heritage services.
+MUS  | CRS    | Music and Performance                   | Music, theater, dance, performance, and live entertainment services.
+REC  | CRS    | Recreation and Leisure                  | Leisure, amusement, hobby, outdoor, and recreation services.
+SPS  | CRS    | Sport Service                           | Sports instruction, officiating, facility, competition, and athletic service.
+GAM  | CRS    | Gaming and Interactive Entertainment    | Video-game, tabletop, esports, and interactive entertainment services.
+
+GOV  | PCS    | Government and Civic Service            | Government transactions, licensing, administration, and civic services.
+EMS  | PCS    | Emergency and Safety Service            | Emergency response, rescue, fire, disaster, and public-safety services.
+NCO  | PCS    | Nonprofit and Community Service         | Charity, advocacy, community development, and volunteer services.
+SSW  | PCS    | Social Work and Support                 | Social assistance, counseling support, shelter, and protection services.
+FMS  | PCS    | Funeral and Memorial Service            | Funeral, cremation, burial, memorial, and bereavement services.
+
+UTL  | EIS    | Utility Service                         | Electricity, gas, telecommunications utility, and public utility operations.
+WTR  | EIS    | Water and Sanitation                    | Water supply, wastewater, sanitation, drainage, and sewer services.
+ENR  | EIS    | Energy Service                          | Energy generation, installation, efficiency, and renewable-energy services.
+WST  | EIS    | Waste and Recycling                     | Collection, recycling, recovery, disposal, and material diversion.
+ENV  | EIS    | Environmental Service                   | Environmental assessment, remediation, conservation, and compliance.
+IFO  | EIS    | Infrastructure Operations               | Road, transit, facility, network, and public-infrastructure operations.
+
+MFS  | IAT    | Manufacturing Support                   | Fabrication, production support, assembly, machining, and industrial services.
+EQM  | IAT    | Equipment Maintenance                   | Industrial equipment, machinery, plant, and technical maintenance.
+AGR  | IAT    | Agricultural Service                    | Crop, farm, soil, irrigation, and agricultural support.
+FOR  | IAT    | Forestry Service                        | Forestry, timber, tree management, and woodland services.
+FSH  | IAT    | Fisheries Service                       | Aquaculture, fishing, hatchery, and fisheries support.
+MIN  | IAT    | Mining and Extraction Service           | Mining, quarrying, drilling, and extraction support.
+LBT  | IAT    | Laboratory and Testing                  | Laboratory analysis, calibration, inspection, and technical testing.
+WHS  | IAT    | Warehousing and Industrial Handling     | Storage, fulfillment, material handling, and industrial logistics.
+
+================================================================================
+4. MASSAGE NEXUS SERVICE FAMILY
+================================================================================
+
+The families below are the current Service Families used by Massage Nexus.
+They are reference taxonomy records under the broader hierarchy rather than the complete list of every service family in the economy.
+
+Code | Sector | Domain | Label                                  | Description
+-----|--------|--------|----------------------------------------|------------------------------------------------------------
+MAS  | HWC    | SPW    | Massage                                | Hands-on or tool-assisted manipulation presented primarily as massage.
+RFX  | HWC    | SPW    | Reflexology                            | Pressure-based service organized around reflex maps or zones.
+MBW  | HWC    | SPW    | Manual Bodywork                        | Hands-on body-focused work not best represented as ordinary massage.
+STM  | HWC    | SPW    | Stretching and Mobility                | Assisted stretching, mobility, joint movement, and range-of-motion service.
+HYA  | HWC    | SPW    | Hydrotherapy and Aquatic Bodywork      | Water, pressure, buoyancy, immersion, or aquatic movement as the central method.
+TRW  | HWC    | SPW    | Thermal and Recovery Wellness          | Heat, cold, compression, and recovery-focused wellness service.
+BWW  | HWC    | SPW    | Bathing and Wet Wellness               | Bathing, soaking, bathhouse, wet-wellness, and communal bathing experience.
+DLW  | HWC    | SPW    | Device-Led Wellness                    | Wellness service delivered primarily through specialized equipment or a device.
+MBR  | HWC    | SPW    | Mind-Body and Relaxation               | Guided relaxation, breathwork, meditation, sound, Reiki, and related non-massage practices.
+WCA  | HWC    | SPW    | Wellness Consultation and Assessment   | Wellness intake, evaluation, planning, consultation, and guidance.
+
+BDT  | PCL    | BGR    | Body Treatment                         | Scrub, polish, wrap, mask, mud, exfoliation, and comparable body care.
+FSC  | PCL    | BGR    | Facial and Skin Care                   | Facial cleansing, skin care, facial treatment, and related non-medical service.
+NHF  | PCL    | BGR    | Nail, Hand and Foot Care               | Manicure, pedicure, hand spa, foot spa, nail treatment, and related care.
+HSC  | PCL    | BGR    | Hair and Scalp Care                    | Haircut, styling, hair treatment, scalp care, and salon-based hair service.
+GHR  | PCL    | BGR    | Grooming and Hair Removal              | Barbering, shaving, waxing, threading, sugaring, and related grooming.
+
+MAT  | HWC    | MCC    | Medical Aesthetic Service              | Medically supervised or regulated aesthetic procedure.
+RCT  | HWC    | RHC    | Regulated Clinical Treatment           | Licensed or regulated clinical, rehabilitation, pelvic-health, or therapeutic treatment.
+
+SBW  | PCL    | ISW    | Sensual Bodywork                       | Consensual sensual or erotic bodywork whose primary presentation involves arousal-oriented touch.
+SXW  | PCL    | ISW    | Sexual Wellness Service                | Consensual intimate service presented primarily for sexual-wellness education, exploration, or stimulation.
+ADS  | PCL    | ISW    | Adult Sexual Service                   | Direct adult sexual activity represented for moderation, safety, legal handling, and accurate classification.
+
+Massage Nexus may later adopt another existing domain or add a new family record without changing the common hierarchy fields or code length.
+
+Family Boundary Notes
+---------------------
+- Massage is the primary family when a service is commercially and publicly presented principally as massage.
+- Manual Bodywork is used when presenting the service merely as massage would materially misrepresent its method, professional tradition, or client expectation.
+- Reflexology is organized around reflex maps or zones and remains distinct from ordinary massage of the same body area.
+- Hydrotherapy and Aquatic Bodywork requires water, buoyancy, water pressure, immersion, or aquatic movement to function as a central treatment method.
+- Bathing and Wet Wellness centers on bathing, soaking, bathhouse access, or a wet-wellness experience rather than a structured therapeutic water method.
+- Thermal and Recovery Wellness centers on heat, cold, compression, or recovery exposure rather than water itself.
+- Device-Led Wellness is used when specialized equipment is the principal delivery mechanism and the service is not more accurately a regulated medical or aesthetic procedure.
+- Medical Aesthetic Service remains separate when medical supervision, regulated practice, or medical-aesthetic scope is central.
+
+================================================================================
+5. SERVICE ALIAS TYPE
+================================================================================
+
+Field Name: type_service_alias
+Field Label: Service Alias Type
+Selection: Single-select per alias
+
+Code | Label                | Description
+-----|----------------------|------------------------------------------------------------
+ALT  | Alternate Name       | Widely used alternative name for the same service.
+RGN  | Regional Name        | Name primarily associated with a country, region, culture, or market.
+LOC  | Local Name           | Name used for the service in a particular source language, locality, or linguistic community.
+TRN  | Transliteration      | Name converted from one writing system to another.
+ABR  | Abbreviation         | Shortened form or recognized acronym.
+HIS  | Historical Name      | Earlier name retained for history and discovery.
+MIS  | Common Misspelling   | Frequent misspelling retained only for search and correction.
+DEP  | Deprecated Name      | Former label no longer preferred.
+
+A translated display label is dynamic translated content rather than automatically a service alias.
+A provider-specific branded menu name is not a service alias unless it is independently used or recognized beyond that provider.
+
+================================================================================
+6. SERVICE RELATIONSHIP TYPE
+================================================================================
+
+Field Name: type_service_relationship
+Field Label: Service Relationship Type
+Selection: One relationship type per connected service pair
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+BRD  | Broader               | Source service is broader than the connected service.
+NRW  | Narrower              | Source service is narrower than the connected service.
+PAR  | Parent                | Source service is the direct parent of the connected service.
+CHD  | Child                 | Source service is the direct child of the connected service.
+EQU  | Equivalent            | Both records represent the same service concept.
+NEQ  | Near Equivalent       | Services overlap substantially but are not fully interchangeable.
+REL  | Related               | Services have a meaningful non-hierarchical relationship.
+CCF  | Commonly Confused     | Services are frequently mistaken for one another.
+CMP  | Component             | Source service may be included as a component of the connected service.
+COM  | Often Combined        | Services are commonly performed or sold together.
+CLN  | Clinical Counterpart  | Connected service is the regulated or clinical counterpart.
+SEN  | Sensitive Counterpart | Connected service is the sensual, sexual-wellness, or adult counterpart.
+SUP  | Supersedes            | Source service replaces an older normalized service identity.
+SBD  | Superseded By         | Source service has been replaced by a newer identity.
+MRG  | Merged Into           | Source record was consolidated into the connected canonical record.
+PRE  | Prerequisite For      | Source service is required or recommended before the connected service.
+FOL  | Follows               | Source service naturally follows or is performed after the connected service.
+
+Directional inverse relationships must strictly follow these mappings when automatically generated:
+- BRD <-> NRW
+- PAR <-> CHD
+- EQU <-> EQU
+- NEQ <-> NEQ
+- REL <-> REL
+- CCF <-> CCF
+- SUP <-> SBD
+- PRE <-> FOL
+- CLN <-> SEN
+
+For the CLN and SEN inverse pair:
+- a sensual, sexual-wellness, or adult service pointing to its clinical counterpart uses CLN;
+- a clinical service pointing to its sensual, sexual-wellness, or adult counterpart uses SEN.
+
+================================================================================
+7. PROVIDER MENU STRUCTURE
+================================================================================
+
+Field Name: type_service_menu_structure
+Field Label: Provider Menu Structure
+Selection: Single-select per establishment_service or practitioner_service document
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+SVC  | Service Item        | One provider-specific service offering.
+CBN  | Combination Service | One session blending several normalized services or systems.
+PKG  | Package             | One purchase containing several separately identifiable components.
+SRS  | Series              | One purchase containing repeated or substantially similar sessions over time.
+CRS  | Course              | An ordered or progressive multi-session program whose sessions may develop toward a defined objective.
+ADD  | Add-On              | Optional supplement attached to another menu item.
+FAC  | Facility Access     | Paid or included use of a facility with or without treatment.
+
+A Package bundles separately identifiable services, products, facilities, or components.
+A Series repeats substantially similar sessions.
+A Course follows an ordered or progressive program.
+Menu variants may differ by duration, price, body focus, client count, practitioner count, room, location, or another selectable condition.
+Promotions are time-bound commercial rules and belong to promotion records rather than permanent menu identity.
+
+================================================================================
+8. MASSAGE BASIS
+================================================================================
+
+Field Name: type_massage_basis
+Field Label: Massage Basis
+Selection: Multi-select per massage service
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+SYS  | System                | Organized massage method with recognizable principles and session logic.
+TRD  | Tradition             | Culturally or historically rooted massage or healing practice.
+NMD  | Named Method          | Recognized named approach not necessarily constituting a complete tradition.
+PUR  | Purpose and Approach  | Service primarily defined by intended outcome, treatment goal, or philosophical approach rather than a named system or tradition.
+
+Massage Basis helps distinguish structured systems, cultural traditions, named methods, and services defined mainly by purpose. It supports discovery, filtering, and educational content without replacing the normalized service record in service_main.
+
+================================================================================
+9. MASSAGE PRESSURE LEVEL
+================================================================================
+
+Field Name: level_massage_pressure
+Field Label: Massage Pressure Level
+Selection: Multi-select where several supported levels apply
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+VLT  | Very Light  | Minimal controlled pressure for cautious or highly sensitive care.
+LGT  | Light       | Gentle pressure commonly used for comfort and relaxation.
+MED  | Medium      | Moderate pressure between gentle and firm work.
+FRM  | Firm        | Strong controlled pressure below the provider's deepest range.
+DEP  | Deep        | Deepest controlled pressure appropriate to the service and client.
+
+Selecting several levels represents the supported pressure range.
+Pressure adaptation to preference, tolerance, feedback, body area, or session need is provider-operational information rather than a pressure level.
+
+================================================================================
+10. MASSAGE MEDIUM
+================================================================================
+
+Field Name: type_massage_medium
+Field Label: Massage Medium
+Selection: Multi-select where applicable
+
+Code | Label   | Description
+-----|---------|------------------------------------------------------------
+DRY  | Dry     | No glide product is used.
+OIL  | Oil     | Massage oil is the principal medium.
+LOT  | Lotion  | Lotion is the principal medium.
+CRM  | Cream   | Cream is the principal medium.
+BLM  | Balm    | Balm or ointment is used throughout or on selected areas.
+GEL  | Gel     | Gel is the principal or targeted medium.
+PWD  | Powder  | Powder supports glide or a traditional method.
+WAT  | Water   | Water itself is materially involved in treatment contact.
+
+A named or branded product is linked through the service-product relationship and Product Classification. It is not a Massage Medium option.
+Specific carrier oils, ingredients, scents, essential-oil blends, CBD, magnesium, warming agents, cooling agents, and similar formulation details belong to product records or provider add-ons rather than this broad medium field.
+
+================================================================================
+11. TREATMENT SUPPORT
+================================================================================
+
+Field Name: type_treatment_support
+Field Label: Treatment Support
+Selection: Multi-select where several supports are normally used
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+TBL  | Treatment Table     | Purpose-built table used to support massage or treatment.
+TBD  | Treatment Bed       | Purpose-built treatment bed or padded treatment platform.
+MAT  | Floor Mat           | Mat or padded floor support.
+CHR  | Treatment Chair     | Seated massage or treatment support.
+SBD  | Standard Bed        | Ordinary sleeping bed used as the treatment support.
+RCL  | Recliner            | Reclining chair or supported reclined seat.
+FLT  | Floatation Support  | Float, buoyancy aid, aquatic cradle, or comparable water support.
+SUS  | Suspension Support  | Hammock, sling, aerial support, or suspended treatment setup.
+
+Portability describes service deployment rather than treatment support and is not included in this field.
+Aquatic characteristics are represented through Service Family, Water Contact Method, and Floatation Support rather than a separate Aquatic Setup option.
+Provider menu items or variants hold the authoritative operational support used for an actual booking.
+
+================================================================================
+12. CLIENT POSITION
+================================================================================
+
+Field Name: type_client_position
+Field Label: Client Position
+Selection: Multi-select
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+PRN  | Prone        | Client lies face down.
+SUP  | Supine       | Client lies face up.
+SDL  | Side-Lying   | Client lies on one side.
+STD  | Seated       | Client remains seated.
+RCL  | Reclined     | Client rests in a reclined or semi-reclined position.
+STN  | Standing     | Client stands during all or part of the service.
+KNE  | Kneeling     | Client is supported principally on one or both knees.
+QDP  | Quadruped    | Client is supported in a hands-and-knees or comparable four-point position.
+
+This field contains actual positions only.
+
+================================================================================
+13. CLIENT POSITIONING MODE
+================================================================================
+
+Field Name: mode_client_positioning
+Field Label: Client Positioning Mode
+Selection: Multi-select where applicable
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+STC  | Static Position   | The service normally remains in one principal position.
+MUL  | Multiple Positions| The service normally changes among two or more defined positions.
+MOV  | Movement-Based    | Guided, assisted, or active movement is central to positioning.
+
+================================================================================
+14. CLIENT ATTIRE AND UNDRESSING
+================================================================================
+
+Field Name: type_client_attire
+Field Label: Client Attire
+Selection: Multi-select where several garments may be used
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+REG  | Regular Clothing    | The client wears normal everyday clothing during the service.
+TGM  | Treatment Garment   | A loose, traditional, reusable, or purpose-specific garment is used.
+DGM  | Disposable Garment  | A single-use undergarment, top, spa wrap, or treatment garment is used.
+UWR  | Personal Underwear  | The client retains their own underwear.
+
+Field Name: level_client_undressing
+Field Label: Client Undressing Level
+Selection: Single-select per normal service setup
+
+Code | Label                | Description
+-----|----------------------|------------------------------------------------------------
+FDR  | Fully Dressed        | Normal clothing or a complete treatment garment remains in place.
+PUD  | Partially Undressed  | Clothing is removed only from selected treatment areas.
+FUD  | Fully Undressed      | The client removes all clothing for the service where lawful, consensual, and appropriate.
+
+================================================================================
+15. TREATMENT CONTACT
+================================================================================
+
+Field Name: type_treatment_contact
+Field Label: Treatment Contact
+Selection: Multi-select where several contact arrangements apply
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+OCL  | Over Clothing       | Contact is applied through clothing or a treatment garment.
+DSC  | Direct Skin Contact | Contact is applied directly to exposed skin.
+MIX  | Mixed Contact       | The service intentionally combines over-clothing and direct-skin contact.
+
+================================================================================
+16. DRAPING
+================================================================================
+
+Field Name: mode_draping
+Field Label: Draping Mode
+Selection: Single-select per normal service setup
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+USE  | Draping Used          | Professional draping covers areas not currently being treated.
+OPT  | Draping Optional      | Draping may be selected according to consent, context, law, and provider policy.
+NUS  | Draping Not Used      | The service is normally performed without draping in an appropriate lawful and consensual context.
+NRE  | Draping Not Required  | Clothing, treatment garments, service format, or facility practice makes draping unnecessary.
+
+Field Name: type_draping_item
+Field Label: Draping Item
+Selection: Multi-select where applicable
+
+Code | Label    | Description
+-----|----------|------------------------------------------------------------
+SHT  | Sheet    | A sheet is used as the principal draping item.
+TWL  | Towel    | One or more towels are used for draping.
+BLK  | Blanket  | A blanket is used for coverage, warmth, or draping.
+WRP  | Wrap     | A spa wrap or comparable body wrap is used for draping.
+
+Fiber, material, dimensions, absorbency, construction, reusability, and actual branded items belong to Product Classification.
+
+Clothing, undressing, skin contact, and draping do not by themselves determine whether a service is clinical, professional, sensual, or adult.
+
+================================================================================
+17. PARTICIPANT ARRANGEMENT
+================================================================================
+
+Field Name: type_client_arrangement
+Field Label: Client Arrangement
+Selection: Single-select per menu variant or session
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+IND  | Individual | One client receives the service.
+CPL  | Couple     | Two clients receive concurrent or paired services.
+GRP  | Group      | Three or more clients receive an organized service.
+
+Field Name: type_practitioner_arrangement
+Field Label: Practitioner Arrangement
+Selection: Single-select per menu variant or session
+
+Code | Label               | Description
+-----|---------------------|------------------------------------------------------------
+ONE  | Single Practitioner | One practitioner serves one client.
+TWO  | Two Practitioners   | Two practitioners serve one client.
+TEM  | Practitioner Team   | More than two practitioners participate.
+
+================================================================================
+18. MASSAGE TECHNIQUE STRUCTURE
+================================================================================
+
+Technique records use four levels:
+
+1. Technique Framework
+   Source tradition, curriculum, school, or professional framework.
+2. Technique Group
+   Broad cross-system physical action.
+3. Named Technique
+   Original recognized technique name within its framework.
+4. Technique Variation
+   Contact body part, direction, rhythm, speed, pressure, duration, client body area, or product/tool use.
+
+Field Name: group_massage_technique
+Field Label: Massage Technique Group
+Selection: Multi-select per named technique
+
+Code | Label                           | Description
+-----|---------------------------------|------------------------------------------------------------
+GLD  | Gliding and Stroking            | Continuous sliding or stroking contact.
+KLG  | Kneading, Lifting and Grasping  | Compression with lifting, squeezing, rolling, or grasping.
+FRI  | Friction and Rubbing            | Focused rubbing or friction across selected tissue.
+PER  | Percussion                      | Rhythmic striking, tapping, hacking, cupping, or pounding.
+VIB  | Vibration and Oscillation       | Rapid or rhythmic shaking and oscillating movement.
+COM  | Compression                     | Static or rhythmic pressure without required glide.
+PPR  | Point Pressure                  | Focused pressure applied to selected points or pathways.
+STR  | Stretching                      | Assisted or guided lengthening.
+JMO  | Joint Mobilization              | Controlled passive or assisted joint movement.
+RCK  | Rocking                         | Repetitive rhythmic movement of the body or segment.
+TRA  | Traction                        | Controlled pulling or lengthening force.
+MYF  | Myofascial Work                 | Sustained or guided work directed toward fascia.
+TPT  | Trigger-Point Work              | Focused work on localized areas of tenderness or referred discomfort.
+TAS  | Tool-Assisted Work              | Technique performed with a linked manual tool, product, or instrument.
+THM  | Thermal Application             | Heat or cold is applied as part of the technique.
+AQM  | Aquatic Movement                | Technique is performed through water support, buoyancy, or aquatic motion.
+
+Technique Framework and Named Technique are reference records rather than fixed field options.
+
+Classical Western Massage Framework
+-----------------------------------
+Framework Code: CWM
+Framework Label: Classical Western Massage
+
+Code | Named Technique | Technique Group                           | Description
+-----|-----------------|-------------------------------------------|------------------------------------------------------------
+EFF  | Effleurage      | GLD - Gliding and Stroking                | Gliding or stroking movement.
+PET  | Petrissage      | KLG - Kneading, Lifting and Grasping      | Kneading, lifting, squeezing, rolling, or grasping.
+FRI  | Friction        | FRI - Friction and Rubbing                | Focused rubbing or friction work.
+TAP  | Tapotement      | PER - Percussion                          | Rhythmic percussion.
+VIB  | Vibration       | VIB - Vibration and Oscillation           | Vibration or shaking.
+
+Common variations may include:
+- superficial, deep, long, short, circular, or regional Effleurage;
+- kneading, lifting, wringing, picking up, or skin rolling under Petrissage;
+- circular, transverse, or cross-fiber Friction;
+- tapping, hacking, cupping, beating, or pounding under Tapotement;
+- fine vibration, coarse vibration, or shaking under Vibration.
+
+Hilot Wellness Massage Framework
+--------------------------------
+Framework Code: HLT
+Framework Label: Hilot Wellness Massage
+
+Code | Named Technique | Technique Group                                  | Description
+-----|-----------------|--------------------------------------------------|------------------------------------------------------------
+HGD  | Hagod           | GLD - Gliding and Stroking                       | Long deep stroke.
+HPL  | Haplos          | GLD - Gliding and Stroking                       | Short light stroke.
+PND  | Pindot          | PPR - Point Pressure                             | One-finger press.
+PSL  | Pisil           | COM - Compression; PPR - Point Pressure          | Press using two or more fingers.
+PGA  | Piga            | KLG - Kneading, Lifting and Grasping             | Grasping technique included in the recognized Hilot range where applicable.
+
+The Hilot framework may also preserve sourced information about:
+- pre-Hilot procedure;
+- hand scanning or palpation;
+- Hilot pulse reading;
+- Hilot thermal reading or init-lamig;
+- leaf-based assessment procedures;
+- Hilot pressure areas;
+- customized pressure;
+- pressure duration and direction;
+- use of hands and fingers according to area, rhythm, frequency, and pressure.
+
+Hilot retains its Filipino terminology and is not relabeled merely as Effleurage, Petrissage, or Acupressure.
+
+Thai Massage, Shiatsu, Tui Na, Lomi Lomi, Ayurvedic, and other frameworks may receive their own sourced technique records without changing this hierarchy.
+
+Reiki is a normalized non-massage service under Mind-Body and Relaxation. It is not a Massage Technique Framework or Massage Technique Group. A separate energy-work framework may be created later if Massage Nexus adopts enough related services to justify it.
+
+================================================================================
+19. PRACTITIONER CONTACT BODY PART
+================================================================================
+
+Field Name: type_practitioner_contact_body_part
+Field Label: Practitioner Contact Body Part
+Selection: Multi-select per named technique or normalized service where applicable
+
+Definition:
+Identifies the practitioner body part materially used to apply touch, pressure, movement, stimulation, support, or other direct contact during a named technique or service.
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+FNG  | Finger      | One or more fingers are used for contact or manipulation.
+THB  | Thumb       | The thumb is used as the principal contact body part.
+PLM  | Palm        | The palm provides broad contact, pressure, or glide.
+HND  | Hand        | The whole hand is used without requiring a more specific hand part.
+HDE  | Hand Edge   | The side or ulnar edge of the hand is used.
+KNU  | Knuckle     | One or more knuckles are used.
+FST  | Fist        | A closed or partially closed fist is used.
+WRS  | Wrist       | The wrist or wrist area is used for contact or pressure.
+FRM  | Forearm     | The forearm is used for gliding, compression, or pressure.
+ELB  | Elbow       | The elbow is used for focused or deeper pressure.
+ARM  | Arm         | The arm is used more broadly than the forearm alone.
+SHO  | Shoulder    | The shoulder is used as a contact or pressure area.
+CHS  | Chest       | The chest is used as part of direct consensual body contact.
+BRS  | Breast      | The breast is used as part of direct consensual body contact.
+ABD  | Abdomen     | The abdomen is used as part of direct consensual body contact.
+BCK  | Back        | The back is used as part of direct consensual body contact.
+HIP  | Hip         | The hip is used for contact, positioning, or movement.
+BTT  | Buttocks    | The buttocks are used as part of direct consensual body contact.
+THI  | Thigh       | The thigh is used for contact, pressure, or body movement.
+KNE  | Knee        | The knee is used for supported pressure or compression.
+LEG  | Leg         | The leg is used as a broader contact body part.
+FOT  | Foot        | The foot is used for pressure, glide, or supported contact.
+HEL  | Heel        | The heel of the foot is specifically used.
+MTH  | Mouth       | The mouth is used as part of direct consensual contact.
+LIP  | Lips        | The lips are specifically used for direct consensual contact.
+TNG  | Tongue      | The tongue is used as part of direct consensual contact.
+PEN  | Penis       | The penis is used as part of direct consensual intimate contact.
+VUL  | Vulva       | The vulva is used as part of direct consensual intimate contact.
+SCT  | Scrotum     | The scrotum is used as part of direct consensual intimate contact.
+BDY  | Whole Body  | Broad body-to-body contact is central and cannot be represented accurately by one isolated body part.
+
+Sensitive or intimate contact values are valid neutral taxonomy data. Public visibility, age gating, moderation, legality, payment handling, and booking eligibility remain separate policy decisions.
+
+Selections must follow the documented technique or normalized-service definition. Do not infer contact body parts merely from a suggestive service name.
+
+This field describes the practitioner's contact body part. The part of the client receiving the service belongs to a separate client body-area or service-target classification.
+
+================================================================================
+20. SERVICE PRODUCT USE RELATIONSHIP
+================================================================================
+
+Field Name: type_service_product_use
+Field Label: Service Product Use
+Selection: One relationship type per service-to-product-type or service-to-product connection
+
+Code | Label                   | Description
+-----|-------------------------|------------------------------------------------------------
+REQ  | Required                | The product type is necessary for the defined method or service identity.
+COM  | Commonly Used           | The product type is commonly used but not universally required.
+OPT  | Optional                | The product type may be selected without changing the service identity.
+ALT  | Permitted Alternative   | The product type may substitute for another accepted product type.
+ENH  | Enhancement             | The product adds an optional feature, sensation, or commercial enhancement.
+HIS  | Historically Associated | The product type has a documented historical or cultural association with the service.
+
+Service Classification records the generic role of a product in a service.
+Product Classification records the physical item, formulation, material, specifications, brand, version, and actual product identity.
+
+Examples:
+- Massage Medium may record Oil while the linked product identifies the exact oil formulation.
+- Draping Item may record Towel while the linked product identifies fiber, size, absorbency, and brand.
+- Tool-Assisted Work may link to Bamboo Massage Tool, Massage Stone, Massage Cup, or another controlled product type.
+- Body Treatment Action and Body Treatment Medium may identify a Mud Wrap while the linked product identifies the exact mud formulation.
+
+================================================================================
+21. REFLEXOLOGY TARGET
+================================================================================
+
+Field Name: target_reflexology
+Field Label: Reflexology Target
+Selection: Multi-select
+
+Code | Label | Description
+-----|-------|------------------------------------------------------------
+FOT  | Foot  | Reflexology focused on the feet.
+HND  | Hand  | Reflexology focused on the hands.
+EAR  | Ear   | Reflexology focused on the ears.
+FAC  | Face  | Reflexology focused on the face.
+
+Several selected targets already represent a combined reflexology service; a separate Combination option is unnecessary.
+Reflexology remains distinct from ordinary massage of the same body area.
+
+================================================================================
+22. WATER AND THERMAL SERVICE CHARACTERISTICS
+================================================================================
+
+Field Name: method_water_contact
+Field Label: Water Contact Method
+Selection: Multi-select
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+IMM  | Immersion        | Client is partly or fully immersed in water.
+SHR  | Shower           | Water is delivered through a shower or overhead flow.
+JET  | Jet Pressure     | Pressurized water jets provide the principal action.
+AQM  | Aquatic Movement | Buoyancy and movement in water are central.
+SOA  | Soaking          | Passive or guided soaking is central.
+WET  | Wet Treatment    | Water is used directly without full immersion.
+
+Field Name: level_water_temperature
+Field Label: Water Temperature Level
+Selection: Multi-select
+
+Code | Label   | Description
+-----|---------|------------------------------------------------------------
+HOT  | Hot     | Intentionally high-temperature water exposure.
+WRM  | Warm    | Comfortably warm water below hot treatment level.
+NEU  | Neutral | Approximately neutral or body-comfort temperature.
+COL  | Cool    | Cool water exposure above intense cold level.
+CLD  | Cold    | Deliberate cold-water exposure.
+
+Field Name: mode_temperature_pattern
+Field Label: Temperature Pattern
+Selection: Single-select per service setup
+
+Code | Label     | Description
+-----|-----------|------------------------------------------------------------
+CST  | Constant  | One principal temperature range is maintained.
+CON  | Contrast  | Hot and cold exposures alternate or are intentionally combined.
+VAR  | Variable  | Temperature changes according to the session without a fixed contrast sequence.
+
+Field Name: method_thermal_exposure
+Field Label: Thermal Exposure Method
+Selection: Multi-select
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+STM  | Steam Exposure   | Humid heat or vapor exposure is central.
+DSA  | Dry Sauna        | Heated low-humidity room exposure is central.
+ISA  | Infrared Sauna   | Infrared radiant heat exposure is central.
+
+Steam, dry sauna, and infrared sauna remain distinct methods.
+Water Contact Method does not classify dry-sauna or infrared-sauna exposure.
+
+================================================================================
+23. BATHING ACCESS
+================================================================================
+
+Field Name: mode_bathing_access
+Field Label: Bathing Access
+Selection: Single-select per bathing offer or facility context
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+PVT  | Private      | Bathing facility is reserved for one booking party.
+SHR  | Shared       | Several unrelated clients may use the same facility.
+COM  | Communal     | Group bathing is a defining social or cultural format.
+ROT  | Rotational   | Access is shared through timed or rotating admission.
+
+================================================================================
+24. BODY TREATMENT ACTION AND MEDIUM
+================================================================================
+
+Field Name: type_body_treatment_action
+Field Label: Body Treatment Action
+Selection: Multi-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+CLN  | Cleanse     | Removes surface soil, residue, or product.
+EXF  | Exfoliate   | Removes or loosens dead surface skin.
+POL  | Polish      | Smooths and refines the skin surface.
+MSK  | Mask        | Applies a treatment layer for a defined period.
+WRP  | Wrap        | Encloses or covers the body or selected area.
+HYD  | Hydrate     | Focuses on moisture and skin comfort.
+CMP  | Compress    | Applies a heated, cooled, herbal, or product-based compress.
+RNS  | Rinse       | Includes a required rinse or wash stage.
+
+Field Name: type_body_treatment_medium
+Field Label: Body Treatment Medium
+Selection: Multi-select
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+MUD  | Mud        | Mud is a defining treatment medium.
+CLY  | Clay       | Clay is a defining treatment medium.
+SLT  | Salt       | Salt is a defining scrub, soak, polish, or treatment medium.
+SGR  | Sugar      | Sugar is a defining scrub or polish medium.
+BOT  | Botanical  | Plant-derived material is a defining treatment medium.
+HRB  | Herbal     | Herbs or an herbal preparation are materially involved.
+ALG  | Algae      | Algae is a defining treatment medium.
+SWD  | Seaweed    | Seaweed is a defining treatment medium.
+MIN  | Mineral    | A mineral preparation is materially involved.
+CRM  | Cream      | Cream is a defining treatment medium.
+GEL  | Gel        | Gel is a defining treatment medium.
+OIL  | Oil        | Oil is a defining treatment medium.
+
+The service field records the generic medium. Exact ingredients, formulation, allergens, warnings, brand, and product version belong to Product Classification.
+
+================================================================================
+25. FACIAL AND SKIN CARE
+================================================================================
+
+Field Name: type_skin_care_action
+Field Label: Skin Care Action
+Selection: Multi-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+CLN  | Cleanse     | Cleanses the skin.
+HYD  | Hydrate     | Supports moisture and skin comfort.
+EXF  | Exfoliate   | Removes or loosens dead surface skin.
+EXT  | Extract     | Includes manual or device-assisted extraction.
+MSK  | Mask        | Applies a treatment mask for a defined period.
+POL  | Polish      | Smooths or refines the skin surface.
+
+Field Name: target_skin_concern
+Field Label: Skin Concern
+Selection: Multi-select
+
+Code | Label           | Description
+-----|-----------------|------------------------------------------------------------
+ACN  | Acne-Prone Skin | Service is presented for acne-prone skin within permitted scope.
+AGE  | Age-Related     | Service addresses age-related appearance or skin-comfort concerns.
+SEN  | Sensitivity     | Service is adapted for sensitive or reactive skin.
+PIG  | Pigmentation    | Service addresses uneven tone or pigmentation concerns.
+TXT  | Texture         | Service focuses on skin texture and surface refinement.
+
+Field Name: mode_skin_care_delivery
+Field Label: Skin Care Delivery
+Selection: Single-select per normal setup
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+MAN  | Manual           | The service is delivered principally through manual methods.
+DEV  | Device-Assisted  | A device materially supports the service.
+MIX  | Mixed Delivery   | Manual and device-assisted methods are both material.
+
+================================================================================
+26. NAIL, HAND AND FOOT CARE
+================================================================================
+
+Field Name: target_nail_care
+Field Label: Nail Care Target
+Selection: Multi-select
+
+Code | Label | Description
+-----|-------|------------------------------------------------------------
+HND  | Hand  | Hand or fingernail service.
+FOT  | Foot  | Foot or toenail service.
+NAI  | Nail  | Nail plate, enhancement, or polish-centered service.
+SKN  | Skin  | Surrounding hand, foot, cuticle, or callus care.
+
+Field Name: type_nail_service_action
+Field Label: Nail Service Action
+Selection: Multi-select
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+CLN  | Clean        | Cleans the nail or surrounding area.
+TRM  | Trim         | Cuts or shortens nails.
+SHP  | Shape        | Files or shapes nails.
+CUT  | Cuticle Care | Treats or maintains cuticles.
+POL  | Polish       | Applies ordinary polish.
+GEL  | Gel Polish   | Applies gel-based polish.
+EXT  | Extension    | Adds artificial length or enhancement.
+RPR  | Repair       | Repairs damaged natural or artificial nails.
+REM  | Removal      | Removes polish, gel, extension, or enhancement.
+CAL  | Callus Care  | Treats or reduces callused skin.
+
+================================================================================
+27. HAIR AND SCALP CARE
+================================================================================
+
+Field Name: target_hair_care
+Field Label: Hair and Scalp Care Target
+Selection: Multi-select
+
+Code | Label | Description
+-----|-------|------------------------------------------------------------
+HAR  | Hair  | Hair length, strand, style, or condition.
+SCP  | Scalp | Scalp cleansing, comfort, or treatment.
+
+Selecting both Hair and Scalp represents an integrated service; a separate Both option is unnecessary.
+
+Field Name: type_hair_service_action
+Field Label: Hair Service Action
+Selection: Multi-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+CUT  | Cut         | Cuts or reshapes hair.
+WSH  | Wash        | Cleanses hair or scalp.
+DRY  | Dry         | Blow-dries or otherwise dries hair.
+STY  | Style       | Arranges or styles hair.
+CLR  | Color       | Colors, tones, highlights, or changes hair color.
+TRT  | Treat       | Applies a conditioning or corrective treatment.
+STR  | Straighten  | Chemically or mechanically straightens hair.
+CRL  | Curl        | Chemically or mechanically curls hair.
+EXT  | Extension   | Adds hair extensions or comparable enhancement.
+
+================================================================================
+28. GROOMING AND HAIR REMOVAL
+================================================================================
+
+Field Name: method_hair_removal
+Field Label: Hair Removal Method
+Selection: Multi-select
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+SHV  | Shaving    | Removes hair using a razor or shaving implement.
+WAX  | Waxing     | Removes hair using wax.
+THR  | Threading  | Removes hair using thread.
+SGR  | Sugaring   | Removes hair using sugar-based paste.
+PLK  | Plucking   | Removes individual hairs mechanically.
+DEV  | Device     | Uses a non-medical device for hair removal.
+
+Field Name: type_grooming_action
+Field Label: Grooming Action
+Selection: Multi-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+TRM  | Trim        | Shortens or shapes hair or facial hair.
+SHP  | Shape       | Defines lines, contours, or form.
+SHV  | Shave       | Removes hair through shaving.
+CLN  | Cleanse     | Cleans the treated area.
+STY  | Style       | Arranges hair or facial hair.
+FIN  | Finish      | Applies finishing, aftercare, or presentation product.
+
+Barbering is a normalized grooming service rather than a Hair Removal Method. It may use Trim, Shape, Shave, Cleanse, Style, and Finish actions. Shaving remains the applicable Hair Removal Method when hair is removed with a razor.
+
+================================================================================
+29. DEVICE-LED WELLNESS
+================================================================================
+
+Field Name: type_device_form
+Field Label: Device Form
+Selection: Single-select per principal device
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+CHR  | Treatment Chair  | Client uses a specialized device in chair form.
+BED  | Treatment Bed    | Client uses a specialized device in bed form.
+CHM  | Chamber          | Client enters or uses an enclosed or semi-enclosed chamber.
+HND  | Handheld Device  | Operator or client uses a handheld powered device.
+WRB  | Wearable Device  | Device is worn or attached during the session.
+PLT  | Platform         | Client stands, lies, or moves on a specialized platform.
+POD  | Pod              | Client uses a compact enclosed or semi-enclosed pod.
+
+Field Name: mode_device_deployment
+Field Label: Device Deployment
+Selection: Single-select per service setup
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+FIX  | Fixed       | Equipment is permanently or semi-permanently installed.
+PRT  | Portable    | Equipment can be transported and assembled for service delivery.
+MOB  | Mobile Unit | Equipment is integrated into a mobile facility or service unit.
+
+================================================================================
+30. MIND-BODY GUIDANCE
+================================================================================
+
+Mind-Body services use type_client_arrangement from Section 17 for Individual or Group participation.
+
+Field Name: mode_guidance_delivery
+Field Label: Guidance Delivery
+Selection: Multi-select
+
+Code | Label           | Description
+-----|-----------------|------------------------------------------------------------
+LIV  | Live Guided     | A live facilitator leads the session in real time.
+REC  | Recorded Guided | Guidance is delivered through recorded media.
+SLF  | Self-Directed   | Participant proceeds without active facilitation.
+
+================================================================================
+31. CONSULTATION AND ASSESSMENT PURPOSE
+================================================================================
+
+Field Name: type_consultation_purpose
+Field Label: Consultation and Assessment Purpose
+Selection: Multi-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+INT  | Intake      | Gathers initial client information before service.
+ASM  | Assessment  | Evaluates client condition, need, or suitability.
+SCR  | Screening   | Checks for contraindications or safety concerns.
+PLN  | Planning    | Establishes a service or treatment plan.
+EDU  | Education   | Explains a service, condition, or self-care guidance.
+FUP  | Follow-Up   | Reviews progress or outcome after a prior service.
+REF  | Referral    | Directs the client toward another appropriate service or provider.
+
+================================================================================
+32. SERVICE REGULATION REQUIREMENT
+================================================================================
+
+Field Name: type_service_regulation_requirement
+Field Label: Service Regulation Requirement
+Selection: Multi-select where applicable
+
+Code | Label                   | Description
+-----|-------------------------|------------------------------------------------------------
+NRC  | Non-Regulated Consumer  | Ordinary consumer service without a specific regulated professional scope in the reviewed context.
+TRN  | Training-Controlled     | Requires provider training or demonstrated competency under an identified standard or practice context.
+CRD  | Credential-Controlled   | Requires a defined credential, certification, or recognized competency in the reviewed context.
+LIC  | Licensed Professional   | Requires a licensed or legally authorized professional.
+MED  | Medical Oversight       | Requires medical direction, prescription, supervision, or facility oversight.
+
+Training, credentialing, licensure, and medical oversight may overlap and do not form one universal ordered scale.
+Every recorded requirement must preserve jurisdiction, source, effective date, scope, and verification context.
+Jurisdiction-dependent uncertainty belongs to jurisdiction-specific legal or professional review rather than a classification option.
+
+================================================================================
+33. SERVICE NORMALIZATION AND PROVIDER USE
+================================================================================
+
+service_main
+- stores one normalized service concept;
+- receives its Service Family;
+- may receive applicable family-specific classifications;
+- may have aliases, translations, relationships, media, sources, articles, and lifecycle history.
+
+establishment_service
+- stores the establishment's exact commercial menu item;
+- preserves the provider name, description, duration, price, variants, package structure, add-ons, and availability;
+- maps to one or more service_main records when supported.
+
+practitioner_service
+- stores an independent therapist's exact commercial menu item;
+- preserves the therapist's own name, description, price, duration, service area, package structure, and availability;
+- maps to one or more service_main records when supported.
+
+practitioner_capability
+- represents that a practitioner can competently perform a normalized service even when the practitioner does not independently sell it;
+- remains conceptually separate from practitioner_service.
+
+Capability remains valuable because a spa-employed practitioner may perform services sold only through an establishment and may have no independent commercial menu.
+
+A capability may be asserted or supported by:
+- practitioner self-declaration;
+- establishment-operator confirmation;
+- platform editor review based on reliable evidence;
+- credential or training record;
+- competency assessment;
+- documented professional experience.
+
+Capability trust context may distinguish:
+- claimed;
+- employer-confirmed;
+- credential-supported;
+- independently verified;
+- disputed;
+- expired or no longer current.
+
+A capability must not be inferred merely because:
+- an affiliated establishment offers the service;
+- the practitioner works at that establishment;
+- a vaguely similar service appears in an unsourced biography;
+- a service is presently available for booking.
+
+The exact storage structure for practitioner_capability belongs to Database Structure documentation. This classification document confirms the conceptual distinction without requiring a particular collection design.
+
+Offering, Capability, Availability, and Credential Support are separate facts:
+
+- Establishment Offering means the establishment presents or sells a provider menu item mapped to one or more normalized services.
+- Practitioner Capability means a practitioner can competently perform a normalized service, whether or not it is independently sold.
+- Current Availability means a service can presently be booked in a particular context.
+- Credential Support means a credential supports a claimed capability within a defined scope and validity period.
+
+An establishment offering a service does not mean every affiliated practitioner can perform it.
+A practitioner's capability does not mean every affiliated establishment offers it.
+Capability does not prove current availability.
+Availability does not prove verified training.
+Uncertain provider-menu mappings remain pending rather than guessed.
+
+Examples:
+
+service_main
+- Thai Massage
+
+establishment_service
+- Royal Thai 90
+- maps to Thai Massage
+- 90 minutes
+- PHP 1,200
+
+practitioner_service
+- Adazy Massage
+- maps to Sensual Massage
+- remains a practitioner-specific name unless independently recognized beyond that practitioner.
+
+================================================================================
+34. REMOVED OR SEPARATE CONCEPTS
+================================================================================
+
+- Lists of actual named services belong to service_main seed or catalog data rather than this controlled classification document.
+- Exact products, brands, formulas, ingredients, materials, dimensions, and product specifications belong to Product Classification and product records.
+- Provider-Specified is not a Clothing, Attire, or Draping option; record the real arrangement and an explanatory note.
+- Adjustable and By Area are removed from Massage Pressure Level because they describe adaptation rather than pressure levels.
+- Portable Setup is removed from Treatment Support because portability describes deployment.
+- Aquatic Setup is replaced by Floatation Support together with the existing aquatic Service Family and Water Contact Method.
+- Movement-Based and Variable are removed from Client Position and handled by Client Positioning Mode.
+- Towel Draping is replaced by the independent Draping Item field.
+- Steam and Sauna are removed from Water Contact Method and separated under Thermal Exposure Method.
+- Mud and Clay are removed from Body Treatment Action and separated under Body Treatment Medium.
+- Combination is removed from Reflexology Target because multi-select already represents combined targets.
+- Both is removed from Hair and Scalp Care Target because multi-select already represents both targets.
+- Sensitive Service Nature is removed because Service Family and Service Relationship already represent sensual, sexual-wellness, adult, clinical, and counterpart distinctions.
+- Reiki and Energy Work are removed from Massage Technique Structure because Reiki is not a massage technique.
+- "Other" options are not retained as routine catch-alls. A genuinely new classification uses the approved taxonomy-change workflow.
+- Pricing, duration, booking, promotion, inventory, and schedule remain provider-commercial or operational data.
+
+Companion Document:
+Massage Nexus - 06 - Service Profile v0.20.txt
+
+================================================================================
+FUTURE REVIEW NOTES
+================================================================================
+
+- The universal Service Sector and Service Domain hierarchy remains in this document until an actual parent or shared cross-project service-taxonomy document is created and accepted.
+- Massage Nexus activates and displays only the sectors, domains, families, and fields relevant to its approved product scope.
+- If a parent taxonomy is later created, this document may remove the universal hierarchy and reference the accepted parent source instead.
+- Significant additions to Massage Nexus Service Family records should follow the internal taxonomy-change request process.
+- Public documentation should eventually provide clear examples, icons, and guidance for less familiar families, professional scope, sensitive services, and service-product relationships.

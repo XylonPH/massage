@@ -1,0 +1,448 @@
+Title: Massage Nexus Comment System
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines lightweight comments attached to articles, reviews, spas, therapists, products, services, comics, and other eligible records, including distinctions from reviews and discussions, replies, translation, moderation, editing, reactions, visibility, notifications, and abuse controls.
+
+Related Documents:
+- Massage Nexus Discussion System
+- Massage Nexus Review Writing
+- Massage Nexus Rating System
+- Massage Nexus User Workspace
+- Massage Nexus Translation System
+- Massage Nexus NSFW Mature and Restricted Content Policy
+- Massage Nexus Support and Ticketing System
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+Comments provide lightweight responses that do not require a full Review or separate
+Discussion.
+
+Examples:
+- responding to an article;
+- asking a question about a review;
+- noting a small factual detail about a spa;
+- commenting on a therapist or product without claiming a complete service experience;
+- reacting to a comic;
+- replying to another comment.
+
+Comments do not replace:
+- structured Reviews;
+- Ratings;
+- formal data Corrections;
+- Support tickets;
+- private Messages;
+- long-form Discussions.
+
+================================================================================
+2. ELIGIBLE TARGETS
+================================================================================
+
+Comments may attach to:
+- article;
+- review;
+- spa or establishment;
+- therapist;
+- service;
+- product;
+- seller;
+- promotion;
+- comic;
+- public research page;
+- public statistics page;
+- approved media;
+- another explicitly enabled record.
+
+Each target may:
+- enable or disable comments;
+- require login;
+- limit who may comment;
+- apply a moderation profile;
+- allow or disallow replies;
+- close comments after a defined condition.
+
+================================================================================
+3. COMMENT, REVIEW, AND DISCUSSION
+================================================================================
+
+Use a Review when evaluating an actual experience, service, provider, product, or transaction
+through the Review System.
+
+Use a Comment for:
+- a question;
+- a brief observation;
+- a response to content;
+- added context;
+- information that does not merit a full Review.
+
+A Comment:
+- does not affect Rating;
+- must not imitate Rating through unsupported numeric scoring;
+- may be invited into the Review workflow when appropriate.
+
+Use a Discussion when:
+- the topic needs a title;
+- several people may contribute over time;
+- longer conversation is expected;
+- category discovery or subscriptions are useful.
+
+A moderator may link a growing comment conversation to a new Discussion.
+
+================================================================================
+4. COMMENT RECORD
+================================================================================
+
+A comment may contain:
+- identifier;
+- target type and identifier;
+- author account;
+- original language;
+- content;
+- parent comment;
+- root thread;
+- depth;
+- status;
+- visibility;
+- created and edited dates;
+- deletion date and reason;
+- moderation state;
+- NSFW level;
+- spoiler state;
+- pinned state;
+- provider, author, staff, or moderator label;
+- reaction counts;
+- reply count;
+- report count;
+- source revision;
+- translation availability;
+- audit references.
+
+Final storage belongs in database design.
+
+================================================================================
+5. REPLIES
+================================================================================
+
+Use limited nesting.
+
+Recommended maximum visible depth:
+- three levels.
+
+Deeper replies may display as a flattened continuation while preserving parent relation.
+
+Rules:
+- the author must be able to view the parent;
+- deleted-parent behavior preserves understandable context;
+- blocked users follow blocking rules;
+- closed comments reject new replies;
+- provider and staff responses are labeled.
+
+================================================================================
+6. CONTENT AND FORMAT
+================================================================================
+
+Comments may include:
+- plain text;
+- approved links;
+- mentions;
+- limited emoji;
+- short quoted excerpts;
+- approved media later.
+
+Comments must not include:
+- spam;
+- undisclosed advertising;
+- harassment;
+- doxxing;
+- impersonation;
+- threats;
+- illegal solicitation;
+- prohibited sexual content;
+- private client information;
+- unsupported serious accusation;
+- malicious code;
+- unsafe HTML;
+- excessive copyrighted copying.
+
+Suggested maximum:
+- approximately 4,000 characters.
+
+Longer content should become a Discussion or Review where appropriate.
+
+================================================================================
+7. EDITING AND DELETION
+================================================================================
+
+Authors may edit under policy.
+
+Display Edited when meaning may have changed.
+
+Moderators retain revision history.
+
+A materially changed comment with replies may preserve prior text or show a revision notice.
+
+Deletion types:
+- author removed;
+- moderator removed;
+- target removed;
+- account removed;
+- legal restriction;
+- private retention where required.
+
+Do not destroy evidence needed for moderation, appeal, security, or legal retention without the
+approved process.
+
+================================================================================
+8. VISIBILITY
+================================================================================
+
+Possible visibility:
+- public;
+- registered users;
+- target participants;
+- provider workspace;
+- moderator only;
+- hidden pending review;
+- restricted adult;
+- removed placeholder.
+
+Ordinary comments on public targets remain public unless policy requires restriction.
+
+Restricted or NSFW text must not appear in ordinary previews, search snippets, email subjects,
+or lock-screen notifications.
+
+================================================================================
+9. ROLE-LABELED RESPONSES
+================================================================================
+
+Possible labels:
+- Provider Response;
+- Therapist Response;
+- Author Response;
+- Staff Response;
+- Moderator Notice.
+
+A role label identifies relationship, not truth.
+
+Providers may not:
+- suppress lawful criticism;
+- demand private information publicly;
+- retaliate;
+- offer undisclosed compensation for removal;
+- impersonate customers.
+
+================================================================================
+10. REACTIONS AND SORTING
+================================================================================
+
+Possible reactions:
+- helpful;
+- like;
+- insightful;
+- question.
+
+Reactions:
+- require an eligible account;
+- are reversible;
+- are rate-limited;
+- do not determine factual truth;
+- may inform sorting;
+- are protected from manipulation.
+
+Possible sorting:
+- oldest;
+- newest;
+- most helpful;
+- provider responses;
+- staff notices.
+
+Pinned content must not hide criticism.
+
+================================================================================
+11. TRANSLATION
+================================================================================
+
+Preserve original language.
+
+Offer Translate on demand.
+
+Machine translation:
+- is labeled;
+- may be cached;
+- provides Show Original;
+- becomes stale after edit;
+- may be reported.
+
+Do not pretranslate every comment into every language.
+
+================================================================================
+12. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+- reply;
+- mention;
+- reaction summary;
+- provider response;
+- moderator action;
+- thread closure.
+
+Users control notification preferences.
+
+Notifications must protect:
+- NSFW content;
+- private targets;
+- complaints;
+- blocked-user context;
+- sensitive personal information.
+
+================================================================================
+13. MODERATION
+================================================================================
+
+Possible actions:
+- allow;
+- warn;
+- reduce reach;
+- hide pending review;
+- remove;
+- lock replies;
+- mark spam;
+- request evidence;
+- redirect to Support;
+- redirect to Review;
+- redirect to Discussion;
+- restrict account;
+- escalate.
+
+AI may flag:
+- spam;
+- harassment;
+- solicitation;
+- personal data;
+- NSFW;
+- duplicate text;
+- suspicious links;
+- serious accusation.
+
+AI does not make serious final decisions independently.
+
+================================================================================
+14. REPORTING AND APPEAL
+================================================================================
+
+Report reasons:
+- spam;
+- harassment;
+- personal information;
+- impersonation;
+- prohibited content;
+- false serious allegation;
+- illegal solicitation;
+- undisclosed promotion;
+- wrong target;
+- copyright;
+- other triaged.
+
+Eligible moderation actions may be appealed.
+
+Disagreement is not automatically abuse.
+
+================================================================================
+15. CORRECTION AND SUPPORT REDIRECTION
+================================================================================
+
+A comment saying profile information is wrong does not directly change the profile.
+
+Offer:
+- Submit Correction;
+- Add Source;
+- Report Closed;
+- Report Moved;
+- Report Duplicate.
+
+The correction enters Data Research and Verification.
+
+Technical, account, billing, privacy, security, or complaint matters enter Support.
+
+================================================================================
+16. ANTI-ABUSE
+================================================================================
+
+Use:
+- rate limits;
+- verification and account-standing signals;
+- duplicate detection;
+- link limits;
+- spam filters;
+- block and mute;
+- report thresholds;
+- coordinated-activity detection;
+- temporary posting limits;
+- moderator review.
+
+Do not require public legal identity merely to reduce spam.
+
+================================================================================
+17. ROUTES
+================================================================================
+
+Possible:
+/comment/{comment-reference}
+/comment/{comment-reference}/reply
+/comment/{comment-reference}/edit
+/comment/{comment-reference}/delete
+/comment/{comment-reference}/report
+/comment/{comment-reference}/translate
+
+Workspace:
+/workspace/comment
+/workspace/comment/mine
+/workspace/comment/reply
+/workspace/comment/reported
+/workspace/comment/moderation
+
+Comments normally appear inside the target page rather than a separate public directory.
+
+================================================================================
+18. TESTING
+================================================================================
+
+Test:
+- target eligibility;
+- login;
+- creation;
+- reply depth;
+- authorization;
+- editing;
+- deletion;
+- role labels;
+- rating separation;
+- review conversion;
+- discussion redirection;
+- correction redirection;
+- translation;
+- notification privacy;
+- NSFW access;
+- reporting;
+- moderation;
+- rate limiting;
+- blocked users;
+- target removal.
+
+================================================================================
+19. CURRENT DIRECTIONS
+================================================================================
+
+- Use Comments for lightweight responses that do not merit a full Review or Discussion.
+- Allow Comments on articles, Reviews, spas, therapists, products, services, comics, and other
+  approved records.
+- Comments do not affect Ratings.
+- Keep reply nesting limited.
+- Preserve original language and translate on demand.
+- Label provider, author, therapist, staff, and moderator responses.
+- Route factual corrections to Data Research.
+- Route technical and account problems to Support.
+- Route long conversations to Discussions.

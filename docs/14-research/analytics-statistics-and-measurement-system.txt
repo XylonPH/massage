@@ -1,0 +1,754 @@
+Title: Massage Nexus Analytics Statistics and Measurement System
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 03 - Features v2.40
+- Massage Nexus - 15 - Language Strategy v0.30
+- Massage Nexus - 18 - Site Structure Map v1.90
+- Massage Nexus - 20 - Translation System v0.20
+- Massage Nexus - 21 - User Workspace v0.30
+- Massage Nexus - Data Research Provenance and Field Verification System v0.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
+- Massage Nexus - 31 - Booking and Appointment System v1.00
+- Current Rating, Reputation, Rewards, Payment, Scheduling, and Provider Finance documents
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines analytics, statistics, metrics, events, reports, public aggregates,
+research coverage, social-presence observations, privacy controls, and measurement governance
+for Massage Nexus.
+
+Analytics:
+Measurements used to understand behavior, performance, operations, quality, and outcomes.
+
+Statistics:
+Aggregated descriptive results about the platform, directory, market, research coverage,
+content, providers, services, and communities.
+
+A number is not meaningful unless its definition, scope, timeframe, source, and update date
+are known.
+
+================================================================================
+1. GOALS
+================================================================================
+
+The system should:
+- help users understand their private activity;
+- help providers understand authorized performance;
+- help editors and researchers identify data gaps;
+- help administrators operate the platform;
+- support transparent public statistics;
+- measure translation and market readiness;
+- measure social and external presence;
+- support advertising only with clear separation and consent;
+- protect sensitive and private information;
+- avoid misleading rankings;
+- preserve metric definitions and revisions.
+
+================================================================================
+2. ANALYTICS AREAS
+================================================================================
+
+A. Platform
+- visits;
+- active users;
+- registration;
+- verification;
+- search;
+- content;
+- performance;
+- errors;
+- referrals;
+- conversion;
+- retention.
+
+B. Personal
+- private service history;
+- spending;
+- visit count;
+- duration;
+- service distribution;
+- provider distribution;
+- reviews;
+- ratings;
+- loyalty;
+- saved items.
+
+C. Provider
+- profile views;
+- search impressions;
+- contact;
+- directions;
+- saves;
+- follows;
+- booking;
+- reviews;
+- promotions;
+- resource use;
+- finance.
+
+D. Research and Data Quality
+- coverage;
+- freshness;
+- source mix;
+- verification;
+- contradiction;
+- stale records;
+- missing fields;
+- country and city progress.
+
+E. Translation and Localization
+- coverage;
+- stale translations;
+- fallback;
+- requests;
+- cache hits;
+- cost;
+- quality reports;
+- language demand.
+
+F. Community
+- contributions;
+- approvals;
+- corrections;
+- reviews;
+- discussions;
+- reports;
+- reputation.
+
+G. Social and External Presence
+- followers;
+- engagement;
+- account status;
+- official status;
+- observation date;
+- source;
+- referral traffic.
+
+H. Booking and Finance
+Defined by booking, payment, scheduling, and provider-finance documents.
+
+================================================================================
+3. METRIC REGISTRY
+================================================================================
+
+Every metric should have:
+- metric key;
+- label;
+- definition;
+- purpose;
+- owner;
+- source event or record;
+- numerator;
+- denominator;
+- unit;
+- scope;
+- dimensions;
+- timeframe;
+- time zone;
+- inclusion rules;
+- exclusion rules;
+- privacy class;
+- aggregation;
+- minimum group threshold;
+- update frequency;
+- version;
+- status;
+- caveat;
+- example.
+
+Do not allow several teams to use the same label for different calculations.
+
+Example:
+
+metric:
+provider.profile_view_unique
+
+Definition:
+Distinct authorized browser or account views of one public provider profile during the
+selected period, after bot and duplicate-session filtering.
+
+It is different from:
+- raw page requests;
+- search impressions;
+- profile tab changes;
+- staff preview;
+- crawler access.
+
+================================================================================
+4. EVENT REGISTRY
+================================================================================
+
+Events may include:
+- page_view;
+- search_submitted;
+- search_result_impression;
+- search_result_opened;
+- contact_clicked;
+- directions_clicked;
+- saved;
+- followed;
+- booking_started;
+- booking_submitted;
+- booking_confirmed;
+- booking_completed;
+- review_started;
+- review_published;
+- contribution_submitted;
+- contribution_approved;
+- translation_requested;
+- translation_published;
+- verification_completed;
+- media_viewed;
+- promo_opened;
+- external_referral_received.
+
+Event requirements:
+- stable event name;
+- version;
+- timestamp;
+- allowed properties;
+- actor class where needed;
+- target;
+- context;
+- consent or basis;
+- privacy class;
+- retention;
+- idempotency or duplicate handling;
+- bot handling;
+- test-event exclusion.
+
+Do not attach arbitrary personal data to analytics events.
+
+================================================================================
+5. TIME, DATE, AND GEOGRAPHY
+================================================================================
+
+Reports must identify:
+- event time;
+- reporting time zone;
+- local date if relevant;
+- UTC storage where appropriate;
+- period start and end;
+- data freshness;
+- partial period.
+
+Geographic dimensions may include:
+- country;
+- region;
+- province or state;
+- city;
+- district;
+- tourism area.
+
+Do not expose precise user home location in ordinary analytics.
+
+Provider analytics may use the provider's public location or service area, not the private
+residence of a client.
+
+================================================================================
+6. PLATFORM ANALYTICS
+================================================================================
+
+Possible metrics:
+- public visits;
+- authenticated visits;
+- active accounts;
+- verified accounts;
+- registration completion;
+- verification completion;
+- failed verification;
+- login success and failure aggregate;
+- password recovery aggregate;
+- language distribution;
+- device and browser category;
+- referral source;
+- page performance;
+- error rate;
+- search demand;
+- zero-result search;
+- profile coverage;
+- contribution flow;
+- moderation workload;
+- translation coverage;
+- research coverage.
+
+Security analytics remain restricted and must not become a public dashboard.
+
+================================================================================
+7. PERSONAL ANALYTICS
+================================================================================
+
+Private user reports may include:
+- monthly and yearly spending;
+- visit count;
+- total service duration;
+- average cost;
+- tips;
+- travel fees;
+- discounts;
+- refunds;
+- service-family distribution;
+- provider distribution;
+- loyalty progress;
+- completed series;
+- ratings;
+- reviews;
+- bookings and manual history.
+
+Rules:
+- private by default;
+- only the user sees cross-provider history;
+- providers cannot see unrelated history;
+- intake is not an ordinary analytics dimension;
+- export and deletion follow privacy and retention;
+- user-recorded history is labeled separately from confirmed history.
+
+================================================================================
+8. PROVIDER ANALYTICS
+================================================================================
+
+Possible metrics:
+- profile views;
+- unique profile viewers;
+- search impressions;
+- search click-through;
+- contact clicks;
+- direction clicks;
+- saves;
+- follows;
+- booking start;
+- request;
+- confirmation;
+- completion;
+- cancellation;
+- no-show;
+- waitlist;
+- response time;
+- review count;
+- rating distribution;
+- promotion views;
+- promotion conversion;
+- therapist demand;
+- service demand;
+- resource utilization;
+- product upgrade;
+- language demand;
+- revenue and compensation where authorized.
+
+Permissions:
+- provider sees only records within its authorized context;
+- therapist sees only allowed personal and assigned data;
+- finance information requires finance permission;
+- staff preview and owner activity should be excluded from public-demand metrics when
+  appropriate;
+- no competitor's private analytics.
+
+================================================================================
+9. RESEARCH AND DATA QUALITY STATISTICS
+================================================================================
+
+Possible metrics:
+- total records by type;
+- active, closed, moved, renamed, disputed, historical;
+- claimed and verified;
+- last verified;
+- stale;
+- source count;
+- direct visit;
+- direct contact;
+- official source;
+- map source;
+- contributor source;
+- source conflict;
+- missing fields;
+- city coverage;
+- country coverage;
+- district coverage;
+- service-menu coverage;
+- price freshness;
+- social-account coverage;
+- media coverage;
+- accessibility coverage.
+
+Public methodology should explain that a record count is not a complete census, a map absence
+does not prove nonexistence, verification dates differ by field, and country comparisons may
+reflect research coverage rather than true market size.
+
+================================================================================
+10. SOCIAL MEDIA AND EXTERNAL PRESENCE
+================================================================================
+
+Follower counts are observations, not permanent facts.
+
+A social observation may contain:
+- platform;
+- account handle;
+- account URL;
+- target record;
+- account type;
+- official status;
+- platform verification status;
+- Massage Nexus verification status;
+- follower count;
+- following count;
+- post count where available;
+- engagement observations;
+- observation date;
+- source;
+- capture method;
+- notes;
+- confidence.
+
+Account types:
+- establishment;
+- branch;
+- brand;
+- therapist;
+- creator;
+- hotel or resort group;
+- professional association;
+- school;
+- seller.
+
+Do not store one universal social_followers field.
+
+A ranking must specify platform, account type, geography, timeframe, metric, minimum
+eligibility, last checked, and suspicious-follower handling.
+
+Acceptable:
+"Most followed on Instagram among tracked Philippine massage establishments as of July 2026."
+
+Not acceptable:
+"World's most popular spa."
+
+Follower count is separate from engagement, business size, booking volume, rating,
+professional quality, massage-related content percentage, awards, and geographic reach.
+
+================================================================================
+11. REFERRAL AND AI SEARCH ANALYTICS
+================================================================================
+
+Track approved referral sources:
+- search engines;
+- social sites;
+- partner sites;
+- ChatGPT and other AI search referrals when identifiable;
+- newsletters;
+- campaigns;
+- direct;
+- unknown.
+
+Possible fields:
+- referrer category;
+- source;
+- medium;
+- campaign;
+- landing page;
+- language;
+- country at approved granularity;
+- conversion;
+- bot classification.
+
+Do not fingerprint users aggressively merely to improve attribution.
+
+A crawler may create page requests without producing a human referral. Separate:
+- bot crawl;
+- search impression when available;
+- referral visit;
+- authenticated conversion.
+
+================================================================================
+12. TRANSLATION ANALYTICS
+================================================================================
+
+Metrics:
+- total keys;
+- translated;
+- reviewed;
+- published;
+- stale;
+- missing critical;
+- fallback;
+- machine requests;
+- cache hits;
+- cost;
+- latency;
+- errors;
+- user reports;
+- glossary violations;
+- review time;
+- community approval.
+
+Display by locale, capability, risk, market, and publication status.
+
+================================================================================
+13. PUBLIC STATISTICS
+================================================================================
+
+Possible public pages:
+- platform overview;
+- directory coverage;
+- country and city coverage;
+- service coverage;
+- research freshness;
+- contribution activity;
+- translation coverage;
+- public social observations;
+- methodology;
+- data limitations.
+
+Public statistics must:
+- use aggregates;
+- identify date;
+- define the metric;
+- avoid small-group disclosure;
+- avoid private commercial data;
+- avoid identifiable health or intake information;
+- not publish security telemetry;
+- not imply a complete market census;
+- distinguish observed Massage Nexus data from external estimates.
+
+================================================================================
+14. RANKINGS
+================================================================================
+
+Possible rankings:
+- most reviewed;
+- highest rated with minimum review threshold;
+- most saved;
+- most followed;
+- trending;
+- most recently verified;
+- strongest data completeness;
+- most helpful contributor;
+- most followed on a named social platform.
+
+Every ranking needs:
+- metric definition;
+- geography;
+- timeframe;
+- eligibility;
+- minimum count;
+- anti-manipulation;
+- tie handling;
+- sponsored exclusion;
+- update date.
+
+Spa Market Class, Therapist Market Class, and Product Grade provide context but must not
+automatically raise or lower a rating.
+
+No unexplained "best in the world" label.
+
+================================================================================
+15. PRIVACY
+================================================================================
+
+Do not put in ordinary analytics:
+- password;
+- password hash;
+- recovery token;
+- session token;
+- private message body;
+- sealed intake;
+- precise residential location;
+- full payment card;
+- private identity evidence;
+- cross-provider client history;
+- NSFW preference in public or advertiser targeting;
+- sensitive health inference.
+
+Use aggregation, pseudonymous identifiers where needed, minimum thresholds, retention limits,
+role access, export controls, audit, and privacy review.
+
+Analytics should not become a hidden second user profile.
+
+================================================================================
+16. CONSENT AND COOKIES
+================================================================================
+
+Determine which measurement is:
+- essential operations;
+- security;
+- user-requested personal report;
+- legitimate operational analytics where permitted;
+- optional analytics;
+- advertising.
+
+Do not present essential security logging as optional analytics.
+
+Optional analytics and advertising controls must follow the final cookie and privacy policy.
+
+================================================================================
+17. BOTS, SPAM, AND DATA QUALITY
+================================================================================
+
+Filter or label:
+- search crawlers;
+- AI crawlers;
+- monitoring;
+- uptime checks;
+- staff previews;
+- automated tests;
+- duplicate events;
+- spam accounts;
+- suspicious follows;
+- fraudulent reviews;
+- referral spam.
+
+Keep raw and cleaned counts distinct when useful.
+
+Do not silently change historical published numbers without a correction note when the change
+is material.
+
+================================================================================
+18. STORAGE AND AGGREGATION
+================================================================================
+
+Conceptual areas:
+- event stream;
+- metric registry;
+- daily aggregate;
+- monthly aggregate;
+- personal report;
+- provider report;
+- public statistic snapshot;
+- social observation;
+- research coverage snapshot;
+- translation coverage snapshot;
+- export;
+- audit.
+
+Do not assume all analytics belong in one giant collection.
+
+Raw event retention may be shorter than aggregate retention.
+
+Final database names belong in the database design.
+
+================================================================================
+19. REPORTING WORKSPACE
+================================================================================
+
+Routes:
+/workspace/analytics
+/workspace/analytics/personal
+/workspace/analytics/provider
+/workspace/analytics/profile
+/workspace/analytics/search
+/workspace/analytics/contact
+/workspace/analytics/booking
+/workspace/analytics/review
+/workspace/analytics/promo
+/workspace/analytics/social
+/workspace/analytics/research
+/workspace/analytics/translation
+/workspace/analytics/referral
+/workspace/analytics/export
+/workspace/analytics/definition
+/workspace/analytics/privacy
+
+Public:
+/statistics
+/statistics/platform
+/statistics/directory
+/statistics/country
+/statistics/city
+/statistics/service
+/statistics/research
+/statistics/translation
+/statistics/social
+/statistics/methodology
+
+================================================================================
+20. EXPORT
+================================================================================
+
+Possible formats:
+- CSV;
+- JSON;
+- spreadsheet;
+- PDF summary;
+- chart image for approved reports.
+
+Exports must enforce permission, include metric definitions, include period and time zone,
+include generation date, avoid unauthorized row-level data, expire protected links, and record
+sensitive export where justified.
+
+================================================================================
+21. TESTING
+================================================================================
+
+Test:
+- metric definitions;
+- event validation;
+- duplicate handling;
+- time zones;
+- period boundaries;
+- bot exclusion;
+- staff exclusion;
+- provider authorization;
+- cross-provider denial;
+- minimum thresholds;
+- public aggregation;
+- social observation date;
+- ranking eligibility;
+- translation coverage;
+- research coverage;
+- export;
+- deletion and retention;
+- synthetic test events;
+- no sensitive event properties.
+
+================================================================================
+22. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+1. metric registry;
+2. event registry;
+3. essential operational events;
+4. personal private reports;
+5. provider profile and search reports;
+6. research coverage;
+7. translation coverage;
+8. referral;
+9. social observation;
+10. public aggregate statistics;
+11. booking and finance analytics with their systems;
+12. advertising analytics only after advertising and consent policy.
+
+================================================================================
+23. ACCEPTED DIRECTIONS
+================================================================================
+
+- Analytics and public statistics are separate presentations of governed measurements.
+- Every metric has a definition, scope, timeframe, and version.
+- Personal analytics are private.
+- Provider analytics are permission-bound.
+- Intake is excluded from ordinary analytics.
+- Research coverage and market reality are not the same.
+- Follower counts are dated platform-specific observations.
+- Social popularity does not equal professional quality.
+- Rankings require transparent eligibility and method.
+- AI and search referrals may be measured without exposing private browsing behavior.
+- Public statistics use aggregation and privacy thresholds.
+- Detailed booking and finance metrics remain governed by their own systems.
+
+================================================================================
+24. OPEN DECISIONS
+================================================================================
+
+- final analytics provider or internal stack;
+- raw event retention;
+- optional analytics consent model;
+- public statistic launch set;
+- minimum group thresholds;
+- bot-detection service;
+- social observation automation;
+- engagement-rate formula by platform;
+- advertising attribution;
+- recommendation measurement;
+- public ranking update frequency.

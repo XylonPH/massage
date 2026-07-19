@@ -1,0 +1,647 @@
+Title: Massage Nexus Testing and Quality Assurance Strategy
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines the cross-project testing and quality approach used by AI and human reviewers without duplicating feature-specific validation rules. Validation remains inside the relevant system specification and implementation, while this document defines test layers, organization, automation, release gates, test data, manual review, and maintenance.
+
+Related Documents:
+- Massage Nexus Documentation Writing and Management Standard
+- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Privacy Notice and Data Protection Requirements
+- Massage Nexus Maintenance and Continuous Operations
+- individual capability specifications and implementation records
+
+================================================================================
+1. DOCUMENT BOUNDARY
+================================================================================
+
+Create one compact cross-project testing strategy because AI, CI, release work, and maintenance
+need consistent quality rules.
+
+Do not create one generic validation document.
+
+Validation belongs in:
+- the relevant capability specification;
+- input and business rules;
+- data contracts;
+- client-side validation;
+- server-side validation;
+- database constraints;
+- authorization;
+- targeted tests.
+
+Examples:
+- username validation belongs in Account and Authentication;
+- spa-classification dependencies belong in Spa Classification;
+- booking state validation belongs in Booking;
+- translation placeholder validation belongs in Translation System.
+
+Do not create one generic implementation-strategy document.
+
+Implementation order belongs in:
+- Roadmap;
+- relevant capability specification;
+- narrow AI task packet;
+- implementation record.
+
+================================================================================
+2. QUALITY OBJECTIVES
+================================================================================
+
+Testing should provide confidence that:
+- accepted behavior works;
+- invalid behavior is rejected;
+- authorization is enforced;
+- private data remains private;
+- translations and fallbacks work;
+- accessibility requirements work;
+- upgrades do not break existing behavior;
+- migrations preserve data;
+- failures are recoverable;
+- releases can be rolled back.
+
+Automated tests reduce repetitive manual work. They do not eliminate manual review.
+
+================================================================================
+3. TEST OWNERSHIP
+================================================================================
+
+Each capability owns its tests.
+
+Examples:
+- Identity owns registration, login, verification, recovery, passkeys, and sessions.
+- Localization owns locale selection, fallback, placeholders, and translated routes.
+- Research owns provenance, freshness, contradiction, and evidence access.
+- Booking owns booking states, intake, scheduling, payment, and provider operations.
+- Media owns upload, transformation, access, and NSFW handling.
+
+Cross-cutting suites may cover:
+- security;
+- privacy;
+- accessibility;
+- performance;
+- integration;
+- release smoke tests;
+- backup and restore.
+
+Do not place all tests in one giant file or one universal feature suite.
+
+================================================================================
+4. TEST LEVELS
+================================================================================
+
+Unit Tests
+Test one rule, class, calculation, or transformation.
+
+Examples:
+- username policy;
+- age calculation;
+- rating calculation;
+- freshness calculation;
+- translation placeholder validation.
+
+Feature Tests
+Test an application workflow through its public or internal interface.
+
+Examples:
+- register and verify;
+- submit correction;
+- claim profile;
+- publish review;
+- create booking.
+
+Integration Tests
+Test interaction between application components or external service abstractions.
+
+Examples:
+- MongoDB integration;
+- email provider;
+- storage;
+- payment provider;
+- search;
+- AI provider.
+
+Browser or End-to-End Tests
+Test critical flows through a real browser where necessary.
+
+Examples:
+- registration;
+- login;
+- booking;
+- payment;
+- provider management;
+- locale switching;
+- restricted-content access.
+
+Manual Exploratory Testing
+Used for:
+- visual behavior;
+- unclear edge cases;
+- mobile and responsive layout;
+- usability;
+- actual assistive technology;
+- provider workflows;
+- real-world field scenarios.
+
+================================================================================
+5. TEST ORGANIZATION
+================================================================================
+
+Organize by capability and responsibility.
+
+Example:
+
+tests/
+- Unit/
+  - Identity/
+  - Localization/
+  - Research/
+  - Analytics/
+- Feature/
+  - Identity/
+  - Profile/
+  - Contribution/
+  - Booking/
+- Integration/
+  - Database/
+  - Email/
+  - Storage/
+  - Payment/
+  - Ai/
+- Browser/
+  - CriticalFlow/
+- Security/
+- Accessibility/
+- Performance/
+
+File rules:
+- one coherent scenario group per file;
+- split when unrelated behavior appears;
+- use shared fixtures and builders when several tests genuinely share them;
+- avoid excessive fragmentation;
+- use descriptive test names;
+- keep tests readable as behavior documentation.
+
+================================================================================
+6. REQUIRED TEST CASES
+================================================================================
+
+For each rule, consider:
+- valid case;
+- invalid case;
+- boundary;
+- missing value;
+- duplicate;
+- unauthorized role;
+- wrong owner;
+- inactive status;
+- expired value;
+- stale revision;
+- concurrent action;
+- retry;
+- rollback;
+- localization;
+- accessibility;
+- privacy;
+- audit;
+- malicious input;
+- external-provider failure.
+
+Not every rule needs every case. The capability specification determines relevance.
+
+================================================================================
+7. CLIENT AND SERVER VALIDATION
+================================================================================
+
+Client-side validation:
+- improves immediate feedback;
+- may guide formatting;
+- may prevent obvious mistakes;
+- is never the authority.
+
+Server-side validation:
+- is required;
+- enforces business rules;
+- enforces authorization;
+- returns localized safe errors;
+- handles clients that bypass JavaScript.
+
+Database constraints:
+- enforce uniqueness and structural integrity where appropriate;
+- do not replace application validation;
+- require safe error handling.
+
+A test should prove important rules at the authoritative layer.
+
+================================================================================
+8. SECURITY TESTING
+================================================================================
+
+Test:
+- authentication;
+- authorization;
+- account enumeration;
+- rate limiting;
+- session fixation;
+- session revocation;
+- CSRF;
+- XSS;
+- injection;
+- insecure direct object access;
+- upload validation;
+- private media;
+- secrets;
+- production error leakage;
+- protected routes;
+- webhook signatures;
+- payment replay;
+- privilege escalation.
+
+Security fixes receive regression tests where practical.
+
+Do not expose vulnerability details in public test output.
+
+================================================================================
+9. PRIVACY AND DATA TESTING
+================================================================================
+
+Test:
+- public versus private fields;
+- provider access boundaries;
+- cross-provider denial;
+- data export;
+- deletion;
+- retention;
+- consent and policy version;
+- precise location;
+- sensitive intake;
+- analytics exclusions;
+- AI data minimization;
+- restricted media;
+- audit access.
+
+Use synthetic data.
+
+Do not copy production personal data into ordinary tests.
+
+================================================================================
+10. LOCALIZATION TESTING
+================================================================================
+
+Test:
+- locale selection;
+- fallback;
+- unsupported locale;
+- translation key coverage;
+- placeholders;
+- pluralization;
+- date and number formatting;
+- right-to-left later;
+- translated email;
+- validation messages;
+- public metadata;
+- source revision;
+- stale translation;
+- show original;
+- on-demand user-content translation.
+
+Critical flows must not silently fall back to incomplete or unsafe wording without the accepted
+fallback behavior.
+
+================================================================================
+11. ACCESSIBILITY TESTING
+================================================================================
+
+Automated checks:
+- labels;
+- landmarks;
+- contrast where tooling supports it;
+- keyboard focus;
+- heading structure;
+- image alternatives;
+- form errors.
+
+Manual checks:
+- keyboard-only operation;
+- screen reader;
+- zoom;
+- mobile;
+- reduced motion;
+- error recovery;
+- dialog behavior;
+- language changes.
+
+Passing an automated accessibility scanner does not prove full accessibility.
+
+================================================================================
+12. PERFORMANCE AND RELIABILITY
+================================================================================
+
+Test when relevant:
+- page load;
+- search;
+- large directory queries;
+- booking concurrency;
+- queue processing;
+- media upload;
+- export;
+- AI timeout;
+- provider outage;
+- retry;
+- database failure;
+- cache failure;
+- scheduled jobs;
+- backup and restore.
+
+Define measured targets when real usage exists.
+
+Do not optimize without measurement.
+
+================================================================================
+13. MIGRATION AND UPGRADE TESTING
+================================================================================
+
+Before a schema, data, framework, or dependency change:
+- backup;
+- migration test;
+- representative data;
+- rollback or recovery plan;
+- targeted regression;
+- complete suite;
+- staging deployment;
+- monitoring.
+
+Test:
+- old data;
+- missing fields;
+- new defaults;
+- duplicate conflict;
+- index creation;
+- interrupted migration;
+- retry;
+- rollback;
+- compatibility.
+
+================================================================================
+14. EXTERNAL SERVICE TESTING
+================================================================================
+
+Use provider abstractions and fakes for ordinary automated tests.
+
+External services:
+- email;
+- SMS;
+- payment;
+- maps;
+- storage;
+- search;
+- AI;
+- social publishing;
+- analytics.
+
+Test:
+- success;
+- timeout;
+- invalid response;
+- rate limit;
+- duplicate callback;
+- signature;
+- retry;
+- provider outage;
+- fallback;
+- cost behavior.
+
+Do not spend production AI, SMS, email, or payment credits in routine tests.
+
+================================================================================
+15. TEST DATA
+================================================================================
+
+Use:
+- factories;
+- fixtures;
+- builders;
+- synthetic identities;
+- test media;
+- deterministic clocks;
+- fake providers;
+- seeded taxonomies.
+
+Test data should:
+- be readable;
+- avoid real personal information;
+- include edge cases;
+- identify locale and time zone;
+- support cleanup;
+- remain separate from production.
+
+================================================================================
+16. AI ROLE
+================================================================================
+
+AI may:
+- propose tests;
+- generate test code;
+- identify missing cases;
+- run targeted tests;
+- summarize failures;
+- create regression tests;
+- compare implementation with specification;
+- suggest refactoring.
+
+AI must not:
+- remove tests merely to make the suite pass;
+- weaken assertions without justification;
+- replace a failing requirement with current buggy behavior;
+- use production data;
+- hide unresolved failures;
+- claim a suite passed without execution evidence.
+
+Human review remains required for:
+- changed business meaning;
+- safety;
+- privacy;
+- complex user experience;
+- final release decision.
+
+================================================================================
+17. TEST EXECUTION ORDER
+================================================================================
+
+During development:
+1. smallest targeted unit test;
+2. affected feature test;
+3. affected capability suite;
+4. relevant static analysis and formatting;
+5. cross-cutting security or localization tests;
+6. complete suite at checkpoint;
+7. browser smoke test for critical flows;
+8. staging verification before production.
+
+Do not rerun the entire suite after every minor edit when a targeted test provides the needed
+feedback.
+
+CI runs the approved broader suite.
+
+================================================================================
+18. RELEASE GATES
+================================================================================
+
+A release should not proceed when:
+- critical tests fail;
+- security or privacy regression is unresolved;
+- migration is not tested;
+- rollback is unavailable;
+- production debug information may leak;
+- critical localized flows are incomplete;
+- backup is not current;
+- known data corruption exists;
+- required policies are not ready;
+- major accessibility blockers remain in the affected flow.
+
+A release may proceed with accepted low-risk limitations only when:
+- documented;
+- user impact understood;
+- no safety or security risk;
+- follow-up assigned.
+
+================================================================================
+19. DEFECT SEVERITY
+================================================================================
+
+Critical
+- security compromise;
+- privacy breach;
+- data corruption;
+- payment duplication;
+- inaccessible core service;
+- prohibited content exposure;
+- complete outage.
+
+High
+- broken registration;
+- broken booking;
+- major authorization failure;
+- incorrect public provider data with substantial impact;
+- major accessibility blocker.
+
+Medium
+- significant feature malfunction with workaround;
+- incomplete translation;
+- analytics error;
+- performance degradation.
+
+Low
+- minor visual issue;
+- wording;
+- low-impact inconsistency.
+
+Severity guides priority. It does not replace judgment.
+
+================================================================================
+20. MANUAL ACCEPTANCE
+================================================================================
+
+The user may manually review:
+- visual result;
+- wording;
+- project terminology;
+- logical classification;
+- workflow suitability;
+- content quality;
+- business decisions.
+
+AI and automated tests should handle:
+- repetitive validation;
+- regression;
+- edge cases;
+- authorization;
+- data integrity;
+- compatibility;
+- routine technical checks.
+
+Manual testing findings should become automated regression tests when practical.
+
+================================================================================
+21. TEST DOCUMENTATION
+================================================================================
+
+Do not create a large separate test plan for every feature by default.
+
+Use:
+- testing requirements inside the capability specification;
+- focused test files;
+- concise implementation record;
+- one release checklist for a major release;
+- specialized test plans only for complex or high-risk systems.
+
+Split test documentation when one system has independent areas.
+
+Example:
+- Booking Request Tests;
+- Booking Scheduling Tests;
+- Booking Payment Tests;
+- Booking Provider Operations Tests.
+
+Do not create:
+- one enormous Booking Testing file;
+- one generic Validation document duplicating every capability.
+
+================================================================================
+22. MAINTENANCE
+================================================================================
+
+Maintain tests when:
+- behavior changes;
+- a defect is fixed;
+- a dependency changes;
+- a flaky test appears;
+- runtime performance changes;
+- a specification is revised;
+- a provider changes.
+
+Review:
+- slow tests;
+- duplicate tests;
+- brittle selectors;
+- outdated fixtures;
+- unused helpers;
+- missing critical flows;
+- false positives;
+- coverage gaps.
+
+Test-count growth is not a goal. Useful confidence is the goal.
+
+================================================================================
+23. CURRENT DIRECTIONS
+================================================================================
+
+- Maintain one compact cross-project testing strategy.
+- Keep validation rules inside the relevant capability specification and implementation.
+- Do not create a generic implementation-strategy document.
+- Organize tests by capability and responsibility.
+- Split large test files and specialized plans by coherent workflow.
+- Use unit, feature, integration, browser, security, privacy, localization, accessibility,
+  performance, migration, and manual testing as needed.
+- Use synthetic data and fake external providers.
+- Let AI generate and run tests, but require honest execution results and human review for
+  business meaning and release decisions.
+- Run targeted tests during development and complete suites at checkpoints and in CI.
+- Treat automated tests as support for, not replacement of, manual product review.
+
+================================================================================
+24. OPEN DECISIONS
+================================================================================
+
+- final test runner and CI configuration;
+- browser testing tool;
+- static analysis tools;
+- code coverage target, if any;
+- performance targets;
+- staging data strategy;
+- test database configuration;
+- release smoke-test list;
+- accessibility testing tools;
+- security testing schedule;
+- flaky-test policy.

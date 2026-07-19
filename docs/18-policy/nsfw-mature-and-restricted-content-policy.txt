@@ -1,0 +1,714 @@
+Title: Massage Nexus NSFW Mature and Restricted Content Policy
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Product, Safety, and Moderation Specification
+Publication Status: Public policy and user-facing guidance still to be drafted
+Authority: Current accepted direction
+Shared Standard Version: 2.60
+
+DOCUMENT PURPOSE
+----------------
+This document defines how Massage Nexus classifies, stores, displays, restricts, moderates,
+and reports mature, NSFW, adult, intimate, sexual-wellness, sensitive-service, and prohibited
+content.
+
+Massage Nexus is a massage, spa, wellness, and bodywork discovery platform. It is not
+designed as an adult-content platform. Accurate documentation of sensitive services,
+experiences, boundaries, risks, and media may still require neutral classification and
+controlled access.
+
+A content label does not legalize, excuse, or permit prohibited material.
+
+RELATED DOCUMENTS
+-----------------
+- Massage Nexus Features v2.30
+- Massage Nexus Article Writing v2.10
+- Massage Nexus Review Writing v1.70
+- Massage Nexus Account Identity Registration and Authentication System v0.10
+- Massage Nexus Terms of Use Requirements v0.10
+- Massage Nexus Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus Security Architecture and Information Disclosure Policy v0.10
+- Massage Nexus User Workspace v0.20
+- Shared Project Standards v2.60
+
+================================================================================
+1. SCOPE
+================================================================================
+
+This policy applies to:
+- articles;
+- reviews;
+- ratings with text or media;
+- discussions;
+- comments;
+- user profiles;
+- provider profiles;
+- service profiles;
+- product profiles;
+- seller profiles;
+- images;
+- videos;
+- animated media;
+- uploaded documents;
+- messages where moderation lawfully applies;
+- advertising;
+- promotions;
+- comics;
+- live or recorded community rooms;
+- AI-generated or AI-assisted content;
+- translations;
+- thumbnails;
+- previews;
+- search results;
+- notifications;
+- exports;
+- APIs.
+
+================================================================================
+2. CORE PRINCIPLES
+================================================================================
+
+- Ordinary public browsing should not unexpectedly expose NSFW material.
+- Mature and NSFW content is hidden by default.
+- Massage Nexus membership is 18+.
+- Email verification and an active membership are required before restricted access.
+- Access to NSFW content requires an explicit user choice.
+- A self-declared birth date is ordinary eligibility evidence, not necessarily strong age
+  verification.
+- Stronger age assurance may be required by risk, law, jurisdiction, payment provider, or
+  content type.
+- Search engines and public previews should not index or expose NSFW content.
+- Sensitive-service taxonomy may remain neutral and complete even when public visibility is
+  restricted.
+- Educational, clinical, safety, and documentary context matters.
+- Consent and rights of depicted persons are required.
+- Minor-related sexual content, exploitation, trafficking, non-consensual content, and
+  illegal activity are prohibited.
+- NSFW classification is not a substitute for moderation.
+- Users need reporting and appeal routes.
+- Privacy and safety override engagement or advertising goals.
+
+================================================================================
+3. CLASSIFICATION LEVELS
+================================================================================
+
+Working field:
+level_nsfw
+
+Default:
+N
+
+A missing level_nsfw is interpreted as N only when the content type and workflow permit a
+safe default. User-uploaded media may remain unpublished until classification completes.
+
+N - NONE / ORDINARY PUBLIC
+- ordinary massage, spa, wellness, business, educational, or community content;
+- no mature sexual theme;
+- no nudity beyond approved ordinary context;
+- suitable for general public discovery;
+- may appear in search, thumbnails, notifications, feeds, and previews.
+
+M - MATURE CONTEXT
+- non-explicit discussion of sexual wellness, intimate boundaries, sensual or adult service
+  terminology, anatomy, abuse prevention, harassment, or other mature subject;
+- educational, clinical, documentary, safety, legal, or review context;
+- no explicit sexual act;
+- may require warning or adult membership depending on presentation and jurisdiction;
+- hidden from child-oriented or broad incidental surfaces.
+
+A - NSFW / ADULT RESTRICTED
+- adult-only text or media that is lawful and relevant but inappropriate for ordinary public
+  display;
+- non-explicit adult nudity or strongly sexualized context only when later approved by
+  moderation and legal rules;
+- detailed descriptions of intimate or adult services;
+- access restricted to eligible verified adult members who explicitly opt in;
+- excluded from public indexing, previews, ordinary notifications, and broad recommendations.
+
+R - HIGHLY RESTRICTED
+- retained for moderation, legal, safety, research, evidence, dispute, or authorized
+  professional handling;
+- not ordinarily available to members;
+- access limited by role, purpose, jurisdiction, and audit;
+- may include content removed from publication but preserved under hold.
+
+P - PROHIBITED
+- must not be published or made available as an allowed NSFW item;
+- remove, quarantine, preserve evidence, report, or escalate according to law and policy.
+
+================================================================================
+4. PROHIBITED CONTENT
+================================================================================
+
+Prohibited includes:
+- sexual content involving a minor or a person presented as a minor;
+- age-ambiguous sexual depiction;
+- grooming or sexual solicitation of a minor;
+- child sexual abuse material;
+- trafficking or exploitation;
+- non-consensual sexual content;
+- voyeurism or hidden-camera sexual content;
+- sexual violence presented for gratification;
+- intimate media shared without permission;
+- sexual deepfake or deceptive sexual depiction of a real person;
+- coercion;
+- extortion;
+- blackmail;
+- doxxing;
+- personal contact information used for sexual solicitation;
+- illegal sexual service solicitation;
+- content facilitating a crime;
+- bestiality;
+- necrophilic sexual content;
+- sexual harassment;
+- provider or client bait-and-switch solicitation;
+- malware or deceptive links;
+- content that violates rights in a depicted person;
+- explicit sexual-activity media during the initial platform policy unless a later dedicated
+  policy, legal review, age-assurance system, processor approval, and moderation capability
+  explicitly authorize a narrow category;
+- any content prohibited by applicable law, hosting provider, payment provider, or approved
+  platform policy.
+
+A prohibited item must not become allowed merely by choosing level A.
+
+================================================================================
+5. MASSAGE AND SENSITIVE-SERVICE CONTEXT
+================================================================================
+
+Massage Nexus may accurately document:
+- sensitive or intimate service terminology;
+- sensual or adult-adjacent market descriptions;
+- professional boundaries;
+- draping;
+- practitioner and client conduct;
+- harassment and solicitation;
+- sexual-wellness services where lawful and in scope;
+- safety warnings;
+- disputed classifications;
+- gray-area business practices;
+- legal and cultural differences;
+- user experiences.
+
+The platform must distinguish:
+- neutral taxonomy;
+- public discovery;
+- restricted access;
+- booking eligibility;
+- payment eligibility;
+- advertising eligibility;
+- legal availability;
+- moderation status.
+
+A service may exist in the internal knowledge base while being:
+- hidden from public discovery;
+- blocked from booking;
+- blocked in a jurisdiction;
+- excluded from payment;
+- restricted to research or moderation;
+- prohibited from promotion.
+
+================================================================================
+6. ACCESS CONTROL
+================================================================================
+
+6.1 Public Visitors
+
+Public visitors may access level N content.
+
+They should not receive:
+- NSFW thumbnails;
+- explicit snippets;
+- search-result previews;
+- autoplay media;
+- sensitive notifications;
+- hidden metadata that reveals restricted content.
+
+6.2 Pending or Unverified Accounts
+
+Pending or unverified users have no NSFW access.
+
+They cannot use authenticated content preferences because they cannot enter the normal User
+Workspace.
+
+6.3 Active Adult Members
+
+Possible access to M or A requires:
+- active Massage Nexus membership;
+- verified email;
+- age eligibility of at least 18;
+- explicit NSFW or mature-content preference;
+- acknowledgment of an age and content warning;
+- jurisdictional permission;
+- no account restriction that removes access.
+
+6.4 Stronger Age Assurance
+
+Self-declared date of birth is not government-ID verification.
+
+Stronger age assurance may later be required for:
+- higher-risk visual media;
+- a jurisdiction with a stronger requirement;
+- a payment or distribution provider requirement;
+- repeated age-related risk;
+- a dedicated adult-only feature.
+
+Stronger assurance must be privacy-preserving and separately specified before implementation.
+
+6.5 Staff Access
+
+Moderator, legal, safety, and security access must be:
+- role-limited;
+- purpose-limited;
+- auditable;
+- protected from casual browsing;
+- supported by staff-wellbeing procedures where necessary.
+
+================================================================================
+7. USER PREFERENCE AND DISPLAY
+================================================================================
+
+NSFW is hidden by default.
+
+User settings may include:
+- allow mature context;
+- allow NSFW restricted content;
+- blur restricted thumbnails;
+- require click-to-reveal every time;
+- remember reveal choice for the session;
+- exclude NSFW from search;
+- exclude from recommendations;
+- exclude from history display;
+- hide from shared-device surfaces.
+
+The interface should:
+- display a content warning before reveal;
+- avoid explicit text in the warning itself;
+- provide a back or cancel action;
+- respect reduced motion;
+- not autoplay;
+- not preload unnecessary restricted media;
+- avoid exposing content in page titles, browser notifications, email subject lines, lock
+  screens, or generic calendars.
+
+================================================================================
+8. CONTENT-TYPE RULES
+================================================================================
+
+8.1 Articles
+- level N may be public;
+- level M may be public with a warning or member-restricted depending on detail;
+- level A requires verified adult membership and opt-in;
+- explicit images require separate media approval;
+- educational context must be clear;
+- SEO metadata and public summaries must remain safe;
+- translations inherit or increase restriction, never silently reduce it.
+
+8.2 Reviews
+- a review may discuss an adult or sensitive experience neutrally;
+- explicit unnecessary detail may be edited, restricted, or removed;
+- private identities and contact details must be removed;
+- solicitation is prohibited;
+- the review's access level may differ from the reviewed profile's ordinary public level;
+- provider responses follow the same policy.
+
+8.3 Discussions and Comments
+- require topic-level classification;
+- replies may increase the required level;
+- thread previews remain safe;
+- adult solicitation, harassment, and contact exchange are prohibited;
+- moderation and reporting must be prominent.
+
+8.4 Images and Videos
+- classify before publication;
+- use safe poster and thumbnail;
+- remove unnecessary metadata;
+- confirm rights and consent;
+- no incidental person without authority;
+- no unapproved explicit activity;
+- no public URL for restricted originals;
+- no search indexing;
+- no unrestricted download;
+- access checks on every request.
+
+8.5 Avatar and Cover Media
+- must be level N;
+- must not contain NSFW nudity, sexualized display, solicitation, or restricted material;
+- animated avatars follow the same rule;
+- a user may not use an NSFW avatar even when their account permits restricted content.
+
+8.6 Advertising and Promotions
+- ordinary advertising surfaces must be level N;
+- no deceptive adult-service advertising;
+- no NSFW creative in broad feeds;
+- no targeting based on sensitive sexual or health inference without a separately approved
+  lawful policy;
+- payment and advertising-provider restrictions apply.
+
+8.7 Messages
+- private messaging is not exempt from law or abuse policy;
+- consensual adult conversation is not automatically public content;
+- harassment, exploitation, illegal solicitation, non-consensual media, and prohibited
+  content remain prohibited;
+- automated scanning or moderation of private messages requires a separate privacy and
+  proportionality decision;
+- reports may allow users to submit relevant message evidence.
+
+================================================================================
+9. CLASSIFICATION AND MODERATION WORKFLOW
+================================================================================
+
+Possible workflow:
+1. creator or uploader selects a content level and reason;
+2. server applies type-specific minimum restrictions;
+3. automated tools may flag risk;
+4. item remains pending when classification is uncertain;
+5. human moderator reviews higher-risk material;
+6. system generates safe derivatives;
+7. access, indexing, search, and notification settings are applied;
+8. reports and appeals remain available;
+9. later edits trigger reclassification when material changes.
+
+Automated classification:
+- may assist;
+- must not be the only authority for serious enforcement;
+- must not infer protected characteristics unnecessarily;
+- must preserve the original for authorized review where lawful;
+- must not downgrade a restriction without evidence.
+
+================================================================================
+10. CLASSIFICATION REASONS
+================================================================================
+
+Possible reason codes:
+- sexual_wellness;
+- intimate_service;
+- sensual_service;
+- adult_service;
+- non_explicit_nudity;
+- anatomy;
+- clinical;
+- educational;
+- harassment_report;
+- abuse_prevention;
+- legal_or_policy;
+- documentary;
+- user_experience;
+- strong_language;
+- sexual_description;
+- safety_evidence;
+- moderation_evidence;
+- review_required.
+
+A vague fallback should not become a permanent taxonomy value. An unrecognized reason should
+be submitted for classification review.
+
+================================================================================
+11. SEARCH, INDEXING, RECOMMENDATION, AND API
+================================================================================
+
+Level A and R content:
+- no public search-engine indexing;
+- no public sitemap;
+- no open-graph image;
+- no explicit social preview;
+- no public RSS content;
+- no public API payload;
+- no unauthenticated CDN path;
+- no broad recommendation;
+- no default autocomplete suggestion;
+- no explicit analytics label visible to unauthorized staff.
+
+Authorized APIs must enforce the same:
+- membership;
+- verification;
+- age;
+- preference;
+- jurisdiction;
+- role;
+- content status;
+- record authorization.
+
+================================================================================
+12. LOCATION AND JURISDICTION
+================================================================================
+
+Content legality and access may vary by country, region, or locality.
+
+The system may apply:
+- geoblocking;
+- jurisdiction-specific warning;
+- booking prohibition;
+- payment prohibition;
+- advertising prohibition;
+- search exclusion;
+- stronger age assurance;
+- complete removal.
+
+Location-based restrictions should not expose precise user location unnecessarily.
+
+A VPN or uncertain location does not create permission. The application should fail safely
+when the legal or policy result cannot be determined for a high-risk action.
+
+================================================================================
+13. MEDIA STORAGE AND PRIVACY
+================================================================================
+
+Restricted media:
+- stored outside public document root;
+- kept in private or restricted object storage;
+- referenced by opaque identifiers;
+- delivered through authorized requests or short-lived protected URLs;
+- protected from public CDN caching;
+- excluded from public backup exports where inappropriate;
+- logged when sensitive access justifies audit;
+- removed from caches after access expires;
+- retained or deleted according to policy and legal hold.
+
+Do not expose:
+- raw storage path;
+- object-storage account;
+- internal container;
+- local server path;
+- original file name when unsafe;
+- embedded GPS metadata when unnecessary.
+
+================================================================================
+14. CONSENT AND RIGHTS OF DEPICTED PEOPLE
+================================================================================
+
+An uploader must have authority to upload media.
+
+Depending on content, require:
+- confirmation of ownership;
+- confirmation all depicted adults consented;
+- model or participant release;
+- provider authorization;
+- evidence of age;
+- evidence of professional or educational context;
+- confirmation that no minor appears;
+- confirmation the content was not secretly recorded;
+- confirmation that editing or AI generation is disclosed.
+
+A person depicted may report:
+- lack of consent;
+- impersonation;
+- deepfake;
+- privacy violation;
+- harassment;
+- inaccurate identity;
+- continued publication after consent withdrawal where applicable.
+
+================================================================================
+15. REPORTING, ENFORCEMENT, AND APPEAL
+================================================================================
+
+Report categories:
+- minor or age concern;
+- non-consensual content;
+- exploitation or trafficking;
+- illegal solicitation;
+- harassment;
+- doxxing;
+- privacy violation;
+- wrong NSFW classification;
+- unblurred preview;
+- explicit content;
+- misleading edit or deepfake;
+- copyright or ownership;
+- prohibited advertising;
+- other urgent safety concern.
+
+Possible actions:
+- immediate hide;
+- quarantine;
+- restrict;
+- reclassify;
+- remove;
+- preserve evidence;
+- disable download;
+- suspend uploader;
+- lock messaging;
+- refer to legal or safety review;
+- report where legally required.
+
+Appeals should:
+- protect reporters;
+- protect depicted persons;
+- avoid redistributing the content;
+- use trained reviewers;
+- record reasons;
+- not expose sensitive evidence to unauthorized parties.
+
+================================================================================
+16. NOTIFICATIONS AND COMMUNICATION
+================================================================================
+
+Notifications concerning restricted content must use neutral wording.
+
+Do not place explicit detail in:
+- email subject;
+- SMS;
+- push notification;
+- lock-screen preview;
+- calendar event;
+- generic activity feed;
+- provider reception display.
+
+Example safe wording:
+"Content you submitted requires review."
+
+Not:
+"Your explicit adult massage image was rejected."
+
+================================================================================
+17. ANALYTICS
+================================================================================
+
+NSFW analytics should be:
+- aggregated;
+- access-limited;
+- purpose-limited;
+- protected from user re-identification;
+- excluded from ordinary advertiser targeting;
+- careful with small groups;
+- separated from private health or sexual inference.
+
+Do not create an advertising profile that infers sexual behavior or sensitive health status
+from restricted-content access without an explicit later legal and product decision.
+
+================================================================================
+18. AI AND TRANSLATION
+================================================================================
+
+AI may assist:
+- classification;
+- safe-summary generation;
+- moderation triage;
+- duplicate detection;
+- translation;
+- thumbnail risk detection.
+
+Requirements:
+- preserve restriction level;
+- do not send prohibited or highly sensitive material to an unapproved provider;
+- do not use private content for model training without an approved basis;
+- require human review for serious enforcement;
+- label AI-generated sexual or intimate depictions;
+- prohibit sexual deepfakes of real persons;
+- do not translate a euphemism into a more explicit public preview;
+- do not reduce a restriction merely because a translation appears milder.
+
+================================================================================
+19. INITIAL RELEASE BOUNDARY
+================================================================================
+
+For the first implementation:
+- level N public content is supported;
+- level M classification and warnings should be supported;
+- level A textual content may be supported only after verified-adult access, opt-in, routing,
+  indexing, moderation, and reporting are implemented;
+- level A images and videos remain unpublished until secure restricted-media processing,
+  consent checks, moderation, safe derivatives, storage, and legal review are operational;
+- explicit sexual-activity media remains prohibited unless a future dedicated policy
+  explicitly changes this;
+- level R is internal only;
+- level P is prohibited;
+- avatars and cover images remain level N only.
+
+Do not launch an NSFW upload option merely because the database has a level_nsfw field.
+
+================================================================================
+20. DATA AND IMPLEMENTATION CONCEPTS
+================================================================================
+
+Possible fields:
+- level_nsfw;
+- reason_nsfw_list;
+- status_nsfw_review;
+- status_content_moderation;
+- minimum_age;
+- scope_visibility;
+- jurisdiction_rule_list;
+- is_search_indexable;
+- is_previewable;
+- is_thumbnail_blurred;
+- is_downloadable;
+- is_opt_in_required;
+- is_stronger_age_assurance_required;
+- source_classification;
+- classifier_version;
+- classified_at;
+- classified_by;
+- appeal_status;
+- legal_hold_status.
+
+Final fields and codes belong in the future database and taxonomy specifications.
+
+================================================================================
+21. TESTING REQUIREMENTS
+================================================================================
+
+Test:
+- default hidden state;
+- public visitor denial;
+- unverified-user denial;
+- underage denial;
+- active adult opt-in;
+- opt-out;
+- safe previews;
+- browser title;
+- open-graph metadata;
+- search exclusion;
+- sitemap exclusion;
+- API denial;
+- direct-media URL denial;
+- CDN cache control;
+- notification wording;
+- translation inheritance;
+- edited-content reclassification;
+- avatar prohibition;
+- reporting;
+- appeal;
+- moderator access;
+- audit;
+- jurisdiction restriction;
+- deleted and quarantined media;
+- backup and derivative handling;
+- reduced-motion behavior;
+- screen-reader warning;
+- no accidental exposure in logs or analytics.
+
+================================================================================
+22. ACCEPTED DECISIONS SUMMARY
+================================================================================
+
+- NSFW content is not publicly displayed by default.
+- Access requires an active, verified, adult Massage Nexus membership and explicit opt-in
+  where the content is allowed.
+- Massage Nexus membership is 18+.
+- Public visitors can still use the ordinary directory and articles.
+- Articles, reviews, discussions, images, videos, and other content carry classification.
+- Sensitive taxonomy remains neutral and complete even when public access is restricted.
+- NSFW avatars and cover images are prohibited.
+- Explicit sexual-activity media is not approved for the initial platform.
+- Restricted media requires secure storage and per-request authorization.
+- Search engines, notifications, previews, and broad recommendations must not leak NSFW
+  content.
+- Minor-related, exploitative, non-consensual, trafficking, illegal solicitation, and sexual
+  deepfake content is prohibited.
+- AI may assist but does not make the sole final serious moderation decision.
+- Article Writing, Review Writing, User Workspace, Site Structure Map, Features, and media
+  specifications must later be synchronized with this policy.
+
+================================================================================
+23. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+- Philippine Data Privacy Act and National Privacy Commission guidance for personal media,
+  consent, privacy, security, children, and data-subject rights.
+- Applicable launch-market laws regarding minors, sexual content, obscenity, exploitation,
+  trafficking, non-consensual intimate media, online safety, and age assurance.
+- Hosting, payment, app-store, identity-provider, advertising, and storage-provider policies.
+- Future qualified legal and moderation review.

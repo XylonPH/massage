@@ -1,0 +1,654 @@
+Title: Massage Nexus Language and Market Localization Strategy
+Document Version: 0.50
+Date Created: 2026-07-10
+Revision Date: 2026-07-19
+Status: Internal Planning Reference
+
+Related Documents:
+- Massage Nexus - 02 - AI-Assisted Development Workflow v1.10
+- Massage Nexus - 03 - Features v2.40
+- Massage Nexus - 18 - Site Structure Map v1.90
+- Massage Nexus - 20 - Translation System v0.20
+- Massage Nexus - 21 - User Workspace v0.30
+- Massage Nexus - Terms of Use Requirements v0.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - Data Research Provenance and Field Verification System v0.10
+- Massage Nexus - Analytics Statistics and Measurement System v0.10
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the language, locale, content-style, routing, fallback, market-priority,
+quality, and rollout strategy for Massage Nexus.
+
+Language priority is not based only on world population or total language speakers. It
+considers internet-addressable audience, massage and spa market relevance, likelihood that
+users need discovery and booking information, availability of useful provider data, strategic
+proximity to the Philippine starting market, translation and moderation capacity, and the
+ability to maintain the language after launch.
+
+Version History
+---------------
+- v0.50 (2026-07-19): Updated all language and locale codes to use the standard 3-letter ISO codes (e.g., 'eng' for English, 'fil' for Filipino, 'spa' for Spanish, 'jpn' for Japanese).
+- v0.40 (2026-07-19): Simplified Philippine market language configuration to only use standard Filipino (3-letter ISO code 'fil'), deprecating Tagalog (tl), Taglish styles, and removing regional languages (Cebuano, Hiligaynon) to eliminate linguistic confusion.
+- v0.30 (2026-07-18): Reframed language priority around online and Massage Nexus market
+  relevance; established Filipino with Taglish as a style/register; added Indonesian,
+  Brazilian Portuguese, Japanese, Thai, Vietnamese, Chinese script variants, French, German,
+  Arabic, and later market languages; added phased publication standards, completeness
+  measures, on-demand user-content translation, and market-data readiness.
+- v0.20 (2026-07-16): Established the earlier English, Taglish, Spanish, Korean, and Cebuano
+  working model and language-subdomain direction.
+
+================================================================================
+1. LANGUAGE, LOCALE, AND STYLE ARE DIFFERENT
+================================================================================
+
+Language:
+A linguistic system such as English, Filipino, Spanish, or Japanese.
+
+Locale:
+A language plus script, region, formatting, or jurisdiction where needed.
+
+Examples:
+- fil;
+- id-ID;
+- pt-BR;
+- ja-JP;
+- ko-KR;
+- zh-Hans;
+- zh-Hant.
+
+Style or register:
+How the language is written.
+
+Examples:
+- formal;
+- neutral;
+- conversational;
+- technical;
+- legal;
+- editorial;
+- humorous.
+
+Mixed registers like Taglish are deprecated for interface, layout, and content representation. All Philippine market resources use standard neutral Filipino ('fil').
+
+================================================================================
+2. DEFAULT LANGUAGE
+================================================================================
+
+Default source language:
+English
+
+Default interface:
+English
+
+Fallback when a requested language is unsupported or unavailable:
+English, followed by the original content language where appropriate.
+
+English remains the authoritative source for initial interface keys, technical specifications,
+internal code names, many first-version policy drafts, and cross-language comparison.
+
+An original work may still be created in another language. The original language must remain
+identified.
+
+================================================================================
+3. LANGUAGE PRIORITY MODEL
+================================================================================
+
+Evaluate a language through:
+- online audience;
+- digital commerce and discovery behavior;
+- massage and spa market relevance;
+- wellness tourism;
+- number and diversity of establishments and practitioners;
+- likely contributor and provider participation;
+- ability to research and verify records;
+- translation and moderation readiness;
+- legal and support readiness;
+- maintenance cost.
+
+A language does not become useful merely because the interface can be translated.
+
+A useful localized market needs enough of:
+- core interface;
+- Terms and Privacy information;
+- safety and account messages;
+- local establishments and services;
+- local terminology and aliases;
+- search support;
+- moderation and reporting;
+- contributor support;
+- maintainable translation workflow.
+
+================================================================================
+4. LANGUAGE ROLLOUT GROUPS
+================================================================================
+
+4.1 Foundation
+
+English
+Internal code: eng
+Role:
+- default;
+- source language;
+- international fallback;
+- initial broad public interface.
+
+Filipino
+Internal locale: fil
+Role:
+- core Philippine localization;
+- neutral Filipino register for public interface, local community, onboarding, and help.
+
+4.2 Philippine Inclusion Track
+
+(Deprecated and removed to avoid confusion. Only standard Filipino using the 'fil' 3-letter code is supported for the Philippine market.)
+
+4.3 First International Expansion Track
+
+Indonesian
+Internal locale: ind
+
+Spanish
+Internal locale: spa
+
+Brazilian Portuguese
+Internal locale: por
+
+Japanese
+Internal locale: jpn
+
+Thai
+Internal locale: tha
+
+Vietnamese
+Internal locale: vie
+
+4.4 Second International Expansion Track
+
+Korean
+Internal locale: kor
+
+Traditional Chinese
+Internal locale: zho-hant
+
+Simplified Chinese
+Internal locale: zho-hans
+
+French
+Internal locale: fra
+
+German
+Internal locale: deu
+
+Arabic
+Internal locale: ara
+
+4.5 Market-Specific Later Track
+
+Malay:
+msa
+
+Hindi:
+hin
+
+Additional Indian languages require market-specific planning. Hindi alone does not represent
+all Indian users.
+
+Possible later:
+- Italian;
+- Turkish;
+- Dutch;
+- other languages supported by a real market, content, contributor, or provider need.
+
+================================================================================
+5. COUNTRY AND DATA READINESS
+================================================================================
+
+Language rollout and country research are connected but not identical.
+
+Examples:
+- Spanish can serve several countries, but each country needs local terminology, prices, laws,
+  providers, and data.
+- English can serve several markets, but does not eliminate local research.
+- Chinese requires separate scripts and a market-specific platform, maps, payment, identity,
+  and regulatory strategy.
+- Thai is highly valuable for Massage Nexus because of massage relevance even though it is
+  not one of the largest general online languages.
+
+A language may be:
+- registered;
+- internally available;
+- interface draft;
+- limited public beta;
+- market-supported;
+- fully supported;
+- paused;
+- retired.
+
+Do not call a language fully supported merely because some strings exist.
+
+================================================================================
+6. PUBLIC ROUTING
+================================================================================
+
+Current working public model remains language subdomains unless a later accepted routing
+decision replaces it.
+
+Default:
+massagenexus.com
+www.massagenexus.com
+
+Working aliases:
+eng.massagenexus.com
+fil.massagenexus.com
+ind.massagenexus.com
+spa.massagenexus.com
+por.massagenexus.com
+jpn.massagenexus.com
+tha.massagenexus.com
+vie.massagenexus.com
+kor.massagenexus.com
+zho-hant.massagenexus.com
+zho-hans.massagenexus.com
+fra.massagenexus.com
+deu.massagenexus.com
+ara.massagenexus.com
+
+Do not use:
+spa.massagenexus.com for Spanish.
+
+Keep:
+/spa
+reserved for spa and establishment routes.
+
+The exact list of publicly activated subdomains depends on translation and market readiness.
+Inactive planned aliases may be reserved without publishing incomplete localized sites.
+
+================================================================================
+7. INTERFACE, CONTENT, CONVERSATION, AND SUBMISSION LANGUAGES
+================================================================================
+
+A user may choose separately:
+- interface language;
+- preferred content language;
+- fallback language;
+- conversation display language;
+- submission language;
+- translation display behavior;
+- regional formats;
+- site-specific override.
+
+Examples:
+- English interface with Filipino articles;
+- English interface with Spanish content;
+- Thai interface with an English fallback article;
+- original Korean review with an on-demand English translation.
+
+The application must not force the interface and all content into one language.
+
+================================================================================
+8. LANGUAGE SELECTION ORDER
+================================================================================
+
+Working priority:
+
+1. explicit page language or language subdomain;
+2. explicit logged-in site override;
+3. logged-in universal interface preference;
+4. guest cookie preference;
+5. supported browser language;
+6. English;
+7. original content language where appropriate.
+
+A stored universal language preference should be reused across future network sites to avoid
+repeated setup.
+
+A site may allow an override because terminology, content availability, or user intent may
+differ.
+
+Browser detection is a suggestion, not a permanent choice without user confirmation.
+
+================================================================================
+9. STATIC INTERFACE
+================================================================================
+
+User-facing text must use semantic translation keys.
+
+Preferred:
+auth.login.title
+auth.login.identifier
+account.registration.birth_date
+booking.status.confirmed
+research.source.last_verified
+analytics.metric.profile_view
+
+Avoid using raw English text as the key.
+
+Different meanings need different keys even when English wording matches.
+
+Examples:
+common.action.save_record
+user.action.save_favorite
+promotion.message.save_money
+
+Static interface includes navigation, buttons, forms, validation, errors, account, email,
+notifications, workspace, accessibility, security, booking, research, analytics, translation,
+and moderation.
+
+Laravel language files belong under:
+apps/web/lang/
+
+Possible locale directories:
+eng/
+fil/
+ind/
+spa/
+por/
+jpn/
+tha/
+vie/
+kor/
+zho_hans/
+zho_hant/
+fra/
+deu/
+ara/
+
+The final Laravel directory naming must follow the selected framework convention and mapping
+contract.
+
+================================================================================
+10. DYNAMIC CONTENT
+================================================================================
+
+Dynamic content may include articles, profiles, taxonomy labels, provider descriptions,
+service descriptions, menu descriptions, reviews, discussions, comments, media captions,
+help, policies, and research summaries.
+
+Preserve:
+- original language;
+- source revision;
+- target locale;
+- translation revision;
+- translation method;
+- reviewer;
+- status;
+- stale state;
+- publication state.
+
+A translation never overwrites the original.
+
+================================================================================
+11. USER-GENERATED CONTENT
+================================================================================
+
+Reviews, discussions, comments, corrections, and field notes remain in their original language.
+
+Default direction:
+- show original;
+- offer Translate when a supported translation is available or can be generated;
+- label machine translation;
+- offer Show original;
+- cache an accepted machine translation;
+- invalidate or mark stale when the original changes;
+- permit reporting of harmful or materially incorrect translation.
+
+Do not translate every comment into every language in advance.
+
+This reduces AI cost, storage, stale copies, moderation complexity, and unnecessary processing.
+
+A translated discussion remains one conversation. It does not become a separate language
+thread unless the community intentionally creates a separate topic.
+
+================================================================================
+12. LEGAL, SECURITY, PAYMENT, AND SAFETY CONTENT
+================================================================================
+
+High-risk content requires stronger review:
+- Terms;
+- Privacy;
+- account eligibility;
+- password and recovery;
+- security notices;
+- payment;
+- cancellation;
+- refunds;
+- consent;
+- intake;
+- clinical and safety warnings;
+- serious moderation notices;
+- NSFW warnings.
+
+AI-only publication is not sufficient.
+
+Acceptance records must preserve:
+- document;
+- version;
+- locale shown;
+- date and time;
+- account;
+- site.
+
+A translated legal document must identify whether it is authoritative, approved,
+explanatory, or pending review.
+
+================================================================================
+13. TRANSLATION QUALITY AND COMPLETENESS
+================================================================================
+
+Measure coverage by area, not one misleading site-wide percentage.
+
+Example:
+
+Filipino:
+- registration: 100%;
+- login and recovery: 100%;
+- navigation: 100%;
+- legal: reviewed;
+- booking: 82%;
+- provider workspace: 40%;
+- articles: 17 of 46;
+- discussions: translated on request.
+
+Possible dimensions:
+- key coverage;
+- approved coverage;
+- published coverage;
+- critical-flow coverage;
+- stale count;
+- placeholder correctness;
+- glossary compliance;
+- route coverage;
+- email coverage;
+- accessibility coverage;
+- content count;
+- market-data coverage.
+
+A language is fully supported only when critical account, privacy, security, legal, payment,
+navigation, and reporting content meets the approved standard.
+
+================================================================================
+14. USER AND COMMUNITY TRANSLATION
+================================================================================
+
+Users may suggest translations for public taxonomy labels, public profile descriptions,
+selected articles, help, captions, public factual content, and non-sensitive interface
+strings when a controlled interface exists.
+
+Users do not directly publish.
+
+Workflow:
+suggestion
+-> automated validation
+-> translator or language editor review
+-> authorized approval
+-> publication
+
+Community translators must not directly publish Terms, Privacy, security, payment, account
+recovery, intake, consent, serious moderation, or clinical guidance.
+
+Approved translation work may contribute to reputation or rewards. Raw volume alone must not.
+
+================================================================================
+15. AI AND MANUAL TRANSLATION
+================================================================================
+
+Support:
+- manual human translation;
+- community suggestion;
+- professional translation;
+- direct AI API draft;
+- export to ChatGPT or another approved tool;
+- validated import;
+- AI-assisted human revision.
+
+Export packages should contain key or content identifier, source locale, target locale, source
+revision, source text, context, tone, placeholders, glossary, protected terms, formatting
+rules, character limits, and risk classification.
+
+Import validation checks expected keys, unexpected keys, placeholders, tags, source revision,
+target locale, duplicates, length, prohibited wording, and review requirement.
+
+================================================================================
+16. SEARCH AND DISCOVERY
+================================================================================
+
+Multilingual search should consider:
+- translated name;
+- original name;
+- alias;
+- transliteration;
+- local name;
+- common spelling;
+- normalized record;
+- local service terminology.
+
+One service or provider remains one canonical record even when it has many names.
+
+Search analytics should identify failed searches by language, missing synonyms, missing
+translations, language fallback, untranslated popular records, and country or city demand.
+
+Do not expose private search histories publicly.
+
+================================================================================
+17. SEO AND INDEXING
+================================================================================
+
+Each approved public localized page should use correct language metadata, canonical URL,
+alternate-language references, safe translated title and description, and language-appropriate
+sitemap participation.
+
+Do not publish thousands of thin machine-translated pages merely to increase index count.
+
+================================================================================
+18. WORKSPACE
+================================================================================
+
+Possible user routes:
+/workspace/language
+/workspace/language/interface
+/workspace/language/content
+/workspace/language/conversation
+/workspace/language/submission
+/workspace/language/translation
+/workspace/language/format
+/workspace/language/site-override
+
+Translation-management routes:
+/workspace/translation
+/workspace/translation/interface
+/workspace/translation/content
+/workspace/translation/user-content
+/workspace/translation/assigned
+/workspace/translation/draft
+/workspace/translation/review
+/workspace/translation/stale
+/workspace/translation/published
+/workspace/translation/glossary
+/workspace/translation/memory
+/workspace/translation/coverage
+/workspace/translation/import
+/workspace/translation/export
+/workspace/translation/history
+
+================================================================================
+19. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1:
+- publish Laravel language files;
+- English semantic keys;
+- locale registry;
+- locale middleware;
+- browser suggestion;
+- user preference;
+- English fallback;
+- language metadata;
+- translated validation and account messages;
+- coverage test.
+
+Phase 2:
+- Filipino interface;
+- translation records;
+- source revisions;
+- stale detection;
+- translation workspace;
+- legal and policy localization workflow.
+
+Phase 3:
+- Indonesian, Spanish, Portuguese, Japanese, Thai, and Vietnamese preparation according to
+  market and data readiness;
+- community suggestions;
+- AI export and import;
+- glossary;
+- translation memory;
+- on-demand user-content translation.
+
+Phase 4:
+- Korean, Chinese variants, French, German, Arabic, and later markets;
+- right-to-left support;
+- advanced multilingual search;
+- localized market operations.
+
+================================================================================
+20. CURRENT ACCEPTED DIRECTION
+================================================================================
+
+- English is the default and source language.
+- Filipino (fil) is the sole local language for the Philippine market.
+- Taglish, Tagalog (tl), and regional languages like Cebuano and Hiligaynon are deprecated.
+- Indonesian is a high-priority international expansion language.
+- Spanish, Brazilian Portuguese, Japanese, Thai, and Vietnamese belong in the first
+  international expansion track.
+- Korean, Chinese variants, French, German, and Arabic follow according to market readiness.
+- Language priority combines online audience and Massage Nexus relevance.
+- Public language aliases may be reserved before activation.
+- Static interface uses semantic keys.
+- Dynamic translations preserve originals and source revisions.
+- User discussions and comments are translated on request.
+- High-risk content requires stronger human review.
+- Completeness is measured by area and critical flow.
+- A language is not fully supported without useful local data and moderation capability.
+
+================================================================================
+21. OPEN DECISIONS
+================================================================================
+
+- final canonical English host;
+- whether language subdomains remain the final production model;
+- final locale and script code table;
+- first languages available at public beta;
+- exact legal-translation authority rules;
+- exact AI provider order;
+- when localized slugs are introduced;
+- first Arabic and right-to-left release;
+- India language rollout;
+- language publication and retirement thresholds.
+
+================================================================================
+22. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+Before implementation and launch, recheck current Laravel localization documentation, search
+engine localization guidance, wellness market data, internet-use data, applicable legal
+language requirements, and professional translation guidance.

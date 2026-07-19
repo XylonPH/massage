@@ -1,0 +1,345 @@
+Title: Massage Nexus: Database Structure
+Document Version: 1.20
+Date Created: 2026-07-12
+Revision Date: 2026-07-19
+
+PURPOSE
+
+This file records current Massage Nexus database and collection-boundary decisions.
+
+It is not the final database structure.
+It does not define collection properties, fields, indexes, validation rules, option codes, sample records, or final relationships.
+Those details must be discussed separately for each collection.
+
+The collection list may be renamed, split, merged, embedded, postponed, or removed during detailed database design.
+
+1. DATABASE BOUNDARIES
+
+Primary operational database:
+- massage_main
+
+Shared reference database:
+- common_reference
+
+Shared identity database, when connected identity is implemented:
+- common_identity
+
+Working archive storage name:
+- massage_archive
+
+The archive may use a lower-cost database, object storage, compressed exports, or another approved cold-storage system. The final archive technology is not yet selected.
+
+Images, videos, and large media files should be stored outside the main document database. Their metadata and relationships may remain in massage_main.
+
+2. DOCUMENT-STORE COLLECTION RULE
+
+Embed information in a parent document when it:
+- belongs to only one parent;
+- remains bounded and predictably small;
+- is normally loaded and updated with the parent;
+- has no independent lifecycle;
+- is not independently searched, paginated, moderated, secured, restored, or shared.
+
+Create a separate collection when the information:
+- has its own identity or lifecycle;
+- is shared by several parents;
+- forms a many-to-many relationship;
+- may grow without a practical bound;
+- is independently searched or paginated;
+- changes frequently without the parent;
+- requires separate permissions, moderation, history, retention, restoration, or archival;
+- would create significant duplication if embedded.
+
+A page section, profile tab, route, navigation item, or file folder does not automatically require its own collection.
+
+Small cached previews may eventually be embedded for performance, but the cache must not become the authoritative source.
+
+3. COLLECTION NAMING AND HIERARCHY
+
+Technical collection names use singular snake_case.
+
+Use:
+- module_main when the module has supporting collections;
+- module_section for a supporting collection owned by that module;
+- a standalone collection name without _main when it is intentionally independent and has no supporting collection family.
+
+Examples:
+- establishment_main
+- establishment_service
+- practitioner_main
+- practitioner_credential
+- audit_log
+- reward_ledger
+
+Database hierarchy, site navigation, URL routes, and file-and-folder structure may differ. They should not be forced to mirror one another.
+
+A relationship collection is stored only once. For example:
+- use establishment_practitioner;
+- do not also create practitioner_establishment.
+
+Cross-target features with their own lifecycle should normally become their own module instead of being duplicated under establishment, practitioner, and product.
+
+4. IDENTIFIER DIRECTION
+
+For MongoDB-compatible storage:
+- use the required _id as the canonical record identifier;
+- assign an application-generated opaque 16-character alphanumeric identifier;
+- use the same value in related *_id references;
+- enforce uniqueness through the database;
+- regenerate and retry after a duplicate-key collision;
+- do not duplicate the same identity as both _id and establishment_id, practitioner_id, product_id, or another concept-specific owner field.
+
+For engines without a required reserved identifier:
+- use the concept-specific *_id as the canonical identifier.
+
+Identifiers are internal by default and are not intended as visible record numbers.
+
+For an establishment:
+- establishment_main._id stores the stable random 16-character base62 identifier;
+- related records store that same value under establishment_id;
+- establishment_slug stores the separate readable public-route value;
+- a public spa page may use /spa/{establishment_slug};
+- APIs, imports, relationships, audit records, and background work use _id or establishment_id
+  when permanent record identity is required;
+- establishment_title and establishment_slug must not replace the stable identifier in internal
+  relationships because names may repeat and slugs may change.
+
+An optional id_counter may be used only for human-facing references such as claims, tickets, applications, invoices, or correspondence.
+
+5. CANONICAL FIELD CONTRACT
+
+This file does not define fields, but later collection design must follow this rule:
+
+The same field name must retain the same semantic meaning, data type, structure, format, controlled options, limits, default behavior, cleanup, validation, reference meaning, and stored-value interpretation everywhere it is used.
+
+Local usage may vary in requiredness, label, description, help text, placeholder, display order, layout, visibility, and permission.
+
+If the actual data contract differs, create a different specifically named field.
+
+6. CORE IDENTITY AND ACCOUNT COLLECTION
+
+- user_main
+  Project-local Massage Nexus user account and profile identity.
+
+Additional user collections are deferred until account, preference, saved-item, follow, notification, and privacy workflows are designed.
+
+7. ORGANIZATION AND ESTABLISHMENT COLLECTIONS
+
+- organization_main
+  Company, brand, chain, institution, network, or operating organization.
+
+- organization_establishment
+  Relationship between an organization and an establishment, including branch and operating relationships.
+
+- establishment_main
+  One establishment or supported provider profile, using Establishment as the technical term and Spa as an appropriate public label.
+
+- establishment_service
+  One actual establishment menu item, including ordinary, branded, combined, package, add-on, seasonal, or custom-named offerings.
+
+- establishment_practitioner
+  Relationship between an establishment and a practitioner, including a confirmation status
+  (at minimum: pending, confirmed, disputed, disaffiliated). Per
+  docs/05-directory/spa-profile.txt section 6, the practitioner must actively confirm the
+  relationship before it is eligible for public display on the establishment's roster, and an
+  active disaffiliation or dispute must immediately remove the practitioner from public
+  discovery and availability pools rather than waiting for a moderation pass.
+
+Regular bounded profile details may initially remain embedded in establishment_main.
+
+A separate treatment-area collection should be created only when treatment areas become independently bookable, searchable, media-rich, availability-controlled, or managed as resources.
+
+8. PRACTITIONER COLLECTIONS
+
+- practitioner_main
+  One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label.
+
+- practitioner_service
+  Relationship between a practitioner and a normalized service or capability.
+
+- practitioner_credential
+  Individual credential, training, certification, or license record with its own lifecycle and verification needs.
+
+Full practitioner profiles must not be embedded inside establishment_main.
+
+9. Service Catalog Collections
+
+* service_main - Normalized massage, spa, wellness, and related service identity used for browsing, comparison, and mapping.
+* service_alias - Regional, cultural, translated, alternate, misspelled, and commercial names connected to a normalized service.
+* service_relationship - Broader, narrower, related, equivalent, combined, or commonly confused relationships among normalized services.
+
+Provider-created names such as Jupiter Massage remain in establishment_service and may map to one or more normalized services.
+
+10. PRODUCT COLLECTIONS
+
+- product_main
+  Stable product identity.
+
+- product_category
+  Expandable product category hierarchy.
+
+- product_version
+  Materially changed formulation, packaging identity, generation, or product version.
+
+- product_offer
+  Seller-specific commercial offer, availability, or listing for a product.
+
+Detailed product specifications may remain embedded in the appropriate product or product-version document until a category requires independently searchable records.
+
+11. BOOKING COLLECTIONS
+
+- booking_main
+  One booking or appointment.
+
+- booking_event
+  Booking lifecycle and history events such as submission, confirmation, rescheduling, cancellation, completion, and no-show.
+
+Booking is a cross-target module and should not be stored as establishment_booking.
+
+Payment collections remain deferred until the payment flow is finalized.
+
+12. REVIEW, RATING, DISCUSSION, AND REACTION COLLECTIONS
+
+- review_main
+  Shared review module for establishments, practitioners, products, and other later-approved review targets.
+
+- rating_main
+  Shared rating records for approved targets.
+
+- discussion_main
+  Discussion thread identity.
+
+- discussion_post
+  Individual posts and replies; these must not be embedded indefinitely inside discussion_main.
+
+- reaction_main
+  Shared reactions to articles, reviews, discussions, posts, media, and other approved content targets.
+
+Do not create separate establishment_review, practitioner_review, and product_review collections unless later workflows become fundamentally incompatible.
+
+13. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
+
+claim_main - Shared ownership or management claim workflow for approved claimable targets.
+verification_main - Shared verification process and result history.
+contribution_main - User or staff proposal to add, correct, translate, enrich, or update a record.
+revision_main - Approved and restorable revision history for supported targets.
+moderation_main - Moderation case or review workflow.
+moderation_action - Human decision, administrative action, AI recommendation, escalation, reversal, or other action inside a moderation case.
+
+AI may assist with classification, comparison, flagging, and recommendations, but the system must remain operable through manual review when AI is unavailable.
+
+Restoring an older revision creates a new current revision based on the earlier version. It must not erase intervening history.
+
+14. AUDIT, REWARD, ANALYTICS, AND COUNTER COLLECTIONS
+
+- audit_log
+  Immutable operational trail for important record, administrative, security, approval, restoration, and system actions.
+
+- reward_ledger
+  Authoritative reason-based history of Nexus Points, Embers, Inklings, and other tracked balance changes.
+
+- analytics_event
+  High-volume raw analytics events eligible for scheduled archival.
+
+- analytics_summary
+  Lower-volume aggregated analytics used for reporting and longer-term comparison.
+
+- id_counter
+  Optional human-reference counters only; not canonical record identity.
+
+Audit and reward history must not rely only on current totals or the current state of a record.
+
+15. MEDIA COLLECTIONS
+
+- media_image
+  Image metadata and target relationships.
+
+- media_video
+  Video metadata and target relationships.
+
+Large binary media remains in object or file storage.
+
+16. DEFERRED SOCIAL-PUBLISHING COLLECTIONS
+
+These are not required for the first website release:
+
+- social_main
+- social_post
+- social_publication
+- social_campaign
+
+Use native scheduling tools first. Add these collections only when Massage Nexus develops a secured web-based social publishing workflow.
+
+17. ARCHIVE POLICY
+
+Do not move an establishment, practitioner, product, article, or other authoritative domain record to archive storage merely because it is closed, inactive, discontinued, retired, deceased, renamed, relocated, or historical.
+
+Those records remain in their authoritative collection with their lifecycle and history.
+
+Archive candidates are high-volume or infrequently retrieved historical records, particularly:
+- analytics_event;
+- older audit_log records;
+- older revision snapshots;
+- older moderation actions;
+- activity and delivery logs;
+- older ledger entries when authoritative totals, reconciliation, and retrieval remain possible.
+
+Use a hybrid archive rule:
+- time-based retention is the normal predictable trigger;
+- storage size, index size, memory pressure, performance, and hosting cost are additional triggers;
+- archival runs on a schedule;
+- users must receive the minimum active retention promised in public documentation.
+
+Working retention direction, not yet final:
+- detailed owner analytics: 24 months in the active reporting system;
+- older analytics: archived or retained as smaller summaries;
+- audit records: 24 months readily accessible to administrators, then moved to archive storage under a longer internal retention rule;
+- revision history: retained, with older snapshots eligible for cold archive while remaining restorable;
+- reward ledger: authoritative history retained, with older entries eligible for cold archive only when reconciliation and dispute retrieval remain possible.
+
+Owner-facing documentation must clearly state the immediately accessible analytics period. It must not imply that five years of detailed analytics are instantly available when only two years are retained in the active system.
+
+The final retention period, archive destination, retrieval process, legal hold, deletion schedule, and owner access policy remain unresolved.
+
+18. CURRENT NON-COLLECTION DECISIONS
+
+The following should normally remain embedded or use shared systems until detailed design proves that a separate collection is necessary:
+- bounded multilingual names and short descriptions;
+- basic classifications and current status;
+- primary address;
+- small bounded contact and social-link lists;
+- regular weekly hours;
+- small facility and amenity reference lists;
+- service-delivery modes and access rules;
+- bounded booking preferences;
+- bounded product specifications;
+- cached counts and summaries.
+
+The following reuse shared or cross-target collections rather than spa-specific copies:
+- reviews;
+- ratings;
+- discussions;
+- reactions;
+- claims;
+- verification;
+- contributions;
+- moderation;
+- revisions;
+- media;
+- booking;
+- audit;
+- rewards;
+- analytics.
+
+19. UNRESOLVED COLLECTION QUESTIONS
+
+- Final organization and franchise relationship model.
+- Whether treatment areas require establishment_treatment_area.
+- Whether schedules remain embedded or later require schedule collections.
+- Final payment collection family.
+- Final account-support collections.
+- Final notification and messaging collections.
+- Final search and analytics storage.
+- Final archive technology and retention periods.
+- Final social-publishing module.
+- Whether any future Business Directory migration changes establishment ownership or database boundaries.

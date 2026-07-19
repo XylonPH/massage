@@ -1,0 +1,1253 @@
+Massage Nexus Review Writing Guide
+==================================
+
+Field            | Value
+-----------------+-----------------------------------
+Title            | Massage Nexus Review Writing Guide
+Document Version | 1.70
+Date Created     | 2026-07-05
+Revision Date    | 2026-07-09
+
+Document Description
+--------------------
+
+This document defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System. It is separate from the Article Writing guide because reviews are experience-based, while articles are topic-based editorial content.
+
+This is not the public user guide for how to write reviews. A shorter public-facing guide may be created later for normal users, reviewers, business owners, practitioners, and product owners.
+
+Core Principle
+--------------
+
+A Massage Nexus review should help the next person understand what an experience was like.
+
+A review may be positive, negative, mixed, disappointed, funny, emotional, blunt, or glowing. It does not need to pretend to be perfectly neutral. However, it should still be useful, concrete, and clear about what the reviewer experienced, observed, assumed, preferred, or disliked.
+
+A review is different from a profile page.
+
+The profile page tells users what is listed: location, services, operating hours, amenities, prices, facilities, media, and structured details.
+
+The review tells users what the experience felt like: whether the place delivered on its promise, how the visit unfolded, whether the environment felt comfortable, how the service flow worked, what surprised the reviewer, what disappointed them, and who may or may not enjoy the same experience.
+
+Review Targets
+--------------
+
+Massage Nexus reviews currently focus on three main review targets:
+
+- establishment;
+- practitioner;
+- product.
+
+An establishment review may discuss the spa, massage establishment, wellness center, clinic-like wellness location, or similar place.
+
+A practitioner review may discuss the individual practitioner, therapist, or wellness worker who performed the service.
+
+A product review may discuss oils, tools, massage accessories, wellness products, spa-related items, or other approved products connected to the Massage Nexus ecosystem.
+
+For this version, organization reviews are not yet defined. Service received may be recorded as part of the review context, but the review target itself should remain establishment, practitioner, or product until a separate decision changes this.
+
+Review, Comment, and Rating
+---------------------------
+
+A review is a substantive experience-based write-up.
+
+A comment is shorter, looser, and more conversational. A short reaction may still be useful, but it should not automatically count as a review.
+
+A rating is a score or reaction. A rating may support a review, but a rating alone is not a review.
+
+For review writing, there are two rating contexts:
+
+- the review author's rating of the reviewed target;
+- other users' thumbs up/down rating of the review content itself.
+
+The review author's rating should follow the Rating System document.
+
+The public reaction to the review content should use thumbs up/down only. Those reactions may affect the Review Author's reputation through the Reputation System when they create meaningful, weighted, capped, and abuse-checked helpfulness signals.
+
+If a submitted review is too short, the system should suggest that the user either add more detail or post it as a comment instead.
+
+
+Review Authors and Review Roles
+-------------------------------
+
+Review Author
+~~~~~~~~~~~~~
+
+A Review Author is any credited person who contributed to the review text.
+
+A review may have one Review Author or multiple Review Authors.
+
+If a review is published anonymously, the public byline may be hidden, but the system should still know which registered account submitted it.
+
+User Reviewer
+~~~~~~~~~~~~~
+
+A User Reviewer is a registered user who submits a review based on their own experience.
+
+User reviews may be imperfect, emotional, casual, multilingual, or written in the user's own style. The platform may guide the user toward better review writing, but the review should still belong to the user.
+
+Review Correspondent
+~~~~~~~~~~~~~~~~~~~~
+
+A Review Correspondent is an assigned Massage Nexus person who visits, observes, experiences, gathers details, and writes or contributes to editorial reviews.
+
+This term is preferred over simply calling the person a Reviewer because Review may also refer to editorial checking, source checking, content approval, moderation, or status review.
+
+A Review Correspondent may also gather field details, media, structured observations, visit notes, and basic profile information, but that broader fieldwork system will be documented separately.
+
+Review Editor
+~~~~~~~~~~~~~
+
+A Review Editor edits, checks, improves, approves, requests revision, or rejects review submissions according to Massage Nexus guidelines.
+
+A Review Editor is different from a Review Correspondent. One person may perform both roles in early operations, but the roles should remain conceptually separate.
+
+Moderator
+~~~~~~~~~
+
+A Moderator handles rule enforcement, reports, disputes, suspicious behavior, abusive submissions, and escalation. Moderation may overlap with review approval, but moderation is not the same as editorial polishing.
+
+Admin
+~~~~~
+
+An Admin can override, configure, and manage review policies, permissions, moderation settings, AI settings, and platform-level decisions.
+
+Preferred Review Style
+----------------------
+
+The preferred Massage Nexus review style is narrative, well-worded, descriptive, properly sequenced, balanced, human, readable, and engaging without sounding artificial.
+
+A good review should feel like a real person telling the reader what happened. It should explain what stood out, what felt good, what felt wrong, what was surprising, what was ordinary, what was worth the price, and what future visitors should know.
+
+The language should be easy enough for a general audience to understand. It can use sensory description, contrast, analogy, metaphor, personification, and wit when natural, but it should not become overly complicated or theatrical.
+
+Editorial Voice Preference
+--------------------------
+
+Raw dictated notes may be Taglish, scattered, repetitive, emotional, or out of sequence. The final written review should usually be polished English, while preserving the reviewer's actual experience and voice.
+
+The preferred transformation is:
+
+- from raw Taglish notes to polished English narrative;
+- from scattered dictation to properly sequenced review;
+- from simple complaint or praise to useful criticism;
+- from checklist-like details to readable experience;
+- from generic wording to human, specific, experience-based writing.
+
+The review should remain understandable to clients, useful to spa owners or practitioners, and fair to the class and purpose of the reviewed target.
+
+A glowing review can still be balanced. A negative review can still acknowledge positive details. A review may give a high rating even when some quirks exist, if those quirks work for the reviewer but may not work for everyone.
+
+Neural Agents and AI in Review Writing
+--------------------------------------
+
+Reviews are not Neural Agent-authored content.
+
+Neural Agents may help polish, arrange, clarify, or improve the readability of raw notes only when this is intentionally allowed. They should not invent events, services, ratings, dialogue, prices, therapist behavior, product results, accusations, or conclusions.
+
+The final review should belong to the Review Author, not to the Neural Agent.
+
+AI may help with review handling, but AI should not automatically rewrite the user’s review without permission.
+
+Possible AI-assisted review functions include:
+
+- title suggestion;
+- short description suggestion;
+- NSFW level checking;
+- duplicate or generic review detection;
+- publication-risk screening;
+- review quality scoring;
+- reward recommendation;
+- manual-review recommendation;
+- private feedback to the submitter;
+- translation assistance, if allowed later.
+
+AI should not reject a review only because it is explicit, emotional, rant-like, written in Taglish, written in nonstandard grammar, or written in a strong personal style.
+
+AI should not treat local spa names, local expressions, mixed-language writing, deliberate tone, humor, or imperfect grammar as automatic problems.
+
+Review Target Guidelines
+------------------------
+
+Establishment Review
+~~~~~~~~~~~~~~~~~~~~
+
+An establishment review is about the place and the overall customer experience.
+
+It may include:
+
+- arrival experience;
+- finding the location;
+- booking or walk-in process;
+- reception handling;
+- cleanliness;
+- scent;
+- lighting;
+- music;
+- noise;
+- privacy;
+- room layout;
+- visible professionalism;
+- facilities;
+- shower, steam, sauna, parking, or similar amenities when relevant;
+- service flow;
+- price and value;
+- how the establishment treats clients;
+- whether the place matches its class and positioning.
+
+An establishment review may mention the practitioner involved if that affected the visit, but it should not become mainly a practitioner review. If the main subject is the individual practitioner, a separate practitioner review should be created.
+
+Practitioner Review
+~~~~~~~~~~~~~~~~~~~
+
+A practitioner review is about the person who performed the service.
+
+It may include:
+
+- communication;
+- pressure control;
+- pacing;
+- technique;
+- professionalism;
+- hygiene;
+- draping and boundaries;
+- adjustment to client feedback;
+- consistency;
+- comfort;
+- whether the session felt safe and respectful;
+- whether the practitioner matched the requested service.
+
+A practitioner review should not unfairly blame the individual practitioner for establishment-level problems unless the issue clearly involved that practitioner.
+
+Product Review
+~~~~~~~~~~~~~~
+
+A product review may be shorter than an establishment or practitioner review, but it should still be based on actual use.
+
+It may include:
+
+- what the product is;
+- how it was used;
+- scent, texture, comfort, durability, packaging, size, safety, or practicality;
+- whether it worked as expected;
+- price and value;
+- who may or may not like it;
+- whether the product matched its claim.
+
+A product review should not be written as a fake promotional description. It should be grounded in the reviewer’s actual use or inspection.
+
+Review Length Standards
+-----------------------
+
+General Length Range
+~~~~~~~~~~~~~~~~~~~~
+
+- Quick review: 150 to 400 words.
+- Standard review: 600 to 1,200 words.
+- Long narrative review or editorial review: 1,200 to 2,500 words.
+- Hard upper limit before splitting: around 3,000 words, unless intentionally written as a long-form feature.
+
+Minimum Review Substance
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+A review should meet a minimum substance threshold.
+
+For Latin-script or space-separated languages such as English, Filipino, Taglish, Spanish, Bisaya, and similar languages, the working minimum is:
+
+- 150 words; or
+- 900 visible characters.
+
+The long-term preferred method is to use estimated reading duration as part of the minimum substance check, because word counting does not work equally well across all languages.
+
+A future rule may use:
+
+- minimum visual reading duration; or
+- minimum visible character count by language family; or
+- a combination of word count, character count, and reading duration.
+
+Korean, Japanese, Chinese, and Similar Languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Korean, Japanese, Chinese, and other languages with different spacing or character systems should have separate calibrated rules.
+
+Temporary future fallback candidates:
+
+- Korean: 100 reliable space tokens or 600 visible characters;
+- Japanese or Chinese: 500 to 600 visible characters.
+
+These are not final standards. Reading duration research and language-specific calibration should be handled in a later implementation phase. Korean calibration is likely a higher priority than Japanese or Chinese because Korean support may arrive sooner.
+
+Reading Duration
+----------------
+
+Reviews should have an automatically computed reading duration.
+
+Reading duration should be stored internally in seconds.
+
+Displayed reading duration should use minutes and seconds, not minutes only.
+
+Examples:
+
+- 45 seconds;
+- 1 minute 30 seconds;
+- 3 minutes 12 seconds.
+
+If computation produces a decimal value or milliseconds, round up to the next full second.
+
+Reading Duration Types
+~~~~~~~~~~~~~~~~~~~~~~
+
+Massage Nexus should eventually support two reading duration types:
+
+- visual reading duration;
+- spoken reading duration.
+
+Visual reading duration estimates how long it takes a user to read silently.
+
+Spoken reading duration estimates how long it takes to read aloud or to listen through screen reader or text-to-speech output.
+
+Working Formula for Latin-Script Reviews
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For reviews in English, Filipino, Taglish, Spanish, Bisaya, and similar space-separated languages:
+
+Code block (text):
+    visual_reading_seconds = ceil((word_count / 225) * 60)
+    spoken_reading_seconds = ceil((word_count / 150) * 60)
+
+The divisor represents estimated words per minute.
+
+For most reviews, use the normal visual reading divisor of 225 words per minute.
+
+For dense technical, legal, medical, policy, or heavily instructional content, the visual reading divisor may be slower, such as 200 words per minute. This dense-content rule is more likely to apply to articles, policies, and legal documents than to normal reviews.
+
+Character-Based Fallback
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For languages where word count is unreliable, a future character-based fallback may be used:
+
+Code block (text):
+    visual_reading_seconds = ceil((character_count / 900) * 60)
+    spoken_reading_seconds = ceil((character_count / 650) * 60)
+
+This is a temporary implementation idea, not a final linguistic standard.
+
+What Text Is Counted
+~~~~~~~~~~~~~~~~~~~~
+
+Reading duration should count visible review content.
+
+Do not count:
+
+- HTML tags;
+- hidden metadata;
+- database-only fields;
+- media tokens;
+- internal moderation notes.
+
+Captions should be counted only when displayed as part of the review body.
+
+AI and Reading Duration
+~~~~~~~~~~~~~~~~~~~~~~~
+
+If AI is not available, the system formula should compute reading duration.
+
+If AI is available, AI may recommend reading duration, but the system formula should remain available as a fallback and consistency check.
+
+Review Form Requirements
+------------------------
+
+Required Fields
+~~~~~~~~~~~~~~~
+
+The core required fields for a review submission are:
+
+- review target;
+- rating;
+- review body;
+- submission language;
+- NSFW level.
+
+Title is required when AI title generation is unavailable.
+
+Title may become optional when AI can generate or suggest a title, but a user-written title may still contribute to review quality scoring when it is relevant and useful.
+
+Rating
+~~~~~~
+
+Reviews should include a rating for the reviewed target.
+
+The working rating structure is:
+
+- spa, therapist, and product targets use a 1 to 10 rating system;
+- spa, therapist, and product targets may support criteria-based ratings;
+- review content itself may be rated by other users using thumbs up/down only.
+
+The detailed rating system is defined in Massage Nexus - 14 - Rating System v1.10.md.
+
+Relevant rating concepts include:
+
+- Xylon Calibrated Experience Score (XCES);
+- simple 1 to 10 rating;
+- criteria-based rating;
+- session or booking rating;
+- user-period rating;
+- weighted official score;
+- Anchored Milestone Sequence (AMS) for rating-related milestones;
+- the non-star connected pulse / nexus node visual direction for 1 to 10 rating assets.
+
+This Review Writing guide should not redefine the full rating criteria or weighted-score formula. It should only ensure that reviews collect or link the rating information needed by the Rating System.
+
+Rating Display in Review Forms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a review form asks the Review Author to rate the reviewed target, the interface may use the Massage Nexus rating asset direction from the Rating System:
+
+- a 1 to 10 score;
+- non-star visual treatment;
+- connected pulse / nexus node styling;
+- square rating tokens for input choices when useful;
+- horizontal rating pills for compact display inside review cards, profile summaries, and review previews.
+
+The visual asset should support light and dark mode, avoid normal star-rating imagery, and keep score text exact. Review content reactions remain thumbs up/down and should not use the 1 to 10 rating asset set.
+
+Title
+~~~~~
+
+Review title maximum length:
+
+- 75 characters.
+
+A good review title should summarize the experience honestly without turning into clickbait.
+
+It may highlight the strongest impression, such as cleanliness, value, comfort, pressure, ambience, consistency, professionalism, or whether the place is better for a specific type of client.
+
+Slug
+~~~~
+
+The slug should be generated automatically from the title.
+
+Slug maximum length:
+
+- 100 characters.
+
+Slug format should follow public URL slug standards.
+
+Short Description
+~~~~~~~~~~~~~~~~~
+
+The short description is a one-sentence or short preview of the review.
+
+Maximum length:
+
+- 255 characters.
+
+The short description may be:
+
+- written by the user;
+- suggested by AI;
+- written by an editor;
+- generated from an excerpt if left blank and no AI is available.
+
+If the short description is generated by AI or by the system, it should not earn user-writing reward credit.
+
+Optional and Linked Review Details
+----------------------------------
+
+The review form may allow the user to add or link additional details.
+
+These details may belong to a separate visit/history record, booking record, media record, or other future database structure. They do not all need to be stored directly inside the review record.
+
+Possible optional or linked details include:
+
+- visit date;
+- visit time;
+- service received;
+- service duration;
+- amount paid;
+- tip amount;
+- booking method;
+- practitioner who performed the service;
+- disclosure type;
+- byline or anonymous display preference;
+- media attachments.
+
+For public review display, establishment reviews may show only selected visit information by default, such as visit date or visit period. The practitioner who performed the service should not automatically become the public focus of an establishment review unless the reviewer intentionally includes it and platform rules allow it.
+
+Booking and Session Rating Links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A review may be linked to a completed booking, session, confirmed visit, or manually recorded history entry.
+
+A completed spa booking may support both a spa rating and a therapist rating when the therapist is known.
+
+A completed freelance therapist booking may support a therapist rating.
+
+A manually entered personal history entry may help the user remember their own experience, but reward and rating weight rules should follow the Rating System.
+
+The review body should remain the written experience. The rating record, booking/session record, media record, and visit/history record may be stored separately in the final database design.
+
+
+Media Attachments
+-----------------
+
+Users and Review Correspondents may attach images or videos to reviews when relevant.
+
+Media may show:
+
+- facade;
+- signage;
+- reception area;
+- hallway;
+- treatment room;
+- massage bed or chair;
+- towels or linens;
+- amenities;
+- menu or price board, if allowed;
+- product packaging;
+- product texture or use;
+- reviewer and practitioner, only when appropriate and consent rules are followed;
+- other relevant review evidence.
+
+Media should be labelable by subject or context.
+
+A review may attach newly uploaded media or reference media already uploaded elsewhere in the user’s history, establishment profile, practitioner profile, or product profile, depending on future database design.
+
+Duplicate media should be detected by content-based file checks such as checksum or hash, not by filename alone. The exact media-deduplication system should be defined in the Media documentation later.
+
+AI should not be required to inspect every image or video by default because media analysis can be expensive. Manual labeling, metadata, checksum checks, and moderation review may be used first.
+
+Authorship, Byline, and Anonymity
+---------------------------------
+
+A review may be public under a visible byline or public anonymously.
+
+Anonymous public display does not mean anonymous to the system. The platform should still know the submitting account internally for moderation, abuse prevention, reward calculation, dispute handling, and legal or safety reasons.
+
+A review may have multiple Review Authors. In that case, public bylines may show all credited authors or may use an agreed anonymous/shared presentation.
+
+If rewards apply to a multi-author review, rewards should be shared among credited authors, not duplicated in full for every credited account.
+
+Editorial Reviews
+-----------------
+
+An editorial review is a longer, more structured Massage Nexus review.
+
+It may be created by:
+
+- one Review Correspondent;
+- multiple Review Correspondents;
+- an editor using field notes from others;
+- a combination of Review Authors who visited or tested the target.
+
+Editorial reviews should be polished, properly sequenced, detailed, fair, and useful to both clients and owners or practitioners.
+
+An editorial review may be based on:
+
+- one visit;
+- multiple visits;
+- multiple reviewers;
+- different days or times;
+- different services;
+- different practitioners;
+- a product test period.
+
+Editorial reviews should disclose enough context for readers to understand how the review was conducted.
+
+User Reviews
+------------
+
+A user review is submitted by a registered user based on their own experience.
+
+User reviews do not need to sound like editorial reviews. They may use the user’s preferred language, tone, humor, structure, and personal style.
+
+However, users should still be encouraged to write reviews that are useful, concrete, and fair.
+
+A user review may be imperfect and still publish. A review should not be rejected only because it is not elegantly written.
+
+Disclosure Types
+----------------
+
+Reviews should disclose incentives, sponsorship, special access, and possible bias when relevant.
+
+Possible disclosure types include:
+
+- undisclosed self-paid visit;
+- announced visit;
+- sponsored visit;
+- discounted visit;
+- complimentary service;
+- paid editorial review;
+- PR sample or product sample;
+- owner-requested review;
+- practitioner-requested review;
+- product-owner-requested review;
+- private critique or unpublished review;
+- multi-visit review;
+- multi-reviewer review.
+
+Undisclosed Self-Paid Visit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An undisclosed self-paid visit means the reviewer paid normally, did not identify themselves as connected to Massage Nexus, and did not receive a discount, freebie, payment, special handling, or incentive in exchange for the review.
+
+This is usually the strongest setup for reducing special-treatment bias.
+
+Announced Visit
+~~~~~~~~~~~~~~~
+
+An announced visit means the establishment, practitioner, or product provider knew the reviewer was reviewing.
+
+This should be disclosed because it may affect service quality, staff behavior, preparation, or access.
+
+Sponsored, Discounted, Complimentary, or Paid Review
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A review may still be useful even when the service, product, visit, or access was sponsored, discounted, complimentary, or paid.
+
+However, the disclosure should be visible because readers need to understand possible bias.
+
+Sponsorship, discount, free service, or payment should not guarantee a positive review.
+
+Private Critique
+~~~~~~~~~~~~~~~~
+
+Some establishments, practitioners, or product owners may request critique without publication.
+
+A private critique is not the same as a public review. It may help the business improve before public publication, but it should be documented separately from public review rules.
+
+Connected-Party Review Rule
+---------------------------
+
+Owners, managers, practitioners, sponsors, sellers, and product owners should not review their own connected records as neutral customers.
+
+Examples:
+
+- a business owner should not review their own establishment as a neutral customer;
+- an establishment manager should not review the establishment they manage as a neutral customer;
+- a practitioner should not review their own practitioner profile as a neutral customer;
+- an owner or manager should not review current practitioners connected to their own establishment as neutral customers;
+- a product owner, seller, distributor, or sponsor should not review their own product as a neutral customer.
+
+Connected parties may respond, disclose, clarify, provide official information, or participate through approved owner/practitioner/product-owner tools.
+
+They should not fake neutral customer reviews, inflate their own ratings, or use alternate accounts to manipulate review scores, comments, helpful votes, or reputation signals.
+
+Violations may lead to moderation action, reduced privileges, suspension of profile management tools, loss of booking-system access, or other penalties to be defined in Terms and policy documents.
+
+Former relationships remain unresolved and should be discussed later. If allowed, former connections should require disclosure.
+
+NSFW Level
+----------
+
+Reviews may include sensitive or explicit content when it is part of a real experience and is handled responsibly.
+
+Explicit content should not automatically be rejected simply because it is explicit.
+
+NSFW level should control:
+
+- visibility;
+- audience restrictions;
+- warning labels;
+- filtering;
+- moderation routing.
+
+A review may be restricted or labeled without being rejected.
+
+If the user selects an incorrect NSFW level, the system may:
+
+- correct the NSFW level;
+- request revision;
+- send the review to manual review;
+- reduce reward quality scoring for incorrect labeling.
+
+AI or human moderation should not remove the user’s voice only because the content is uncomfortable, emotional, explicit, or strongly worded.
+
+However, NSFW allowance does not allow spam, fake reviews, private personal information, harassment, threats, illegal solicitation, exploitation, or content outside Massage Nexus platform boundaries.
+
+Review Approval and Moderation
+------------------------------
+
+Massage Nexus should distinguish between publication approval, reward quality, and reputation impact.
+
+Publication approval answers:
+
+- Can this be published?
+
+Reward quality answers:
+
+- How useful and well-formed is this contribution?
+
+Reputation impact answers:
+
+- How does the community and system evaluate this contribution over time?
+
+A real but poorly written review may still be published, but it may receive fewer rewards and may not help the reviewer’s reputation.
+
+A rant-like review may still publish if it is real, long enough, and does not violate serious rules. It may be classified as lower quality, restricted if necessary, or receive reduced rewards.
+
+Editorial reviews should be held to a higher writing and balance standard than normal user reviews.
+
+Conceptual Review Statuses
+--------------------------
+
+Exact technical field names should be defined later in the database structure.
+
+Conceptual review statuses may include:
+
+- draft;
+- submitted;
+- pending screening;
+- pending manual review;
+- revision requested;
+- approved;
+- published;
+- published with restriction;
+- converted or suggested as comment;
+- rejected;
+- withdrawn.
+
+Revision Policy
+---------------
+
+Massage Nexus should allow revisions.
+
+Use this general policy:
+
+- approve when the review is acceptable;
+- request revision when the issue is fixable;
+- reject when the problem is serious;
+- convert or suggest as comment when the content is real but too short or too casual for a review.
+
+A rejected or revision-requested review should guide the user to the Review Writing guide or public review instructions.
+
+If a user repeatedly fails validation or repeatedly submits review content that cannot pass, the system should point them to the review guide more strongly.
+
+Edit Existing Review or Create New Review
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Same visit or same experience should usually update the existing review.
+
+A new visit, new service, new product use, or major new experience may justify a new review.
+
+Recommended stable starting policy:
+
+- if the same user reviewed the same target within the last 30 days, suggest editing the existing review;
+- allow a new review within 30 days only when the user records a new visit, new service, new practitioner session, new product use, or other materially new experience;
+- after 30 days, allow a new review if the user indicates a fresh experience;
+- do not allow repeated low-effort reviews for the same target only to farm points.
+
+Review Version History
+~~~~~~~~~~~~~~~~~~~~~~
+
+Review edits should preserve a private version or audit history.
+
+The public page may show only the current approved version unless a later policy decides to show edit history publicly.
+
+Rejected reviews should not be deleted immediately. They should be retained privately for moderation history, appeals, duplicate detection, abuse detection, and audit purposes, subject to a retention policy to be defined later.
+
+Rejection and Revision Reasons
+------------------------------
+
+Rejection, revision, conversion, and moderation reasons should eventually use a controlled taxonomy.
+
+For review documentation, the important principle is this:
+
+- reasons may be general or review-specific;
+- the selected reason list should be usable as one combined reason selection for the decision;
+- multiple reasons may apply;
+- the database design should not force separate general and context-specific reason fields unless there is a later technical reason to do so.
+
+A general moderation taxonomy may guide all submission types, including reviews, comments, articles, media, translations, profile edits, and other user submissions.
+
+Review-specific reasons may be added inside the same reason-selection system.
+
+Possible review-related reasons include:
+
+- too short for review;
+- should be comment;
+- no actual experience described;
+- review target unclear;
+- wrong target;
+- rating and body mismatch;
+- duplicate review;
+- generic or suspicious review;
+- spam;
+- fake or suspicious experience claim;
+- conflict of interest;
+- connected-party review;
+- missing disclosure;
+- NSFW mislabeled;
+- unrelated media;
+- private information;
+- threat or harassment;
+- unsupported serious claim;
+- illegal solicitation;
+- outside platform scope.
+
+The exact reason taxonomy should be finalized in moderation and database documentation later.
+
+Internal moderator notes should follow the project’s standard record-note approach rather than inventing a separate inconsistent field name.
+
+Validation
+----------
+
+Validation should happen both client-side and server-side.
+
+Client-side validation prevents obvious errors before submission and reduces unnecessary server or AI work.
+
+Server-side validation must repeat important checks because the browser cannot be trusted.
+
+Client-Side Validation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Client-side validation may check:
+
+- required fields;
+- minimum review length;
+- title required when AI title generation is unavailable;
+- title maximum length;
+- short description maximum length;
+- rating range;
+- submission language selection;
+- NSFW level selection;
+- media file type;
+- media file size;
+- basic media count limits;
+- basic form completion errors.
+
+If a user fails validation repeatedly, such as three times in one review-writing attempt, the system should show a clearer message and link to the Review Writing guide or public review instructions.
+
+Example concept:
+
+Code block (text):
+    Your review still has required items to fix. Please review the highlighted fields or read the review guide before submitting again.
+
+Server-Side Validation
+~~~~~~~~~~~~~~~~~~~~~~
+
+Server-side validation may check:
+
+- required fields;
+- minimum length;
+- title and slug rules;
+- rating rules;
+- NSFW level rules;
+- account permission;
+- registered-user requirement;
+- connected-party restrictions;
+- duplicate or spam pattern;
+- media checksum duplicate;
+- media safety and relevance;
+- rate limits;
+- reward-abuse patterns;
+- moderation status;
+- AI or manual approval requirements.
+
+Obvious validation issues such as missing body, missing rating, or too-short content should not require AI review.
+
+Registered Users and Anonymous Display
+--------------------------------------
+
+Reviews should require a registered account because reviews affect ratings, rewards, reputation, moderation, abuse prevention, and profile trust.
+
+Guests may be allowed to comment later, but guest reviews should not be enabled by default.
+
+A registered user may publish a review anonymously to the public, subject to policy.
+
+The system should still know the submitting account internally.
+
+New users may be allowed to submit reviews immediately, but their reviews should go through stricter screening or moderation until they build trust.
+
+Higher-trust users may later unlock faster publishing, subject to moderation policy.
+
+AI-Assisted Review Screening
+----------------------------
+
+AI-assisted screening should be optional and configurable.
+
+Possible modes:
+
+- AI disabled: manual review only;
+- AI assistive: AI screens and recommends, human may approve;
+- AI automatic: AI approves low-risk reviews within configured rules.
+
+The detailed AI queue, quota, provider, retry, and budget system should be documented in the AI/API operations document later.
+
+For this review guide, the main principles are:
+
+- AI should save human effort, not replace platform judgment completely;
+- AI should not be used for simple validation that the system can check without tokens;
+- AI should not reject explicit content only because it is explicit;
+- AI should not reject nonstandard writing only because it is nonstandard;
+- AI should provide clear reasons when it recommends rejection, revision, or manual review;
+- AI feedback to the user should use the user's conversational language whenever possible;
+- AI quality scores and risk scores should be internal, not public.
+
+Possible AI input includes:
+
+- review target;
+- title if provided;
+- review body;
+- rating;
+- submission language;
+- user-selected NSFW level;
+- disclosure type;
+- visit date or time if provided;
+- media metadata;
+- user role;
+- user trust or reputation signals;
+- duplicate or hash signals.
+
+Possible AI output includes:
+
+- recommended publication decision;
+- recommended NSFW level;
+- title suggestion if needed;
+- short description suggestion;
+- quality score;
+- generic or duplicate risk;
+- reward recommendation;
+- reason for revision, rejection, or manual review;
+- private feedback to the submitter.
+
+AI-generated title, short description, or cleanup should not count as user-written quality effort for reward purposes.
+
+Review Rewards
+--------------
+
+Review rewards should be defined fully in the User Rewards and Gamification documentation.
+
+This section records the working review-specific recommendation only.
+
+Current reward concepts:
+
+- Nexus Points: lifetime contribution value;
+- Embers: spendable reward currency;
+- Inklings: working name for the game, exploration, seasonal, or mascot-related currency;
+- badges: visible achievement signals;
+- reputation: trust signal affected over time by quality, community response, and moderation outcomes.
+
+Working Maximum Rewards
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Review rewards are still provisional and should be recalibrated in the User Rewards and Gamification documentation.
+
+The important working principle is:
+
+- reviews earn more than simple ratings because reviews require more effort;
+- establishment and practitioner reviews may earn more than product reviews because they usually require an actual service experience;
+- Embers and Inklings should use gratifying visible numbers and may be scaled higher than Nexus Points;
+- AI-generated title, AI-generated short description, or AI cleanup should not earn the same user-writing credit as user-written work;
+- multi-author review rewards should be shared, not duplicated in full for every byline.
+
+Previous small Embers/Inklings values should not be treated as final.
+
+Reward Factors
+~~~~~~~~~~~~~~
+
+Review reward scoring may consider:
+
+- review body quality;
+- originality;
+- specific experience details;
+- actual visit or use evidence;
+- rating and body consistency;
+- user-written title quality;
+- user-written short description quality;
+- correct NSFW labeling;
+- honest disclosure;
+- useful visit details;
+- helpful media attachments;
+- proper media labeling;
+- balanced reasoning when possible;
+- constructive criticism;
+- usefulness to clients;
+- usefulness to owners, practitioners, or product owners;
+- community helpful votes after publication;
+- moderator or editor quality assessment.
+
+Reading duration should not itself earn points. It is computed automatically.
+
+AI-assisted title, AI-assisted summary, or AI cleanup should not earn the same user-writing credit as user-written work.
+
+A real but poorly structured review may still publish but receive fewer rewards.
+
+A fake, spammy, copied, or reward-farming review should not earn rewards and may trigger moderation action.
+
+Revisions and Rewards
+~~~~~~~~~~~~~~~~~~~~~
+
+Main review rewards should be granted after accepted publication.
+
+Minor edits should not repeatedly grant new rewards.
+
+A major update after a new visit or new product use may earn additional reward credit only if later policy allows it.
+
+If a review was rejected, revised, and later accepted, rewards should be based on the accepted version.
+
+Reputation and Community Response
+---------------------------------
+
+Submitting a review may contribute to rewards, but reputation depends more on quality, usefulness, reliability, moderation outcomes, and community response over time.
+
+A review may affect reputation through:
+
+- helpful votes;
+- thumbs up or thumbs down;
+- reports;
+- confirmed usefulness;
+- owner, practitioner, product owner, Review Editor, or Moderator response quality;
+- moderation outcomes;
+- repeated accuracy or inaccuracy;
+- suspicious behavior.
+
+Review-related reputation effects should follow Massage Nexus - 16 - Reputation System v1.70.md.
+
+Important rules:
+
+- a single helpful vote should not directly grant large reputation points;
+- review helpfulness should use weighted signals, voter trust, item quality, diminishing returns, anti-abuse checks, and per-item caps;
+- one review should not be able to carry a user to a high reputation level by itself;
+- review popularity alone is not the same as Review Author trust;
+- a user should not gain strong reputation only by submitting many reviews;
+- repeated helpful, accurate, fair, low-dispute reviews may strengthen Review Trust over time;
+- fake, abusive, manipulative, or unsupported reviews may reduce reputation.
+
+The Reputation System sets the current maximum reputation gain for one review at +100 before broader score and level-gate rules are applied.
+
+Review Badges
+-------------
+
+Review badges should be defined fully in the badge and gamification documentation.
+
+The Review Writing guide may record review-related badge candidates and what they represent.
+
+Accepted Review Milestone Badges
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Accepted review count may use the Anchored Milestone Sequence (AMS).
+
+Working review milestone sequence:
+
+Code block (text):
+    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
+
+The sequence starts with an early engagement badge for the first accepted review, then uses larger milestone gaps over time.
+
+Possible milestone badges:
+
+Badge        | Meaning
+-------------+------------------------------------------------
+First Review | Awarded after the user's first accepted review.
+10 Reviews   | Awarded after 10 accepted reviews.
+20 Reviews   | Awarded after 20 accepted reviews.
+30 Reviews   | Awarded after 30 accepted reviews.
+50 Reviews   | Awarded after 50 accepted reviews.
+80 Reviews   | Awarded after 80 accepted reviews.
+130 Reviews  | Awarded after 130 accepted reviews.
+
+The sequence may continue beyond 130 when the badge system and badge icons are ready.
+
+Review-Type Badges
+~~~~~~~~~~~~~~~~~~
+
+Possible review-type badges:
+
+Badge                           | Meaning
+--------------------------------+--------------------------------------------------------------
+First Establishment Review      | Awarded after the user's first accepted establishment review.
+First Practitioner Review       | Awarded after the user's first accepted practitioner review.
+First Product Review            | Awarded after the user's first accepted product review.
+Establishment Review Milestones | Awarded at AMS counts for accepted establishment reviews.
+Practitioner Review Milestones  | Awarded at AMS counts for accepted practitioner reviews.
+Product Review Milestones       | Awarded at AMS counts for accepted product reviews.
+
+Review Quality and Conduct Badges
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Possible non-count review badges:
+
+Badge                    | Meaning
+-------------------------+---------------------------------------------------------------------
+Detailed Reviewer        | Awarded for consistently detailed reviews.
+Helpful Reviewer         | Awarded when reviews receive meaningful helpful votes.
+Photo Review Contributor | Awarded for accepted reviews with useful media attachments.
+Transparent Reviewer     | Awarded for consistently proper disclosure and NSFW labeling.
+Multi-Visit Reviewer     | Awarded for reviews based on multiple visits or updated experiences.
+Review Correspondent     | Awarded or assigned to approved Massage Nexus Review Correspondents.
+Reviewer of the Year     | Annual recognition for outstanding review contribution.
+
+Badge visuals, badge tiers, badge rarity, badge style, icon production, and annual award presentation should be discussed in the badge and gamification documentation later.
+
+Rank Path Reference
+-------------------
+
+Reviews may contribute to review-related rank path progress.
+
+Working idea:
+
+- one accepted review unlocks review-path eligibility;
+- three accepted reviews may allow the user to display review-path progress;
+- higher review activity and review usefulness may support later review ranks.
+
+The full rank path system should remain in the rewards and gamification documentation.
+
+Review Writing Guidance
+-----------------------
+
+A good review should explain:
+
+- what the reviewer expected;
+- what actually happened;
+- what details mattered;
+- what felt successful;
+- what felt disappointing;
+- what kind of reader may benefit from the information;
+- whether the experience seems consistent or possibly dependent on timing, practitioner, room, branch, promo, crowding, or personal preference.
+
+A review should separate:
+
+- observation;
+- opinion;
+- emotion;
+- uncertainty;
+- assumption;
+- confirmed fact.
+
+For example, a reviewer can say that a room smelled damp, towels looked worn, music was too loud, reception felt rushed, pressure was lighter than requested, or the service was surprisingly good for the price.
+
+Those details are more useful than simply saying the place was bad or great.
+
+Review Structure Guide
+----------------------
+
+A review does not need to follow this structure exactly, but this sequence works well for many Massage Nexus reviews:
+
+1. Opening context.
+2. Booking or arrival.
+3. First impression.
+4. Environment and cleanliness.
+5. Service flow.
+6. Main experience.
+7. Price and value.
+8. What worked.
+9. What needs improvement.
+10. Who may or may not like it.
+11. Overall rating and conclusion.
+
+For product reviews, the structure may be shorter:
+
+1. Product context.
+2. Use case.
+3. Texture, scent, feel, durability, or performance.
+4. Value.
+5. Who it fits.
+6. Final impression.
+
+Fairness by Class
+-----------------
+
+A review should judge the target according to its class, purpose, and price range.
+
+A budget neighborhood establishment should not be punished for lacking luxury-spa amenities if it is clean, safe, honest, and effective for its price.
+
+A luxury establishment should be judged more strictly because the guest is paying for a full premium experience.
+
+A simple practitioner should not be punished for lacking luxury branding if the service is clean, respectful, safe, and effective.
+
+A premium practitioner should be judged more strictly on polish, communication, consistency, boundaries, and personalization.
+
+The Class System document should define class standards. This Review Writing guide should only remind reviewers to judge within the correct class.
+
+Constructive Criticism
+----------------------
+
+Massage Nexus reviews should allow criticism.
+
+The goal is not to protect establishments, practitioners, or products from negative feedback. The goal is to make criticism useful.
+
+Useful criticism explains what happened, why it mattered, and what could improve.
+
+A review may be strongly negative if the experience was genuinely negative. However, it should avoid turning into a vague attack when concrete details are available.
+
+Owners, practitioners, and product owners should be encouraged to receive criticism as information, not automatically as sabotage. Competitor abuse may happen, but not every negative review should be dismissed as competitor behavior.
+
+Editorial Review Checklist
+--------------------------
+
+Use this as a simple internal editing checklist.
+
+- Target clear.
+- Review type clear.
+- Disclosure checked.
+- Visit context included when relevant.
+- Rating included.
+- Rating matches body.
+- Language marked.
+- NSFW level checked.
+- Minimum substance met.
+- Reading duration computed.
+- Facts and opinions separated.
+- Uncertainty preserved.
+- No invented details.
+- No unsupported serious claims.
+- Class judged fairly.
+- Establishment/practitioner/product boundary respected.
+- Media relevant.
+- Media labels checked.
+- Title under 75 characters.
+- Slug auto-generated.
+- Short description under 255 characters.
+- Reviewer voice preserved.
+- Narrative flow improved.
+- Useful to clients.
+- Useful to owners or practitioners when applicable.
+- Rewards reviewed.
+- Moderation status correct.
+
+Public Guides to Create Later
+-----------------------------
+
+Separate public guides may be created later for:
+
+- how users can write a useful review;
+- how owners should respond to reviews;
+- how practitioners should respond to reviews;
+- how product owners should respond to reviews;
+- how sponsored or discounted reviews should be disclosed;
+- how anonymous reviews work;
+- what makes a review different from a comment.
+
+Related Documents and Remaining Planning Items
+----------------------------------------------
+
+The following items should be discussed or updated later:
+
+- review reward values using scaled Embers and Inklings;
+- review badges and badge visuals;
+- annual review awards;
+- review rank path;
+- user roles and moderation permissions;
+- reading duration research for Korean, Japanese, Chinese, and other languages;
+- minimum review length by language;
+- Class System expansion, including product classes;
+- Media duplicate and checksum handling;
+- visit/history records linked to reviews;
+- booking/session records linked to reviews;
+- review rejection reason taxonomy;
+- review retention policy for rejected submissions;
+- review revision/version history rules;
+- client-side and server-side validation rules;
+- review cooldown and new-review-vs-edit policy;
+- AI queue, quota, API provider, and monthly budget handling;
+- language settings: interface language, content language, conversational language, submission language;
+- translation contribution system;
+- correspondent field sheet or printable clipboard form;
+- public Review Writing guide;
+- public review response guide for owners, practitioners, and product owners;
+- Rating System implementation details that affect review forms.
+
+Current related documents:
+
+- Massage Nexus - 14 - Rating System v1.10.md defines target rating rules, 1 to 10 labels, XCES, and the connected pulse / nexus node rating asset direction.
+- Massage Nexus - 16 - Reputation System v1.70.md defines review helpfulness effects on Review Author reputation, per-item caps, diminishing returns, reputation levels, and trust-weight mapping.

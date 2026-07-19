@@ -1,0 +1,743 @@
+Title: Massage Nexus Translation and Localization Management System
+Document Version: 0.40
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 15 - Language Strategy v0.30
+- Massage Nexus - 02 - AI-Assisted Development Workflow v1.10
+- Massage Nexus - 03 - Features v2.40
+- Massage Nexus - 18 - Site Structure Map v1.90
+- Massage Nexus - 21 - User Workspace v0.30
+- Massage Nexus - Terms of Use Requirements v0.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
+- Massage Nexus - Analytics Statistics and Measurement System v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the Translation and Localization Management System.
+
+It separates:
+- static interface translation;
+- structured reference translation;
+- dynamic editorial translation;
+- provider-supplied text;
+- legal and high-risk translation;
+- user-generated content translation;
+- on-demand machine translation;
+- community suggestions;
+- AI and manual import/export;
+- coverage and quality management.
+
+Translation does not replace the original.
+
+Version History
+---------------
+- v0.40 (2026-07-19): Updated language codes in the registry to 3-letter ISO standards (e.g., 'eng', 'spa', 'jpn').
+- v0.30 (2026-07-19): Simplified locale registry to support Filipino ('fil') only for the Philippine market, deprecating Tagalog, Taglish, and other regional languages (Cebuano, Hiligaynon).
+- v0.20 (2026-07-18): Added semantic key context, complete locale registry direction,
+  Filipino with Taglish style, on-demand discussion and comment translation, translation
+  coverage, community suggestion workflow, validated AI import/export, stricter high-risk
+  publication, and detailed administrative routes.
+- v0.10 (2026-07-16): Established the original translation layers, source revision,
+  translation status, AI labels, glossary, memory, roles, and workspace.
+
+================================================================================
+1. TRANSLATION LAYERS
+================================================================================
+
+A. Static Interface
+- navigation;
+- forms;
+- buttons;
+- validation;
+- errors;
+- account;
+- email;
+- notifications;
+- workspace;
+- accessibility;
+- booking;
+- analytics;
+- research.
+
+B. Controlled Reference
+- taxonomy labels;
+- statuses;
+- country and language names;
+- service terms;
+- policy reason codes;
+- help labels;
+- metric labels.
+
+C. Dynamic Editorial
+- articles;
+- help;
+- service descriptions;
+- public profile descriptions;
+- policy explainers;
+- comic captions;
+- room prompts.
+
+D. Provider-Supplied
+- establishment description;
+- therapist biography;
+- menu item;
+- promotion;
+- seller content;
+- provider policy.
+
+E. Legal and High Risk
+- Terms;
+- Privacy;
+- account eligibility;
+- security notices;
+- payment;
+- cancellation;
+- consent;
+- intake;
+- safety;
+- clinical;
+- serious moderation.
+
+F. User-Generated
+- review;
+- discussion;
+- comment;
+- correction;
+- field note;
+- caption;
+- reply.
+
+================================================================================
+2. CORE TERMS
+================================================================================
+
+Language:
+Recognized language.
+
+Locale:
+Language plus script, region, formatting, or jurisdiction.
+
+Style:
+Formal, conversational, legal, technical, or another register.
+
+Source content:
+Original or authoritative text.
+
+Source revision:
+Exact source version used.
+
+Translation unit:
+Smallest independently managed translatable item.
+
+Translation revision:
+Saved target-language version tied to a source revision.
+
+Stale:
+Source changed after translation.
+
+Translation method:
+Human original, human translation, professional, community, AI-assisted, AI draft, imported,
+or legacy.
+
+================================================================================
+3. LANGUAGE REGISTRY
+================================================================================
+
+Current strategy includes:
+- eng;
+- fil;
+- ind;
+- spa;
+- por;
+- jpn;
+- tha;
+- vie;
+- kor;
+- zho-hant;
+- zho-hans;
+- fra;
+- deu;
+- ara;
+- later justified locales.
+
+A language record may contain identifier, key, English name, native name, public label, ISO
+or custom code, public alias, script, writing direction, active status, interface status,
+content status, legal status, fallback, plural rules, formats, market list, support status,
+and notes.
+
+Mixed registers like Taglish, Tagalog (tl), and regional Philippine languages (Cebuano, Hiligaynon) are deprecated to eliminate linguistic duplication.
+
+================================================================================
+4. SEMANTIC INTERFACE KEYS
+================================================================================
+
+Use keys based on meaning and context.
+
+Good:
+auth.login.identifier
+account.registration.birth_date
+booking.action.save_draft
+user.action.save_favorite
+research.source.last_verified
+analytics.metric.profile_view
+
+Avoid:
+Log in
+Save
+Confirmed
+
+Each key should preserve:
+- namespace;
+- default English;
+- meaning;
+- usage context;
+- feature or screen;
+- placeholders;
+- plural behavior;
+- allowed formatting;
+- maximum length if applicable;
+- accessibility note;
+- sensitivity;
+- source revision;
+- deprecation replacement.
+
+The same English word may require several keys when meaning differs.
+
+================================================================================
+5. STATIC FILES AND SHARED CONTRACT
+================================================================================
+
+Laravel:
+apps/web/lang/
+
+Shared localization contract:
+contracts/localization/
+
+The contract may generate or validate resources for Laravel, future Flutter, future desktop
+clients, email, notifications, and API documentation.
+
+Laravel files may be grouped by capability:
+- common.php;
+- navigation.php;
+- authentication.php;
+- account.php;
+- security.php;
+- privacy.php;
+- service.php;
+- establishment.php;
+- therapist.php;
+- product.php;
+- booking.php;
+- research.php;
+- analytics.php;
+- translation.php;
+- validation.php;
+- email.php;
+- notification.php;
+- accessibility.php.
+
+Do not maintain unrelated duplicate catalogs manually.
+
+================================================================================
+6. DYNAMIC TRANSLATION RECORD
+================================================================================
+
+A translation may contain:
+- translation identifier;
+- target record;
+- target field or block;
+- source locale;
+- target locale;
+- source revision;
+- source hash;
+- translated structured content;
+- translated HTML;
+- translated plain text;
+- method;
+- translator;
+- AI provider and model internally when needed;
+- status;
+- reviewer;
+- review date;
+- approval;
+- publication;
+- stale state;
+- quality note;
+- public disclosure;
+- NSFW level;
+- jurisdiction;
+- legal authority status.
+
+Final data placement belongs in the database specification.
+
+================================================================================
+7. STATUS WORKFLOW
+================================================================================
+
+Statuses:
+- missing;
+- draft_ai;
+- draft_human;
+- community_suggestion;
+- submitted;
+- under_review;
+- needs_revision;
+- approved;
+- published;
+- stale;
+- rejected;
+- withdrawn;
+- archived.
+
+Approved does not always mean published.
+
+A stale translation may remain with a clear warning, be hidden, fall back to English, show
+current original beside old translation, or enter a priority queue.
+
+High-risk stale content should normally not appear as current.
+
+================================================================================
+8. METHODS
+================================================================================
+
+- Human Original;
+- Human Translation;
+- Professional Translation;
+- Community Translation;
+- AI-Assisted Translation;
+- AI-Generated Draft;
+- Imported Translation;
+- Legacy Translation.
+
+Public labels depend on policy and materiality.
+
+AI-assisted human review does not erase relevant AI involvement.
+
+================================================================================
+9. ORIGINAL PRESERVATION
+================================================================================
+
+Always preserve:
+- original text;
+- original locale;
+- original author;
+- original date;
+- original revision;
+- original moderation state;
+- original rating and structured facts.
+
+A translation may not silently alter:
+- name;
+- address;
+- price;
+- date;
+- credential;
+- rating;
+- source;
+- taxonomy code;
+- legal obligation;
+- medical claim;
+- account status.
+
+================================================================================
+10. USER-GENERATED CONTENT
+================================================================================
+
+Default behavior:
+1. show original;
+2. identify language;
+3. offer Translate;
+4. translate to the requested supported language;
+5. label machine translation;
+6. offer Show original;
+7. cache using content, revision, source, target, provider, and model version;
+8. invalidate or mark stale after edit;
+9. allow reporting.
+
+Do not automatically create every target-language version for every comment.
+
+A conversation remains one thread. Translations are viewer presentations, not independent
+statements by the original author.
+
+Moderator review should be able to see original, translation, provider, report, and
+uncertainty.
+
+================================================================================
+11. LEGAL AND HIGH-RISK CONTENT
+================================================================================
+
+Required controls:
+- document version;
+- locale;
+- source revision;
+- translator;
+- specialist reviewer;
+- approval;
+- effective date;
+- authority status;
+- acceptance record;
+- archived prior versions.
+
+AI-only publication is prohibited for:
+- Terms;
+- Privacy;
+- security and recovery;
+- age eligibility;
+- payment;
+- refund;
+- cancellation;
+- consent;
+- intake;
+- clinical safety;
+- serious moderation.
+
+A translation may be labeled:
+- authoritative;
+- approved translation;
+- explanatory translation;
+- draft;
+- not available.
+
+================================================================================
+12. TRANSLATION MANAGEMENT WORKSPACE
+================================================================================
+
+Routes:
+/workspace/translation
+/workspace/translation/dashboard
+/workspace/translation/interface
+/workspace/translation/reference
+/workspace/translation/content
+/workspace/translation/provider
+/workspace/translation/user-content
+/workspace/translation/legal
+/workspace/translation/assigned
+/workspace/translation/missing
+/workspace/translation/draft
+/workspace/translation/submitted
+/workspace/translation/review
+/workspace/translation/stale
+/workspace/translation/approved
+/workspace/translation/published
+/workspace/translation/rejected
+/workspace/translation/glossary
+/workspace/translation/memory
+/workspace/translation/coverage
+/workspace/translation/import
+/workspace/translation/export
+/workspace/translation/history
+/workspace/translation/language
+
+Dashboard:
+- critical missing;
+- stale;
+- pending review;
+- AI drafts;
+- community suggestions;
+- placeholder errors;
+- glossary conflicts;
+- source changes;
+- language coverage;
+- legal readiness;
+- market readiness.
+
+================================================================================
+13. EDITOR
+================================================================================
+
+Modes:
+- side by side;
+- section by section;
+- changed only;
+- preview in context.
+
+Show:
+- source;
+- target;
+- source revision;
+- changed source;
+- locale;
+- style;
+- glossary;
+- placeholders;
+- links;
+- character limits;
+- context screenshot or interface preview;
+- reviewer notes;
+- AI assistance;
+- status;
+- stale warning;
+- NSFW and risk classification.
+
+================================================================================
+14. COVERAGE AND COMPLETENESS
+================================================================================
+
+Coverage is calculated separately for:
+- critical interface;
+- complete interface;
+- account;
+- legal;
+- security;
+- payment;
+- booking;
+- provider workspace;
+- research;
+- analytics;
+- email;
+- notifications;
+- accessibility;
+- articles;
+- profiles;
+- user content on demand.
+
+Possible measures:
+- total units;
+- translated units;
+- reviewed units;
+- published units;
+- stale units;
+- missing critical units;
+- placeholder-valid units;
+- glossary-valid units;
+- fallback events;
+- failed translation requests.
+
+A language may be:
+- planned;
+- drafting;
+- limited;
+- beta;
+- market-supported;
+- fully supported;
+- paused.
+
+================================================================================
+15. COMMUNITY CONTRIBUTIONS
+================================================================================
+
+Users may suggest translations only for approved areas.
+
+Workflow:
+draft
+-> automated validation
+-> submitted
+-> review
+-> revision if needed
+-> approval
+-> publication
+-> contributor credit.
+
+No self-approval for reputation.
+
+Community contributors cannot directly publish high-risk text.
+
+Language proficiency claims do not automatically grant permission. Trust is based on reviewed
+work, role, and area.
+
+================================================================================
+16. AI EXPORT AND IMPORT
+================================================================================
+
+Export package fields:
+- unit identifier;
+- source locale;
+- target locale;
+- source revision;
+- source;
+- context;
+- tone;
+- style;
+- glossary;
+- protected terms;
+- placeholders;
+- tags;
+- links;
+- character limits;
+- NSFW level;
+- risk class;
+- review requirement.
+
+Import validator:
+- expected identifiers;
+- no unknown identifiers;
+- target locale;
+- source revision;
+- placeholders;
+- tags;
+- links;
+- numbers;
+- duplicates;
+- length;
+- empty values;
+- glossary;
+- protected names;
+- unsafe HTML;
+- prohibited content;
+- review queue.
+
+Never import directly to published state unless a specifically approved trusted process
+permits it.
+
+================================================================================
+17. GLOSSARY AND TRANSLATION MEMORY
+================================================================================
+
+Glossary:
+- source term;
+- approved target term;
+- forbidden translation;
+- domain;
+- definition;
+- context;
+- locale;
+- status;
+- reviewer.
+
+Translation memory:
+- exact and partial matches;
+- approved translations only by default;
+- context;
+- source;
+- revision;
+- confidence;
+- private-content boundary;
+- no automatic cross-context replacement.
+
+Brand names such as Massage Nexus, The Resting Leaf, Embers, and Inklings may remain
+untranslated unless an approved localization exists.
+
+================================================================================
+18. MULTILINGUAL SEARCH
+================================================================================
+
+Index:
+- original name;
+- translated name;
+- alias;
+- transliteration;
+- local name;
+- common spelling;
+- normalized record.
+
+Do not duplicate one service or provider because of language.
+
+Search fallback and zero-result analytics should inform missing aliases, missing translation,
+regional terminology, and research priorities.
+
+================================================================================
+19. ACCESSIBILITY AND SCRIPT
+================================================================================
+
+Requirements:
+- correct lang attributes;
+- correct writing direction;
+- accessible language selector;
+- screen-reader labels;
+- keyboard editing;
+- preserved alt text;
+- captions;
+- reduced motion;
+- right-to-left readiness;
+- readable fallback and stale notices;
+- no color-only status.
+
+================================================================================
+20. SECURITY AND PRIVACY
+================================================================================
+
+Do not send unnecessary personal or restricted content to translation providers.
+
+Sensitive translation requires:
+- approved purpose;
+- minimum data;
+- approved provider;
+- access control;
+- retention rules;
+- original preservation;
+- human review;
+- audit where justified.
+
+Do not expose private intake, secrets, recovery codes, precise private address, confidential
+evidence, or full payment credentials.
+
+================================================================================
+21. ANALYTICS
+================================================================================
+
+Track:
+- translation request count;
+- target locale;
+- latency;
+- cost;
+- cache hit;
+- failure;
+- report;
+- stale detection;
+- coverage;
+- fallback;
+- glossary issue;
+- reviewer turnaround;
+- community approval rate.
+
+Do not expose a person's private reading or sensitive-content preferences in public analytics.
+
+================================================================================
+22. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+1. English semantic key registry.
+2. Laravel language files.
+3. locale middleware and fallback.
+4. user universal and site-specific preference.
+5. coverage and placeholder tests.
+6. Filipino (fil) language.
+7. translation record and source revision.
+8. admin translation workspace.
+9. legal and policy translation workflow.
+10. community suggestions.
+11. AI export and import.
+12. on-demand user-content translation.
+13. glossary.
+14. translation memory.
+15. multilingual search.
+16. later language groups and right-to-left support.
+
+================================================================================
+23. CURRENT ACCEPTED DIRECTION
+================================================================================
+
+- English is the source and fallback.
+- Filipino (fil) is the sole local language for the Philippine market.
+- Taglish, Tagalog (tl), and regional languages are deprecated.
+- Static interface uses semantic keys.
+- Original content remains identifiable.
+- Translations are tied to source revisions.
+- Discussions and comments are translated on demand.
+- Community translations are suggestions until approved.
+- AI translation supports draft, export, import, and review.
+- High-risk text is not published from AI alone.
+- Completeness is measured by area and critical flow.
+- Translation management has its own workspace.
+- Search uses all language forms without duplicating canonical records.
+
+================================================================================
+24. OPEN DECISIONS
+================================================================================
+
+- final storage granularity;
+- final locale code table;
+- final canonical routing;
+- first public language set;
+- exact professional reviewer requirements;
+- exact cache duration for user-content translation;
+- provider order and fallback;
+- public AI-translation label rules;
+- translation reward formula;
+- localized slug timing;
+- language retirement procedure.

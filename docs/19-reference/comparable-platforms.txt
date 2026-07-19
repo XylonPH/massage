@@ -1,0 +1,195 @@
+Title: Massage Nexus Comparable Platforms
+Document Version: 1.20
+Date Created: 2026-06-29
+Revision Date: 2026-07-18
+Status: Internal Planning Reference
+
+DOCUMENT PURPOSE
+----------------
+This document lists platforms that overlap with Massage Nexus in directory discovery,
+provider profiles, reviews, booking, business tools, community participation, or moderation.
+
+Similarity ratings are internal planning estimates inherited from the original combined
+document. They are comparison aids, not independent market measurements.
+
+================================================================================
+1. DIRECT MASSAGE AND SPA DISCOVERY PLATFORMS
+================================================================================
+
+1. Manila Touch
+URL: https://www.manilatouch.com/
+Similarity: 92%
+Comparison Value: Philippine spa and home-service massage directory. Relevant for local
+listings, locations, contact details, search filters, and Philippine directory coverage.
+
+2. MassageBook
+URL: https://www.massagebook.com/
+Similarity: 88%
+Comparison Value: Massage-therapy directory and booking platform. Relevant for therapist
+discovery, business profiles, online booking, reviews, massage techniques, and provider tools.
+
+3. RentMasseur
+URL: https://rentmasseur.com/
+Similarity: 84%
+Comparison Value: Global male massage-therapist marketplace. Relevant for therapist profiles,
+location discovery, service descriptions, provider listings, and booking-oriented search.
+
+4. MasseurFinder
+URL: https://www.masseurfinder.com/
+Similarity: 83%
+Comparison Value: Worldwide male massage directory. Relevant for city-based browsing,
+therapist profiles, provider discovery, and massage-focused directory structure.
+
+5. Masseuse PH
+URL: https://masseuseph.com/
+Similarity: 82%
+Comparison Value: Philippine massage-therapist directory. Relevant for location and
+massage-type filters, availability, gender preference, ratings, and direct contact details.
+
+6. MassageFinder
+URL: https://www.massagefinder.com/
+Similarity: 80%
+Comparison Value: Worldwide massage-professional directory. Relevant for therapist listings,
+city search, profile browsing, and direct provider contact.
+
+================================================================================
+2. BROADER WELLNESS, BEAUTY, AND BOOKING PLATFORMS
+================================================================================
+
+7. Fresha
+URL: https://www.fresha.com/
+Similarity: 78%
+Comparison Value: Global beauty and wellness marketplace with business software. Relevant for
+booking, reviews, profiles, reminders, consultation forms, payments, POS, and owner tools.
+
+8. Treatwell
+URL: https://www.treatwell.com/
+Similarity: 76%
+Comparison Value: Beauty and wellness booking platform. Relevant for service menus, reviews,
+treatment booking, promotional pricing, and continuous appointment access.
+
+9. Parlon
+URL: https://www.parlon.ph/
+Similarity: 74%
+Comparison Value: Philippine beauty and wellness discovery, booking, and commerce platform.
+Relevant for local service discovery, promotions, bookings, and wellness transactions.
+
+10. Vagaro
+URL: https://www.vagaro.com/
+Similarity: 73%
+Comparison Value: Salon, spa, fitness, and wellness marketplace and management platform.
+Relevant for appointments, services, profiles, reviews, photos, promotions, and business tools.
+
+11. Booksy
+URL: https://booksy.com/
+Similarity: 72%
+Comparison Value: Beauty and wellness appointment platform. Relevant for discovery, booking,
+schedules, payments, business profiles, service management, and provider applications.
+
+12. Mindbody
+URL: https://www.mindbodyonline.com/
+Similarity: 68%
+Comparison Value: Fitness, beauty, and wellness discovery and management platform. Relevant
+for booking, schedules, payments, staff calendars, reporting, and operator tools.
+
+13. Zennya
+URL: https://www.zennya.com/
+Similarity: 66%
+Comparison Value: Philippine home health and wellness application. Relevant for home-service
+massage booking, therapist dispatch, mobile appointments, service delivery, and cashless flow.
+
+14. Spafinder
+URL: https://www.spafinder.com/
+Similarity: 64%
+Comparison Value: Spa and wellness discovery and gift-card platform. Relevant for spa
+discovery, wellness listings, offers, and gift-card monetization.
+
+15. Booky
+URL: https://booky.ph/
+Similarity: 60%
+Comparison Value: Philippine lifestyle deals and voucher platform. Relevant for local
+discovery, promotions, vouchers, and wellness-deal presentation.
+
+16. ClassPass
+URL: https://classpass.com/
+Similarity: 58%
+Comparison Value: Fitness, salon, spa, and wellness booking platform. Relevant for
+location-based discovery, reviews, schedules, bookings, and treatment listings.
+
+17. Soothe
+URL: https://www.soothe.com/
+Similarity: 56%
+Comparison Value: On-demand wellness marketplace for massage, skincare, hair, and beauty.
+Relevant for provider booking, home or hotel delivery, and appointment operations.
+
+18. Healers Touch
+URL: https://healerstouch.ph/
+Similarity: 54%
+Comparison Value: Philippine home-service massage provider. Relevant for service information,
+pricing, service descriptions, and direct booking presentation.
+
+================================================================================
+3. PROFESSIONAL DIRECTORIES AND TRUST REFERENCES
+================================================================================
+
+19. ABMP Members Directory
+URL: https://www.abmpmembers.com/
+Similarity: 62%
+Comparison Value: Massage therapist and bodyworker locator. Relevant for professional
+discovery, location search, credential-oriented trust, and therapist profiles.
+
+20. AMTA Find a Massage Therapist
+URL: https://www.amtamassage.org/find-massage-therapist/
+Similarity: 61%
+Comparison Value: Professional massage-therapist locator. Relevant for association-backed
+trust, location search, and massage-focused directory design.
+
+================================================================================
+4. COMMUNITY AND CAUTIONARY REFERENCES
+================================================================================
+
+21. People Like Us
+URL: https://peoplelikeus.activeboard.com/
+Similarity: 45%
+Comparison Value: Private lifestyle discussion board containing massage, spa, travel, and
+community discussions. Relevant mainly for user-generated recommendations and discussions.
+
+22. Massage Republic
+URL: https://massagerepublic.com/
+Similarity: 44%
+Comparison Value: Adult-oriented provider directory and review platform. Structurally relevant
+for profiles, reviews, questions, verification signals, advertiser tools, and moderation, but
+its adult-service orientation is not a content model for Massage Nexus.
+
+23. Bodyrubsmap
+URL: https://bodyrubsmap.com/
+Similarity: 42%
+Comparison Value: Adult-adjacent bodywork advertising directory. Useful only as a structural
+and cautionary reference for location ads, provider posting, search, moderation, and safety.
+
+24. Rubmaps
+URL: https://www.rubmaps.ch/
+Similarity: 40%
+Comparison Value: Negative-reference case associated in news reporting with illicit
+massage-parlor activity. Relevant for identifying harmful review behavior, coded language,
+exploitation risks, unsafe moderation patterns, and features Massage Nexus must not enable.
+
+================================================================================
+5. COMPARISON USE
+================================================================================
+
+Review comparable platforms for:
+- discovery and search;
+- profile structure;
+- service and price presentation;
+- provider verification;
+- reviews and ratings;
+- booking flow;
+- owner and therapist tools;
+- promotions and vouchers;
+- location and map behavior;
+- community interaction;
+- content safety and moderation;
+- privacy and exploitation risks.
+
+Do not copy another platform's taxonomy, wording, interface, data, or unsafe business model.

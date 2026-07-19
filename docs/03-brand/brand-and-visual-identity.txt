@@ -1,0 +1,165 @@
+Brand and Visual Identity
+=========================
+Document Version: 1.60
+Date Created: 2026-07-01
+Revision Date: 2026-07-15
+
+
+About the Logo
+--------------
+
+The Massage Nexus logo brings together a supportive hand, connected nodes, a flowing body/spine-like line, and a leaf to represent human care, wellness, connection, and guided discovery. The hand reflects the healing value of touch and the platform’s focus on massage and restorative care, while the flowing line suggests the body, movement, relief, and physical balance. The connected nodes express the meaning of “Nexus”: spas, therapists, services, reviews, learning resources, products, users, and community activity coming together in one organized platform. The leaf adds a sense of natural wellness, calm, and renewal, softening the more technical connection motif. The deep navy, charcoal, ember orange, and green palette balances trust, professionalism, warmth, and organic care.
+
+The custom lettering is clean, modern, and highly readable, giving the brand a polished platform identity rather than a generic spa-only look. The stylized orange “X” in “Nexus” serves as a memorable visual accent, reinforcing crossing paths, connection, discovery, and the meeting point between people, places, and wellness experiences.
+
+Logo variations are located at C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\branding
+
+
+Theme: Ink & Ember
+------------------
+
+Ink & Ember was chosen as the visual theme because it gives Massage Nexus a stronger and more memorable identity than the usual soft spa palette. The “Ink” side represents structure, clarity, professionalism, and trust through deep black, charcoal, and navy tones. The “Ember” side adds warmth, energy, and attention through orange accents, preventing the design from feeling too cold, plain, or overly corporate.
+
+The theme supports wellness through controlled green accents, which suggest balance, care, recovery, and natural calm. Together, the colors create a modern massage and wellness platform that feels bold but not aggressive, calm but not boring, and premium without feeling unreachable. Ink & Ember helps Massage Nexus stand out as a serious digital platform while still keeping the warmth and comfort expected from a spa and massage-related brand.
+
+Specifications for Ink & Ember at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\zenith_main\theme_main v1.01.json
+
+
+Brand Footer Strip
+------------------
+
+The Massage Nexus Brand Footer Strip is the reusable visual footer used for branded graphics, design boards, mockup sheets, printed materials, PDF or DOCX exports, stationery-style documents, presentation images, social media layouts, and other visual materials where a polished brand signature is useful. It is different from the website footer and should not be treated as a navigation area. The website footer may contain links and functional site information, while the Brand Footer Strip is mainly a visual identity element.
+
+The preferred footer strip uses the Ink & Ember system with a dark navy or light-mode variant, abstract background detail, subtle flowing lines, dotted texture, diagonal signature slash accents, and clean divider lines. The full-width version should include the Massage Nexus logo or logo with wordmark, the brand positioning line “The leading platform for massage, wellness, and connection.”, the full copyright line “Copyright © 2026. MassageNexus.com.”, the phrase “Discover. Book. Relax.”, and the blue/orange/green diagonal slash marks. On narrower layouts, the footer should remove optional elements progressively rather than squeezing everything into an unreadable strip.
+
+Responsive footer versions may include full width, medium width, compact width, and micro width layouts. The full version is preferred for posters, brochures, design boards, certificates, and wide images. Medium and compact versions are useful for narrower documents, social media graphics, cards, and presentation layouts. The micro version should be reserved for signatures, watermarks, or very narrow spaces where only a logo or copyright line can remain readable. The footer should stay straight, aligned, and visually clean, especially when used at the bottom of generated images.
+
+Brand footer strip visual reference is located at C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\branding
+
+
+Identity Materials: Calling Card, ID Card and Lanyard
+-----------------------------------------------------
+
+The Massage Nexus identity materials are designed for people officially involved with the platform, including the Founder, Correspondents, Brand Ambassadors, Editors, and other authorized project roles that may be defined later. These materials are not limited to field work. They support public trust, brand recognition, event visibility, spa visits, partnership conversations, and internal presentation. The system should feel modern, polished, and desirable enough that the lanyard, ID, and calling card do not feel like generic office supplies.
+
+The visual direction should use the Massage Nexus logo, the Ink & Ember theme colors, clean readable typography, rounded card edges, curved color bands, subtle node/leaf/body-line motifs, and enough white space to keep the items professional. The main colors are deep navy, charcoal, white, ember orange, royal blue, and leaf green. Orange is used for energy, emphasis, and role accents. Green is used for wellness, trust, and natural balance. Navy and charcoal provide structure and professionalism. White is used heavily in the calling card and ID design to reduce printing cost and keep printed materials clear.
+
+
+Calling Card Design
+~~~~~~~~~~~~~~~~~~~
+
+The Massage Nexus calling card should be usable by authorized people when speaking to spas, therapists, wellness businesses, event contacts, sellers, or potential partners. The first design direction should use a vertical card layout, white-dominant front, navy-dominant back, rounded corners, and the Massage Nexus logo. It should avoid a full black background to reduce print cost. It should not require an office address or personal home phone number because Massage Nexus is currently a virtual-first platform.
+
+Calling cards can be person-specific or purpose-specific. For the first sprint, the main mock-up can be a personal calling card for Caleb Rivera as Brand Ambassador. Later, purpose-based cards may be created for “List Your Spa,” “Claim Your Spa,” “List Your Therapist Profile,” or “Claim Your Therapist Profile.” Purpose-based cards are reusable and cheaper to print because they are not tied to a specific person.
+
+
+Recommended calling card specifications:
+- Standard size option: 90 mm × 54 mm if horizontal, or 54 mm × 90 mm if vertical.
+- Orientation for current mock-up direction: vertical.
+- Finish: matte or soft-touch matte.
+- Corners: rounded.
+- Front: white-dominant with logo, slogan, short service keywords, QR code, and curved navy/orange/green accents.
+- Back: navy-dominant with the person’s name, role, fictional mobile number, email, website, social media handle, and subtle brand motif.
+- Printing: full-color front and back.
+- QR concept: QR code with Massage Nexus logo centered inside the code area.
+
+
+Calling card front content:
+- Massage Nexus logo.
+- Slogan: Find Your Next Great Massage.
+- Optional three-word line: Discover. Book. Relax.
+- Service keywords: Spas, Therapists, Reviews, Wellness, Deals & More.
+- QR code.
+
+
+Calling card back content:
+- Massage Nexus logo or symbol.
+- Full name.
+- Role title.
+- Mobile number.
+- Email address.
+- Website: MassageNexus.com.
+- Massage Nexus social media handle or person-specific mock-up handle.
+
+ID Card Design
+~~~~~~~~~~~~~~
+
+The ID card is for verifying that the holder is associated with Massage Nexus. It should look official, modern, and worth showing to spa owners, event organizers, partners, and other contacts. The ID should not feel like a school ID or a cheap staff badge. It should clearly show the person’s identity, role, QR verification concept, and return information.
+
+
+Recommended ID specifications:
+- Card standard: CR80 PVC ID card.
+- Card size: 85.6 mm × 54 mm.
+- Orientation: vertical.
+- Thickness: 0.76 mm PVC card.
+- Holder: clear vertical ID holder or rigid badge holder.
+- Finish: matte or semi-gloss.
+- Corners: rounded.
+- Layout style: white-dominant front with navy base/footer and orange/green curved accent bands.
+- QR concept: QR code with the Massage Nexus logo centered inside the code area. The QR may later point to a public verification page.
+
+
+ID card front content:
+- Massage Nexus logo.
+- Photo of the holder.
+- Full name.
+- Role title (such as Founder, Correspondent, Brand Ambassador, or Editor).
+- ID number.
+- QR code.
+- MassageNexus.com.
+- Slogan.
+
+
+ID card back content:
+- Massage Nexus logo or symbol.
+- Authorized representative statement.
+- Holder signature.
+- Validity date.
+- Emergency contact name.
+- Emergency contact number.
+- Return note.
+- MassageNexus.com.
+
+Lanyard Design
+~~~~~~~~~~~~~~
+
+The lanyard is a reusable general Massage Nexus lanyard rather than a person-specific item. It may later have role-based versions, but the first version should work for any authorized person. The recommended width is 20 mm, using polyester or satin polyester suitable for full-color sublimation printing. The lanyard should use a deep navy base with bold diagonal bands, dotted texture, subtle node patterning, and repeated Massage Nexus logo/wordmark placements. The design should feel energetic and premium, not plain, school-like, or overly corporate.
+
+
+Recommended lanyard specifications:
+- Width: 20 mm.
+- Length: standard adult loop, approximately 900 mm total loop length / around 450 mm drop.
+- Material: woven polyester, satin polyester, or high-quality sublimation polyester.
+- Printing: full-color dye sublimation.
+- Base color: deep navy.
+- Accent colors: ember orange, leaf green, white, and controlled blue.
+- Hardware: black metal swivel hook or black coated metal hook.
+- Safety feature: breakaway safety clasp at the back of the neck.
+- Attachment: suitable for clear ID holder, PVC ID card holder, or event badge holder.
+- Design motif: repeated Massage Nexus logo/wordmark, diagonal accent stripes, dotted motion texture, and subtle connection/node patterning.
+
+
+In-Universe Visual Brands
+-------------------------
+
+Massage Nexus may use fictional or in-universe brands for comics, mockups, example scenes, visual storytelling, and demonstration content. These brands help make the Massage Nexus world feel lived-in without implying that Massage Nexus directly operates those businesses or services. Their logos and environments should be visually consistent enough to be reused, but they should remain clearly separate from the official Massage Nexus platform identity.
+
+
+The Resting Leaf
+~~~~~~~~~~~~~~~~
+
+The Resting Leaf is an in-universe spa and wellness retreat used for Massage Nexus comics, cast scenes, mockups, demo content, and educational visuals. It represents the fictional spa environment where many Nexus Cast stories can happen. Its visual identity uses a premium tropical wellness style with warm lighting, wood, stone, plants, soft gold accents, and a calm restorative atmosphere.
+
+The Resting Leaf logo uses a leaf-focused mark with green and gold tones. It should feel more spa-like, organic, and retreat-oriented than the Massage Nexus platform logo. When used in scenes, The Resting Leaf should be treated as a fictional establishment within the Massage Nexus world, not as the official Massage Nexus brand itself.
+
+The Resting Leaf visual references are located at C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\the resting leaf
+
+
+Sugod Express
+~~~~~~~~~~~~~
+
+Sugod Express is an in-universe delivery service used for The Resting Leaf and other Massage Nexus visual storytelling scenes. It is mainly connected to delivery-rider scenarios, product delivery jokes, campaign mockups, wellness finds content, and comic interruptions. It is not part of the main Massage Nexus brand system and does not need to follow the Ink & Ember palette.
+
+The Sugod Express logo uses a fast red motion mark with bold black and red lettering. Its visual identity should feel energetic, street-level, practical, and delivery-oriented. When shown in comics or mockups, it should be treated as a fictional outside-world service that helps the Massage Nexus universe feel broader and more realistic.
+
+Sugod Express visual references are located at C:\Users\Xylon\OneDrive\Pictures\generated\text-prompt\ChatGPT\project\Massage Nexus\the resting leaf

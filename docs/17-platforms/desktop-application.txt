@@ -1,0 +1,401 @@
+Title: Massage Nexus Desktop Application
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines the installable desktop application for high-volume administration, research, media, data quality, translation, moderation, support, provider operations, offline work, bulk import and export, local integration, and advanced multi-window workflows.
+
+Related Documents:
+- Massage Nexus Web Application
+- Massage Nexus Mobile Application
+- Massage Nexus First-Party App API
+- Massage Nexus Cache and Temporary Data Strategy
+- Massage Nexus Data Research Provenance and Field Verification System
+- Massage Nexus Translation System
+- Massage Nexus Support and Ticketing System
+- Massage Nexus Security Architecture and Information Disclosure Policy
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+The desktop application is an installed workspace for:
+- administrators;
+- researchers;
+- translators;
+- moderators;
+- support agents;
+- editors;
+- provider operators;
+- data managers;
+- authorized enterprise users.
+
+It emphasizes:
+- multi-window work;
+- keyboard efficiency;
+- bulk operations;
+- large datasets;
+- local files;
+- offline work;
+- long-running tasks;
+- advanced media and document handling.
+
+It uses the same server-side permissions and business rules as web and mobile.
+
+================================================================================
+2. DESKTOP-EXCLUSIVE OR PRIMARILY DESKTOP CAPABILITIES
+================================================================================
+
+- multi-window workspace;
+- detachable panels;
+- keyboard command system;
+- bulk file import;
+- watched import folders;
+- drag-and-drop directory processing;
+- local document comparison;
+- high-volume media organization;
+- batch metadata editing;
+- local export packages;
+- background synchronization;
+- long-running research jobs;
+- spreadsheet-like data review;
+- scanner integration where supported;
+- local print and label workflows;
+- system-tray task monitoring;
+- encrypted offline workspaces;
+- local diagnostic bundles;
+- bulk translation packages;
+- advanced duplicate resolution.
+
+Limited web alternatives may exist, but these workflows are designed around desktop hardware
+and local file systems.
+
+================================================================================
+3. ADMINISTRATION AND DATA RESEARCH
+================================================================================
+
+Desktop-enhanced administration:
+- account review;
+- profile merge;
+- taxonomy editing;
+- bulk Corrections;
+- permission review;
+- moderation queue;
+- Support queue;
+- provider and advertiser review;
+- exports;
+- audits;
+- scheduled-task monitoring.
+
+Research:
+- side-by-side sources;
+- evidence viewer;
+- map comparison;
+- historical snapshots;
+- contradiction resolution;
+- source import;
+- menu transcription;
+- social observation review;
+- city coverage;
+- field-report synchronization;
+- duplicate review.
+
+High-risk actions require server authorization, recent authentication, confirmation, and
+audit. Installation grants no additional authority.
+
+================================================================================
+4. TRANSLATION AND MEDIA
+================================================================================
+
+Translation:
+- side-by-side editor;
+- large key sets;
+- glossary;
+- translation memory;
+- source diff;
+- stale review;
+- batch export and validated import;
+- keyboard shortcuts;
+- multi-locale comparison;
+- context preview.
+
+Media:
+- batch upload;
+- folder import;
+- metadata;
+- duplicate detection;
+- derivative preview;
+- captions and alt text;
+- rights and consent metadata;
+- access classification;
+- transcoding status;
+- archive export.
+
+Server validation and publication remain authoritative.
+
+================================================================================
+5. SUPPORT AND MODERATION
+================================================================================
+
+Support:
+- multi-ticket workspace;
+- keyboard triage;
+- internal notes;
+- knowledge search;
+- complaint evidence;
+- issue conversion;
+- response templates;
+- escalation dashboard;
+- advertiser account context.
+
+Moderation:
+- queue comparison;
+- media review;
+- thread context;
+- translation comparison;
+- repeated-abuse patterns;
+- appeals;
+- audit.
+
+Sensitive records require role access and protected local cache.
+
+================================================================================
+6. PROVIDER OPERATIONS
+================================================================================
+
+Eligible provider desktop tools:
+- reception dashboard;
+- bookings;
+- queue;
+- walk-ins;
+- therapist schedule;
+- room and resource schedule;
+- check-in;
+- invoice and receipt printing;
+- compensation reports;
+- inventory;
+- branch comparison;
+- exports;
+- offline continuity.
+
+Access is restricted to authorized provider records.
+
+================================================================================
+7. BULK IMPORT AND EXPORT
+================================================================================
+
+Possible formats:
+- CSV;
+- JSON;
+- spreadsheet;
+- media package;
+- translation package;
+- research package;
+- report package.
+
+Import:
+1. select source;
+2. validate schema;
+3. preview;
+4. identify duplicates and conflicts;
+5. map fields;
+6. apply permissions;
+7. dry run;
+8. submit;
+9. review result;
+10. preserve audit.
+
+Bulk import never bypasses validation or silently overwrites verified data.
+
+================================================================================
+8. OFFLINE WORKSPACE
+================================================================================
+
+Offline-capable:
+- assigned research;
+- translation packages;
+- draft content;
+- selected Support drafts;
+- approved provider operations;
+- local exports;
+- public reference data.
+
+States:
+- local;
+- pending;
+- syncing;
+- conflict;
+- failed;
+- completed.
+
+Sensitive offline data:
+- is encrypted;
+- may expire;
+- supports remote revocation;
+- excludes unnecessary records;
+- clears after account removal or policy.
+
+The desktop application does not maintain an uncontrolled full production database replica.
+
+================================================================================
+9. LOCAL FILE SYSTEM
+================================================================================
+
+Possible areas:
+- user-selected workspace;
+- import;
+- export;
+- temporary processing;
+- cache;
+- logs;
+- encrypted local database.
+
+Rules:
+- show storage location;
+- avoid hidden permanent copies;
+- support cleanup;
+- protect sensitive files;
+- keep secrets out of ordinary text;
+- validate paths;
+- prevent traversal;
+- handle removable drives carefully.
+
+================================================================================
+10. PLATFORM AND UPDATE MODEL
+================================================================================
+
+Windows is the likely initial platform.
+
+The capability specification does not bind the application to a particular desktop framework.
+
+Later desktop platforms use the same API and permissions.
+
+Update system:
+- signed packages;
+- integrity verification;
+- version check;
+- release notes;
+- staged rollout;
+- rollback or reinstall path;
+- minimum supported version;
+- forced update only for security or compatibility.
+
+Do not execute unsigned production code.
+
+================================================================================
+11. SECURITY
+================================================================================
+
+Use:
+- passkeys or secure authentication;
+- encrypted token storage;
+- device registration;
+- session revocation;
+- signed application;
+- encrypted sensitive local data;
+- automatic lock;
+- safe logs;
+- least privilege;
+- server permission recheck;
+- secure updates;
+- export controls.
+
+A local installation is not automatically trusted.
+
+================================================================================
+12. PERFORMANCE AND ACCESSIBILITY
+================================================================================
+
+Desktop may:
+- process larger data;
+- use local indexes;
+- queue background tasks;
+- stream files;
+- pause and resume imports;
+- create local previews.
+
+Long operations show progress, current item, errors, pause, cancel, retry, and final report.
+
+Support:
+- keyboard-first operation;
+- screen readers;
+- scalable interface;
+- contrast;
+- focus visibility;
+- accessible tables;
+- shortcut alternatives;
+- reduced motion;
+- clear progress and recovery.
+
+================================================================================
+13. PLATFORM BOUNDARIES
+================================================================================
+
+Web is better for:
+- canonical public pages;
+- search indexing;
+- public Help and policy;
+- immediate browser access;
+- public sharing.
+
+Mobile is better for:
+- location;
+- camera field work;
+- push;
+- QR;
+- portable booking;
+- on-site contribution.
+
+Desktop focuses on high-volume, multi-window, local-file, bulk, and offline work.
+
+================================================================================
+14. ANALYTICS AND TESTING
+================================================================================
+
+Measure:
+- version;
+- crash;
+- startup;
+- synchronization;
+- import and export;
+- task completion;
+- queue performance;
+- cache;
+- update adoption;
+- local-storage failures.
+
+Do not collect private local filenames or file content without approved diagnostics and user
+consent.
+
+Test:
+- installation;
+- update;
+- rollback;
+- authentication;
+- secure storage;
+- multi-window;
+- bulk import;
+- dry run;
+- export;
+- local files;
+- offline;
+- synchronization;
+- conflict;
+- remote revocation;
+- accessibility;
+- background jobs;
+- crash recovery;
+- large datasets;
+- account switching;
+- cleanup.
+
+================================================================================
+15. CURRENT DIRECTIONS
+================================================================================
+
+- Desktop is an installed high-volume operational and administrative client.
+- It uses the same server API, permissions, and business rules as web and mobile.
+- Its strengths are multi-window work, keyboard operation, bulk import and export, local files,
+  media processing, large data review, and encrypted offline workspaces.
+- It does not replace the canonical public web application.
+- It does not maintain an uncontrolled production database copy.
+- Windows is the likely initial platform without embedding a framework decision here.

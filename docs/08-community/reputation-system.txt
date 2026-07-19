@@ -1,0 +1,410 @@
+Massage Nexus Reputation System
+===============================
+
+Field            | Value
+-----------------+--------------------------------
+Title            | Massage Nexus Reputation System
+Document Version | 1.70
+Date Created     | 2026-07-07
+Revision Date    | 2026-07-09
+
+Document Description
+--------------------
+
+This document defines the Massage Nexus reputation system: the score scale, reputation labels, level thresholds, scoring principles, trust signals, penalties, formula, rating-weight connection, and visual label direction.
+
+Reputation is separate from Nexus Points, Embers, Inklings, badges, contribution count, rank paths, roles, verification, moderation authority, and paid status.
+
+Core Principle
+--------------
+
+Massage Nexus Reputation measures community-tested trust quality.
+
+It is not simple popularity, not a staff-assigned position, and not a purchased benefit. Reputation reflects whether a user’s reviews, ratings, corrections, reports, comments, discussions, translations, media, and other contributions are useful, accurate, fair, respectful, and trusted over time.
+
+Reputation may increase or decrease. A user can build trust through consistently useful activity, and a user can lose trust through abuse, manipulation, misinformation, repeated low-quality behavior, or moderation issues.
+
+Reputation Score Scale
+----------------------
+
+Massage Nexus uses a 0 to 10,000 Reputation Score.
+
+The score is intentionally larger than a 0 to 1,000 scale so that high reputation cannot be reached easily through one viral item, one popular article, or a small number of upvotes. The highest level should require broad, repeated, and durable trust across time.
+
+New registered users start at:
+
+Code block (text):
+    2,000 Reputation Score
+
+This places a normal new user at Balanced. A new user is treated as neutral, not automatically distrusted. Users may fall below Balanced if they trigger moderation penalties, suspicious behavior, repeated rejected contributions, or other negative trust signals.
+
+Reputation Levels
+-----------------
+
+Level | Reputation Label | Score Range  | Meaning
+------+------------------+--------------+-----------------------------------------------------------------------------------
+1     | Unsettled        | 0–999        | New-risk, unclear, suspicious, recently problematic, or heavily penalized account.
+2     | Warming Up       | 1,000–1,999  | Beginning or recovering user with limited proven trust.
+3     | Balanced         | 2,000–3,499  | Normal stable user with acceptable behavior and no strong trust signal yet.
+4     | Grounded         | 3,500–4,999  | Consistently useful and respectful participant.
+5     | Steady Hands     | 5,000–6,499  | Reliable contributor with repeated good signals and low issue rate.
+6     | Trusted Touch    | 6,500–7,999  | Strong trust signal from useful, accurate, respectful, and validated activity.
+7     | Guiding Hand     | 8,000–8,999  | Highly trusted user whose input helps guide community understanding.
+8     | Nexus Pillar     | 9,000–10,000 | Exceptional long-term trust and platform value across multiple trust areas.
+
+Level-Gated Trust
+-----------------
+
+Reaching a score threshold is not always enough for the highest reputation levels. Level 7 and Level 8 require both score and quality conditions.
+
+Guiding Hand Requirements
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A user may be shown as Guiding Hand when all of the following are true:
+
+- Reputation Score is at least 8,000.
+- The account has no active serious moderation restriction.
+- The user has meaningful positive history in at least two trust categories.
+- The user has a low confirmed dispute, reversal, or abuse rate.
+
+Nexus Pillar Requirements
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A user may be shown as Nexus Pillar when all of the following are true:
+
+- Reputation Score is at least 9,000.
+- The account is at least 180 days old.
+- The account has no active serious moderation restriction.
+- The user has meaningful positive history in at least three trust categories.
+- The user has a low confirmed dispute, reversal, or abuse rate.
+- The user’s positive reputation is not based only on one viral item, one content type, gifts, purchases, or cosmetic support.
+
+If a user reaches the score threshold but fails the level-gated requirements, the system may keep the user at the highest eligible level until the missing condition is satisfied.
+
+Reputation Categories
+---------------------
+
+Reputation should be built from several trust categories rather than one general popularity score.
+
+Category           | What It Measures                                                        | Example Sources
+-------------------+-------------------------------------------------------------------------+-------------------------------------------------------------------------------
+Review Trust       | Whether the user’s reviews are useful, fair, specific, and low-dispute. | Helpful review votes, editor quality checks, low review reversal rate.
+Rating Trust       | Whether the user’s ratings are reliable and non-manipulative.           | Rating alignment, criteria-rating consistency, absence of suspicious patterns.
+Contribution Trust | Whether the user improves platform records accurately.                  | Approved corrections, approved listing submissions, low rejected-edit rate.
+Community Trust    | Whether the user participates constructively.                           | Helpful comments, useful discussion replies, respectful participation.
+Report Trust       | Whether the user reports real issues responsibly.                       | Confirmed valid reports, useful safety reports, low malicious-report rate.
+Content Trust      | Whether the user-created content is useful and approved.                | Articles, guides, translations, media, and other approved content.
+Conduct Trust      | Whether the user behaves safely and respectfully.                       | No harassment, no spam, no manipulation, no serious moderation issue.
+
+Reputation Sources
+------------------
+
+Reputation may increase through weighted and capped signals from the following areas.
+
+Source Area                              | Reputation Effect
+-----------------------------------------+------------------------------------------------------------------------------------------------
+Reviews                                  | Strong source when reviews are helpful, specific, low-dispute, and editor-approved.
+Criteria Ratings                         | Strong source when ratings show reliable alignment and are not manipulative.
+Community Discussions                    | Moderate source when comments or replies are helpful, fair, and respectful.
+Contributions                            | Strong source when corrections, listing submissions, media, and data improvements are approved.
+Safety and Reporting                     | Strong source when reports are valid and help protect the platform.
+Media Uploads                            | Moderate source when media is useful, approved, properly labeled, and non-duplicative.
+Articles and Resources                   | Moderate to strong source, but capped to prevent virality from overpowering trust.
+Translations                             | Moderate source when translations are accurate, readable, approved, and useful.
+Massage Campus                           | Small or indirect source only when tied to meaningful competency or contributor credibility.
+Booking and Completed Sessions           | Indirect source only; booking proves experience context but should not itself raise reputation.
+Owner, Practitioner, or Seller Responses | Careful source when responses are helpful, respectful, transparent, and not self-serving.
+
+Actions That Should Not Increase Reputation
+-------------------------------------------
+
+Reputation should not increase from:
+
+- quizzes alone;
+- polls alone;
+- logging in;
+- daily check-ins alone;
+- spending Embers;
+- spending Inklings;
+- buying premium;
+- purchasing gifts;
+- receiving gifts;
+- cosmetic purchases;
+- having many Nexus Points alone;
+- having many badges alone;
+- booking alone without meaningful review, rating, or verified experience signal;
+- popularity alone without quality or trust controls.
+
+Helpful Votes and Community Reactions
+-------------------------------------
+
+Individual helpful votes, thumbs up, or positive reactions should not directly grant large reputation points.
+
+A helpful vote creates a small reputation signal. That signal is affected by:
+
+- voter trust;
+- item type;
+- item quality;
+- source weight;
+- diminishing returns;
+- anti-abuse checks;
+- daily limits;
+- per-item caps.
+
+A normal user helpful vote should usually be a small signal. A helpful mark from a Review Editor, Moderator, or other authorized quality reviewer may carry more weight because it reflects stronger quality confirmation.
+
+Per-Vote Signal Values
+----------------------
+
+Vote / Reaction Type                                        | Raw Reputation Signal
+------------------------------------------------------------+---------------------------------
+Helpful vote from normal registered user                    | +0.10 to +0.25
+Helpful vote from high-reputation user                      | +0.25 to +0.75
+Helpful mark from Review Editor or Moderator                | +2 to +10
+Not-helpful vote from normal registered user                | -0.05 to -0.15
+Confirmed misleading, abusive, or harmful item after review | Larger penalty based on severity
+
+These are raw signals before weighting, diminishing returns, caps, and abuse checks.
+
+Per-Item Reputation Caps
+------------------------
+
+A single item should not be able to carry a user to a high reputation level by itself.
+
+Item / Action Type              | Maximum Reputation Gain Per Item
+--------------------------------+---------------------------------
+One review                      | +100
+One article or guide            | +150
+One comment                     | +20
+One discussion thread           | +50
+One media upload                | +50
+One translation                 | +75
+One approved profile correction | +25
+One approved new listing        | +50
+One valid report                | +40
+
+The cap applies after raw signals, vote weights, quality weights, and diminishing returns are calculated.
+
+Diminishing Returns
+-------------------
+
+Diminishing returns prevent viral content from creating disproportionate reputation gains.
+
+Helpful Votes on Same Item | Diminishing Return Weight
+---------------------------+--------------------------
+1–10                       | 1.00
+11–50                      | 0.50
+51–200                     | 0.25
+201+                       | 0.10
+
+Example:
+
+A review receives 200 helpful votes from normal users. If each vote has a raw value of +0.20, the item does not simply gain +40 without controls. The system applies diminishing returns and the review’s per-item cap.
+
+Code block (text):
+    first 10 votes:    10 × 0.20 × 1.00 = 2.00
+    next 40 votes:     40 × 0.20 × 0.50 = 4.00
+    next 150 votes:   150 × 0.20 × 0.25 = 7.50
+    raw item gain: 13.50
+
+The review may still receive separate quality bonuses from editor approval, verified visit context, low dispute rate, or other trust factors, but it cannot exceed the review cap of +100.
+
+Reputation Formula
+------------------
+
+Massage Nexus Reputation is event-based. Each reputation event produces a reputation gain or penalty. The user’s current score is the starting score plus all valid reputation events, bounded between 0 and 10,000.
+
+Code block (text):
+    reputation_score = clamp(
+        base_score
+        + approved_quality_score
+        + community_helpfulness_score
+        + reliability_score
+        + conduct_score
+        - penalty_score,
+        0,
+        10000
+    )
+
+Where:
+
+Term                        | Meaning
+----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+base_score                  | Starting score, normally 2,000 for a new registered user.
+approved_quality_score      | Score from approved reviews, articles, translations, media, corrections, listings, and other accepted contributions.
+community_helpfulness_score | Score from weighted helpful votes, useful reactions, and community confirmation.
+reliability_score           | Score from rating alignment, low dispute rate, low reversal rate, valid reports, and repeated accuracy.
+conduct_score               | Score from sustained respectful participation and absence of serious moderation issues.
+penalty_score               | Negative score from abuse, spam, harassment, fake activity, misinformation, manipulative rating behavior, repeated low-quality behavior, and moderation penalties.
+clamp                       | Limits the final score so it cannot go below 0 or above 10,000.
+
+Reputation Event Formula
+------------------------
+
+For a positive reputation event:
+
+Code block (text):
+    positive_event_value = base_action_value
+                         × source_weight
+                         × voter_weight
+                         × item_quality_weight
+                         × diminishing_return_weight
+                         × anti_abuse_weight
+
+For a negative reputation event:
+
+Code block (text):
+    negative_event_value = base_penalty_value
+                         × severity_weight
+                         × confidence_weight
+                         × repeat_behavior_weight
+
+For item-based gains:
+
+Code block (text):
+    item_reputation_gain = min(
+        sum(positive_event_value for the item),
+        item_reputation_cap
+    )
+
+For final score update:
+
+Code block (text):
+    new_reputation_score = clamp(
+        old_reputation_score + item_reputation_gain - penalty_value,
+        0,
+        10000
+    )
+
+Formula Factor Definitions
+--------------------------
+
+Factor                    | Meaning                                                                                                                | Default
+--------------------------+------------------------------------------------------------------------------------------------------------------------+----------------------
+base_action_value         | The starting value of the positive event before weighting.                                                             | Depends on action.
+source_weight             | Strength of the source, such as verified review, editor-confirmed contribution, normal community vote, or weak signal. | 1.00
+voter_weight              | Weight based on the voter’s own trust level when the event is a vote or reaction.                                      | 1.00
+item_quality_weight       | Adjustment based on quality review, originality, specificity, usefulness, evidence, and moderation result.             | 1.00
+diminishing_return_weight | Reduces repeated signals from the same item after vote thresholds are reached.                                         | 1.00
+anti_abuse_weight         | Reduces or nullifies signals that appear suspicious, coordinated, farmed, or low-confidence.                           | 1.00
+base_penalty_value        | Starting negative value for a penalty event.                                                                           | Depends on violation.
+severity_weight           | Multiplier for how serious a violation is.                                                                             | 1.00
+confidence_weight         | Multiplier based on how confirmed the negative finding is.                                                             | 1.00
+repeat_behavior_weight    | Multiplier for repeated misconduct or repeated low-quality behavior.                                                   | 1.00
+
+If a factor is not applicable, use 1.00 by default.
+
+Positive Reputation Values
+--------------------------
+
+Reputation Source                                              | Suggested Effect
+---------------------------------------------------------------+------------------------------------
+Approved review published                                      | +10 to +30
+Review marked helpful by user                                  | +0.10 to +0.75 per vote before caps
+Review Editor quality bonus                                    | +5 to +25
+Criteria rating later aligns with trusted or editorial pattern | +1 to +5 per eligible rating
+Approved profile correction                                    | +5 to +20
+Approved new spa, therapist, or product listing                | +10 to +40
+Valid safety or abuse report confirmed                         | +10 to +40
+Helpful comment or discussion vote                             | +0.05 to +0.30 per vote before caps
+Moderator-marked helpful answer                                | +2 to +10
+Article helpful vote                                           | +0.05 to +0.30 per vote before caps
+Article editorial quality bonus                                | +10 to +50
+Approved translation                                           | +10 to +30
+Translation helpful vote                                       | +0.05 to +0.30 per vote before caps
+Approved useful media upload                                   | +5 to +20
+
+Negative Reputation Values
+--------------------------
+
+Negative Signal                                 | Suggested Effect
+------------------------------------------------+-------------------------------------------
+Minor rejected contribution from honest mistake | -1 to -5
+Repeated low-quality submissions                | -10 to -50
+Confirmed inaccurate correction                 | -5 to -25
+Review rejected for unsupported claims          | -10 to -40
+Review receives repeated confirmed disputes     | -10 to -100
+False or malicious report                       | -20 to -100
+Suspicious rating pattern                       | -25 to -200
+Manipulative rating behavior                    | -50 to -200
+Spam behavior                                   | -100 to -300
+Harassment or abusive conduct                   | -100 to -500
+Fake review or fake rating activity             | -100 to -500
+Serious safety or moderation violation          | -200 to -500
+Account restriction or suspension-level issue   | Force Level 1 or freeze reputation effect.
+
+Reputation Status Modifiers
+---------------------------
+
+A user may have a reputation score and a separate reputation status. Status modifiers protect the platform when an account is under review or restricted.
+
+Status       | Meaning                                                                | Effect
+-------------+------------------------------------------------------------------------+---------------------------------------------------------------------------------
+Normal       | Reputation works normally.                                             | No restriction.
+Under Review | Account has a pending trust or moderation concern.                     | Reputation label may show normally, but trust effects may be temporarily paused.
+Limited      | Account has reduced trust influence.                                   | Rating weight and reputation gains may be reduced.
+Frozen       | Account cannot gain reputation during investigation or penalty period. | Positive events do not increase score while frozen.
+Restricted   | Account has serious trust limitation.                                  | Reputation weight may be disabled or forced low.
+
+Reputation and XCES Rating Weight
+---------------------------------
+
+Reputation affects the trust weight used in XCES for user ratings. It should not make normal user ratings stronger than editorial ratings.
+
+Reputation Level | Label         | XCES Trust Weight
+-----------------+---------------+------------------
+1                | Unsettled     | 0.50
+2                | Warming Up    | 0.75
+3                | Balanced      | 1.00
+4                | Grounded      | 1.10
+5                | Steady Hands  | 1.20
+6                | Trusted Touch | 1.30
+7                | Guiding Hand  | 1.40
+8                | Nexus Pillar  | 1.50
+
+Editorial rating weight remains stronger than ordinary user reputation weight.
+
+Inactivity and Freshness
+------------------------
+
+Reputation should not automatically decay simply because a user is inactive.
+
+However, high-influence reputation may require recent trusted activity for full rating-weight effect. A Level 7 or Level 8 user who has no trusted activity for more than 365 days may keep the public reputation label, but their active XCES trust weight may temporarily soften until new validated activity occurs.
+
+Example:
+
+Code block (text):
+    A Nexus Pillar with no trusted activity for 365+ days may keep the Nexus Pillar label,
+    but rating trust weight may temporarily use Trusted Touch or Guiding Hand weight
+    until the user produces new validated activity.
+
+Visual Label Asset Direction
+----------------------------
+
+The reputation label asset is a set of eight professional horizontal profile tags, not square badges and not standalone icons. These labels are intended for user profiles, comments, posts, reviews, discussions, articles, and other write-ups where a user reputation label may be displayed.
+
+The preferred implementation is CSS/SVG rather than generated-image text. This prevents misspellings, duplicate labels, incorrect counts, text hallucination, and inconsistent sizing. Each label should have a transparent background and should work in both light mode and dark mode.
+
+The current asset direction uses narrow rounded labels with controlled colors, a small icon on the left, the reputation label text in the center, and subtle signal dots on the right. The labels should feel modern, clean, web-native, and professional rather than fantasy-styled.
+
+Reputation Label | Color Direction       | Icon Direction                        | Visual Meaning
+-----------------+-----------------------+---------------------------------------+-------------------------------------------------
+Unsettled        | Dark graphite / slate | Question mark symbol                  | Unclear, unproven, or unstable trust.
+Warming Up       | Warm amber / orange   | Flame or ember symbol                 | Early trust-building and recovery.
+Balanced         | Stable green          | Scale symbol                          | Fair, normal, stable participation.
+Grounded         | Stone / earth neutral | Anchor symbol                         | Rooted, steady, practical reliability.
+Steady Hands     | Deep blue             | Hands / care symbol                   | Consistent, controlled, dependable contribution.
+Trusted Touch    | Teal                  | Hand-and-heart or trusted-care symbol | Strong trust signal and helpful participation.
+Guiding Hand     | Purple                | Compass symbol                        | Respected guidance and high community trust.
+Nexus Pillar     | Gold / bronze         | Pillar symbol                         | Exceptional long-term trust and platform value.
+
+The reputation labels should remain visually distinct from:
+
+- 1:1 badges;
+- role badges;
+- verification badges;
+- rating assets;
+- award icons;
+- mascot or game assets.
+
+For live website use, CSS components are preferred because they are easier to theme, scale, localize, and maintain. SVG exports may be used when fixed image assets are needed.

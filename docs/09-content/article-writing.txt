@@ -1,0 +1,1006 @@
+Massage Nexus Article Writing Guide and Working Topic Calendar
+==============================================================
+
+Field            | Value
+-----------------+-----------
+Document Version | 2.10
+Date Created     | 2026-07-04
+Revision Date    | 2026-07-11
+
+Document Description
+--------------------
+
+This document defines Massage Nexus article-writing guidance, article topic scope, title selection, target article length ranges, Neural Agent use in article planning, approved article categories, target audience labels, research and source handling, visual direction, article NSFW levels, reading-duration handling, downloadable text-file output rules, article rating/reaction references, reputation-effect references, reward references, data-structure references, reusable article-thread and follow-up prompts, and the working article topic calendar.
+
+The listed calendar dates are brainstorming and planning guides for release order and seasonal timing, not permanent publication records. Once an article is published, remove it from this working list or move it to a separate published-content tracker.
+
+Core Article Direction
+----------------------
+
+Massage Nexus articles should help readers discover, understand, compare, discuss, and experience massage, spa, and wellness services with more confidence. Articles may cover practical spa-going guidance, massage education, practitioner and spa professionalism, local and global spa culture, wellness habits, caregiving, products, business operations, public awareness, and light fictional or comic-adjacent topics when they still connect to rest, touch, service culture, bodywork, or wellness discovery.
+
+Topic scope is about editorial focus, not censorship. Official Massage Nexus articles should avoid unrelated subjects unless there is a clear connection to the spa or wellness experience; for example, car repair is outside article scope by itself, but parking access, commuting to a spa, rider delivery interruptions, accessibility, or transport around a spa may be relevant if the article clearly connects those details back to the user experience.
+
+Target Article Length
+---------------------
+
+- Normal published article target: 900 to 1,500 words, roughly 6,000 to 11,000 characters.
+- Minimum normal article: 700 words, roughly 4,000 to 5,000 characters.
+- Maximum normal article: 2,000 words, roughly 12,000 to 15,000 characters.
+- Deep guide, professional guide, medical-caution guide, business guide, or complex safety guide: 1,800 to 3,000 words, roughly 12,000 to 22,500 characters.
+- Hard upper limit before splitting into multiple articles: 4,000 words, roughly 24,000 to 30,000 characters.
+- Short site update or announcement: 300 to 700 words, roughly 1,800 to 5,000 characters.
+
+These ranges are targets, not prison bars. A short article is acceptable when the topic is simple and complete, while a longer article is acceptable when the subject needs explanation, safety notes, examples, comparison, or step-by-step guidance.
+
+Reading Duration Guidance
+-------------------------
+
+Article reading duration should be computed systematically and stored internally in seconds.
+
+Display preference:
+
+- show minutes and seconds;
+- do not display only rounded minutes;
+- round up when the computed value has decimals or milliseconds.
+
+Examples:
+
+- 45 seconds;
+- 1 minute 30 seconds;
+- 3 minutes 12 seconds.
+
+Reading Duration Types
+~~~~~~~~~~~~~~~~~~~~~~
+
+Massage Nexus should support two reading-duration estimates:
+
+- visual reading duration;
+- spoken reading duration.
+
+Visual reading duration estimates silent reading.
+
+Spoken reading duration estimates reading aloud, screen-reader playback, or text-to-speech listening at a normal pace.
+
+Current content structures may still use a single reading_duration field as a primary visual reading estimate until the database structure is updated. Long term, reading_duration should support visual and spoken values.
+
+Working Formula for Latin-Script Articles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For English, Filipino, Taglish, Spanish, Bisaya, and similar space-separated languages:
+
+Code block (text):
+    visual_reading_seconds = ceil((word_count / 225) * 60)
+    spoken_reading_seconds = ceil((word_count / 150) * 60)
+
+The divisor represents estimated words per minute.
+
+For dense technical, legal, medical, policy, professional, or heavily instructional content, the visual reading divisor may be slower:
+
+Code block (text):
+    visual_reading_seconds = ceil((word_count / 200) * 60)
+
+This dense-content adjustment is more likely to apply to articles, policies, legal pages, safety guides, medical-caution articles, and professional guides than to normal narrative reviews.
+
+Character-Based Fallback
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Korean, Japanese, Chinese, and other languages where word counting may be unreliable, a future calibrated reading-duration system should be created.
+
+Temporary fallback candidates:
+
+Code block (text):
+    visual_reading_seconds = ceil((character_count / 900) * 60)
+    spoken_reading_seconds = ceil((character_count / 650) * 60)
+
+These fallback values are not final linguistic standards. Korean calibration should be prioritized before Japanese and Chinese if Korean support arrives earlier.
+
+What Text Is Counted
+~~~~~~~~~~~~~~~~~~~~
+
+Reading duration should count visible article body content.
+
+Do not count:
+
+- HTML tags;
+- hidden metadata;
+- database-only fields;
+- media tokens;
+- internal notes;
+- moderation notes.
+
+Captions should be counted only when displayed as part of the article body.
+
+AI and Reading Duration
+~~~~~~~~~~~~~~~~~~~~~~~
+
+If AI is not available, the system formula should compute reading duration.
+
+If AI is available, AI may recommend reading duration, but the system formula should remain available as a fallback and consistency check.
+
+Reading duration is an interface estimate, not a promise that every reader will finish at that exact time. Reading speed varies by person, language, device, complexity, and accessibility method.
+
+Article NSFW Level
+------------------
+
+Every completed article output should include an NSFW Level. The level describes the article as a whole; individual media items may receive a different level when their visual treatment is more or less sensitive than the written article.
+
+- None: Safe for general audiences; no meaningful adult, sexual, traumatic, or unusually sensitive content.
+- Mild: Non-sexual body exposure, clinical anatomy, ordinary bodily reactions, awkward body topics, or lightly sensitive wellness discussion.
+- Sensitive: Sexual-boundary discussions, adult-adjacent terminology, trauma, abuse, serious medical situations, distress, or other material that may require a content notice or limited preview.
+- Explicit: Detailed sexualized or graphic adult content. This level should be rare for official Massage Nexus articles and should require deliberate editorial approval.
+
+Men-focused, women-focused, LGBTQ-focused, couples-focused, pregnancy-related, or caregiving content is not automatically NSFW. Classification should be based on the actual treatment of the subject, not the identity of the audience.
+
+Article Rating and Community Response
+-------------------------------------
+
+Articles are rated through thumbs up and thumbs down reactions, not through the 1 to 10 rating system.
+
+The 1 to 10 rating system is reserved for experience or product targets such as spas, therapists, and products.
+
+Content reaction targets may include:
+
+- article;
+- news;
+- guide;
+- comic or comic strip;
+- review;
+- comment;
+- discussion thread;
+- media upload;
+- translation.
+
+For articles, thumbs up/down should answer a simple content question:
+
+- Was this useful, interesting, helpful, clear, or worth reading?
+
+A content reaction rates the content item. It is not a direct rating of the author.
+
+Article reactions may affect the credited author’s reputation through the Reputation System when the reactions create meaningful, weighted, capped, and abuse-checked helpfulness signals. A single article should not be able to create unlimited reputation gain, even when it becomes popular or viral.
+
+For multi-author content, any reputation effect should be shared among credited authors according to the Reputation System rules instead of being duplicated in full for every credited author.
+
+Article reactions should remain separate from article rewards. A user may receive a small reward for reacting, while the article author may receive a small reputation signal only when the reaction passes the Reputation System’s weighting, diminishing-return, and anti-abuse rules.
+
+Article Rewards Reference
+-------------------------
+
+Article-related rewards should be defined fully in the User Rewards and Gamification documentation.
+
+Current direction:
+
+- writing an approved article may earn Nexus Points, Embers, Inklings, badges, rank-path progress, or reputation effects depending on author type and policy;
+- rating an article with thumbs up/down may earn small rewards, subject to daily caps;
+- repeated low-effort voting should not become a farming route;
+- AI-generated or AI-assisted portions should not receive the same user-writing credit as fully user-written work unless policy later allows it;
+- reputation effects from article reactions should follow the Reputation System, not the reward table.
+
+Working reaction reward reference:
+
+Action                    | Nexus Points | Embers | Inklings
+--------------------------+--------------+--------+---------
+Thumbs up/down on content | 1            | 10     | 5
+
+A daily reward cap should apply to thumbs up/down actions. Current working cap is 25 rewarded thumbs up/down actions per day. Users may continue reacting after the cap, but they should not receive additional Nexus Points, Embers, or Inklings for those extra reactions on that day.
+
+Article author reputation effects should use weighted helpfulness signals, diminishing returns, per-item caps, and anti-abuse checks from the Reputation System. Article popularity alone should not be treated as proof of high author trust.
+
+Related Rating and Reputation Documents
+---------------------------------------
+
+Article reactions and article-author reputation effects should reference:
+
+- Massage Nexus - 14 - Rating System v1.10.md for content reaction rating rules and reward caps;
+- Massage Nexus - 16 - Reputation System v1.70.md for weighted helpfulness signals, per-item caps, diminishing returns, and author reputation effects.
+
+Articles themselves do not use the non-star 1 to 10 rating asset set because articles are content-reaction targets, not experience or product targets.
+
+Content and Media Structure References
+--------------------------------------
+
+Use the latest approved PHP structure guide files from:
+
+
+Code block (text):
+    C:\Users\Xylon\OneDrive\Documents\text\PHP Script\Massage Nexus\
+
+- content_main v??.php for shared content metadata, type_content, category, target audience, tags, authors, publication status, counters, visibility, and embedded record_note.
+- content_body v??.php for language-specific HTML body content, language_id, reading_duration, and translation-related body handling.
+- content_revision v??.php for content revision snapshots, review decisions, approval history, and change tracking.
+- media_image v??.php for image metadata, image relationships, NSFW level, tags, people detection/recognition, storage path, storage URL, dimensions, captions, alt text, and creator/editor data.
+- media_video v??.php for video metadata, video relationships, NSFW level, tags, thumbnails, storage path, storage URL, dimensions, captions, duration, and creator/editor data.
+
+
+This guide does not define public article routes. The article slug remains required metadata, but route structure belongs in the latest Massage Nexus Site Structure Map and related implementation documentation.
+
+For the current article-writing workflow, content_main can be treated as article-focused even though type_content exists for future content types such as news. Article bodies are stored as HTML in content_body, not as Markdown or plain text.
+
+Function of Neural Agents in Article Work
+-----------------------------------------
+
+Neural Agents function as editorial voice lenses, angle generators, draft helpers, reviewers, explainers, and recurring point-of-view systems for Massage Nexus content. They help shape rhythm, tone, examples, humor, skepticism, warmth, seriousness, or instructional clarity while the platform keeps factual responsibility, editorial direction, and publishing control.
+
+A Neural Agent assignment suggests the best-fit voice and angle for a topic; it does not mean the article becomes an uncontrolled character diary or that the platform loses ownership of quality. The article should still feel like a Massage Nexus publication, even when the selected voice is blunt, warm, chaotic, formal, poetic, or humorous.
+
+The canonical Neural Agent writing-style reference should be the shared JSON file located at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\common_reference\neural_agent.json. When creating or assigning an article, use the selected Neural Agent's article_writing_style, tone, humor_style, comment_style, personality, and relevant preferences from that JSON file as the writing-style source. Project-specific copies such as Massage Nexus Neural Agent Profile.json may be used during planning, but the shared common_reference file should remain the long-term reusable source.
+
+Suggested Neural Agent Fit
+--------------------------
+
+Neural Agent    | Best Fit
+----------------+------------------------------------------------------------------------------------------------------------------------------
+Atlas Blackwell | Best for safety, trust, boundaries, serious risks, protective guidance, and strategic warnings.
+Avery Knox      | Best for skeptical reviews, red flags, weak claims, overhype, and dry corrective articles.
+Brio Nexus      | Best for playful, internet-native, weird, fictional, pop-culture, and experimental angles.
+Cassian Brooks  | Best for brand-safe public-facing articles, PR, business reputation, marketing, and polished persuasion.
+Clara Hartmann  | Best for standards, credentials, quality criteria, legal or operational clarity, and formal explainers.
+Diether Solano  | Best for local practice, price awareness, practical spa-going advice, and street-level realism.
+Elliot Kane     | Best for quiet cultural, historical, atmospheric, spooky, or darker reflective pieces.
+Ember Sato      | Best for ambiance, lighting, visual design, aesthetics, luxury presentation, and sensory branding.
+Felix Tanaka    | Best for beginner tutorials, step-by-step explanations, forms, systems, practical how-to guides, and tools.
+Juno Reyes      | Best for friendly community-facing articles, social etiquette, relatable first-time concerns, and soft conversational warmth.
+Kenji Navarro   | Best for instructional bodywork, stretching, posture, breathing, movement, technique, and calm explanations.
+Maya Kestrel    | Best for sensory wellness, emotional rest, nature, stress, sleep, grief, and poetic recovery pieces.
+Noah Calder     | Best for balanced main-guide articles, fair comparisons, general wellness explanations, and calm conclusions.
+Nora Solis      | Best for caregiving, family support, seniors, pregnancy, home care, comfort, and nurturing safety topics.
+Paolo Vergara   | Best for humorous everyday situations, awkward body moments, barkada-friendly jokes, and light features.
+Rafael Cross    | Best for contrarian, debate-driven, uncomfortable, provocative, or industry-challenging opinion pieces.
+Yara Mendoza    | Best for dignity, access, fairness, community care, inclusion, advocacy, and public-awareness articles.
+
+How to Write a Good Massage Nexus Article
+-----------------------------------------
+
+A good Massage Nexus article should begin with a clear reader situation, question, tension, or scene, then guide the reader through the issue in a natural, narrated, well-worded way. It should feel connected to the reader without becoming generic, padded, or artificially simplified. The article should explain what matters, why it matters, what the reader can observe or do, and what practical conclusion they can take away.
+
+The selected Neural Agent's tone may stay intact, whether warm, strict, funny, skeptical, poetic, or blunt, but the article should still be organized and understandable. Personality should give the article flavor; it should not hide the point, confuse the reader, exaggerate claims, or turn useful content into empty performance.
+
+When the article deals with health, safety, pregnancy, medical conditions, senior care, disability, special populations, minors, legal matters, or post-injury situations, it should avoid promising cures or pretending to replace professional medical, legal, or regulatory advice. It may explain general considerations, warning signs, questions to ask, and when to consult a qualified professional.
+
+How to Choose the Right Topic
+-----------------------------
+
+Choose topics that help Massage Nexus become useful to real people: first-time spa guidance, massage types, hygiene, safety, communication, pricing, reviews, etiquette, local practice, global spa culture, practitioner professionalism, spa owner operations, wellness habits, products, caregiving, travel, public awareness, and character-friendly fictional what-if features connected to massage or wellness.
+
+A topic is strong when it answers a real reader question, reduces confusion, helps someone avoid a bad experience, explains a misunderstood practice, supports professional standards, or gives Massage Nexus a distinctive point of view. A topic is weak when it is only generic SEO filler, unrelated trivia, or something that could appear on any random website without a Massage Nexus reason for existing.
+
+How to Choose a Proper Article Title
+------------------------------------
+
+A proper title should be clear, specific, and honest about what the reader will get. It may be practical, witty, question-based, or editorial, but it should not trick the reader with fake urgency or unrelated clickbait. The best titles usually name the situation, the audience, the problem, or the comparison directly.
+
+Use plain language when the article is for beginners. Use stronger editorial wording when the topic needs a sharper opinion. Use subtitles after a colon when the title needs both a hook and a clear explanation. Sensitive topics should be titled directly and responsibly, not sensationally.
+
+Visual Direction and Media Planning
+-----------------------------------
+
+Every full article output should include a concise Visual Direction that can be handed to the separate Massage Nexus article-media thread. It should identify the main visual concept, appropriate image style, preferred aspect ratio when useful, and any important boundaries such as professional draping, no text, no identifiable brand imitation, or no people.
+
+An article may suggest one to five media items. Each item should state its intended placement, what it should show, and its own NSFW Level. Media suggestions should support the article rather than merely decorate it. The separate image-creation guide remains the controlling reference for final image generation and complete media metadata.
+
+Research and Source Use
+-----------------------
+
+Massage Nexus articles may use the writing assistant's stable general knowledge when the topic is ordinary, non-current, and primarily explanatory or editorial. However, the assistant should also search for credible resources whenever external research would materially improve accuracy, completeness, cultural context, or usefulness.
+
+Research is especially important for:
+
+- current laws, permits, licensing, registration, taxation, trademarks, and regulatory requirements;
+- medical, safety, pregnancy, disability, senior-care, rehabilitation, or contraindication topics;
+- country-specific naming practices, language use, cultural expectations, and business customs;
+- local pricing, location selection, zoning, transport, demographics, and market conditions;
+- historical claims, statistics, scientific claims, product changes, travel guidance, and current industry practice.
+
+Prefer official agencies, primary sources, recognized professional organizations, research publications, and reputable local references. Do not invent sources or cite a source that was not actually consulted.
+
+When sources are used, factual claims that depend on them should be attributed naturally in the article when appropriate, and every consulted source that materially informed the article should appear in the Sources section. Sources may be listed as None used when the article is original commentary, creative writing, general platform guidance, or a stable explanation that genuinely did not require external research.
+
+Article Category List
+---------------------
+
+No. | Category                                           | Description
+----+----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+01  | Platform and Community Identity                    | Launch notes, platform explanations, editorial identity, brand-world setup, community purpose, and Massage Nexus positioning belong here.
+02  | First-Time Massage and Spa Etiquette               | Beginner-friendly guidance about what happens before, during, and after a massage, including manners, comfort, clothing, conversation, and normal spa behavior.
+03  | Choosing Spas, Booking, Pricing and Reviews        | Decision-making articles that help readers compare establishments, understand value, read reviews, book wisely, and avoid poor-fit choices.
+04  | Safety, Boundaries and Professional Trust          | Articles about consent, professional limits, sensitive situations, ethical conduct, public trust, red flags, and the protection of both clients and practitioners.
+05  | Hygiene, Cleanliness and Service Comfort           | Practical articles about linens, rooms, oils, sanitation, skin concerns, smells, bodily noises, service comfort, and visible cleanliness signals.
+06  | Massage Types, Techniques and Traditions           | Plain-language explainers about massage modalities, bodywork traditions, treatment formats, technique differences, and how to choose a suitable style.
+07  | Pressure, Pain, Recovery and Aftercare             | Articles about pressure, soreness, hydration, heat, ice, exercise timing, post-treatment recovery, and knowing when discomfort is not normal.
+08  | Body, Posture and Stress Science                   | Accessible body-education content about muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and recovery mechanisms.
+09  | Everyday Wellness, Sleep and Self-Care             | Habit-based wellness articles about burnout, sleep, digital fatigue, sensory overload, decompression, rest routines, and small resets between spa visits.
+10  | Oils, Products and Home Wellness Tools             | Guides about oils, balms, linens, tools, aromatherapy, hydrotherapy items, home-care supplies, and practical wellness finds.
+11  | Special Care, Accessibility and Caregiving         | Content for pregnancy, seniors, children, disability, limited mobility, illness recovery, family caregiving, home support, and dignity-centered care.
+12  | Local Practice, Credentials and Global Spa Culture | Articles about local massage terms, credentials, regulations, cultural practices, travel etiquette, public bathhouses, tipping abroad, and international spa expectations.
+13  | Spa Business, Design and Operations                | Business-facing content about starting, managing, designing, pricing, staffing, marketing, scheduling, complaint handling, and improving establishment operations.
+14  | Practitioner Practice and Career Development       | Practitioner-focused articles about technique, ergonomics, boundaries, client communication, professional conduct, safety, reputation, and continuing growth.
+15  | Fictional, Seasonal and Pop-Culture Features       | Imaginative, seasonal, comic-adjacent, supernatural, celebrity-style, or pop-culture articles that still connect clearly to massage, recovery, touch, or wellness.
+
+Target Audience Labels
+----------------------
+
+No. | Audience     | Description
+----+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+01  | General      | Broad readers interested in Massage Nexus, wellness culture, public awareness, humor, body education, platform updates, or practical self-care.
+02  | Client       | People who book, compare, visit, or consider massage and spa services, including first-time spa-goers and regular clients.
+03  | Practitioner | Massage therapists, bodyworkers, wellness practitioners, students, or people practicing hands-on care in professional or learning contexts.
+04  | Owner        | Spa owners, establishment managers, operators, marketers, and decision-makers responsible for service quality, reputation, staffing, pricing, or business operations.
+05  | Caregiver    | Family members or helpers supporting older adults, patients, children, bedridden persons, recovering loved ones, or dependent family members.
+06  | Traveler     | Readers visiting spas, bathhouses, wellness destinations, or massage providers outside their familiar area or culture.
+
+Completed Article Text-File Output
+----------------------------------
+
+When a full article is requested, create a downloadable UTF-8 plain-text file instead of pasting the complete article into the chat. The text file contains all requested metadata, visual planning, article-ready HTML body, reading-duration values, and sources.
+
+If more than one article is requested, create one separate text file for each article.
+
+File Name Rules
+~~~~~~~~~~~~~~~
+
+- Use the final article title as the base file name.
+- Preserve normal spaces and readable capitalization.
+- Do not convert the file name into a slug and do not replace every space with a dash.
+- Add the .txt extension.
+- Make the name safe for Windows by removing or replacing \ / : * ? " < > |.
+- A colon should normally become  - so the title remains readable.
+- Remove trailing periods and spaces.
+- Collapse accidental repeated spaces.
+- If two requested articles produce the same file name, append  (2),  (3), and so on.
+
+Example:
+
+Code block (text):
+    How to Name a Spa Business - A Global Guide.txt
+
+Required Content of Each Article File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code block (text):
+    Title:
+    File Name:
+    Slug:
+    Short Description:
+    Category:
+    Target Audience:
+    Tags:
+    Neural Agent:
+    NSFW Level:
+    Reading Duration:
+    - Visual:
+    - Spoken:
+    Visual Direction:
+    Media:
+    Body:
+    Sources:
+
+The Body remains clean article-ready HTML even though the containing deliverable is a .txt file. Reading Duration should be calculated from the final visible article body and should include both stored seconds and a readable display value.
+
+Reusable Prompt Roles
+---------------------
+
+Massage Nexus uses three different prompt types:
+
+1. Article Writing Thread Starter Prompt: Used once when opening a dedicated article-writing thread. It establishes editorial scope, categories, audiences, Neural Agents, research behavior, output-file rules, and expected article structure.
+2. Follow-Up Article Request Prompt: Used after the thread has been established whenever one or more specific articles should be created.
+3. Article Image Thread Starter and Image Request Prompts: Used in a separate media-creation thread and should not be mixed with article drafting.
+
+Reusable Follow-Up Prompt for Requesting an Article
+---------------------------------------------------
+
+Use this after the Article Writing Thread Starter Prompt has already established the Massage Nexus context. The request may contain one article or several articles.
+
+Prompt
+~~~~~~
+
+Code block (text):
+    Create the following Massage Nexus article or articles using the established instructions for this thread.
+
+    Article Request 1
+    Topic or Working Idea: [TOPIC OR WORKING IDEA]
+    Working Title, if any: [OPTIONAL TITLE]
+    Category: [APPROVED CATEGORY, OR RECOMMEND ONE]
+    Target Audience: [General / Client / Practitioner / Owner / Caregiver / Traveler]
+    Suggested Neural Agent: [NAME, OR RECOMMEND ONE]
+    Target Length: [WORD RANGE, OR USE THE GUIDE]
+    Visual or Media Notes: [OPTIONAL]
+    Special Requirements: [OPTIONAL]
+
+    [Repeat the Article Request block when requesting more than one article.]
+
+    For each requested article:
+
+    - Research credible and current sources when external research would materially improve accuracy, completeness, cultural context, or usefulness.
+    - For medical, safety, legal, regulatory, country-specific, historical, statistical, pricing, travel, or location-sensitive topics, prioritize authoritative and current sources.
+    - Stable general knowledge, original commentary, and creative material may be written without external sources when research is not genuinely needed.
+    - Never fabricate a source. When no external source was used, write `Sources: None used`.
+    - Follow the selected Neural Agent's article-writing style, tone, humor, personality, and relevant preferences while keeping the article recognizably suitable for Massage Nexus.
+    - Write the Body in clean article-ready HTML without unnecessary inline styling.
+    - Position media tokens such as [media:image_1] or [media:video_1] where the suggested media belongs.
+    - Include a concise Visual Direction and one to five useful media suggestions. Images are preferred for Neural Agent-generated drafts unless video is genuinely necessary.
+    - Include the article NSFW Level and an NSFW Level for each suggested media item.
+    - Calculate visual and spoken reading duration from the final visible article body. Give both seconds and a readable display value.
+    - Create one downloadable UTF-8 `.txt` file per article. Do not paste the complete article into the chat unless file creation fails.
+
+    Use the final article title as the file name. Preserve spaces and readable capitalization. Do not slugify the file name. Remove or replace Windows-invalid characters: \ / : * ? " < > |. A colon should normally become ` -`. Add `.txt`.
+
+    Each file must use this structure:
+
+    Title: [not more than 75 characters]
+    File Name: [Windows-safe final title with .txt]
+    Slug: [not more than 100 characters]
+    Short Description: [not more than 255 characters]
+    Category: [approved category]
+    Target Audience: [approved target audience]
+    Tags: [comma-separated, lowercase; use hyphens inside multi-word tags]
+    Neural Agent: [selected writing-style basis]
+    NSFW Level: [None / Mild / Sensitive / Explicit]
+    Reading Duration:
+    - Visual: [seconds] ([readable duration])
+    - Spoken: [seconds] ([readable duration])
+    Visual Direction:
+    [concise hero-image or overall visual direction]
+    Media:
+    - image_1:
+      - placement: [body position or section]
+      - description: [what it should show or an image prompt]
+      - aspect ratio: [recommended ratio]
+      - NSFW Level: [None / Mild / Sensitive / Explicit]
+    - image_2: [optional]
+    - video_1: [optional and only when genuinely useful]
+    Body:
+    [clean article-ready HTML with correctly positioned media tokens]
+    Sources:
+    - [source title] | [organization or publication] | [URL or publication identifier]
+    or
+    Sources: None used
+
+Release Calendar Notes
+----------------------
+
+- Format: YYYY-MM-DD | Article Title | Category | Target Audience | Suggested Neural Agent | Suggested Word Count
+The calendar begins on World Massage Day, July 11, 2026. The dates are planning guides for release order and seasonal timing, not permanent publishing records. Once an article is published, remove it from this working list or move it to a separate published-content tracker. Some intentional date gaps may remain when a title fits better on a later occasion such as Mother's Day or Father's Day.
+
+
+Naming and Location Article Series
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The spa-naming series should begin with one global guide covering clarity, terminology, brand fit, cultural sensitivity, searchability, and the difference between a business name and its legal registration. Country-specific follow-ups should add local language, cultural expectations, trademark or registration considerations, and current rules without turning every article into registration instructions alone.
+
+The location series should include one general guide about market fit, accessibility, competition, rent, visibility, service model, and customer behavior, plus a separate Metro Manila guide reflecting local transport, density, parking, flooding, building types, neighborhood patterns, and city-specific business conditions.
+
+Article Topic Calendar and Classification
+-----------------------------------------
+
+Written means the original line was marked with ?, which the source file defines as written already.
+
+Status  | Date       | Article Title                                                                                                      | Category                                           | Target Audience | Suggested Neural Agent | Suggested Word Count
+--------+------------+--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+-----------------+------------------------+---------------------
+Written | 2026-07-11 | Introducing Massage Nexus on World Massage Day                                                                     | Platform and Community Identity                    | General         | Cassian Brooks         | 700–1,200 words
+Written | 2026-07-12 | What Actually Happens During Your First Massage?                                                                   | First-Time Massage and Spa Etiquette               | Client          | Noah Calder            | 900–1,500 words
+Written | 2026-07-13 | Spa Etiquette 101: What's Actually Expected of You                                                                 | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Written | 2026-07-14 | Questions to Ask Before Booking a Massage: A Practical Guide                                                       | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
+Written | 2026-07-15 | Choosing the Right Spa: A Practical Guide Before Booking                                                           | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
+Written | 2026-07-16 | Is It Rude to Fall Asleep During a Massage?                                                                        | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-07-17 | Meet The Resting Leaf: Our Comic World Says Hi                                                                     | Platform and Community Identity                    | General         | Brio Nexus             | 700–1,200 words
+Written | 2026-07-18 | Massage Is Not A Sexual Service: Why Boundaries Matter                                                             | Safety, Boundaries and Professional Trust          | General         | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-07-19 | Red Flags During a Massage: When to Speak Up or Leave                                                              | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
+Planned | 2026-07-20 | 5 Green Flags and 3 Red Flags to Look for Before Booking a Neighborhood Spa                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
+Planned | 2026-07-21 | How to Tell Your Therapist the Pressure Is Too Hard or Too Soft                                                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-07-22 | Underwear or Naked? Navigating Draping and Clothing Preferences on the Massage Table                               | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Written | 2026-07-23 | Should You Shower Before or After a Massage?                                                                       | Hygiene, Cleanliness and Service Comfort           | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-07-24 | How to Tell If a Spa Takes Hygiene Seriously                                                                       | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Planned | 2026-07-25 | Allergies, Oils, and Sensitive Skin: Questions Worth Asking Before You Book                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Written | 2026-07-26 | Massage Oil vs. Lotion vs. Cream vs. Balm: What’s the Difference?                                                  | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-07-27 | Swedish, Shiatsu, or Thai? A Plain-Language Starter Guide                                                          | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 1,200–2,000 words
+Planned | 2026-07-28 | Hilot vs. Modern Massage: What's the Same, What's Different                                                        | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2026-07-29 | Foot Reflexology, Explained Without the Mysticism                                                                  | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-07-30 | Deep Tissue Massage: Why "More Pressure" Isn't Always "Better"                                                     | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-07-31 | How Often Should You Get a Massage?                                                                                | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-08-01 | Post-Massage Soreness: When Is It Normal "Good Pain" vs. Bad Technique?                                            | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-08-02 | One Bad Review Doesn't Tell the Whole Story — Here's How to Read Patterns                                          | Choosing Spas, Booking, Pricing and Reviews        | Client          | Avery Knox             | 900–1,500 words
+Planned | 2026-08-03 | How to Write a Review That Actually Helps the Next Person                                                          | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-08-04 | Budget vs. Premium Spas: You're Not Always Paying for Better                                                       | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-08-05 | Why Massage Prices Vary So Much Across the Philippines                                                             | Choosing Spas, Booking, Pricing and Reviews        | Client          | Diether Solano         | 900–1,500 words
+Planned | 2026-08-06 | Tipping Culture in Philippine Spas: How Much is Appropriate and How Does It Help?                                  | Choosing Spas, Booking, Pricing and Reviews        | Client          | Diether Solano         | 900–1,500 words
+Planned | 2026-08-07 | The Real Cost of a Good Massage: What Fair Pricing Looks Like in Metro Manila                                      | Choosing Spas, Booking, Pricing and Reviews        | Client          | Diether Solano         | 900–1,500 words
+Written | 2026-08-08 | Massage Nexus Leads Annual Spa Day Campaign on August 8                                                            | Platform and Community Identity                    | General         | Cassian Brooks         | 700–1,200 words
+Planned | 2026-08-09 | How Legitimate Massage Businesses Can Fight the Wrong Image                                                        | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-08-10 | Self-Care That Isn't a Spa Day: Small Habits Between Visits                                                        | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-08-11 | How to Communicate with a Massage Therapist in Another Language                                                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-08-12 | Massage Travel Safety: How to Avoid Sketchy Places Abroad                                                          | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-08-13 | Pregnant and Considering a Massage? Here's What to Ask First                                                       | Special Care, Accessibility and Caregiving         | Client          | Nora Solis             | 1,200–2,000 words
+Planned | 2026-08-14 | The Fantasy of Misbehaving: Navigating the Urge to Break Spa Protocol vs. the Art of Full Decompression            | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-08-15 | What Happens During a Consultation? Communicating Injuries and Pressure Preferences                                | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-08-16 | Which Massage Oil Is Right for Me?                                                                                 | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-08-17 | Why Words Matter: Avoiding Suggestive Spa Marketing                                                                | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-08-18 | Cancellation and No-Show Norms: What's Fair to Both Sides                                                          | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-08-19 | Quick Kwento & Coffee: Wellness Habits That Fit Into a Busy Commuter's Schedule                                    | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-08-20 | The Role of Hydration: Why Therapists Tell You to Drink Water After Your Treatment                                 | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-08-21 | Heat vs. Ice: Which Should You Reach For When Back or Shoulder Pain Strikes?                                       | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-08-22 | Useful Massage Phrases for Travelers                                                                               | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-08-23 | TESDA, DOH, Business Permits: What Massage Professionals Should Understand                                         | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-08-24 | Massage for Older Adults: Gentle Care, Comfort, and Safety                                                         | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-08-25 | Desk Worker Posture Drills: Simple Stretching Intervals to Survive Back-to-Back Meetings                           | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-08-26 | Body Positivity on the Massage Table: Overcoming Self-Consciousness at the Spa                                     | Special Care, Accessibility and Caregiving         | General         | Yara Mendoza           | 1,200–2,000 words
+Planned | 2026-08-27 | Couples Massage: What to Expect Before You Book One Together                                                       | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-08-28 | Identifying Burnout: When Your Body is Desperate for a Professional Reset                                          | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-08-29 | Starting a Spa Business: What Do You Need First?                                                                   | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-08-30 | Home Service vs. Spa Studio: Pros, Cons, and Safety Preparations for Both                                          | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Planned | 2026-08-31 | The Ergonomic Desk Audit: 5 Simple Adjustments to Prevent "Tech Neck" at Work                                      | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-09-01 | Aromatherapy Massage: Relaxing or Overrated?                                                                       | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-09-02 | What to Know Before Visiting a Spa in Another Country                                                              | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-09-03 | Shaving, Scars, and Stretch Marks: Why Your Therapist Only Sees Your Muscle Map                                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-04 | Starting a Spa Business Checklist: The Regulatory, Safety, and Equipment Essentials                                | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-05 | Home Service Massage or Spa Visit: Which One Is Better for You                                                     | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-09-06 | Massage for People with Diabetes: Safety Notes Before Booking                                                      | Special Care, Accessibility and Caregiving         | Client          | Nora Solis             | 1,200–2,000 words
+Planned | 2026-09-07 | The Power of the Micro-Break: Why Standing Up Every Hour Saves Your Posture                                        | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-09-08 | Sneezing, Coughing, or Snoring: Managing Normal Bodily Noises on the Table                                         | Hygiene, Cleanliness and Service Comfort           | Client          | Paolo Vergara          | 900–1,500 words
+Planned | 2026-09-09 | The Anatomy of a Snore: Why Lying Prone in a Face Cradle Triggers Unexpected Bodily Noises                         | Hygiene, Cleanliness and Service Comfort           | General         | Kenji Navarro          | 900–1,500 words
+Planned | 2026-09-10 | Sleeping Beauty and the Snoring Beast: What Happens If You Accidentally Start Snoring Mid-Session                  | Hygiene, Cleanliness and Service Comfort           | General         | Brio Nexus             | 900–1,500 words
+Planned | 2026-09-11 | Should You Exercise Before or After a Massage? How to Time Your Gym Sessions Correctly                             | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-09-12 | Red Carpet Recovery: The Specific Massage Styles Hollywood Stars Rely On                                           | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-09-13 | What Equipment Does a Massage Business Need?                                                                       | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-14 | Under the Surface: Should a Therapist Massage Skin Patches with Rashes, Bumps, or Blemishes?                       | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-15 | The 5-Minute Morning Mobility Routine Before Checking Your Phone                                                   | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-09-16 | Stress, Screens, and Sore Shoulders: A Very Modern Problem                                                         | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-09-17 | When You Should Not Get a Massage                                                                                  | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-09-18 | Massage Etiquette Around the World                                                                                 | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-09-19 | Home Service Massage Business vs. Physical Spa: Which Is Better to Start?                                          | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-09-20 | Essential Oil Breakdown: Lavender, Peppermint, Eucalyptus, and Lemongrass                                          | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-09-21 | Massage for Teens: Sports, Stress, Posture, and Boundaries                                                         | Special Care, Accessibility and Caregiving         | Client          | Nora Solis             | 1,200–2,000 words
+Planned | 2026-09-22 | The Contraindication Checklist: Visual Skin Indicators That Tell a Therapist to Work Around an Area                | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-23 | Involuntary Reflexes: Why Your Body Twitches Right Before You Fall Asleep on the Massage Table                     | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-09-24 | The Geek’s Guide to Getting a Massage: Resetting Muscles Strained by Long Gaming and Coding Sessions               | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 1,200–2,000 words
+Planned | 2026-09-25 | How to Price Massage Services Without Looking Cheap or Overpriced                                                  | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-09-26 | When Heat Therapy Is Not a Good Idea                                                                               | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-09-27 | Can I Take a Bath After a Massage? The Truth Behind the Common Advice                                              | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-09-28 | What Should a Therapist Do If a Client Gets an Erection?                                                           | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-09-29 | International Spa Culture Shock: Unexpected Customs Every Global Wellness Traveler Should Expect                   | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-09-30 | Footwear and Back Pain: How Everyday Shoes Impact Your Lumbar Spine                                                | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-10-01 | How Should a Spa Be Designed?                                                                                      | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-10-02 | Pediatric Bodywork: Is Massage Therapy Safe and Beneficial for Children?                                           | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-10-03 | The Traditional Hilot Explained: Cultural Heritage Beyond Basic Muscle Relief                                      | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2026-10-04 | The Skin You Are In: Overcoming the Anxiety of Scars, Acne, and Skin Conditions at the Spa                         | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-10-05 | Demystifying the Unexpected Physical Reaction: How Therapists Handle Involuntary Arousal                           | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-10-06 | The Imperial Treatment: A Historical Look at How Royalties and Monarchs Experienced Bodywork                       | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-10-07 | Ergonomics in Motion: Restructuring Your Daily Commute to Protect Your Lumbar Spine                                | Practitioner Practice and Career Development       | Practitioner    | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-10-08 | Small Spa Layout Ideas for Limited Space                                                                           | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-10-09 | Massage Oils 101: What's Actually in the Bottle                                                                    | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-10-10 | Public Bathhouse Etiquette for Beginners                                                                           | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-10-11 | Sleep Hygiene 101: How Evening Wind-Down Routines Improve Your Deep REM Sleep                                      | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Written | 2026-10-12 | Maintaining Professional Boundaries When Clients Request Extra Services                                            | Safety, Boundaries and Professional Trust          | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Written | 2026-10-13 | Lingam and Yoni Work: History, Practice, and Professional Boundaries                                               | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 900–1,500 words
+Planned | 2026-10-14 | The Anatomy of a Perfect Spa Design: Balancing Aesthetics, Acoustic Separation, and Operational Flow               | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-10-15 | Shifting the Schedule: Is It Better to Get a Massage Before or After Your Workday?                                 | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-10-16 | Lumens and Luxury: How to Properly Design and Layer Lighting in a Professional Spa Space                           | Spa Business, Design and Operations                | Owner           | Ember Sato             | 1,200–2,000 words
+Planned | 2026-10-17 | Post-Massage Appetite: Can You Eat a Heavy Meal Right After Your Treatment?                                        | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-10-18 | Elevated Table vs. Traditional Floor Mat: Structural Differences in Bodywork Alignment                             | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-10-19 | Geriatric Massage: Tailoring Bodywork Safely for Senior Citizens                                                   | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-10-20 | Anatomy of an Escape: What to Do If You Accidentally Pass Gas During a Massage                                     | Hygiene, Cleanliness and Service Comfort           | Client          | Paolo Vergara          | 900–1,500 words
+Planned | 2026-10-21 | A Therapist’s Perspective: Respecting Physical Boundaries and Professional Care                                    | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Planned | 2026-10-22 | De-Stressing After the Shift: The Best Evening Treatments for BPO and Night-Shift Workers                          | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-10-23 | Spa Scent Design: How Aromatherapy Shapes Your Mental Recovery                                                     | Spa Business, Design and Operations                | Owner           | Ember Sato             | 1,200–2,000 words
+Planned | 2026-10-24 | Total Dark vs. Golden Glow: Should Spas Keep the Lights On or Off During a Treatment Session?                      | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-10-25 | Should You Go Nude at a Public Bathhouse or Spa?                                                                   | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-10-26 | Can Coconut Oil Be Used for Massage?                                                                               | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-10-27 | Professional Boundaries: Why Therapists Never Request or Provide Personal Contact Details                          | Safety, Boundaries and Professional Trust          | Practitioner    | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-10-28 | The Night-Shift Decompression: Why Early Morning Massages Benefit Night Workers Before Sleep                       | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-10-29 | Ambiance Audit: How Lighting and Scent Tell You Everything About a Spa’s Quality                                   | Spa Business, Design and Operations                | Owner           | Ember Sato             | 1,200–2,000 words
+Planned | 2026-10-30 | The Time Traveler’s Vetting Check: 5 Historical Figures Who Needed a Good Massage Badly                            | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-10-31 | Cold Skin, Deep Knots: A Therapist’s Manual on How to Properly Massage a Vampire                                   | Fictional, Seasonal and Pop-Culture Features       | General         | Elliot Kane            | 800–1,400 words
+Planned | 2026-11-01 | The Multitarget Protocol: How to Balance Pressure When Massaging an Alien with 8 Tentacles                         | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-11-02 | The Ethereal Reset: How a Therapy Session for a Haunted Ghost Would Actually Go                                    | Fictional, Seasonal and Pop-Culture Features       | General         | Elliot Kane            | 800–1,400 words
+Planned | 2026-11-03 | The Transylvanian Treatment: How Vampires Get a Premium Massage Without Ruining the Linens                         | Hygiene, Cleanliness and Service Comfort           | General         | Elliot Kane            | 900–1,500 words
+Planned | 2026-11-04 | Postural Preferences: Why Low-Back Sufferers Prefer Mats While Shoulder Patients Love Tables                       | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-11-05 | Energy Management Between Appointments: Quick Grounding Routines Before Your Next Client                           | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-11-06 | Oncology Massage Protocols: Safe Touch Adjustments for Clients in Cancer Recovery                                  | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-11-07 | Massage Therapist Code of Conduct: A Plain-English Guide                                                           | Practitioner Practice and Career Development       | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Planned | 2026-11-08 | The Midnight Reset: The Restorative Physiology of Late-Night Massages                                              | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-11-09 | Spa Menu Design: How Many Services Should You Offer?                                                               | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-11-10 | The Truth About "Toxins": What Manual Therapy Actually Flushes from Your Muscles                                   | First-Time Massage and Spa Etiquette               | Client          | Noah Calder            | 1,200–2,000 words
+Planned | 2026-11-11 | True Hammam vs. Neighborhood Studio: What a Real Turkish Massage Looks and Feels Like                              | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-11-12 | Can Olive Oil Be Used as Massage Oil?                                                                              | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-11-13 | The Customer is Not Always Right: Translating Client Terminology Into Correct Anatomical Goals                     | Spa Business, Design and Operations                | Owner           | Rafael Cross           | 1,200–2,000 words
+Planned | 2026-11-14 | Therapist Etiquette: What Clients Have the Right to Expect                                                         | Practitioner Practice and Career Development       | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Planned | 2026-11-15 | Overcoming Sedentary Fatigue: Why Long Flights and Desk Demands Require Structural Rest                            | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-11-16 | Menu Simplification: Why Too Many Treatment Options Can Overwhelm First-Time Guests                                | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-11-17 | Thai Massage Demystified: What to Expect from a Fully Clothed, Dynamic Treatment                                   | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-11-18 | Caregiver Burnout: When the Helper Also Needs Care                                                                 | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-11-19 | Ticklishness and Tension: How to Stop Involuntary Laughing During a Session                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Paolo Vergara          | 900–1,500 words
+Planned | 2026-11-20 | What Makes a Massage Therapist Professional?                                                                       | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-11-21 | A Short Honest History of Massage Culture in the Philippines                                                       | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2026-11-22 | Digital Detox Weekends: Simple Strategies to Rest Your Eyes and Reset Your Nervous System                          | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2026-11-23 | Crafting the Perfect Feed: An Actionable Strategy Guide for Promoting Your Spa on Social Media                     | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-11-24 | The Global Gratuity Guide: Navigating Spa Tipping Norms Across Four Continents                                     | Choosing Spas, Booking, Pricing and Reviews        | Client          | Rafael Cross           | 1,200–2,000 words
+Planned | 2026-11-25 | The Renaissance Revival: How Bodywork and Physical Culture Emerged in Early Modern Europe                          | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-11-26 | Public Awareness: What the Term "Happy Ending" Means and How Clean Directories Sanitize Wellness Data              | Safety, Boundaries and Professional Trust          | General         | Yara Mendoza           | 1,200–2,000 words
+Planned | 2026-11-27 | Is Hydrotherapy a Real Thing?                                                                                      | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-11-28 | How to Build Trust as a Legitimate Massage Therapist                                                               | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-11-29 | Understanding Sports Massage: How Pre-Event and Post-Event Protocols Differ                                        | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 1,200–2,000 words
+Planned | 2026-11-30 | Sensory Overload: Simple Strategies to Build a Daily Low-Stimulus Sanctuary Corner at Home                         | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-12-01 | Handling Negative Reviews Gracefully: A Spa Owner’s Guide to Online Reputation Management                          | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-12-02 | Polite Redirection: Verbal Scripts to Transition a Chatty Client Into Deep, Quiet Decompression                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-12-03 | The Caregiver’s Strained Shoulders: Physical Relief for Those Who Support Others                                   | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-12-04 | Best Massage Oils for Dry Skin                                                                                     | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-12-05 | How Therapists Can Protect Their Professional Reputation                                                           | Practitioner Practice and Career Development       | Practitioner    | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-12-06 | Best Cities in the World to Get a Massage                                                                          | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-12-07 | The Mental Mute Button: Actionable Strategies for Silencing Your Chatterbox Mind During a Treatment                | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2026-12-08 | Turning Feedback Into Loyalty: The Spa Manager’s Operational Blueprint for Handling Customer Complaints            | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 1,200–2,000 words
+Planned | 2026-12-09 | The Clock Dilemma: How Long Should a Massage Actually Be?                                                          | First-Time Massage and Spa Etiquette               | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-12-10 | First-Class Treatment on a Couch-Budget: How to Confidently Navigate an Unexpected Luxury Hotel Spa Invite         | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-12-11 | Steam Room, Sauna, Jacuzzi, Hot Bath: What’s the Difference?                                                       | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-12-12 | Breaking the Stigma: Why Straight Men Choose Male Massage Therapists for High-Pressure Recovery                    | Practitioner Practice and Career Development       | Practitioner    | Yara Mendoza           | 1,200–2,000 words
+Planned | 2026-12-13 | The Science of Touch: What Happens to Your Body in a Single 60-Minute Session                                      | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2026-12-14 | Reducing No-Shows: Simple Scheduling and Communication Policies That Respect Everyone’s Time                       | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-12-15 | Simple Comfort Massage for Family Caregivers                                                                       | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-12-16 | From Blockbusters to Bodywork: What Massage Styles Your Favorite Fictional Characters Secretly Need                | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2026-12-17 | The Rise of Wellness Tourism: Planning Your Next Trip Around Spa Destinations                                      | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2026-12-18 | Reading Between the Lines of a Spa's Photos                                                                        | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-12-19 | Is a TESDA Certificate Enough to Work as a Massage Therapist?                                                      | Local Practice, Credentials and Global Spa Culture | Practitioner    | Diether Solano         | 1,100–1,800 words
+Planned | 2026-12-20 | Beyond Tissue: How Therapeutic Touch Calms the Central Nervous System                                              | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2026-12-21 | Walk-In Chaos vs. Calendar Control: A Spa Manager’s Strategy for Managing Peak Wait Times                          | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-12-22 | The Diminishing Return: Why Spending More Than 90 Minutes on a Table Can Sometimes Backfire                        | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2026-12-23 | The Four Seasons of Massage: Adapting Bodywork Styles to Match Seasonal Environmental Changes                      | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-12-24 | Spa Carrier Oils: Can You Use Kitchen Olive or Coconut Oil on a Client?                                            | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-12-25 | The Surprise Decompression: How to Gift and Plan a Seamless Spa Day for a Stressed Loved One                       | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Written | 2026-12-26 | What If I Get an Erection During a Massage?                                                                        | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2026-12-27 | Navigating TESDA Certification: What Filipino Practitioners Should Know About Credentials and Growth               | Local Practice, Credentials and Global Spa Culture | Practitioner    | Diether Solano         | 1,100–1,800 words
+Planned | 2026-12-28 | The Ambient Intrusion: A Spa Manager’s Guide to Politely Quieting Loud Group Gatherings                            | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2026-12-29 | How to Take Care of an Elderly Loved One at Home                                                                   | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2026-12-30 | Hot Stone vs. Regular Massage: Is It Worth the Upgrade?                                                            | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2026-12-31 | Understanding Cortisol: How Everyday Chronic Stress Physically Alters Muscle Tension                               | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2027-01-01 | Building a Simple Monthly Wellness Habit Without Overcomplicating It                                               | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2027-01-02 | The Global Traveler’s Recovery Plan: Using Local Bodywork to Defeat Jet Lag                                        | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2027-01-03 | Dependence or Decompression: Is "Spa Addiction" a Real Psychological Condition?                                    | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2027-01-04 | The Maintenance Calendar: Distinguishing Your Acute Recovery Schedule From Routine Maintenance                     | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-01-05 | Friction at the Front Desk: An Operational Blueprint for Handling Clients Who Make a Scene                         | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-01-06 | TESDA NC II vs. DOH License: Navigating Philippine Massage Credentials Legally                                     | Local Practice, Credentials and Global Spa Culture | Practitioner    | Diether Solano         | 1,100–1,800 words
+Planned | 2027-01-07 | The Central Perk Decompression: The Perfect Massage Style for Rachel, Monica, Phoebe, Joey, Chandler, and Ross     | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-01-08 | Why Some People Misunderstand Massage Therapy                                                                      | Safety, Boundaries and Professional Trust          | General         | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2027-01-09 | How to Care for a Stroke Patient at Home                                                                           | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2027-01-10 | The Student’s Budget Blueprint: Finding Affordable, High-Value Muscle Decompression Between Exams                  | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 1,200–2,000 words
+Planned | 2027-01-11 | The Nervous System Reset: How Chronic Stress Changes the Physical Architecture of Your Muscles                     | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2027-01-12 | The Payment Stand-Off: What to Do If a Client Claims Dissatisfaction and Refuses to Pay After a Session            | Spa Business, Design and Operations                | Owner           | Rafael Cross           | 1,200–2,000 words
+Planned | 2027-01-13 | Bringing the Spa Home: Simple Tools Worth Owning                                                                   | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-01-14 | Ancient Roots, Modern Relief: A Beginner's Guide to Ayurvedic Bodywork                                             | Massage Types, Techniques and Traditions           | Client          | Maya Kestrel           | 1,200–2,000 words
+Planned | 2027-01-15 | The Digital Hustle: How to Successfully Market and Promote Yourself as a Freelance Massage Therapist               | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-01-16 | The Myth of "Harder is Always Better": Debunking Extreme Deep Tissue Assumptions                                   | Massage Types, Techniques and Traditions           | Client          | Avery Knox             | 900–1,500 words
+Planned | 2027-01-17 | Hot Stone Massage vs. Hydrotherapy: Which One Feels Better?                                                        | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-01-18 | Chronic Stress and the Fascia Network: How Mental Exhaustion Locks Your Posture                                    | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2027-01-19 | Staff Retention in the Wellness Industry: Keeping High-Quality Therapists Happy and Supported                      | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-01-20 | Solo vs. Duo Sessions: The Psychological Differences in Spa Experiences                                            | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-01-21 | Massage After Stroke: What Families Should Know                                                                    | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2027-01-22 | Therapist Ergonomics: Protecting Your Hands, Wrists, and Lower Back During Back-to-Back Sessions                   | Practitioner Practice and Career Development       | Practitioner    | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2027-01-23 | The Anatomy of Heartbreak: How Emotional Grief Manifests as Physical Muscle Tension                                | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2027-01-24 | Field Safety Baseline: Creating Secure Protocols for Solo Mobile Practitioners                                     | Practitioner Practice and Career Development       | Practitioner    | Atlas Blackwell        | 1,200–2,000 words
+Planned | 2027-01-25 | The Fluid Motion of Hawaiian Lomi-Lomi: More Than Just a Relaxation Style                                          | Massage Types, Techniques and Traditions           | Client          | Maya Kestrel           | 900–1,500 words
+Planned | 2027-01-26 | The Physics of Pressure: Why "More" Doesn’t Always Mean "Better"                                                   | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-01-27 | The Silent Treatment: Should You Keep Conversing If a Client Is Naturally Chatty?                                  | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-01-28 | Ask Massage Nexus: Your Weirdest Massage Questions, Answered                                                       | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-01-29 | Continuing Education Strategies: How Specialization Prevents Therapist Burnout                                     | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-01-30 | Breaking the Cycle of Burnout: The Scientific Connection Between Mindful Rest and Cellular Recovery                | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-01-31 | What Spa Owners Wish Customers Understood                                                                          | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-02-01 | Wellness Finds: Top Local Oils, Balms, and Liniments Worth Keeping at Home                                         | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2027-02-02 | Sorting the Spine: The Perfect Therapeutic Bodywork Modality for Each Harry Potter House                           | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-02-03 | The Oxygen Deficit: How Deep Diaphragmatic Breathing Exercises Change Your Blood Chemistry                         | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-02-04 | Home Care 101: A Guide to Supporting and Positioning a Stroke Patient                                              | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2027-02-05 | The Professional Perspective: What Massage Therapists Secretly Dislike About Their Clients                         | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-02-06 | The Vagus Nerve Blueprint: Activating Your Body's Natural Off-Switch for Anxiety                                   | Body, Posture and Stress Science                   | General         | Maya Kestrel           | 1,100–1,800 words
+Planned | 2027-02-07 | The Practitioner’s Pseudonym: Should Wellness Staff Use Professional Stage Names?                                  | Practitioner Practice and Career Development       | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Planned | 2027-02-08 | Pluviophile Relaxation: Why Rainy Days Heighten the Psychological Benefits of Bodywork                             | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-02-09 | Beyond the Map: The Ancient Structural Secrets Underlying Chinese Reflexology                                      | Massage Types, Techniques and Traditions           | Client          | Maya Kestrel           | 900–1,500 words
+Planned | 2027-02-10 | The Non-Verbal Code: Reading the Hidden Language of Client Body Cues on the Table                                  | Practitioner Practice and Career Development       | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Planned | 2027-02-11 | The Honest Consumer Report: What Spa Clients Secretly Dislike About Their Therapists                               | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-02-12 | The Circadian Rhythm Reset: Natural Habits to Optimize Your Sleep Architecture Without Medication                  | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
+Planned | 2027-02-13 | The Professional Blueprint: A Spa Owner’s Guide to Selecting Functional and Tasteful Attire for Staff              | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-02-14 | The Tandem Session: Booking a Couples Massage with a Male Therapist Configured Comfortably                         | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-02-15 | The Caregiver's Checklist: How to Change an Adult Diaper Respectfully and Efficiently                              | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2027-02-16 | The Role of Music in Therapy: How Soundscapes Influence Your Relaxation Response                                   | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-02-17 | Awkward Coexistence: Surviving the Moment You and Your Ex Bump Into Each Other at the Same Spa                     | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-02-18 | The Breakup Protocol: Who Gets Custody of Your Favorite Spa When a Relationship Ends?                              | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-02-19 | The Romantic Plot Twist: What to Do or Say If Your Longtime Crush Volunteers to Massage You                        | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-02-20 | Thread Counts and Durability: The Spa Owner’s Strategic Guide to Choosing the Right Table Linens                   | Hygiene, Cleanliness and Service Comfort           | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-02-21 | The Gut-Brain Connection: How Daily Diet and Inflammation Alter Your Mood and Energy Levels                        | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-02-22 | The Evolution of Massage: From Ancient Medicinal Rituals to Modern Recovery Tools                                  | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-02-23 | Hydration Myths: How Much Water Does Your Body Actually Need Daily for Joint Health?                               | Pressure, Pain, Recovery and Aftercare             | Client          | Avery Knox             | 900–1,500 words
+Planned | 2027-02-24 | Ashiatsu Barefoot Massage: The Mechanics of Deep-Tissue Gravity Therapy                                            | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-02-25 | The Golden Rule of Silence: Deciding Between Conversation or Quiet Comfort on the Massage Table                    | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-02-26 | The Fluid Gym: Evaluating the Long-Term Circulation Efficacy of Hydro-Massage Pools                                | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-02-27 | Spotting the Flaws: How to Tell If Your Massage Therapist Is Using Incorrect or Dangerous Technique                | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-02-28 | The Chemistry of Linens: How to Cleanly Purge Essential Oil Residue and Avoid Fabric Stains                        | Hygiene, Cleanliness and Service Comfort           | Owner           | Felix Tanaka           | 900–1,500 words
+Planned | 2027-03-01 | Why Massage Therapy Deserves Respect as Skilled Work                                                               | Safety, Boundaries and Professional Trust          | General         | Yara Mendoza           | 1,200–2,000 words
+Planned | 2027-03-02 | The Chronic Inflammation Checklist: Everyday Lifestyle Edits to Cool Down Tissue Distress                          | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 1,200–2,000 words
+Planned | 2027-03-03 | How to Prevent Bedsores in Bedridden Patients                                                                      | Special Care, Accessibility and Caregiving         | Caregiver       | Nora Solis             | 1,200–2,000 words
+Planned | 2027-03-04 | The Awkward Questions Everyone's Afraid to Ask, Answered                                                           | Safety, Boundaries and Professional Trust          | Client          | Paolo Vergara          | 1,200–2,000 words
+Planned | 2027-03-05 | Sustainable Sanctuaries: Reducing Water and Linen Overhead in Eco-Friendly Spas                                    | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-03-06 | The Practitioner's Signposts: Understanding the Subtle Physical Cues Your Therapist Is Giving You                  | Practitioner Practice and Career Development       | Practitioner    | Clara Hartmann         | 1,200–2,000 words
+Planned | 2027-03-07 | Edges and Extensions: Balancing Rotational Strain and Joint Alignment for Figure Skaters                           | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-03-08 | The Gratuity Dilemma: Am I Obligated to Tip If the Massage Was Poor or Ineffective?                                | Choosing Spas, Booking, Pricing and Reviews        | Client          | Rafael Cross           | 900–1,500 words
+Planned | 2027-03-09 | The Decompression Pathway: Practical Mental Health Habits to Move Through Mild Depression and Fatigue              | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2027-03-10 | The Ringing Interruption: Is Answering Your Phone Ever Acceptable Mid-Massage?                                     | First-Time Massage and Spa Etiquette               | Client          | Paolo Vergara          | 900–1,500 words
+Planned | 2027-03-11 | Pressing the Man of Steel: How to Handle a Request for An Extremely Hard Massage from Superman                     | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-03-12 | Dynamic Pricing Models: How Modern Spas Balance Peak-Hour Demand and Slow Days                                     | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2027-03-13 | Hydrotherapy Deep-Dive: How Alternating Water Temperatures Accelerate Muscle Recovery                              | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-03-14 | The Express Strategy: Practical Self-Care and Quick-Fix Massages for the Exceptionally Busy Professional           | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 1,200–2,000 words
+Planned | 2027-03-15 | The Self-Care Manual: Effective Techniques for Massaging Your Own Neck, Shoulders, and Hands                       | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 1,200–2,000 words
+Planned | 2027-03-16 | Kneading the Giants: The Specialized Biomechanics of Massaging a Basketball Player                                 | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
+Planned | 2027-03-17 | Accessibility in Wellness: Modifying the Spa Intake Process for Limited Mobility                                   | Special Care, Accessibility and Caregiving         | Practitioner    | Yara Mendoza           | 1,200–2,000 words
+Planned | 2027-03-18 | Choosing the Right Location for Your Spa Business: Access, Demand, and Market Fit                                  | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-03-19 | Fact vs. Folklore: Debunking Widespread Superstitions in the Global Spa and Massage Industry                       | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2027-03-20 | Fasting on the Table: Why an Empty Stomach Beats a Full Belly Prior to Deep Tissue Work                            | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2027-03-21 | The Table Stand-Off: How to Gracefully Try a New Spa Practitioner Without Offending Your Regular Therapist         | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-03-22 | Stretching vs. Kneading: If I Do Daily Yoga Sessions, Do I Still Need to Get a Massage?                            | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
+Planned | 2027-03-23 | The Weekend Escape Operations Manual: A Manager's Guide to Running a Premium Resort Spa                            | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 1,200–2,000 words
+Planned | 2027-03-24 | The Canine Comfort Routine: A Step-by-Step Guide to Massaging Your Fur Baby                                        | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-03-25 | Zero-Gravity Muscle Relief: Can Astronauts on Long Orbit Space Missions Get a Massage?                             | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-03-26 | The Toolkit Breakdown: Hot Stones, Bamboo Rods, and Percussion Guns Explained                                      | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-03-27 | High-Pressure Hydrotherapy: How Water Jet Systems Stimulate Muscle Tissue Recovery                                 | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-03-28 | Scriptural Touch: Does Massage Therapy and Anointing with Oils Exist in the Bible?                                 | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
+Planned | 2027-03-29 | Shared Sanctuaries: Navigating Couples Massages When You Both Prefer a Female Therapist                            | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-03-30 | The Impostor Syndrome at the Front Desk: Overcoming the Fear of Not Fitting In at Elite Wellness Resorts           | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-03-31 | Structural Modification: How to Properly Adapt Massage Technique for Amputation and Residual Limbs                 | Special Care, Accessibility and Caregiving         | Practitioner    | Yara Mendoza           | 1,200–2,000 words
+Planned | 2027-04-01 | The World's Best Cities for Wellness Enthusiasts: Where Massage Innovation Flourishes                              | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
+Planned | 2027-04-02 | The Science of "Lamig": What Is Going On Physically When We Feel a Muscular Knot?                                  | Local Practice, Credentials and Global Spa Culture | General         | Diether Solano         | 1,100–1,800 words
+Planned | 2027-04-03 | Handling the Heavyweight Dog: Tailoring Joint and Muscle Relief for Large Breeds                                   | Fictional, Seasonal and Pop-Culture Features       | General         | Brio Nexus             | 800–1,400 words
+Planned | 2027-04-04 | The Gift of Tactile Sight: Career Mastery, Spatial Tracking, and Specialized Training for Blind Massage Therapists | Special Care, Accessibility and Caregiving         | Practitioner    | Yara Mendoza           | 1,200–2,000 words
+Planned | 2027-04-05 | Authenticity Audit: Why Modern Spa Directors Are Moving Away From Faux-Exotic Treatment Menus                      | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
+Planned | 2027-04-06 | The Payment Timing Dilemma: What Spa Owners Need to Know About Pay-First vs. Pay-Later Policies                    | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Written | 2027-04-07 | The Reality of Extra Services in Some Massage Settings                                                             | Safety, Boundaries and Professional Trust          | Client          | Avery Knox             | 1,200–2,000 words
+Planned | 2027-04-08 | How to Name a Spa Business: A Practical Global Guide                                                               | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
+Planned | 2027-04-09 | How to Name a Spa Business in the Philippines                                                                      | Spa Business, Design and Operations                | Owner           | Diether Solano         | 1,200–2,000 words
+Planned | 2027-04-10 | How to Name a Spa Business in Thailand                                                                             | Spa Business, Design and Operations                | Owner           | Noah Calder            | 1,200–2,000 words
+Planned | 2027-04-11 | How to Name a Spa Business in South Korea                                                                          | Spa Business, Design and Operations                | Owner           | Clara Hartmann         | 1,200–2,000 words
+Planned | 2027-04-12 | How to Name a Spa Business in Japan                                                                                | Spa Business, Design and Operations                | Owner           | Noah Calder            | 1,200–2,000 words
+Planned | 2027-04-13 | How to Name a Spa Business in the United States                                                                    | Spa Business, Design and Operations                | Owner           | Clara Hartmann         | 1,200–2,000 words
+Planned | 2027-04-14 | Choosing the Best Location for a Spa in Metro Manila                                                               | Spa Business, Design and Operations                | Owner           | Diether Solano         | 1,200–2,000 words
+Planned | 2027-05-09 | The Mother’s Escape Protocol: How to Maximize a Rare 60 Minutes of Uninterrupted Spa Rest                          | Fictional, Seasonal and Pop-Culture Features       | General         | Nora Solis             | 800–1,400 words
+Planned | 2027-06-20 | The Father’s Physical Reset: Tailoring Bodywork for Chronic Lower Back and Heavy Lifting Strain                    | Fictional, Seasonal and Pop-Culture Features       | General         | Nora Solis             | 800–1,400 words
+
+Reusable Starter Prompt for Article Writing Thread
+--------------------------------------------------
+
+Code block (text):
+    This chat thread will be used to help me plan, draft, revise, and improve articles for Massage Nexus.
+    Massage Nexus is a massage, spa, wellness, and bodywork discovery platform. Its articles should help readers discover, understand, compare, discuss, and experience massage, spa, and wellness services with more confidence. Articles may cover spa-going guidance, massage education, practitioner professionalism, safety, boundaries, hygiene, local and global spa culture, wellness habits, caregiving, products, business operations, public awareness, and light fictional or pop-culture topics when they still connect clearly to massage, recovery, touch, service culture, bodywork, or wellness discovery.
+    This thread is not only for generating finished articles. It may also be used for brainstorming topics, improving titles, assigning target audience labels, selecting the best Neural Agent writing voice, planning media, rewriting weak sections, checking whether an article sounds too AI-written, and improving clarity, structure, tone, usefulness, and reader appeal.
+    Massage Nexus articles should not feel like generic SEO filler. They should be well worded, human, useful, distinctive, and clear enough for the intended target audience. A clinical topic may be clinical. A complicated topic may be properly complicated. A humorous topic may be playful. A business topic may be direct and practical. Do not force every article to begin the same way. Do not repeatedly summarize and conclude after every section. Avoid the common AI habit of sounding polished but empty.
+    Media placement tokens may be inserted inside the body where an image or video should appear, such as [media:image_1] or [media:video_1].
+    When I request one or more complete articles, create one downloadable UTF-8 text file per article rather than pasting the full article into the chat. Use the final article title as the file name, preserve spaces, do not slugify the file name, remove Windows-invalid characters, and include all metadata, visual planning, article-ready HTML, reading duration, and sources inside the file.
+    Use stable general knowledge when sufficient, but search credible resources whenever research would materially improve accuracy or completeness. Current legal, regulatory, medical, safety, scientific, country-specific, pricing, location, historical, and travel claims should use authoritative and current sources whenever available. Never invent sources. Sources may be `None used` for original commentary, creative material, or stable general guidance that genuinely required no external research.
+    Approved article categories:
+    01. Platform and Community Identity: Launch notes, platform explanations, editorial identity, brand-world setup, community purpose, and Massage Nexus positioning belong here.
+    02. First-Time Massage and Spa Etiquette: Beginner-friendly guidance about what happens before, during, and after a massage, including manners, comfort, clothing, conversation, and normal spa behavior.
+    03. Choosing Spas, Booking, Pricing and Reviews: Decision-making articles that help readers compare establishments, understand value, read reviews, book wisely, and avoid poor-fit choices.
+    04. Safety, Boundaries and Professional Trust: Articles about consent, professional limits, sensitive situations, ethical conduct, public trust, red flags, and the protection of both clients and practitioners.
+    05. Hygiene, Cleanliness and Service Comfort: Practical articles about linens, rooms, oils, sanitation, skin concerns, smells, bodily noises, service comfort, and visible cleanliness signals.
+    06. Massage Types, Techniques and Traditions: Plain-language explainers about massage modalities, bodywork traditions, treatment formats, technique differences, and how to choose a suitable style.
+    07. Pressure, Pain, Recovery and Aftercare: Articles about pressure, soreness, hydration, heat, ice, exercise timing, post-treatment recovery, and knowing when discomfort is not normal.
+    08. Body, Posture and Stress Science: Accessible body-education content about muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and recovery mechanisms.
+    09. Everyday Wellness, Sleep and Self-Care: Habit-based wellness articles about burnout, sleep, digital fatigue, sensory overload, decompression, rest routines, and small resets between spa visits.
+    10. Oils, Products and Home Wellness Tools: Guides about oils, balms, linens, tools, aromatherapy, hydrotherapy items, home-care supplies, and practical wellness finds.
+    11. Special Care, Accessibility and Caregiving: Content for pregnancy, seniors, children, disability, limited mobility, illness recovery, family caregiving, home support, and dignity-centered care.
+    12. Local Practice, Credentials and Global Spa Culture: Articles about local massage terms, credentials, regulations, cultural practices, travel etiquette, public bathhouses, tipping abroad, and international spa expectations.
+    13. Spa Business, Design and Operations: Business-facing content about starting, managing, designing, pricing, staffing, marketing, scheduling, complaint handling, and improving establishment operations.
+    14. Practitioner Practice and Career Development: Practitioner-focused articles about technique, ergonomics, boundaries, client communication, professional conduct, safety, reputation, and continuing growth.
+    15. Fictional, Seasonal and Pop-Culture Features: Imaginative, seasonal, comic-adjacent, supernatural, celebrity-style, or pop-culture articles that still connect clearly to massage, recovery, touch, or wellness.
+    Approved target audience labels:
+    General: Broad readers interested in Massage Nexus, wellness culture, public awareness, humor, body education, platform updates, or practical self-care.
+    Client: People who book, compare, visit, or consider massage and spa services, including first-time spa-goers and regular clients.
+    Practitioner: Massage therapists, bodyworkers, wellness practitioners, students, or people practicing hands-on care in professional or learning contexts.
+    Owner: Spa owners, establishment managers, operators, marketers, and decision-makers responsible for service quality, reputation, staffing, pricing, or business operations.
+    Caregiver: Family members or helpers supporting older adults, patients, children, bedridden persons, recovering loved ones, or dependent family members.
+    Traveler: Readers visiting spas, bathhouses, wellness destinations, or massage providers outside their familiar area or culture.
+    Neural Agents are editorial voice lenses. They help shape style, angle, rhythm, examples, humor, skepticism, warmth, seriousness, or instructional clarity, but the article should still feel like a Massage Nexus publication, not an uncontrolled character diary.
+    Use this Neural Agent guide when assigning or following a voice:
+    Atlas Blackwell: serious, strategic, protective; best for safety, trust, boundaries, red flags, risks, and serious warnings.
+    Avery Knox: skeptical, blunt, dry; best for weak claims, overhype, red flags, and corrective articles.
+    Brio Nexus: playful, chaotic, internet-native; best for weird, fictional, pop-culture, comic-adjacent, and experimental angles.
+    Cassian Brooks: polished, persuasive, brand-safe; best for launch notes, PR, business reputation, marketing, and public-facing platform messaging.
+    Clara Hartmann: formal, precise, standards-minded; best for credentials, rules, quality standards, legal-adjacent clarity, and professional explainers.
+    Diether Solano: practical, local, price-aware; best for Filipino/local practice, street-level realism, pricing, credentials, and grounded advice.
+    Elliot Kane: quiet, atmospheric, darker, reflective; best for spooky, historical, cultural, or moody wellness pieces.
+    Ember Sato: visual, sensory, aesthetic; best for ambiance, lighting, scent, luxury presentation, interiors, and design.
+    Felix Tanaka: clear, instructional, step-by-step; best for tutorials, tools, forms, checklists, systems, and practical how-to guides.
+    Juno Reyes: warm, friendly, social; best for etiquette, first-time concerns, awkward situations, and community-facing guidance.
+    Kenji Navarro: calm, bodywork-focused, instructional; best for posture, breathing, pressure, movement, technique, recovery, and body mechanics.
+    Maya Kestrel: poetic, sensory, emotionally restorative; best for stress, sleep, grief, rest, nature, burnout, and emotional recovery.
+    Noah Calder: balanced, fair, calm; best for general guides, comparisons, beginner explanations, and measured conclusions.
+    Nora Solis: nurturing, careful, caregiving-focused; best for seniors, pregnancy, home care, family support, comfort, and vulnerable populations.
+    Paolo Vergara: humorous, everyday, Filipino-friendly; best for awkward body moments, relatable jokes, and light-but-useful features.
+    Rafael Cross: contrarian, debate-driven, provocative; best for uncomfortable industry opinions, hard questions, and challenging assumptions.
+    Yara Mendoza: fiery, dignity-centered, community-minded; best for access, fairness, inclusion, body respect, advocacy, and public awareness.
+    When I request a full article, create one downloadable UTF-8 `.txt` file per article using this structure:
+    Title: not more than 75 characters
+    File Name: final title made safe for Windows, preserving spaces and readable capitalization
+    Slug: not more than 100 characters
+    Short Description: not more than 255 characters
+    Category: from the approved category list
+    Target Audience: from the approved target audience list
+    Tags: comma-separated, lowercase; use hyphens inside multi-word tags
+    Neural Agent: name of the Neural Agent whose writing style, personality, and humor guide the article
+    NSFW Level: None, Mild, Sensitive, or Explicit
+    Reading Duration:
+    - Visual: seconds plus readable duration
+    - Spoken: seconds plus readable duration
+    Visual Direction: concise overall visual concept, style, aspect ratio, and important boundaries
+    Media: suggest 1 to 5 images or videos; images are preferred for Neural Agent-generated drafts unless video is genuinely necessary; state placement, description, aspect ratio, and NSFW Level for every item; include media tokens in the Body
+    Body: clean article-ready HTML that is human-sounding, well worded, clear, useful, and shaped naturally for the topic
+    Sources: source title, organization or publication, and URL or publication identifier; use `None used` only when no external source was genuinely used
+
+    File-name rules:
+    - Use the final title, not the slug.
+    - Preserve spaces.
+    - Do not replace every space with a dash.
+    - Remove or replace \ / : * ? " < > |.
+    - A colon should normally become ` -`.
+    - Add `.txt`.
+    - When several articles are requested, create a separate file for each one.
+    For now, do not write an article yet. Just treat this as the setup instruction for this thread.
+
+Reusable Starter Prompt for Image Creation
+------------------------------------------
+
+Code block (text):
+    This chat thread will be used only for creating and documenting images for Massage Nexus article media.
+
+    Massage Nexus is a massage, spa, wellness, and bodywork discovery platform. This thread is not for writing articles. Article writing happens in a separate thread. In this thread, the user will provide:
+    - the article title
+    - a short article description for context
+    - the image description or exact image prompt
+    - the Neural Agent who will visualize the image
+    - optional aspect ratio, image count, style preference, or special requirements
+
+    The task is to create or help refine article images and provide media metadata for storage in a text file or media database.
+
+    The image does not have to follow the Ink & Ember brand theme unless it fits naturally. The article topic, image subject, visual clarity, and intended emotional effect come first. Massage Nexus branding may influence the image only when appropriate.
+
+    Neural Agent visual direction: The Neural Agent does not write the article in this thread. The Neural Agent influences how the image should look if that Neural Agent were the one creating or editing the image. Use the Neural Agent to guide composition, lighting, line quality, contrast, mood, atmosphere, texture, saturation, hue choices, framing, visual symbolism, and overall emotional treatment.
+
+    Use this Neural Agent visual guide:
+
+    Atlas Blackwell: Structured, serious, protective visuals. Use strong contrast, controlled shadows, firm framing, dark refined tones, clear spatial order, and a sense of safety, authority, and consequence.
+    Avery Knox: Dry, skeptical, unsentimental visuals. Use muted tones, sharp composition, cool lighting, minimal clutter, neutral grays, deadpan framing, and subtle visual critique.
+    Brio Nexus: Chaotic, playful, futuristic visuals. Use bright accents, neon energy, playful distortion, expressive shapes, glitch-like details, pop-culture energy, and bold social-media-ready composition.
+    Cassian Brooks: Polished, public-facing, launch-ready visuals. Use elegant lighting, clean framing, confident composition, premium editorial styling, warm luxury accents, and brand-safe professionalism.
+    Clara Hartmann: Formal, precise, standards-oriented visuals. Use symmetry, cool controlled palettes, clean typography when needed, structured layouts, high clarity, and almost architectural order.
+    Diether Solano: Practical, grounded, local, realistic visuals. Use natural urban light, everyday Philippine or neighborhood context when relevant, practical textures, realistic spaces, and unglamorous usefulness.
+    Elliot Kane: Quiet, atmospheric, reflective visuals. Use moody lighting, restrained color, soft shadows, negative space, old-book or rainy-night atmosphere, and subtle emotional tension.
+    Ember Sato: Cinematic, aesthetic, fashion-editorial visuals. Use dramatic lighting, high contrast, luxurious textures, strong color accents, stylized angles, glossy details, and carefully staged ambiance.
+    Felix Tanaka: Clear, instructional, organized visuals. Use clean diagrams, structured layouts, friendly tech-like clarity, soft minimalism, readable visual flow, and practical step-by-step composition.
+    Juno Reyes: Warm, friendly, relatable visuals. Use soft social lighting, approachable expressions, cozy spaces, gentle color accents, everyday human moments, and light cheerful warmth.
+    Kenji Navarro: Calm, disciplined, bodywork-focused visuals. Use clean movement lines, balanced composition, anatomical clarity, soft natural greens, training-room order, and patient instructional calm.
+    Maya Kestrel: Poetic, sensory, restorative visuals. Use soft natural light, plants, breath-like spacing, gentle textures, sage or earth tones, emotional stillness, and quiet healing atmosphere.
+    Noah Calder: Balanced, clear, trustworthy visuals. Use calm composition, natural light, stable framing, accessible visual storytelling, deep blue or water-like calm, and fair neutral presentation.
+    Nora Solis: Nurturing, caregiving, comforting visuals. Use warm cream tones, soft home-like light, gentle hands, safe spaces, practical care details, and emotional reassurance.
+    Paolo Vergara: Humorous, everyday, expressive visuals. Use warm social color, casual Filipino-friendly settings when relevant, comic timing, expressive body language, and light relatable awkwardness.
+    Rafael Cross: Bold, provocative, debate-driven visuals. Use intense contrast, strong diagonals, crimson or dark accents, confrontation in composition, visual tension, and editorial sharpness.
+    Yara Mendoza: Dignity-centered, inclusive, community-minded visuals. Use vivid but humane color, expressive people-centered framing, strong posture, warmth with urgency, and visuals that protect fairness and respect.
+
+    Suggested image style list:
+    When choosing or describing Image Style, use one or more of the following when appropriate (this is not the extensive list):
+    Realistic Photography
+    Cinematic Photography
+    Editorial Photography
+    Documentary Photography
+    Lifestyle Photography
+    Studio Photography
+    Product Photography
+    Flat Lay Photography
+    Macro Photography
+    Black and White Photography
+    Film Photography
+    Digital Illustration
+    Digital Painting
+    Vector Illustration
+    Flat Illustration
+    Isometric Illustration
+    3D Render
+    Line Art
+    Ink Drawing
+    Watercolor
+    Pencil Sketch
+    Oil Painting
+    Acrylic Painting
+    Pastel Art
+    Collage
+    Mixed Media
+    Pixel Art
+    Low Poly
+    Minimalist
+    Abstract
+    Surrealism
+    * Pop Art
+    * Art Deco
+    * Bauhaus
+    * Retro
+    * Vintage
+    * Comic Book
+    * Modern Slice-of-Life Comic
+    * Pinoy Comic
+    * Manga
+    * Anime
+    * Chibi
+    * Ghibli-Inspired
+    * Cartoon
+    * Caricature
+    * Semi-Realistic
+    * Stylized Realism
+    * Fantasy Art
+    * Sci-Fi
+    * Cyberpunk
+    * Steampunk
+    * Solarpunk
+    * Vaporwave
+    * Noir
+    * Gothic
+    * Horror
+    * Dreamlike
+    * Infographic
+    * Blueprint
+    * UI Mockup
+    * Poster Design
+    * Social Media Card
+
+    Color Set:
+    Return actual color names and hex values. One dominant color is acceptable. More than one color is also acceptable when useful.
+
+    Example:
+    Color Set:
+    - Deep Sea Blue (#005F73)
+    - Warm Cream (#F5E6CC)
+    - Ember Orange (#FF6A1A)
+
+    NSFW Level:
+    This describes whether the image contains adult, sexual, sensitive, or potentially inappropriate material.
+    None - Safe for general audiences
+    Mild - non-sexual body exposure, clinical anatomy, or sensitive wellness context
+    Sensitive - serious safety, trauma, medical, boundary, or distress-related visual context
+    Explicit - sexualized, explicit, or adult-service imagery
+
+    After generating or planning an image, provide this metadata:
+
+    Suggested File Name:
+    Alternative Text:
+    Caption:
+    Tags:
+    NSFW Level:
+    Image Style:
+    Color Set:
+
+    Metadata rules:
+    - Suggested File Name should be clean, descriptive, and suitable for saving.
+    - Alternative Text should be concise, accessible, and useful for screen readers.
+    - Caption should be short and human-readable for article use.
+    - Tags should be lowercase, no spaces, comma-separated.
+    - NSFW Level should be written plainly.
+    - Color Set should include color names and hex values.
+
+    Do not write the article.
+    Do not rewrite the article.
+    Do not add article sections.
+    Do not turn this into an article-writing task.
+    Only create or plan the image and provide the image metadata.
+
+Reusable Image Prompt Guide Template
+------------------------------------
+
+Code block (text):
+    Create an article image for Massage Nexus.
+
+    Article Title: [ARTICLE TITLE]
+    Article Short Description: [SHORT ARTICLE DESCRIPTION]
+    Neural Agent for Visual Direction: [NEURAL AGENT NAME]
+    Image Description or Exact Image Prompt: [IMAGE DESCRIPTION OR EXACT PROMPT]
+    Aspect Ratio: [1:1 / 16:9 / 9:16 / 4:5 / other]
+    Image Count: [NUMBER OF IMAGES]
+    Special Requirements: [OPTIONAL: no text, include logo, Filipino setting, no people, professional draping, homepage mockup, clean boundaries, etc.]
+
+    After generating or planning the image, provide:
+    Suggested File Name:
+    Alternative Text:
+    Caption:
+    Tags:
+    NSFW Level:
+    Image Style:
+    Color Set:

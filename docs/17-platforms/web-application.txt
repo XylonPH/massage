@@ -1,0 +1,382 @@
+Title: Massage Nexus Web Application
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines the browser-based Massage Nexus application, including web-exclusive capabilities, web-enhanced workflows, public discovery, search indexing, multilingual pages, responsive workspaces, administration, accessibility, and boundaries with the mobile and desktop applications.
+
+Related Documents:
+- Massage Nexus Mobile Application
+- Massage Nexus Desktop Application
+- Massage Nexus Site Structure Map
+- Massage Nexus User Workspace
+- Massage Nexus Language Strategy
+- Massage Nexus Translation System
+- Massage Nexus Cache and Temporary Data Strategy
+- Massage Nexus Support and Ticketing System
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+The web application is:
+- the primary public destination;
+- the canonical public directory;
+- the public content and research publication platform;
+- the broadest account-access option;
+- the main multilingual and search-indexed experience;
+- the full provider, advertiser, translator, researcher, moderator, support, and administrator
+  workspace where appropriate.
+
+It runs in supported browsers without installation.
+
+It shares server-side rules with mobile and desktop.
+
+================================================================================
+2. WEB-EXCLUSIVE OR PRIMARILY WEB CAPABILITIES
+================================================================================
+
+- publicly indexable canonical pages;
+- search-engine metadata and sitemaps;
+- alternate-language public URLs;
+- public Research Methodology;
+- public Statistics;
+- browser Help Center;
+- public Terms, Privacy, and policies;
+- shareable public profile URLs;
+- public campaign landing pages;
+- provider claim links;
+- public API and developer documentation later;
+- public release and status pages;
+- browser-based account recovery;
+- advertiser and provider onboarding.
+
+Mobile and desktop may display the same information, but the public web URL remains canonical.
+
+================================================================================
+3. WEB-ENHANCED WORKFLOWS
+================================================================================
+
+Web is suited for:
+- large forms;
+- profile editing;
+- taxonomy and classification editing;
+- side-by-side translation;
+- article editing;
+- moderation queues;
+- research evidence comparison;
+- provider configuration;
+- campaign management;
+- complex analytics;
+- booking calendars;
+- staff and permission management;
+- exports;
+- security settings;
+- support-agent work.
+
+Responsive design preserves essential behavior on smaller screens.
+
+================================================================================
+4. PUBLIC DISCOVERY
+================================================================================
+
+Public:
+- spa directory;
+- therapist directory;
+- service directory;
+- product and seller directories;
+- Articles;
+- Reviews;
+- Comments;
+- Discussions;
+- comics;
+- Research;
+- Statistics;
+- Support.
+
+Public browsing does not require registration.
+
+Account is required for actions such as Review, Comment, Discussion, save, follow, contribute,
+claim, book, manage, and view ticket history.
+
+================================================================================
+5. SEARCH AND AI-SEARCH DISCOVERY
+================================================================================
+
+Approved public pages may be exposed to:
+- search engines;
+- approved AI-search crawlers;
+- social previews;
+- external referrals.
+
+Use:
+- canonical URLs;
+- language metadata;
+- alternate-language references;
+- accurate structured data;
+- safe descriptions;
+- sitemaps;
+- indexing controls.
+
+Do not expose:
+- private workspaces;
+- tickets;
+- messages;
+- intake;
+- restricted media;
+- moderation evidence;
+- internal technology;
+- private datasets.
+
+================================================================================
+6. MULTILINGUAL WEB
+================================================================================
+
+Web provides:
+- language routing;
+- language selector;
+- browser-language suggestion;
+- universal preference;
+- site override;
+- translated navigation;
+- localized metadata;
+- original and translation display;
+- on-demand user-content translation;
+- Translation Workspace.
+
+A public language requires sufficient interface, legal, policy, data, moderation, search, and
+Support readiness.
+
+================================================================================
+7. RESPONSIVE AND PROGRESSIVE BEHAVIOR
+================================================================================
+
+One public URL adapts to:
+- desktop;
+- tablet;
+- mobile browser;
+- zoom;
+- assistive technology.
+
+Do not maintain a separate reduced mobile website with different business rules.
+
+Core content and forms remain usable. JavaScript improves interaction. Server validation and
+authorization remain authoritative.
+
+================================================================================
+8. BROWSER CAPABILITIES
+================================================================================
+
+Use where supported:
+- passkeys;
+- password managers;
+- autofill;
+- file upload;
+- camera with permission;
+- geolocation with permission;
+- clipboard;
+- share API;
+- browser notifications;
+- print;
+- download;
+- calendar files;
+- deep links.
+
+Provide fallback when a browser capability is unavailable.
+
+================================================================================
+9. WORKSPACES
+================================================================================
+
+Web may provide full workspaces for:
+- user;
+- provider;
+- therapist;
+- seller;
+- advertiser;
+- translator;
+- researcher;
+- correspondent;
+- moderator;
+- support agent;
+- administrator.
+
+Web supports:
+- multi-column views;
+- bulk actions;
+- detailed filters;
+- large editors;
+- exports;
+- reports;
+- role configuration;
+- documentation links.
+
+Permissions are server enforced.
+
+================================================================================
+10. CONTENT, PROVIDER, AND ADVERTISER OPERATIONS
+================================================================================
+
+Web is the primary interface for:
+- Article creation;
+- Review editing;
+- comic metadata;
+- structured profile content;
+- translation;
+- media organization;
+- moderation;
+- scheduling;
+- public preview;
+- provider claims;
+- branch management;
+- services and prices;
+- staff;
+- booking setup;
+- campaigns;
+- billing;
+- invoices;
+- analytics;
+- Support.
+
+Use sanitized structured content. Arbitrary executable HTML is prohibited.
+
+================================================================================
+11. ADMINISTRATION
+================================================================================
+
+Web administration may include:
+- accounts;
+- content;
+- moderation;
+- research;
+- translation;
+- taxonomy;
+- Support;
+- billing;
+- campaigns;
+- analytics;
+- configuration;
+- system status.
+
+High-risk actions require recent authentication, permission, confirmation, audit, and recovery
+path.
+
+================================================================================
+12. SECURITY AND CACHE
+================================================================================
+
+Requirements:
+- HTTPS;
+- secure cookies;
+- CSRF protection;
+- output encoding;
+- content security controls;
+- rate limiting;
+- session rotation;
+- passkeys;
+- safe upload;
+- production-safe errors;
+- secure headers;
+- no unnecessary stack disclosure.
+
+Use:
+- compiled configuration;
+- application cache;
+- profile and search cache;
+- media CDN;
+- immutable assets;
+- lazy loading;
+- pagination;
+- queues;
+- suitable public rendering.
+
+Do not publicly cache authenticated or sensitive pages.
+
+================================================================================
+13. ACCESSIBILITY
+================================================================================
+
+Support:
+- semantic HTML;
+- keyboard;
+- screen readers;
+- focus management;
+- headings and landmarks;
+- labels;
+- error summaries;
+- contrast;
+- zoom;
+- reduced motion;
+- captions;
+- alternative text;
+- accessible tables;
+- map list alternatives;
+- language attributes.
+
+================================================================================
+14. PUBLIC DOCUMENTATION
+================================================================================
+
+Web hosts canonical:
+- Help Center;
+- Support;
+- Terms;
+- Privacy;
+- Community Guidelines;
+- Research Methodology;
+- Statistics Methodology;
+- Accessibility guidance;
+- advertiser guidance;
+- provider guidance;
+- correction and appeal guidance.
+
+Mobile and desktop may render or link to them.
+
+================================================================================
+15. BROWSER SUPPORT, ANALYTICS, AND TESTING
+================================================================================
+
+Define supported browser families, minimum versions, degraded behavior, and end-of-support
+communication.
+
+Measure:
+- visits;
+- search;
+- referrals;
+- profile actions;
+- registration;
+- provider claims;
+- content;
+- Support;
+- performance;
+- browser compatibility;
+- crawler activity.
+
+Test:
+- public routes;
+- responsive layouts;
+- supported browsers;
+- keyboard and screen reader flows;
+- locale routing;
+- canonical and alternate URLs;
+- crawler restrictions;
+- workspaces;
+- Support;
+- editor;
+- upload;
+- cache;
+- security;
+- production errors;
+- browser API fallback.
+
+================================================================================
+16. CURRENT DIRECTIONS
+================================================================================
+
+- Web is the primary public and canonical Massage Nexus destination.
+- It provides the fullest public content, multilingual pages, Help, policies, Research, and
+  Statistics.
+- It provides full browser-based professional and administrative workspaces.
+- It uses responsive design rather than a separate reduced mobile website.
+- Approved public pages support search and AI-search discovery.
+- Private and restricted routes are not indexed or publicly cached.
+- Browser features use permission and fallback.

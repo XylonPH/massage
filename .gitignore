@@ -124,8 +124,8 @@ TestResults/
 *.snupkg
 packages/
 artifacts/
-apps/admin-desktop/bin/
-apps/admin-desktop/obj/
+apps/desktop/bin/
+apps/desktop/obj/
 
 # Python tooling under tools/
 __pycache__/

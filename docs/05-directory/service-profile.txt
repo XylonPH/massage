@@ -1,0 +1,800 @@
+Title: Massage Nexus Service Profile Guide
+Document Version: 0.20
+Date Created: 2026-07-15
+Revision Date: 2026-07-17
+Status: Internal Planning Reference
+Shared Standard Reference: Shared Project Standards v2.60
+
+Related Documents:
+- Massage Nexus - 05 - Service Classification v2.00
+- Massage Nexus - 06 - Spa Classification v1.40
+- Massage Nexus - 07 - Spa Profile v0.20
+- Massage Nexus - 08 - Therapist Classification v1.30
+- Massage Nexus - 09 - Therapist Profile v0.20
+- Massage Nexus - 11 - Product Classification v1.40
+- Massage Nexus - 11 - Product Profile v0.10
+- Massage Nexus - Review Writing v1.70
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the purpose, public content, layout direction, editorial boundaries, lifecycle rules, and implementation direction of a Massage Nexus service profile.
+
+A service profile is the normalized reference page for one reusable service concept, such as Thai Massage, Foot Reflexology, Body Scrub, Manicure, Sauna Session, or Pelvic-Floor Therapy. It explains what the service is independently of any one establishment or therapist.
+
+The public page does not need to display the words Service Profile. The page title may simply be the service name. Service Profile is the internal module and planning term used to distinguish the normalized service record from provider menu items.
+
+This is not public help documentation, a complete database schema, a provider menu, a training manual, a certification guarantee, or a claim that every traditional or commercial theory is scientifically established.
+
+================================================================================
+1. MODULE PURPOSE
+================================================================================
+
+Service is one of the principal Massage Nexus directory and content modules:
+
+- Service
+- Spa or Establishment
+- Therapist
+- Product
+
+Service connects the other modules:
+
+- establishments offer services;
+- therapists can perform services;
+- independent therapists sell service menu items;
+- products may be used during services;
+- credentials and training programs may support service capability;
+- reviews may discuss a particular service;
+- articles, images, and videos may explain the service.
+
+A service profile should answer:
+
+- What is this service?
+- Which Service Sector, Domain, and Family contain it?
+- What names, aliases, translations, and regional terms are used?
+- What is its history, origin, or cultural context?
+- What normally happens during the service?
+- Which techniques, practitioner contact body parts, tools, products, treatment supports, positions, facilities, and session arrangements may be involved?
+- What preparation, consent, safety, contraindication, and aftercare information is relevant?
+- Which credentials, qualifications, courses, or professional scopes relate to it?
+- Which establishments offer it?
+- Which therapists can perform it?
+- What provider menu names, durations, and prices are currently available?
+- Which products and facilities are related?
+- What do users, professionals, and editors say about it?
+- How current and well sourced is the information?
+
+================================================================================
+2. SERVICE PROFILE AND PROVIDER MENU BOUNDARY
+================================================================================
+
+Service Profile
+- represents the reusable normalized service concept;
+- remains independent of any one provider;
+- contains general identity, history, explanation, classification, media, evidence, and relationships.
+
+Establishment Service
+- represents the exact commercial menu item sold by an establishment;
+- contains provider wording, duration, price, package, add-on, eligibility, and availability.
+
+Practitioner Service
+- represents the exact commercial menu item sold directly by an independent therapist;
+- contains the therapist's wording, duration, price, location, package, and availability.
+
+Example:
+
+Service Profile
+- Thai Massage
+
+Establishment Service
+- Royal Thai 90
+- The Resting Leaf
+- PHP 1,200
+- 90 minutes
+
+The provider menu item may map to Thai Massage while preserving its original commercial name.
+
+A branded or personally developed menu item does not automatically become a normalized service. It may receive a service profile only when evidence shows that it has an independently meaningful identity beyond one temporary provider listing.
+
+================================================================================
+3. RECOMMENDED PUBLIC PAGE LAYOUT
+================================================================================
+
+A. Identity Header
+
+Show when available:
+
+- preferred service name;
+- primary image or visual placeholder;
+- short description;
+- Service Sector;
+- Service Domain;
+- Service Family;
+- important classification labels;
+- cultural or regional origin when relevant;
+- regulation or credential caution when relevant;
+- rating summary and review count;
+- number of establishments and therapists currently connected.
+
+B. Primary Actions
+
+- Find Establishments;
+- Find Therapists;
+- View Prices;
+- Save;
+- Follow;
+- Share;
+- Compare;
+- Suggest a Correction;
+- Report.
+
+C. Main Sections or Tabs
+
+1. Overview
+2. What to Expect
+3. Methods and Techniques
+4. History and Cultural Context
+5. Safety and Professional Scope
+6. Training and Credentials
+7. Establishments and Prices
+8. Therapists
+9. Products and Facilities
+10. Gallery and Videos
+11. Reviews and Ratings
+12. Related Services
+13. Sources and Revision History
+
+Empty sections may be hidden or replaced by a concise request for sourced information.
+
+================================================================================
+4. IDENTITY AND HIERARCHY
+================================================================================
+
+The profile may show:
+
+- preferred service name;
+- alternate names;
+- regional names;
+- local-language names;
+- transliterations;
+- abbreviations;
+- historical names;
+- deprecated names;
+- common misspellings for search;
+- public slug;
+- Service Sector;
+- Service Domain;
+- Service Family;
+- lifecycle status;
+- merge or supersession relationship;
+- source and verification context.
+
+The hierarchy follows Service Classification:
+
+Service Sector
+  -> Service Domain
+     -> Service Family
+        -> Service
+
+Example:
+
+Health, Wellness and Care
+  -> Spa and Wellness
+     -> Massage
+        -> Thai Massage
+
+The service receives one primary Service Family. Related, component, counterpart, or commonly confused services are represented through explicit relationships.
+
+================================================================================
+5. OVERVIEW AND DESCRIPTION
+================================================================================
+
+The public explanation may include:
+
+- concise definition;
+- extended description;
+- principal purpose;
+- typical setting;
+- common session structure;
+- usual duration range without asserting provider-specific prices;
+- common practitioner contact body parts, tools, products, facilities, treatment supports, or equipment;
+- typical clothing, draping, position, or participant arrangement;
+- common client reasons for choosing it;
+- boundaries from similar or commonly confused services.
+
+Descriptions should distinguish:
+
+- established observable practice;
+- traditional explanation;
+- provider claim;
+- user-reported experience;
+- scientific or clinical evidence;
+- regulated professional scope.
+
+The profile must not present a disputed mechanism, spiritual belief, detox claim, organ-reflex claim, or medical promise automatically as established fact.
+
+================================================================================
+6. FAMILY-SPECIFIC CLASSIFICATION
+================================================================================
+
+A service profile displays only the classifications relevant to its Service Family.
+
+Massage may include:
+
+- Massage Basis;
+- Pressure Level;
+- Massage Medium;
+- Treatment Support;
+- Client Position;
+- Client Positioning Mode;
+- Client Attire;
+- Client Undressing Level;
+- Treatment Contact;
+- Draping Mode;
+- Draping Item;
+- Client Arrangement;
+- Practitioner Arrangement;
+- Technique Framework;
+- Technique Group;
+- Practitioner Contact Body Part;
+- Service Product Use.
+
+Reflexology may include:
+
+- Reflexology Target;
+- Treatment Support;
+- Client Position;
+- Practitioner Contact Body Part;
+- technique and pressure information.
+
+Hydrotherapy, Thermal, and Bathing may include:
+
+- Water Contact Method;
+- Water Temperature Level;
+- Temperature Pattern;
+- Thermal Exposure Method;
+- Bathing Access;
+- Treatment Support.
+
+Body Treatment may include:
+
+- Body Treatment Action;
+- Body Treatment Medium;
+- body coverage;
+- linked products and rinse requirements.
+
+Facial and Skin Care may include:
+
+- Skin Care Action;
+- Skin Concern;
+- Skin Care Delivery;
+- extraction;
+- linked products and safety information.
+
+Nail, Hand and Foot Care may include:
+
+- Nail Care Target;
+- Nail Service Action;
+- material, polish, enhancement, and removal information.
+
+Hair and Scalp Care may include:
+
+- Hair and Scalp Care Target;
+- Hair Service Action;
+- chemical, device, and maintenance information.
+
+Grooming and Hair Removal may include:
+
+- Hair Removal Method;
+- Grooming Action;
+- body-area and aftercare information.
+
+Device-Led Wellness may include:
+
+- Device Form;
+- Device Deployment;
+- equipment, power, sanitation, and operating restrictions.
+
+Mind-Body and Relaxation may include:
+
+- Client Arrangement;
+- Guidance Delivery;
+- movement, stillness, and participation information.
+
+Consultation and Assessment may include:
+
+- Consultation and Assessment Purpose.
+
+Clinical services may include:
+
+- Service Regulation Requirement;
+- jurisdiction;
+- credential, scope, and consent requirements.
+
+Sensual, sexual-wellness, and adult services use their Service Family, applicable neutral classifications, and explicit clinical or sensitive counterpart relationships. They do not use a redundant Sensitive Service Nature field.
+
+Provider-specific operational values may differ from the service's typical profile and remain authoritative for the actual booking.
+
+================================================================================
+7. WHAT TO EXPECT
+================================================================================
+
+The profile may describe a general service sequence:
+
+- preparation;
+- intake or consultation;
+- client attire, undressing, treatment contact, and draping;
+- treatment support;
+- client position and positioning mode;
+- opening stage;
+- principal methods;
+- tools or products;
+- duration pattern;
+- closing stage;
+- aftercare;
+- common provider variations.
+
+This section explains the service without instructing an unqualified person to perform a regulated or high-risk procedure.
+
+Where services vary substantially by tradition, school, country, provider, or client, the page should state the variation rather than present one sequence as universally correct.
+
+================================================================================
+8. METHODS, TECHNIQUES, AND FRAMEWORKS
+================================================================================
+
+The service profile may connect to:
+
+- technique frameworks;
+- named techniques;
+- technique groups;
+- technique variations;
+- practitioner contact body parts;
+- equipment or tools;
+- products and their service-use relationship;
+- treatment supports;
+- client body areas;
+- client positions;
+- session formats.
+
+For massage:
+
+- original technique names remain connected to their source framework;
+- Classical Western, Hilot, Thai, Shiatsu, Tui Na, Lomi Lomi, and other systems should not be forced into one vocabulary;
+- cross-system Technique Groups support comparison and search without declaring traditions identical.
+
+Technique media may include:
+
+- diagrams;
+- photographs;
+- illustrations;
+- short videos;
+- animation;
+- instructor demonstrations;
+- safety annotations.
+
+Instructional detail should indicate the source, intended audience, required training, and safety limits.
+
+================================================================================
+9. HISTORY, ORIGIN, AND CULTURAL CONTEXT
+================================================================================
+
+The profile may include:
+
+- country, region, community, or tradition of origin;
+- historical development;
+- important practitioners or schools;
+- cultural meaning;
+- transmission and modernization;
+- international adoption;
+- commercial adaptation;
+- terminology changes;
+- documented controversies or contested origin claims.
+
+Historical claims should cite sources and distinguish:
+
+- documented history;
+- oral tradition;
+- provider marketing;
+- modern reconstruction;
+- disputed attribution.
+
+Traditional services should be described respectfully without requiring Massage Nexus to accept every traditional health mechanism as scientifically verified.
+
+================================================================================
+10. SAFETY, CONSENT, AND PROFESSIONAL SCOPE
+================================================================================
+
+The profile may include:
+
+- contraindications;
+- precautions;
+- client screening;
+- pregnancy considerations;
+- age restrictions;
+- medical-condition cautions;
+- medication concerns;
+- infection-control requirements;
+- sanitation;
+- draping and privacy;
+- intimate-area boundaries;
+- informed consent;
+- referral guidance;
+- emergency concerns;
+- post-service reactions;
+- aftercare;
+- when to consult a qualified healthcare professional.
+
+Safety information must indicate whether it comes from:
+
+- regulator;
+- professional body;
+- training regulation;
+- manufacturer;
+- clinical source;
+- provider;
+- Massage Nexus editorial review;
+- user report.
+
+A service profile must not imply diagnosis, treatment, cure, rehabilitation, or medical authority beyond the documented legal and professional scope.
+
+Sensitive and adult services require accurate consent, age, legal, moderation, and visibility handling. Gender, orientation, client focus, nudity, or appearance alone does not prove an adult service.
+
+================================================================================
+11. TRAINING, QUALIFICATIONS, AND CREDENTIALS
+================================================================================
+
+The profile may connect to:
+
+- national qualifications;
+- licenses;
+- competency certificates;
+- professional certifications;
+- accredited courses;
+- school programs;
+- assessment standards;
+- continuing education;
+- workshops;
+- apprenticeships;
+- traditional lineage or supervised learning;
+- Massage Campus material.
+
+Each connection should state:
+
+- credential or program name;
+- issuing or responsible organization;
+- country or jurisdiction;
+- covered scope;
+- whether the service is fully covered, partly covered, or merely mentioned;
+- validity or expiry rules;
+- verification source.
+
+A qualification mentioning a service does not automatically establish advanced specialization in that service.
+
+For example, a broad massage qualification may discuss several systems without certifying specialist mastery in each one.
+
+================================================================================
+12. ESTABLISHMENTS, THERAPISTS, PRICES, AND AVAILABILITY
+================================================================================
+
+The service profile may aggregate:
+
+Establishments
+- establishment name;
+- location;
+- Spa Type and Market Class;
+- exact menu item name;
+- duration;
+- current price;
+- package or add-on status;
+- current availability;
+- last-confirmed date.
+
+Therapists
+- public name;
+- affiliation or independent practice;
+- Provider Rank where applicable;
+- Therapist Service Market Class for that context;
+- verified capability or credential support;
+- exact menu item;
+- duration;
+- price;
+- availability;
+- booking requirement.
+
+Important rules:
+
+- price belongs to the establishment_service or practitioner_service record;
+- the service profile may summarize current offers but does not own one universal price;
+- one provider may use a branded name;
+- one provider menu item may map to several services;
+- a therapist capability does not prove current booking availability;
+- an establishment offering does not mean every therapist can perform it;
+- old or unverified prices require a last-confirmed warning.
+
+Possible discovery tools:
+
+- nearby establishments;
+- independent therapists;
+- price range;
+- duration range;
+- availability;
+- delivery context;
+- provider market class;
+- verified credential support;
+- client access;
+- treatment setup.
+
+================================================================================
+13. PRODUCTS, FACILITIES, AND EQUIPMENT
+================================================================================
+
+The profile may connect to:
+
+- generic Product Types and actual Product records through a declared service-use relationship;
+- massage oils, lotions, creams, balms, gels, and powders;
+- tools;
+- stones;
+- herbal compresses;
+- linens;
+- tables, chairs, mats, and treatment beds;
+- hydrotherapy equipment;
+- thermal equipment;
+- recovery devices;
+- sanitation supplies;
+- aftercare products;
+- facility types.
+
+Connections should distinguish:
+
+- required;
+- commonly used;
+- optional;
+- permitted alternative;
+- enhancement;
+- historically associated;
+- provider-specific;
+- recommended by a professional source;
+- sponsored or affiliate-linked.
+
+Service Classification records the generic service characteristic, such as Oil, Towel, Mud, Floatation Support, or Tool-Assisted Work. Product Classification records the exact product type, formulation, material, specifications, brand, version, and seller offer.
+
+A product relationship does not mean that Massage Nexus endorses the product. A Product Type must not be assigned to a service merely because the combination is commercially possible; the connection requires source, provider, historical, or method evidence.
+
+================================================================================
+14. MEDIA, ARTICLES, AND LEARNING CONTENT
+================================================================================
+
+The profile may contain or connect to:
+
+- representative images;
+- diagrams;
+- technique illustrations;
+- demonstration videos;
+- interviews;
+- historical images;
+- cultural media;
+- safety graphics;
+- preparation and aftercare media;
+- articles;
+- beginner explanations;
+- professional references;
+- Massage Campus lessons.
+
+Media should identify:
+
+- represented service;
+- technique or stage;
+- source;
+- creator;
+- consent;
+- jurisdiction or tradition;
+- educational level;
+- safety context;
+- whether the media is editorial, provider-supplied, sponsored, or user-contributed.
+
+A provider advertisement should not become the universal representative image without review.
+
+================================================================================
+15. REVIEWS AND RATINGS
+================================================================================
+
+A service profile may include:
+
+- overall service review summary;
+- editorial service reviews;
+- user reviews linked to actual provider visits;
+- professional commentary;
+- criteria ratings relevant to the service;
+- discussions;
+- corrections;
+- source notes.
+
+A review should preserve when available:
+
+- establishment or therapist;
+- exact provider menu item;
+- normalized service mapping;
+- date;
+- duration;
+- price paid;
+- pressure or setup;
+- client context;
+- disclosure;
+- whether the review concerns the service concept, provider execution, or both.
+
+A poor execution by one provider should not automatically define the entire service. Provider ratings and service-level editorial information remain distinguishable.
+
+================================================================================
+16. RELATED SERVICES AND RELATIONSHIPS
+================================================================================
+
+The profile may display:
+
+- broader and narrower services;
+- parent and child services;
+- equivalent and near-equivalent services;
+- related services;
+- commonly confused services;
+- component services;
+- services often combined;
+- clinical counterparts;
+- sensitive counterparts;
+- superseded and merged records.
+
+Examples:
+
+- Foot Massage and Foot Reflexology may be Commonly Confused.
+- Cupping Massage and Cupping Therapy may be Related.
+- Facial Massage may be a Component of a complete facial treatment.
+- Clinical Prostate Treatment and adult prostate stimulation require distinct clinical and sensitive relationships.
+
+================================================================================
+17. CREATION, EDITING, AND AUTHORITY
+================================================================================
+
+A service profile is not claimed or owned by one provider.
+
+Public Visitor
+- view, save, follow, share, compare, report, and suggest corrections.
+
+Registered Contributor
+- propose a service, alias, translation, relationship, source, image, video, article, correction, duplicate report, or merge request.
+
+Establishment or Therapist
+- submit provider-specific evidence, menu mappings, techniques, credentials, images, and corrections;
+- cannot redefine the universal service solely for commercial advantage.
+
+School, Professional Organization, Credential Issuer, or Cultural Body
+- submit sourced history, terminology, training, technique, and credential information;
+- does not receive automatic exclusive authority over a widely shared service concept.
+
+Editor or Moderator
+- review identity, aliases, hierarchy, classification, claims, evidence, safety, sensitive content, duplicates, and disputes.
+
+Administrator
+- add, edit, translate, restore, merge, deprecate, restrict, and perform approved cleanup after review.
+
+Conflicts should preserve competing sourced claims when one definitive conclusion is not justified.
+
+================================================================================
+18. DUPLICATES, MERGE, AND LIFECYCLE
+================================================================================
+
+Duplicate review should compare:
+
+- preferred and alternate names;
+- language and transliteration;
+- definition;
+- history and origin;
+- Service Family;
+- techniques;
+- provider usage;
+- credentials;
+- related services;
+- whether records are synonyms, variants, components, or genuinely different services.
+
+Do not merge:
+
+- two services merely because they share a technique;
+- a branded menu item with a universal service without broader evidence;
+- a clinical service with its sensual or adult counterpart;
+- a complete treatment with one component;
+- Foot Massage with Foot Reflexology solely because both involve feet.
+
+One record becomes the canonical service when a true duplicate is merged.
+
+The merge should preserve:
+
+- old names and slugs;
+- aliases;
+- provider mappings;
+- therapist capabilities;
+- media;
+- reviews;
+- articles;
+- sources;
+- contribution history;
+- audit history.
+
+Lifecycle may include active, deprecated, merged, superseded, restricted, or removed handling through the approved shared record-lifecycle and moderation systems.
+
+A discontinued commercial provider menu item does not make the normalized service obsolete.
+
+================================================================================
+19. SERVICE EDITORIAL WORKSPACE
+================================================================================
+
+Early editorial tools may include:
+
+- service identity and hierarchy;
+- aliases and translations;
+- family-specific classifications;
+- related services;
+- provider mappings;
+- therapist capabilities;
+- media;
+- history and cultural context;
+- technique framework;
+- safety and scope;
+- credential and training links;
+- sources;
+- corrections;
+- duplicate review;
+- merge and deprecation;
+- basic analytics.
+
+Later tools may include:
+
+- structured technique media;
+- source-comparison views;
+- jurisdiction-specific scope;
+- credential coverage maps;
+- price and availability aggregation;
+- provider-mapping confidence;
+- automated duplicate suggestions;
+- advanced multilingual editorial workflows;
+- Massage Campus integration.
+
+The Service Editorial Workspace is different from a provider workspace. Providers manage their own menu records; editors manage the universal service identity.
+
+================================================================================
+20. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial Service Profile
+- identity;
+- hierarchy;
+- concise description;
+- aliases;
+- family-specific classification;
+- what to expect;
+- basic safety;
+- establishments;
+- therapists;
+- related services;
+- media;
+- sources;
+- corrections and report actions.
+
+Early Editorial Workspace
+- create and edit service;
+- alias and translation;
+- relationship management;
+- provider mapping;
+- family-specific taxonomy;
+- sources;
+- merge and lifecycle;
+- basic media.
+
+Later Features
+- detailed history;
+- structured technique framework;
+- instructional media;
+- credential and training coverage;
+- jurisdiction-specific scope;
+- price analytics;
+- advanced comparisons;
+- Massage Campus learning integration.
+
+Service should be implemented before finalizing the deepest Spa and Therapist profile workflows because establishment_service and practitioner_service both depend on service_main.

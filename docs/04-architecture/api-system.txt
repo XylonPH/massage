@@ -1,0 +1,1270 @@
+Title: Massage Nexus API System
+Document Version: 0.30
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 02 - Technology Stack v1.60
+- Massage Nexus - 02.01 - File and Folder Structure v1.00
+- Massage Nexus - 02.02 - AI Use v1.00
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 20 - Translation System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- docs/11-workspaces/operator-workspace.txt
+- Massage Nexus - 25 - Therapist Workspace v0.10
+- Massage Nexus - 26 - Seller Workspace v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working API system for Massage Nexus.
+
+The API allows approved applications and external systems to interact with the Laravel backend without connecting directly to the database.
+
+The website, future Flutter application, future desktop application, partner systems, and approved public developers should share the same business rules, permissions, validation, records, and audit systems.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The API System should:
+
+- support future Massage Nexus mobile and desktop clients;
+- support approved establishment, therapist, seller, and booking integrations;
+- expose selected public data safely;
+- avoid duplicate business logic;
+- provide stable versioned contracts;
+- use controlled authentication and authorization;
+- support multilingual responses;
+- protect private and restricted media;
+- provide predictable error handling;
+- support rate limits, quotas, and audit;
+- support webhooks;
+- allow gradual expansion without breaking existing clients;
+- keep database credentials and internal storage paths private.
+
+================================================================================
+2. API GROUPS
+================================================================================
+
+2.1 First-Party App API
+
+Purpose:
+Used by official Massage Nexus applications.
+
+Examples:
+
+- Flutter mobile application;
+- future Windows application;
+- official browser clients when appropriate.
+
+Base path:
+
+/v1/app/
+
+Possible areas:
+
+- authentication;
+- user;
+- search;
+- directory;
+- Service;
+- establishment;
+- therapist;
+- Product;
+- seller;
+- article;
+- news;
+- review;
+- rating;
+- discussion;
+- media;
+- booking;
+- calendar;
+- contribution;
+- claim;
+- verification;
+- notification;
+- message;
+- workspace.
+
+2.2 Partner API
+
+Purpose:
+Used by approved external organizations and software systems.
+
+Possible users:
+
+- establishment management systems;
+- therapist scheduling systems;
+- seller systems;
+- hotel systems;
+- booking partners;
+- agency tools;
+- approved advertisers;
+- approved content partners.
+
+Base path:
+
+/v1/partner/
+
+Possible areas:
+
+- establishments;
+- therapists;
+- services;
+- prices;
+- hours;
+- availability;
+- bookings;
+- Products;
+- Seller Offers;
+- stock;
+- media;
+- analytics;
+- webhooks.
+
+2.3 Approved Public API
+
+Purpose:
+Provides selected non-private public information to approved or general developers.
+
+Base path:
+
+/v1/public/
+
+Possible areas:
+
+- public search;
+- public directory;
+- public Service records;
+- public establishment summaries;
+- public therapist summaries;
+- public Product summaries;
+- public article and news metadata;
+- public locations;
+- public status.
+
+Public API does not mean unrestricted access to all data.
+
+2.4 Internal Administrative API
+
+Purpose:
+Supports controlled internal asynchronous operations or separate trusted administration clients.
+
+This may use the First-Party API with stronger permissions rather than a separate public route family.
+
+A separate internal API should be created only when it has a clear technical need.
+
+================================================================================
+3. WEBSITE AND API RELATIONSHIP
+================================================================================
+
+The Laravel website does not need to call its own public API for every server-rendered page.
+
+The website may directly use:
+
+- Actions;
+- Services;
+- Models;
+- Repositories where needed;
+- Policies;
+- validation;
+- application rules.
+
+The API uses the same application layer and returns JSON.
+
+Example:
+
+Website request
+-> Controller or Livewire page
+-> Action
+-> Service
+-> Repository or Model
+-> database
+-> Blade or Livewire response.
+
+API request
+-> API Controller
+-> same Action
+-> same Service
+-> same Repository or Model
+-> database
+-> JSON Resource response.
+
+This avoids rewriting booking, permission, media, or edit rules several times.
+
+================================================================================
+4. API HOST AND VERSION
+================================================================================
+
+Working host:
+
+api.massagenexus.com
+
+Working version:
+
+v1
+
+Examples:
+
+https://api.massagenexus.com/v1/app/service
+https://api.massagenexus.com/v1/partner/availability
+https://api.massagenexus.com/v1/public/article
+
+The exact production host may be introduced later.
+
+Version should appear in the URL for major public contracts.
+
+Minor compatible additions do not require a new major version.
+
+Breaking changes require a new version or a documented compatibility plan.
+
+================================================================================
+5. CONTRACT SOURCE
+================================================================================
+
+The authoritative API description should use OpenAPI.
+
+Repository location:
+
+contracts/api/openapi/massage-nexus-v1.yaml
+
+Supporting areas:
+
+contracts/api/schema/
+contracts/api/example/
+
+The contract should define:
+
+- endpoint;
+- method;
+- purpose;
+- authentication;
+- permission;
+- request fields;
+- response fields;
+- error codes;
+- pagination;
+- language behavior;
+- example;
+- rate limit;
+- version;
+- deprecation.
+
+Do not maintain unrelated unofficial endpoint definitions in each client repository.
+
+================================================================================
+6. APPLICATION FILE STRUCTURE
+================================================================================
+
+Suggested Laravel structure:
+
+apps/web/routes/api.php
+apps/web/routes/api/v1/app.php
+apps/web/routes/api/v1/partner.php
+apps/web/routes/api/v1/public.php
+
+apps/web/app/Http/Controllers/Api/V1/App/
+apps/web/app/Http/Controllers/Api/V1/Partner/
+apps/web/app/Http/Controllers/Api/V1/Public/
+
+apps/web/app/Http/Requests/Api/
+apps/web/app/Http/Resources/Api/V1/App/
+apps/web/app/Http/Resources/Api/V1/Partner/
+apps/web/app/Http/Resources/Api/V1/Public/
+
+apps/web/app/Policies/
+apps/web/app/Actions/
+apps/web/app/Services/
+apps/web/app/Repositories/
+
+Controllers should remain thin.
+
+Business logic should remain in shared Actions and Services.
+
+================================================================================
+7. AUTHENTICATION
+================================================================================
+
+Working Laravel direction:
+
+Laravel Sanctum
+
+Possible authentication methods:
+
+First-Party App:
+- user login;
+- personal access token;
+- device session;
+- secure refresh strategy if required.
+
+Partner API:
+- client credential or personal access token;
+- organization-linked token;
+- scoped abilities;
+- expiration;
+- rotation;
+- revocation.
+
+Public API:
+- anonymous limited access;
+- optional API key;
+- developer client;
+- quota.
+
+Authentication proves who or what is calling.
+
+It does not automatically prove permission to access a specific record.
+
+================================================================================
+8. AUTHORIZATION
+================================================================================
+
+Authorization should use:
+
+- user identity;
+- client identity;
+- token ability or scope;
+- record Policy;
+- role and permission;
+- organization context;
+- record status;
+- requested action.
+
+Example:
+
+A token has availability:write.
+
+The caller still must be authorized for the specific therapist or establishment.
+
+Hiding an endpoint in documentation is not security.
+
+================================================================================
+9. TOKEN ABILITIES AND SCOPES
+================================================================================
+
+Possible abilities:
+
+- profile:read;
+- profile:write;
+- service:read;
+- service:write;
+- hours:read;
+- hours:write;
+- availability:read;
+- availability:write;
+- booking:read;
+- booking:write;
+- media:read;
+- media:write;
+- Product:read;
+- Product:write;
+- offer:read;
+- offer:write;
+- stock:read;
+- stock:write;
+- analytics:read;
+- webhook:manage.
+
+Use narrow abilities.
+
+Do not issue one all-powerful token when a smaller token is sufficient.
+
+================================================================================
+10. TOKEN LIFECYCLE
+================================================================================
+
+A token may contain:
+
+- token identifier;
+- owner;
+- client;
+- abilities;
+- creation date;
+- expiration;
+- last used;
+- last IP or device context where appropriate;
+- status;
+- revocation date;
+- reason;
+- audit history.
+
+Secrets should be displayed only when created or rotated.
+
+Store only secure hashes when appropriate.
+
+================================================================================
+11. FIRST-PARTY APP API
+================================================================================
+
+Possible endpoints:
+
+Authentication:
+- POST /v1/app/auth/login
+- POST /v1/app/auth/logout
+- POST /v1/app/auth/register
+- POST /v1/app/auth/password/forgot
+- POST /v1/app/auth/password/reset
+- GET /v1/app/auth/session
+
+User:
+- GET /v1/app/user
+- PATCH /v1/app/user
+- GET /v1/app/user/notification
+- GET /v1/app/user/saved
+- GET /v1/app/user/following
+
+Discovery:
+- GET /v1/app/search
+- GET /v1/app/directory
+- GET /v1/app/service
+- GET /v1/app/spa
+- GET /v1/app/therapist
+- GET /v1/app/product
+- GET /v1/app/article
+- GET /v1/app/news
+
+Participation:
+- POST /v1/app/review
+- POST /v1/app/rating
+- POST /v1/app/discussion
+- POST /v1/app/contribution
+- POST /v1/app/report
+
+Workspace:
+- GET /v1/app/workspace
+- GET /v1/app/booking
+- GET /v1/app/message
+- GET /v1/app/calendar
+
+These are planning examples, not a final endpoint contract.
+
+================================================================================
+12. PARTNER API
+================================================================================
+
+Possible establishment endpoints:
+
+- GET /v1/partner/spa
+- GET /v1/partner/spa/{id}
+- PATCH /v1/partner/spa/{id}
+- GET /v1/partner/spa/{id}/hour
+- PUT /v1/partner/spa/{id}/hour
+- GET /v1/partner/spa/{id}/service
+- PATCH /v1/partner/spa/{id}/service/{service-id}
+- GET /v1/partner/spa/{id}/booking
+- PATCH /v1/partner/spa/{id}/booking/{booking-id}
+
+Possible therapist endpoints:
+
+- GET /v1/partner/therapist
+- PATCH /v1/partner/therapist/{id}/availability
+- GET /v1/partner/therapist/{id}/schedule
+
+Possible seller endpoints:
+
+- GET /v1/partner/seller/{id}/offer
+- POST /v1/partner/seller/{id}/offer
+- PATCH /v1/partner/offer/{offer-id}
+- PATCH /v1/partner/offer/{offer-id}/stock
+- PATCH /v1/partner/offer/{offer-id}/price
+
+The final API should follow consistent resource naming and method rules.
+
+================================================================================
+13. PUBLIC API
+================================================================================
+
+Possible public endpoints:
+
+- GET /v1/public/search
+- GET /v1/public/service
+- GET /v1/public/service/{id-or-slug}
+- GET /v1/public/spa
+- GET /v1/public/spa/{id-or-slug}
+- GET /v1/public/therapist
+- GET /v1/public/therapist/{id-or-slug}
+- GET /v1/public/product
+- GET /v1/public/product/{id-or-slug}
+- GET /v1/public/article
+- GET /v1/public/news
+- GET /v1/public/location
+- GET /v1/public/status
+
+Public output should exclude:
+
+- private identity;
+- private documents;
+- private contact;
+- restricted media;
+- moderation notes;
+- internal source notes;
+- security metadata;
+- unpublished drafts;
+- deleted or restricted records unless explicitly allowed.
+
+================================================================================
+14. REQUEST FORMAT
+================================================================================
+
+Use JSON for ordinary API request bodies.
+
+Possible headers:
+
+- Accept: application/json
+- Content-Type: application/json
+- Authorization: Bearer {token}
+- Accept-Language: en
+- Idempotency-Key: {unique-key}
+- X-Request-ID: {request-id}
+
+File uploads may use multipart form data or an approved direct-upload process.
+
+================================================================================
+15. RESPONSE FORMAT
+================================================================================
+
+A successful single-record response may contain:
+
+- data;
+- links;
+- meta.
+
+A successful list response may contain:
+
+- data;
+- links;
+- meta;
+- pagination.
+
+Example conceptual shape:
+
+data:
+- record fields.
+
+meta:
+- request identifier;
+- language;
+- fallback;
+- version.
+
+Do not expose internal class names or database connection details.
+
+================================================================================
+16. ERROR FORMAT
+================================================================================
+
+Errors should use:
+
+- HTTP status;
+- stable machine-readable code;
+- human-readable message;
+- field errors where applicable;
+- request identifier;
+- documentation reference where helpful.
+
+Example error codes:
+
+- authentication_required;
+- permission_denied;
+- record_not_found;
+- validation_failed;
+- rate_limit_exceeded;
+- conflict_detected;
+- translation_unavailable;
+- media_access_denied;
+- token_expired;
+- unsupported_version;
+- service_unavailable.
+
+The human-readable message may be localized.
+
+The machine-readable code remains stable.
+
+================================================================================
+17. HTTP STATUS DIRECTION
+================================================================================
+
+Examples:
+
+200
+Successful read or update.
+
+201
+Record created.
+
+202
+Accepted for background processing.
+
+204
+Successful action with no body.
+
+400
+Invalid request.
+
+401
+Authentication required or invalid.
+
+403
+Authenticated but not allowed.
+
+404
+Record not found or intentionally unavailable.
+
+409
+Conflict, duplicate, or stale revision.
+
+422
+Validation failed.
+
+429
+Rate limit exceeded.
+
+500
+Unexpected server error.
+
+503
+Temporarily unavailable.
+
+Exact use should remain consistent.
+
+================================================================================
+18. IDENTIFIERS
+================================================================================
+
+Massage Nexus APIs use the approved cryptographically random 16-character base62 identifier when
+stable record identity is required. MongoDB stores it as _id; relationship fields use the same
+value through concept-specific names such as establishment_id. Predictable counter-based IDs,
+UUIDs, and ULIDs are not the default Massage Nexus identifier profile.
+
+Do not expose predictable sequential storage paths for private files.
+
+A record may also have a readable public slug. For establishments, the canonical field name is
+establishment_slug because the owning collection is establishment_main. A public website route
+may use /spa/{establishment_slug} while an API, import, relationship, or audit record uses the
+stable identifier.
+
+Identifier and slug serve different purposes.
+
+API clients should not assume that a slug never changes unless the contract promises that behavior.
+
+================================================================================
+19. PAGINATION
+================================================================================
+
+List endpoints should support pagination.
+
+Possible request values:
+
+- page;
+- per_page;
+- cursor;
+- limit.
+
+Cursor pagination may be preferable for large or frequently changing lists.
+
+Responses may include:
+
+- next;
+- previous;
+- current page;
+- total where practical;
+- has more.
+
+Maximum page size should be controlled.
+
+================================================================================
+20. FILTERING
+================================================================================
+
+Possible filters:
+
+- status;
+- location;
+- language;
+- Service;
+- Service Family;
+- Spa Type;
+- Market Class;
+- availability;
+- verification;
+- updated date;
+- price;
+- rating;
+- seller;
+- Product category.
+
+Unsupported filters should return a clear validation error rather than being silently ignored.
+
+================================================================================
+21. SORTING
+================================================================================
+
+Possible sort fields:
+
+- relevance;
+- name;
+- distance;
+- updated;
+- created;
+- rating;
+- review count;
+- price;
+- availability.
+
+Allowed sort values should be documented.
+
+Do not allow arbitrary database-field sorting.
+
+================================================================================
+22. FIELD SELECTION AND EXPANSION
+================================================================================
+
+A later API may support:
+
+- fields;
+- include;
+- expand.
+
+Example:
+
+include=translations,media,services
+
+Expansion must respect permissions.
+
+Do not expose private relationships merely because the caller requested include=all.
+
+================================================================================
+23. LOCALIZATION
+================================================================================
+
+API requests may use:
+
+Accept-Language
+
+The response may identify:
+
+- requested language;
+- returned language;
+- fallback language;
+- original language;
+- translation status;
+- stale status.
+
+Static API errors may use localized messages.
+
+Stable error codes remain language-independent.
+
+Partner clients may choose to handle interface translation themselves.
+
+================================================================================
+24. EDITS AND REVISION CONTROL
+================================================================================
+
+API writes should use the shared Edit System.
+
+Possible requirements:
+
+- current revision;
+- change reason;
+- source;
+- idempotency key;
+- validation;
+- Policy;
+- audit.
+
+A stale edit may return:
+
+409 conflict_detected
+
+The response may include the current revision and changed fields.
+
+Partner systems must not bypass revision and source rules.
+
+================================================================================
+25. IDEMPOTENCY
+================================================================================
+
+Idempotency prevents a repeated request from creating duplicate effects.
+
+Use for operations such as:
+
+- booking creation;
+- payment action;
+- order creation;
+- contribution submission;
+- webhook processing;
+- import;
+- media finalization.
+
+The client sends a unique Idempotency-Key.
+
+The server returns the original result when the same valid operation is repeated.
+
+================================================================================
+26. RATE LIMITS AND QUOTAS
+================================================================================
+
+Rate limits may depend on:
+
+- anonymous caller;
+- authenticated user;
+- client;
+- partner plan;
+- endpoint;
+- risk;
+- operation cost.
+
+Possible response information:
+
+- allowed requests;
+- remaining requests;
+- reset time;
+- retry-after.
+
+Do not reveal security-sensitive limit details unnecessarily.
+
+================================================================================
+27. WEBHOOKS
+================================================================================
+
+A webhook sends an event from Massage Nexus to an approved partner.
+
+Possible events:
+
+- booking.created;
+- booking.updated;
+- booking.cancelled;
+- establishment.updated;
+- hours.updated;
+- availability.updated;
+- offer.updated;
+- order.created;
+- verification.updated;
+- claim.updated;
+- media.approved.
+
+Webhook requirements:
+
+- signed request;
+- event identifier;
+- timestamp;
+- retry;
+- replay protection;
+- idempotent receiver;
+- delivery log;
+- disable control;
+- secret rotation.
+
+================================================================================
+28. EVENT PAYLOAD
+================================================================================
+
+A webhook event may include:
+
+- event id;
+- event type;
+- occurred at;
+- API version;
+- resource id;
+- organization;
+- data;
+- previous values where approved;
+- delivery attempt.
+
+Do not include unrelated private data.
+
+================================================================================
+29. MEDIA API
+================================================================================
+
+Public media may use ordinary public URLs.
+
+Private or restricted media should use:
+
+- authenticated media endpoint;
+- Policy check;
+- short-lived protected URL;
+- server streaming;
+- controlled cache headers.
+
+Example:
+
+GET /v1/app/media/{media-id}/content
+
+The API must not return the actual private storage path before authorization.
+
+================================================================================
+30. FILE UPLOAD
+================================================================================
+
+Possible flow:
+
+1. client requests upload permission;
+2. server checks user and purpose;
+3. server creates upload record;
+4. client uploads to quarantine or approved temporary storage;
+5. server validates and scans;
+6. server processes media;
+7. moderator or system approves;
+8. media becomes available according to visibility.
+
+Validate:
+
+- type;
+- size;
+- extension;
+- content;
+- dimensions;
+- duration;
+- malware;
+- ownership;
+- permission.
+
+================================================================================
+31. SEARCH API
+================================================================================
+
+Search may support:
+
+- keyword;
+- location;
+- filters;
+- sorting;
+- language;
+- pagination;
+- result groups.
+
+Search response may group:
+
+- Service;
+- establishment;
+- therapist;
+- Product;
+- seller;
+- article;
+- news;
+- review.
+
+Search should not return private records.
+
+================================================================================
+32. BOOKING API
+================================================================================
+
+Booking may eventually support:
+
+- request;
+- approval;
+- rejection;
+- reschedule;
+- cancellation;
+- deposit;
+- payment;
+- check-in;
+- completion;
+- refund.
+
+Booking writes require:
+
+- permission;
+- current availability;
+- idempotency;
+- conflict handling;
+- timezone;
+- audit;
+- notification.
+
+Do not expose one client's booking to another client or unrelated provider.
+
+================================================================================
+33. AI API USE
+================================================================================
+
+Public or partner access to AI features should be limited.
+
+Possible first-party AI operations:
+
+- name brainstorming;
+- writing assistance;
+- translation draft;
+- summary;
+- classification suggestion.
+
+AI endpoints may require:
+
+- authenticated user;
+- plan;
+- quota;
+- Ember confirmation;
+- input validation;
+- content policy;
+- usage log;
+- cost control.
+
+Provider API keys remain on the server.
+
+They are never delivered to mobile or partner clients.
+
+================================================================================
+34. CLIENT LIBRARIES AND SDK
+================================================================================
+
+A later stage may provide:
+
+- generated Dart client;
+- PHP client;
+- JavaScript client;
+- webhook helper.
+
+Clients should be generated or maintained from the OpenAPI contract where practical.
+
+Do not create an SDK before the API contract is stable enough.
+
+================================================================================
+35. SANDBOX AND TEST ENVIRONMENT
+================================================================================
+
+Partner developers may need:
+
+- sandbox host;
+- test credentials;
+- test records;
+- test webhooks;
+- simulated booking;
+- quota;
+- reset process;
+- documentation.
+
+Sandbox must not contain real production personal data.
+
+================================================================================
+36. MONITORING
+================================================================================
+
+Monitor:
+
+- request count;
+- error rate;
+- latency;
+- timeout;
+- authentication failure;
+- authorization denial;
+- rate-limit event;
+- failed webhook;
+- unusual client behavior;
+- expensive endpoint;
+- version usage.
+
+Monitoring data should avoid unnecessary request-body logging.
+
+================================================================================
+37. LOGGING AND AUDIT
+================================================================================
+
+Possible API logs:
+
+- request identifier;
+- client;
+- user;
+- endpoint;
+- method;
+- result;
+- status;
+- duration;
+- ability;
+- resource;
+- error code;
+- timestamp.
+
+Do not log:
+
+- password;
+- full token;
+- private key;
+- complete payment information;
+- unnecessary private documents.
+
+High-risk writes should create application audit records in addition to technical logs.
+
+================================================================================
+38. SECURITY
+================================================================================
+
+API security should include:
+
+- HTTPS;
+- secure token storage;
+- token hashing where appropriate;
+- limited scope;
+- expiration;
+- revocation;
+- rate limits;
+- validation;
+- Policy checks;
+- audit;
+- CORS controls;
+- replay protection;
+- webhook signature;
+- dependency updates;
+- security testing.
+
+CORS is not authentication.
+
+================================================================================
+39. DATA PRIVACY
+================================================================================
+
+Return the minimum information required.
+
+Partner API clients should receive only data connected to their approved purpose.
+
+Public API clients should not receive:
+
+- private identity;
+- private booking notes;
+- private messages;
+- restricted media;
+- credential documents;
+- internal moderation data;
+- production secrets.
+
+Data retention and deletion should follow policy.
+
+================================================================================
+40. API DOCUMENTATION
+================================================================================
+
+Documentation should include:
+
+- getting started;
+- authentication;
+- abilities;
+- endpoint reference;
+- examples;
+- errors;
+- pagination;
+- webhooks;
+- limits;
+- changelog;
+- deprecation;
+- support;
+- security reporting.
+
+Internal implementation documentation remains separate from public developer documentation.
+
+================================================================================
+41. CHANGELOG AND DEPRECATION
+================================================================================
+
+API Changelog:
+Records accepted contract changes.
+
+Deprecation notice should identify:
+
+- affected endpoint;
+- replacement;
+- deprecation date;
+- planned removal date;
+- migration guide.
+
+Breaking changes should not be introduced silently.
+
+================================================================================
+42. TESTING
+================================================================================
+
+Tests should cover:
+
+- authentication;
+- ability;
+- Policy;
+- validation;
+- pagination;
+- filter;
+- error format;
+- localization;
+- private media;
+- idempotency;
+- rate limit;
+- webhook signature;
+- stale revision;
+- duplicate request;
+- data leakage;
+- version compatibility.
+
+Contract tests should confirm that implementation matches OpenAPI.
+
+================================================================================
+43. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1:
+- API conventions;
+- OpenAPI foundation;
+- First-Party read endpoints;
+- authentication;
+- error format;
+- pagination;
+- localization;
+- tests.
+
+Phase 2:
+- First-Party write endpoints;
+- private media;
+- contributions;
+- workspace operations;
+- webhooks;
+- partner client registration.
+
+Phase 3:
+- Partner API;
+- sandbox;
+- SDK generation;
+- public API;
+- advanced quotas;
+- API analytics;
+- developer portal.
+
+================================================================================
+44. CURRENT WORKING DECISIONS
+================================================================================
+
+- The API is served by Laravel.
+- Mobile and desktop clients do not connect directly to Azure DocumentDB.
+- Website and API share Actions, Services, Models, Policies, and validation.
+- First-Party App, Partner, and Approved Public APIs remain separate.
+- OpenAPI is the shared contract.
+- Laravel Sanctum is the working authentication direction.
+- Token ability does not replace record authorization.
+- Private media paths are never exposed before authorization.
+- API writes use revision, validation, audit, and Edit System rules.
+- Server-side AI provider keys are never delivered to clients.
+- API development begins with first-party needs before broad public access.
+
+================================================================================
+45. OPEN DECISIONS
+================================================================================
+
+- exact API host activation date;
+- final endpoint naming;
+- endpoint-specific choice of stable identifier, public slug, or both where the contract requires it;
+- token expiration;
+- refresh-token strategy;
+- public API registration;
+- public API pricing;
+- partner plans;
+- exact rate limits;
+- sandbox host;
+- webhook event list;
+- API support process;
+- SDK languages;
+- GraphQL consideration;
+- caching;
+- exact search backend;
+- mobile offline synchronization;
+- final version-removal policy.

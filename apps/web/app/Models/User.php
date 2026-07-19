@@ -2,31 +2,80 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
+use App\Notifications\PasswordResetLink;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
 
-#[Fillable(['name', 'email', 'password'])]
+/**
+ * The account, credential, contact, and membership record boundaries here
+ * follow docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ * section 18 (Conceptual Record Responsibilities). These stay embedded in
+ * one collection for the initial implementation, per that document's
+ * guidance to avoid premature collection splitting.
+ */
+#[Fillable([
+    'username', 'email', 'password', 'birth_date',
+    'terms_accepted_at', 'terms_accepted_version',
+    'privacy_acknowledged_at', 'privacy_acknowledged_version',
+    'is_marketing_email_opt_in',
+])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class User extends MongoAuthenticatable implements MustVerifyEmailContract
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, MustVerifyEmail, Notifiable;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    protected $connection = 'mongodb';
+
+    protected $collection = 'user_main';
+
+    protected $primaryKey = '_id';
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (self $user): void {
+            if (! $user->getKey()) {
+                $user->{$user->getKeyName()} = Str::random(16);
+            }
+
+            $user->status_account ??= 'pending_email_verification';
+            $user->status_membership ??= 'pending_eligibility';
+        });
+    }
+
     protected function casts(): array
     {
         return [
+            'birth_date' => 'date',
             'email_verified_at' => 'datetime',
+            'terms_accepted_at' => 'datetime',
+            'privacy_acknowledged_at' => 'datetime',
+            'is_marketing_email_opt_in' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status_account === 'active' && $this->status_membership === 'active';
+    }
+
+    public function sendPasswordResetNotification($token): void
+    {
+        // Recovery is available only through an already verified email.
+        // Keep the controller response neutral for pending accounts while
+        // ensuring no usable recovery message is delivered to them.
+        if (! $this->hasVerifiedEmail()) {
+            return;
+        }
+
+        $this->notify(new PasswordResetLink($token));
     }
 }

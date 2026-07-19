@@ -1,0 +1,286 @@
+Document Title: Massage Nexus: Spa Classification
+Document Version: 1.55
+Date Created: 2026-07-11
+Revision Date: 2026-07-19
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the controlled fields and option sets used to classify spas and spa-like establishments in Massage Nexus. It includes recommended snake_case field names, stable option codes, concise labels, and internal descriptions.
+
+This is a compact taxonomy reference, not public documentation, a database schema, a profile specification, or an implementation guide. Unconfirmed classifications should remain unselected and may be explained through a separate internal note. Labels may be translated later without changing their stable option codes.
+
+GENERAL RULES
+-------------
+- Technical field names use English snake_case.
+- Option codes use stable uppercase letters, normally one to three characters.
+- Spa Type, Spa Market Class, Physical Setting, Access Model, Operation Model, Establishment Status, Treatment Area Type, Privacy Level, Treatment Area Capacity, and Client Access are single-select.
+- Service Delivery Mode and Client Focus are multi-select.
+- Spa Type identifies the establishment's primary identity; actual services describe additional offerings.
+- Market Class provides comparison context and does not determine rating, verification, price, or quality by itself.
+- Establishment Status describes real-world operation, not record lifecycle or moderation.
+- Website quality, subscription plan, custom domain, Branded Portal, and Massage Campus participation do not affect classification.
+
+================================================================================
+1. SPA TYPE
+================================================================================
+
+Field Name: type_spa
+Field Label: Spa Type
+Selection: Single-select
+
+Code | Label                         | Description
+-----|-------------------------------|------------------------------------------------------------
+MS   | Massage Spa                   | Establishment primarily centered on massage services.
+DY   | Day Spa                       | Non-residential spa offering treatments completed within one visit.
+SL   | Salon Spa                     | Salon or grooming business with a meaningful spa and wellness operation.
+NL   | Nail Spa                      | Nail-focused establishment also offering hand, foot, or related spa services.
+BT   | Beauty Spa                    | Beauty-focused spa offering facial, skin, body, slimming, or related treatments.
+RF   | Reflexology Center            | Establishment primarily centered on reflexology and related pressure-based services.
+BH   | Bathhouse                     | Communal or facility-based bathing and relaxation establishment.
+HY   | Hydrotherapy Spa              | Spa primarily centered on water-based treatment or hydrotherapy equipment.
+WC   | Wellness Center               | Broader establishment combining massage with several wellness disciplines or programs.
+SP   | Specialty Wellness Facility   | Establishment centered on a distinctive wellness system, format, or technology.
+MD   | Medical Spa                   | Spa providing medically supervised or regulated aesthetic and wellness procedures.
+HT   | Hotel Spa                     | Spa situated within or directly operated as part of a hotel.
+RS   | Resort Spa                    | Spa situated within or directly operated as part of a resort.
+DT   | Destination Spa               | Wellness destination that is itself a principal reason for travel or an extended stay.
+HP   | Home Service Provider         | Organized provider primarily sending therapists to clients rather than serving a public branch.
+MB   | Mobile Spa                    | Portable spa operation designed to serve changing venues with deployable equipment and staff.
+TC   | Training Clinic               | Supervised client-service facility connected to massage or wellness training.
+HS   | Hot Spring Bathing Facility   | Bathing establishment centered on natural or geothermally heated water.
+
+Classification Notes
+--------------------
+- A conventional spa that also offers home service keeps its normal Spa Type and uses Home Service under Service Delivery Mode.
+- Mobile Spa is reserved for an operation whose identity is genuinely portable, not merely any spa that accepts off-site bookings.
+- Regional terms such as Onsen may be retained as aliases or descriptive terminology without replacing the normalized label.
+
+================================================================================
+2. SPA MARKET CLASS
+================================================================================
+
+Field Name: level_spa_market
+Field Label: Spa Market Class
+Selection: Single-select
+
+Code | Label    | Description
+-----|----------|--------------------------------------------------------------
+S    | Luxury   | Elite, highly refined spa experience with substantial premium facilities, privacy, service flow, and presentation.
+A    | Premium  | Clearly upscale spa experience above ordinary professional standards.
+B    | Standard | Dependable mainstream professional spa with appropriate cleanliness, safety, privacy, and organization.
+C    | Budget   | Affordable spa with simpler facilities and presentation but normal expectations for safety, respect, honesty, and value.
+D    | Basic    | Minimal or entry-level establishment focused on essential, short, shared, or limited-amenity service.
+
+Philippine Planning Reference
+-----------------------------
+Use the establishment's typical standard 60-minute individual massage when available:
+- S: usually PHP 2,500 or more;
+- A: usually PHP 1,500 to 2,499;
+- B: usually PHP 700 to 1,499;
+- C: usually PHP 350 to 699;
+- D: usually below PHP 350 or primarily short basic services.
+
+The ranges are internal Philippine references only. Other markets require locally reviewed thresholds based on normal prices, wages, facilities, and purchasing conditions. Price alone never determines class.
+
+================================================================================
+3. PHYSICAL SETTING
+================================================================================
+
+Field Name: type_physical_setting
+Field Label: Physical Setting
+Selection: Single-select
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+ST   | Standalone Storefront | Dedicated street-level or freestanding premises.
+CU   | Commercial Unit       | Unit inside a commercial building, retail strip, or business complex.
+ML   | Mall                  | Premises inside a shopping mall or major retail center.
+HT   | Hotel                 | Premises physically located within a hotel property.
+RS   | Resort                | Premises physically located within a resort property.
+RU   | Residential Unit      | Spa operating from a property organized or classified as residential.
+OR   | Owner Residence       | Business receiving clients directly in the owner's or operator's home.
+OB   | Office Building       | Premises inside a building primarily used for offices.
+CS   | Corporate Site        | Premises inside a company campus, headquarters, or private organizational site.
+EV   | Event Site            | Temporary location used specifically for an organized event.
+PU   | Pop-Up Site           | Temporary commercial location operating for a limited run.
+HC   | Healthcare Facility   | Premises inside a clinic, rehabilitation, medical, or healthcare property.
+FT   | Fitness Facility      | Premises inside a gym, sports club, or fitness center.
+TR   | Training Center       | Premises inside a school, academy, vocational center, or training facility.
+
+Physical Setting may remain unselected when a Home Service Provider or Mobile Spa has no suitable fixed service premises.
+
+================================================================================
+4. SERVICE DELIVERY MODE
+================================================================================
+
+Field Name: mode_service_delivery
+Field Label: Service Delivery Mode
+Selection: Multi-select
+
+Code | Label                     | Description
+-----|---------------------------|------------------------------------------------------------
+OS   | On-Site Service           | Clients receive service at provider-controlled premises.
+HM   | Home Service              | Service is delivered at a client's residence.
+HR   | Hotel Room Service        | Service is delivered inside guest lodging.
+CP   | Corporate Service         | Service is delivered through a workplace or employer arrangement.
+EV   | Event Service             | Service is delivered for an organized event or temporary function.
+MB   | Mobile Service            | Provider can deploy portable equipment and personnel to changing locations.
+PA   | Provider-Arranged Off-Site| Provider delivers service at an off-site location it selects or arranges that does not fit a more specific off-site code.
+
+Mobile Service describes portable capability and may be selected with Home Service, Hotel Room Service, Corporate Service, or Event Service.
+
+Provider-Arranged Off-Site is a catch-all off-site delivery context, not a Spa Type (see docs/05-directory/spa-profile.txt section 17). Use Home Service, Hotel Room Service, Corporate Service, or Event Service instead whenever the booking actually fits one of those more specific codes; reserve Provider-Arranged Off-Site for an off-site arrangement that does not.
+
+================================================================================
+5. ACCESS MODEL
+================================================================================
+
+Field Name: mode_access
+Field Label: Access Model
+Selection: Single-select
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+WI   | Walk-In               | Clients are normally accepted without prior booking.
+AP   | Appointment Preferred | Advance booking is encouraged, but walk-ins may be accepted.
+AR   | Appointment Required  | Service must normally be arranged before arrival.
+EA   | Event Access          | Service is available only through a particular event or scheduled engagement.
+RE   | Restricted Entry      | Entry follows a special rule not fully represented by ordinary booking access.
+
+Membership, property-guest, referral, invitation, and clientele restrictions belong under Client Access rather than Access Model.
+
+================================================================================
+6. OPERATION MODEL
+================================================================================
+
+Field Name: type_operation
+Field Label: Operation Model
+Selection: Single-select
+
+Code | Label                      | Description
+-----|----------------------------|------------------------------------------------------------
+IN   | Independent Operation      | Standalone business not operating as a branch, franchise, department, collective, or managed network.
+OB   | Owner-Operated Branch      | Branch directly owned and operated by the brand or organization owner.
+FR   | Franchise-Operated Branch  | Branch operated by a franchise holder under another brand's system.
+HO   | Hotel-Operated             | Spa directly managed as part of a hotel organization.
+RO   | Resort-Operated            | Spa directly managed as part of a resort organization.
+CL   | Clinic-Operated            | Spa or massage service directly managed by a clinic or healthcare organization.
+TC   | Training-Center-Operated   | Client-service operation directly managed by a school or training institution.
+CO   | Therapist Collective       | Therapists operating under a shared identity or coordinated service arrangement.
+HN   | Home Service Network       | Managed group coordinating several therapists for off-site bookings.
+TM   | Temporary Operation        | Seasonal, experimental, event-based, or limited-run operation.
+SP   | Shared Practice Facility   | Facility renting rooms, stations, equipment, or shared support to independent providers.
+
+A marketplace relationship, directory listing, or booking partnership does not by itself determine Operation Model.
+
+================================================================================
+7. ESTABLISHMENT STATUS
+================================================================================
+
+Field Name: status_establishment
+Field Label: Establishment Status
+Selection: Single-select
+
+Code | Label                | Description
+-----|----------------------|------------------------------------------------------------
+PO   | Pre-Opening          | Announced or being prepared but not yet serving the public.
+SO   | Soft Opening         | Serving clients in a limited or trial operating phase.
+OP   | Operating            | Conducting normal or substantially normal operations.
+RO   | Restricted Operation | Operating with limited access, services, hours, facilities, clientele, or capacity.
+TC   | Temporarily Closed   | Not currently serving clients but expected or reported to reopen.
+UR   | Under Renovation     | Closed or partly operating because of renovation or repair.
+SU   | Suspended Operation  | Operations stopped for regulatory, legal, safety, administrative, or internal reasons.
+RL   | Relocated            | No longer operating at the listed location and may continue through another location.
+PC   | Permanently Closed   | Permanently stopped operating at the listed location.
+UN   | Unknown              | Current real-world operating condition cannot be confirmed.
+
+================================================================================
+8. TREATMENT AREA TYPE
+================================================================================
+
+Field Name: type_treatment_area
+Field Label: Treatment Area Type
+Selection: Single-select per treatment area
+
+Code | Label            | Description
+-----|------------------|------------------------------------------------------------
+ER   | Enclosed Room    | Space fully enclosed by permanent walls and normally entered through a door.
+PA   | Partitioned Area | Station separated by curtains, screens, dividers, or partial walls.
+OA   | Open Area        | Station with little structural separation from surrounding activity.
+PS   | Portable Setup   | Temporary area created with portable beds, chairs, mats, screens, or equipment.
+
+VIP designation, equipment, wet-treatment capability, and accessibility features are separate properties.
+
+================================================================================
+9. TREATMENT PRIVACY LEVEL
+================================================================================
+
+Field Name: level_treatment_privacy
+Field Label: Treatment Privacy Level
+Selection: Single-select per treatment area
+
+Code | Label        | Description
+-----|--------------|------------------------------------------------------------
+PV   | Private      | Strong visual and physical separation for one booking party.
+SP   | Semi-Private | Partial separation with possible sound transfer, shared access, or nearby activity.
+SH   | Shared       | Several unrelated clients or treatment stations use the same room or area.
+OP   | Open         | Little or no meaningful privacy separation.
+
+================================================================================
+10. TREATMENT AREA CAPACITY
+================================================================================
+
+Field Name: type_treatment_capacity
+Field Label: Treatment Area Capacity
+Selection: Single-select per treatment area
+
+Code | Label      | Description
+-----|------------|------------------------------------------------------------
+I    | Individual | Designed primarily for one client at a time.
+C    | Couple     | Designed primarily for two clients receiving service together.
+G    | Group      | Designed for three or more clients or several treatment stations.
+
+================================================================================
+11. CLIENT ACCESS
+================================================================================
+
+Field Name: type_client_access
+Field Label: Client Access
+Selection: Single-select
+
+Code | Label                | Description
+-----|----------------------|------------------------------------------------------------
+OA   | Open Access          | Normally accepts eligible members of the general public.
+MO   | Men Only             | Access is restricted to male clients.
+WO   | Women Only           | Access is restricted to female clients.
+CO   | Couples Only         | Access is restricted to paired or couple bookings.
+MR   | Members Only         | Access is restricted to registered members.
+PG   | Property Guests Only | Access is restricted to authorized guests of a host property or organization.
+PC   | Private Clientele    | Access is limited to invited, referred, approved, or selectively accepted clients.
+
+Client Access describes an actual restriction. It must not be inferred from marketing style, therapist gender, LGBTQ focus, nudity policy, or adult-service assumptions.
+
+================================================================================
+12. CLIENT FOCUS
+================================================================================
+
+Field Name: target_client_focus
+Field Label: Client Focus
+Selection: Multi-select
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+GP   | General Public    | Designed for a broad clientele rather than a specialized group.
+MN   | Men               | Intentionally develops services, facilities, or expertise relevant to male clients.
+WM   | Women             | Intentionally develops services, facilities, or expertise relevant to female clients.
+LQ   | LGBTQ Community   | Explicitly welcomes or focuses on LGBTQ clients and related community needs.
+CP   | Couples           | Offers spaces, packages, or experiences designed for couples.
+FM   | Families          | Accommodates family-oriented visits or service arrangements.
+SR   | Seniors           | Provides facilities or services designed with older clients in mind.
+PR   | Pregnant Clients  | Provides appropriately trained and safety-conscious pregnancy services.
+PN   | Postnatal Clients | Provides services intended for clients after childbirth.
+AT   | Athletes          | Supports sports recovery, mobility, training fatigue, or performance needs.
+TR   | Tourists          | Is prepared for travelers through location, language, booking, or visitor support.
+OW   | Office Workers    | Supports workplace stress, occupational strain, sitting, standing, or commuting fatigue.
+
+Client Focus describes intentional service relevance and does not restrict access unless Client Access says otherwise.

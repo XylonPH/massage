@@ -1,0 +1,847 @@
+Massage Nexus User Rewards, Gamification, Ranks, and Roles
+==========================================================
+
+Field            | Value
+-----------------+-----------------------------------------------------------
+Title            | Massage Nexus User Rewards, Gamification, Ranks, and Roles
+Document Version | 1.60
+Date Created     | 2026-07-07
+Revision Date    | 2026-07-09
+
+Document Description
+--------------------
+
+This document records the current working system for Massage Nexus rewards, gamification currencies, points, badges, rank paths, user statistics, rating rewards, and user roles.
+
+It is still a planning document. Exact costs, full badge artwork, final rank requirements, final permission rules, monetization limits, and AI quota rules remain open for later discussion.
+
+Core User Progression Concepts
+------------------------------
+
+Massage Nexus separates activity, trust, rewards, and permissions instead of mixing everything into one score.
+
+Concept            | Meaning
+-------------------+--------------------------------------------------------------------------------------------------------------------------------------------
+Contribution Count | Raw count of actions a user has completed.
+Nexus Points       | Permanent lifetime value of useful approved activity.
+Embers             | Spendable reward currency.
+Inklings           | Second gamification, exploration, seasonal, mascot, and game-board currency.
+Badges             | Visible proof icons for achievements, milestones, roles, verification, or participation.
+Rank Paths         | Fictional internal progression systems where users can grow in multiple themed paths.
+Roles              | Account identity, permission category, or system category.
+User Statistics    | Visible or internal counts such as reviews written, comments posted, ratings made, photos uploaded, bookings completed, or events attended.
+
+Contribution Count
+------------------
+
+Contribution Count is not the same as Nexus Points.
+
+It records factual activity totals such as:
+
+- spas added;
+- practitioners added;
+- articles written;
+- reviews written;
+- ratings submitted;
+- comments posted;
+- discussions participated in;
+- approved edits made;
+- photos or videos added;
+- reports submitted;
+- translations submitted;
+- events attended;
+- quizzes completed;
+- polls answered;
+- bookings completed;
+- purchases completed.
+
+Some actions may count as contribution. Some may only count as participation statistics. Final contribution-count rules are still undecided.
+
+Nexus Points
+------------
+
+Nexus Points are the permanent lifetime value of useful approved activity.
+
+They are not spendable. They should not decrease when a user redeems rewards or spends Embers/Inklings.
+
+Nexus Points may come from:
+
+- approved spa or establishment submission;
+- approved practitioner submission;
+- approved profile correction;
+- approved article;
+- approved review;
+- approved media contribution;
+- approved translation;
+- useful comments or discussion participation;
+- rating content;
+- rating a spa, therapist, or product;
+- completed booking/session rating;
+- valid reports;
+- Campus quiz completion;
+- poll participation;
+- event attendance;
+- booking through the site;
+- purchases through the site;
+- campaign participation.
+
+Exact point values depend on the action type and will be refined by document area.
+
+Embers
+------
+
+Embers are the accepted spendable reward currency.
+
+Purpose:
+
+- cosmetics;
+- selected platform perks;
+- limited feature credits;
+- owner/practitioner support;
+- event rewards;
+- non-trust benefits.
+
+Possible uses:
+
+- avatar borders;
+- profile frames;
+- profile decorations;
+- badge display slots;
+- comment flair;
+- profile backgrounds;
+- rank cosmetics;
+- limited theme cosmetics;
+- event cosmetics;
+- limited no-ad access;
+- limited booking-system credits;
+- limited messaging or SMS quota;
+- limited promo or listing feature credits;
+- small support features for practitioners, spas, or business accounts that cannot pay yet.
+
+Limits:
+
+Embers should not buy:
+
+- review influence;
+- rating weight;
+- moderation power;
+- verification status;
+- trust labels;
+- automatic approval;
+- real authority;
+- permanent premium status.
+
+Ember values may intentionally use larger numbers for stronger gamification feel. Tens, hundreds, or thousands of Embers are acceptable as long as redemption costs scale accordingly.
+
+Inklings
+--------
+
+Inklings are the working name for the second gamification currency.
+
+Earlier working name:
+
+- Ink Drops.
+
+Current working name:
+
+- Inklings.
+
+Purpose:
+
+Inklings are for exploration, game-board activity, seasonal progress, mascot interactions, mini-games, story progress, and playful site activity.
+
+Possible uses:
+
+- game-board movement;
+- seasonal missions;
+- mascot events;
+- Resting Leaf check-ins;
+- hidden site Easter eggs;
+- story tiles;
+- mini-game progress;
+- challenge boards;
+- event progress;
+- special unlocks inside a game-like user panel.
+
+Possible sources:
+
+- daily check-in;
+- Resting Leaf interaction;
+- booking through the site;
+- purchases through the site;
+- Campus quizzes;
+- poll participation;
+- mascot clicks;
+- Easter egg discovery;
+- Relaxation Room visits;
+- event QR scans;
+- campaign participation;
+- mini-game activity;
+- rating and review actions, when allowed.
+
+Inklings may also use larger numbers for better reward feel.
+
+Xylon Calibrated Experience Score
+---------------------------------
+
+Xylon Calibrated Experience Score, abbreviated XCES, is the working name for the reusable weighted experience-rating formula.
+
+It is not only for Massage Nexus. It may be reused in other Xylon projects where experience-based targets need fairer scoring over time.
+
+XCES is designed for things that can improve, decline, or vary by experience, such as:
+
+- spas;
+- therapists;
+- restaurants;
+- service providers;
+- locations;
+- other experience-based entities.
+
+XCES may also be adapted for product ratings, but product ratings normally do not need recency decay unless product versions change.
+
+Core idea:
+
+Code block (text):
+    XCES = Σ(rᵢ × wᵢ) ÷ Σ(wᵢ)
+
+Where:
+
+Code block (text):
+    rᵢ = rating score
+    wᵢ = rating weight
+
+Expanded working weight:
+
+Code block (text):
+    wᵢ = actor_weight × trust_weight × source_weight × completeness_weight × recency_weight
+
+For Massage Nexus, XCES is defined in the Rating System document.
+
+Anchored Milestone Sequence
+---------------------------
+
+Anchored Milestone Sequence, abbreviated AMS, is the working name for the reusable milestone progression sequence.
+
+It is not only for Massage Nexus and not only for badges. It may be used for:
+
+- badges;
+- achievements;
+- contribution milestones;
+- seasonal missions;
+- reward thresholds;
+- progression ladders;
+- activity goals;
+- gamified unlocks.
+
+Definition:
+
+An Anchored Milestone Sequence starts with one or more early engagement anchors, then continues with a generalized Fibonacci-style progression where later values are created by adding the two previous milestone values.
+
+Criteria-rating milestone example:
+
+Code block (text):
+    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
+
+Thumbs up/down milestone example:
+
+Code block (text):
+    1, 10, 50, 100, 150, 250, 400, 650, 1050...
+
+The first milestones encourage early participation. Later milestones become harder to reach without becoming too abruptly spaced.
+
+Rating Rewards
+--------------
+
+Rating rewards should stay smaller than review-writing rewards, but Embers and Inklings may use larger visible numbers.
+
+Thumbs Up / Thumbs Down Rating
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Applies to:
+
+- article;
+- review;
+- news;
+- guide;
+- comic or comic strip;
+- comment;
+- discussion thread;
+- media upload;
+- translation.
+
+Working reward:
+
+Action         | Nexus Points | Embers | Inklings
+---------------+--------------+--------+---------
+Thumbs up/down | 1            | 10     | 5
+
+Daily reward cap:
+
+- first 25 thumbs up/down actions per day may earn rewards;
+- users may continue rating after the cap;
+- actions after the cap should not earn additional Nexus Points, Embers, or Inklings that day.
+
+Simple 1 to 10 Rating
+~~~~~~~~~~~~~~~~~~~~~
+
+A simple rating is one overall score without full criteria.
+
+Working reward:
+
+Action                              | Nexus Points | Embers | Inklings
+------------------------------------+--------------+--------+---------
+Simple spa/therapist/product rating | 5            | 50     | 20
+
+Simple ratings may count less than criteria ratings in XCES because they provide less detail.
+
+Criteria-Based Rating
+~~~~~~~~~~~~~~~~~~~~~
+
+A criteria rating uses the full five-rating criteria for spa, therapist, or product.
+
+Working reward:
+
+Action                | Nexus Points | Embers | Inklings
+----------------------+--------------+--------+---------
+Criteria-based rating | 10           | 100    | 40
+
+Criteria-based ratings should count toward rating milestone badges.
+
+Booking and Session Rating Rewards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Booking/session ratings may be rewarded when they are tied to a real completed activity.
+
+Working reward direction:
+
+Rating Source                                                | Nexus Points | Embers | Inklings
+-------------------------------------------------------------+--------------+--------+---------
+Massage Nexus confirmed paid booking/session criteria rating | 5            | 50     | 20
+Confirmed external/on-site visit criteria rating             | 3            | 30     | 10
+User-entered personal history rating                         | 0            | 0      | 0
+Spa/therapist manually encoded own record                    | 0            | 0      | 0
+
+Same-day cap:
+
+- same user + same spa + same calendar day = one rewarded spa session rating only;
+- same user + same therapist + same calendar day = one rewarded therapist session rating only.
+
+The user may still rate additional valid sessions, but the extra same-day ratings should not earn extra rewards for the same target.
+
+Repeat Rating Rule
+~~~~~~~~~~~~~~~~~~
+
+A user may change or revoke a rating, but repeated edits should not repeatedly grant rewards.
+
+For spa and therapist ratings, reward eligibility may refresh after the 83-day rating cycle if there is a new valid experience.
+
+For product ratings, recurring rewards are not enabled by default because the same product does not improve over time unless it becomes a new version.
+
+Review Rewards
+--------------
+
+Review rewards should be higher than rating rewards because reviews require more effort, observation, writing, and usefulness.
+
+Working maximums remain provisional:
+
+Review Type               | Nexus Points | Embers             | Inklings
+--------------------------+--------------+--------------------+-------------------
+User establishment review | 500          | To be recalibrated | To be recalibrated
+User practitioner review  | 500          | To be recalibrated | To be recalibrated
+User product review       | 300          | To be recalibrated | To be recalibrated
+Editorial review          | 1,500 total  | To be decided      | To be decided
+
+Ember and Inkling review rewards should likely be scaled upward from early low-number drafts so they feel rewarding.
+
+Review reward factors may include:
+
+- review body quality;
+- originality;
+- specific experience detail;
+- actual visit or use evidence;
+- rating and body consistency;
+- user-written title quality;
+- user-written short description quality;
+- correct NSFW labeling;
+- honest disclosure;
+- useful visit details;
+- helpful media;
+- constructive criticism;
+- community helpful votes after publication;
+- moderator or editor quality assessment.
+
+For multi-author reviews, rewards should be shared among credited authors, not duplicated in full.
+
+Article and Content Rewards
+---------------------------
+
+Article-writing rewards are separate from review-writing rewards.
+
+Possible article reward factors:
+
+- approved article publication;
+- originality;
+- usefulness;
+- author role;
+- research quality;
+- source quality;
+- readability;
+- media planning;
+- revision quality;
+- content rating response after publication.
+
+Exact article reward values are still unresolved.
+
+Translation Rewards
+-------------------
+
+Translation may become a contribution type.
+
+Possible translation reward factors:
+
+- whether it is the original author’s translation;
+- whether it translates another user’s content;
+- completeness;
+- accuracy;
+- readability;
+- moderation approval;
+- community usefulness;
+- editor confirmation.
+
+Translations may also be rated with thumbs up/down.
+
+Exact translation rewards and translation badges are unresolved.
+
+Badges
+------
+
+Badges are visible proof icons, usually small square or one-by-one images, showing achievements, participation, role status, verification, or milestones.
+
+Badge types:
+
+- Achievement Badges;
+- Contribution Badges;
+- Review Badges;
+- Rating Badges;
+- Campus Badges;
+- Event Badges;
+- Seasonal Badges;
+- Participation Badges;
+- Role Badges;
+- Verification Badges;
+- Legacy Badges.
+
+Verification badge meaning:
+
+A Verification Badge means a specific identity, claim, contact detail, credential, attendance, role, or business relationship was checked. It does not automatically mean the user has broader authority in all areas.
+
+Badge artwork style, badge rarity, icon templates, and visual consistency should be defined later.
+
+Rating Badges
+-------------
+
+Rating badges should use AMS.
+
+Criteria Rating Milestones
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Applies to spa, therapist, and product criteria ratings.
+
+Milestone sequence:
+
+Code block (text):
+    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
+
+Badge families:
+
+- Rating Milestone;
+- Spa Rating Milestone;
+- Therapist Rating Milestone;
+- Product Rating Milestone.
+
+Examples:
+
+- First Rating;
+- 10 Ratings;
+- First Spa Rating;
+- 10 Spa Ratings;
+- First Therapist Rating;
+- 10 Therapist Ratings;
+- First Product Rating;
+- 10 Product Ratings.
+
+Thumbs Up / Thumbs Down Milestones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Applies to content reaction ratings.
+
+Milestone sequence:
+
+Code block (text):
+    1, 10, 50, 100, 150, 250, 400, 650, 1050...
+
+Badge families:
+
+- Article Rater;
+- Review Rater;
+- News Rater;
+- Guide Rater;
+- Comic Rater;
+- Comment Rater;
+- Discussion Rater;
+- Media Rater;
+- Translation Rater.
+
+Trusted Rater
+~~~~~~~~~~~~~
+
+Trusted Rater is a special badge for rating alignment.
+
+Current direction:
+
+- applies mainly to spa and therapist criteria ratings;
+- requires at least 30 eligible spa/therapist criteria ratings;
+- requires enough overlap with editorial-rated targets;
+- should measure alignment with editorial consensus, not community popularity alone;
+- suspicious exact-copy patterns should be flagged rather than rewarded.
+
+Exact math belongs in the Rating System document and related trust documentation.
+
+Review Badges
+-------------
+
+Possible review badges:
+
+- First Review;
+- First Establishment Review;
+- First Practitioner Review;
+- First Product Review;
+- 10 Reviews;
+- 25 Reviews;
+- 50 Reviews;
+- 100 Reviews;
+- Detailed Reviewer;
+- Helpful Reviewer;
+- Photo Review Contributor;
+- Transparent Reviewer;
+- Multi-Visit Reviewer;
+- Review Correspondent;
+- Reviewer of the Year.
+
+Review badges should be refined in the badge system discussion.
+
+Received-Rating Badges and Awards
+---------------------------------
+
+Spas and therapists may receive badges or award recognition based on ratings.
+
+Possible examples:
+
+- Highly Rated Spa;
+- Top Rated Spa;
+- Rising Spa;
+- Client Favorite;
+- Top Rated Therapist;
+- Rising Therapist;
+- Trusted Therapist;
+- Massage Nexus Award Nominee;
+- Massage Nexus Award Winner.
+
+Products do not need the same badge system yet.
+
+Quarterly or annual awards should be discussed in a separate Awards document.
+
+Rank Paths
+----------
+
+Rank Paths are fictional internal progression systems. They are not real-world credentials, licenses, or authority.
+
+A user can have progress in multiple rank paths at the same time. A user is not limited to one rank only.
+
+Users may choose which rank or path to display publicly, but progress in other paths should remain recorded.
+
+Rank progression may be based on:
+
+- Nexus Points;
+- activity type;
+- contribution counts;
+- path-specific requirements;
+- badges or milestones.
+
+Ranks should not be purchased directly with Embers. Embers may be used for rank cosmetics, not the rank itself.
+
+Path: Wellness Journey
+~~~~~~~~~~~~~~~~~~~~~~
+
+General user/client progression.
+
+1. New Guest
+2. Curious Visitor
+3. Calm Seeker
+4. Spa Explorer
+5. Table Regular
+6. Wellness Scout
+7. Service Mapper
+8. Local Guide
+9. Trusted Explorer
+10. Nexus Pathfinder
+11. Wellness Navigator
+12. Guardian of Calm
+
+Path: Spa Directory
+~~~~~~~~~~~~~~~~~~~
+
+For users who add spas, improve location records, correct profiles, and help map the directory.
+
+1. Street Scout
+2. Listing Finder
+3. Area Explorer
+4. Spa Spotter
+5. Branch Mapper
+6. Local Verifier
+7. District Guide
+8. City Pathfinder
+9. Regional Scout
+10. Directory Architect
+11. Nexus Cartographer
+12. Master Spa Navigator
+
+Path: Review and Community
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For users who write reviews, comment helpfully, rate content, answer questions, and participate in discussions.
+
+1. First Voice
+2. Comment Regular
+3. Helpful Guest
+4. Review Writer
+5. Discussion Guide
+6. Community Voice
+7. Experience Analyst
+8. Trusted Reviewer
+9. Conversation Steward
+10. Public Insight Keeper
+11. Community Luminary
+12. Voice of the Nexus
+
+Path: Massage Campus
+~~~~~~~~~~~~~~~~~~~~
+
+For users who participate in lessons, quizzes, learning paths, glossary activity, and educational features.
+
+1. Campus Newcomer
+2. Technique Curious
+3. Pressure Student
+4. Bodywork Learner
+5. Wellness Scholar
+6. Technique Tracker
+7. Recovery Reader
+8. Massage Theorist
+9. Campus Mentor
+10. Bodywork Sage
+11. Knowledge Steward
+12. Master of Calm Study
+
+Path: Data Steward
+~~~~~~~~~~~~~~~~~~
+
+For users who correct data, check sources, improve profiles, report duplicates, and help keep records accurate.
+
+1. Detail Helper
+2. Correction Runner
+3. Info Gatherer
+4. Data Cleaner
+5. Listing Fixer
+6. Source Checker
+7. Accuracy Builder
+8. Profile Polisher
+9. Quality Keeper
+10. Data Steward
+11. Nexus Archivist
+12. Master Record Keeper
+
+Path: Outreach
+~~~~~~~~~~~~~~
+
+For users who participate in public events, campaigns, QR check-ins, launch activities, outreach, and community missions.
+
+1. Event Visitor
+2. QR Check-In
+3. Campaign Guest
+4. Outreach Friend
+5. Wellness Participant
+6. Event Regular
+7. Community Supporter
+8. Outreach Guide
+9. Campaign Steward
+10. Public Wellness Herald
+11. Nexus Ambassador
+12. Grand Outreach Champion
+
+The word “track” should be avoided for now. “Path” currently fits better.
+
+User Roles
+----------
+
+Roles are separate from points, badges, and ranks. Roles define account identity, permission, responsibility, or system category.
+
+A user may have more than one role.
+
+Working role list:
+
+- Guest;
+- Registered User;
+- User Reviewer;
+- Review Correspondent;
+- Contributor;
+- Business Owner;
+- Establishment Manager;
+- Practitioner;
+- Sponsor;
+- Steward;
+- Editor;
+- Content Reviewer;
+- Review Editor;
+- Moderator;
+- Admin;
+- Founder;
+- Neural Agent;
+- Model.
+
+Role notes:
+
+- Guest means a user who is not logged in. Guest commenting may be allowed later, but guest reviews and official ratings should not be enabled by default.
+- Registered User means a normal logged-in account.
+- User Reviewer means a registered user who writes reviews based on their own experience.
+- Review Correspondent means an assigned Massage Nexus person who visits, observes, gathers details, and contributes to editorial reviews.
+- Contributor means a user who submits useful corrections, listings, media, translations, or data improvements.
+- Business Owner should be used instead of simply Owner to avoid confusion with the platform owner.
+- Establishment Manager means the manager of a spa or establishment, not the manager of Massage Nexus.
+- Practitioner is preferred over Therapist as the role term, but rating documents may use Therapist when specifically referring to service rating.
+- Sponsor means an advertiser, brand, seller, campaign partner, or other sponsor account.
+- Steward means a trusted person helping maintain listings or public data.
+- Editor and Content Reviewer are different; exact differences will be defined later.
+- Review Editor handles review editing, approval, revision, and rejection.
+- Founder refers to the founder of Massage Nexus.
+- Neural Agent is a system/persona account type.
+- Model may refer to a visual/campaign/cast/profile model account type if needed.
+
+Booking, Purchases, and Rewards
+-------------------------------
+
+Users may earn points, Embers, Inklings, badges, participation statistics, or game progress when they book through Massage Nexus, purchase products, attend events, complete campaigns, or participate in site activities.
+
+Booking and purchasing are not automatically contribution count.
+
+Booking/session ratings should use separate reward limits to prevent abuse.
+
+Manual history entries should not earn rewards by default.
+
+Owner, Practitioner, and Business Support Using Embers
+------------------------------------------------------
+
+Embers may help small spas, practitioners, or businesses with limited budget access selected paid or premium-like features without paying real money immediately.
+
+Possible Ember-supported features:
+
+- limited booking credits;
+- limited SMS or messaging quota;
+- limited promo credits;
+- limited no-ad or ad-reduction access;
+- limited profile enhancement;
+- limited feature trials;
+- small campaign participation.
+
+Limits:
+
+Embers should not replace the full paid business model. Massage Nexus still needs monetization because server, AI, messaging, storage, and platform operations cost money.
+
+AI Privileges
+-------------
+
+AI features are expensive and should be limited.
+
+Possible AI features:
+
+- review draft helper;
+- profile improvement helper;
+- spa description helper;
+- practitioner bio helper;
+- owner response draft helper;
+- massage type explainer;
+- content suggestion helper;
+- rating/review screening;
+- reward recommendation.
+
+Possible access:
+
+- paid plans;
+- limited free quota;
+- limited Ember redemption;
+- event or campaign credits.
+
+AI access should not be unlimited through farmable rewards.
+
+AI quota, queue, API provider, retry logic, and monthly budget handling should be documented separately.
+
+Easter Eggs, Mascots, and Mini-Games
+------------------------------------
+
+Massage Nexus may include mascot-based Easter eggs and small game interactions.
+
+Possible ideas:
+
+- hidden mascot on pages;
+- click mascot to earn Inklings;
+- mascot reactions;
+- find-the-mascot challenge;
+- weekly hidden mascot event;
+- seasonal Easter eggs;
+- unlock badge after finding several mascots;
+- hidden comic panel or story tile;
+- mini-games connected to The Resting Leaf;
+- future mobile-app game features.
+
+Flash and Java applets are not current modern directions. Future game features should use modern web or mobile approaches such as HTML5, JavaScript/TypeScript, Canvas, WebGL, Phaser, PixiJS, Unity WebGL, or native mobile app features.
+
+Social Media Actions
+--------------------
+
+Social media rewards are unresolved.
+
+Liking or following a social media page is difficult to verify unless the user's social media account is connected or a supported API/login integration exists.
+
+Possible safe direction:
+
+- reward official campaign links;
+- reward QR-based events;
+- reward platform-confirmed social actions only if technically verifiable;
+- avoid serious rewards based only on screenshots.
+
+Unresolved Items for Later Discussion
+-------------------------------------
+
+- final Ember earning rules;
+- final Ember spending rules;
+- final Inkling earning rules;
+- final Inkling spending rules;
+- exact reward values for reviews, articles, media, translations, bookings, purchases, and contributions;
+- exact reward costs for cosmetics and features;
+- exact badge list;
+- badge artwork style;
+- badge icon template system;
+- rank path requirements;
+- whether users can display multiple rank titles at once;
+- which roles are public, internal, or system-only;
+- guest commenting rules;
+- editor versus content reviewer difference;
+- business owner versus establishment manager permissions;
+- AI quota and reward redemption rules;
+- mascot and Easter egg system;
+- Story Tiles;
+- Resting Leaf game design;
+- future game panel, mobile game, or gamification page;
+- awards system;
+- Massage Nexus yearly and quarterly awards;
+- product/shop/seller structure;
+- product versioning rules for ratings.

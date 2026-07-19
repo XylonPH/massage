@@ -1,0 +1,598 @@
+Title: Massage Nexus Terms of Use Requirements
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Status: Internal Legal and Product Requirements Draft
+Publication Status: Not approved for public use
+Authority: Planning reference pending operator details and qualified legal review
+Shared Standard Version: 2.60
+
+DOCUMENT PURPOSE
+----------------
+This document defines what the future public Massage Nexus Terms of Use must cover. It is
+not yet the final contract presented to users.
+
+Before public registration, the final Terms must be:
+- completed with the legal operator's exact name and contact details;
+- checked against the final business model and payment flows;
+- checked against Philippine law and applicable target-market law;
+- reviewed together with the Privacy Notice and all site-specific policies;
+- versioned;
+- published in supported languages according to policy;
+- accepted through a recorded electronic action.
+
+PLACEHOLDERS
+------------
+Legal Operator:
+[LEGAL OPERATOR NAME]
+
+Business Address:
+[BUSINESS ADDRESS]
+
+Terms Contact:
+[TERMS CONTACT EMAIL]
+
+Governing Law:
+[FINAL GOVERNING LAW]
+
+Dispute Venue or Process:
+[FINAL DISPUTE PROCESS]
+
+Effective Date:
+[PUBLICATION DATE]
+
+================================================================================
+1. DOCUMENT RELATIONSHIP
+================================================================================
+
+The public Terms should work with:
+- Privacy Notice;
+- Community Guidelines;
+- Account and Username Policy;
+- NSFW, Mature, and Restricted Content Policy;
+- Review and Contribution Guidelines;
+- Media Upload Policy;
+- Booking, Cancellation, Refund, and Payment policies;
+- Provider terms;
+- Seller and commerce terms;
+- Advertising and sponsorship terms;
+- Copyright and intellectual-property process;
+- Security and responsible-disclosure information;
+- any service-specific consent or eligibility document.
+
+A policy incorporated by reference must be easy to find, versioned, and not silently changed
+to create unexpected obligations.
+
+================================================================================
+2. ACCEPTANCE AND VERSIONING
+================================================================================
+
+Registration for a Massage Nexus membership requires affirmative acceptance of the current
+Terms of Use.
+
+Terms acceptance must be separate from:
+- acknowledgment of the Privacy Notice;
+- marketing email consent;
+- promotional SMS consent;
+- optional research consent;
+- optional AI-processing consent where separate consent is required.
+
+The acceptance record should include:
+- account identifier;
+- site identifier;
+- document type;
+- document version;
+- locale shown;
+- acceptance date and time;
+- evidence metadata reasonably required for accountability.
+
+When Terms materially change:
+- publish a clear summary;
+- identify the effective date;
+- require renewed acceptance when appropriate;
+- do not rely only on a hidden footer update;
+- retain prior versions for legal and audit purposes.
+
+================================================================================
+3. ELIGIBILITY
+================================================================================
+
+The public Terms must state:
+- ordinary public content may be viewed without registration;
+- Massage Nexus membership is limited to persons at least 18 years old;
+- users must provide accurate eligibility information;
+- a person may not create an account for another person without authority;
+- a person whose membership was terminated may not evade enforcement through another
+  account;
+- professional, provider, advertiser, or seller functions may have additional eligibility
+  and verification requirements.
+
+Massage Nexus's 18+ membership rule is site-specific and does not automatically describe
+every future network site.
+
+================================================================================
+4. NETWORK ACCOUNT AND SITE MEMBERSHIP
+================================================================================
+
+The Terms should explain:
+- one shared account may eventually be used across participating network sites;
+- joining Massage Nexus activates only a Massage Nexus membership;
+- universal settings may be reused to reduce repeated setup;
+- each site may have separate eligibility, terms, privacy information, roles, restrictions,
+  and public profiles;
+- membership on one site does not automatically create a public profile on another;
+- enforcement may be site-specific or network-wide depending on the conduct and documented
+  policy.
+
+The final Terms must identify the legal controller or contracting party for the network
+account and for Massage Nexus membership.
+
+================================================================================
+5. ACCOUNT RESPONSIBILITIES
+================================================================================
+
+Users must:
+- provide accurate required information;
+- protect credentials and recovery methods;
+- use only accounts and identities they are authorized to use;
+- notify Massage Nexus of suspected unauthorized access;
+- keep verified contact methods current where reasonably possible;
+- not share credentials for deceptive, abusive, or prohibited purposes;
+- not impersonate platform staff, providers, other users, or organizations;
+- comply with username and protected-name rules;
+- comply with security checks and reauthentication requirements.
+
+Massage Nexus may:
+- reject a username;
+- require verification;
+- lock an account after suspicious activity;
+- revoke sessions;
+- require a password reset;
+- restrict, suspend, or terminate a membership;
+- preserve a deleted or banned username to prevent impersonation.
+
+================================================================================
+6. PUBLIC DIRECTORY AND PROFILE INFORMATION
+================================================================================
+
+The Terms must explain that Massage Nexus may contain:
+- claimed profiles;
+- verified profiles;
+- unclaimed profiles;
+- community-contributed information;
+- historical, closed, moved, disputed, or incomplete records;
+- information from providers, users, public sources, or approved imports.
+
+A listing does not automatically mean:
+- the provider endorsed Massage Nexus;
+- Massage Nexus verified every fact;
+- the provider is currently operating;
+- availability is live;
+- a booking is confirmed;
+- a service is legal in every location;
+- a provider is licensed for every claimed activity.
+
+Material status labels and source information should be displayed where appropriate.
+
+Users and providers should have processes to:
+- suggest corrections;
+- claim eligible profiles;
+- report impersonation;
+- dispute inaccurate material;
+- provide evidence;
+- appeal applicable moderation or verification decisions.
+
+================================================================================
+7. USER CONTENT AND CONTRIBUTIONS
+================================================================================
+
+User content may include:
+- reviews;
+- ratings;
+- comments;
+- discussions;
+- corrections;
+- profile information;
+- photographs;
+- videos;
+- animated media;
+- translations;
+- sources;
+- booking-related notes;
+- other approved submissions.
+
+Users retain ownership of content they own.
+
+The Terms should request only the license reasonably needed to:
+- host;
+- store;
+- reproduce;
+- display;
+- format;
+- resize;
+- transcode;
+- translate;
+- distribute within approved Massage Nexus and network surfaces;
+- moderate;
+- protect;
+- promote the relevant feature;
+- preserve evidence and history where justified.
+
+The final license must:
+- be understandable;
+- not claim ownership of user content;
+- address public and private content separately;
+- address deletion and retained copies;
+- address translated and transformed media;
+- address backups and legal holds;
+- address content contributed to shared directory records.
+
+Users must have rights and permission to submit their content and depictions of other people.
+
+================================================================================
+8. REVIEWS, RATINGS, AND COMMUNITY CONDUCT
+================================================================================
+
+The Terms and related guidelines must prohibit:
+- fabricated experiences;
+- undisclosed conflicts of interest;
+- review manipulation;
+- paid positive reviews without approved disclosure;
+- threats or retaliation;
+- harassment;
+- doxxing;
+- private health or contact disclosure;
+- impersonation;
+- spam;
+- illegal solicitation;
+- exploitation;
+- sexual harassment;
+- discriminatory abuse;
+- misleading edited media;
+- coordinated abuse;
+- attempts to bypass moderation.
+
+The platform may preserve criticism and negative experiences when they are relevant and
+lawful. Removal must not be promised merely because a provider dislikes a review.
+
+The platform may:
+- label;
+- reduce distribution;
+- request evidence;
+- restrict replies;
+- lock discussion;
+- remove;
+- preserve for investigation;
+- suspend;
+- refer serious matters to appropriate authorities when legally required.
+
+================================================================================
+9. NSFW, MATURE, AND RESTRICTED CONTENT
+================================================================================
+
+The Terms must incorporate the separate NSFW, Mature, and Restricted Content Policy.
+
+Key points:
+- ordinary public content remains safe for broad viewing;
+- mature or NSFW content is hidden by default;
+- restricted access requires an active verified adult Massage Nexus membership and explicit
+  user choice where policy permits;
+- self-declared birth date is not necessarily strong age verification;
+- some content may require stronger assurance, geographic restriction, or complete
+  prohibition;
+- avatars, cover images, ordinary thumbnails, advertising creatives, and incidental public
+  surfaces must not contain NSFW material;
+- illegal, exploitative, non-consensual, or minor-related sexual content is prohibited;
+- a content label does not make otherwise prohibited content acceptable.
+
+================================================================================
+10. BOOKING AND PROVIDER RELATIONSHIPS
+================================================================================
+
+The final Terms must distinguish:
+- Massage Nexus as a discovery and technology platform;
+- independent establishments, therapists, sellers, and other providers;
+- direct provider terms and policies;
+- bookings confirmed through Massage Nexus;
+- inquiries or plans for unclaimed providers;
+- external booking links;
+- walk-in records;
+- provider-created records.
+
+Unless expressly stated otherwise, providers are independent and responsible for:
+- services;
+- qualifications;
+- licenses;
+- professional conduct;
+- facilities;
+- staff;
+- prices;
+- taxes;
+- availability;
+- provider policies;
+- service safety;
+- legal compliance.
+
+Massage Nexus must not represent an unclaimed provider inquiry as a confirmed booking.
+
+Booking terms should cover:
+- participant responsibility;
+- accurate intake;
+- eligibility;
+- consent;
+- cancellation;
+- no-show;
+- lateness;
+- deposits;
+- refunds;
+- payment disputes;
+- provider cancellation;
+- service changes;
+- emergency and safety behavior;
+- provider-specific terms.
+
+================================================================================
+11. HEALTH, WELLNESS, AND SAFETY DISCLAIMER
+================================================================================
+
+Massage Nexus provides directory, educational, community, and platform information.
+
+The Terms should explain:
+- content is not a diagnosis;
+- content is not individualized medical advice;
+- AI-generated or translated content may require human verification;
+- users should consult qualified professionals for medical concerns;
+- emergency situations require appropriate emergency services;
+- providers remain responsible for their professional scope and service decisions;
+- users must disclose relevant information through approved intake when booking;
+- no platform content guarantees a particular health result.
+
+This disclaimer must not be used to excuse negligent platform conduct or remove rights that
+cannot legally be waived.
+
+================================================================================
+12. PAYMENTS, COMMERCE, AND FINANCIAL RECORDS
+================================================================================
+
+Before accepting money, the Terms must identify:
+- who receives the payment;
+- whether Massage Nexus acts as merchant, agent, marketplace, or technology provider;
+- applicable fees;
+- taxes;
+- deposit handling;
+- refunds;
+- chargebacks;
+- payout timing;
+- payment-provider involvement;
+- vouchers and gift cards;
+- abandoned or dormant balances if ever applicable;
+- currency and exchange issues;
+- payment-document responsibility.
+
+Massage Nexus does not initially operate a general stored-value wallet. A future wallet
+requires a separate financial, legal, fraud, security, reconciliation, and regulatory
+specification.
+
+The site must not store full payment-card details unless an approved, compliant architecture
+requires it. Prefer approved payment-provider tokens.
+
+================================================================================
+13. EXTERNAL LINKS AND THIRD-PARTY SERVICES
+================================================================================
+
+The Terms should explain that third parties may provide:
+- maps;
+- social login;
+- email;
+- SMS;
+- payment processing;
+- storage;
+- analytics;
+- AI;
+- translation;
+- external booking;
+- provider websites;
+- embedded content.
+
+Third-party terms and privacy practices may apply.
+
+Massage Nexus should not disclaim all responsibility for vendor selection, configuration, or
+data handling. It remains responsible for obligations that apply to it.
+
+================================================================================
+14. INTELLECTUAL PROPERTY
+================================================================================
+
+The Terms should cover:
+- Massage Nexus names, logos, visual identity, software, text, taxonomy, and original media;
+- third-party marks and content;
+- user-owned content;
+- permitted personal use;
+- prohibited scraping, copying, reselling, or misleading reuse;
+- API and data-license rules;
+- copyright complaint and counter-notice process where applicable;
+- repeat infringement response;
+- preservation of lawful quotation, review, commentary, and other applicable rights.
+
+Do not claim ownership over factual information merely because it appears in a database.
+Rights in selection, structure, original descriptions, media, software, and branding should
+be described separately.
+
+================================================================================
+15. PROHIBITED USE
+================================================================================
+
+Prohibited conduct should include:
+- unauthorized access;
+- credential attacks;
+- malware;
+- scraping that violates approved access rules;
+- denial-of-service activity;
+- bypassing rate limits;
+- reverse engineering where lawfully restrictable and not conflicting with mandatory rights;
+- data harvesting;
+- doxxing;
+- stalking;
+- fraud;
+- impersonation;
+- exploitation;
+- trafficking;
+- illegal solicitation;
+- harassment;
+- extortion;
+- false claims;
+- spam;
+- review manipulation;
+- upload of prohibited content;
+- evasion of bans;
+- interference with provider or user accounts;
+- misuse of private booking, health, contact, or location information;
+- disclosure of confidential security information for harmful purposes.
+
+Responsible security research should be handled through a separate disclosure process and
+must not be confused with malicious exploitation.
+
+================================================================================
+16. MODERATION, RESTRICTION, SUSPENSION, AND APPEAL
+================================================================================
+
+The Terms should reserve proportionate actions:
+- warning;
+- content label;
+- visibility limit;
+- feature restriction;
+- temporary lock;
+- content removal;
+- site-membership suspension;
+- network-account security lock;
+- termination;
+- evidence preservation;
+- referral where required.
+
+Where safe and appropriate, users should receive:
+- reason category;
+- duration;
+- affected content or feature;
+- appeal route;
+- required correction;
+- final result.
+
+Immediate action may occur for urgent safety, fraud, legal, or security risk.
+
+================================================================================
+17. ACCOUNT CLOSURE, DELETION, AND RETENTION
+================================================================================
+
+The Terms should explain:
+- how a user requests closure;
+- any deletion grace period;
+- how the request can be canceled;
+- what becomes unavailable immediately;
+- what may be retained for security, fraud, tax, booking, dispute, consent, legal, backup,
+  and legitimate record purposes;
+- how public contributions are handled;
+- whether content is deleted, anonymized, detached, or retained;
+- how managed business records differ from the personal account;
+- how a site membership differs from the shared network account.
+
+Exact retention belongs in the Privacy Notice and retention schedule.
+
+================================================================================
+18. SERVICE CHANGES AND AVAILABILITY
+================================================================================
+
+The Terms should allow reasonable changes to:
+- features;
+- supported countries;
+- providers;
+- interfaces;
+- storage;
+- account methods;
+- policies;
+- pricing;
+- integrations.
+
+Users should receive meaningful notice when changes materially affect rights, payments,
+privacy, or account use.
+
+Do not promise uninterrupted or error-free availability.
+
+Maintenance, security events, external-service failures, force majeure, and development
+changes may affect service, but these clauses must not remove non-waivable consumer rights.
+
+================================================================================
+19. DISCLAIMERS, LIABILITY, INDEMNITY, AND DISPUTES
+================================================================================
+
+These provisions require qualified legal review before publication.
+
+The final Terms may address:
+- directory accuracy;
+- provider conduct;
+- service results;
+- user content;
+- external services;
+- service availability;
+- damages;
+- exclusions not permitted by law;
+- liability caps where enforceable;
+- user responsibility for unlawful submissions;
+- dispute escalation;
+- governing law;
+- venue;
+- mediation or arbitration only if appropriate and lawful;
+- consumer rights that remain unaffected.
+
+Do not copy aggressive clauses from another platform without reviewing whether they are
+lawful, proportionate, understandable, and suitable for Massage Nexus.
+
+================================================================================
+20. CONTACT AND NOTICES
+================================================================================
+
+The public Terms should identify:
+- legal operator;
+- business address where required;
+- general support contact;
+- legal contact;
+- privacy contact or DPO;
+- copyright contact;
+- security disclosure contact;
+- how formal notices are delivered.
+
+Security, privacy, legal, and ordinary support channels should not all be one unmanaged
+mailbox.
+
+================================================================================
+21. PUBLICATION READINESS CHECKLIST
+================================================================================
+
+Before public registration:
+- legal operator finalized;
+- Terms reviewed;
+- Privacy Notice reviewed;
+- account policy accepted;
+- age rule accepted;
+- Community Guidelines accepted;
+- NSFW policy accepted;
+- booking and provider boundaries accepted;
+- payment role finalized;
+- user-content license finalized;
+- dispute and governing-law clauses finalized;
+- contact channels operational;
+- versioned acceptance implemented;
+- prior versions archived;
+- supported-language publication plan accepted;
+- accessibility review completed;
+- public change-notice process implemented.
+
+================================================================================
+22. EXTERNAL REFERENCE BASELINE
+================================================================================
+
+- Philippine Data Privacy Act of 2012 and Implementing Rules and Regulations.
+- National Privacy Commission guidance on consent, transparency, data-subject rights,
+  privacy engineering, breach management, and cross-border processing.
+- Applicable Philippine electronic-commerce, consumer-protection, cybercrime, intellectual
+  property, contract, and sector rules, to be verified by qualified counsel.
+- Final launch-market laws and platform-provider terms.

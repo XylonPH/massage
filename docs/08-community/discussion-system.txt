@@ -1,0 +1,1216 @@
+Title: Massage Nexus Discussion System
+Document Version: 0.10
+Date Created: 2026-07-16
+Revision Date: 2026-07-16
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 03 - Features v1.90
+- Massage Nexus - 05 - Review Writing v1.70
+- Massage Nexus - 06 - Rating System v1.10
+- Massage Nexus - 07 - Reputation System v1.70
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- Massage Nexus - 29 - News Writing Guide v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working public and member discussion system for Massage Nexus.
+
+The Discussion System allows users, establishments, therapists, sellers, contributors, editors, moderators, and approved platform personas to ask questions, share information, respond, clarify, debate, and build community knowledge.
+
+A discussion is different from a review, private message, live chat, news story, and profile correction.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Discussion System should:
+
+- support useful public conversation;
+- connect conversations to Services, establishments, therapists, Products, articles, news, reviews, and locations;
+- support questions and answers;
+- support official responses;
+- support moderation and reporting;
+- preserve edit history;
+- discourage spam, harassment, manipulation, and unsafe solicitation;
+- allow multilingual participation;
+- support reputation without rewarding raw volume;
+- remain readable and searchable;
+- support accessibility;
+- protect private information;
+- allow AI assistance without allowing automated manipulation.
+
+================================================================================
+2. DISCUSSION VERSUS OTHER SYSTEMS
+================================================================================
+
+Discussion:
+Public or group conversation organized around a topic.
+
+Review:
+Experience-based evaluation of an establishment, therapist, or Product.
+
+Comment:
+A reply attached to content or a discussion.
+
+Private Message:
+Direct non-public communication between approved participants.
+
+Live Chat:
+Real-time or near-real-time conversation.
+
+Contribution:
+Structured suggestion to change platform data.
+
+Report:
+Private request for moderation or safety action.
+
+Question:
+A discussion seeking an answer.
+
+Discussion should not be used to bypass:
+
+- review rules;
+- correction workflow;
+- private messaging boundaries;
+- booking;
+- verification;
+- emergency support.
+
+================================================================================
+3. DISCUSSION TYPES
+================================================================================
+
+Possible types:
+
+- General Discussion;
+- Question;
+- Advice Request;
+- Recommendation Request;
+- Service Discussion;
+- Establishment Discussion;
+- Therapist Discussion;
+- Product Discussion;
+- Article Discussion;
+- News Discussion;
+- Review Discussion;
+- Location Discussion;
+- Professional Discussion;
+- Business Discussion;
+- Safety Discussion;
+- Platform Feedback;
+- Help Discussion;
+- Event Discussion;
+- Poll;
+- Announcement Thread;
+- Moderated Debate.
+
+================================================================================
+4. DISCUSSION LOCATIONS
+================================================================================
+
+Possible public routes:
+
+/discussion
+/discussion/{discussion-slug}
+
+Possible profile-linked routes:
+
+/service/{service-slug}/discussion
+/spa/{spa-slug}/discussion
+/therapist/{therapist-slug}/discussion
+/product/{product-slug}/discussion
+/article/{article-slug}/discussion
+/news/{news-slug}/discussion
+/review/{review-slug}/discussion
+/location/{location-slug}/discussion
+
+Possible workspace route:
+
+/workspace/discussion
+
+The Site Structure Map should be updated if /discussion is accepted as a first-level route.
+
+================================================================================
+5. DISCUSSION RECORD
+================================================================================
+
+A discussion may contain:
+
+- discussion id;
+- type;
+- title;
+- slug;
+- body;
+- author;
+- anonymous public display option where allowed;
+- language;
+- related record;
+- location;
+- tags;
+- status;
+- visibility;
+- created date;
+- updated date;
+- last activity;
+- reply count;
+- participant count;
+- follower count;
+- helpful count;
+- pinned status;
+- locked status;
+- accepted answer;
+- moderation status;
+- NSFW level;
+- source where relevant.
+
+================================================================================
+6. PARTICIPANTS
+================================================================================
+
+Possible participants:
+
+- guest reader;
+- registered user;
+- contributor;
+- establishment representative;
+- therapist;
+- seller;
+- author;
+- correspondent;
+- editor;
+- moderator;
+- administrator;
+- Neural Agent where approved;
+- official Massage Nexus account.
+
+Guests may read public discussions.
+
+Posting normally requires a registered account.
+
+================================================================================
+7. AUTHOR IDENTITY
+================================================================================
+
+Possible public author display:
+
+- public user name;
+- professional profile;
+- establishment official account;
+- seller official account;
+- Massage Nexus Staff;
+- Neural Agent label;
+- anonymous public label where permitted.
+
+The system should still know the internal account responsible for an anonymous public post.
+
+Anonymous public posting should not be available for every discussion type.
+
+================================================================================
+8. OFFICIAL RESPONSES
+================================================================================
+
+Official response labels may include:
+
+- Establishment Response;
+- Therapist Response;
+- Seller Response;
+- Author Response;
+- Editor Note;
+- Moderator Note;
+- Massage Nexus Official;
+- Neural Agent.
+
+Official status should be based on permission and relationship, not self-selected text.
+
+================================================================================
+9. CREATING A DISCUSSION
+================================================================================
+
+Creation form may include:
+
+- type;
+- title;
+- body;
+- related record;
+- language;
+- tags;
+- location;
+- question status;
+- poll;
+- media;
+- disclosure;
+- anonymity request;
+- notification preference.
+
+The form should search for existing similar discussions before submission.
+
+================================================================================
+10. TITLE RULES
+================================================================================
+
+A title should:
+
+- describe the topic;
+- avoid all-caps;
+- avoid clickbait;
+- avoid personal private information;
+- avoid unsupported accusation;
+- remain understandable in search.
+
+Poor title:
+
+Help!!!
+
+Better title:
+
+Which massage type is usually gentler for a first visit?
+
+================================================================================
+11. BODY EDITOR
+================================================================================
+
+The discussion editor may support:
+
+- paragraph;
+- list;
+- quotation;
+- link;
+- mention;
+- emoji;
+- limited image;
+- content warning;
+- code only where relevant to technical discussions.
+
+Do not allow:
+
+- script;
+- arbitrary HTML;
+- unsafe iframe;
+- hidden tracking;
+- unrestricted CSS.
+
+The editor should be simpler than the article editor.
+
+================================================================================
+12. REPLIES AND THREADING
+================================================================================
+
+A reply may respond to:
+
+- original discussion;
+- another reply.
+
+Recommended threading depth should remain limited for readability.
+
+Possible direction:
+
+- visible nesting up to three levels;
+- deeper replies flattened with context link.
+
+Each reply may contain:
+
+- body;
+- author;
+- date;
+- edited status;
+- parent;
+- reaction;
+- report;
+- moderation status.
+
+================================================================================
+13. QUESTIONS AND ACCEPTED ANSWERS
+================================================================================
+
+A Question discussion may allow an accepted answer.
+
+The original author or authorized moderator may mark an answer accepted.
+
+Accepted does not always mean officially verified.
+
+Possible labels:
+
+- Accepted by Author;
+- Official Answer;
+- Editor-Verified Answer;
+- Community Answer.
+
+The system should distinguish them.
+
+================================================================================
+14. HELPFUL VOTES AND REACTIONS
+================================================================================
+
+Possible reactions:
+
+- Helpful;
+- Not Helpful;
+- Like;
+- Thanks;
+- Agree;
+- Informative.
+
+The first version should avoid too many reaction types.
+
+Working direction:
+
+- thumbs up;
+- thumbs down;
+- Helpful mark where needed.
+
+Reactions may create small reputation signals according to the Reputation System.
+
+They should not create large rewards or allow farming.
+
+================================================================================
+15. POLLS
+================================================================================
+
+A discussion poll may include:
+
+- question;
+- options;
+- start;
+- end;
+- single or multiple selection;
+- anonymous public result;
+- result visibility;
+- minimum account age;
+- related record.
+
+Polls should not be used as proof of factual truth.
+
+Votes may be limited by account and anti-abuse checks.
+
+================================================================================
+16. TAGS AND CATEGORIES
+================================================================================
+
+Possible categories:
+
+- Service;
+- Spa;
+- Therapist;
+- Product;
+- Safety;
+- Etiquette;
+- Pricing;
+- Booking;
+- Business;
+- Career;
+- Training;
+- Product;
+- Local Area;
+- Platform;
+- Help;
+- Off-Topic Wellness.
+
+Tags should support discovery without becoming an uncontrolled duplicate taxonomy.
+
+Moderators or editors may merge duplicate tags.
+
+================================================================================
+17. RELATED RECORDS
+================================================================================
+
+A discussion may connect to:
+
+- one primary record;
+- several secondary records.
+
+Examples:
+
+- Thai Massage Service;
+- one establishment;
+- one therapist;
+- one Product;
+- one article;
+- one city.
+
+The connection should not imply official endorsement.
+
+================================================================================
+18. DISCUSSION STATUS
+================================================================================
+
+Possible statuses:
+
+- Draft;
+- Published;
+- Pending Review;
+- Locked;
+- Archived;
+- Removed;
+- Restricted;
+- Merged;
+- Closed;
+- Deleted by Author;
+- Hidden Pending Appeal.
+
+================================================================================
+19. VISIBILITY
+================================================================================
+
+Possible visibility:
+
+- Public;
+- Members Only;
+- Selected Group;
+- Establishment Team;
+- Therapist Team;
+- Seller Team;
+- Moderator Only;
+- Private Draft.
+
+The first public Discussion System should focus on Public and Members Only.
+
+Private group discussions may be introduced later.
+
+================================================================================
+20. EDITING
+================================================================================
+
+Authors may edit according to policy.
+
+Possible edit rules:
+
+- free editing during a short period;
+- later edits create visible history;
+- substantial edits show Edited;
+- edit after replies preserves previous meaning;
+- title change may require review;
+- serious accusation changes require moderation.
+
+An author should not rewrite a discussion after receiving replies in a way that makes respondents appear misleading.
+
+================================================================================
+21. EDIT HISTORY
+================================================================================
+
+Public history may show:
+
+- edited date;
+- summary;
+- prior version where needed.
+
+Internal history may preserve:
+
+- exact before and after;
+- reason;
+- moderator action;
+- source;
+- IP or device context where justified.
+
+Minor spelling edits may not need a detailed public diff.
+
+================================================================================
+22. DELETION AND ARCHIVE
+================================================================================
+
+Author deletion may:
+
+- remove body;
+- preserve reply structure;
+- show Deleted by Author.
+
+Moderator removal may:
+
+- hide body;
+- preserve evidence;
+- show moderation reason where appropriate.
+
+Archive may close old or inactive discussions while keeping them searchable.
+
+Permanent erasure is reserved for legal, privacy, or retention requirements.
+
+================================================================================
+23. LOCKING
+================================================================================
+
+A discussion may be locked when:
+
+- question is resolved;
+- conversation is repetitive;
+- abuse continues;
+- legal risk is active;
+- emergency information must remain stable;
+- old thread receives spam;
+- moderator review is underway.
+
+Locked discussions remain readable unless separately restricted.
+
+================================================================================
+24. MERGING DUPLICATE DISCUSSIONS
+================================================================================
+
+Merge process:
+
+1. identify duplicate topics;
+2. select canonical discussion;
+3. move or link useful replies;
+4. preserve authorship;
+5. redirect old URL;
+6. record moderator action.
+
+Do not merge discussions merely because they mention the same Service if the actual questions differ.
+
+================================================================================
+25. MODERATION
+================================================================================
+
+Moderation may address:
+
+- spam;
+- harassment;
+- threats;
+- impersonation;
+- doxxing;
+- fraud;
+- explicit solicitation;
+- illegal activity;
+- unsafe medical advice;
+- defamation;
+- misinformation;
+- hate;
+- copyright;
+- off-topic repetition;
+- manipulation;
+- brigading.
+
+A negative opinion is not automatically abuse.
+
+================================================================================
+26. REPORTING
+================================================================================
+
+Users may report:
+
+- discussion;
+- reply;
+- author;
+- media;
+- link.
+
+Report reasons may include:
+
+- spam;
+- harassment;
+- threat;
+- private information;
+- impersonation;
+- false information;
+- unsafe advice;
+- explicit solicitation;
+- illegal content;
+- copyright;
+- wrong category.
+
+Reports are private.
+
+================================================================================
+27. MODERATION ACTIONS
+================================================================================
+
+Possible actions:
+
+- no action;
+- warning;
+- request edit;
+- label;
+- limit visibility;
+- remove media;
+- remove reply;
+- lock discussion;
+- restrict author;
+- suspend account;
+- escalate;
+- preserve evidence;
+- refer to legal or safety process.
+
+Serious actions should have:
+
+- reason;
+- evidence;
+- reviewer;
+- date;
+- appeal;
+- audit.
+
+================================================================================
+28. APPEALS
+================================================================================
+
+An author may appeal an eligible moderation decision.
+
+Appeal may include:
+
+- decision;
+- reason;
+- explanation;
+- supporting evidence;
+- requested outcome.
+
+A different authorized reviewer should handle serious appeals when possible.
+
+================================================================================
+29. SAFETY AND SENSITIVE TOPICS
+================================================================================
+
+Sensitive discussions may involve:
+
+- sexual boundaries;
+- adult-adjacent services;
+- harassment;
+- assault;
+- health;
+- pregnancy;
+- minors;
+- disability;
+- grief;
+- death;
+- self-harm;
+- exploitation;
+- illegal activity.
+
+Possible controls:
+
+- content warning;
+- limited preview;
+- member-only visibility;
+- slower moderation;
+- link restriction;
+- identity protection;
+- comment lock;
+- specialist review.
+
+The system should not allow discussion to become a marketplace for illegal or exploitative activity.
+
+================================================================================
+30. MEDICAL AND PROFESSIONAL ADVICE
+================================================================================
+
+Users may share experience and general information.
+
+They should not present unsupported advice as diagnosis or guaranteed treatment.
+
+Possible notice:
+
+Community discussion does not replace medical, legal, or professional advice.
+
+High-risk medical claims may be labeled, limited, or removed.
+
+================================================================================
+31. BUSINESS AND PROVIDER DISCUSSIONS
+================================================================================
+
+Providers may answer questions but may not:
+
+- threaten critics;
+- reveal client identity;
+- fabricate testimonials;
+- manipulate votes;
+- advertise repeatedly outside approved areas;
+- remove independent discussion.
+
+Commercial promotion should use approved promotion or advertising systems.
+
+================================================================================
+32. REVIEWS AND DISCUSSIONS
+================================================================================
+
+A discussion about a review may:
+
+- ask for clarification;
+- discuss general lessons;
+- allow an official response;
+- identify correction needs.
+
+It should not:
+
+- reveal anonymous reviewer identity;
+- coordinate harassment;
+- relitigate moderation endlessly;
+- replace the review response system.
+
+================================================================================
+33. NEWS DISCUSSIONS
+================================================================================
+
+News discussions may be enabled, limited, or disabled.
+
+Special care is required for:
+
+- active investigation;
+- accusation;
+- victim;
+- minor;
+- death;
+- legal case;
+- breaking emergency.
+
+A moderator may pin verified updates.
+
+================================================================================
+34. MENTIONS
+================================================================================
+
+Mentions may notify:
+
+- user;
+- establishment;
+- therapist;
+- seller;
+- official account.
+
+Controls should prevent:
+
+- mass mention;
+- harassment;
+- repeated tagging;
+- fake official mention.
+
+Users should be able to limit mention notifications.
+
+================================================================================
+35. FOLLOWING AND NOTIFICATIONS
+================================================================================
+
+Users may follow:
+
+- discussion;
+- category;
+- related record;
+- author.
+
+Possible notifications:
+
+- reply;
+- mention;
+- accepted answer;
+- official answer;
+- moderator note;
+- lock;
+- merge;
+- report decision;
+- followed topic update.
+
+Users should control notification frequency.
+
+================================================================================
+36. SEARCH AND DISCOVERY
+================================================================================
+
+Discussion search may use:
+
+- title;
+- body;
+- tag;
+- category;
+- related record;
+- location;
+- language;
+- author;
+- status;
+- date.
+
+Search results should exclude restricted and removed content.
+
+Duplicate detection may suggest existing threads before creation.
+
+================================================================================
+37. SORTING
+================================================================================
+
+Possible sorts:
+
+- latest;
+- recently active;
+- unanswered;
+- most helpful;
+- most discussed;
+- followed;
+- official answer;
+- nearby;
+- language.
+
+Popularity should not permanently bury newer useful questions.
+
+================================================================================
+38. REPUTATION
+================================================================================
+
+Useful discussion activity may affect reputation through:
+
+- helpful replies;
+- accepted answers;
+- accurate information;
+- respectful participation;
+- confirmed reports;
+- editor quality checks.
+
+Negative signals may include:
+
+- spam;
+- harassment;
+- manipulation;
+- repeated misinformation;
+- malicious reports;
+- deleted abuse.
+
+Reputation should use weighted and capped signals.
+
+Raw post count should not create high reputation.
+
+================================================================================
+39. REWARDS
+================================================================================
+
+Possible rewards:
+
+- Nexus Points;
+- Embers;
+- Inklings;
+- badges;
+- contribution progress.
+
+Rewards should have:
+
+- daily caps;
+- anti-farming controls;
+- quality requirement;
+- reversal when abuse is confirmed.
+
+A low-effort reply should not earn the same as an accepted useful answer.
+
+================================================================================
+40. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- suggest similar discussion;
+- summarize a long thread;
+- suggest title;
+- detect spam;
+- flag harassment;
+- identify unsafe advice;
+- suggest translation;
+- prepare moderator summary;
+- surface unanswered questions.
+
+AI must not:
+
+- post fake community replies;
+- manipulate votes;
+- impersonate a human;
+- decide serious punishment alone;
+- reveal private information;
+- fabricate consensus.
+
+Neural Agent participation should be visibly labeled and controlled.
+
+================================================================================
+41. NEURAL AGENT PARTICIPATION
+================================================================================
+
+A Neural Agent may:
+
+- answer approved general questions;
+- explain a Service;
+- summarize a discussion;
+- ask a discussion prompt;
+- guide users to resources;
+- participate in scheduled events.
+
+A Neural Agent should not:
+
+- pretend to have visited a spa;
+- write a personal review;
+- claim human credentials;
+- disclose private user data;
+- dominate community conversation;
+- replace official moderation.
+
+================================================================================
+42. TRANSLATION
+================================================================================
+
+Possible translation display:
+
+- original;
+- translated;
+- original and translation;
+- translate on request.
+
+The original remains preserved.
+
+Translation should show:
+
+- source language;
+- method;
+- review status;
+- stale status where relevant.
+
+A translated reply should not alter links, names, dates, or factual values.
+
+================================================================================
+43. MEDIA
+================================================================================
+
+Discussion media may include:
+
+- image;
+- short video;
+- document;
+- screenshot;
+- link preview.
+
+Validate:
+
+- file type;
+- size;
+- ownership;
+- privacy;
+- people;
+- location;
+- sensitive content;
+- copyright;
+- AI use.
+
+Private documents should not be uploaded into a public discussion.
+
+================================================================================
+44. LINK HANDLING
+================================================================================
+
+Links may be:
+
+- allowed;
+- previewed;
+- blocked;
+- nofollowed;
+- held for review.
+
+Possible risky links:
+
+- malware;
+- phishing;
+- illegal marketplace;
+- explicit solicitation;
+- tracking;
+- misleading redirect;
+- personal data.
+
+New accounts may have stricter link limits.
+
+================================================================================
+45. ANTI-SPAM
+================================================================================
+
+Controls may include:
+
+- email verification;
+- account age;
+- rate limit;
+- duplicate detection;
+- link limit;
+- CAPTCHA where justified;
+- reputation;
+- moderation queue;
+- hidden honeypot;
+- device and behavior signals;
+- block list.
+
+Anti-spam should not make ordinary participation unnecessarily difficult.
+
+================================================================================
+46. RATE LIMITS
+================================================================================
+
+Possible limits:
+
+- new discussions per hour;
+- replies per minute;
+- mentions per post;
+- links per post;
+- reports per day;
+- votes per minute;
+- media uploads per day.
+
+Limits may depend on account trust and moderation history.
+
+================================================================================
+47. PRIVACY
+================================================================================
+
+Do not allow users to post:
+
+- private phone without permission;
+- private address;
+- identity document;
+- booking code;
+- private message screenshot without review;
+- exact therapist home location;
+- private health record;
+- private credential document.
+
+Moderators need tools to remove exposed private information quickly.
+
+================================================================================
+48. ACCESSIBILITY
+================================================================================
+
+The Discussion System should support:
+
+- keyboard navigation;
+- screen-reader labels;
+- logical reply order;
+- accessible editor;
+- visible focus;
+- descriptive link text;
+- alt text;
+- captions;
+- content warnings;
+- understandable moderation notices;
+- no color-only status;
+- reduced motion.
+
+================================================================================
+49. API
+================================================================================
+
+First-Party App API may support:
+
+- list discussions;
+- view discussion;
+- create discussion;
+- reply;
+- edit own post;
+- react;
+- follow;
+- report;
+- mark accepted answer.
+
+Partner API access should be limited and may be unnecessary for the first version.
+
+Public API may provide selected read-only public discussion data later.
+
+================================================================================
+50. WORKSPACE
+================================================================================
+
+Possible routes:
+
+/workspace/discussion
+/workspace/discussion/my
+/workspace/discussion/draft
+/workspace/discussion/reply
+/workspace/discussion/following
+/workspace/discussion/mention
+/workspace/discussion/question
+/workspace/discussion/report
+/workspace/discussion/moderation-status
+/workspace/discussion/history
+
+Moderators use:
+
+/workspace/moderation/discussion
+
+================================================================================
+51. ANALYTICS
+================================================================================
+
+Possible metrics:
+
+- discussions created;
+- replies;
+- active participants;
+- unanswered questions;
+- accepted answers;
+- helpful votes;
+- reports;
+- removals;
+- lock rate;
+- response time;
+- language;
+- category;
+- related record;
+- return participation.
+
+Analytics should not expose private user behavior without need and permission.
+
+================================================================================
+52. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1:
+- public Discussion directory;
+- discussion page;
+- registered-user creation;
+- replies;
+- basic reactions;
+- related record;
+- reporting;
+- moderation;
+- edit history;
+- notifications.
+
+Phase 2:
+- questions and accepted answers;
+- tags;
+- search;
+- follows;
+- translations;
+- profile-linked discussion tabs;
+- reputation integration;
+- official responses.
+
+Phase 3:
+- polls;
+- group discussions;
+- AI summaries;
+- advanced recommendations;
+- app API;
+- live-event discussions;
+- richer analytics.
+
+================================================================================
+53. CURRENT WORKING DECISIONS
+================================================================================
+
+- Discussions are separate from reviews, private messages, live chat, contributions, and reports.
+- Posting normally requires a registered account.
+- Official responses are permission-based.
+- Public anonymity may be allowed only in selected cases.
+- Edit history prevents misleading rewrites.
+- Useful replies may affect reputation through weighted and capped signals.
+- AI may assist moderation and summaries but may not fake community participation.
+- Negative opinions are not automatically moderation violations.
+- Sensitive discussions may receive stronger controls.
+- The first version should remain readable and avoid excessive reaction types or deep reply nesting.
+
+================================================================================
+54. OPEN DECISIONS
+================================================================================
+
+- whether /discussion becomes a first-level route;
+- public anonymous posting;
+- maximum reply depth;
+- final reaction types;
+- public edit-history detail;
+- poll release timing;
+- content-warning categories;
+- off-topic area;
+- establishment and therapist official-response rules;
+- discussion rewards;
+- exact rate limits;
+- moderator staffing;
+- appeal timing;
+- public API access;
+- group discussion support;
+- live discussion integration.

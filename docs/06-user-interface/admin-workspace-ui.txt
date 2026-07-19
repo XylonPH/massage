@@ -1,0 +1,1164 @@
+Title: Massage Nexus Admin Workspace User Interface
+Document Version: 0.10
+Date Created: 2026-07-19
+Revision Date: 2026-07-19
+Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
+
+Related Documents:
+- Massage Nexus Admin Workspace
+- Massage Nexus Brand and Visual Identity
+- Massage Nexus Account Identity Registration and Authentication System
+- Massage Nexus Edit System
+- Massage Nexus Support and Ticketing System
+- Massage Nexus Analytics Statistics and Measurement System
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Privacy Notice and Data Protection Requirements
+- Massage Nexus NSFW Mature and Restricted Content Policy
+- Massage Nexus Testing and Quality Assurance Strategy
+
+================================================================================
+1. PURPOSE AND BOUNDARY
+================================================================================
+
+The Admin Workspace User Interface provides authorized administrators with a consistent way to inspect queues, compare changes, review evidence, make decisions, manage operational systems, and understand the result of each action.
+
+This document owns:
+
+- workspace information architecture;
+- navigation and page organization;
+- dashboard content;
+- queue, table, detail, comparison, form, and timeline behavior;
+- permission-aware visibility and redaction;
+- high-risk confirmation and approval interactions;
+- responsive and accessible behavior;
+- loading, empty, partial, failure, and degraded states;
+- common administrative components.
+
+This document does not redefine:
+
+- which content is allowed;
+- what proves verification;
+- when a Review violates policy;
+- final account, privacy, security, translation, payment, or legal rules;
+- final database schema;
+- final route implementation;
+- final permission codes.
+
+Those decisions remain in the Admin Workspace and the authoritative capability documents.
+
+The initial interface may use Filament, Livewire, Alpine.js, and Tailwind CSS if compatibility is approved. These UI requirements remain valid if the implementation framework changes.
+
+================================================================================
+2. DESIGN DIRECTION
+================================================================================
+
+The Admin Workspace should feel operational, focused, and trustworthy rather than decorative or consumer-oriented.
+
+Visual direction:
+
+- use the Ink & Ember identity without overwhelming dense administrative content;
+- use Ink colors for structure, navigation, tables, and quiet surfaces;
+- reserve Ember accents for primary actions, attention, and selected navigation;
+- use neutral backgrounds for long review sessions;
+- use compact but readable typography;
+- keep dangerous actions visually distinct from ordinary actions;
+- use icons only with visible text or accessible labels;
+- never communicate state through color alone;
+- avoid unnecessary animation;
+- support light and dark administrative themes only when both meet contrast and data-visualization requirements.
+
+The interface must prioritize:
+
+1. current risk and urgent work;
+2. assigned work;
+3. actionable queues;
+4. record context and evidence;
+5. safe decision-making;
+6. system and provider health;
+7. historical and analytical information.
+
+================================================================================
+3. WORKSPACE SECURITY CONTEXT
+================================================================================
+
+The interface may expose three security contexts:
+
+Standard Security Panel
+- editorial;
+- translation;
+- stewardship;
+- ordinary structured data review.
+
+Medium Security Panel
+- moderation;
+- verification;
+- claims;
+- Support;
+- restricted evidence according to permission.
+
+Critical Security Panel
+- user access;
+- roles and permissions;
+- system settings;
+- credentials and integrations;
+- backups and restore controls;
+- emergency locks;
+- other high-risk operations.
+
+The current security context should be visually clear in the header and page title. Moving into a stronger context may require step-up authentication and may open in a separately configured authenticated panel. A route change alone must not be presented as proof of stronger security.
+
+When step-up authentication expires:
+
+- preserve safe unsaved work where possible;
+- block the high-risk action;
+- explain that recent authentication is required;
+- return the administrator to the intended action after successful reauthentication when safe;
+- never apply the action before reauthentication completes.
+
+================================================================================
+4. APPLICATION SHELL
+================================================================================
+
+The Admin Workspace uses a consistent shell containing:
+
+- permission-filtered sidebar;
+- workspace header;
+- breadcrumb or location trail;
+- page title and compact description;
+- environment and security-context indicator;
+- global search;
+- notifications;
+- current administrator menu;
+- content area;
+- optional contextual inspector or evidence drawer.
+
+The shell must show a non-production environment label in development, test, and staging. Production should not use a distracting banner during ordinary operation, but critical lock, incident, degradation, and maintenance states must remain visible.
+
+The administrator menu should include:
+
+- display name and administrative context;
+- security settings;
+- active sessions and devices;
+- interface language and time zone;
+- accessibility preferences;
+- theme where enabled;
+- exit View-As when active;
+- log out.
+
+================================================================================
+5. SIDEBAR AND NAVIGATION
+================================================================================
+
+Navigation appears only when the administrator has permission to access at least one page in the group.
+
+Recommended primary groups:
+
+Home
+- Dashboard
+- My Work
+- Notifications
+
+Queues
+- All Allowed Queues
+- Assigned to Me
+- Unassigned
+- Due Soon
+- Escalated
+- Awaiting Approval
+
+Data
+- Services and Taxonomy
+- Spas and Establishments
+- Therapists
+- Products
+- Sellers
+- Locations
+- Contributions
+
+Trust and Safety
+- Moderation
+- Verification
+- Claims
+- Appeals
+- Restricted Media
+
+Content
+- Articles
+- News
+- Media
+- Translation
+- Publication Calendar
+
+People and Support
+- Users
+- Support Cases
+- View-As
+- Roles and Permissions
+
+Business
+- Advertising
+- Campaigns
+- Billing Review
+
+Operations
+- Integrations and API
+- Usage, Quotas, and Costs
+- Jobs and Scheduler
+- Search and Cache
+- Storage
+- Imports and Exports
+- Backups and Restore Tests
+- Maintenance and Lock Modes
+
+Insights
+- Analytics
+- Data Quality
+- Research Coverage
+
+Governance
+- Audit
+- Security Events
+- Incident Response
+- System Settings
+
+The sidebar should support collapse without hiding the text alternative from assistive technology. A collapsed sidebar may use icons visually, but accessible names and tooltips remain required.
+
+Sidebar badges may show permitted queue counts or critical alerts. Counts must not reveal records the administrator cannot access.
+
+================================================================================
+6. GLOBAL SEARCH
+================================================================================
+
+Global search is permission-filtered before results are returned.
+
+Searchable types may include:
+
+- user;
+- Service;
+- spa or establishment;
+- therapist;
+- Product;
+- Seller;
+- Article or News item;
+- Review;
+- media;
+- contribution;
+- claim;
+- verification;
+- moderation case;
+- Support case;
+- campaign;
+- API client;
+- integration;
+- job or batch;
+- audit event.
+
+The search field should support type filtering and exact identifier lookup. Results show type, safe identifying information, status, and the reason the result is relevant.
+
+Restricted result existence, count, preview, or matching text must not leak through search. Search history containing private identifiers should follow retention and privacy rules.
+
+================================================================================
+7. ADMIN DASHBOARD
+================================================================================
+
+The dashboard is permission-personalized. It does not show blank cards for inaccessible modules.
+
+Top status row:
+
+- active incident or security alert;
+- maintenance or lock mode;
+- degraded provider or integration;
+- failed backup or restore test;
+- production quota or budget warning.
+
+Primary work cards:
+
+- assigned to me;
+- unassigned allowed work;
+- due soon;
+- overdue;
+- escalated;
+- awaiting my approval;
+- returned for changes.
+
+Operational queue cards may include:
+
+- spa and therapist submissions;
+- contributions and corrections;
+- Review and community moderation;
+- verification and claims;
+- editorial approval;
+- translation backlog;
+- media review;
+- Support escalation;
+- advertising approval;
+- failed jobs and imports.
+
+System-health cards may include:
+
+- API and integration errors;
+- AI token and cost use;
+- maps and places quota use;
+- email, SMS, and push delivery failures;
+- storage use;
+- search-index freshness;
+- queue delay;
+- backup status;
+- unusual exports or high-risk actions.
+
+Every card must:
+
+- state its timeframe;
+- state whether the value is a count, rate, cost, or status;
+- link to the corresponding filtered page;
+- show loading, stale, unavailable, and permission-limited states honestly;
+- avoid implying zero when data is unavailable.
+
+Dashboard cards should be reorderable only if the preference system can preserve an accessible default and critical alerts remain prominent.
+
+================================================================================
+8. UNIFIED WORK QUEUE
+================================================================================
+
+The queue page contains:
+
+- queue selector;
+- saved-view selector;
+- search;
+- filter drawer;
+- sort control;
+- result count;
+- table or accessible list;
+- bulk-selection controls when permitted;
+- refresh and last-updated status.
+
+Recommended queue columns:
+
+- selection;
+- priority or risk;
+- item type;
+- subject or target;
+- submitted by or source;
+- submitted date;
+- status;
+- assigned administrator;
+- due date;
+- warning indicators;
+- last activity;
+- permitted quick action.
+
+Filters may include:
+
+- item type;
+- status;
+- priority;
+- risk;
+- privacy class;
+- language;
+- geography;
+- source;
+- assigned administrator;
+- unassigned;
+- submitted date;
+- due date;
+- overdue;
+- verification or claim state;
+- policy warning;
+- duplicate candidate;
+- appeal;
+- second approval required.
+
+Saved views are private by default. Shared team views require permission and should show their owner and last modification.
+
+Opening a queue item should claim or assign it only through an explicit action. Merely viewing an item must not silently remove it from another administrator's queue.
+
+================================================================================
+9. QUEUE ITEM DETAIL
+================================================================================
+
+The queue-item page uses a consistent structure.
+
+Header:
+
+- item type;
+- subject;
+- status;
+- priority and risk;
+- assignment;
+- due date;
+- privacy or evidence warning;
+- related record link;
+- action menu.
+
+Summary area:
+
+- submitter or system source;
+- submission reason;
+- submitted and updated dates;
+- capability-specific validation result;
+- related cases, revisions, claims, reports, and appeals;
+- public visibility state.
+
+Main review area:
+
+- current value;
+- proposed value;
+- field-level difference;
+- source and provenance;
+- validation and policy warnings;
+- public preview;
+- protected evidence according to permission.
+
+Context panel:
+
+- assignment history;
+- internal notes;
+- previous decisions;
+- audit relationship;
+- communication history allowed for the case;
+- related jobs or imports.
+
+Decision area:
+
+- available decisions based on permission and workflow state;
+- required reason;
+- field-level selection when supported;
+- submitter notification preview;
+- resulting public and internal effects;
+- second-approval requirement;
+- final confirmation.
+
+If the record changes while it is open, the page must show a stale-work warning and require refresh or comparison before a decision can be submitted.
+
+================================================================================
+10. DIRECTORY SUBMISSION REVIEW
+================================================================================
+
+Spa, establishment, therapist, Product, Seller, and Service review pages should support:
+
+- new record submission;
+- correction;
+- provider change;
+- user contribution;
+- internal research update;
+- closure;
+- relocation;
+- rename;
+- duplicate;
+- disputed ownership or affiliation.
+
+The main comparison should show current and proposed fields side by side. Unchanged fields may be collapsed but remain available.
+
+The review interface should provide:
+
+- field-level approve and reject controls;
+- source and last-verified date;
+- source conflicts;
+- map and location comparison;
+- duplicate candidates;
+- related profile and claim state;
+- contact and credential evidence in a protected panel;
+- image and media comparison;
+- public-page preview;
+- change-result summary.
+
+Verification, claim approval, and publication status must have separate controls and labels. The interface must not use one generic Approve button when several independent effects would occur.
+
+================================================================================
+11. REVIEW AND COMMUNITY MODERATION
+================================================================================
+
+The moderation detail page should show:
+
+- reported content in a safe preview;
+- content author and target profile;
+- rating and Review text where applicable;
+- report categories and reporters according to privacy rules;
+- provider response;
+- booking or visit signal where permitted;
+- spam, duplicate, coordinated-activity, and conflict indicators;
+- personal-information, allegation, medical, NSFW, harassment, and policy warnings;
+- prior moderation and appeal history;
+- protected evidence.
+
+Decision controls may include:
+
+- no action;
+- publish unchanged;
+- request revision;
+- approved redaction;
+- label;
+- limit visibility;
+- remove prohibited portion;
+- remove content;
+- restrict or suspend account;
+- preserve evidence;
+- escalate;
+- restore after appeal.
+
+The interface must state separately whether an action affects:
+
+- content visibility;
+- rating aggregation;
+- author account status;
+- provider response;
+- evidence retention;
+- appeal availability.
+
+Potentially disturbing or NSFW material uses a safe placeholder and explicit Reveal control. There is no hover reveal. The action should warn the reviewer, work with keyboard and touch, and avoid announcing hidden content to a screen reader before consent.
+
+================================================================================
+12. VERIFICATION AND CLAIMS
+================================================================================
+
+Verification review should display:
+
+- target profile and verification scope;
+- claimant or applicant;
+- organization relationship;
+- contact verification;
+- submitted documents and credentials;
+- evidence source and expiry;
+- detected conflicts;
+- previous verification decisions;
+- public trust signal preview;
+- limitations that will be displayed publicly.
+
+Documents and credentials remain in a protected viewer. Download is separate from view permission and may be disabled.
+
+Claim approval must show the exact permissions that will be granted, their context, effective time, expiry where applicable, and notification result. It must state that Reviews, ratings, universal Services, and public historical data are not transferred to the claimant.
+
+Appeal review should be assigned to a qualified person who did not make the original decision when separation is required.
+
+================================================================================
+13. EDITORIAL REVIEW
+================================================================================
+
+Editorial pages should provide:
+
+- assignment and workflow status;
+- structured content editor or safe rendered preview;
+- revision comparison;
+- source list and claim verification checklist;
+- author and contributor attribution;
+- copyright and media permission status;
+- AI-assistance record;
+- sponsor and affiliate disclosure;
+- legal, medical, safety, privacy, and reputational warnings;
+- translation status;
+- accessibility checklist;
+- metadata, canonical URL, and social preview;
+- scheduling;
+- correction and retraction history.
+
+The publication action should open a compact readiness summary. Missing mandatory approval, disclosure, source, translation, or accessibility requirements block publication rather than appearing as a dismissible warning.
+
+================================================================================
+14. TRANSLATION ADMINISTRATION
+================================================================================
+
+Translation overview should show completeness by:
+
+- language and locale;
+- feature;
+- content type;
+- source revision;
+- status;
+- risk;
+- release requirement.
+
+Translation statuses:
+
+- Draft;
+- Machine Draft;
+- Human Review Required;
+- Reviewed;
+- Approved;
+- Published;
+- Stale;
+- Rejected;
+- Archived.
+
+The translation editor should show:
+
+- source and target side by side;
+- source revision and translation source revision;
+- highlighted source changes;
+- glossary suggestions and violations;
+- placeholder and variable parity;
+- pluralization variants;
+- markup differences;
+- fallback preview;
+- locale-specific date, number, currency, and address preview;
+- legal or high-risk review requirement;
+- translation history and reviewer.
+
+Completeness must not treat copied source text as translated without an approved exception. A stale translation remains visible as stale and cannot be represented as current.
+
+================================================================================
+15. MEDIA ADMINISTRATION
+================================================================================
+
+Media review should show:
+
+- safe derivative or placeholder;
+- media type, dimensions, duration, and size;
+- uploader and related record;
+- privacy and NSFW class;
+- ownership and permission;
+- malware and processing status;
+- AI-generation label;
+- duplicate candidates;
+- original and derivative inventory;
+- current storage and delivery state without exposing internal paths;
+- reports and moderation history;
+- legal hold or retention restriction.
+
+Actions may include approve, classify, restrict, replace, reject, quarantine, remove, restore, regenerate safe derivative, and escalate.
+
+When public media is restricted, the interface should show the state of public delivery, protected URLs, cached derivatives, and purge jobs. It must not report the media as safely hidden until required delivery paths are disabled.
+
+================================================================================
+16. USER, SUPPORT, AND VIEW-AS
+================================================================================
+
+User lookup should separate:
+
+- public profile;
+- account and membership status;
+- roles and permissions;
+- security events;
+- active sessions and devices;
+- restrictions and moderation history;
+- Support cases;
+- privacy requests;
+- protected identity or recovery information.
+
+The page must not expose more information merely because all sections exist. Each panel requires its own permission.
+
+Account merge, deletion, export, contact correction, and recovery actions should open their controlled workflow rather than run directly from the user page.
+
+View-As requires:
+
+- linked Support case;
+- target user;
+- reason;
+- allowed scope;
+- duration;
+- visible persistent banner;
+- explicit start and stop;
+- read-only enforcement;
+- user notification result;
+- audit relationship.
+
+The banner should identify the target account, remaining time, and Exit View-As action. It must remain visible on every viewed page.
+
+================================================================================
+17. API CLIENTS AND EXTERNAL SERVICE OPERATIONS
+================================================================================
+
+Separate tabs should distinguish:
+
+Massage Nexus API Clients
+- clients;
+- credentials;
+- scopes;
+- quotas;
+- rate limits;
+- webhooks;
+- request logs;
+- contract versions.
+
+Services Used by Massage Nexus
+- AI providers;
+- maps and places;
+- email;
+- SMS;
+- push notifications;
+- payments;
+- identity verification;
+- search;
+- object storage and CDN;
+- media processing;
+- translation;
+- analytics;
+- monitoring.
+
+Provider overview columns:
+
+- service;
+- provider;
+- environment;
+- status;
+- usage and quota;
+- estimated cost and budget;
+- latency;
+- error rate;
+- last successful health check;
+- credential rotation status;
+- active alert;
+- fallback availability.
+
+Usage detail should adapt to the provider's billing units.
+
+AI examples:
+- input tokens;
+- cached input tokens;
+- output tokens;
+- images;
+- audio;
+- embeddings;
+- tools;
+- cost by model and capability.
+
+Maps examples:
+- map loads;
+- places search;
+- place details;
+- geocoding;
+- routes;
+- distance;
+- cost by application and market.
+
+Controls may include warning threshold, hard limit, quota, emergency disable, approved model or endpoint, fallback, retry, circuit breaker, and alert routing.
+
+Credential values are never displayed after controlled creation. The interface may show credential identifier, purpose, owner, environment, age, last rotation, and status.
+
+================================================================================
+18. JOBS, IMPORTS, EXPORTS, AND BULK ACTIONS
+================================================================================
+
+Job list columns:
+
+- job or batch identifier;
+- capability;
+- initiator;
+- status;
+- progress;
+- attempts;
+- scheduled or started time;
+- duration;
+- result;
+- failure class;
+- permitted action.
+
+The job detail page should show redacted parameters, correlation identifier, related records, retry history, failure details safe for the viewer, and resulting audit event.
+
+Import flow:
+
+1. choose approved import type;
+2. upload to private quarantine;
+3. validate file and scan;
+4. select or confirm mapping;
+5. preview affected records;
+6. run dry run;
+7. review warnings and errors;
+8. confirm permission and impact;
+9. execute bounded batches;
+10. show per-record result and rollback or compensation options.
+
+Export flow:
+
+1. choose authorized scope;
+2. explain purpose;
+3. preview fields and privacy class;
+4. confirm protection and retention;
+5. generate asynchronously;
+6. notify through a protected channel;
+7. download through an expiring authorized link;
+8. show expiry and deletion status.
+
+Bulk-action UI must always show selected count, affected type, scope, preview, irreversible or compensating behavior, second-approval requirement, and partial-failure behavior. Selection across pages must be explicit and must not silently expand after filters change.
+
+================================================================================
+19. SYSTEM OPERATIONS
+================================================================================
+
+System operations should be separated into focused pages:
+
+- configuration by capability;
+- jobs and scheduler;
+- search index;
+- cache;
+- storage;
+- logs;
+- audit;
+- backups and restore tests;
+- maintenance and lock modes;
+- security events;
+- incident response.
+
+Do not create one giant settings form.
+
+Each setting should show:
+
+- name and explanation;
+- environment;
+- current effective value when non-secret;
+- source of value;
+- permission requirement;
+- validation;
+- effect and affected systems;
+- whether restart, job, or cache invalidation is required;
+- previous value where safe;
+- rollback behavior;
+- approval and audit requirement.
+
+Secrets should be represented by status and reference metadata, never plaintext value.
+
+================================================================================
+20. BACKUP, RESTORE, MAINTENANCE, AND LOCKS
+================================================================================
+
+Backup overview should show:
+
+- protected backup set;
+- environment;
+- last successful backup;
+- last failure;
+- next schedule;
+- encryption status;
+- retention class;
+- storage health;
+- last restore test;
+- recovery objective where approved.
+
+Restore is not an ordinary one-click action. The UI should guide an approved runbook, require recent authentication and second approval where applicable, display the target and impact, and prefer an isolated restore test before production restoration.
+
+Lock-mode controls should show:
+
+- current mode;
+- affected capabilities;
+- public and workspace message preview;
+- reason;
+- start and optional expiry;
+- requester and approver;
+- propagation status across instances;
+- rollback or unlock action;
+- audit relationship.
+
+Emergency controls should remain available only to approved break-glass operators and must not depend on the failing subsystem they are intended to control where avoidable.
+
+================================================================================
+21. AUDIT AND HISTORY
+================================================================================
+
+Audit search should support authorized filtering by:
+
+- actor;
+- action;
+- target;
+- date and time;
+- result;
+- permission;
+- source application;
+- case;
+- revision;
+- approval;
+- correlation identifier;
+- job or request identifier;
+- security or privacy class.
+
+Audit detail is read-only. There is no edit or delete action.
+
+The interface should distinguish:
+
+- immutable audit event;
+- security event;
+- operational log;
+- record revision;
+- moderation or Support case history.
+
+Links may connect them, but labels and permissions must remain distinct.
+
+Sensitive export requires reason, permission, protection, expiry, and audit. Audit search must avoid exposing secret values or unnecessary private content.
+
+================================================================================
+22. HIGH-RISK ACTION INTERACTION
+================================================================================
+
+High-risk actions must not use a generic browser confirmation.
+
+The confirmation view should state:
+
+- exact action;
+- target and environment;
+- expected effect;
+- records or users affected;
+- reversibility;
+- known risks;
+- required reason;
+- recent-authentication status;
+- second-approval status;
+- notification result;
+- planned execution time;
+- rollback or compensation path.
+
+Typed confirmation should use a meaningful target or action phrase, not a universal word such as YES.
+
+If approval is required, submitting creates a pending approval rather than executing. The requester cannot approve their own action. Changing the action invalidates prior approval.
+
+The execution screen must revalidate permission, target state, and approval immediately before execution.
+
+================================================================================
+23. NOTIFICATIONS AND ALERTS
+================================================================================
+
+Administrative notifications may cover:
+
+- new assignment;
+- due-soon and overdue work;
+- request for more information;
+- escalation;
+- appeal;
+- approval request;
+- high-risk action result;
+- permission grant or revocation;
+- unusual account or export activity;
+- failed job or integration;
+- quota or budget threshold;
+- backup failure;
+- incident update;
+- maintenance or lock change.
+
+Notifications should support severity, capability, read state, related item, created time, expiry, and preferred authorized channel.
+
+Critical alerts must not depend only on in-app notifications. Delivery rules remain subject to final operational staffing and notification decisions.
+
+================================================================================
+24. LOADING, EMPTY, ERROR, AND DEGRADED STATES
+================================================================================
+
+Loading:
+- show stable skeleton or progress without moving decision controls unexpectedly;
+- identify long-running background work;
+- allow safe navigation when work continues asynchronously.
+
+Empty:
+- distinguish no matching records, no assigned work, no permission, and unavailable data;
+- offer a relevant action such as clearing filters when allowed;
+- never imply a system is healthy solely because a queue is empty.
+
+Error:
+- show a safe message;
+- preserve entered work where possible;
+- provide an opaque correlation identifier;
+- identify whether retry is safe;
+- avoid raw exceptions, internal paths, provider secrets, and private content.
+
+Degraded:
+- identify the affected capability;
+- show last successful update;
+- avoid presenting stale values as current;
+- disable actions that cannot be performed safely;
+- provide the approved manual or fallback workflow where available.
+
+Partial failure:
+- show successful and failed records separately;
+- provide per-record reason;
+- expose retry only when idempotent or otherwise safe;
+- never display complete success.
+
+================================================================================
+25. RESPONSIVE BEHAVIOR
+================================================================================
+
+The Admin Workspace is desktop-first because comparison, evidence, and dense operational tables require space, but it must remain usable at supported tablet and mobile widths.
+
+Desktop:
+- persistent sidebar where space permits;
+- table and comparison views;
+- optional context drawer;
+- sticky decision area without covering content.
+
+Tablet:
+- collapsible sidebar;
+- reduced visible table columns;
+- detail drawer or stacked comparison;
+- preserved filters and decision controls.
+
+Mobile:
+- navigation drawer;
+- card or list representation for queues;
+- one-column detail flow;
+- explicit tabs for Current, Proposed, Evidence, History, and Decision;
+- no hover dependency;
+- no horizontal page scrolling for primary actions.
+
+Complex or high-risk actions may recommend a larger screen, but viewport size is not an authorization control. If an action cannot be made safely usable at a supported width, the interface must explain the limitation without losing work.
+
+================================================================================
+26. ACCESSIBILITY AND LOCALIZATION
+================================================================================
+
+Requirements:
+
+- keyboard access to navigation, filters, tables, dialogs, media reveal, and decisions;
+- visible focus;
+- skip links and landmarks;
+- semantic table headers and captions;
+- accessible names for icon controls;
+- status text in addition to color and icons;
+- live-region use only for useful status updates;
+- focus restoration after dialogs and asynchronous actions;
+- no hover-only information or action;
+- sufficient contrast;
+- text zoom and responsive reflow;
+- reduced-motion support;
+- accessible charts with text summaries or tables;
+- warnings before restricted media;
+- no hidden media content announced before deliberate reveal;
+- localizable labels, validation, reasons, statuses, dates, numbers, currency, and time zones;
+- source and translation language clearly identified;
+- administrator-selected interface language independent from reviewed-content language.
+
+Validation messages should identify the field, problem, and corrective action. Error summaries should link to affected controls.
+
+================================================================================
+27. COMMON COMPONENTS
+================================================================================
+
+Reusable components may include:
+
+- workspace shell;
+- permission-aware navigation group;
+- security-context indicator;
+- environment indicator;
+- global search;
+- dashboard status card;
+- queue table;
+- filter drawer;
+- saved-view selector;
+- assignment control;
+- priority and risk badge;
+- status badge with text;
+- current-versus-proposed comparison;
+- field-level decision control;
+- source and provenance panel;
+- protected evidence viewer;
+- safe media placeholder and Reveal control;
+- public preview;
+- revision timeline;
+- case timeline;
+- audit-event link;
+- internal note composer;
+- notification preview;
+- step-up authentication prompt;
+- second-approval panel;
+- high-risk confirmation;
+- quota and budget meter;
+- provider health card;
+- job progress and result panel;
+- import mapping and dry-run report;
+- protected export status;
+- empty, error, degraded, and partial-failure state.
+
+Components should encapsulate presentation and interaction. Domain authorization and business rules remain enforced server-side.
+
+================================================================================
+28. TESTING AND ACCEPTANCE
+================================================================================
+
+Test the interface with representative permissions and synthetic records.
+
+Required areas:
+
+- permission-filtered navigation and dashboard counts;
+- no restricted count or search leakage;
+- queue filtering, sorting, pagination, saved views, and assignment;
+- stale item and concurrency warning;
+- field-level comparison and decision;
+- View-As persistent banner and write denial;
+- protected evidence and media reveal;
+- second approval and self-approval denial;
+- provider quota and cost states;
+- import, export, bulk, and job partial failures;
+- audit read-only behavior;
+- maintenance and lock propagation status;
+- loading, empty, unavailable, stale, degraded, and error states;
+- keyboard-only completion of critical workflows;
+- screen-reader labels and announcements;
+- contrast, zoom, reflow, touch, and reduced motion;
+- localization expansion, placeholders, pluralization, dates, currency, and time zones;
+- desktop, tablet, and mobile layouts;
+- safe behavior when JavaScript or an asynchronous request fails.
+
+Automated accessibility checks do not replace keyboard, screen-reader, zoom, and manual workflow review.
+
+================================================================================
+29. INITIAL UI IMPLEMENTATION ORDER
+================================================================================
+
+Foundation
+- workspace shell;
+- authentication-context and environment indicators;
+- permission-aware navigation;
+- accessible component baseline;
+- step-up and high-risk confirmation patterns;
+- audit and notification relationships.
+
+Phase 1
+- dashboard;
+- unified queue;
+- queue-item detail;
+- assignment, notes, evidence, and decision components;
+- basic user lookup;
+- Service, taxonomy, spa, and therapist submission review;
+- media review.
+
+Phase 2
+- Review and community moderation;
+- verification and claims;
+- Support and View-As;
+- editorial review;
+- translation overview and editor;
+- imports, exports, and jobs.
+
+Phase 3
+- external-service usage, quota, cost, and health;
+- API clients;
+- advertising;
+- analytics;
+- backups and restore tests;
+- maintenance and lock modes;
+- incident response;
+- advanced bulk actions;
+- AI assistance.
+
+================================================================================
+30. CURRENT WORKING DECISIONS
+================================================================================
+
+- The Admin Workspace is permission-filtered and does not expose every module to every administrator.
+- The interface is desktop-first but responsive and accessible at supported sizes.
+- One common queue pattern supports domain-specific administrative work.
+- Queue item pages separate summary, comparison, evidence, history, and decision.
+- Approval, verification, claim authority, publication, and role grant are displayed as separate effects.
+- Potentially NSFW media uses a deliberate accessible Reveal action and never hover reveal.
+- High-risk actions use step-up authentication and purpose-built confirmation.
+- External services consumed by Massage Nexus receive usage, quota, cost, error, and health views.
+- Secrets are represented by status and reference metadata, never displayed plaintext after creation.
+- Audit is read-only in the interface.
+- Filament is a working implementation choice, not a permanent UI requirement until compatibility is verified.
+
+================================================================================
+31. OPEN DECISIONS
+================================================================================
+
+- final sidebar labels and group order;
+- final dashboard default cards by role;
+- final density options;
+- final desktop sidebar width and content maximum width;
+- whether command-palette navigation is needed;
+- final saved-view sharing rules;
+- exact queue statuses and service targets;
+- final permission codes and UI capability matrix;
+- final chart library and accessible chart pattern;
+- final table implementation and virtualization threshold;
+- final protected-document viewer;
+- final mobile support boundary for complex actions;
+- final Filament panel and plugin choices;
+- final dark-theme availability;
+- final notification delivery controls;
+- final provider-budget visualization;
+- final administrator exposure and wellness controls for disturbing content.

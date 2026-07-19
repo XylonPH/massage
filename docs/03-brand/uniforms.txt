@@ -1,0 +1,313 @@
+Massage Nexus Uniform and Wardrobe
+==================================
+Version: 1.20
+Date Created: 2026-07-04
+Revision Date: 2026-07-05
+
+Document Description: This document defines the clothing and wardrobe systems used for Massage Nexus, separating real-world wearable company clothing from visual-storytelling attire used for application imagery, social media, mockups, comics, onboarding visuals, and presentation scenes.
+
+Core Decision: Massage Nexus has two real-world viable clothing systems: Office Uniform and Correspondent Wear. Other role-based looks, including Therapist Suit, Receptionist Uniform, Manager Attire, Delivery Rider Uniform, and Plant Vendor Casual Wear, are visual identity costumes or role-readable wardrobe systems used for mockups, social media posts, comics, onboarding visuals, presentation images, and sample scenes. Massage Nexus is a platform, not a spa operator, so therapist, receptionist, manager, delivery rider, and plant vendor outfits should not imply that Massage Nexus directly employs or operates those real-world occupations unless they are clearly being used for staged visual content.
+
+Brand Clothing Principles: All Massage Nexus clothing should feel modern, professional, approachable, wellness-oriented, practical, and suitable for Philippine weather. Branding should be tasteful and never loud. Logos should be small, readable, and placed naturally on the garment, usually on the left chest, sleeve, lanyard card, cap, bag patch, or discreet back yoke. Large back logos should be avoided unless the item is explicitly promotional event wear. Clothing should generally use the Massage Nexus brand color family: deep navy, charcoal, black, white, ember orange, and leaf green. Orange and green should usually work as accents, not dominant base colors.
+
+Visual Board Footer Rule: Uniform specification boards, wardrobe mockups, cast sheets, presentation graphics, and printable design sheets may use the Massage Nexus Brand Footer Strip when space allows. The footer strip is a branded layout device, not part of the clothing itself.
+
+Color Palette
+-------------
+
+Deep Navy: #0E2A47
+Midnight Navy: #1E2A44
+Charcoal: #333333
+Jet Black: #0D0D0D
+White: #FFFFFF
+Stone Grey: #E3E5E8
+Leaf Green: #4CAF50
+Sage Green: #6BAA6E
+Nexus Orange: #F36C21
+Ember Orange: #FF7A00
+
+Real-World Wearable Clothing Systems
+------------------------------------
+
+Office Uniform
+~~~~~~~~~~~~~~
+
+Purpose: Used by Massage Nexus office staff, admin staff, internal platform representatives, front-facing company personnel, meeting attendees, and brand presenters in formal but approachable settings. This is the main office-ready clothing system for the platform.
+
+Use Cases: Office work, client consultations, partner meetings, internal documentation photos, company profile photos, public brand events, professional presentations, staff directory imagery, and platform credibility visuals.
+
+Visual Direction: Smart-casual officewear. The uniform should not look like a real estate agent suit, corporate sales costume, medical scrub, or spa therapist uniform. It should feel polished, modern, comfortable, approachable, and suitable for a creative wellness-tech company.
+
+Main Garments: Branded lightweight jacket or overshirt, clean inner polo or crew-neck top, modern fit trousers or chinos, and polished casual shoes or sneakers.
+
+Logo Placement: Small embroidered Massage Nexus logo on the left chest. Optional small back yoke logo near the upper center, but only if subtle. No oversized logo across the back. No personal name tag is required.
+
+Material Direction: Lightweight performance blend with 4-way stretch, smooth hand feel, wrinkle resistance, moisture-wicking properties, and easy-care finish.
+
+Suggested Fiber Composition: 92% polyester, 8% spandex for jacket and trousers; cotton-poly or performance polyester blend for inner shirt.
+
+Fabric Weight: Jacket around 220 GSM or 6.5 oz/yd²; inner shirt around 160-180 GSM; trousers around 200-240 GSM depending on stretch and drape.
+
+Weave Type: Plain weave or performance twill for jacket and trousers; jersey knit or pique knit for inner shirt.
+
+Fasteners: Full-length YKK-style coil zipper with matte gunmetal puller; optional hidden snaps or low-profile buttons if using overshirt format.
+
+Accent Materials: Matte gunmetal zipper pull, soft-touch binding at inner neck and pocket openings, small orange zipper pull tab or stitch accent, optional green detail only when restrained.
+
+Interlining: Lightweight fusible interlining on collar, placket, and structured areas to preserve shape without stiffness.
+
+Functional Panels: Ergonomic sleeve construction, stretch side panels, back yoke, and clean shoulder seams for natural movement.
+
+Pocket Architecture: Two secure zip hand pockets, optional inner phone pocket, clean invisible pocket bags, and minimal external bulk.
+
+Seam Types: Coverstitch or reinforced seams on stress areas, clean-finished seam allowances, bar tacks at pocket openings, and double-needle stitching where needed.
+
+Threading: High-tenacity polyester thread, color-matched to garment base, fade-resistant, shrink-resistant, and suitable for repeated washing.
+
+Sizing Tech Pack: Men and women should have separate size charts. Standard production ranges may include XS, S, M, L, XL, 2XL, and 3XL. Measurements should include chest or bust, waist, hip, sleeve length, jacket length, shoulder width, and trouser inseam.
+
+Accessories: None required. Optional company lanyard for events or office ID systems. Personal accessories should remain personal, not part of the uniform design.
+
+Footwear: Clean black sneakers, dark casual shoes, or low-profile office shoes. Shoes should be comfortable enough for all-day wear.
+
+Care Instructions: Machine wash cold with like colors, mild detergent, tumble dry low, cool iron if needed, do not bleach, do not dry clean unless garment-specific.
+
+Correspondent Wear
+~~~~~~~~~~~~~~~~~~
+
+Purpose: Used by Massage Nexus correspondents who visit spas, wellness centers, neighborhoods, public venues, and events to gather information, verify listings, introduce Massage Nexus, take photos, hand out flyers, attend expos, assist campaigns, and represent the platform outside the office.
+
+Terminology Decision: Correspondent Wear is the accepted term. Do not use Field Scout Casual Wear as the preferred name in current documentation.
+
+Use Cases: Spa-to-spa visits, listing verification, area research, outreach, wellness expos, campaign activations, partner visits, flyer distribution, street-level social media content, event assistance, review/reaction support, and public-facing platform promotion.
+
+Visual Direction: Modern, noticeable, breathable, mobile, and field-ready without looking like a rigid uniform, security uniform, delivery uniform, or formal corporate attire. The look should feel credible enough to introduce the brand but casual enough for walking, commuting, and interacting with local businesses.
+
+Accepted Visual Direction: Dark navy outer layer, white inner shirt, dark utility pants, white sneakers, restrained Massage Nexus accent details, and role-readable accessories such as a lanyard ID, cap, crossbody bag, clipboard, and sneakers when shown on a spec board.
+
+Main Garments: Branded dark navy jacket, vest, overshirt, or field layer; white inner shirt or polo; dark utility pants, chinos, or clean field trousers; comfortable walking sneakers; optional cap; lanyard ID; and crossbody bag or backpack.
+
+Logo Placement: Small logo on outer layer chest, cap front, bag patch, and lanyard card. Optional small sleeve logo. Avoid large logos unless the item is specifically for event promotion.
+
+Material Direction: Breathable, sweat-managing, travel-friendly, easy-wash fabrics that remain presentable after walking, commuting, and field visits.
+
+Suggested Fiber Composition: Top or inner shirt in 88-92% polyester and 8-12% spandex or cotton-poly performance blend. Pants in cotton-nylon-spandex, polyester-rayon-spandex, or stretch utility twill. Cap in cotton twill or lightweight performance polyester.
+
+Fabric Weight: Shirt around 150-180 GSM; jacket or outer layer around 180-220 GSM; pants around 220-260 GSM; cap around 180-240 GSM depending on fabric.
+
+Weave Type: Pique knit, jersey knit, or performance mesh for tops; twill or ripstop stretch weave for pants; structured twill for cap.
+
+Fasteners: Shirt buttons or quarter zip, jacket zipper, pants button and zipper fly, adjustable cap strap, lanyard clip, and safety breakaway clasp.
+
+Accent Materials: Orange zipper pull tab, green stitch accent, matte black bag hardware, reflective micro-detail for visibility, rubberized logo patch on bag or cap if appropriate.
+
+Interlining: Minimal. Use lightweight interlining on collar, cap front panel, and structured bag patch areas only.
+
+Functional Panels: Underarm mesh, side vents, back yoke, stretch gussets, articulated knees if utility trousers are used, and breathable cap eyelets.
+
+Pocket Architecture: Shirt chest pocket optional, jacket hand pockets optional, pants should have secure phone pocket or side utility pocket, and bag should have compartments for brochures, lanyard, ID, phone, pens, and small items.
+
+Seam Types: Reinforced shoulder seams, flatlock or coverstitch where comfort matters, bar tacks on pocket openings and bag stress points, and clean-finished hems.
+
+Threading: High-tenacity polyester thread; color-matched base stitching with controlled orange or green accents.
+
+Sizing Tech Pack: Men and women should have separate measurement references for shirt, jacket, and pants. Include chest/bust, waist, hip, shoulder width, shirt length, sleeve length, pants inseam, and cap adjustability.
+
+Accessories That Are Part of the Look: Cap, lanyard ID, body bag, crossbody bag, or backpack.
+
+Operational Tools Not Classified as Uniform Accessories: Clipboard, tablet, phone, camera, power bank, pen, flyers, brochures, printed forms, and business cards. These may appear in visuals but should be treated as field tools or scene props, not clothing accessories.
+
+Footwear: Comfortable white sneakers, dark sneakers, walking shoes, or casual field shoes with good grip. White sneakers are preferred for the accepted visual direction when they remain practical and clean-looking.
+
+Care Instructions: Machine wash cold, quick-dry preferred, do not bleach, hang dry or tumble low, clean cap and bag as needed according to material.
+
+Visual-Storytelling Wardrobe Systems
+------------------------------------
+
+Therapist Suit
+~~~~~~~~~~~~~~
+
+Purpose: Used when Massage Nexus needs immediate visual recognition of a massage therapist in social media posts, demo images, onboarding scenes, educational visuals, comics, and sample scenarios. This does not imply Massage Nexus operates a spa or employs massage therapists as spa staff.
+
+Use Cases: Massage technique visuals, service explanation posts, comics, mock booking scenes, educational materials, therapist profile examples, and staged wellness content.
+
+Visual Direction: Functional, comfortable, modern massage-work attire. It should support motion while working on floor mats or massage tables. It should be practical and occupationally readable.
+
+Male Version Direction: Inner sando, comfortable shorts, and a modern sleeveless or short-sleeve scrub-inspired wrap top or therapist vest. Optional utility armband for oil bottle and alcohol spray. Wristwatch for session timing. Face mask shown as a kit item, not necessarily worn.
+
+Female Version Direction: Inner fitted sando or camisole, comfortable shorts with polished and modest cut, and a modern feminine scrub-inspired wrap top or tunic. Optional utility armband, wristwatch, and face mask kit.
+
+Logo Placement: Small chest logo, small shorts logo, accessory logo on armband or mask. Back logo should be avoided or placed naturally; long hair should not be forced aside just to show it.
+
+Name Label: Used only when role readability is needed. Male sample may use "Enzo" or "Therapist Enzo." Female sample should avoid personal identity if the board is about the uniform; use "Therapist" only if needed.
+
+Material Direction: Lightweight, breathable, quick-dry, easy-care, stretch fabric with moisture-wicking panels.
+
+Suggested Fiber Composition: Top and shorts around 92% polyester, 8% spandex. Inner sando around 92% polyester, 8% spandex or cotton-modal-spandex blend. Mesh panels 100% polyester.
+
+Fabric Weight: Top around 180-200 GSM; inner sando around 160-180 GSM; shorts around 160-190 GSM; mesh panels around 120-140 GSM.
+
+Weave Type: Performance polyester-spandex weave, plain weave for top, jersey knit for inner layer and shorts when appropriate, mesh weave for ventilation panels.
+
+Fasteners: Hidden snap at crossover top, internal tie closure, reinforced bar tacks at stress points, elastic waistband with internal drawcord for shorts.
+
+Accent Materials: Moisture-wicking mesh at underarm and back yoke, stretch binding at armholes and neckline, contrast bar tacks, orange piping detail, matte snaps, soft elastic.
+
+Interlining: Lightweight fusible at collar, placket, and front wrap edge to maintain shape without stiffness.
+
+Functional Panels: Mesh back yoke, underarm mesh, side slits, stretch panels, gusseted underarm, flexible shoulder construction.
+
+Pocket Architecture: Chest pocket with pen slot, lower front pocket with hidden snap, side-seam shorts pockets, back zip pocket on shorts, small hidden pocket for therapist essentials.
+
+Seam Types: Flatlock seams to reduce friction, coverstitch hems, reinforced bar tacks, clean-finished interior seams.
+
+Threading: High-tenacity polyester thread, color matched, fade resistant, shrink resistant, smooth seam finish.
+
+Accessories: Utility armband for oil bottle and alcohol spray, wristwatch for timing, custom face mask shown as kit item.
+
+Care Instructions: Machine wash cold, mild detergent, tumble dry low, do not bleach, cool iron if needed, do not dry clean.
+
+Receptionist Uniform
+~~~~~~~~~~~~~~~~~~~~
+
+Purpose: Used for staged visuals where the audience needs to instantly understand that a character is a spa receptionist or front-desk person. This is mainly for comics, social media, mockups, onboarding, and sample scenes.
+
+Terminology Decision: Receptionist Uniform is the accepted term. Do not use Receptionist Wear as the preferred name.
+
+Use Cases: Booking scenes, check-in scenes, greeting customers, phone calls, client confusion jokes, appointment reminders, queue management, and service-desk explanations.
+
+Visual Direction: Neat, approachable, front-desk professional, and spa-specific. It should feel like a spa front-desk outfit, not a hotel uniform, security uniform, medical scrub, or generic office polo.
+
+Accepted Visual Direction: Fitted modern spa top with asymmetrical or concealed placket details, structured but breathable fabric, orange and green accent piping, tailored dark trousers, and a name plate when requested. The look should communicate calm service, front-desk clarity, and polished hospitality.
+
+Main Garments: Fitted dark navy spa receptionist top with refined collar or mandarin-inspired neckline, concealed placket or asymmetrical front closure, tailored dark trousers, and comfortable closed shoes.
+
+Logo Placement: If representing a fictional spa, use the fictional spa logo or neutral name badge. If representing Massage Nexus content, use small neutral branding only when needed. Avoid large or loud logos.
+
+Material Direction: Easy-care office-spa fabric, breathable inner construction, stretch trousers, wrinkle-resistant outer layer, and enough structure to look polished throughout a shift.
+
+Accessories: Name plate may be used when role readability is needed. Lanyard or desk ID may be used in visuals. Avoid overloading the receptionist with field tools or unrelated props.
+
+Production Note: This outfit exists for role clarity in visuals and should not be treated as a Massage Nexus operational uniform.
+
+Manager Attire
+~~~~~~~~~~~~~~
+
+Purpose: Used to visually identify a spa manager, owner, or senior business representative in social media posts, demo scenes, and comics.
+
+Use Cases: Complaint resolution scenes, quality standards scenes, business-owner dashboard visuals, staff coaching, promotional conversations, owner-response scenarios, and calm leadership moments.
+
+Visual Direction: Formal, professional, polished, body-flattering, composed, mature, business-minded, and slightly more elegant than receptionist wear. It should communicate authority without looking like a formal corporate executive suit, hotel concierge outfit, or dark-heavy uniform.
+
+Accepted Visual Direction: Light cream or warm neutral tailored manager outfit with subtle green/navy/orange accent details, elegant structure, and calm spa-leadership presence. It should not include a lanyard, ID, name tag, or name plate.
+
+Main Garments: Smart dress, tailored blouse and trousers, blazer, structured cardigan, or elegant business-casual suit-style separates in light cream or warm neutral tones.
+
+Logo Placement: Usually none unless the manager is representing a fictional spa. Use role identity through styling, posture, and visual authority rather than heavy branding.
+
+Material Direction: Wrinkle-resistant suiting blend, stretch crepe, ponte knit, smooth twill, soft structured fabric, or other materials that look polished without stiffness.
+
+Accessories: Watch, simple earrings, tablet, folder, or clipboard may be used if needed in a scene. These are visual props, not uniform requirements. Do not add lanyard, ID, name tag, or name plate to the accepted manager look unless a specific future scene requires it.
+
+Production Note: This wardrobe is for application visualization and role readability only.
+
+Delivery Rider Uniform
+~~~~~~~~~~~~~~~~~~~~~~
+
+Purpose: Used when a delivery rider appears in comics, social posts, campaign visuals, or outside-world scenes. This is not a Massage Nexus operational uniform unless a future campaign specifically requires delivery partnership visuals.
+
+Fictional Service: The delivery rider belongs to the fictional service Sugod Express and is an outlier in The Resting Leaf comic world.
+
+Use Cases: Comic interruptions, promo deliveries, gift card or product delivery jokes, wellness finds content, street-level storytelling, and campaign scenes.
+
+Visual Direction: Practical, street-smart, mobile, weather-ready, energetic, and visually distinct from Massage Nexus uniforms. The outfit does not need to follow the Ink & Ember palette.
+
+Accepted Visual Direction: Sugod Express red, yellow, black, and reflective accents; performance rider shirt or jersey; cargo riding pants; rider gloves; crossbody pouch; and practical delivery mobility details.
+
+Main Garments: Rider jersey or jacket, breathable performance shirt, cargo pants or riding pants, sneakers or riding shoes, gloves, and cap or helmet depending on scene.
+
+Logo Placement: Use Sugod Express branding or fictional delivery markings. Massage Nexus logo placement on the spec board should use the real Massage Nexus logo only as board branding; generated versions may be treated as placeholders if distorted. Avoid implying Massage Nexus owns or operates the fictional delivery service.
+
+Material Direction: Durable nylon or polyester, reflective piping, breathable mesh zones, reinforced panels, quick-dry performance fabric, and water-resistant layer where appropriate.
+
+Accessories: Helmet, delivery bag, gloves, phone mount, sling pouch, and crossbody pouch. These are scene props and role markers.
+
+Production Note: Mainly for comics and campaign storytelling.
+
+Plant Vendor Casual Wear
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Purpose: Used for a recurring plant vendor character in comics, wellness-themed visuals, community scenes, and light humor around calm, nature, and care.
+
+Terminology Decision: Plant Vendor Casual Wear is not a uniform. It is an everyday role-readable character wardrobe.
+
+Use Cases: Plant jokes, wellness advice scenes, outdoor market scenes, community posts, The Resting Leaf comic scenes, grounding visual moments, and nature-themed visual storytelling.
+
+Visual Direction: Earthy, warm, practical, approachable, community-rooted, natural, and lived-in. It should represent Rina Salcedo’s everyday vendor identity and should not conform to the Ink & Ember palette.
+
+Accepted Visual Direction: Natural greens, warm beige, terracotta, earth brown, soft cream, cotton/linen/canvas textures, apron pockets, sandals, and optional plant-vendor accessories such as a woven crossbody bag, plant tags, or small gardening items.
+
+Main Garments: Comfortable blouse, shirt, or tank top; apron or utility plant-vendor layer; relaxed pants or skirt; sandals or practical shoes; optional sun hat, headscarf, or hair scarf.
+
+Logo Placement: Usually none. If needed, use fictional shop/vendor signage rather than Massage Nexus branding.
+
+Material Direction: Cotton, linen blend, canvas apron, breathable natural fabrics, washable everyday wear, and textures that look practical rather than polished corporate apparel.
+
+Accessories: Apron pockets, small towel, plant tags, tote, woven crossbody bag, basket, watering spray, small gardening items, plant crates, or potted plant.
+
+Production Note: Primarily for comics and visual atmosphere, not a company uniform.
+
+Nexus Cast Wardrobe Context
+---------------------------
+
+The Nexus Cast are recurring visual characters used for social media posts, mockups, onboarding scenes, comics, gamification visuals, presentation images, sample scenarios, and platform storytelling. They are not Neural Agents and they do not represent actual AI writers or chat personas. Their clothing systems help make their roles readable in images: therapist, client, receptionist, manager, correspondent, delivery rider, plant vendor, or other scenario roles.
+
+Nexus Cast Current Role-to-Wardrobe Mapping
+-------------------------------------------
+
+Enzo Villaluz — Male Therapist — Therapist Suit
+Iris Montoya — Female Therapist — Therapist Suit
+Caleb Rivera — Male Client — flexible stylish client attire
+Mika Torres — Female Client — flexible stylish client attire
+Gavin Lorico — Receptionist — Receptionist Uniform
+Lara Castillo — Spa Manager — Manager Attire
+Javi Mercado — Delivery Rider — Sugod Express Delivery Rider Uniform
+Rina Salcedo — Plant Vendor — Plant Vendor Casual Wear
+
+Real-World vs Visual-Only Clothing Rule
+---------------------------------------
+
+Real-world clothing systems:
+
+1. Office Uniform
+2. Correspondent Wear
+
+Visual-storytelling clothing systems:
+
+1. Therapist Suit
+2. Receptionist Uniform
+3. Manager Attire
+4. Delivery Rider Uniform
+5. Plant Vendor Casual Wear
+
+The real-world clothing systems can be used for future company use, presentations, events, or brand representation. The visual-storytelling clothing systems should be used primarily to make scenes understandable in social media content, app visuals, demo content, and comics.
+
+General Logo Rules
+------------------
+
+Use the Massage Nexus logo without tagline for uniforms unless a campaign explicitly requires the slogan. Keep the logo small and tasteful. Use embroidery, woven patch, heat transfer, or rubberized patch depending on garment type. Do not place the logo where hair, straps, bags, or body movement would make it look unnatural. Do not force visibility if realistic clothing behavior would cover it.
+
+General Accessory Rules
+-----------------------
+
+Uniform accessories are items worn as part of the look, such as lanyard, cap, body bag, backpack, watch, utility armband, or face mask. Operational tools are not uniform accessories. Clipboards, tablets, phones, flyers, pens, brochures, cameras, and power banks should be treated as field tools or scene props.
+
+General Fabric and Production Notes
+-----------------------------------
+
+The preferred uniform fabrics should be breathable, easy to maintain, wrinkle-resistant, durable, movement-friendly, and appropriate for Philippine weather. Avoid fabrics that look too heavy, stiff, shiny, or costume-like. Use stretch blends when mobility matters. Use stronger stitching and bar tacks on stress points. Use colorfast thread and easy-care materials.
+
+General Care Notes
+------------------
+
+Most uniform items should support machine wash cold, mild detergent, low tumble dry or hang dry, no bleach, cool iron if needed, and no dry cleaning unless specific garment construction requires it.

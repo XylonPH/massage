@@ -1,0 +1,2215 @@
+Title: Massage Nexus Booking and Appointment System
+Document Version: 1.10
+Date Created: 2026-07-17
+Revision Date: 2026-07-19
+Status: Internal Planning Reference
+Shared Standard Reference: Shared Project Standards v2.60
+
+Related Documents:
+- Massage Nexus - 05 - Service Classification v2.00
+- Massage Nexus - 06 - Service Profile v0.20
+- Massage Nexus - 07 - Spa Profile v0.10
+- Massage Nexus - 09 - Therapist Profile v0.10
+- Massage Nexus - 11 - Product Classification v1.40
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+- Massage Nexus - User Rewards and Gamification v1.60
+- Massage Nexus - Translation System v0.10
+- Massage Nexus - 21 - User Workspace v0.20
+- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
+- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
+- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
+- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
+- Shared Project Standards v2.60
+
+Consolidation Note:
+This v1.00 document consolidates and supersedes:
+- Massage Nexus - 31 - Booking and Appointment System v0.10
+- Massage Nexus - 36 - Booking Loyalty Rewards Gamification and Post-Service Engagement v0.10
+- Massage Nexus - 38 - Booking Database Structure v0.10
+
+Client Service History, analytics, and data portability are not contained here. They are part of:
+- Massage Nexus - 21 - User Workspace v0.20
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the complete working direction for booking and appointment handling in Massage Nexus.
+
+It also contains the formerly separate Booking Loyalty, Rewards, Gamification and Post-Service Engagement specification and the Booking Database Structure specification. These subjects are integral parts of the booking system and are maintained in this single document rather than as separate numbered files.
+
+The system uses a reusable appointment engine, but its initial behavior is deliberately massage-, spa-, bodywork-, beauty-, and wellness-aware. It must not be reduced to a generic date, time, name, and note form.
+
+The booking system consumes normalized Service information and provider-specific establishment_service or practitioner_service information. It also coordinates client preferences, therapist assignment, group participation, eligibility screening, consent, scheduling, resources, price computation, policies, communication, payment, history, rewards, and post-service activity.
+
+This document defines planning decisions and implementation boundaries. It is not a public booking policy, legal agreement, tax specification, complete database schema, or promise that every provider will activate every feature.
+
+================================================================================
+1. CORE PRINCIPLES
+================================================================================
+
+1. Client-centered
+   A booking begins with what the client or booking party wants to receive.
+
+2. Provider- and resource-aware
+   A request becomes confirmable only when the provider can supply the required service, therapist, room, equipment, location, time, preparation, and capacity.
+
+3. Service-driven
+   The normalized Service and provider menu item determine which questions, options, cautions, products, supports, and arrangements are relevant.
+
+4. Massage-first depth
+   Massage Nexus supports detailed pressure, body-area, therapist, oil, draping, attire, product, and safety preferences that generic booking systems normally omit.
+
+5. Service-flexible scope
+   The same engine may support other approved Massage Nexus services such as reflexology, body treatments, facials, nail care, hair and scalp care, grooming, hydrotherapy, thermal wellness, bathing, mind-body sessions, and consultations.
+
+6. Privacy by design
+   Sensitive intake data is separated from ordinary booking data, shown only to authorized people, retained only as justified, and never exposed merely because a profile exists.
+
+7. Multilingual by design
+   Structured options use controlled translations. Free-text notes preserve the original and may include a clearly labeled translation.
+
+8. Claim- and verification-aware
+   The system must distinguish unclaimed, claimed, verified, and fully booking-enabled provider profiles.
+
+9. Snapshot-based
+   Prices, policies, service configuration, translations, consent text, and selected options are preserved as they existed when the booking was accepted.
+
+10. Progressive disclosure
+    A client who wants a fast booking can answer only required questions. A client who wants detailed customization can expand additional sections.
+
+11. Human override with audit
+    Authorized staff may adapt, approve, reject, or correct a request, but important changes require reason, timestamp, actor, and notification.
+
+12. Complete planning, staged implementation
+    The full system is documented now even when implementation is divided into later roadmap phases.
+
+================================================================================
+2. BOOKING MODES
+================================================================================
+
+Field Name: type_booking_mode
+Field Label: Booking Mode
+Selection: Single-select
+
+Code | Label                       | Description
+-----|-----------------------------|------------------------------------------------------------
+PLN  | Personal Appointment Plan   | Private future plan recorded by the client without provider submission or confirmation.
+INQ  | Booking Inquiry             | Client asks whether a service, date, therapist, arrangement, or condition can be accommodated.
+REQ  | Booking Request             | Structured request sent to an authorized provider for approval.
+RSV  | Reserved Appointment        | Provider accepted the request and reserved the required capacity.
+PAY  | Paid Reservation            | Deposit or full payment has been received for a reserved appointment.
+WLK  | Walk-In Session             | Provider records a client who arrived without advance booking.
+IMP  | Imported Appointment        | Appointment created in another system and imported or synchronized.
+MAN  | Provider Manual Booking     | Authorized provider staff creates the appointment from phone, chat, paper, or another external request.
+
+Personal Service History is not a booking mode. It belongs to Client Service History and may reference a past booking when one exists.
+
+================================================================================
+3. PROVIDER BOOKING ELIGIBILITY
+================================================================================
+
+A public profile may exist before it is claimed. Public visibility does not automatically grant booking authority.
+
+A. Unclaimed provider
+- client may create a Personal Appointment Plan;
+- client may privately record past Service History;
+- client may send an unconfirmed inquiry only through an independently verified public contact route;
+- Massage Nexus may offer an Invite Provider to Claim action;
+- no live availability;
+- no appointment reservation;
+- no payment collection;
+- no implication that the provider accepted, reserved, or even received the request.
+
+Required notice:
+"This provider has not claimed or configured booking through Massage Nexus. This entry is not a confirmed appointment unless the provider confirms it directly."
+
+B. Claimed but not booking-verified
+- authorized operator or therapist account is linked;
+- request-and-approval booking may be enabled after contact verification;
+- provider must publish or accept booking policies;
+- payment and payout remain disabled until required financial and identity verification is complete.
+
+C. Claimed, verified, and booking-configured
+- live or managed availability;
+- therapist assignment;
+- request or instant confirmation;
+- deposits or full payment when enabled;
+- automated reminders;
+- cancellation and refund handling;
+- completion and post-service workflow.
+
+Field Name: status_provider_booking_enablement
+Field Label: Provider Booking Enablement Status
+Selection: Single-select
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+OFF  | Disabled                 | Provider does not use Massage Nexus booking.
+INQ  | Inquiry Only             | Provider accepts inquiries but no structured reservation.
+REQ  | Request Approval         | Every booking requires provider approval.
+INS  | Instant Confirmation     | Eligible requests may confirm immediately from live capacity.
+EXT  | External Booking         | Massage Nexus redirects or synchronizes with an approved external booking system.
+SUS  | Suspended                | Booking is temporarily disabled because of policy, verification, safety, dispute, or operational concern.
+
+================================================================================
+4. BOOKING PARTY AND SERVICE PARTICIPANTS
+================================================================================
+
+A booking may contain one booking party and one or more service participants.
+
+Booking Party
+- person responsible for creating the booking;
+- may be a participant or may book for companions, dependents, guests, family members, or a group;
+- receives the primary confirmation unless another contact is explicitly assigned;
+- accepts booking-level terms and financial responsibility when applicable.
+
+Service Participant
+- person receiving one or more services;
+- has an individual service line, intake, preferences, therapist assignment, price, consent, and completion status;
+- may use a limited guest identity when no Massage Nexus account exists.
+
+Each participant may select:
+- normalized Service;
+- provider menu item;
+- duration or variant;
+- requested date and time;
+- therapist preference;
+- pressure and body-area preferences;
+- product and medium choices;
+- attire and draping preferences;
+- accessibility needs;
+- intake answers;
+- language;
+- consent;
+- price and payer.
+
+Field Name: type_participant_relationship
+Field Label: Participant Relationship to Booking Party
+Selection: Single-select per participant
+
+Code | Label              | Description
+-----|--------------------|------------------------------------------------------------
+SELF | Self               | Booking party is the participant.
+CMP  | Companion          | Participant is accompanying the booking party.
+FAM  | Family Member      | Participant is a family member.
+DEP  | Dependent          | Participant depends on the booking party for consent, support, or payment.
+GST  | Guest              | Participant is a guest without another specified relationship.
+GRD  | Guardian-Supported | Participant requires guardian involvement.
+ORG  | Organization Guest | Participant is booked through an employer, event, hotel, or organization.
+
+A group booking must not be represented only by one guest count. Each service participant needs an individual service line when the service, therapist, duration, intake, price, or consent differs.
+
+================================================================================
+5. GROUP AND MULTI-PARTICIPANT BOOKINGS
+================================================================================
+
+Field Name: type_group_service_timing
+Field Label: Group Service Timing
+Selection: Single-select
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+CON  | Concurrent  | Participants receive services at the same or overlapping time.
+SEQ  | Sequential  | Participants receive services one after another.
+MIX  | Mixed       | Some service lines are concurrent and others sequential.
+
+Group booking must support:
+- different services per participant;
+- different durations;
+- specific therapist per participant;
+- one therapist serving several sequential participants;
+- several therapists serving one group;
+- shared or separate rooms;
+- couple-room and group-area limits;
+- one payer or split payment;
+- individual consent;
+- partial cancellation;
+- participant substitution subject to provider policy;
+- waitlist handling for only the unavailable participant or service line.
+
+================================================================================
+6. THERAPIST SELECTION
+================================================================================
+
+Public label:
+Therapist Selection
+
+Technical relationships may use practitioner_id where the wider data model uses Practitioner as the technical entity.
+
+Field Name: type_therapist_selection
+Field Label: Therapist Selection
+Selection: Single-select per service line
+
+Code | Label                        | Description
+-----|------------------------------|------------------------------------------------------------
+REQ  | Specific Therapist Required  | Do not confirm unless the selected therapist is available.
+PRF  | Specific Therapist Preferred | Selected therapist is preferred; approved alternatives are acceptable.
+PRO  | Provider Selects Therapist   | Provider assigns an eligible therapist.
+NPR  | No Preference                | Any eligible therapist is acceptable.
+LAT  | Select Later                 | Assignment is deferred until check-in or a later provider step.
+
+For direct practitioner_service booking, the therapist is already selected. The client may still need to select the therapist's location, affiliation, delivery context, or supported service variant.
+
+Provider assignment must consider:
+- practitioner_capability;
+- current affiliation;
+- current schedule;
+- required credential or scope;
+- service language;
+- client access policy when lawfully and operationally applicable;
+- client preference;
+- room or resource compatibility;
+- travel time;
+- workload and break rules.
+
+An establishment offering a service does not mean every therapist can perform it.
+
+================================================================================
+7. SERVICE-DRIVEN DYNAMIC BOOKING FORM
+================================================================================
+
+The normalized Service and provider menu item determine which sections appear.
+
+Common booking sections:
+- provider and location;
+- service and variant;
+- participant;
+- date and time;
+- therapist selection;
+- contact;
+- price;
+- policies;
+- confirmation.
+
+Massage-specific sections may include:
+- overall pressure;
+- body-area pressure;
+- focus and avoid areas;
+- massage medium;
+- product choice;
+- client-provided product;
+- attire;
+- undressing;
+- treatment contact;
+- draping;
+- treatment support;
+- communication preference;
+- safety intake.
+
+Other Service Families display only relevant fields.
+The booking form must not show unrelated questions simply because they exist elsewhere in the taxonomy.
+
+================================================================================
+8. QUICK BOOKING AND DETAILED BOOKING
+================================================================================
+
+Field Name: mode_booking_detail
+Field Label: Booking Detail Mode
+Selection: Single-select per client session
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+QCK  | Quick       | Shows only required service, schedule, contact, eligibility, and policy questions.
+STD  | Standard    | Shows common massage and wellness preferences.
+DTL  | Detailed    | Allows extensive body-area, product, accessibility, translation, and communication preferences.
+
+Quick mode does not bypass required safety screening, eligibility, age or guardian rules, policy, contact verification, consent, or required payment.
+
+Optional fields may use:
+- No Preference;
+- Therapist Recommendation;
+- Ask Me at Arrival;
+- Use My Saved Preference;
+- Skip Optional Details.
+
+================================================================================
+9. PRESSURE AND BODY-AREA PREFERENCES
+================================================================================
+
+Field Name: level_booking_pressure_preference
+Field Label: Preferred Massage Pressure
+Selection: Single-select overall, with repeatable area-specific overrides
+
+Code | Label                    | Description
+-----|--------------------------|------------------------------------------------------------
+VLT  | Very Light               | Minimal pressure is preferred.
+LGT  | Light                    | Gentle pressure is preferred.
+MED  | Medium                   | Moderate pressure is preferred.
+FRM  | Firm                     | Strong controlled pressure is preferred.
+DEP  | Deep                     | Deepest appropriate pressure is preferred.
+REC  | Therapist Recommendation | Client asks the therapist to recommend appropriate pressure.
+NOP  | No Preference            | Client has no initial pressure preference.
+
+Field Name: type_pressure_adjustment_preference
+Field Label: Pressure Adjustment Preference
+Selection: Multi-select
+
+Code | Label                        | Description
+-----|------------------------------|------------------------------------------------------------
+CHK  | Check During Session         | Therapist should ask about pressure during the service.
+TOL  | Adjust to Tolerance          | Therapist may adapt based on comfort and response.
+HLD  | Keep Selected Pressure       | Maintain selected pressure unless the client requests a change.
+ASK  | Ask Before Changing          | Therapist should ask before materially changing pressure.
+SAF  | Therapist Safety Override    | Client acknowledges that the therapist may reduce, stop, or alter pressure for safety.
+
+Repeatable body-area preference:
+- client body area;
+- requested pressure;
+- Focus;
+- Avoid;
+- Use Caution;
+- Pain or Discomfort Reported;
+- Therapist Assessment Needed;
+- note;
+- original language;
+- translated note where applicable.
+
+Client preference does not override therapist safety judgment, professional scope, provider policy, or informed consent.
+
+================================================================================
+10. PRODUCTS, OILS, TOOLS, AND CLIENT-SUPPLIED ITEMS
+================================================================================
+
+Provider menu configuration may define:
+- one included product;
+- several free choices;
+- paid upgrades;
+- unavailable or restricted products;
+- allergen or sensitivity information;
+- client-supplied-item policy.
+
+Field Name: type_client_supplied_item_policy
+Field Label: Client-Supplied Item Policy
+Selection: Single-select per provider or menu item
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+NAL  | Not Allowed           | Provider does not accept client-supplied items.
+INS  | Inspection Required   | Item may be accepted after provider inspection.
+SEA  | Sealed Product Only   | Only sealed and identifiable products are allowed.
+APR  | Prior Approval        | Item must be submitted and approved before arrival.
+ALW  | Generally Allowed     | Item is normally allowed subject to safety and suitability.
+CSE  | Case by Case          | Provider decides according to the item and service.
+
+Client-supplied item record may include product type, name, brand, ingredient or material summary, photo, sealed or opened status, reason for use, allergy note, provider acceptance, responsible person, and storage or removal responsibility.
+
+================================================================================
+11. ATTIRE, UNDRESSING, CONTACT, AND DRAPING
+================================================================================
+
+Booking options are constrained by normalized Service, provider policy, service variant, facility, jurisdiction, and client consent.
+
+The client may express a preference only among permitted choices.
+If the client requests an unsupported arrangement, the system should explain the conflict and show allowed alternatives rather than submit an impossible request.
+
+================================================================================
+12. CONTACT VERIFICATION
+================================================================================
+
+A provider-routed booking requires at least one verified contact channel.
+
+Field Name: type_contact_verification
+Field Label: Contact Verification Method
+Selection: Multi-select
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+SMS  | SMS OTP           | Verification code is sent to a mobile number.
+EML  | Email OTP         | Verification link or code is sent to email.
+APP  | Authenticated App | Confirmation occurs through an authenticated Massage Nexus app session.
+CAL  | Verified Call     | Provider or authorized support verifies through a recorded call workflow.
+EXT  | External Identity | Approved external identity or booking system supplies verification.
+
+Contact verification confirms control of a channel. It does not mean provider acceptance, payment completion, or appointment confirmation.
+
+================================================================================
+13. MULTILINGUAL BOOKING
+================================================================================
+
+Structured booking options use translation keys.
+
+Free-text notes preserve original text, original language, translated text, target language, translation method, translation timestamp, translation warning or confidence, and client-approved translation where available.
+
+Display rule:
+- always preserve the original;
+- show automatic translation as a separate labeled block;
+- never silently replace safety-critical original text;
+- allow provider clarification through structured translated questions;
+- record which language version of provider policy the client accepted.
+
+Suggested public value statement:
+"Book in your language. Let the provider receive your service preferences in theirs."
+
+================================================================================
+14. BOOKING STATUS
+================================================================================
+
+Field Name: status_booking
+Field Label: Booking Status
+Selection: Single current status with event history
+
+Code | Label                   | Description
+-----|-------------------------|------------------------------------------------------------
+DRF  | Draft                   | Booking has not been submitted.
+ELG  | Eligibility Check       | Eligibility rules are being evaluated.
+BLK  | Ineligible              | Request cannot proceed under selected rules.
+SUB  | Submitted               | Booking request was sent.
+REV  | Provider Review         | Provider is reviewing the request.
+INF  | More Information Needed | Additional clarification is required.
+QTD  | Quoted                  | Provider issued a price or arrangement requiring acceptance.
+ACC  | Accepted                | Provider accepted the request.
+RSV  | Reserved                | Required schedule and resources are reserved.
+PAY  | Payment Pending         | Required payment has not been completed.
+CNF  | Confirmed               | Booking is fully confirmed.
+CHK  | Checked In              | Participant arrived or provider began arrival workflow.
+IPR  | In Progress             | Service is underway.
+CMP  | Completed               | Service was completed.
+PCN  | Partially Completed     | Some service lines completed and others did not.
+RSC  | Rescheduled             | Booking moved to another schedule.
+CNC  | Client Cancelled        | Client cancelled.
+PNC  | Provider Cancelled      | Provider cancelled.
+NSH  | Client No-Show          | Client did not attend under policy.
+PNS  | Provider No-Show        | Provider failed to deliver the confirmed appointment.
+EXP  | Expired                 | Request, quote, waitlist offer, or payment window expired.
+DSP  | Disputed                | Booking or financial outcome is under dispute.
+CLS  | Closed                  | Administrative processing is complete.
+
+Status transitions must be validated. Important transitions create booking_event records and notifications.
+
+================================================================================
+15. POLICY ACCEPTANCE AND SNAPSHOTS
+================================================================================
+
+Before confirmation, the client may need to accept booking rules, cancellation policy, no-show policy, refund terms, arrival instructions, provider conduct and facility rules, home-service rules, consent and safety statements, product or allergy declarations, and privacy notice.
+
+The booking stores policy_id, policy_version, language, rendered text hash, accepted_at, accepting user or participant, acceptance method, and signature where required.
+
+================================================================================
+16. NOTIFICATIONS AND COMMUNICATION
+================================================================================
+
+Possible events include submission, eligibility outcome, provider clarification, quote, acceptance, payment, confirmation, reminder, therapist assignment, location instructions, delay, cancellation, refund, completion, aftercare, feedback, and rebooking.
+
+Sensitive intake data must not appear in ordinary email, SMS, lock-screen push notification, calendar title, or receptionist queue display.
+
+================================================================================
+17. ANTI-ABUSE AND BOOKING RISK
+================================================================================
+
+The system may detect repeated no-shows, repeated last-minute cancellations, suspicious simultaneous bookings, mass requests to competing providers, invalid contact, payment failures, identity manipulation, harassment, provider-side false completion, competitor interference, or reward farming.
+
+Booking risk is internal. Providers should normally receive an operational requirement such as deposit required, manual approval required, contact re-verification, booking limit, or temporary block rather than unrelated private history.
+
+Do not automatically publish a client's cancellation history or reduce public Reputation merely because a booking was cancelled.
+
+================================================================================
+18. EDUCATION, ONBOARDING, AND SUPPORT
+================================================================================
+
+Massage Nexus should provide client and provider tutorials, contextual tips, onboarding checklists, Help Center articles, Massage Campus lessons, short videos, recorded sessions, downloadable setup guides, and a demo booking environment.
+
+Complexity should be absorbed by defaults, templates, progressive disclosure, and education rather than deleting valuable capability.
+
+================================================================================
+19. COMPETITIVE VALUE AND PLATFORM RETENTION
+================================================================================
+
+Massage Nexus remains valuable even when a provider has an internal system because it supports one client history across many providers, therapist identity across affiliations, normalized Services and products, multilingual communication, portable preferences, budgeting, analytics, discovery, reviews, ratings, reputation, claim and verification, loyalty, consent, and external integrations.
+
+A provider's internal system primarily serves that provider. Massage Nexus must serve the client, therapist, establishment, seller, contributor, and wider knowledge base together.
+
+Therapist profiles remain independent of employment. A claimed therapist may receive a unique public username or stable public identifier. Establishments connect to that existing identity rather than create duplicate therapist records.
+
+================================================================================
+20. IMPLEMENTATION STAGES
+================================================================================
+
+Stage A - Planning and Personal Records
+Stage B - Request and Approval
+Stage C - Intake and Resource Scheduling
+Stage D - Payments and Financial Documents
+Stage E - Loyalty, Rewards, Analytics, and Integration
+
+These stages describe implementation order. Planning decisions across all stages remain documented now.
+
+================================================================================
+21. DEPENDENCIES AND FUTURE LINKED UPDATES
+================================================================================
+
+Later coordinated updates are required for Spa Profile, Therapist Profile, Spa Classification delivery modes, Therapist Workspace, Operator Workspace, User Workspace, Translation System, Rating System, Reputation System, User Rewards and Gamification, API System, Site Structure Map, Privacy Policy, Terms of Use, Cancellation and Refund Policy, and Database Structure.
+
+Companion documents:
+- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
+- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
+- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
+- Massage Nexus - 35 - Client Service History Analytics and Data Portability v0.10
+- Massage Nexus - 36 - Booking Loyalty Rewards Gamification and Post-Service Engagement v0.10
+- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
+- Massage Nexus - 38 - Booking Database Structure v0.10
+
+================================================================================
+PART II. LOYALTY, REWARDS, GAMIFICATION AND POST-SERVICE ENGAGEMENT
+================================================================================
+
+This part defines how booking completion connects to provider loyalty, Massage Nexus rewards,
+badges, rank-path progress, post-service surveys, ratings, reviews, aftercare, rebooking,
+anti-abuse handling, and Reputation boundaries.
+
+Provider loyalty, Massage Nexus rewards, public ratings, public reviews, private feedback,
+internal booking risk, and Reputation remain distinct systems even when one booking event
+connects them.
+
+================================================================================
+22. SEPARATION OF SYSTEMS
+================================================================================
+
+Provider Loyalty
+- controlled by provider;
+- rewards repeat business with that provider;
+- may use visits, spend, service count, package, stamps, or credits.
+
+Massage Nexus Rewards
+- platform-wide;
+- Nexus Points;
+- Embers;
+- Inklings;
+- badges;
+- rank-path progress;
+- user statistics.
+
+Reputation
+- trust quality;
+- must not be purchased;
+- must not automatically rise merely because a booking occurred.
+
+Rating and Review
+- experience feedback;
+- separate from provider loyalty and platform currency.
+
+================================================================================
+23. QUALIFYING BOOKING EVENT
+================================================================================
+
+Field Name: type_booking_reward_eligibility
+Field Label: Booking Reward Eligibility
+Selection: Single-select per booking participant or event
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+CMP  | Completed             | Valid completed service may earn configured rewards.
+PCP  | Partially Completed   | Only completed eligible service lines may earn rewards.
+CAN  | Cancelled             | No normal completion reward.
+NSH  | Client No-Show        | No normal reward.
+PNO  | Provider No-Show      | Client may receive corrective credit but not completed-service reward.
+MAN  | Manual History        | No reward by default.
+IMP  | Imported History      | No reward by default.
+DSP  | Disputed              | Reward is held pending outcome.
+FRD  | Fraudulent or Abusive | Reward is denied or reversed.
+RFD  | Refunded              | Reward depends on whether service occurred and policy permits it.
+
+Rewards should normally occur after service completion, provider or system confirmation, expiry of immediate fraud checks, and no conflicting cancellation or refund.
+
+================================================================================
+24. MASSAGE NEXUS REWARD EVENTS
+================================================================================
+
+Possible sources:
+- first confirmed booking;
+- completed booking;
+- completed booking through a new provider;
+- completed booking in a new location;
+- completed booking in a new Service Family;
+- on-time arrival streak;
+- completed series;
+- post-service rating;
+- approved review;
+- useful correction;
+- verified attendance at campaign or event;
+- multilingual booking usage;
+- accessible booking setup.
+
+Possible effects:
+- Nexus Points;
+- Embers;
+- Inklings;
+- badge progress;
+- rank-path progress;
+- user statistic;
+- campaign mission.
+
+Exact values remain governed by User Rewards and Gamification.
+Booking must emit a qualified reward event rather than directly edit balances without shared reward logic.
+
+================================================================================
+25. REWARD ANTI-ABUSE
+================================================================================
+
+Do not reward:
+- Personal Appointment Plan;
+- unconfirmed inquiry;
+- draft;
+- duplicate booking;
+- same event imported repeatedly;
+- provider-created fake completion;
+- cancelled appointment;
+- unverified manual history;
+- self-dealing arrangement designed only for rewards;
+- refunded event where service did not occur.
+
+Controls:
+- same client, provider, therapist, service, and time-window checks;
+- completion verification;
+- payment signal where applicable;
+- provider connection check;
+- reward cap;
+- reversal;
+- audit;
+- risk review.
+
+A provider cannot sell Reputation or rating weight through a booking benefit.
+
+================================================================================
+26. BOOKING BADGES AND MILESTONES
+================================================================================
+
+Possible badges:
+- First Booking;
+- First Completed Massage;
+- Five Completed Sessions;
+- Ten Providers Explored;
+- Five Service Families;
+- Home-Service Planner;
+- Multilingual Booker;
+- Group Organizer;
+- Loyal Regular;
+- Series Completer;
+- Thoughtful Reviewer;
+- On-Time Streak;
+- Wellness Budget Keeper.
+
+Milestones should use shared Anchored Milestone Sequence where appropriate.
+
+Badge description must state qualifying event, threshold, whether hidden or public, repeatability, reward, revocation, and privacy.
+
+Sensitive service identity must not be exposed through public badge without explicit consent.
+
+================================================================================
+27. PROVIDER LOYALTY PROGRAM TYPE
+================================================================================
+
+Field Name: type_provider_loyalty_program
+Field Label: Provider Loyalty Program Type
+Selection: Single-select per program
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+VIS  | Visit Stamp       | Qualifying completed visit earns a stamp.
+SVC  | Service Count     | Qualifying service count earns a benefit.
+SPN  | Spend Based       | Eligible spending earns points or progress.
+PTS  | Provider Points   | Provider maintains its own points.
+PKG  | Package Balance   | Client prepays or holds a number of sessions.
+TIR  | Tiered Loyalty    | Benefits change by tier.
+MEM  | Membership        | Benefits depend on active membership.
+HYB  | Hybrid            | Program combines more than one method.
+
+Provider loyalty is not Massage Nexus Nexus Points.
+
+================================================================================
+28. LOYALTY PROGRAM RULES
+================================================================================
+
+A program may define provider, branch, eligible services, excluded services, eligible amount, stamps or points, reward, threshold, expiry, transferability, participant, cancellation effect, refund effect, package balance, tier, version, and effective date.
+
+Example:
+- 10 qualifying massages;
+- one selected massage free;
+- reward valid for 90 days;
+- only completed and paid services count;
+- no duplicate stamp for same service line.
+
+Historical progress uses program version active when event occurred.
+
+================================================================================
+29. LOYALTY VISIBILITY AND PORTABILITY
+================================================================================
+
+Provider loyalty belongs to provider and does not transfer automatically to another provider.
+
+Client workspace may show all provider loyalty accounts in one place: provider, program, progress, reward, expiry, last event, and terms.
+
+Provider sees only its own loyalty account and events.
+
+================================================================================
+30. POST-SERVICE WORKFLOW
+================================================================================
+
+After completion, system may:
+1. confirm service;
+2. show payment and balance;
+3. record tip;
+4. provide aftercare;
+5. request private satisfaction survey;
+6. request public rating;
+7. invite public review;
+8. offer private complaint or safety report;
+9. update loyalty;
+10. generate platform reward event;
+11. offer rebooking;
+12. update budget analytics.
+
+These are separate actions and permissions.
+
+================================================================================
+31. PRIVATE SATISFACTION SURVEY
+================================================================================
+
+Private survey may ask service met expectation, comfort, pressure, communication, cleanliness, privacy, likelihood to return, issue requiring contact, and private comment.
+
+Private survey:
+- is visible to authorized provider roles;
+- is not automatically public;
+- does not automatically become testimonial;
+- may be anonymous to ordinary staff while linked internally;
+- may trigger service recovery;
+- may be withheld from public Reputation and rating systems.
+
+Provider must obtain permission before publishing private response.
+
+================================================================================
+32. PUBLIC RATING AND REVIEW
+================================================================================
+
+Completed booking may support spa rating, therapist rating when known, product rating when eligible, review linked to booking, and verified-experience label.
+
+One completed event must not multiply rewards through repeated rating deletion and resubmission.
+
+A poor provider execution does not automatically redefine normalized Service.
+
+================================================================================
+33. REPUTATION BOUNDARY
+================================================================================
+
+Booking completion alone does not prove trust.
+
+Possible Reputation effects:
+- valid review;
+- accurate rating behavior;
+- constructive report;
+- reliable attendance over time only as small conduct signal;
+- abuse or fraud after review.
+
+Do not publicly label a client as unreliable based only on cancellations.
+Internal booking risk and public Reputation remain separate.
+
+================================================================================
+34. SERVICE RECOVERY
+================================================================================
+
+Negative private survey may create provider follow-up, apology, re-service offer, credit, refund review, safety review, moderation report, or no-contact preference.
+
+A service-recovery benefit must not require removal of honest review or positive rating.
+
+================================================================================
+35. AFTERCARE
+================================================================================
+
+Aftercare may come from normalized Service, provider, therapist, product, clinical source, or editorial source.
+
+Store source, language, booking, participant, sent_at, acknowledgment, expiry, and emergency caution.
+
+Aftercare is informational and must not exceed provider scope.
+
+================================================================================
+36. REBOOKING
+================================================================================
+
+Rebooking may offer same provider, same therapist, same service, saved preferences, new schedule, loyalty reward, or series continuation.
+
+Rebooking reconfirms current price, availability, policy, time-sensitive intake, therapist affiliation, and product choices.
+
+A prior booking is a template, not automatic authorization.
+
+================================================================================
+37. IMPLEMENTATION PRIORITIES
+================================================================================
+
+Initial:
+- completion event;
+- private survey;
+- public rating invitation;
+- review link;
+- simple provider visit stamp;
+- shared reward event.
+
+Later:
+- provider points;
+- tiers;
+- packages;
+- badges;
+- rank paths;
+- campaigns;
+- service recovery;
+- advanced anti-abuse.
+
+================================================================================
+PART III. BOOKING DATABASE STRUCTURE
+================================================================================
+
+This part defines the working document-store collection model for Booking and its integrated
+loyalty, reward, engagement, history references, scheduling, payment, finance, privacy,
+translation, audit, and anti-abuse structures.
+
+It is a planning structure rather than executable validation code. Exact BSON types, Laravel
+models, indexes, encryption, transactions, migrations, and API resources remain implementation
+tasks.
+
+================================================================================
+38. DOCUMENT-STORE DESIGN RULES
+================================================================================
+
+Embed when:
+- data belongs only to one parent booking;
+- list size is naturally bounded;
+- data is normally read with booking;
+- separate lifecycle and access are unnecessary;
+- independent query is not important.
+
+Use separate collection when:
+- data is sensitive with different access or retention;
+- one parent may create unbounded events;
+- independent query, scheduling, finance, or reporting is required;
+- data is reusable across bookings;
+- independent lifecycle or versioning exists;
+- several bookings reference same rule, policy, resource, or program.
+
+Use stable identifiers. Technical names use singular snake_case. Public labels may use Therapist while technical references may use practitioner_id where required by accepted entity model.
+
+================================================================================
+39. COLLECTION SUMMARY
+================================================================================
+
+Core booking:
+- booking_main
+- booking_event
+- booking_provider_config
+- booking_policy
+- booking_intake_template
+- booking_eligibility_rule
+- booking_intake_private
+- booking_financial_document
+
+Scheduling:
+- provider_resource
+- provider_availability_rule
+- provider_schedule_exception
+- booking_resource_reservation
+- booking_waitlist
+
+Payment and finance:
+- payment_transaction
+- provider_payout
+- provider_finance_event
+- therapist_compensation_rule
+- therapist_compensation_event
+- reconciliation_record
+
+History and client settings:
+- client_booking_default
+- client_service_history
+
+Loyalty and engagement:
+- provider_loyalty_program
+- provider_loyalty_account
+- provider_loyalty_event
+- booking_private_feedback
+
+Security and abuse:
+- booking_risk_signal
+
+Shared systems referenced rather than duplicated:
+- user_main
+- establishment_main
+- practitioner_main
+- establishment_service
+- practitioner_service
+- practitioner_capability
+- service_main
+- product_main
+- rating records
+- review records
+- reward transaction or event records
+- notification records
+- message records
+- media and file records
+- translation records where shared implementation requires them.
+
+================================================================================
+40. booking_main
+================================================================================
+
+Purpose:
+Stores current bounded operational snapshot for one booking, request, manual booking, walk-in, imported appointment, or personal appointment plan.
+
+Primary fields:
+- _id
+  Stable booking identifier.
+
+- booking_number
+  Human-readable provider or platform reference. Not substitute for _id.
+
+- type_booking_mode
+  Controlled value from Booking and Appointment System.
+
+- status_booking
+  Current booking status.
+
+- booking_party
+  Embedded booking-party snapshot.
+
+- participant_list
+  Embedded bounded list of service participants.
+
+- provider_context
+  Embedded provider, branch, and booking-enablement snapshot.
+
+- schedule_summary
+  Embedded requested and confirmed time summary.
+
+- contact_snapshot
+  Embedded verified communication channels used for booking.
+
+- price_summary
+  Embedded current and accepted commercial total.
+
+- policy_acceptance_list
+  Embedded accepted policy snapshots or references.
+
+- translation_summary
+  Embedded language and translation summary.
+
+- status_payment_summary
+  Current derived payment summary.
+
+- status_intake_summary
+  Minimum non-sensitive intake state.
+
+- status_resource_summary
+  Resource reservation summary.
+
+- source_context
+  Origin such as web, mobile, provider workspace, API, import, or walk-in.
+
+- created_at
+- created_by_user_id
+- submitted_at
+- confirmed_at
+- completed_at
+- closed_at
+- updated_at
+
+Recommended indexes:
+- booking_number unique where scoped;
+- booking_party.user_id + created_at;
+- provider_context.establishment_id + schedule_summary.confirmed_start_at;
+- provider_context.practitioner_id + schedule_summary.confirmed_start_at;
+- status_booking + updated_at;
+- participant_list.service_line_list.practitioner_id + confirmed time where supported;
+- source_context.external_id unique per source where applicable.
+
+Do not store full private intake inside booking_main.
+
+================================================================================
+41. booking_main.booking_party
+================================================================================
+
+Embedded fields:
+- user_id
+- guest_id
+- display_name_snapshot
+- type_participant_relationship_default
+- payer_role
+- preferred_language_id
+- time_zone
+- contact_reference_list
+- verified_contact_count
+- marketing_consent
+- note_original
+- note_language_id
+- note_translation_list
+- created_for_organization_id
+
+Sensitive health information is prohibited here.
+
+================================================================================
+42. booking_main.participant_list
+================================================================================
+
+Each participant embeds:
+- participant_key
+- user_id
+- guest_identity
+- type_participant_relationship
+- display_name_snapshot
+- age_group when operationally required
+- guardian_snapshot
+- preferred_language_id
+- accessibility_summary
+- service_line_list
+- eligibility_summary
+- intake_private_id
+- consent_summary_list
+- participant_status
+- payer_key
+- price_summary
+- completion_summary
+
+Participant list should remain bounded by provider group-booking limits.
+
+================================================================================
+43. booking_main.participant_list.service_line_list
+================================================================================
+
+Each service line embeds:
+- service_line_key
+- service_id
+- establishment_service_id
+- practitioner_service_id
+- service_name_snapshot
+- provider_menu_name_snapshot
+- service_family_id
+- variant_snapshot
+- duration_minutes
+- quantity
+- type_service_delivery_context
+- requested_start_at
+- confirmed_start_at
+- confirmed_end_at
+- type_therapist_selection
+- requested_practitioner_id
+- assigned_practitioner_id
+- capability_reference
+- pressure_preference
+- body_area_preference_list
+- product_selection_list
+- client_supplied_item_list
+- attire_preference
+- undressing_preference
+- treatment_contact_preference
+- draping_preference
+- treatment_support_preference
+- communication_preference
+- service_note_original
+- service_note_language_id
+- service_note_translation_list
+- policy_exception_list
+- price_line_summary
+- status_service_line
+- completed_at
+
+Why embedded:
+- bounded;
+- normally displayed with booking;
+- historical snapshot belongs to booking.
+
+Independent resource reservations remain separate for scheduling queries.
+
+================================================================================
+44. booking_event
+================================================================================
+
+Purpose:
+Append-only or controlled event history for status, actor, change, and audit.
+
+Fields:
+- _id
+- booking_id
+- event_sequence
+- type_booking_event
+- prior_status
+- new_status
+- actor_type
+- actor_user_id
+- provider_context
+- participant_key
+- service_line_key
+- occurred_at
+- reason_code
+- reason_text
+- source
+- request_id
+- changed_field_list
+- snapshot_hash
+- metadata
+- visibility_scope
+- is_sensitive
+- retention_class
+
+Example type_booking_event options:
+- created;
+- submitted;
+- eligibility_checked;
+- blocked;
+- provider_review_started;
+- clarification_requested;
+- quote_issued;
+- accepted;
+- resource_held;
+- payment_requested;
+- payment_received;
+- confirmed;
+- therapist_assigned;
+- rescheduled;
+- checked_in;
+- service_started;
+- completed;
+- cancelled;
+- no_show;
+- refund_requested;
+- refund_completed;
+- disputed;
+- closed.
+
+Indexes:
+- booking_id + event_sequence unique;
+- booking_id + occurred_at;
+- actor_user_id + occurred_at;
+- type_booking_event + occurred_at.
+
+================================================================================
+45. booking_provider_config
+================================================================================
+
+Purpose:
+Reusable booking settings for establishment, branch, or independent practitioner.
+
+Fields:
+- _id
+- establishment_id
+- branch_id
+- practitioner_id
+- status_provider_booking_enablement
+- supported_booking_mode_list
+- supported_service_id_list
+- minimum_notice_minutes
+- maximum_advance_days
+- default_slot_interval_minutes
+- default_preparation_minutes
+- default_cleanup_minutes
+- supported_contact_verification_list
+- payment_requirement_default
+- cancellation_policy_id
+- intake_template_id
+- eligibility_rule_set_id_list
+- therapist_selection_mode_list
+- client_supplied_item_policy
+- supported_language_id_list
+- translation_enabled
+- instant_confirmation_rule
+- walk_in_enabled
+- waitlist_enabled
+- group_booking_limit
+- retention_policy_snapshot
+- finance_permission_config
+- feature_flag_list
+- effective_at
+- expires_at
+- updated_by_user_id
+- updated_at
+
+Unique scope:
+One active configuration per provider context and effective period unless branch or service override applies.
+
+================================================================================
+46. booking_policy
+================================================================================
+
+Purpose:
+Reusable versioned provider or platform policy.
+
+Fields:
+- _id
+- provider_context
+- type_policy
+- policy_key
+- version
+- language_body_list
+- structured_rule
+- effective_at
+- expires_at
+- status_lifecycle
+- created_by_user_id
+- approved_by_user_id
+- content_hash
+- supersedes_policy_id
+
+type_policy options:
+- booking;
+- cancellation;
+- no_show;
+- refund;
+- payment;
+- arrival;
+- home_service;
+- provider_arranged_transport;
+- privacy;
+- intake;
+- consent;
+- product;
+- minor_guardian;
+- facility;
+- conduct.
+
+Bookings store accepted policy reference, version, language, and rendered hash.
+
+================================================================================
+47. booking_intake_template
+================================================================================
+
+Purpose:
+Reusable provider- and service-aware intake form definition.
+
+Fields:
+- _id
+- template_key
+- provider_context
+- service_id_list
+- service_family_id_list
+- type_delivery_context_list
+- title_translation
+- description_translation
+- question_list
+- consent_type_list
+- outcome_instruction_list
+- print_template_reference
+- status_lifecycle
+- version
+- effective_at
+- expires_at
+- created_by_user_id
+- approved_by_user_id
+- updated_at
+
+Embedded question_list item:
+- question_key
+- group_intake_topic
+- prompt_translation
+- help_translation
+- type_answer_control
+- allowed_answer_list
+- is_required
+- allow_note
+- allow_translation
+- persistence_mode
+- reconfirmation_hours
+- sensitivity_level
+- provider_visibility_rule
+- therapist_visibility_rule
+- eligibility_rule_reference_list
+- display_condition
+- order_index
+
+persistence_mode options:
+- booking_only;
+- reusable_until_changed;
+- reusable_with_expiry;
+- always_reconfirm;
+- never_store_after_result.
+
+================================================================================
+48. booking_eligibility_rule
+================================================================================
+
+Purpose:
+Reusable rule evaluated against structured booking and intake information.
+
+Fields:
+- _id
+- rule_key
+- provider_context
+- service_id_list
+- service_family_id_list
+- delivery_context_list
+- client_access_requirement_list
+- question_key
+- operator
+- expected_value
+- compound_condition
+- status_booking_eligibility
+- alternative_service_id_list
+- client_message_translation
+- provider_message_translation
+- disclose_reason_to_provider
+- minimum_disclosure_field_list
+- source_reference_list
+- jurisdiction_id
+- effective_at
+- expires_at
+- status_lifecycle
+- reviewer_user_id
+- verified_at
+
+Operator examples:
+- equals;
+- not_equals;
+- in;
+- not_in;
+- greater_than;
+- less_than;
+- exists;
+- missing;
+- any;
+- all.
+
+Rules are server-enforced.
+
+================================================================================
+49. booking_intake_private
+================================================================================
+
+Purpose:
+Stores sensitive participant intake separately with stricter encryption, access, and retention.
+
+Fields:
+- _id
+- booking_id
+- participant_key
+- template_id
+- template_version
+- answer_list_encrypted
+- consent_record_list
+- provider_observation_list_encrypted
+- measurement_list_encrypted
+- status_booking_eligibility
+- status_sensitive_disclosure
+- disclosure_window
+- access_role_list
+- assigned_practitioner_id
+- client_visible
+- amendment_list_encrypted
+- signed_document_media_id_list
+- retention_policy
+- delete_after
+- legal_hold
+- anonymized_at
+- deleted_at
+- created_at
+- updated_at
+
+Answer item:
+- question_key
+- type_intake_answer
+- answer_value
+- note_original
+- language_id
+- translation_list
+- answered_at
+- source
+- last_confirmed_at
+- expires_at
+
+Access must be checked on every read. Do not expose through normal booking API resources.
+
+Indexes:
+- booking_id + participant_key unique;
+- assigned_practitioner_id + disclosure_window.start_at;
+- delete_after;
+- legal_hold.
+
+================================================================================
+50. provider_resource
+================================================================================
+
+Purpose:
+Queryable provider resource used for capacity and conflict management.
+
+Fields:
+- _id
+- provider_context
+- type_provider_resource
+- resource_key
+- label_translation
+- capacity
+- supported_service_id_list
+- supported_treatment_support_list
+- supported_delivery_context_list
+- location_id
+- preparation_minutes
+- cleanup_minutes
+- sanitation_minutes
+- status_operational
+- maintenance_note
+- access_permission
+- status_lifecycle
+- created_at
+- updated_at
+
+Examples:
+- therapist;
+- treatment room;
+- couple room;
+- massage chair;
+- treatment table;
+- floatation support;
+- sauna;
+- vehicle;
+- device;
+- group capacity.
+
+================================================================================
+51. provider_availability_rule
+================================================================================
+
+Purpose:
+Recurring queryable availability.
+
+Fields:
+- _id
+- provider_context
+- resource_id
+- practitioner_id
+- service_id
+- day_of_week_list
+- local_start_time
+- local_end_time
+- time_zone
+- capacity
+- minimum_notice_minutes
+- maximum_advance_days
+- slot_interval_minutes
+- effective_at
+- expires_at
+- status_lifecycle
+- created_at
+- updated_at
+
+Indexes:
+- resource_id + effective_at + expires_at;
+- practitioner_id + day_of_week_list;
+- provider_context + day_of_week_list.
+
+================================================================================
+52. provider_schedule_exception
+================================================================================
+
+Purpose:
+One-time opening, closure, leave, travel, maintenance, or capacity change.
+
+Fields:
+- _id
+- provider_context
+- resource_id
+- practitioner_id
+- type_schedule_exception
+- start_at
+- end_at
+- capacity_override
+- reason
+- source
+- external_calendar_reference
+- created_by_user_id
+- status_lifecycle
+- created_at
+
+Indexes:
+- resource_id + start_at + end_at;
+- practitioner_id + start_at + end_at;
+- provider_context + start_at.
+
+================================================================================
+53. booking_resource_reservation
+================================================================================
+
+Purpose:
+Independent queryable holds and reservations preventing conflicts.
+
+Fields:
+- _id
+- booking_id
+- participant_key
+- service_line_key
+- provider_context
+- resource_id
+- practitioner_id
+- start_at
+- end_at
+- preparation_start_at
+- cleanup_end_at
+- capacity_units
+- status_reservation
+- hold_expires_at
+- source
+- override_reason
+- created_at
+- updated_at
+
+status_reservation options:
+- hold;
+- reserved;
+- confirmed;
+- in_use;
+- completed;
+- released;
+- expired;
+- cancelled.
+
+Critical indexes:
+- resource_id + start_at + end_at;
+- practitioner_id + start_at + end_at;
+- hold_expires_at;
+- booking_id.
+
+================================================================================
+54. booking_waitlist
+================================================================================
+
+Purpose:
+Independent waitlist workflow.
+
+Fields:
+- _id
+- user_id
+- provider_context
+- participant_summary
+- service_id
+- establishment_service_id
+- practitioner_service_id
+- requested_practitioner_id
+- type_therapist_selection
+- date_range
+- time_range
+- duration_minutes
+- participant_count
+- type_service_delivery_context
+- maximum_price
+- contact_reference
+- status_waitlist
+- offer_booking_id
+- offer_expires_at
+- created_at
+- expires_at
+- cancelled_at
+
+Indexes:
+- provider_context + service_id + status_waitlist;
+- requested_practitioner_id + status_waitlist;
+- expires_at.
+
+================================================================================
+55. client_booking_default
+================================================================================
+
+Purpose:
+Reusable client preferences and approved persistent answers.
+
+Fields:
+- _id
+- user_id
+- default_key
+- preferred_language_id
+- pressure_preference
+- pressure_adjustment_preference_list
+- body_area_preference_list
+- product_preference_list
+- attire_preference
+- draping_preference
+- communication_preference
+- accessibility_preference_encrypted
+- therapist_selection_preference
+- reusable_intake_answer_list_encrypted
+- last_confirmed_at
+- expires_at
+- status_lifecycle
+- updated_at
+
+Time-sensitive answers use expiry or are excluded.
+Unique: user_id + default_key.
+
+================================================================================
+56. payment_transaction
+================================================================================
+
+Purpose:
+All payment-like movements, including payment, refund, chargeback, reversal, and manual adjustment.
+
+Fields:
+- _id
+- booking_id
+- participant_key
+- service_line_key
+- provider_context
+- type_payment_transaction
+- type_booking_payment_mode
+- status_payment_transaction
+- amount
+- currency
+- payer
+- payee
+- gateway
+- external_reference
+- proof_media_id
+- parent_transaction_id
+- initiated_at
+- authorized_at
+- captured_at
+- settled_at
+- failed_at
+- reason
+- metadata
+- recorded_by_user_id
+- verified_by_user_id
+- created_at
+- updated_at
+
+type_payment_transaction:
+- authorization;
+- capture;
+- payment;
+- deposit;
+- balance;
+- refund;
+- reversal;
+- chargeback;
+- tip;
+- booking_fee;
+- commission;
+- manual_adjustment.
+
+status_payment_transaction:
+- pending;
+- authorized;
+- completed;
+- failed;
+- cancelled;
+- reversed;
+- disputed;
+- partially_refunded;
+- refunded.
+
+Indexes:
+- booking_id + created_at;
+- external_reference + gateway unique where applicable;
+- provider_context + settled_at;
+- status_payment_transaction + updated_at.
+
+================================================================================
+57. provider_payout
+================================================================================
+
+Purpose:
+Platform-to-provider settlement.
+
+Fields:
+- _id
+- provider_context
+- payout_account_id
+- period_start
+- period_end
+- payment_transaction_id_list
+- gross_amount
+- refund_amount
+- chargeback_amount
+- commission_amount
+- processing_fee_amount
+- reserve_amount
+- adjustment_amount
+- tip_amount
+- tax_withholding_amount
+- net_amount
+- currency
+- status_payout
+- scheduled_at
+- processed_at
+- paid_at
+- external_reference
+- statement_media_id
+- hold_reason
+- created_at
+- updated_at
+
+Indexes:
+- provider_context + period_start;
+- status_payout + scheduled_at;
+- external_reference.
+
+================================================================================
+58. booking_financial_document
+================================================================================
+
+Purpose:
+Versioned quote, confirmation, invoice, receipt, refund, payout, compensation, or statement.
+
+Fields:
+- _id
+- booking_id
+- payment_transaction_id
+- provider_payout_id
+- therapist_compensation_event_id
+- type_financial_document
+- document_number
+- issuer_snapshot
+- recipient_snapshot
+- jurisdiction_id
+- tax_profile_snapshot
+- currency
+- line_item_list
+- subtotal
+- tax_summary
+- total
+- language_id
+- template_id
+- rendered_media_id
+- status_document
+- issued_at
+- voided_at
+- replaces_document_id
+- created_by_user_id
+- created_at
+
+status_document:
+- draft;
+- issued;
+- paid;
+- partially_paid;
+- void;
+- corrected;
+- refunded;
+- archived.
+
+================================================================================
+59. client_service_history
+================================================================================
+
+Purpose:
+Cross-provider client history, including manual and imported past events.
+
+Fields:
+- _id
+- user_id
+- type_service_history_source
+- status_history_confirmation
+- booking_id
+- provider_reference
+- practitioner_reference
+- service_reference
+- provider_menu_name
+- occurred_at
+- duration_minutes
+- amount_summary
+- type_service_delivery_context
+- preference_summary
+- private_note_encrypted
+- evidence_media_id_list
+- rating_id
+- review_id
+- source_import_id
+- visibility
+- created_at
+- updated_at
+- withdrawn_at
+
+Validation:
+- manual or imported history occurred_at cannot be future-dated;
+- future event must use booking workflow.
+
+Indexes:
+- user_id + occurred_at;
+- provider_reference + status_history_confirmation;
+- booking_id unique where one history record per participant service line is intended.
+
+================================================================================
+60. provider_loyalty_program
+================================================================================
+
+Purpose:
+Versioned provider-controlled loyalty rules.
+
+Fields:
+- _id
+- provider_context
+- program_key
+- type_provider_loyalty_program
+- title_translation
+- description_translation
+- eligible_service_id_list
+- eligible_establishment_service_id_list
+- excluded_service_id_list
+- earn_rule
+- reward_rule
+- expiry_rule
+- transfer_rule
+- branch_rule
+- version
+- effective_at
+- expires_at
+- status_lifecycle
+- created_by_user_id
+- approved_by_user_id
+- updated_at
+
+================================================================================
+61. provider_loyalty_account
+================================================================================
+
+Purpose:
+One client's current provider-program progress.
+
+Fields:
+- _id
+- program_id
+- user_id
+- guest_identity_reference
+- provider_context
+- progress_summary
+- available_reward_list
+- package_balance_list
+- tier
+- last_event_at
+- status_account
+- created_at
+- updated_at
+
+Unique: program_id + user_id or approved guest key.
+
+================================================================================
+62. provider_loyalty_event
+================================================================================
+
+Purpose:
+Append-only earn, redeem, expire, reverse, or adjust event.
+
+Fields:
+- _id
+- program_id
+- loyalty_account_id
+- booking_id
+- participant_key
+- service_line_key
+- type_loyalty_event
+- value
+- reward_reference
+- program_version
+- reason
+- occurred_at
+- expires_at
+- reversed_event_id
+- created_by_user_id
+- created_at
+
+type_loyalty_event:
+- earn;
+- redeem;
+- expire;
+- reverse;
+- adjust;
+- transfer where permitted;
+- package_purchase;
+- package_use.
+
+================================================================================
+63. booking_private_feedback
+================================================================================
+
+Purpose:
+Private post-service provider feedback separate from public Rating and Review.
+
+Fields:
+- _id
+- booking_id
+- participant_key
+- provider_context
+- practitioner_id
+- response_list
+- private_note_encrypted
+- request_contact
+- service_recovery_status
+- visibility_scope
+- submitted_at
+- provider_viewed_at
+- resolved_at
+- linked_report_id
+- linked_refund_id
+
+Must not automatically publish.
+
+================================================================================
+64. therapist_compensation_rule
+================================================================================
+
+Purpose:
+Versioned provider-therapist compensation agreement or rule.
+
+Fields:
+- _id
+- provider_context
+- practitioner_id
+- service_id_list
+- establishment_service_id_list
+- type_therapist_compensation_list
+- basis_rule
+- rate_or_amount
+- currency
+- tier_rule
+- product_rule
+- tip_rule
+- team_split_rule
+- effective_at
+- expires_at
+- status_lifecycle
+- approved_by_user_id
+- created_at
+- updated_at
+
+Sensitive access: finance and authorized therapist self-view according to policy.
+
+================================================================================
+65. therapist_compensation_event
+================================================================================
+
+Purpose:
+Amount earned, payable, adjusted, or paid from booking.
+
+Fields:
+- _id
+- booking_id
+- participant_key
+- service_line_key
+- provider_context
+- practitioner_id
+- compensation_rule_id
+- rule_snapshot
+- basis_amount
+- compensation_amount
+- tip_amount
+- adjustment_amount
+- currency
+- status_compensation
+- earned_at
+- approved_at
+- paid_at
+- payment_reference
+- created_at
+- updated_at
+
+status_compensation:
+- pending;
+- earned;
+- approved;
+- held;
+- paid;
+- reversed;
+- disputed;
+- adjusted.
+
+================================================================================
+66. provider_finance_event
+================================================================================
+
+Purpose:
+Queryable provider-side financial ledger event derived from booking, transaction, payout, compensation, expense, or adjustment.
+
+Fields:
+- _id
+- provider_context
+- booking_id
+- participant_key
+- service_line_key
+- payment_transaction_id
+- provider_payout_id
+- therapist_compensation_event_id
+- type_provider_finance_event
+- direction
+- amount
+- currency
+- tax_classification
+- occurred_at
+- effective_date
+- document_reference
+- account_mapping
+- reconciliation_status
+- created_by_user_id
+- created_at
+
+direction:
+- inflow;
+- outflow;
+- non_cash;
+- memo.
+
+================================================================================
+67. reconciliation_record
+================================================================================
+
+Purpose:
+Matches system, provider, gateway, cash, bank, payout, and compensation references.
+
+Fields:
+- _id
+- provider_context
+- source_type
+- source_reference
+- target_type
+- target_reference
+- expected_amount
+- matched_amount
+- currency
+- status_reconciliation
+- discrepancy
+- evidence_media_id_list
+- reviewer_user_id
+- reviewed_at
+- adjustment_event_id
+- created_at
+- updated_at
+
+================================================================================
+68. booking_risk_signal
+================================================================================
+
+Purpose:
+Internal security and abuse signal. Not public Reputation record.
+
+Fields:
+- _id
+- booking_id
+- user_id
+- provider_context
+- type_risk_signal
+- severity
+- confidence
+- source
+- evidence_reference_list
+- status_review
+- operational_action_list
+- expires_at
+- resolved_at
+- reviewer_user_id
+- created_at
+
+type_risk_signal examples:
+- repeated_no_show;
+- repeated_late_cancellation;
+- suspicious_concurrent_booking;
+- contact_failure;
+- payment_failure;
+- identity_mismatch;
+- provider_false_completion;
+- reward_farming;
+- harassment;
+- competitor_interference;
+- chargeback_pattern.
+
+Provider-facing output should normally be operational requirement, not unrelated private detail.
+
+================================================================================
+69. REWARD AND GAMIFICATION INTEGRATION
+================================================================================
+
+The Booking System does not directly mutate Nexus Points, Embers, Inklings, badge, rank, or Reputation totals.
+
+On qualifying event, Booking sends or creates shared reward event containing:
+- source_type: booking;
+- booking_id;
+- participant_key;
+- service_line_key;
+- actor_user_id;
+- provider_context;
+- event_type;
+- qualification;
+- value suggestion;
+- anti_abuse_key;
+- occurred_at.
+
+Shared Rewards system validates, caps, awards, reverses, and updates balances and milestone progress.
+
+Reputation remains governed by Reputation System and does not rise merely because booking completed.
+
+================================================================================
+70. TRANSLATION STRUCTURE
+================================================================================
+
+Bounded translated notes may embed:
+- source_language_id;
+- target_language_id;
+- source_text;
+- translated_text;
+- translation_method;
+- provider;
+- created_at;
+- confidence;
+- client_approved;
+- warning.
+
+Large or reusable translations may reference shared Translation System.
+Original text is always preserved.
+
+================================================================================
+71. ENCRYPTION AND ACCESS
+================================================================================
+
+Encrypt or otherwise strongly protect:
+- private intake;
+- provider observation;
+- accessibility detail;
+- home address;
+- guardian data;
+- private client note;
+- payment proof;
+- compensation rule;
+- payout account;
+- tax profile;
+- risk evidence.
+
+Every read path must apply authenticated actor, provider context, participant relationship, permission, booking status, disclosure window, retention state, legal hold, and audit where required.
+
+================================================================================
+72. RETENTION CLASSES
+================================================================================
+
+Suggested retention classes:
+- transient eligibility input;
+- ordinary booking;
+- private intake;
+- signed consent;
+- payment;
+- tax document;
+- dispute;
+- incident;
+- loyalty;
+- compensation;
+- audit;
+- anonymized analytics.
+
+Each collection or field identifies retention_class, delete_after, anonymize_after, legal_hold, jurisdiction, provider policy, and platform minimum or maximum.
+
+================================================================================
+73. INITIAL IMPLEMENTATION COLLECTIONS
+================================================================================
+
+Minimum initial set:
+- booking_main;
+- booking_event;
+- booking_provider_config;
+- booking_policy;
+- booking_intake_template;
+- booking_intake_private;
+- provider_resource;
+- provider_availability_rule;
+- provider_schedule_exception;
+- booking_resource_reservation;
+- client_booking_default;
+- payment_transaction;
+- client_service_history.
+
+Later:
+- booking_eligibility_rule;
+- booking_waitlist;
+- provider_payout;
+- booking_financial_document;
+- provider loyalty collections;
+- compensation collections;
+- provider_finance_event;
+- reconciliation_record;
+- booking_private_feedback;
+- booking_risk_signal.
+
+Later does not mean unplanned. Structures remain defined here for continuity.

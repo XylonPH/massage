@@ -1,0 +1,667 @@
+Title: Massage Nexus Product Profile Guide
+Document Version: 0.10
+Date Created: 2026-07-15
+Revision Date: 2026-07-15
+Status: Internal Planning Reference
+
+Related Documents:
+- Massage Nexus - 03 - Features v1.80
+- Massage Nexus - 05 - Massage and Service Classification v1.10
+- Massage Nexus - 10 - Product Classification v1.30
+- Massage Nexus - Site Structure Map v0.60
+- Massage Nexus - Review Writing v1.70
+- Massage Nexus - Rating System v1.10
+- Massage Nexus - Reputation System v1.70
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the purpose, public content, layout direction, management boundaries, lifecycle rules, seller relationships, safety presentation, and future workspace direction of a Massage Nexus product profile.
+
+The product profile is the normalized public record used for discovery, comparison, specifications, versions, variants, sellers, prices, availability, safety information, reviews, ratings, corrections, and product history. It is not a seller listing, advertisement, inventory record, brand website, or database schema.
+
+Detailed classification definitions remain in Product Classification.
+
+================================================================================
+1. PROFILE PURPOSE AND BOUNDARIES
+================================================================================
+
+A product profile should answer:
+
+- What is the product?
+- Which category and grade apply?
+- Who manufactures, publishes, or owns the brand?
+- Which version and variants exist?
+- What specifications, ingredients, materials, claims, allergens, and warnings are known?
+- Which sellers offer it, at what price, and under what conditions?
+- Is it current, discontinued, recalled, authentic, disputed, or restricted?
+- How is it used and for whom is it intended?
+- What do users, therapists, spas, and reviewers say about it?
+- Has it been renamed, reformulated, repackaged, replaced, merged, or removed?
+
+The profile should remain useful when the product has no official website, incomplete specifications, limited distribution, several sellers, or no current offer.
+
+The following concepts remain separate:
+
+Product
+- stable commercial or published identity.
+
+Product Version
+- materially distinct formula, construction, design, or release.
+
+Variant
+- selectable scent, color, size, volume, model, or package quantity that does not necessarily create a new product identity.
+
+Seller Offer
+- seller-specific price, stock, shipping, pickup, return, affiliate, or commercial terms.
+
+Bundle
+- several products or variants sold together.
+
+Seller Profile
+- separate public record for the seller or retailer.
+
+================================================================================
+2. RECOMMENDED PUBLIC PAGE LAYOUT
+================================================================================
+
+A. Identity Header
+
+Show when available:
+
+- product name;
+- primary image or fallback;
+- short description;
+- brand;
+- manufacturer or publisher;
+- Product Category;
+- Product Grade;
+- current lifecycle status;
+- authenticity or recall warning;
+- current price range from active seller offers;
+- rating summary and review count;
+- sponsored label when applicable.
+
+B. Primary Actions
+
+- View Offers;
+- Save;
+- Follow;
+- Share;
+- Compare;
+- Suggest a Correction;
+- Report.
+
+A purchase action should lead to a specific seller offer rather than imply that Massage Nexus is the seller.
+
+C. Main Sections or Tabs
+
+1. Overview
+2. Specifications
+3. Ingredients, Materials, and Safety
+4. Versions and Variants
+5. Sellers and Prices
+6. Gallery and Documents
+7. Reviews and Ratings
+8. Promotions
+9. Related Services and Providers
+10. About, Verification, and Sources
+
+Empty sections may be hidden or replaced by a concise request for information.
+
+================================================================================
+3. IDENTITY AND CLASSIFICATION
+================================================================================
+
+The profile may show:
+
+- official product name;
+- brand;
+- manufacturer, publisher, developer, or responsible organization;
+- model or line name;
+- alternate or former name;
+- transliteration or translated explanation;
+- Product Category;
+- Product Grade;
+- Product Use Context;
+- current Product Lifecycle Status;
+- Product Authenticity Status;
+- Product Moderation Status;
+- claim, verification, sponsorship, and source context.
+
+Classification follows Product Classification v1.30.
+
+Important boundaries:
+
+- Product Category describes what the product fundamentally is.
+- Product Grade compares the product with direct peers in the same category.
+- Grade is assigned or confirmed by Massage Nexus and is not freely selected by a seller.
+- Price alone does not determine grade.
+- Lifecycle, version relationship, authenticity, moderation, review rating, and seller availability remain separate.
+- Gift, retail, travel, training, aftercare, and home use are contexts rather than universal product categories.
+
+When a material version change affects formulation, safety, performance, or construction, the grade and reviews may need to apply to that version rather than automatically to every version.
+
+================================================================================
+4. CATEGORY-SPECIFIC SPECIFICATIONS
+================================================================================
+
+The profile should use specification groups appropriate to the Product Category rather than one universal field list.
+
+Possible specification groups include:
+
+Massage Medium
+- base or carrier;
+- ingredients;
+- scent;
+- viscosity;
+- glide and absorption;
+- volume;
+- container;
+- professional or home use.
+
+Textile and Linen
+- material;
+- dimensions;
+- weight or GSM;
+- weave;
+- absorbency;
+- color;
+- care instructions;
+- reusable or single-use status.
+
+Treatment Furniture
+- dimensions;
+- weight;
+- load capacity;
+- frame and upholstery;
+- padding;
+- adjustability;
+- portability;
+- included accessories;
+- warranty.
+
+Powered Device
+- dimensions and weight;
+- power source;
+- voltage;
+- battery;
+- settings;
+- operating limits;
+- cleaning;
+- warranty;
+- certifications and safety information.
+
+Digital Product
+- supported platforms;
+- version;
+- license model;
+- language support;
+- system requirements;
+- data and privacy notes;
+- update policy.
+
+The profile should preserve:
+
+- source of each important specification;
+- measurement unit;
+- regional differences;
+- whether a value is verified, manufacturer-declared, seller-declared, estimated, or user-contributed;
+- last-confirmed date.
+
+================================================================================
+5. INGREDIENTS, MATERIALS, CLAIMS, ALLERGENS, AND WARNINGS
+================================================================================
+
+A. Ingredients and Materials
+
+Show complete manufacturer or publisher information when available rather than relying only on summary tags.
+
+Information may include:
+
+- ingredient list;
+- material composition;
+- active or aromatic components;
+- concentration where appropriate;
+- fabric or construction material;
+- replaceable parts;
+- country or place of manufacture;
+- batch, model, or regulatory information.
+
+B. Product Characteristics
+
+Examples:
+
+- Scented;
+- Heat-Producing;
+- Electrical;
+- Battery-Powered;
+- Single-Use;
+- Reusable.
+
+C. Product Claims
+
+Examples:
+
+- Vegan;
+- Cruelty-Free;
+- Organic;
+- Dermatologically Tested;
+- Hypoallergenic.
+
+Each claim should preserve:
+
+- claimant;
+- certification or standard where applicable;
+- jurisdiction;
+- evidence;
+- verification result;
+- review date.
+
+A manufacturer statement is not automatically verified platform truth.
+
+D. Allergen and Sensitivity Information
+
+Possible groups include:
+
+- Peanut;
+- Tree Nut;
+- Coconut;
+- Soy;
+- Wheat;
+- Milk;
+- Egg;
+- Shellfish;
+- Bee Product;
+- Latex;
+- Fragrance;
+- Essential Oil.
+
+The profile should identify the specific ingredient or material when known. Absence of a recorded allergen does not mean allergen-free.
+
+E. Product Warnings
+
+Possible warnings include:
+
+- Skin Irritation Risk;
+- Photosensitivity Risk;
+- Heat Risk;
+- Electrical Risk;
+- Flammability Risk;
+- Pregnancy Caution;
+- Medical Condition Caution;
+- Professional Use Only;
+- Sanitation Required.
+
+Warnings should distinguish manufacturer, regulator, verified source, editorial guidance, and user report. Serious safety information should be prominent and not buried in general description.
+
+================================================================================
+6. VERSIONS, VARIANTS, AND PRODUCT CHANGES
+================================================================================
+
+Product Lifecycle Status may be:
+
+- Current;
+- Discontinued;
+- Recalled;
+- Unknown.
+
+Version relationships may include:
+
+- Replaces;
+- Reformulated From;
+- Repackaged From;
+- Renamed From;
+- Superseded By.
+
+A version record may show:
+
+- version or model identifier;
+- release or effective date;
+- formula, material, design, or feature changes;
+- packaging change;
+- current or previous relationship;
+- affected variants;
+- review-continuity decision;
+- safety and recall information.
+
+Variant examples:
+
+- scent;
+- color;
+- size;
+- volume;
+- model;
+- package quantity;
+- material choice.
+
+A simple size or scent variation may remain one product version with several variants. A reformulation or material redesign may require a separate version when reviews, safety, performance, or specifications would otherwise become misleading.
+
+Old versions should remain visible when they have reviews, safety notices, historical value, or continuing market circulation.
+
+================================================================================
+7. SELLERS, OFFERS, PRICES, AND AVAILABILITY
+================================================================================
+
+The product profile should aggregate seller offers without turning seller information into product identity.
+
+A seller offer may include:
+
+- seller;
+- offer title;
+- specific version and variant;
+- price;
+- previous or promotional price;
+- currency;
+- stock or availability;
+- condition where relevant;
+- minimum quantity;
+- shipping;
+- pickup;
+- delivery area;
+- estimated delivery;
+- return or exchange policy;
+- warranty;
+- affiliate relationship;
+- sponsored placement;
+- source and last-confirmed date.
+
+Important rules:
+
+- Price belongs to a seller offer, not the universal product definition.
+- One product may have many sellers and prices.
+- One seller may offer several variants.
+- A product may remain public when no active seller offer exists.
+- Massage Nexus should not imply stock certainty when seller information is old or unverified.
+- Sponsored placement and affiliate links must be disclosed.
+- Seller quality and seller reviews remain separate from product reviews.
+
+The public profile may show:
+
+- lowest confirmed offer;
+- typical price range;
+- number of current offers;
+- local availability;
+- shipping or pickup summary;
+- last-updated warning.
+
+================================================================================
+8. AUTHENTICITY, MODERATION, RECALL, AND SAFETY HANDLING
+================================================================================
+
+Product Authenticity Status may be:
+
+- Verified Authentic;
+- Unverified;
+- Suspected Counterfeit;
+- Confirmed Counterfeit.
+
+Product Moderation Status may be:
+
+- Active;
+- Under Review;
+- Restricted;
+- Removed.
+
+Important rules:
+
+- Authenticity status does not replace seller verification.
+- A legitimate product may be sold through a suspicious seller.
+- A seller may list a counterfeit version of a legitimate product.
+- Suspected or confirmed counterfeit concerns require evidence, moderation, and careful public wording.
+- Confirmed counterfeit items should not receive normal buying promotion.
+- Recalled products may remain visible with prominent warnings, affected versions, dates, responsible authority, and safety guidance.
+- Removal from ordinary discovery should not erase safety, recall, contribution, or audit history when continued reference is necessary.
+
+================================================================================
+9. MEDIA AND PUBLIC DOCUMENTS
+================================================================================
+
+Public media may include:
+
+- official product images;
+- packaging;
+- labels;
+- ingredients or materials;
+- size reference;
+- included accessories;
+- product in use;
+- model or version differences;
+- safety labels;
+- manuals;
+- certificates;
+- test reports;
+- recall notices;
+- user and reviewer media.
+
+Media should be labeled by version and variant when differences matter.
+
+Media must not:
+
+- misrepresent another product or size;
+- conceal safety labels;
+- imply unverified claims;
+- show unsafe use as recommended practice;
+- copy seller branding in a way that falsely suggests endorsement;
+- expose private purchase or identity information.
+
+Public documents should preserve source, date, applicable version, and redaction where needed.
+
+================================================================================
+10. REVIEWS, RATINGS, AND REVIEW CONTINUITY
+================================================================================
+
+The profile may include:
+
+- review summary;
+- overall and criteria ratings;
+- editorial reviews;
+- user reviews;
+- therapist or spa professional-use reviews;
+- discussions;
+- manufacturer or brand responses;
+- safety reports;
+- corrections;
+- source notes;
+- related articles.
+
+A review should identify when possible:
+
+- tested version and variant;
+- purchase source;
+- test period;
+- professional or home-use context;
+- disclosure, sponsorship, or sample status;
+- price paid;
+- relevant specifications;
+- observed performance and safety concerns.
+
+Reviews should not automatically transfer across a materially reformulated or redesigned version.
+
+Possible continuity decisions:
+
+- reviews remain shared because the change is only packaging;
+- reviews remain visible but filtered by version;
+- ratings restart for the new version;
+- selected reviews transfer after editorial review;
+- safety reports remain connected across all affected versions.
+
+Product Grade provides review context but must never alter the rating automatically.
+
+================================================================================
+11. RELATED ENTITIES AND DISCOVERY
+================================================================================
+
+The product profile may connect to:
+
+- brands and responsible organizations;
+- manufacturers or publishers;
+- sellers;
+- related products;
+- previous and later versions;
+- compatible accessories;
+- replacement parts;
+- bundles;
+- related services;
+- spas using or recommending the product;
+- therapists using or recommending the product;
+- Massage Campus lessons or training materials;
+- articles;
+- promotions;
+- recalls and safety notices.
+
+A spa or therapist recommendation is a relationship and may require disclosure. It is not part of Product Category or Product Grade.
+
+================================================================================
+12. CREATION, CLAIM, EDITING, AND PERMISSIONS
+================================================================================
+
+Public Visitor
+- view, save, follow, share, compare, report, review, rate, and suggest corrections when allowed.
+
+Registered Contributor
+- propose a product, version, variant, specification, seller offer, media item, safety source, translation, correction, duplicate report, or merge request.
+
+Authorized Brand, Manufacturer, Publisher, or Developer Representative
+- manage approved identity, specifications, versions, official media, instructions, warnings, and public responses;
+- submit evidence for claims, grade, authenticity, or product changes;
+- cannot erase reviews, reports, historical versions, seller offers, or the complete public record.
+
+Authorized Seller
+- manage only its seller offer, price, availability, shipping, pickup, return, and commercial terms;
+- cannot control universal product identity or unrelated seller offers.
+
+Editor or Moderator
+- review product identity, classification, versions, claims, safety, authenticity, seller offers, corrections, duplicates, and sensitive changes according to permission.
+
+Administrator
+- add, edit, translate, restore, merge, soft-delete, restrict, and perform approved cleanup after dependency and safety checks.
+
+================================================================================
+13. DUPLICATES, MERGE, AND LIFECYCLE
+================================================================================
+
+Duplicate review should compare:
+
+- product name and former names;
+- brand and responsible organization;
+- manufacturer or publisher;
+- model and version;
+- ingredients, materials, dimensions, and packaging;
+- barcodes, identifiers, and regulatory records when available;
+- images;
+- release dates;
+- whether records are variants, versions, bundles, or genuinely separate products.
+
+A merge should:
+
+- select one canonical product or version;
+- remove the duplicate from normal discovery;
+- redirect or connect the old route when appropriate;
+- preserve identity, contributions, revisions, reviews, ratings, sources, and audit history;
+- reconnect valid seller offers and relationships only after review;
+- stop new activity on the merged record.
+
+Do not merge:
+
+- materially different formulations;
+- separate models;
+- variants that require independent review treatment;
+- original and counterfeit products;
+- a bundle with its individual components.
+
+A discontinued or recalled real product normally remains visible. Soft deletion is reserved for invalid, duplicate, spam, test, unsafe-to-display, unlawfully published, or otherwise unsuitable records.
+
+Hard deletion requires legal, safety, retention, audit, and dependency review.
+
+Contribution history should retain a product-name or version snapshot and indicate merge, removal, restoration, or replacement.
+
+================================================================================
+14. CONFLICT OF INTEREST, SPONSORSHIP, AND COMMERCIAL INFLUENCE
+================================================================================
+
+Brands, manufacturers, developers, publishers, sellers, affiliates, spas, therapists, and sponsored partners may have conflicts of interest.
+
+They should not receive points, Embers, Inklings, reputation, or ranking influence through:
+
+- self-review or self-rating;
+- artificial votes;
+- undisclosed sponsored promotion;
+- repeated reward-seeking corrections;
+- manipulation of competing products;
+- reacting to their own official responses.
+
+Official specifications, safety notices, offer updates, brand responses, and legitimate corrections may remain allowed when clearly labeled and unrewarded.
+
+Disclose:
+
+- sponsored placement;
+- affiliate link;
+- free sample;
+- discounted sample;
+- manufacturer-requested review;
+- seller-requested review;
+- professional relationship;
+- spa or therapist recommendation;
+- editorial purchase.
+
+Product ranking should not be purchased through a premium account without clear sponsored labeling.
+
+================================================================================
+15. PRODUCT MANAGEMENT WORKSPACE
+================================================================================
+
+Early workspace areas may include:
+
+- product identity and classification;
+- versions and variants;
+- category-specific specifications;
+- ingredients and materials;
+- claims and evidence;
+- allergens and warnings;
+- official media and documents;
+- seller offers;
+- corrections and contribution review;
+- recall and authenticity reports;
+- public responses;
+- basic analytics.
+
+Later modules may include:
+
+- seller inventory integration;
+- price history;
+- stock monitoring;
+- affiliate and sponsored campaigns;
+- brand catalogs;
+- wholesale and distributor relationships;
+- warranty and support workflows;
+- advanced document verification;
+- localized regulatory information;
+- product comparison tools;
+- recommendation management.
+
+A seller workspace and seller profile remain separate from the normalized product profile.
+
+================================================================================
+16. IMPLEMENTATION PRIORITIES AND OPEN ITEMS
+================================================================================
+
+Initial Priority
+- identity, category, grade, brand, current version, variants, specifications, safety, sellers, prices, media, reviews, ratings, and basic actions.
+
+Early Management
+- brand and seller corrections, version handling, specifications, seller offers, claims, warnings, media, and moderation.
+
+Open items requiring separate decisions:
+- final tabs and mobile navigation;
+- brand, manufacturer, publisher, and seller claim rules;
+- Product Grade evidence and governance;
+- version-versus-variant thresholds;
+- review continuity after product changes;
+- ingredient and allergen source hierarchy;
+- recall and regulatory handling by jurisdiction;
+- authenticity evidence;
+- seller-offer freshness and price history;
+- return, warranty, and shipping normalization;
+- affiliate and sponsored disclosure;
+- public ranking rules;
+- product-focused release phase.

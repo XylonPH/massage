@@ -1,0 +1,551 @@
+Title: Massage Nexus: Technology Stack
+Document Version: 2.10
+Date Created: 2026-06-30
+Revision Date: 2026-07-19
+
+DOCUMENT DESCRIPTION
+--------------------
+This document records the accepted and working technology direction for Massage Nexus. Exact package versions are locked through each application's dependency and lock files when implementation begins. Versions shown in planning notes must not be treated as installed facts until the local environment and compatibility requirements are verified. This file defines the intended stack and major boundaries; the File and Folder Structure document defines where the code and supporting files belong.
+
+Version History
+---------------
+- v2.10 (2026-07-19): Confirmed apps/desktop/ as the canonical location for the general Massage Nexus Desktop Application rather than an administration-only desktop application.
+- v2.00 (2026-07-19): Implemented ordinary authentication (registration, email verification, login, logout, remember me) directly on Laravel's native Auth guard rather than installing Laravel Fortify; see docs/07-accounts/account-identity-registration-and-authentication-system.txt section 17 for the rationale. Activated Argon2id password hashing via a published config/hashing.php (HASH_DRIVER=argon2id in .env). Confirmed the local mail driver is `log` (writes verification emails to storage/logs/laravel.log instead of sending them), which is how email verification is exercised without a real mail server in local development; a real provider is still an open decision under section 2 (Email Hosting: Undecided). Added a unique-index migration for user_main.username and user_main.email against the mongodb connection, satisfying the database-level collision protection required by Shared Project Standards section 9.4.
+- v1.90 (2026-07-18): Selected and proved the Laravel-to-MongoDB integration: installed mongodb/laravel-mongodb 5.8.2 (official MongoDB package, formerly jenssegers/laravel-mongodb) and configured a dedicated `mongodb` Laravel database connection reading MONGODB_URI and MONGODB_DATABASE from the environment. Verified a live insert, read, and delete against the local massage_main database at 127.0.0.1:27018 through the Laravel query builder (DB::connection('mongodb')). Recorded that Laravel's own operational tables (sessions, cache, queued jobs) remain on the existing sqlite connection as framework-internal plumbing, not as the primary application data store; this does not change the accepted document-oriented primary data model. Removed the MongoDB application-package and integration decision from unresolved technology decisions.
+- v1.80 (2026-07-17): Recorded the verified local development environment: PHP 8.5.8 Thread Safe Win64, Apache HTTP Server 2.4.68-260617 Win64, Laravel Framework 13.20.0, PIE 1.4.8, MongoDB PHP extension 2.3.3, MongoDB Community Server 8.3 at 127.0.0.1:27018, the application path C:\code\multiplatform\massage\apps\web, the local Massage Nexus Apache document root at apps\web\public, and localhost routing to C:\code\php. Removed PHP and Laravel version selection from unresolved decisions and replaced them with the remaining MongoDB application-package and integration decision.
+- v1.70 (2026-07-16): Established the monorepository, application, hosting, API, security, localization, storage, AI, and development technology direction before Laravel initialization.
+
+================================================================================
+1. PROJECT AND REPOSITORY MODEL
+================================================================================
+
+Repository Model:
+Single Git monorepository for shared documentation, API contracts, brand assets, the Laravel web application, and reserved future client applications.
+
+Repository Root:
+massage/
+
+Primary Local Repository Path:
+C:\code\multiplatform\massage
+
+Remote Repository:
+https://github.com/XylonPH/massage
+
+Primary Application:
+apps/web/
+
+Reserved Future Applications:
+apps/mobile/
+apps/desktop/
+
+Shared Areas:
+assets/
+contracts/
+docs/
+tools/
+
+Current Repository Preparation:
+- GitHub repository name: massage
+- local repository path: C:\code\multiplatform\massage
+- PHP application path: C:\code\multiplatform\massage\apps\web
+- Apache public document root for Massage Nexus: C:\code\multiplatform\massage\apps\web\public
+- README.md created as a working repository foundation
+- .gitignore created as a working monorepository foundation
+- Laravel Framework 13.20.0 installed under apps/web/
+- Composer dependency files and Laravel application structure initialized
+- local Apache virtual host routes http://www.massagenexus.com/ to apps/web/public/
+
+Version Control:
+Git
+
+Remote Repository Hosting:
+GitHub
+
+Agentic Coding:
+OpenAI Codex
+Google Antigravity
+Other explicitly approved coding agents
+
+Generative AI:
+ChatGPT and other explicitly approved AI providers through an application-level provider abstraction
+
+The different applications may use different programming languages while remaining in one repository. Each application keeps its own dependencies, build process, tests, and release process. They share documentation, API contracts, taxonomy contracts, localization keys, brand sources, and accepted project decisions.
+
+================================================================================
+2. DOMAIN, HOSTING, AND INFRASTRUCTURE
+================================================================================
+
+Primary Domain:
+MassageNexus.com
+
+Domain Registrar:
+Spaceship
+
+DNS / CDN / Edge Security:
+Undecided
+Leading option: Cloudflare
+
+Web Hosting:
+Azure App Service for Linux
+
+Production Database:
+Azure DocumentDB
+
+Development Database:
+MongoDB Community Server 8.3
+
+Development MongoDB Connection:
+mongodb://127.0.0.1:27018
+
+Production Media and Document Storage:
+Azure Blob Storage
+
+Development Runtime Storage:
+Laravel storage under apps/web/storage/app/
+
+Source Asset Archive:
+Repository assets/source/
+Optional external backup: OneDrive
+
+Email Hosting:
+Undecided
+Candidates:
+- Microsoft 365
+- Google Workspace
+- Zoho
+
+Search Indexing:
+Undecided
+Candidates:
+- Meilisearch
+- Azure AI Search
+
+Status Service:
+Future status.massagenexus.com
+
+CDN Host:
+Future cdn.massagenexus.com for public assets only
+
+Private or restricted media must not be exposed through a public CDN path. It must be delivered through an authorized server request or short-lived protected storage URL.
+
+================================================================================
+3. WEB APPLICATION STACK
+================================================================================
+
+Local PHP Installation Path:
+C:\php
+
+Server-Side Programming Language:
+PHP
+
+Current Local PHP Status:
+PHP 8.5.8 Thread Safe Win64 installed under C:\php.
+
+Installed PHP Build:
+- PHP version: 8.5.8
+- architecture: x64
+- thread safety: enabled
+- compiler: Visual C++ 2022
+- command-line SAPI: CLI
+
+PHP Version Policy:
+Keep PHP on a stable version supported by the installed Laravel release, required extensions, Apache integration, production hosting, and project packages. Future upgrades require compatibility verification before changing the active runtime.
+
+Backend Framework:
+Laravel
+
+Installed Laravel Version:
+Laravel Framework 13.20.0
+
+Laravel Application Path:
+C:\code\multiplatform\massage\apps\web
+
+Laravel Public Directory:
+C:\code\multiplatform\massage\apps\web\public
+
+Laravel Version Policy:
+Use Composer lock files to preserve installed framework and package versions. Framework upgrades must be deliberate, tested, documented, and checked against PHP, Livewire, Filament, MongoDB integration, and production-hosting compatibility.
+
+MongoDB Application Package:
+mongodb/laravel-mongodb 5.8.2 (official MongoDB package; PSR-4 namespace MongoDB\Laravel\), providing an Eloquent-compatible model and query builder for MongoDB. Verified compatible with Laravel 13.20.0, PHP 8.5.8, and MongoDB PHP extension 2.3.3.
+
+MongoDB Connection Direction:
+A dedicated `mongodb` Laravel database connection reads MONGODB_URI (default mongodb://127.0.0.1:27018 in local development) and MONGODB_DATABASE (massage_main in local development) from the environment. Laravel's own operational tables (sessions, cache, queued jobs, migrations repository) remain on the existing sqlite connection as framework-internal plumbing; this is an implementation convenience and does not change massage_main's status as the primary application data store.
+
+Server-Rendered Views:
+Laravel Blade
+
+Interactive Server-Driven Interface:
+Livewire
+
+Lightweight Browser Interaction:
+Alpine.js
+
+Version Policy:
+Use the current stable version compatible with the initialized Laravel, Livewire, Filament, and Vite stack.
+
+CSS Framework:
+Tailwind CSS
+
+Version Policy:
+Use the current stable version supported by the initialized Laravel and frontend toolchain.
+
+Frontend Asset Build Tool:
+Vite
+
+Private Workspace and Administration:
+Filament working choice, subject to compatibility review against Laravel 13.20.0, PHP 8.5.8, Livewire, MongoDB integration, and the accepted workspace architecture
+
+Rich-Text Editor:
+Tiptap open-source core working choice
+
+Rich-Text Storage Direction:
+- structured editor document data;
+- sanitized rendered HTML;
+- searchable plain text.
+
+The article editor may allow a wider set of formatting and embedded content than the review editor. Arbitrary scripts, arbitrary CSS, and uncontrolled HTML are not allowed.
+
+Vite prepares CSS and JavaScript for browsers. It does not turn the Laravel website into an EXE file. Development uses the Vite development server; deployment uses a production asset build.
+
+================================================================================
+4. FUTURE CLIENT APPLICATIONS
+================================================================================
+
+Future Mobile Application:
+Flutter
+
+Primary Mobile Language:
+Dart
+
+Possible Native Platform Code:
+- Kotlin or Java under Android when required;
+- Swift or Objective-C under iOS when required.
+
+Future Windows Administration Application:
+Deferred
+
+Possible Direction:
+- Flutter desktop if substantial code can be shared;
+- a separate desktop technology only if a real desktop-only requirement justifies it.
+
+The web, mobile, and desktop applications share the Laravel backend and API contracts. They do not duplicate the database, booking rules, permissions, or other business rules.
+
+================================================================================
+5. APPLICATION API
+================================================================================
+
+API Host Direction:
+api.massagenexus.com
+
+API Versioning:
+v1
+
+API Groups:
+- First-Party App API for future Massage Nexus mobile and desktop clients;
+- Partner API for approved spa, therapist, hotel, booking, and business systems;
+- Public API for specifically approved public data.
+
+Working Paths:
+- /v1/app/
+- /v1/partner/
+- /v1/public/
+
+API Contract:
+OpenAPI document under contracts/api/openapi/
+
+Web and API code share:
+- Models;
+- Actions;
+- Services;
+- Policies;
+- Repositories where used;
+- validation rules;
+- business decisions.
+
+The website returns HTML. APIs return JSON. The underlying business rules are not rewritten for each interface.
+
+API Authentication:
+Laravel Sanctum working direction
+
+Partner API Authorization:
+Token abilities or scopes plus ordinary user and record authorization
+
+Examples:
+- profile:read
+- hours:write
+- availability:write
+- booking:read
+- booking:write
+
+================================================================================
+6. AUTHENTICATION AND AUTHORIZATION
+================================================================================
+
+Web Authentication:
+Laravel's native Auth guard (session driver) with a MongoDB-backed Authenticatable user model,
+fully custom controllers and views. Laravel Fortify was evaluated but not installed for
+ordinary authentication; see docs/07-accounts/account-identity-registration-and-authentication-
+system.txt section 17 for the rationale. Fortify remains the candidate direction for TOTP and
+passkey support later.
+
+Password Hashing:
+Argon2id via config/hashing.php (HASH_DRIVER=argon2id)
+
+Possible Starter Scaffolding:
+Laravel Breeze may be used only if it remains useful at project initialization
+
+API Authentication:
+Laravel Sanctum
+
+Record Authorization:
+Laravel Policies
+
+Role and Permission Management:
+Spatie Laravel Permission working direction
+
+Broad request checks:
+Middleware
+
+Record-specific permission checks:
+Policies
+
+Submitted-data validation:
+Form Request classes and reusable Rules
+
+Hiding an interface button is not security. The server repeats authorization when a web, Livewire, mobile API, partner API, or private-file request is received.
+
+================================================================================
+7. STORAGE AND MEDIA SECURITY
+================================================================================
+
+Development Public Media:
+apps/web/storage/app/public/
+
+Development Private Documents:
+apps/web/storage/app/private/
+
+Upload Quarantine:
+apps/web/storage/app/quarantine/
+
+Temporary Uploads:
+apps/web/storage/app/temporary/
+
+Production Storage Containers or Logical Areas:
+- public-media;
+- private-document;
+- restricted-media;
+- quarantine;
+- temporary-upload;
+- backup.
+
+Private-file rules:
+- never place private files under apps/web/public/;
+- never expose the original private storage path in HTML or JavaScript;
+- check MediaPolicy or the relevant policy before delivery;
+- stream the file or issue a short-lived protected URL;
+- use UUID or ULID identifiers rather than predictable numeric file paths;
+- disable directory listing;
+- prevent public CDN caching of restricted files;
+- record sensitive access where auditing is justified.
+
+Native screenshot blocking may be used as an additional protection on supported mobile or desktop platforms. It is not the primary access-control system and cannot prevent a separate camera from photographing a screen.
+
+================================================================================
+8. LOCALIZATION
+================================================================================
+
+Static Interface Translation:
+Laravel language files under apps/web/lang/
+
+Examples:
+- navigation;
+- buttons;
+- form labels;
+- validation messages;
+- errors;
+- emails;
+- notifications;
+- workspace wording.
+
+Dynamic Content Translation:
+Database records
+
+Examples:
+- articles;
+- reviews;
+- profile descriptions;
+- service descriptions;
+- taxonomy labels;
+- media captions;
+- business-provided text.
+
+Shared Localization Contracts:
+contracts/localization/
+
+User-facing interface text should use translation keys rather than hard-coded English strings.
+
+Original user-generated content remains identifiable even when a translation is displayed.
+
+================================================================================
+9. SOURCE ASSETS AND BRAND FILES
+================================================================================
+
+Master Brand and Design Sources:
+assets/source/
+
+Website-Ready Brand Assets:
+apps/web/resources/images/brand/
+
+Preferred Logo Master:
+Adobe Illustrator .ai source plus clean SVG exports
+
+Web Logo Formats:
+- SVG for scalable interface use;
+- PNG or WebP for contexts requiring raster images;
+- favicon and application-icon exports.
+
+An automatic image trace may be used as a starting point, but a shaded AI-generated PNG logo should normally be manually reconstructed in Illustrator for a clean editable vector master.
+
+================================================================================
+10. AI, PROMPTS, AND SECRETS
+================================================================================
+
+Coding-Agent Root Instruction:
+AGENTS.md
+
+Detailed AI Use Reference:
+docs/ or the source document Massage Nexus - 02.02 - AI Use v1.00
+
+Runtime Prompt Sources:
+apps/web/resources/prompt/
+
+Prompts requiring editorial versioning may later use database records.
+
+Local Secrets:
+apps/web/.env
+
+Committed Secret Template:
+apps/web/.env.example
+
+Production Secrets:
+- Azure App Service application settings;
+- Azure Key Vault when appropriate;
+- managed identity where supported.
+
+Secrets must never be committed to Git, written into prompt files, embedded in JavaScript, placed in taxonomy data, or copied into public documentation.
+
+================================================================================
+11. DEVELOPMENT, TESTING, AND BUILD
+================================================================================
+
+PHP Dependencies:
+Composer
+
+Installed PHP Extension Installer:
+PIE 1.4.8
+
+Installed MongoDB PHP Driver:
+mongodb extension 2.3.3
+
+MongoDB Extension Installation Direction:
+Use PIE for supported PHP extensions where appropriate. The installed MongoDB extension must match PHP 8.5, Thread Safe, x64, and the active module API.
+
+Browser Dependencies:
+npm
+
+Flutter Dependencies:
+Dart pub
+
+Web Tests:
+PHPUnit or Pest, selected during implementation
+
+Flutter Tests:
+Flutter test framework when the mobile application begins
+
+Browser Asset Development:
+npm run dev
+
+Browser Production Build:
+npm run build
+
+Laravel Application Commands:
+php artisan ...
+
+The website remains a server application after deployment. The Vite build creates browser-ready CSS and JavaScript rather than a single executable program.
+
+Local Web Server:
+Apache HTTP Server 2.4.68-260617 Win64
+
+Local Apache Routing:
+- http://www.massagenexus.com/ -> C:\code\multiplatform\massage\apps\web\public
+- http://localhost/ -> C:\code\php
+
+Apache must serve Laravel only from apps/web/public/. The Laravel project root, .env file, vendor directory, private storage, documentation, and source assets must not be exposed as the web document root.
+
+================================================================================
+12. SCHEDULED AND BACKGROUND WORK
+================================================================================
+
+Scheduling:
+Laravel Scheduler
+
+Azure Execution Support:
+Azure WebJobs or another approved Azure scheduling arrangement
+
+Queue and Background Jobs:
+Laravel Queue
+
+Planned scheduled or queued work may include:
+- rebuild cached pages;
+- send reminders;
+- send newsletters;
+- generate reports;
+- clean temporary files;
+- refresh search indexes;
+- process uploaded media;
+- scan uploads in quarantine;
+- run backup tasks;
+- expire promotions;
+- update availability summaries;
+- prepare translations;
+- process notifications;
+- generate approved AI summaries;
+- detect duplicate records;
+- update analytics aggregates.
+
+================================================================================
+13. CURRENT VERIFIED LOCAL ENVIRONMENT
+================================================================================
+
+Verified installed components:
+- PHP 8.5.8 Thread Safe Win64 under C:\php;
+- Apache HTTP Server 2.4.68-260617 Win64;
+- Laravel Framework 13.20.0 under C:\code\multiplatform\massage\apps\web;
+- PIE 1.4.8;
+- MongoDB PHP extension 2.3.3;
+- MongoDB Community Server 8.3;
+- MongoDB connection at 127.0.0.1:27018;
+- mongodb/laravel-mongodb 5.8.2 installed and proven against the massage_main database (insert, read, delete through the Laravel query builder);
+- local Massage Nexus host routed to apps/web/public;
+- localhost routed to C:\code\php.
+
+================================================================================
+14. CURRENT UNRESOLVED TECHNOLOGY DECISIONS
+================================================================================
+
+- Apache module and PHP handler configuration to retain for development;
+- Cloudflare or another DNS/CDN/security arrangement;
+- email host;
+- Meilisearch versus Azure AI Search;
+- exact payment gateway;
+- exact SMS and push-notification providers;
+- exact map provider and commercial terms;
+- exact production queue backend;
+- final native mobile start date;
+- whether a separate Windows application will ever be needed;
+- final production AI providers and fallback order;
+- final rich-text sanitization package;
+- exact Filament use across operator, therapist, editorial, and administrator workspaces.
+
+These unresolved choices do not block documentation, taxonomy preparation, API contracts, source asset organization, or continued Laravel foundation work. The local PHP, Apache, Laravel, PIE, MongoDB driver, and MongoDB server foundations are now installed and verified as working components, subject to application-level integration and testing.

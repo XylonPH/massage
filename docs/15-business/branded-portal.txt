@@ -1,0 +1,740 @@
+Massage Nexus - Branded Portal
+Document Version: 0.10
+Date Created: 2026-07-14
+Revision Date: 2026-07-14
+Status: Future-Scope Concept
+Related Documents:
+- Massage Nexus - Site Structure Map v0.60
+- Massage Nexus - Massage Campus v0.10
+- Massage Nexus - Spa Classification v1.10
+
+DOCUMENT PURPOSE
+----------------
+This document records the early direction for Branded Portal, a future Massage Nexus capability that may allow spas, therapists, schools, training institutions, and other approved organizations to present a customized public website while continuing to use Massage Nexus data, accounts, booking, learning, content, and management systems.
+
+The concept may support Massage Nexus-hosted subdomains, customer-owned custom domains, and selected white-label presentation.
+
+This is not an immediate MVP commitment, final architecture, pricing plan, domain policy, database design, or legal agreement.
+
+================================================================================
+1. CONCEPT
+================================================================================
+
+A Branded Portal is a public-facing website or microsite whose presentation is controlled by an approved Massage Nexus tenant while its underlying platform services remain connected to Massage Nexus.
+
+The portal may look primarily like the spa, therapist, school, or institution's own website.
+
+Examples:
+
+therestingleaf.massagenexus.com
+example-spa.massagenexus.com
+learn.example-school.com
+www.example-spa.com
+
+The domain examples are illustrative only.
+
+The same organization may have:
+
+- a normal public profile inside Massage Nexus;
+- a branded portal;
+- a custom domain pointing to that portal;
+- access to the unified Massage Nexus workspace.
+
+The branded public website and the shared management workspace are separate presentation surfaces even when they use the same data and account system.
+
+================================================================================
+2. TERMINOLOGY
+================================================================================
+
+Tenant
+
+An organization, establishment, professional, school, or other approved account that manages its own records, staff access, settings, branding, and public portal within the shared Massage Nexus platform.
+
+Branded Portal
+
+The tenant-controlled public presentation generated through Massage Nexus.
+
+Tenant Subdomain
+
+A Massage Nexus-hosted subdomain assigned to one portal, such as:
+
+example-spa.massagenexus.com
+
+Custom Domain
+
+A domain or subdomain owned or controlled by the tenant and connected to the Massage Nexus-hosted portal, such as:
+
+www.example-spa.com
+booking.example-spa.com
+learn.example-school.com
+
+White Label
+
+A commercial presentation option where Massage Nexus branding is minimized or removed according to an approved plan and contractual terms.
+
+Powered by Massage Nexus
+
+An attribution model in which the tenant's brand leads the public presentation while Massage Nexus remains visibly credited as the technology or platform provider.
+
+================================================================================
+3. POSSIBLE TENANT TYPES
+================================================================================
+
+Initial future candidates include:
+
+- spa or wellness establishment;
+- independent therapist;
+- massage school;
+- vocational training provider;
+- academy or training center;
+- therapist collective;
+- home-service network;
+- wellness educator;
+- seller or wellness business when later supported.
+
+A portal account does not change the real-world classification of the business.
+
+For example:
+
+- a budget neighborhood spa does not become a premium spa because its website looks expensive;
+- a school does not become a spa merely because it offers a Massage Campus portal;
+- a therapist does not become a spa operator because a custom domain is connected;
+- a branded website does not prove verification, accreditation, ownership, or licensure.
+
+================================================================================
+4. PRESENTATION LEVELS
+================================================================================
+
+A future commercial structure may provide several levels.
+
+Level 1 — Standard Massage Nexus Profile
+
+- public profile on MassageNexus.com;
+- Massage Nexus visual identity;
+- standard profile layout;
+- no separate tenant domain.
+
+Level 2 — Branded Massage Nexus Subdomain
+
+- tenant name and logo;
+- selected theme controls;
+- tenant subdomain;
+- Massage Nexus attribution;
+- configurable public sections;
+- shared platform navigation where appropriate.
+
+Level 3 — Custom-Domain Portal
+
+- tenant-owned custom domain;
+- tenant branding;
+- configurable navigation;
+- connected Massage Nexus services;
+- Massage Nexus attribution according to plan;
+- domain verification and certificate management.
+
+Level 4 — White-Label Portal
+
+- tenant-owned custom domain;
+- tenant-first identity;
+- reduced or removed Massage Nexus branding where permitted;
+- advanced theme and content controls;
+- commercial and contractual restrictions;
+- stronger support and governance requirements.
+
+These levels are conceptual. Names, inclusions, pricing, limitations, and availability remain undecided.
+
+================================================================================
+5. PUBLIC PORTAL AND WORKSPACE SEPARATION
+================================================================================
+
+Public Branded Portal
+
+The public portal may include:
+
+- tenant logo and brand name;
+- custom colors and typography;
+- profile information;
+- services;
+- prices;
+- therapists or staff;
+- hours;
+- location and directions;
+- service areas;
+- contact information;
+- media galleries;
+- booking;
+- promotions;
+- articles;
+- announcements;
+- reviews or selected reputation information;
+- courses and programs for institutions;
+- enrollment information;
+- certificate verification;
+- public policies;
+- tenant-specific footer and attribution.
+
+Unified Massage Nexus Workspace
+
+Authorized people may manage:
+
+- tenant profile;
+- staff and permissions;
+- services;
+- prices;
+- schedules;
+- bookings;
+- media;
+- promotions;
+- articles and announcements;
+- portal theme;
+- navigation;
+- domain configuration;
+- analytics;
+- billing;
+- institution courses;
+- learners;
+- instructors;
+- attendance;
+- assessment;
+- certificates;
+- reports;
+- support;
+- audit history.
+
+The workspace may remain recognizably Massage Nexus even when the public portal is white-labeled.
+
+A custom public website should not require a completely separate administrative application for every tenant.
+
+================================================================================
+6. SHARED DATA AND CONTENT MODEL
+================================================================================
+
+The portal should reuse approved Massage Nexus records where practical rather than creating an unrelated duplicate database.
+
+Possible shared data includes:
+
+- establishment profile;
+- therapist profile;
+- organization profile;
+- service catalogue;
+- price information;
+- schedule and availability;
+- booking options;
+- contact and location;
+- media;
+- promotions;
+- articles;
+- announcements;
+- reviews and ratings;
+- verification status;
+- courses and programs;
+- instructor profiles;
+- certificate records.
+
+The public Massage Nexus profile and the tenant portal may show different approved subsets or presentation orders.
+
+The system must distinguish:
+
+- canonical shared record;
+- tenant-editable presentation;
+- platform-controlled verification or moderation data;
+- tenant-only internal records;
+- portal-specific page content;
+- public visibility settings.
+
+A tenant should not be able to change platform verification, moderation, rating, or independent review records merely by changing the branded portal.
+
+================================================================================
+7. BRANDING AND THEME DIRECTION
+================================================================================
+
+Possible controls include:
+
+- logo;
+- favicon;
+- brand name;
+- color set;
+- typography selection;
+- header layout;
+- footer layout;
+- hero media;
+- button style;
+- card style;
+- image treatment;
+- public navigation;
+- section order;
+- selected page templates;
+- social links;
+- contact actions;
+- attribution level.
+
+Customization should use controlled theme options rather than unrestricted code injection in early versions.
+
+A tenant theme must not compromise:
+
+- accessibility;
+- readability;
+- security;
+- mobile usability;
+- legal notices;
+- required platform disclosures;
+- emergency or safety information;
+- verification labels;
+- payment and booking clarity.
+
+The Massage Nexus theme system may provide a technical foundation, but tenant themes should be stored and managed separately from the platform's own global theme.
+
+================================================================================
+8. DOMAIN MODELS
+================================================================================
+
+Massage Nexus Subdomain
+
+A tenant may receive a subdomain such as:
+
+tenant-slug.massagenexus.com
+
+Reserved platform and language subdomains cannot be assigned to tenants.
+
+Possible reserved examples include:
+
+- www;
+- api;
+- cdn;
+- status;
+- demo;
+- app;
+- mail;
+- support;
+- language codes and approved language labels;
+- security-sensitive system words.
+
+Custom Domain
+
+A tenant may connect:
+
+- an apex domain;
+- a www domain;
+- another subdomain;
+- a learning-specific subdomain;
+- a booking-specific subdomain.
+
+Examples:
+
+example-spa.com
+www.example-spa.com
+learn.example-school.com
+booking.example-spa.com
+
+The exact supported domain types depend on the future hosting and certificate architecture.
+
+================================================================================
+9. CUSTOM-DOMAIN LIFECYCLE
+================================================================================
+
+A future domain connection process may include:
+
+1. tenant enters the requested domain;
+2. Massage Nexus provides verification instructions;
+3. tenant updates DNS records;
+4. Massage Nexus verifies domain control;
+5. the platform maps the domain to the correct tenant;
+6. TLS certificate is issued or connected;
+7. the portal is tested;
+8. the domain becomes active;
+9. renewal, failure, ownership change, or removal is monitored.
+
+The system should handle:
+
+- pending verification;
+- verification failure;
+- active mapping;
+- certificate provisioning;
+- certificate renewal;
+- DNS changes;
+- domain conflicts;
+- expired subscription;
+- suspended portal;
+- tenant closure;
+- domain transfer;
+- portal deletion;
+- security incidents.
+
+A domain must not be connected merely because a user typed it into a settings page.
+
+================================================================================
+10. TENANT ROUTING
+================================================================================
+
+Every incoming portal request must resolve to the correct tenant.
+
+Possible routing inputs include:
+
+- Massage Nexus tenant subdomain;
+- verified custom domain;
+- domain alias;
+- language or regional host;
+- portal path;
+- request context.
+
+The platform must prevent:
+
+- one tenant receiving another tenant's content;
+- domain collisions;
+- unauthorized domain claims;
+- cache leakage across tenants;
+- incorrect analytics attribution;
+- cross-tenant media access;
+- shared-session confusion;
+- insecure fallback to another portal.
+
+Exact routing, cache, hosting, edge-network, and deployment choices remain technical decisions for later architecture work.
+
+================================================================================
+11. IDENTITY, ACCOUNTS, AND ACCESS
+================================================================================
+
+The preferred direction is shared identity with tenant-specific authorization.
+
+A person may use one Massage Nexus account while holding different permissions for different tenants.
+
+Examples:
+
+- owner of one spa;
+- manager of another branch;
+- instructor in one institution;
+- learner in another institution;
+- therapist connected to several establishments;
+- portal editor without access to financial records.
+
+The system should distinguish:
+
+- platform identity;
+- tenant membership;
+- tenant role;
+- record-level permission;
+- portal-public visibility;
+- workspace access;
+- billing authority;
+- domain-management authority.
+
+A branded login page may lead into the shared identity system without creating an isolated password database for every tenant.
+
+================================================================================
+12. MULTITENANT DATA PROTECTION
+================================================================================
+
+Branded Portal requires strong tenant isolation.
+
+Future architecture must address:
+
+- tenant identifiers;
+- authorization on every protected request;
+- database partitioning or filtering;
+- storage paths;
+- media permissions;
+- cache separation;
+- search indexing;
+- logging;
+- analytics separation;
+- export permissions;
+- staff access;
+- support access;
+- audit history;
+- backup and restoration;
+- tenant deletion and retention.
+
+Theme customization and custom domains must not weaken the underlying access controls.
+
+This document does not choose a final single-database, database-per-tenant, collection-per-tenant, or hybrid storage strategy.
+
+================================================================================
+13. BOOKING AND CUSTOMER EXPERIENCE
+================================================================================
+
+A spa or therapist portal may eventually support:
+
+- service browsing;
+- price display;
+- availability;
+- therapist selection;
+- booking request;
+- confirmed booking;
+- deposit or payment;
+- cancellation;
+- rescheduling;
+- reminders;
+- contact or inquiry;
+- saved preferences;
+- booking history;
+- portal-specific promotions.
+
+The public portal may use tenant branding, but booking status and financial information must remain clear and truthful.
+
+The platform should disclose:
+
+- which business provides the service;
+- who receives payment;
+- applicable cancellation or refund rules;
+- whether the booking is confirmed or requested;
+- whether Massage Nexus is acting as a platform rather than the service provider.
+
+Exact payment and legal language remain deferred.
+
+================================================================================
+14. MASSAGE CAMPUS INTEGRATION
+================================================================================
+
+A school or training provider portal may eventually support:
+
+- institution homepage;
+- program catalogue;
+- course pages;
+- instructor pages;
+- enrollment information;
+- application or enrollment entry point;
+- learner login;
+- announcements;
+- schedule;
+- campus resources;
+- public certificate verification;
+- institution policies;
+- contact and location information.
+
+Internal education management remains inside the unified Massage Nexus workspace.
+
+The Branded Portal system should provide the public presentation and domain layer. Massage Campus should provide the learning, learner, instructor, assessment, certificate, and reporting capabilities.
+
+Neither subsystem should duplicate the other.
+
+================================================================================
+15. CONTENT AND EDITORIAL CONTROL
+================================================================================
+
+Portal content may come from several sources:
+
+- shared Massage Nexus profile data;
+- tenant-authored public pages;
+- tenant announcements;
+- tenant articles;
+- service and course records;
+- platform-controlled legal or verification information;
+- approved imported content;
+- selected Massage Nexus widgets or related content.
+
+The portal should identify which information is:
+
+- supplied by the tenant;
+- independently verified by Massage Nexus;
+- generated from platform records;
+- based on user reviews;
+- sponsored;
+- AI-assisted where disclosure is required.
+
+A tenant should not be able to hide required warnings, fabricate verification, delete independent reviews, or present platform-generated claims as official accreditation.
+
+================================================================================
+16. SEARCH, DISCOVERY, AND SEO DIRECTION
+================================================================================
+
+A branded portal and the corresponding Massage Nexus profile may contain overlapping information.
+
+Future planning must address:
+
+- canonical URLs;
+- duplicate content;
+- search-engine indexing;
+- structured data;
+- language versions;
+- sitemap generation;
+- tenant-controlled metadata;
+- platform-required metadata;
+- redirects after domain changes;
+- portal suspension;
+- profile-to-portal linking.
+
+A custom-domain portal should not automatically remove the tenant from Massage Nexus discovery unless a later commercial or privacy rule explicitly permits it.
+
+================================================================================
+17. ANALYTICS
+================================================================================
+
+Possible tenant analytics include:
+
+- portal visits;
+- page views;
+- service views;
+- course views;
+- booking actions;
+- enrollment actions;
+- contact actions;
+- source or campaign;
+- device category;
+- search terms;
+- popular content;
+- conversion events;
+- geographic summary;
+- custom-domain health;
+- page performance.
+
+Analytics must be separated by tenant and must follow privacy and consent requirements.
+
+Massage Nexus may need platform-level analytics that tenants cannot alter.
+
+================================================================================
+18. BILLING AND COMMERCIAL DIRECTION
+================================================================================
+
+Potential commercial items include:
+
+- monthly or annual portal plan;
+- branded subdomain;
+- custom-domain connection;
+- white-label level;
+- additional staff seats;
+- storage;
+- media processing;
+- analytics;
+- booking tools;
+- Massage Campus institution tools;
+- premium support;
+- migration or setup assistance.
+
+The system may need:
+
+- plan status;
+- trial;
+- billing owner;
+- invoice;
+- payment;
+- grace period;
+- suspension;
+- downgrade;
+- cancellation;
+- data export;
+- domain disconnection.
+
+No prices or plan names are approved in this version.
+
+================================================================================
+19. MODERATION, SAFETY, AND PLATFORM CONTROL
+================================================================================
+
+Massage Nexus must retain the ability to:
+
+- suspend a portal;
+- remove unsafe or unlawful content;
+- enforce prohibited-service policies;
+- preserve independent review integrity;
+- display required legal notices;
+- investigate impersonation;
+- respond to domain abuse;
+- handle disputed ownership;
+- remove fraudulent credentials;
+- protect users and learners;
+- retain audit records according to policy.
+
+White-label presentation does not eliminate platform responsibility or tenant obligations.
+
+================================================================================
+20. IMPLEMENTATION PRIORITY
+================================================================================
+
+Branded Portal is a substantial future platform capability.
+
+It introduces:
+
+- multitenancy;
+- domain verification;
+- TLS certificate management;
+- tenant routing;
+- theme customization;
+- billing;
+- tenant permissions;
+- content separation;
+- security;
+- support;
+- portal lifecycle management.
+
+It should not be included in the first Massage Nexus MVP.
+
+The recommended order is:
+
+1. stable Massage Nexus profiles and data;
+2. shared workspace and permissions;
+3. reusable theme and page components;
+4. booking or learning functions where approved;
+5. branded subdomain pilot;
+6. custom-domain pilot;
+7. white-label offering only after operations and support are mature.
+
+================================================================================
+21. RELATIONSHIP TO SPA CLASSIFICATION
+================================================================================
+
+Branded Portal is presentation and platform infrastructure.
+
+It is not:
+
+- Spa Market Class;
+- Spa Type;
+- Physical Setting;
+- Service Delivery Mode;
+- Access Model;
+- Operation Model;
+- Establishment Status;
+- verification;
+- claim status;
+- professional credential.
+
+Each real establishment retains its own classification regardless of whether it uses:
+
+- only a Massage Nexus profile;
+- a branded subdomain;
+- a custom domain;
+- a white-label portal.
+
+A single organization may manage several establishments, and each establishment may require its own profile and classification even when they share one brand or portal.
+
+================================================================================
+22. DEFERRED DECISIONS
+================================================================================
+
+The following remain open:
+
+- final tenant entity model;
+- supported tenant types at launch;
+- domain architecture;
+- wildcard subdomain policy;
+- reserved subdomain list;
+- custom-domain verification method;
+- TLS certificate provider and lifecycle;
+- tenant routing;
+- data-isolation strategy;
+- theme format;
+- custom page builder limits;
+- white-label attribution rules;
+- billing plans;
+- usage limits;
+- staff-seat model;
+- custom email;
+- portal-specific notifications;
+- booking and payment integration;
+- SEO and canonical URL rules;
+- portal-language model;
+- institution portal integration;
+- migration and export;
+- suspension and deletion behavior;
+- support obligations;
+- service-level commitments;
+- launch sequence.
+
+CURRENT DECISION SUMMARY
+------------------------
+- Branded Portal is a future multitenant website capability, not an immediate MVP feature.
+- It may support Massage Nexus profiles, tenant subdomains, custom domains, and later white-label presentation.
+- The public tenant portal and the unified Massage Nexus workspace remain separate presentation surfaces.
+- The portal should reuse shared Massage Nexus data rather than create an unrelated duplicate system.
+- Custom branding must not change classification, verification, rating, review, or credential facts.
+- Massage Campus institutions should use the same Branded Portal infrastructure.
+- Tenant isolation, domain verification, security, billing, and support must be solved before launch.

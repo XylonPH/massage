@@ -1,0 +1,812 @@
+Title: Massage Nexus Documentation Writing and Management Standard
+Document Version: 1.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-19
+Document Description: Defines how Massage Nexus internal and public-facing documentation is planned, written, named, versioned, split, updated, archived, translated, and supplied to AI. The objective is complete project-specific guidance with minimal repetition, manageable file sizes, and enough detail to prevent repeated clarification or implementation drift.
+
+================================================================================
+1. CORE PRINCIPLES
+================================================================================
+
+Documentation must be:
+- specific to Massage Nexus;
+- complete enough for one focused implementation or planning task;
+- compact enough for efficient AI and manual reading;
+- logically arranged;
+- clear about scope, constraints, decisions, dependencies, and unresolved matters;
+- free from obsolete, rejected, and duplicated concepts;
+- detailed where structure, taxonomy, data, policy, or edge cases require detail;
+- brief where a label, rule, or definition is sufficient.
+
+Compact does not mean incomplete.
+
+Complete does not mean long.
+
+Remove repetition, filler, generic advice, abandoned concepts, and unnecessary explanation
+before removing accepted rules, edge cases, examples, exact values, or decision logic.
+
+The preferred result is a document that the user can read once and consider sufficiently
+complete, while an AI can use it without repeatedly asking questions already answerable from
+the project context.
+
+================================================================================
+2. DOCUMENT CREATION PRINCIPLE
+================================================================================
+
+Do not generate a standard catalogue of documents merely because a shared project template
+lists them.
+
+Create a document when:
+- the project has a real need for it;
+- a concept has been discussed enough to preserve;
+- implementation depends on stable guidance;
+- several related decisions need one authoritative location;
+- repeated chat discussion should be replaced by a reusable specification;
+- the user explicitly requests an exploratory draft.
+
+A shared documentation catalogue is a reference, not a mandatory checklist.
+
+Do not create generic documents that contain assumptions the user has not accepted.
+
+When a concept has not been discussed thoroughly:
+- create a lower-version planning draft only when the user delegates the initial design;
+- identify uncertain decisions clearly;
+- do not present generic industry practice as an accepted Massage Nexus decision.
+
+When the concept has been discussed thoroughly:
+- create the project-specific document directly as version 1.00;
+- include the accepted decisions, constraints, exceptions, dependencies, and unresolved items;
+- avoid leaving obvious sections as “and others,” “to be completed,” or unexplained placeholders.
+
+================================================================================
+3. DOCUMENT TYPES AND HANDLING
+================================================================================
+
+3.1 Internal Specification
+
+Defines a project-specific system, feature, domain, workflow, policy requirement, taxonomy,
+architecture decision, or operational rule.
+
+Examples:
+- account and authentication;
+- translation;
+- booking;
+- research provenance;
+- analytics;
+- service classification.
+
+3.2 Internal Governance Standard
+
+Defines rules used across several specifications.
+
+Examples:
+- documentation writing;
+- naming;
+- security;
+- AI-assisted development;
+- testing.
+
+3.3 Roadmap
+
+Contains milestone order, dependencies, current stage, and exit conditions.
+
+It is not a full feature specification.
+
+3.4 Simple Checklist
+
+Contains concise actionable items and completion markers.
+
+A Simple Checklist does not require purpose, definitions, workflows, or other specification
+sections unless they are genuinely useful.
+
+3.5 Map or Registry
+
+Shows relationships, ownership, routes, files, domains, capabilities, or document locations.
+
+It should not repeat full specifications.
+
+3.6 Implementation Record
+
+Records the final implemented result, affected files, tests, migrations, security impact,
+known limitations, and follow-up work.
+
+It does not preserve the full debugging transcript.
+
+3.7 Data Research Record
+
+Preserves sources, dates, observations, confidence, contradictions, evidence, and verification.
+
+3.8 Working Notes
+
+Working Notes are the user’s private scratchpad.
+
+Rules:
+- they may be incomplete, inconsistent, repetitive, or temporary;
+- they do not need the standard internal document structure;
+- AI must not read, rewrite, clean, reorganize, or edit Working Notes unless the user
+  explicitly supplies them for that purpose;
+- Working Notes are not an implementation authority;
+- accepted decisions should later move into the appropriate specification.
+
+3.9 AI Chat Handoff
+
+The AI Chat Handoff is an AI-maintained continuity document.
+
+Rules:
+- AI creates and updates it;
+- the user does not ordinarily edit it manually;
+- it summarizes accepted decisions, relevant reasoning, unresolved questions, reusable
+  deliverables, technical state, and recommended continuation;
+- it must preserve earlier valid information unless explicitly superseded;
+- it is not more authoritative than a current subject-specific specification;
+- it normally remains in the user’s planning storage rather than the source repository.
+
+3.10 Public-Facing Documentation
+
+Explains Massage Nexus to users, providers, contributors, researchers, partners, or the
+public.
+
+Examples:
+- Help Center articles;
+- user and provider guides;
+- public research methodology;
+- Terms of Use;
+- Privacy Notice;
+- Community Guidelines;
+- public policies;
+- accessibility guidance;
+- release notes.
+
+Public documentation may be more explanatory and verbose than internal documentation.
+
+================================================================================
+4. INTERNAL DOCUMENT METADATA
+================================================================================
+
+Ordinary internal documents begin with:
+
+Title:
+Document Version:
+Date Created:
+Revision Date:
+Document Description:
+
+Do not include a Status field.
+
+Date Created:
+- records the original creation date;
+- remains unchanged after revision, renaming, moving, format change, or splitting.
+
+Revision Date:
+- records the date of the current file content.
+
+Document Description:
+- states what the document governs;
+- identifies its main boundary;
+- remains one compact paragraph.
+
+Optional metadata may follow when useful:
+- Related Documents;
+- Supersedes;
+- Applies To;
+- Public Counterpart.
+
+Do not add optional metadata merely to make the header look formal.
+
+Ordinary internal documents do not include a version-history section. Git, archived OneDrive
+versions, or a separate changelog preserves history.
+
+================================================================================
+5. DOCUMENT VERSIONING
+================================================================================
+
+5.1 First Version After Thorough Discussion
+
+Use version 1.00 when:
+- the concept has been discussed thoroughly before the file is created;
+- the important decision tree has been resolved;
+- the document is intended to preserve the accepted current direction;
+- remaining uncertainties are limited and clearly listed.
+
+Example:
+A fully discussed registration specification begins at v1.00.
+
+5.2 First Version Before Thorough Discussion
+
+Use a lower planning version when:
+- the user asks AI to create an exploratory document for later review;
+- major decisions remain open;
+- AI is allowed to propose the first structure;
+- the document is not yet an accepted project authority.
+
+Normal starting planning version:
+v0.10
+
+5.3 Promotion From Planning to Main Version
+
+When a lower-version document is later thoroughly discussed, reviewed, and accepted:
+- move it to v1.00;
+- do not continue from v0.90 to v0.100;
+- remove rejected and obsolete proposals;
+- retain accepted project-specific content;
+- keep the original Date Created.
+
+5.4 Later Revisions
+
+Use +0.10 for an accepted content, scope, structure, or decision revision.
+
+Examples:
+v1.00 -> v1.10
+v1.10 -> v1.20
+
+Use +0.01 only for a separately distributed minor correction when creating a new file is
+necessary.
+
+Use +1.00 for a fundamental redesign or replacement of the document’s governing model.
+
+5.5 Split Documents
+
+When one document is split into two or more documents:
+- every resulting document retains the original Date Created;
+- every resulting document retains the original document version at the time of the split;
+- splitting alone does not increment the version;
+- use descriptive titles;
+- use A, B, or another approved temporary split identifier when OneDrive numbering still
+  requires a relationship;
+- preserve all still-valid content;
+- remove duplicated shared sections;
+- create a compact parent or index when the relationship needs explanation;
+- archive the replaced combined file.
+
+Example:
+
+Original:
+Massage Nexus - 28 - Comparable Platforms and Resources v1.10.txt
+
+Split:
+Massage Nexus - 28A - Comparable Platforms v1.10.txt
+Massage Nexus - 28B - Data Research Resources v1.10.txt
+
+A later content revision may then become v1.20.
+
+5.6 Independent Versions
+
+Document versions are independent from:
+- product version;
+- database version;
+- API version;
+- taxonomy version;
+- dataset version;
+- source-code package version.
+
+================================================================================
+6. FILENAMES AND STORAGE STAGES
+================================================================================
+
+6.1 OneDrive and Early Planning Stage
+
+While a document is maintained in the user’s planning folders, use:
+
+[PROJECT NAME] - [NUMBER OR GROUP] - [DOCUMENT TITLE] v[VERSION].txt
+
+Purpose:
+- identify the project;
+- preserve the planning order;
+- show which attached file is newest;
+- allow AI to compare versions correctly;
+- support manual archiving.
+
+When a new version is accepted:
+- move the superseded file into the appropriate archive folder;
+- keep only the current version in the active planning folder.
+
+6.2 Repository Stage
+
+After a document is stable enough for the source repository:
+- place it in a logical semantic folder;
+- remove the numeric planning prefix and version from the filename itself;
+- keep the document version inside the file;
+- continue using a plain text file unless another format has a specific approved purpose;
+- use Git for revision history.
+
+The numeric prefix being removed is the OneDrive planning-stage filename prefix (see the example below). It does not forbid numbering the top-level docs/ topic folder itself for logical browsing order (see docs/01-project/file-and-folder-structure.txt section 5) — that folder-numbering choice is a Massage Nexus-specific decision, separate from this filename rule.
+
+Example:
+
+OneDrive:
+Massage Nexus - 20 - Translation System v1.20.txt
+
+Repository:
+docs/13-localization/translation-system.txt
+
+Do not convert a text file to Markdown merely because it has become stable.
+
+6.3 File Format
+
+Internal planning and repository documentation use UTF-8 plain text by default.
+
+Use another format only for a specific need:
+- DOCX for rich editing or formal reusable layouts;
+- PDF for approved publication or distribution;
+- structured machine-readable files for schemas, manifests, contracts, or datasets.
+
+A PDF is not the only editable source for a public legal or policy document.
+
+6.4 No Documentation Spreadsheet Requirement
+
+Do not require an Excel workbook merely to list documents, versions, or status.
+
+The active folder, Git, direct references, and a future lightweight generated manifest should
+provide sufficient organization.
+
+A document registry or manifest may be created when it materially improves AI routing or
+repository maintenance. It should not become a second manually maintained bureaucracy.
+
+================================================================================
+7. DOCUMENT STRUCTURE IS ADAPTIVE
+================================================================================
+
+No universal list of sections is mandatory.
+
+Choose sections according to the document’s purpose.
+
+Possible specification sections include:
+- purpose;
+- scope;
+- definitions;
+- accepted decisions;
+- rules;
+- constraints;
+- roles;
+- permissions;
+- data responsibilities;
+- lifecycle;
+- workflows;
+- validation;
+- edge cases;
+- security;
+- privacy;
+- localization;
+- accessibility;
+- routes;
+- testing;
+- dependencies;
+- implementation order;
+- open decisions.
+
+These are options, not a required template.
+
+Examples:
+
+Simple Checklist:
+- title and metadata;
+- grouped checklist items.
+
+Roadmap:
+- stages;
+- dependencies;
+- exit conditions;
+- current priority.
+
+Taxonomy:
+- purpose and scope;
+- hierarchy;
+- option records;
+- codes;
+- labels;
+- descriptions;
+- inclusion and exclusion rules;
+- relationships;
+- validation;
+- duplicate review.
+
+Working Notes:
+- any structure useful to the user.
+
+AI must not insert empty or irrelevant sections merely because they appear in this standard.
+
+================================================================================
+8. INTERNAL WRITING STYLE
+================================================================================
+
+Internal documents are always written in English.
+
+Use:
+- direct statements;
+- exact names, values, codes, routes, versions, and filenames;
+- short paragraphs;
+- compact lists;
+- explicit rules;
+- examples where they resolve ambiguity;
+- project terminology consistently;
+- technical detail when it is needed for implementation or decision-making.
+
+Avoid:
+- chatty introductions;
+- rhetorical questions;
+- repeated background;
+- generic “best practice” material unrelated to Massage Nexus;
+- marketing language;
+- duplicated definitions;
+- unnecessary teaching of concepts already understood;
+- unexplained jargon;
+- several names for the same concept;
+- “and others” as a substitute for a complete decision;
+- long lists that create the appearance of completeness through duplication.
+
+Explain an unfamiliar technical concept only enough for the user and implementer to understand
+its consequence.
+
+Do not define basic PHP, database, or web concepts merely to make the document longer when the
+user already understands them.
+
+When a new area is likely unfamiliar, such as a future mobile-platform concept:
+- explain it in clear project context;
+- define the decision consequence;
+- avoid turning the internal specification into a textbook.
+
+================================================================================
+9. COMPLETENESS STANDARD
+================================================================================
+
+An internal specification should let a human or AI complete a focused task without rebuilding
+the decision from chat.
+
+Preserve when relevant:
+- objective;
+- boundaries;
+- accepted behavior;
+- prohibited behavior;
+- roles and permissions;
+- states and transitions;
+- validation;
+- edge cases;
+- security and privacy constraints;
+- localization behavior;
+- accessibility requirements;
+- exact terminology;
+- examples;
+- dependencies;
+- tests or acceptance criteria;
+- unresolved decisions.
+
+A document is incomplete when it:
+- replaces required options with “and others”;
+- lists names without definitions;
+- omits codes needed for implementation;
+- ignores important edge cases;
+- leaves conflicting concepts unresolved without identifying them;
+- hides project-specific decisions behind generic advice;
+- requires several more conversations to understand the intended behavior.
+
+A document is overlong when it:
+- repeats the same rule;
+- preserves obsolete discussion;
+- includes generic material the user already knows;
+- duplicates another authoritative document;
+- mixes several independent responsibilities;
+- stores growing inventories inside a governing specification.
+
+================================================================================
+10. TAXONOMIES, CLASSIFICATIONS, AND STRUCTURED LISTS
+================================================================================
+
+Taxonomy work requires sufficient detail.
+
+Each approved option normally includes:
+- code;
+- label;
+- concise description;
+- inclusion rule;
+- exclusion or distinction where confusion is likely;
+- parent or relationship where applicable;
+- example where useful;
+- lifecycle or review note only when needed.
+
+Rules:
+- do not provide only lowercase option names without meaning;
+- do not use “and others” as a permanent option set;
+- do not create Other merely because the list may grow;
+- do not create two options that answer the same question;
+- do not mix several concepts in one slash-joined label;
+- do not increase length by adding redundant options;
+- compare new options against existing definitions;
+- preserve exact distinctions needed by search, filtering, validation, and analytics;
+- separate taxonomy rules from very large option catalogs when that improves maintenance.
+
+Completeness means the classification covers the accepted scope without logical gaps or
+duplicates. It does not mean generating the longest possible list.
+
+================================================================================
+11. FILE SIZE AND SPLITTING
+================================================================================
+
+File size is a review signal, not an automatic rule.
+
+Internal files:
+- aim to remain comfortably below 50 KB when practical;
+- review organization at approximately 50 KB;
+- strongly consider splitting at approximately 75 KB;
+- ordinarily avoid exceeding 100 KB;
+- allow a larger file only when it is one cohesive reusable unit and splitting would increase
+  confusion or AI context overhead.
+
+Public files:
+- may be longer because they explain concepts to a broad audience;
+- split by task, audience, or policy topic when navigation or translation becomes difficult;
+- legal documents may remain long when completeness requires one official text.
+
+Split by logical responsibility, not arbitrary page count.
+
+Common split candidates:
+- article-writing rules versus future article ideas;
+- prompt-writing rules versus prompt library;
+- taxonomy rules versus large option catalogs;
+- research methodology versus source directory;
+- documentation rules versus document inventory;
+- route principles versus large route catalog;
+- policy requirements versus public policy text;
+- system overview versus detailed child capabilities.
+
+A growing list should not make its governing specification indefinitely larger.
+
+When splitting:
+- keep one compact parent or index when necessary;
+- keep shared rules in one place;
+- avoid copying the same paragraphs into each child;
+- update references;
+- verify that no accepted content was lost.
+
+================================================================================
+12. UPDATING DOCUMENTS
+================================================================================
+
+Use the current authoritative version as the baseline.
+
+During revision:
+1. preserve still-valid decisions;
+2. add accepted new decisions;
+3. replace explicitly superseded decisions;
+4. remove obsolete and rejected concepts;
+5. remove repeated explanations;
+6. preserve exact values, names, codes, structures, and edge cases;
+7. keep unresolved matters identifiable;
+8. update related documents only where their meaning changed;
+9. check for contradictions;
+10. confirm that the result is understandable without chat history.
+
+Do not append every new conversation to the end.
+
+Do not preserve every rejected alternative.
+
+Retain a rejected direction only when forgetting it would likely cause the same design mistake
+again. State it briefly under a clearly named prohibition or rejected-direction section.
+
+================================================================================
+13. DOCUMENT AUTHORITY AND CROSS-REFERENCES
+================================================================================
+
+One authoritative document owns each decision.
+
+Examples:
+- username rules belong in Account and Authentication;
+- language priority belongs in Language Strategy;
+- translation workflow belongs in Translation System;
+- security controls belong in Security;
+- route inventory belongs in Site Structure Map;
+- milestone order belongs in Roadmap;
+- action completion belongs in Simple Checklist.
+
+Other documents may summarize or reference the decision.
+
+Do not maintain several complete copies of one rule.
+
+A cross-reference must identify the subject or exact document. Do not write:
+“Follow the other document.”
+
+Write:
+“Password storage follows Massage Nexus Account Identity Registration and Authentication
+System.”
+
+================================================================================
+14. AI USE OF DOCUMENTATION
+================================================================================
+
+AI must:
+- read only documents relevant to the current task;
+- prefer current project-specific documents over generic shared templates;
+- use the latest active OneDrive version when files are attached;
+- use the repository path and internal version after migration to Git;
+- avoid Working Notes unless explicitly instructed;
+- use AI Chat Handoff for continuity, not as a replacement for current specifications;
+- identify missing decisions rather than invent them;
+- create a complete first draft when enough project context exists;
+- preserve accepted detail while removing obsolete material;
+- avoid generating an entire generic documentation set automatically.
+
+A future repository manifest may help route AI to relevant files.
+
+The manifest should be lightweight and preferably generated or easily maintained. It should
+not require a separate spreadsheet or constant manual status updates.
+
+================================================================================
+15. PUBLIC-FACING DOCUMENTATION
+================================================================================
+
+Public documentation is written for a broad range of people and may explain concepts more
+fully than internal specifications.
+
+It should:
+- identify the audience;
+- explain unfamiliar terms;
+- use task-oriented headings;
+- provide step-by-step guidance where applicable;
+- include examples;
+- explain consequences and limitations;
+- place warnings near risky actions;
+- provide troubleshooting;
+- use accessible language;
+- provide contact, correction, reporting, or appeal routes where applicable;
+- identify the effective or last-updated date;
+- link to related guidance.
+
+Public documentation must not unnecessarily expose:
+- database technology;
+- programming language;
+- framework;
+- exact software versions;
+- internal paths;
+- repository structure;
+- server topology;
+- credentials;
+- private routes;
+- security-test details;
+- unpatched vulnerabilities;
+- internal moderation evidence.
+
+================================================================================
+16. MULTILINGUAL PUBLIC DOCUMENTATION
+================================================================================
+
+Internal documentation remains English-only.
+
+Public-facing documentation may be multilingual according to the Language Strategy and
+Translation System.
+
+Requirements:
+- preserve the English or original source;
+- preserve source revision;
+- identify target locale;
+- use approved terminology;
+- localize examples, dates, numbers, and cultural context when needed;
+- retain links and placeholders;
+- identify machine translation when required;
+- mark translations stale after source revision;
+- provide stronger human review for Terms, Privacy, security, payment, consent, intake,
+  safety, age eligibility, NSFW warnings, and serious moderation.
+
+Public content may be verbose enough for users to understand it without internal project
+knowledge.
+
+================================================================================
+17. INTERNAL REQUIREMENT AND PUBLIC DOCUMENT PAIRS
+================================================================================
+
+Keep internal requirements separate from public publication.
+
+Examples:
+
+Internal:
+Massage Nexus Privacy Notice and Data Protection Requirements
+
+Public:
+Massage Nexus Privacy Notice
+
+Internal requirements define:
+- required topics;
+- project decisions;
+- data flows;
+- implementation controls;
+- unresolved work;
+- review requirements.
+
+Public documents explain:
+- what the user needs to know;
+- what the user must do;
+- how the platform behaves;
+- available rights, controls, contacts, and remedies.
+
+Public legal and policy documents require their own:
+- document version;
+- effective date;
+- locale;
+- approval;
+- archived prior version;
+- acceptance or acknowledgment record where applicable.
+
+================================================================================
+18. IMPLEMENTATION RECORDS
+================================================================================
+
+Include:
+- capability or task;
+- governing specification;
+- final behavior;
+- files changed;
+- tests;
+- data migration;
+- security and privacy impact;
+- known limitations;
+- follow-up work;
+- implementation date.
+
+Exclude:
+- complete chat transcript;
+- every failed command;
+- repeated debugging;
+- discarded code;
+- large successful test output.
+
+Git preserves code history. The implementation record preserves meaning.
+
+================================================================================
+19. REVIEW CHECKLIST
+================================================================================
+
+Before accepting an internal document:
+- header fields are correct;
+- no Status field;
+- Date Created is preserved;
+- version follows discussion maturity;
+- purpose and scope are clear;
+- structure fits the document type;
+- accepted decisions are complete;
+- obsolete concepts are removed;
+- important details and edge cases remain;
+- generic filler is removed;
+- terminology is consistent;
+- taxonomies include needed definitions;
+- unresolved matters are identifiable;
+- no Working Notes content was used without permission;
+- internal language is English;
+- size and split need were reviewed;
+- filename matches its storage stage;
+- cross-references are accurate;
+- result can be understood without chat history.
+
+Before publishing a public document:
+- intended audience is clear;
+- wording matches current implementation;
+- explanation is sufficient;
+- no unnecessary technical disclosure;
+- privacy, security, safety, and accessibility are reviewed;
+- locale and translation review are correct;
+- effective or updated date is present;
+- contact, report, correction, or appeal route works;
+- old public version is archived;
+- indexing behavior is intentional.
+
+================================================================================
+20. CURRENT DECISIONS
+================================================================================
+
+- Internal documents use plain English.
+- Public-facing documents may be multilingual and more explanatory.
+- Internal headers do not include Status.
+- Thoroughly discussed documents begin at v1.00.
+- Exploratory documents begin below v1.00, normally v0.10.
+- An accepted lower-version document moves to v1.00.
+- Split documents retain the original Date Created and exact version at the time of split.
+- OneDrive planning filenames include project name, number, and version.
+- Repository filenames drop the OneDrive planning-stage numeric prefix and version; the semantic docs/ topic folder itself may still carry a Massage Nexus-specific browsing-order number.
+- Repository documents remain plain text unless another format has a specific purpose.
+- Working Notes are user-only unless explicitly supplied for AI work.
+- AI Chat Handoffs are AI-maintained continuity files.
+- No universal section template is required.
+- No standard documentation catalogue is automatically generated.
+- No Excel document-status workbook is required.
+- Files are reviewed for splitting near 50 KB and normally kept below 100 KB.
+- Growing idea lists and catalogs should be separated from governing specifications.
+- Complete means logically sufficient, not maximally long.
+- AI should aim for a project-specific, sufficiently complete first result rather than a fast,
+  generic, incomplete draft.

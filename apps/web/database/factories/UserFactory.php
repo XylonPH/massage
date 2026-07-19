@@ -4,8 +4,6 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory<User>
@@ -25,11 +23,17 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'username' => 'testuser'.fake()->unique()->numberBetween(1000, 9999999),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'password' => static::$password ??= 'a factory-generated test passphrase 2026',
+            'birth_date' => fake()->dateTimeBetween('-60 years', '-19 years')->format('Y-m-d'),
+            'status_account' => 'active',
+            'status_membership' => 'active',
+            'terms_accepted_at' => now(),
+            'terms_accepted_version' => config('legal.terms_version'),
+            'privacy_acknowledged_at' => now(),
+            'privacy_acknowledged_version' => config('legal.privacy_version'),
         ];
     }
 
@@ -40,6 +44,8 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+            'status_account' => 'pending_email_verification',
+            'status_membership' => 'pending_eligibility',
         ]);
     }
 }

@@ -1,0 +1,3467 @@
+Massage Nexus - Site Structure Map
+Document Version: 1.90
+Date Created: 2026-07-10
+Revision Date: 2026-07-18
+
+Document Description:
+This document maps the public website structure, profile page areas, content destinations, user-facing paths, unified workspace areas, system-facing routes, reserved route keywords, future Massage Campus areas, future Branded Portal entry points, and the accepted Booking and Appointment System surfaces for Massage Nexus. It is a site structure map, not a visible navigation menu, database schema, implementation schedule, or SEO XML sitemap.
+
+Related Documents:
+- Massage Nexus - 15 - Language Strategy v0.30
+- Massage Nexus - 20 - Translation System v0.20
+- Massage Nexus - Account Identity Registration and Authentication System v0.10
+- Massage Nexus - Terms of Use Requirements v0.10
+- Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
+- Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
+- Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
+- Massage Nexus - Analytics Statistics and Measurement System v0.10
+- Massage Nexus - Data Research Provenance and Field Verification System v0.10
+- Massage Nexus - 08 - Spa Profile v0.30
+- Massage Nexus - 10 - Therapist Profile v0.30
+- Massage Nexus - 21 - User Workspace v0.20
+- Massage Nexus - 31 - Booking and Appointment System v1.00
+- Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
+- Massage Nexus - 33 - Payment Cancellation Refund Payout and Financial Documents v0.10
+- Massage Nexus - 34 - Provider Scheduling Resource and Walk-In Management v0.10
+- Massage Nexus - 37 - Provider Finance Therapist Compensation and Booking Accounting v0.10
+
+================================================================================
+0. ROUTE CONVENTIONS
+================================================================================
+
+Primary domain:
+massagenexus.com
+
+
+Profile and section navigation behavior:
+- every important profile section keeps a real server-rendered URL;
+- opening a section URL directly returns a complete page for users and search engines;
+- after the initial page load, Livewire navigation may fetch the next section in the background and replace the page content without a traditional full browser refresh;
+- lazy loading may be used for heavy maps, galleries, reviews, and analytics;
+- JavaScript enhancement must not make the direct URL unusable.
+
+
+Default public site:
+massagenexus.com
+www.massagenexus.com
+
+Default language if no language setting exists:
+English
+
+Public language subdomain model:
+en.massagenexus.com
+fil.massagenexus.com
+taglish.massagenexus.com
+ceb.massagenexus.com
+hil.massagenexus.com
+id.massagenexus.com
+es.massagenexus.com
+pt-br.massagenexus.com
+ja.massagenexus.com
+th.massagenexus.com
+vi.massagenexus.com
+ko.massagenexus.com
+zh-hant.massagenexus.com
+zh-hans.massagenexus.com
+fr.massagenexus.com
+de.massagenexus.com
+ar.massagenexus.com
+
+Language notes:
+- English remains default.
+- Filipino is the primary local language.
+- taglish is a Filipino presentation alias or style, not a separate canonical language record.
+- public aliases are activated only when the relevant language and market are ready.
+- Cebuano and Hiligaynon remain separate languages.
+
+Public language subdomain route examples:
+en.massagenexus.com/article/falling-asleep-during-a-massage
+taglish.massagenexus.com/article/falling-asleep-during-a-massage
+es.massagenexus.com/article/falling-asleep-during-a-massage
+ko.massagenexus.com/article/falling-asleep-during-a-massage
+ceb.massagenexus.com/article/falling-asleep-during-a-massage
+
+Do not use first-level language prefixes:
+/en
+/taglish
+/es
+/ko
+/ceb
+/tl
+/fil
+/hil
+/war
+
+URL word style:
+lowercase
+dash-separated
+singular first-level keywords
+
+Entity route style:
+/spa/{spa-slug}
+/therapist/{therapist-slug}
+/product/{product-slug}
+/seller/{seller-slug}
+/user/{user-slug}
+/article/{article-slug}
+/review/{review-slug}
+/promo/{promo-slug}
+/comic/{comic-slug}
+/room/{room-slug}
+
+Browse route style:
+/browse/{browse-group}
+/browse/{browse-group}/{browse-slug}
+
+Workspace route style:
+Every registered user is a client by default in Personal context.
+/workspace
+/workspace/{workspace-area}
+/workspace/{workspace-area}/{workspace-section}
+/workspace/{workspace-area}/{workspace-section}/{record-id-or-slug}
+
+No role shortcut routes:
+/admin
+/editor
+/moderator
+
+No public account route:
+/account
+
+User profile route:
+/user/{user-slug}
+
+API route options:
+api.massagenexus.com
+
+Future branded portal host model:
+{portal-slug}.massagenexus.com
+verified custom domain mapped to a Massage Nexus tenant portal
+
+Reserved system, platform, and language subdomains cannot be assigned as tenant portal subdomains.
+
+A branded portal does not require a public first-level /portal route. Portal administration belongs under /workspace/portal.
+
+================================================================================
+1. FIRST-LEVEL WEBSITE STRUCTURE
+================================================================================
+
+/
+/browse
+/search
+/directory
+/map
+/compare
+/spa
+/therapist
+/service
+/product
+/seller
+/promo
+/article
+/news
+/campus
+/comic
+/room
+/review
+/chat
+/user
+/contribute
+/claim
+/verify
+/report
+/newsletter
+/download
+/research
+/statistics
+/about
+/help
+/contact
+/legal
+/policy
+/workspace
+/api
+
+================================================================================
+2. DOMAIN AND SUBDOMAIN STRUCTURE
+================================================================================
+
+massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /map
+    /compare
+    /spa
+    /therapist
+    /service
+    /product
+    /seller
+    /promo
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /chat
+    /user
+    /contribute
+    /claim
+    /verify
+    /report
+    /newsletter
+    /download
+    /about
+    /help
+    /contact
+    /legal
+    /policy
+    /workspace
+    /api
+
+www.massagenexus.com
+    /
+
+en.massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /spa
+    /therapist
+    /service
+    /product
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /user
+    /about
+    /help
+    /legal
+    /policy
+
+taglish.massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /spa
+    /therapist
+    /service
+    /product
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /user
+    /about
+    /help
+    /legal
+    /policy
+
+es.massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /spa
+    /therapist
+    /service
+    /product
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /user
+    /about
+    /help
+    /legal
+    /policy
+
+ko.massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /spa
+    /therapist
+    /service
+    /product
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /user
+    /about
+    /help
+    /legal
+    /policy
+
+ceb.massagenexus.com
+    /
+    /browse
+    /search
+    /directory
+    /spa
+    /therapist
+    /service
+    /product
+    /article
+    /news
+    /campus
+    /comic
+    /room
+    /review
+    /user
+    /about
+    /help
+    /legal
+    /policy
+
+api.massagenexus.com
+    /
+    /v1
+    /v1/listing
+    /v1/spa
+    /v1/therapist
+    /v1/product
+    /v1/seller
+    /v1/review
+    /v1/rating
+    /v1/media
+    /v1/booking
+    /v1/user
+    /v1/auth
+    /v1/webhook
+
+demo.massagenexus.com
+    /
+
+status.massagenexus.com
+    /
+
+cdn.massagenexus.com
+    /image
+    /video
+    /download
+
+{portal-slug}.massagenexus.com
+    /
+    /service
+    /therapist
+    /booking
+    /promo
+    /article
+    /contact
+    /course
+    /enroll
+    /certificate
+
+verified custom domain
+    /
+    maps to one approved Massage Nexus branded portal
+
+Branded portal notes:
+- exact portal routes depend on tenant type and enabled modules;
+- spa and therapist portals may emphasize services, booking, staff, media, and contact;
+- institution portals may emphasize programs, courses, enrollment, instructors, and certificate verification;
+- the secured management surface remains /workspace;
+- custom domains and tenant subdomains are future capabilities, not MVP requirements;
+- reserved Massage Nexus subdomains cannot be claimed by tenants.
+
+
+================================================================================
+2A. ACCOUNT, REGISTRATION, LOGIN, AND VERIFICATION
+================================================================================
+
+Public account routes:
+/register
+/login
+/logout
+/forgot-password
+/reset-password
+/verify-email
+/resend-verification
+/complete-profile
+
+Rules:
+- ordinary public browsing does not require registration;
+- Massage Nexus membership is 18+;
+- registration creates a shared network account and Massage Nexus membership;
+- an unverified user cannot enter the normal User Workspace;
+- username or email may be used to log in;
+- password managers and browser autofill must work;
+- policy acceptance and privacy acknowledgment are versioned;
+- sensitive recovery responses must not reveal account existence unnecessarily.
+
+No public /account route is required.
+Private account management remains under /workspace.
+
+================================================================================
+3. HOME
+================================================================================
+
+/
+
+Homepage areas:
+search-hero
+quick-filter
+featured-spa
+featured-therapist
+browse-area
+browse-massage-type
+latest-article
+latest-review
+promo-deal
+wellness-find
+trending-spa
+trending-therapist
+new-on-massage-nexus
+freshly-updated-profile
+wellness-journey-panel
+sponsored-placement
+community-pulse
+campus-quiz
+quote-of-the-day
+spa-day-campaign
+newsletter-signup
+footer
+
+================================================================================
+4. SEARCH
+================================================================================
+
+/search
+/search/spa
+/search/therapist
+/search/service
+/search/product
+/search/seller
+/search/article
+/search/news
+/search/campus
+/search/comic
+/search/review
+/search/promo
+/search/map
+
+Search result tabs:
+all
+spa
+therapist
+service
+product
+seller
+article
+news
+campus
+comic
+review
+promo
+map
+
+Search filters:
+keyword
+location
+area
+near-me
+open-now
+verified
+promo
+home-service
+massage-type
+service
+price-range
+market-class
+type-spa
+type-therapist
+amenity
+facility
+rating
+review-count
+availability
+language
+accessibility
+sort
+
+================================================================================
+5. BROWSE
+================================================================================
+
+/browse
+/browse/area
+/browse/area/{area-slug}
+/browse/city
+/browse/city/{city-slug}
+/browse/region
+/browse/region/{region-slug}
+/browse/country
+/browse/country/{country-slug}
+/browse/landmark
+/browse/landmark/{landmark-slug}
+/browse/massage-type
+/browse/massage-type/{massage-type-slug}
+/browse/service
+/browse/service/{service-slug}
+/browse/service-category
+/browse/service-category/{service-category-slug}
+/browse/type-spa
+/browse/type-spa/{type-spa-slug}
+/browse/type-therapist
+/browse/type-therapist/{type-therapist-slug}
+/browse/market-class
+/browse/market-class/{market-class-slug}
+/browse/price
+/browse/price/{price-slug}
+/browse/amenity
+/browse/amenity/{amenity-slug}
+/browse/facility
+/browse/facility/{facility-slug}
+/browse/home-service
+/browse/open-now
+/browse/verified
+/browse/promo
+/browse/trending
+/browse/new
+/browse/updated
+/browse/accessibility
+/browse/accessibility/{accessibility-slug}
+
+Browse result groups:
+spa
+therapist
+service
+product
+seller
+article
+news
+campus
+comic
+review
+promo
+
+================================================================================
+6. DIRECTORY
+================================================================================
+
+/directory
+/directory/spa
+/directory/therapist
+/directory/service
+/directory/product
+/directory/seller
+/directory/promo
+/directory/map
+/directory/new
+/directory/updated
+/directory/verified
+/directory/unclaimed
+/directory/claimed
+/directory/closed
+/directory/historical
+/directory/disputed
+
+Directory list item structure:
+thumbnail
+name
+location
+rating-summary
+review-count
+status-label
+verification-label
+market-class
+primary-type
+primary-services
+contact-action
+direction-action
+save-action
+compare-action
+
+================================================================================
+7. MAP
+================================================================================
+
+/map
+/map/spa
+/map/therapist
+/map/service
+/map/promo
+/map/area/{area-slug}
+/map/city/{city-slug}
+/map/massage-type/{massage-type-slug}
+/map/type-spa/{type-spa-slug}
+/map/near-me
+
+Map panels:
+search
+filter
+list
+map-marker
+selected-listing-card
+directions
+nearby
+service-area
+
+================================================================================
+8. COMPARE
+================================================================================
+
+/compare
+/compare/spa
+/compare/therapist
+/compare/service
+/compare/product
+
+Compare sections:
+summary
+rating
+review-count
+price
+service
+amenity
+facility
+availability
+location
+contact
+booking
+verification
+promo
+media
+notes
+
+================================================================================
+9. SPA PROFILE
+================================================================================
+
+/spa
+/spa/{spa-slug}
+/spa/{spa-slug}/service
+/spa/{spa-slug}/service/{service-slug}
+/spa/{spa-slug}/therapist
+/spa/{spa-slug}/price
+/spa/{spa-slug}/amenity
+/spa/{spa-slug}/facility
+/spa/{spa-slug}/hour
+/spa/{spa-slug}/contact
+/spa/{spa-slug}/location
+/spa/{spa-slug}/map
+/spa/{spa-slug}/gallery
+/spa/{spa-slug}/review
+/spa/{spa-slug}/rating
+/spa/{spa-slug}/promo
+/spa/{spa-slug}/booking
+/spa/{spa-slug}/booking/inquiry
+/spa/{spa-slug}/booking/request
+/spa/{spa-slug}/booking/availability
+/spa/{spa-slug}/booking/policy
+/spa/{spa-slug}/booking/waitlist
+/spa/{spa-slug}/booking/external
+/spa/{spa-slug}/verification
+/spa/{spa-slug}/update
+/spa/{spa-slug}/similar
+/spa/{spa-slug}/report
+/spa/{spa-slug}/claim
+/spa/{spa-slug}/correction
+
+Spa profile page sections:
+profile-header
+status-label
+verification-label
+claim-label
+market-class-label
+type-spa-label
+short-description
+overview
+services
+pricing
+packages
+therapists
+staffing
+amenities
+facilities
+hours
+availability
+booking-options
+booking-enablement-status
+unclaimed-booking-notice
+availability-summary
+therapist-selection
+group-booking
+delivery-context
+product-choice
+client-supplied-item-policy
+intake-and-consent-summary
+cancellation-policy
+payment-option
+waitlist-option
+contact-information
+social-links
+location
+map
+directions
+parking
+transit
+nearby-landmark
+service-area
+media-gallery
+menu-images
+facility-images
+service-images
+review-summary
+rating-summary
+criteria-ratings
+reviews
+discussions
+promos
+vouchers
+gift-cards
+announcements
+updates
+verification
+source-notes
+correction-history
+similar-spas
+report-action
+claim-action
+save-action
+follow-action
+share-action
+compare-action
+
+Spa profile tabs:
+overview
+service
+therapist
+price
+gallery
+review
+promo
+location
+about
+
+Spa status labels:
+claimed
+verified
+unclaimed
+closed
+moved
+renamed
+disputed
+historical
+premium
+sponsored
+
+================================================================================
+10. THERAPIST PROFILE
+================================================================================
+
+/therapist
+/therapist/{therapist-slug}
+/therapist/{therapist-slug}/service
+/therapist/{therapist-slug}/service/{service-slug}
+/therapist/{therapist-slug}/price
+/therapist/{therapist-slug}/schedule
+/therapist/{therapist-slug}/availability
+/therapist/{therapist-slug}/service-area
+/therapist/{therapist-slug}/spa
+/therapist/{therapist-slug}/credential
+/therapist/{therapist-slug}/contact
+/therapist/{therapist-slug}/gallery
+/therapist/{therapist-slug}/review
+/therapist/{therapist-slug}/rating
+/therapist/{therapist-slug}/promo
+/therapist/{therapist-slug}/booking
+/therapist/{therapist-slug}/booking/inquiry
+/therapist/{therapist-slug}/booking/request
+/therapist/{therapist-slug}/booking/availability
+/therapist/{therapist-slug}/booking/policy
+/therapist/{therapist-slug}/booking/waitlist
+/therapist/{therapist-slug}/booking/external
+/therapist/{therapist-slug}/verification
+/therapist/{therapist-slug}/similar
+/therapist/{therapist-slug}/report
+/therapist/{therapist-slug}/claim
+/therapist/{therapist-slug}/correction
+
+Therapist profile page sections:
+profile-header
+status-label
+verification-label
+claim-label
+market-class-label
+type-therapist-label
+short-bio
+overview
+specialties
+massage-types
+techniques
+services
+pricing
+schedule
+availability
+service-area
+home-service-options
+spa-affiliations
+business-affiliations
+credentials
+certificates
+experience
+contact-information
+social-links
+media-gallery
+review-summary
+rating-summary
+criteria-ratings
+reviews
+discussions
+promos
+booking-options
+booking-enablement-status
+unclaimed-booking-notice
+professional-context-selection
+delivery-context
+travel-fee
+intake-and-consent-summary
+cancellation-policy
+payment-option
+waitlist-option
+verification
+source-notes
+similar-therapists
+report-action
+claim-action
+save-action
+follow-action
+share-action
+compare-action
+
+Therapist profile tabs:
+overview
+service
+schedule
+gallery
+review
+promo
+credential
+about
+
+Therapist status labels:
+freelance
+spa-based
+home-service
+on-call
+in-house
+verified
+unavailable
+inactive
+claimed
+unclaimed
+disputed
+premium
+sponsored
+
+================================================================================
+11. SERVICE PROFILE
+================================================================================
+
+/service
+/service/{service-slug}
+/service/{service-slug}/overview
+/service/{service-slug}/expect
+/service/{service-slug}/method
+/service/{service-slug}/technique
+/service/{service-slug}/history
+/service/{service-slug}/safety
+/service/{service-slug}/training
+/service/{service-slug}/credential
+/service/{service-slug}/spa
+/service/{service-slug}/therapist
+/service/{service-slug}/product
+/service/{service-slug}/price
+/service/{service-slug}/gallery
+/service/{service-slug}/video
+/service/{service-slug}/article
+/service/{service-slug}/review
+/service/{service-slug}/rating
+/service/{service-slug}/discussion
+/service/{service-slug}/promo
+/service/{service-slug}/source
+/service/{service-slug}/related
+/service/{service-slug}/report
+/service/{service-slug}/correction
+
+Service profile page sections:
+service-header
+preferred-service-name
+alternate-name
+regional-name
+local-language-name
+transliteration
+service-sector
+service-domain
+service-family
+short-description
+overview
+what-to-expect
+typical-setting
+typical-duration
+family-specific-classification
+method
+technique-framework
+named-technique
+tool
+product-use
+treatment-setup
+participant-arrangement
+history
+origin
+cultural-context
+evidence-context
+safety
+contraindication
+consent
+professional-scope
+regulation-level
+training
+qualification
+credential-relationship
+related-establishments
+provider-menu-items
+price-range
+related-therapists
+capability
+related-products
+related-facilities
+media-gallery
+video
+diagram
+article
+review-summary
+rating-summary
+discussion
+promotion
+related-services
+commonly-confused-services
+clinical-counterpart
+sensitive-counterpart
+source-notes
+revision-history
+save-action
+follow-action
+share-action
+compare-action
+report-action
+correction-action
+
+Service profile tabs:
+overview
+expect
+method
+history
+safety
+training
+spa
+therapist
+product
+gallery
+review
+related
+source
+
+Provider menu boundary:
+- service_main owns the normalized service profile;
+- establishment_service owns an establishment's exact commercial menu item;
+- practitioner_service owns an independent therapist's exact commercial menu item;
+- prices, durations, packages, add-ons, facility access, booking rules, and availability remain provider-specific;
+- a branded provider menu name does not automatically receive a universal service profile.
+
+================================================================================
+12. PRODUCT PROFILE
+================================================================================
+
+/product
+/product/{product-slug}
+/product/{product-slug}/seller
+/product/{product-slug}/version
+/product/{product-slug}/price
+/product/{product-slug}/gallery
+/product/{product-slug}/review
+/product/{product-slug}/rating
+/product/{product-slug}/promo
+/product/{product-slug}/article
+/product/{product-slug}/service
+/product/{product-slug}/verification
+/product/{product-slug}/report
+/product/{product-slug}/correction
+
+Product profile page sections:
+profile-header
+status-label
+verification-label
+sponsored-label
+short-description
+overview
+product-type
+product-class
+brand
+seller
+price
+availability
+version
+variant
+ingredient-or-material
+size
+scent
+use-case
+safety-note
+instructions
+related-services
+related-spas
+related-therapists
+related-articles
+media-gallery
+review-summary
+rating-summary
+criteria-ratings
+reviews
+discussions
+promos
+seller-information
+shipping-or-pickup
+return-policy
+source-notes
+report-action
+save-action
+share-action
+compare-action
+
+Product profile tabs:
+overview
+seller
+version
+gallery
+review
+promo
+safety
+about
+
+================================================================================
+13. SELLER PROFILE
+================================================================================
+
+/seller
+/seller/{seller-slug}
+/seller/{seller-slug}/product
+/seller/{seller-slug}/promo
+/seller/{seller-slug}/gallery
+/seller/{seller-slug}/review
+/seller/{seller-slug}/rating
+/seller/{seller-slug}/verification
+/seller/{seller-slug}/contact
+/seller/{seller-slug}/report
+/seller/{seller-slug}/claim
+/seller/{seller-slug}/correction
+
+Seller profile page sections:
+profile-header
+status-label
+verification-label
+claim-label
+short-description
+overview
+seller-type
+business-information
+product-list
+featured-products
+promos
+contact-information
+social-links
+shipping-or-delivery
+pickup-options
+media-gallery
+review-summary
+rating-summary
+reviews
+discussions
+verification
+source-notes
+report-action
+claim-action
+save-action
+follow-action
+share-action
+
+Seller profile tabs:
+overview
+product
+promo
+gallery
+review
+contact
+about
+
+================================================================================
+14. PROMO, VOUCHER, AND GIFT CARD
+================================================================================
+
+/promo
+/promo/{promo-slug}
+/promo/voucher
+/promo/voucher/{voucher-slug}
+/promo/voucher/{voucher-slug}/terms
+/promo/voucher/{voucher-slug}/redeem
+/promo/gift-card
+/promo/gift-card/{gift-card-slug}
+/promo/gift-card/{gift-card-slug}/terms
+/promo/gift-card/{gift-card-slug}/redeem
+/promo/{promo-slug}/spa
+/promo/{promo-slug}/therapist
+/promo/{promo-slug}/product
+/promo/{promo-slug}/seller
+/promo/{promo-slug}/campaign
+/promo/{promo-slug}/terms
+
+Promo page sections:
+promo-header
+offer-label
+validity-period
+business-link
+service-link
+product-link
+seller-link
+campaign-link
+terms
+redemption-instructions
+limitations
+availability
+voucher-option
+gift-card-option
+related-promos
+report-action
+save-action
+share-action
+
+Protected promo route words:
+voucher
+gift-card
+campaign
+terms
+redeem
+new
+edit
+preview
+
+================================================================================
+15. ARTICLE AND NEWS
+================================================================================
+
+/article
+/article/{article-slug}
+/article/category
+/article/category/{article-category-slug}
+/article/tag
+/article/tag/{tag-slug}
+/article/author
+/article/author/{author-slug}
+/article/neural-agent
+/article/neural-agent/{neural-agent-slug}
+/article/audience
+/article/audience/{audience-slug}
+/article/archive
+/article/search
+
+/news
+/news/{news-slug}
+/news/category
+/news/category/{news-category-slug}
+/news/tag
+/news/tag/{tag-slug}
+/news/archive
+
+Article page sections:
+article-header
+title
+short-description
+category
+target-audience
+tag-list
+author-list
+neural-agent
+published-date
+updated-date
+reading-duration
+media-placement
+body
+related-spa
+related-therapist
+related-product
+related-service
+related-article
+related-review
+related-sources
+thumbs-up-down
+comment-area
+share-action
+save-action
+report-action
+
+Content types under article area:
+article
+editorial
+feature
+announcement
+platform-update
+practical-guide
+explainer
+interview
+opinion
+roundup
+
+Protected article route words:
+category
+tag
+author
+neural-agent
+audience
+archive
+search
+new
+edit
+preview
+
+================================================================================
+16. MASSAGE CAMPUS
+================================================================================
+
+Status:
+future major module
+not required for the initial Massage Nexus MVP
+
+Public learning routes:
+/campus
+/campus/course
+/campus/course/{course-slug}
+/campus/path
+/campus/path/{path-slug}
+/campus/lesson
+/campus/lesson/{lesson-slug}
+/campus/topic
+/campus/topic/{topic-slug}
+/campus/quiz
+/campus/quiz/{quiz-slug}
+/campus/knowledge-check
+/campus/knowledge-check/{knowledge-check-slug}
+/campus/glossary
+/campus/glossary/{term-slug}
+/campus/resource
+/campus/download
+/campus/progress
+/campus/certificate
+/campus/certificate/{certificate-code}
+/campus/certificate/{certificate-code}/verify
+
+Future institution-facing public routes:
+/campus/institution
+/campus/institution/{institution-slug}
+/campus/institution/{institution-slug}/program
+/campus/institution/{institution-slug}/course
+/campus/institution/{institution-slug}/instructor
+/campus/institution/{institution-slug}/admission
+/campus/institution/{institution-slug}/enroll
+/campus/institution/{institution-slug}/contact
+
+Campus page sections:
+campus-header
+featured-course
+learning-path
+lesson-list
+course-list
+quiz-list
+knowledge-check-list
+glossary-list
+topic-list
+progress-summary
+certificate-summary
+institution-list
+related-article
+related-service
+related-spa
+related-therapist
+related-product
+related-resource
+
+Campus lesson sections:
+lesson-header
+lesson-body
+media-placement
+knowledge-check
+quiz
+assignment
+practical-note
+related-glossary-term
+related-article
+related-discussion
+completion-action
+thumbs-up-down
+
+Campus course sections:
+course-header
+course-description
+institution
+instructor
+module-list
+lesson-list
+delivery-mode
+language
+requirements
+assessment-summary
+practical-requirement
+completion-rule
+certificate-direction
+enrollment-action
+progress-summary
+related-resource
+
+Campus institution sections:
+institution-header
+short-description
+program-list
+course-list
+instructor-list
+admission-information
+delivery-mode
+location
+contact
+media
+announcement
+certificate-verification
+branded-portal-link
+
+Campus boundary notes:
+- an institution profile does not automatically create a spa listing;
+- a public Training Clinic should have its own establishment profile when it serves clients;
+- ordinary completion certificates must not be presented as regulated professional credentials;
+- practical massage competency requires human observation or supervised assessment;
+- exact institution, learner, course, and certificate data structures are deferred.
+
+17. COMIC
+================================================================================
+
+/comic
+/comic/{comic-slug}
+
+Comic page sections:
+comic-header
+comic-title
+comic-image
+caption
+comic-transcript
+cast-list
+tag-list
+published-date
+related-article
+related-campus-topic
+thumbs-up-down
+comment-area
+share-action
+save-action
+report-action
+previous-next-navigation
+
+Comic archive and discovery:
+- /comic is the archive and browsing destination;
+- tag filtering, pagination, search, and previous-next controls may be implemented as page behavior or query parameters;
+- separate public cast and mascot routes are not required at the current stage.
+
+Comic feature:
+the-resting-leaf
+
+Protected comic route words:
+archive
+tag
+cast
+mascot
+new
+edit
+preview
+
+18. ROOM
+================================================================================
+
+/room
+/room/{room-slug}
+/room/live
+/room/scheduled
+/room/theme
+/room/theme/{theme-slug}
+/room/campaign
+/room/campaign/{campaign-slug}
+
+Room page sections:
+room-header
+room-theme
+room-schedule
+ambient-audio
+calming-visual
+prompt
+live-chat
+sponsored-moment
+campaign-card
+related-article
+related-campus-topic
+related-product
+related-promo
+join-action
+save-action
+share-action
+report-action
+
+Room examples:
+calm-breathing
+sleep-reset
+world-massage-day
+spa-day
+rainy-evening
+quiet-break
+
+================================================================================
+19. REVIEW
+================================================================================
+
+/review
+/review/{review-slug}
+/review/spa
+/review/therapist
+/review/product
+/review/category
+/review/category/{review-category-slug}
+/review/tag
+/review/tag/{tag-slug}
+/review/author
+/review/author/{user-slug}
+/review/latest
+/review/trending
+/review/helpful
+
+Review page sections:
+review-header
+review-title
+short-description
+review-target
+review-author
+anonymous-label
+visit-context
+rating-summary
+criteria-rating
+review-body
+media-attachments
+service-received
+therapist-involved
+disclosure
+verification-context
+published-date
+updated-date
+reading-duration
+thumbs-up-down
+comment-area
+owner-response
+therapist-response
+seller-response
+related-reviews
+related-discussions
+share-action
+save-action
+report-action
+
+Review target types:
+spa
+therapist
+product
+
+Protected review route words:
+spa
+therapist
+product
+category
+tag
+author
+latest
+trending
+helpful
+new
+edit
+preview
+
+================================================================================
+20. TARGET DISCUSSIONS AND CHAT
+================================================================================
+
+Target discussion locations:
+/spa/{spa-slug}/discussion
+/therapist/{therapist-slug}/discussion
+/product/{product-slug}/discussion
+/seller/{seller-slug}/discussion
+/article/{article-slug}/discussion
+/review/{review-slug}/discussion
+/comic/{comic-slug}/discussion
+/room/{room-slug}/discussion
+
+/chat
+/chat/room
+/chat/room/{chat-room-slug}
+/chat/live
+/chat/event
+/chat/event/{event-slug}
+
+Discussion page sections:
+discussion-header
+question-or-topic
+body
+reply-list
+comment-list
+reaction-list
+helpful-vote
+pinned-note
+operator-response
+therapist-response
+moderator-note
+related-spa
+related-therapist
+related-product
+related-article
+related-review
+share-action
+follow-action
+report-action
+
+================================================================================
+21. USER PROFILE
+================================================================================
+
+/user
+/user/{user-slug}
+/user/{user-slug}/review
+/user/{user-slug}/rating
+/user/{user-slug}/comment
+/user/{user-slug}/article
+/user/{user-slug}/media
+/user/{user-slug}/badge
+/user/{user-slug}/reputation
+/user/{user-slug}/contribution
+/user/{user-slug}/following
+/user/{user-slug}/saved
+
+User profile page sections:
+profile-header
+avatar
+cover-image
+display-name
+bio
+public-role-label
+reputation-label
+badge-summary
+point-summary
+review-list
+rating-summary
+discussion-list
+comment-list
+article-list
+media-list
+contribution-summary
+saved-public-list
+following-public-list
+privacy-controlled-activity
+report-action
+follow-action
+message-action
+
+User profile tabs:
+overview
+review
+article
+media
+badge
+reputation
+contribution
+following
+saved
+
+================================================================================
+22. BUSINESS, OPERATOR, AND ADVERTISER HELP AREAS
+================================================================================
+
+/help/spa-operator
+/help/therapist
+/help/seller
+/help/advertiser
+/help/claim
+/help/verification
+/help/pricing
+/help/advertising
+/help/premium
+/help/analytics
+/help/business-guideline
+/help/professional-guideline
+/help/media-guideline
+/help/review-response
+
+/contact/business
+/contact/spa-operator
+/contact/therapist
+/contact/seller
+/contact/advertising
+
+Business and operator help sections:
+spa-owner-information
+spa-operator-information
+therapist-information
+seller-information
+advertiser-information
+claim-information
+verification-information
+premium-listing-information
+sponsored-placement-information
+analytics-information
+business-guidelines
+professional-guidelines
+media-guidelines
+review-response-guidelines
+
+================================================================================
+23. CONTRIBUTION, CLAIMING, VERIFICATION, AND REPORTING
+================================================================================
+
+/contribute
+/contribute/spa
+/contribute/therapist
+/contribute/product
+/contribute/seller
+/contribute/service
+/contribute/media
+/contribute/correction
+/contribute/closure
+/contribute/duplicate
+/contribute/source
+/contribute/translation
+/contribute/article
+/contribute/review
+/contribute/status
+/contribute/history
+
+/claim
+/claim/spa
+/claim/spa/{spa-slug}
+/claim/therapist
+/claim/therapist/{therapist-slug}
+/claim/seller
+/claim/seller/{seller-slug}
+/claim/status
+/claim/history
+
+/verify
+/verify/profile
+/verify/profile/{verification-code}
+/verify/staff
+/verify/staff/{credential-code}
+/verify/contact
+/verify/contact/{verification-code}
+/verify/document
+/verify/document/{verification-code}
+/verify/claim
+/verify/claim/{verification-code}
+/verify/media
+/verify/media/{verification-code}
+
+/report
+/report/spa
+/report/therapist
+/report/product
+/report/seller
+/report/review
+/report/comment
+/report/media
+/report/user
+/report/safety
+/report/spam
+/report/duplicate
+/report/correction
+/report/status
+/report/history
+
+Submission status sections:
+draft
+submitted
+under-review
+needs-info
+approved
+rejected
+published
+merged
+closed
+archived
+
+================================================================================
+24. NEWSLETTER
+================================================================================
+
+/newsletter
+/newsletter/subscribe
+/newsletter/unsubscribe
+/newsletter/preference
+/newsletter/archive
+/newsletter/archive/{newsletter-slug}
+/newsletter/category
+/newsletter/category/{newsletter-category-slug}
+
+Newsletter page sections:
+newsletter-header
+subscribe-form
+preference-form
+archive-list
+newsletter-issue
+campaign-link
+article-link
+promo-link
+campus-link
+unsubscribe-action
+
+================================================================================
+25. DOWNLOAD
+================================================================================
+
+/download
+/download/{download-slug}
+/download/category
+/download/category/{download-category-slug}
+/download/tag
+/download/tag/{tag-slug}
+/download/campus
+/download/correspondent
+/download/media-kit
+/download/brand
+/download/form
+/download/checklist
+/download/template
+/download/report
+
+Download item sections:
+download-header
+file-title
+file-type
+file-size
+version
+language
+category
+tag-list
+related-article
+related-campus-topic
+related-operator-page
+access-rule
+download-action
+report-action
+
+Download types:
+pdf
+docx
+xlsx
+pptx
+image
+zip
+form
+checklist
+template
+media-kit
+brand-kit
+
+
+================================================================================
+25A. RESEARCH AND DATA METHODOLOGY
+================================================================================
+
+/research
+/research/methodology
+/research/source
+/research/verification
+/research/freshness
+/research/coverage
+/research/country
+/research/country/{country-slug}
+/research/city
+/research/city/{city-slug}
+/research/contribute
+/research/correction
+/research/correspondent
+
+Research page sections:
+methodology
+source-type
+verification-level
+freshness
+coverage
+known-limitations
+country-priority
+city-priority
+contribution
+correction
+last-updated
+
+Public research pages do not expose private evidence, personal contact details, internal
+confidence notes, private residential locations, or security information.
+
+================================================================================
+25B. PUBLIC STATISTICS
+================================================================================
+
+/statistics
+/statistics/platform
+/statistics/directory
+/statistics/country
+/statistics/country/{country-slug}
+/statistics/city
+/statistics/city/{city-slug}
+/statistics/service
+/statistics/research
+/statistics/translation
+/statistics/social
+/statistics/methodology
+
+Public statistics:
+- use approved aggregates;
+- identify metric definition, timeframe, date, and caveat;
+- distinguish research coverage from true market size;
+- do not expose provider-private, client-private, intake, security, or small-group data;
+- do not publish an unexplained world-best ranking.
+
+================================================================================
+26. ABOUT
+================================================================================
+
+/about
+/about/massage-nexus
+/about/mission
+/about/vision
+/about/story
+/about/team
+/about/correspondent
+/about/neural-agent
+/about/neural-agent/{neural-agent-slug}
+/about/mascot
+/about/mascot/{mascot-slug}
+/about/nexus-cast
+/about/the-resting-leaf
+/about/brand
+/about/press
+/about/advertise
+/about/partner
+/about/contact
+
+Neural Agent public pages:
+/about/neural-agent/atlas-blackwell
+/about/neural-agent/avery-knox
+/about/neural-agent/brio-nexus
+/about/neural-agent/cassian-brooks
+/about/neural-agent/clara-hartmann
+/about/neural-agent/diether-solano
+/about/neural-agent/elliot-kane
+/about/neural-agent/ember-sato
+/about/neural-agent/felix-tanaka
+/about/neural-agent/juno-reyes
+/about/neural-agent/kenji-navarro
+/about/neural-agent/maya-kestrel
+/about/neural-agent/noah-calder
+/about/neural-agent/nora-solis
+/about/neural-agent/paolo-vergara
+/about/neural-agent/rafael-cross
+/about/neural-agent/yara-mendoza
+
+About page sections:
+platform-description
+mission
+vision
+scope
+boundary
+team
+roles
+brand
+press
+contact
+
+================================================================================
+27. HELP AND DOCUMENTATION
+================================================================================
+
+/help
+/help/search
+/help/directory
+/help/service-profile
+/help/spa-profile
+/help/therapist-profile
+/help/product-profile
+/help/seller-profile
+/help/user-profile
+/help/review
+/help/rating
+/help/reputation
+/help/badge
+/help/point
+/help/ember
+/help/inkling
+/help/contribution
+/help/claim
+/help/verification
+/help/report
+/help/safety
+/help/message
+/help/booking
+/help/booking/quick
+/help/booking/detailed
+/help/booking/group
+/help/booking/intake
+/help/booking/privacy
+/help/booking/translation
+/help/booking/cancellation
+/help/booking/payment
+/help/booking/walk-in
+/help/booking/provider
+/help/booking/therapist
+/help/loyalty
+/help/promo
+/help/newsletter
+/help/download
+/help/language
+/help/accessibility
+/help/privacy-setting
+/help/security
+/help/therapist
+/help/seller
+/help/advertiser
+/help/correspondent
+/help/editor
+/help/moderator
+/help/admin
+/help/faq
+/help/contact-support
+/help/status
+/help/roadmap
+/help/changelog
+/help/release-note
+
+Help page types:
+faq
+how-to
+platform-guide
+release-note-explainer
+changelog-explainer
+policy-explainer
+troubleshooting
+contact-support
+status
+roadmap
+changelog
+
+================================================================================
+28. CONTACT
+================================================================================
+
+/contact
+/contact/support
+/contact/business
+/contact/therapist
+/contact/seller
+/contact/advertising
+/contact/press
+/contact/correspondent
+/contact/report
+/contact/feedback
+
+Contact form types:
+general
+support
+business
+spa-operator
+therapist
+seller
+advertising
+press
+correspondent
+report
+feedback
+bug
+feature-request
+
+================================================================================
+29. LEGAL AND POLICY
+================================================================================
+
+/legal
+/legal/terms
+/legal/privacy
+/legal/copyright
+/legal/cookie
+/legal/licensing
+/legal/disclaimer
+/legal/accessibility
+/legal/contact
+
+/policy
+/policy/community-guideline
+/policy/review
+/policy/rating
+/policy/reputation
+/policy/sponsored-content
+/policy/advertising
+/policy/nsfw-mature-restricted-content
+/policy/safety
+/policy/verification
+/policy/claim
+/policy/takedown
+/policy/correction
+/policy/dispute
+/policy/data-retention
+/policy/account-deletion
+/policy/booking
+/policy/booking-privacy
+/policy/intake
+/policy/consent
+/policy/payment
+/policy/refund
+/policy/cancellation
+/policy/no-show
+/policy/provider-loyalty
+/policy/financial-document
+/policy/contributor
+/policy/media-upload
+/policy/ai-generated-content
+/policy/moderation
+/policy/law-enforcement-request
+/policy/sensitive-topic
+
+================================================================================
+30. WORKSPACE ROOT
+================================================================================
+
+/workspace
+/workspace/home
+/workspace/profile
+/workspace/identity
+/workspace/setting
+/workspace/language
+/workspace/theme
+/workspace/security
+/workspace/privacy
+/workspace/notification
+/workspace/message
+/workspace/saved
+/workspace/following
+/workspace/history
+/workspace/review
+/workspace/rating
+/workspace/badge
+/workspace/reputation
+/workspace/point
+/workspace/ember
+/workspace/inkling
+/workspace/booking
+/workspace/calendar
+/workspace/loyalty
+/workspace/finance
+/workspace/listing
+/workspace/claim
+/workspace/service
+/workspace/media
+/workspace/product
+/workspace/seller
+/workspace/promo
+/workspace/contribution
+/workspace/correspondent
+/workspace/editorial
+/workspace/campus
+/workspace/portal
+/workspace/comic
+/workspace/room
+/workspace/newsletter
+/workspace/download
+/workspace/advertising
+/workspace/analytics
+/workspace/research
+/workspace/translation
+/workspace/moderation
+/workspace/verification
+/workspace/database
+/workspace/system
+/workspace/api
+/workspace/support
+/workspace/audit
+
+Workspace home sections:
+workspace-summary
+my-profile
+my-activity
+managed-profile
+pending-task
+notification
+message
+review-summary
+rating-summary
+contribution-summary
+booking-summary
+analytics-summary
+moderation-summary
+editorial-summary
+system-alert
+quick-action
+
+Workspace access views:
+member-view
+operator-view
+therapist-view
+seller-view
+learner-view
+instructor-view
+assessor-view
+institution-admin-view
+advertiser-view
+contributor-view
+correspondent-view
+editor-view
+moderator-view
+admin-view
+founder-view
+
+Access-view notes:
+- these are permission-aware workspace presentations, not separate top-level sites;
+- one account may hold different roles for different establishments, institutions, courses, or tenants;
+- Massage Campus and Branded Portal remain future modules.
+
+================================================================================
+31. WORKSPACE PERSONAL AREAS
+================================================================================
+
+/workspace/profile
+/workspace/profile/public
+/workspace/profile/avatar
+/workspace/profile/cover
+/workspace/profile/bio
+/workspace/profile/privacy
+/workspace/profile/activity
+
+/workspace/identity
+/workspace/identity/display-name
+/workspace/identity/email
+/workspace/identity/phone
+/workspace/identity/social-link
+/workspace/identity/verification
+
+/workspace/setting
+/workspace/setting/account
+/workspace/setting/security
+/workspace/setting/privacy
+/workspace/setting/language
+/workspace/setting/theme
+/workspace/setting/notification
+/workspace/setting/accessibility
+/workspace/setting/deletion
+
+/workspace/language
+/workspace/language/interface
+/workspace/language/content
+/workspace/language/conversation
+/workspace/language/submission
+/workspace/language/translation
+/workspace/language/format
+/workspace/language/site-override
+
+/workspace/security
+/workspace/security/password
+/workspace/security/session
+/workspace/security/device
+/workspace/security/two-factor
+/workspace/security/passkey
+/workspace/security/recovery-code
+/workspace/security/login-history
+/workspace/security/security-event
+
+/workspace/saved
+/workspace/saved/spa
+/workspace/saved/therapist
+/workspace/saved/service
+/workspace/saved/product
+/workspace/saved/seller
+/workspace/saved/article
+/workspace/saved/news
+/workspace/saved/campus
+/workspace/saved/comic
+/workspace/saved/review
+/workspace/saved/promo
+/workspace/saved/search
+
+/workspace/following
+/workspace/following/spa
+/workspace/following/therapist
+/workspace/following/seller
+/workspace/following/user
+/workspace/following/article
+
+/workspace/history
+/workspace/history/view
+/workspace/history/search
+/workspace/history/booking
+/workspace/history/service
+/workspace/history/session
+/workspace/history/manual
+/workspace/history/import
+/workspace/history/export
+/workspace/history/budget
+/workspace/history/analytics
+/workspace/history/review
+/workspace/history/rating
+/workspace/history/reward
+
+================================================================================
+32. WORKSPACE COMMUNICATION AREAS
+================================================================================
+
+/workspace/notification
+/workspace/notification/all
+/workspace/notification/booking
+/workspace/notification/review
+/workspace/notification/contribution
+/workspace/notification/claim
+/workspace/notification/verification
+/workspace/notification/promo
+/workspace/notification/system
+/workspace/notification/security
+
+/workspace/message
+/workspace/message/inbox
+/workspace/message/sent
+/workspace/message/archive
+/workspace/message/spa
+/workspace/message/therapist
+/workspace/message/seller
+/workspace/message/support
+/workspace/message/report
+
+/workspace/chat
+/workspace/chat/room
+/workspace/chat/event
+/workspace/chat/moderation
+/workspace/chat/log
+
+================================================================================
+33. WORKSPACE REVIEW, RATING, AND REWARD AREAS
+================================================================================
+
+/workspace/review
+/workspace/review/my
+/workspace/review/draft
+/workspace/review/submitted
+/workspace/review/published
+/workspace/review/rejected
+/workspace/review/received
+/workspace/review/response
+/workspace/review/report
+/workspace/review/revision
+
+/workspace/rating
+/workspace/rating/my
+/workspace/rating/spa
+/workspace/rating/therapist
+/workspace/rating/product
+/workspace/rating/content-reaction
+/workspace/rating/history
+
+/workspace/badge
+/workspace/badge/my
+/workspace/badge/earned
+/workspace/badge/available
+/workspace/badge/progress
+
+/workspace/reputation
+/workspace/reputation/summary
+/workspace/reputation/history
+/workspace/reputation/category
+/workspace/reputation/status
+
+/workspace/point
+/workspace/point/summary
+/workspace/point/history
+/workspace/point/source
+
+/workspace/ember
+/workspace/ember/balance
+/workspace/ember/history
+/workspace/ember/earn
+/workspace/ember/spend
+/workspace/ember/redeem
+
+/workspace/inkling
+/workspace/inkling/balance
+/workspace/inkling/history
+/workspace/inkling/earn
+/workspace/inkling/spend
+/workspace/inkling/unlock
+
+================================================================================
+34. WORKSPACE BOOKING AND CALENDAR AREAS
+================================================================================
+
+/workspace/booking
+/workspace/booking/plan
+/workspace/booking/inquiry
+/workspace/booking/request
+/workspace/booking/quote
+/workspace/booking/upcoming
+/workspace/booking/past
+/workspace/booking/cancelled
+/workspace/booking/rescheduled
+/workspace/booking/pending
+/workspace/booking/approved
+/workspace/booking/rejected
+/workspace/booking/waitlist
+/workspace/booking/check-in
+/workspace/booking/session
+/workspace/booking/intake
+/workspace/booking/consent
+/workspace/booking/policy
+/workspace/booking/payment
+/workspace/booking/deposit
+/workspace/booking/refund
+/workspace/booking/tip
+/workspace/booking/feedback
+/workspace/booking/rebook
+/workspace/booking/reminder
+/workspace/booking/default
+/workspace/booking/export
+
+Personal booking sections:
+personal-appointment-plan
+booking-party
+participant-list
+service-line
+provider
+professional-context
+schedule
+therapist-selection
+pressure-preference
+body-area-preference
+product-choice
+client-supplied-item
+attire-and-draping
+accessibility
+eligibility-result
+private-intake
+consent
+policy
+price
+payment
+status
+translation
+history
+feedback
+loyalty
+reward
+
+/workspace/calendar
+/workspace/calendar/my
+/workspace/calendar/spa
+/workspace/calendar/therapist
+/workspace/calendar/availability
+/workspace/calendar/resource
+/workspace/calendar/travel
+/workspace/calendar/waitlist
+/workspace/calendar/sync
+/workspace/calendar/export
+
+/workspace/loyalty
+/workspace/loyalty/provider
+/workspace/loyalty/progress
+/workspace/loyalty/reward
+/workspace/loyalty/package
+/workspace/loyalty/history
+
+/workspace/finance
+/workspace/finance/payment
+/workspace/finance/refund
+/workspace/finance/payout
+/workspace/finance/tip
+/workspace/finance/invoice
+/workspace/finance/compensation
+/workspace/finance/reconciliation
+/workspace/finance/export
+
+Personal context shows the user's client bookings and history by default.
+Provider, therapist, scheduling, loyalty, and finance tools appear only in authorized managed contexts.
+
+================================================================================
+35. WORKSPACE LISTING AND CLAIM AREAS
+================================================================================
+
+/workspace/listing
+/workspace/listing/spa
+/workspace/listing/therapist
+/workspace/listing/product
+/workspace/listing/seller
+/workspace/listing/service
+/workspace/listing/promo
+/workspace/listing/status
+/workspace/listing/history
+
+/workspace/listing/spa/{spa-id}
+/workspace/listing/spa/{spa-id}/profile
+/workspace/listing/spa/{spa-id}/service
+/workspace/listing/spa/{spa-id}/price
+/workspace/listing/spa/{spa-id}/therapist
+/workspace/listing/spa/{spa-id}/amenity
+/workspace/listing/spa/{spa-id}/facility
+/workspace/listing/spa/{spa-id}/hour
+/workspace/listing/spa/{spa-id}/contact
+/workspace/listing/spa/{spa-id}/location
+/workspace/listing/spa/{spa-id}/media
+/workspace/listing/spa/{spa-id}/promo
+/workspace/listing/spa/{spa-id}/booking
+/workspace/listing/spa/{spa-id}/booking/setting
+/workspace/listing/spa/{spa-id}/booking/policy
+/workspace/listing/spa/{spa-id}/booking/intake-template
+/workspace/listing/spa/{spa-id}/booking/eligibility
+/workspace/listing/spa/{spa-id}/booking/request
+/workspace/listing/spa/{spa-id}/booking/assignment
+/workspace/listing/spa/{spa-id}/booking/walk-in
+/workspace/listing/spa/{spa-id}/booking/queue
+/workspace/listing/spa/{spa-id}/booking/waitlist
+/workspace/listing/spa/{spa-id}/booking/resource
+/workspace/listing/spa/{spa-id}/booking/payment
+/workspace/listing/spa/{spa-id}/booking/refund
+/workspace/listing/spa/{spa-id}/booking/loyalty
+/workspace/listing/spa/{spa-id}/booking/feedback
+/workspace/listing/spa/{spa-id}/finance
+/workspace/listing/spa/{spa-id}/finance/payout
+/workspace/listing/spa/{spa-id}/finance/compensation
+/workspace/listing/spa/{spa-id}/finance/invoice
+/workspace/listing/spa/{spa-id}/finance/reconciliation
+/workspace/listing/spa/{spa-id}/analytics
+/workspace/listing/spa/{spa-id}/verification
+/workspace/listing/spa/{spa-id}/response
+/workspace/listing/spa/{spa-id}/history
+
+/workspace/listing/therapist/{therapist-id}
+/workspace/listing/therapist/{therapist-id}/profile
+/workspace/listing/therapist/{therapist-id}/service
+/workspace/listing/therapist/{therapist-id}/price
+/workspace/listing/therapist/{therapist-id}/schedule
+/workspace/listing/therapist/{therapist-id}/availability
+/workspace/listing/therapist/{therapist-id}/service-area
+/workspace/listing/therapist/{therapist-id}/credential
+/workspace/listing/therapist/{therapist-id}/media
+/workspace/listing/therapist/{therapist-id}/promo
+/workspace/listing/therapist/{therapist-id}/booking
+/workspace/listing/therapist/{therapist-id}/booking/setting
+/workspace/listing/therapist/{therapist-id}/booking/policy
+/workspace/listing/therapist/{therapist-id}/booking/intake-template
+/workspace/listing/therapist/{therapist-id}/booking/eligibility
+/workspace/listing/therapist/{therapist-id}/booking/request
+/workspace/listing/therapist/{therapist-id}/booking/waitlist
+/workspace/listing/therapist/{therapist-id}/booking/payment
+/workspace/listing/therapist/{therapist-id}/booking/refund
+/workspace/listing/therapist/{therapist-id}/booking/feedback
+/workspace/listing/therapist/{therapist-id}/finance
+/workspace/listing/therapist/{therapist-id}/finance/compensation
+/workspace/listing/therapist/{therapist-id}/finance/tip
+/workspace/listing/therapist/{therapist-id}/finance/export
+/workspace/listing/therapist/{therapist-id}/analytics
+/workspace/listing/therapist/{therapist-id}/verification
+/workspace/listing/therapist/{therapist-id}/response
+/workspace/listing/therapist/{therapist-id}/history
+
+/workspace/claim
+/workspace/claim/spa
+/workspace/claim/therapist
+/workspace/claim/seller
+/workspace/claim/product
+/workspace/claim/pending
+/workspace/claim/approved
+/workspace/claim/rejected
+/workspace/claim/history
+/workspace/claim/document
+/workspace/claim/contact
+/workspace/claim/proof
+
+================================================================================
+36. WORKSPACE SERVICE, PRODUCT, SELLER, PROMO, AND SHOP AREAS
+================================================================================
+
+/workspace/service
+/workspace/service/list
+/workspace/service/create
+/workspace/service/edit
+/workspace/service/menu-name
+/workspace/service/normalized-type
+/workspace/service/price
+/workspace/service/duration
+/workspace/service/add-on
+/workspace/service/availability
+/workspace/service/tag
+
+/workspace/product
+/workspace/product/list
+/workspace/product/create
+/workspace/product/edit
+/workspace/product/version
+/workspace/product/variant
+/workspace/product/price
+/workspace/product/inventory
+/workspace/product/gallery
+/workspace/product/review
+/workspace/product/rating
+/workspace/product/promo
+/workspace/product/seller
+/workspace/product/report
+/workspace/product/verification
+
+/workspace/seller
+/workspace/seller/profile
+/workspace/seller/product
+/workspace/seller/order
+/workspace/seller/promo
+/workspace/seller/contact
+/workspace/seller/verification
+/workspace/seller/analytics
+/workspace/seller/setting
+
+/workspace/promo
+/workspace/promo/list
+/workspace/promo/create
+/workspace/promo/edit
+/workspace/promo/schedule
+/workspace/promo/service
+/workspace/promo/product
+/workspace/promo/seller
+/workspace/promo/spa
+/workspace/promo/therapist
+/workspace/promo/campaign
+/workspace/promo/analytics
+
+/workspace/promo/voucher/list
+/workspace/promo/voucher/create
+/workspace/promo/voucher/edit
+/workspace/promo/voucher/redeem
+/workspace/promo/voucher/history
+
+/workspace/promo/gift-card/list
+/workspace/promo/gift-card/create
+/workspace/promo/gift-card/edit
+/workspace/promo/gift-card/redeem
+/workspace/promo/gift-card/history
+
+
+================================================================================
+36A. WORKSPACE RESEARCH AREAS
+================================================================================
+
+/workspace/research
+/workspace/research/dashboard
+/workspace/research/assignment
+/workspace/research/lead
+/workspace/research/visit
+/workspace/research/interview
+/workspace/research/source
+/workspace/research/evidence
+/workspace/research/observation
+/workspace/research/verification
+/workspace/research/contradiction
+/workspace/research/stale
+/workspace/research/social
+/workspace/research/country
+/workspace/research/city
+/workspace/research/district
+/workspace/research/coverage
+/workspace/research/import
+/workspace/research/export
+/workspace/research/history
+/workspace/research/methodology
+
+================================================================================
+36B. WORKSPACE TRANSLATION AREAS
+================================================================================
+
+/workspace/translation
+/workspace/translation/dashboard
+/workspace/translation/interface
+/workspace/translation/reference
+/workspace/translation/content
+/workspace/translation/provider
+/workspace/translation/user-content
+/workspace/translation/legal
+/workspace/translation/assigned
+/workspace/translation/missing
+/workspace/translation/draft
+/workspace/translation/submitted
+/workspace/translation/review
+/workspace/translation/stale
+/workspace/translation/approved
+/workspace/translation/published
+/workspace/translation/rejected
+/workspace/translation/glossary
+/workspace/translation/memory
+/workspace/translation/coverage
+/workspace/translation/import
+/workspace/translation/export
+/workspace/translation/history
+
+================================================================================
+36C. WORKSPACE ANALYTICS AREAS
+================================================================================
+
+/workspace/analytics
+/workspace/analytics/personal
+/workspace/analytics/provider
+/workspace/analytics/profile
+/workspace/analytics/search
+/workspace/analytics/contact
+/workspace/analytics/booking
+/workspace/analytics/review
+/workspace/analytics/promo
+/workspace/analytics/social
+/workspace/analytics/research
+/workspace/analytics/translation
+/workspace/analytics/referral
+/workspace/analytics/export
+/workspace/analytics/definition
+/workspace/analytics/privacy
+
+================================================================================
+37. WORKSPACE MEDIA AND GALLERY AREAS
+================================================================================
+
+/workspace/media
+/workspace/media/upload
+/workspace/media/image
+/workspace/media/video
+/workspace/media/document
+/workspace/media/menu
+/workspace/media/profile
+/workspace/media/article
+/workspace/media/campus
+/workspace/media/comic
+/workspace/media/product
+/workspace/media/review
+/workspace/media/pending
+/workspace/media/approved
+/workspace/media/rejected
+/workspace/media/flagged
+/workspace/media/source
+/workspace/media/permission
+/workspace/media/nsfw-level
+/workspace/media/ai-label
+/workspace/media/duplicate
+/workspace/media/processing
+/workspace/media/archive
+
+
+Media target groups:
+spa-profile
+therapist-profile
+product-profile
+seller-profile
+article-body
+news-body
+campus-lesson
+comic-episode
+review-attachment
+discussion-attachment
+promo-card
+download-item
+workspace-record
+
+Media types:
+photo
+video
+menu-image
+facility-image
+service-image
+product-image
+profile-image
+article-image
+comic-image
+campus-image
+review-image
+discussion-image
+document
+pdf
+slide-deck
+spreadsheet
+archive-file
+
+================================================================================
+38. WORKSPACE CONTRIBUTION AND CORRESPONDENT AREAS
+================================================================================
+
+/workspace/contribution
+/workspace/contribution/new-listing
+/workspace/contribution/edit
+/workspace/contribution/correction
+/workspace/contribution/photo
+/workspace/contribution/video
+/workspace/contribution/service
+/workspace/contribution/hour
+/workspace/contribution/contact
+/workspace/contribution/location
+/workspace/contribution/closure
+/workspace/contribution/duplicate
+/workspace/contribution/source
+/workspace/contribution/translation
+/workspace/contribution/report
+/workspace/contribution/status
+/workspace/contribution/history
+
+/workspace/correspondent
+/workspace/correspondent/assignment
+/workspace/correspondent/visit
+/workspace/correspondent/field-note
+/workspace/correspondent/photo
+/workspace/correspondent/source
+/workspace/correspondent/spa
+/workspace/correspondent/therapist
+/workspace/correspondent/interview
+/workspace/correspondent/verification
+/workspace/correspondent/review
+/workspace/correspondent/report
+/workspace/correspondent/history
+
+================================================================================
+39. WORKSPACE EDITORIAL, ARTICLE, CAMPUS, PORTAL, COMIC, ROOM, NEWSLETTER, AND DOWNLOAD AREAS
+================================================================================
+
+/workspace/editorial
+/workspace/editorial/dashboard
+/workspace/editorial/content
+/workspace/editorial/article
+/workspace/editorial/news
+/workspace/editorial/category
+/workspace/editorial/tag
+/workspace/editorial/author
+/workspace/editorial/neural-agent
+/workspace/editorial/calendar
+/workspace/editorial/draft
+/workspace/editorial/revision
+/workspace/editorial/review
+/workspace/editorial/approval
+/workspace/editorial/published
+/workspace/editorial/archive
+
+/workspace/article
+/workspace/article/draft
+/workspace/article/submitted
+/workspace/article/published
+/workspace/article/revision
+/workspace/article/category
+/workspace/article/tag
+/workspace/article/media
+/workspace/article/reaction
+/workspace/article/analytics
+
+/workspace/campus
+/workspace/campus/home
+/workspace/campus/institution
+/workspace/campus/institution/{institution-id}
+/workspace/campus/instructor
+/workspace/campus/learner
+/workspace/campus/program
+/workspace/campus/course
+/workspace/campus/path
+/workspace/campus/module
+/workspace/campus/lesson
+/workspace/campus/class
+/workspace/campus/cohort
+/workspace/campus/enrollment
+/workspace/campus/schedule
+/workspace/campus/attendance
+/workspace/campus/assignment
+/workspace/campus/quiz
+/workspace/campus/knowledge-check
+/workspace/campus/assessment
+/workspace/campus/practical
+/workspace/campus/grade
+/workspace/campus/glossary
+/workspace/campus/topic
+/workspace/campus/certificate
+/workspace/campus/progress
+/workspace/campus/report
+/workspace/campus/export
+/workspace/campus/media
+/workspace/campus/revision
+/workspace/campus/analytics
+/workspace/campus/audit
+
+/workspace/portal
+/workspace/portal/list
+/workspace/portal/create
+/workspace/portal/profile
+/workspace/portal/page
+/workspace/portal/navigation
+/workspace/portal/theme
+/workspace/portal/branding
+/workspace/portal/domain
+/workspace/portal/domain/verify
+/workspace/portal/domain/status
+/workspace/portal/subdomain
+/workspace/portal/attribution
+/workspace/portal/seo
+/workspace/portal/analytics
+/workspace/portal/billing
+/workspace/portal/member
+/workspace/portal/permission
+/workspace/portal/audit
+/workspace/portal/support
+
+/workspace/comic
+/workspace/comic/list
+/workspace/comic/create
+/workspace/comic/edit
+/workspace/comic/script
+/workspace/comic/cast
+/workspace/comic/mascot
+/workspace/comic/media
+/workspace/comic/revision
+/workspace/comic/reaction
+/workspace/comic/analytics
+
+/workspace/room
+/workspace/room/list
+/workspace/room/create
+/workspace/room/schedule
+/workspace/room/theme
+/workspace/room/audio
+/workspace/room/visual
+/workspace/room/chat
+/workspace/room/sponsor
+/workspace/room/campaign
+/workspace/room/moderation
+/workspace/room/analytics
+
+/workspace/newsletter
+/workspace/newsletter/subscriber
+/workspace/newsletter/list
+/workspace/newsletter/issue
+/workspace/newsletter/template
+/workspace/newsletter/campaign
+/workspace/newsletter/schedule
+/workspace/newsletter/archive
+/workspace/newsletter/unsubscribe
+/workspace/newsletter/preference
+/workspace/newsletter/analytics
+
+/workspace/download
+/workspace/download/list
+/workspace/download/create
+/workspace/download/edit
+/workspace/download/category
+/workspace/download/tag
+/workspace/download/file
+/workspace/download/version
+/workspace/download/access
+/workspace/download/analytics
+
+40. WORKSPACE ADVERTISING AND ANALYTICS AREAS
+================================================================================
+
+/workspace/advertising
+/workspace/advertising/dashboard
+/workspace/advertising/campaign
+/workspace/advertising/placement
+/workspace/advertising/sponsored-listing
+/workspace/advertising/sponsored-article
+/workspace/advertising/sponsored-product
+/workspace/advertising/sidebar
+/workspace/advertising/hero
+/workspace/advertising/promo
+/workspace/advertising/sponsor
+/workspace/advertising/budget
+/workspace/advertising/invoice
+/workspace/advertising/payment
+/workspace/advertising/analytics
+/workspace/advertising/policy
+
+/workspace/analytics
+/workspace/analytics/profile
+/workspace/analytics/spa
+/workspace/analytics/therapist
+/workspace/analytics/product
+/workspace/analytics/seller
+/workspace/analytics/promo
+/workspace/analytics/advertising
+/workspace/analytics/article
+/workspace/analytics/newsletter
+/workspace/analytics/search
+/workspace/analytics/booking
+/workspace/analytics/intake
+/workspace/analytics/schedule
+/workspace/analytics/resource
+/workspace/analytics/walk-in
+/workspace/analytics/waitlist
+/workspace/analytics/loyalty
+/workspace/analytics/payment
+/workspace/analytics/finance
+/workspace/analytics/compensation
+/workspace/analytics/review
+/workspace/analytics/rating
+/workspace/analytics/contribution
+/workspace/analytics/platform
+/workspace/analytics/export
+/workspace/analytics/report
+
+================================================================================
+41. WORKSPACE MODERATION, VERIFICATION, DATABASE, SYSTEM, API, AND SUPPORT AREAS
+================================================================================
+
+/workspace/moderation
+/workspace/moderation/dashboard
+/workspace/moderation/queue
+/workspace/moderation/review
+/workspace/moderation/rating
+/workspace/moderation/comment
+/workspace/moderation/chat
+/workspace/moderation/media
+/workspace/moderation/user
+/workspace/moderation/profile
+/workspace/moderation/listing
+/workspace/moderation/report
+/workspace/moderation/safety
+/workspace/moderation/spam
+/workspace/moderation/abuse
+/workspace/moderation/dispute
+/workspace/moderation/appeal
+/workspace/moderation/nsfw
+/workspace/moderation/ai-flag
+/workspace/moderation/log
+
+/workspace/verification
+/workspace/verification/dashboard
+/workspace/verification/profile
+/workspace/verification/spa
+/workspace/verification/therapist
+/workspace/verification/seller
+/workspace/verification/product
+/workspace/verification/business
+/workspace/verification/contact
+/workspace/verification/document
+/workspace/verification/claim
+/workspace/verification/media
+/workspace/verification/credential
+/workspace/verification/source
+/workspace/verification/history
+
+/workspace/database
+/workspace/database/dashboard
+/workspace/database/spa
+/workspace/database/therapist
+/workspace/database/service
+/workspace/database/product
+/workspace/database/seller
+/workspace/database/promo
+/workspace/database/user
+/workspace/database/content
+/workspace/database/article
+/workspace/database/news
+/workspace/database/campus
+/workspace/database/comic
+/workspace/database/room
+/workspace/database/review
+/workspace/database/rating
+/workspace/database/comment
+/workspace/database/media
+/workspace/database/contribution
+/workspace/database/claim
+/workspace/database/verification
+/workspace/database/report
+/workspace/database/booking
+/workspace/database/intake
+/workspace/database/schedule
+/workspace/database/resource
+/workspace/database/waitlist
+/workspace/database/payment
+/workspace/database/payout
+/workspace/database/loyalty
+/workspace/database/compensation
+/workspace/database/finance
+/workspace/database/reconciliation
+/workspace/database/taxonomy
+/workspace/database/location
+/workspace/database/language
+/workspace/database/theme
+/workspace/database/role
+/workspace/database/permission
+/workspace/database/system
+/workspace/database/audit
+/workspace/database/import
+/workspace/database/export
+/workspace/database/cleanup
+/workspace/database/merge
+/workspace/database/archive
+
+/workspace/system
+/workspace/system/dashboard
+/workspace/system/setting
+/workspace/system/language
+/workspace/system/theme
+/workspace/system/accessibility
+/workspace/system/security
+/workspace/system/role
+/workspace/system/permission
+/workspace/system/notification
+/workspace/system/email
+/workspace/system/sms
+/workspace/system/push
+/workspace/system/storage
+/workspace/system/search-index
+/workspace/system/cache
+/workspace/system/scheduler
+/workspace/system/job
+/workspace/system/log
+/workspace/system/audit
+/workspace/system/backup
+/workspace/system/restore
+/workspace/system/maintenance
+/workspace/system/lock-mode
+
+/workspace/api
+/workspace/api/dashboard
+/workspace/api/key
+/workspace/api/client
+/workspace/api/scope
+/workspace/api/quota
+/workspace/api/rate-limit
+/workspace/api/log
+/workspace/api/webhook
+/workspace/api/integration
+/workspace/api/documentation
+
+/workspace/support
+/workspace/support/ticket
+/workspace/support/inbox
+/workspace/support/bug
+/workspace/support/feature-request
+/workspace/support/contact
+/workspace/support/feedback
+/workspace/support/escalation
+/workspace/support/history
+
+/workspace/audit
+/workspace/audit/activity
+/workspace/audit/login
+/workspace/audit/record-change
+/workspace/audit/moderation
+/workspace/audit/verification
+/workspace/audit/payment
+/workspace/audit/api
+/workspace/audit/system
+
+================================================================================
+42. API STRUCTURE
+================================================================================
+
+API host:
+api.massagenexus.com
+
+API version:
+/v1
+
+First-Party App API:
+/v1/app
+/v1/app/auth
+/v1/app/user
+/v1/app/search
+/v1/app/directory
+/v1/app/spa
+/v1/app/therapist
+/v1/app/service
+/v1/app/product
+/v1/app/seller
+/v1/app/promo
+/v1/app/article
+/v1/app/review
+/v1/app/rating
+/v1/app/comment
+/v1/app/media
+/v1/app/booking
+/v1/app/booking/plan
+/v1/app/booking/request
+/v1/app/booking/participant
+/v1/app/booking/eligibility
+/v1/app/booking/intake
+/v1/app/booking/consent
+/v1/app/booking/waitlist
+/v1/app/booking/payment
+/v1/app/booking/refund
+/v1/app/booking/feedback
+/v1/app/booking/rebook
+/v1/app/calendar
+/v1/app/contribution
+/v1/app/claim
+/v1/app/verification
+/v1/app/report
+/v1/app/notification
+/v1/app/message
+/v1/app/status
+
+Partner API:
+/v1/partner
+/v1/partner/auth
+/v1/partner/client
+/v1/partner/spa
+/v1/partner/therapist
+/v1/partner/service
+/v1/partner/product
+/v1/partner/promo
+/v1/partner/media
+/v1/partner/booking
+/v1/partner/booking/request
+/v1/partner/booking/assignment
+/v1/partner/booking/walk-in
+/v1/partner/booking/queue
+/v1/partner/booking/waitlist
+/v1/partner/booking/intake-result
+/v1/partner/booking/payment
+/v1/partner/booking/refund
+/v1/partner/booking/loyalty
+/v1/partner/booking/finance
+/v1/partner/calendar
+/v1/partner/availability
+/v1/partner/hour
+/v1/partner/price
+/v1/partner/analytics
+/v1/partner/webhook
+/v1/partner/status
+
+Approved Public API:
+/v1/public
+/v1/public/search
+/v1/public/directory
+/v1/public/spa
+/v1/public/therapist
+/v1/public/service
+/v1/public/product
+/v1/public/seller
+/v1/public/promo
+/v1/public/article
+/v1/public/review-summary
+/v1/public/rating-summary
+/v1/public/location
+/v1/public/status
+
+Protected media delivery examples:
+/v1/app/media/{media-id}/content
+/v1/partner/media/{media-id}/content
+
+Protected media rules:
+- the real private storage path is not returned before authorization;
+- private media is not stored under the public web root;
+- access uses the current user, token abilities, record permissions, and MediaPolicy;
+- delivery uses server streaming or a short-lived protected storage URL;
+- public CDN URLs are not used for private or restricted originals.
+
+API implementation notes:
+- website, app API, and partner API share Laravel Models, Actions, Services, Policies, and validation;
+- website responses render HTML;
+- API responses use controlled JSON Resources;
+- clients do not connect directly to Azure DocumentDB;
+- the shared OpenAPI contract lives outside a single client application.
+
+================================================================================
+43. RESERVED FIRST-LEVEL ROUTE WORDS
+================================================================================
+
+api
+app
+asset
+auth
+booking
+browse
+calendar
+consent
+campaign
+cdn
+chat
+claim
+comic
+compare
+contact
+contribute
+directory
+download
+finance
+file
+help
+image
+intake
+legal
+loyalty
+login
+logout
+map
+news
+newsletter
+policy
+portal
+payment
+product
+promo
+register
+report
+review
+room
+search
+seller
+service
+spa
+storage
+therapist
+upload
+user
+verify
+waitlist
+video
+workspace
+
+================================================================================
+44. RESERVED ROUTE WORDS NOT USED AS PUBLIC ENTITY SLUGS
+================================================================================
+
+about
+admin
+api
+archive
+auth
+category
+create
+dashboard
+delete
+edit
+help
+login
+logout
+new
+preview
+register
+search
+setting
+status
+system
+tag
+update
+workspace
+
+================================================================================
+45. BACKEND AND SYSTEM-ONLY AREAS
+================================================================================
+
+scheduler
+queue
+job
+cache
+session
+log
+audit
+backup
+restore
+import
+export
+index
+search-index
+media-processing
+image-processing
+video-processing
+ai-moderation
+ai-summary
+ai-duplicate-detection
+ai-tag-suggestion
+ai-review-quality
+ai-safety-flag
+email-service
+sms-service
+push-service
+payment-gateway
+booking-eligibility
+booking-intake
+booking-resource-reservation
+booking-waitlist
+provider-loyalty
+therapist-compensation
+provider-finance
+payout-processing
+reconciliation
+calendar-sync
+storage-integration
+analytics-tracking
+security-monitoring
+maintenance-mode
+lock-mode
+
+================================================================================
+46. PAGE, TAB, SECTION, AND WORKSPACE PLACEMENT SUMMARY
+================================================================================
+
+Real public pages:
+/
+/browse
+/search
+/directory
+/map
+/compare
+/spa/{spa-slug}
+/therapist/{therapist-slug}
+/service/{service-slug}
+/product/{product-slug}
+/seller/{seller-slug}
+/promo/{promo-slug}
+/article/{article-slug}
+/news/{news-slug}
+/campus
+/campus/lesson/{lesson-slug}
+/campus/course/{course-slug}
+/campus/institution/{institution-slug}
+/comic/{comic-slug}
+/room/{room-slug}
+/review/{review-slug}
+/user/{user-slug}
+/contribute
+/claim
+/verify
+/report
+/newsletter
+/download
+/about
+/help
+/contact
+/legal
+/policy
+
+Profile tabs or sections:
+/spa/{spa-slug}/service
+/spa/{spa-slug}/therapist
+/spa/{spa-slug}/gallery
+/spa/{spa-slug}/review
+/spa/{spa-slug}/promo
+/spa/{spa-slug}/location
+/therapist/{therapist-slug}/service
+/therapist/{therapist-slug}/schedule
+/therapist/{therapist-slug}/gallery
+/therapist/{therapist-slug}/review
+/therapist/{therapist-slug}/spa
+/product/{product-slug}/gallery
+/product/{product-slug}/review
+/seller/{seller-slug}/product
+/seller/{seller-slug}/promo
+/seller/{seller-slug}/review
+/user/{user-slug}/review
+/user/{user-slug}/badge
+/user/{user-slug}/reputation
+
+Workspace pages:
+/workspace/home
+/workspace/profile
+/workspace/setting
+/workspace/notification
+/workspace/message
+/workspace/saved
+/workspace/following
+/workspace/history
+/workspace/review
+/workspace/rating
+/workspace/badge
+/workspace/reputation
+/workspace/booking
+/workspace/calendar
+/workspace/loyalty
+/workspace/finance
+/workspace/listing
+/workspace/claim
+/workspace/service
+/workspace/media
+/workspace/product
+/workspace/seller
+/workspace/promo
+/workspace/contribution
+/workspace/correspondent
+/workspace/editorial
+/workspace/campus
+/workspace/portal
+/workspace/comic
+/workspace/room
+/workspace/newsletter
+/workspace/download
+/workspace/advertising
+/workspace/analytics
+/workspace/moderation
+/workspace/verification
+/workspace/database
+/workspace/system
+/workspace/api
+/workspace/support
+/workspace/audit
+
+System-facing routes:
+/api
+/api/v1
+api.massagenexus.com
+cdn.massagenexus.com
+status.massagenexus.com
+{portal-slug}.massagenexus.com
+verified tenant custom domains
+
+Not first-level public pages:
+/rating
+/media
+/gallery
+/resource
+/guide
+/discussion
+/operator
+/portal
+/voucher
+/gift-card
+/admin
+/account
+
+================================================================================
+47. BOOKING ROUTE BOUNDARIES
+================================================================================
+
+- Public spa and therapist booking pages explain availability, booking enablement, policies,
+  unclaimed-profile limits, and supported actions.
+- Personal Appointment Plans, private intake, booking history, payment, refund, loyalty, and
+  personal analytics remain under /workspace.
+- Provider scheduling, assignment, queue, walk-in, intake templates, eligibility, finance, and
+  compensation remain permission-aware workspace areas.
+- No public URL exposes a client's private intake or another provider's booking history.
+- Unclaimed providers do not receive confirmed Massage Nexus reservations or platform payment.
+- API routes use the same server-side authorization, eligibility, policy, privacy, and retention
+  rules as the website.
+- Booking is service-flexible but initially massage-, spa-, bodywork-, beauty-, and
+  wellness-aware.
+
+================================================================================
+V1.90 SYNCHRONIZATION NOTES
+================================================================================
+
+- Added registration, login, verification, recovery, and profile-completion routes.
+- Added Filipino, Hiligaynon, Indonesian, Brazilian Portuguese, Japanese, Thai, Vietnamese,
+  Chinese script, French, German, and Arabic language aliases.
+- Taglish is a Filipino style or presentation alias.
+- Added public Research and Statistics areas.
+- Added Research, Translation, and expanded Analytics workspace routes.
+- Added passkey, recovery-code, and security-event routes.
+- Replaced the obsolete adult-service-exclusion route with the current NSFW, Mature, and
+  Restricted Content policy route.
+- Private research evidence, analytics, account, intake, and restricted media remain protected.

@@ -1,0 +1,946 @@
+Title: Massage Nexus Edit System
+Document Version: 0.10
+Date Created: 2026-07-16
+Revision Date: 2026-07-16
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 02.01 - File and Folder Structure v1.00
+- Massage Nexus - 02.02 - AI Use v1.00
+- Massage Nexus - 03 - Features v1.90
+- Massage Nexus - 15 - Language Strategy v0.20
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 20 - Translation System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working direction for creating, editing, correcting, reviewing, approving, publishing, merging, restoring, and tracking records in Massage Nexus.
+
+The Edit System is shared across Service, Spa or Establishment, Therapist, Product, Seller, Article, Review, Media, Translation, Taxonomy, Promotion, and other supported records. It is not one giant universal form. It is a shared editing framework used by feature-specific forms and workflows.
+
+The system must preserve current accepted data, sources, revision history, permissions, and accountability without turning every small change into an unmanageable log.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The Edit System should:
+
+- make it easy to create and improve records;
+- prevent unauthorized changes;
+- preserve the accepted current version;
+- preserve useful revision history;
+- support direct edits and suggested edits;
+- support draft, review, approval, rejection, and publication;
+- support field-level sources and notes;
+- support multilingual content;
+- prevent silent overwriting of another person's newer work;
+- support merge, restore, and correction;
+- allow AI assistance without allowing AI to become the final authority;
+- keep forms and code divided into manageable components;
+- provide clear final history rather than a dump of every temporary attempt.
+
+================================================================================
+2. CORE TERMS
+================================================================================
+
+Record
+One stored item, such as a Service, establishment, therapist, product, article, review, media item, translation, or taxonomy option.
+
+Current Version
+The accepted version currently used by the platform.
+
+Draft
+An unfinished version not yet publicly applied.
+
+Revision
+A saved version of a record or content item.
+
+Change Set
+A grouped collection of proposed changes submitted together.
+
+Direct Edit
+A change applied by someone who has permission to edit that record directly.
+
+Suggested Edit
+A proposed change that requires review before it affects the current version.
+
+Correction
+A suggested or direct edit intended to fix inaccurate, outdated, incomplete, or misleading information.
+
+Edit Session
+The period in which a person or approved system is actively changing a record.
+
+Source
+Evidence supporting a value or claim.
+
+Field Provenance
+Information explaining where a particular field value came from and when it was last confirmed.
+
+Conflict
+A situation where the current record changed after an editor began working.
+
+Approval
+A decision allowing a proposed change to become accepted.
+
+Rejection
+A decision not to apply a proposed change.
+
+Merge
+Combining duplicate records while preserving useful history and links.
+
+Restore
+Returning a removed, archived, or earlier version to active use through an authorized process.
+
+================================================================================
+3. RECORDS COVERED
+================================================================================
+
+The shared Edit System may support:
+
+- service_main;
+- establishment_main;
+- establishment_service;
+- practitioner_main;
+- practitioner_service;
+- practitioner capability;
+- product_main;
+- product version;
+- product variant;
+- seller offer;
+- article;
+- review;
+- rating criteria;
+- discussion;
+- comment;
+- media;
+- promotion;
+- voucher;
+- gift card;
+- taxonomy;
+- language;
+- translation;
+- source;
+- qualification;
+- credential;
+- verification;
+- claim;
+- contribution;
+- user profile;
+- help content;
+- policy content;
+- platform configuration where appropriate.
+
+Each record type may have its own form, rules, permissions, and approval path.
+
+================================================================================
+4. EDITING MODES
+================================================================================
+
+4.1 Create
+Create a new record.
+
+4.2 Direct Edit
+Change an existing record immediately when the person has direct authority.
+
+4.3 Suggested Edit
+Submit a proposed change for review.
+
+4.4 Correction
+Report and propose a factual correction.
+
+4.5 Translation Edit
+Create or revise a translated version while preserving the source version.
+
+4.6 Bulk Edit
+Apply the same controlled change to several selected records.
+
+4.7 Import
+Create or update records from an approved structured file or integration.
+
+4.8 Merge
+Combine duplicates.
+
+4.9 Restore
+Restore a previously removed or archived record.
+
+4.10 Revert
+Return selected fields or the complete record to an earlier accepted revision.
+
+4.11 System Update
+Apply a controlled update generated by a scheduled process, integration, or migration.
+
+4.12 AI-Assisted Draft
+Use AI to suggest content or structure while keeping the change in draft until reviewed.
+
+================================================================================
+5. AUTHORITY AND PERMISSION
+================================================================================
+
+Permission should be checked on the server.
+
+Possible participants:
+
+Public Visitor
+- can view public history where allowed;
+- can report an error;
+- cannot directly edit.
+
+Registered User
+- can submit suggested edits and corrections;
+- can manage their own drafts;
+- can edit their own permitted profile fields.
+
+Contributor
+- can submit more structured additions and corrections;
+- may receive faster review based on reputation;
+- does not automatically receive direct-edit authority.
+
+Steward
+- may maintain assigned unclaimed or community-managed records;
+- authority is limited to assigned record types or areas.
+
+Owner or Operator
+- can directly edit approved official establishment information;
+- cannot rewrite independent reviews, ratings, or editorial conclusions.
+
+Therapist or Practitioner
+- can directly edit approved personal and professional information;
+- cannot rewrite independent reviews or establishment-owned menu records without permission.
+
+Seller
+- can edit approved seller and seller-offer information.
+
+Editor
+- can edit approved editorial, classification, or catalog areas.
+
+Translator
+- can create or revise translations according to language permission.
+
+Moderator
+- can act on moderation-related records and restricted content.
+
+Administrator
+- can perform broad system actions according to assigned permissions.
+
+Founder or Highest Authority
+- has exceptional authority;
+- high-risk actions should still be confirmed and audited.
+
+The system should use permissions rather than assuming that every person with the same role can edit every record.
+
+================================================================================
+6. EDIT FORM STRUCTURE
+================================================================================
+
+A large record should be divided into sections.
+
+Example Service edit sections:
+
+- Identity;
+- Hierarchy;
+- Aliases;
+- Description;
+- What to Expect;
+- Methods and Techniques;
+- History;
+- Safety;
+- Training and Credentials;
+- Relationships;
+- Media;
+- Sources;
+- Translation;
+- Lifecycle.
+
+Example establishment edit sections:
+
+- Identity;
+- Classification;
+- Address and Location;
+- Contact;
+- Hours;
+- Services;
+- Therapists;
+- Facilities and Amenities;
+- Media;
+- Booking;
+- Verification;
+- Sources;
+- Lifecycle.
+
+Each section should be a separate form component when it has its own substantial rules or fields.
+
+A form should provide:
+
+- clear section title;
+- save status;
+- validation messages;
+- source fields where required;
+- preview;
+- permission-aware controls;
+- unsaved-change warning;
+- accessible labels;
+- keyboard navigation;
+- mobile-friendly layout where practical.
+
+================================================================================
+7. DRAFT AND AUTOSAVE
+================================================================================
+
+The system should support drafts for substantial editing.
+
+Draft behavior:
+
+- save automatically at a reasonable interval;
+- also provide an explicit Save Draft action;
+- show the last saved time;
+- do not publish automatically;
+- restore an interrupted session;
+- keep personal drafts private unless shared;
+- allow an authorized reviewer to open a submitted draft;
+- remove abandoned temporary drafts according to retention rules.
+
+Autosave should not create a permanent revision for every keystroke.
+
+Recommended distinction:
+
+Temporary Autosave
+Short-lived working state.
+
+Saved Draft Revision
+A deliberate draft checkpoint.
+
+Submitted Change Set
+A complete proposal sent for review.
+
+Accepted Revision
+The approved current version.
+
+================================================================================
+8. VALIDATION
+================================================================================
+
+Validation occurs at several levels.
+
+Field Validation
+- required field;
+- length;
+- date;
+- number;
+- URL;
+- file type;
+- allowed taxonomy value.
+
+Record Validation
+- required relationship exists;
+- date range is logical;
+- slug is unique;
+- status combination is valid;
+- source is required for a sensitive claim.
+
+Business Validation
+- user has authority;
+- record is editable;
+- menu item belongs to the correct provider;
+- private contact detail is not made public accidentally;
+- translation matches the intended source revision.
+
+Publication Validation
+- required public fields are complete;
+- content is sanitized;
+- required review is complete;
+- legal or policy requirement is satisfied;
+- no blocking moderation issue remains.
+
+================================================================================
+9. FIELD SOURCES AND PROVENANCE
+================================================================================
+
+Important values may record:
+
+- source type;
+- source link or document;
+- source title;
+- source date;
+- date accessed;
+- contributor;
+- verification status;
+- last confirmed date;
+- confidence;
+- internal note;
+- public source note where appropriate.
+
+Field-level provenance is especially useful for:
+
+- establishment status;
+- operating hours;
+- contact details;
+- prices;
+- credentials;
+- historical claims;
+- service origin;
+- safety statements;
+- product warnings;
+- ownership;
+- location;
+- verification.
+
+Not every ordinary field needs a separate source record, but the system should support it where accuracy depends on evidence.
+
+================================================================================
+10. CHANGE SETS
+================================================================================
+
+A Change Set groups related proposed edits.
+
+Example:
+
+Change Set:
+Update The Resting Leaf contact and operating hours
+
+Changes:
+- phone number changed;
+- Saturday closing time changed;
+- Facebook link added;
+- old phone number marked inactive.
+
+A Change Set should contain:
+
+- record;
+- submitter;
+- reason;
+- changed fields;
+- old values;
+- proposed values;
+- sources;
+- notes;
+- created date;
+- review status;
+- reviewer;
+- decision;
+- decision note;
+- applied revision.
+
+A reviewer should be able to accept:
+
+- the entire Change Set;
+- selected changes;
+- none of the changes.
+
+================================================================================
+11. REVISION HISTORY
+================================================================================
+
+Revision history should preserve meaningful accepted states.
+
+A revision may record:
+
+- revision identifier;
+- record identifier;
+- version number or sequence;
+- editor;
+- source Change Set;
+- date;
+- summary;
+- changed fields;
+- reason;
+- publication status;
+- previous revision;
+- rollback relationship.
+
+Do not create permanent revision noise for:
+
+- every autosave;
+- every key press;
+- temporary formatting experiments;
+- abandoned previews.
+
+Public revision history may be simpler than internal revision history.
+
+Public view may show:
+
+- date;
+- general change summary;
+- contributor credit where appropriate.
+
+Internal view may show:
+
+- exact before and after values;
+- reviewer;
+- source;
+- permission context;
+- system metadata.
+
+================================================================================
+12. CONFLICT DETECTION
+================================================================================
+
+The system should prevent one editor from silently overwriting newer work.
+
+Working approach:
+
+1. Editor opens revision 14.
+2. Another person publishes revision 15.
+3. First editor attempts to submit.
+4. System detects that revision 14 is no longer current.
+5. System shows the changed fields.
+6. Editor chooses how to resolve the conflict.
+
+Possible outcomes:
+
+- keep newer current value;
+- use proposed value;
+- manually combine;
+- cancel;
+- submit for review.
+
+This may use a revision number, updated timestamp, or another optimistic-locking value.
+
+================================================================================
+13. REVIEW WORKFLOW
+================================================================================
+
+Possible statuses:
+
+Draft
+Saved but not submitted.
+
+Submitted
+Waiting for review.
+
+Under Review
+A reviewer is examining it.
+
+Needs Information
+More evidence or explanation is required.
+
+Partially Approved
+Some proposed changes were accepted.
+
+Approved
+Accepted for application or publication.
+
+Rejected
+Not accepted.
+
+Withdrawn
+Submitter removed the proposal before decision.
+
+Applied
+Approved changes were written to the current record.
+
+Superseded
+A newer accepted proposal replaced it.
+
+Closed
+No further action is expected.
+
+Review queues may be separated by:
+
+- record type;
+- language;
+- geography;
+- risk;
+- source quality;
+- submitter reputation;
+- urgency;
+- assigned team.
+
+================================================================================
+14. DIRECT EDIT VERSUS REVIEWED EDIT
+================================================================================
+
+Direct edits may be allowed for:
+
+- a user's own biography;
+- an operator's verified phone number;
+- a therapist's availability;
+- an editor's approved article draft;
+- an administrator's system setting.
+
+Reviewed edits may be required for:
+
+- universal Service identity;
+- historical claims;
+- credentials;
+- verification status;
+- public warnings;
+- sensitive classifications;
+- profile ownership changes;
+- merge;
+- permanent removal;
+- legal or policy content;
+- high-impact taxonomy changes.
+
+A direct edit should still create an accepted revision and audit entry.
+
+================================================================================
+15. RICH-TEXT EDITING
+================================================================================
+
+Rich text may be used for:
+
+- articles;
+- reviews;
+- Service explanations;
+- profile descriptions;
+- help content;
+- policy content;
+- selected announcements.
+
+Recommended storage:
+
+- structured editor document;
+- sanitized rendered HTML;
+- searchable plain text.
+
+Article editor:
+May allow headings, links, lists, quotations, tables, images, captions, callouts, and approved embeds.
+
+Review editor:
+Should use a smaller safe toolbar.
+
+The system must reject or sanitize:
+
+- scripts;
+- unsafe event handlers;
+- arbitrary CSS;
+- unapproved iframes;
+- dangerous links;
+- hidden tracking;
+- unsupported HTML.
+
+================================================================================
+16. MEDIA EDITING
+================================================================================
+
+Media editing may include:
+
+- title;
+- caption;
+- alt text;
+- tags;
+- source;
+- permission;
+- copyright;
+- AI-use label;
+- visibility;
+- moderation status;
+- crop;
+- focal point;
+- replacement;
+- archive.
+
+Replacing a media file should not silently erase the earlier source when history is needed.
+
+Private or restricted files remain protected by server authorization.
+
+================================================================================
+17. TRANSLATION EDITING
+================================================================================
+
+Translation editing uses the Translation System.
+
+The Edit System should show:
+
+- source language;
+- target language;
+- source revision;
+- translation status;
+- stale warning;
+- translator;
+- AI use;
+- reviewer;
+- preview;
+- fallback behavior.
+
+A change to the source may mark translations as outdated without deleting them.
+
+================================================================================
+18. TAXONOMY EDITING
+================================================================================
+
+Taxonomy changes can affect:
+
+- filters;
+- icons;
+- translations;
+- seed data;
+- APIs;
+- mobile clients;
+- existing records.
+
+Taxonomy editing should support:
+
+- stable key or code;
+- label;
+- description;
+- parent;
+- sort order;
+- icon reference;
+- status;
+- translation;
+- usage count;
+- replacement relationship.
+
+High-impact taxonomy changes require review.
+
+Do not reuse a retired code for a different meaning.
+
+================================================================================
+19. MERGE AND DUPLICATE HANDLING
+================================================================================
+
+Merge workflow:
+
+1. identify possible duplicates;
+2. compare identity and relationships;
+3. select canonical record;
+4. review conflicting fields;
+5. move or preserve relationships;
+6. preserve aliases and old slugs;
+7. redirect public routes;
+8. retain source and contribution history;
+9. mark duplicate as merged;
+10. test affected pages.
+
+A merge should not be treated as ordinary deletion.
+
+================================================================================
+20. REMOVAL, ARCHIVE, AND RESTORE
+================================================================================
+
+Possible outcomes:
+
+Archive
+Record remains internally available but is no longer normally shown.
+
+Soft Remove
+Record is hidden but recoverable.
+
+Restrict
+Record remains available only to authorized users.
+
+Close
+An establishment or provider stopped operating but remains historically valid.
+
+Merge
+Record redirects to another record.
+
+Permanent Erasure
+Reserved for cases where legal, privacy, or retention requirements justify it.
+
+Restore requires permission and an audit entry.
+
+================================================================================
+21. API AND EXTERNAL EDITS
+================================================================================
+
+Partner systems may propose or directly apply approved changes through the Partner API.
+
+Examples:
+
+- operating hours;
+- availability;
+- selected prices;
+- booking status;
+- selected profile fields.
+
+API edits must use:
+
+- authenticated client;
+- limited scope;
+- record authorization;
+- validation;
+- rate limit;
+- idempotency where needed;
+- audit entry;
+- source client;
+- revision handling.
+
+External systems must not bypass the Edit System.
+
+================================================================================
+22. AI-ASSISTED EDITING
+================================================================================
+
+AI may:
+
+- suggest wording;
+- organize notes;
+- identify missing fields;
+- propose a normalized Service mapping;
+- summarize a Change Set;
+- compare revisions;
+- draft a translation;
+- detect possible duplicates;
+- suggest tags;
+- flag unsupported claims.
+
+AI must not:
+
+- silently publish;
+- invent sources;
+- invent credentials;
+- invent a visit;
+- change verification;
+- accuse a person;
+- permanently remove a record;
+- override a human decision without authority.
+
+AI-assisted output remains marked internally and follows the ordinary review process.
+
+================================================================================
+23. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+
+- draft recovery;
+- submission received;
+- reviewer assigned;
+- more information requested;
+- partially approved;
+- approved;
+- rejected;
+- conflict detected;
+- source expired;
+- translation outdated;
+- record merged;
+- direct edit changed a followed record.
+
+Users should be able to control non-essential notifications.
+
+================================================================================
+24. WORKSPACE PLACEMENT
+================================================================================
+
+User and contributor areas:
+
+/workspace/contribution
+/workspace/review
+/workspace/article
+/workspace/media
+/workspace/translation
+/workspace/listing
+
+Editor and administrator areas:
+
+/workspace/editorial
+/workspace/moderation
+/workspace/verification
+/workspace/database
+/workspace/system
+/workspace/audit
+
+Feature-specific edit pages should use the same shared Edit System rules without forcing all records into one identical interface.
+
+================================================================================
+25. SECURITY AND AUDIT
+================================================================================
+
+Audit entries may record:
+
+- actor;
+- action;
+- record;
+- before and after reference;
+- date and time;
+- permission used;
+- source application;
+- IP or device context where justified;
+- API client;
+- reason;
+- result.
+
+High-risk actions should require:
+
+- recent authentication;
+- confirmation;
+- reason;
+- second approval where appropriate;
+- audit entry.
+
+Sensitive values should not be copied unnecessarily into logs.
+
+================================================================================
+26. ACCESSIBILITY
+================================================================================
+
+Editing must support:
+
+- keyboard navigation;
+- screen-reader labels;
+- logical heading order;
+- clear error summaries;
+- errors connected to fields;
+- visible focus;
+- text alternatives;
+- sufficient contrast;
+- no drag-only requirement;
+- recoverable timeout;
+- understandable save state.
+
+================================================================================
+27. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+- shared draft and revision foundation;
+- basic direct edit;
+- basic suggested edit;
+- validation;
+- permission;
+- audit entry;
+- Service editing.
+
+Phase 2
+- source and provenance;
+- conflict detection;
+- review queue;
+- partial approval;
+- translation integration;
+- media editing.
+
+Phase 3
+- merge and restore;
+- bulk edit;
+- import;
+- API edit;
+- advanced comparison;
+- AI assistance.
+
+================================================================================
+28. CURRENT WORKING DECISIONS
+================================================================================
+
+- One shared Edit System supports feature-specific forms.
+- Current accepted data remains separate from unapproved suggestions.
+- Important edits create meaningful revisions.
+- Autosave does not create permanent history for every keystroke.
+- Direct edits still create an audit trail.
+- Server-side permission checks are required.
+- Source and provenance are supported at field or claim level where useful.
+- Conflicts must not silently overwrite newer work.
+- AI suggestions remain drafts until accepted.
+- Changelog, record revision history, and temporary work notes are separate systems.
+
+================================================================================
+29. OPEN DECISIONS
+================================================================================
+
+- exact database collections for revisions and Change Sets;
+- retention period for drafts and autosaves;
+- which roles receive direct-edit authority;
+- when second approval is required;
+- public revision-history detail;
+- contribution reward rules;
+- offline draft behavior;
+- exact bulk-edit limits;
+- exact merge approval process;
+- whether edits can be scheduled for future publication;
+- how several editors share one draft;
+- exact AI comparison and assistance features.

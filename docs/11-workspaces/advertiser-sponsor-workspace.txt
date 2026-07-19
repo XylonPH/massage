@@ -1,0 +1,918 @@
+Title: Massage Nexus Advertiser and Sponsor Workspace
+Document Version: 0.10
+Date Created: 2026-07-16
+Revision Date: 2026-07-16
+Status: Internal Planning Draft
+
+Related Documents:
+- Massage Nexus - 03 - Features v1.90
+- Massage Nexus - 18 - Site Structure Map v1.70
+- Massage Nexus - 19 - Edit System v0.10
+- Massage Nexus - 21 - User Workspace v0.10
+- Massage Nexus - 22 - Admin Workspace v0.10
+- Shared Project Standards v2.60
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the working private workspace for advertisers and sponsors using Massage Nexus.
+
+It covers advertiser identity, sponsor identity, campaigns, placements, sponsored listings, sponsored content, creative media, targeting, budget, billing, approval, disclosure, analytics, policy, and support.
+
+Advertising and sponsorship must remain visibly separate from organic ratings, verification, reputation, moderation, and editorial conclusions.
+
+================================================================================
+1. PRIMARY GOALS
+================================================================================
+
+The workspace should:
+
+- let approved organizations create and manage advertising;
+- support sponsors of articles, comics, rooms, events, campaigns, downloads, and learning material;
+- show clear approval and publication status;
+- provide budget and invoice information;
+- provide useful analytics;
+- require truthful disclosure;
+- protect user privacy;
+- prevent advertisers from influencing organic trust systems;
+- support small local businesses and larger organizations;
+- allow administrative review and policy enforcement.
+
+================================================================================
+2. PARTICIPANT TYPES
+================================================================================
+
+Advertiser
+Pays for placement, promotion, visibility, or a campaign.
+
+Sponsor
+Provides money, products, services, venue, prizes, or another approved benefit supporting content, an event, a series, or a platform activity.
+
+Provider Advertiser
+A spa, therapist, seller, or product owner promoting their own approved record.
+
+Agency
+Manages advertising for one or more clients.
+
+Brand
+An organization promoting products, services, or awareness.
+
+Institution
+A school, association, clinic, hotel, resort, or another organization sponsoring relevant content or activity.
+
+Platform Administrator
+Reviews advertising, sponsorship, billing, and compliance.
+
+One organization may be both advertiser and sponsor.
+
+================================================================================
+3. WORKSPACE PLACEMENT
+================================================================================
+
+Primary existing route area:
+
+/workspace/advertising
+
+Proposed supporting routes:
+
+/workspace/advertising/dashboard
+/workspace/advertising/organization
+/workspace/advertising/member
+/workspace/advertising/campaign
+/workspace/advertising/creative
+/workspace/advertising/placement
+/workspace/advertising/sponsored-listing
+/workspace/advertising/sponsored-content
+/workspace/advertising/sponsorship
+/workspace/advertising/audience
+/workspace/advertising/budget
+/workspace/advertising/invoice
+/workspace/advertising/payment
+/workspace/advertising/analytics
+/workspace/advertising/policy
+/workspace/advertising/support
+/workspace/advertising/history
+
+A separate /workspace/sponsor route is not required if sponsorship is managed inside the Advertising Workspace.
+
+================================================================================
+4. ORGANIZATION PROFILE
+================================================================================
+
+The workspace may store:
+
+- legal organization name;
+- public brand name;
+- organization type;
+- country;
+- address;
+- contact;
+- website;
+- social account;
+- billing contact;
+- campaign contact;
+- authorized representative;
+- logo;
+- brand assets;
+- verification;
+- tax information where needed;
+- payment status;
+- account status;
+- internal note.
+
+Private billing and verification details remain hidden from the public.
+
+================================================================================
+5. ORGANIZATION MEMBERS
+================================================================================
+
+Possible organization permissions:
+
+Organization Owner
+Manages the organization and member access.
+
+Campaign Manager
+Creates and manages campaigns.
+
+Creative Manager
+Uploads and edits creative material.
+
+Billing Manager
+Handles invoices and payment.
+
+Analyst
+Views analytics.
+
+Agency Manager
+Manages approved client organizations.
+
+Approver
+Approves a campaign before submission.
+
+A member receives only necessary permission.
+
+================================================================================
+6. ADVERTISER AND SPONSOR VERIFICATION
+================================================================================
+
+Verification may include:
+
+- email;
+- phone;
+- business identity;
+- authorized representative;
+- website ownership;
+- billing identity;
+- relationship to promoted record;
+- agency-client authority.
+
+Verification does not mean that Massage Nexus endorses all claims.
+
+================================================================================
+7. DASHBOARD
+================================================================================
+
+Possible dashboard cards:
+
+- active campaign;
+- campaign awaiting approval;
+- rejected creative;
+- budget used;
+- remaining budget;
+- invoice due;
+- placement result;
+- click summary;
+- conversion summary;
+- sponsor deliverable;
+- policy alert;
+- recent support response.
+
+================================================================================
+8. CAMPAIGN
+================================================================================
+
+A campaign may contain:
+
+- campaign name;
+- organization;
+- objective;
+- start date;
+- end date;
+- status;
+- budget;
+- currency;
+- audience;
+- geography;
+- language;
+- placement;
+- creative;
+- promoted record;
+- landing page;
+- disclosure;
+- tracking;
+- approval;
+- internal note.
+
+Possible campaign objectives:
+
+- profile visibility;
+- service awareness;
+- promotion;
+- booking inquiry;
+- product discovery;
+- event awareness;
+- article readership;
+- brand awareness;
+- newsletter signup;
+- sponsored campaign support.
+
+================================================================================
+9. CAMPAIGN STATUS
+================================================================================
+
+Draft
+Not submitted.
+
+Submitted
+Waiting for review.
+
+Under Review
+Being checked.
+
+Needs Revision
+Changes required.
+
+Approved
+Allowed to run when scheduled and funded.
+
+Scheduled
+Approved for a future start.
+
+Active
+Currently running.
+
+Paused
+Temporarily stopped.
+
+Completed
+Ended normally.
+
+Rejected
+Not approved.
+
+Cancelled
+Cancelled before completion.
+
+Suspended
+Stopped because of policy, payment, safety, or technical concern.
+
+Expired
+End date passed.
+
+================================================================================
+10. PLACEMENT TYPES
+================================================================================
+
+Possible placements:
+
+- homepage feature;
+- search result sponsored placement;
+- directory sponsored placement;
+- Service page placement;
+- Spa page placement;
+- Therapist page placement;
+- Product page placement;
+- Article page placement;
+- promotion card;
+- newsletter placement;
+- Relaxation Room sponsorship;
+- The Resting Leaf sponsorship;
+- Massage Campus sponsorship;
+- download sponsorship;
+- event sponsorship;
+- banner;
+- sidebar;
+- hero;
+- native sponsored card.
+
+Each placement requires a clear sponsored label.
+
+================================================================================
+11. SPONSORED LISTING
+================================================================================
+
+A sponsored listing may provide:
+
+- enhanced placement;
+- visual highlight;
+- additional media;
+- promotion callout;
+- booking callout;
+- brand style within approved limits;
+- analytics.
+
+It must not:
+
+- change the organic rating;
+- fabricate verification;
+- remove negative reviews;
+- hide required warnings;
+- appear as an ordinary organic ranking without disclosure.
+
+================================================================================
+12. SPONSORED CONTENT
+================================================================================
+
+Sponsored content may include:
+
+- article;
+- guide;
+- interview;
+- video;
+- comic;
+- newsletter section;
+- downloadable resource;
+- campaign page;
+- event page.
+
+It should identify:
+
+- sponsor;
+- content creator;
+- editorial reviewer;
+- disclosure;
+- relationship;
+- claims source;
+- publication date.
+
+The sponsor may review factual brand details but should not secretly control independent editorial conclusions.
+
+================================================================================
+13. SPONSORSHIP
+================================================================================
+
+A sponsorship record may include:
+
+- sponsor;
+- sponsored item;
+- sponsorship type;
+- financial or in-kind support;
+- benefit provided;
+- sponsor deliverables;
+- Massage Nexus deliverables;
+- date range;
+- exclusivity;
+- category;
+- disclosure;
+- contract;
+- approval;
+- status;
+- analytics.
+
+Possible sponsorships:
+
+- World Massage Day campaign;
+- Spa Day campaign;
+- The Resting Leaf episode or series;
+- Relaxation Room;
+- Massage Campus lesson or event;
+- newsletter;
+- awards;
+- free download;
+- community event;
+- research or directory project.
+
+================================================================================
+14. IN-KIND SPONSORSHIP
+================================================================================
+
+In-kind support may include:
+
+- product;
+- venue;
+- service;
+- equipment;
+- prize;
+- media;
+- transportation;
+- professional support.
+
+The system should record the estimated value and disclosure where appropriate.
+
+A complimentary service does not guarantee a positive review.
+
+================================================================================
+15. CREATIVE ASSET
+================================================================================
+
+Creative may include:
+
+- image;
+- video;
+- audio;
+- text;
+- headline;
+- description;
+- call to action;
+- logo;
+- landing page;
+- tracking parameters.
+
+Creative record may contain:
+
+- dimensions;
+- file type;
+- language;
+- accessibility text;
+- source;
+- copyright permission;
+- AI-use label;
+- approval;
+- rejection reason;
+- version;
+- schedule.
+
+================================================================================
+16. CREATIVE RULES
+================================================================================
+
+Creative must not contain:
+
+- false or unsupported claim;
+- misleading verification;
+- hidden adult solicitation;
+- exploitation;
+- harassment;
+- unsafe medical promise;
+- deceptive button;
+- malware;
+- unauthorized tracking;
+- stolen media;
+- fake urgency;
+- prohibited discrimination.
+
+Health, clinical, credential, and safety claims may require supporting evidence.
+
+================================================================================
+17. LANDING PAGE
+================================================================================
+
+A campaign may link to:
+
+- approved Massage Nexus profile;
+- promotion;
+- article;
+- product;
+- event;
+- approved external page.
+
+External landing pages may be checked for:
+
+- relevance;
+- security;
+- misleading redirect;
+- prohibited content;
+- broken link;
+- mobile usability;
+- disclosure.
+
+================================================================================
+18. AUDIENCE AND TARGETING
+================================================================================
+
+Possible targeting:
+
+- country;
+- region;
+- city;
+- Service Family;
+- Service;
+- Spa Type;
+- content category;
+- language;
+- device;
+- broad interest;
+- time period.
+
+Targeting should avoid prohibited sensitive profiling.
+
+Do not target or exclude users unfairly based on sensitive personal traits without a lawful and approved basis.
+
+================================================================================
+19. LANGUAGE
+================================================================================
+
+Campaign creative may have several language versions.
+
+Each version may contain:
+
+- headline;
+- body;
+- call to action;
+- image text;
+- alt text;
+- landing page;
+- approval.
+
+AI may draft translations, but the advertiser remains responsible for accuracy and compliance.
+
+================================================================================
+20. BUDGET
+================================================================================
+
+Budget may support:
+
+- total budget;
+- daily limit;
+- placement limit;
+- currency;
+- tax;
+- credit;
+- refund;
+- remaining balance;
+- forecast.
+
+The system should clearly explain:
+
+- pricing method;
+- minimum;
+- spending cap;
+- charge timing;
+- unused balance;
+- cancellation;
+- tax.
+
+Exact advertising pricing remains undecided.
+
+================================================================================
+21. POSSIBLE PRICING METHODS
+================================================================================
+
+Possible methods:
+
+Flat Fee
+Fixed price for a placement or period.
+
+Cost Per Thousand Impressions
+Charge based on impressions.
+
+Cost Per Click
+Charge based on valid clicks.
+
+Cost Per Action
+Charge based on an approved action.
+
+Sponsorship Package
+Fixed package of deliverables.
+
+Subscription
+Recurring plan with included benefits.
+
+The first implementation should preferably use simple manually approved flat-fee packages before advanced automated bidding.
+
+================================================================================
+22. BILLING AND PAYMENT
+================================================================================
+
+Workspace may show:
+
+- quote;
+- order;
+- invoice;
+- payment;
+- tax;
+- credit;
+- refund;
+- receipt;
+- billing contact;
+- billing history.
+
+Payment records are private.
+
+Changing billing information may require recent authentication.
+
+================================================================================
+23. APPROVAL WORKFLOW
+================================================================================
+
+Possible process:
+
+1. organization creates draft;
+2. organization reviews and submits;
+3. automated validation checks format and prohibited content;
+4. advertising administrator reviews;
+5. evidence is requested if needed;
+6. campaign is approved, revised, or rejected;
+7. payment requirement is satisfied;
+8. campaign is scheduled;
+9. platform monitors delivery and policy;
+10. campaign completes or is suspended.
+
+Urgent same-day placement should not bypass safety review.
+
+================================================================================
+24. DISCLOSURE
+================================================================================
+
+Possible labels:
+
+- Sponsored;
+- Advertisement;
+- Paid Promotion;
+- Sponsored Article;
+- Sponsored Product;
+- Sponsored Listing;
+- Supported by;
+- In partnership with.
+
+Disclosure should be:
+
+- visible;
+- understandable;
+- close to the promoted content;
+- not hidden only in a policy page.
+
+================================================================================
+25. EDITORIAL INDEPENDENCE
+================================================================================
+
+Advertisers and sponsors cannot:
+
+- change independent reviews;
+- remove valid criticism;
+- alter ratings;
+- grant verification;
+- control moderation;
+- suppress required warnings;
+- direct organic ranking secretly;
+- demand a positive editorial conclusion.
+
+A sponsor relationship should be recorded and disclosed.
+
+================================================================================
+26. ANALYTICS
+================================================================================
+
+Possible metrics:
+
+- impression;
+- unique reach estimate;
+- click;
+- click-through rate;
+- profile view;
+- contact click;
+- direction click;
+- save;
+- follow;
+- booking inquiry;
+- promotion view;
+- voucher action;
+- video view;
+- article read;
+- campaign completion.
+
+Analytics should distinguish:
+
+- organic;
+- sponsored;
+- invalid traffic;
+- estimated;
+- confirmed.
+
+================================================================================
+27. PRIVACY
+================================================================================
+
+Advertisers should receive aggregated or appropriately limited analytics.
+
+They should not receive:
+
+- private user identity;
+- exact private health information;
+- private messages;
+- unrelated booking details;
+- private review drafts;
+- private location history.
+
+Tracking must follow policy and applicable law.
+
+================================================================================
+28. INVALID TRAFFIC AND FRAUD
+================================================================================
+
+The system may detect:
+
+- repeated automated click;
+- self-clicking;
+- bot impression;
+- duplicate action;
+- suspicious referral;
+- manipulated conversion.
+
+Invalid activity should not be billed as ordinary valid performance where the pricing model depends on it.
+
+================================================================================
+29. PROMOTED RECORD CONNECTION
+================================================================================
+
+A campaign may connect to:
+
+- establishment;
+- therapist;
+- Service;
+- product;
+- seller;
+- promotion;
+- article;
+- event;
+- room;
+- comic;
+- download.
+
+The advertiser must have authority to promote the record or obtain approval from the record manager.
+
+================================================================================
+30. SUPPORT AND COMMUNICATION
+================================================================================
+
+Routes:
+
+/workspace/advertising/support
+
+Possible support topics:
+
+- campaign setup;
+- creative rejection;
+- billing;
+- payment;
+- targeting;
+- analytics;
+- policy;
+- sponsorship;
+- technical integration;
+- refund.
+
+Support history should remain connected to the organization and campaign.
+
+================================================================================
+31. NOTIFICATIONS
+================================================================================
+
+Possible notifications:
+
+- organization approved;
+- campaign submitted;
+- revision requested;
+- creative rejected;
+- campaign approved;
+- payment required;
+- campaign started;
+- budget threshold;
+- campaign paused;
+- campaign completed;
+- invoice due;
+- policy warning;
+- sponsor deliverable due.
+
+================================================================================
+32. API AND INTEGRATION
+================================================================================
+
+A later Partner API may support:
+
+- campaign read;
+- creative upload;
+- analytics read;
+- webhook;
+- budget status;
+- campaign pause.
+
+API access requires:
+
+- approved client;
+- scope;
+- quota;
+- audit;
+- revocation.
+
+The first version may be workspace-only.
+
+================================================================================
+33. AI ASSISTANCE
+================================================================================
+
+AI may help:
+
+- brainstorm campaign;
+- draft headline;
+- resize or adapt wording;
+- suggest language version;
+- summarize analytics;
+- flag prohibited claim;
+- generate alt text;
+- compare creative versions.
+
+AI must not guarantee performance or approve its own high-risk claim.
+
+AI-generated or edited creative should receive the appropriate label where required.
+
+================================================================================
+34. ACCESSIBILITY
+================================================================================
+
+Creative should provide:
+
+- alt text;
+- captions;
+- readable contrast;
+- understandable call to action;
+- no harmful flashing;
+- keyboard-accessible landing experience;
+- transcript for important audio or video where required.
+
+================================================================================
+35. ADMINISTRATIVE REVIEW
+================================================================================
+
+Advertising administrators may:
+
+- approve organization;
+- review campaign;
+- request evidence;
+- approve placement;
+- reject creative;
+- pause campaign;
+- issue credit;
+- review dispute;
+- enforce policy;
+- view audit.
+
+Administrative advertising access remains separate from editorial, rating, verification, and moderation authority unless separately granted.
+
+================================================================================
+36. INITIAL IMPLEMENTATION ORDER
+================================================================================
+
+Phase 1
+Manual advertising and sponsorship administration:
+- organization;
+- campaign brief;
+- creative upload;
+- flat-fee placement;
+- approval;
+- disclosure;
+- invoice;
+- basic analytics.
+
+Phase 2
+Self-service workspace:
+- campaign builder;
+- budget;
+- scheduling;
+- language versions;
+- richer analytics;
+- sponsored listing.
+
+Phase 3
+Automation:
+- API;
+- advanced targeting;
+- usage-based billing;
+- fraud detection;
+- partner integration;
+- automated optimization.
+
+================================================================================
+37. CURRENT WORKING DECISIONS
+================================================================================
+
+- Advertising and sponsorship use one permission-aware workspace area.
+- Sponsorship is distinct from ordinary advertising but may share organization and billing tools.
+- Sponsored content must be disclosed.
+- Advertising does not alter organic ratings, verification, moderation, or editorial conclusions.
+- Private user data is not provided to advertisers.
+- The first implementation should use simpler manually approved packages.
+- Creative and claims require review.
+- Organization members receive limited permissions.
+- AI may assist creative work but does not approve itself.
+
+================================================================================
+38. OPEN DECISIONS
+================================================================================
+
+- exact advertising products;
+- first placement inventory;
+- pricing;
+- payment gateway;
+- tax handling;
+- refund policy;
+- sponsorship contract process;
+- campaign approval time;
+- prohibited categories;
+- adult and sensitive advertising boundary;
+- political advertising policy;
+- geographic targeting limits;
+- analytics attribution;
+- invalid-traffic rules;
+- agency support;
+- external tracking;
+- first public advertiser launch date.

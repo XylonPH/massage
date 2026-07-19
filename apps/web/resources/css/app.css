@@ -6,4 +6,58 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Ink & Ember — Ink (deep navy) */
+    --color-ink-50: #f2f6fb;
+    --color-ink-100: #e2eaf5;
+    --color-ink-200: #c3d3e8;
+    --color-ink-300: #96b1d4;
+    --color-ink-400: #6289bb;
+    --color-ink-500: #3f6aa3;
+    --color-ink-600: #2e5288;
+    --color-ink-700: #26426e;
+    --color-ink-800: #1d3457;
+    --color-ink-900: #16294a;
+    --color-ink-950: #0b1830;
+
+    /* Ink & Ember — Ember (orange) */
+    --color-ember-50: #fff6ed;
+    --color-ember-100: #ffead4;
+    --color-ember-200: #ffd0a8;
+    --color-ember-300: #ffaf70;
+    --color-ember-400: #fd8336;
+    --color-ember-500: #f96410;
+    --color-ember-600: #ea4a06;
+    --color-ember-700: #c23607;
+    --color-ember-800: #9a2c0e;
+    --color-ember-900: #7c270f;
+    --color-ember-950: #431105;
+
+    /* Ink & Ember — Leaf (green) */
+    --color-leaf-50: #f2f9f2;
+    --color-leaf-100: #e0f1e1;
+    --color-leaf-200: #c2e2c5;
+    --color-leaf-300: #94cc9b;
+    --color-leaf-400: #62ae6c;
+    --color-leaf-500: #3e914a;
+    --color-leaf-600: #2e7539;
+    --color-leaf-700: #265d30;
+    --color-leaf-800: #214b29;
+    --color-leaf-900: #1c3e24;
+    --color-leaf-950: #0e2213;
+
+    /* Ink & Ember — Charcoal */
+    --color-charcoal-800: #2b2f33;
+    --color-charcoal-900: #1f2225;
+    --color-charcoal-950: #141618;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@utility text-balance {
+    text-wrap: balance;
 }

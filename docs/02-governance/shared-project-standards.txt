@@ -1,0 +1,2287 @@
+Shared Project Standards
+========================
+
+Field                  | Value
+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Document Version       | 2.70
+Author                 | Xylon Reyes
+Original Creation Date | June 9, 2026
+Revision Date          | July 19, 2026
+Supersedes             | Shared Project Standards v2.60
+Applies To             | All projects in Xylon's project ecosystem unless an explicit project-specific exception is recorded
+Description            | Shared documentation, versioning, coding, testing, technical, data, naming, multilingual, identity, repository, interface, accessibility, security, backup, and compatibility standards for independently developed projects
+
+--------------------------------------------------------------------------------
+
+Table of Contents
+-----------------
+
+1. Purpose and Authority (#1-purpose-and-authority)
+2. Development and Production Environments (#2-development-and-production-environments)
+3. Project Documentation System (#3-project-documentation-system)
+4. Product Versioning (#4-product-versioning)
+5. Coding and Engineering Standards (#5-coding-and-engineering-standards)
+6. Testing and Validation Standards (#6-testing-and-validation-standards)
+7. Shared Technology and Data Baseline (#7-shared-technology-and-data-baseline)
+8. Naming Conventions (#8-naming-conventions)
+9. Identifier Standards (#9-identifier-standards)
+10. Shared Taxonomy Governance (#10-shared-taxonomy-governance)
+11. Selectable Data Classification (#11-selectable-data-classification)
+12. Shared Reference Data (#12-shared-reference-data)
+13. Multilingual and Translation Standards (#13-multilingual-and-translation-standards)
+14. Shared Identity and Independent Accounts (#14-shared-identity-and-independent-accounts)
+15. Common Product Requirements (#15-common-product-requirements)
+16. Interface and Accessibility Baseline (#16-interface-and-accessibility-baseline)
+17. Folder, File, and Repository Structure (#17-folder-file-and-repository-structure)
+18. Git and GitHub Standards (#18-git-and-github-standards)
+19. Security, Privacy, and Secret Handling (#19-security-privacy-and-secret-handling)
+20. Backup, Restore, and Preservation (#20-backup-restore-and-preservation)
+21. Change and Compatibility Standards (#21-change-and-compatibility-standards)
+22. Appendix A: Conformance Checklist (#appendix-a-conformance-checklist)
+
+--------------------------------------------------------------------------------
+
+1. Purpose and Authority
+------------------------
+
+These standards establish reusable conventions across independently developed projects. They are intended to reduce incompatible naming, data, identity, multilingual, repository, and maintenance practices while allowing each project to choose its own features, framework, hosting, deployment model, and user experience.
+
+1.1 Authority Order
+~~~~~~~~~~~~~~~~~~~
+
+Use the following order when shared and project-specific documentation differ:
+
+1. current explicit user decision;
+2. current project-specific specification;
+3. current Shared Project Standards;
+4. older project documents;
+5. historical notes and superseded standards.
+
+A project-specific specification may override a shared standard only when it records an explicit exception.
+
+1.2 Outdated Rules and Explicit Exceptions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When Shared Project Standards changes, project documentation must distinguish among:
+
+Outdated inherited rule
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The project copied an older shared rule and did not intentionally depart from it.
+
+Required action: update the project documentation to the current standard.
+
+Explicit project exception
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The project intentionally differs because of a real product, legal, framework, platform, or operational requirement.
+
+Required action: preserve the exception and record:
+
+- the shared rule being overridden;
+- the project-specific replacement;
+- the reason;
+- the effective date or version;
+- whether the exception is temporary or permanent.
+
+Unclear conflict
+~~~~~~~~~~~~~~~~
+
+It is not clear whether the difference was intentional.
+
+Required action: do not overwrite it silently. Mark it for review.
+
+1.3 Project Conformance Reference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each maintained project specification should identify:
+
+Code block (text):
+    shared_standard_version: 2.50
+    project_exception_list:
+
+Project documents should reference shared standards instead of copying large sections unless local detail is necessary.
+
+1.4 Scope Boundary
+~~~~~~~~~~~~~~~~~~
+
+A shared convention does not require every project to implement the same:
+
+- modules;
+- screens;
+- workflows;
+- account features;
+- database collections;
+- hosting platform;
+- folder structure;
+- lifecycle process;
+- AI features.
+
+Only standards relevant to the project apply.
+
+--------------------------------------------------------------------------------
+
+2. Development and Production Environments
+------------------------------------------
+
+2.1 Development Host
+~~~~~~~~~~~~~~~~~~~~
+
+The primary environment in which project files are created, edited, tested, and managed is Windows.
+
+This does not determine the production hosting platform.
+
+Default development guidance may therefore use:
+
+- Windows-compatible tooling;
+- PowerShell command examples;
+- Windows desktop paths in private documentation;
+- Windows development utilities;
+- UTF-8 text files.
+
+2.2 Production Independence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each project must declare its actual production target separately.
+
+Possible production environments include:
+
+- Linux servers;
+- Windows servers;
+- containers;
+- managed cloud platforms;
+- static hosting;
+- mobile platforms;
+- browser-only delivery;
+- local desktop installation;
+- another documented environment.
+
+Development instructions must not be reused as production instructions without review.
+
+2.3 Portability Rules
+~~~~~~~~~~~~~~~~~~~~~
+
+- Use language or framework path libraries instead of manually concatenating path separators.
+- Avoid repository files whose names differ only by letter case.
+- Use UTF-8 for source, configuration, exported text, and documentation.
+- Do not assume a Windows-only production filesystem unless the project is explicitly Windows-only.
+- Keep environment-specific values in configuration.
+- Document production commands for the actual target environment.
+
+--------------------------------------------------------------------------------
+
+3. Project Documentation System
+-------------------------------
+
+Project documentation should be proportionate to project size, risk, maturity, and public exposure. The complete documentation catalogue is available to every project, but documents are created only when they are useful or required.
+
+3.1 Document Naming (Retired)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Earlier revisions of this standard specified a numbered, versioned OneDrive planning filename pattern: [PROJECT NAME] - [GROUP].[ORDER] - [DOCUMENT TITLE] v[VERSION].[EXTENSION]. That pattern applied only while a document was still private OneDrive planning material. It is retired for any document that has moved into a project's Git repository.
+
+Current repository document naming, folder placement, and versioning are governed by the Documentation Writing and Management Standard, which requires lowercase, dash-separated, unnumbered, unversioned filenames placed in a semantic folder, with the version tracked inside the document rather than the filename. Do not reintroduce numbered or versioned filenames for repository documents.
+
+3.2 File Formats
+~~~~~~~~~~~~~~~~
+
+Format | Primary Use
+-------+---------------------------------------------------------------------------------------
+.txt   | Rapidly edited notes, lightweight checklists, AI handoffs, and prompt packs
+.md    | Structured project documentation maintained with source code or planning files
+.docx  | Reusable planning-library guides and documents requiring rich editing or formal layout
+.pdf   | Published or distributed legal and policy documents
+
+A PDF should not be the only editable copy of a legal or policy document. Retain an editable source in Markdown, DOCX, or another approved format.
+
+3.3 Applicability
+~~~~~~~~~~~~~~~~~
+
+Documents are classified as:
+
+- Core — normally maintained for an active software project;
+- Conditional — created when relevant to the product, business model, users, data, migration, marketing, or legal exposure;
+- Working — frequently edited private material that may remain informal;
+- Published — generated or approved material intended for users, clients, regulators, or the public;
+- Reusable reference — shared planning guidance that is not copied into every project.
+
+3.4 Project-Specific Documentation Set (Retired)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Earlier revisions of this standard defined a fixed catalogue of numbered OneDrive planning documents (00.01 Working Notes through 06.03 Copyright, Licensing, and Legal Notices) that every project was expected to eventually produce. That fixed catalogue is retired.
+
+A project's actual documentation set is whatever the project's own docs/ folder contains, organized into semantic topic folders per the Documentation Writing and Management Standard, sized to the project's real size, risk, maturity, and public exposure per section 3.3 above. Do not recreate the retired numbered catalogue as a checklist of documents a project must produce.
+
+3.5 Reusable Planning Library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The reusable planning library provides shared guidance and templates. These files are maintained once and referenced by project-specific documents.
+
+Frameworks and Master References
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Adaptive Planning Model Library.docx
+   Reusable planning models, document types, and planning approaches for different software, digital-product, research, and organizational projects.
+
+2. Universal Adaptive Project Lifecycle Framework.docx
+   Broad lifecycle guidance from idea and planning through design, development, release, maintenance, expansion, and retirement.
+
+3. Software Project Documentation System.docx
+   Defines the documentation catalogue, naming, numbering, versioning, formats, applicability, update rules, and documentation discipline.
+
+Reusable Guidebooks
+~~~~~~~~~~~~~~~~~~~
+
+4. Product and Architecture Specification Guide.docx
+   Guidance for product scope, user types, requirements, features, non-goals, architecture, boundaries, and acceptance criteria.
+
+5. UI UX and Asset Design Guide.docx
+   Guidance for interfaces, dashboards, menus, navigation, color, icons, images, desktop, mobile, website, and visual consistency.
+
+6. Data Database and File Architecture Guide.docx
+   Guidance for databases, relationships, controlled data, shared reference data, files, media, imports, exports, and folder architecture.
+
+7. Development Testing Release and Maintenance Guide.docx
+   Guidance from implementation through testing, validation, packaging, deployment, releases, bug fixing, and maintenance.
+
+8. Security Privacy and Legal Readiness Guide.docx
+   Guidance for authentication, permissions, sensitive data, privacy, backup, recovery, terms, copyright, licensing, and legal readiness.
+
+9. AI-Assisted Development Workflow Guide.docx
+   Guidance for AI planning, coding, review, debugging, documentation, testing, prompt reuse, summaries, handoffs, and verification.
+
+10. Legacy Migration and Data Conversion Guide.docx
+    Guidance for legacy assessment, data conversion, field mapping, cleanup, import, semantic preservation, and system rebuilding.
+
+11. Marketing Growth and Analytics Guide.docx
+    Guidance for launch strategy, online and offline marketing, search visibility, social media, analytics, metrics, and growth.
+
+12. Content Strategy and Editorial System Guide.docx
+    Guidance for articles, directory records, categories, descriptions, metadata, media, editorial workflow, naming, and content quality.
+
+3.6 Project Document to Reusable Library Matrix (Retired)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This matrix mapped the retired numbered catalogue (section 3.4) to the reusable guidebooks in section 3.5. It is retired along with section 3.4. When a document in a project's actual docs/ folder would benefit from one of the guidebooks in section 3.5, note the reference directly in that document instead of maintaining a separate matrix.
+
+--------------------------------------------------------------------------------
+
+4. Product Versioning
+---------------------
+
+4.1 Format
+~~~~~~~~~~
+
+Product versions use:
+
+Code block (text):
+    MAJOR.MINOR.PATCH
+
+The preferred display width is:
+
+Code block (text):
+    00.00.00
+
+Example:
+
+Code block (text):
+    23.10.35
+
+The components are numeric:
+
+- Major: 23
+- Minor: 10
+- Patch: 35
+
+Compare versions numerically, not alphabetically.
+
+Note on machine storage: 00.00.00 is a user-facing visual presentation mask. Underlying package manifests, Git tags, and dependency lockfiles must store strictly unpadded integers (e.g., 23.10.4) to maintain compatibility with standard SemVer 2.0.0 parsers.
+
+A project may adopt another versioning scheme only through an explicit project-specific exception.
+
+4.2 Major Version
+~~~~~~~~~~~~~~~~~
+
+Increase MAJOR for a substantially incompatible or identity-changing release, including:
+
+- major product-scope change;
+- incompatible architecture redesign;
+- breaking public API or data contract;
+- central workflow replacement;
+- removal of major supported behavior;
+- migration that cannot be treated as an ordinary compatible upgrade.
+
+Example:
+
+Code block (text):
+    23.10.35 -> 24.0.00
+
+Increasing Major resets Minor and Patch.
+
+4.3 Minor Version
+~~~~~~~~~~~~~~~~~
+
+Increase MINOR for a substantial backward-compatible feature release, including:
+
+- major new feature;
+- new product area or workflow;
+- significant compatible interface addition;
+- optional integration;
+- compatible schema expansion;
+- meaningful capability improvement without a breaking migration.
+
+Example:
+
+Code block (text):
+    23.10.35 -> 23.11.00
+
+Increasing Minor resets Patch.
+
+4.4 Patch Version
+~~~~~~~~~~~~~~~~~
+
+Increase PATCH for backward-compatible maintenance, including:
+
+- bug fix;
+- security correction;
+- accessibility correction;
+- performance improvement;
+- minor interface refinement;
+- safe refactoring;
+- packaging or deployment correction;
+- small compatible data correction.
+
+Example:
+
+Code block (text):
+    23.10.35 -> 23.10.36
+
+Patch may exceed two digits. Its number is a version component, not a count of defects.
+
+4.5 Independent Version Streams
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Keep these versions independent unless the project explicitly couples them:
+
+- product;
+- document;
+- database or schema;
+- API;
+- taxonomy;
+- shared reference dataset;
+- seed data;
+- file format.
+
+A documentation-only revision does not automatically change the product version.
+
+--------------------------------------------------------------------------------
+
+5. Coding and Engineering Standards
+-----------------------------------
+
+5.1 General Engineering Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Every code project should:
+
+- follow a declared language or framework convention;
+- use consistent automated formatting where practical;
+- use clear names and avoid unexplained abbreviations;
+- separate responsibilities and avoid duplicated logic;
+- validate external input;
+- handle errors deliberately;
+- keep secrets and environment-specific values out of source code;
+- use dependency management;
+- use static analysis and type checking where available;
+- document public interfaces and non-obvious behavior;
+- remove dead code and obsolete compatibility paths;
+- avoid suppressing warnings without a documented reason.
+
+Project-specific conventions and enforcement tools belong in the Technology Stack and File and Folder Structure documents.
+
+5.2 Established Language Standards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use current official or broadly recognized language resources rather than inventing a new style without need.
+
+Language                | Recommended Baseline
+------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Python                  | PEP 8, PEP 257 where docstrings are used, official typing guidance, a formatter or linter, static type checking, and pytest or an approved equivalent
+PHP                     | PHP-FIG PSR-1, PSR-4, the current PHP-FIG coding-style recommendation, Composer autoloading, static analysis, and PHPUnit, Pest, or an approved equivalent
+Java                    | A declared recognized Java style guide, formatter, static analysis, and JUnit or an approved equivalent
+C#                      | Microsoft .NET and C# coding conventions, .editorconfig, analyzers, nullable reference rules where applicable, and an approved .NET test framework
+JavaScript / TypeScript | Declared framework conventions, ESLint or equivalent, formatter, strict TypeScript where applicable, and an approved unit or browser test framework
+C / C++                 | A declared recognized style guide, compiler warnings, static analysis, sanitizers where useful, and an approved test framework
+Kotlin                  | Official Kotlin conventions, formatter, static analysis, and an approved JVM or Android test framework
+Dart / Flutter          | Official Dart formatting and analysis with Flutter or Dart testing tools
+
+The selected standard must be practical for the project. Framework-required conventions may override the general profile when documented.
+
+5.3 Maintainability
+~~~~~~~~~~~~~~~~~~~
+
+- Prefer simple, explicit code over unnecessary abstraction.
+- Introduce reusable layers when they remove genuine duplication or clarify responsibility.
+- Do not create a generic helper area that becomes an unstructured dumping ground.
+- Keep database access, business logic, user-interface behavior, and external integration responsibilities distinguishable.
+- Refactoring must preserve behavior unless the change intentionally alters requirements.
+
+--------------------------------------------------------------------------------
+
+6. Testing and Validation Standards
+-----------------------------------
+
+6.1 Risk-Based Coverage
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Testing depth should reflect project risk, data sensitivity, public exposure, complexity, and change size.
+
+Applicable layers may include:
+
+- unit tests;
+- database or repository integration tests;
+- API and contract tests;
+- system or end-to-end tests;
+- regression tests;
+- import, export, and migration tests;
+- security tests;
+- accessibility tests;
+- performance and load tests;
+- backup and restore tests;
+- packaging and deployment tests;
+- manual usability and acceptance tests.
+
+Not every project requires every layer, but omission must be based on relevance rather than convenience.
+
+6.2 Manual Development
+~~~~~~~~~~~~~~~~~~~~~~
+
+For code written primarily by a human developer:
+
+1. review the affected requirement;
+2. add or update tests where practical;
+3. run targeted tests;
+4. run the applicable regression suite;
+5. run formatting, linting, static analysis, and type checks;
+6. manually verify important user-facing behavior;
+7. review destructive, migration, and data changes separately.
+
+6.3 AI-Assisted Development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a human directs AI-generated edits:
+
+- treat generated code as untrusted until reviewed;
+- inspect the actual diff;
+- do not accept tests written by the same AI as the only proof of correctness;
+- independently check edge cases, error handling, and failure behavior;
+- do not weaken existing tests merely to make generated code pass;
+- run static analysis, secret checks, and relevant integration tests;
+- manually test user-facing behavior.
+
+6.4 AI-Led or Broad Autonomous Development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When AI performs most of a milestone:
+
+- begin from a known recoverable repository and data state;
+- define explicit scope, prohibited actions, and completion gates;
+- use a branch, worktree, backup, or equivalent recovery method;
+- record the pre-change baseline;
+- run targeted tests and the full applicable regression suite;
+- run formatting, linting, typing, security, secret, and private-path checks;
+- use dry runs for migrations and destructive operations;
+- compare file and database state before and after;
+- require human approval before production deployment or destructive LIVE changes;
+- keep commits coherent and reviewable;
+- provide an implementation summary and unresolved-risk list.
+
+AI-led development does not reduce the required quality standard.
+
+6.5 Test Data and Environments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Separate test, development, staging, and production data where applicable.
+- Do not use real personal or secret data in automated tests.
+- Destructive test helpers must not target production.
+- Seed data must be deterministic when tests depend on exact results.
+- Restore and migration procedures should be tested using representative non-production data.
+
+--------------------------------------------------------------------------------
+
+7. Shared Technology and Data Baseline
+--------------------------------------
+
+7.1 Primary Data Model
+~~~~~~~~~~~~~~~~~~~~~~
+
+Each project will use a document-oriented NoSQL database as its primary structured-data store unless an explicit project decision changes that requirement.
+
+The engine and hosting model may differ by project.
+
+Supplementary technologies may include:
+
+- object or file storage;
+- search indexes;
+- caches;
+- queues;
+- analytics stores;
+- relational databases;
+- graph databases.
+
+A supplementary store does not replace the primary data model unless the project specification states otherwise.
+
+7.2 Availability Profiles
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each project must declare one primary availability profile.
+
+Profile                | Meaning
+-----------------------+------------------------------------------------------------------------------------------------------
+Local-only             | Data and operation remain on one device or local network.
+Local-primary          | The local copy is authoritative; remote backup or synchronization may be added.
+Hybrid/offline-capable | A local working copy supports offline use and later synchronization.
+Online-primary         | The online service is authoritative; local copies exist for backup, development, export, or recovery.
+Online-only            | Core operation requires an online service and no complete offline mode is promised.
+
+The project specification must identify:
+
+- authoritative data location;
+- offline behavior;
+- local copy behavior;
+- backup location and frequency;
+- restore procedure;
+- synchronization rules;
+- network-loss behavior;
+- whether local copies are editable or read-only.
+
+7.3 Cloud Neutrality
+~~~~~~~~~~~~~~~~~~~~
+
+Shared standards do not require a specific provider.
+
+A project may use:
+
+- MongoDB Atlas;
+- Firebase or Firestore;
+- Azure;
+- Supabase;
+- a custom API;
+- another provider;
+- no cloud service.
+
+Provider-specific rules belong in the project specification.
+
+7.4 API & Payload Pagination Standards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When projects query list data across network boundaries, they must declare a standardized pagination parameter profile to prevent ecosystem fragmentation. Projects must standardize on one of the following canonical models:
+
+- Offset/Page Profile: page_number (integer, 1-indexed) and page_size (integer).
+- Cursor Profile: starting_after_id (record identifier) and limit_count (integer).
+
+Response payloads returning paginated collections must include explicit metadata detailing total matching records, current limits, and whether additional pages exist.
+
+--------------------------------------------------------------------------------
+
+8. Naming Conventions
+---------------------
+
+8.1 Technical Naming
+~~~~~~~~~~~~~~~~~~~~
+
+- Use English for technical identifiers, schema names, source-code names, internal keys, AI schemas, and developer-facing documentation.
+- Use snake_case for database names, collection names, field names, files, folders, export keys, and technical identifiers unless a language or framework requires another convention.
+- Use singular conceptual names by default.
+- Use singular custom folder names by default.
+- Use singular collection names by default.
+- Use PascalCase for classes where applicable.
+- Use UPPER_CASE for constants where applicable.
+- Use kebab-case for public URL slugs.
+- Prefer clear full words over unexplained abbreviations.
+- Do not use different names for the same concept without documenting the distinction.
+
+8.2 Name, Title, and Label
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Choose the suffix that matches the meaning.
+
+Suffix  | Use
+--------+-----------------------------------------------------------------------------------------
+*_name  | Normal name of a person, organization, project, entity, setting, or technical structure.
+*_title | Title of a creative, editorial, published, episodic, or named content work.
+*_label | Concise interface caption, option label, button text, or field label.
+
+Examples:
+
+Code block (text):
+    project_name
+    organization_name
+    movie_title
+    episode_title
+    article_title
+    field_label
+    option_label
+    display_name
+
+Rules:
+
+- Use one of name, title, or label for the same fact.
+- Use more than one only when they represent different facts.
+- A technical field may have both field_name and user-facing field_label.
+- A label is not a stable key.
+
+8.3 Identifier, Key, Code, Slug, and Value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Concept    | Meaning
+-----------+-------------------------------------------------------------------------------------------------
+Identifier | Locates a stored record, such as _id, user_id, or movie_id.
+Key        | Stable internal identity used for mapping, import, export, generation, or structural comparison.
+Code       | Compact controlled or externally standardized value, such as USD, ENG, C, or MR.
+Slug       | URL-safe public path segment.
+Value      | Actual stored content of a field.
+
+Rules:
+
+- Use *_id for record relationships.
+- Use *_key only for stable internal identity.
+- Do not append *_key merely because a value is selected from a list.
+- Use *_code only for a real standardized or controlled code.
+- A slug is not a key.
+- A label is not a code.
+- Preserve external codes separately from internal keys.
+
+8.4 Standard Field-Name Direction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use one standard direction for common field families.
+
+Meaning                   | Standard | Examples
+--------------------------+----------+------------------------------------------
+Count of records or items | *_count  | view_count, comment_count, record_count
+Accumulated amount        | total_*  | total_price, total_amount, total_duration
+Date without time         | *_date   | birth_date, release_date, expiration_date
+Time without date         | *_time   | start_time, opening_time
+Date and time             | *_at     | created_at, published_at, translated_at
+URL                       | *_url    | website_url, source_url, image_url
+Path                      | *_path   | file_path, relative_path, output_path
+
+Do not mix both directions in one project.
+
+Avoid forms such as:
+
+Code block (text):
+    count_comment
+    price_total
+    date_release
+    datetime_created
+    url_website
+    path_file
+
+unless an external contract requires them.
+
+8.5 Controlled-Field Prefixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A controlled field prefix expresses the semantic question being answered.
+
+Prefix       | Use                                                         | Examples
+-------------+-------------------------------------------------------------+-----------------------------------
+type_*       | Category or classification                                  | type_operation, type_location
+group_*      | Broad grouping or family                                    | group_content, group_permission
+status_*     | Current lifecycle, review, completion, or operational state | status_review, status_account
+format_*     | Representation, media, file, or encoding format             | format_video, format_sound
+level_*      | Ordered degree, severity, confidence, access, or priority   | level_priority, level_confidence
+mode_*       | Operating, display, interaction, or behavior mode           | mode_display_layout, mode_crud
+method_*     | Method or means used to perform something                   | method_payment, method_translation
+placement_*  | Physical, visual, navigational, or document placement       | placement_navigation
+scheme_*     | Organized rule or numbering/color scheme                    | scheme_color, scheme_numbering
+scope_*      | Boundary, reach, or coverage                                | scope_navigation, scope_visibility
+role_*       | Assigned responsibility                                     | role_account, role_editorial
+position_*   | Position or rank                                            | user_position, position_staff
+source_*     | Origin, provider, or evidence source                        | source_record, source_import
+target_*     | Intended destination, object, or audience                   | target_audience, target_platform
+visibility_* | Visibility rule or audience                                 | visibility_scope
+is_*         | Boolean state or characteristic                             | is_active, is_translatable
+has_*        | Boolean possession or availability                          | has_attachment
+can_*        | Boolean capability or permission                            | can_translate, can_publish
+
+Rules:
+
+- Do not use type_ and group_ for the same classification.
+- Do not use status_* for a permanent category.
+- Do not use level_* unless values have an ordered progression.
+- Do not use mode_* for a factual entity type.
+- Do not append _key to controlled field names because their values are option codes.
+
+Boolean fields must strictly answer a state of being (is), possession (has), or permission (can). Intentional action prefixes (such as allow_comments or should_notify) are prohibited; map them to their stateful equivalents (e.g., is_commentable, can_comment, or is_notification_enabled).
+
+--------------------------------------------------------------------------------
+
+8.6 Date, Time, Time Zone, and Precision
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When applying the temporal suffixes established in Section 8.4 (#84-standard-field-name-direction), exact moments must store an unambiguous timestamp, normally UTC.
+
+For exact moments:
+
+- convert to the user's or event's time zone for display;
+- retain the relevant time-zone reference when local interpretation matters.
+
+For schedules defined by local wall-clock time, preserve:
+
+- local date or recurrence rule;
+- local time;
+- time-zone reference;
+- computed UTC only when needed.
+
+Do not store a date-only fact as midnight UTC because time-zone conversion may change the displayed date.
+
+Use the approved taxonomy fields when uncertainty or partial precision matters:
+
+Code block (text):
+    type_date_precision
+    type_time_precision
+    type_date_qualifier
+    type_time_qualifier
+
+Examples include year-only dates, month-level precision, approximate values, ranges, before/after qualifiers, and unknown precision.
+
+Routine audit timestamps such as created_at and updated_at do not need extra precision fields when they are exact.
+
+Storage remains machine-readable and unambiguous. Display follows the selected language, regional format, and time zone.
+
+--------------------------------------------------------------------------------
+
+8.7 Order, Number, and Limit Names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the following direction for common ordering, numbering, and validation-limit fields unless a project-specific exception or external contract requires another name.
+
+Meaning                                                                                    | Standard | Examples
+-------------------------------------------------------------------------------------------+----------+----------------------------------------------------
+Sort, display, print, field, route, or layout ordering                                     | *_order  | sort_order, display_order, field_order, route_order
+Assigned number, version-like number, port number, sequence number, or human-facing number | *_number | version_number, port_number, sequence_number
+Minimum validation limit                                                                   | min_*    | min_character, min_number
+Maximum validation limit                                                                   | max_*    | max_character, max_number
+
+Avoid reversing the direction without a documented reason.
+
+Examples to avoid:
+
+Code block (text):
+    order_sort
+    order_display
+    number_version
+    number_port
+    character_min
+    character_max
+    number_min
+    number_max
+
+8.8 Related Controlled-Field Names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When multiple controlled fields describe related parts of the same subject, use names that distinguish the semantic question each field answers.
+
+Examples:
+
+Code block (text):
+    type_index
+    type_index_mode
+    type_database_provider
+    type_database_service
+    type_database_engine
+    type_database_purpose
+    type_database_usage
+
+Rules:
+
+- type_index classifies the overall index kind, such as standard, compound, text, geospatial, TTL, or wildcard.
+- type_index_mode classifies how an individual field participates in an index, such as ascending, descending, text, 2dsphere, or hashed.
+- type_database_provider classifies the provider or local hosting package, such as Microsoft Azure, AWS, Google Cloud, MongoDB Atlas, localhost, XAMPP, WampServer, or Laragon.
+- type_database_service classifies the hosted or local service, such as Azure Database for MySQL, Amazon RDS, Cloud SQL, MongoDB Atlas, or Local Database.
+- type_database_engine classifies the actual database or storage engine, such as MySQL, PostgreSQL, MongoDB, SQLite, LiteDB, Redis, JSON File, or CSV File.
+- type_database_purpose classifies what the database is for.
+- type_database_usage classifies how a project uses a selected database.
+
+Do not use two controlled names that appear to answer the same question unless the distinction is documented in the field description.
+
+9. Identifier Standards
+-----------------------
+
+9.1 Canonical Record Identifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each authoritative record must have one canonical internal identifier.
+
+The default ecosystem identifier profile is:
+
+- opaque rather than descriptive;
+- non-sequential;
+- generated with a cryptographically secure random generator;
+- exactly 16 characters unless a project records another approved length;
+- composed of URL-safe alphanumeric characters (A-Z, a-z, and 0-9);
+- stable for the lifetime of the record;
+- never reused after deletion, merge, retirement, or archival.
+
+A 16-character base-62 identifier provides a large random space while remaining compact enough for internal references and optional URL use.
+
+Identifiers should normally remain internal. Public slugs, titles, usernames, human-readable reference numbers, and external identifiers are separate concepts.
+
+9.2 Engine-Required Identifiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a database engine requires a reserved identifier, use that reserved identifier as the canonical record identifier.
+
+For MongoDB and MongoDB-compatible document stores:
+
+Code block (text):
+    series_main._id
+    episode_main.series_id
+
+episode_main.series_id stores the same identifier value as series_main._id.
+
+The application should assign the approved opaque identifier to _id instead of allowing an engine-generated identifier when project portability and cross-system consistency require application-controlled identity.
+
+Do not duplicate the same identity in the owning document as both _id and series_id unless a separate public, imported, legacy, or cross-system identifier is required.
+
+9.3 Engines Without a Required Reserved Identifier
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When no reserved identifier is required:
+
+Code block (text):
+    series_main.series_id
+    episode_main.episode_id
+    episode_main.series_id
+
+Use the concept-specific *_id in both the owning structure and references. The same opaque identifier profile from Section 9.1 applies unless an external contract requires another format.
+
+9.4 Collision Prevention and Retry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Random identifiers must be protected by an authoritative uniqueness constraint.
+
+Required process:
+
+1. generate the identifier with a cryptographically secure random generator;
+2. optionally perform a pre-insert existence check when useful;
+3. attempt the insert using the database uniqueness constraint;
+4. if a duplicate-key collision occurs, generate a new identifier and retry;
+5. stop and report an error after a documented maximum retry count.
+
+A pre-insert check alone is insufficient because another process may insert the same value between the check and the write. The database uniqueness constraint and duplicate-key retry are the authoritative collision controls.
+
+9.5 Optional Counters and Human Reference Numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A project may maintain an id_counter collection or equivalent sequence service only for human-facing or operational numbers such as:
+
+- ticket numbers;
+- claim numbers;
+- application numbers;
+- invoice numbers;
+- correspondence numbers;
+- printed administrative references.
+
+A counter value is not the canonical record identifier, must not replace _id or the concept-specific *_id, and should not be exposed as a predictable public record locator unless the project explicitly accepts that risk.
+
+9.6 Stable Keys
+~~~~~~~~~~~~~~~
+
+Identifiers and keys serve different purposes:
+
+- an identifier locates a stored record;
+- a key preserves logical identity across rename, import, export, generation, and comparison.
+
+Renaming a label or name should not ordinarily change the key.
+
+9.7 Sparse Default Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a field has an approved default value, records should omit that field when the stored value would equal the default, unless the database engine, external contract, reporting requirement, or compatibility rule requires explicit storage.
+
+Rules:
+
+- do not store fields whose value is the default;
+- when a default field is absent, the application must behave as though the default value is present;
+- the user interface may show the interpreted default;
+- saved database documents should omit the field when the selected or computed value is default;
+- validation, import, export, comparison, generation, and reporting must treat missing default fields consistently;
+- migrations may remove stored default values only after fallback behavior is implemented and tested;
+- explicit non-default values must be stored normally.
+
+Examples:
+
+Code block (text):
+    visibility_scope default = INH
+    missing visibility_scope = INH
+
+    status_record_lifecycle default = ACT
+    missing status_record_lifecycle = ACT
+
+    level_nsfw default = N
+    missing level_nsfw = N
+
+    is_system default = false
+    missing is_system = false
+
+Sparse defaults are a storage rule, not a user-interface rule. A screen may display "Inherit", "Active", "None", "No", or another approved label even when the underlying database field is omitted.
+
+9.8 Logical Field Order
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Document-oriented databases do not require a strict physical column order, and relational databases can technically function with many valid column orders. However, schema documents, sample records, generated files, migration scripts, exports, and user-facing structure previews should use a consistent logical order for readability.
+
+Default logical field order:
+
+1. Primary identity and uniqueness — _id, primary keys, public IDs, stable keys, unique identifiers, and uniqueness-defining fields.
+2. Core value — the main name, title, label, heading, or primary value users recognize.
+3. Parent and relationship references — project, module, section, branch, owner, parent, source, target, lookup, or foreign-key references.
+4. Operational options and classifications — type, group, status, format, level, mode, method, placement, scheme, scope, role, position, source, target, visibility, booleans, and other controlled fields.
+5. Display, print, and usage ordering — sort order, display order, print order, layout order, route order, view priority, and frequently viewed fields when no stronger grouping applies.
+6. Descriptive and informational fields — descriptions, notes, summaries, comments, help text, metadata, URLs, paths, and future-reference information.
+7. Statistics and counters — counts, totals, computed tallies, cached relationship counts, and summary metrics that belong with the record.
+8. Administrative handling fields — lifecycle status, moderation flags, access controls, visibility controls, ownership controls, review controls, version numbers, archival markers, and operational management fields.
+9. Audit and log fields — created, updated, deleted, imported, exported, generated, synchronized, checked, reviewed, approved, user/device/source references, and other audit timestamps or actors.
+
+When a project has a stronger domain-specific reason to group fields differently, record the exception in the project specification. Do not reorder existing production data merely for style unless the change is part of an approved migration, export format, generated schema, or documentation cleanup.
+
+--------------------------------------------------------------------------------
+
+10. Shared Taxonomy Governance
+------------------------------
+
+10.1 Zenith field_main
+~~~~~~~~~~~~~~~~~~~~~~
+
+Zenith field_main is the monitored ecosystem catalogue for reusable field definitions and controlled option sets.
+
+Other projects do not need a runtime collection named field_main. They may consume approved taxonomy definitions through:
+
+- generated constants or enumerations;
+- static JSON or configuration;
+- generated schemas;
+- copied approved option codes;
+- project-specific customized copies.
+
+10.2 Mandatory Search Before Creation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a project needs a controlled or enumerated field:
+
+1. define the semantic question;
+2. search Zenith field_main;
+3. reuse an existing field when the meaning matches;
+4. extend or replace an incomplete field when appropriate;
+5. create a new field only when no suitable definition exists;
+6. add the new controlled field to Zenith field_main, including project-specific fields;
+7. classify it as ecosystem-wide, reusable, project-specific, experimental, or deprecated.
+
+A project-specific taxonomy entry does not require every project to adopt it. Registration allows Zenith to monitor overlap and compatibility.
+
+10.3 Replacement and Overlap
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Do not preserve overlapping taxonomy fields indefinitely when one was created only because another was too limited.
+
+Example:
+
+- restore mode_crud to Create, Read, Update, Delete;
+- create type_operation for broader individual operations;
+- deprecate or replace mode_crud_extended.
+
+Before creating a new field, determine whether it:
+
+- extends an existing concept;
+- replaces an incorrectly expanded concept;
+- or answers a genuinely different question.
+
+10.4 Taxonomy Adoption
+~~~~~~~~~~~~~~~~~~~~~~
+
+A project may:
+
+- adopt the approved definition directly;
+- adopt only applicable options;
+- extend it locally;
+- remain pinned to an older version;
+- migrate to a newer version;
+- decline a breaking change temporarily.
+
+Taxonomy adoption metadata should be tracked in a project-level manifest, dependency record, configuration file, or equivalent structure.
+
+Do not add several version-tracking fields to every business record merely to record taxonomy adoption.
+
+10.5 Taxonomy Option Codes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Internal controlled-option codes should:
+
+- use uppercase letters;
+- normally contain one to three characters;
+- be unique within the field;
+- remain stable after publication;
+- never be reused for a different meaning after retirement.
+
+Code selection order:
+
+1. use an official external code when one exists;
+2. use one clear letter for a small option list when unambiguous;
+3. use meaningful initials for multiple words;
+4. for a single word, retain the first letter and add significant letters;
+5. remove internal vowels when useful, but do not apply this mechanically;
+6. prioritize recognizability and uniqueness.
+
+Examples:
+
+Code block (text):
+    Create       C
+    Read         R
+    Update       U
+    Delete       D
+    Merge        MR
+    Approve      APR
+    Reject       REJ
+    Verify       VRF
+    Recolor      RCL
+
+The first letter may be a vowel.
+
+External standards may use codes longer than three characters.
+
+10.6 Taxonomy Option Quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Controlled option lists should use clear, intentional options rather than catch-all or ambiguous labels.
+
+Rules:
+
+- avoid using Other, Others, Miscellaneous, or similar catch-all options as routine field options;
+- use a specific option when the expected value is known;
+- use Unknown, Not Applicable, Unspecified, Custom, or another precise option only when that meaning is truly needed;
+- if a temporary catch-all option is unavoidable, document the reason, review it later, and avoid using it as a substitute for proper taxonomy design;
+- avoid using / in option labels to join similar words, such as Private / Restricted;
+- when an option label contains slash-joined meanings, split the meanings into separate options, choose the best single word, or rename the option to a clearer combined concept;
+- avoid option labels that mix separate concepts, audiences, actions, statuses, or access levels in one selectable value;
+- keep option labels concise, translatable, and easy to map to behavior.
+
+Examples:
+
+Code block (text):
+    Avoid: Private / Restricted
+    Prefer: Private
+    Prefer: Restricted
+    Prefer: Limited Access
+
+    Avoid: Travelers / Tourists
+    Prefer: Travelers
+    Prefer: Tourists
+    Prefer: Visitors
+
+    Avoid: VIP / Premium Customers
+    Prefer: VIP Customer
+    Prefer: Premium Customer
+    Prefer: Priority Customer
+
+This rule applies especially to Zenith field_main taxonomy records and any generated or project-specific controlled field lists.
+
+10.7 Taxonomy Change Safety
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Adding an option does not automatically grant new behavior or permissions in consuming projects.
+
+Removing or changing a code is a breaking change unless a compatibility mapping exists.
+
+A consuming project may:
+
+- remain pinned;
+- adopt the new option;
+- map an old code to a replacement;
+- migrate stored values and application logic;
+- postpone adoption until a safe release.
+
+
+10.8 Field Description Quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+field_description must be descriptive enough to determine the field's actual use without guessing from the field name alone.
+
+Avoid generic descriptions such as:
+
+Code block (text):
+    Reusable field template for [Field Label] values.
+
+A good field description explains:
+
+- the purpose of the field;
+- the kind of value it stores;
+- when it should be used;
+- how it affects validation, forms, generation, import/export, lookup behavior, or database mapping when relevant.
+
+Example:
+
+Code block (text):
+    Classifies the general runtime value shape of a field, such as string, integer, boolean, array, object, binary, or null. Used by validation, form generation, import/export, and database mapping.
+
+Translations that merely copy the English text into another language are incomplete translations, not reviewed translations.
+
+10.9 Field Catalog, Validation, Cleanup, and Reference Metadata
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a project uses a reusable field catalogue or field-definition system, that catalogue should define the canonical meaning of a field. Forms, database collections, generated schemas, and imports may reference the catalogue and apply local usage settings or stricter local constraints without changing the field's canonical meaning.
+
+Ordinary reusable field behavior should use explicit properties instead of being hidden inside custom validation scripts.
+
+Common examples include:
+
+Code block (text):
+    is_mandatory
+    min_character
+    max_character
+    min_number
+    max_number
+    constraint_text_input
+    type_input_cleanup
+    type_field
+    format_text
+    type_sql
+    field_option
+    point_count
+
+Use validation_rule_list only for advanced validation that cannot be represented by ordinary top-level properties, such as:
+
+- cross-field comparisons;
+- conditional required rules;
+- collection uniqueness checks;
+- existence checks against another collection or table;
+- regular-expression checks;
+- API checks;
+- custom rules.
+
+Keep input validation separate from input cleanup.
+
+- constraint_text_input validates whether input is acceptable. It may be an array.
+- type_input_cleanup modifies or normalizes input before saving. It may be an array.
+
+Examples:
+
+Code block (text):
+    constraint_text_input = ["SLG", "NOL"]
+    type_input_cleanup = ["TRM", "SNK"]
+
+TIT = Convert to Title Case is allowed only with language-aware handling, preview, or explicit user confirmation. Do not apply title-casing automatically to keys, codes, IDs, usernames, slugs, database names, or other technical identifiers.
+
+Projects should distinguish lightweight field-level reference or lookup metadata from managed structural relationship records.
+
+Field-level reference metadata is appropriate for:
+
+- reference pickers;
+- lookup labels;
+- display-field selection;
+- basic filtered selection lists.
+
+Managed relationship records are appropriate for:
+
+- dependency analysis;
+- merge and delete impact review;
+- relationship diagrams;
+- generated relationship helpers;
+- cross-collection, cross-database, or cross-project relationship tracking.
+
+Do not use personal, social, or human-relationship taxonomy fields for technical database or field relationships.
+
+10.10 Database, Provider, Service, Engine, and Relationship Modeling
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a project models external or internal databases, distinguish the following concepts:
+
+Code block (text):
+    database provider
+    database service
+    database engine
+    database purpose
+    database usage
+    database account
+    database or schema
+    collection or table
+    field or column
+    index
+    relationship
+
+Rules:
+
+- Provider identifies the hosting provider, cloud vendor, local package, or platform, such as Microsoft Azure, AWS, Google Cloud, MongoDB Atlas, localhost, XAMPP, WampServer, or Laragon.
+- Service identifies the provider's database product or local database service, such as Azure Database for MySQL, Amazon RDS, Cloud SQL, MongoDB Atlas, or Local Database.
+- Engine identifies the actual database or storage engine, such as MySQL, PostgreSQL, MongoDB, SQLite, LiteDB, Redis, JSON File, or CSV File.
+- Purpose identifies what the database is for, such as main data, audit, reference, backup, cache, search, or analytics.
+- Usage identifies how a particular project uses a selected database.
+
+A project that manages databases should not confuse project-database selection with database-structure ownership.
+
+Recommended separation:
+
+- database-account records or configuration identify the provider account and secret reference;
+- database records identify one actual database or schema;
+- collection/table records own fields, indexes, and collection-level validation;
+- relationship records own managed structural relationships and dependency awareness;
+- project records should only link to or select databases they use unless the project explicitly owns the database-design workflow.
+
+Database index definitions belong with the owning collection/table or in a dedicated index registry. They should not be stored only as relationship metadata.
+
+Database validation may be derived from:
+
+- reusable field definitions;
+- collection/table field usage;
+- collection/table-level validation rules;
+- database-engine-specific generation rules.
+
+Technical relationship metadata may help generate indexes, foreign-key suggestions, lookup helpers, dependency reports, and merge/delete warnings, but it should not replace field validation or index definitions.
+
+10.11 Canonical Field Contract and Local Usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A reusable field name represents one canonical data contract throughout the ecosystem.
+
+When the same technical field name is reused in another collection, form, import, export, schema, or project, the following must retain the same meaning and behavior:
+
+- semantic question answered by the field;
+- stored value type and structural shape;
+- format and encoding rules;
+- controlled option set and option codes;
+- minimum and maximum limits;
+- canonical default behavior;
+- cleanup and normalization behavior;
+- validation constraints;
+- reference target and identifier meaning;
+- null, empty, and omitted-value interpretation;
+- units, precision, and ordering semantics where applicable.
+
+Local usage may vary only in presentation and workflow details that do not redefine the stored value contract, including:
+
+- whether the field is mandatory in that specific context;
+- user-facing field label;
+- local description or help text;
+- placeholder text;
+- display order and layout placement;
+- visibility and permission rules;
+- context-specific examples.
+
+If a collection or workflow requires a different data type, different value limits, different controlled options, different default semantics, or another materially different contract, create a new specifically named field instead of reusing the existing field name.
+
+Filtering which canonical options are visible in a particular interface is allowed only when it does not change the authoritative stored value domain. If the allowed stored values genuinely differ, use another field name.
+
+Forms and collection schemas may reference the canonical field catalogue and store local usage metadata, but they must not silently redefine the canonical field contract.
+
+
+11. Selectable Data Classification
+----------------------------------
+
+Use three levels to determine where selectable data belongs.
+
+11.1 Small Controlled Enumeration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use Zenith field_main.field_option.
+
+Examples:
+
+- account status;
+- review status;
+- operation type;
+- display mode;
+- priority level.
+
+11.2 Shared Reference Dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use common_reference.
+
+Examples:
+
+- language;
+- currency;
+- country;
+- time zone.
+
+These datasets are richer than simple dropdown options but shared and relatively stable.
+
+11.3 Dynamic Domain Entity
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the owning project's or domain service's collection.
+
+Examples:
+
+- movies;
+- people;
+- places;
+- businesses;
+- products;
+- articles.
+
+A favorite_movie field should store movie_id and refer to authoritative movie data. Movies do not belong in field_option or common_reference.
+
+--------------------------------------------------------------------------------
+
+12. Shared Reference Data
+-------------------------
+
+12.1 Approved Collections
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The currently approved common_reference collections are:
+
+1. language_main
+2. currency_main
+3. country_main
+4. time_zone_main
+
+Additional collections require separate design and approval.
+
+12.2 Canonical Ownership
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+common_reference is the canonical shared source.
+
+Consumer projects:
+
+- treat canonical records as read-only;
+- do not directly correct shared records;
+- may maintain local projections;
+- may keep local display preferences;
+- may keep approved local overrides where explicitly allowed.
+
+Canonical changes are managed through Zenith.
+
+12.3 Local Projections
+~~~~~~~~~~~~~~~~~~~~~~
+
+Projects may localize only the fields and records they need.
+
+Example:
+
+A project may localize:
+
+Code block (text):
+    currency_id
+    currency_code
+    currency_name
+    currency_symbol
+
+without copying historical or administrative fields it does not use.
+
+12.4 Version Tracking
+~~~~~~~~~~~~~~~~~~~~~
+
+Track reference adoption at the dataset or projection level, not automatically on every copied record.
+
+A dataset-adoption record may include:
+
+Code block (text):
+    dataset_name
+    source_version
+    localized_field_list
+    last_checked_at
+    last_refreshed_at
+    local_override_policy
+
+12.5 Refresh Strategy
+~~~~~~~~~~~~~~~~~~~~~
+
+Reference datasets should not be polled daily or weekly by default.
+
+Recommended process:
+
+1. check a dataset version manifest;
+2. do nothing when the version is unchanged;
+3. assess compatibility when it changes;
+4. refresh or rebuild the localized projection;
+5. preserve stable identifiers, keys, and codes.
+
+For small or moderate reference datasets, replacing the local projection may be simpler than tracking every individual change.
+
+Dataset-level tracking is normally sufficient. Add record-level source fields only when records have different sources, local overrides, legal source requirements, or selective synchronization needs.
+
+--------------------------------------------------------------------------------
+
+13. Multilingual and Translation Standards
+------------------------------------------
+
+13.1 Interface and Structured Text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All user-facing projects should be designed for multilingual structured content.
+
+For interface text, labels, option descriptions, navigation, and similar project-controlled text:
+
+- English is the required default source language;
+- English is the fallback when a requested translation is unavailable;
+- technical keys and source-code identifiers remain English.
+
+13.2 Authored Content
+~~~~~~~~~~~~~~~~~~~~~
+
+Articles, reviews, blog posts, recipes, historical material, policies, and other authored content may originate in any supported language.
+
+Each authored record should identify its original language.
+
+Recommended relationship field:
+
+Code block (text):
+    language_original_id
+
+The original content is authoritative and is not classified as a translation.
+
+Fallback order for authored content:
+
+1. requested language when an approved version exists;
+2. original language;
+3. another project-defined fallback only when explicitly allowed.
+
+13.3 Language Identity
+~~~~~~~~~~~~~~~~~~~~~~
+
+language_main resides in common_reference.
+
+Use:
+
+- language_id for record relationships;
+- custom language_key as the key inside multilingual objects;
+- ISO language codes as separate reference facts.
+
+Do not assume the custom key always equals an ISO code.
+
+13.4 Embedded Multilingual Values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use embedded multilingual values for bounded structured text such as:
+
+- names;
+- labels;
+- short descriptions;
+- navigation text;
+- option labels and descriptions;
+- tooltips;
+- brief help text.
+
+Example:
+
+Code block (json):
+    {
+      "eng": {"text": "Privacy Policy"},
+      "fil": {"text": "Patakaran sa Pagkapribado"}
+    }
+
+Detailed revision history is not required for every short label.
+
+13.5 Substantial Authored Content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Substantial content may use either:
+
+Embedded language versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Appropriate when:
+
+- only a few languages are supported;
+- translated content is not independently searched;
+- independent review workflow is limited;
+- content size remains manageable.
+
+One content-specific translation collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Appropriate when:
+
+- translations are large;
+- versions are independently edited or reviewed;
+- translations need separate indexes;
+- many languages are supported;
+- editorial workflow requires separate records.
+
+Examples:
+
+Code block (text):
+    article_main
+    article_translation
+
+or:
+
+Code block (text):
+    review_main
+    review_translation
+
+Shared standards do not require a universal family of translation collections.
+
+13.6 Translation Method
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the controlled field:
+
+Code block (text):
+    method_translation
+
+It identifies how a translated version was initially produced.
+
+Recommended options:
+
+Code | Label
+-----+---------------------
+HUM  | Human Translation
+AI   | AI Translation
+MT   | Machine Translation
+IMP  | Imported Translation
+MIG  | Migrated Translation
+UNK  | Unknown
+
+method_translation is defined in the approved Zenith taxonomy and should be reused rather than recreated locally.
+
+A translation created by AI and later edited by a person remains AI as its original method. Later edits belong to content history.
+
+13.7 Review Status
+~~~~~~~~~~~~~~~~~~
+
+Reuse the existing taxonomy field:
+
+Code block (text):
+    status_review
+
+Projects may apply it to managed translations when formal review is required.
+
+AI or machine translations should not begin as approved by default.
+
+A project may allow provisional display of an unreviewed machine translation only when it is visibly identified as provisional.
+
+13.8 Minimum Managed Translation Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A managed translation record should contain only the fields needed by its content workflow.
+
+A typical minimum is:
+
+Code block (text):
+    translation_id or _id
+    parent_content_id
+    language_id
+    translated_title or translated_text
+    method_translation
+    status_review
+    created_at
+    updated_at
+
+Use content-specific parent identifiers such as article_id when possible.
+
+Do not add translator, editor, reviewer, approver, and multiple timestamp fields to every record by default.
+
+13.9 Revision and Audit History
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Projects requiring detailed translation accountability should reuse their existing:
+
+- revision history;
+- editorial history;
+- activity log;
+- audit log.
+
+That history may record:
+
+- who translated;
+- who edited;
+- who reviewed;
+- who approved;
+- when each action occurred;
+- previous and current revisions;
+- provider or model reference when AI was used.
+
+The current translation record stores the current state. The audit or revision system stores history.
+
+13.10 Content Normally Translatable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Examples:
+
+- labels;
+- descriptions;
+- navigation text;
+- controlled option text;
+- help text;
+- official project descriptions;
+- articles;
+- editorial reviews;
+- blog posts;
+- policy pages;
+- official announcements.
+
+13.11 Content Normally Untranslated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ordinary user-generated content remains in its original language unless a project explicitly supports translation:
+
+- comments;
+- private messages;
+- forum posts;
+- informal submissions;
+- ordinary user reviews;
+- chat content.
+
+13.12 Translation Permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Depending on the project, translation may be performed by:
+
+- administrators;
+- designated staff;
+- editors;
+- translators;
+- trusted contributors;
+- users meeting approved role, level, status, or reputation requirements.
+
+--------------------------------------------------------------------------------
+
+14. Shared Identity and Independent Accounts
+--------------------------------------------
+
+14.1 Project-Local Accounts
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each project with user accounts:
+
+- operates independently;
+- maintains its own user_main;
+- allows direct registration within the project;
+- maintains local roles, permissions, settings, activity, contribution, and ownership records.
+
+14.2 common_identity
+~~~~~~~~~~~~~~~~~~~~
+
+A shared database named common_identity connects accounts belonging to the same verified person.
+
+Initial collections:
+
+- user_identity
+- username_reserved
+
+14.3 Shared Identity Data
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Subject to consent and project need, shared identity may include:
+
+- user_id;
+- username;
+- display name;
+- avatar;
+- profile biography;
+- verified contact details;
+- verified login-provider references;
+- general security settings;
+- general preferences.
+
+Projects may provide local overrides.
+
+14.4 Global Username Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A username is unique across the ecosystem.
+- The verified owner may reuse it in connected projects.
+- Another person may not claim it elsewhere.
+- Matching usernames alone do not prove identity.
+- Protected names and misleading variants are prohibited.
+- Retired usernames should normally remain unavailable.
+
+14.5 Project-Specific Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each project independently maintains:
+
+- membership state;
+- roles and permissions;
+- project settings;
+- contribution counts;
+- ranking and position;
+- editorial ownership;
+- sanctions and moderation state;
+- project records and activities;
+- local profile overrides.
+
+14.6 Account Linking
+~~~~~~~~~~~~~~~~~~~~
+
+Accounts may be linked only after approved verification, such as:
+
+- same verified login provider;
+- verified email address;
+- verified mobile number;
+- authentication into both existing accounts.
+
+Automatic linking based only on username, display name, device, or similarity is prohibited.
+
+14.7 Privacy and Consent
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Cross-project sharing requires connected accounts or separate consent.
+- Users must be told which projects can access shared information.
+- Users must be able to disconnect projects.
+- Each project must request only the shared fields it needs.
+
+14.8 Deletion and Recovery
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Distinguish:
+
+1. delete one project account;
+2. disconnect projects;
+3. delete the shared identity and connected accounts.
+
+Deleted accounts normally have a 60-day recovery period.
+
+After final deletion:
+
+- private profile and login data is removed;
+- rankings no longer include the user;
+- the user's canonical user_id is preserved indefinitely on all public contributions to prevent orphaned database relationships; public contributions may remain under Deleted User or a system sentinel ID;
+- editorial ownership is transferred when necessary;
+- legally or operationally required records may remain;
+- the former username remains retired.
+
+14.9 Duplicate Accounts
+~~~~~~~~~~~~~~~~~~~~~~~
+
+- One person may maintain only one personal shared identity.
+- Duplicate accounts require verification.
+- The user selects the identity to retain.
+- Automatic merging is prohibited.
+- Record transfer requires explicit rules and evidence.
+
+--------------------------------------------------------------------------------
+
+15. Common Product Requirements
+-------------------------------
+
+15.1 About and Policy Information
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Every user-facing project should provide:
+
+- project information or About area;
+- Privacy Policy;
+- Terms of Use, Terms of Service, Terms of Agreement, or equivalent;
+- Copyright and content-ownership information.
+
+Implementation may use pages, screens, dialogs, routes, documents, or another appropriate form.
+
+15.2 Settings
+~~~~~~~~~~~~~
+
+Every interactive project must provide settings relevant to its use.
+
+Possible settings include:
+
+- language;
+- appearance;
+- notifications;
+- privacy;
+- accessibility;
+- display behavior;
+- account settings;
+- device settings.
+
+15.3 User Account Area
+~~~~~~~~~~~~~~~~~~~~~~
+
+Projects with user accounts must provide an account-management area appropriate to their authentication model.
+
+Possible capabilities include:
+
+- view and edit profile;
+- manage security;
+- manage linked identities;
+- change settings;
+- export data;
+- deactivate account;
+- delete project account.
+
+Administrative user management is separate from a user's own account area.
+
+--------------------------------------------------------------------------------
+
+16. Interface and Accessibility Baseline
+----------------------------------------
+
+16.1 General Principle
+~~~~~~~~~~~~~~~~~~~~~~
+
+Interfaces should be visually polished and accessible.
+
+Accessibility must not be treated as a requirement to produce generic, unattractive, or oversimplified designs.
+
+16.2 Menus and Navigation
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Use recognizable icons where appropriate.
+- Pair icons with text when meaning would otherwise be unclear.
+- Icon-only controls require accessible names and tooltips.
+- Left or right navigation should be collapsible when appropriate.
+- Collapsed navigation must remain understandable and keyboard accessible.
+- Navigation state may be remembered per user or device.
+
+16.3 Accessibility
+~~~~~~~~~~~~~~~~~~
+
+Where supported by the platform:
+
+- controls must expose readable labels to assistive technology;
+- informative images require alternative text or descriptions;
+- decorative images should be ignored by screen readers;
+- keyboard navigation and logical focus order must work;
+- visible focus indicators must remain clear;
+- color must not be the only means of communication;
+- contrast must remain sufficient;
+- text scaling must not break essential layout;
+- validation and status messages should be announced accessibly;
+- important icon actions should include text, tooltips, or accessible names.
+
+16.4 Desktop Status Bar
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Desktop applications should provide a status bar unless the project documents a stronger reason not to.
+
+Default behavior:
+
+- visible by default;
+- user may hide or show it;
+- preference is remembered;
+- content adapts to the active field or view.
+
+Recommended regions:
+
+Region | Content
+-------+----------------------------------------------------------------------------------------------
+Left   | Contextual help, hovered-control description, validation summary, or active-field explanation
+Center | Character, word, and line counts when relevant
+Right  | Current date and time, connection state, workspace state, or compact global status
+
+Recommended formats:
+
+Code block (text):
+    June 15, 2026 (Monday)
+    23:59:59
+
+Use 24-hour time with seconds unless a project allows user selection.
+
+16.5 Platform Independence
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Do not copy one project's interface into unrelated projects.
+- Use platform-native, responsive, or adaptive patterns where appropriate.
+- Standardize behavior only when it remains useful across multiple projects.
+
+--------------------------------------------------------------------------------
+
+17. Folder, File, and Repository Structure
+------------------------------------------
+
+17.1 General Rules
+~~~~~~~~~~~~~~~~~~
+
+- Use singular custom folder names by default.
+- Follow language, framework, and tooling conventions when they improve compatibility or clarity.
+- Do not mix singular and plural names for the same concept.
+- Separate source, documentation, tests, scripts, cache, generated output, uploads, backups, and logs.
+- Keep generated output outside the generator's source tree.
+- Keep secrets outside source-controlled files.
+- Keep large media outside the main document database unless a project intentionally uses database-backed object storage.
+
+Broadly conventional plural root folders include:
+
+Code block (text):
+    docs
+    tests
+    scripts
+
+Context-dependent plural conventions may include:
+
+Code block (text):
+    migrations
+    fixtures
+    templates
+    routes
+    views
+    resources
+    assets
+
+These are not universal requirements.
+
+17.2 Python Project Baseline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A general Python project should normally use a src layout:
+
+Code block (text):
+    project_root/
+    ├── src/
+    │   └── package_name/
+    │       └── __init__.py
+    ├── docs/
+    ├── tests/
+    ├── scripts/
+    ├── pyproject.toml
+    ├── README.md
+    ├── CHANGELOG.md
+    ├── .gitignore
+    └── .env.example
+
+The contents inside src/package_name/ depend on the project.
+
+A layered desktop application may include:
+
+Code block (text):
+    app/
+    asset/
+    config/
+    core/
+    database/
+    documentation/
+    exporter/
+    generator/
+    importer/
+    model/
+    repository/
+    resource/
+    service/
+    ui/
+    utility/
+    validation/
+
+This is a project architecture profile, not a requirement for every Python project.
+
+Clarifications:
+
+- root docs/ contains project documentation;
+- source documentation/ contains code that generates documents or related output;
+- asset/ contains bundled visual or media files;
+- resource/ contains structured non-code files such as schemas, defaults, prompts, and sample definitions;
+- merge asset and resource if a project cannot maintain a clear distinction;
+- AGENTS.md is optional and used only when AI coding agents need repository instructions.
+
+17.3 Custom PHP Without a Framework
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A recommended starting profile is:
+
+Code block (text):
+    project_root/
+    ├── src/
+    │   ├── Controller/
+    │   ├── Domain/
+    │   ├── Model/
+    │   ├── Repository/
+    │   ├── Service/
+    │   ├── Support/
+    │   └── View/
+    ├── config/
+    ├── database/
+    ├── template/
+    ├── theme/
+    ├── public/
+    │   ├── index.php
+    │   └── asset/
+    ├── storage/
+    │   ├── cache/
+    │   ├── log/
+    │   └── upload/
+    ├── docs/
+    ├── scripts/
+    ├── tests/
+    ├── composer.json
+    ├── README.md
+    ├── CHANGELOG.md
+    ├── .gitignore
+    └── .env.example
+
+Rules:
+
+- use Composer autoloading and namespaces;
+- keep the public web root limited to publicly safe files;
+- keep cache disposable and non-authoritative;
+- distinguish templates, themes, views, and public assets;
+- avoid a generic helper dumping ground;
+- avoid folder names such as refactor that describe an activity rather than responsibility;
+- refine the profile after reviewing the actual project architecture.
+
+17.4 Framework-Based Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When using Laravel, Vue, React, Django, FastAPI, Flutter, or another framework:
+
+- follow the framework's required structure;
+- do not rename required folders merely to enforce singular naming;
+- document custom additions;
+- isolate generated, cached, vendor-managed, and uploaded content;
+- keep business terminology consistent.
+
+17.5 Root Documentation
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Every maintained code project should normally include:
+
+- README.md;
+- .gitignore;
+- dependency or package manifest;
+- environment example without secrets;
+- change history;
+- project documentation;
+- license or ownership notice where applicable;
+- build, run, test, backup, and restore instructions;
+- an optional AGENTS.md (or .clonerules) instruction file mapping repository boundaries to Section 6.4 (#64-ai-led-or-broad-autonomous-development) whenever autonomous AI coding agents are deployed.
+
+17.6 Configuration Data Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Static project configuration files stored outside of compiled source code must govern their serialization formats and key structures predictably:
+
+- Format Selection: Prefer .json for strictly machine-written or tool-generated configurations. Prefer .yaml or .toml for human-edited configuration declarations.
+- Key Formatting: Configuration keys must strictly adhere to snake_case to maintain structural parity with database schemas and technical identifiers defined in Section 8.1 (#81-technical-naming).
+
+--------------------------------------------------------------------------------
+
+18. Git and GitHub Standards
+----------------------------
+
+Every active project must use Git for controlled source code and project documents.
+
+A GitHub repository is required unless a project records another approved remote.
+
+Defaults:
+
+- repository is private;
+- primary branch is main;
+- secrets and private local files are excluded;
+- commits are meaningful and reviewable;
+- accepted milestones have a clean working tree;
+- major milestones are tagged or otherwise identifiable;
+- release history is recorded;
+- generated output is committed only when explicitly required.
+
+GitHub is not a backup for runtime databases or user-uploaded data.
+
+--------------------------------------------------------------------------------
+
+19. Security, Privacy, and Secret Handling
+------------------------------------------
+
+- Store secrets in the operating-system secure store, environment variables, or an approved secret manager.
+- Commit only placeholders such as .env.example.
+- Redact private paths, tokens, credentials, personal data, and machine-specific values from portable exports.
+- Document retention and deletion rules.
+- Protect backups containing personal or sensitive information.
+- Review public projects for security, privacy, accessibility, and abuse-prevention needs.
+- Do not convert local development convenience into production security policy.
+
+--------------------------------------------------------------------------------
+
+19.1 Database Credential References
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database credentials and secret values must not be stored directly in database records, taxonomy records, generated files, or committed project files.
+
+Use connection_secret_reference to point to an approved secret location, such as:
+
+Code block (text):
+    env:DATABASE_URL
+    env:AZURE_MYSQL_PASSWORD
+    windows_credential:project_database_account
+    manual:not_stored
+
+For database records, the default credential reference belongs on database_account. A database_main record should reference database_account_id instead of duplicating the secret reference.
+
+20. Backup, Restore, Retention, and Preservation
+------------------------------------------------
+
+Every project with meaningful data must define:
+
+- authoritative source;
+- backup format;
+- backup location;
+- backup frequency;
+- restore procedure;
+- restore testing;
+- active-data retention period;
+- archive retention period;
+- encryption requirement;
+- off-device or remote copy;
+- archive retrieval procedure;
+- shutdown, transfer, or archival procedure.
+
+Online-primary projects should maintain an independent backup where feasible.
+
+Local-primary projects should maintain at least one off-device or remote backup.
+
+Source code, documentation, runtime data, media, analytics, audit records, revision history, and archived data require separate backup and retention decisions.
+
+20.1 Archive Purpose
+~~~~~~~~~~~~~~~~~~~~
+
+Archival is intended primarily for high-volume, append-heavy, historical, analytical, and operational records that are not required for routine application reads.
+
+Typical archive candidates include:
+
+- raw analytics events;
+- older audit-log entries;
+- old activity and delivery logs;
+- superseded revision snapshots;
+- older moderation actions;
+- historical notification delivery records;
+- older ledger entries when an authoritative summary and retrieval path remain available.
+
+A domain entity must not be archived merely because it is closed, inactive, discontinued, retired, deceased, renamed, or historical. Establishments, practitioners, products, articles, and other authoritative entities should normally remain in their owning collection with their real lifecycle state and history.
+
+20.2 Hybrid Retention Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Projects should use a hybrid archive policy:
+
+1. define a normal time-based active retention window for each eligible collection;
+2. run archival on a scheduled basis;
+3. monitor storage size, index size, memory pressure, read performance, and hosting cost;
+4. allow earlier archival when documented cost or capacity thresholds are reached;
+5. preserve the minimum active retention promised to users unless an emergency or approved policy change requires otherwise.
+
+Time-based retention is the primary predictable rule. Size, cost, and performance thresholds are safety triggers and capacity controls.
+
+Do not wait until a collection causes an outage or unexpected bill before defining archive behavior.
+
+20.3 Active, Archived, and Deleted Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Projects must distinguish:
+
+- active data — kept in the primary operational database for normal application use;
+- archived data — preserved in a lower-cost database, object storage, compressed export, or another approved cold-storage system and retrievable through a documented process;
+- deleted data — intentionally removed under an approved deletion, privacy, legal, or disposal rule.
+
+Archiving is not deletion.
+
+Moving data to archive storage must preserve stable identifiers and enough metadata to locate, verify, restore, or explain the archived record.
+
+20.4 User-Visible Retention
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When users, owners, operators, or administrators can view analytics, history, audit information, or reports, public documentation and interface text must state the accessible retention window.
+
+Example:
+
+Code block (text):
+    Detailed analytics are available for the most recent 24 months.
+    Older information may be retained in archive storage and may require a separate retrieval request.
+
+Do not promise indefinite immediate access when the operational database retains only a limited window.
+
+20.5 Archive Retrieval and Restoration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each archive policy must define:
+
+- who may request archived data;
+- whether retrieval is automatic, administrative, paid, delayed, or unavailable;
+- expected retrieval format;
+- restoration destination;
+- integrity verification;
+- legal-hold behavior;
+- whether restored records return to the primary database or remain read-only;
+- whether archived revisions can be used to create a new restored revision.
+
+Restoring an older revision should create a new current revision based on the archived version rather than erasing intervening history.
+
+20.6 Project-Specific Retention Schedule
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Exact periods are project decisions.
+
+Each project should maintain a retention schedule that records, for every eligible collection or data family:
+
+- active retention window;
+- archive trigger;
+- archive destination;
+- archive retention window;
+- user-visible availability;
+- deletion rule;
+- legal or operational exception;
+- review date.
+
+Retention periods should be based on user expectations, dispute needs, legal obligations, restore value, storage cost, and operational risk rather than one universal number.
+
+--------------------------------------------------------------------------------
+
+21. Change and Compatibility Standards
+--------------------------------------
+
+- Stable identifiers and keys survive ordinary renaming.
+- Schema changes require versioning and a migration or compatibility decision.
+- Sparse-default storage changes require tested fallback behavior before stored default values are removed.
+- Taxonomy and reference-data updates require impact review.
+- Deprecation should precede removal. A deprecated field, taxonomy code, or public interface must remain supported for at least one minor version cycle or 30 days before destructive removal, unless an emergency security fix requires immediate remediation.
+- Removed codes should have replacement mappings where possible.
+- Unknown downstream dependencies block destructive deletion.
+- AI-generated changes remain proposals until reviewed.
+- Existing user data must not be rewritten merely to match a style preference.
+- Projects may pin shared taxonomy or reference versions when immediate adoption is unsafe.
+
+--------------------------------------------------------------------------------
+
+Appendix A: Conformance Checklist
+---------------------------------
+
+Before approving a new or substantially revised project, confirm:
+
+- current Shared Project Standards version recorded;
+- explicit project exceptions documented;
+- Windows development host and production target distinguished;
+- applicable project documents and reusable planning references identified;
+- product and document versions kept separate;
+- language or framework coding standards declared;
+- testing strategy matches the development mode and project risk;
+- document-oriented NoSQL primary database selected or exception recorded;
+- availability profile and authoritative data source defined;
+- network pagination model defined for list data crossing network boundaries;
+- naming, identifier, date/time, field-direction, sparse-default, and logical field-order rules applied;
+- boolean identifiers strictly limited to state (is), possession (has), or permission (can);
+- controlled fields checked against Zenith field_main;
+- taxonomy options avoid routine catch-all values such as Other or Others;
+- taxonomy option labels avoid slash-joined meanings such as Private / Restricted;
+- selectable data classified as taxonomy, shared reference, or domain entity;
+- common_reference use and refresh strategy defined;
+- multilingual fallback and authored-content original language defined;
+- translation method and review rules defined where needed;
+- accessibility reviewed;
+- project-local and shared identity boundaries defined when accounts exist;
+- repository, secret, backup, and restore rules configured;
+- folder profile documented;
+- static configuration file formats and snake_case configuration keys verified;
+- production release and recovery procedures are testable;
+- deprecation sunset windows are defined and testable before destructive removal;
+- canonical record identifiers follow the opaque non-sequential identifier profile or document an exception;
+- identifier uniqueness is enforced by the database and duplicate-key retry, not only by a pre-insert check;
+- counters are used only for human or operational reference numbers and not as canonical identity;
+- same-named fields preserve one canonical data contract across collections and projects;
+- archive-eligible data has active-retention, archive-trigger, archive-destination, retrieval, and deletion rules;
+- closed, inactive, discontinued, retired, deceased, or historical domain entities remain in their authoritative collections unless another explicit preservation policy applies;
+- user-facing analytics and history interfaces disclose their accessible retention windows;
+
+
+Additional conformance checks for v2.60:
+
+- Controlled related fields use clear differentiated names such as type_index and type_index_mode.
+- Field descriptions explain actual usage and are not generic placeholder descriptions.
+- Reusable Field Catalog or field-definition systems are not confused with local form or collection usage.
+- Field validation uses top-level properties for ordinary rules and validation_rule_list only for advanced rules.
+- Input validation and input cleanup are separate.
+- constraint_text_input validates accepted input.
+- type_input_cleanup normalizes or transforms input before saving.
+- Technical references use field_reference and relationship_main, not type_person_relationship or type_event_relationship.
+- Database-account, database, collection/table, index, and relationship concepts are separated where the project models them.
+- Project database selection is not confused with database-structure ownership.
+- Database credentials are represented through secret references and not stored directly.

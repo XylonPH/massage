@@ -1,0 +1,823 @@
+Title: Massage Nexus Maintenance and Continuous Operations
+Document Version: 0.10
+Date Created: 2026-07-18
+Revision Date: 2026-07-18
+Document Description: Defines how Massage Nexus is maintained after a stable public release, including content publishing, comics, social media, moderation, research freshness, analytics, AI-assisted operations, security, technical upgrades, refactoring, documentation, surveys, backups, incidents, and continuous improvement.
+
+Related Documents:
+- Massage Nexus Roadmap
+- Massage Nexus Simple Checklist
+- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus Analytics Statistics and Measurement System
+- Massage Nexus Data Research Provenance and Field Verification System
+- Massage Nexus Documentation Writing and Management Standard
+- Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Translation and Localization Management System
+- Massage Nexus NSFW Mature and Restricted Content Policy
+- Massage Nexus Marketing and Growth Strategy
+- Massage Nexus Monetization Strategy
+
+================================================================================
+1. MAINTENANCE MODE
+================================================================================
+
+Massage Nexus enters maintenance mode when:
+- the intended public foundation is released;
+- the roadmap’s core launch stages are implemented;
+- ordinary operations no longer depend on continuous foundational construction;
+- remaining work is primarily improvement, expansion, correction, optimization, and support.
+
+Maintenance mode does not mean development stops.
+
+Maintenance includes:
+- publishing;
+- moderation;
+- data research;
+- provider and user support;
+- security;
+- dependency updates;
+- bug fixes;
+- performance;
+- refactoring;
+- documentation;
+- translation;
+- analytics;
+- market research;
+- product improvement;
+- new compatible features.
+
+Large new systems return to normal planning and implementation workflow rather than being
+treated as routine maintenance.
+
+================================================================================
+2. OPERATING PRINCIPLES
+================================================================================
+
+- Keep the platform useful, current, safe, and technically supported.
+- Automate repeatable work, but retain human review where trust, safety, law, or quality
+  requires it.
+- Do not publish low-quality content merely to satisfy a numerical schedule.
+- Preserve backups and rollback before significant changes.
+- Patch urgent security issues immediately.
+- Update public data according to field freshness rather than one profile-level date.
+- Use analytics and surveys to prioritize work.
+- Refactor before code, tests, prompts, or documentation become unmanageable.
+- Record maintenance work only at the level needed for accountability and continuation.
+- Do not expose internal technology, vulnerabilities, or operational details publicly.
+
+================================================================================
+3. CONTENT PUBLISHING CADENCE
+================================================================================
+
+Minimum editorial targets after the publishing workflow is stable:
+
+Daily:
+- at least one article;
+- at least one Massage Nexus comic;
+- social posts adapted from current content, research, profiles, or community activity;
+- moderation of newly submitted public content;
+- review of scheduled publication failures.
+
+The daily article and comic are publishing targets, not permission to release incomplete,
+unsafe, repetitive, inaccurate, or poorly translated work.
+
+Maintain:
+- a rolling 30-day article backlog;
+- a rolling 30-day comic backlog;
+- emergency replacement content;
+- evergreen content;
+- timely content;
+- market-specific content;
+- publication status and source revision;
+- translated versions according to readiness.
+
+Content balance should include:
+- service education;
+- spa and therapist discovery;
+- field research;
+- safety and boundaries;
+- reviews and experiences;
+- provider operations;
+- massage culture and history;
+- wellness tourism;
+- products;
+- accessibility;
+- data and statistics;
+- community;
+- The Resting Leaf and other approved comics.
+
+================================================================================
+4. SOCIAL MEDIA OPERATIONS
+================================================================================
+
+Primary social channels are defined in the Marketing and Growth Strategy.
+
+Maintenance responsibilities:
+- maintain consistent account names, bios, links, logos, and contact information;
+- publish frequently enough for each platform;
+- adapt content rather than post identical material everywhere;
+- respond to messages and comments;
+- moderate harassment, spam, impersonation, solicitation, and prohibited content;
+- monitor account security;
+- archive reusable assets and captions;
+- track post source, campaign, language, and performance;
+- correct outdated promotions and links;
+- preserve access recovery and administrator ownership;
+- review platform policy changes.
+
+Working cadence after the team and backlog can support it:
+
+Daily:
+- one to three posts across each primary active platform, adapted to platform format;
+- Stories or short updates when useful;
+- replies and moderation.
+
+Weekly:
+- three to five short-form videos;
+- one longer video or substantial visual feature when production capacity permits;
+- one research or data update;
+- one provider, therapist, contributor, or community spotlight;
+- one newsletter or weekly digest after newsletter launch.
+
+Do not create platform accounts that cannot be maintained.
+
+================================================================================
+5. EDITORIAL AND COMIC WORKFLOW
+================================================================================
+
+Workflow:
+1. plan;
+2. research;
+3. draft;
+4. source and fact check;
+5. legal, safety, NSFW, and privacy review where applicable;
+6. edit;
+7. create media;
+8. translate when approved;
+9. schedule;
+10. publish;
+11. distribute;
+12. measure;
+13. correct;
+14. archive source assets.
+
+AI may assist with:
+- ideas;
+- outlines;
+- drafts;
+- title options;
+- captions;
+- translation drafts;
+- image prompts;
+- content repurposing;
+- summaries;
+- metadata;
+- scheduling suggestions.
+
+Human approval remains required for:
+- factual publication;
+- reviews;
+- provider claims;
+- legal and policy content;
+- health and safety guidance;
+- NSFW classification;
+- serious allegations;
+- final comic continuity and character consistency.
+
+================================================================================
+6. MODERATION AND COMMUNITY MAINTENANCE
+================================================================================
+
+Continuous moderation covers:
+- reviews;
+- ratings;
+- discussions;
+- comments;
+- profiles;
+- corrections;
+- messages where policy permits review;
+- images;
+- videos;
+- animated media;
+- advertisements;
+- provider responses;
+- translations;
+- AI-generated content.
+
+Daily:
+- triage urgent reports;
+- remove or quarantine clearly prohibited content;
+- review spam and automated abuse;
+- respond to safety escalations;
+- review high-risk AI flags;
+- preserve required evidence.
+
+Weekly:
+- review unresolved queues;
+- sample moderation quality;
+- identify repeated abuse patterns;
+- adjust filters and rate limits;
+- review appeals and response times.
+
+Monthly:
+- review rule effectiveness;
+- review moderator consistency;
+- update training examples;
+- publish appropriate transparency statistics when available.
+
+Urgent categories:
+- minor safety;
+- exploitation or trafficking;
+- non-consensual intimate content;
+- threats;
+- doxxing;
+- account takeover;
+- payment fraud;
+- credible security incidents.
+
+================================================================================
+7. DATA RESEARCH AND FRESHNESS
+================================================================================
+
+Maintenance should continuously improve:
+- operating status;
+- hours;
+- contact details;
+- prices;
+- service menus;
+- therapist rosters;
+- facilities;
+- accessibility;
+- map positions;
+- branch relationships;
+- social accounts;
+- provider claims;
+- credentials;
+- historical names and locations.
+
+Automated maintenance may:
+- identify stale fields;
+- create research assignments;
+- compare official sources;
+- detect broken links;
+- identify conflicting values;
+- identify missing localities;
+- suggest possible duplicates;
+- summarize candidate changes.
+
+AI and automation do not automatically verify:
+- active status;
+- price;
+- credential;
+- therapist identity;
+- direct visit;
+- interview;
+- serious allegation.
+
+Field review cadence should depend on volatility:
+- fast-changing fields: frequent review;
+- moderately changing fields: periodic review;
+- stable historical fields: review when contradicted or corrected.
+
+Public pages should display meaningful last-checked or last-verified information.
+
+================================================================================
+8. SCHEDULED JOBS AND AUTOMATION
+================================================================================
+
+Use Laravel Scheduler, queues, CRON or the production platform’s supported scheduler.
+
+Possible scheduled jobs:
+
+Frequent:
+- queue processing;
+- failed-job monitoring;
+- notification delivery;
+- scheduled publication;
+- expiring token cleanup;
+- rate-limit and abuse maintenance;
+- uptime and endpoint checks.
+
+Daily:
+- event aggregation;
+- personal and provider summary updates;
+- research freshness checks;
+- broken-link sampling;
+- translation stale detection;
+- moderation queue summaries;
+- backup execution;
+- backup completion verification;
+- sitemap updates where needed;
+- AI cost and quota report;
+- search-index synchronization where applicable;
+- scheduled social publication.
+
+Weekly:
+- public weekly statistics;
+- search-demand summary;
+- zero-result search report;
+- content performance summary;
+- data coverage report;
+- translation coverage report;
+- contributor and moderation report;
+- social performance report;
+- dependency and vulnerability scan review.
+
+Monthly:
+- official monthly statistics snapshot;
+- revenue and monetization report;
+- retention and deletion tasks;
+- stale account and abandoned-registration review;
+- documentation size review;
+- code complexity review;
+- search and performance review;
+- provider and user support trends;
+- market and competitor review.
+
+Quarterly:
+- restore test;
+- security review;
+- accessibility review;
+- performance and load review;
+- provider and user survey;
+- taxonomy and classification review;
+- market expansion review;
+- technical upgrade planning;
+- incident-response exercise;
+- policy review.
+
+Annual:
+- strategic review;
+- legal and privacy review;
+- disaster-recovery exercise;
+- long-term retention purge review;
+- major dependency and platform upgrade review;
+- brand and public documentation audit.
+
+Exact schedules must be adjusted after real usage is measured.
+
+================================================================================
+9. ANALYTICS AND PUBLIC STATISTICS
+================================================================================
+
+Raw operational events may be recorded continuously.
+
+Daily computation:
+- platform activity aggregates;
+- registration and verification aggregates;
+- search totals and zero-result counts;
+- profile views and actions;
+- moderation counts;
+- research freshness;
+- translation coverage;
+- content publication;
+- booking operational metrics when booking is active;
+- AI usage, latency, and cost;
+- error and performance aggregates.
+
+Weekly computation and public display:
+- weekly platform activity;
+- new and updated directory records;
+- research coverage;
+- popular searches;
+- article and comic performance;
+- community contribution;
+- translation progress;
+- social growth and referrals;
+- moderation transparency where safe.
+
+Monthly computation and public display:
+- official monthly platform snapshot;
+- country and city coverage;
+- data freshness;
+- content and community growth;
+- provider participation;
+- major service trends;
+- public social observations;
+- monetization summaries where publication is appropriate;
+- methodology and caveats.
+
+Public statistics must:
+- define the metric;
+- identify the period;
+- identify the update date;
+- use privacy thresholds;
+- distinguish research coverage from real market size;
+- avoid private provider, user, intake, payment, security, or small-group data.
+
+================================================================================
+10. SECURITY MAINTENANCE
+================================================================================
+
+Continuous:
+- uptime and anomaly monitoring;
+- login and recovery anomaly detection;
+- payment and booking fraud detection when active;
+- secret and access protection;
+- incident intake;
+- backup monitoring.
+
+Daily automated checks:
+- dependency alerts;
+- failed logins and credential attacks;
+- suspicious account changes;
+- malware and upload alerts;
+- public error leakage;
+- failed scheduled jobs.
+
+Weekly human review:
+- security alerts;
+- access changes;
+- administrator accounts;
+- suspicious exports;
+- blocked attacks;
+- unresolved vulnerabilities.
+
+Monthly:
+- patch window;
+- permission review for privileged roles;
+- secrets and certificate expiry review;
+- logging and retention review;
+- public security contact test.
+
+Quarterly:
+- focused security testing;
+- incident-response exercise;
+- backup restore;
+- dependency and infrastructure review;
+- public technology-disclosure check.
+
+Emergency security fixes override normal publication schedules.
+
+================================================================================
+11. TECHNICAL UPDATES
+================================================================================
+
+Maintain supported versions of:
+- PHP;
+- Laravel;
+- MongoDB integration;
+- database services;
+- Apache or production web service;
+- Node.js and frontend packages;
+- Livewire;
+- Alpine.js;
+- Tailwind CSS;
+- Vite;
+- Filament where used;
+- Tiptap;
+- mobile frameworks later;
+- cloud services;
+- external APIs;
+- testing tools.
+
+Update process:
+1. review release and security notes;
+2. verify compatibility;
+3. create backup and recoverable Git state;
+4. update development environment;
+5. run targeted tests;
+6. run full automated tests;
+7. run manual critical-flow checks;
+8. test migration and rollback;
+9. deploy to staging;
+10. monitor;
+11. deploy to production;
+12. record the final implemented change.
+
+Urgent security patches may use an accelerated process but still require backup, testing, and
+rollback.
+
+Do not remain on unsupported versions merely to avoid maintenance work.
+
+Do not upgrade every dependency immediately without compatibility and benefit review.
+
+================================================================================
+12. REFACTORING
+================================================================================
+
+Refactor when:
+- a file mixes several responsibilities;
+- repeated bugs occur in the same area;
+- tests become difficult to target;
+- a change requires opening many unrelated files;
+- code complexity blocks safe modification;
+- performance degrades;
+- duplicate business logic appears;
+- an AI repeatedly consumes excessive context for one task;
+- a package or architecture is no longer appropriate.
+
+Refactoring rules:
+- preserve behavior unless behavior change is explicitly planned;
+- add or strengthen tests before risky restructuring;
+- split by coherent responsibility;
+- avoid excessive fragmentation;
+- update documentation and implementation records;
+- measure performance before and after when performance is the reason.
+
+================================================================================
+13. DOCUMENTATION MAINTENANCE
+================================================================================
+
+Review documentation when:
+- implementation changes;
+- policy changes;
+- terminology changes;
+- files become difficult to edit;
+- AI repeatedly loads irrelevant content;
+- references become stale;
+- a document reaches the size review threshold;
+- an inventory grows independently from its governing rules.
+
+Actions:
+- preserve current accepted decisions;
+- remove obsolete concepts;
+- archive superseded OneDrive versions;
+- use Git history after repository migration;
+- split large files by responsibility;
+- separate catalogs, article ideas, prompt libraries, and source lists from governing
+  specifications;
+- update related references;
+- keep internal files English-only;
+- keep public translations synchronized by source revision.
+
+Working Notes remain user-maintained unless explicitly supplied.
+
+================================================================================
+14. SURVEYS AND PRODUCT FEEDBACK
+================================================================================
+
+Use several feedback methods:
+
+Continuous:
+- correction and report forms;
+- support conversations;
+- optional short feedback after key actions;
+- search zero-result analysis;
+- cancellation reasons;
+- provider claim and onboarding feedback.
+
+Quarterly:
+- user satisfaction survey;
+- provider satisfaction survey;
+- therapist and contributor survey;
+- accessibility survey;
+- content and feature demand;
+- reasons people do not use booking, reviews, or accounts.
+
+Annual:
+- broad product and market survey;
+- brand awareness;
+- trust;
+- price sensitivity;
+- preferred services;
+- language demand;
+- country expansion priorities.
+
+Surveys must:
+- state purpose;
+- collect only necessary data;
+- avoid leading questions;
+- separate users, providers, therapists, and contributors;
+- publish aggregate findings when useful;
+- influence roadmap and maintenance priorities.
+
+================================================================================
+15. SUPPORT AND PROVIDER RELATIONS
+================================================================================
+
+Maintain:
+- user support;
+- provider claim support;
+- account recovery;
+- correction requests;
+- booking and payment support when active;
+- data-subject requests;
+- security reports;
+- copyright and media reports;
+- appeals;
+- advertiser support;
+- contributor support.
+
+Track:
+- category;
+- priority;
+- first response;
+- resolution;
+- escalation;
+- repeated issue;
+- documentation gap;
+- product defect.
+
+Repeated support questions should improve:
+- public guidance;
+- interface wording;
+- validation;
+- workflows;
+- training;
+- automation.
+
+================================================================================
+16. BACKUP, RESTORE, AND BUSINESS CONTINUITY
+================================================================================
+
+Maintain backups for:
+- databases;
+- media;
+- source code;
+- configuration;
+- documentation;
+- translation resources;
+- research evidence;
+- critical financial records.
+
+Rules:
+- encrypt;
+- restrict access;
+- retain according to policy;
+- maintain an independent copy;
+- verify completion;
+- test restoration;
+- document recovery order;
+- protect keys;
+- test disaster scenarios;
+- ensure deletion obligations are reflected in backup rotation.
+
+Git is not the backup for user data or uploaded media.
+
+================================================================================
+17. INCIDENTS AND CORRECTIONS
+================================================================================
+
+Incident types:
+- outage;
+- data corruption;
+- security incident;
+- privacy breach;
+- payment failure;
+- mass email or notification error;
+- incorrect public statistic;
+- harmful content exposure;
+- broken booking flow;
+- failed migration;
+- social account compromise.
+
+Response:
+1. detect;
+2. assess severity;
+3. contain;
+4. preserve evidence;
+5. communicate internally;
+6. restore service;
+7. notify affected people or authorities when required;
+8. correct public information;
+9. document final cause and remediation;
+10. prevent recurrence.
+
+Public corrections should identify material errors without exposing sensitive internal detail.
+
+================================================================================
+18. AI-ASSISTED MAINTENANCE
+================================================================================
+
+AI may assist with:
+- content drafts and repurposing;
+- comic planning;
+- translation drafts;
+- moderation triage;
+- data freshness;
+- source comparison;
+- anomaly detection;
+- test generation;
+- dependency research;
+- upgrade plans;
+- documentation refactoring;
+- survey analysis;
+- analytics summaries;
+- support-response drafts;
+- social scheduling.
+
+AI must not independently:
+- publish legal or safety-critical content;
+- make final serious moderation decisions;
+- verify a provider fact without accepted evidence;
+- apply production upgrades without review;
+- expose secrets or private data;
+- send mass communications without approval;
+- change pricing or policy;
+- resolve a security incident without human control.
+
+Maintain:
+- provider usage limits;
+- cost monitoring;
+- fallback behavior;
+- provider outage handling;
+- prompt and workflow versions;
+- human-review requirements;
+- synthetic tests.
+
+================================================================================
+19. MAINTENANCE PRIORITY
+================================================================================
+
+Priority 1:
+- security;
+- privacy;
+- safety;
+- data integrity;
+- outages;
+- payment and booking failures;
+- prohibited content;
+- legal obligations.
+
+Priority 2:
+- critical user and provider workflows;
+- incorrect directory information;
+- verification and account recovery;
+- moderation backlog;
+- broken publication;
+- backups.
+
+Priority 3:
+- performance;
+- data freshness;
+- content quality;
+- translation;
+- support improvements;
+- technical debt.
+
+Priority 4:
+- experiments;
+- cosmetic improvements;
+- low-impact automation;
+- nonessential expansion.
+
+================================================================================
+20. MAINTENANCE REVIEW
+================================================================================
+
+Monthly review:
+- incidents;
+- content output;
+- moderation;
+- data freshness;
+- user and provider support;
+- technical debt;
+- dependencies;
+- AI cost;
+- revenue;
+- analytics;
+- documentation;
+- upcoming work.
+
+Quarterly review:
+- surveys;
+- market needs;
+- language readiness;
+- security;
+- accessibility;
+- performance;
+- monetization;
+- marketing;
+- staffing or automation needs;
+- roadmap changes.
+
+Maintenance decisions should create focused work items rather than one endlessly expanding
+maintenance checklist.
+
+================================================================================
+21. CURRENT DIRECTIONS
+================================================================================
+
+- Publish at least one article and one comic per day after the workflow and backlog are stable.
+- Maintain frequent, platform-appropriate social activity.
+- Use AI API assistance for repeatable maintenance work.
+- Use scheduled jobs for publishing, aggregation, freshness, backups, notifications, and
+  operational checks.
+- Compute operational aggregates daily.
+- Publish weekly and monthly statistics with definitions and privacy controls.
+- Moderate continuously and review moderation quality regularly.
+- Keep data current through field-level freshness and research assignments.
+- Keep PHP, Laravel, packages, services, and code supported and maintainable.
+- Refactor code, tests, prompts, and documentation when responsibility or size becomes
+  unmanageable.
+- Conduct recurring user, provider, therapist, and contributor surveys.
+- Maintain backups, restore tests, incident response, and security monitoring.
+- Do not sacrifice quality, trust, safety, or accuracy merely to meet a publishing quota.
+
+================================================================================
+22. OPEN DECISIONS
+================================================================================
+
+- exact staffing and ownership;
+- final content publication times;
+- final social platform cadence;
+- final moderation response targets;
+- field-specific freshness intervals;
+- final analytics publication schedule;
+- production scheduler and monitoring services;
+- AI provider and budget;
+- support response targets;
+- maintenance dashboard design;
+- final survey schedule;
+- public transparency report format.

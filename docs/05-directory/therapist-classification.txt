@@ -1,0 +1,275 @@
+Document Title: Massage Nexus: Therapist Classification
+Document Version: 1.35
+Date Created: 2026-07-11
+Revision Date: 2026-07-15
+
+DOCUMENT DESCRIPTION
+--------------------
+This document defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus. It includes recommended snake_case field names, stable option codes, concise labels, and internal descriptions.
+
+This is a compact taxonomy reference, not public documentation, a database schema, a therapist-profile specification, a credential schema, or a scheduling system. Some fields apply to the therapist generally; Work Arrangement, Provider Rank, Therapist Service Market Class, Client Access, and Booking Requirement may instead apply to a specific establishment affiliation or independent-practice context.
+
+GENERAL RULES
+-------------
+- Use Therapist as the public Massage Nexus term.
+- Do not create one broad Therapist Type field that mixes profession, work arrangement, specialty, service, technique, and training status.
+- Work Arrangement and Provider Rank describe a particular professional context and may differ across affiliations.
+- Provider Rank records a rank assigned by an establishment or organized provider; it does not prove credentials or quality.
+- Therapist Service Market Class describes the market position of a specific therapist service context, not the permanent worth or skill of the person.
+- Exact provider-specific rank titles may be preserved separately from the normalized Provider Rank.
+- Massage systems, named services, techniques, and capabilities are represented through service relationships rather than Specialty Focus.
+- Unconfirmed classifications remain unselected and may be explained through a separate internal note.
+
+================================================================================
+1. WORK ARRANGEMENT
+================================================================================
+
+Field Name: type_work_arrangement
+Field Label: Work Arrangement
+Selection: Single-select per professional context
+
+Code | Label       | Description
+-----|-------------|------------------------------------------------------------
+EMP  | Employee    | Works as an employee or regular staff member of an organization.
+IND  | Independent | Operates independently and controls their own professional practice.
+CTR  | Contractor  | Provides services through a contract, assignment, agency, or service agreement.
+
+Trainee is not a Work Arrangement. Training status belongs to education, credential, learner, or Provider Rank records.
+
+================================================================================
+2. PRACTICE SETTING
+================================================================================
+
+Field Name: type_practice_setting
+Field Label: Practice Setting
+Selection: Multi-select
+
+Code | Label                     | Description
+-----|---------------------------|------------------------------------------------------------
+SP   | Spa                       | Massage spa, day spa, salon spa, hotel spa, or comparable spa setting.
+SL   | Salon                     | Beauty, grooming, nail, or salon establishment offering massage.
+WC   | Wellness Center           | Broader wellness establishment combining massage with other disciplines.
+PS   | Private Studio            | Dedicated professional treatment room or independent practice space.
+CL   | Clinic                    | Clinic or health-oriented practice offering massage or bodywork.
+RF   | Rehabilitation Facility   | Facility focused on rehabilitation, recovery, or restorative care.
+HP   | Hospital                  | Hospital or hospital-operated service environment.
+HT   | Hotel                     | Hotel treatment area, hotel spa, or hotel-operated guest service.
+RS   | Resort                    | Resort spa, destination property, or resort-operated service.
+BF   | Bathing Facility          | Bathhouse, hot-spring facility, thermal bath, hammam, or similar setting.
+FF   | Fitness Facility          | Gym, fitness center, or health club.
+SF   | Sports Facility           | Athletic center, sports club, stadium facility, or training venue.
+CS   | Corporate Site            | Workplace, office, company campus, or employer-sponsored setting.
+EV   | Event Site                | Convention, expo, fair, private event, pop-up, or organized temporary event.
+CR   | Client Residence          | Client's house, apartment, condominium, or other residence.
+TR   | Therapist Residence       | Therapist's own residence where clients are received.
+TC   | Training Center           | Massage school, academy, vocational institution, or supervised training clinic.
+CF   | Community Facility        | Community center, civic facility, nonprofit venue, or public-service location.
+RC   | Residential Care Facility | Senior residence, nursing facility, assisted-living site, or long-term care facility.
+RT   | Retreat Center            | Wellness, meditation, recovery, or residential retreat setting.
+TH   | Transportation Hub        | Airport, railway station, bus terminal, or similar passenger facility.
+MF   | Maritime Facility         | Cruise ship, ferry, passenger vessel, yacht, port facility, or maritime workplace.
+MU   | Mobile Treatment Unit     | Vehicle, trailer, or transportable purpose-built treatment room.
+OV   | Outdoor Venue             | Beach, park, campsite, outdoor resort area, or arranged outdoor treatment site.
+
+Practice Setting identifies recurring professional environments, not every place where massage could theoretically occur.
+
+================================================================================
+3. PROVIDER RANK
+================================================================================
+
+Field Name: position_affiliation
+Field Label: Provider Rank
+Selection: Single-select per establishment or organized-provider affiliation
+
+Code | Label           | Description
+-----|-----------------|------------------------------------------------------------
+TRN  | Trainee         | Provides service under training, practice, or supervised competency development.
+JNR  | Junior          | Entry-level provider rank formally used by the establishment.
+REG  | Regular         | Normal established provider rank without a senior or specialist designation.
+SEN  | Senior          | Higher internal rank based on experience, responsibility, demand, or provider policy.
+SPC  | Specialist      | Provider-designated rank for a recognized specialist service area.
+MST  | Master          | Highest or advanced provider-designated rank within the establishment's own system.
+VEX  | Visiting Expert | Temporarily scheduled expert, trainer, master, or specialist from another location or organization.
+
+Rules
+-----
+- The establishment or authorized provider may submit its own rank.
+- The exact provider title, such as Master Reflexologist, should be preserved separately.
+- The therapist may confirm or dispute the affiliation and rank.
+- Master, Specialist, or Visiting Expert does not automatically prove licensure, credential verification, or superior review results.
+- Independent therapists normally have no Provider Rank unless an organized provider has formally assigned one.
+
+================================================================================
+4. THERAPIST SERVICE MARKET CLASS
+================================================================================
+
+Field Name: level_therapist_service_market
+Field Label: Therapist Service Market Class
+Selection: Single-select per establishment or independent-practice service context
+
+Code | Label    | Description
+-----|----------|--------------------------------------------------------------
+S    | Elite    | Exceptional premium service context with very high price, personalization, presentation, demand, or specialist positioning.
+A    | Premium  | Clearly upscale professional service context above ordinary market standards.
+B    | Standard | Mainstream professional service with normal expectations for reliability, cleanliness, safety, and competence.
+C    | Budget   | Affordable professional service with simpler presentation, equipment, or commercial structure.
+D    | Basic    | Entry-level, trainee, short, express, or minimal service context.
+
+Philippine Planning Reference
+-----------------------------
+Use a directly attributable 60-minute therapist service rate when available:
+- S: usually PHP 2,500 or more;
+- A: usually PHP 1,500 to 2,499;
+- B: usually PHP 700 to 1,499;
+- C: usually PHP 350 to 699;
+- D: usually below PHP 350 or primarily short basic services.
+
+Rules
+-----
+- The field applies to a service context, not permanently to the therapist profile.
+- A therapist may have different market classes across a spa, hotel, event, or independent practice.
+- The establishment or therapist may provide evidence, but Massage Nexus assigns or confirms the class.
+- Price alone does not determine class.
+- Credentials, Provider Rank, ratings, reviews, experience, and market class remain separate.
+- Other countries and regions require locally reviewed price references rather than direct currency conversion.
+
+================================================================================
+5. SPECIALTY FOCUS
+================================================================================
+
+Field Name: type_specialty_focus
+Field Label: Specialty Focus
+Selection: Multi-select
+
+Code | Label                      | Description
+-----|----------------------------|------------------------------------------------------------
+RLX  | Relaxation                 | Focuses on calm, comfort, reduced tension, and restful service.
+MDS  | Muscle Discomfort Support  | Focuses on muscle tension and discomfort within permitted massage scope.
+DP   | Deep Pressure              | Focuses on clients preferring sustained, firm, or deeper controlled pressure.
+SR   | Sports Recovery            | Focuses on exercise fatigue, athletic recovery, and performance support.
+MB   | Mobility                   | Focuses on movement comfort, range of motion, and mobility-oriented bodywork.
+ST   | Stretching                 | Uses assisted or guided stretching as a meaningful service focus.
+STR  | Stress Relief              | Focuses on physical and mental tension associated with stress or daily strain.
+SL   | Sleep Support              | Focuses on relaxation-oriented services intended to support rest and sleep readiness.
+SC   | Senior Care                | Adapts pressure, pace, positioning, communication, and accessibility for older clients.
+PN   | Perinatal Support          | Focuses on appropriately trained pregnancy and postnatal service.
+RC   | Recovery Support           | Supports fatigue, exertion, inactivity, travel, or non-acute physical strain.
+WF   | Workplace Fatigue          | Focuses on occupational strain, desk work, standing, repetition, and commuting fatigue.
+GC   | Gentle Care                | Focuses on light pressure, slower pacing, cautious handling, and comfort adaptation.
+
+Hilot, Thai Massage, Shiatsu, Swedish Massage, Deep Tissue Massage, Oncology Massage, Manual Lymphatic Drainage, Reflexology, Hot Stone Massage, and similar named services belong under service capability rather than Specialty Focus.
+
+================================================================================
+6. AVAILABILITY STATUS
+================================================================================
+
+Field Name: status_therapist_availability
+Field Label: Availability Status
+Selection: Single-select per applicable context
+
+Code | Label                  | Description
+-----|------------------------|------------------------------------------------------------
+AV   | Available              | Actively accepting or providing services under normal conditions.
+LM   | Limited Availability   | Accepting services only within restricted days, hours, locations, services, or capacity.
+EC   | Existing Clients Only  | Continuing current client relationships but not accepting new clients.
+TU   | Temporarily Unavailable| Not presently accepting or providing services but expected to return.
+IN   | Inactive               | No confirmed current professional service activity.
+RT   | Retired                | Has ended professional practice.
+UN   | Unknown                | Current availability cannot be confirmed.
+
+Death is a separate life-status fact and is not an Availability Status.
+
+================================================================================
+7. BOOKING REQUIREMENT
+================================================================================
+
+Field Name: mode_therapist_booking
+Field Label: Booking Requirement
+Selection: Single-select per applicable context
+
+Code | Label                 | Description
+-----|-----------------------|------------------------------------------------------------
+WI   | Walk-In Accepted      | May accept clients without an advance booking.
+AP   | Appointment Preferred | Advance booking is encouraged, but unscheduled service may be accepted.
+AR   | Appointment Required  | Service must be arranged in advance.
+
+On Call is a scheduling arrangement and is not retained in this classification document.
+
+================================================================================
+8. CLIENT ACCESS
+================================================================================
+
+Field Name: type_client_access
+Field Label: Client Access
+Selection: Single-select per applicable practice context
+
+Code | Label                | Description
+-----|----------------------|------------------------------------------------------------
+OA   | Open Access          | Normally accepts eligible members of the general public.
+MO   | Men Only             | Accepts only male clients for the represented service context.
+WO   | Women Only           | Accepts only female clients for the represented service context.
+CO   | Couples Only         | Accepts only paired or couple bookings.
+MR   | Members Only         | Serves only registered members of an establishment, club, or program.
+PG   | Property Guests Only | Serves only authorized guests of a host property or organization.
+PC   | Private Clientele    | Accepts only invited, referred, approved, or selectively accepted clients.
+
+A therapist may have different Client Access rules at different affiliations or service contexts.
+
+================================================================================
+9. CLIENT FOCUS
+================================================================================
+
+Field Name: target_client_focus
+Field Label: Client Focus
+Selection: Multi-select
+
+Code | Label             | Description
+-----|-------------------|------------------------------------------------------------
+GP   | General Public    | Serves a broad clientele rather than one specialized group.
+MN   | Men               | Has services or experience relevant to male clients.
+WM   | Women             | Has services or experience relevant to female clients.
+LQ   | LGBTQ Community   | Explicitly welcomes or focuses on LGBTQ clients and related community needs.
+CP   | Couples           | Supports couple-oriented sessions, paired services, or couple bookings.
+FM   | Families          | Supports appropriate family-oriented service arrangements.
+SR   | Seniors           | Has experience adapting service for older clients.
+PR   | Pregnant Clients  | Provides appropriately trained and safety-conscious pregnancy service.
+PN   | Postnatal Clients | Provides appropriately trained service after childbirth.
+AT   | Athletes          | Supports sports recovery, training fatigue, mobility, or athletic needs.
+TR   | Tourists          | Is prepared for traveler needs, hotel service, language support, or short-term booking.
+OW   | Office Workers    | Focuses on workplace stress, occupational strain, repetition, or commuting fatigue.
+
+Client Focus does not restrict access unless Client Access says otherwise.
+
+================================================================================
+10. CREDENTIAL VERIFICATION STATUS
+================================================================================
+
+Field Name: status_credential_verification
+Field Label: Credential Verification Status
+Selection: Single-select per credential record
+
+Code | Label         | Description
+-----|---------------|------------------------------------------------------------
+SD   | Self-Declared | Credential information is claimed without confirmed supporting evidence.
+SB   | Submitted     | Supporting information has been submitted and awaits review.
+VF   | Verified      | Credential has been reviewed and verified under Massage Nexus rules.
+NR   | Needs Review  | Information is incomplete, conflicting, disputed, or requires additional assessment.
+RJ   | Rejected      | Submitted credential claim was not accepted after review.
+
+================================================================================
+11. CREDENTIAL LIFECYCLE STATUS
+================================================================================
+
+Field Name: status_credential_lifecycle
+Field Label: Credential Lifecycle Status
+Selection: Single-select per credential record
+
+Code | Label     | Description
+-----|-----------|------------------------------------------------------------
+AC   | Active    | Credential is currently valid according to available information.
+EX   | Expired   | Credential has passed its stated validity period.
+SU   | Suspended | Credential has been formally suspended by the issuer or responsible authority.
+RV   | Revoked   | Credential has been formally withdrawn or cancelled.
+UN   | Unknown   | Current lifecycle condition cannot be confirmed.
+
+A public profile summary should be derived from individual credential records rather than stored as one conflicting profile-level status.
