@@ -187,6 +187,7 @@ turbo/
 storybook-static/
 
 # Local-only repository notes
+.claude/
 LOCAL_NOTES.*
 WORKING_NOTES_PRIVATE.*
 scratch/
