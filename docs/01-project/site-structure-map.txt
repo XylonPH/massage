@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.10
+Document Version: 2.30
 Date Created: 2026-07-10
 Revision Date: 2026-07-19
 
@@ -266,11 +266,15 @@ api.massagenexus.com
     /v1/auth
     /v1/webhook
 
-demo.massagenexus.com
-    /
-
 status.massagenexus.com
     /
+    public service availability and incident information
+    planned maintenance and resolved-incident history
+
+The public status page must not expose private monitoring data, security evidence, internal
+ticket identifiers, staff notes, infrastructure details, or unapproved incident information.
+It should be hosted independently enough to remain available when the main application is
+unavailable.
 
 cdn.massagenexus.com
     /image
@@ -292,7 +296,8 @@ Branded portal notes:
 - the secured management surface remains /workspace;
 - custom domains and tenant subdomains remain planned capabilities whose prerequisites must be
   completed before they are offered;
-- tenant portals are not hosted as subdomains of massagenexus.com.
+- tenant portals are not hosted as subdomains of massagenexus.com;
+- custom domains mapped to tenant portals must not include "massagenexus" to prevent brand confusion and phishing.
 
 
 ================================================================================
@@ -3323,6 +3328,7 @@ Workspace pages:
 /workspace/finance
 /workspace/listing
 /workspace/claim
+/workspace/affiliation
 /workspace/service
 /workspace/media
 /workspace/product

@@ -153,7 +153,7 @@ Membership, property-guest, referral, invitation, and clientele restrictions bel
 6. OPERATION MODEL
 ================================================================================
 
-Field Name: type_operation_model
+Field Name: type_establishment_operation
 Field Label: Operation Model
 Selection: Single-select
 

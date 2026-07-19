@@ -19,7 +19,7 @@
             },
             "theme_description": {
                 "eng": {
-                    "text": "Ink & Ember (Light) uses ink black for structure, royal blue for clarity, ember orange for energy, and leaf green for a grounded wellness accent. The light background keeps the interface open and readable, while the darker navigation elements give the theme a confident visual anchor. The result is a bold but usable light-mode appearance that feels modern, focused, and active without losing warmth."
+                    "text": "Ink & Ember (Light) uses deep navy ink for structure, a supporting royal-leaning blue for clarity, ember orange for energy, and leaf green for a grounded wellness accent. The light background keeps the interface open and readable, while the dark navy navigation and hero elements give the theme a confident visual anchor. The result is a bold but usable light-mode appearance that feels modern, focused, and active without losing warmth."
                 },
                 "spa": {
                     "text": "Tinta y Brasa (Claro) usa negro tinta para la estructura, azul real para la claridad, naranja brasa para la energía y verde hoja como acento de bienestar. El fondo claro mantiene la interfaz abierta y legible, mientras que los elementos de navegación oscuros dan al tema un ancla visual segura. El resultado es una apariencia de modo claro audaz pero usable, moderna, enfocada y activa sin perder calidez."
@@ -39,33 +39,33 @@
             ],
             "status_record_lifecycle": "ACT",
             "color_config": {
-                "primary_color": "171717",
-                "secondary_color": "2563EB",
-                "accent_color": "F97316",
-                "background_color": "FFFFFF",
-                "surface_color": "F8FAFC",
-                "surface_alt_color": "F1F5F9",
-                "text_color": "111827",
-                "muted_text_color": "6B7280",
+                "primary_color": "16294A",
+                "secondary_color": "3F6AA3",
+                "accent_color": "F96410",
+                "background_color": "F8FAFC",
+                "surface_color": "FFFFFF",
+                "surface_alt_color": "F2F6FB",
+                "text_color": "1F2225",
+                "muted_text_color": "3F6AA3",
                 "inverse_text_color": "FFFFFF",
-                "border_color": "D1D5DB",
-                "divider_color": "E5E7EB",
-                "success_color": "16A34A",
+                "border_color": "C3D3E8",
+                "divider_color": "E2EAF5",
+                "success_color": "3E914A",
                 "warning_color": "D97706",
                 "danger_color": "DC2626",
-                "info_color": "2563EB",
+                "info_color": "3F6AA3",
                 "fyi_color": "0EA5E9"
             },
             "typography_config": {
-                "font_family": "Segoe UI",
-                "base_font_size": 10,
-                "heading_font_size": 16,
-                "subheading_font_size": 13,
-                "small_font_size": 9,
-                "line_height": 1.35,
+                "font_family": "Instrument Sans",
+                "base_font_size": 16,
+                "heading_font_size": 24,
+                "subheading_font_size": 18,
+                "small_font_size": 13,
+                "line_height": 1.5,
                 "font_weight_normal": 400,
                 "font_weight_medium": 500,
-                "font_weight_bold": 600
+                "font_weight_bold": 700
             },
             "spacing_config": {
                 "page_padding": 16,
@@ -117,16 +117,16 @@
             },
             "chart_config": {
                 "chart_palette": "INK_AND_EMBER_LIGHT",
-                "grid_line_color": "E5E7EB",
-                "axis_text_color": "6B7280",
-                "positive_color": "16A34A",
+                "grid_line_color": "E2EAF5",
+                "axis_text_color": "3F6AA3",
+                "positive_color": "3E914A",
                 "negative_color": "DC2626",
-                "neutral_color": "6B7280",
+                "neutral_color": "96B1D4",
                 "series_color_list": [
-                    "171717",
-                    "2563EB",
-                    "F97316",
-                    "16A34A",
+                    "16294A",
+                    "3F6AA3",
+                    "F96410",
+                    "3E914A",
                     "DC2626"
                 ]
             },
@@ -142,9 +142,9 @@
             },
             "is_responsive": true,
             "is_locked": false,
-            "theme_note": "Bold light theme direction based on black, blue, orange, and green.",
+            "theme_note": "Aligned 2026-07-19 with the implemented Massage Nexus website tokens (Instrument Sans, navy ink scale, ember 500, leaf 500). Non-English label and description translations predate this alignment and need retranslation review.",
             "created_at": "2026-07-01T00:00:00Z",
-            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-19T00:00:00Z",
             "updated_by_device_id": 1
         },
         {
@@ -166,7 +166,7 @@
             },
             "theme_description": {
                 "eng": {
-                    "text": "Ink & Ember (Dark) places night black and graphite surfaces at the center, then uses electric blue, ember glow, and fresh green to create contrast, movement, and warmth. The palette gives the interface a premium nocturnal tone while keeping actions, links, and status cues easy to notice. It allows an application to feel bold and immersive while remaining readable, practical, and visually disciplined."
+                    "text": "Ink & Ember (Dark) places deep navy ink surfaces at the center, then uses lighter ink blues, ember glow, and leaf green to create contrast, movement, and warmth. The palette gives the interface a premium nocturnal tone while keeping actions, links, and status cues easy to notice. It allows the application to feel bold and immersive while remaining readable, practical, and visually disciplined."
                 },
                 "spa": {
                     "text": "Tinta y Brasa (Oscuro) coloca el negro noche y las superficies grafito en el centro, y usa azul eléctrico, brillo brasa y verde fresco para crear contraste, movimiento y calidez. La paleta da a la interfaz un tono nocturno y premium, manteniendo las acciones, enlaces y señales de estado fáciles de identificar. Permite que una aplicación se sienta audaz e inmersiva sin perder legibilidad, practicidad ni disciplina visual."
@@ -186,33 +186,33 @@
             ],
             "status_record_lifecycle": "ACT",
             "color_config": {
-                "primary_color": "60A5FA",
-                "secondary_color": "FB923C",
-                "accent_color": "22C55E",
-                "background_color": "000000",
-                "surface_color": "111827",
-                "surface_alt_color": "1F2937",
-                "text_color": "F4F4F5",
-                "muted_text_color": "A1A1AA",
-                "inverse_text_color": "000000",
-                "border_color": "374151",
-                "divider_color": "27272A",
-                "success_color": "22C55E",
+                "primary_color": "96B1D4",
+                "secondary_color": "6289BB",
+                "accent_color": "FD8336",
+                "background_color": "0B1830",
+                "surface_color": "16294A",
+                "surface_alt_color": "1D3457",
+                "text_color": "E2EAF5",
+                "muted_text_color": "96B1D4",
+                "inverse_text_color": "0B1830",
+                "border_color": "26426E",
+                "divider_color": "1D3457",
+                "success_color": "62AE6C",
                 "warning_color": "F59E0B",
                 "danger_color": "EF4444",
-                "info_color": "38BDF8",
+                "info_color": "6289BB",
                 "fyi_color": "A78BFA"
             },
             "typography_config": {
-                "font_family": "Segoe UI",
-                "base_font_size": 10,
-                "heading_font_size": 16,
-                "subheading_font_size": 13,
-                "small_font_size": 9,
-                "line_height": 1.35,
+                "font_family": "Instrument Sans",
+                "base_font_size": 16,
+                "heading_font_size": 24,
+                "subheading_font_size": 18,
+                "small_font_size": 13,
+                "line_height": 1.5,
                 "font_weight_normal": 400,
                 "font_weight_medium": 500,
-                "font_weight_bold": 600
+                "font_weight_bold": 700
             },
             "spacing_config": {
                 "page_padding": 16,
@@ -264,17 +264,17 @@
             },
             "chart_config": {
                 "chart_palette": "INK_AND_EMBER_DARK",
-                "grid_line_color": "27272A",
-                "axis_text_color": "A1A1AA",
-                "positive_color": "22C55E",
+                "grid_line_color": "1D3457",
+                "axis_text_color": "96B1D4",
+                "positive_color": "62AE6C",
                 "negative_color": "EF4444",
-                "neutral_color": "A1A1AA",
+                "neutral_color": "6289BB",
                 "series_color_list": [
-                    "60A5FA",
-                    "FB923C",
-                    "22C55E",
-                    "EF4444",
-                    "A78BFA"
+                    "96B1D4",
+                    "6289BB",
+                    "FD8336",
+                    "62AE6C",
+                    "EF4444"
                 ]
             },
             "component_config": {
@@ -289,9 +289,9 @@
             },
             "is_responsive": true,
             "is_locked": false,
-            "theme_note": "Bold dark theme direction based on black, blue, orange, and green.",
+            "theme_note": "Aligned 2026-07-19 with the implemented Massage Nexus website tokens (Instrument Sans, navy ink scale, ember 400 accent on dark, leaf 400). Color roles now parallel the light theme: primary navy ink, secondary ink blue, accent ember, success leaf. Non-English label and description translations predate this alignment and need retranslation review.",
             "created_at": "2026-07-01T00:00:00Z",
-            "updated_at": "2026-07-01T00:00:00Z",
+            "updated_at": "2026-07-19T00:00:00Z",
             "updated_by_device_id": 1
         },
         {

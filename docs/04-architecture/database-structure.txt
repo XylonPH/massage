@@ -116,7 +116,7 @@ Local usage may vary in requiredness, label, description, help text, placeholder
 
 If the actual data contract differs, create a different specifically named field.
 
-Before creating any new field name, check the field-name index at data/field_index.txt first. It is one compact generated list of every field name known to the taxonomy files and the PHP structure guides, with the places each name is defined, so a name check does not require reading every individual file. Regenerate it with tools/script/build_field_index.php in the same change whenever a taxonomy file or structure guide adds, renames, or removes a field.
+Before creating any new field name, check the field-name index at data/field_index.txt first. It is a bare generated list of every field name known to the taxonomy files and the PHP structure guides, kept location-free so it stays small and cheap to read. To find where a listed name is defined, run: php tools/script/build_field_index.php --where field_name. Regenerate the index with the same script in the same change whenever a taxonomy file or structure guide adds, renames, or removes a field.
 
 6. CORE IDENTITY AND ACCOUNT COLLECTION
 

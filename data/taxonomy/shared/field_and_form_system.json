@@ -311,9 +311,9 @@
     },
     {
         "_id": 48,
-        "field_name": "type_operation",
-        "field_label": "Operation Type",
-        "field_description": "Reusable field template for Operation Type values.",
+        "field_name": "type_record_operation",
+        "field_label": "Record Operation Type",
+        "field_description": "Reusable field template for Record Operation Type values.",
         "type_field": "DDL",
         "type_sql": "ENUM",
         "is_translatable": true,
@@ -321,112 +321,112 @@
             {
                 "option_code": "C",
                 "option_label": "Create",
-                "option_description": "Select Create for Operation Type."
+                "option_description": "Select Create for Record Operation Type."
             },
             {
                 "option_code": "R",
                 "option_label": "Retrieve / View",
-                "option_description": "Select Retrieve / View for Operation Type."
+                "option_description": "Select Retrieve / View for Record Operation Type."
             },
             {
                 "option_code": "U",
                 "option_label": "Update / Edit",
-                "option_description": "Select Update / Edit for Operation Type."
+                "option_description": "Select Update / Edit for Record Operation Type."
             },
             {
                 "option_code": "D",
                 "option_label": "Delete",
-                "option_description": "Select Delete for Operation Type."
+                "option_description": "Select Delete for Record Operation Type."
             },
             {
                 "option_code": "VRF",
                 "option_label": "Verify",
-                "option_description": "Select Verify for Operation Type."
+                "option_description": "Select Verify for Record Operation Type."
             },
             {
                 "option_code": "RST",
                 "option_label": "Restore",
-                "option_description": "Select Restore for Operation Type."
+                "option_description": "Select Restore for Record Operation Type."
             },
             {
                 "option_code": "MRG",
                 "option_label": "Merge",
-                "option_description": "Select Merge for Operation Type."
+                "option_description": "Select Merge for Record Operation Type."
             },
             {
                 "option_code": "CMP",
                 "option_label": "Compare",
-                "option_description": "Select Compare for Operation Type."
+                "option_description": "Select Compare for Record Operation Type."
             },
             {
                 "option_code": "SRC",
                 "option_label": "Search",
-                "option_description": "Select Search for Operation Type."
+                "option_description": "Select Search for Record Operation Type."
             },
             {
                 "option_code": "FLT",
                 "option_label": "Filter",
-                "option_description": "Select Filter for Operation Type."
+                "option_description": "Select Filter for Record Operation Type."
             },
             {
                 "option_code": "IMP",
                 "option_label": "Import",
-                "option_description": "Select Import for Operation Type."
+                "option_description": "Select Import for Record Operation Type."
             },
             {
                 "option_code": "EXP",
                 "option_label": "Export",
-                "option_description": "Select Export for Operation Type."
+                "option_description": "Select Export for Record Operation Type."
             },
             {
                 "option_code": "TRN",
                 "option_label": "Translate",
-                "option_description": "Select Translate for Operation Type."
+                "option_description": "Select Translate for Record Operation Type."
             },
             {
                 "option_code": "RVW",
                 "option_label": "Review",
-                "option_description": "Select Review for Operation Type."
+                "option_description": "Select Review for Record Operation Type."
             },
             {
                 "option_code": "APR",
                 "option_label": "Approve",
-                "option_description": "Select Approve for Operation Type."
+                "option_description": "Select Approve for Record Operation Type."
             },
             {
                 "option_code": "REJ",
                 "option_label": "Reject",
-                "option_description": "Select Reject for Operation Type."
+                "option_description": "Select Reject for Record Operation Type."
             },
             {
                 "option_code": "PUB",
                 "option_label": "Publish",
-                "option_description": "Select Publish for Operation Type."
+                "option_description": "Select Publish for Record Operation Type."
             },
             {
                 "option_code": "GEN",
                 "option_label": "Generate",
-                "option_description": "Select Generate for Operation Type."
+                "option_description": "Select Generate for Record Operation Type."
             },
             {
                 "option_code": "CAL",
                 "option_label": "Calculate",
-                "option_description": "Select Calculate for Operation Type."
+                "option_description": "Select Calculate for Record Operation Type."
             },
             {
                 "option_code": "RCL",
                 "option_label": "Recolor",
-                "option_description": "Select Recolor for Operation Type."
+                "option_description": "Select Recolor for Record Operation Type."
             },
             {
                 "option_code": "CFG",
                 "option_label": "Configure",
-                "option_description": "Select Configure for Operation Type."
+                "option_description": "Select Configure for Record Operation Type."
             },
             {
                 "option_code": "CUS",
                 "option_label": "Custom",
-                "option_description": "Select Custom for Operation Type."
+                "option_description": "Select Custom for Record Operation Type."
             }
         ]
     },

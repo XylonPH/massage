@@ -3,11 +3,11 @@ Shared Project Standards
 
 Field                  | Value
 -----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Document Version       | 2.70
+Document Version       | 2.80
 Author                 | Xylon Reyes
 Original Creation Date | June 9, 2026
 Revision Date          | July 19, 2026
-Supersedes             | Shared Project Standards v2.60
+Supersedes             | Shared Project Standards v2.70
 Applies To             | All projects in Xylon's project ecosystem unless an explicit project-specific exception is recorded
 Description            | Shared documentation, versioning, coding, testing, technical, data, naming, multilingual, identity, repository, interface, accessibility, security, backup, and compatibility standards for independently developed projects
 
@@ -688,7 +688,7 @@ A controlled field prefix expresses the semantic question being answered.
 
 Prefix       | Use                                                         | Examples
 -------------+-------------------------------------------------------------+-----------------------------------
-type_*       | Category or classification                                  | type_operation, type_location
+type_*       | Category or classification                                  | type_record_operation, type_location
 group_*      | Broad grouping or family                                    | group_content, group_permission
 status_*     | Current lifecycle, review, completion, or operational state | status_review, status_account
 format_*     | Representation, media, file, or encoding format             | format_video, format_sound
@@ -990,7 +990,7 @@ Do not preserve overlapping taxonomy fields indefinitely when one was created on
 Example:
 
 - restore mode_crud to Create, Read, Update, Delete;
-- create type_operation for broader individual operations;
+- create type_record_operation for broader individual record operations (this field was originally named type_operation and was renamed to a scoped name so domain-specific operation classifications such as type_establishment_operation cannot collide with it);
 - deprecate or replace mode_crud_extended.
 
 Before creating a new field, determine whether it:

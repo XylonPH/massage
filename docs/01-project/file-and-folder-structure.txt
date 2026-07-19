@@ -220,7 +220,7 @@ data/theme/
 Contains theme/configuration data such as theme_main.json (Ink & Ember and other theme definitions). Theme data is configuration, not taxonomy, and is not automatically converted into CSS or Tailwind configuration.
 
 data/field_index.txt
-Generated compact index of every known field name and where each is defined (taxonomy files and PHP structure guides). Check this file first before creating any new field name so the check does not require reading every individual file. Regenerate it with tools/script/build_field_index.php whenever a taxonomy file or structure guide adds, renames, or removes a field; do not edit it by hand.
+Generated bare list of every known field name (from the taxonomy files and PHP structure guides), deliberately without definition locations so the file stays small and cheap to read. Check this file first before creating any new field name; to find where a listed name is defined, run php tools/script/build_field_index.php --where field_name. Regenerate the index with the same script whenever a taxonomy file or structure guide adds, renames, or removes a field; do not edit it by hand.
 
 docs/
 Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.

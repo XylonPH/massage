@@ -299,7 +299,7 @@
         "source_document": "docs/05-directory/spa-classification.txt"
     },
     {
-        "field_name": "type_operation_model",
+        "field_name": "type_establishment_operation",
         "field_label": "Operation Model",
         "selection_rule": "Single-select",
         "field_description": "How the establishment is operated. A marketplace relationship, directory listing, or booking partnership does not by itself determine Operation Model.",
