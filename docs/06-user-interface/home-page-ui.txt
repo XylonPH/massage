@@ -1,7 +1,7 @@
 Title: Massage Nexus Homepage UI
-Version: 1.30
+Version: 1.31
 Date Created: 2026-07-01
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 Homepage UI Documentation
 =========================
@@ -173,7 +173,7 @@ Sponsored placement blocks provide tasteful monetization spaces without making t
 
 Placement: Right sidebar, after an initial sponsored placement.
 
-Community Pulse is a rotating poll or survey widget that asks users a short question and encourages quick participation. After a user answers, the system should show the poll result briefly and may offer another question, especially for logged-in users. This feature helps collect lightweight user opinions and makes the homepage feel interactive.
+Community Pulse is a rotating poll or survey widget that asks users a short question and encourages quick participation. After a user answers, the system shows the result briefly, then after a short delay a new unanswered item replaces the completed one in place if the user is still on the page. Rotation is per user and completion-aware: any page showing the widget serves items the user has not yet answered, never items they already completed. This feature helps collect lightweight user opinions and makes the homepage feel interactive. Participation rules, result recording, and rotation behavior are owned by docs/08-community/survey-system.txt.
 
 --------------------------------------------------------------------------------
 
@@ -182,7 +182,7 @@ Community Pulse is a rotating poll or survey widget that asks users a short ques
 
 Placement: Right sidebar, after Community Pulse and a sponsored placement.
 
-Campus Quiz shows a short quiz question connected to Wellness Campus learning. When a user submits an answer, the system should show whether the answer is correct, provide a short explanation, and offer another question. Logged-in users may earn points, track progress, or unlock badges, while guests can answer casually and be invited to sign in for saved progress.
+Campus Quiz shows a short quiz question connected to Wellness Campus learning. When a user submits an answer, the system shows whether the answer is correct with a short explanation, then after a short delay a new unanswered question replaces the completed one in place if the user is still on the page. Rotation is per user and completion-aware: any page showing the quiz widget serves questions the user has not yet answered, never questions they already completed. Logged-in users may earn points and have their quiz results recorded, while guests can answer casually and be invited to sign in for saved progress. Participation rules, result recording, rotation behavior, and the open Campus-integration decision are owned by docs/10-education/quiz-system.txt.
 
 --------------------------------------------------------------------------------
 
@@ -193,7 +193,7 @@ Placement: Right sidebar, usually below the quiz and sponsored placements.
 
 Quote of the Day displays a rotating wellness, relaxation, massage, self-care, or motivational quote from an approved quote collection. The quote should come from a database rather than a plain text file so it can support categories, languages, authors, sources, active dates, seasonal use, and moderation. This section gives the homepage a calmer editorial touch between more functional sections.
 
-The proposed database structure for this feature is the quote_main collection, documented in the PHP-readable structure guide at docs/04-architecture/structure-guide/quote_main.php, with its quote categories defined by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json. The current implementation still renders one temporary hard-coded sample quote; replacing it with quote_main-backed rotation is pending implementation.
+The proposed database structure for this feature is the quote_main collection, documented in the PHP-readable structure guide at docs/04-architecture/structure-guide/quote_main.php, with its quote categories defined by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json. The current implementation still renders one temporary hard-coded sample quote; replacing it with quote_main-backed rotation is pending implementation. Quote sourcing, attribution, rotation, and administration rules are owned by docs/09-content/quote-system.txt. Unlike Community Pulse and Campus Quiz, quotes have nothing for the user to complete, so quote rotation is time-based rather than completion-aware.
 
 --------------------------------------------------------------------------------
 

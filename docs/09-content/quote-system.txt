@@ -1,0 +1,79 @@
+Title: Massage Nexus Quote System
+Document Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+Status: Internal Planning Draft
+Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
+
+Related Documents:
+- docs/06-user-interface/home-page-ui.txt (section 20, Quote of the Day)
+- docs/04-architecture/structure-guide/quote_main.php
+- docs/04-architecture/database-structure.txt
+- docs/11-workspaces/admin-workspace.txt (Editorial Management, Quote administration)
+- docs/13-localization/translation-system.txt
+- data/taxonomy/massage_nexus/content_classification.json (type_quote_category)
+
+================================================================================
+1. PURPOSE AND BOUNDARY
+================================================================================
+
+Quotes give the homepage and other approved placements a calm editorial touch between more
+functional sections. A quote is a short approved text with attribution, a category, and an
+optional display window. It is curated platform content, not user-submitted content, and it does
+not use article_main, article_body, or any user-contribution workflow.
+
+Quotes are display-only. Users do not answer, vote on, or complete a quote, so quotes do not use
+the completion-rotation behavior defined for Surveys and Quizzes. Quote rotation is time-based.
+
+================================================================================
+2. CONTENT AND ATTRIBUTION
+================================================================================
+
+Each quote should preserve:
+- the quote text, multilingual where translated;
+- attribution (person, work, tradition, or Unknown/Anonymous where genuinely unattributable);
+- source context where known;
+- category from the type_quote_category taxonomy;
+- optional display window for seasonal or campaign use;
+- review and lifecycle status.
+
+Rules:
+- do not invent attributions or attach a famous name to an unverified quote;
+- prefer wellness, relaxation, massage, rest, self-care, and motivational themes fitting the
+  platform voice;
+- a quote with unresolved attribution doubt should remain unpublished rather than published with
+  a guessed source;
+- translated quote text follows the Translation System; the original language remains preserved.
+
+================================================================================
+3. PLACEMENT AND ROTATION
+================================================================================
+
+Current placement is the homepage right sidebar (Quote of the Day). Future approved placements
+may include Relaxation Rooms, Campus pages, or newsletters without changing quote ownership.
+
+Rotation is time-based (normally daily) from the approved active pool, respecting display
+windows. Rotation does not depend on per-user completion state because there is nothing for the
+user to complete.
+
+================================================================================
+4. STORAGE AND ADMINISTRATION
+================================================================================
+
+The proposed collection is quote_main; see the structure guide at
+docs/04-architecture/structure-guide/quote_main.php. Quote categories come from
+type_quote_category in data/taxonomy/massage_nexus/content_classification.json.
+
+Administration (attribution, source, language, category, display window, duplication review,
+approval, scheduling, retirement, correction) belongs to the Admin Workspace editorial area per
+docs/11-workspaces/admin-workspace.txt. The homepage currently renders one temporary hard-coded
+sample quote; replacing it with quote_main-backed rotation is pending implementation.
+
+================================================================================
+5. OPEN DECISIONS
+================================================================================
+
+- final quote curation sources and licensing/copyright review workflow for quoted material;
+- whether user-suggested quotes are ever accepted through the contribution system;
+- exact rotation schedule and whether rotation is per-locale;
+- additional placements beyond the homepage.

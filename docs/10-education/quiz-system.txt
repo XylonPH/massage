@@ -1,0 +1,103 @@
+Title: Massage Nexus Quiz System
+Document Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+Status: Internal Planning Draft
+Document Description: Defines platform quizzes, including the homepage Campus Quiz widget, participation rules, per-user completion rotation, result recording, rewards references, and administration. The relationship between casual quiz results and formal Massage Campus learner progress is an explicitly open decision, and exact question schemas and collections remain deferred.
+
+Related Documents:
+- docs/06-user-interface/home-page-ui.txt (section 19, Campus Quiz)
+- docs/10-education/massage-campus.txt
+- docs/11-workspaces/admin-workspace.txt (Editorial Management, Quiz administration)
+- docs/08-community/user-rewards-and-gamification.txt
+- docs/13-localization/translation-system.txt
+- docs/18-policy/accessibility-and-inclusive-design-requirements.txt
+
+================================================================================
+1. PURPOSE AND BOUNDARY
+================================================================================
+
+Quizzes let users test and build massage, spa, and wellness knowledge in a light, rewarding
+format. A quiz item is a platform-authored question with defined choices, a correct answer, and
+a short explanation shown after answering.
+
+Casual quizzes (such as the homepage widget) are engagement and learning features. They are not
+assessments, certifications, or credentials, and a quiz result must never be presented as a
+professional qualification. Formal course assessment belongs to the Massage Campus specification.
+
+================================================================================
+2. PLACEMENT
+================================================================================
+
+The current placement is the homepage right sidebar (Campus Quiz). Quiz items may later appear
+on other approved pages and, when the Campus module ships, inside Campus lessons and courses.
+Placement does not change ownership of the quiz record or its results.
+
+================================================================================
+3. PARTICIPATION AND COMPLETION ROTATION
+================================================================================
+
+Participation:
+- registered users participate normally, and their quiz results (item, answer given,
+  correctness, time) are recorded per user;
+- guests may answer casually; guest results are not recorded as user history, and guests may be
+  invited to sign in for saved progress;
+- one user is scored on a given quiz item once; repeat attempts, where allowed, must not farm
+  additional rewards for the same item.
+
+After answering, the widget shows whether the answer was correct and a short explanation.
+
+Completion rotation (accepted direction):
+- after the result and explanation are shown, and after a short delay, a new unanswered quiz
+  item replaces the completed one in place if the user is still on the page;
+- rotation is per user and completion-aware: any page showing the quiz widget serves items the
+  user has not yet answered, not items they already completed;
+- when no unanswered items remain for the user, the widget may show a neutral message, recent
+  performance, or hide, rather than repeating completed items;
+- completion-aware rotation requires an identified user; guests may receive simple time-based
+  rotation instead.
+
+Replacing the completed question in place is a dynamic update and must follow Accessibility and
+Inclusive Design Requirements: the correctness result, explanation, and arrival of a new
+question are announced to assistive technology (aria-live), and keyboard focus is not lost or
+hijacked by the swap.
+
+================================================================================
+4. RESULTS, REWARDS, AND CAMPUS RELATIONSHIP
+================================================================================
+
+- user quiz results are recorded per user and visible to that user as personal history;
+- quiz results are private by default and are not public profile content;
+- quiz completion may earn rewards per the User Rewards and Gamification document (Campus quiz
+  completion is an accepted Nexus Points and Inklings source there), subject to its caps and
+  anti-farming rules;
+- correctness may gate rewards or reward size; that detail belongs to the rewards document.
+
+Open decision — Campus integration: whether casual quiz results (homepage and general-page
+quizzes) are stored together with, feed into, or remain fully separate from formal Massage
+Campus learner progress, course assessment, and knowledge-check records is not yet decided.
+Until decided, casual quiz results and Campus assessment records must not be silently merged,
+and nothing in this document creates a Campus credential or completion effect.
+
+================================================================================
+5. ADMINISTRATION AND STORAGE
+================================================================================
+
+Quiz administration (draft, question and response structure, audience, availability window,
+translation, accessibility, moderation, scoring rules, preview, publication, closure, export
+authorization, archive) belongs to the Admin Workspace editorial area per
+docs/11-workspaces/admin-workspace.txt.
+
+Final quiz and result collections, field names, and option codes are deferred and will be
+defined through the database-structure and structure-guide process before implementation. The
+current homepage Campus Quiz widget is a visual preview; progress is not stored yet.
+
+================================================================================
+6. OPEN DECISIONS
+================================================================================
+
+- relationship between casual quiz results and formal Campus learner progress (see section 4);
+- final quiz and result collection design;
+- repeat-attempt policy and whether later correct answers change recorded history;
+- difficulty levels, streaks, or leaderboard-style presentations and their privacy rules;
+- whether quiz items are versioned when a question or correct answer is corrected.

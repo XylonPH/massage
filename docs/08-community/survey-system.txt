@@ -1,0 +1,97 @@
+Title: Massage Nexus Survey System
+Document Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+Status: Internal Planning Draft
+Document Description: Defines platform polls and surveys, including the homepage Community Pulse widget, participation rules, per-user completion rotation, result recording, privacy boundaries, rewards references, and administration. Exact question schemas and collections remain deferred.
+
+Related Documents:
+- docs/06-user-interface/home-page-ui.txt (section 18, Community Pulse)
+- docs/11-workspaces/admin-workspace.txt (Editorial Management, Survey administration)
+- docs/08-community/user-rewards-and-gamification.txt
+- docs/14-research/analytics-statistics-and-measurement-system.txt
+- docs/16-operations/maintenance-and-continuous-operations.txt
+- docs/13-localization/translation-system.txt
+- docs/18-policy/accessibility-and-inclusive-design-requirements.txt
+
+================================================================================
+1. PURPOSE AND BOUNDARY
+================================================================================
+
+Surveys and polls collect lightweight, structured user opinion to guide platform decisions and
+make participation feel active. A poll is normally a single question with predefined choices; a
+survey may contain several questions. Both are platform-authored: they are not user-generated
+discussions, reviews, or ratings, and answering one is not a review or rating of any target.
+
+Survey results are opinion signals, not official platform statistics. Published aggregates must
+follow the Analytics Statistics and Measurement System rules (approved aggregates, minimum group
+sizes, no exposure of individual answers).
+
+================================================================================
+2. PLACEMENT
+================================================================================
+
+The current placement is the homepage right sidebar (Community Pulse). The same widget or its
+survey items may later appear on other approved pages. Placement does not change ownership: the
+survey record and its results belong to the Survey System regardless of which page displays it.
+
+================================================================================
+3. PARTICIPATION AND COMPLETION ROTATION
+================================================================================
+
+Participation:
+- registered users participate normally and their completion state is recorded per user;
+- guests may be shown polls and may answer casually where allowed, but guest answers do not
+  create official recorded results and guests may be invited to sign in;
+- one user answers a given survey or poll item once; changing an answer, where allowed, updates
+  the same recorded response rather than creating a second one.
+
+Completion rotation (accepted direction):
+- after a user completes an item, the widget briefly shows the result or acknowledgment;
+- after a short delay, if the user is still on the page, a new unanswered item replaces the
+  completed one in place;
+- rotation is per user and completion-aware: any page showing the widget serves items the user
+  has not yet answered, not items they already completed;
+- when no unanswered items remain for the user, the widget may show recent results, a neutral
+  message, or hide, rather than repeating completed items;
+- completion-aware rotation requires an identified user; guests may receive simple time-based
+  rotation instead.
+
+Replacing the completed item in place is a dynamic update and must follow Accessibility and
+Inclusive Design Requirements: the result and the arrival of a new item are announced to
+assistive technology (aria-live), and keyboard focus is not lost or hijacked by the swap.
+
+================================================================================
+4. RESULTS, PRIVACY, AND REWARDS
+================================================================================
+
+- individual answers are private by default; public display uses aggregates only;
+- results shown to the user immediately after answering are the same aggregate view, not other
+  users' individual answers;
+- sensitive topics require the same privacy, minimum-group, and retention rules as other
+  measurement data;
+- poll participation may earn small rewards per the User Rewards and Gamification document,
+  subject to its caps and anti-farming rules; answering repeatedly is prevented by the one-answer
+  rule rather than by reward caps alone.
+
+================================================================================
+5. ADMINISTRATION AND STORAGE
+================================================================================
+
+Survey administration (draft, question and response structure, audience, availability window,
+translation, accessibility, moderation, preview, publication, closure, export authorization,
+archive) belongs to the Admin Workspace editorial area per docs/11-workspaces/admin-workspace.txt.
+
+Final survey and response collections, field names, and option codes are deferred and will be
+defined through the database-structure and structure-guide process before implementation. The
+current homepage Community Pulse widget is a visual preview; submissions are not stored yet.
+
+================================================================================
+6. OPEN DECISIONS
+================================================================================
+
+- final survey and response collection design;
+- whether guests may ever have answers counted in any aggregate;
+- multi-question survey presentation (inline, dedicated page, or both);
+- targeting rules (audience, locale, role) beyond simple availability windows;
+- how survey insights feed the research and product-decision workflow.
