@@ -10,6 +10,7 @@ use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\File;
 
@@ -24,24 +25,15 @@ class EstablishmentForm
                         Tab::make('Identity')
                             ->schema([
                                 TextInput::make('display_name.eng')
-                                    ->label('Establishment Name (English)')
+                                    ->label('Establishment Name')
                                     ->required()
                                     ->maxLength(255),
-                                TextInput::make('display_name.zho')
-                                    ->label('Establishment Name (Chinese)')
-                                    ->maxLength(255),
                                 Textarea::make('short_description.eng')
-                                    ->label('Short Description (English)')
-                                    ->rows(3),
-                                Textarea::make('short_description.zho')
-                                    ->label('Short Description (Chinese)')
+                                    ->label('Short Description')
                                     ->rows(3),
                                 Textarea::make('description.eng')
-                                    ->label('Full Description (English)')
+                                    ->label('Full Description')
                                     ->helperText('The complete public description shown on the profile page.')
-                                    ->rows(8),
-                                Textarea::make('description.zho')
-                                    ->label('Full Description (Chinese)')
                                     ->rows(8),
                                 TextInput::make('email')
                                     ->label('Business Email')
@@ -230,13 +222,15 @@ class EstablishmentForm
                             ])->columns(3),
                         Tab::make('Amenities & Accessibility')
                             ->schema([
-                                Select::make('amenities')
+                                ToggleButtons::make('amenities')
                                     ->label('General Amenities')
                                     ->multiple()
+                                    ->inline()
                                     ->options(self::getTaxonomyOptions('amenities')),
-                                Select::make('accessibility_information')
+                                ToggleButtons::make('accessibility_information')
                                     ->label('Accessibility Features')
                                     ->multiple()
+                                    ->inline()
                                     ->options(self::getTaxonomyOptions('accessibility_information')),
                             ])->columns(2),
                     ])->columnSpanFull(),
