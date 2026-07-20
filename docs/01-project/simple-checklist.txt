@@ -3540,8 +3540,8 @@ complete a website feature.
 
 32.1 User Workspace
 -------------------
-[ ] Personal dashboard
-[ ] Public-profile controls
+[~] Personal dashboard
+[~] Public-profile controls
 [ ] Bookings
 [ ] Manual service history
 [ ] Receipts
@@ -3566,8 +3566,8 @@ complete a website feature.
 
 32.2 Professional and Commercial Workspaces
 -------------------------------------------
-[ ] Therapist Workspace
-[ ] Operator Workspace
+[~] Therapist Workspace
+[~] Operator Workspace
 [ ] Reception Workspace
 [ ] Manager Workspace
 [ ] Finance Workspace

@@ -1,5 +1,5 @@
 Title: Massage Nexus Operator Workspace
-Document Version: 0.40
+Document Version: 0.41
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: Defines the private, permission-aware Operator Workspace used by authorized people to manage one or more establishment profiles, branches, public business information, services, staff relationships, media, booking operations, verification, documents, and analytics without controlling independent community or editorial content.
@@ -85,6 +85,12 @@ The context switcher may allow the user to move among:
 - advertising organization.
 
 Changing context changes available records and actions. It does not change the user's account identity.
+
+Current implementation state (2026-07-20): /workspace/listing/spa is implemented inside the
+workspace shell for every active member. Because claim records do not exist yet, it renders the
+managed-establishment empty state with the /claim/spa route as the entry point, matching the
+rule that management authority comes from the claim workflow rather than a pre-assigned role.
+Per-establishment management routes and the dashboard below remain unimplemented.
 
 ================================================================================
 4. DASHBOARD

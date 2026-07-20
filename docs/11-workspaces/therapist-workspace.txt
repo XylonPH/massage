@@ -1,5 +1,5 @@
 Title: Massage Nexus Therapist Workspace
-Document Version: 0.30
+Document Version: 0.31
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: Defines the permission-aware private workspace used by therapists and practitioners to manage professional profile information, services, affiliations, credentials, availability, bookings, privacy, messages, verification, analytics, and professional settings within the general Massage Nexus User Workspace.
@@ -74,6 +74,13 @@ The context switcher may show:
 - one establishment affiliation;
 - another establishment affiliation;
 - editorial or contributor role.
+
+Current implementation state (2026-07-20): /workspace/listing/therapist is implemented inside
+the workspace shell for every active member. Because claim records do not exist yet, it renders
+the managed-profile empty state with the /claim/therapist route as the entry point, matching
+this document's rule that management authority comes from the claim workflow rather than a
+pre-assigned role. Per-profile management routes and the dashboard cards below remain
+unimplemented.
 
 ================================================================================
 4. DASHBOARD

@@ -42,6 +42,9 @@
             <div class="ml-auto hidden items-center gap-2.5 lg:flex">
                 @auth
                     @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
+                        <a href="{{ route('workspace.home') }}" class="rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-800 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
+                            {{ __('navigation.workspace') }}
+                        </a>
                         <a href="{{ route('workspace.article.index') }}" class="rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-800 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
                             {{ __('article.workspace_title') }}
                         </a>
@@ -87,6 +90,7 @@
                 <a href="{{ route('promo.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.promos') }}</a>
                 @auth
                     @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
+                        <a href="{{ route('workspace.home') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.workspace') }}</a>
                         <a href="{{ route('workspace.article.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('article.workspace_title') }}</a>
                         <a href="{{ route('workspace.review.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('review.workspace_title') }}</a>
                     @endif

@@ -1,5 +1,5 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.51
+Document Version: 0.52
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description:
@@ -142,6 +142,15 @@ The home page may show:
 - quick actions.
 
 The dashboard should not display every possible card to every user.
+
+Current implementation state (2026-07-20): the workspace shell is implemented behind
+auth + verified + EnsureActiveMember. /workspace redirects to /workspace/home, which renders a
+Personal-context dashboard (greeting via display name with username fallback, account summary,
+My Reviews and My Articles counts linking to their existing workspace areas, and a claim
+invitation card). /workspace/profile edits the public display_name and bio (user_main structure
+guide records both fields), and /workspace/setting shows account facts and toggles the separate
+marketing email opt-in. Context switching, notifications, messages, saved, following, history,
+booking, and the remaining areas stay unimplemented; the dashboard names them as coming.
 
 ================================================================================
 4. NAVIGATION MODEL

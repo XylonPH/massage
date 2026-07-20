@@ -81,6 +81,15 @@ foreach ([
     Route::view("/{$path}", 'coming-soon', ['sectionKey' => $sectionKey])->name(str_replace('-', '_', $path).'.index');
 }
 
+foreach ([
+    'claim' => 'navigation.claim',
+    'help' => 'navigation.help',
+] as $path => $sectionKey) {
+    Route::view("/{$path}/{subpath?}", 'coming-soon', ['sectionKey' => $sectionKey])
+        ->where('subpath', '.*')
+        ->name($path.'.index');
+}
+
 Route::prefix('workspace')
     ->name('workspace.')
     ->middleware(['auth', 'verified', EnsureActiveMember::class])
