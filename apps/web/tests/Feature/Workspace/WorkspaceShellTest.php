@@ -231,4 +231,15 @@ class WorkspaceShellTest extends TestCase
             ->assertOk()
             ->assertSee('Maya Santos');
     }
+
+    public function test_dashboard_shows_activity_stat_row(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->get('/workspace/home')
+            ->assertOk()
+            ->assertSee(__('workspace.stat_reviews'))
+            ->assertSee(__('workspace.stat_articles'))
+            ->assertSee(__('workspace.stat_contributions'));
+    }
 }

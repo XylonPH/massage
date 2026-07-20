@@ -22,6 +22,9 @@ return [
 
     'card_account_title' => 'Account',
     'card_account_member_since' => 'Member since :date',
+    'stat_reviews' => 'Reviews written',
+    'stat_articles' => 'Articles',
+    'stat_contributions' => 'Contributions',
     'card_reviews_title' => 'My Reviews',
     'card_reviews_text' => '{0} No reviews written yet.|{1} :count review written.|[2,*] :count reviews written.',
     'card_articles_title' => 'My Articles',
@@ -29,6 +32,7 @@ return [
     'card_claim_title' => 'Run a spa or practice professionally?',
     'card_claim_text' => 'Contribute an establishment and declare your relationship to it. Management access is reviewed separately before it is granted.',
     'card_claim_action' => 'Contribute an establishment',
+    'quick_actions_title' => 'Quick actions',
     'open' => 'Open',
     'back_to_site' => 'Back to site',
 

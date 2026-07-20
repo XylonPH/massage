@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Workspace;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article\Article;
+use App\Models\Contribution;
 use App\Models\Review\Review;
 use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class HomeController extends Controller
             'user' => $user,
             'reviewCount' => Review::query()->where('created_by_user_id', (string) $user->getKey())->count(),
             'articleCount' => Article::query()->where('created_by_user_id', (string) $user->getKey())->count(),
+            'contributionCount' => Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->count(),
             'administrativeAreas' => $workspaceAccess->administrativeAreas($user),
         ]);
     }
