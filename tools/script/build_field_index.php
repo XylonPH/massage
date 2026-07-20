@@ -44,14 +44,19 @@ foreach (glob("$repo/data/taxonomy/massage_nexus/*.json") as $f) {
     }
 }
 
-// 3. Collection fields from PHP structure guides ($<collection>_field_order arrays)
+// 3. Collection and embedded-item fields from PHP structure-guide *_field_order arrays.
+// A guide may define more than one order array when the collection contains
+// bounded embedded objects; every stored field name still belongs in the
+// canonical index.
 foreach (glob("$repo/docs/04-architecture/structure-guide/*.php") as $f) {
-    $collection = basename($f, '.php');
     $srcText = file_get_contents($f);
-    if (preg_match('/\$' . preg_quote($collection, '/') . '_field_order\s*=\s*\[(.*?)\];/s', $srcText, $m)) {
-        preg_match_all("/'([A-Za-z0-9_]+)'/", $m[1], $mm);
-        foreach ($mm[1] as $name) {
-            $add($name, 'collection: docs/04-architecture/structure-guide/' . basename($f));
+    if (preg_match_all('/\$[A-Za-z0-9_]+_field_order\s*=\s*\[(.*?)\];/s', $srcText, $matches)) {
+        foreach ($matches[1] as $fieldOrder) {
+            preg_match_all("/'([A-Za-z0-9_]+)'/", $fieldOrder, $mm);
+
+            foreach ($mm[1] as $name) {
+                $add($name, 'collection: docs/04-architecture/structure-guide/' . basename($f));
+            }
         }
     }
 }

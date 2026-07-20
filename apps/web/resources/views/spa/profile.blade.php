@@ -91,9 +91,15 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M5 11h14M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
                 {{ __('common.book_now') }}
             </a>
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-4 py-2.5 text-sm font-semibold text-ink-100 transition hover:bg-white/10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5A1.5 1.5 0 0 1 4.5 6h2.6a1 1 0 0 1 1 .76l.7 2.8a1 1 0 0 1-.5 1.12l-1.6.94a11.6 11.6 0 0 0 5.7 5.7l.94-1.6a1 1 0 0 1 1.1-.5l2.8.7a1 1 0 0 1 .76 1v2.58a1.5 1.5 0 0 1-1.5 1.5C9.7 21 3 14.3 3 7.5Z"/></svg>
+                {{ __('common.contact') }}
+            </a>
+            <a href="{{ $spa['map_url'] }}" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-4 py-2.5 text-sm font-semibold text-ink-100 transition hover:bg-white/10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9 20-5.5-2.5v-13L9 7l6-2.5L20.5 7v13L15 17.5 9 20Zm0-13v13m6-15.5v13"/></svg>
+                {{ __('common.get_directions') }}
+            </a>
             @foreach ([
-                ['label' => __('common.contact'), 'icon' => 'M3 7.5A1.5 1.5 0 0 1 4.5 6h2.6a1 1 0 0 1 1 .76l.7 2.8a1 1 0 0 1-.5 1.12l-1.6.94a11.6 11.6 0 0 0 5.7 5.7l.94-1.6a1 1 0 0 1 1.1-.5l2.8.7a1 1 0 0 1 .76 1v2.58a1.5 1.5 0 0 1-1.5 1.5C9.7 21 3 14.3 3 7.5Z'],
-                ['label' => __('common.get_directions'), 'icon' => 'm9 20-5.5-2.5v-13L9 7l6-2.5L20.5 7v13L15 17.5 9 20Zm0-13v13m6-15.5v13'],
                 ['label' => __('common.save'), 'icon' => 'M12 20s-7.5-4.7-9.4-9A5.3 5.3 0 0 1 12 6.6 5.3 5.3 0 0 1 21.4 11c-1.9 4.3-9.4 9-9.4 9Z'],
                 ['label' => __('common.follow'), 'icon' => 'M12 5v14m-7-7h14'],
                 ['label' => __('common.share'), 'icon' => 'M7.5 13.5 15 18m0-12-7.5 4.5M18 5.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 13a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-11-6.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z'],
@@ -253,20 +259,32 @@
                 </div>
             </section>
 
-            {{-- Location --}}
+            {{-- Location and public business contact --}}
             <section id="location" aria-labelledby="location-heading" class="scroll-mt-32">
                 <x-section-heading id="location-heading" :title="__('spa.location_title')" accent="leaf" />
                 <div class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
                     <div class="relative flex h-36 items-center justify-center bg-gradient-to-br from-ink-100 to-ink-200">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="size-9 text-ember-500" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                        <a href="https://maps.google.com/?q={{ urlencode($spa['name'].' '.$spa['address']) }}" target="_blank" rel="noopener" class="absolute bottom-2.5 right-2.5 rounded-lg bg-ink-950 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-ink-800">
+                        <a href="{{ $spa['map_url'] }}" target="_blank" rel="nofollow noopener noreferrer" class="absolute bottom-2.5 right-2.5 rounded-lg bg-ink-950 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-ink-800">
                             {{ __('spa.view_on_map') }}
                         </a>
                     </div>
-                    <div class="grid gap-4 p-4 sm:grid-cols-2">
-                        <div>
-                            <p class="text-sm leading-relaxed text-ink-700">{{ $spa['address'] }}</p>
-                            <a href="https://maps.google.com/?q={{ urlencode($spa['name'].' '.$spa['address']) }}" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-ember-600 transition hover:text-ember-700">
+                    <p class="border-b border-ink-100 px-4 py-2.5 text-xs text-ink-500">{{ __('spa.map_location_note') }}</p>
+                    <div class="grid gap-5 p-5 sm:grid-cols-2">
+                        <div class="space-y-5">
+                            <div>
+                                <h3 class="text-sm font-bold text-ink-900">{{ __('spa.public_address') }}</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-ink-700">{{ $spa['address_public'] }}</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-ink-900">{{ __('spa.directions_note') }}</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ $spa['direction_note'] }}</p>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-ink-900">{{ __('spa.parking_information') }}</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-ink-600">{{ $spa['parking_note'] }}</p>
+                            </div>
+                            <a href="{{ $spa['map_url'] }}" target="_blank" rel="nofollow noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-bold text-ember-600 transition hover:text-ember-700">
                                 {{ __('common.get_directions') }}
                                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
                             </a>
@@ -274,14 +292,33 @@
                         <div>
                             <h3 class="text-sm font-bold text-ink-900">{{ __('spa.nearby_landmarks') }}</h3>
                             <ul class="mt-2 space-y-1.5 text-sm text-ink-600">
-                                @foreach ($spa['landmarks'] as $landmark)
+                                @foreach ($spa['landmark_list'] as $landmark)
                                     <li class="flex items-center gap-2">
                                         <span class="size-1.5 rounded-full bg-leaf-500" aria-hidden="true"></span>
-                                        {{ $landmark['name'] }} · {{ __('spa.walk_time', ['minutes' => $landmark['minutes']]) }}
+                                        {{ $landmark['landmark_name'] }} · {{ __('spa.walk_time', ['minutes' => $landmark['walking_duration_minute']]) }}
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
+                    </div>
+                    <div id="contact" class="scroll-mt-32 border-t border-ink-100 p-5">
+                        <h3 class="text-base font-black text-ink-950">{{ __('spa.contact_title') }}</h3>
+                        <p class="mt-1 text-xs text-ink-500">{{ __('spa.contact_channel_notice') }}</p>
+                        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+                            @foreach ($spa['contact_channel_list'] as $channel)
+                                <li>
+                                    <a href="{{ $channel['contact_url'] }}"
+                                       @if ($channel['is_external']) target="_blank" rel="nofollow noopener noreferrer" @endif
+                                       class="flex h-full items-center justify-between gap-3 rounded-xl border border-ink-100 px-4 py-3 transition hover:border-ember-200 hover:bg-ember-50/40">
+                                        <span class="min-w-0">
+                                            <span class="block text-xs font-bold uppercase tracking-wide text-ink-500">{{ $channel['contact_label'] }}</span>
+                                            <span class="mt-0.5 block truncate text-sm font-semibold text-ink-900">{{ $channel['contact_value'] }}</span>
+                                        </span>
+                                        <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 shrink-0 text-ember-500" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </section>

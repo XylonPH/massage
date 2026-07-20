@@ -25,6 +25,13 @@ class Establishment extends Model
         'short_description',
         'email',
         'contact_number',
+        'address_public',
+        'coordinate_latitude',
+        'coordinate_longitude',
+        'direction_note',
+        'parking_note',
+        'landmark_list',
+        'contact_channel_list',
         'type_spa',
         'level_spa_market',
         'type_physical_setting',
@@ -52,6 +59,12 @@ class Establishment extends Model
 
     protected $casts = [
         'status_record_lifecycle' => RecordLifecycleStatus::class,
+        'coordinate_latitude' => 'float',
+        'coordinate_longitude' => 'float',
+        'direction_note' => 'array',
+        'parking_note' => 'array',
+        'landmark_list' => 'array',
+        'contact_channel_list' => 'array',
     ];
 
     protected static function boot()

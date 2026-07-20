@@ -1,5 +1,5 @@
 Title: Massage Nexus Spa Profile UI
-Document Version: 0.21
+Document Version: 0.31
 Date Created: 2026-07-18
 Revision Date: 2026-07-19
 
@@ -89,12 +89,17 @@ The section now reads approved Review records from review_main and their linked 
 
 --------------------------------------------------------------------------------
 
-9. Location
-=============
+9. Location and Contact
+=======================
 
 Placement: Main column, after Reviews.
 
-A map placeholder tile linking out to an external map search, the public address, a Get Directions link, and a Nearby Landmarks list with walking time. A real embedded map is not yet implemented.
+A map tile opens a coordinate-based external map destination. The section shows the public address,
+entrance directions, parking information, a Get Directions action, and nearby landmarks with
+walking time. A Business Contact Channels panel presents repeatable public telephone, messaging,
+website, and social-account actions. Telephone actions remain in the current page; external web
+channels open separately with nofollow, noopener, and noreferrer protection. Unsupported stored
+URL schemes are removed before rendering. A real embedded map is not implemented.
 
 --------------------------------------------------------------------------------
 
@@ -119,13 +124,13 @@ A quick-booking form: service selector (populated from the establishment's menu 
 Spa Profile UI Behavior Notes
 ================================
 
-The Spa identity, services, staff, facilities, location, claim status, booking mode, and verification labels still render from synthetic sample data (see apps/web/app/Support/Demo/SampleContent.php) rather than establishment_main. The Review section is the exception: it reads approved review_main and rating_main records associated with the demo target's stable placeholder ID. Booking form submission does not yet call a booking endpoint. Empty Review state is implemented; broader section visibility rules remain deferred because the other sample sections are populated.
+The Spa identity, services, staff, facilities, location/contact, claim status, booking mode, and verification labels still render from synthetic sample data (see apps/web/app/Support/Demo/SampleContent.php) rather than establishment_main. The administration form and establishment structure guide now support public address, coordinates, directions, parking, landmarks, and repeatable public business contact channels, but the public-profile persistence connection remains a separate checklist item. The Review section reads approved review_main and rating_main records associated with the demo target's stable placeholder ID. Booking form submission does not yet call a booking endpoint. Empty Review state is implemented; broader section visibility rules remain deferred because the other sample sections are populated.
 
 Open Items
 ============
 
 - Reconcile the tab set with the Spa Profile Guide's eleven-section list once Gallery, Promotions and Updates, and a dedicated About/Verification/Sources tab are prioritized.
 - Link therapist cards to their own profile pages once the Therapist Profile UI exists.
-- Replace the map placeholder with an embedded map once a map provider is selected (still an open technology decision).
+- Decide whether the coordinate-based external map action should remain the default or be supplemented by an embedded map after a provider is selected.
 - Add a Report action once the moderation/reporting flow is designed.
 - Confirm whether Facilities should absorb the Overview amenities list or remain Treatment-Areas-only.

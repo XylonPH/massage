@@ -137,6 +137,7 @@ if (usernameInput && usernameAvailability) {
         try {
             const response = await fetch(`${checkUrl}?username=${encodeURIComponent(value)}`, {
                 headers: { Accept: 'application/json' },
+                cache: 'no-cache',
                 signal: controller.signal,
             });
             const data = await response.json();
@@ -147,6 +148,14 @@ if (usernameInput && usernameAvailability) {
     };
 
     usernameInput.addEventListener('input', () => {
+        // Clear server-side error immediately on new input
+        const serverError = usernameInput.parentElement.querySelector('p.text-ember-600:not([data-username-availability])');
+        if (serverError) {
+            serverError.remove();
+            usernameInput.classList.remove('border-ember-400');
+            usernameInput.classList.add('border-ink-200');
+        }
+        
         clearTimeout(debounceTimer);
         const value = usernameInput.value.toLowerCase();
         if (!pattern.test(value)) {

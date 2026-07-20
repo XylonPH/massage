@@ -1,5 +1,5 @@
 Title: Massage Nexus Spa Profile Guide
-Document Version: 0.70
+Document Version: 0.80
 Date Created: 2026-07-14
 Revision Date: 2026-07-20
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, and lifecycle of a Massage Nexus spa profile. It distinguishes the public establishment record from the Operator Workspace, Branded Portal, organization record, booking engine, and private operational data.
@@ -527,6 +527,18 @@ Map and direction presentation must distinguish an exact verified entrance, an a
 a service-area center, and a privacy-reduced location. Map-provider attribution and usage must
 follow the applicable provider terms. A third-party map listing is evidence, not automatic proof
 that the establishment remains open or that every displayed fact is current.
+
+Current web implementation:
+
+- the public Spa page shows an approved address, coordinate-based external map action, entrance
+  directions, parking information, nearby landmarks with walking time, telephone actions,
+  messaging links, an official website link, and approved social-account links;
+- public contact actions accept only http, https, tel, mailto, and sms schemes; unsupported or
+  malformed stored actions are omitted before rendering;
+- the administration form uses repeatable landmark and public business-channel inputs backed by
+  the shared Address and Contact taxonomies;
+- public profile identity and location/contact content still use the fictional demo record until
+  the separate MongoDB-backed establishment-profile milestone is completed.
 
 ================================================================================
 10. MEDIA AND PUBLIC DOCUMENTS

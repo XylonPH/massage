@@ -92,7 +92,7 @@ class EstablishmentsTable
 
     private static function getTaxonomyOptions(string $fieldName): array
     {
-        $path = base_path('data/taxonomy/massage_nexus/establishment_classification.json');
+        $path = dirname(base_path(), 2).'/data/taxonomy/massage_nexus/establishment_classification.json';
 
         if (! File::exists($path)) {
             return [];

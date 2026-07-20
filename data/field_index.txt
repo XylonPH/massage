@@ -14,6 +14,7 @@ actor_ip_address
 actor_type
 actor_user_agent
 actor_user_id
+address_public
 ai_tool_name
 air_conditioning_information
 alt_text
@@ -52,6 +53,12 @@ color_config
 comment_count
 component_config
 constraint_text_input
+contact_channel_list
+contact_label
+contact_url
+contact_value
+coordinate_latitude
+coordinate_longitude
 couple_room_availability
 cover_media_image_id
 created_at
@@ -65,6 +72,7 @@ day_pattern
 decision_note
 default_value
 detected_person_list
+direction_note
 display_end_date
 display_name
 display_start_date
@@ -75,6 +83,7 @@ duration
 editor_user_id_list
 email
 email_verified_at
+establishment_slug
 evidence_note
 exercise_description
 expires_at
@@ -132,6 +141,8 @@ is_system
 is_system_generated
 is_translatable
 jacuzzi_availability
+landmark_list
+landmark_name
 language_id
 language_original_id
 last_confirmed_at
@@ -179,6 +190,7 @@ moderation_id
 operator_filter
 orientation_sexual
 origin_country_id_list
+parking_note
 part_of_day
 part_of_speech
 password
@@ -537,6 +549,7 @@ video_variant_list
 videographer_user_id_list
 view_count
 visibility_scope
+walking_duration_minute
 watch_scope
 weight_kg
 width_pixel

@@ -258,11 +258,27 @@ class SampleContent
                     ['name' => 'Bamboo Rooms 1–4', 'privacy' => 'private', 'capacity' => 'individual', 'note' => 'Enclosed single rooms'],
                     ['name' => 'Lounge Stations', 'privacy' => 'semi_private', 'capacity' => 'group', 'note' => 'Reflexology recliners'],
                 ],
-                'address' => 'Unit 3A, 2F, Luna Bldg., Pineda St. cor. Shaw Blvd., Mandaluyong City 1550',
-                'landmarks' => [
-                    ['name' => 'SM Megamall', 'minutes' => 5],
-                    ['name' => 'Robinsons Pioneer', 'minutes' => 7],
-                    ['name' => 'Shaw MRT Station', 'minutes' => 5],
+                'address_public' => 'Unit 3A, 2F, Luna Bldg., Pineda St. cor. Shaw Blvd., Mandaluyong City 1550',
+                'coordinate_latitude' => 14.5764,
+                'coordinate_longitude' => 121.0482,
+                'direction_note' => [
+                    'eng' => 'Use the Pineda Street entrance beside the pharmacy, then take the elevator to the second floor.',
+                ],
+                'parking_note' => [
+                    'eng' => 'Paid basement parking is available from Shaw Boulevard. Present your spa receipt for the first-hour validation.',
+                ],
+                'landmark_list' => [
+                    ['landmark_name' => 'SM Megamall', 'walking_duration_minute' => 5],
+                    ['landmark_name' => 'Robinsons Pioneer', 'walking_duration_minute' => 7],
+                    ['landmark_name' => 'Shaw MRT Station', 'walking_duration_minute' => 5],
+                ],
+                'contact_channel_list' => [
+                    ['type_contact_channel' => 'PHN', 'type_contact_number' => 'L', 'contact_label' => 'Business phone', 'contact_value' => '(02) 8555 0148', 'contact_url' => 'tel:+63285550148'],
+                    ['type_contact_channel' => 'PHN', 'type_contact_number' => 'M', 'contact_label' => 'Booking mobile', 'contact_value' => '+63 917 555 0148', 'contact_url' => 'tel:+639175550148'],
+                    ['type_contact_channel' => 'MSG', 'contact_label' => 'Viber', 'contact_value' => 'Message The Resting Leaf', 'contact_url' => 'https://example.com/the-resting-leaf/viber'],
+                    ['type_contact_channel' => 'WEB', 'contact_label' => 'Official website', 'contact_value' => 'therestingleaf.example', 'contact_url' => 'https://example.com/the-resting-leaf'],
+                    ['type_contact_channel' => 'SOC', 'contact_label' => 'Facebook', 'contact_value' => '@TheRestingLeafDemo', 'contact_url' => 'https://example.com/the-resting-leaf/facebook'],
+                    ['type_contact_channel' => 'SOC', 'contact_label' => 'Instagram', 'contact_value' => '@TheRestingLeafDemo', 'contact_url' => 'https://example.com/the-resting-leaf/instagram'],
                 ],
                 'reviews' => [
                     ['reviewer' => 'Micaela R.', 'date' => 'Jul 10, 2026', 'rating' => 5.0, 'text' => 'The place is so relaxing and clean. The therapists are very professional. Will definitely come back!', 'initials' => 'MR', 'tone' => 'bg-leaf-100 text-leaf-700'],

@@ -37,6 +37,23 @@ class PublicPagesTest extends TestCase
         $response->assertSee(__('spa.book_title'));
     }
 
+    public function test_spa_profile_renders_location_directions_parking_and_public_contact_channels(): void
+    {
+        $response = $this->get('/spa/the-resting-leaf');
+
+        $response->assertStatus(200);
+        $response->assertSee('Unit 3A, 2F, Luna Bldg.');
+        $response->assertSee('Use the Pineda Street entrance');
+        $response->assertSee('Paid basement parking');
+        $response->assertSee('SM Megamall');
+        $response->assertSee('query=14.5764%2C121.0482', false);
+        $response->assertSee('href="tel:+63285550148"', false);
+        $response->assertSee('Viber');
+        $response->assertSee('Official website');
+        $response->assertSee('Facebook');
+        $response->assertSee('Instagram');
+    }
+
     public function test_spa_profile_returns_not_found_for_unknown_slug(): void
     {
         $this->get('/spa/does-not-exist')->assertStatus(404);

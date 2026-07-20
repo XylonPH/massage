@@ -3,6 +3,8 @@
 namespace App\Filament\Editorial\Resources\Establishments\Schemas;
 
 use App\Enums\RecordLifecycleStatus;
+use App\Rules\PublicContactUrl;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
@@ -44,7 +46,7 @@ class EstablishmentForm
                                 Select::make('status_record_lifecycle')
                                     ->label('Record Lifecycle Status')
                                     ->options(RecordLifecycleStatus::class)
-                                    ->default(RecordLifecycleStatus::DRAFT)
+                                    ->default(RecordLifecycleStatus::Active)
                                     ->required(),
                             ]),
                         Tab::make('Classification')
@@ -84,6 +86,78 @@ class EstablishmentForm
                                     ->label('Target Client Focus')
                                     ->multiple()
                                     ->options(self::getTaxonomyOptions('target_client_focus')),
+                            ])->columns(2),
+                        Tab::make('Location & Contact')
+                            ->schema([
+                                Textarea::make('address_public')
+                                    ->label('Public Address')
+                                    ->helperText('Use an approximate area instead when an exact address should not be public.')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                TextInput::make('coordinate_latitude')
+                                    ->label('Map Latitude')
+                                    ->numeric()
+                                    ->minValue(-90)
+                                    ->maxValue(90),
+                                TextInput::make('coordinate_longitude')
+                                    ->label('Map Longitude')
+                                    ->numeric()
+                                    ->minValue(-180)
+                                    ->maxValue(180),
+                                Textarea::make('direction_note.eng')
+                                    ->label('Directions (English)')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                Textarea::make('parking_note.eng')
+                                    ->label('Parking Information (English)')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                Repeater::make('landmark_list')
+                                    ->label('Nearby Landmarks')
+                                    ->schema([
+                                        TextInput::make('landmark_name')
+                                            ->required()
+                                            ->maxLength(255),
+                                        TextInput::make('walking_duration_minute')
+                                            ->label('Walking Time (minutes)')
+                                            ->numeric()
+                                            ->minValue(0),
+                                    ])
+                                    ->columns(2)
+                                    ->defaultItems(0)
+                                    ->columnSpanFull(),
+                                Repeater::make('contact_channel_list')
+                                    ->label('Public Business Contact Channels')
+                                    ->helperText('Do not enter private personal contact details.')
+                                    ->schema([
+                                        Select::make('type_contact_channel')
+                                            ->label('Channel Type')
+                                            ->options(self::getTaxonomyOptions('type_contact_channel'))
+                                            ->required(),
+                                        Select::make('type_contact_number')
+                                            ->label('Number Type')
+                                            ->options(self::getTaxonomyOptions('type_contact_number')),
+                                        TextInput::make('contact_label')
+                                            ->label('Public Label')
+                                            ->required()
+                                            ->maxLength(100),
+                                        TextInput::make('contact_value')
+                                            ->label('Displayed Value')
+                                            ->required()
+                                            ->maxLength(255),
+                                        TextInput::make('contact_url')
+                                            ->label('Action URL')
+                                            ->helperText('Use http, https, tel, mailto, or sms.')
+                                            ->required()
+                                            ->rules([new PublicContactUrl])
+                                            ->maxLength(2048),
+                                        Select::make('status_contact_channel')
+                                            ->label('Channel Status')
+                                            ->options(self::getTaxonomyOptions('status_contact_channel')),
+                                    ])
+                                    ->columns(2)
+                                    ->defaultItems(0)
+                                    ->columnSpanFull(),
                             ])->columns(2),
                         Tab::make('Facilities')
                             ->schema([
@@ -140,22 +214,28 @@ class EstablishmentForm
 
     private static function getTaxonomyOptions(string $fieldName): array
     {
-        $path = base_path('data/taxonomy/massage_nexus/establishment_classification.json');
+        $repositoryRoot = dirname(base_path(), 2);
+        $paths = [
+            $repositoryRoot.'/data/taxonomy/massage_nexus/establishment_classification.json',
+            $repositoryRoot.'/data/taxonomy/shared/person_identity_and_contact.json',
+        ];
 
-        if (! File::exists($path)) {
-            return [];
-        }
+        foreach ($paths as $path) {
+            if (! File::exists($path)) {
+                continue;
+            }
 
-        $data = json_decode(File::get($path), true);
+            $data = json_decode(File::get($path), true);
 
-        foreach ($data as $field) {
-            if ($field['field_name'] === $fieldName) {
-                $options = [];
-                foreach ($field['field_option'] ?? [] as $option) {
-                    $options[$option['option_code']] = $option['option_label'];
+            foreach ($data as $field) {
+                if ($field['field_name'] === $fieldName) {
+                    $options = [];
+                    foreach ($field['field_option'] ?? [] as $option) {
+                        $options[$option['option_code']] = $option['option_label'];
+                    }
+
+                    return $options;
                 }
-
-                return $options;
             }
         }
 
