@@ -1,5 +1,5 @@
 Title: Massage Nexus: Technology Stack
-Document Version: 2.10
+Document Version: 2.20
 Date Created: 2026-06-30
 Revision Date: 2026-07-19
 
@@ -9,6 +9,7 @@ This document records the accepted and working technology direction for Massage 
 
 Version History
 ---------------
+- v2.20 (2026-07-19): Replaced the obsolete OneDrive-era AI reference with the repository AI-Assisted Development Workflow and Runtime AI System authorities.
 - v2.10 (2026-07-19): Confirmed apps/desktop/ as the canonical location for the general Massage Nexus Desktop Application rather than an administration-only desktop application.
 - v2.00 (2026-07-19): Implemented ordinary authentication (registration, email verification, login, logout, remember me) directly on Laravel's native Auth guard rather than installing Laravel Fortify; see docs/07-accounts/account-identity-registration-and-authentication-system.txt section 17 for the rationale. Activated Argon2id password hashing via a published config/hashing.php (HASH_DRIVER=argon2id in .env). Confirmed the local mail driver is `log` (writes verification emails to storage/logs/laravel.log instead of sending them), which is how email verification is exercised without a real mail server in local development; a real provider is still an open decision under section 2 (Email Hosting: Undecided). Added a unique-index migration for user_main.username and user_main.email against the mongodb connection, satisfying the database-level collision protection required by Shared Project Standards section 9.4.
 - v1.90 (2026-07-18): Selected and proved the Laravel-to-MongoDB integration: installed mongodb/laravel-mongodb 5.8.2 (official MongoDB package, formerly jenssegers/laravel-mongodb) and configured a dedicated `mongodb` Laravel database connection reading MONGODB_URI and MONGODB_DATABASE from the environment. Verified a live insert, read, and delete against the local massage_main database at 127.0.0.1:27018 through the Laravel query builder (DB::connection('mongodb')). Recorded that Laravel's own operational tables (sessions, cache, queued jobs) remain on the existing sqlite connection as framework-internal plumbing, not as the primary application data store; this does not change the accepted document-oriented primary data model. Removed the MongoDB application-package and integration decision from unresolved technology decisions.
@@ -414,8 +415,11 @@ An automatic image trace may be used as a starting point, but a shaded AI-genera
 Coding-Agent Root Instruction:
 AGENTS.md
 
-Detailed AI Use Reference:
-docs/ or the source document Massage Nexus - 02.02 - AI Use v1.00
+Repository AI Development Workflow:
+docs/02-governance/ai-assisted-development-workflow.txt
+
+Runtime AI Architecture:
+docs/04-architecture/runtime-ai-system.txt
 
 Runtime Prompt Sources:
 apps/web/resources/prompt/

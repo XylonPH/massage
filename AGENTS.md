@@ -37,6 +37,7 @@ Common starting points:
 - Documentation rules: `docs/02-governance/documentation-writing-and-management-standard.txt`
 - Testing strategy: `docs/02-governance/testing-and-quality-assurance-strategy.txt`
 - Technology direction: `docs/04-architecture/technology-stack.txt`
+- Runtime AI architecture: `docs/04-architecture/runtime-ai-system.txt`
 - Database boundaries: `docs/04-architecture/database-structure.txt`
 - Collection-level structure guides (PHP-readable): `docs/04-architecture/structure-guide/`
 - Security, privacy, and policy: `docs/18-policy/`

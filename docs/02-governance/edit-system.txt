@@ -1,12 +1,12 @@
 Title: Massage Nexus Edit System
 Document Version: 0.10
 Date Created: 2026-07-16
-Revision Date: 2026-07-16
+Revision Date: 2026-07-19
 Status: Internal Planning Draft
 
 Related Documents:
 - Massage Nexus - 02.01 - File and Folder Structure v1.00
-- Massage Nexus - 02.02 - AI Use v1.00
+- Massage Nexus Runtime AI System
 - Massage Nexus - 03 - Features v1.90
 - Massage Nexus - 15 - Language Strategy v0.20
 - Massage Nexus - 18 - Site Structure Map v1.70

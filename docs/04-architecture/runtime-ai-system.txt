@@ -1,0 +1,544 @@
+Title: Massage Nexus Runtime AI System
+Document Version: 1.50
+Date Created: 2026-07-16
+Revision Date: 2026-07-19
+Document Description: Defines the shared architecture, trust boundaries, provider abstraction, prompt and output governance, tool restrictions, human-review gates, usage controls, privacy protections, caching rules, failure behavior, testing, audit, and feature-ownership boundaries for AI capabilities executed by Massage Nexus applications. It does not govern repository coding agents and does not imply that a listed runtime capability is already implemented.
+
+Document Relationships:
+Technology Stack owns provider, hosting, framework, and secret-storage choices. AI-Assisted
+Development Workflow governs repository coding agents. Translation and Localization Management
+System, Data Research Provenance and Field Verification System, Support and Ticketing System,
+Comment System, Discussion System, Cache and Temporary Data Strategy, Security Architecture and
+Information Disclosure Policy, Privacy Notice and Data Protection Requirements, and applicable
+content specifications own their feature-specific behavior. This document owns the shared
+runtime AI contract used across those capabilities.
+
+================================================================================
+1. PURPOSE AND SCOPE
+================================================================================
+
+Runtime AI means an AI capability called by a Massage Nexus application or approved backend
+process for a visitor, user, provider, contributor, staff member, administrator, or scheduled
+operation.
+
+Possible runtime uses include:
+- writing assistance;
+- translation on request;
+- summarization;
+- search assistance;
+- duplicate and taxonomy suggestions;
+- moderation triage;
+- support guidance;
+- approved Neural Agent conversations;
+- research and data-quality suggestions;
+- captions, metadata, articles, reviews, images, video, audio, and comics where the owning
+  content workflow permits them;
+- stale-record, missing-evidence, incomplete-translation, and analytics-anomaly detection.
+
+This document does not authorize every possible use. A runtime capability exists only when its
+owning specification accepts it and the implementation satisfies authorization, privacy,
+security, cost, review, and testing requirements.
+
+AI output remains a proposal or signal until the owning workflow accepts it. AI output is not
+proof of identity, ownership, verification, professional quality, legal compliance, safety,
+medical truth, or factual accuracy.
+
+================================================================================
+2. CORE PRINCIPLES
+================================================================================
+
+- Use AI only where it provides a clear user, editorial, operational, or research benefit.
+- Minimize the data and context supplied to a provider.
+- Preserve authoritative source records and original user expression.
+- Keep authorization, validation, policy, and business rules outside the model.
+- Treat model output as untrusted until validated.
+- Require human review for high-risk publication or action.
+- Use accurate AI labels and retain reusable provenance.
+- Control spending, retries, duplicate requests, and provider failure.
+- Avoid provider lock-in through an application-level abstraction.
+- Do not represent runtime AI as a real user, staff member, therapist, researcher, or decision
+  authority.
+
+================================================================================
+3. SHARED RUNTIME ARCHITECTURE
+================================================================================
+
+Runtime AI uses an application-level provider abstraction. Controllers, views, public client
+code, and database scripts must not call external AI providers directly.
+
+Intended Laravel responsibility area when implementation begins:
+
+apps/web/app/Services/Ai/
+- Client;
+- Prompt;
+- Schema;
+- Tool;
+- Moderation;
+- Translation;
+- Research;
+- Search;
+- Usage;
+- Audit.
+
+Intended version-controlled prompt source when file-based prompts are appropriate:
+
+apps/web/resources/prompt/
+
+Prompts that require editorial workflow, publication state, localization, or independent
+revision history may use governed database records instead of ordinary source files.
+
+Shared request flow:
+
+Authorized feature request
+-> requester, role, target, and capability authorization
+-> quota, entitlement, budget, and idempotency check
+-> privacy, sensitivity, NSFW, and content classification
+-> minimum-context retrieval
+-> prompt and tool-policy assembly
+-> provider call
+-> schema and safety validation
+-> human review, user preview, or controlled action gate
+-> accepted storage or display
+-> usage, cost, provenance, and audit record
+
+Authorization must be checked again immediately before any state-changing action. A model's
+recommendation never grants permission.
+
+================================================================================
+4. TRUST BOUNDARIES AND PROMPT INJECTION
+================================================================================
+
+Treat all of the following as untrusted data:
+- user prompts and messages;
+- reviews, discussions, comments, tickets, and profile text;
+- uploaded documents and media metadata;
+- crawled or retrieved pages;
+- search results;
+- provider-supplied content;
+- imported datasets;
+- AI output from an earlier stage.
+
+Untrusted content must not override system policy, authorization, tool restrictions, output
+schemas, or the user's confirmed intent.
+
+Controls include:
+- clearly separate instructions from retrieved data;
+- allow only approved tools for the current capability;
+- allow only the minimum fields and records needed for the task;
+- validate tool parameters server-side;
+- validate model output against an explicit schema where structured output is expected;
+- reject unexpected fields, targets, actions, URLs, or identifiers;
+- prohibit arbitrary shell, code execution, database queries, network access, and dynamic tool
+  discovery in user-facing AI unless a separately approved architecture safely provides them;
+- limit tool-call count, recursion, execution time, payload size, and spending;
+- preserve an auditable record of requested and executed state-changing tools;
+- require an independent confirmation or authorized workflow for high-impact actions.
+
+Instructions found inside a webpage, attachment, record, message, or search result are content
+to analyze, not commands to obey.
+
+================================================================================
+5. PROVIDER AND MODEL GOVERNANCE
+================================================================================
+
+Shared standards do not require one AI provider. The application may use different approved
+providers or models through the same internal contract.
+
+Before enabling a provider or materially different model, review:
+- permitted use and content policy;
+- whether submitted data is used for training;
+- retention and deletion controls;
+- processing and storage regions;
+- subprocessors;
+- security and privacy terms;
+- availability, latency, rate limits, and outage behavior;
+- input, output, image, audio, video, storage, and tool-call cost;
+- supported schemas and tool controls;
+- NSFW and safety behavior;
+- contractual and legal requirements;
+- model-change and deprecation behavior.
+
+Provider selection and fallback order remain configuration and architecture decisions. Public
+interfaces must disclose AI involvement where required but do not need to expose internal model
+routing when that detail provides no user benefit or legal requirement.
+
+Model upgrades are behavior changes. They require regression testing for affected prompts,
+schemas, safety controls, languages, costs, latency, and representative edge cases before broad
+activation.
+
+================================================================================
+6. DATA MINIMIZATION, PRIVACY, AND RETENTION
+================================================================================
+
+Send only the minimum data required for the approved purpose.
+
+Do not send to a general AI provider:
+- passwords or password hashes;
+- API keys, private keys, tokens, cookies, or recovery codes;
+- full payment-card or bank data;
+- identity documents;
+- sealed intake or consent records;
+- unrelated private messages;
+- precise private residential addresses;
+- confidential provider, staff, moderation, legal, or security evidence;
+- restricted media without an explicitly approved purpose and provider;
+- production database exports or broad personal-data collections.
+
+Where approved sensitive processing is genuinely necessary:
+- use a provider and contract approved for that data class;
+- minimize or redact identifiers;
+- enforce access and purpose restrictions;
+- define retention and deletion;
+- record the lawful and project-authorized purpose;
+- prevent the data from appearing in ordinary logs, analytics, or prompt-debugging output.
+
+Prompt and response logs must be classified separately from ordinary application logs. Store
+full content only when necessary and approved. Prefer structured metadata, hashes, safe excerpts,
+or redacted records. Deletion, account closure, legal hold, and retention workflows must include
+eligible AI records and caches.
+
+================================================================================
+7. PROMPT, SCHEMA, AND OUTPUT PROVENANCE
+================================================================================
+
+Each reusable runtime task should identify as applicable:
+- capability and task identifier;
+- prompt identifier and version;
+- provider and model reference;
+- model settings that materially affect behavior;
+- input and source revisions;
+- source and target language or locale;
+- output schema version;
+- tool-policy version;
+- safety-policy version;
+- glossary or protected-term version;
+- requester and target context;
+- creation time;
+- AI method and label;
+- review state and reviewer;
+- accepted, rejected, stale, or superseded state;
+- usage and cost record.
+
+Prompt changes are versioned when stored results, tests, review, cost, safety, or reproducibility
+depend on the wording. Do not silently change a prompt contract while continuing to treat old
+and new outputs as equivalent.
+
+Structured output is validated before use. Validation may include expected keys, unexpected
+keys, types, identifiers, placeholders, links, tags, code values, lengths, source revisions,
+duplicates, prohibited claims, citations, and review requirements.
+
+The original source remains identifiable. An AI translation, summary, enhancement, or rewrite
+must not silently overwrite the original.
+
+================================================================================
+8. HUMAN REVIEW, AI LABELS, AND HIGH-IMPACT DECISIONS
+================================================================================
+
+Possible truthful process labels include:
+- AI-Generated;
+- AI-Assisted;
+- AI-Edited;
+- AI-Enhanced;
+- AI-Translated;
+- Human-Reviewed;
+- Human-Approved.
+
+Use the label that accurately describes the process. A generic AI label does not replace
+internal provenance.
+
+The following require the approved rule-based and human workflow rather than an autonomous
+model decision:
+- permanent account restriction or deletion;
+- serious moderation enforcement or appeal resolution;
+- identity, ownership, credential, or verification rejection;
+- legal accusation or public fraud claim;
+- payment, refund, credit, chargeback, payout, or financial adjustment;
+- booking eligibility or safety decision with material consequence;
+- publication of Terms, Privacy, consent, intake, security, payment, age-eligibility, clinical,
+  or serious safety content;
+- release of restricted evidence or private data;
+- production configuration, permission, secret, or data change.
+
+AI may triage, classify, summarize, or recommend. It must not conceal uncertainty or present a
+recommendation as an authorized final decision.
+
+================================================================================
+9. FEATURE OWNERSHIP
+================================================================================
+
+This document owns the shared runtime contract. Detailed product behavior remains with the
+capability that uses AI.
+
+Translation and localization:
+- owned by Translation and Localization Management System and Language Strategy;
+- uses three-letter ISO language codes for base languages and approved locale identifiers with
+  script or region when needed, such as eng, fil, spa, jpn, por-BR, zho-Hant, and zho-Hans;
+- preserves original text, source revision, placeholders, glossary, method, and review state;
+- does not publish AI-only high-risk legal, security, payment, consent, intake, clinical, or
+  safety translations.
+
+Research and data quality:
+- owned by Data Research Provenance and Field Verification System;
+- produces leads and candidate facts, never automatic verification;
+- preserves source, observation date, extracted claim, uncertainty, and review state;
+- never invents a visit, interview, price, address, therapist, credential, or operational
+  status.
+
+Support:
+- owned by Support and Ticketing System;
+- answers only from approved current knowledge and authorized account context;
+- escalates action, uncertainty, complaints, privacy, security, financial, safety, ownership,
+  moderation, and policy-discretion matters;
+- never promises a refund, ranking, verification, restoration, or campaign result.
+
+Comments and discussions:
+- owned by Comment System and Discussion System;
+- may suggest titles, tags, duplicates, translations, summaries, or moderation signals;
+- preserves original speech and distinguishes opinion from fact;
+- does not manufacture participation, impersonate people, or answer private support matters in
+  public.
+
+Editorial and creative work:
+- owned by the applicable article, review, news, brand, media, or creative specification;
+- preserves authorship and AI-process disclosure where required;
+- does not fabricate sources, experiences, interviews, credentials, or real-world events.
+
+Neural Agents:
+- use the identities and traits defined by the machine-readable authority at
+  data/common_reference/neural_agent.json and the human-readable reference at
+  docs/03-brand/neural-agents.txt;
+- are fictional AI-assisted personas, not real users or staff;
+- must not imply real professional credentials, real-world experiences, or human identity;
+- remain subject to the same privacy, safety, moderation, and tool restrictions as other
+  runtime AI.
+
+Caching:
+- owned by Cache and Temporary Data Strategy;
+- follows the shared cache contract in section 12 of this document.
+
+Public crawler and indexing behavior:
+- owned by Data Research Provenance and Field Verification System, Web Application, and
+  applicable security and public-data policy;
+- follows the shared boundary in section 13 of this document.
+
+================================================================================
+10. USAGE, QUOTAS, EMBERS, AND COST
+================================================================================
+
+Runtime AI may be limited by:
+- account;
+- role and permission;
+- feature;
+- plan or entitlement;
+- request and output size;
+- daily, monthly, or rolling quota;
+- provider capacity;
+- model cost;
+- abuse and safety controls;
+- system budget;
+- Embers where the accepted feature uses them.
+
+For a user-triggered action that spends Embers or another disclosed user balance:
+- show the cost before spending;
+- require the applicable confirmation;
+- reserve or charge idempotently;
+- prevent duplicate charges after retries or refreshes;
+- define cancellation, failure, retry, and refund behavior;
+- show the final result and balance effect.
+
+Background, editorial, moderation, research, and operational AI does not require a user's
+confirmation for every call. It requires an authorized system budget, feature quota, provider
+shutoff, role controls, idempotency, monitoring, and escalation thresholds.
+
+The system must measure cost, latency, success, failure, cached reuse, and abnormal usage. A
+more expensive model does not guarantee a more correct result.
+
+================================================================================
+11. TOOLS AND STATE-CHANGING ACTIONS
+================================================================================
+
+Tools are capability-specific and allowlisted. Read access does not imply write access.
+
+Before executing a model-requested tool:
+- confirm the requester remains authorized;
+- validate the target identifier and ownership;
+- validate every parameter independently of the model;
+- enforce current business and policy rules;
+- enforce idempotency and concurrency controls;
+- record the action when audit is required;
+- require the applicable preview, confirmation, or human gate.
+
+Runtime AI must not autonomously:
+- execute arbitrary code or shell commands;
+- query unrestricted databases;
+- access unrelated accounts or records;
+- change roles, permissions, credentials, or security controls;
+- publish high-risk content;
+- issue or promise financial adjustments;
+- permanently enforce moderation or account actions;
+- deploy, release, or modify production infrastructure;
+- contact an external person or organization outside an explicitly authorized workflow.
+
+Tool failure must not be presented as success. The application verifies the actual result from
+the authoritative service before updating user-visible state.
+
+================================================================================
+12. CACHE AND REUSE
+================================================================================
+
+Reusable AI output may be cached only when reuse remains valid for:
+- input and source revision;
+- target record;
+- language or locale;
+- requester permission and visibility;
+- provider and model where behavior depends on them;
+- prompt and schema version;
+- tool and safety-policy version;
+- review and publication state;
+- expiration and retention rules.
+
+Do not reuse:
+- one user's account-specific support answer for another user;
+- stale policy or legal guidance;
+- private prompts or outputs outside their permission scope;
+- an output after its source revision changes;
+- restricted content for a broader audience;
+- rejected, unsafe, or superseded output.
+
+Invalidate or mark stale after applicable feature, source, policy, prompt, model, permission,
+incident-status, or translation changes. Cache failure must not weaken authorization or make
+stale output authoritative.
+
+================================================================================
+13. PUBLIC CRAWLERS, DISCOVERY, AND REFERRALS
+================================================================================
+
+Massage Nexus may favor public discovery, citation, and referral while limiting unrestricted
+bulk reuse.
+
+Possible controlled direction:
+- allow ordinary search crawlers on approved public pages;
+- allow approved AI search crawlers when citation and referral are beneficial;
+- restrict training crawlers where supported and required by the accepted policy;
+- block or disallow workspace, account, booking, intake, message, moderation, private evidence,
+  restricted media, and non-public API paths;
+- use noindex where appropriate;
+- measure approved referral traffic;
+- provide controlled public APIs where accepted.
+
+Crawler names and directives change and must be verified against current official provider
+documentation before production configuration. Robots directives are voluntary signals and do
+not replace authentication, authorization, access control, rate limits, or private storage.
+
+================================================================================
+14. FAILURE, RETRY, AND PROVIDER SWITCHING
+================================================================================
+
+Define behavior for:
+- timeout;
+- rate limit;
+- malformed or schema-invalid output;
+- refusal;
+- unsafe output;
+- provider outage;
+- partial tool completion;
+- duplicate request;
+- user cancellation;
+- budget exhaustion;
+- stale source revision;
+- provider or model switch.
+
+Retries must be bounded and idempotent. Do not create duplicate charges, messages, tickets,
+translations, publications, or state changes. Use backoff and circuit breaking where repeated
+provider failure could create load or cost storms.
+
+Fail closed for authorization, permission, privacy, and high-impact action gates. A provider
+outage may fall back to another approved provider or a non-AI workflow only when the fallback
+preserves the same data classification, policy, schema, review, and user expectation.
+
+Tell the user when an AI action did not complete. Do not fabricate a result merely to preserve
+interface continuity.
+
+================================================================================
+15. TESTING
+================================================================================
+
+Test as applicable:
+- provider abstraction and switching;
+- authentication and authorization;
+- entitlement, quota, Embers, and budget controls;
+- idempotent charging and state changes;
+- timeout, retry, cancellation, refusal, and outage behavior;
+- schema and identifier validation;
+- prompt injection and malicious retrieved content;
+- unauthorized or unexpected tool calls;
+- recursion, action, time, payload, and cost limits;
+- unsafe output and human-review gates;
+- private-data and cross-user leakage;
+- prompt, source, schema, tool-policy, and safety-policy revisions;
+- translation placeholders, scripts, regions, and fallbacks;
+- research provenance and candidate-versus-verified state;
+- support escalation;
+- cache isolation and invalidation;
+- crawler and noindex behavior;
+- accessibility and localization of AI controls and disclosures;
+- audit and retention behavior.
+
+Automated tests use fake providers by default and spend no production credits. Provider
+contract tests use approved non-production credentials, synthetic data, strict budgets, and
+separate execution. Tests created with the implementation are not the sole proof of safety;
+review failure behavior and authorization independently.
+
+================================================================================
+16. AUDIT, MONITORING, AND ADMINISTRATIVE CONTROL
+================================================================================
+
+Monitor as applicable:
+- request count and feature;
+- provider and model;
+- token or media usage;
+- cost and Ember effects;
+- latency;
+- success, refusal, cancellation, timeout, and failure;
+- cache hit and avoided cost;
+- schema-validation failure;
+- safety and moderation signals;
+- tool requests and executed actions;
+- human review, override, acceptance, and rejection;
+- unusual account, provider, or feature usage.
+
+Monitoring must not log secrets or unnecessary sensitive content.
+
+Authorized administration needs controls to:
+- disable a provider, model, feature, prompt version, or tool;
+- set budgets, quotas, and rate limits;
+- inspect safe usage and failure summaries;
+- invalidate affected caches;
+- pause background processing;
+- route work to manual review;
+- respond to provider policy, security, privacy, cost, or availability changes.
+
+Serious incidents follow the approved incident-response process. Public status information must
+remain sanitized and separate from private evidence and internal diagnostics.
+
+================================================================================
+17. CURRENT DECISIONS
+================================================================================
+
+- Runtime AI is separate from repository coding-agent governance.
+- Runtime AI uses an application-level provider abstraction.
+- Controllers, views, and public client code do not call providers directly.
+- User, retrieved, imported, and model-generated content is untrusted data.
+- Authorization and business rules remain server-controlled and are rechecked before actions.
+- Structured output and tool parameters are validated independently of the model.
+- High-impact decisions and actions require the approved human and rule-based workflow.
+- Runtime AI sends the minimum approved data and never receives ordinary production secrets.
+- Prompt, source, schema, model, safety, review, usage, and cost provenance is retained where
+  needed.
+- User-triggered Ember spending and background operational AI use different confirmation and
+  budget controls.
+- AI results may be cached only when revision, permission, privacy, and policy context still
+  match.
+- Automated tests use fake providers by default and do not spend production credits.
+- Capability specifications own their detailed AI behavior.
+- A listed runtime capability is planned architecture, not evidence that it is implemented.

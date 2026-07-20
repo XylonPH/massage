@@ -7,7 +7,7 @@ Status: Internal Planning Draft
 Related Documents:
 - Massage Nexus - 02 - Technology Stack v1.60
 - Massage Nexus - 02.01 - File and Folder Structure v1.00
-- Massage Nexus - 02.02 - AI Use v1.00
+- Massage Nexus Runtime AI System
 - Massage Nexus - 18 - Site Structure Map v1.70
 - Massage Nexus - 19 - Edit System v0.10
 - Massage Nexus - 20 - Translation System v0.10

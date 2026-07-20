@@ -1,0 +1,688 @@
+Title: Massage Nexus Legal and Public Policy Writing Guide
+Document Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
+
+================================================================================
+1. PURPOSE
+================================================================================
+
+Massage Nexus legal and public policy writing should give users accurate, understandable,
+findable, and versioned information about their relationship with the platform.
+
+This guide governs:
+- the boundary between internal requirements and public documents;
+- document classification;
+- drafting and plain-language presentation;
+- source and jurisdiction handling;
+- specialist, legal, privacy, security, and product review;
+- approval and publication;
+- public versions, effective dates, and change summaries;
+- acceptance or acknowledgment when required;
+- translation and locale handling;
+- corrections, replacement, withdrawal, and archival;
+- accessibility and public presentation;
+- AI-assisted legal-writing limits.
+
+This guide does not decide the actual contractual clauses, privacy disclosures, prohibited
+content, security controls, payment terms, or other substantive requirements. Those decisions
+remain in the authoritative requirements and policy documents under docs/18-policy and in the
+applicable product specifications.
+
+This guide is an internal writing and publication specification. It is not legal advice and is
+not itself a public Terms of Use, Privacy Notice, or policy.
+
+================================================================================
+2. INTERNAL REQUIREMENTS AND PUBLIC DOCUMENTS
+================================================================================
+
+Massage Nexus must keep internal requirements separate from the public document produced from
+them.
+
+Internal requirement documents define:
+- product and legal decisions;
+- required subjects and disclosures;
+- data flows and implementation controls;
+- unresolved operator, jurisdiction, vendor, retention, and business details;
+- publication prerequisites;
+- review and approval requirements;
+- internal evidence and risk notes.
+
+Public documents explain:
+- what users need to know;
+- what rules apply;
+- what Massage Nexus does;
+- what users may, must, or must not do;
+- applicable rights, choices, contacts, reports, appeals, and remedies;
+- when the document takes effect;
+- what changed when a material revision is published.
+
+An internal requirements file must not be published merely by removing its internal labels.
+Placeholders, unresolved decisions, internal paths, technical architecture, moderation evidence,
+security details, and drafting notes must be resolved or intentionally excluded before public
+publication.
+
+The current internal authorities include:
+- docs/18-policy/terms-of-use-requirements.txt;
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt;
+- docs/18-policy/nsfw-mature-and-restricted-content-policy.txt;
+- docs/18-policy/security-architecture-and-information-disclosure-policy.txt.
+
+Future requirement documents may govern Community Guidelines, review and contribution rules,
+media uploads, cookies, copyright complaints, accessibility, bookings, cancellations, refunds,
+payments, providers, sellers, advertising, and other public policies.
+
+================================================================================
+3. DOCUMENT CLASSES
+================================================================================
+
+Public legal and policy material should be classified by function before drafting.
+
+Binding Terms or Agreement
+Defines contractual eligibility, rights, obligations, restrictions, enforcement, disclaimers,
+disputes, and related terms requiring affirmative acceptance when applicable.
+
+Privacy or Transparency Notice
+Explains personal-data collection, use, disclosure, retention, security, rights, choices,
+contacts, and other legally required transparency. A notice is not automatically consent.
+
+Public Conduct or Content Policy
+Defines platform rules, allowed and prohibited behavior, moderation consequences, reporting,
+appeals, and safety boundaries. Examples include Community Guidelines and an approved public
+NSFW policy.
+
+Operational Policy
+Defines a public transaction or service process, such as booking, cancellation, refund,
+payment, provider, seller, promotion, or advertising rules.
+
+Legal Notice or Statement
+Provides a focused disclosure such as copyright, licensing, cookies, accessibility, disclaimer,
+or legal contact information.
+
+Context-Specific Terms
+Apply to one campaign, voucher, gift card, event, provider program, seller program, promotion,
+or other bounded activity. Context-specific terms must identify their scope and relationship to
+the platform-wide Terms.
+
+Legal or Policy Explainer
+Explains a legal or policy subject in ordinary editorial language. An explainer is Article
+content and must not be presented as the controlling legal text.
+
+Document labels must reflect actual authority. Do not call a draft, summary, help page, FAQ,
+article, or AI-generated explanation the Terms, Privacy Notice, or official policy.
+
+================================================================================
+4. DOCUMENT RELATIONSHIPS AND AUTHORITY
+================================================================================
+
+Each public document must identify its scope and relationship to other controlling documents.
+
+Rules:
+- one authoritative public version exists for each document, locale, jurisdiction, and effective
+  period;
+- summaries and help pages link to the controlling document;
+- an incorporated policy must be easy to find and versioned;
+- a lower-level policy must not silently contradict a higher-level agreement;
+- context-specific terms state whether they supplement or override a general rule;
+- an override must be explicit, narrow, and legally reviewed;
+- definitions should be shared or cross-referenced when the same term must keep one meaning;
+- duplicated clauses must be reviewed together when duplication is unavoidable;
+- a public document must not imply authority that has not been approved.
+
+When two documents conflict, publication must pause until the owner of the controlling decision
+resolves the conflict. The drafting team must not guess which clause should prevail.
+
+================================================================================
+5. SOURCE, JURISDICTION, AND FACT STANDARD
+================================================================================
+
+Legal and policy drafting requires current, authoritative sources appropriate to the launch
+market and document type.
+
+Possible sources include:
+- enacted law and official regulations;
+- official regulator guidance;
+- court or administrative decisions when relevant;
+- final product and data-flow specifications;
+- final vendor and processor contracts;
+- approved business, payment, booking, moderation, and retention decisions;
+- qualified counsel advice;
+- verified operator and contact information;
+- current platform behavior confirmed by implementation and testing.
+
+For each material legal proposition, preserve internally:
+- the source;
+- jurisdiction;
+- source date or version;
+- access date when relevant;
+- reviewer;
+- uncertainty or pending verification;
+- affected public clause or section.
+
+Never invent or assume:
+- operator identity;
+- business address;
+- governing law;
+- dispute venue;
+- lawful basis;
+- consent requirement;
+- retention period;
+- processor or recipient;
+- consumer right;
+- liability limitation;
+- regulator approval;
+- legal-review completion.
+
+Boilerplate from another service is a research lead, not an approved Massage Nexus clause. Do
+not copy terms merely because they are common, strict, or professionally worded.
+
+Current laws, regulations, regulator guidance, and jurisdiction-specific requirements must be
+verified at the time of drafting and again before approval. Legal research must not rely on AI
+memory alone.
+
+================================================================================
+6. WRITING STYLE
+================================================================================
+
+Public legal and policy writing should be precise without being needlessly difficult.
+
+Use:
+- direct headings;
+- short paragraphs;
+- defined terms only when they reduce ambiguity;
+- consistent names for the platform, operator, user roles, services, and documents;
+- active voice where responsibility matters;
+- lists for conditions, rights, restrictions, and procedures;
+- examples when they clarify a rule without changing it;
+- links to related documents and working contact routes;
+- plain explanations near high-impact choices or consequences.
+
+Avoid:
+- one enormous legal paragraph;
+- vague statements such as "we may do anything necessary";
+- unnecessary capitalization of ordinary words;
+- several labels for the same party or action;
+- promises broader than actual implementation;
+- absolute security, accuracy, availability, safety, or outcome guarantees;
+- clauses that appear to waive rights that cannot legally be waived;
+- hidden obligations created only through a linked document;
+- promotional language inside required disclosures;
+- unexplained internal or technical terminology;
+- copied foreign clauses that do not fit the governing jurisdiction or business model.
+
+Use must for a real obligation, may for a genuine discretion, should for guidance, and will only
+when Massage Nexus can reliably perform the stated action. These words must not be exchanged
+merely for stylistic variety.
+
+Plain language does not mean removing necessary qualifications. A shorter sentence that changes
+the legal meaning is not an improvement.
+
+================================================================================
+7. PUBLIC DOCUMENT STRUCTURE
+================================================================================
+
+The exact structure depends on the document. A public legal or policy document normally needs:
+- public title;
+- responsible operator or issuing authority;
+- intended audience and scope;
+- effective date;
+- public document version;
+- locale and authoritative-language statement when relevant;
+- definitions needed to understand the text;
+- rights, obligations, restrictions, or disclosures;
+- procedures, controls, reports, appeals, or remedies;
+- enforcement or consequence information where applicable;
+- relationship to other documents;
+- change-notice approach;
+- applicable contact details;
+- links to the current version and accessible prior versions when required.
+
+Long documents should include navigation or a table of contents. Important eligibility,
+consent, payment, cancellation, safety, content, privacy, and dispute information must not be
+buried under decorative introductory text.
+
+A summary may accompany a legal document, but the summary must:
+- be labeled as a summary;
+- link to the controlling text;
+- avoid contradicting or narrowing the controlling text;
+- identify material changes accurately;
+- never substitute for required acceptance of the controlling version.
+
+================================================================================
+8. VERSION, REVISION, AND EFFECTIVE DATE
+================================================================================
+
+Editorial revision and public legal version are related but different concepts.
+
+Editorial revision tracks drafts, edits, review decisions, and restoration history before or
+after publication.
+
+Public legal version identifies the exact approved text presented to users for one effective
+period. Acceptance and acknowledgment records must refer to this immutable published version,
+not merely to a mutable current page.
+
+Every approved public version must preserve:
+- exact approved content;
+- document type;
+- public version;
+- locale;
+- jurisdiction or market scope when applicable;
+- approval record;
+- publication time;
+- effective time;
+- superseded version when applicable;
+- public change summary when required;
+- archive and withdrawal state.
+
+Once a public legal version becomes effective, do not edit its stored snapshot in place. Create
+a new draft and publish a new version. A formatting-only repair may retain the public version
+only when it cannot change meaning, acceptance evidence, or the rendered text users relied on;
+the repair must still be auditable.
+
+Do not use content revision numbers as public legal versions without an explicit mapping.
+Internal draft revision 18 may still become public version 2.1, for example.
+
+The current public route should resolve to the current effective version. Archived prior
+versions should remain retrievable for audit and user reference where legally and operationally
+appropriate, but should not appear to be the current controlling text.
+
+================================================================================
+9. MATERIAL AND NON-MATERIAL CHANGES
+================================================================================
+
+A material change may affect user rights, obligations, eligibility, data processing, payment,
+content permissions, moderation, dispute handling, liability, or another significant reliance
+interest.
+
+Material changes normally require:
+- a new public version;
+- a clear change summary;
+- a future or clearly stated effective date;
+- appropriate notice;
+- renewed acceptance or acknowledgment when required;
+- translation review for every supported authoritative or approved locale;
+- preservation of the previous version.
+
+A non-material change may correct spelling, formatting, a broken link, or wording that cannot
+reasonably change meaning.
+
+Non-material changes still require:
+- review that the meaning is unchanged;
+- audit history;
+- synchronized translations when affected;
+- a visible note when transparency warrants it.
+
+Do not label a consequential correction non-material merely to avoid notice or renewed
+acceptance.
+
+================================================================================
+10. ACCEPTANCE, ACKNOWLEDGMENT, AND CONSENT
+================================================================================
+
+Acceptance, acknowledgment, and consent are different actions.
+
+Acceptance records agreement to binding terms when agreement is required.
+
+Acknowledgment records that a notice or policy was presented or received. It does not by itself
+create consent or prove that every clause is enforceable.
+
+Consent records a specific, informed, freely given action where consent is the applicable basis.
+Marketing, optional research, optional AI processing, and other separate choices must not be
+bundled into acceptance of general Terms when separate choice is required.
+
+The acceptance or acknowledgment system should preserve:
+- account and site identity;
+- exact public document version;
+- locale shown;
+- presentation and action time;
+- acceptance or acknowledgment method;
+- evidence metadata justified by accountability needs;
+- withdrawal or replacement where applicable.
+
+Acceptance evidence belongs in a dedicated operational record. It must not be stored only as a
+counter or mutable flag on the public content record.
+
+The substantive requirements documents decide which documents need acceptance,
+acknowledgment, consent, or renewed action. This writing guide does not make that legal decision.
+
+================================================================================
+11. TRANSLATION AND LOCALE
+================================================================================
+
+Legal and high-risk translation follows docs/13-localization/translation-system.txt.
+
+Each translated public version must preserve:
+- source locale;
+- target locale;
+- source public version and source revision;
+- translation method;
+- translator;
+- specialist reviewer;
+- approval;
+- authority label;
+- publication and effective dates;
+- stale state after a material source change.
+
+A translation must be labeled accurately as one of the approved authority states, such as an
+authoritative text, approved translation, explanatory translation, or draft.
+
+AI-only publication is prohibited for Terms, Privacy, security, recovery, age eligibility,
+payment, refund, cancellation, consent, intake, clinical safety, and serious moderation text.
+
+Do not present a stale or unapproved translation during an acceptance flow as though it were the
+current approved text. If the current approved locale is unavailable, the product and legal
+owners must decide the safe fallback and disclosure; the interface must not improvise one.
+
+Names, legal terms, rights, deadlines, amounts, contact details, defined terms, cross-references,
+and negation require specific review after translation.
+
+================================================================================
+12. CONTENT STORAGE BOUNDARY
+================================================================================
+
+Public legal and policy pages may use the shared editorial content system only after that system
+supports a Legal or Public Policy content type and the safeguards in this guide.
+
+Shared content identity and localized body storage may hold:
+- public title and slug;
+- summary;
+- current publication state;
+- localized approved body;
+- public media when appropriate;
+- public relationships and links;
+- ordinary discovery metadata.
+
+Legal-specific metadata must additionally represent:
+- legal or policy document class;
+- public legal version;
+- jurisdiction or market scope;
+- issuing authority;
+- effective period;
+- approval authority and time;
+- whether acceptance or acknowledgment is required;
+- superseded and replacement version relationships;
+- withdrawal or emergency-replacement state.
+
+Field names, option codes, indexes, and collection placement are finalized in database and
+taxonomy documentation, not in this writing guide.
+
+Acceptance evidence, consent records, legal holds, internal counsel notes, privileged material,
+and sensitive evidence must not be embedded in the public content body.
+
+The current content_main, content_body, and content_revision structure guides are article-first.
+They must not be treated as legal-publication-ready until they can preserve an immutable complete
+published version, including all user-visible localized text and legal-specific metadata.
+
+Reviews remain in the separate Review module and are not Legal content merely because a review
+discusses a legal issue or policy.
+
+================================================================================
+13. PUBLIC ROUTES, DISCOVERY, AND PRESENTATION
+================================================================================
+
+Public legal routes follow docs/01-project/site-structure-map.txt. Current route direction
+includes /legal and focused routes for Terms, Privacy, Copyright, Cookies, Licensing,
+Disclaimer, Accessibility, and Contact.
+
+Presentation rules:
+- the current document is available without login when public access is required;
+- draft, internal, privileged, rejected, and approval-pending versions are not publicly indexed;
+- the current version uses a stable canonical route;
+- the version and effective date are visible;
+- superseded versions are clearly labeled;
+- print and download behavior preserves the version and effective date;
+- headings and links remain usable on mobile and with assistive technology;
+- important notices are not conveyed by color alone;
+- the document remains readable without client-side animation;
+- broken contact, report, request, correction, or appeal links block publication when they are
+  necessary to exercise a stated right or process.
+
+Public legal pages must not expose internal collection names, repository paths, software or
+package versions, server topology, private workflow routes, secret contacts, privileged advice,
+or security details prohibited by the Security Architecture and Information Disclosure Policy.
+
+================================================================================
+14. MEDIA, EXAMPLES, AND INTERFACE TEXT
+================================================================================
+
+Legal documents generally do not need decorative media.
+
+Use diagrams, examples, tables, or layered summaries only when they improve understanding and do
+not alter the controlling meaning.
+
+Rules:
+- an example must be labeled when a reader could mistake it for a complete rule;
+- an illustration must not imply a guarantee or right absent from the text;
+- screenshots showing a legal choice must match the current interface;
+- icons and color cannot be the only indication of acceptance, warning, or document state;
+- generated images must not imitate official seals, regulator approval, or legal evidence;
+- decorative media must not delay or obstruct access to the text.
+
+Contextual interface notices near registration, booking, payment, intake, uploads, location,
+cookies, or sensitive data collection should link to the relevant controlling document and show
+the information needed at the point of decision.
+
+================================================================================
+15. AI USE
+================================================================================
+
+AI may assist with:
+- outline comparison against approved requirements;
+- plain-language alternatives;
+- defined-term and cross-reference checks;
+- duplicated or conflicting clause detection;
+- source discovery;
+- draft change summaries;
+- translation drafts;
+- readability and accessibility review;
+- version-to-version comparison;
+- metadata preparation;
+- checklist preparation.
+
+AI must not:
+- act as final legal reviewer;
+- invent law, rights, obligations, sources, contacts, operator details, or product behavior;
+- claim that counsel approved a draft;
+- publish or approve high-risk text by itself;
+- convert uncertainty into a final legal decision;
+- copy another service's protected text;
+- expose privileged or sensitive legal material to an unapproved provider;
+- silently weaken a restriction, right, disclosure, qualification, or non-waivable protection;
+- generate an acceptance record that did not occur.
+
+AI output is a draft or review aid until an authorized human approves it. Current legal research
+and product-behavior verification remain required.
+
+================================================================================
+16. REVIEW AND APPROVAL
+================================================================================
+
+Review should be proportionate to the document and change.
+
+Possible reviewers include:
+- document owner;
+- product owner;
+- qualified legal reviewer;
+- privacy or Data Protection Officer function;
+- security reviewer;
+- payments, booking, provider, seller, advertising, or moderation owner;
+- localization reviewer;
+- accessibility reviewer;
+- implementation owner who verifies actual behavior.
+
+The author must not mark a document legally approved merely because editorial review passed.
+Self-review alone is insufficient for a new or materially changed high-risk public document.
+
+Approval must identify:
+- exact draft or revision;
+- scope and locale;
+- approving authority;
+- decision and time;
+- conditions or unresolved launch blockers;
+- approved effective date;
+- whether notice, acceptance, or renewed acceptance is required.
+
+Publication is blocked when required operator details, contacts, legal decisions, translations,
+implementation controls, or approvals remain unresolved.
+
+================================================================================
+17. PUBLICATION WORKFLOW
+================================================================================
+
+1. Identify the public document class, owner, audience, jurisdiction, and governing internal
+   requirements.
+2. Confirm that product behavior, data flows, vendors, contacts, and unresolved decisions are
+   sufficiently complete.
+3. Gather and preserve current authoritative sources.
+4. Draft from the approved requirements rather than from generic boilerplate.
+5. Check definitions, cross-references, incorporated documents, and route relationships.
+6. Verify the draft against actual product behavior.
+7. Complete required product, privacy, security, moderation, payment, accessibility, and legal
+   review.
+8. Prepare each supported locale under the high-risk translation workflow.
+9. Assign the public version, effective date, change classification, notice plan, and acceptance
+   behavior.
+10. Approve the exact immutable publication candidate.
+11. Test rendering, links, accessibility, locale selection, archival, notice, and acceptance
+    recording.
+12. Publish the approved version and preserve its evidence.
+13. Monitor contact channels, legal changes, product changes, complaints, and correction needs.
+14. Replace or archive through a new controlled version when required.
+
+Urgency may shorten scheduling but must not create invented approval or silently bypass required
+legal, privacy, security, or product review.
+
+================================================================================
+18. CORRECTIONS, WITHDRAWAL, AND EMERGENCY REPLACEMENT
+================================================================================
+
+Minor correction:
+Repairs a spelling, formatting, or link problem without changing meaning. Preserve an audit
+record and verify translations and rendered copies.
+
+Material correction:
+Changes legal meaning or corrects a consequential error. Publish a new version, explain the
+change, assess notice and renewed acceptance, and preserve the superseded version.
+
+Withdrawal:
+Removes a document from current effect because it no longer applies or should not have been
+published. Identify the replacement or consequence and preserve the internal record.
+
+Emergency replacement:
+Publishes urgently because the current text creates serious legal, privacy, safety, security, or
+consumer harm. Use the strongest review available, record why the emergency process was used,
+notify affected users as required, and complete post-publication review promptly.
+
+Do not silently delete or overwrite a version that users accepted or relied on.
+
+================================================================================
+19. COMPLETED LEGAL DOCUMENT OUTPUT
+================================================================================
+
+A requested public legal or policy draft should normally be delivered as a UTF-8 text file
+containing:
+
+Public Title:
+Document Class:
+Draft or Public Version:
+Jurisdiction or Market Scope:
+Source Locale:
+Target Locale, if translated:
+Authority Status:
+Intended Audience:
+Responsible Operator or Issuer:
+Effective Date:
+Acceptance or Acknowledgment Requirement:
+Supersedes:
+Public Change Summary:
+Public Route:
+Public Body:
+Related Controlling Documents:
+Sources Consulted:
+Required Reviewers:
+Unresolved Publication Blockers:
+
+A draft must retain visible placeholders for unresolved facts and must say that it is not
+approved for public use. Do not fabricate a public version, effective date, reviewer, approval,
+acceptance requirement, or source.
+
+The Public Body may use clean controlled HTML when prepared for the content system. Internal
+review copies may remain plain text when that is easier to compare and approve.
+
+================================================================================
+20. QUALITY AND PUBLICATION CHECKLIST
+================================================================================
+
+Before approval, confirm:
+- the correct internal requirement documents were used;
+- document class, audience, scope, and jurisdiction are clear;
+- operator, issuer, and contact information are exact;
+- the text matches current implemented behavior;
+- current authoritative sources were checked;
+- no unresolved placeholder is hidden;
+- definitions and cross-references are consistent;
+- summaries do not contradict controlling text;
+- rights, choices, consequences, deadlines, and contacts are understandable;
+- no unsupported guarantee or waiver appears;
+- legal, privacy, security, product, localization, and accessibility review is complete where
+  required;
+- version, locale, approval, publication date, and effective date are correct;
+- materiality, notice, and acceptance decisions are recorded;
+- prior versions are preserved;
+- translated versions match the approved source and authority label;
+- routes, links, contacts, printing, downloading, and mobile presentation work;
+- drafts and internal versions are not publicly indexed;
+- the exact publication candidate is immutable after approval;
+- acceptance or acknowledgment refers to the exact public version;
+- correction, report, request, and appeal channels work where promised.
+
+================================================================================
+21. CURRENT DIRECTIONS AND OPEN DECISIONS
+================================================================================
+
+Current directions:
+- internal legal requirements and public legal documents remain separate artifacts;
+- docs/18-policy owns substantive requirements;
+- this guide owns legal and public policy writing and publication practice;
+- legal explainers remain Article content and are not controlling legal documents;
+- public versions are immutable and separate from internal editorial revision numbers;
+- acceptance, acknowledgment, and consent remain distinct;
+- acceptance evidence is stored separately from public content;
+- AI-only legal publication is prohibited;
+- legal and high-risk translation requires specialist review;
+- public legal pages use stable /legal routes and preserve prior versions;
+- the shared content system may serve public legal pages only after legal-publication safeguards
+  and a Legal or Public Policy content type are approved.
+
+Open decisions:
+- final public legal and policy document taxonomy and option codes;
+- final database fields, indexes, and collection boundaries for legal metadata;
+- legal acceptance and acknowledgment collection design;
+- public-version numbering policy;
+- exact material-change and renewed-acceptance decision authority;
+- authoritative locale policy for each launch market;
+- archive access and retention periods;
+- final legal operator, contacts, governing law, and dispute process;
+- qualified counsel and privacy-review workflow;
+- final cookie, copyright, accessibility, Community Guidelines, review, media, booking,
+  cancellation, refund, provider, seller, and advertising public-document set.
+
+================================================================================
+22. RELATED DOCUMENTS
+================================================================================
+
+- docs/18-policy/terms-of-use-requirements.txt owns future Terms content requirements.
+- docs/18-policy/privacy-notice-and-data-protection-requirements.txt owns privacy architecture and
+  future Privacy Notice content requirements.
+- docs/18-policy/nsfw-mature-and-restricted-content-policy.txt owns NSFW classification, access,
+  moderation, and publication requirements.
+- docs/18-policy/security-architecture-and-information-disclosure-policy.txt owns public and
+  internal security-disclosure boundaries.
+- docs/13-localization/translation-system.txt owns legal and high-risk translation workflow.
+- docs/01-project/site-structure-map.txt owns public legal routes.
+- docs/04-architecture/database-structure.txt owns database and collection boundaries.
+- docs/04-architecture/structure-guide/content_main.php,
+  docs/04-architecture/structure-guide/content_body.php, and
+  docs/04-architecture/structure-guide/content_revision.php are current article-first proposed
+  content structures and are not yet legal-publication-ready.

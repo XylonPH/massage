@@ -1,7 +1,7 @@
 Title: Massage Nexus Data Research Provenance and Field Verification System
 Document Version: 0.10
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Status: Internal Planning Draft
 
 Related Documents:
@@ -10,7 +10,7 @@ Related Documents:
 - Massage Nexus - 18 - Site Structure Map v1.90
 - Massage Nexus - 21 - User Workspace v0.30
 - Massage Nexus - Analytics Statistics and Measurement System v0.10
-- Massage Nexus - 02 - AI-Assisted Development Workflow v1.10
+- Massage Nexus Runtime AI System
 - Massage Nexus - Privacy Notice and Data Protection Requirements v0.10
 - Massage Nexus - Security Architecture and Information Disclosure Policy v0.10
 - Current Service, Spa, Therapist, Product, Review, Rating, Reputation, and Contribution documents

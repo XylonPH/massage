@@ -1,12 +1,13 @@
 Title: Massage Nexus Testing and Quality Assurance Strategy
 Document Version: 0.10
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-19
 Document Description: Defines the cross-project testing and quality approach used by AI and human reviewers without duplicating feature-specific validation rules. Validation remains inside the relevant system specification and implementation, while this document defines test layers, organization, automation, release gates, test data, manual review, and maintenance.
 
 Related Documents:
 - Massage Nexus Documentation Writing and Management Standard
-- Massage Nexus AI-Assisted Development and Runtime AI Workflow
+- Massage Nexus AI-Assisted Development Workflow
+- Massage Nexus Runtime AI System
 - Massage Nexus Security Architecture and Information Disclosure Policy
 - Massage Nexus Privacy Notice and Data Protection Requirements
 - Massage Nexus Maintenance and Continuous Operations
