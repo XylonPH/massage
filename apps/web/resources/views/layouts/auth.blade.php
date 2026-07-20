@@ -53,7 +53,7 @@
                 </a>
                 <div class="flex items-center gap-2.5">
                     <x-theme-toggle />
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100">
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-200">
                         <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H6.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L6.56 9.25h9.69A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/></svg>
                         {{ __('auth.back_to_home') }}
                     </a>
