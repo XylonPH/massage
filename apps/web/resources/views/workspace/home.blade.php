@@ -1,16 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.workspace', ['navActive' => 'home'])
 
 @section('title', __('workspace.home_title'))
 
-@section('content')
-<div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-    <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
-        <aside class="min-w-0"><x-workspace-nav active="home" /></aside>
+@section('page-title', __('workspace.greeting', ['name' => $user->publicName()]))
+@section('page-context', __('workspace.workspace_note'))
 
-        <div class="min-w-0">
-            <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600">{{ __('workspace.workspace_overview') }}</p>
-            <h1 class="mt-2 text-4xl font-black text-ink-950">{{ __('workspace.greeting', ['name' => $user->publicName()]) }}</h1>
-            <p class="mt-2 max-w-2xl text-ink-600">{{ __('workspace.workspace_note') }}</p>
+@section('content')
+<div class="min-w-0">
+    <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600">{{ __('workspace.workspace_overview') }}</p>
 
             <div class="mt-8 grid gap-5 sm:grid-cols-2">
                 <section aria-labelledby="ws-account" class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
@@ -63,7 +60,5 @@
                 <h2 id="ws-coming" class="font-bold text-ink-700">{{ __('workspace.coming_soon_title') }}</h2>
                 <p class="mt-1.5 text-sm text-ink-500">{{ __('workspace.coming_soon_text') }}</p>
             </section>
-        </div>
-    </div>
 </div>
 @endsection

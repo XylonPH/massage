@@ -30,6 +30,7 @@ return [
     'card_claim_text' => 'Contribute an establishment and declare your relationship to it. Management access is reviewed separately before it is granted.',
     'card_claim_action' => 'Contribute an establishment',
     'open' => 'Open',
+    'back_to_site' => 'Back to site',
 
     'coming_soon_title' => 'More workspace areas are on the way',
     'coming_soon_text' => 'Saved items, following, messages, notifications, booking history, and rewards will appear here as those systems are completed.',
