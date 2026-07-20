@@ -182,7 +182,7 @@ A separate treatment-area collection should be created only when treatment areas
 8. PRACTITIONER COLLECTIONS
 
 - practitioner_main
-  One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label.
+  One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label. Proposed structure; see docs/04-architecture/structure-guide/practitioner_main.php.
 
 - practitioner_service
   Relationship between a practitioner and a normalized service or capability.

@@ -1,5 +1,5 @@
 Title: Massage Nexus Therapist Profile Guide
-Document Version: 0.60
+Document Version: 0.61
 Date Created: 2026-07-14
 Revision Date: 2026-07-20
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, privacy, and lifecycle of a Massage Nexus therapist profile. It distinguishes the public professional record from the user account, professional-context relationships, Therapist Workspace, booking engine, and branded website.

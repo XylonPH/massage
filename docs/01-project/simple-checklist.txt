@@ -400,7 +400,7 @@ complete a website feature.
 
 4.1 Core Profile
 ----------------
-[ ] Therapist profile page
+[~] Therapist profile page
 [ ] Display name
 [ ] Professional name
 [ ] Former names/aliases where appropriate
