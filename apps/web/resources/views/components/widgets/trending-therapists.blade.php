@@ -11,9 +11,9 @@
             ['name' => 'David K.', 'specialty' => 'Shiatsu', 'avatar' => 'DK'],
         ] as $therapist)
             <li>
-                <a href="#" class="group flex flex-col items-center gap-2 text-center transition">
-                    <span class="flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-leaf-100 to-leaf-200 text-base font-black text-leaf-800 shadow-sm ring-2 ring-white transition group-hover:from-ember-100 group-hover:to-ember-200 group-hover:text-ember-800">{{ $therapist['avatar'] }}</span>
-                    <span class="min-w-0">
+                <a href="#" class="group flex flex-col items-center gap-2 text-center transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0 active:scale-95">
+                    <span class="flex size-14 items-center justify-center rounded-full bg-gradient-to-br from-leaf-100 to-leaf-200 text-base font-black text-leaf-800 shadow-sm ring-2 ring-white transition-all duration-300 group-hover:shadow-md group-hover:from-ember-100 group-hover:to-ember-200 group-hover:text-ember-800">{{ $therapist['avatar'] }}</span>
+                    <span class="min-w-0 transition-colors duration-300">
                         <span class="block truncate text-sm font-bold text-ink-900 group-hover:text-ember-700">{{ $therapist['name'] }}</span>
                         <span class="block truncate text-xs font-semibold text-ink-500">{{ $therapist['specialty'] }}</span>
                     </span>
