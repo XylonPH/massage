@@ -3,7 +3,7 @@ Massage Nexus Article Writing Guide and Working Topic Calendar
 
 Field            | Value
 -----------------+-----------
-Document Version | 2.21
+Document Version | 2.22
 Date Created     | 2026-07-04
 Revision Date    | 2026-07-20
 
@@ -211,6 +211,37 @@ Use the current PHP-readable structure guides under docs/04-architecture/structu
 This guide does not define public article routes. The article slug remains required metadata, but route structure belongs in the latest Massage Nexus Site Structure Map and related implementation documentation.
 
 Articles use article_main, article_body, and article_revision. They do not use a generic content_main collection or a type_content discriminator. News, Reviews, Comics, public Legal documents, and Announcements remain separate domains. Article bodies are stored as controlled HTML in article_body, not as Markdown or plain text.
+
+Workspace Article Editor
+------------------------
+
+Article drafting is part of the unified authenticated /workspace experience. My Articles, the
+editor, and revision history use the shared workspace navigation; they are not separate global
+header destinations or a role-specific sign-in area.
+
+The implemented visual editor uses the open-source Tiptap core with a compact formatting toolbar.
+Authors may switch between the visual document and its HTML source. Both modes write the same
+article_body HTML, and the server-side ArticleContent allowlist remains authoritative when the
+draft is saved. Scripts, arbitrary CSS, unsafe links, and unapproved elements or attributes are
+removed even when entered in HTML mode.
+
+Current authoring behavior includes:
+
+- title-to-slug generation while the slug remains untouched, with server-side generation as a
+  fallback;
+- a required short description limited to 255 characters, with a visible character counter;
+- headings at levels two through four, paragraphs, emphasis, underline, strikethrough, lists,
+  quotations, dividers, approved text alignment, links, undo, redo, and format clearing;
+- live word count, estimated visual reading time, unsaved-change feedback, and a non-blocking draft
+  readiness summary;
+- article classification, sources, revision notes, comment and sharing preferences in a compact
+  metadata rail;
+- anonymous publication preference through article_main.is_anonymous. Public article pages and
+  public author listings suppress the contributor identity, while internal authorship and audit
+  associations remain available to authorized reviewers and staff;
+- proposed publication scheduling for users with article.schedule. A future date may be recorded,
+  but scheduling never bypasses editorial review or publication approval, and the publication job
+  remains a separate workflow responsibility.
 
 Function of Neural Agents in Article Work
 -----------------------------------------

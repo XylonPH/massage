@@ -54,9 +54,16 @@ class SaveArticleDraft
             'source_reference_list' => $this->content->parseSources($input['source_references'] ?? null),
             'is_commentable' => (bool) ($input['is_commentable'] ?? false),
             'is_shareable' => (bool) ($input['is_shareable'] ?? false),
+            'is_anonymous' => (bool) ($input['is_anonymous'] ?? false),
             'level_nsfw' => $input['level_nsfw'],
             'updated_by_user_id' => $userId,
         ]);
+
+        if (array_key_exists('scheduled_publish_at', $input)) {
+            $article->scheduled_publish_at = filled($input['scheduled_publish_at'])
+                ? $input['scheduled_publish_at']
+                : null;
+        }
 
         if ($isNew) {
             $article->fill([

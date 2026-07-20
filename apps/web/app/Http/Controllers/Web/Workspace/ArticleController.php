@@ -11,6 +11,7 @@ use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
+use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -65,9 +66,11 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function create(): View
+    public function create(Request $request, WorkspaceAccess $workspaceAccess): View
     {
-        return view('workspace.article.editor', $this->editorData());
+        return view('workspace.article.editor', $this->editorData(
+            canSchedule: $workspaceAccess->can($request->user(), 'article.schedule'),
+        ));
     }
 
     public function store(SaveArticleRequest $request, SaveArticleDraft $save): RedirectResponse
@@ -78,7 +81,7 @@ class ArticleController extends Controller
             ->with('status', __('article.draft_saved'));
     }
 
-    public function edit(Request $request, Article $article): View
+    public function edit(Request $request, Article $article, WorkspaceAccess $workspaceAccess): View
     {
         $this->authorizeOwner($request, $article);
         $body = ArticleBody::query()
@@ -86,7 +89,11 @@ class ArticleController extends Controller
             ->where('language_id', 3049)
             ->firstOrFail();
 
-        return view('workspace.article.editor', $this->editorData($article, $body));
+        return view('workspace.article.editor', $this->editorData(
+            $article,
+            $body,
+            $workspaceAccess->can($request->user(), 'article.schedule'),
+        ));
     }
 
     public function update(SaveArticleRequest $request, Article $article, SaveArticleDraft $save): RedirectResponse
@@ -136,8 +143,11 @@ class ArticleController extends Controller
     }
 
     /** @return array<string, mixed> */
-    private function editorData(?Article $article = null, ?ArticleBody $body = null): array
-    {
+    private function editorData(
+        ?Article $article = null,
+        ?ArticleBody $body = null,
+        bool $canSchedule = false,
+    ): array {
         $tags = $article
             ? Tag::query()->whereIn('_id', $article->tag_id_list ?? [])->get()->map(fn (Tag $tag) => $tag->localized('tag_title'))->implode(', ')
             : '';
@@ -155,6 +165,7 @@ class ArticleController extends Controller
             'sources' => $sources,
             'categories' => ArticleCategory::cases(),
             'audiences' => ArticleAudience::cases(),
+            'canSchedule' => $canSchedule,
         ];
     }
 

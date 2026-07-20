@@ -1,5 +1,5 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 1.91
+Document Version: 1.92
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 
@@ -870,6 +870,7 @@ apps/web/resources/
 |
 +-- js/
 |   +-- app.js
+|   +-- article-editor.js
 |   +-- bootstrap.js
 |   +-- core/
 |   +-- component/

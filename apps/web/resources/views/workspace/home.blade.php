@@ -30,7 +30,10 @@
                 <section aria-labelledby="ws-articles" class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
                     <h2 id="ws-articles" class="font-black text-ink-950">{{ __('workspace.card_articles_title') }}</h2>
                     <p class="mt-2 text-sm text-ink-700">{{ trans_choice('workspace.card_articles_text', $articleCount, ['count' => $articleCount]) }}</p>
-                    <a href="{{ route('workspace.article.index') }}" class="mt-4 inline-block text-sm font-bold text-ember-600 transition hover:text-ember-700">{{ __('workspace.open') }} →</a>
+                    <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold">
+                        <a href="{{ route('workspace.article.index') }}" class="text-ember-600 transition hover:text-ember-700">{{ __('workspace.open') }} &rarr;</a>
+                        <a href="{{ route('workspace.article.create') }}" class="text-ink-700 transition hover:text-ink-950">{{ __('article.new_article') }} +</a>
+                    </div>
                 </section>
 
                 <section aria-labelledby="ws-claim" class="rounded-2xl border border-leaf-200 bg-leaf-50 p-5 shadow-sm">

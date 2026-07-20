@@ -73,6 +73,29 @@ class ArticlePagesTest extends TestCase
         $this->get('/article/category/not-a-category')->assertNotFound();
     }
 
+    public function test_anonymous_article_hides_its_public_author_association(): void
+    {
+        [$article] = $this->createArticle('first-massage-guide', true);
+        $article->forceFill(['is_anonymous' => true])->save();
+
+        $this->get('/article/first-massage-guide')
+            ->assertOk()
+            ->assertSee(__('article.anonymous_byline'))
+            ->assertDontSee($this->author->username);
+        $this->get('/article/author/'.$this->author->username)
+            ->assertOk()
+            ->assertDontSee('First Massage Guide');
+    }
+
+    public function test_future_scheduled_article_is_not_public_before_its_time(): void
+    {
+        [$article] = $this->createArticle('first-massage-guide', true);
+        $article->forceFill(['scheduled_publish_at' => now()->addDay()])->save();
+
+        $this->get('/article')->assertOk()->assertDontSee('First Massage Guide');
+        $this->get('/article/first-massage-guide')->assertNotFound();
+    }
+
     /** @return array{Article, ArticleBody} */
     private function createArticle(string $slug, bool $published, string $plainText = 'Safe article body for readers.'): array
     {
@@ -86,6 +109,7 @@ class ArticlePagesTest extends TestCase
             'target_audience' => 'C',
             'tag_id_list' => [],
             'author_user_id_list' => [(string) $this->author->getKey()],
+            'is_anonymous' => false,
             'related_article_id_list' => [],
             'source_reference_list' => [[
                 'source_title' => 'Example Source',

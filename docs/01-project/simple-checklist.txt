@@ -1,5 +1,5 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 1.92
+Document Version: 2.03
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: This is the master categorical completion checklist for Massage Nexus. Items are organized by the product or platform domain that owns them, regardless of implementation order, release target, or whether the work is one-time or recurring. Milestone order and release gates belong only in the Roadmap.
@@ -2211,13 +2211,18 @@ Use:
 
 15.1 Content Editing and Rendering Technology
 ---------------------------------------------
-[x] Structured WYSIWYG article editor
+[x] Workspace-integrated rich visual article editor
+[x] Controlled HTML source editing for article bodies
+[x] Automatic article slug generation and 255-character description feedback
+[x] Live article word count, reading estimate, unsaved state, and readiness guidance
 [ ] Restricted WYSIWYG review editor
 [x] Sanitized rendered HTML
 [x] Editable structured content
 [x] Searchable plain text
 [x] Visual and spoken reading-duration calculation
 [x] Article revision snapshots and contributor submission state
+[x] Anonymous public article preference with protected internal authorship
+[~] Permission-aware proposed article scheduling; approval and scheduled publishing remain incomplete
 
 15.2 Article and Guide Types
 ----------------------------

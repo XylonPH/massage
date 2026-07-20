@@ -1,7 +1,7 @@
 Title: Massage Nexus: Technology Stack
-Document Version: 2.20
+Document Version: 2.30
 Date Created: 2026-06-30
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -9,6 +9,7 @@ This document records the accepted and working technology direction for Massage 
 
 Version History
 ---------------
+- v2.30 (2026-07-20): Implemented the Tiptap open-source core for the workspace Article editor through @tiptap/core 3.28.0, StarterKit, text-alignment, placeholder, and ProseMirror packages, built through the existing Vite pipeline. StarterKit supplies the link and underline extensions. The server-side controlled-HTML sanitizer remains authoritative.
 - v2.20 (2026-07-19): Replaced the obsolete OneDrive-era AI reference with the repository AI-Assisted Development Workflow and Runtime AI System authorities.
 - v2.10 (2026-07-19): Confirmed apps/desktop/ as the canonical location for the general Massage Nexus Desktop Application rather than an administration-only desktop application.
 - v2.00 (2026-07-19): Implemented ordinary authentication (registration, email verification, login, logout, remember me) directly on Laravel's native Auth guard rather than installing Laravel Fortify; see docs/07-accounts/account-identity-registration-and-authentication-system.txt section 17 for the rationale. Activated Argon2id password hashing via a published config/hashing.php (HASH_DRIVER=argon2id in .env). Confirmed the local mail driver is `log` (writes verification emails to storage/logs/laravel.log instead of sending them), which is how email verification is exercised without a real mail server in local development; a real provider is still an open decision under section 2 (Email Hosting: Undecided). Added a unique-index migration for user_main.username and user_main.email against the mongodb connection, satisfying the database-level collision protection required by Shared Project Standards section 9.4.

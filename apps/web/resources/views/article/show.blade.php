@@ -28,7 +28,9 @@
                     @endif
 
                     <div class="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-500">
-                        @if ($authors->isNotEmpty())
+                        @if ($article->is_anonymous)
+                            <span class="font-bold text-ink-800">{{ __('article.anonymous_byline') }}</span>
+                        @elseif ($authors->isNotEmpty())
                             <span>{{ __('article.written_by') }}
                                 @foreach ($authors as $author)
                                     <a class="font-bold text-ink-800 hover:text-ember-600" href="{{ route('article.author.show', $author->username) }}">{{ $author->username }}</a>@if (! $loop->last), @endif

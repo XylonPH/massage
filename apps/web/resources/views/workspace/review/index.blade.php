@@ -3,9 +3,12 @@
 @section('title', __('review.workspace_title'))
 
 @section('content')
-<div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-    <h1 class="text-4xl font-black text-ink-950">{{ __('review.workspace_title') }}</h1>
-    <p class="mt-2 text-ink-600">{{ __('review.workspace_intro') }}</p>
+<div class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <aside class="min-w-0"><x-workspace-nav active="reviews" /></aside>
+        <main class="min-w-0">
+    <h1 class="text-3xl font-black text-ink-950">{{ __('review.workspace_title') }}</h1>
+    <p class="mt-1 text-sm text-ink-600">{{ __('review.workspace_intro') }}</p>
 
     @if (session('status'))
         <div class="mt-6 rounded-xl border border-leaf-200 bg-leaf-50 p-4 font-semibold text-leaf-800" role="status">{{ session('status') }}</div>
@@ -45,5 +48,7 @@
     </div>
 
     <div class="mt-8">{{ $reviews->links() }}</div>
+        </main>
+    </div>
 </div>
 @endsection

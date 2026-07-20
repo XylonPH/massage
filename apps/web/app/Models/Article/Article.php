@@ -9,7 +9,7 @@ use MongoDB\Laravel\Eloquent\Model;
 
 #[Fillable([
     'article_title', 'article_slug', 'short_description', 'language_original_id',
-    'type_article_category', 'target_audience', 'tag_id_list', 'author_user_id_list',
+    'type_article_category', 'target_audience', 'tag_id_list', 'author_user_id_list', 'is_anonymous',
     'editor_user_id_list', 'reviewer_user_id_list', 'photographer_user_id_list',
     'cover_media_image_id', 'related_article_id_list', 'related_organization_id_list',
     'related_establishment_id_list', 'related_practitioner_id_list', 'related_service_id_list',
@@ -50,6 +50,7 @@ class Article extends Model
             'reading_duration_spoken' => 'integer',
             'is_commentable' => 'boolean',
             'is_shareable' => 'boolean',
+            'is_anonymous' => 'boolean',
             'scheduled_publish_at' => 'datetime',
             'published_at' => 'datetime',
             'archived_at' => 'datetime',
@@ -63,6 +64,9 @@ class Article extends Model
             ->where('status_review', 'A')
             ->where('visibility_scope', 'PUB')
             ->where('status_record_lifecycle', 'ACT')
+            ->where(function (Builder $query): void {
+                $query->whereNull('scheduled_publish_at')->orWhere('scheduled_publish_at', '<=', now());
+            })
             ->where(function (Builder $query): void {
                 $query->whereNull('published_at')->orWhere('published_at', '<=', now());
             });

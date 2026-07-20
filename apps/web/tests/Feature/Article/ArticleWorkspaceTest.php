@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Article;
 
+use App\Models\AccessAssignment;
 use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
@@ -19,11 +20,13 @@ class ArticleWorkspaceTest extends TestCase
         parent::setUp();
         $this->setUpInteractsWithMongoUsers();
         $this->clearArticles();
+        AccessAssignment::query()->delete();
     }
 
     protected function tearDown(): void
     {
         $this->clearArticles();
+        AccessAssignment::query()->delete();
         $this->tearDownInteractsWithMongoUsers();
         parent::tearDown();
     }
@@ -52,6 +55,69 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertGreaterThan(0, $body->word_count);
         $this->assertSame(1, ArticleRevision::query()->where('article_id', (string) $article->getKey())->count());
         $this->assertSame(2, Tag::query()->count());
+    }
+
+    public function test_editor_is_integrated_with_workspace_and_supports_rich_and_html_modes(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->get('/workspace/article/new')
+            ->assertOk()
+            ->assertSee(__('workspace.nav_articles'))
+            ->assertSee('data-editor-mode="visual"', false)
+            ->assertSee('data-editor-mode="html"', false)
+            ->assertSee('maxlength="255"', false)
+            ->assertDontSee('name="scheduled_publish_at"', false);
+    }
+
+    public function test_member_can_save_an_anonymous_article_with_an_automatic_slug(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+            'article_title' => 'Automatically Generated Slug',
+            'article_slug' => '',
+            'is_anonymous' => '1',
+        ]))->assertRedirect();
+
+        $article = Article::query()->firstOrFail();
+        $this->assertTrue($article->is_anonymous);
+        $this->assertSame('automatically-generated-slug', $article->localized('article_slug'));
+    }
+
+    public function test_article_scheduling_requires_permission(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+            'scheduled_publish_at' => now()->addDay()->toDateTimeString(),
+        ]))->assertSessionHasErrors('scheduled_publish_at');
+
+        $this->assertSame(0, Article::query()->count());
+    }
+
+    public function test_editorial_user_can_record_a_future_publication_time(): void
+    {
+        $user = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $user->getKey(),
+            'role_workspace' => 'EAD',
+            'permission_code_list' => [],
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'assigned_by_user_id' => (string) $user->getKey(),
+            'assignment_reason' => 'Article scheduling test.',
+        ]);
+        $scheduledAt = now()->addDay()->startOfMinute();
+
+        $this->actingAs($user)->get('/workspace/article/new')
+            ->assertOk()
+            ->assertSee('name="scheduled_publish_at"', false);
+        $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+            'scheduled_publish_at' => $scheduledAt->toDateTimeString(),
+        ]))->assertRedirect();
+
+        $this->assertTrue(Article::query()->firstOrFail()->scheduled_publish_at->equalTo($scheduledAt));
     }
 
     public function test_author_can_update_and_submit_latest_revision(): void
@@ -105,6 +171,7 @@ class ArticleWorkspaceTest extends TestCase
             'revision_note' => 'Initial test draft.',
             'is_commentable' => '1',
             'is_shareable' => '1',
+            'is_anonymous' => '0',
         ], $overrides);
     }
 

@@ -34,4 +34,17 @@ class ArticleContentTest extends TestCase
         $this->assertSame(90, $metrics['spoken_seconds']);
         $this->assertStringNotContainsString('media', $metrics['plain_text']);
     }
+
+    #[Test]
+    public function it_keeps_editor_formatting_but_rejects_arbitrary_styles(): void
+    {
+        $content = new ArticleContent;
+        $html = $content->sanitize('<p style="text-align: center; color: red"><u>underlined</u></p><h3 style="text-align:right"><s>old</s></h3><p style="position:fixed">unsafe</p>');
+
+        $this->assertStringContainsString('<u>underlined</u>', $html);
+        $this->assertStringContainsString('<s>old</s>', $html);
+        $this->assertStringContainsString('style="text-align: right;"', $html);
+        $this->assertStringNotContainsString('color:', $html);
+        $this->assertStringNotContainsString('position:', $html);
+    }
 }

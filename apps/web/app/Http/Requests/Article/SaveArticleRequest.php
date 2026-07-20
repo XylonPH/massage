@@ -5,8 +5,10 @@ namespace App\Http\Requests\Article;
 use App\Enums\ArticleAudience;
 use App\Enums\ArticleCategory;
 use App\Support\Article\ArticleContent;
+use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class SaveArticleRequest extends FormRequest
 {
@@ -40,6 +42,20 @@ class SaveArticleRequest extends FormRequest
             'revision_note' => ['nullable', 'string', 'max:1000'],
             'is_commentable' => ['nullable', 'boolean'],
             'is_shareable' => ['nullable', 'boolean'],
+            'is_anonymous' => ['nullable', 'boolean'],
+            'scheduled_publish_at' => ['nullable', 'date', 'after:now'],
+        ];
+    }
+
+    public function after(): array
+    {
+        return [
+            function (Validator $validator): void {
+                if ($this->has('scheduled_publish_at')
+                    && ! app(WorkspaceAccess::class)->can($this->user(), 'article.schedule')) {
+                    $validator->errors()->add('scheduled_publish_at', __('article.schedule_not_allowed'));
+                }
+            },
         ];
     }
 }

@@ -70,7 +70,11 @@ class ArticleController extends Controller
 
         return $this->listing(
             $request,
-            Article::query()->where('author_user_id_list', (string) $author->getKey()),
+            Article::query()
+                ->where('author_user_id_list', (string) $author->getKey())
+                ->where(function (Builder $query): void {
+                    $query->whereNull('is_anonymous')->orWhere('is_anonymous', false);
+                }),
             __('article.articles_by', ['name' => $author->username]),
         );
     }
@@ -217,6 +221,10 @@ class ArticleController extends Controller
 
     private function authorsFor(Article $article)
     {
+        if ($article->is_anonymous) {
+            return collect();
+        }
+
         return User::query()->whereIn('_id', $article->author_user_id_list ?? [])->get();
     }
 }

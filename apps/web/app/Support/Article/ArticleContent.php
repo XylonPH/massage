@@ -10,15 +10,17 @@ class ArticleContent
 {
     /** @var array<string, array<int, string>> */
     private const ALLOWED_ELEMENTS = [
-        'p' => ['class'],
-        'h2' => ['class'],
-        'h3' => ['class'],
-        'h4' => ['class'],
+        'p' => ['class', 'style'],
+        'h2' => ['class', 'style'],
+        'h3' => ['class', 'style'],
+        'h4' => ['class', 'style'],
         'ul' => ['class'],
         'ol' => ['class'],
         'li' => [],
         'strong' => [],
         'em' => [],
+        'u' => [],
+        's' => [],
         'blockquote' => ['class'],
         'a' => ['href', 'title', 'target', 'rel'],
         'figure' => ['class', 'data-media-image-id'],
@@ -142,6 +144,15 @@ class ArticleContent
 
     private function cleanElementAttributes(DOMElement $node, string $name): void
     {
+        if ($node->hasAttribute('style')) {
+            $style = strtolower(trim($node->getAttribute('style')));
+            if (preg_match('/^text-align:\s*(left|center|right|justify);?$/', $style, $match)) {
+                $node->setAttribute('style', 'text-align: '.$match[1].';');
+            } else {
+                $node->removeAttribute('style');
+            }
+        }
+
         if ($node->hasAttribute('class')) {
             $classes = array_intersect(preg_split('/\s+/', $node->getAttribute('class')) ?: [], self::ALLOWED_CLASSES);
             $classes === [] ? $node->removeAttribute('class') : $node->setAttribute('class', implode(' ', $classes));

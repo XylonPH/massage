@@ -10,7 +10,10 @@
         : route('therapist.review.store', ['therapist_slug' => $target['slug']]);
     $formAction = $review ? route('workspace.review.update', $review) : $storeRoute;
 @endphp
-<div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+<div class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
+    <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <aside class="min-w-0"><x-workspace-nav active="reviews" /></aside>
+        <main class="min-w-0 max-w-5xl">
     <div class="mb-8">
         <a href="{{ $target['route'] }}" class="text-sm font-bold text-ember-700 hover:underline">← {{ __('review.back_to_target', ['target' => $target['name']]) }}</a>
         <h1 class="mt-3 text-4xl font-black text-ink-950">{{ $review ? __('review.edit_title', ['target' => $target['name']]) : __('review.new_title', ['target' => $target['name']]) }}</h1>
@@ -136,5 +139,7 @@
             <button class="rounded-xl border border-ember-300 bg-ember-50 px-6 py-3 font-bold text-ember-800 hover:bg-ember-100">{{ __('review.submit_review') }}</button>
         </form>
     @endif
+        </main>
+    </div>
 </div>
 @endsection

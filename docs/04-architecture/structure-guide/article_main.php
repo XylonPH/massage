@@ -4,7 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: article_main
- * Version: 1.50
+ * Version: 1.60
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -70,6 +70,7 @@ $article_main_record_default = [
 	'target_audience' => 'G', // G = General
 	'tag_id_list' => [],
 	'author_user_id_list' => [],
+	'is_anonymous' => false,
 	'editor_user_id_list' => [],
 	'reviewer_user_id_list' => [],
 	'photographer_user_id_list' => [],
@@ -146,6 +147,7 @@ $article_main = [
 
 	# Credits
 	'author_user_id_list' => ['U5rK8mP2xN7qL4vA', 'U9cF3hJ6sD1wB8nM'], // human users or Neural Agent user accounts credited as authors
+	'is_anonymous' => false, // when true, public surfaces hide author identities while retaining them privately for ownership, review, audit, safety, and abuse handling
 	'editor_user_id_list' => ['U2pR7vX4kT9mC5qL'], // users who edited structure, clarity, grammar, or publication quality
 	'reviewer_user_id_list' => ['U6nH1sW8dK3yP9fR'], // users who reviewed factual, safety, professional, or policy accuracy
 	'photographer_user_id_list' => ['U4bM9xQ2jV7cL5tN'], // optional article-level photo credit when applicable
@@ -217,6 +219,7 @@ $article_main_field_order = [
 	'target_audience',
 	'tag_id_list',
 	'author_user_id_list',
+	'is_anonymous',
 	'editor_user_id_list',
 	'reviewer_user_id_list',
 	'photographer_user_id_list',
@@ -362,6 +365,13 @@ $article_main_field_property = [
 		'type_data' => 'A',
 		'is_relational' => true,
 		'is_mandatory' => true,
+	],
+	'is_anonymous' => [
+		'field_label' => 'Anonymous Public Authorship',
+		'field_description' => 'When true, public Article surfaces suppress author identity and display an anonymous byline. Internal ownership, editorial review, audit, safety, and abuse handling continue to use author_user_id_list.',
+		'type_data' => 'B',
+		'type_field' => 'CHK',
+		'type_sql' => 'BOOLEAN',
 	],
 	'editor_user_id_list' => [
 		'field_label' => 'Editor User ID List',
