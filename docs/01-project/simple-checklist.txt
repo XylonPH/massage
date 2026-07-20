@@ -497,13 +497,13 @@ complete a website feature.
 
 5.1 Normalized Service Profile
 ------------------------------
-[ ] service_main record
-[ ] Preferred service name
+[x] service_main record
+[x] Preferred service name
 [ ] Service Sector (universal parent grouping retained in Service Classification)
 [ ] Service Domain
 [ ] Service Family
 [ ] Additional classification dimensions (system/tradition, purpose, client adaptation, body focus, integration, pressure, medium, setup, participant arrangement, delivery context — from Service Classification)
-[ ] Service aliases and translations
+[x] Service aliases and translations
 [ ] Service history and cultural context
 [ ] What to expect
 [ ] Methods and techniques
@@ -588,7 +588,7 @@ complete a website feature.
 
 5.9 Service Management
 ----------------------
-[ ] Service claim/correction workflow
+[~] Service claim/correction workflow
 
 
 

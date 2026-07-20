@@ -13,7 +13,11 @@ use App\Http\Controllers\TherapistProfileController;
 use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
 use App\Http\Controllers\Web\Public\ReviewController as PublicReviewController;
 use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
+use App\Http\Controllers\Web\Workspace\HomeController as WorkspaceHomeController;
+use App\Http\Controllers\Web\Workspace\ListingController as WorkspaceListingController;
+use App\Http\Controllers\Web\Workspace\ProfileController as WorkspaceProfileController;
 use App\Http\Controllers\Web\Workspace\ReviewController as WorkspaceReviewController;
+use App\Http\Controllers\Web\Workspace\SettingController as WorkspaceSettingController;
 use App\Http\Middleware\EnsureActiveMember;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +80,20 @@ foreach ([
 ] as $path => $sectionKey) {
     Route::view("/{$path}", 'coming-soon', ['sectionKey' => $sectionKey])->name(str_replace('-', '_', $path).'.index');
 }
+
+Route::prefix('workspace')
+    ->name('workspace.')
+    ->middleware(['auth', 'verified', EnsureActiveMember::class])
+    ->group(function () {
+        Route::redirect('/', '/workspace/home');
+        Route::get('/home', [WorkspaceHomeController::class, 'index'])->name('home');
+        Route::get('/profile', [WorkspaceProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [WorkspaceProfileController::class, 'update'])->middleware('throttle:20,1')->name('profile.update');
+        Route::get('/setting', [WorkspaceSettingController::class, 'edit'])->name('setting.edit');
+        Route::put('/setting', [WorkspaceSettingController::class, 'update'])->middleware('throttle:20,1')->name('setting.update');
+        Route::get('/listing/spa', [WorkspaceListingController::class, 'spaIndex'])->name('listing.spa');
+        Route::get('/listing/therapist', [WorkspaceListingController::class, 'therapistIndex'])->name('listing.therapist');
+    });
 
 Route::prefix('workspace/article')
     ->name('workspace.article.')

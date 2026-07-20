@@ -22,7 +22,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
  * guidance to avoid premature collection splitting.
  */
 #[Fillable([
-    'username', 'email', 'password', 'birth_date',
+    'username', 'display_name', 'bio', 'email', 'password', 'birth_date',
     'terms_accepted_at', 'terms_accepted_version',
     'privacy_acknowledged_at', 'privacy_acknowledged_version',
     'is_marketing_email_opt_in',
@@ -74,6 +74,11 @@ class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmail
             'is_marketing_email_opt_in' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function publicName(): string
+    {
+        return $this->display_name ?: $this->username;
     }
 
     public function isActive(): bool

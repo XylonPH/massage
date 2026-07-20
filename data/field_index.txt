@@ -32,7 +32,9 @@ assigned_at
 assigned_user_id
 attribution_name
 author_user_id_list
+bio
 biography
+birth_date
 border_config
 caption_text
 care_description
@@ -58,12 +60,15 @@ decision_note
 default_value
 detected_person_list
 display_end_date
+display_name
 display_start_date
 dog_breed_key
 dog_breed_name
 download_scope
 duration
 editor_user_id_list
+email
+email_verified_at
 evidence_note
 exercise_description
 expires_at
@@ -112,6 +117,7 @@ is_favorite
 is_indexed
 is_locked
 is_mandatory
+is_marketing_email_opt_in
 is_relational
 is_responsive
 is_revoked
@@ -167,6 +173,7 @@ orientation_sexual
 origin_country_id_list
 part_of_day
 part_of_speech
+password
 photographer_user_id_list
 placeholder_text
 point_count
@@ -175,6 +182,8 @@ practitioner_name
 practitioner_slug
 preview_media_image_id_list
 priority_level
+privacy_acknowledged_at
+privacy_acknowledged_version
 published_at
 published_by_user_id
 quote_text
@@ -196,6 +205,7 @@ related_organization_id_list
 related_practitioner_id_list
 related_product_id_list
 related_service_id_list
+remember_token
 resolution_type
 resolved_at
 review_body
@@ -243,6 +253,7 @@ status_file
 status_import
 status_installation
 status_link
+status_membership
 status_moderation
 status_ownership
 status_payment
@@ -287,6 +298,8 @@ target_record_label
 target_reflexology
 target_skin_concern
 temperament_description
+terms_accepted_at
+terms_accepted_version
 theme_description
 theme_key
 theme_label
@@ -504,6 +517,7 @@ updated_at
 updated_by_device_id
 updated_by_user_id
 usage_count
+username
 validation_rule_list
 video_title
 video_variant_list

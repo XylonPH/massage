@@ -1,0 +1,68 @@
+<?php
+
+return [
+    'title' => 'Workspace',
+    'home_title' => 'Workspace Home',
+    'greeting' => 'Welcome back, :name',
+    'context_personal' => 'Personal',
+    'context_note' => 'You are in your Personal context. Professional and business tools appear here once you claim or create a managed profile.',
+
+    'nav_personal' => 'Personal',
+    'nav_home' => 'Home',
+    'nav_profile' => 'Profile',
+    'nav_settings' => 'Settings',
+    'nav_activity' => 'Activity',
+    'nav_reviews' => 'My Reviews',
+    'nav_articles' => 'My Articles',
+    'nav_managed' => 'Managed Work',
+    'nav_listing_spa' => 'My Establishments',
+    'nav_listing_therapist' => 'My Practitioner Profiles',
+
+    'card_account_title' => 'Account',
+    'card_account_member_since' => 'Member since :date',
+    'card_reviews_title' => 'My Reviews',
+    'card_reviews_text' => '{0} No reviews written yet.|{1} :count review written.|[2,*] :count reviews written.',
+    'card_articles_title' => 'My Articles',
+    'card_articles_text' => '{0} No articles yet.|{1} :count article.|[2,*] :count articles.',
+    'card_claim_title' => 'Run a spa or practice professionally?',
+    'card_claim_text' => 'Claim your establishment or therapist profile to manage services, prices, availability, and responses from this workspace.',
+    'card_claim_action' => 'Learn about claiming',
+    'open' => 'Open',
+
+    'coming_soon_title' => 'More workspace areas are on the way',
+    'coming_soon_text' => 'Saved items, following, messages, notifications, booking history, and rewards will appear here as those systems are completed.',
+
+    'profile_title' => 'Public Profile',
+    'profile_intro' => 'Control how you appear in reviews, discussions, and your future public profile page. Your username stays your permanent handle.',
+    'display_name_label' => 'Display name',
+    'display_name_hint' => 'Optional. Shown instead of your username. Leave blank to use your username.',
+    'bio_label' => 'Bio',
+    'bio_hint' => 'Optional. A short public introduction, up to 1,000 characters.',
+    'profile_saved' => 'Profile updated.',
+    'save' => 'Save Changes',
+
+    'settings_title' => 'Settings',
+    'settings_intro' => 'Account preferences. Security, language, theme, notification, and privacy settings arrive with their systems.',
+    'settings_account_heading' => 'Account',
+    'settings_username' => 'Username',
+    'settings_email' => 'Email address',
+    'settings_email_verified' => 'Verified',
+    'settings_marketing_heading' => 'Email preferences',
+    'settings_marketing_label' => 'Send me occasional wellness tips, promos, and platform news by email.',
+    'settings_marketing_hint' => 'Optional and separate from account or booking email. You can change this anytime.',
+    'settings_saved' => 'Settings updated.',
+
+    'listing_spa_title' => 'My Establishments',
+    'listing_spa_intro' => 'Establishments you manage appear here with their services, prices, hours, media, and review responses.',
+    'listing_spa_empty_title' => 'No managed establishments yet',
+    'listing_spa_empty_text' => 'When you claim an establishment, its management tools open here: profile details, services and prices, operating hours, media, promotions, and official review responses.',
+    'listing_spa_claim_action' => 'Claim your establishment',
+
+    'listing_therapist_title' => 'My Practitioner Profiles',
+    'listing_therapist_intro' => 'Professional profiles you manage appear here with services, schedule, credentials, and review responses.',
+    'listing_therapist_empty_title' => 'No managed practitioner profiles yet',
+    'listing_therapist_empty_text' => 'When you claim your therapist profile, its management tools open here: public profile, services and prices, availability, service area, credentials, and official review responses.',
+    'listing_therapist_claim_action' => 'Claim your therapist profile',
+
+    'claim_route_note' => 'Claiming verifies that you are the establishment operator or the practitioner before management access is granted.',
+];
