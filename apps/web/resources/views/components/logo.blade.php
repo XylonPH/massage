@@ -3,8 +3,8 @@
 @php
     // Drop-in brand assets take priority over the built-in fallback mark.
     // Place exported files under public/images/brand/ using these names:
-    //   logo-stacked-color.svg|png|webp  full stacked lockup (mark + wordmark), colored artwork for light backgrounds
-    //   logo-stacked-light.svg|png|webp  full stacked lockup, light artwork for dark backgrounds
+    //   logo-horizontal-color.svg|png|webp  full horizontal lockup (mark + wordmark), colored artwork for light backgrounds
+    //   logo-horizontal-light.svg|png|webp  full horizontal lockup, light artwork for dark backgrounds
     //   logo-mark-color.svg|png|webp     square mark only, light backgrounds (used when $wordmark is false)
     //   logo-mark-light.svg|png|webp     square mark only, dark backgrounds
     $brandFile = function (string $stem): ?string {
@@ -18,7 +18,7 @@
     };
 
     $mark = $dark ? ($brandFile('logo-mark-light') ?? $brandFile('logo-mark-color')) : $brandFile('logo-mark-color');
-    $full = $dark ? ($brandFile('logo-stacked-light') ?? $brandFile('logo-stacked-color')) : $brandFile('logo-stacked-color');
+    $full = $dark ? ($brandFile('logo-horizontal-light') ?? $brandFile('logo-horizontal-color')) : $brandFile('logo-horizontal-color');
 @endphp
 
 <span {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5']) }}>
