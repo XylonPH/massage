@@ -9,7 +9,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased">
-    <x-theme-toggle class="absolute right-4 top-4 z-10" />
     <div class="flex min-h-screen">
         {{-- Branded panel --}}
         <aside class="relative hidden w-[44%] overflow-hidden bg-ink-950 lg:flex lg:flex-col lg:justify-between" aria-hidden="true">
@@ -47,12 +46,15 @@
 
         {{-- Form panel --}}
         <main class="flex flex-1 flex-col overflow-y-auto">
-            <div class="flex items-center justify-between p-6 lg:justify-end">
+            <div class="flex items-center justify-between gap-2.5 p-6 lg:justify-end">
                 <a href="{{ route('home') }}" class="lg:hidden"><x-logo size="h-12" /></a>
-                <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800">
-                    <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H6.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L6.56 9.25h9.69A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/></svg>
-                    {{ __('auth.back_to_home') }}
-                </a>
+                <div class="flex items-center gap-2.5">
+                    <x-theme-toggle />
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800">
+                        <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H6.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L6.56 9.25h9.69A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/></svg>
+                        {{ __('auth.back_to_home') }}
+                    </a>
+                </div>
             </div>
             <div class="flex flex-1 items-center justify-center px-6 pb-12">
                 <div class="w-full max-w-md">
