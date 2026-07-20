@@ -88,7 +88,7 @@ $user_main = [
 	'remember_token' => null,
 
 	# Membership / Eligibility
-	'birth_date' => '1990-05-15T00:00:00Z', // date of birth stored, age always derived; 18+ eligibility
+	'birth_date' => '1990-05-15', // date-only Y-m-d string per Shared Project Standards 8.6 (never midnight UTC); age always derived; 18+ eligibility
 	'terms_accepted_at' => '2026-07-20T00:59:00Z',
 	'terms_accepted_version' => '2026-07-18.1',
 	'privacy_acknowledged_at' => '2026-07-20T00:59:00Z',
