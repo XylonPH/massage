@@ -6,6 +6,9 @@ return [
     'register_title' => 'Create your account',
     'register_subtitle' => 'Join Massage Nexus to book, review, learn, and earn rewards.',
 
+    'username_checking' => 'Checking availability…',
+    'username_available' => 'Username available.',
+
     'identifier_label' => 'Username or email',
     'username_label' => 'Username',
     'email_label' => 'Email address',
@@ -42,13 +45,14 @@ return [
     'log_in_link' => 'Log in',
     'back_to_home' => 'Back to home',
 
-    'aside_title' => 'Your wellness journey starts here',
+    'aside_title' => 'Find Your Next Great Massage.',
     'aside_point_discover' => 'Discover verified spas and skilled therapists near you',
     'aside_point_book' => 'Book appointments and keep your service history in one place',
     'aside_point_learn' => 'Learn with Massage Campus courses, guides, and quizzes',
     'aside_point_rewards' => 'Earn points, badges, and reputation as you participate',
 
     'username_reserved' => 'This username is reserved and cannot be used. Please choose another.',
+    'email_already_registered' => 'This email address is already registered.',
     'password_obvious_pattern' => 'This password is too predictable. Please choose a longer, less guessable password or passphrase.',
     'password_matches_identity' => 'Your password cannot be based on your username or email address.',
     'birth_date_too_young' => 'You must be at least 18 years old to join Massage Nexus.',

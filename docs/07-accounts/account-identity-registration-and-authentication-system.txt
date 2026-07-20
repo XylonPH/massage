@@ -1,7 +1,7 @@
 Title: Massage Nexus Account Identity Registration and Authentication System
-Document Version: 1.20
+Document Version: 1.21
 Date Created: 2026-07-18
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 DOCUMENT PURPOSE
 ----------------
@@ -853,6 +853,15 @@ sent after a successful reset.
 Session/device management beyond remember-token rotation and logout, TOTP, recovery codes,
 passkeys, and external identity providers remain unimplemented, matching their later position
 in the section 20 implementation order.
+
+Registration submission (POST /register) is rate-limited, matching the password-recovery
+pattern above. A separate advisory endpoint (GET /register/check-username) lets the register
+form show real-time username-availability feedback before submission; it runs the same format,
+protected-username, and uniqueness rules as registration itself, is independently rate-limited,
+and never replaces the authoritative server-side uniqueness check performed in
+RegisterController::store(). Page layout and copy for Login and Register are documented
+separately in Auth UI (docs/06-user-interface/auth-ui.txt); this section remains authoritative
+for the underlying behavior.
 
 ================================================================================
 18. CONCEPTUAL RECORD RESPONSIBILITIES

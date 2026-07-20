@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.60
+Document Version: 1.61
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -172,7 +172,10 @@ Legal, privacy, security, and accessibility:
 - privacy rights, retention, deletion, export, and correction;
 - secure media, authorization, audit, rate limits, incident reporting, and account recovery;
 - screen-reader, keyboard, contrast, scalable text, caption, error, form, and non-visual
-  workflow foundations.
+  workflow foundations, per Accessibility and Inclusive Design Requirements;
+- before public launch: re-confirm the CAPTCHA/bot-mitigation decision in that document
+  section 6 against real beta-period abuse data, and complete its full pre-launch checklist
+  (section 8), including a manual screen-reader/keyboard pass and caption-accuracy review.
 
 MILESTONE 3 — ACCOUNT AND POLICY ALPHA
 

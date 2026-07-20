@@ -1,0 +1,162 @@
+Title: Massage Nexus Auth UI (Login and Register)
+Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+
+Auth UI Documentation
+======================
+
+This document describes the implemented content and behavior of the Login and Register pages
+and the shared branded layout they render inside. It documents what is actually built
+(apps/web/resources/views/auth/, apps/web/resources/views/layouts/auth.blade.php,
+apps/web/app/Http/Controllers/Auth/), not a proposal. Behavior rules (validation, rate limits,
+password policy, session handling) remain owned by Account Identity, Registration, and
+Authentication System; this document owns page layout, copy, and on-page interaction only, and
+must be kept in sync with that specification and with Accessibility and Inclusive Design
+Requirements rather than restating their rules.
+
+Page Layout Overview
+---------------------
+
+Both pages share one two-column layout. A branded left panel (hidden below the lg breakpoint)
+carries the Massage Nexus identity and is marked decorative to assistive technology; a right
+panel carries the actual form and is the only content a screen-reader user or narrow-viewport
+user needs. Both panels sit inside layouts/auth.blade.php so a change to the shared panel
+affects Login, Register, Forgot Password, and Reset Password together.
+
+--------------------------------------------------------------------------------
+
+1. Branded Panel
+================
+
+Placement: Left column, 44% width, hidden on narrow viewports (lg breakpoint and above only).
+
+The panel shows the Massage Nexus logo linking home, a headline, four benefit points with
+icons, and a footer motto with the copyright year. The headline is the platform's current
+slogan, "Find Your Next Great Massage." (Basic Profile, Brand and Visual Identity), not generic
+placeholder copy. The four benefit points cover discovery, booking and service history, Massage
+Campus learning, and rewards/badges/reputation, each with a small icon. The entire panel carries
+aria-hidden="true": it is intentionally decorative and duplicates nothing a screen-reader user
+needs to complete registration or login, so hiding it removes noise rather than information.
+
+--------------------------------------------------------------------------------
+
+2. Form Panel Header
+=====================
+
+Placement: Top of the right column, both pages.
+
+A compact header shows the Massage Nexus logo (visible only below the lg breakpoint, since the
+branded panel already shows it above that breakpoint) and a "Back to home" link with a left-
+chevron icon. This header is shared by both pages and by the password-reset pages.
+
+--------------------------------------------------------------------------------
+
+3. Register Page
+=================
+
+Placement: Right column, /register.
+
+Heading "Create your account" and subheading "Join Massage Nexus to book, review, learn, and
+earn rewards." precede the form. A validation error summary renders above the form as a bulleted
+list when the page reloads with errors, and each field also repeats its own error inline
+directly under that field. This intentional duplication (summary plus per-field) mirrors the
+established Password Strength pattern below and helps both a sighted user scanning quickly and
+a screen-reader user who lands on a specific field.
+
+Fields, in order:
+
+Username: text input, lowercase letters and numbers only, 4-30 characters. As the user types (or
+on blur), an advisory, debounced check against GET /register/check-username shows real-time
+availability feedback ("Checking availability…", "Username available.", or the specific reason
+it is unavailable) directly under the field, before submission. This check is UX-only; the
+authoritative uniqueness check remains server-side in RegisterController::store() and always
+runs again at submission regardless of what the client-side check reported.
+
+Email address: email input. On a duplicate-email submission the message reads "This email
+address is already registered." (not "already taken," which reads naturally for a username but
+not for an email address people did not choose).
+
+Password: password input with a show/hide toggle (icon button, accessible name via visually
+hidden text, aria-pressed state) and an advisory strength meter (Too short / Fair / Good /
+Strong) that updates live as the user types via an aria-live region. The meter is explicitly
+advisory; server-side password policy (length, breach check, similarity to username/email)
+remains authoritative and is unaffected by what the meter shows.
+
+Confirm password: password input, must match Password.
+
+Date of birth: date input, capped client-side at 18 years before today; server-side validation
+is authoritative and independently enforces the same 18+ eligibility rule.
+
+Terms and privacy: a required checkbox linking to /legal/terms and /legal/privacy inside its
+label text, plus a separate, optional marketing-email-opt-in checkbox. These sit together inside
+a visually distinct grouped box so they read as a related pair, not two unrelated form fields.
+
+Submit button: "Create Account," full width. Below the form, a "Log in" link for users who
+already have an account.
+
+--------------------------------------------------------------------------------
+
+4. Login Page
+==============
+
+Placement: Right column, /login.
+
+Heading "Welcome back" and subheading "Log in to book, review, save, and connect." precede the
+form. Three possible status/error messages can appear above the form depending on how the user
+arrived: a neutral "please verify your email" notice, a positive password-reset-succeeded
+notice, and a generic invalid-credentials error. The invalid-credentials message deliberately
+does not reveal whether the username/email or the password was wrong, per Account Identity's
+generic-response requirement.
+
+Fields, in order:
+
+Username or email: single text input covering both identifiers (label: "Username or email"),
+since login accepts either.
+
+Password: password input with the same show/hide toggle as Register. The "Forgot password?"
+link sits inline with the Password label rather than below the field, so it stays visible without
+scrolling past the field itself.
+
+Remember me: checkbox, unchecked by default.
+
+Submit button: "Log In," full width. Below the form: a "Sign up" link for users without an
+account, and a smaller "Resend verification email" link for users stuck at the unverified stage.
+
+--------------------------------------------------------------------------------
+
+5. Password Reset Pages
+=========================
+
+Placement: /forgot-password and /reset-password/{token}, same shared layout.
+
+Not detailed field-by-field in this version of the document. They share the branded panel,
+header, and overall form styling described above; both submission endpoints are rate-limited
+(throttle:5,1) per Account Identity section 17. Expand this section when the reset pages need
+their own documented copy or layout decisions beyond what they already inherit.
+
+--------------------------------------------------------------------------------
+
+6. Cookie Preference Banner
+=============================
+
+Placement: Bottom of the screen when required, rendered by the shared layout on every auth page.
+
+Same component and behavior as the homepage's cookie banner (Homepage UI section 30): Accept
+All, Reject Non-Essential, and Manage Preferences, writing a first-party consent cookie.
+
+--------------------------------------------------------------------------------
+
+Auth UI Accessibility Notes
+=============================
+
+This page family is a release-blocking accessibility surface under Accessibility and Inclusive
+Design Requirements section 1 (a client cannot do anything else on the platform until they can
+register and log in). In addition to that document's general rules: the branded panel's
+aria-hidden="true" is intentional and must be preserved through any redesign, since it prevents
+a screen-reader user from having to tab or listen through marketing copy before reaching the
+actual form; the password strength meter and username-availability feedback are both delivered
+through aria-live regions specifically so a screen-reader user receives the same real-time
+signal a sighted user gets from the meter's color and width; and per section 6 of that document,
+no CAPTCHA exists on this page today, and any future addition must be reviewed against that
+section before implementation, not added directly to this page in isolation.

@@ -1,7 +1,7 @@
 Title: Massage Nexus Discussion System
-Document Version: 0.20
+Document Version: 0.21
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 Related Documents:
 - Massage Nexus - 03 - Features v1.90
@@ -13,6 +13,7 @@ Related Documents:
 - Massage Nexus - 21 - User Workspace v0.10
 - Massage Nexus - 22 - Admin Workspace v0.10
 - Massage Nexus - 29 - News Writing Guide v0.10
+- docs/18-policy/accessibility-and-inclusive-design-requirements.txt
 - Shared Project Standards v2.60
 
 DOCUMENT DESCRIPTION
@@ -1026,6 +1027,10 @@ Controls may include:
 - block list.
 
 Anti-spam should not make ordinary participation unnecessarily difficult.
+
+If CAPTCHA is used, it must follow Accessibility and Inclusive Design Requirements section 6:
+prefer honeypot and invisible behavioral checks first, and never deploy an image-only or
+audio-only challenge with no accessible alternative.
 
 ================================================================================
 46. RATE LIMITS

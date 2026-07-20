@@ -1,7 +1,7 @@
 Title: Massage Nexus Web Application
-Document Version: 0.10
+Document Version: 0.11
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-20
 Document Description: Defines the browser-based Massage Nexus application, including web-exclusive capabilities, web-enhanced workflows, public discovery, search indexing, multilingual pages, responsive workspaces, administration, accessibility, and boundaries with the mobile and desktop applications.
 
 Related Documents:
@@ -13,6 +13,7 @@ Related Documents:
 - Massage Nexus Translation System
 - Massage Nexus Cache and Temporary Data Strategy
 - Massage Nexus Support and Ticketing System
+- Massage Nexus Accessibility and Inclusive Design Requirements
 
 ================================================================================
 1. PURPOSE
@@ -295,6 +296,10 @@ Do not publicly cache authenticated or sensitive pages.
 13. ACCESSIBILITY
 ================================================================================
 
+Requirements, conformance target, and bot-mitigation/CAPTCHA constraints are defined in
+Accessibility and Inclusive Design Requirements. This section lists the web-specific baseline
+support only.
+
 Support:
 - semantic HTML;
 - keyboard;
@@ -324,7 +329,7 @@ Web hosts canonical:
 - Community Guidelines;
 - Research Methodology;
 - Statistics Methodology;
-- Accessibility guidance;
+- Accessibility guidance (public version of Accessibility and Inclusive Design Requirements);
 - advertiser guidance;
 - provider guidance;
 - correction and appeal guidance.

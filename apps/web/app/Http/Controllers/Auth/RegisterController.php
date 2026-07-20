@@ -7,9 +7,11 @@ use App\Models\User;
 use App\Rules\NotCompromisedPassword;
 use App\Rules\NotObviousPassword;
 use App\Rules\ProtectedUsername;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -20,6 +22,40 @@ class RegisterController extends Controller
     public function create(): View
     {
         return view('auth.register');
+    }
+
+    /**
+     * Advisory client-side availability check. This never replaces the
+     * authoritative uniqueness check performed in store() — it only lets
+     * the form give the user a faster hint before they submit.
+     */
+    public function checkUsername(Request $request): JsonResponse
+    {
+        $username = Str::lower((string) $request->query('username', ''));
+
+        $validator = Validator::make(['username' => $username], [
+            'username' => [
+                'required',
+                'string',
+                'regex:/^[a-z][a-z0-9]{3,29}$/',
+                Rule::unique(User::class, 'username'),
+                new ProtectedUsername,
+            ],
+        ], [
+            'username.regex' => __('auth.username_hint'),
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'available' => false,
+                'message' => $validator->errors()->first('username'),
+            ]);
+        }
+
+        return response()->json([
+            'available' => true,
+            'message' => __('auth.username_available'),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -61,6 +97,7 @@ class RegisterController extends Controller
             'marketing_opt_in' => ['sometimes', 'boolean'],
         ], [
             'username.regex' => __('auth.username_hint'),
+            'email.unique' => __('auth.email_already_registered'),
             'birth_date.before_or_equal' => __('auth.birth_date_too_young'),
             'terms_accepted.accepted' => __('auth.terms_must_accept'),
         ]);

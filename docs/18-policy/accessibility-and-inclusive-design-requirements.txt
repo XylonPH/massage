@@ -1,0 +1,211 @@
+Title: Massage Nexus Accessibility and Inclusive Design Requirements
+Document Version: 0.10
+Date Created: 2026-07-20
+Revision Date: 2026-07-20
+Status: Internal Accessibility Specification
+Publication Status: Not yet published as the public Accessibility guidance page referenced by Web Application section 14
+Authority: Current accepted accessibility direction for client-facing and provider-facing surfaces
+Shared Standard Version: 2.80
+
+Related Documents:
+- Massage Nexus Shared Project Standards (section 16, Interface and Accessibility Baseline)
+- Massage Nexus Web Application
+- Massage Nexus Mobile Application
+- Massage Nexus Desktop Application
+- Massage Nexus Testing and Quality Assurance Strategy
+- Massage Nexus Account Identity, Registration, and Authentication System
+- docs/06-user-interface/auth-ui.txt
+- Massage Nexus Discussion System
+- Massage Nexus Therapist Workspace
+- Massage Nexus Rating System
+- Massage Nexus Translation System
+
+DOCUMENT PURPOSE
+-----------------
+Shared Project Standards section 16 sets the cross-project interface and accessibility
+baseline (labels, focus order, contrast, color independence). This document does not repeat
+that baseline. It sets the Massage Nexus-specific conformance target, extends that baseline to
+groups the shared standard does not cover in depth (Deaf and hard-of-hearing users), applies it
+to a case the shared standard does not anticipate at all (providers who are themselves disabled,
+not only the clients browsing them), and records the platform's bot-mitigation approach so a
+public launch does not introduce an accessibility regression through a well-intentioned
+anti-abuse feature.
+
+This document governs the web, mobile, and desktop applications and the Therapist, Seller,
+Operator, and Admin workspaces. It is not a substitute for a real audit with assistive
+technology and disabled testers before public launch.
+
+================================================================================
+1. CONFORMANCE TARGET
+================================================================================
+
+Massage Nexus targets WCAG 2.1 Level AA as the accepted minimum across public pages,
+authentication, booking, and every workspace. Level AAA success criteria should be adopted
+where the cost is low and the benefit is real (for example, stronger contrast, clearer language,
+sign language interpretation for key video content) even where AA alone would pass.
+
+Accessibility is a release-blocking requirement for any surface a client or a provider needs to
+complete a core task (register, verify, log in, search, browse, book, message, manage a
+professional profile, respond to a client), not a post-launch nice-to-have.
+
+================================================================================
+2. BLIND AND LOW-VISION USERS
+================================================================================
+
+- Every interactive control has a programmatic accessible name; icon-only controls are never
+  unlabeled.
+- Page structure uses real headings and landmarks so a screen-reader user can navigate by
+  structure, not by reading the whole page top to bottom.
+- Focus order follows visual/reading order; focus is never trapped or lost after a dynamic
+  update (form submission, live availability check, modal, toast).
+- Nothing is communicated by color alone. This project already commits to this for claim,
+  verification, rating, and availability labels (see Spa Profile and Therapist Profile); this
+  document extends the same rule to every future surface.
+- Rating visuals use the connected pulse / nexus node system with numeric and text labels, not
+  bare stars or color swatches, so the score is available to a screen reader without relying on
+  an image.
+- Maps always have a text list alternative with the same information (name, distance, status).
+- Meaningful images carry real alternative text; decorative images are hidden from assistive
+  technology rather than read aloud as noise.
+- No workflow may require a sighted user to solve a purely visual challenge with no equivalent
+  non-visual path. See section 6 for how this applies to bot mitigation specifically.
+
+================================================================================
+3. DEAF AND HARD-OF-HEARING USERS
+================================================================================
+
+Deaf and hard-of-hearing accessibility is not fully covered by the shared cross-project
+baseline and needs its own explicit requirements here.
+
+- Every video (Campus lessons, comics with motion/audio elements, marketing and brand video,
+  interviews) carries accurate captions, not auto-generated captions left uncorrected.
+- Audio-only content (voice notes, if ever introduced) carries a text transcript.
+- Nothing is communicated by sound alone. A booking confirmation chime, a new-message alert, an
+  error tone: every one of these has an equal visual signal (banner, badge, visible toast) that
+  does not depend on the user hearing it.
+- Live or synchronous features (chat rooms, Room, live events) default to text-based
+  communication as a first-class mode, not an accommodation bolted on afterward. A deaf client
+  must be able to complete an inquiry or booking conversation with a therapist through text
+  without needing a phone call at any required step.
+- Where sign language interpretation is feasible for a key public video (brand introduction,
+  major how-to content), prefer it over captions-only; where it is not yet feasible, captions
+  remain mandatory regardless.
+- Contact and support channels always include a non-voice option (messaging, email, text-based
+  support) alongside any phone option; phone is never the only way to reach Support or a
+  provider.
+
+================================================================================
+4. MOTOR, COGNITIVE, AND OTHER ACCESS NEEDS
+================================================================================
+
+- Touch targets meet platform minimum size guidance; gestures always have a non-gesture
+  alternative (see Mobile Application section 9).
+- Time limits (session timeout, booking-hold windows) are extendable or clearly warned before
+  expiry rather than silently discarding a user's in-progress work.
+- Forms tolerate real-world input: paste is never blocked, autofill and password managers work,
+  and error messages state what is wrong and how to fix it in plain language next to the field
+  that failed, per the Account Identity specification.
+- Reduced-motion and text-scaling preferences are respected without breaking layout.
+
+================================================================================
+5. ACCESSIBILITY FOR PROVIDERS AND STAFF, NOT ONLY CLIENTS
+================================================================================
+
+Accessibility documentation across the industry is written almost entirely for the
+customer-facing side. Massage Nexus explicitly rejects that framing: a blind or Deaf person is
+not only a potential client browsing the directory, they are also a potential therapist,
+operator, or staff member actually working through this platform every day.
+
+- The Therapist Workspace, Operator Workspace, and Seller Workspace meet the same WCAG 2.1 AA
+  target as the public site. A therapist managing their own profile, schedule, prices, or
+  responding to a client message must be able to do so with a screen reader or without hearing,
+  with no degraded or "read-only" experience.
+- Booking, scheduling, and messaging tools used by providers do not rely on sound-only alerts or
+  color-only status indicators, for the same reasons given in sections 2 and 3.
+- Provider-facing analytics and dashboards (charts, calendars, availability grids) carry a
+  non-visual equivalent (data table, text summary) alongside any visual chart or grid.
+- Onboarding and claim flows for a new provider account do not assume the provider can see a
+  screen or hear audio instructions; verification and identity steps offer an accessible path.
+
+================================================================================
+6. BOT MITIGATION AND CAPTCHA
+================================================================================
+
+Current decision, recorded 2026-07-20:
+
+- No CAPTCHA is added before public launch. The site currently has no real traffic to defend,
+  and adding friction ahead of need has cost with no benefit.
+- Registration and the client-side username-availability check are rate-limited
+  (see RegisterController and routes/web.php) as the first line of defense; this alone is
+  sufficient pre-launch.
+- When bot mitigation for registration, reviews, ratings, or contact forms is needed
+  (see section 8), the accepted approach is, in order:
+  1. a hidden honeypot field (already an accepted technique per Discussion System section on
+     abuse controls);
+  2. an invisible, behavioral, risk-scored check (for example Cloudflare Turnstile or reCAPTCHA
+     v3) that does not present a visual or audio challenge to the large majority of legitimate
+     sessions, including screen-reader sessions;
+  3. only as a last resort for a session flagged high-risk by the above, a challenge — and that
+     challenge must offer more than one accessible modality (for example audio plus a
+     non-image, non-audio fallback such as a one-time code sent by email or SMS), never an
+     image-only or audio-only challenge with no alternative.
+- A traditional distorted-image CAPTCHA with no equivalent accessible path is rejected outright.
+  It is a well-documented barrier for blind and low-vision users, and the commonly offered audio
+  fallback is frequently unusable in practice (distorted, low quality, hard to parse even with a
+  screen reader). This conflicts directly with section 2 above and is not an acceptable
+  trade-off for bot mitigation.
+- Any future CAPTCHA or challenge decision must be reviewed against this section before
+  implementation, not decided independently by whichever feature happens to need bot mitigation
+  next.
+
+================================================================================
+7. TESTING AND VALIDATION
+================================================================================
+
+Testing follows Testing and Quality Assurance Strategy's general model; this section adds what
+that model does not already specify for accessibility.
+
+- Automated accessibility checks (axe or equivalent) run against new and changed public and
+  workspace pages as part of the normal test proportion-to-risk model.
+- Automated checks alone are not sufficient evidence of accessibility. Before public launch,
+  core flows (registration, login, search, booking, and the Therapist Workspace's profile and
+  messaging screens) require manual testing with real assistive technology: at minimum a screen
+  reader (NVDA or VoiceOver) and keyboard-only navigation.
+- Testing with actual disabled users, not only automated tools or sighted/hearing developers
+  simulating impairment, is the strongest signal available and is recommended before public
+  launch wherever it is practically possible.
+- Caption accuracy is checked by a human for every published video before it counts as meeting
+  section 3, not assumed correct because a caption track exists.
+
+================================================================================
+8. BEFORE PUBLIC LAUNCH
+================================================================================
+
+Confirm or complete each of the following before the site accepts public, non-test traffic:
+
+- re-confirm the CAPTCHA/bot-mitigation decision in section 6 against actual observed abuse
+  patterns from the beta period, rather than assuming the pre-launch decision still fits;
+- run a full WCAG 2.1 AA pass (automated plus manual screen-reader and keyboard testing) across
+  registration, login, search, booking, and the Therapist Workspace;
+- verify caption coverage and accuracy across all published video content;
+- verify every sound-based alert has a working visual equivalent and every color-based status
+  has a working non-color equivalent;
+- if practical, arrange informal usability review with people who are blind or low-vision and
+  people who are Deaf or hard-of-hearing before launch, not only after a complaint;
+- publish the public Accessibility guidance page referenced by Web Application section 14,
+  including a real, monitored contact channel for reporting an accessibility barrier.
+
+================================================================================
+9. DEFERRED DECISIONS
+================================================================================
+
+The following should be discussed or finalized later:
+
+- exact automated accessibility tooling and CI integration;
+- whether sign language interpretation is committed to for specific content categories or
+  remains case-by-case;
+- formal accessibility statement wording and legal review by launch jurisdiction;
+- accessibility requirements for user-generated media (review photos/video) versus
+  platform-authored content;
+- budget and vendor selection if a paid invisible bot-mitigation service (Turnstile/reCAPTCHA)
+  is adopted.

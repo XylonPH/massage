@@ -1,7 +1,7 @@
 Title: Massage Nexus Mobile Application
-Document Version: 0.10
+Document Version: 0.11
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-20
 Document Description: Defines the native mobile application, including mobile-exclusive capabilities, mobile-enhanced workflows, shared features, offline behavior, device integration, notifications, security, privacy, accessibility, and boundaries with the web and desktop applications.
 
 Related Documents:
@@ -13,6 +13,7 @@ Related Documents:
 - Massage Nexus Booking and Appointment System
 - Massage Nexus Data Research Provenance and Field Verification System
 - Massage Nexus Security Architecture and Information Disclosure Policy
+- Massage Nexus Accessibility and Inclusive Design Requirements
 
 ================================================================================
 1. PURPOSE AND SHARED RULES
@@ -229,6 +230,10 @@ Request permission at point of use, explain purpose, support denial, and avoid c
 ================================================================================
 9. ACCESSIBILITY
 ================================================================================
+
+Requirements, conformance target, and bot-mitigation/CAPTCHA constraints are defined in
+Accessibility and Inclusive Design Requirements. This section lists the mobile-specific baseline
+support only.
 
 Support:
 - screen readers;

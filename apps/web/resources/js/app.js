@@ -115,6 +115,54 @@ if (strengthInput && strengthMeter && strengthText) {
     });
 }
 
+// Advisory username availability check (server-side uniqueness check in
+// RegisterController::store() remains authoritative on submission)
+const usernameInput = document.querySelector('[data-username-check]');
+const usernameAvailability = document.querySelector('[data-username-availability]');
+if (usernameInput && usernameAvailability) {
+    const checkUrl = usernameInput.dataset.usernameCheck;
+    const pattern = /^[a-z][a-z0-9]{3,29}$/;
+    let debounceTimer;
+    let controller;
+
+    const setStatus = (text, tone) => {
+        usernameAvailability.textContent = text;
+        usernameAvailability.className = `mt-1.5 text-xs font-semibold ${tone}`;
+    };
+
+    const checkAvailability = async (value) => {
+        controller?.abort();
+        controller = new AbortController();
+        setStatus(usernameAvailability.dataset.checking, 'text-ink-400');
+        try {
+            const response = await fetch(`${checkUrl}?username=${encodeURIComponent(value)}`, {
+                headers: { Accept: 'application/json' },
+                signal: controller.signal,
+            });
+            const data = await response.json();
+            setStatus(data.message ?? '', data.available ? 'text-leaf-600' : 'text-ember-600');
+        } catch (error) {
+            if (error.name !== 'AbortError') setStatus('', 'text-ink-400');
+        }
+    };
+
+    usernameInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        const value = usernameInput.value.toLowerCase();
+        if (!pattern.test(value)) {
+            setStatus('', 'text-ink-400');
+            return;
+        }
+        debounceTimer = setTimeout(() => checkAvailability(value), 400);
+    });
+
+    usernameInput.addEventListener('blur', () => {
+        clearTimeout(debounceTimer);
+        const value = usernameInput.value.toLowerCase();
+        if (pattern.test(value)) checkAvailability(value);
+    });
+}
+
 // Community Pulse poll (visual preview — submissions are not stored yet)
 const poll = document.querySelector('[data-poll]');
 if (poll) {
