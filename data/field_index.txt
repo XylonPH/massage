@@ -15,6 +15,11 @@ approved_at
 approved_by_user_id
 archived_at
 archived_by_user_id
+article_body
+article_body_id
+article_id
+article_slug
+article_title
 attribution_name
 author_user_id_list
 border_config
@@ -26,11 +31,6 @@ color_config
 comment_count
 component_config
 constraint_text_input
-content_body
-content_body_id
-content_id
-content_slug
-content_title
 cover_media_image_id
 created_at
 created_by_user_id
@@ -168,7 +168,7 @@ section_fci_registry
 shadow_config
 share_count
 short_description
-source_content_body_id
+source_article_body_id
 source_media_image_id
 source_media_video_id
 source_title
@@ -272,7 +272,6 @@ type_contact_channel
 type_contact_event
 type_contact_group
 type_contact_number
-type_content
 type_cost_adjustment
 type_credit_appearance
 type_crew_role_group

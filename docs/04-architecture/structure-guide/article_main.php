@@ -1,10 +1,10 @@
 <?php
 /**
- * Title: Massage Nexus Content Main Structure Guide
+ * Title: Massage Nexus Article Main Structure Guide
  * Author: Xylon Reyes
  *
- * Collection: content_main
- * Version: 1.31
+ * Collection: article_main
+ * Version: 1.41
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -15,10 +15,10 @@
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
- * - content_main is currently treated as article-first content.
- * - type_content exists so future content types can be added without renaming
- *   the collection, but this version only defines Article as active scope.
- * - The long HTML article body is not stored here; use content_body.
+ * - article_main stores article identity, metadata, relationships, and publication state.
+ * - News, Reviews, Comics, Legal documents, and Announcements use separate collections.
+ * - The long HTML article body is not stored here; use article_body.
+ * - References to common_reference records retain that dataset's numeric identifier type.
  */
 
 # Variable
@@ -44,7 +44,7 @@ $field_property_default = [
 
 /**
  * Multilingual short-text sample.
- * Used by content_title, short_description, caption_text, alt_text, and similar
+ * Used by article_title, short_description, caption_text, alt_text, and similar
  * bounded user-facing text values. English is shown as sample data only; the
  * original language of authored content is controlled by language_original_id.
  */
@@ -62,12 +62,11 @@ $multilingual_text_sample = [
 ];
 
 /**
- * Actual record-level defaults for content_main.
- * These are defaults for stored content records, not field-definition metadata.
+ * Actual record-level defaults for article_main.
+ * These are defaults for stored Article records, not field-definition metadata.
  * Sparse-default storage may omit these values in actual database records.
  */
-$content_main_record_default = [
-	'type_content' => 'A', // A = Article; current default while content is article-first
+$article_main_record_default = [
 	'target_audience' => 'G', // G = General
 	'tag_id_list' => [],
 	'author_user_id_list' => [],
@@ -96,16 +95,16 @@ $content_main_record_default = [
 ];
 
 /**
- * content_main sample record.
+ * article_main sample record.
  * This sample intentionally includes populated values so the intended shape can
  * be reviewed. Actual sparse records may omit default values.
  */
-$content_main = [
+$article_main = [
 	# Primary
-	'_id' => 1, // physical MongoDB identity; referenced elsewhere as content_id
+	'_id' => 'A7mK2pQ9xR4tV8zN', // canonical application-generated 16-character Base62 identifier
 
 	# Core
-	'content_title' => [
+	'article_title' => [
 		'eng' => [
 			'text' => 'What Actually Happens During Your First Massage',
 			'method_translation' => 'HUM',
@@ -117,7 +116,7 @@ $content_main = [
 			'status_review' => 'A',
 		],
 	], // required public title; multilingual bounded text
-	'content_slug' => [
+	'article_slug' => [
 		'eng' => [
 			'text' => 'what-actually-happens-during-your-first-massage',
 			'method_translation' => 'HUM',
@@ -138,26 +137,25 @@ $content_main = [
 	], // optional; maximum 255 characters per language text value
 
 	# Parent / Classification
-	'language_original_id' => 1, // original authored language; default English may be omitted in sparse records
-	'type_content' => 'A', // A = Article; future values require an approved version update
+	'language_original_id' => 3049, // English in common_reference.language_main; common_reference IDs remain numeric
 	'type_article_category' => 'FTM', // article-only category, e.g. First-Time Massage and Spa Etiquette
 	'target_audience' => 'C', // C = Client
-	'tag_id_list' => [301, 302, 315], // tag records are stored in a separate tag collection
+	'tag_id_list' => ['T3gH7kM2pR9vX4cN', 'T8qL1sF6wB3nJ5dP', 'T5xC9mK4rV2hN7zQ'], // tag records are stored in a separate tag collection
 
 	# Credits
-	'author_user_id_list' => [501, 9001], // human users or Neural Agent user accounts credited as authors
-	'editor_user_id_list' => [502], // users who edited structure, clarity, grammar, or publication quality
-	'reviewer_user_id_list' => [503], // users who reviewed factual, safety, professional, or policy accuracy
-	'photographer_user_id_list' => [504], // optional article-level photo credit when applicable
+	'author_user_id_list' => ['U5rK8mP2xN7qL4vA', 'U9cF3hJ6sD1wB8nM'], // human users or Neural Agent user accounts credited as authors
+	'editor_user_id_list' => ['U2pR7vX4kT9mC5qL'], // users who edited structure, clarity, grammar, or publication quality
+	'reviewer_user_id_list' => ['U6nH1sW8dK3yP9fR'], // users who reviewed factual, safety, professional, or policy accuracy
+	'photographer_user_id_list' => ['U4bM9xQ2jV7cL5tN'], // optional article-level photo credit when applicable
 
 	# Media / Relationships
-	'cover_media_image_id' => 7001, // main image used for article cards, listing previews, and header display
-	'related_article_id_list' => [1002, 1005], // related content_main records
-	'related_organization_id_list' => [201], // organization-level relationship, e.g. Nuat Thai brand/company
-	'related_establishment_id_list' => [301], // branch/location-level relationship
-	'related_practitioner_id_list' => [401], // practitioner-level relationship; public UI may call them therapist/masseur/masseuse
-	'related_service_id_list' => [601, 602],
-	'related_product_id_list' => [801],
+	'cover_media_image_id' => 'M7dP2kR9xC4vN8hQ', // main image used for article cards, listing previews, and header display
+	'related_article_id_list' => ['B8nL3qR0yS5uW9aP', 'C9oM4rS1zT6vX0bQ'], // related article_main records
+	'related_organization_id_list' => ['O3gK8pV1xR6mN4cT'], // organization-level relationship, e.g. Nuat Thai brand/company
+	'related_establishment_id_list' => ['E6sQ2nW9kD4vH7pM'], // branch/location-level relationship
+	'related_practitioner_id_list' => ['P8rC3mL7xT1qV5nK'], // practitioner-level relationship; public UI may call them therapist/masseur/masseuse
+	'related_service_id_list' => ['S4vN9kR2pD7mX5cQ', 'S1hM6qT8wC3nL9yP'],
+	'related_product_id_list' => ['D7xP2mK5vR9cN4qT'],
 
 	# Cached Statistic
 	'view_count' => 1280,
@@ -167,7 +165,7 @@ $content_main = [
 	'reading_duration' => 420, // optional fallback estimated reading duration in seconds
 
 	# Handling
-	'is_commentable' => true, // comments are allowed for this content record
+	'is_commentable' => true, // comments are allowed for this Article
 	'is_shareable' => true, // sharing controls may display public share actions
 	'status_publication' => 'P', // D = Draft, S = Scheduled, P = Published, U = Unpublished
 	'status_review' => 'A', // P = Pending, A = Approved, N = Needs Changes, R = Rejected
@@ -179,32 +177,31 @@ $content_main = [
 			'type_record_note' => 'ED', // ED = Editorial Note
 			'note_body' => 'Check if this guide needs an updated beginner checklist before launch.',
 			'created_at' => '2026-07-06T08:15:00Z',
-			'created_by_user_id' => 502,
+			'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
 		],
 	], // embedded internal notes for this record; not public article body
 
 	# Audit
 	'created_at' => $created_at,
-	'created_by_user_id' => 501,
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
 	'updated_at' => $updated_at,
-	'updated_by_user_id' => 502,
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
 	'scheduled_publish_at' => null,
 	'published_at' => '2026-07-12T00:00:00Z',
-	'published_by_user_id' => 502,
+	'published_by_user_id' => 'U2pR7vX4kT9mC5qL',
 	'archived_at' => null,
 	'archived_by_user_id' => null,
 ];
 
 /**
- * Current content_main logical field order.
+ * Current article_main logical field order.
  */
-$content_main_field_order = [
+$article_main_field_order = [
 	'_id',
-	'content_title',
-	'content_slug',
+	'article_title',
+	'article_slug',
 	'short_description',
 	'language_original_id',
-	'type_content',
 	'type_article_category',
 	'target_audience',
 	'tag_id_list',
@@ -244,45 +241,46 @@ $content_main_field_order = [
 ];
 
 /**
- * Embedded structures owned by content_main.
+ * Embedded structures owned by article_main.
  */
-$content_main_embedded_structure = [
+$article_main_embedded_structure = [
 	'record_note' => [
 		'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
 		'note_body' => 'Internal note text for editors, reviewers, or administrators.',
 		'created_at' => '2026-07-06T08:15:00Z',
-		'created_by_user_id' => 502,
+		'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
 	],
 ];
 
 /**
- * Field-property guide for content_main.
+ * Field-property guide for article_main.
  * These are field-definition properties, not stored record defaults.
  */
-$content_main_field_property = [
+$article_main_field_property = [
 	# Primary
 	'_id' => [
-		'field_label' => 'Content ID',
-		'field_description' => 'Physical MongoDB identity for the content_main record. Referenced by other structures as content_id.',
-		'type_data' => 'I',
-		'type_sql' => 'INT',
+		'field_label' => 'Article ID',
+		'field_description' => 'Canonical application-generated 16-character Base62 identifier for the article_main record. Referenced by other structures as article_id.',
+		'type_data' => 'S',
+		'min_character' => 16,
+		'max_character' => 16,
 		'is_mandatory' => true,
 		'is_system' => true,
 		'is_indexed' => true,
 	],
 
 	# Core
-	'content_title' => [
-		'field_label' => 'Content Title',
-		'field_description' => 'Public multilingual title of the content record. For the current article-first scope, this is the article title.',
+	'article_title' => [
+		'field_label' => 'Article Title',
+		'field_description' => 'Public multilingual title of the article.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',
 		'is_translatable' => true,
 		'is_mandatory' => true,
 	],
-	'content_slug' => [
-		'field_label' => 'Content Slug',
-		'field_description' => 'Multilingual URL-safe slug text for public content routes. Values should use kebab-case.',
+	'article_slug' => [
+		'field_label' => 'Article Slug',
+		'field_description' => 'Multilingual URL-safe slug text for public article routes. Values should use kebab-case.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',
 		'is_translatable' => true,
@@ -301,31 +299,15 @@ $content_main_field_property = [
 	# Parent / Classification
 	'language_original_id' => [
 		'field_label' => 'Original Language ID',
-		'field_description' => 'Reference to the language in which the content was originally authored. The original does not have to be English.',
+		'field_description' => 'Numeric reference to common_reference.language_main for the language in which the article was originally authored. The original does not have to be English.',
 		'type_data' => 'I',
 		'type_sql' => 'INT',
 		'is_relational' => true,
 		'is_indexed' => true,
 	],
-	'type_content' => [
-		'field_label' => 'Content Type',
-		'field_description' => 'Classifies the content record. Current active scope is Article only; future content types require a structure version update.',
-		'type_field' => 'DDL',
-		'type_sql' => 'ENUM',
-		'field_option' => [
-			[
-				'option_code' => 'A',
-				'option_label' => 'Article',
-				'option_description' => 'Editorial or educational article content.',
-				'sort_order' => 10,
-			],
-		],
-		'is_mandatory' => true,
-		'is_indexed' => true,
-	],
 	'type_article_category' => [
 		'field_label' => 'Article Category',
-		'field_description' => 'Article-only editorial category used while type_content is Article. Category taxonomy is managed separately from tags.',
+		'field_description' => 'Editorial category for the article. Category taxonomy is managed separately from tags.',
 		'type_field' => 'DDL',
 		'type_sql' => 'ENUM',
 		'is_indexed' => true,
@@ -384,12 +366,11 @@ $content_main_field_property = [
 	# Media / Relationships
 	'cover_media_image_id' => [
 		'field_label' => 'Cover Media Image ID',
-		'field_description' => 'Reference to the main image used for content cards, previews, and header display. Inline article images are referenced inside content_body HTML.',
-		'type_data' => 'I',
-		'type_sql' => 'INT',
+		'field_description' => 'Reference to the main image used for article cards, previews, and header display. Inline article images are referenced inside article_body HTML.',
+		'type_data' => 'S',
 		'is_relational' => true,
 	],
-	'related_article_id_list' => ['field_label' => 'Related Article ID List', 'field_description' => 'Related content_main IDs for article-to-article recommendations.', 'type_data' => 'A', 'is_relational' => true],
+	'related_article_id_list' => ['field_label' => 'Related Article ID List', 'field_description' => 'Related article_main IDs for article-to-article recommendations.', 'type_data' => 'A', 'is_relational' => true],
 	'related_organization_id_list' => ['field_label' => 'Related Organization ID List', 'field_description' => 'Related organization IDs, such as spa brands or parent companies.', 'type_data' => 'A', 'is_relational' => true],
 	'related_establishment_id_list' => ['field_label' => 'Related Establishment ID List', 'field_description' => 'Related establishment IDs, such as spa branches or physical service locations.', 'type_data' => 'A', 'is_relational' => true],
 	'related_practitioner_id_list' => ['field_label' => 'Related Practitioner ID List', 'field_description' => 'Related practitioner IDs. Public UI may label practitioners as therapists, masseurs, or masseuses depending on context.', 'type_data' => 'A', 'is_relational' => true],
@@ -397,18 +378,18 @@ $content_main_field_property = [
 	'related_product_id_list' => ['field_label' => 'Related Product ID List', 'field_description' => 'Related wellness product IDs.', 'type_data' => 'A', 'is_relational' => true],
 
 	# Cached Statistic
-	'view_count' => ['field_label' => 'View Count', 'field_description' => 'Cached total number of recorded views for this content.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
-	'comment_count' => ['field_label' => 'Comment Count', 'field_description' => 'Cached total number of comments for this content.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
-	'save_count' => ['field_label' => 'Save Count', 'field_description' => 'Cached total number of user saves/bookmarks for this content.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
-	'share_count' => ['field_label' => 'Share Count', 'field_description' => 'Cached total number of share actions for this content.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
-	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Optional fallback estimated reading duration in seconds. Content-body language-specific values override this when present.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'view_count' => ['field_label' => 'View Count', 'field_description' => 'Cached total number of recorded views for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'comment_count' => ['field_label' => 'Comment Count', 'field_description' => 'Cached total number of comments for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'save_count' => ['field_label' => 'Save Count', 'field_description' => 'Cached total number of user saves or bookmarks for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'share_count' => ['field_label' => 'Share Count', 'field_description' => 'Cached total number of share actions for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Optional fallback estimated reading duration in seconds. Article-body language-specific values override this when present.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 
 	# Handling
 	'is_commentable' => ['field_label' => 'Is Commentable', 'field_description' => 'Indicates whether users may comment on this content.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN'],
 	'is_shareable' => ['field_label' => 'Is Shareable', 'field_description' => 'Indicates whether public share controls should be available for this content.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN'],
 	'status_publication' => [
 		'field_label' => 'Publication Status',
-		'field_description' => 'Current publication state of the content record.',
+		'field_description' => 'Current publication state of the Article record.',
 		'type_field' => 'DDL',
 		'type_sql' => 'ENUM',
 		'field_option' => [
@@ -421,7 +402,7 @@ $content_main_field_property = [
 	],
 	'status_review' => [
 		'field_label' => 'Review Status',
-		'field_description' => 'Editorial or approval review state of the content record.',
+		'field_description' => 'Editorial or approval review state of the Article record.',
 		'type_field' => 'DDL',
 		'type_sql' => 'ENUM',
 		'field_option' => [
@@ -432,19 +413,19 @@ $content_main_field_property = [
 		],
 		'is_indexed' => true,
 	],
-	'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Audience visibility rule for the content record.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
+	'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Audience visibility rule for the Article record.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'level_nsfw' => ['field_label' => 'NSFW Level', 'field_description' => 'Content-sensitivity level for moderation and display handling.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state such as active, archived, deleted, or retired.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
-	'record_note' => ['field_label' => 'Record Note', 'field_description' => 'Embedded internal notes attached to this content record.', 'type_data' => 'A', 'type_field' => 'JSE'],
+	'record_note' => ['field_label' => 'Record Note', 'field_description' => 'Embedded internal notes attached to this Article record.', 'type_data' => 'A', 'type_field' => 'JSE'],
 
 	# Audit
-	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this content record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
-	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this content record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
-	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this content record was last updated.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this content record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this Article record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
+	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this article record.', 'type_data' => 'S', 'is_relational' => true],
+	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this Article record was last updated.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this article record.', 'type_data' => 'S', 'is_relational' => true],
 	'scheduled_publish_at' => ['field_label' => 'Scheduled Publish At', 'field_description' => 'UTC timestamp when scheduled content should be published.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'published_at' => ['field_label' => 'Published At', 'field_description' => 'UTC timestamp when content was published.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'published_by_user_id' => ['field_label' => 'Published By User ID', 'field_description' => 'User ID that published the content.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'published_by_user_id' => ['field_label' => 'Published By User ID', 'field_description' => 'User ID that published the article.', 'type_data' => 'S', 'is_relational' => true],
 	'archived_at' => ['field_label' => 'Archived At', 'field_description' => 'UTC timestamp when content was archived.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived the content.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived the article.', 'type_data' => 'S', 'is_relational' => true],
 ];

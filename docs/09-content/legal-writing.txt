@@ -1,5 +1,5 @@
 Title: Massage Nexus Legal and Public Policy Writing Guide
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-20
 Revision Date: 2026-07-20
 Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
@@ -410,9 +410,11 @@ taxonomy documentation, not in this writing guide.
 Acceptance evidence, consent records, legal holds, internal counsel notes, privileged material,
 and sensitive evidence must not be embedded in the public content body.
 
-The current content_main, content_body, and content_revision structure guides are article-first.
-They must not be treated as legal-publication-ready until they can preserve an immutable complete
-published version, including all user-visible localized text and legal-specific metadata.
+Public legal documents use the separate legal_main domain. The article_main, article_body, and
+article_revision structure guides do not define legal publication records and must not be reused
+as though an Article revision were a controlling legal version. The detailed legal_main structure
+must preserve an immutable complete published version, including all user-visible localized text
+and legal-specific metadata.
 
 Reviews remain in the separate Review module and are not Legal content merely because a review
 discusses a legal issue or policy.
@@ -649,6 +651,8 @@ Current directions:
 - public versions are immutable and separate from internal editorial revision numbers;
 - acceptance, acknowledgment, and consent remain distinct;
 - acceptance evidence is stored separately from public content;
+- user_policy stores the user's versioned policy acceptance, acknowledgment, consent, and
+  withdrawal history; it does not store the controlling public legal text;
 - AI-only legal publication is prohibited;
 - legal and high-risk translation requires specialist review;
 - public legal pages use stable /legal routes and preserve prior versions;
@@ -657,8 +661,8 @@ Current directions:
 
 Open decisions:
 - final public legal and policy document taxonomy and option codes;
-- final database fields, indexes, and collection boundaries for legal metadata;
-- legal acceptance and acknowledgment collection design;
+- final database fields and indexes for legal_main;
+- final user_policy fields, evidence metadata, indexes, and retention rules;
 - public-version numbering policy;
 - exact material-change and renewed-acceptance decision authority;
 - authoritative locale policy for each launch market;
@@ -682,7 +686,7 @@ Open decisions:
 - docs/13-localization/translation-system.txt owns legal and high-risk translation workflow.
 - docs/01-project/site-structure-map.txt owns public legal routes.
 - docs/04-architecture/database-structure.txt owns database and collection boundaries.
-- docs/04-architecture/structure-guide/content_main.php,
-  docs/04-architecture/structure-guide/content_body.php, and
-  docs/04-architecture/structure-guide/content_revision.php are current article-first proposed
-  content structures and are not yet legal-publication-ready.
+- docs/04-architecture/structure-guide/article_main.php,
+  docs/04-architecture/structure-guide/article_body.php, and
+  docs/04-architecture/structure-guide/article_revision.php govern Articles only and are not
+  legal-publication structures.

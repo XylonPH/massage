@@ -3,9 +3,9 @@ Massage Nexus Article Writing Guide and Working Topic Calendar
 
 Field            | Value
 -----------------+-----------
-Document Version | 2.10
+Document Version | 2.20
 Date Created     | 2026-07-04
-Revision Date    | 2026-07-11
+Revision Date    | 2026-07-20
 
 Document Description
 --------------------
@@ -29,7 +29,7 @@ Target Article Length
 - Maximum normal article: 2,000 words, roughly 12,000 to 15,000 characters.
 - Deep guide, professional guide, medical-caution guide, business guide, or complex safety guide: 1,800 to 3,000 words, roughly 12,000 to 22,500 characters.
 - Hard upper limit before splitting into multiple articles: 4,000 words, roughly 24,000 to 30,000 characters.
-- Short site update or announcement: 300 to 700 words, roughly 1,800 to 5,000 characters.
+- Short focused Article: 300 to 700 words, roughly 1,800 to 5,000 characters.
 
 These ranges are targets, not prison bars. A short article is acceptable when the topic is simple and complete, while a longer article is acceptable when the subject needs explanation, safety notes, examples, comparison, or step-by-step guidance.
 
@@ -191,30 +191,25 @@ Related Rating and Reputation Documents
 
 Article reactions and article-author reputation effects should reference:
 
-- Massage Nexus - 14 - Rating System v1.10.md for content reaction rating rules and reward caps;
-- Massage Nexus - 16 - Reputation System v1.70.md for weighted helpfulness signals, per-item caps, diminishing returns, and author reputation effects.
+- docs/08-community/rating-system.txt for content-reaction rating rules and reward caps;
+- docs/08-community/reputation-system.txt for weighted helpfulness signals, per-item caps, diminishing returns, and author reputation effects.
 
 Articles themselves do not use the non-star 1 to 10 rating asset set because articles are content-reaction targets, not experience or product targets.
 
 Content and Media Structure References
 --------------------------------------
 
-Use the latest approved PHP structure guide files from:
+Use the current PHP-readable structure guides under docs/04-architecture/structure-guide/:
 
-
-Code block (text):
-    C:\Users\Xylon\OneDrive\Documents\text\PHP Script\Massage Nexus\
-
-- content_main v??.php for shared content metadata, type_content, category, target audience, tags, authors, publication status, counters, visibility, and embedded record_note.
-- content_body v??.php for language-specific HTML body content, language_id, reading_duration, and translation-related body handling.
-- content_revision v??.php for content revision snapshots, review decisions, approval history, and change tracking.
-- media_image v??.php for image metadata, image relationships, NSFW level, tags, people detection/recognition, storage path, storage URL, dimensions, captions, alt text, and creator/editor data.
-- media_video v??.php for video metadata, video relationships, NSFW level, tags, thumbnails, storage path, storage URL, dimensions, captions, duration, and creator/editor data.
+- article_main.php for Article metadata, category, target audience, tags, credits, publication status, counters, visibility, and embedded record_note;
+- article_body.php for language-specific HTML Article bodies, language_id, reading_duration, and translation handling;
+- article_revision.php for Article body snapshots, review decisions, approval history, and change tracking;
+- media_image.php and media_video.php for media metadata and relationships.
 
 
 This guide does not define public article routes. The article slug remains required metadata, but route structure belongs in the latest Massage Nexus Site Structure Map and related implementation documentation.
 
-For the current article-writing workflow, content_main can be treated as article-focused even though type_content exists for future content types such as news. Article bodies are stored as HTML in content_body, not as Markdown or plain text.
+Articles use article_main, article_body, and article_revision. They do not use a generic content_main collection or a type_content discriminator. News, Reviews, Comics, public Legal documents, and Announcements remain separate domains. Article bodies are stored as controlled HTML in article_body, not as Markdown or plain text.
 
 Function of Neural Agents in Article Work
 -----------------------------------------
@@ -223,7 +218,7 @@ Neural Agents function as editorial voice lenses, angle generators, draft helper
 
 A Neural Agent assignment suggests the best-fit voice and angle for a topic; it does not mean the article becomes an uncontrolled character diary or that the platform loses ownership of quality. The article should still feel like a Massage Nexus publication, even when the selected voice is blunt, warm, chaotic, formal, poetic, or humorous.
 
-The canonical Neural Agent writing-style reference should be the shared JSON file located at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\common_reference\neural_agent.json. When creating or assigning an article, use the selected Neural Agent's article_writing_style, tone, humor_style, comment_style, personality, and relevant preferences from that JSON file as the writing-style source. Project-specific copies such as Massage Nexus Neural Agent Profile.json may be used during planning, but the shared common_reference file should remain the long-term reusable source.
+The canonical Neural Agent writing-style reference is the shared repository JSON file at data/common_reference/neural_agent.json. When creating or assigning an article, use the selected Neural Agent's article_writing_style, tone, humor_style, comment_style, personality, and relevant preferences from that JSON file as the writing-style source. Project-specific copies such as Massage Nexus Neural Agent Profile.json may be used during planning, but the shared common_reference file remains the long-term reusable source.
 
 Suggested Neural Agent Fit
 --------------------------

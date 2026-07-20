@@ -15,6 +15,8 @@
  * - field_main is the global Zenith Field Catalog.
  * - field_main defines canonical reusable field meaning.
  * - Forms and database collections reference field_main records by field_id.
+ * - field_main retains counter-issued numeric _id values through id_counter as
+ *   an approved shared-infrastructure compatibility exception.
  * - Form fields and collection fields may add local usage overrides.
  * - Local usage overrides must not redefine the canonical field meaning here.
  *

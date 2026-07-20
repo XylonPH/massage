@@ -1,7 +1,7 @@
 Title: Massage Nexus Operator Workspace
-Document Version: 0.30
+Document Version: 0.40
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: Defines the private, permission-aware Operator Workspace used by authorized people to manage one or more establishment profiles, branches, public business information, services, staff relationships, media, booking operations, verification, documents, and analytics without controlling independent community or editorial content.
 
 Related Documents:
@@ -657,6 +657,10 @@ These are later-stage commerce functions.
 22. ANNOUNCEMENTS
 ================================================================================
 
+Operator announcements use announcement_main as the current working collection boundary. An
+Announcement is an official first-party statement from the authorized operator; it is not
+independent News and must not be presented with a News byline or reporting label.
+
 Possible announcements:
 
 - holiday hours;
@@ -677,6 +681,12 @@ Announcements should have:
 - language;
 - status;
 - public visibility.
+
+An Announcement may reference an establishment, branch, practitioner, service, event, or
+Promotion. The Promotion remains the authority for offer price, eligibility, dates, redemption,
+limits, and terms; the Announcement communicates that the Promotion exists. A press release or
+public-relations submission from an operator remains an Announcement or editorial source material
+unless Massage Nexus independently reports it as a separate News record.
 
 ================================================================================
 23. CLAIM AND VERIFICATION

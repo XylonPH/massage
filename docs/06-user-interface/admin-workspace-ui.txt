@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-19
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
 
 Related Documents:
@@ -185,6 +185,12 @@ Trust and Safety
 Content
 - Articles
 - News
+- Comics
+- Legal and Public Policies
+- Announcements
+- Quotes
+- Surveys
+- Quizzes
 - Media
 - Translation
 - Publication Calendar
@@ -551,6 +557,17 @@ Editorial pages should provide:
 - scheduling;
 - correction and retraction history.
 
+Articles, News, Comics, Legal documents, Announcements, Quotes, Surveys, and Quizzes may share
+list, queue, preview, scheduling, and approval components, but each page must show its actual domain
+label and domain-specific requirements. The interface must not imply that these records share one
+generic content collection. Announcement previews must identify the statement as first-party and
+must not use an independent-News presentation.
+
+Quote pages should expose attribution, source, language, display window, approval, and duplicate
+review. Survey and Quiz pages should expose question structure, audience, availability, translation,
+accessibility, scoring or result rules where applicable, response/export controls, preview,
+publication, closure, and archive.
+
 The publication action should open a compact readiness summary. Missing mandatory approval, disclosure, source, translation, or accessibility requirements block publication rather than appearing as a dismissible warning.
 
 ================================================================================
@@ -777,6 +794,7 @@ Bulk-action UI must always show selected count, affected type, scope, preview, i
 System operations should be separated into focused pages:
 
 - configuration by capability;
+- themes;
 - jobs and scheduler;
 - search index;
 - cache;
@@ -805,6 +823,20 @@ Each setting should show:
 - approval and audit requirement.
 
 Secrets should be represented by status and reference metadata, never plaintext value.
+
+Theme pages should separate draft, preview, validation, publication, scheduling, version history,
+and rollback. Preview must support representative pages, supported viewport sizes, languages,
+right-to-left behavior when applicable, dark or light variants where supported, missing assets,
+translation completeness, and accessible contrast and focus checks.
+
+Cache pages should default to targeted invalidation by environment, capability, target, locale,
+permission scope, key family, or revision. They should show estimated scope, affected dependencies,
+progress, partial failure, and audit details. Global clearing requires a stronger warning and
+permission.
+
+Statistics and rating-maintenance pages should request recomputation from authoritative records,
+show a dry run or impact estimate where practical, run as idempotent jobs, and report reconciliation
+results. The interface must not offer direct editing of aggregate counts as a repair method.
 
 ================================================================================
 20. BACKUP, RESTORE, MAINTENANCE, AND LOCKS
@@ -1139,6 +1171,8 @@ Phase 3
 - External services consumed by Massage Nexus receive usage, quota, cost, error, and health views.
 - Secrets are represented by status and reference metadata, never displayed plaintext after creation.
 - Audit is read-only in the interface.
+- Themes, Quotes, Surveys, Quizzes, Announcements, targeted cache invalidation, and aggregate
+  recomputation use permission-scoped, domain-specific pages.
 - Filament is a working implementation choice, not a permanent UI requirement until compatibility is verified.
 
 ================================================================================

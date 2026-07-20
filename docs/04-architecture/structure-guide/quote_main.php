@@ -4,8 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: quote_main
- * Version: 0.10
- * Status: Proposed structure for review; not an accepted decision.
+ * Version: 0.20
  *
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
@@ -28,7 +27,8 @@
  *
  * Scope decisions:
  * - A quote is short approved text with attribution; it is not article content
- *   and does not use content_main or content_body.
+ *   and does not use article_main or article_body.
+ * - References to common_reference records retain that dataset's numeric identifier type.
  * - Publication and scheduling behavior is represented by status_review,
  *   is_display_enabled, and the optional display_start_date/display_end_date
  *   window. A quote is eligible for homepage rotation only when review status
@@ -44,12 +44,8 @@
  *   not stored state; no display counters are stored.
  *
  * Identifier note:
- * The sample below follows the existing Massage Nexus structure guides
- * (content_main, media_image), which show a simple numeric _id. The accepted
- * identifier direction in docs/04-architecture/database-structure.txt section 4
- * is an application-generated opaque 16-character alphanumeric _id for
- * MongoDB collections. Resolve the final identifier form at implementation
- * time consistently across collections; this guide does not decide it.
+ * The sample follows the accepted application-generated opaque 16-character
+ * Base62 _id direction in docs/04-architecture/database-structure.txt section 4.
  */
 
 # Variable
@@ -117,7 +113,7 @@ $quote_main_record_default = [
  */
 $quote_main = [
 	# Primary
-	'_id' => 1, // physical MongoDB identity; referenced elsewhere as quote_id; see Identifier note above
+	'_id' => 'Q8mR3xN6pK1vT9cH', // canonical application-generated 16-character Base62 identifier
 
 	# Core
 	'quote_text' => [
@@ -134,7 +130,7 @@ $quote_main = [
 	], // required multilingual quote text; the displayed language follows the visitor's interface language with fallback rules
 
 	# Parent / Classification
-	'language_original_id' => 1, // original language of the quoted text; default English may be omitted in sparse records
+	'language_original_id' => 3049, // English in common_reference.language_main; common_reference IDs remain numeric
 	'type_quote_category' => ['WEL', 'MOT'], // multi-select codes from type_quote_category (see data/taxonomy/massage_nexus/content_classification.json)
 
 	# Attribution / Source
@@ -156,15 +152,15 @@ $quote_main = [
 			'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
 			'note_body' => 'Attribution confirmed against two published interviews.',
 			'created_at' => '2026-07-19T00:00:00Z',
-			'created_by_user_id' => 502,
+			'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
 		],
 	], // embedded internal notes for this record; not public text
 
 	# Audit
 	'created_at' => $created_at,
-	'created_by_user_id' => 501,
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
 	'updated_at' => $updated_at,
-	'updated_by_user_id' => 502,
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
 	'archived_at' => null,
 	'archived_by_user_id' => null,
 ];
@@ -197,14 +193,14 @@ $quote_main_field_order = [
 
 /**
  * Embedded structures owned by quote_main.
- * record_note reuses the shared embedded note structure used by content_main.
+ * record_note reuses the shared embedded note shape also used by article_main.
  */
 $quote_main_embedded_structure = [
 	'record_note' => [
 		'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
 		'note_body' => 'Internal note text for editors, reviewers, or administrators.',
 		'created_at' => '2026-07-19T00:00:00Z',
-		'created_by_user_id' => 502,
+		'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
 	],
 ];
 
@@ -216,9 +212,10 @@ $quote_main_field_property = [
 	# Primary
 	'_id' => [
 		'field_label' => 'Quote ID',
-		'field_description' => 'Physical MongoDB identity for the quote_main record. Referenced by other structures as quote_id.',
-		'type_data' => 'I',
-		'type_sql' => 'INT',
+		'field_description' => 'Canonical application-generated 16-character Base62 identifier for the quote_main record. Referenced by other structures as quote_id.',
+		'type_data' => 'S',
+		'min_character' => 16,
+		'max_character' => 16,
 		'is_mandatory' => true,
 		'is_system' => true,
 		'is_indexed' => true,
@@ -238,7 +235,7 @@ $quote_main_field_property = [
 	# Parent / Classification
 	'language_original_id' => [
 		'field_label' => 'Original Language ID',
-		'field_description' => 'Reference to the language in which the quote was originally expressed. The original does not have to be English.',
+		'field_description' => 'Numeric reference to common_reference.language_main for the language in which the quote was originally expressed. The original does not have to be English.',
 		'type_data' => 'I',
 		'type_sql' => 'INT',
 		'is_relational' => true,
@@ -294,7 +291,7 @@ $quote_main_field_property = [
 	# Handling
 	'status_review' => [
 		'field_label' => 'Review Status',
-		'field_description' => 'Editorial approval state of the quote. Only Approved quotes are eligible for public display. Uses the same option codes as content_main.status_review.',
+		'field_description' => 'Editorial approval state of the quote. Only Approved quotes are eligible for public display. Uses the same option codes as article_main.status_review.',
 		'type_field' => 'DDL',
 		'type_sql' => 'ENUM',
 		'field_option' => [
@@ -311,11 +308,11 @@ $quote_main_field_property = [
 
 	# Audit
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this quote record was created.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
-	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this quote record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this quote record.', 'type_data' => 'S', 'is_relational' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this quote record was last updated.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this quote record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this quote record.', 'type_data' => 'S', 'is_relational' => true],
 	'archived_at' => ['field_label' => 'Archived At', 'field_description' => 'UTC timestamp when this quote record was archived.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived this quote record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived this quote record.', 'type_data' => 'S', 'is_relational' => true],
 ];
 
 /**

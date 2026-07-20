@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace
-Document Version: 0.40
+Document Version: 0.50
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
 
 Related Documents:
@@ -268,7 +268,14 @@ Routes:
 /workspace/database/user
 /workspace/database/content
 /workspace/database/article
+/workspace/database/news
 /workspace/database/review
+/workspace/database/comic
+/workspace/database/legal
+/workspace/database/announcement
+/workspace/database/quote
+/workspace/database/survey
+/workspace/database/quiz
 /workspace/database/media
 /workspace/database/contribution
 /workspace/database/claim
@@ -610,6 +617,12 @@ Routes:
 /workspace/editorial/content
 /workspace/editorial/article
 /workspace/editorial/news
+/workspace/editorial/comic
+/workspace/editorial/legal
+/workspace/editorial/announcement
+/workspace/editorial/quote
+/workspace/editorial/survey
+/workspace/editorial/quiz
 /workspace/editorial/category
 /workspace/editorial/tag
 /workspace/editorial/author
@@ -635,6 +648,19 @@ Editorial administrators may manage:
 - revision;
 - correction;
 - archive.
+
+The editorial area may administer Articles, News, Comics, public Legal documents, official
+Announcements, Quotes, Surveys, and Quizzes according to separate permissions and the owning
+domain specification. The shared workspace and queue patterns do not merge these records into a
+generic content collection. announcement_main is the current working collection name for official
+first-party announcements; it is not independent News.
+
+Quote administration includes attribution, source, language, category, display window,
+duplication review, approval, scheduling, retirement, and correction. Survey and Quiz
+administration includes draft, question and response structure, audience, availability window,
+translation, accessibility, moderation, scoring or result rules where applicable, preview,
+publication, closure, export authorization, and archive. Their final schemas remain owned by their
+future domain specifications.
 
 Sponsored content must remain labeled.
 
@@ -667,6 +693,11 @@ Editorial decisions may include:
 - archive.
 
 Publication requires all mandatory approvals for the content risk. A publication action must not silently approve unresolved source, copyright, sponsorship, translation, or accessibility requirements.
+
+Approved material may be prepared for external social channels, but direct publishing, account
+credential handling, provider integration, scheduling, retry, and publication reconciliation remain
+deferred until the secured social-publishing system is approved. The Admin Workspace must not imply
+that a prepared social post was published externally when it was only exported or copied.
 
 ================================================================================
 16. TRANSLATION ADMINISTRATION
@@ -889,6 +920,16 @@ System settings should be divided by area.
 
 Do not create one giant settings form.
 
+Theme administration should support permission-scoped editing of theme definitions, asset and
+translation completeness checks, accessible preview, validation, draft and published states,
+activation scheduling where supported, version history, rollback, and audit. A theme must not be
+published when required assets, tokens, contrast checks, or compatibility validation fail.
+
+Cache operations should provide targeted invalidation by environment, capability, target, locale,
+permission scope, key family, or revision. Global cache clearing is a high-risk fallback rather
+than the ordinary action. The interface must distinguish authoritative-data changes from cache
+invalidation and report partial failures.
+
 ================================================================================
 21. JOB AND QUEUE MANAGEMENT
 ================================================================================
@@ -914,6 +955,11 @@ Job types may include:
 - AI;
 - report;
 - backup.
+- targeted cache invalidation;
+- search-index rebuild;
+- translation completeness scan;
+- analytics aggregate recomputation;
+- rating and statistics count recomputation.
 
 Retry should be safe and should avoid duplicate effects.
 
@@ -1089,6 +1135,11 @@ Administrative analytics may cover:
 Analytics should not expose private individual behavior without a legitimate purpose and permission.
 
 Administrative analytics must use the metric definitions, privacy classes, aggregation rules, minimum group thresholds, staff and bot exclusions, retention limits, and export controls defined by the Analytics Statistics and Measurement System. Person-level drill-down is not a general analytics feature and requires a separately authorized operational, fraud, privacy, or security purpose.
+
+Authorized administrators may request recomputation of cached statistics, rating aggregates, and
+derived counts from authoritative source records. They must not directly edit a displayed count or
+aggregate to manufacture a result. Recompute operations require a scoped dry run or impact preview
+where practical, idempotent jobs, progress and failure reporting, reconciliation, and audit.
 
 ================================================================================
 28. SUPPORT
@@ -1399,6 +1450,8 @@ Phase 3
 - One common queue framework supports domain-specific workflows without replacing their authoritative rules.
 - Third-party API, AI, maps, communication, storage, search, and processing usage require health, quota, budget, and cost visibility.
 - Administrative UI behavior is defined separately in Massage Nexus Admin Workspace User Interface.
+- Theme publication, Quotes, Surveys, Quizzes, Announcements, targeted cache invalidation, and
+  aggregate recomputation are permission-scoped administrative capabilities.
 
 ================================================================================
 38. OPEN DECISIONS

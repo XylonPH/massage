@@ -1,5 +1,5 @@
 Title: Massage Nexus Account Identity Registration and Authentication System
-Document Version: 1.21
+Document Version: 1.31
 Date Created: 2026-07-18
 Revision Date: 2026-07-20
 
@@ -164,7 +164,8 @@ Not required during initial registration:
 - marketing consent.
 
 Marketing email and promotional SMS consent must be separate, optional, and unchecked by
-default. They must not be bundled into required Terms acceptance.
+default. They must not be bundled into required Terms acceptance. Separate user decisions do not
+require separate collections: their versioned grant and withdrawal history belongs in user_policy.
 
 ================================================================================
 4. USERNAME POLICY
@@ -864,10 +865,33 @@ separately in Auth UI (docs/06-user-interface/auth-ui.txt); this section remains
 for the underlying behavior.
 
 ================================================================================
-18. CONCEPTUAL RECORD RESPONSIBILITIES
+18. COLLECTION AND RECORD RESPONSIBILITIES
 ================================================================================
 
-These are conceptual responsibilities, not final collection names:
+The accepted initial project-local account collection boundaries are:
+
+user_main:
+- account identity, membership state, public profile, and bounded current preferences normally
+  loaded and updated with the user;
+- examples include current interface language, time zone, regional formatting, theme,
+  accessibility, notification, community, and content-visibility preferences where applicable;
+- a current convenience flag may summarize whether a required policy step is outstanding, but it
+  is not the authoritative evidence that the user accepted or acknowledged a particular version.
+
+user_policy:
+- history-preserving records of the user's required policy acceptance, privacy or policy
+  acknowledgment, optional consent grant, and consent withdrawal;
+- identifies the applicable policy or public legal document, exact version, site, locale, action,
+  date and time, and approved evidence metadata;
+- preserves separate user decisions even though they share one collection;
+- does not store the controlling public legal text and does not absorb ordinary preferences;
+- is not replaced by a single mutable consent flag in user_main.
+
+Do not create a separate user_consent collection under the current direction. Additional account
+collections are created only when an independently growing, secured, searched, retained, or
+operated responsibility requires one.
+
+The following remain conceptual responsibilities rather than final additional collection names:
 
 Network account:
 - global identity and lifecycle.
@@ -882,13 +906,13 @@ Contact:
 - email or mobile number and verification state.
 
 Site membership:
-- Massage Nexus eligibility, status, roles, and policy acceptance.
+- Massage Nexus eligibility, status, roles, and current policy-compliance requirement.
 
 Profile:
 - public Massage Nexus identity and visibility-controlled information.
 
 Preference:
-- universal and site-specific settings.
+- universal and site-specific current settings, initially bounded within user_main.
 
 Session and device:
 - active authentication sessions and recognized devices.
@@ -902,8 +926,8 @@ Security event:
 Media asset:
 - avatar, cover, image, video, processing, storage, and moderation metadata.
 
-Policy acceptance:
-- document type, version, site, locale, date and time, and approved evidence metadata.
+Policy history:
+- accepted user_policy responsibility described above.
 
 ================================================================================
 19. TESTING REQUIREMENTS

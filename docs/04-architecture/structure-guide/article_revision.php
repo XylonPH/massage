@@ -1,10 +1,10 @@
 <?php
 /**
- * Title: Massage Nexus Content Revision Structure Guide
+ * Title: Massage Nexus Article Revision Structure Guide
  * Author: Xylon Reyes
  *
- * Collection: content_revision
- * Version: 1.01
+ * Collection: article_revision
+ * Version: 1.11
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -15,9 +15,10 @@
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
- * - content_revision stores body snapshots for review, rollback, and editorial
+ * - article_revision stores body snapshots for review, rollback, and editorial
  *   revision history.
- * - It focuses on content_body revisions, not general audit logging.
+ * - It focuses on article_body revisions, not general audit logging.
+ * - References to common_reference records retain that dataset's numeric identifier type.
  */
 
 # Variable
@@ -42,9 +43,9 @@ $field_property_default = [
 ];
 
 /**
- * Actual record-level defaults for content_revision.
+ * Actual record-level defaults for article_revision.
  */
-$content_revision_record_default = [
+$article_revision_record_default = [
 	'revision_number' => 1,
 	'revision_note' => null,
 	'review_note' => null,
@@ -53,20 +54,20 @@ $content_revision_record_default = [
 ];
 
 /**
- * content_revision sample record.
+ * article_revision sample record.
  */
-$content_revision = [
+$article_revision = [
 	# Primary
-	'_id' => 3001,
+	'_id' => 'R9cM4xK1pT7vN2qH',
 
 	# Parent
-	'content_id' => 1001,
-	'content_body_id' => 2001,
-	'language_id' => 1,
+	'article_id' => 'A7mK2pQ9xR4tV8zN',
+	'article_body_id' => 'B6qN1xT8mR3vK9cP',
+	'language_id' => 3049, // English in common_reference.language_main; common_reference IDs remain numeric
 
 	# Revision Snapshot
 	'revision_number' => 2,
-	'content_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, areas of discomfort, and privacy preferences.</p>',
+	'article_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, areas of discomfort, and privacy preferences.</p>',
 	'reading_duration' => 435,
 	'revision_note' => 'Expanded the consultation paragraph and clarified privacy wording.',
 	'review_note' => 'Approved after safety wording update.',
@@ -77,22 +78,22 @@ $content_revision = [
 
 	# Audit
 	'created_at' => $created_at,
-	'created_by_user_id' => 501,
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
 	'submitted_at' => '2026-07-06T09:30:00Z',
-	'submitted_by_user_id' => 501,
+	'submitted_by_user_id' => 'U5rK8mP2xN7qL4vA',
 	'reviewed_at' => '2026-07-06T10:00:00Z',
-	'reviewed_by_user_id' => 503,
+	'reviewed_by_user_id' => 'U6nH1sW8dK3yP9fR',
 	'approved_at' => '2026-07-06T10:30:00Z',
-	'approved_by_user_id' => 503,
+	'approved_by_user_id' => 'U6nH1sW8dK3yP9fR',
 ];
 
-$content_revision_field_order = [
+$article_revision_field_order = [
 	'_id',
-	'content_id',
-	'content_body_id',
+	'article_id',
+	'article_body_id',
 	'language_id',
 	'revision_number',
-	'content_body',
+	'article_body',
 	'reading_duration',
 	'revision_note',
 	'review_note',
@@ -108,13 +109,13 @@ $content_revision_field_order = [
 	'approved_by_user_id',
 ];
 
-$content_revision_field_property = [
-	'_id' => ['field_label' => 'Content Revision ID', 'field_description' => 'Physical MongoDB identity for the content_revision record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
-	'content_id' => ['field_label' => 'Content ID', 'field_description' => 'Reference to the owning content_main record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-	'content_body_id' => ['field_label' => 'Content Body ID', 'field_description' => 'Reference to the body record being revised.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-	'language_id' => ['field_label' => 'Language ID', 'field_description' => 'Language of the revised body snapshot.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-	'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Sequential revision number for the content body language version.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
-	'content_body' => ['field_label' => 'Content Body', 'field_description' => 'Snapshot of the controlled/theme-aware HTML body at this revision.', 'type_data' => 'S', 'type_field' => 'HTE', 'format_text' => 'HTML', 'is_mandatory' => true],
+$article_revision_field_property = [
+	'_id' => ['field_label' => 'Article Revision ID', 'field_description' => 'Canonical application-generated 16-character Base62 identifier for the article_revision record.', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
+	'article_id' => ['field_label' => 'Article ID', 'field_description' => 'Reference to the owning article_main record.', 'type_data' => 'S', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+	'article_body_id' => ['field_label' => 'Article Body ID', 'field_description' => 'Reference to the article body being revised.', 'type_data' => 'S', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+	'language_id' => ['field_label' => 'Language ID', 'field_description' => 'Numeric reference to common_reference.language_main for the revised body snapshot.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+	'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Sequential revision number for the article body language version.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
+	'article_body' => ['field_label' => 'Article Body', 'field_description' => 'Snapshot of the controlled/theme-aware HTML article body at this revision.', 'type_data' => 'S', 'type_field' => 'HTE', 'format_text' => 'HTML', 'is_mandatory' => true],
 	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Estimated reading duration in seconds for this revision snapshot.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 	'revision_note' => ['field_label' => 'Revision Note', 'field_description' => 'Internal note explaining what changed in this revision.', 'type_data' => 'S', 'type_field' => 'TXA', 'format_text' => 'TXT'],
 	'review_note' => ['field_label' => 'Review Note', 'field_description' => 'Reviewer note explaining approval, rejection, or requested changes.', 'type_data' => 'S', 'type_field' => 'TXA', 'format_text' => 'TXT'],
@@ -132,11 +133,11 @@ $content_revision_field_property = [
 	],
 	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state for this revision record.', 'type_field' => 'DDL', 'type_sql' => 'ENUM'],
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this revision record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
-	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this revision.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this revision.', 'type_data' => 'S', 'is_relational' => true],
 	'submitted_at' => ['field_label' => 'Submitted At', 'field_description' => 'UTC timestamp when this revision was submitted for review.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'submitted_by_user_id' => ['field_label' => 'Submitted By User ID', 'field_description' => 'User ID that submitted this revision for review.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'submitted_by_user_id' => ['field_label' => 'Submitted By User ID', 'field_description' => 'User ID that submitted this revision for review.', 'type_data' => 'S', 'is_relational' => true],
 	'reviewed_at' => ['field_label' => 'Reviewed At', 'field_description' => 'UTC timestamp when this revision was reviewed.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'reviewed_by_user_id' => ['field_label' => 'Reviewed By User ID', 'field_description' => 'User ID that reviewed this revision.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'reviewed_by_user_id' => ['field_label' => 'Reviewed By User ID', 'field_description' => 'User ID that reviewed this revision.', 'type_data' => 'S', 'is_relational' => true],
 	'approved_at' => ['field_label' => 'Approved At', 'field_description' => 'UTC timestamp when this revision was approved.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'approved_by_user_id' => ['field_label' => 'Approved By User ID', 'field_description' => 'User ID that approved this revision.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'approved_by_user_id' => ['field_label' => 'Approved By User ID', 'field_description' => 'User ID that approved this revision.', 'type_data' => 'S', 'is_relational' => true],
 ];

@@ -3,11 +3,11 @@ Shared Project Standards
 
 Field                  | Value
 -----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Document Version       | 2.80
+Document Version       | 2.90
 Author                 | Xylon Reyes
 Original Creation Date | June 9, 2026
-Revision Date          | July 19, 2026
-Supersedes             | Shared Project Standards v2.70
+Revision Date          | July 20, 2026
+Supersedes             | Shared Project Standards v2.80
 Applies To             | All projects in Xylon's project ecosystem unless an explicit project-specific exception is recorded
 Description            | Shared documentation, versioning, coding, testing, technical, data, naming, multilingual, identity, repository, interface, accessibility, security, backup, and compatibility standards for independently developed projects
 
@@ -97,7 +97,7 @@ Required action: do not overwrite it silently. Mark it for review.
 Each maintained project specification should identify:
 
 Code block (text):
-    shared_standard_version: 2.50
+    shared_standard_version: 2.90
     project_exception_list:
 
 Project documents should reference shared standards instead of copying large sections unless local detail is necessary.
@@ -859,6 +859,26 @@ Code block (text):
 
 Use the concept-specific *_id in both the owning structure and references. The same opaque identifier profile from Section 9.1 applies unless an external contract requires another format.
 
+9.3.1 Approved Shared-Infrastructure Identifier Exceptions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The following established shared-data systems retain their current numeric identifier contracts:
+
+- common_reference records use stable sequential numeric identifiers, including language_id,
+  currency_id, country_id, and time_zone_id;
+- Zenith field_main and related field-taxonomy records use counter-issued numeric identifiers
+  allocated through id_counter.
+
+Consumer fields preserve the identifier type of the authoritative shared source. For example,
+language_id remains numeric when it references common_reference.language_main even when the
+consumer record's own _id uses the opaque 16-character profile.
+
+These are deliberate compatibility exceptions for shared reference and field-taxonomy identity.
+They do not authorize sequential canonical identifiers for ordinary project domain, account,
+content, community, transaction, media, audit, or operational records. The exceptions may be
+reviewed through an explicit compatibility and migration decision; they must not be changed by an
+ordinary schema cleanup.
+
 9.4 Collision Prevention and Retry
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -877,7 +897,9 @@ A pre-insert check alone is insufficient because another process may insert the 
 9.5 Optional Counters and Human Reference Numbers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A project may maintain an id_counter collection or equivalent sequence service only for human-facing or operational numbers such as:
+Outside the approved field-taxonomy exception in Section 9.3.1, a project may maintain an
+id_counter collection or equivalent sequence service only for human-facing or operational numbers
+such as:
 
 - ticket numbers;
 - claim numbers;
@@ -886,7 +908,10 @@ A project may maintain an id_counter collection or equivalent sequence service o
 - correspondence numbers;
 - printed administrative references.
 
-A counter value is not the canonical record identifier, must not replace _id or the concept-specific *_id, and should not be exposed as a predictable public record locator unless the project explicitly accepts that risk.
+A counter value is not the canonical record identifier and must not replace _id or the
+concept-specific *_id except for the approved Zenith field-taxonomy compatibility profile. A
+human-facing or operational counter should not be exposed as a predictable public record locator
+unless the project explicitly accepts that risk.
 
 9.6 Stable Keys
 ~~~~~~~~~~~~~~~
@@ -958,6 +983,9 @@ When a project has a stronger domain-specific reason to group fields differently
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Zenith field_main is the monitored ecosystem catalogue for reusable field definitions and controlled option sets.
+
+Zenith field_main and its related field-taxonomy records retain counter-issued numeric identifiers
+under Section 9.3.1. field_id relationships preserve that numeric contract.
 
 Other projects do not need a runtime collection named field_main. They may consume approved taxonomy definitions through:
 
@@ -1340,6 +1368,10 @@ The currently approved common_reference collections are:
 4. time_zone_main
 
 Additional collections require separate design and approval.
+
+These collections retain stable sequential numeric record identifiers under Section 9.3.1. A
+consumer must store the corresponding numeric relationship value rather than convert it to the
+ordinary 16-character project-domain identifier format.
 
 12.2 Canonical Ownership
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2265,7 +2297,8 @@ Before approving a new or substantially revised project, confirm:
 - deprecation sunset windows are defined and testable before destructive removal;
 - canonical record identifiers follow the opaque non-sequential identifier profile or document an exception;
 - identifier uniqueness is enforced by the database and duplicate-key retry, not only by a pre-insert check;
-- counters are used only for human or operational reference numbers and not as canonical identity;
+- counters are used only for human or operational reference numbers, except for the approved
+  Zenith field-taxonomy numeric-identity compatibility profile;
 - same-named fields preserve one canonical data contract across collections and projects;
 - archive-eligible data has active-retention, archive-trigger, archive-destination, retrieval, and deletion rules;
 - closed, inactive, discontinued, retired, deceased, or historical domain entities remain in their authoritative collections unless another explicit preservation policy applies;

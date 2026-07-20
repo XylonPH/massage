@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.33
+Document Version: 2.43
 Date Created: 2026-07-10
 Revision Date: 2026-07-20
 
@@ -2695,6 +2695,12 @@ archive-file
 /workspace/editorial/content
 /workspace/editorial/article
 /workspace/editorial/news
+/workspace/editorial/comic
+/workspace/editorial/legal
+/workspace/editorial/announcement
+/workspace/editorial/quote
+/workspace/editorial/survey
+/workspace/editorial/quiz
 /workspace/editorial/category
 /workspace/editorial/tag
 /workspace/editorial/author
@@ -2933,6 +2939,11 @@ archive-file
 /workspace/database/news
 /workspace/database/campus
 /workspace/database/comic
+/workspace/database/legal
+/workspace/database/announcement
+/workspace/database/quote
+/workspace/database/survey
+/workspace/database/quiz
 /workspace/database/room
 /workspace/database/review
 /workspace/database/rating

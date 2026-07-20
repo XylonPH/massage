@@ -1,7 +1,7 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 Document Description: This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
 
@@ -226,7 +226,7 @@ docs/
 Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.
 
 docs/04-architecture/structure-guide/
-Contains PHP-readable database structure guides (field_main.php, theme_main.php, content_main.php, content_body.php, content_revision.php, media_image.php, media_video.php, dog_breed_main.php, quote_main.php). These are human- and AI-readable documentation artifacts kept in PHP array form for review; they are not runtime application code, not seed files, and not migrations, and they must not be placed in production application PHP directories merely because they use PHP syntax.
+Contains PHP-readable database structure guides (field_main.php, theme_main.php, article_main.php, article_body.php, article_revision.php, media_image.php, media_video.php, dog_breed_main.php, quote_main.php). These are human- and AI-readable documentation artifacts kept in PHP array form for review; they are not runtime application code, not seed files, and not migrations, and they must not be placed in production application PHP directories merely because they use PHP syntax.
 
 tools/
 Contains project-maintenance scripts. Application runtime code does not belong here. The first active script is tools/script/build_field_index.php, which regenerates data/field_index.txt.
@@ -274,9 +274,9 @@ docs/
 |   +-- runtime-ai-system.txt
 |   +-- technology-stack.txt
 |   +-- structure-guide/
-|       +-- content_body.php
-|       +-- content_main.php
-|       +-- content_revision.php
+|       +-- article_body.php
+|       +-- article_main.php
+|       +-- article_revision.php
 |       +-- dog_breed_main.php
 |       +-- field_main.php
 |       +-- media_image.php
@@ -307,16 +307,20 @@ docs/
 |   +-- discussion-system.txt
 |   +-- rating-system.txt
 |   +-- reputation-system.txt
+|   +-- survey-system.txt
 |   +-- user-rewards-and-gamification.txt
 |
 +-- 09-content/
 |   +-- article-writing.txt
-|   +-- news-writing-guide.txt
+|   +-- legal-writing.txt
+|   +-- news-writing.txt
+|   +-- quote-system.txt
 |   +-- review-writing.txt
 |   +-- the-resting-leaf.txt
 |
 +-- 10-education/
 |   +-- massage-campus.txt
+|   +-- quiz-system.txt
 |
 +-- 11-workspaces/
 |   +-- admin-workspace.txt

@@ -1,7 +1,7 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.40
+Document Version: 1.50
 Date Created: 2026-07-12
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 PURPOSE
 
@@ -58,16 +58,23 @@ Small cached previews may eventually be embedded for performance, but the cache 
 
 Technical collection names use singular snake_case.
 
-Use:
-- module_main when the module has supporting collections;
-- module_section for a supporting collection owned by that module;
-- a standalone collection name without _main when it is intentionally independent and has no supporting collection family.
+Collection names express the owning domain and the record's responsibility. The _main suffix may
+identify a domain's principal authoritative record collection when that name is useful, but it is
+not imposed on every collection and does not create a universal module/section/branch database
+hierarchy. Related collections may share a domain prefix when that makes ownership clear.
+
+Module, section, and branch concepts may still organize navigation, codes, folders, documents,
+or collection families. Each system may use the hierarchy that is convenient for its own purpose.
+Their structures may resemble one another, but they are not required to have identical depth,
+names, parents, or boundaries.
 
 Examples:
 - establishment_main
 - establishment_service
 - practitioner_main
 - practitioner_credential
+- article_main
+- article_body
 - audit_log
 - reward_ledger
 
@@ -77,7 +84,10 @@ A relationship collection is stored only once. For example:
 - use establishment_practitioner;
 - do not also create practitioner_establishment.
 
-Cross-target features with their own lifecycle should normally become their own module instead of being duplicated under establishment, practitioner, and product.
+Cross-domain features with their own identity or lifecycle should normally have one authoritative
+collection or collection family and reference the applicable domains. They should not be duplicated
+under every establishment, practitioner, product, article, or other target merely to mimic another
+hierarchy.
 
 4. IDENTIFIER DIRECTION
 
@@ -88,6 +98,16 @@ For MongoDB-compatible storage:
 - enforce uniqueness through the database;
 - regenerate and retry after a duplicate-key collision;
 - do not duplicate the same identity as both _id and establishment_id, practitioner_id, product_id, or another concept-specific owner field.
+
+Accepted identifier exceptions:
+- common_reference datasets retain their existing stable sequential numeric identifiers, such as
+  language_id, currency_id, country_id, and time_zone_id. Consumer relationships store those
+  numeric values. This is the current compatibility direction and may be reviewed later;
+- Zenith field_main and related field-taxonomy records retain their counter-issued numeric
+  identifiers through the Field Catalog's owning id_counter. Massage Nexus field_id relationships
+  preserve those numeric values but do not own or reissue them;
+- these exceptions do not authorize sequential identifiers for ordinary Massage Nexus domain,
+  account, editorial, directory, booking, community, media, audit, or operational records.
 
 For engines without a required reserved identifier:
 - use the concept-specific *_id as the canonical identifier.
@@ -121,9 +141,17 @@ Before creating any new field name, check the field-name index at data/field_ind
 6. CORE IDENTITY AND ACCOUNT COLLECTION
 
 - user_main
-  Project-local Massage Nexus user account and profile identity.
+  Project-local Massage Nexus user account, profile identity, membership state, and bounded current
+  preferences that are normally loaded and updated with the account.
 
-Additional user collections are deferred until account, preference, saved-item, follow, notification, and privacy workflows are designed.
+- user_policy
+  Append-only or otherwise history-preserving user records for versioned policy acceptance,
+  acknowledgment, optional consent, withdrawal, and the evidence needed to establish what decision
+  occurred. Published legal or policy text does not belong in this collection.
+
+Additional user collections are deferred until saved-item, follow, notification, security-history,
+and other independently growing workflows are designed. Do not create user_consent merely to split
+consent from user_policy; bounded ordinary preferences remain in user_main.
 
 7. ORGANIZATION AND ESTABLISHMENT COLLECTIONS
 
@@ -196,14 +224,14 @@ Detailed product specifications may remain embedded in the appropriate product o
 - booking_event
   Booking lifecycle and history events such as submission, confirmation, rescheduling, cancellation, completion, and no-show.
 
-Booking is a cross-target module and should not be stored as establishment_booking.
+Booking is a cross-domain capability and should not be stored as establishment_booking.
 
 Payment collections remain deferred until the payment flow is finalized.
 
 12. REVIEW, RATING, DISCUSSION, AND REACTION COLLECTIONS
 
 - review_main
-  Shared review module for establishments, practitioners, products, and other later-approved review targets.
+  Shared review domain for establishments, practitioners, products, and other later-approved review targets.
 
 - rating_main
   Shared rating records for approved targets.
@@ -219,21 +247,46 @@ Payment collections remain deferred until the payment flow is finalized.
 
 Do not create separate establishment_review, practitioner_review, and product_review collections unless later workflows become fundamentally incompatible.
 
-13. EDITORIAL CONTENT AND QUOTE COLLECTIONS
+13. EDITORIAL, PUBLICATION, ANNOUNCEMENT, AND QUOTE COLLECTIONS
 
-- content_main
-  Article-first editorial content identity, credits, classification, relationships, and publication state. The long article body is not stored here.
+- article_main
+  Article identity, credits, classification, relationships, and publication state. The long article
+  body is not stored here. A type_content discriminator is unnecessary because the collection owns
+  only Articles.
 
-- content_body
-  The long article body content referenced by content_main.
+- article_body
+  Language-specific long article body referenced by article_main.
 
-- content_revision
-  Revision history for editorial content.
+- article_revision
+  Reviewable and restorable revision snapshots for article bodies.
+
+- news_main
+  Independently reported, timely, attributable News. News remains distinct from official
+  announcements, press releases, evergreen Articles, Reviews, and sponsored material.
+
+- content_comic
+  Comic identity, publication state, credits, relationships, and the current six-panel comic media
+  direction. The Resting Leaf specification owns its accepted fields and explicitly does not require
+  a separate comic_panel collection under the current scope.
+
+- legal_main
+  Public legal document and public-facing policy identity, version, locale, approval, effective-date,
+  publication, and archival responsibility. Internal legal requirements remain under docs/18-policy;
+  user decisions about published policies belong in user_policy.
+
+- announcement_main
+  Working collection name for official Massage Nexus, establishment, organization, or practitioner
+  announcements displayed on Massage Nexus. Announcements are first-party statements rather than
+  independent News. The detailed schema and its relationship to Promotions remain unresolved.
 
 - quote_main
   Approved quotes for the homepage Quote of the Day section, including multilingual quote text, attribution, categories, display window, review status, and lifecycle. Proposed structure; see the structure guide below.
 
 PHP-readable structure guides for these and other collections are maintained under docs/04-architecture/structure-guide/. The guides record proposed or working field-level structure in reviewable PHP array form; this document remains the authority for database and collection boundaries, and the guides do not by themselves make a structure an accepted decision.
+
+The former generic content_main, content_body, and content_revision direction is retired. Shared
+editorial workflows, media, reactions, moderation, translation, search, and analytics may operate
+across these domains without forcing their authoritative records into one generic collection.
 
 14. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
 
@@ -263,7 +316,8 @@ Restoring an older revision creates a new current revision based on the earlier 
   Lower-volume aggregated analytics used for reporting and longer-term comparison.
 
 - id_counter
-  Optional human-reference counters only; not canonical record identity.
+  Optional Massage Nexus human-reference counters only; not canonical record identity. Zenith's
+  field-taxonomy counter remains owned by the Zenith Field Catalog and is not duplicated here.
 
 Audit and reward history must not rely only on current totals or the current state of a record.
 

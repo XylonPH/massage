@@ -1,7 +1,7 @@
 Title: Massage Nexus News Writing Guide
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-20
 Document Description: Defines how Massage Nexus researches, writes, edits, updates, corrects, translates, labels, and publishes timely news about the platform, massage, spas, therapists, wellness businesses, regulation, research, events, products, and related communities. It distinguishes News from Articles, announcements, opinion, sponsored content, Reviews, and unverified social-media claims.
 
 ================================================================================
@@ -34,9 +34,11 @@ Reports a timely development using current sources and attribution.
 Article or Guide:
 Explains a topic whose usefulness does not depend mainly on a new event.
 
-Platform Announcement:
-Communicates an official Massage Nexus decision, release, campaign, outage, policy change, or
-event. It must be labeled as an official announcement rather than independent reporting.
+Official Announcement:
+Communicates a first-party statement from Massage Nexus or an authorized establishment,
+organization, or practitioner, such as a release, outage, policy change, new branch, new service,
+event, temporary closure, relocation, or promotion notice. It must be labeled as an official
+announcement rather than independent reporting.
 
 Press Release:
 A statement supplied by an organization. Massage Nexus may summarize or quote it as a source,
@@ -697,6 +699,12 @@ Before approval, confirm:
 ================================================================================
 
 - News remains separate from Articles, Reviews, announcements, opinion, and sponsored content.
+- news_main is the authoritative News collection; it does not require type_content.
+- announcement_main is the working collection name for first-party announcements. A provider
+  submission or press release remains an Announcement or source material unless independent
+  reporting produces a separate News record.
+- An Announcement may reference a Promotion, establishment, practitioner, organization, Article,
+  or News record without merging those domains.
 - Current stories require current research and source preservation.
 - Social posts, maps, advertisements, and AI summaries are leads rather than proof.
 - The first paragraph states the most important confirmed development.
