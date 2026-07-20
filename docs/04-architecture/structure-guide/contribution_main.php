@@ -3,11 +3,12 @@
 /**
  * Massage Nexus Structure Guide
  * Collection: contribution_main
- * Version: 0.10
+ * Version: 0.20
  *
  * Purpose: Stores a user's or staff member's proposal to add, correct,
  * translate, enrich, or update a supported record. The current application
- * slice accepts new-establishment proposals inside /workspace.
+ * slice accepts new-establishment and new-practitioner proposals inside
+ * /workspace.
  *
  * A declared establishment relationship and a request for workspace access
  * remain claims for review. They never grant management authority directly.
@@ -21,6 +22,7 @@ $contribution_main_field_order = [
     'submitted_by_user_id',
     'proposed_data',
     'type_establishment_relationship',
+    'type_practitioner_relationship',
     'is_workspace_access_requested',
     'relationship_note',
     'status_contribution',
@@ -40,6 +42,7 @@ return [
     'submitted_by_user_id' => ['type' => 'string', 'required' => true, 'relationship' => 'user_main._id'],
     'proposed_data' => ['type' => 'object', 'required' => true, 'description' => 'Validated proposed fields using the owning target collection field contracts.'],
     'type_establishment_relationship' => ['type' => 'string', 'required' => false, 'taxonomy' => 'workspace_access.json', 'description' => 'Submitter declaration only; verification remains separate.'],
+    'type_practitioner_relationship' => ['type' => 'string', 'required' => false, 'taxonomy' => 'workspace_access.json', 'description' => 'Submitter declaration for a practitioner contribution only; identity or representative verification remains separate.'],
     'is_workspace_access_requested' => ['type' => 'boolean', 'required' => false, 'default' => false],
     'relationship_note' => ['type' => 'string', 'required' => false, 'maximum' => 1000],
     'status_contribution' => ['type' => 'string', 'required' => true, 'default' => 'DFT', 'taxonomy' => 'workspace_access.json'],

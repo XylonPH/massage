@@ -9,9 +9,10 @@ use MongoDB\Laravel\Eloquent\Model;
 #[Fillable([
     'type_contribution', 'target_collection', 'target_record_id',
     'submitted_by_user_id', 'proposed_data',
-    'declared_establishment_relationship', 'is_workspace_access_requested',
+    'type_establishment_relationship', 'type_practitioner_relationship',
+    'is_workspace_access_requested',
     'relationship_note', 'status_contribution', 'submitted_at',
-    'reviewed_at', 'reviewed_by_user_id', 'review_note',
+    'reviewed_at', 'reviewer_user_id', 'decision_note',
 ])]
 class Contribution extends Model
 {

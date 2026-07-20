@@ -37,10 +37,10 @@
                 </div>
 
                 <div>
-                    <label for="declared_establishment_relationship" class="block text-sm font-bold text-ink-900">{{ __('workspace.contribution_relationship_label') }}</label>
-                    <select id="declared_establishment_relationship" name="declared_establishment_relationship" required class="mt-2 w-full rounded-xl border border-ink-200 px-4 py-3 text-ink-950 focus:border-ember-500 focus:ring-ember-500">
+                    <label for="type_establishment_relationship" class="block text-sm font-bold text-ink-900">{{ __('workspace.contribution_relationship_label') }}</label>
+                    <select id="type_establishment_relationship" name="type_establishment_relationship" required class="mt-2 w-full rounded-xl border border-ink-200 px-4 py-3 text-ink-950 focus:border-ember-500 focus:ring-ember-500">
                         @foreach ($relationshipTypes as $relationshipType)
-                            <option value="{{ $relationshipType }}" @selected(old('declared_establishment_relationship', 'NON') === $relationshipType)>{{ __('workspace.relationship_'.$relationshipType) }}</option>
+                            <option value="{{ $relationshipType }}" @selected(old('type_establishment_relationship', 'NON') === $relationshipType)>{{ __('workspace.establishment_relationship_'.$relationshipType) }}</option>
                         @endforeach
                     </select>
                     <p class="mt-2 text-sm text-ink-500">{{ __('workspace.contribution_relationship_hint') }}</p>

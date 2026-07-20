@@ -120,5 +120,19 @@
             { "option_code": "WDR", "option_label": "Withdrawn", "option_description": "Submitter withdrew the unapproved contribution." },
             { "option_code": "ARC", "option_label": "Archived", "option_description": "Contribution is retained as inactive history." }
         ]
+    },
+    {
+        "_id": 509,
+        "field_name": "type_practitioner_relationship",
+        "field_label": "Practitioner Relationship",
+        "field_description": "Classifies how a contribution submitter is connected to a practitioner profile. It is a declaration for verification and remains separate from workspace permissions.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "NON", "option_label": "No Existing Relationship", "option_description": "The user is contributing public information without claiming to be or represent the practitioner." },
+            { "option_code": "SLF", "option_label": "Self", "option_description": "The user declares that the practitioner profile represents them." },
+            { "option_code": "REP", "option_label": "Authorized Representative", "option_description": "The user declares authority to represent the practitioner, subject to verification." }
+        ]
     }
 ]

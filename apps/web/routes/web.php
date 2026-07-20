@@ -112,6 +112,10 @@ Route::prefix('workspace')
         Route::post('/contribution/establishment', [WorkspaceContributionController::class, 'storeEstablishment'])
             ->middleware('throttle:10,1')
             ->name('contribution.establishment.store');
+        Route::get('/contribution/practitioner/new', [WorkspaceContributionController::class, 'createPractitioner'])->name('contribution.practitioner.create');
+        Route::post('/contribution/practitioner', [WorkspaceContributionController::class, 'storePractitioner'])
+            ->middleware('throttle:10,1')
+            ->name('contribution.practitioner.store');
     });
 
 Route::prefix('workspace/article')

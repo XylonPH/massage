@@ -482,6 +482,7 @@ type_powered_massage_device
 type_practice_setting
 type_practitioner_arrangement
 type_practitioner_contact_body_part
+type_practitioner_relationship
 type_product_category
 type_product_characteristic
 type_product_claim

@@ -102,17 +102,17 @@ class WorkspaceShellTest extends TestCase
         $this->actingAs($user)->get('/workspace/listing/spa')
             ->assertStatus(200)
             ->assertSee(__('workspace.listing_spa_empty_title'))
-            ->assertSee('/claim/spa', false);
+            ->assertSee(route('workspace.contribution.establishment.create', [], false), false);
 
         $this->actingAs($user)->get('/workspace/listing/therapist')
             ->assertStatus(200)
             ->assertSee(__('workspace.listing_therapist_empty_title'))
-            ->assertSee('/claim/therapist', false);
+            ->assertSee(route('workspace.contribution.practitioner.create', [], false), false);
     }
 
     public function test_claim_and_help_routes_render_coming_soon(): void
     {
-        foreach (['/claim', '/claim/spa', '/claim/therapist', '/help', '/help/claim'] as $path) {
+        foreach (['/help', '/help/claim'] as $path) {
             $this->get($path)->assertStatus(200)->assertSee(__('common.coming_soon_badge'));
         }
     }
