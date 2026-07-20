@@ -2,12 +2,16 @@
 
 namespace App\Filament\Editorial\Resources\Establishments\Tables;
 
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Filters\SelectFilter;
+use App\Enums\RecordLifecycleStatus;
+use App\Models\Establishment;
+use Filament\Schemas\Components\Select;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Support\Facades\File;
 
 class EstablishmentsTable
@@ -42,7 +46,7 @@ class EstablishmentsTable
             ->filters([
                 SelectFilter::make('status_record_lifecycle')
                     ->label('Lifecycle Status')
-                    ->options(\App\Enums\RecordLifecycleStatus::class),
+                    ->options(RecordLifecycleStatus::class),
                 SelectFilter::make('type_spa')
                     ->label('Spa Type')
                     ->options(self::getTaxonomyOptions('type_spa')),
@@ -60,27 +64,27 @@ class EstablishmentsTable
                     ->modalHeading('Merge Establishment')
                     ->modalDescription('Select a target establishment to merge this one into. The current establishment will be archived.')
                     ->form([
-                        \Filament\Schemas\Components\Select::make('target_establishment_id')
+                        Select::make('target_establishment_id')
                             ->label('Target Establishment')
-                            ->options(function (\App\Models\Establishment $record) {
-                                return \App\Models\Establishment::where('_id', '!=', $record->_id)
+                            ->options(function (Establishment $record) {
+                                return Establishment::where('_id', '!=', $record->_id)
                                     ->get()
                                     ->pluck('english_name', '_id');
                             })
                             ->required()
                             ->searchable(),
                     ])
-                    ->action(function (array $data, \App\Models\Establishment $record): void {
+                    ->action(function (array $data, Establishment $record): void {
                         // In a real application, you'd update related records like Therapists here
                         // to point to the new establishment ID.
-                        
+
                         // Archive the old establishment
-                        $record->status_record_lifecycle = \App\Enums\RecordLifecycleStatus::Archived;
+                        $record->status_record_lifecycle = RecordLifecycleStatus::Archived;
                         $record->save();
                     }),
             ])
             ->bulkActions([
-                \Filament\Tables\Actions\BulkActionGroup::make([
+                BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
             ]);
@@ -89,29 +93,31 @@ class EstablishmentsTable
     private static function getTaxonomyOptions(string $fieldName): array
     {
         $path = base_path('data/taxonomy/massage_nexus/establishment_classification.json');
-        
-        if (!File::exists($path)) {
+
+        if (! File::exists($path)) {
             return [];
         }
 
         $data = json_decode(File::get($path), true);
-        
+
         foreach ($data as $field) {
             if ($field['field_name'] === $fieldName) {
                 $options = [];
                 foreach ($field['field_option'] ?? [] as $option) {
                     $options[$option['option_code']] = $option['option_label'];
                 }
+
                 return $options;
             }
         }
-        
+
         return [];
     }
 
     private static function getTaxonomyLabel(string $fieldName, string $code): string
     {
         $options = self::getTaxonomyOptions($fieldName);
+
         return $options[$code] ?? $code;
     }
 }

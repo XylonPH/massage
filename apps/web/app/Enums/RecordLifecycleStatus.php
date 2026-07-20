@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
 use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
 
-enum RecordLifecycleStatus: string implements HasLabel, HasColor
+enum RecordLifecycleStatus: string implements HasColor, HasLabel
 {
     case Active = 'ACT';
     case Inactive = 'INA';
@@ -22,7 +22,7 @@ enum RecordLifecycleStatus: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             self::Active => 'success',

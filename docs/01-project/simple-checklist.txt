@@ -813,19 +813,19 @@ Use:
 
 6.5 Facilities and Amenities
 ----------------------------
-[ ] Amenities
-[ ] Room types
-[ ] Shower availability
-[ ] Sauna availability
-[ ] Steam room availability
-[ ] Jacuzzi availability
-[ ] Locker availability
-[ ] Couple room availability
-[ ] Private room availability
-[ ] Curtain/divider information
-[ ] Bed/mat/chair setup
-[ ] Air-conditioning information
-[ ] Accessibility information
+[x] Amenities
+[x] Room types
+[x] Shower availability
+[x] Sauna availability
+[x] Steam room availability
+[x] Jacuzzi availability
+[x] Locker availability
+[x] Couple room availability
+[x] Private room availability
+[x] Curtain/divider information
+[x] Bed/mat/chair setup
+[x] Air-conditioning information
+[x] Accessibility information
 
 6.6 Services, Prices, and Payments
 ----------------------------------

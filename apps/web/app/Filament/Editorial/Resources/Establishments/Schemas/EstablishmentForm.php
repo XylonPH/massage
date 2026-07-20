@@ -2,13 +2,13 @@
 
 namespace App\Filament\Editorial\Resources\Establishments\Schemas;
 
+use App\Enums\RecordLifecycleStatus;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
-use App\Enums\RecordLifecycleStatus;
 use Illuminate\Support\Facades\File;
 
 class EstablishmentForm
@@ -85,30 +85,80 @@ class EstablishmentForm
                                     ->multiple()
                                     ->options(self::getTaxonomyOptions('target_client_focus')),
                             ])->columns(2),
-                    ])->columnSpanFull()
+                        Tab::make('Facilities')
+                            ->schema([
+                                Select::make('room_types')
+                                    ->label('Treatment Room Types')
+                                    ->multiple()
+                                    ->options(self::getTaxonomyOptions('room_types')),
+                                Select::make('bed_mat_chair_setup')
+                                    ->label('Bed/Mat/Chair Setup')
+                                    ->multiple()
+                                    ->options(self::getTaxonomyOptions('bed_mat_chair_setup')),
+                                Select::make('shower_availability')
+                                    ->label('Shower Availability')
+                                    ->options(self::getTaxonomyOptions('shower_availability')),
+                                Select::make('sauna_availability')
+                                    ->label('Sauna Availability')
+                                    ->options(self::getTaxonomyOptions('sauna_availability')),
+                                Select::make('steam_room_availability')
+                                    ->label('Steam Room Availability')
+                                    ->options(self::getTaxonomyOptions('steam_room_availability')),
+                                Select::make('jacuzzi_availability')
+                                    ->label('Jacuzzi Availability')
+                                    ->options(self::getTaxonomyOptions('jacuzzi_availability')),
+                                Select::make('locker_availability')
+                                    ->label('Locker Availability')
+                                    ->options(self::getTaxonomyOptions('locker_availability')),
+                                Select::make('couple_room_availability')
+                                    ->label('Couple Room Availability')
+                                    ->options(self::getTaxonomyOptions('couple_room_availability')),
+                                Select::make('private_room_availability')
+                                    ->label('Private Room Availability')
+                                    ->options(self::getTaxonomyOptions('private_room_availability')),
+                                Select::make('curtain_divider_information')
+                                    ->label('Curtain/Divider Information')
+                                    ->options(self::getTaxonomyOptions('curtain_divider_information')),
+                                Select::make('air_conditioning_information')
+                                    ->label('Air-Conditioning')
+                                    ->options(self::getTaxonomyOptions('air_conditioning_information')),
+                            ])->columns(3),
+                        Tab::make('Amenities & Accessibility')
+                            ->schema([
+                                Select::make('amenities')
+                                    ->label('General Amenities')
+                                    ->multiple()
+                                    ->options(self::getTaxonomyOptions('amenities')),
+                                Select::make('accessibility_information')
+                                    ->label('Accessibility Features')
+                                    ->multiple()
+                                    ->options(self::getTaxonomyOptions('accessibility_information')),
+                            ])->columns(2),
+                    ])->columnSpanFull(),
             ]);
     }
 
     private static function getTaxonomyOptions(string $fieldName): array
     {
         $path = base_path('data/taxonomy/massage_nexus/establishment_classification.json');
-        
-        if (!File::exists($path)) {
+
+        if (! File::exists($path)) {
             return [];
         }
 
         $data = json_decode(File::get($path), true);
-        
+
         foreach ($data as $field) {
             if ($field['field_name'] === $fieldName) {
                 $options = [];
                 foreach ($field['field_option'] ?? [] as $option) {
                     $options[$option['option_code']] = $option['option_label'];
                 }
+
                 return $options;
             }
         }
-        
+
         return [];
     }
 }

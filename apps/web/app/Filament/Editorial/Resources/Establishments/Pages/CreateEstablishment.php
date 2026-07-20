@@ -3,7 +3,6 @@
 namespace App\Filament\Editorial\Resources\Establishments\Pages;
 
 use App\Filament\Editorial\Resources\Establishments\EstablishmentResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateEstablishment extends CreateRecord

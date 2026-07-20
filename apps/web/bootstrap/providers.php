@@ -1,8 +1,13 @@
 <?php
 
+use App\Providers\AppServiceProvider;
+use App\Providers\Filament\EditorialPanelProvider;
+use App\Providers\Filament\ModerationPanelProvider;
+use App\Providers\Filament\SystemPanelProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
-    App\Providers\Filament\EditorialPanelProvider::class,
-    App\Providers\Filament\ModerationPanelProvider::class,
-    App\Providers\Filament\SystemPanelProvider::class,
+    AppServiceProvider::class,
+    EditorialPanelProvider::class,
+    ModerationPanelProvider::class,
+    SystemPanelProvider::class,
 ];

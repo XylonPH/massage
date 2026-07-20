@@ -615,5 +615,429 @@
             }
         ],
         "source_document": "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "field_name": "amenities",
+        "field_label": "Amenities",
+        "selection_rule": "Multi-select",
+        "field_description": "General facilities and amenities available at the establishment.",
+        "field_option": [
+            {
+                "option_code": "WIFI",
+                "option_label": "Wi-Fi",
+                "option_description": ""
+            },
+            {
+                "option_code": "PRK",
+                "option_label": "Parking",
+                "option_description": ""
+            },
+            {
+                "option_code": "WTEA",
+                "option_label": "Welcome Tea/Drink",
+                "option_description": ""
+            },
+            {
+                "option_code": "SLIP",
+                "option_label": "Slippers Provided",
+                "option_description": ""
+            },
+            {
+                "option_code": "TOWL",
+                "option_label": "Towels Provided",
+                "option_description": ""
+            },
+            {
+                "option_code": "SROB",
+                "option_label": "Spa Robe/Gown",
+                "option_description": ""
+            },
+            {
+                "option_code": "WSHR",
+                "option_label": "Washroom/Toilet in facility",
+                "option_description": ""
+            },
+            {
+                "option_code": "LOUNGE",
+                "option_label": "Lounge/Waiting Area",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "room_types",
+        "field_label": "Room Types",
+        "selection_rule": "Multi-select",
+        "field_description": "Types of treatment areas available.",
+        "field_option": [
+            {
+                "option_code": "ER",
+                "option_label": "Enclosed Room",
+                "option_description": ""
+            },
+            {
+                "option_code": "PA",
+                "option_label": "Partitioned Area",
+                "option_description": ""
+            },
+            {
+                "option_code": "OA",
+                "option_label": "Open Area",
+                "option_description": ""
+            },
+            {
+                "option_code": "PS",
+                "option_label": "Portable Setup",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "bed_mat_chair_setup",
+        "field_label": "Bed/Mat/Chair Setup",
+        "selection_rule": "Multi-select",
+        "field_description": "Treatment surface setups available.",
+        "field_option": [
+            {
+                "option_code": "MB",
+                "option_label": "Massage Bed/Table",
+                "option_description": ""
+            },
+            {
+                "option_code": "FM",
+                "option_label": "Floor Mat",
+                "option_description": ""
+            },
+            {
+                "option_code": "MC",
+                "option_label": "Massage Chair",
+                "option_description": ""
+            },
+            {
+                "option_code": "RC",
+                "option_label": "Recliner/Lounge Chair",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "accessibility_information",
+        "field_label": "Accessibility Information",
+        "selection_rule": "Multi-select",
+        "field_description": "Accessibility features available.",
+        "field_option": [
+            {
+                "option_code": "SFE",
+                "option_label": "Step-free / Ramped Entrance",
+                "option_description": ""
+            },
+            {
+                "option_code": "ELV",
+                "option_label": "Elevator / Lift Access",
+                "option_description": ""
+            },
+            {
+                "option_code": "AWA",
+                "option_label": "Accessible Washroom/Toilet",
+                "option_description": ""
+            },
+            {
+                "option_code": "ATR",
+                "option_label": "Accessible Treatment Room",
+                "option_description": ""
+            },
+            {
+                "option_code": "AP",
+                "option_label": "Accessible Parking / Drop-off",
+                "option_description": ""
+            },
+            {
+                "option_code": "MOB",
+                "option_label": "Mobility Assistance Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "VHC",
+                "option_label": "Visual/Hearing Communication Assistance",
+                "option_description": ""
+            },
+            {
+                "option_code": "SA",
+                "option_label": "Service Animals Allowed",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "shower_availability",
+        "field_label": "Shower Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "IR",
+                "option_label": "In Room (Private)",
+                "option_description": ""
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Shared / Communal",
+                "option_description": ""
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Available upon Request / Paid",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "sauna_availability",
+        "field_label": "Sauna Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "IR",
+                "option_label": "In Room (Private)",
+                "option_description": ""
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Shared / Communal",
+                "option_description": ""
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Available upon Request / Paid",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "steam_room_availability",
+        "field_label": "Steam Room Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "IR",
+                "option_label": "In Room (Private)",
+                "option_description": ""
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Shared / Communal",
+                "option_description": ""
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Available upon Request / Paid",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "jacuzzi_availability",
+        "field_label": "Jacuzzi Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "IR",
+                "option_label": "In Room (Private)",
+                "option_description": ""
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Shared / Communal",
+                "option_description": ""
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Available upon Request / Paid",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "locker_availability",
+        "field_label": "Locker Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "IR",
+                "option_label": "In Room (Private)",
+                "option_description": ""
+            },
+            {
+                "option_code": "SC",
+                "option_label": "Shared / Communal",
+                "option_description": ""
+            },
+            {
+                "option_code": "NR",
+                "option_label": "Available upon Request / Paid",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "couple_room_availability",
+        "field_label": "Couple Room Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "AV",
+                "option_label": "Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "private_room_availability",
+        "field_label": "Private Room Availability",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "AV",
+                "option_label": "Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "NA",
+                "option_label": "Not Available",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "curtain_divider_information",
+        "field_label": "Curtain/Divider Information",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "FC",
+                "option_label": "Full Curtains",
+                "option_description": ""
+            },
+            {
+                "option_code": "PC",
+                "option_label": "Partial Curtains",
+                "option_description": ""
+            },
+            {
+                "option_code": "ND",
+                "option_label": "No Dividers",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
+    },
+    {
+        "field_name": "air_conditioning_information",
+        "field_label": "Air-Conditioning Information",
+        "selection_rule": "Single-select",
+        "field_description": "",
+        "field_option": [
+            {
+                "option_code": "CA",
+                "option_label": "Centralized A/C",
+                "option_description": ""
+            },
+            {
+                "option_code": "IR",
+                "option_label": "Individual Room A/C",
+                "option_description": ""
+            },
+            {
+                "option_code": "FN",
+                "option_label": "Fan Cooled",
+                "option_description": ""
+            },
+            {
+                "option_code": "NV",
+                "option_label": "Natural Ventilation",
+                "option_description": ""
+            },
+            {
+                "option_code": "UN",
+                "option_label": "Unknown",
+                "option_description": ""
+            }
+        ]
     }
 ]

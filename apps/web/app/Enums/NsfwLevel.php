@@ -2,10 +2,10 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
 use Filament\Support\Contracts\HasColor;
+use Filament\Support\Contracts\HasLabel;
 
-enum NsfwLevel: string implements HasLabel, HasColor
+enum NsfwLevel: string implements HasColor, HasLabel
 {
     case None = 'N';
     case Suggestive = 'S';
@@ -22,7 +22,7 @@ enum NsfwLevel: string implements HasLabel, HasColor
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             self::None => 'success',

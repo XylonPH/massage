@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Service;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ServiceProfileTest extends TestCase
@@ -20,7 +18,7 @@ class ServiceProfileTest extends TestCase
         Service::create([
             'service_slug' => 'test-service',
             'service_name' => ['eng' => 'Test Service'],
-            'status_record_lifecycle' => 'ACT'
+            'status_record_lifecycle' => 'ACT',
         ]);
 
         $response = $this->get('/service/test-service');
