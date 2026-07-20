@@ -4,11 +4,11 @@ namespace App\Filament\Editorial\Resources\Services\Tables;
 
 use App\Enums\RecordLifecycleStatus;
 use App\Models\Service;
-use Filament\Schemas\Components\Select;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use Filament\Forms\Components\Select;
+use Filament\Actions\Action;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
