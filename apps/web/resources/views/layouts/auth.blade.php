@@ -8,7 +8,7 @@
     @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased">
+<body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased dark:bg-charcoal-950 dark:text-ink-50">
     <div class="flex min-h-screen">
         {{-- Branded panel --}}
         <aside class="relative hidden w-[44%] overflow-hidden bg-ink-950 lg:flex lg:flex-col lg:justify-between" aria-hidden="true">
@@ -47,10 +47,13 @@
         {{-- Form panel --}}
         <main class="flex flex-1 flex-col overflow-y-auto">
             <div class="flex items-center justify-between gap-2.5 p-6 lg:justify-end">
-                <a href="{{ route('home') }}" class="lg:hidden"><x-logo size="h-12" /></a>
+                <a href="{{ route('home') }}" class="lg:hidden">
+                    <x-logo size="h-12" class="dark:hidden" />
+                    <x-logo dark size="h-12" class="hidden dark:block" />
+                </a>
                 <div class="flex items-center gap-2.5">
                     <x-theme-toggle />
-                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800">
+                    <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800 dark:text-ink-400 dark:hover:text-ink-100">
                         <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H6.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L6.56 9.25h9.69A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/></svg>
                         {{ __('auth.back_to_home') }}
                     </a>

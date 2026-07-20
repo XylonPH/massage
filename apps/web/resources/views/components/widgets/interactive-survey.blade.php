@@ -1,20 +1,20 @@
-<section class="overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-white to-sky-50/50 shadow-sm transition hover:shadow-md">
+<section class="overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-white to-sky-50/50 shadow-sm transition hover:shadow-md dark:border-sky-800 dark:from-ink-900 dark:to-sky-950/50">
     <div class="relative p-5">
-        <div class="absolute -right-4 -top-4 size-24 rounded-full bg-sky-100/50 blur-2xl"></div>
-        
+        <div class="absolute -right-4 -top-4 size-24 rounded-full bg-sky-100/50 blur-2xl dark:bg-sky-900/50"></div>
+
         <div class="relative flex items-center justify-between">
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/80 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-700">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100/80 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-700 dark:bg-sky-900/80 dark:text-sky-300">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M2 3.75A.75.75 0 0 1 2.75 3h11.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 3.75ZM2 7.5a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 2 7.5ZM2 11.25a.75.75 0 0 1 .75-.75h11.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75ZM2 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 2 15Z" clip-rule="evenodd"/></svg>
                 {{ __('widget.survey_label') }}
             </span>
-            <span class="text-xs font-semibold text-ink-400">2 mins</span>
+            <span class="text-xs font-semibold text-ink-400 dark:text-ink-300">2 mins</span>
         </div>
 
-        <h3 class="relative mt-4 text-base font-black leading-tight tracking-tight text-ink-950">
+        <h3 class="relative mt-4 text-base font-black leading-tight tracking-tight text-ink-950 dark:text-ink-50">
             Help us improve our booking experience!
         </h3>
-        
-        <p class="relative mt-2 text-xs leading-relaxed text-ink-600">
+
+        <p class="relative mt-2 text-xs leading-relaxed text-ink-600 dark:text-ink-300">
             Your feedback shapes the future of Massage Nexus. Answer 3 quick questions.
         </p>
 
