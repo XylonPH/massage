@@ -146,7 +146,13 @@
                     @foreach ($featuredTherapists as $therapist)
                         <article class="min-w-0 rounded-2xl border border-ink-100 bg-white p-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
                             <span class="mx-auto flex size-16 items-center justify-center rounded-full text-lg font-bold {{ $therapist['tone'] }}">{{ $therapist['initials'] }}</span>
-                            <h3 class="mt-3 text-sm font-bold text-ink-950">{{ $therapist['name'] }}</h3>
+                            <h3 class="mt-3 text-sm font-bold text-ink-950">
+                                @if (!empty($therapist['slug']))
+                                    <a href="{{ route('therapist.show', ['therapist_slug' => $therapist['slug']]) }}" class="transition hover:text-ember-600">{{ $therapist['name'] }}</a>
+                                @else
+                                    {{ $therapist['name'] }}
+                                @endif
+                            </h3>
                             <div class="mt-1 flex items-center justify-center gap-1 text-xs">
                                 <span class="font-bold text-ink-900">{{ number_format($therapist['rating'], 1) }}</span>
                                 <x-rating :value="$therapist['rating']" size="size-3" />

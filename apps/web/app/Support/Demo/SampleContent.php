@@ -218,6 +218,7 @@ class SampleContent
     {
         $profiles = [
             'the-resting-leaf' => [
+                'id' => 'E7sQ2nW9kD4vH8pM',
                 'slug' => 'the-resting-leaf',
                 'name' => 'The Resting Leaf',
                 'type' => 'Wellness Center',
@@ -286,6 +287,7 @@ class SampleContent
     {
         $profiles = [
             'maya-santos' => [
+                'id' => 'P4rK8mN2xV7qL5dA',
                 'slug' => 'maya-santos',
                 'name' => 'Maya Santos',
                 'headline' => 'Calm, detail-focused therapist specializing in Swedish and deep tissue massage for stress recovery.',
@@ -351,6 +353,7 @@ class SampleContent
                 'booking_times' => ['10:00 AM', '11:30 AM', '1:00 PM', '3:00 PM', '5:00 PM', '7:00 PM'],
             ],
             'dennis-aquino' => [
+                'id' => 'P9dC3hJ6sF1wB8nM',
                 'slug' => 'dennis-aquino',
                 'name' => 'Dennis Aquino',
                 'headline' => 'Home-service massage therapist serving Cavite, focused on Hilot and Swedish massage.',

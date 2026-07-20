@@ -7,20 +7,35 @@ use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\ServiceProfileController;
 use App\Http\Controllers\SpaProfileController;
 use App\Http\Controllers\TherapistProfileController;
 use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
+use App\Http\Controllers\Web\Public\ReviewController as PublicReviewController;
 use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
+use App\Http\Controllers\Web\Workspace\ReviewController as WorkspaceReviewController;
 use App\Http\Middleware\EnsureActiveMember;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/spa/{establishment_slug}', [SpaProfileController::class, 'show'])->name('spa.show');
+Route::get('/spa/{establishment_slug}/review', [WorkspaceReviewController::class, 'createSpa'])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class])
+    ->name('spa.review.create');
+Route::post('/spa/{establishment_slug}/review', [WorkspaceReviewController::class, 'storeSpa'])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class, 'throttle:10,1'])
+    ->name('spa.review.store');
 
 Route::get('/therapist/{therapist_slug}', [TherapistProfileController::class, 'show'])->name('therapist.show');
+Route::get('/therapist/{therapist_slug}/review', [WorkspaceReviewController::class, 'createTherapist'])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class])
+    ->name('therapist.review.create');
+Route::post('/therapist/{therapist_slug}/review', [WorkspaceReviewController::class, 'storeTherapist'])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class, 'throttle:10,1'])
+    ->name('therapist.review.store');
 
-Route::get('/service/{service_slug}', [\App\Http\Controllers\ServiceProfileController::class, 'show'])->name('service.show');
+Route::get('/service/{service_slug}', [ServiceProfileController::class, 'show'])->name('service.show');
 Route::prefix('article')->name('article.')->group(function () {
     Route::get('/', [PublicArticleController::class, 'index'])->name('index');
     Route::get('/category', [PublicArticleController::class, 'categoryIndex'])->name('category.index');
@@ -36,6 +51,13 @@ Route::prefix('article')->name('article.')->group(function () {
     Route::get('/archive', [PublicArticleController::class, 'archive'])->name('archive');
     Route::get('/search', [PublicArticleController::class, 'search'])->name('search');
     Route::get('/{article_slug}', [PublicArticleController::class, 'show'])->name('show');
+});
+
+Route::prefix('review')->name('review.')->group(function () {
+    Route::get('/', [PublicReviewController::class, 'index'])->name('index');
+    Route::get('/spa', [PublicReviewController::class, 'spas'])->name('spa');
+    Route::get('/therapist', [PublicReviewController::class, 'therapists'])->name('therapist');
+    Route::get('/{review_slug}', [PublicReviewController::class, 'show'])->name('show');
 });
 
 Route::get('/legal/terms', [LegalController::class, 'terms'])->name('legal.terms');
@@ -69,6 +91,19 @@ Route::prefix('workspace/article')
         Route::put('/{article}', [WorkspaceArticleController::class, 'update'])->middleware('throttle:30,1')->name('update');
         Route::post('/{article}/submit', [WorkspaceArticleController::class, 'submit'])->middleware('throttle:10,1')->name('submit');
         Route::get('/{article}/revision', [WorkspaceArticleController::class, 'revisions'])->name('revisions');
+    });
+
+Route::prefix('workspace/review')
+    ->name('workspace.review.')
+    ->middleware(['auth', 'verified', EnsureActiveMember::class])
+    ->group(function () {
+        Route::get('/', [WorkspaceReviewController::class, 'index'])->name('index');
+        Route::get('/draft', [WorkspaceReviewController::class, 'drafts'])->name('draft');
+        Route::get('/submitted', [WorkspaceReviewController::class, 'submitted'])->name('submitted');
+        Route::get('/published', [WorkspaceReviewController::class, 'published'])->name('published');
+        Route::get('/{review}/edit', [WorkspaceReviewController::class, 'edit'])->name('edit');
+        Route::put('/{review}', [WorkspaceReviewController::class, 'update'])->middleware('throttle:20,1')->name('update');
+        Route::post('/{review}/submit', [WorkspaceReviewController::class, 'submit'])->middleware('throttle:10,1')->name('submit');
     });
 
 Route::middleware('guest')->group(function () {

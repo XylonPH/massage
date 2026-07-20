@@ -1,5 +1,5 @@
 Title: Massage Nexus Features
-Document Version: 2.61
+Document Version: 2.62
 Date Created: 2026-06-30
 Revision Date: 2026-07-20
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
@@ -805,23 +805,14 @@ This inventory groups the feature list into a cleaner logical structure while pr
 
 6.4 Rating Fields
 -----------------
-- Review rating
-- Category ratings
-- Spa rating categories
-- Therapist rating categories
-- Service rating categories
-- Cleanliness rating
-- Massage quality rating
-- Professionalism rating
-- Ambience rating
-- Value rating
-- Booking experience rating
-- Privacy/safety rating
-- Facilities rating
-- Pressure control rating
-- Communication rating
-- Punctuality rating
-- Boundary/respect rating
+- Review-linked target rating on the 1-to-10 scale
+- Simple overall rating mode
+- Criteria rating mode with Not Observed or Not Applicable support
+- Spa criteria: Cleanliness, Comfort, Privacy, Service, and Value
+- Therapist criteria: Technique, Pressure, Professionalism, Communication, and Reliability
+- Criteria-based event score calculated from answered criteria only
+- Rating count kept separate from review count
+- Non-star connected-pulse or nexus-node rating presentation
 
 
 6.5 Review Interaction

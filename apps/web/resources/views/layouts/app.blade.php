@@ -45,6 +45,9 @@
                         <a href="{{ route('workspace.article.index') }}" class="rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-800 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
                             {{ __('article.workspace_title') }}
                         </a>
+                        <a href="{{ route('workspace.review.index') }}" class="rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-800 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
+                            {{ __('review.workspace_title') }}
+                        </a>
                     @endif
                     <span class="inline-flex items-center gap-2 rounded-lg bg-ink-50 px-3 py-2 text-sm font-semibold text-ink-800">
                         <span class="flex size-6 items-center justify-center rounded-full bg-ember-100 text-xs font-bold text-ember-700" aria-hidden="true">
@@ -85,6 +88,7 @@
                 @auth
                     @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
                         <a href="{{ route('workspace.article.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('article.workspace_title') }}</a>
+                        <a href="{{ route('workspace.review.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('review.workspace_title') }}</a>
                     @endif
                     <div class="flex items-center justify-between gap-2.5 pt-2">
                         <span class="text-sm font-semibold text-ink-800">{{ __('auth.logged_in_as', ['username' => auth()->user()->username]) }}</span>

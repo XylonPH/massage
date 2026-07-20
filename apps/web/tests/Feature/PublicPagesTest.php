@@ -42,6 +42,56 @@ class PublicPagesTest extends TestCase
         $this->get('/spa/does-not-exist')->assertStatus(404);
     }
 
+    public function test_therapist_profile_renders_for_claimed_sample_slug(): void
+    {
+        $this->assertSame(
+            url('/therapist/maya-santos'),
+            route('therapist.show', ['therapist_slug' => 'maya-santos']),
+        );
+
+        $response = $this->get('/therapist/maya-santos');
+
+        $response->assertStatus(200);
+        $response->assertSee('Maya Santos');
+        $response->assertSee(__('therapist.claimed_profile'));
+        $response->assertSee(__('therapist.booking_enabled'));
+        $response->assertSee(__('therapist.book_title', ['name' => 'Maya Santos']));
+        $response->assertSee(__('therapist.affiliations_title'));
+        // Ratings and reviews come from the shared review domain (empty in the
+        // test database), so the profile shows the below-threshold state while
+        // still keeping rating and review facts separate.
+        $response->assertSee(__('therapist.not_enough_ratings'));
+        $response->assertSee(__('therapist.rating_summary'));
+    }
+
+    public function test_unclaimed_therapist_profile_shows_no_booking_panel(): void
+    {
+        $response = $this->get('/therapist/dennis-aquino');
+
+        $response->assertStatus(200);
+        $response->assertSee('Dennis Aquino');
+        $response->assertSee(__('therapist.unclaimed_profile'));
+        $response->assertSee(__('therapist.unclaimed_notice_title'));
+        $response->assertSee(__('therapist.invite_to_claim'));
+        // Below the rating display threshold, no official score is shown.
+        $response->assertSee(__('therapist.not_enough_ratings'));
+        // An unclaimed profile must not offer a confirmed booking flow.
+        $response->assertDontSee(__('therapist.book_title', ['name' => 'Dennis Aquino']));
+        $response->assertDontSee(__('therapist.booking_enabled'));
+    }
+
+    public function test_therapist_profile_returns_not_found_for_unknown_slug(): void
+    {
+        $this->get('/therapist/does-not-exist')->assertStatus(404);
+    }
+
+    public function test_homepage_links_featured_therapist_with_profile(): void
+    {
+        $this->get('/')
+            ->assertStatus(200)
+            ->assertSee('/therapist/maya-santos', false);
+    }
+
     public function test_planned_sections_render_coming_soon_pages(): void
     {
         foreach (['/directory', '/directory/area', '/directory/type-spa', '/campus', '/promo'] as $path) {

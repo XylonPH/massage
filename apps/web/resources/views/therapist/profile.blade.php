@@ -56,7 +56,7 @@
                         <span class="flex items-center gap-1.5">
                             <span class="text-lg font-black text-ember-400">{{ number_format($therapist['rating'], 1) }}</span>
                             <x-rating :value="$therapist['rating']" />
-                            <span class="text-ink-300">{{ __('therapist.rating_count', ['count' => $therapist['rating_count']]) }} · {{ __('therapist.review_count', ['count' => $therapist['review_count']]) }}</span>
+                            <span class="text-ink-300">{{ trans_choice('therapist.rating_count', $therapist['rating_count'], ['count' => $therapist['rating_count']]) }} · {{ trans_choice('therapist.review_count', $therapist['review_count'], ['count' => $therapist['review_count']]) }}</span>
                         </span>
                     @else
                         <span class="text-ink-300">{{ __('therapist.not_enough_ratings') }}</span>
@@ -311,32 +311,37 @@
                             @if ($therapist['rating'] !== null)
                                 <p class="mt-1 text-5xl font-black text-ink-950">{{ number_format($therapist['rating'], 1) }}</p>
                                 <x-rating :value="$therapist['rating']" size="size-5" class="mt-2 justify-center" />
-                                <p class="mt-1.5 text-xs text-ink-400">{{ __('therapist.rating_count', ['count' => $therapist['rating_count']]) }}</p>
-                                <p class="text-xs text-ink-400">{{ __('therapist.review_count', ['count' => $therapist['review_count']]) }}</p>
+                                <p class="mt-1.5 text-xs text-ink-400">{{ trans_choice('therapist.rating_count', $therapist['rating_count'], ['count' => $therapist['rating_count']]) }}</p>
+                                <p class="text-xs text-ink-400">{{ trans_choice('therapist.review_count', $therapist['review_count'], ['count' => $therapist['review_count']]) }}</p>
                             @else
                                 <p class="mt-3 rounded-xl bg-ink-50 px-3 py-4 text-sm font-semibold text-ink-500">{{ __('therapist.not_enough_ratings') }}</p>
-                                <p class="mt-1.5 text-xs text-ink-400">{{ __('therapist.review_count', ['count' => $therapist['review_count']]) }}</p>
+                                <p class="mt-1.5 text-xs text-ink-400">{{ trans_choice('therapist.rating_count', $therapist['rating_count'], ['count' => $therapist['rating_count']]) }}</p>
+                                <p class="mt-1.5 text-xs text-ink-400">{{ trans_choice('therapist.review_count', $therapist['review_count'], ['count' => $therapist['review_count']]) }}</p>
                             @endif
                         </div>
                         <ul class="min-w-0 flex-1 space-y-5">
-                            @foreach ($therapist['reviews'] as $review)
+                            @forelse ($therapist['reviews'] as $review)
                                 <li class="flex gap-3.5 {{ $loop->last ? '' : 'border-b border-ink-100 pb-5' }}">
-                                    <span class="flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-bold {{ $review['tone'] }}">{{ $review['initials'] }}</span>
+                                    <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-ember-100 text-sm font-bold text-ember-700">{{ $review['initials'] }}</span>
                                     <div class="min-w-0">
                                         <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
-                                            <p class="text-sm font-bold text-ink-950">{{ $review['reviewer'] }}</p>
-                                            <p class="text-xs text-ink-400">{{ $review['date'] }}</p>
-                                            <x-rating :value="$review['rating']" size="size-3.5" />
+                                            <p class="text-sm font-bold text-ink-950">{{ $review['byline'] }}</p>
+                                            <p class="text-xs text-ink-400">{{ optional($review['published_at'])->format('M j, Y') }}</p>
+                                            <span class="rounded-md bg-ink-950 px-2 py-1 text-xs font-black text-white">{{ __('review.score_out_of_ten', ['score' => number_format($review['score'], 1)]) }}</span>
                                         </div>
-                                        <p class="mt-0.5 text-xs text-ink-400">{{ __('therapist.review_context') }}: {{ $review['context'] }}</p>
-                                        <p class="mt-1.5 text-sm leading-relaxed text-ink-600">{{ $review['text'] }}</p>
+                                        @if ($review['service_received'])<p class="mt-0.5 text-xs text-ink-400">{{ $review['service_received'] }}</p>@endif
+                                        <a href="{{ route('review.show', $review['slug']) }}" class="mt-1.5 block font-bold text-ink-900 hover:text-ember-700">{{ $review['title'] }}</a>
+                                        <p class="mt-1 text-sm leading-relaxed text-ink-600">{{ $review['short_description'] }}</p>
                                     </div>
                                 </li>
-                            @endforeach
+                            @empty
+                                <li class="rounded-xl bg-ink-50 p-5 text-sm text-ink-500">{{ __('therapist.no_reviews') }}</li>
+                            @endforelse
                         </ul>
                     </div>
-                    <div class="mt-6 text-right">
-                        <a href="#reviews" class="inline-flex items-center gap-1 rounded-xl border border-ink-200 px-4 py-2 text-sm font-bold text-ink-700 transition hover:border-ember-300 hover:text-ember-600">
+                    <div class="mt-6 flex flex-wrap justify-end gap-3">
+                        <a href="{{ route('therapist.review.create', ['therapist_slug' => $therapist['slug']]) }}" class="inline-flex items-center rounded-xl bg-ember-500 px-4 py-2 text-sm font-bold text-white hover:bg-ember-600">{{ __('therapist.write_review') }}</a>
+                        <a href="{{ route('review.therapist', ['target' => $therapist['slug']]) }}" class="inline-flex items-center gap-1 rounded-xl border border-ink-200 px-4 py-2 text-sm font-bold text-ink-700 transition hover:border-ember-300 hover:text-ember-600">
                             {{ __('therapist.view_all_reviews') }}
                             <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
                         </a>

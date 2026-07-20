@@ -4,7 +4,7 @@ Massage Nexus Review Writing Guide
 Field            | Value
 -----------------+-----------------------------------
 Title            | Massage Nexus Review Writing Guide
-Document Version | 1.82
+Document Version | 1.83
 Date Created     | 2026-07-05
 Revision Date    | 2026-07-20
 
@@ -700,7 +700,10 @@ Editorial reviews should be held to a higher writing and balance standard than n
 Conceptual Review Statuses
 --------------------------
 
-Exact technical field names should be defined later in the database structure.
+Technical field names and controlled option codes are defined in
+docs/04-architecture/structure-guide/review_main.php,
+docs/04-architecture/structure-guide/rating_main.php, and
+data/taxonomy/massage_nexus/review_and_rating.json.
 
 Conceptual review statuses may include:
 
@@ -715,6 +718,18 @@ Conceptual review statuses may include:
 - converted or suggested as comment;
 - rejected;
 - withdrawn.
+
+The initial web workflow maps these concepts to the shared publication, review, visibility, and
+record-lifecycle fields as follows:
+
+- an editable draft uses status_publication D, status_review NR, visibility_scope PRV, and
+  status_record_lifecycle DRA;
+- a submitted review uses status_publication D, status_review PND, visibility_scope PRV, and
+  status_record_lifecycle ACT;
+- an approved public review uses status_publication P, status_review APR, visibility_scope PUB,
+  and status_record_lifecycle ACT;
+- its review-linked rating remains status_rating DRA until approval and becomes ACT only when the
+  review is approved and the rating passes its own eligibility checks.
 
 Revision Policy
 ---------------

@@ -633,23 +633,14 @@ complete a website feature.
 
 6.4 Rating Fields
 -----------------
-[ ] Review rating
-[ ] Category ratings
-[ ] Spa rating categories
-[ ] Therapist rating categories
-[ ] Service rating categories
-[ ] Cleanliness rating
-[ ] Massage quality rating
-[ ] Professionalism rating
-[ ] Ambience rating
-[ ] Value rating
-[ ] Booking experience rating
-[ ] Privacy/safety rating
-[ ] Facilities rating
-[ ] Pressure control rating
-[ ] Communication rating
-[ ] Punctuality rating
-[ ] Boundary/respect rating
+[ ] Review-linked target rating on the 1-to-10 scale
+[ ] Simple overall rating mode
+[ ] Criteria rating mode with Not Observed or Not Applicable support
+[ ] Spa criteria: Cleanliness, Comfort, Privacy, Service, and Value
+[ ] Therapist criteria: Technique, Pressure, Professionalism, Communication, and Reliability
+[ ] Criteria-based event score calculated from answered criteria only
+[ ] Rating count kept separate from review count
+[ ] Non-star connected-pulse or nexus-node rating presentation
 
 
 6.5 Review Interaction

@@ -1,0 +1,107 @@
+[
+    {
+        "field_name": "type_review",
+        "field_label": "Review Type",
+        "selection_rule": "Single-select per review record",
+        "field_description": "Identifies whether a review is a registered user's experience review or a Massage Nexus editorial review. It does not describe the reviewed target.",
+        "field_option": [
+            { "option_code": "USR", "option_label": "User Review", "option_description": "Experience review submitted by a registered user." },
+            { "option_code": "EDT", "option_label": "Editorial Review", "option_description": "Structured review produced through the approved Massage Nexus editorial workflow." }
+        ],
+        "source_document": "docs/09-content/review-writing.txt"
+    },
+    {
+        "field_name": "type_review_disclosure",
+        "field_label": "Review Disclosure Type",
+        "selection_rule": "Single-select per review record",
+        "field_description": "Discloses payment, advance notice, sponsorship, requested access, or other circumstances that may affect how a review experience was arranged or perceived.",
+        "field_option": [
+            { "option_code": "SFP", "option_label": "Undisclosed Self-Paid Visit", "option_description": "The reviewer paid normally, did not announce the review, and received no review-related incentive." },
+            { "option_code": "ANN", "option_label": "Announced Visit", "option_description": "The target knew in advance that the experience would be reviewed." },
+            { "option_code": "SPO", "option_label": "Sponsored Visit", "option_description": "A sponsor funded or arranged the reviewed experience." },
+            { "option_code": "DSC", "option_label": "Discounted Visit", "option_description": "The reviewer received a discount connected to the reviewed experience." },
+            { "option_code": "CMP", "option_label": "Complimentary Service", "option_description": "The reviewed service or experience was provided without charge." },
+            { "option_code": "PED", "option_label": "Paid Editorial Review", "option_description": "Massage Nexus or a Review Author was paid to conduct the disclosed editorial review." },
+            { "option_code": "PRS", "option_label": "PR Sample", "option_description": "A product or access sample was supplied for review." },
+            { "option_code": "ORQ", "option_label": "Owner-Requested Review", "option_description": "An establishment owner or manager requested the review." },
+            { "option_code": "PRQ", "option_label": "Practitioner-Requested Review", "option_description": "A practitioner requested the review." },
+            { "option_code": "PQR", "option_label": "Product-Owner-Requested Review", "option_description": "A product owner, seller, or distributor requested the review." },
+            { "option_code": "PVT", "option_label": "Private Critique", "option_description": "The review was commissioned for private improvement and is not intended for public publication." },
+            { "option_code": "MVT", "option_label": "Multi-Visit Review", "option_description": "The review combines more than one distinct visit or use period." },
+            { "option_code": "MRA", "option_label": "Multi-Reviewer Review", "option_description": "The review combines the credited work of more than one Review Author." }
+        ],
+        "source_document": "docs/09-content/review-writing.txt"
+    },
+    {
+        "field_name": "mode_rating",
+        "field_label": "Rating Mode",
+        "selection_rule": "Single-select per rating event",
+        "field_description": "Identifies whether a 1-to-10 target rating contains one overall score or target-specific criterion scores.",
+        "field_option": [
+            { "option_code": "SMP", "option_label": "Simple", "option_description": "One overall score from 1 to 10." },
+            { "option_code": "CRT", "option_label": "Criteria", "option_description": "At least three target-specific criteria scored from 1 to 10; the event score is their arithmetic mean." }
+        ],
+        "source_document": "docs/08-community/rating-system.txt"
+    },
+    {
+        "field_name": "type_rating_criterion",
+        "field_label": "Rating Criterion Type",
+        "selection_rule": "One value per rating criterion entry; applicable options depend on target_collection",
+        "field_description": "Identifies the approved spa or therapist quality dimension represented by one criterion score. Spa and therapist criteria must not be mixed in one rating event.",
+        "field_option": [
+            { "option_code": "CLN", "option_label": "Cleanliness", "option_description": "Spa hygiene, linens, smell, bathroom condition, visible sanitation, and physical cleanliness." },
+            { "option_code": "CFT", "option_label": "Comfort", "option_description": "Spa ambience, room setup, noise, temperature, relaxation, and ease of settling into the experience." },
+            { "option_code": "PRV", "option_label": "Privacy", "option_description": "Spa room separation, discretion, draping-related environment, safety, and client protection." },
+            { "option_code": "SRV", "option_label": "Service", "option_description": "Spa reception, booking, waiting, handoff, staff handling, organization, and service flow." },
+            { "option_code": "VAL", "option_label": "Value", "option_description": "Whether the experience fits its price, class, promise, and user expectation." },
+            { "option_code": "TEC", "option_label": "Technique", "option_description": "Therapist massage skill, bodywork quality, flow, and performance of the intended service." },
+            { "option_code": "PRS", "option_label": "Pressure", "option_description": "Therapist pressure control, adjustment, sensitivity, and response to requested intensity." },
+            { "option_code": "PRO", "option_label": "Professionalism", "option_description": "Therapist hygiene, boundaries, presentation, respect, and appropriate conduct." },
+            { "option_code": "COM", "option_label": "Communication", "option_description": "Therapist listening, checking in, explaining when needed, and understanding requests." },
+            { "option_code": "REL", "option_label": "Reliability", "option_description": "Therapist punctuality, focus, consistency, preparedness, and reasonably attributable interruptions." }
+        ],
+        "source_document": "docs/08-community/rating-system.txt"
+    },
+    {
+        "field_name": "type_rating_source",
+        "field_label": "Rating Source Type",
+        "selection_rule": "Single-select per rating event",
+        "field_description": "Identifies the workflow or evidence source that produced a spa, therapist, or product rating event for eligibility and weighting.",
+        "field_option": [
+            { "option_code": "BKG", "option_label": "Verified Booking", "option_description": "Rating linked to a Massage Nexus verified completed booking or session." },
+            { "option_code": "RVW", "option_label": "Review-Linked", "option_description": "Rating submitted as part of a substantive written review." },
+            { "option_code": "VIS", "option_label": "Confirmed Visit", "option_description": "Rating linked to a confirmed external or on-site visit." },
+            { "option_code": "DIR", "option_label": "Direct Profile", "option_description": "Standalone rating submitted directly from a target profile." },
+            { "option_code": "HIS", "option_label": "Manual History", "option_description": "Rating entered from a user's manually recorded experience history." }
+        ],
+        "source_document": "docs/08-community/rating-system.txt"
+    },
+    {
+        "field_name": "status_rating_observation",
+        "field_label": "Rating Observation Status",
+        "selection_rule": "Single-select per rating criterion entry",
+        "field_description": "Records whether a target-specific criterion received a numeric score, was not observed during the experience, or did not apply to the service.",
+        "field_option": [
+            { "option_code": "SCR", "option_label": "Scored", "option_description": "The criterion was observed and has a 1-to-10 rating_score." },
+            { "option_code": "NOB", "option_label": "Not Observed", "option_description": "The reviewer could not reasonably observe the criterion during this experience." },
+            { "option_code": "NAP", "option_label": "Not Applicable", "option_description": "The criterion did not apply to this service or experience." }
+        ],
+        "source_document": "docs/08-community/rating-system.txt"
+    },
+    {
+        "field_name": "status_rating",
+        "field_label": "Rating Status",
+        "selection_rule": "Single-select per rating event",
+        "field_description": "Controls whether a rating event is eligible for official scoring while preserving moderation, revocation, replacement, and audit state.",
+        "field_option": [
+            { "option_code": "DRA", "option_label": "Draft", "option_description": "Not active and not eligible for official scoring." },
+            { "option_code": "ACT", "option_label": "Active", "option_description": "Eligible to enter user-period selection and official scoring when all other rules pass." },
+            { "option_code": "QRT", "option_label": "Quarantined", "option_description": "Temporarily excluded while moderation or evidence is reviewed." },
+            { "option_code": "RVK", "option_label": "Revoked by User", "option_description": "Withdrawn by its submitting user and excluded from scoring." },
+            { "option_code": "REJ", "option_label": "Rejected", "option_description": "Rejected through moderation and excluded from scoring." },
+            { "option_code": "SUP", "option_label": "Superseded", "option_description": "Replaced by another eligible event for the same experience." },
+            { "option_code": "INV", "option_label": "Invalidated", "option_description": "Invalidated after evidence, abuse, connection, or eligibility review." }
+        ],
+        "source_document": "docs/08-community/rating-system.txt"
+    }
+]

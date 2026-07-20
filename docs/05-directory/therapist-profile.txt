@@ -912,6 +912,20 @@ Minimum Acceptance Invariants
   lawfully necessary restricted audit or dependency record;
 - accessibility and state meaning remain available without color, pointer, image, or map use.
 
+Current implementation state (2026-07-20):
+The first public therapist profile page is implemented at /therapist/{therapist_slug}
+(TherapistProfileController and resources/views/therapist/profile.blade.php), rendering sample
+demo records (one claimed booking-enabled profile, one unclaimed profile) from the temporary
+Support/Demo/SampleContent provider pending persisted practitioner_main records. The page honors
+the minimum acceptance invariants that are observable at this stage: separate claim,
+identity-verification, and booking-enablement labels; rating count distinct from review count
+with the below-threshold "not enough ratings" state; no booking panel, payment, or private
+contact on an unclaimed profile, which instead shows the unclaimed notice and invite-to-claim
+route; service-area display without a private address for home service; and keyboard-accessible
+tabs and text-labeled states. Reviews and ratings on the page are served by the shared review
+domain. The proposed collection structure is recorded in
+docs/04-architecture/structure-guide/practitioner_main.php.
+
 Current working decisions:
 - therapist profile identity is independent of employment;
 - stable therapist ID, not username, prevents duplicate records;

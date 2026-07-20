@@ -51,19 +51,70 @@ class Service extends Model
         return $this->service_name['eng'] ?? null;
     }
 
-    /**
-     * Get the English short description.
-     */
+    public function setEnglishNameAttribute($value)
+    {
+        $names = $this->service_name ?? [];
+        $names['eng'] = $value;
+        $this->attributes['service_name'] = $names;
+    }
+
     public function getEnglishShortDescriptionAttribute()
     {
         return $this->short_description['eng'] ?? null;
     }
 
-    /**
-     * Get the English overview.
-     */
+    public function setEnglishShortDescriptionAttribute($value)
+    {
+        $desc = $this->short_description ?? [];
+        $desc['eng'] = $value;
+        $this->attributes['short_description'] = $desc;
+    }
+
     public function getEnglishOverviewAttribute()
     {
         return $this->service_description_overview['eng'] ?? null;
+    }
+
+    public function setEnglishOverviewAttribute($value)
+    {
+        $overview = $this->service_description_overview ?? [];
+        $overview['eng'] = $value;
+        $this->attributes['service_description_overview'] = $overview;
+    }
+
+    public function getChineseNameAttribute()
+    {
+        return $this->service_name['zho'] ?? null;
+    }
+
+    public function setChineseNameAttribute($value)
+    {
+        $names = $this->service_name ?? [];
+        $names['zho'] = $value;
+        $this->attributes['service_name'] = $names;
+    }
+
+    public function getChineseShortDescriptionAttribute()
+    {
+        return $this->short_description['zho'] ?? null;
+    }
+
+    public function setChineseShortDescriptionAttribute($value)
+    {
+        $desc = $this->short_description ?? [];
+        $desc['zho'] = $value;
+        $this->attributes['short_description'] = $desc;
+    }
+
+    public function getChineseOverviewAttribute()
+    {
+        return $this->service_description_overview['zho'] ?? null;
+    }
+
+    public function setChineseOverviewAttribute($value)
+    {
+        $overview = $this->service_description_overview ?? [];
+        $overview['zho'] = $value;
+        $this->attributes['service_description_overview'] = $overview;
     }
 }

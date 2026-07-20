@@ -16,6 +16,7 @@ actor_user_id
 ai_tool_name
 alt_text
 alternative_name_list
+amount_paid
 animation_config
 approved_at
 approved_by_user_id
@@ -49,6 +50,8 @@ cover_media_image_id
 created_at
 created_by_user_id
 creator_user_id_list
+currency_id
+date_experience
 day_of_week
 day_pattern
 decision_note
@@ -98,6 +101,7 @@ icon_config
 image_title
 image_variant_list
 is_animated
+is_anonymous
 is_appealed
 is_auto_complete
 is_claimed
@@ -152,6 +156,7 @@ mode_device_deployment
 mode_display_layout
 mode_draping
 mode_guidance_delivery
+mode_rating
 mode_service_delivery
 mode_skin_care_delivery
 mode_temperature_pattern
@@ -174,7 +179,10 @@ published_at
 published_by_user_id
 quote_text
 rating_count
+rating_criterion_list
+rating_id
 rating_official
+rating_score
 reading_duration_spoken
 reading_duration_visual
 reason_note
@@ -190,8 +198,12 @@ related_product_id_list
 related_service_id_list
 resolution_type
 resolved_at
+review_body
 review_count
+review_id
 review_note
+review_slug
+review_title
 reviewed_at
 reviewed_by_user_id
 reviewer_user_id
@@ -202,6 +214,7 @@ save_count
 scheduled_publish_at
 scope_product_use
 section_fci_registry
+service_received
 shadow_config
 share_count
 short_description
@@ -237,6 +250,7 @@ status_product_authenticity
 status_product_lifecycle
 status_product_moderation
 status_publication
+status_rating
 status_recognition
 status_record_completion
 status_record_lifecycle
@@ -421,6 +435,8 @@ type_production_software
 type_project_phase
 type_publication
 type_quote_category
+type_rating_criterion
+type_rating_source
 type_reading_status
 type_reality_status
 type_receipt_source
@@ -432,6 +448,8 @@ type_relationship
 type_relationship_cardinality
 type_release_region
 type_resolution_context
+type_review
+type_review_disclosure
 type_route_segment
 type_routine
 type_series_program

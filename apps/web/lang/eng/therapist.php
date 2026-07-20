@@ -52,8 +52,8 @@ return [
     'affiliation_note' => 'Each location may have its own services, prices, availability, and booking rules.',
 
     'credentials_title' => 'Experience & Credentials',
-    'credentials_verified_active' => ':count verified active credential|:count verified active credentials',
-    'credentials_submitted' => ':count credential awaiting review|:count credentials awaiting review',
+    'credentials_verified_active' => '{1} :count verified active credential|[2,*] :count verified active credentials',
+    'credentials_submitted' => '{1} :count credential awaiting review|[2,*] :count credentials awaiting review',
     'credentials_none' => 'No credentials have been submitted for this profile yet.',
     'credentials_note' => 'Credential verification covers each submitted credential only. It does not by itself verify identity, affiliation, or service quality.',
 
@@ -62,11 +62,13 @@ return [
 
     'reviews_title' => 'Reviews & Ratings',
     'rating_summary' => 'Official rating',
-    'rating_count' => ':count ratings',
-    'review_count' => ':count reviews',
+    'rating_count' => '{0} :count ratings|{1} :count rating|[2,*] :count ratings',
+    'review_count' => '{0} :count reviews|{1} :count review|[2,*] :count reviews',
     'not_enough_ratings' => 'Not enough ratings yet.',
     'review_context' => 'Visited at',
     'view_all_reviews' => 'View all reviews',
+    'write_review' => 'Write a review',
+    'no_reviews' => 'No approved reviews yet. Be the first to share a detailed experience.',
 
     'verification_title' => 'Verification & Sources',
     'claimed_profile' => 'Claimed profile',
