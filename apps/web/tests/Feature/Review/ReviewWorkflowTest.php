@@ -146,6 +146,7 @@ class ReviewWorkflowTest extends TestCase
             'published_by_user_id' => (string) $user->getKey(),
         ])->save();
         $rating->forceFill(['status_rating' => 'ACT'])->save();
+        auth()->logout();
 
         $this->get('/review/'.$review->review_slug)
             ->assertOk()

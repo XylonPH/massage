@@ -1,5 +1,5 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.50
+Document Version: 0.51
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description:
@@ -649,6 +649,12 @@ Routes:
 /workspace/review/response
 /workspace/review/report
 /workspace/review/revision
+
+Current implemented Review workspace routes are /workspace/review, /workspace/review/draft,
+/workspace/review/submitted, /workspace/review/published, /workspace/review/{review}/edit, and
+/workspace/review/{review}/submit. Target-specific creation starts from
+/spa/{establishment_slug}/review or /therapist/{therapist-slug}/review. My, rejected, received,
+response, report, and revision routes remain planned until their owning workflows are implemented.
 
 Users may:
 

@@ -1,5 +1,5 @@
 Title: Massage Nexus Spa Profile UI
-Document Version: 0.20
+Document Version: 0.21
 Date Created: 2026-07-18
 Revision Date: 2026-07-19
 
@@ -85,7 +85,7 @@ Currently shows Treatment Areas only (name, privacy level, capacity, and a short
 
 Placement: Main column, after Facilities.
 
-A rating summary (large numeric average, star display, review count) beside a list of individual reviews (reviewer, date, rating, text). A "View all reviews" action is present but does not yet lead to a dedicated reviews page.
+The section now reads approved Review records from review_main and their linked 1-to-10 rating events from rating_main. Rating count and review count remain separate. Until the Rating System's public XCES threshold and calculation are implemented, the profile says "Not enough ratings yet" instead of presenting an unexplained fixture average. Review cards show the public byline or anonymous label, publication date, exact score out of 10, title, and short description without star imagery. "Write a review" opens the authenticated Spa review form, and "View all reviews" opens the public list filtered to this Spa.
 
 --------------------------------------------------------------------------------
 
@@ -119,7 +119,7 @@ A quick-booking form: service selector (populated from the establishment's menu 
 Spa Profile UI Behavior Notes
 ================================
 
-The page currently renders from synthetic sample data (see apps/web/app/Support/SampleContent.php) rather than the establishment_main collection, so claim status, booking mode, and verification labels reflect fixture values, not live authorization state. Booking form submission does not yet call a booking endpoint. Section visibility rules from the Spa Profile Guide (hiding genuinely empty sections rather than showing placeholders) are not yet implemented, since sample data always populates every section.
+The Spa identity, services, staff, facilities, location, claim status, booking mode, and verification labels still render from synthetic sample data (see apps/web/app/Support/Demo/SampleContent.php) rather than establishment_main. The Review section is the exception: it reads approved review_main and rating_main records associated with the demo target's stable placeholder ID. Booking form submission does not yet call a booking endpoint. Empty Review state is implemented; broader section visibility rules remain deferred because the other sample sections are populated.
 
 Open Items
 ============

@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.44
+Document Version: 2.45
 Date Created: 2026-07-10
 Revision Date: 2026-07-20
 
@@ -1400,6 +1400,16 @@ quiet-break
 /review/latest
 /review/trending
 /review/helpful
+
+Current implemented Review routes:
+- /review, /review/spa, /review/therapist, and /review/{review-slug} render approved MongoDB-backed
+  Review records;
+- /review/spa?target={establishment-slug} and
+  /review/therapist?target={therapist-slug} provide target-filtered public lists;
+- /spa/{establishment_slug}/review and /therapist/{therapist-slug}/review are authenticated review
+  creation and submission routes rather than passive profile tabs;
+- product, category, tag, author, latest, trending, helpful, reaction, response, and discussion
+  Review routes remain planned.
 
 Review page sections:
 review-header

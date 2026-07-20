@@ -251,6 +251,7 @@ status_product_lifecycle
 status_product_moderation
 status_publication
 status_rating
+status_rating_observation
 status_recognition
 status_record_completion
 status_record_lifecycle

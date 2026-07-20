@@ -1243,6 +1243,23 @@ Separate public guides may be created later for:
 - how anonymous reviews work;
 - what makes a review different from a comment.
 
+Current Web Implementation Boundary
+-----------------------------------
+
+The first MongoDB-backed web foundation supports registered-user reviews of the current Spa and
+Therapist profile targets. It includes private drafts, owner-only editing, submission to pending
+moderation, public anonymity, original-language selection for English or Filipino, the minimum
+substance rule, computed reading duration, basic experience and payment context, disclosure and
+NSFW selection, simple 1-to-10 ratings, approved target-specific criteria ratings, and explicit
+Not Observed or Not Applicable criterion states. Approved records can render in public Review
+lists, Review detail pages, and the matching profile's Review section.
+
+This foundation does not yet provide moderator approval actions, post-submission revision history,
+verified-visit evidence, connected-party relationship detection, owner or therapist responses,
+helpfulness reactions, reports, appeals, media attachments, rewards, AI screening, product reviews,
+or official XCES calculation. Until XCES and its minimum-signal rules are implemented, profile
+pages must show Not Enough Ratings instead of calculating a simple public average.
+
 Related Documents and Remaining Planning Items
 ----------------------------------------------
 

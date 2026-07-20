@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.62
+Document Version: 1.63
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -427,6 +427,18 @@ Community:
 - translation on demand;
 - mentions, replies, role labels, subscriptions, blocks, mute, and reporting;
 - Reputation, limited rewards, badges, ranks, and anti-farming controls.
+
+Current Review foundation checkpoint (2026-07-20):
+- active verified members can create spa and therapist review drafts, use simple or approved
+  criteria-based 1-to-10 ratings, preserve Not Observed and Not Applicable choices, choose public
+  anonymity, record basic visit context and disclosure, and submit a review for moderation;
+- the User Workspace lists draft, submitted, and published review states, while approved records
+  have public Review detail, Spa Review, Therapist Review, and profile-summary presentation;
+- review_main and rating_main are MongoDB-backed shared target collections with controlled review,
+  rating, disclosure, criterion, observation, and rating-state taxonomy;
+- moderator approval actions, revision history after submission, connected-party detection,
+  reports, appeals, responses, reactions, media, rewards, official XCES calculation, and product
+  reviews remain Phase 7 dependencies, so the community expansion gate is not yet satisfied.
 
 Moderation and trust:
 - verification and trust labels;

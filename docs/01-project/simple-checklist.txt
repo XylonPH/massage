@@ -1,5 +1,5 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 1.71
+Document Version: 1.72
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: This is the master categorical to-do checklist for Massage Nexus. It preserves completed planning and technical foundations, every detailed website feature and requirement from the Features inventory, release readiness, and continuing operations. It is not a changelog, Roadmap, Feature summary, release log, or document-version history; items stay in their logical category and change only by checkbox status or accepted wording.
@@ -599,33 +599,33 @@ complete a website feature.
 
 6.1 Review Types
 ----------------
-[ ] User reviews
+[x] User reviews
 [ ] Editorial reviews
 [ ] Verified visit reviews
 [ ] Multi-visit review
-[ ] Anonymous review option
+[x] Anonymous review option
 [ ] Pseudonymous review option
 
 
 6.2 Review Labels and Badges
 ----------------------------
-[ ] Sponsored/invited review label
-[ ] Owner-requested review label
+[x] Sponsored/invited review label
+[x] Owner-requested review label
 [ ] Verified customer badge
 [ ] Verified booking badge
 
 
 6.3 Review Content Fields
 -------------------------
-[ ] Review title
-[ ] Review body
-[ ] Minimum review length
-[ ] Visit date
+[x] Review title
+[x] Review body
+[x] Minimum review length
+[x] Visit date
 [ ] Visit time
-[ ] Service received
-[ ] Therapist reviewed
-[ ] Spa reviewed
-[ ] Price paid
+[x] Service received
+[x] Therapist reviewed
+[x] Spa reviewed
+[x] Price paid
 [ ] Booking/walk-in indicator
 [ ] Review photos
 [ ] Review videos
@@ -633,14 +633,14 @@ complete a website feature.
 
 6.4 Rating Fields
 -----------------
-[ ] Review-linked target rating on the 1-to-10 scale
-[ ] Simple overall rating mode
-[ ] Criteria rating mode with Not Observed or Not Applicable support
-[ ] Spa criteria: Cleanliness, Comfort, Privacy, Service, and Value
-[ ] Therapist criteria: Technique, Pressure, Professionalism, Communication, and Reliability
-[ ] Criteria-based event score calculated from answered criteria only
-[ ] Rating count kept separate from review count
-[ ] Non-star connected-pulse or nexus-node rating presentation
+[x] Review-linked target rating on the 1-to-10 scale
+[x] Simple overall rating mode
+[x] Criteria rating mode with Not Observed or Not Applicable support
+[x] Spa criteria: Cleanliness, Comfort, Privacy, Service, and Value
+[x] Therapist criteria: Technique, Pressure, Professionalism, Communication, and Reliability
+[x] Criteria-based event score calculated from answered criteria only
+[x] Rating count kept separate from review count
+[x] Non-star connected-pulse or nexus-node rating presentation
 
 
 6.5 Review Interaction
