@@ -36,6 +36,13 @@ class EstablishmentForm
                                 Textarea::make('short_description.zho')
                                     ->label('Short Description (Chinese)')
                                     ->rows(3),
+                                Textarea::make('description.eng')
+                                    ->label('Full Description (English)')
+                                    ->helperText('The complete public description shown on the profile page.')
+                                    ->rows(8),
+                                Textarea::make('description.zho')
+                                    ->label('Full Description (Chinese)')
+                                    ->rows(8),
                                 TextInput::make('email')
                                     ->label('Business Email')
                                     ->email()
@@ -161,6 +168,30 @@ class EstablishmentForm
                             ])->columns(2),
                         Tab::make('Facilities')
                             ->schema([
+                                Repeater::make('treatment_area_list')
+                                    ->label('Treatment Areas')
+                                    ->helperText('Named treatment rooms, suites, or stations with their privacy and capacity.')
+                                    ->schema([
+                                        TextInput::make('treatment_area_name')
+                                            ->label('Area Name')
+                                            ->required()
+                                            ->maxLength(255),
+                                        Select::make('type_treatment_area')
+                                            ->label('Area Type')
+                                            ->options(self::getTaxonomyOptions('type_treatment_area')),
+                                        Select::make('level_treatment_privacy')
+                                            ->label('Privacy Level')
+                                            ->options(self::getTaxonomyOptions('level_treatment_privacy')),
+                                        Select::make('type_treatment_capacity')
+                                            ->label('Capacity')
+                                            ->options(self::getTaxonomyOptions('type_treatment_capacity')),
+                                        TextInput::make('treatment_area_note')
+                                            ->label('Public Note')
+                                            ->maxLength(255),
+                                    ])
+                                    ->columns(2)
+                                    ->defaultItems(0)
+                                    ->columnSpanFull(),
                                 Select::make('room_types')
                                     ->label('Treatment Room Types')
                                     ->multiple()

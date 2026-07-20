@@ -23,6 +23,7 @@ class Establishment extends Model
         '_id',
         'display_name',
         'short_description',
+        'description',
         'email',
         'contact_number',
         'address_public',
@@ -32,6 +33,7 @@ class Establishment extends Model
         'parking_note',
         'landmark_list',
         'contact_channel_list',
+        'treatment_area_list',
         'type_spa',
         'level_spa_market',
         'type_physical_setting',
@@ -64,6 +66,7 @@ class Establishment extends Model
         'direction_note' => 'array',
         'parking_note' => 'array',
         'landmark_list' => 'array',
+        'treatment_area_list' => 'array',
         'contact_channel_list' => 'array',
     ];
 
