@@ -121,7 +121,7 @@ complete a website feature.
 1.1 Platform Surfaces
 ---------------------
 [x] Service profile module
-[~] Spa or establishment profile module
+[x] Spa or establishment profile module
 [ ] Therapist profile module
 [ ] Product profile module
 [~] Public website
