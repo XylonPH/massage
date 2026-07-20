@@ -39,8 +39,8 @@ class EmailVerificationController extends Controller
 
         $user->markEmailAsVerified();
         $user->forceFill([
-            'status_account' => 'active',
-            'status_membership' => 'active',
+            'status_account' => 'ACT',
+            'status_membership' => 'ACT',
         ])->save();
 
         return redirect()

@@ -60,8 +60,8 @@ class RegistrationTest extends TestCase
 
         $user = User::where('username', 'wellnessfan7')->first();
         $this->assertNotNull($user);
-        $this->assertSame('pending_email_verification', $user->status_account);
-        $this->assertSame('pending_eligibility', $user->status_membership);
+        $this->assertSame('PND', $user->status_account);
+        $this->assertSame('PEL', $user->status_membership);
         $this->assertNotNull($user->terms_accepted_at);
         $this->assertNotNull($user->privacy_acknowledged_at);
         $this->assertTrue(strlen($user->_id) === 16);

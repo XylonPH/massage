@@ -39,8 +39,8 @@ class EmailVerificationTest extends TestCase
 
         $user->refresh();
         $this->assertNotNull($user->email_verified_at);
-        $this->assertSame('active', $user->status_account);
-        $this->assertSame('active', $user->status_membership);
+        $this->assertSame('ACT', $user->status_account);
+        $this->assertSame('ACT', $user->status_membership);
     }
 
     public function test_tampered_hash_is_rejected(): void

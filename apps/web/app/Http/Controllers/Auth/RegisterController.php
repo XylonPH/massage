@@ -115,7 +115,7 @@ class RegisterController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        // The account is created with pending_email_verification status and
+        // The account is created with PND (pending) account status and
         // must not be logged in until the email is verified (accounts spec
         // section 6), so we redirect to the notice page instead of the
         // authenticated area.
