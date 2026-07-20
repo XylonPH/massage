@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\RecordLifecycleStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model;
 
 class Service extends Model
@@ -11,9 +12,11 @@ class Service extends Model
     use HasFactory;
 
     protected $connection = 'mongodb';
-    protected $collection = 'service_main';
+
+    protected $table = 'service_main';
 
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
@@ -38,7 +41,7 @@ class Service extends Model
 
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = \Illuminate\Support\Str::random(16);
+                $model->{$model->getKeyName()} = Str::random(16);
             }
         });
     }

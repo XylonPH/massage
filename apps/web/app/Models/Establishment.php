@@ -4,17 +4,19 @@ namespace App\Models;
 
 use App\Enums\RecordLifecycleStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use MongoDB\Laravel\Eloquent\Model;
 use Illuminate\Support\Str;
+use MongoDB\Laravel\Eloquent\Model;
 
 class Establishment extends Model
 {
     use HasFactory;
 
     protected $connection = 'mongodb';
-    protected $collection = 'establishment_main';
+
+    protected $table = 'establishment_main';
 
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
@@ -33,6 +35,19 @@ class Establishment extends Model
         'type_client_access',
         'target_client_focus',
         'status_record_lifecycle',
+        'amenities',
+        'room_types',
+        'shower_availability',
+        'sauna_availability',
+        'steam_room_availability',
+        'jacuzzi_availability',
+        'locker_availability',
+        'couple_room_availability',
+        'private_room_availability',
+        'curtain_divider_information',
+        'bed_mat_chair_setup',
+        'air_conditioning_information',
+        'accessibility_information',
     ];
 
     protected $casts = [

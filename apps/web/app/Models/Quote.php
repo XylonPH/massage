@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Enums\NsfwLevel;
-use App\Enums\QuoteCategory;
 use App\Enums\RecordLifecycleStatus;
 use App\Enums\ReviewStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model;
 
 class Quote extends Model
@@ -14,10 +14,12 @@ class Quote extends Model
     use HasFactory;
 
     protected $connection = 'mongodb';
-    protected $collection = 'quote_main';
-    
+
+    protected $table = 'quote_main';
+
     // Per documentation: application-generated 16-character Base62 identifier
     protected $keyType = 'string';
+
     public $incrementing = false;
 
     protected $fillable = [
@@ -58,7 +60,7 @@ class Quote extends Model
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
                 // Generate a 16-character Base62 ID using Str::random or similar
-                $model->{$model->getKeyName()} = \Illuminate\Support\Str::random(16);
+                $model->{$model->getKeyName()} = Str::random(16);
             }
         });
     }
