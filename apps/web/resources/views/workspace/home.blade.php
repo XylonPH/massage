@@ -26,7 +26,7 @@
             <h2 id="ws-account" class="font-black text-ink-950 dark:text-ink-50">{{ __('workspace.card_account_title') }}</h2>
             <p class="mt-2 text-sm text-ink-700 dark:text-ink-200">{{ '@'.$user->username }}</p>
             <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ $user->email }}</p>
-            <p class="mt-1 text-xs text-ink-400 dark:text-ink-400">{{ __('workspace.card_account_member_since', ['date' => $user->created_at?->format('M j, Y')]) }}</p>
+            <p class="mt-1 text-xs text-ink-400 dark:text-ink-300">{{ __('workspace.card_account_member_since', ['date' => $user->created_at?->format('M j, Y')]) }}</p>
             <a href="{{ route('workspace.profile.edit') }}" class="mt-4 inline-block text-sm font-bold text-ember-600 transition hover:text-ember-700 dark:text-ember-400 dark:hover:text-ember-300">{{ __('workspace.nav_profile') }} →</a>
         </section>
 
