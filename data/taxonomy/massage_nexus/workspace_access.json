@@ -1,0 +1,124 @@
+[
+    {
+        "_id": 502,
+        "field_name": "role_workspace",
+        "field_label": "Workspace Role",
+        "field_description": "Classifies an additive Massage Nexus responsibility used as a permission bundle. A role never replaces the user's ordinary personal capabilities and does not by itself identify ownership of an establishment.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "FND", "option_label": "Founder", "option_description": "Highest project decision responsibility, still subject to audit and high-risk safeguards." },
+            { "option_code": "EAD", "option_label": "Editorial Administrator", "option_description": "Administers approved editorial areas according to granted permissions." },
+            { "option_code": "MOD", "option_label": "Moderator", "option_description": "Handles assigned moderation work according to granted permissions." },
+            { "option_code": "VRF", "option_label": "Verifier", "option_description": "Reviews assigned claims, credentials, contacts, or evidence according to granted permissions." },
+            { "option_code": "DAT", "option_label": "Data Administrator", "option_description": "Maintains approved structured records and taxonomy according to granted permissions." },
+            { "option_code": "SYS", "option_label": "System Administrator", "option_description": "Handles approved technical and system operations under critical safeguards." },
+            { "option_code": "TRN", "option_label": "Translator", "option_description": "Translates assigned languages and content without automatic publication authority." },
+            { "option_code": "STW", "option_label": "Steward", "option_description": "Maintains specifically assigned community-managed records." },
+            { "option_code": "OPR", "option_label": "Establishment Operator", "option_description": "Performs approved operational work for one or more establishments without implying ownership." },
+            { "option_code": "THP", "option_label": "Practitioner", "option_description": "Manages approved practitioner responsibilities while retaining ordinary user capabilities." },
+            { "option_code": "INS", "option_label": "Instructor", "option_description": "Performs approved teaching responsibilities in Massage Campus." },
+            { "option_code": "LRN", "option_label": "Learner", "option_description": "Participates in approved Massage Campus learning activities." }
+        ]
+    },
+    {
+        "_id": 503,
+        "field_name": "scope_access",
+        "field_label": "Access Scope",
+        "field_description": "Identifies the boundary within which a workspace access assignment applies. The related scope_record_id supplies the specific record when the scope is not global.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "GBL", "option_label": "Global", "option_description": "Applies across Massage Nexus within the granted permission." },
+            { "option_code": "EST", "option_label": "Establishment", "option_description": "Applies only to one establishment record." },
+            { "option_code": "PRA", "option_label": "Practitioner", "option_description": "Applies only to one practitioner record." },
+            { "option_code": "LNG", "option_label": "Language", "option_description": "Applies only to one assigned language." },
+            { "option_code": "EDT", "option_label": "Editorial Area", "option_description": "Applies only to one editorial category, publication, or assignment boundary." },
+            { "option_code": "CRS", "option_label": "Course", "option_description": "Applies only to one Massage Campus course." }
+        ]
+    },
+    {
+        "_id": 504,
+        "field_name": "status_access_assignment",
+        "field_label": "Access Assignment Status",
+        "field_description": "Lifecycle state of a role or direct-permission assignment. Only active assignments within their effective and expiry times grant access.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "PND", "option_label": "Pending", "option_description": "Assignment has been proposed but does not grant access." },
+            { "option_code": "ACT", "option_label": "Active", "option_description": "Assignment currently grants its approved access." },
+            { "option_code": "EXP", "option_label": "Expired", "option_description": "Assignment passed its approved expiry and no longer grants access." },
+            { "option_code": "REV", "option_label": "Revoked", "option_description": "Assignment was withdrawn and no longer grants access." }
+        ]
+    },
+    {
+        "_id": 505,
+        "field_name": "type_establishment_relationship",
+        "field_label": "Establishment Relationship",
+        "field_description": "Classifies how a user is connected to an establishment. It is separate from workspace permissions, and a declaration remains unverified until the applicable review succeeds.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "NON", "option_label": "No Existing Relationship", "option_description": "The user is contributing public information without claiming a business relationship." },
+            { "option_code": "OWN", "option_label": "Owner", "option_description": "The user declares legal or beneficial ownership of the establishment." },
+            { "option_code": "INV", "option_label": "Investor", "option_description": "The user declares an investment relationship without implying sole ownership or management authority." },
+            { "option_code": "MGR", "option_label": "Manager", "option_description": "The user declares responsibility for managing the establishment or one of its branches." },
+            { "option_code": "OPR", "option_label": "Authorized Operator", "option_description": "The user declares authority to operate the establishment's Massage Nexus workspace without claiming ownership." },
+            { "option_code": "REP", "option_label": "Authorized Representative", "option_description": "The user declares another approved representative relationship requiring verification." }
+        ]
+    },
+    {
+        "_id": 506,
+        "field_name": "status_establishment_relationship",
+        "field_label": "Establishment Relationship Status",
+        "field_description": "Current verification and lifecycle state of one user-to-establishment relationship. It does not describe the user's separate workspace access assignment.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "PND", "option_label": "Pending", "option_description": "Relationship has been declared but is not yet verified." },
+            { "option_code": "ACT", "option_label": "Active", "option_description": "Relationship is verified and currently active." },
+            { "option_code": "DSP", "option_label": "Disputed", "option_description": "Relationship is contested and must not independently grant trust or access." },
+            { "option_code": "END", "option_label": "Ended", "option_description": "Relationship no longer applies but remains in history." }
+        ]
+    },
+    {
+        "_id": 507,
+        "field_name": "type_contribution",
+        "field_label": "Contribution Type",
+        "field_description": "Classifies the operation proposed by a user or staff contribution independently from the target collection.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "ADD", "option_label": "Add Record", "option_description": "Proposes a new record that does not yet exist." },
+            { "option_code": "COR", "option_label": "Correct Record", "option_description": "Proposes a factual correction to an existing record." },
+            { "option_code": "CLS", "option_label": "Report Closure", "option_description": "Proposes recording that an establishment or another supported target has closed." },
+            { "option_code": "DUP", "option_label": "Report Duplicate", "option_description": "Proposes linking or merging records believed to represent the same target." },
+            { "option_code": "SRC", "option_label": "Add Source", "option_description": "Proposes new provenance or supporting-source information." },
+            { "option_code": "TRN", "option_label": "Add Translation", "option_description": "Proposes translated content without automatic publication authority." }
+        ]
+    },
+    {
+        "_id": 508,
+        "field_name": "status_contribution",
+        "field_label": "Contribution Status",
+        "field_description": "Workflow state of a contribution from private draft through review and final disposition.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "DFT", "option_label": "Draft", "option_description": "Private contribution not yet submitted for review." },
+            { "option_code": "PND", "option_label": "Pending Review", "option_description": "Submitted contribution awaiting an authorized review decision." },
+            { "option_code": "RET", "option_label": "Returned", "option_description": "Reviewer requested clarification or revision from the submitter." },
+            { "option_code": "APR", "option_label": "Approved", "option_description": "Authorized reviewer accepted the applicable proposed information." },
+            { "option_code": "REJ", "option_label": "Rejected", "option_description": "Authorized reviewer declined the contribution with a recorded reason." },
+            { "option_code": "WDR", "option_label": "Withdrawn", "option_description": "Submitter withdrew the unapproved contribution." },
+            { "option_code": "ARC", "option_label": "Archived", "option_description": "Contribution is retained as inactive history." }
+        ]
+    }
+]

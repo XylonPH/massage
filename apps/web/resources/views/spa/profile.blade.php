@@ -337,40 +337,44 @@
             </section>
         </div>
 
-        {{-- ===================== Booking panel ===================== --}}
+        {{-- ===================== Booking panel & Sidebar ===================== --}}
         <aside class="min-w-0">
-            <section id="book" aria-labelledby="book-heading" class="scroll-mt-32 rounded-2xl border border-ink-100 bg-white p-4 shadow-md lg:sticky lg:top-36">
-                <h2 id="book-heading" class="text-lg font-black text-ink-950">{{ __('spa.book_title') }}</h2>
-                <form class="mt-5 space-y-4" action="#book" method="get">
-                    <div>
-                        <label for="booking-service" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_service') }}</label>
-                        <select id="booking-service" name="service" class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
-                            <option value="">{{ __('spa.choose_service') }}</option>
-                            @foreach ($spa['services'] as $service)
-                                <option value="{{ \Illuminate\Support\Str::slug($service['name']) }}">{{ $service['name'] }} — {{ $service['price'] }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div>
-                        <label for="booking-date" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_date') }}</label>
-                        <input id="booking-date" name="date" type="date" min="{{ now()->toDateString() }}" value="{{ now()->addDay()->toDateString() }}"
-                               class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
-                    </div>
-                    <div>
-                        <label for="booking-time" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_time') }}</label>
-                        <select id="booking-time" name="time" class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
-                            @foreach ($spa['booking_times'] as $time)
-                                <option value="{{ $time }}">{{ $time }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button type="submit" class="w-full rounded-xl bg-ember-500 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">
-                        {{ __('common.book_now') }}
-                    </button>
-                    <p class="text-center text-xs text-ink-400">{{ __('spa.book_note') }}</p>
-                    <p class="rounded-xl bg-ink-50 px-3.5 py-2.5 text-center text-xs text-ink-500">{{ __('spa.booking_mode_request') }}</p>
-                </form>
-            </section>
+            <div class="space-y-6 lg:sticky lg:top-36">
+                <section id="book" aria-labelledby="book-heading" class="scroll-mt-32 rounded-2xl border border-ink-100 bg-white p-4 shadow-md">
+                    <h2 id="book-heading" class="text-lg font-black text-ink-950">{{ __('spa.book_title') }}</h2>
+                    <form class="mt-5 space-y-4" action="#book" method="get">
+                        <div>
+                            <label for="booking-service" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_service') }}</label>
+                            <select id="booking-service" name="service" class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+                                <option value="">{{ __('spa.choose_service') }}</option>
+                                @foreach ($spa['services'] as $service)
+                                    <option value="{{ \Illuminate\Support\Str::slug($service['name']) }}">{{ $service['name'] }} — {{ $service['price'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
+                            <label for="booking-date" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_date') }}</label>
+                            <input id="booking-date" name="date" type="date" min="{{ now()->toDateString() }}" value="{{ now()->addDay()->toDateString() }}"
+                                   class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+                        </div>
+                        <div>
+                            <label for="booking-time" class="mb-1 block text-sm font-bold text-ink-900">{{ __('spa.select_time') }}</label>
+                            <select id="booking-time" name="time" class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+                                @foreach ($spa['booking_times'] as $time)
+                                    <option value="{{ $time }}">{{ $time }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full rounded-xl bg-ember-500 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">
+                            {{ __('common.book_now') }}
+                        </button>
+                        <p class="text-center text-xs text-ink-400">{{ __('spa.book_note') }}</p>
+                        <p class="rounded-xl bg-ink-50 px-3.5 py-2.5 text-center text-xs text-ink-500">{{ __('spa.booking_mode_request') }}</p>
+                    </form>
+                </section>
+
+                <x-widgets.sidebar-container :content-length="3000" />
+            </div>
         </aside>
     </div>
 </div>

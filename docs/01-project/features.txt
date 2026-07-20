@@ -98,7 +98,10 @@ Recommendations help users discover relevant services, spas, therapists, article
 8. Theme Customization
 Users may choose supported appearance themes while preserving accessibility and consistent interface behavior.
 
-9. Accessibility
+9. Dynamic Engagement Sidebar
+The Dynamic Engagement Sidebar provides an intelligent, context-aware secondary column on public-facing pages (Articles, News, Reviews, Spa Profiles, Therapist Profiles, Service Profiles, etc.). It adapts its length and modules based on the main content's length. Modules include Quizzes, Surveys, Trending Therapists, Trending Spas, Recent Reviews, Recent Discussions, and personalized elements like Recent Visits. Quizzes and Surveys allow anonymous participation (tracked via session) with lead-generation prompts upon completion. The sidebar is explicitly excluded from internal workspaces.
+
+10. Accessibility
 Accessibility applies across public pages, account flows, profiles, search, maps, media, booking, Support, workspaces, translations, Comments, Discussions, and administrative tools. The platform should support screen readers, keyboard navigation, scalable text, captions, contrast, reduced motion, understandable labels and errors, accessible forms, and non-visual alternatives. Accessibility is a system-wide requirement rather than a one-sentence interface preference.
 
 2. DIRECTORY PROFILES, MENUS, PRODUCTS, AND MEDIA
@@ -299,6 +302,7 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Product profile module
 - Public website
 - Responsive web design
+- Dynamic engagement sidebar (Articles, Profiles, etc.)
 - Customer mobile app
 - Business mobile app
 - Admin/moderator interface

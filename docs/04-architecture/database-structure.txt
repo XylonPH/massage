@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.51
+Document Version: 1.61
 Date Created: 2026-07-12
 Revision Date: 2026-07-20
 
@@ -149,6 +149,13 @@ Before creating any new field name, check the field-name index at data/field_ind
   acknowledgment, optional consent, withdrawal, and the evidence needed to establish what decision
   occurred. Published legal or policy text does not belong in this collection.
 
+- access_assignment
+  Additive workspace role and direct-permission assignments. An assignment may be global or scoped
+  to one establishment, practitioner, language, editorial area, or Massage Campus course. Effective
+  and expiry times, assigner, reason, and lifecycle state belong here rather than in user_main.
+  Ordinary personal user capabilities require no assignment. Ownership, investment, management,
+  and other factual establishment relationships do not belong in this collection.
+
 Additional user collections are deferred until saved-item, follow, notification, security-history,
 and other independently growing workflows are designed. Do not create user_consent merely to split
 consent from user_policy; bounded ordinary preferences remain in user_main.
@@ -160,6 +167,12 @@ consent from user_policy; bounded ordinary preferences remain in user_main.
 
 - organization_establishment
   Relationship between an organization and an establishment, including branch and operating relationships.
+
+- establishment_user
+  Factual user-to-establishment relationships such as owner, investor, manager, or authorized
+  operator. One establishment may have several related users, one user may relate to several
+  establishments, and separate relationship records may coexist. These records do not grant
+  workspace access; operational authority is assigned separately through access_assignment.
 
 - establishment_main
   One establishment or supported provider profile, using Establishment as the technical term and Spa as an appropriate public label.
@@ -294,9 +307,13 @@ across these domains without forcing their authoritative records into one generi
 
 14. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
 
-claim_main - Shared ownership or management claim workflow for approved claimable targets.
+claim_main - Shared ownership or management claim workflow for approved claimable targets. A claim
+declaration is not an active establishment relationship or access assignment until the applicable
+review creates or updates those separate records.
 verification_main - Shared verification process and result history.
-contribution_main - User or staff proposal to add, correct, translate, enrich, or update a record.
+contribution_main - Authenticated user or staff proposal to add, correct, translate, enrich, or
+update a record. A contribution may declare a submitter relationship and request workspace access,
+but neither declaration grants authority before authorized review.
 revision_main - Approved and restorable revision history for supported targets.
 moderation_main - Moderation case or review workflow.
 moderation_action - Human decision, administrative action, AI recommendation, escalation, reversal, or other action inside a moderation case.

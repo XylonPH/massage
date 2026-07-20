@@ -392,6 +392,7 @@ Brand and frequent content:
 - mascots and Nexus Cast;
 - Neural Agent editorial use;
 - newsletters and digests;
+- dynamic engagement sidebars for public surfaces;
 - initial Relaxation Room experiences where operationally manageable.
 
 MILESTONE 5 — INTERNAL CONTENT AND CAMPUS ALPHA

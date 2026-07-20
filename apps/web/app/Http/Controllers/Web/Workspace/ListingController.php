@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Web\Workspace;
 
 use App\Http\Controllers\Controller;
+use App\Models\Establishment;
+use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -10,16 +12,21 @@ use Illuminate\View\View;
  * Operator and practitioner managed-listing areas
  * (/workspace/listing/spa and /workspace/listing/therapist per the Site
  * Structure Map section 35). Management authority comes from the claim
- * workflow; until claim records exist, every member sees the honest empty
- * state with the claim route as the way in, matching the operator and
- * therapist workspace specifications' access model.
+ * workflow and explicit scoped access assignments. A person may manage
+ * several establishments without selecting a separate role context.
  */
 class ListingController extends Controller
 {
-    public function spaIndex(Request $request): View
+    public function spaIndex(Request $request, WorkspaceAccess $workspaceAccess): View
     {
+        $establishmentIds = $workspaceAccess->scopedRecordIds(
+            $request->user(),
+            'establishment.manage',
+            'EST',
+        );
+
         return view('workspace.listing.spa', [
-            'establishments' => [],
+            'establishments' => Establishment::query()->whereIn('_id', $establishmentIds)->get(),
         ]);
     }
 

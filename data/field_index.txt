@@ -33,7 +33,9 @@ article_plain_text
 article_slug
 article_title
 assigned_at
+assigned_by_user_id
 assigned_user_id
+assignment_reason
 attribution_name
 author_user_id_list
 bed_mat_chair_setup
@@ -81,8 +83,11 @@ dog_breed_name
 download_scope
 duration
 editor_user_id_list
+effective_at
 email
 email_verified_at
+ended_at
+establishment_id
 establishment_slug
 evidence_note
 exercise_description
@@ -140,6 +145,7 @@ is_shareable
 is_system
 is_system_generated
 is_translatable
+is_workspace_access_requested
 jacuzzi_availability
 landmark_list
 landmark_name
@@ -194,6 +200,7 @@ parking_note
 part_of_day
 part_of_speech
 password
+permission_code_list
 photographer_user_id_list
 placeholder_text
 point_count
@@ -205,6 +212,7 @@ priority_level
 privacy_acknowledged_at
 privacy_acknowledged_version
 private_room_availability
+proposed_data
 published_at
 published_by_user_id
 quote_text
@@ -226,6 +234,7 @@ related_organization_id_list
 related_practitioner_id_list
 related_product_id_list
 related_service_id_list
+relationship_note
 remember_token
 resolution_type
 resolved_at
@@ -241,11 +250,15 @@ reviewer_user_id
 reviewer_user_id_list
 revision_note
 revision_number
+revoked_at
+role_workspace
 room_types
 sauna_availability
 save_count
 scheduled_publish_at
+scope_access
 scope_product_use
+scope_record_id
 section_fci_registry
 service_received
 shadow_config
@@ -261,6 +274,7 @@ source_reference_list
 source_title
 source_url
 spacing_config
+status_access_assignment
 status_account
 status_activity
 status_agreement
@@ -268,10 +282,12 @@ status_award_result
 status_backup
 status_claim
 status_contact_channel
+status_contribution
 status_credential_lifecycle
 status_credential_verification
 status_download
 status_establishment
+status_establishment_relationship
 status_export
 status_file
 status_import
@@ -373,6 +389,7 @@ type_contact_channel
 type_contact_event
 type_contact_group
 type_contact_number
+type_contribution
 type_cost_adjustment
 type_credit_appearance
 type_crew_role_group
@@ -394,6 +411,7 @@ type_edition
 type_environment
 type_episode_content
 type_establishment_operation
+type_establishment_relationship
 type_event_relationship
 type_evidence_list
 type_evidence_strength
@@ -542,8 +560,11 @@ updated_at
 updated_by_device_id
 updated_by_user_id
 usage_count
+user_id
 username
 validation_rule_list
+verified_at
+verified_by_user_id
 video_title
 video_variant_list
 videographer_user_id_list

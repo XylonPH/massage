@@ -144,6 +144,7 @@
                 </div>
             </div>
             
+            <x-widgets.sidebar-container :content-length="3000" />
         </aside>
     </div>
 </div>

@@ -2,7 +2,7 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Http\Middleware\Authenticate;
+use App\Http\Middleware\AuthenticateWorkspacePanel;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -27,7 +27,6 @@ class EditorialPanelProvider extends PanelProvider
             ->default()
             ->id('editorial')
             ->path('workspace/editorial')
-            ->login()
             ->colors([
                 'primary' => Color::Green,
             ])
@@ -53,7 +52,7 @@ class EditorialPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
+                AuthenticateWorkspacePanel::class,
             ]);
     }
 }

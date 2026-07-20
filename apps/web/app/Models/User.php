@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Notifications\PasswordResetLink;
+use App\Support\Workspace\WorkspaceAccess;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Auth\MustVerifyEmail;
@@ -40,14 +41,11 @@ class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmail
 
     public function canAccessPanel(Panel $panel): bool
     {
-        // Require active account and verified email for all workspace panels
         if (! $this->hasVerifiedEmail() || ! $this->isActive()) {
             return false;
         }
 
-        // Additional role/permission checks based on $panel->getId()
-        // can be added here once the roles/permissions system is built.
-        return true;
+        return app(WorkspaceAccess::class)->canAccessPanel($this, $panel->getId());
     }
 
     protected static function boot(): void

@@ -121,6 +121,15 @@ A quick-booking form: service selector (populated from the establishment's menu 
 
 --------------------------------------------------------------------------------
 
+12. Dynamic Engagement Sidebar
+==============================
+
+Placement: Right rail, immediately below the Booking Panel.
+
+A dynamically populated stack of engagement widgets (Trending Spas, Trending Therapists, Recent Reviews, Quizzes, Surveys, etc.) that scales according to the length of the main profile content. The widgets encourage cross-navigation and interaction. Anonymous users can participate in quizzes and surveys via session tracking.
+
+--------------------------------------------------------------------------------
+
 Spa Profile UI Behavior Notes
 ================================
 

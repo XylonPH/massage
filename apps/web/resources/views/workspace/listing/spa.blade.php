@@ -16,10 +16,22 @@
                 <div class="mt-8 rounded-2xl border border-dashed border-ink-200 bg-ink-50/50 p-8 text-center">
                     <h2 class="text-lg font-black text-ink-800">{{ __('workspace.listing_spa_empty_title') }}</h2>
                     <p class="mx-auto mt-2 max-w-lg text-sm text-ink-500">{{ __('workspace.listing_spa_empty_text') }}</p>
-                    <a href="{{ url('/claim/spa') }}" class="mt-5 inline-flex items-center justify-center rounded-xl bg-ember-500 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">
+                    <a href="{{ route('workspace.contribution.establishment.create') }}" class="mt-5 inline-flex items-center justify-center rounded-xl bg-ember-500 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">
                         {{ __('workspace.listing_spa_claim_action') }}
                     </a>
                     <p class="mt-3 text-xs text-ink-400">{{ __('workspace.claim_route_note') }}</p>
+                </div>
+            @else
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                    @foreach ($establishments as $establishment)
+                        <article class="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+                            <h2 class="text-xl font-black text-ink-950">{{ data_get($establishment->display_name, 'eng', __('workspace.listing_spa_unnamed')) }}</h2>
+                            @if ($establishment->address_public)
+                                <p class="mt-2 text-sm text-ink-600">{{ is_array($establishment->address_public) ? data_get($establishment->address_public, 'eng') : $establishment->address_public }}</p>
+                            @endif
+                            <p class="mt-4 text-xs font-bold uppercase tracking-wider text-leaf-700">{{ __('workspace.listing_spa_access_active') }}</p>
+                        </article>
+                    @endforeach
                 </div>
             @endif
         </div>

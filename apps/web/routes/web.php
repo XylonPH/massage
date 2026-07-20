@@ -13,6 +13,7 @@ use App\Http\Controllers\TherapistProfileController;
 use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
 use App\Http\Controllers\Web\Public\ReviewController as PublicReviewController;
 use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
+use App\Http\Controllers\Web\Workspace\ContributionController as WorkspaceContributionController;
 use App\Http\Controllers\Web\Workspace\HomeController as WorkspaceHomeController;
 use App\Http\Controllers\Web\Workspace\ListingController as WorkspaceListingController;
 use App\Http\Controllers\Web\Workspace\ProfileController as WorkspaceProfileController;
@@ -81,14 +82,18 @@ foreach ([
     Route::view("/{$path}", 'coming-soon', ['sectionKey' => $sectionKey])->name(str_replace('-', '_', $path).'.index');
 }
 
-foreach ([
-    'claim' => 'navigation.claim',
-    'help' => 'navigation.help',
-] as $path => $sectionKey) {
-    Route::view("/{$path}/{subpath?}", 'coming-soon', ['sectionKey' => $sectionKey])
-        ->where('subpath', '.*')
-        ->name($path.'.index');
-}
+Route::view('/help/{subpath?}', 'coming-soon', ['sectionKey' => 'navigation.help'])
+    ->where('subpath', '.*')
+    ->name('help.index');
+
+// Contributions require an account. Keep the former public paths as entry
+// points, but send them into the authenticated workspace workflow.
+Route::redirect('/claim/{subpath?}', '/workspace/contribution/establishment/new')
+    ->where('subpath', '.*')
+    ->name('claim.index');
+Route::redirect('/contribute/{subpath?}', '/workspace/contribution/establishment/new')
+    ->where('subpath', '.*')
+    ->name('contribute.index');
 
 Route::prefix('workspace')
     ->name('workspace.')
@@ -102,6 +107,11 @@ Route::prefix('workspace')
         Route::put('/setting', [WorkspaceSettingController::class, 'update'])->middleware('throttle:20,1')->name('setting.update');
         Route::get('/listing/spa', [WorkspaceListingController::class, 'spaIndex'])->name('listing.spa');
         Route::get('/listing/therapist', [WorkspaceListingController::class, 'therapistIndex'])->name('listing.therapist');
+        Route::get('/contribution', [WorkspaceContributionController::class, 'index'])->name('contribution.index');
+        Route::get('/contribution/establishment/new', [WorkspaceContributionController::class, 'createEstablishment'])->name('contribution.establishment.create');
+        Route::post('/contribution/establishment', [WorkspaceContributionController::class, 'storeEstablishment'])
+            ->middleware('throttle:10,1')
+            ->name('contribution.establishment.store');
     });
 
 Route::prefix('workspace/article')

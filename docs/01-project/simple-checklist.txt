@@ -120,6 +120,7 @@ Use:
 [ ] Therapist profile module
 [ ] Product profile module
 [~] Public website
+[ ] Dynamic engagement sidebar (Articles, Profiles, etc.)
 [ ] Responsive web design
 [ ] Customer mobile app
 [ ] Business mobile app

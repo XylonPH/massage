@@ -8,9 +8,9 @@
         <aside class="min-w-0"><x-workspace-nav active="home" /></aside>
 
         <div class="min-w-0">
-            <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600">{{ __('workspace.context_personal') }}</p>
+            <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600">{{ __('workspace.workspace_overview') }}</p>
             <h1 class="mt-2 text-4xl font-black text-ink-950">{{ __('workspace.greeting', ['name' => $user->publicName()]) }}</h1>
-            <p class="mt-2 max-w-2xl text-ink-600">{{ __('workspace.context_note') }}</p>
+            <p class="mt-2 max-w-2xl text-ink-600">{{ __('workspace.workspace_note') }}</p>
 
             <div class="mt-8 grid gap-5 sm:grid-cols-2">
                 <section aria-labelledby="ws-account" class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
@@ -36,9 +36,25 @@
                 <section aria-labelledby="ws-claim" class="rounded-2xl border border-leaf-200 bg-leaf-50 p-5 shadow-sm">
                     <h2 id="ws-claim" class="font-black text-ink-950">{{ __('workspace.card_claim_title') }}</h2>
                     <p class="mt-2 text-sm text-ink-700">{{ __('workspace.card_claim_text') }}</p>
-                    <a href="{{ url('/help/claim') }}" class="mt-4 inline-block text-sm font-bold text-leaf-700 transition hover:text-leaf-800">{{ __('workspace.card_claim_action') }} →</a>
+                    <a href="{{ route('workspace.contribution.establishment.create') }}" class="mt-4 inline-block text-sm font-bold text-leaf-700 transition hover:text-leaf-800">{{ __('workspace.card_claim_action') }} &rarr;</a>
                 </section>
             </div>
+
+            @if ($administrativeAreas !== [])
+                <section aria-labelledby="ws-administration" class="mt-8">
+                    <h2 id="ws-administration" class="text-2xl font-black text-ink-950">{{ __('workspace.administration_title') }}</h2>
+                    <p class="mt-1 text-sm text-ink-600">{{ __('workspace.administration_intro') }}</p>
+                    <div class="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        @foreach ($administrativeAreas as $area)
+                            <a href="{{ url($area['url']) }}" class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm transition hover:border-ember-200 hover:shadow-md">
+                                <h3 class="font-black text-ink-950">{{ $area['title'] }}</h3>
+                                <p class="mt-2 text-sm text-ink-600">{{ $area['description'] }}</p>
+                                <span class="mt-4 inline-block text-sm font-bold text-ember-600">{{ __('workspace.open') }} &rarr;</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </section>
+            @endif
 
             <section aria-labelledby="ws-coming" class="mt-6 rounded-2xl border border-dashed border-ink-200 bg-ink-50/50 p-5">
                 <h2 id="ws-coming" class="font-bold text-ink-700">{{ __('workspace.coming_soon_title') }}</h2>
