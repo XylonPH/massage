@@ -3,10 +3,10 @@
 @php
     // Drop-in brand assets take priority over the built-in fallback mark.
     // Place exported files under public/images/brand/ using these names:
-    //   logo-full.svg|png|webp       full lockup (mark + wordmark) for light backgrounds
-    //   logo-full-dark.svg|png|webp  full lockup for dark backgrounds
-    //   logo-mark.svg|png|webp       square mark only, light backgrounds (used when $wordmark is false)
-    //   logo-mark-dark.svg|png|webp  square mark only, dark backgrounds
+    //   logo-stacked-color.svg|png|webp  full stacked lockup (mark + wordmark), colored artwork for light backgrounds
+    //   logo-stacked-light.svg|png|webp  full stacked lockup, light artwork for dark backgrounds
+    //   logo-mark-color.svg|png|webp     square mark only, light backgrounds (used when $wordmark is false)
+    //   logo-mark-light.svg|png|webp     square mark only, dark backgrounds
     $brandFile = function (string $stem): ?string {
         foreach (['svg', 'png', 'webp'] as $extension) {
             if (file_exists(public_path("images/brand/{$stem}.{$extension}"))) {
@@ -17,8 +17,8 @@
         return null;
     };
 
-    $mark = $dark ? ($brandFile('logo-mark-dark') ?? $brandFile('logo-mark')) : $brandFile('logo-mark');
-    $full = $dark ? ($brandFile('logo-full-dark') ?? $brandFile('logo-full')) : $brandFile('logo-full');
+    $mark = $dark ? ($brandFile('logo-mark-light') ?? $brandFile('logo-mark-color')) : $brandFile('logo-mark-color');
+    $full = $dark ? ($brandFile('logo-stacked-light') ?? $brandFile('logo-stacked-color')) : $brandFile('logo-stacked-color');
 @endphp
 
 <span {{ $attributes->merge(['class' => 'inline-flex items-center gap-2.5']) }}>
