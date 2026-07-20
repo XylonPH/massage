@@ -1,7 +1,7 @@
 Title: Massage Nexus: Technology Stack
-Document Version: 2.30
+Document Version: 2.40
 Date Created: 2026-06-30
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -9,6 +9,7 @@ This document records the accepted and working technology direction for Massage 
 
 Version History
 ---------------
+- v2.40 (2026-07-21): Added the missing apps/web/storage/app/restricted/ development path to section 7 (Storage and Media Security), aligning it with file-and-folder-structure.txt section 18 and this document's own Production Storage Containers list, both of which already treat restricted media as distinct from private documents.
 - v2.30 (2026-07-20): Implemented the Tiptap open-source core for the workspace Article editor through @tiptap/core 3.28.0, StarterKit, text-alignment, placeholder, and ProseMirror packages, built through the existing Vite pipeline. StarterKit supplies the link and underline extensions. The server-side controlled-HTML sanitizer remains authoritative.
 - v2.20 (2026-07-19): Replaced the obsolete OneDrive-era AI reference with the repository AI-Assisted Development Workflow and Runtime AI System authorities.
 - v2.10 (2026-07-19): Confirmed apps/desktop/ as the canonical location for the general Massage Nexus Desktop Application rather than an administration-only desktop application.
@@ -326,6 +327,9 @@ apps/web/storage/app/public/
 
 Development Private Documents:
 apps/web/storage/app/private/
+
+Development Restricted Media:
+apps/web/storage/app/restricted/
 
 Upload Quarantine:
 apps/web/storage/app/quarantine/
