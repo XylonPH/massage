@@ -1,7 +1,7 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.32
+Document Version: 2.33
 Date Created: 2026-07-10
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 
 Document Description:
 This document maps the public website structure, profile page areas, content destinations, user-facing paths, unified workspace areas, system-facing routes, reserved route keywords, future Massage Campus areas, future Branded Portal entry points, and the accepted Booking and Appointment System surfaces for Massage Nexus. It is a site structure map, not a visible navigation menu, database schema, implementation schedule, or SEO XML sitemap.
@@ -782,10 +782,9 @@ about
 Therapist profile labels by semantic group:
 
 Working-arrangement labels:
-freelance
-spa-based
-in-house
-on-call
+employee
+independent
+contractor
 
 Service-delivery labels:
 home-service
@@ -2455,9 +2454,9 @@ Provider, therapist, scheduling, loyalty, and finance tools appear only in autho
 /workspace/affiliation/history
 
 A practitioner's affiliation area tracks the spa-affiliations and business-affiliations named in
-the Therapist Profile section and reflects the therapist working-arrangement labels (freelance,
-spa-based, in-house, on-call). One therapist account may hold concurrent affiliation records
-with more than one spa.
+the Therapist Profile section and reflects the therapist Work Arrangement values (employee,
+independent, contractor) defined in Therapist Classification. One therapist account may hold
+concurrent affiliation records with more than one spa.
 
 ================================================================================
 36. WORKSPACE SERVICE, PRODUCT, SELLER, PROMO, AND SHOP AREAS
