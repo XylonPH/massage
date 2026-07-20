@@ -9,7 +9,7 @@
     <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600 dark:text-ember-400">{{ __('workspace.contribution_title') }}</p>
 
     @if ($errors->any())
-        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800" role="alert">
+        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
             <p class="font-bold">{{ __('workspace.contribution_fix_errors') }}</p>
             <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
         </div>
@@ -44,7 +44,7 @@
                 <input type="checkbox" name="is_workspace_access_requested" value="1" @checked(old('is_workspace_access_requested')) class="mt-1 rounded border-ink-300 text-ember-600 focus:ring-ember-500">
                 <span><span class="block font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.contribution_practitioner_access_label') }}</span><span class="mt-1 block text-sm text-ink-600 dark:text-ink-300">{{ __('workspace.contribution_access_hint') }}</span></span>
             </label>
-            @error('is_workspace_access_requested')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
+            @error('is_workspace_access_requested')<p class="mt-2 text-sm text-red-700 dark:text-red-300">{{ $message }}</p>@enderror
         </div>
         <div class="flex flex-wrap gap-3">
             <button class="rounded-xl bg-ember-500 px-6 py-3 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">{{ __('workspace.contribution_submit') }}</button>

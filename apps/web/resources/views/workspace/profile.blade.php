@@ -20,7 +20,7 @@
                 <input id="display_name" name="display_name" type="text" maxlength="60"
                        value="{{ old('display_name', $user->display_name) }}"
                        aria-describedby="display-name-hint"
-                       class="w-full rounded-xl border {{ $errors->has('display_name') ? 'border-ember-400' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">
+                       class="w-full rounded-xl border {{ $errors->has('display_name') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">
                 @error('display_name')
                     <p class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
                 @enderror
@@ -31,7 +31,7 @@
                 <label for="bio" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.bio_label') }}</label>
                 <textarea id="bio" name="bio" rows="5" maxlength="1000"
                           aria-describedby="bio-hint"
-                          class="w-full rounded-xl border {{ $errors->has('bio') ? 'border-ember-400' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">{{ old('bio', $user->bio) }}</textarea>
+                          class="w-full rounded-xl border {{ $errors->has('bio') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">{{ old('bio', $user->bio) }}</textarea>
                 @error('bio')
                     <p class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
                 @enderror

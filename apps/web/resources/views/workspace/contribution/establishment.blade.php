@@ -9,7 +9,7 @@
     <p class="text-sm font-bold uppercase tracking-[0.18em] text-ember-600 dark:text-ember-400">{{ __('workspace.contribution_title') }}</p>
 
     @if ($errors->any())
-        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800" role="alert">
+        <div class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800 dark:border-red-800 dark:bg-red-950 dark:text-red-100" role="alert">
             <p class="font-bold">{{ __('workspace.contribution_fix_errors') }}</p>
             <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
                 @foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach
@@ -23,13 +23,13 @@
         <div>
             <label for="display_name" class="block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.contribution_name_label') }}</label>
             <input id="display_name" name="display_name" value="{{ old('display_name') }}" required maxlength="160" class="mt-2 w-full rounded-xl border border-ink-200 px-4 py-3 text-ink-950 focus:border-ember-500 focus:ring-ember-500 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-50">
-            @error('display_name')<p class="mt-1 text-sm text-red-700">{{ $message }}</p>@enderror
+            @error('display_name')<p class="mt-1 text-sm text-red-700 dark:text-red-300">{{ $message }}</p>@enderror
         </div>
 
         <div>
             <label for="address_public" class="block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.contribution_address_label') }}</label>
             <textarea id="address_public" name="address_public" rows="3" required maxlength="500" class="mt-2 w-full rounded-xl border border-ink-200 px-4 py-3 text-ink-950 focus:border-ember-500 focus:ring-ember-500 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-50">{{ old('address_public') }}</textarea>
-            @error('address_public')<p class="mt-1 text-sm text-red-700">{{ $message }}</p>@enderror
+            @error('address_public')<p class="mt-1 text-sm text-red-700 dark:text-red-300">{{ $message }}</p>@enderror
         </div>
 
         <div>
@@ -56,7 +56,7 @@
                     <span class="mt-1 block text-sm text-ink-600 dark:text-ink-300">{{ __('workspace.contribution_access_hint') }}</span>
                 </span>
             </label>
-            @error('is_workspace_access_requested')<p class="mt-2 text-sm text-red-700">{{ $message }}</p>@enderror
+            @error('is_workspace_access_requested')<p class="mt-2 text-sm text-red-700 dark:text-red-300">{{ $message }}</p>@enderror
         </div>
 
         <div class="flex flex-wrap gap-3">
