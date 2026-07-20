@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.61
+Document Version: 1.62
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -355,6 +355,15 @@ Editorial content:
 - guides, glossaries, downloads, series, and related-record links;
 - content editing, revisions, sources, media, reactions, and translations;
 - reading-duration and accessibility handling.
+
+Current Article foundation checkpoint (2026-07-20):
+- the public web application has MongoDB-backed Article listing, search, category, tag, author,
+  Neural Agent, audience, archive, and detail routes;
+- active verified members can create and update private drafts, use the allowlisted visual editor,
+  keep revision snapshots, record sources, and submit the latest revision for editorial review;
+- editorial review decisions, scheduling and publication controls remain Phase 6 dependencies of the
+  separate editorial/admin workspace, while reactions, comments, saves, media management, analytics,
+  translations, corrections, and archive operations remain later Article increments.
 
 News:
 - standard News, briefs, breaking and developing stories;

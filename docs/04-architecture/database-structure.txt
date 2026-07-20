@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.50
+Document Version: 1.51
 Date Created: 2026-07-12
 Revision Date: 2026-07-20
 
@@ -256,6 +256,10 @@ Do not create separate establishment_review, practitioner_review, and product_re
 
 - article_body
   Language-specific long article body referenced by article_main.
+
+- tag_main
+  Shared lightweight editorial discovery tags referenced by article_main.tag_id_list and reusable by
+  other editorial domains. Controlled Article categories remain taxonomy values, not tag records.
 
 - article_revision
   Reviewable and restorable revision snapshots for article bodies.

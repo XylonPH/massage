@@ -4,7 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: article_revision
- * Version: 1.11
+ * Version: 1.20
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -68,7 +68,9 @@ $article_revision = [
 	# Revision Snapshot
 	'revision_number' => 2,
 	'article_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, areas of discomfort, and privacy preferences.</p>',
-	'reading_duration' => 435,
+	'word_count' => 1630,
+	'reading_duration_visual' => 435,
+	'reading_duration_spoken' => 652,
 	'revision_note' => 'Expanded the consultation paragraph and clarified privacy wording.',
 	'review_note' => 'Approved after safety wording update.',
 	'status_review' => 'A',
@@ -94,7 +96,9 @@ $article_revision_field_order = [
 	'language_id',
 	'revision_number',
 	'article_body',
-	'reading_duration',
+	'word_count',
+	'reading_duration_visual',
+	'reading_duration_spoken',
 	'revision_note',
 	'review_note',
 	'status_review',
@@ -116,7 +120,9 @@ $article_revision_field_property = [
 	'language_id' => ['field_label' => 'Language ID', 'field_description' => 'Numeric reference to common_reference.language_main for the revised body snapshot.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
 	'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Sequential revision number for the article body language version.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
 	'article_body' => ['field_label' => 'Article Body', 'field_description' => 'Snapshot of the controlled/theme-aware HTML article body at this revision.', 'type_data' => 'S', 'type_field' => 'HTE', 'format_text' => 'HTML', 'is_mandatory' => true],
-	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Estimated reading duration in seconds for this revision snapshot.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'word_count' => ['field_label' => 'Word Count', 'field_description' => 'Count of visible words in this revision snapshot after HTML and media placement tokens are removed.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_visual' => ['field_label' => 'Visual Reading Duration', 'field_description' => 'Visual-reading estimate in seconds for this revision snapshot.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_spoken' => ['field_label' => 'Spoken Reading Duration', 'field_description' => 'Read-aloud, screen-reader, or text-to-speech estimate in seconds for this revision snapshot.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 	'revision_note' => ['field_label' => 'Revision Note', 'field_description' => 'Internal note explaining what changed in this revision.', 'type_data' => 'S', 'type_field' => 'TXA', 'format_text' => 'TXT'],
 	'review_note' => ['field_label' => 'Review Note', 'field_description' => 'Reviewer note explaining approval, rejection, or requested changes.', 'type_data' => 'S', 'type_field' => 'TXA', 'format_text' => 'TXT'],
 	'status_review' => [

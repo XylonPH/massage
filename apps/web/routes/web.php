@@ -8,11 +8,34 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LegalController;
 use App\Http\Controllers\SpaProfileController;
+use App\Http\Controllers\TherapistProfileController;
+use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
+use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
+use App\Http\Middleware\EnsureActiveMember;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/spa/{establishment_slug}', [SpaProfileController::class, 'show'])->name('spa.show');
+
+Route::get('/therapist/{therapist_slug}', [TherapistProfileController::class, 'show'])->name('therapist.show');
+
+Route::prefix('article')->name('article.')->group(function () {
+    Route::get('/', [PublicArticleController::class, 'index'])->name('index');
+    Route::get('/category', [PublicArticleController::class, 'categoryIndex'])->name('category.index');
+    Route::get('/category/{article_category_slug}', [PublicArticleController::class, 'category'])->name('category.show');
+    Route::get('/tag', [PublicArticleController::class, 'tagIndex'])->name('tag.index');
+    Route::get('/tag/{tag_slug}', [PublicArticleController::class, 'tag'])->name('tag.show');
+    Route::get('/author', [PublicArticleController::class, 'authorIndex'])->name('author.index');
+    Route::get('/author/{author_slug}', [PublicArticleController::class, 'author'])->name('author.show');
+    Route::get('/neural-agent', [PublicArticleController::class, 'neuralAgentIndex'])->name('neural-agent.index');
+    Route::get('/neural-agent/{neural_agent_slug}', [PublicArticleController::class, 'neuralAgent'])->name('neural-agent.show');
+    Route::get('/audience', [PublicArticleController::class, 'audienceIndex'])->name('audience.index');
+    Route::get('/audience/{audience_slug}', [PublicArticleController::class, 'audience'])->name('audience.show');
+    Route::get('/archive', [PublicArticleController::class, 'archive'])->name('archive');
+    Route::get('/search', [PublicArticleController::class, 'search'])->name('search');
+    Route::get('/{article_slug}', [PublicArticleController::class, 'show'])->name('show');
+});
 
 Route::get('/legal/terms', [LegalController::class, 'terms'])->name('legal.terms');
 Route::get('/legal/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
@@ -25,12 +48,27 @@ Route::view('/directory/{path?}', 'coming-soon', ['sectionKey' => 'navigation.di
     ->name('directory.index');
 
 foreach ([
-    'article' => 'navigation.articles',
     'campus' => 'navigation.campus',
     'promo' => 'navigation.promos',
 ] as $path => $sectionKey) {
     Route::view("/{$path}", 'coming-soon', ['sectionKey' => $sectionKey])->name(str_replace('-', '_', $path).'.index');
 }
+
+Route::prefix('workspace/article')
+    ->name('workspace.article.')
+    ->middleware(['auth', 'verified', EnsureActiveMember::class])
+    ->group(function () {
+        Route::get('/', [WorkspaceArticleController::class, 'index'])->name('index');
+        Route::get('/draft', [WorkspaceArticleController::class, 'drafts'])->name('draft');
+        Route::get('/submitted', [WorkspaceArticleController::class, 'submitted'])->name('submitted');
+        Route::get('/published', [WorkspaceArticleController::class, 'published'])->name('published');
+        Route::get('/new', [WorkspaceArticleController::class, 'create'])->name('create');
+        Route::post('/', [WorkspaceArticleController::class, 'store'])->middleware('throttle:20,1')->name('store');
+        Route::get('/{article}/edit', [WorkspaceArticleController::class, 'edit'])->name('edit');
+        Route::put('/{article}', [WorkspaceArticleController::class, 'update'])->middleware('throttle:30,1')->name('update');
+        Route::post('/{article}/submit', [WorkspaceArticleController::class, 'submit'])->middleware('throttle:10,1')->name('submit');
+        Route::get('/{article}/revision', [WorkspaceArticleController::class, 'revisions'])->name('revisions');
+    });
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');

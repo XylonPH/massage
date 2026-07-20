@@ -4,7 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: article_body
- * Version: 1.11
+ * Version: 1.21
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -17,7 +17,8 @@
  * Current scope:
  * - article_body stores the long authored body for an article_main record.
  * - Article body content is stored as controlled/theme-aware HTML.
- * - No search_text field is defined in this structure.
+ * - article_plain_text is a system-generated, markup-free search projection;
+ *   it is never an independently authored body.
  * - References to common_reference records retain that dataset's numeric identifier type.
  */
 
@@ -47,7 +48,10 @@ $field_property_default = [
  */
 $article_body_record_default = [
 	'article_body' => '',
-	'reading_duration' => null, // optional estimated reading duration in seconds
+	'article_plain_text' => '',
+	'word_count' => 0,
+	'reading_duration_visual' => null, // optional visual-reading estimate in seconds
+	'reading_duration_spoken' => null, // optional read-aloud or screen-reader estimate in seconds
 	'translator_user_id_list' => [],
 	'source_article_body_id' => null,
 	'method_translation' => null,
@@ -68,7 +72,10 @@ $article_body = [
 
 	# Body
 	'article_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, and areas of discomfort.</p><figure class="mn-image-center" data-media-image-id="M2wH7pL4xQ9nC5vR"><img src="/media/image/M2wH7pL4xQ9nC5vR" alt="Massage room with folded towels"><figcaption>A calm room helps the session feel less intimidating.</figcaption></figure>', // controlled/theme-aware HTML body
-	'reading_duration' => 420, // optional estimated reading duration in seconds for this language body
+	'article_plain_text' => 'Before the massage begins Your therapist may ask about pressure, allergies, and areas of discomfort. A calm room helps the session feel less intimidating.', // generated from visible body text
+	'word_count' => 1575, // count of visible words after HTML and media tokens are removed
+	'reading_duration_visual' => 420, // ceil((1575 / 225) * 60)
+	'reading_duration_spoken' => 630, // ceil((1575 / 150) * 60)
 
 	# Translation / Review
 	'translator_user_id_list' => ['U3wD8kN1sR6pX4mQ'], // users who translated this body, empty for original language body
@@ -95,7 +102,10 @@ $article_body_field_order = [
 	'article_id',
 	'language_id',
 	'article_body',
-	'reading_duration',
+	'article_plain_text',
+	'word_count',
+	'reading_duration_visual',
+	'reading_duration_spoken',
 	'translator_user_id_list',
 	'source_article_body_id',
 	'method_translation',
@@ -121,7 +131,10 @@ $article_body_field_property = [
 
 	# Body
 	'article_body' => ['field_label' => 'Article Body', 'field_description' => 'Long authored article body stored as controlled/theme-aware HTML. Search systems should not search raw class names or markup as content terms.', 'type_data' => 'S', 'type_field' => 'HTE', 'format_text' => 'HTML', 'is_mandatory' => true],
-	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Optional estimated reading duration in seconds for this language body. This is an estimate, not a user-specific promise.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'article_plain_text' => ['field_label' => 'Article Plain Text', 'field_description' => 'System-generated visible-text projection of article_body for full-text search and indexing. Editors do not enter this value directly.', 'type_data' => 'S', 'type_field' => 'TXA', 'format_text' => 'TXT', 'is_system' => true, 'is_indexed' => true],
+	'word_count' => ['field_label' => 'Word Count', 'field_description' => 'Count of visible words after HTML tags, hidden metadata, and media placement tokens are removed.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_visual' => ['field_label' => 'Visual Reading Duration', 'field_description' => 'Visual-reading estimate in seconds for this language body, normally calculated at 225 words per minute or 200 for dense material.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_spoken' => ['field_label' => 'Spoken Reading Duration', 'field_description' => 'Read-aloud, screen-reader, or text-to-speech estimate in seconds for this language body, normally calculated at 150 words per minute.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 
 	# Translation / Review
 	'translator_user_id_list' => ['field_label' => 'Translator User ID List', 'field_description' => 'List of user IDs that translated this body record. Empty when the body is original authored content.', 'type_data' => 'A', 'is_relational' => true],

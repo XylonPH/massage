@@ -1,7 +1,7 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 1.70
+Document Version: 1.71
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-20
 Document Description: This is the master categorical to-do checklist for Massage Nexus. It preserves completed planning and technical foundations, every detailed website feature and requirement from the Features inventory, release readiness, and continuing operations. It is not a changelog, Roadmap, Feature summary, release log, or document-version history; items stay in their logical category and change only by checkbox status or accepted wording.
 
 Use:
@@ -128,7 +128,7 @@ complete a website feature.
 [ ] Responsive web design
 [ ] Customer mobile app
 [ ] Business mobile app
-[ ] Admin/moderator interface
+[x] Admin/moderator interface
 [ ] Owner area
 [ ] Therapist area
 [ ] Steward/editor area
@@ -143,7 +143,7 @@ complete a website feature.
 [ ] Booking pages
 [ ] Review pages
 [ ] Discussion pages
-[ ] Article pages
+[x] Article pages
 [ ] Shop pages
 [ ] Dashboard pages
 [x] Custom 404 error page
@@ -1603,11 +1603,13 @@ complete a website feature.
 
 12.1 Content Editing and Rendering Technology
 ---------------------------------------------
-[ ] Structured WYSIWYG article editor
+[x] Structured WYSIWYG article editor
 [ ] Restricted WYSIWYG review editor
-[ ] Sanitized rendered HTML
-[ ] Editable structured content
-[ ] Searchable plain text
+[x] Sanitized rendered HTML
+[x] Editable structured content
+[x] Searchable plain text
+[x] Visual and spoken reading-duration calculation
+[x] Article revision snapshots and contributor submission state
 
 
 12.2 Article and Guide Types
@@ -1638,7 +1640,10 @@ complete a website feature.
 12.3 Article Metadata and Labels
 --------------------------------
 [ ] Sponsored article labels
-[ ] Multi-author support for articles
+[x] Multi-author support for articles
+[x] Controlled article category, audience, NSFW, publication, review, visibility, and lifecycle metadata
+[x] Public article source references
+[x] Shared editorial tag records and tag browsing
 
 
 12.4 Related Content Inside Articles
@@ -1647,6 +1652,7 @@ complete a website feature.
 [ ] Related services inside articles
 [ ] Related therapists inside articles
 [ ] Related products inside articles
+[x] Related articles inside articles
 
 
 12.5 Article Interaction
@@ -2570,7 +2576,7 @@ complete a website feature.
 
 21.1 Admin Dashboard and Management
 -----------------------------------
-[ ] Admin dashboard
+[x] Admin dashboard
 [ ] Listing management
 [ ] User management
 [ ] Spa management
@@ -3589,19 +3595,19 @@ complete a website feature.
 [ ] Researcher Workspace
 [ ] Translator Workspace
 [ ] Review Editor Workspace
-[ ] Article Editor Workspace
+[x] Article Editor Workspace
 [ ] News Editor Workspace
 [ ] Campus Editor Workspace
 [ ] Media Editor Workspace
 [ ] Steward Workspace
 [ ] Assignment queue
-[ ] Drafts
+[x] Drafts
 [ ] Evidence
-[ ] Sources
+[x] Sources
 [ ] Corrections
 [ ] Review decisions
 [ ] Publication
-[ ] Credit and attribution
+[x] Credit and attribution
 
 32.4 Internal Workspaces
 ------------------------
@@ -3610,7 +3616,7 @@ complete a website feature.
 [ ] Trust and Safety Workspace
 [ ] Privacy Workspace
 [ ] Security Workspace
-[ ] Administrator Workspace
+[x] Administrator Workspace
 [ ] Taxonomy Workspace
 [ ] Analytics Workspace
 [ ] Advertising Administration

@@ -1,5 +1,57 @@
 [
     {
+        "field_name": "type_article_category",
+        "field_label": "Article Category",
+        "selection_rule": "Single-select per article record",
+        "field_description": "Primary editorial category for an Article. Categories are intentionally broader and more stable than free-form tags.",
+        "field_option": [
+            { "option_code": "PCI", "option_label": "Platform and Community Identity", "option_description": "Platform identity, launch, community purpose, and brand-world content." },
+            { "option_code": "FTM", "option_label": "First-Time Massage and Spa Etiquette", "option_description": "Beginner guidance about massage and spa visits." },
+            { "option_code": "CBR", "option_label": "Choosing Spas, Booking, Pricing and Reviews", "option_description": "Decision guidance for comparing, booking, pricing, and reviewing services." },
+            { "option_code": "SBT", "option_label": "Safety, Boundaries and Professional Trust", "option_description": "Consent, boundaries, red flags, ethical conduct, and public trust." },
+            { "option_code": "HYG", "option_label": "Hygiene, Cleanliness and Service Comfort", "option_description": "Sanitation, linens, oils, service comfort, and cleanliness signals." },
+            { "option_code": "MTT", "option_label": "Massage Types, Techniques and Traditions", "option_description": "Massage modalities, bodywork traditions, and technique explainers." },
+            { "option_code": "PRA", "option_label": "Pressure, Pain, Recovery and Aftercare", "option_description": "Pressure, soreness, recovery, and aftercare guidance." },
+            { "option_code": "BPS", "option_label": "Body, Posture and Stress Science", "option_description": "Accessible education about the body, posture, and stress." },
+            { "option_code": "WSC", "option_label": "Everyday Wellness, Sleep and Self-Care", "option_description": "Rest, sleep, burnout, and everyday wellness habits." },
+            { "option_code": "OPH", "option_label": "Oils, Products and Home Wellness Tools", "option_description": "Oils, tools, supplies, and home wellness products." },
+            { "option_code": "SAC", "option_label": "Special Care, Accessibility and Caregiving", "option_description": "Pregnancy, seniors, disability, caregiving, and dignity-centered care." },
+            { "option_code": "LPG", "option_label": "Local Practice, Credentials and Global Spa Culture", "option_description": "Local practice, professional credentials, travel, and global spa culture." },
+            { "option_code": "SBO", "option_label": "Spa Business, Design and Operations", "option_description": "Spa ownership, management, design, staffing, marketing, and operations." },
+            { "option_code": "PPC", "option_label": "Practitioner Practice and Career Development", "option_description": "Practitioner technique, conduct, safety, communication, and professional growth." },
+            { "option_code": "FSP", "option_label": "Fictional, Seasonal and Pop-Culture Features", "option_description": "Imaginative or seasonal features that remain connected to wellness and massage." }
+        ],
+        "source_document": "docs/09-content/article-writing.txt"
+    },
+    {
+        "field_name": "target_audience",
+        "field_label": "Target Audience",
+        "selection_rule": "Single-select per article record",
+        "field_description": "Broad reader role the Article is written for.",
+        "field_option": [
+            { "option_code": "G", "option_label": "General", "option_description": "Broad readers and the general public." },
+            { "option_code": "C", "option_label": "Client", "option_description": "People considering, booking, or using massage and spa services." },
+            { "option_code": "P", "option_label": "Practitioner", "option_description": "Massage therapists, bodyworkers, wellness practitioners, and students." },
+            { "option_code": "O", "option_label": "Owner", "option_description": "Spa owners, managers, operators, and business decision-makers." },
+            { "option_code": "V", "option_label": "Caregiver", "option_description": "Family members and helpers supporting another person's care." },
+            { "option_code": "T", "option_label": "Traveler", "option_description": "Readers navigating unfamiliar spa or wellness cultures." }
+        ],
+        "source_document": "docs/09-content/article-writing.txt"
+    },
+    {
+        "field_name": "status_publication",
+        "field_label": "Publication Status",
+        "selection_rule": "Single-select per publishable editorial record",
+        "field_description": "Current publication state of an editorial record, independent from review approval and record lifecycle.",
+        "field_option": [
+            { "option_code": "D", "option_label": "Draft", "option_description": "Not yet submitted or published." },
+            { "option_code": "S", "option_label": "Scheduled", "option_description": "Approved and queued for publication at a future time." },
+            { "option_code": "P", "option_label": "Published", "option_description": "Published and available according to visibility rules." },
+            { "option_code": "U", "option_label": "Unpublished", "option_description": "Removed from publication without deleting its history." }
+        ],
+        "source_document": "docs/04-architecture/structure-guide/article_main.php"
+    },
+    {
         "field_name": "type_quote_category",
         "field_label": "Quote Category",
         "selection_rule": "Multi-select per quote record",
@@ -37,7 +89,7 @@
         "field_name": "type_record_note",
         "field_label": "Record Note Type",
         "selection_rule": "Single-select per embedded record note",
-        "field_description": "Classifies one embedded internal record note. The option codes and meanings are taken from the record_note embedded structure defined in the content_main structure guide and reused by quote_main; this record centralizes that enumeration so it is not defined only inside PHP structure guides.",
+        "field_description": "Classifies one embedded internal record note. The option codes and meanings are taken from the record_note embedded structure defined in the article_main structure guide and reused by quote_main; this record centralizes that enumeration so it is not defined only inside PHP structure guides.",
         "field_option": [
             {
                 "option_code": "ED",
@@ -60,6 +112,6 @@
                 "option_description": "Note documenting a correction to the record."
             }
         ],
-        "source_document": "docs/04-architecture/structure-guide/content_main.php"
+        "source_document": "docs/04-architecture/structure-guide/article_main.php"
     }
 ]

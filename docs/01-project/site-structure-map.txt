@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.43
+Document Version: 2.44
 Date Created: 2026-07-10
 Revision Date: 2026-07-20
 
@@ -1118,6 +1118,12 @@ preview
 /article/audience/{audience-slug}
 /article/archive
 /article/search
+
+Current web implementation (2026-07-20):
+- The routes above are server-rendered and MongoDB-backed. Category, tag, author, Neural Agent,
+  audience, archive, and search destinations currently share the accessible Article listing shell.
+- Public Article detail pages require Published, Approved, Public, Active metadata and an Approved,
+  Active language body. Drafts and submitted revisions are not exposed through public routes.
 
 /news
 /news/{news-slug}
@@ -2723,6 +2729,14 @@ archive-file
 /workspace/article/media
 /workspace/article/reaction
 /workspace/article/analytics
+
+Current web implementation (2026-07-20):
+- /workspace/article, /draft, /submitted, and /published provide the initial contributor dashboard.
+- /workspace/article/new, /workspace/article/{article-id}/edit,
+  /workspace/article/{article-id}/revision, and the POST submit action provide private author-owned
+  drafting and review submission for active verified members.
+- Category/tag discovery is implemented publicly. Workspace media, reaction, analytics, and the
+  editorial review/publish controls remain separate follow-up work and must not be represented as live.
 
 /workspace/campus
 /workspace/campus/home

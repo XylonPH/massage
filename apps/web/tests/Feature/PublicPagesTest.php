@@ -44,7 +44,7 @@ class PublicPagesTest extends TestCase
 
     public function test_planned_sections_render_coming_soon_pages(): void
     {
-        foreach (['/directory', '/directory/area', '/directory/type-spa', '/article', '/campus', '/promo'] as $path) {
+        foreach (['/directory', '/directory/area', '/directory/type-spa', '/campus', '/promo'] as $path) {
             $response = $this->get($path);
 
             $response->assertStatus(200);

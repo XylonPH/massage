@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Notifications\PasswordResetLink;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -26,7 +28,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
     'is_marketing_email_opt_in',
 ])]
 #[Hidden(['password', 'remember_token'])]
-class User extends MongoAuthenticatable implements MustVerifyEmailContract
+class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmailContract
 {
     use HasFactory, MustVerifyEmail, Notifiable;
 
@@ -35,6 +37,18 @@ class User extends MongoAuthenticatable implements MustVerifyEmailContract
     protected $table = 'user_main';
 
     protected $primaryKey = '_id';
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Require active account and verified email for all workspace panels
+        if (! $this->hasVerifiedEmail() || ! $this->isActive()) {
+            return false;
+        }
+
+        // Additional role/permission checks based on $panel->getId()
+        // can be added here once the roles/permissions system is built.
+        return true;
+    }
 
     protected static function boot(): void
     {

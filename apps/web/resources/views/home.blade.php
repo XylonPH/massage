@@ -204,7 +204,7 @@
                 <div class="grid gap-5 sm:grid-cols-3">
                     @foreach ($articles as $article)
                         <article class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
-                            <a href="{{ route('article.index') }}" class="block">
+                            <a href="{{ ! empty($article['slug']) ? route('article.show', $article['slug']) : route('article.index') }}" class="block">
                                 <div class="flex h-28 items-center justify-center bg-gradient-to-br {{ $article['tone'] }}">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-9 text-white/70" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-2.5-1.7-5.5-1.9-8-.75v13c2.5-1.15 5.5-.95 8 .75 2.5-1.7 5.5-1.9 8-.75v-13c-2.5-1.15-5.5-.95-8 .75Zm0 0V19.5"/></svg>
                                 </div>

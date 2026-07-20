@@ -80,10 +80,10 @@ class SampleContent
     public static function featuredTherapists(): array
     {
         return [
-            ['name' => 'Maya Santos', 'rating' => 4.9, 'review_count' => 128, 'specialties' => 'Swedish • Deep Tissue', 'area' => 'Makati, Metro Manila', 'availability' => 'today', 'initials' => 'MS', 'tone' => 'bg-leaf-100 text-leaf-700'],
-            ['name' => 'Rafael Dela Cruz', 'rating' => 4.9, 'review_count' => 96, 'specialties' => 'Hilot • Ventosa', 'area' => 'Quezon City', 'availability' => 'today', 'initials' => 'RD', 'tone' => 'bg-ink-100 text-ink-700'],
-            ['name' => 'Luna Reyes', 'rating' => 4.8, 'review_count' => 110, 'specialties' => 'Aromatherapy • Shiatsu', 'area' => 'Taguig City', 'availability' => 'tomorrow', 'initials' => 'LR', 'tone' => 'bg-ember-100 text-ember-700'],
-            ['name' => 'Tara Mendoza', 'rating' => 4.8, 'review_count' => 88, 'specialties' => 'Thai • Hot Stone', 'area' => 'Pasig City', 'availability' => 'today', 'initials' => 'TM', 'tone' => 'bg-ink-100 text-ink-700'],
+            ['slug' => 'maya-santos', 'name' => 'Maya Santos', 'rating' => 4.9, 'review_count' => 128, 'specialties' => 'Swedish • Deep Tissue', 'area' => 'Makati, Metro Manila', 'availability' => 'today', 'initials' => 'MS', 'tone' => 'bg-leaf-100 text-leaf-700'],
+            ['slug' => null, 'name' => 'Rafael Dela Cruz', 'rating' => 4.9, 'review_count' => 96, 'specialties' => 'Hilot • Ventosa', 'area' => 'Quezon City', 'availability' => 'today', 'initials' => 'RD', 'tone' => 'bg-ink-100 text-ink-700'],
+            ['slug' => null, 'name' => 'Luna Reyes', 'rating' => 4.8, 'review_count' => 110, 'specialties' => 'Aromatherapy • Shiatsu', 'area' => 'Taguig City', 'availability' => 'tomorrow', 'initials' => 'LR', 'tone' => 'bg-ember-100 text-ember-700'],
+            ['slug' => null, 'name' => 'Tara Mendoza', 'rating' => 4.8, 'review_count' => 88, 'specialties' => 'Thai • Hot Stone', 'area' => 'Pasig City', 'availability' => 'today', 'initials' => 'TM', 'tone' => 'bg-ink-100 text-ink-700'],
         ];
     }
 
@@ -269,6 +269,133 @@ class SampleContent
                     ['reviewer' => 'Ana P.', 'date' => 'Jul 7, 2026', 'rating' => 4.5, 'text' => 'Love their aromatherapy massage and the warm ambiance. Highly recommended!', 'initials' => 'AP', 'tone' => 'bg-ember-100 text-ember-700'],
                 ],
                 'booking_times' => ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM', '7:00 PM', '8:30 PM'],
+            ],
+        ];
+
+        return $profiles[$slug] ?? null;
+    }
+
+    /**
+     * Full sample profiles for demo therapists: one claimed booking-enabled
+     * profile and one unclaimed profile, so both public states required by
+     * docs/05-directory/therapist-profile.txt can be rendered and tested.
+     *
+     * @return array<string, mixed>
+     */
+    public static function therapistProfile(string $slug): ?array
+    {
+        $profiles = [
+            'maya-santos' => [
+                'slug' => 'maya-santos',
+                'name' => 'Maya Santos',
+                'headline' => 'Calm, detail-focused therapist specializing in Swedish and deep tissue massage for stress recovery.',
+                'area_summary' => 'Makati & BGC, Metro Manila',
+                'practice_status' => 'active',
+                'availability' => 'available',
+                'is_claimed' => true,
+                'is_identity_verified' => true,
+                'is_booking_enabled' => true,
+                'rating' => 4.9,
+                'rating_count' => 214,
+                'review_count' => 128,
+                'starting_price' => '₱900',
+                'starting_price_duration' => 60,
+                'starting_price_context' => 'Independent practice, home service',
+                'last_confirmed' => 'Jul 18, 2026',
+                'photo_count' => 9,
+                'initials' => 'MS',
+                'tone' => 'bg-leaf-100 text-leaf-700',
+                'about' => 'Maya has practiced professional massage for over nine years across spa and independent settings. She focuses on pressure communication, careful draping, and helping first-time clients feel at ease. Sessions begin with a short conversation about pressure preference, focus areas, and anything to avoid.',
+                'specialties' => ['Relaxation', 'Deep Pressure', 'Stress Relief'],
+                'massage_types' => ['Swedish', 'Deep Tissue', 'Aromatherapy', 'Prenatal-Safe Relaxation'],
+                'client_focus' => ['General Public', 'Office Workers', 'Athletes'],
+                'experience_note' => '9+ years of practice, self-reported and consistent with submitted training records.',
+                'credential_summary' => ['verified_active' => 2, 'submitted' => 1, 'expired' => 0],
+                'affiliations' => [
+                    [
+                        'name' => 'Independent Practice',
+                        'spa_slug' => null,
+                        'is_independent' => true,
+                        'work_arrangement' => 'independent',
+                        'title' => null,
+                        'market_class' => 'Standard',
+                        'availability' => 'available',
+                        'booking_mode' => 'appointment_required',
+                        'confirmation' => 'therapist_confirmed',
+                        'detail' => 'Home service across Makati and BGC, weekdays 10 AM – 8 PM',
+                    ],
+                    [
+                        'name' => 'Haven of Serenity',
+                        'spa_slug' => null,
+                        'is_independent' => false,
+                        'work_arrangement' => 'contractor',
+                        'title' => 'Senior Therapist',
+                        'market_class' => 'Standard',
+                        'availability' => 'limited',
+                        'booking_mode' => 'appointment_preferred',
+                        'confirmation' => 'therapist_confirmed',
+                        'detail' => 'Weekend sessions at the BGC branch',
+                    ],
+                ],
+                'services' => [
+                    ['name' => 'Swedish Massage', 'context' => 'Independent · Home service', 'duration' => 60, 'price' => '₱900', 'icon' => 'waves', 'tone' => 'from-leaf-100 to-leaf-200 text-leaf-700'],
+                    ['name' => 'Deep Tissue Massage', 'context' => 'Independent · Home service', 'duration' => 90, 'price' => '₱1,400', 'icon' => 'muscle', 'tone' => 'from-ember-100 to-ember-200 text-ember-700'],
+                    ['name' => 'Aromatherapy Massage', 'context' => 'Haven of Serenity · In-spa', 'duration' => 90, 'price' => '₱1,350', 'icon' => 'aroma', 'tone' => 'from-ink-100 to-ink-200 text-ink-600'],
+                ],
+                'service_area' => ['Makati City', 'BGC, Taguig', 'Mandaluyong (selected areas)'],
+                'reviews' => [
+                    ['reviewer' => 'Carlo M.', 'date' => 'Jul 16, 2026', 'rating' => 5.0, 'context' => 'Independent · Home service', 'text' => 'Maya checked on pressure throughout and adjusted perfectly. Most relaxing session I\'ve booked at home.', 'initials' => 'CM', 'tone' => 'bg-ink-100 text-ink-700'],
+                    ['reviewer' => 'Bea A.', 'date' => 'Jul 12, 2026', 'rating' => 4.5, 'context' => 'Haven of Serenity', 'text' => 'Professional and punctual. The deep tissue work on my shoulders genuinely helped.', 'initials' => 'BA', 'tone' => 'bg-leaf-100 text-leaf-700'],
+                    ['reviewer' => 'Nina R.', 'date' => 'Jul 5, 2026', 'rating' => 5.0, 'context' => 'Independent · Home service', 'text' => 'Very respectful of boundaries and draping, and explained everything first. Highly recommended.', 'initials' => 'NR', 'tone' => 'bg-ember-100 text-ember-700'],
+                ],
+                'booking_times' => ['10:00 AM', '11:30 AM', '1:00 PM', '3:00 PM', '5:00 PM', '7:00 PM'],
+            ],
+            'dennis-aquino' => [
+                'slug' => 'dennis-aquino',
+                'name' => 'Dennis Aquino',
+                'headline' => 'Home-service massage therapist serving Cavite, focused on Hilot and Swedish massage.',
+                'area_summary' => 'Home service, Cavite',
+                'practice_status' => 'active',
+                'availability' => 'unknown',
+                'is_claimed' => false,
+                'is_identity_verified' => false,
+                'is_booking_enabled' => false,
+                'rating' => null,
+                'rating_count' => 2,
+                'review_count' => 1,
+                'starting_price' => null,
+                'starting_price_duration' => null,
+                'starting_price_context' => null,
+                'last_confirmed' => 'Jul 15, 2026',
+                'photo_count' => 0,
+                'initials' => 'DA',
+                'tone' => 'bg-ink-100 text-ink-700',
+                'about' => 'This profile was created from public listings and field research. Dennis Aquino has not yet claimed it, so services, prices, and availability have not been confirmed by the therapist.',
+                'specialties' => ['Relaxation'],
+                'massage_types' => ['Hilot', 'Swedish'],
+                'client_focus' => ['General Public'],
+                'experience_note' => null,
+                'credential_summary' => ['verified_active' => 0, 'submitted' => 0, 'expired' => 0],
+                'affiliations' => [
+                    [
+                        'name' => 'Independent Practice',
+                        'spa_slug' => null,
+                        'is_independent' => true,
+                        'work_arrangement' => 'independent',
+                        'title' => null,
+                        'market_class' => null,
+                        'availability' => 'unknown',
+                        'booking_mode' => null,
+                        'confirmation' => 'reported',
+                        'detail' => 'Reported home service around Cavite; not yet confirmed by the therapist',
+                    ],
+                ],
+                'services' => [],
+                'service_area' => ['Cavite (reported)'],
+                'reviews' => [
+                    ['reviewer' => 'Paulo V.', 'date' => 'Jul 8, 2026', 'rating' => 4.5, 'context' => 'Home service', 'text' => 'Good hilot session, arrived on time. Booked through a neighborhood referral.', 'initials' => 'PV', 'tone' => 'bg-leaf-100 text-leaf-700'],
+                ],
+                'booking_times' => [],
             ],
         ];
 

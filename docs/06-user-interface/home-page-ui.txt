@@ -1,5 +1,5 @@
 Title: Massage Nexus Homepage UI
-Version: 1.31
+Version: 1.32
 Date Created: 2026-07-01
 Revision Date: 2026-07-20
 
@@ -84,6 +84,8 @@ Browse by Massage Type allows users to explore service categories such as Swedis
 Placement: Main content area, below the browse sections.
 
 Latest Articles displays recent guide-style, educational, or editorial content related to massage, spa visits, wellness, aftercare, safety, service types, and platform usage. Each article item should show a thumbnail image, article title, date, category, and optionally a short one-line excerpt if space allows. The section should include a View All link leading to the Articles area.
+
+Current web behavior: the section reads the three newest public, approved, active Article records from article_main and links each card to its public Article detail route. Until the first eligible database Article exists, the clearly fictional SampleContent cards remain a temporary empty-state fallback; they link to the Article index rather than pretending to be published database records.
 
 --------------------------------------------------------------------------------
 

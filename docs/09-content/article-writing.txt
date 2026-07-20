@@ -3,7 +3,7 @@ Massage Nexus Article Writing Guide and Working Topic Calendar
 
 Field            | Value
 -----------------+-----------
-Document Version | 2.20
+Document Version | 2.21
 Date Created     | 2026-07-04
 Revision Date    | 2026-07-20
 
@@ -62,7 +62,7 @@ Visual reading duration estimates silent reading.
 
 Spoken reading duration estimates reading aloud, screen-reader playback, or text-to-speech listening at a normal pace.
 
-Current content structures may still use a single reading_duration field as a primary visual reading estimate until the database structure is updated. Long term, reading_duration should support visual and spoken values.
+Current Article structures store reading_duration_visual and reading_duration_spoken separately in seconds. article_body also stores the system-generated visible word_count and article_plain_text used to calculate the estimates and support search without indexing HTML class names or markup.
 
 Working Formula for Latin-Script Articles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -202,8 +202,9 @@ Content and Media Structure References
 Use the current PHP-readable structure guides under docs/04-architecture/structure-guide/:
 
 - article_main.php for Article metadata, category, target audience, tags, credits, publication status, counters, visibility, and embedded record_note;
-- article_body.php for language-specific HTML Article bodies, language_id, reading_duration, and translation handling;
+- article_body.php for language-specific HTML Article bodies, language_id, visual/spoken reading durations, generated plain-text search projection, and translation handling;
 - article_revision.php for Article body snapshots, review decisions, approval history, and change tracking;
+- tag_main.php for stable editorial tag identity and multilingual public tag slugs;
 - media_image.php and media_video.php for media metadata and relationships.
 
 

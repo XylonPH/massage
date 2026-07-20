@@ -185,3 +185,32 @@ if (quiz) {
         quiz.querySelector('[data-quiz-incorrect]').toggleAttribute('hidden', correct);
     });
 }
+
+// Article workspace editor. The server applies the authoritative HTML
+// allowlist; this browser layer only provides a focused writing interface.
+const articleEditor = document.querySelector('[data-article-editor]');
+const articleBody = document.querySelector('[data-article-body]');
+const articleForm = document.querySelector('[data-article-form]');
+if (articleEditor && articleBody && articleForm) {
+    const syncArticleBody = () => { articleBody.value = articleEditor.innerHTML; };
+
+    document.querySelectorAll('[data-editor-command]').forEach((button) => {
+        button.addEventListener('click', () => {
+            articleEditor.focus();
+            document.execCommand(button.dataset.editorCommand, false, button.dataset.editorValue || null);
+            syncArticleBody();
+        });
+    });
+
+    document.querySelector('[data-editor-link]')?.addEventListener('click', () => {
+        const href = window.prompt('Enter an https:// link');
+        if (!href || !/^https?:\/\//i.test(href)) return;
+        articleEditor.focus();
+        document.execCommand('createLink', false, href);
+        syncArticleBody();
+    });
+
+    articleEditor.addEventListener('input', syncArticleBody);
+    articleForm.addEventListener('submit', syncArticleBody);
+    syncArticleBody();
+}

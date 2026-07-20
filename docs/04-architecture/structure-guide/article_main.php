@@ -4,7 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: article_main
- * Version: 1.41
+ * Version: 1.50
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -83,7 +83,9 @@ $article_main_record_default = [
 	'comment_count' => 0,
 	'save_count' => 0,
 	'share_count' => 0,
-	'reading_duration' => null, // optional fallback estimated reading duration in seconds
+	'reading_duration_visual' => null, // optional fallback visual-reading estimate in seconds
+	'reading_duration_spoken' => null, // optional fallback spoken/screen-reader estimate in seconds
+	'source_reference_list' => [],
 	'is_commentable' => true,
 	'is_shareable' => true,
 	'status_publication' => 'D', // D = Draft
@@ -162,7 +164,16 @@ $article_main = [
 	'comment_count' => 16,
 	'save_count' => 84,
 	'share_count' => 21,
-	'reading_duration' => 420, // optional fallback estimated reading duration in seconds
+	'reading_duration_visual' => 420, // optional fallback visual-reading estimate in seconds
+	'reading_duration_spoken' => 630, // optional fallback read-aloud or screen-reader estimate in seconds
+	'source_reference_list' => [
+		[
+			'source_title' => 'Massage Therapy: What You Need To Know',
+			'source_organization' => 'National Center for Complementary and Integrative Health',
+			'source_url' => 'https://www.nccih.nih.gov/health/massage-therapy-what-you-need-to-know',
+			'publication_identifier' => null,
+		],
+	], // ordered public source references used by the article
 
 	# Handling
 	'is_commentable' => true, // comments are allowed for this Article
@@ -220,7 +231,9 @@ $article_main_field_order = [
 	'comment_count',
 	'save_count',
 	'share_count',
-	'reading_duration',
+	'reading_duration_visual',
+	'reading_duration_spoken',
+	'source_reference_list',
 	'is_commentable',
 	'is_shareable',
 	'status_publication',
@@ -244,6 +257,12 @@ $article_main_field_order = [
  * Embedded structures owned by article_main.
  */
 $article_main_embedded_structure = [
+	'source_reference_list' => [
+		'source_title' => 'Human-readable title of the cited work or resource.',
+		'source_organization' => 'Optional publisher, agency, institution, or organization name.',
+		'source_url' => 'Optional canonical HTTPS URL for the source.',
+		'publication_identifier' => 'Optional DOI, ISBN, report number, or comparable publication identifier.',
+	],
 	'record_note' => [
 		'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
 		'note_body' => 'Internal note text for editors, reviewers, or administrators.',
@@ -382,7 +401,9 @@ $article_main_field_property = [
 	'comment_count' => ['field_label' => 'Comment Count', 'field_description' => 'Cached total number of comments for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 	'save_count' => ['field_label' => 'Save Count', 'field_description' => 'Cached total number of user saves or bookmarks for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 	'share_count' => ['field_label' => 'Share Count', 'field_description' => 'Cached total number of share actions for this Article.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
-	'reading_duration' => ['field_label' => 'Reading Duration', 'field_description' => 'Optional fallback estimated reading duration in seconds. Article-body language-specific values override this when present.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_visual' => ['field_label' => 'Visual Reading Duration', 'field_description' => 'Optional fallback visual-reading estimate in seconds. The language-specific article_body value overrides this when present.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'reading_duration_spoken' => ['field_label' => 'Spoken Reading Duration', 'field_description' => 'Optional fallback read-aloud, screen-reader, or text-to-speech estimate in seconds. The language-specific article_body value overrides this when present.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'source_reference_list' => ['field_label' => 'Source Reference List', 'field_description' => 'Ordered, bounded list of public references used to research or substantiate the article. Empty means no external source was used.', 'type_data' => 'A', 'type_field' => 'JSE'],
 
 	# Handling
 	'is_commentable' => ['field_label' => 'Is Commentable', 'field_description' => 'Indicates whether users may comment on this content.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN'],
