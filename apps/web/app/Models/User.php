@@ -32,7 +32,7 @@ class User extends MongoAuthenticatable implements MustVerifyEmailContract
 
     protected $connection = 'mongodb';
 
-    protected $collection = 'user_main';
+    protected $table = 'user_main';
 
     protected $primaryKey = '_id';
 
