@@ -1,4 +1,4 @@
-@props(['dark' => false, 'wordmark' => true, 'size' => 'h-10'])
+@props(['dark' => false, 'wordmark' => true, 'size' => 'h-12'])
 
 @php
     // Drop-in brand assets take priority over the built-in fallback mark.

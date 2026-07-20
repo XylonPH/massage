@@ -17,7 +17,7 @@
                 <svg class="absolute -bottom-10 -right-10 h-80 w-80 text-white/[0.04]" viewBox="0 0 24 24" fill="currentColor"><path d="M6 15C6 8 11 4 19 4c0 8-4 13-11 13-1 0-2-.5-2-2Z"/></svg>
             </div>
             <div class="relative p-10">
-                <a href="{{ route('home') }}"><x-logo dark size="h-11" /></a>
+                <a href="{{ route('home') }}"><x-logo dark size="h-12" /></a>
             </div>
             <div class="relative p-10">
                 <h2 class="max-w-md text-3xl font-black leading-tight tracking-tight text-white">{!! __('auth.aside_title') !!}</h2>
@@ -46,7 +46,7 @@
         {{-- Form panel --}}
         <main class="flex flex-1 flex-col overflow-y-auto">
             <div class="flex items-center justify-between p-6 lg:justify-end">
-                <a href="{{ route('home') }}" class="lg:hidden"><x-logo size="h-9" /></a>
+                <a href="{{ route('home') }}" class="lg:hidden"><x-logo size="h-12" /></a>
                 <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-ink-500 transition hover:text-ink-800">
                     <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H6.56l3.22 3.22a.75.75 0 1 1-1.06 1.06l-4.5-4.5a.75.75 0 0 1 0-1.06l4.5-4.5a.75.75 0 0 1 1.06 1.06L6.56 9.25h9.69A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/></svg>
                     {{ __('auth.back_to_home') }}

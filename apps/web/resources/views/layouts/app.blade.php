@@ -20,7 +20,7 @@
     <header class="sticky top-0 z-40 border-b border-ink-100 bg-white/95 shadow-sm backdrop-blur">
         <div class="mx-auto flex h-16 max-w-[1600px] items-center gap-6 px-4 sm:px-6 lg:px-8">
             <a href="{{ route('home') }}" class="shrink-0" aria-label="{{ config('app.name') }}">
-                <x-logo size="h-9" />
+                <x-logo size="h-12" />
             </a>
 
             <nav class="hidden flex-1 items-center gap-1 lg:flex" aria-label="{{ __('navigation.main_navigation') }}">
