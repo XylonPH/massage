@@ -1,18 +1,20 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 1.72
+Document Version: 1.82
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
-Document Description: This is the master categorical to-do checklist for Massage Nexus. It preserves completed planning and technical foundations, every detailed website feature and requirement from the Features inventory, release readiness, and continuing operations. It is not a changelog, Roadmap, Feature summary, release log, or document-version history; items stay in their logical category and change only by checkbox status or accepted wording.
+Document Description: This is the master categorical completion checklist for Massage Nexus. Items are organized by the product or platform domain that owns them, regardless of implementation order, release target, or whether the work is one-time or recurring. Milestone order and release gates belong only in the Roadmap.
 
 Use:
-[x] Completed or stable enough for its present planning or setup purpose
+[x] Completed or stable enough for its present planning, setup, or implementation purpose
 [~] In progress or under review
 [ ] Not completed
 
 ================================================================================
-1. PROJECT, BRAND, CONTENT, AND PLANNING FOUNDATION
+1. PRODUCT, BRAND, AND DOCUMENTATION GOVERNANCE
 ================================================================================
 
+1.1 Product and Brand Foundation
+--------------------------------
 [x] Define the Massage Nexus concept, name, scope, audience, objective, mission, and global direction
 [x] Register MassageNexus.com
 [x] Create the Basic Profile
@@ -50,10 +52,8 @@ Use:
 [~] Restore the Simple Checklist as a complete categorical checklist
 [~] Restore the Roadmap as a complete dependency and release map
 
-================================================================================
-2. DOCUMENTATION AND AI CONTEXT
-================================================================================
-
+1.2 Documentation Governance
+----------------------------
 [x] Create the Documentation Writing and Management Standard
 [ ] Review current documents for contradictions and lost detail
 [ ] Refactor Shared Project Standards into a small core and focused topic files
@@ -68,11 +68,22 @@ Use:
 [ ] Create focused task-packet format
 [ ] Confirm AI reads only task-relevant documents
 [ ] Update the current handoff after the documentation set is stable
+[ ] Maintain the Changelog
+[ ] Maintain final implementation records
+[ ] Maintain the decision log
+[ ] Maintain the Simple Checklist
+[ ] Maintain the Roadmap
+[ ] Refactor code, tests, prompts, and documentation when they become difficult to maintain
+[ ] Split documentation only at a clear subject or maintainability boundary
+[ ] Retire, redesign, or narrow low-value features based on evidence
+
 
 ================================================================================
-3. REPOSITORY AND TECHNICAL FOUNDATION
+2. PLATFORM ARCHITECTURE, ENGINEERING, AND OPERATIONS
 ================================================================================
 
+2.1 Repository and Development Environment
+------------------------------------------
 [x] Create C:\code\multiplatform\massage
 [x] Create the private GitHub repository
 [x] Create README and .gitignore foundations
@@ -102,23 +113,7 @@ Use:
 [ ] Add GitHub Actions and protected deployment controls
 [ ] Test clean restoration from Git and backups
 
-================================================================================
-4. WEBSITE FEATURE IMPLEMENTATION
-================================================================================
-
-Items below reflect verified implementation status. A completed planning document alone does not
-complete a website feature.
-
-================================================================================
-
-
-
-================================================================================
-1. PLATFORM IDENTITY, CORE SCOPE, AND PUBLIC SURFACES
-================================================================================
-
-
-1.1 Platform Surfaces
+2.2 Platform Surfaces
 ---------------------
 [x] Service profile module
 [x] Spa or establishment profile module
@@ -133,8 +128,7 @@ complete a website feature.
 [ ] Therapist area
 [ ] Steward/editor area
 
-
-1.2 Public Page Types
+2.3 Public Page Types
 ---------------------
 [ ] Public listing pages
 [ ] Profile pages
@@ -148,8 +142,7 @@ complete a website feature.
 [ ] Dashboard pages
 [x] Custom 404 error page
 
-
-1.3 Technical Page Behavior
+2.4 Technical Page Behavior
 ---------------------------
 [ ] Slug URL routing
 [ ] Page caching
@@ -160,8 +153,7 @@ complete a website feature.
 [ ] Deep links
 [ ] App links
 
-
-1.4 Platform Data Foundation
+2.5 Platform Data Foundation
 ----------------------------
 [ ] Seed data
 [ ] Multilingual interface
@@ -171,20 +163,522 @@ complete a website feature.
 [ ] Location permission handling
 [ ] Offline draft support
 
-
-1.5 Notifications and Centers
+2.6 Notifications and Centers
 -----------------------------
 [ ] Notification center
 [ ] Push notifications
 
+2.7 APIs
+--------
+[ ] First-Party App API
+[ ] Partner API
+[ ] Approved Public API
+[ ] Owner and therapist API scopes
+[ ] Listing API
+[ ] Review API
+[ ] Media API
+[ ] Product API
+[ ] Booking API
+[ ] Scheduling API
+[ ] Payment API
+[ ] Loyalty API
+[ ] Provider-finance API where approved
+
+2.8 API Operations
+------------------
+[ ] OpenAPI contract
+[ ] Webhooks
+[ ] API keys
+[ ] OAuth or token scopes
+[ ] API quotas
+[ ] API logs
+[ ] API rate limits
+[ ] Revocation
+[ ] Versioning
+[ ] Partner testing environment
+[ ] Audit
+
+2.9 Booking API Capabilities
+----------------------------
+[ ] Personal plan
+[ ] Booking request
+[ ] Participant service lines
+[ ] Availability
+[ ] Therapist selection
+[ ] Assignment
+[ ] Eligibility outcome
+[ ] Private-intake access through restricted scope only
+[ ] Consent
+[ ] Waitlist
+[ ] Walk-in
+[ ] Queue
+[ ] Payment
+[ ] Refund
+[ ] Feedback
+[ ] Rebooking
+[ ] Booking event
+[ ] Provider finance where permitted
+
+2.10 Calendar and Booking Integrations
+--------------------------------------
+[ ] Third-party booking integration
+[ ] External booking link
+[ ] Calendar synchronization
+[ ] Google Calendar integration
+[ ] Microsoft calendar integration
+[ ] iCalendar feed
+[ ] Conflict handling
+[ ] Webhook
+[ ] No private intake in generic calendar content
+
+2.11 Map and Travel Integrations
+--------------------------------
+[ ] Google Maps integration
+[ ] Apple Maps integration
+[ ] Geocoding
+[ ] Service-area validation
+[ ] Distance calculation
+[ ] Travel fee input
+[ ] Provider location tracking only under approved safety and privacy rules
+
+2.12 Social and Tracking Integrations
+-------------------------------------
+[ ] Social media booking links
+[ ] Facebook booking link
+[ ] Instagram booking link
+[ ] Meta Pixel support subject to privacy policy
+[ ] Analytics tracking
+[ ] Consent-aware marketing attribution
+
+2.13 Communication Integrations
+-------------------------------
+[ ] Email service
+[ ] SMS service
+[ ] Push notification service
+[ ] OTP
+[ ] International email or app verification
+[ ] Translated notifications
+[ ] Sensitive-data suppression
+
+2.14 Payment and Storage Integrations
+-------------------------------------
+[ ] Payment gateway
+[ ] Payout provider
+[ ] External e-wallet
+[ ] Bank-transfer verification
+[ ] Storage integration
+[ ] Protected media
+[ ] Financial-document rendering
+
+2.15 Processing and AI
+----------------------
+[ ] Image processing
+[ ] Video processing
+[ ] AI moderation
+[ ] AI summary generation
+[ ] AI duplicate detection
+[ ] AI taxonomy suggestions
+[ ] AI review-quality assistance
+[ ] AI safety flagging
+[ ] Booking-note translation
+[ ] Human review for high-impact outcomes
+
+2.16 Data and Security Systems
+------------------------------
+[ ] Data export
+[ ] Data import
+[ ] Backup
+[ ] Restore
+[ ] Audit logging
+[ ] Security monitoring
+[ ] Encryption and key management
+[ ] Retention jobs
+[ ] Legal hold
+[ ] Anonymization
+[ ] Clients do not connect directly to Azure DocumentDB
+
+2.17 Browser Extensions
+-----------------------
+[ ] Firefox extension
+[ ] Chrome extension
+[ ] Deferred until separately approved
+
+2.18 Application and Public Cache
+---------------------------------
+[ ] Configuration cache
+[ ] Route cache
+[ ] Compiled-view cache
+[ ] Reference and taxonomy cache
+[ ] Public profile cache
+[ ] Directory cache
+[ ] Search cache
+[ ] Common-query cache
+[ ] Public Statistics cache
+[ ] Support knowledge cache
+[ ] External-service response cache
+[ ] AI-result cache
+[ ] Translation cache
+[ ] Media derivative cache
+[ ] CDN cache
+[ ] Immutable static asset cache
+
+2.19 Cache Scope and Invalidation
+---------------------------------
+[ ] Environment in cache key
+[ ] Capability in cache key
+[ ] Target identifier in cache key
+[ ] Locale in cache key
+[ ] Permission class in cache key
+[ ] Source revision in cache key
+[ ] Filter and page in cache key
+[ ] Public and private cache separation
+[ ] Direct invalidation
+[ ] Event-driven invalidation
+[ ] Revisioned key
+[ ] Time-to-live
+[ ] Group invalidation
+[ ] CDN purge
+[ ] Visibility-change purge
+[ ] Deletion purge
+[ ] Translation stale handling
+[ ] Permission-change invalidation
+
+2.20 Private, Mobile, and Desktop Temporary Data
+------------------------------------------------
+[ ] Session store
+[ ] Rate-limit counters
+[ ] Distributed locks
+[ ] One-time state
+[ ] Verification state
+[ ] Private short-lived cache
+[ ] Mobile offline cache
+[ ] Mobile draft queue
+[ ] Mobile logout cleanup
+[ ] Desktop local cache
+[ ] Desktop encrypted workspace
+[ ] Import staging
+[ ] Export staging
+[ ] Temporary media processing
+[ ] Storage limits
+[ ] User clear-cache control
+[ ] Account separation
+[ ] Conflict handling
+[ ] No uncontrolled production database copy
+
+2.21 Performance and Failure
+----------------------------
+[ ] Cache hit and miss
+[ ] Cache latency
+[ ] Cache size
+[ ] Eviction
+[ ] Stale response monitoring
+[ ] Invalidation failure monitoring
+[ ] Cache stampede protection
+[ ] Single-flight request
+[ ] Jittered expiry
+[ ] Background refresh
+[ ] Stale-while-revalidate
+[ ] Retry-storm protection
+[ ] Safe authoritative fallback
+[ ] Safe degraded mode
+[ ] No authorization bypass
+[ ] No stale private-data exposure
+
+2.22 AI-Assisted Development
+----------------------------
+[ ] Codex-assisted coding
+[ ] Antigravity-assisted coding
+[ ] Documentation synchronization
+[ ] Test generation and maintenance
+[ ] Implementation record updates
+[ ] Changelog updates
+[ ] Checklist and roadmap updates
+[ ] File-size and placement checks
+[ ] Duplicate-code detection
+[ ] Security review assistance
+
+2.23 Platform Maintenance and Resilience
+----------------------------------------
+[ ] Create the initial authoritative collections, indexes, constraints, and audit records
+[ ] Prepare backups, restore tests, incident response, and operational dashboards
+[ ] Monitor security, privacy, outages, performance, queues, cache, email, payments, and integrations
+[ ] Apply PHP, Laravel, package, browser, server, mobile, and desktop updates
+[ ] Run backups and restoration tests
+[ ] Maintain the public system-status page
 
 
 ================================================================================
-2. PUBLIC DISCOVERY, DIRECTORY, SEARCH, AND BROWSING
+3. ACCOUNTS, IDENTITY, AND PERSONALIZATION
 ================================================================================
 
+3.1 Account and Membership
+--------------------------
+[ ] Shared network account
+[~] Separate Massage Nexus membership
+[~] Massage Nexus eligibility record
+[x] Public browsing without registration
+[x] User is a client by default
+[ ] Additional professional and platform roles on the same account
+[ ] Membership suspension separate from network-account suspension
+[ ] Account deletion grace period
+[ ] Re-created account treated according to deletion policy
+[ ] Public display name separate from username
+[ ] Public User Profile separate from the private personal account area
+[~] Personal dashboard
 
-2.1 Directory Types
+3.2 Registration and Verification
+---------------------------------
+[x] Branded registration page
+[x] Lowercase alphanumeric username
+[x] Username starts with a letter
+[x] Protected and reserved username families
+[x] Email address registration
+[x] Email verification before normal member access
+[x] Age and eligibility confirmation
+[x] Terms acceptance record
+[x] Privacy acknowledgment record
+[x] Marketing consent kept optional and separate
+[ ] Registration rate limiting
+[ ] Duplicate account signals
+[~] Accessible registration errors
+[ ] Multilingual registration guidance
+
+3.3 Authentication and Recovery
+-------------------------------
+[x] Login by username or email
+[x] Secure password hashing
+[x] Compromised-password rejection
+[x] Project-specific expected-password rejection
+[x] Remember me
+[x] Logout
+[x] Password recovery
+[x] Session rotation
+[ ] Session and device list
+[ ] Remote session revocation
+[ ] Security notifications
+[ ] TOTP
+[ ] Recovery codes
+[ ] Passkeys
+[ ] Device biometric use through passkeys
+[ ] Approved external identities
+[ ] Account-recovery escalation
+[ ] Recycled phone-number protection
+
+3.4 Profile Identity and Avatar
+-------------------------------
+[ ] Branded default avatars
+[ ] Deterministic default-avatar assignment
+[ ] Uploaded avatar
+[ ] Animated avatar
+[ ] Avatar moderation
+[ ] Public cover image
+[ ] Bio
+[ ] Pronouns where voluntarily provided
+[ ] Gender kept optional and privacy-controlled
+[ ] Language and regional preferences
+[ ] Time zone
+[ ] Account security history
+[ ] Public and private visibility controls
+
+3.5 User as Client by Default
+-----------------------------
+[x] Every registered user is a client by default
+[ ] Personal context remains available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
+[ ] Professional or managed roles do not replace the Personal client context
+[ ] One user account may manage several establishments, affiliations, or organizations
+[ ] Context switcher
+
+3.6 Public User Profile
+-----------------------
+[ ] User profile
+[ ] Display name
+[ ] Avatar
+[ ] Cover photo
+[ ] Bio/about
+[ ] Public activity controls
+[ ] Public reviews
+[ ] Public contributions
+[ ] Public badges and Reputation
+[ ] Public follows where permitted
+[ ] Private profile settings
+[~] Public-profile controls
+
+3.7 Saved and Followed Items
+----------------------------
+[ ] Saved spas
+[ ] Saved therapists
+[ ] Saved services
+[ ] Saved products
+[ ] Saved sellers
+[ ] Saved articles
+[ ] Saved reviews
+[ ] Saved promos
+[ ] Saved searches
+[ ] Followed spas
+[ ] Followed therapists
+[ ] Followed sellers
+[ ] Followed users
+[ ] Followed topics
+
+3.8 Client Booking and Service History
+--------------------------------------
+[ ] Massage Nexus confirmed booking history
+[ ] Provider-recorded walk-in history
+[ ] Client manual past-service history
+[ ] Imported history
+[ ] Provider legacy history where authorized
+[ ] Confirmation level
+[ ] Private notes
+[ ] Evidence
+[ ] Provider and therapist matching
+[ ] Past-date validation
+[ ] Entries dated in the future redirected to Booking
+[ ] Cross-provider history visible only to the client by default
+[ ] Provider visibility limited to records involving that provider or explicitly shared by the client
+
+3.9 Client Preferences and Defaults
+-----------------------------------
+[ ] Preferred language
+[ ] Preferred pressure
+[ ] Body-area focus and avoid preferences
+[ ] Product and scent preferences
+[ ] Attire and draping preferences
+[ ] Therapist-selection preference
+[ ] Accessibility preferences
+[ ] Communication preference
+[ ] Reusable booking defaults
+[ ] Expiring or always-reconfirmed safety answers
+[ ] Last-confirmed date
+
+3.10 Personal Analytics and Budgeting
+-------------------------------------
+[ ] Monthly and yearly service spending
+[ ] Service, product, travel, tip, fee, tax, refund, and discount breakdown
+[ ] Visit count
+[ ] Service-family distribution
+[ ] Provider distribution
+[ ] Total service duration
+[ ] Average cost
+[ ] Loyalty progress
+[ ] Rating and review activity
+[ ] Private analytics by default
+
+3.11 Offers and Recommendations
+-------------------------------
+[ ] Birthday offers
+[ ] New customer offers
+[ ] Personalized recommendations
+[ ] Rebooking suggestions
+[ ] Provider loyalty summary
+
+3.12 Account Data Control
+-------------------------
+[ ] Account deletion
+[ ] Booking and service-history export
+[ ] CSV export
+[ ] JSON export
+[ ] PDF summary
+[ ] Import preview and mapping
+[ ] Correction and amendment
+[ ] Privacy and retention controls
+
+
+================================================================================
+4. LOCALIZATION AND TRANSLATION
+================================================================================
+
+4.1 Language and Locale
+-----------------------
+[ ] English source and fallback
+[ ] Filipino
+[ ] Approved Taglish style
+[ ] Cebuano
+[ ] Hiligaynon
+[ ] Indonesian
+[ ] Spanish
+[ ] Brazilian Portuguese
+[ ] Japanese
+[ ] Thai
+[ ] Vietnamese
+[ ] Korean
+[ ] Traditional Chinese
+[ ] Simplified Chinese
+[ ] French
+[ ] German
+[ ] Arabic
+[ ] Additional market-specific languages
+[ ] Locale registry
+[ ] Language selector
+[ ] Browser-language suggestion
+[ ] Universal language preference
+[ ] Massage Nexus override
+[ ] Regional formatting
+[ ] Time zone
+[ ] Right-to-left support when Arabic activates
+
+4.2 Static Interface Translation
+--------------------------------
+[ ] Semantic translation keys
+[ ] Namespace
+[ ] Source text
+[ ] Context
+[ ] Placeholder definition
+[ ] Pluralization
+[ ] Maximum length
+[ ] HTML permission
+[ ] Sensitivity
+[ ] Source revision
+[ ] Coverage by critical workflow
+[ ] Fallback test
+[ ] Placeholder test
+[ ] Published-language readiness
+
+4.3 Dynamic and User Content Translation
+----------------------------------------
+[ ] Original language preservation
+[ ] Source revision
+[ ] Translate on demand
+[ ] Show Original
+[ ] AI-translated label
+[ ] Translation cache
+[ ] Stale after edit
+[ ] Community suggestion
+[ ] Human review
+[ ] Translation memory
+[ ] Glossary
+[ ] Do-not-translate terms
+[ ] Provider and model provenance
+[ ] Report poor translation
+
+4.4 High-Risk Translation
+-------------------------
+[ ] Legal translation
+[ ] Privacy translation
+[ ] Security translation
+[ ] Payment translation
+[ ] Booking intake translation
+[ ] Consent translation
+[ ] Eligibility translation
+[ ] Safety translation
+[ ] Health-related translation
+[ ] Human review requirement
+[ ] Exact accepted document version and locale
+[ ] Original text preserved
+[ ] Material-update invalidation
+
+4.5 Translation Management
+--------------------------
+[ ] Translator contribution tools
+[ ] Translation assignment queue
+[ ] Translation evidence and source context
+[ ] Translation review decisions
+
+
+================================================================================
+5. PUBLIC DISCOVERY, DIRECTORY, SEARCH, AND BROWSING
+================================================================================
+
+5.1 Directory Types
 -------------------
 [ ] Spa directory
 [ ] Massage establishment directory
@@ -195,8 +689,7 @@ complete a website feature.
 [ ] Service directory
 [ ] Massage type directory
 
-
-2.2 Location Browsing
+5.2 Location Browsing
 ---------------------
 [ ] Location-based browsing
 [ ] City browsing
@@ -205,8 +698,7 @@ complete a website feature.
 [ ] Nearby search
 [ ] Map-based search
 
-
-2.3 Search Modes
+5.3 Search Modes
 ----------------
 [ ] Search by spa name
 [ ] Search by therapist name
@@ -222,8 +714,7 @@ complete a website feature.
 [ ] Search by facility
 [ ] Search by neighborhood/landmark
 
-
-2.4 Availability and Status Search
+5.4 Availability and Status Search
 ----------------------------------
 [ ] “Open now” search
 [ ] “Available today” search
@@ -234,8 +725,7 @@ complete a website feature.
 [ ] “Verified listing” search
 [ ] “Claimed listing” search
 
-
-2.5 Browsing Labels
+5.5 Browsing Labels
 -------------------
 [ ] “Top rated” browsing
 [ ] “Most reviewed” browsing
@@ -247,8 +737,7 @@ complete a website feature.
 [ ] “New spa” browsing
 [ ] “Closed/historical spa” browsing
 
-
-2.6 Search Tools
+5.6 Search Tools
 ----------------
 [ ] Advanced filtering
 [ ] Sorting
@@ -259,8 +748,7 @@ complete a website feature.
 [ ] Similar spas
 [ ] Similar therapists
 
-
-2.7 Public Listing Improvement
+5.7 Public Listing Improvement
 ------------------------------
 [ ] Duplicate listing detection
 [ ] Report missing listing
@@ -269,13 +757,11 @@ complete a website feature.
 [ ] Submit correction
 
 
-
 ================================================================================
-3. SPA AND ESTABLISHMENT PROFILES
+6. SPA AND ESTABLISHMENT PROFILES
 ================================================================================
 
-
-3.1 Core Profile
+6.1 Core Profile
 ----------------
 [ ] Establishment profile page
 [ ] Official business name
@@ -291,8 +777,7 @@ complete a website feature.
 [ ] Source label
 [ ] Last updated date
 
-
-3.2 Location and Contact
+6.2 Location and Contact
 ------------------------
 [ ] Address
 [ ] Map location
@@ -303,8 +788,7 @@ complete a website feature.
 [ ] Website links
 [ ] Social media links
 
-
-3.3 Hours and Availability
+6.3 Hours and Availability
 --------------------------
 [ ] Operating hours
 [ ] Holiday hours
@@ -314,8 +798,7 @@ complete a website feature.
 [ ] Home-service availability
 [ ] Service area
 
-
-3.4 Profile Content
+6.4 Profile Content
 -------------------
 [ ] Business description
 [ ] Short description
@@ -328,8 +811,7 @@ complete a website feature.
 [ ] Owner announcements
 [ ] Promos
 
-
-3.5 Facilities and Amenities
+6.5 Facilities and Amenities
 ----------------------------
 [ ] Amenities
 [ ] Room types
@@ -345,23 +827,20 @@ complete a website feature.
 [ ] Air-conditioning information
 [ ] Accessibility information
 
-
-3.6 Services, Prices, and Payments
+6.6 Services, Prices, and Payments
 ----------------------------------
 [ ] Service menu
 [ ] Price list
 [ ] Payment methods
 [ ] Price range
 
-
-3.7 Media and Documents
+6.7 Media and Documents
 -----------------------
 [ ] Photos
 [ ] Videos
 [ ] Documents
 
-
-3.8 Profile Sections
+6.8 Profile Sections
 --------------------
 [ ] Therapists section
 [ ] Reviews section
@@ -373,8 +852,7 @@ complete a website feature.
 [ ] Nearby listings
 [ ] Similar listings
 
-
-3.9 History
+6.9 History
 -----------
 [ ] Establishment history
 [ ] Ownership history
@@ -382,8 +860,7 @@ complete a website feature.
 [ ] Former address history
 [ ] Former branch/outlet history
 
-
-3.10 Profile Actions
+6.10 Profile Actions
 --------------------
 [ ] User-submitted corrections
 [ ] Profile claim button
@@ -391,14 +868,43 @@ complete a website feature.
 [ ] Save/bookmark button
 [ ] Share button
 
+6.11 Persistent Records and Identifiers
+---------------------------------------
+[ ] Replace temporary spa sample content with MongoDB-backed establishment records
+[ ] Generate random 16-character base62 establishment _id values
+[ ] Generate unique establishment_slug values separately from _id and title
+[ ] List and view persisted spa profiles
+
+6.12 Member Submissions
+-----------------------
+[ ] Allow a verified member to create and save a private spa draft
+[ ] Allow the draft owner to view, edit, and safely delete an unused private draft
+[ ] Allow the draft owner to submit the spa for review
+[ ] Show spa submissions with draft, pending, returned, approved, rejected, withdrawn, and archived states
+[ ] Explain the reason and next action for each spa-submission state
+[ ] Allow the submitter to view, edit, and withdraw a returned or pending submission
+
+6.13 Submission Review and Publication Integrity
+------------------------------------------------
+[ ] Screen spa submissions for duplicates before publication
+[ ] Add spa submissions to the administrator review queue
+[ ] Require administrator or reviewer permission for every moderation action
+[ ] Approve, reject, return, restore, and escalate spa submissions
+[ ] Publish only approved spa submissions
+[ ] Preserve source, revision, moderation, and actor history
+[ ] Prevent cross-user viewing or modification of private drafts and submissions
+[ ] Route published-spa edits through accepted revision and permission rules
+[ ] Support closure, archive, duplicate, merge, removal request, restoration, and soft deletion
+[ ] Prevent ordinary users and operators from permanently erasing public history or evidence
+[ ] Test validation, authorization, rate limits, abuse controls, and identifier and slug collisions
+[ ] Verify accessible forms, understandable errors, responsive layouts, backup, restore, rollback, and production-safe errors
 
 
 ================================================================================
-4. THERAPIST PROFILES
+7. THERAPIST PROFILES
 ================================================================================
 
-
-4.1 Core Profile
+7.1 Core Profile
 ----------------
 [~] Therapist profile page
 [ ] Display name
@@ -415,8 +921,7 @@ complete a website feature.
 [ ] Therapist Service Market Class (context-specific and provides review context only)
 [ ] Therapist safety/trust signals
 
-
-4.2 Credentials and Background
+7.2 Credentials and Background
 ------------------------------
 [ ] License/certification fields
 [ ] Training background
@@ -425,8 +930,7 @@ complete a website feature.
 [ ] Massage techniques
 [ ] Massage types offered
 
-
-4.3 Service Details
+7.3 Service Details
 -------------------
 [ ] Pressure style
 [ ] Service durations
@@ -435,8 +939,7 @@ complete a website feature.
 [ ] Service area
 [ ] Schedule/availability
 
-
-4.4 Work Arrangement
+7.4 Work Arrangement
 --------------------
 [ ] Spa affiliation
 [ ] Current spa affiliation
@@ -445,21 +948,18 @@ complete a website feature.
 [ ] Provider-configured on-call or live schedule state where supported
 [ ] In-house status
 
-
-4.5 Contact and Booking
+7.5 Contact and Booking
 -----------------------
 [ ] Contact options
 [ ] Booking options
 
-
-4.6 Identity and Professional Information
+7.6 Identity and Professional Information
 -----------------------------------------
 [ ] Languages spoken
 [ ] Gender
 [ ] Professional boundaries statement
 
-
-4.7 Reviews and Community
+7.7 Reviews and Community
 -------------------------
 [ ] Reviews
 [ ] Ratings
@@ -469,8 +969,7 @@ complete a website feature.
 [ ] Therapist promos
 [ ] Therapist statistics
 
-
-4.8 Media and Documents
+7.8 Media and Documents
 -----------------------
 [ ] Media gallery
 [ ] Portfolio photos
@@ -480,8 +979,7 @@ complete a website feature.
 [ ] AI media label
 [ ] Visibility control for media
 
-
-4.9 Profile Actions
+7.9 Profile Actions
 -------------------
 [ ] Follow button
 [ ] Save/bookmark button
@@ -489,13 +987,11 @@ complete a website feature.
 [ ] Request correction
 
 
-
 ================================================================================
-5. SERVICE PROFILES, PROVIDER MENUS, PRICES, AND CLASSIFICATION
+8. SERVICE PROFILES, PROVIDER MENUS, PRICES, AND CLASSIFICATION
 ================================================================================
 
-
-5.1 Normalized Service Profile
+8.1 Normalized Service Profile
 ------------------------------
 [x] service_main record
 [x] Preferred service name
@@ -515,8 +1011,7 @@ complete a website feature.
 [ ] Service images and videos
 [ ] Sources and revision history
 
-
-5.2 Provider Menu Structure
+8.2 Provider Menu Structure
 ---------------------------
 [ ] establishment_service (real, priced establishment menu item)
 [ ] practitioner_service (real, priced independent-therapist menu item)
@@ -532,8 +1027,7 @@ complete a website feature.
 [ ] Pressure tags
 [ ] Oil/lotion tags
 
-
-5.3 Service Options
+8.3 Service Options
 -------------------
 [ ] Duration options
 [ ] Add-ons
@@ -541,8 +1035,7 @@ complete a website feature.
 [ ] Couples services
 [ ] Group services
 
-
-5.4 Pricing Types
+8.4 Pricing Types
 -----------------
 [ ] Home-service pricing
 [ ] In-spa pricing
@@ -552,8 +1045,7 @@ complete a website feature.
 [ ] First-time customer pricing
 [ ] Last-minute deal pricing
 
-
-5.5 Service Guidance
+8.5 Service Guidance
 --------------------
 [ ] Service inclusions
 [ ] Service exclusions
@@ -561,15 +1053,13 @@ complete a website feature.
 [ ] Service preparation notes
 [ ] Aftercare notes
 
-
-5.6 Service Availability
+8.6 Service Availability
 ------------------------
 [ ] Service availability by therapist
 [ ] Service availability by location
 [ ] Service availability by schedule
 
-
-5.7 Service Media and Feedback
+8.7 Service Media and Feedback
 ------------------------------
 [ ] Service photos
 [ ] Service videos
@@ -577,27 +1067,23 @@ complete a website feature.
 [ ] Service rating summary
 [ ] Service popularity count
 
-
-5.8 Service Discovery
+8.8 Service Discovery
 ---------------------
 [ ] Related services
 [ ] Similar services
 [ ] Service comparison
 [ ] Service recommendation
 
-
-5.9 Service Management
+8.9 Service Management
 ----------------------
 [~] Service claim/correction workflow
 
 
-
 ================================================================================
-6. REVIEWS AND RATINGS
+9. REVIEWS AND RATINGS
 ================================================================================
 
-
-6.1 Review Types
+9.1 Review Types
 ----------------
 [x] User reviews
 [ ] Editorial reviews
@@ -606,16 +1092,14 @@ complete a website feature.
 [x] Anonymous review option
 [ ] Pseudonymous review option
 
-
-6.2 Review Labels and Badges
+9.2 Review Labels and Badges
 ----------------------------
 [x] Sponsored/invited review label
 [x] Owner-requested review label
 [ ] Verified customer badge
 [ ] Verified booking badge
 
-
-6.3 Review Content Fields
+9.3 Review Content Fields
 -------------------------
 [x] Review title
 [x] Review body
@@ -630,8 +1114,7 @@ complete a website feature.
 [ ] Review photos
 [ ] Review videos
 
-
-6.4 Rating Fields
+9.4 Rating Fields
 -----------------
 [x] Review-linked target rating on the 1-to-10 scale
 [x] Simple overall rating mode
@@ -642,16 +1125,14 @@ complete a website feature.
 [x] Rating count kept separate from review count
 [x] Non-star connected-pulse or nexus-node rating presentation
 
-
-6.5 Review Interaction
+9.5 Review Interaction
 ----------------------
 [ ] Review helpful votes
 [ ] Review replies
 [ ] Owner response
 [ ] Therapist response
 
-
-6.6 Review Moderation and Quality
+9.6 Review Moderation and Quality
 ---------------------------------
 [ ] Moderator note
 [ ] Review edit history
@@ -666,22 +1147,74 @@ complete a website feature.
 [ ] Suspicious review detection
 
 
-
 ================================================================================
-7. DISCUSSION, COMMENTS, CHAT, AND COMMUNITY INTERACTION
+10. COMMENTS, DISCUSSIONS, CHAT, AND COMMUNITY INTERACTION
 ================================================================================
 
-
-7.1 Discussion Areas
+10.1 Comment Targets
 --------------------
+[ ] Article comments
+[ ] News comments
+[ ] Review comments
+[ ] Spa comments
+[ ] Therapist comments
+[ ] Service comments
+[ ] Product comments
+[ ] Seller comments
+[ ] Comic comments
+[ ] Public research-page comments
+[ ] Public statistics-page comments
+[ ] Approved media comments
+
+10.2 Comment Behavior
+---------------------
+[ ] Short-form comment
+[ ] Reply
+[ ] Limited visible nesting
+[ ] Parent reference
+[ ] Comment permalink
+[ ] Draft comment
+[ ] Edit comment
+[ ] Edited label
+[ ] Moderator-visible revision history
+[ ] User deletion
+[ ] Moderator removal
+[ ] Closed comments
+[ ] Pinned comment
+[ ] Spoiler label
+[ ] NSFW classification
+[ ] Public, member, target-participant, restricted, and moderator visibility
+
+10.3 Comment Roles and Interaction
+----------------------------------
+[ ] Provider Response label
+[ ] Therapist Response label
+[ ] Author Response label
+[ ] Staff Response label
+[ ] Moderator Notice label
+[ ] Helpful reaction
+[ ] Like reaction
+[ ] Mention
+[ ] Reply notification
+[ ] Translation on demand
+[ ] Show Original
+[ ] Machine-translation label
+[ ] Report comment
+[ ] Appeal eligible moderation action
+[ ] Redirect factual claim to Correction
+[ ] Redirect technical or account problem to Support
+[ ] Redirect long conversation to Discussion
+[ ] Invite substantive experience into Review workflow
+
+10.4 Discussion Areas
+---------------------
 [ ] Spa discussion area
 [ ] Therapist discussion area
 [ ] Article discussion area
 [ ] Product discussion area
 
-
-7.2 Replies and Conversation Tools
-----------------------------------
+10.5 Replies and Conversation Tools
+-----------------------------------
 [ ] Threaded replies
 [ ] Comment replies
 [ ] Quote reply
@@ -689,18 +1222,16 @@ complete a website feature.
 [ ] Reaction buttons
 [ ] Helpful votes
 
-
-7.3 Discussion Participation
-----------------------------
+10.6 Discussion Participation
+-----------------------------
 [ ] Owner participation
 [ ] Therapist participation
 [ ] Steward participation
 [ ] Editor participation
 [ ] Moderator participation
 
-
-7.4 Discussion Controls
------------------------
+10.7 Discussion Controls
+------------------------
 [ ] Report comment
 [ ] Moderation queue
 [ ] Pinned discussion note
@@ -711,9 +1242,8 @@ complete a website feature.
 [ ] Discussion search
 [ ] Discussion filters
 
-
-7.5 Attachments and Safety
---------------------------
+10.8 Attachments and Safety
+---------------------------
 [ ] Attachment support
 [ ] Image support
 [ ] Link moderation
@@ -722,9 +1252,8 @@ complete a website feature.
 [ ] Unwanted adult-service solicitation blocking
 [ ] Sensitive-topic education labels
 
-
-7.6 Chat
---------
+10.9 Chat
+---------
 [ ] Chat and live conversations
 [ ] Scheduled chat availability
 [ ] Moderated chat rooms
@@ -738,154 +1267,12 @@ complete a website feature.
 [ ] Chat moderation
 
 
-
 ================================================================================
-8. USER ACCOUNTS AND PERSONALIZATION
+11. BOOKING, AVAILABILITY, AND APPOINTMENTS
 ================================================================================
 
-
-8.1 Account Access
+11.1 Booking Modes
 ------------------
-[ ] Shared network account
-[ ] Massage Nexus site membership
-[x] Public browsing without registration
-[x] Massage Nexus membership limited to users aged 18 or older
-[x] User registration
-[x] Lowercase alphanumeric username beginning with a letter
-[x] Protected authority, brand, route, and impersonation username families
-[x] Login by username or email
-[x] Password hashing through Argon2id
-[x] Compromised and project-specific weak-password rejection
-[x] Email verification required before normal login and workspace access
-[x] Password recovery
-[ ] Add registration rate limiting
-[x] Remember me
-[ ] Active session and device management
-[x] Policy acceptance and privacy acknowledgment records
-[ ] Social login later
-[ ] Optional phone verification
-[ ] TOTP two-factor authentication
-[ ] Recovery codes
-[ ] Passkeys through WebAuthn
-[ ] One account with several permission-aware contexts
-
-
-8.2 User as Client by Default
------------------------------
-[x] Every registered user is a client by default
-[ ] Personal context remains available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
-[ ] Professional or managed roles do not replace the Personal client context
-[ ] One user account may manage several establishments, affiliations, or organizations
-[ ] Context switcher
-
-
-8.3 Public User Profile
------------------------
-[ ] User profile
-[ ] Display name
-[ ] Avatar
-[ ] Cover photo
-[ ] Bio/about
-[ ] Public activity controls
-[ ] Public reviews
-[ ] Public contributions
-[ ] Public badges and Reputation
-[ ] Public follows where permitted
-[ ] Private profile settings
-
-
-8.4 Saved and Followed Items
-----------------------------
-[ ] Saved spas
-[ ] Saved therapists
-[ ] Saved services
-[ ] Saved products
-[ ] Saved sellers
-[ ] Saved articles
-[ ] Saved reviews
-[ ] Saved promos
-[ ] Saved searches
-[ ] Followed spas
-[ ] Followed therapists
-[ ] Followed sellers
-[ ] Followed users
-[ ] Followed topics
-
-
-8.5 Client Booking and Service History
---------------------------------------
-[ ] Massage Nexus confirmed booking history
-[ ] Provider-recorded walk-in history
-[ ] Client manual past-service history
-[ ] Imported history
-[ ] Provider legacy history where authorized
-[ ] Confirmation level
-[ ] Private notes
-[ ] Evidence
-[ ] Provider and therapist matching
-[ ] Past-date validation
-[ ] Future entries redirected to Booking
-[ ] Cross-provider history visible only to the client by default
-[ ] Provider visibility limited to records involving that provider or explicitly shared by the client
-
-
-8.6 Client Preferences and Defaults
------------------------------------
-[ ] Preferred language
-[ ] Preferred pressure
-[ ] Body-area focus and avoid preferences
-[ ] Product and scent preferences
-[ ] Attire and draping preferences
-[ ] Therapist-selection preference
-[ ] Accessibility preferences
-[ ] Communication preference
-[ ] Reusable booking defaults
-[ ] Expiring or always-reconfirmed safety answers
-[ ] Last-confirmed date
-
-
-8.7 Personal Analytics and Budgeting
-------------------------------------
-[ ] Monthly and yearly service spending
-[ ] Service, product, travel, tip, fee, tax, refund, and discount breakdown
-[ ] Visit count
-[ ] Service-family distribution
-[ ] Provider distribution
-[ ] Total service duration
-[ ] Average cost
-[ ] Loyalty progress
-[ ] Rating and review activity
-[ ] Private analytics by default
-
-
-8.8 Offers and Recommendations
-------------------------------
-[ ] Birthday offers
-[ ] New customer offers
-[ ] Personalized recommendations
-[ ] Rebooking suggestions
-[ ] Provider loyalty summary
-
-
-8.9 Account Data Control
-------------------------
-[ ] Account deletion
-[ ] Booking and service-history export
-[ ] CSV export
-[ ] JSON export
-[ ] PDF summary
-[ ] Import preview and mapping
-[ ] Correction and amendment
-[ ] Privacy and retention controls
-
-
-================================================================================
-9. BOOKING, AVAILABILITY, AND APPOINTMENTS
-================================================================================
-
-
-9.1 Booking Modes
------------------
 [ ] Personal Appointment Plan
 [ ] Booking inquiry
 [ ] Booking request
@@ -899,9 +1286,8 @@ complete a website feature.
 [ ] Instant Confirmation
 [ ] External Booking
 
-
-9.2 Claim and Booking Enablement
---------------------------------
+11.2 Claim and Booking Enablement
+---------------------------------
 [ ] Unclaimed-provider warning
 [ ] Invite provider to claim
 [ ] No confirmed reservation for an unclaimed provider
@@ -913,9 +1299,8 @@ complete a website feature.
 [ ] Provider contact verification
 [ ] Identity, policy, payout, and financial configuration
 
-
-9.3 Booking Party and Participants
-----------------------------------
+11.3 Booking Party and Participants
+-----------------------------------
 [ ] Booking party
 [ ] Participant list
 [ ] Self
@@ -933,9 +1318,8 @@ complete a website feature.
 [ ] Mixed group timing
 [ ] Partial participant cancellation
 
-
-9.4 Service-Driven Booking Form
--------------------------------
+11.4 Service-Driven Booking Form
+--------------------------------
 [ ] Form generated from normalized Service and provider menu item
 [ ] Quick Booking
 [ ] Standard Booking
@@ -950,14 +1334,13 @@ complete a website feature.
 [ ] Massage-first depth
 [ ] Support for other approved Massage Nexus services
 
-
-9.5 Therapist Selection and Assignment
---------------------------------------
+11.5 Therapist Selection and Assignment
+---------------------------------------
 [ ] Specific therapist required
 [ ] Specific therapist preferred
 [ ] Provider selects therapist
 [ ] No therapist preference
-[ ] Select later
+[ ] Select therapist after the booking request
 [ ] Direct independent-therapist booking
 [ ] Professional-context selection
 [ ] practitioner_capability check
@@ -966,9 +1349,8 @@ complete a website feature.
 [ ] Therapist schedule and travel conflict check
 [ ] Multi-participant therapist assignment
 
-
-9.6 Massage and Service Preferences
------------------------------------
+11.6 Massage and Service Preferences
+------------------------------------
 [ ] Overall pressure
 [ ] Very Light
 [ ] Light
@@ -997,9 +1379,8 @@ complete a website feature.
 [ ] Conversation preference
 [ ] Temperature or room preference where supported
 
-
-9.7 Intake, Eligibility, Consent, and Privacy
----------------------------------------------
+11.7 Intake, Eligibility, Consent, and Privacy
+----------------------------------------------
 [ ] Separate ordinary booking, preference, private intake, and provider-observation data
 [ ] Pregnancy and postpartum questions
 [ ] Current illness and infection
@@ -1039,9 +1420,8 @@ complete a website feature.
 [ ] Paper signature upload
 [ ] Provider observation and optional authorized measurements
 
-
-9.8 Client Access and Guardian Handling
----------------------------------------
+11.8 Client Access and Guardian Handling
+----------------------------------------
 [ ] Open to all eligible clients
 [ ] Men-only or women-only access where legitimately configured
 [ ] Adults only
@@ -1055,9 +1435,8 @@ complete a website feature.
 [ ] Guardian presence
 [ ] Service-specific age rule
 
-
-9.9 Multilingual Booking
-------------------------
+11.9 Multilingual Booking
+-------------------------
 [ ] Translated interface
 [ ] Translated structured options
 [ ] Translated provider policy
@@ -1069,9 +1448,8 @@ complete a website feature.
 [ ] Clarification workflow
 [ ] Safety-critical original preserved
 
-
-9.10 Schedule and Resource Reservation
---------------------------------------
+11.10 Schedule and Resource Reservation
+---------------------------------------
 [ ] Recurring availability
 [ ] Schedule exception
 [ ] Special opening
@@ -1098,9 +1476,8 @@ complete a website feature.
 [ ] Conflict prevention
 [ ] Double-booking prevention
 
-
-9.11 Walk-In, Queue, and Waitlist
----------------------------------
+11.11 Walk-In, Queue, and Waitlist
+----------------------------------
 [ ] Registered walk-in
 [ ] Guest walk-in
 [ ] Provider-local client
@@ -1123,9 +1500,8 @@ complete a website feature.
 [ ] Time-limited offer
 [ ] Waitlist acceptance and expiry
 
-
-9.12 Delivery Context and Travel
---------------------------------
+11.12 Delivery Context and Travel
+---------------------------------
 [ ] Provider premises
 [ ] Client home
 [ ] Hotel or accommodation
@@ -1150,9 +1526,8 @@ complete a website feature.
 [ ] Return arrangement
 [ ] Unsafe-location cancellation
 
-
-9.13 Booking Status and Communication
--------------------------------------
+11.13 Booking Status and Communication
+--------------------------------------
 [ ] Draft
 [ ] Eligibility Check
 [ ] Ineligible
@@ -1180,9 +1555,8 @@ complete a website feature.
 [ ] Booking conversation
 [ ] Notifications without sensitive intake
 
-
-9.14 Policy, Cancellation, and No-Show
---------------------------------------
+11.14 Policy, Cancellation, and No-Show
+---------------------------------------
 [ ] Versioned booking policy
 [ ] Versioned cancellation policy
 [ ] Free-cancellation window
@@ -1201,9 +1575,8 @@ complete a website feature.
 [ ] Policy hash
 [ ] Dispute and appeal
 
-
-9.15 Booking Payment and Commercial Flow
-----------------------------------------
+11.15 Booking Payment and Commercial Flow
+-----------------------------------------
 [ ] Pay on site
 [ ] Pay provider directly
 [ ] Manual payment record
@@ -1235,9 +1608,8 @@ complete a website feature.
 [ ] Tip
 [ ] Financial-document relationship
 
-
-9.16 Provider Loyalty and Post-Service
---------------------------------------
+11.16 Provider Loyalty and Post-Service
+---------------------------------------
 [ ] Provider visit stamp
 [ ] Provider service-count program
 [ ] Provider spend-based program
@@ -1257,9 +1629,8 @@ complete a website feature.
 [ ] Verified-booking context
 [ ] Provider loyalty separate from platform gamification
 
-
-9.17 Booking Analytics and Records
-----------------------------------
+11.17 Booking Analytics and Records
+-----------------------------------
 [ ] Client booking history
 [ ] Provider booking history
 [ ] Walk-in history
@@ -1278,9 +1649,8 @@ complete a website feature.
 [ ] Import and export
 [ ] Audit history
 
-
-9.18 Booking Database Structures
---------------------------------
+11.18 Booking Database Structures
+---------------------------------
 [ ] booking_main
 [ ] booking_event
 [ ] booking_provider_config
@@ -1312,11 +1682,10 @@ complete a website feature.
 
 
 ================================================================================
-10. PAYMENT, VOUCHERS, GIFT CARDS, AND COMMERCE
+12. PAYMENTS, VOUCHERS, GIFT CARDS, AND COMMERCE
 ================================================================================
 
-
-10.1 Payment Methods
+12.1 Payment Methods
 --------------------
 [ ] Pay on site
 [ ] Pay provider directly
@@ -1330,8 +1699,7 @@ complete a website feature.
 [ ] Deposit through Massage Nexus
 [ ] Full payment through Massage Nexus
 
-
-10.2 Payment Requirement
+12.2 Payment Requirement
 ------------------------
 [ ] No advance payment
 [ ] Fixed deposit
@@ -1343,8 +1711,7 @@ complete a website feature.
 [ ] Remaining balance
 [ ] Currency and rounding
 
-
-10.3 Price Breakdown
+12.3 Price Breakdown
 --------------------
 [ ] Service subtotal
 [ ] Participant subtotal
@@ -1369,8 +1736,7 @@ complete a website feature.
 [ ] Remaining balance
 [ ] Known total or clearly labeled estimate
 
-
-10.4 Platform Revenue
+12.4 Platform Revenue
 ---------------------
 [ ] Provider subscription
 [ ] Provider-funded commission
@@ -1382,8 +1748,7 @@ complete a website feature.
 [ ] Transparent fee disclosure
 [ ] No silent provider-price markup
 
-
-10.5 Cancellation, Refund, and Dispute
+12.5 Cancellation, Refund, and Dispute
 --------------------------------------
 [ ] Client cancellation
 [ ] Provider cancellation
@@ -1402,8 +1767,7 @@ complete a website feature.
 [ ] Evidence and appeal
 [ ] Payout hold
 
-
-10.6 Tips
+12.6 Tips
 ---------
 [ ] Tip through Massage Nexus
 [ ] Cash tip
@@ -1415,8 +1779,7 @@ complete a website feature.
 [ ] Provider confirmation
 [ ] Jurisdiction-specific tax or payroll classification
 
-
-10.7 Payout
+12.7 Payout
 -----------
 [ ] Pending
 [ ] On Hold
@@ -1436,8 +1799,7 @@ complete a website feature.
 [ ] Tax withholding where applicable
 [ ] Net payout
 
-
-10.8 Financial Documents
+12.8 Financial Documents
 ------------------------
 [ ] Price quote
 [ ] Booking confirmation
@@ -1455,8 +1817,7 @@ complete a website feature.
 [ ] A4, Letter, thermal, compact, PDF, and browser-print output
 [ ] Legally required fields protected from template customization
 
-
-10.9 Vouchers, Gift Cards, Memberships, and Passes
+12.9 Vouchers, Gift Cards, Memberships, and Passes
 --------------------------------------------------
 [ ] Vouchers
 [ ] Gift cards
@@ -1467,16 +1828,14 @@ complete a website feature.
 [ ] Membership billing
 [ ] Subscription passes
 
-
-10.10 Stored-Value Boundary
+12.10 Stored-Value Boundary
 ---------------------------
 [ ] A Massage Nexus stored-value wallet is not an initial feature
 [ ] Booking credit is not automatically a transferable wallet balance
-[ ] Future wallet requires dedicated legal, security, fraud, reconciliation, dormant-balance, and regulatory planning
+[ ] Stored-value wallet legal, security, fraud, reconciliation, dormant-balance, and regulatory planning
 [ ] Do not store unexplained money balances in the user profile
 
-
-10.11 Provider Finance and Compensation
+12.11 Provider Finance and Compensation
 ---------------------------------------
 [ ] Provider finance events
 [ ] Service sale
@@ -1506,15 +1865,279 @@ complete a website feature.
 [ ] Team split
 [ ] Reconciliation
 [ ] Accounting export
-[ ] Inventory and expense integration later
+[ ] Inventory and expense integration
 
 
 ================================================================================
-11. SHOP AND WELLNESS PRODUCTS
+13. PROVIDER, THERAPIST, STAFF, AND BUSINESS MANAGEMENT
 ================================================================================
 
+13.1 Claiming, Identity, and Proof
+----------------------------------
+[ ] Profile claim workflow
+[ ] Ownership proof upload
+[ ] Therapist claim workflow
+[ ] Stable therapist-profile matching
+[ ] Provider contact verification
+[ ] Booking enablement verification
+[ ] Payout and tax configuration
+[ ] Create provider claim and onboarding material
 
-11.1 Product Listings
+13.2 Permission-Aware Management Contexts
+-----------------------------------------
+[ ] One personal account area
+[ ] Personal client context
+[ ] Therapist managed context
+[ ] Establishment operator context
+[ ] Seller context
+[ ] Contributor context
+[ ] Advertiser context
+[ ] Editor, moderator, and administrator contexts
+[ ] Context switcher
+[ ] Reception, therapist, manager, finance, and owner permissions
+
+13.3 Profile and Service Management
+-----------------------------------
+[ ] Update business information
+[ ] Update therapist information
+[ ] Manage establishment_service
+[ ] Manage practitioner_service
+[ ] Manage practitioner_capability
+[ ] Manage prices and variants
+[ ] Manage availability
+[ ] Manage media
+[ ] Manage products and client-supplied-item policy
+[ ] Manage delivery contexts
+
+13.4 Booking Enablement and Policies
+------------------------------------
+[ ] Booking disabled
+[ ] Inquiry Only
+[ ] Request Approval
+[ ] Instant Confirmation
+[ ] External Booking
+[ ] Booking suspension
+[ ] Booking policy
+[ ] Cancellation policy
+[ ] No-show policy
+[ ] Refund policy
+[ ] Arrival instructions
+[ ] Home-service policy
+[ ] Transport policy
+[ ] Product policy
+[ ] Minor and guardian policy
+[ ] Policy versioning and translation
+
+13.5 Intake, Consent, Privacy, and Retention
+--------------------------------------------
+[ ] Intake template
+[ ] Service-specific questions
+[ ] Eligibility rule
+[ ] Privacy-preserving rejection
+[ ] Manual review
+[ ] Alternative service
+[ ] Consent form
+[ ] Digital signature
+[ ] Paper form
+[ ] Provider observation
+[ ] Assigned therapist disclosure
+[ ] Time-limited access
+[ ] Retention configuration
+[ ] Deletion or anonymization
+[ ] Legal hold
+[ ] Access audit
+[ ] Confidentiality agreement
+
+13.6 Scheduling, Staff, and Resources
+-------------------------------------
+[ ] Staff schedule
+[ ] Therapist availability
+[ ] Recurring availability
+[ ] Schedule exceptions
+[ ] Staff permissions
+[ ] Room scheduling
+[ ] Treatment-station scheduling
+[ ] Treatment-support scheduling
+[ ] Device and facility scheduling
+[ ] Vehicle scheduling
+[ ] Equipment scheduling
+[ ] Capacity management
+[ ] Travel and buffer time
+[ ] Double-booking prevention
+[ ] External calendar sync
+
+13.7 Booking Operations
+-----------------------
+[ ] Manage inquiries
+[ ] Manage booking requests
+[ ] Quote
+[ ] Accept or decline
+[ ] Request more information
+[ ] Assign therapist
+[ ] Group assignment
+[ ] Walk-in
+[ ] Express workflow
+[ ] Queue
+[ ] Waitlist
+[ ] Check-in
+[ ] Session status
+[ ] Completion
+[ ] Cancellation
+[ ] Rescheduling
+[ ] No-show
+[ ] Rebooking
+
+13.8 Payment and Financial Documents
+------------------------------------
+[ ] Record cash
+[ ] Verify bank transfer or e-wallet
+[ ] Manage deposit
+[ ] Payment status
+[ ] Refund
+[ ] Provider payout
+[ ] Tip
+[ ] Provider invoice
+[ ] Payment acknowledgment
+[ ] Payout statement
+[ ] Financial permissions
+[ ] Manual reconciliation
+[ ] Accounting export
+
+13.9 Client Records and Privacy Boundary
+----------------------------------------
+[ ] Provider-local client list
+[ ] Provider-involved booking history
+[ ] Client-shared history
+[ ] Client preferences for that provider
+[ ] Private intake for assigned booking
+[ ] Treatment note where authorized
+[ ] Follow-up note
+[ ] Aftercare
+[ ] No access to unrelated provider history
+[ ] No marketing use of private intake
+[ ] No uncontrolled copying to personal devices or chats
+
+13.10 Loyalty, Feedback, and Engagement
+---------------------------------------
+[ ] Provider loyalty program
+[ ] Visit stamps
+[ ] Service counts
+[ ] Provider points
+[ ] Package balance
+[ ] Membership
+[ ] Tier
+[ ] Private satisfaction survey
+[ ] Service recovery
+[ ] Rating request
+[ ] Review request
+[ ] Aftercare
+[ ] Rebooking
+[ ] Booking reward event
+
+13.11 Therapist Compensation and Provider Finance
+-------------------------------------------------
+[ ] Compensation rule
+[ ] Percentage commission
+[ ] Fixed amount
+[ ] Hourly
+[ ] Salary
+[ ] Tiered commission
+[ ] Product commission
+[ ] Tip distribution
+[ ] Team split
+[ ] Compensation statement
+[ ] Provider finance dashboard
+[ ] Tax-summary support
+[ ] Reconciliation
+[ ] Export
+
+13.12 Promotions and Communication
+----------------------------------
+[ ] Manage promos
+[ ] Manage announcements
+[ ] Reply to reviews
+[ ] Reply to discussions
+[ ] Booking messages
+[ ] Translated structured communication
+[ ] Notification templates
+[ ] Email and SMS marketing subject to consent
+[ ] Campaign tracking
+
+13.13 Analytics Access
+----------------------
+[ ] Profile analytics
+[ ] Booking analytics
+[ ] Schedule analytics
+[ ] Resource analytics
+[ ] Walk-in analytics
+[ ] Waitlist analytics
+[ ] Loyalty analytics
+[ ] Payment analytics
+[ ] Revenue analytics
+[ ] Compensation analytics
+[ ] Review analytics
+[ ] Search analytics
+[ ] Promo analytics
+[ ] Contact and direction clicks
+[ ] Exportable reports
+[ ] Anonymized intake aggregates only
+
+13.14 Inventory, Expenses, and Wider Operations
+-----------------------------------------------
+[ ] Product usage
+[ ] Consumable usage
+[ ] Product sales
+[ ] Inventory integration
+[ ] Supplier and expense support
+[ ] POS integration
+[ ] Integration boundary for external accounting, payroll, bank reconciliation, and purchasing systems
+
+13.15 Marketing and Sales Tools
+-------------------------------
+[ ] Marketing tools
+[ ] Social booking links
+[ ] Website booking widget
+[ ] Branded booking page
+[ ] Business mini-site
+[ ] Branded Portal
+
+13.16 Multi-Entity Management
+-----------------------------
+[ ] Multi-location management
+[ ] Franchise management
+[ ] Brand management
+[ ] Bulk listing management
+[ ] CSV import/export
+
+13.17 Branded Portal
+--------------------
+[ ] Tenant subdomain
+[ ] Custom-domain connection and verification
+[ ] White-label presentation tier
+[ ] Portal theme and branding controls
+[ ] Domain and TLS lifecycle
+[ ] Portal-specific analytics
+[ ] Institution portal support
+[ ] Shared Massage Nexus account, profile, booking, learning, and managed-context data
+[ ] No change to Market Class, Product Grade, verification, claim status, or credentials
+
+13.18 Operational Interfaces
+----------------------------
+[~] Therapist self-management interface
+[~] Establishment operator interface
+[ ] Reception operations interface
+[ ] Manager oversight interface
+[ ] Finance operations interface
+[ ] Owner controls
+[ ] Multi-branch controls
+[ ] Multi-provider controls
+
+
+================================================================================
+14. SHOP, SELLERS, AND WELLNESS PRODUCTS
+================================================================================
+
+14.1 Product Listings
 ---------------------
 [ ] Wellness product listings
 [ ] Product categories (from Product Classification)
@@ -1528,8 +2151,7 @@ complete a website feature.
 [ ] Massage tools
 [ ] Wellness accessories
 
-
-11.2 Product Profile
+14.2 Product Profile
 --------------------
 [ ] Product photos
 [ ] Product description
@@ -1538,15 +2160,13 @@ complete a website feature.
 [ ] Stock availability
 [ ] Product Grade (provides review context only)
 
-
-11.3 Product Feedback and Questions
+14.3 Product Feedback and Questions
 -----------------------------------
 [ ] Product reviews
 [ ] Product ratings
 [ ] Product questions
 
-
-11.4 Product Discovery and Promotion
+14.4 Product Discovery and Promotion
 ------------------------------------
 [ ] Product recommendations
 [ ] Product bundles
@@ -1556,22 +2176,20 @@ complete a website feature.
 [ ] Affiliate products
 [ ] Voucher-compatible products
 
-
-11.5 Product Checkout and Fulfillment
+14.5 Product Checkout and Fulfillment
 -------------------------------------
 [ ] Shop checkout
 [ ] Order history
 [ ] Delivery options
 [ ] Pickup options
 
-
-11.6 Seller and Product Control
+14.6 Seller and Product Control
 -------------------------------
 [ ] Seller verification
 [ ] Product moderation
+[ ] Seller management interface
 
-
-11.7 Seller Profile Page
+14.7 Seller Profile Page
 ------------------------
 [ ] Seller profile page (public, separate from individual product profiles)
 [ ] Seller type
@@ -1586,13 +2204,11 @@ complete a website feature.
 [ ] Claim, follow, save, share, and report actions
 
 
-
 ================================================================================
-12. ARTICLES, GUIDES, NEWS, RESOURCES, AND EDITORIAL CONTENT
+15. ARTICLES, GUIDES, RESOURCES, AND EDITORIAL CONTENT
 ================================================================================
 
-
-12.1 Content Editing and Rendering Technology
+15.1 Content Editing and Rendering Technology
 ---------------------------------------------
 [x] Structured WYSIWYG article editor
 [ ] Restricted WYSIWYG review editor
@@ -1602,8 +2218,7 @@ complete a website feature.
 [x] Visual and spoken reading-duration calculation
 [x] Article revision snapshots and contributor submission state
 
-
-12.2 Article and Guide Types
+15.2 Article and Guide Types
 ----------------------------
 [ ] Massage articles
 [ ] Spa guides
@@ -1626,9 +2241,10 @@ complete a website feature.
 [ ] Glossary
 [ ] FAQ
 [ ] Resource pages
+[ ] Create the initial Article backlog
+[ ] Publish Articles at the accepted cadence
 
-
-12.3 Article Metadata and Labels
+15.3 Article Metadata and Labels
 --------------------------------
 [ ] Sponsored article labels
 [x] Multi-author support for articles
@@ -1636,8 +2252,7 @@ complete a website feature.
 [x] Public article source references
 [x] Shared editorial tag records and tag browsing
 
-
-12.4 Related Content Inside Articles
+15.4 Related Content Inside Articles
 ------------------------------------
 [ ] Related listings inside articles
 [ ] Related services inside articles
@@ -1645,8 +2260,7 @@ complete a website feature.
 [ ] Related products inside articles
 [x] Related articles inside articles
 
-
-12.5 Article Interaction
+15.5 Article Interaction
 ------------------------
 [ ] Article comments/discussion
 [ ] Article bookmarks
@@ -1654,1519 +2268,11 @@ complete a website feature.
 [ ] Social sharing
 
 
-
 ================================================================================
-13. MEDIA, DOCUMENTS, UPLOADS, AND DOWNLOADS
-================================================================================
-
-
-13.1 Galleries
---------------
-[ ] Spa photo gallery
-[ ] Therapist photo gallery
-[ ] Service photo gallery
-[ ] Video gallery
-[ ] Document gallery
-
-
-13.2 Upload Types
------------------
-[ ] Menu uploads
-[ ] Price list uploads
-[ ] Certificate uploads
-[ ] Business permit uploads
-[ ] Verification document uploads
-[ ] User-uploaded media
-[ ] Owner-uploaded media
-[ ] Therapist-uploaded media
-[ ] Editor-uploaded media
-[ ] Mobile photo upload
-[ ] Mobile video upload
-
-
-13.3 Media Labels
------------------
-[ ] Official media label
-[ ] Community media label
-[ ] Source label
-[ ] Copyright/permission label
-[ ] AI-generated label
-[ ] AI-edited label
-[ ] AI-enhanced label
-[ ] Original/source-unknown label
-
-
-13.4 Media Visibility and Protected Delivery
---------------------------------------------
-[ ] Public visibility
-[ ] Restricted visibility
-[ ] Private server-side authorization
-[ ] Short-lived protected media links
-[ ] No direct private storage path in HTML or JavaScript
-[ ] No public directory listing
-[ ] Optional viewer watermarking
-[ ] Native screenshot blocking where supported as an additional control
-[ ] Members-only visibility
-[ ] Owner-only visibility
-[ ] Moderator-only visibility
-[ ] Selected-user visibility
-
-
-13.5 Media Moderation and Quality
----------------------------------
-[ ] Media moderation
-[ ] Blur/sensitive media handling
-[ ] Duplicate media detection
-[ ] Image quality checks
-[ ] Video quality checks
-
-
-13.6 Media Metadata
--------------------
-[ ] Caption
-[ ] Alt text
-[ ] Tags
-[ ] Location metadata
-[ ] Upload date
-[ ] Approval status
-
-
-13.7 Media Requests
--------------------
-[ ] Report media
-[ ] Remove media request
-
-
-13.8 Free Downloads and Brand Resources
----------------------------------------
-[ ] Free wallpaper downloads
-[ ] Free rotating wallpapers
-[ ] Free instrumental/background sounds
-[ ] Download section for free brand/resources
-
-
-
-================================================================================
-14. CONTRIBUTIONS AND DATA IMPROVEMENT
+16. NEWS AND TIMELY REPORTING
 ================================================================================
 
-
-14.1 Listing Submissions and Edits
-----------------------------------
-[ ] Submit new listing
-[ ] Suggest edit
-[ ] Suggest closure
-[ ] Suggest reopening
-[ ] Suggest moved location
-[ ] Suggest renamed business
-[ ] Suggest duplicate merge
-
-
-14.2 Add Information
---------------------
-[ ] Add contact information
-[ ] Add operating hours
-[ ] Add holiday hours
-[ ] Add service menu
-[ ] Add price list
-[ ] Add amenities
-[ ] Add parking information
-[ ] Add therapist information
-[ ] Add photos
-[ ] Add videos
-[ ] Add documents
-[ ] Add social media links
-[ ] Add website links
-
-
-14.3 Reports
-------------
-[ ] Report incorrect information
-[ ] Report unsafe information
-[ ] Report adult-service solicitation
-[ ] Report fake profile
-[ ] Report impersonation
-[ ] Report spam
-[ ] Report harassment
-
-
-14.4 Contribution Workflow
---------------------------
-[ ] Contribution approval workflow
-[ ] Contribution rejection reason
-[ ] Contribution edit history
-[ ] Contributor credit
-[ ] Contributor points
-[ ] Contributor badges
-
-
-14.5 Review Roles and Trust
----------------------------
-[ ] Steward review
-[ ] Editor review
-[ ] Moderator review
-[ ] Source tracking
-[ ] Confidence score
-[ ] Verification level
-[ ] Community-assisted data improvement
-
-
-
-================================================================================
-15. OWNER, THERAPIST, STAFF, AND BUSINESS TOOLS
-================================================================================
-
-
-15.1 Claiming, Identity, and Proof
-----------------------------------
-[ ] Profile claim workflow
-[ ] Ownership proof upload
-[ ] Therapist claim workflow
-[ ] Stable therapist-profile matching
-[ ] Provider contact verification
-[ ] Booking enablement verification
-[ ] Payout and tax configuration later
-
-
-15.2 Permission-Aware Workspaces
---------------------------------
-[ ] One User Workspace
-[ ] Personal client context
-[ ] Therapist managed context
-[ ] Establishment operator context
-[ ] Seller context
-[ ] Contributor context
-[ ] Advertiser context
-[ ] Editor, moderator, and administrator contexts
-[ ] Context switcher
-[ ] Reception, therapist, manager, finance, and owner permissions
-
-
-15.3 Profile and Service Management
------------------------------------
-[ ] Update business information
-[ ] Update therapist information
-[ ] Manage establishment_service
-[ ] Manage practitioner_service
-[ ] Manage practitioner_capability
-[ ] Manage prices and variants
-[ ] Manage availability
-[ ] Manage media
-[ ] Manage products and client-supplied-item policy
-[ ] Manage delivery contexts
-
-
-15.4 Booking Enablement and Policies
-------------------------------------
-[ ] Booking disabled
-[ ] Inquiry Only
-[ ] Request Approval
-[ ] Instant Confirmation
-[ ] External Booking
-[ ] Booking suspension
-[ ] Booking policy
-[ ] Cancellation policy
-[ ] No-show policy
-[ ] Refund policy
-[ ] Arrival instructions
-[ ] Home-service policy
-[ ] Transport policy
-[ ] Product policy
-[ ] Minor and guardian policy
-[ ] Policy versioning and translation
-
-
-15.5 Intake, Consent, Privacy, and Retention
---------------------------------------------
-[ ] Intake template
-[ ] Service-specific questions
-[ ] Eligibility rule
-[ ] Privacy-preserving rejection
-[ ] Manual review
-[ ] Alternative service
-[ ] Consent form
-[ ] Digital signature
-[ ] Paper form
-[ ] Provider observation
-[ ] Assigned therapist disclosure
-[ ] Time-limited access
-[ ] Retention configuration
-[ ] Deletion or anonymization
-[ ] Legal hold
-[ ] Access audit
-[ ] Confidentiality agreement
-
-
-15.6 Scheduling, Staff, and Resources
--------------------------------------
-[ ] Staff schedule
-[ ] Therapist availability
-[ ] Recurring availability
-[ ] Schedule exceptions
-[ ] Staff permissions
-[ ] Room scheduling
-[ ] Treatment-station scheduling
-[ ] Treatment-support scheduling
-[ ] Device and facility scheduling
-[ ] Vehicle scheduling
-[ ] Equipment scheduling
-[ ] Capacity management
-[ ] Travel and buffer time
-[ ] Double-booking prevention
-[ ] External calendar sync
-
-
-15.7 Booking Operations
------------------------
-[ ] Manage inquiries
-[ ] Manage booking requests
-[ ] Quote
-[ ] Accept or decline
-[ ] Request more information
-[ ] Assign therapist
-[ ] Group assignment
-[ ] Walk-in
-[ ] Express workflow
-[ ] Queue
-[ ] Waitlist
-[ ] Check-in
-[ ] Session status
-[ ] Completion
-[ ] Cancellation
-[ ] Rescheduling
-[ ] No-show
-[ ] Rebooking
-
-
-15.8 Payment and Financial Documents
-------------------------------------
-[ ] Record cash
-[ ] Verify bank transfer or e-wallet
-[ ] Manage deposit
-[ ] Payment status
-[ ] Refund
-[ ] Provider payout
-[ ] Tip
-[ ] Provider invoice
-[ ] Payment acknowledgment
-[ ] Payout statement
-[ ] Financial permissions
-[ ] Manual reconciliation
-[ ] Accounting export later
-
-
-15.9 Client Records and Privacy Boundary
-----------------------------------------
-[ ] Provider-local client list
-[ ] Provider-involved booking history
-[ ] Client-shared history
-[ ] Client preferences for that provider
-[ ] Private intake for assigned booking
-[ ] Treatment note where authorized
-[ ] Follow-up note
-[ ] Aftercare
-[ ] No access to unrelated provider history
-[ ] No marketing use of private intake
-[ ] No uncontrolled copying to personal devices or chats
-
-
-15.10 Loyalty, Feedback, and Engagement
----------------------------------------
-[ ] Provider loyalty program
-[ ] Visit stamps
-[ ] Service counts
-[ ] Provider points
-[ ] Package balance
-[ ] Membership
-[ ] Tier
-[ ] Private satisfaction survey
-[ ] Service recovery
-[ ] Rating request
-[ ] Review request
-[ ] Aftercare
-[ ] Rebooking
-[ ] Booking reward event
-
-
-15.11 Therapist Compensation and Provider Finance
--------------------------------------------------
-[ ] Compensation rule
-[ ] Percentage commission
-[ ] Fixed amount
-[ ] Hourly
-[ ] Salary
-[ ] Tiered commission
-[ ] Product commission
-[ ] Tip distribution
-[ ] Team split
-[ ] Compensation statement
-[ ] Provider finance dashboard
-[ ] Tax-summary support
-[ ] Reconciliation
-[ ] Export
-
-
-15.12 Promotions and Communication
-----------------------------------
-[ ] Manage promos
-[ ] Manage announcements
-[ ] Reply to reviews
-[ ] Reply to discussions
-[ ] Booking messages
-[ ] Translated structured communication
-[ ] Notification templates
-[ ] Email and SMS marketing subject to consent
-[ ] Campaign tracking
-
-
-15.13 Analytics Access
-----------------------
-[ ] Profile analytics
-[ ] Booking analytics
-[ ] Schedule analytics
-[ ] Resource analytics
-[ ] Walk-in analytics
-[ ] Waitlist analytics
-[ ] Loyalty analytics
-[ ] Payment analytics
-[ ] Revenue analytics
-[ ] Compensation analytics
-[ ] Review analytics
-[ ] Search analytics
-[ ] Promo analytics
-[ ] Contact and direction clicks
-[ ] Exportable reports
-[ ] Anonymized intake aggregates only
-
-
-15.14 Inventory, Expenses, and Wider Operations
------------------------------------------------
-[ ] Product usage
-[ ] Consumable usage
-[ ] Product sales
-[ ] Inventory integration
-[ ] Supplier and expense support later
-[ ] POS integration later
-[ ] Full accounting, payroll, bank reconciliation, and purchasing remain separate future systems
-
-
-15.15 Marketing and Sales Tools
--------------------------------
-[ ] Marketing tools
-[ ] Social booking links
-[ ] Website booking widget
-[ ] Branded booking page
-[ ] Business mini-site
-[ ] Branded Portal later
-
-
-15.16 Multi-Entity Management
------------------------------
-[ ] Multi-location management
-[ ] Franchise management
-[ ] Brand management
-[ ] Bulk listing management
-[ ] CSV import/export
-
-
-15.17 Branded Portal (Future-Scope)
------------------------------------
-[ ] Tenant subdomain
-[ ] Custom-domain connection and verification
-[ ] White-label presentation tier
-[ ] Portal theme and branding controls
-[ ] Domain and TLS lifecycle
-[ ] Portal-specific analytics
-[ ] Institution portal support
-[ ] Shared Massage Nexus account, profile, booking, learning, and workspace data
-[ ] No change to Market Class, Product Grade, verification, claim status, or credentials
-
-
-================================================================================
-16. TRUST, VERIFICATION, SAFETY, AND MODERATION
-================================================================================
-
-
-16.1 Verification
------------------
-[ ] User verification
-[ ] Therapist verification
-[ ] Spa verification
-[ ] Owner verification
-[ ] Business document verification
-[ ] Credential verification
-[ ] License/certification verification
-[ ] ID verification
-[ ] Photo verification
-[ ] Phone verification
-[ ] Email verification
-[ ] In-person verification status
-[ ] Verification levels
-
-
-16.2 Trust Badges and Labels
-----------------------------
-[ ] Trust badges
-[ ] Claimed badge
-[ ] Verified badge
-[ ] Historical badge
-[ ] Disputed badge
-[ ] Warning label
-[ ] Safety label
-[ ] Source label
-[ ] Editorial label
-[ ] Sponsored label
-[ ] AI media label
-
-
-16.3 Safety and Risk Controls
------------------------------
-[ ] Sensitive-service access and visibility policy
-[ ] Coded-language detection
-[ ] Exploitation-risk moderation
-[ ] Harassment reporting
-[ ] Spam reporting
-[ ] Fake review detection
-[ ] Fake profile detection
-[ ] Impersonation reporting
-[ ] Suspicious listing review
-[ ] Sensitive content review
-
-
-16.4 Moderator and Public Notes
--------------------------------
-[ ] Moderator notes
-[ ] Public correction notes
-
-
-16.5 Disputes and Appeals
--------------------------
-[ ] Dispute workflow
-[ ] Appeals workflow
-
-
-16.6 Security and Access
-------------------------
-[ ] Audit trail
-[ ] Role-based access control
-[ ] Private document protection
-[ ] Data privacy controls
-[ ] Abuse-prevention rules
-
-
-
-================================================================================
-17. POINTS, BADGES, RANKINGS, REPUTATION, AND GAMIFICATION
-================================================================================
-
-
-17.1 Massage Nexus Platform Rewards
------------------------------------
-[ ] Nexus Points
-[ ] Embers
-[ ] Inklings
-[ ] User statistics
-[ ] Campaign missions
-[ ] Shared reward events
-[ ] Reward caps
-[ ] Reward reversal
-[ ] Anti-abuse key
-[ ] Human review for disputed rewards
-
-
-17.2 Badge and Rank Systems
----------------------------
-[ ] Badge system
-[ ] Rank-path system
-[ ] Contributor rank
-[ ] Reviewer rank
-[ ] Steward rank
-[ ] Booking milestone badges
-[ ] Progress and hidden badges
-[ ] Anchored milestone sequence where applicable
-
-
-17.3 Example Badges
--------------------
-[ ] Verified reviewer
-[ ] Helpful reviewer
-[ ] Top contributor
-[ ] Trusted contributor
-[ ] Founder or early contributor
-[ ] First Booking
-[ ] First Completed Massage
-[ ] Five Completed Sessions
-[ ] Multilingual Booker
-[ ] Group Organizer
-[ ] Series Completer
-[ ] Wellness Budget Keeper
-
-
-17.4 Ranking
-------------
-[ ] Spa rating rank
-[ ] Therapist rating rank
-[ ] Service popularity rank
-[ ] Trending listing rank
-[ ] Ranking context and eligibility
-[ ] Sponsored placement excluded from organic trust ranking
-
-
-17.5 Reputation Boundary
-------------------------
-[ ] Community Reputation
-[ ] Trust signals
-[ ] Quality signals
-[ ] Abuse penalties after review
-[ ] Booking completion alone does not automatically create Reputation
-[ ] Cancellation history is not automatically public Reputation
-[ ] Internal booking risk remains separate
-
-
-17.6 Provider Loyalty
----------------------
-[ ] Visit stamp
-[ ] Service count
-[ ] Spend-based progress
-[ ] Provider points
-[ ] Package balance
-[ ] Tiered loyalty
-[ ] Membership
-[ ] Hybrid program
-[ ] Program version
-[ ] Expiry
-[ ] Branch restriction
-[ ] Reward redemption
-[ ] Provider loyalty separate from Nexus Points, Embers, Inklings, badges, Reputation, ratings, and reviews
-
-
-17.7 Reward-Eligible Booking Events
------------------------------------
-[ ] Completed booking
-[ ] Partially completed eligible service line
-[ ] First confirmed booking
-[ ] New provider or Service Family milestone
-[ ] Completed series or course
-[ ] Post-service rating
-[ ] Approved review
-[ ] Reward held during dispute
-[ ] No normal reward for cancelled, no-show, fake, duplicated, or unverified manual history
-[ ] Provider-false-completion detection
-[ ] Reward farming detection
-
-
-17.8 Leaderboards and Awards
-----------------------------
-[ ] Contribution leaderboard
-[ ] Local area leaderboard
-[ ] Monthly contributor highlights
-[ ] Annual awards
-
-
-17.9 Quizzes and Experiences
-----------------------------
-[ ] Quizzes and tests
-[ ] Gamified quiz pop-ups
-[ ] Character-led quizzes
-[ ] Story-based gamification
-[ ] Spa management mini-game concept
-[ ] Wellness journey gamification
-
-
-================================================================================
-18. NEURAL AGENTS, NEXUS CAST, MASCOTS, AI PERSONAS, AND COMICS (SUPPORTING BRAND ELEMENTS)
-================================================================================
-
-
-18.1 Four Separate Systems
---------------------------
-[ ] Neural Agents — editorial writing-voice personas (tone, humor, article-writing style, chat style) used for written content such as articles and review-organization assistance. They are not visual characters and do not appear on-screen.
-[ ] Nexus Cast — recurring illustrated visual characters used in comics, mockups, and staged marketing or demonstration scenes. They are visual actors, not writers, and are not Neural Agents.
-[ ] Mascots — non-human brand characters (e.g., Nexus, Embi, Leafy) used for onboarding, gamification, badges, and playful interface moments.
-[ ] AI personas / chat experiences — conversational surfaces that may draw on a Neural Agent's voice; these are a delivery channel, not a fourth character roster.
-
-
-18.2 Neural Agent Writing-Style Fields
---------------------------------------
-[ ] Neural Agent profile (see the Neural Agent Profile reference)
-[ ] article_writing_style
-[ ] tone
-[ ] humor_style
-[ ] comment_style
-[ ] chat_style
-[ ] personality
-[ ] interest and preference fields used to color writing voice
-
-
-18.3 Nexus Cast and Mascot Visual Profile Fields
-------------------------------------------------
-[ ] Character profiles
-[ ] Character gender identity
-[ ] Character gender presentation
-[ ] Character cultural background
-[ ] Character personality
-[ ] Character interests
-[ ] Character favorite activities
-[ ] Character visual style
-
-
-18.4 Character Roles
---------------------
-[ ] Neural Agent role in written content
-[ ] Nexus Cast role in visual/staged content
-[ ] Mascot role in gamification and onboarding
-[ ] AI persona role in chat
-
-
-18.5 AI Attribution and Disclosure
-----------------------------------
-[ ] AI byline handling
-[ ] AI article author display
-[ ] AI translation credit
-[ ] AI image credit
-[ ] AI-generated content disclosure
-
-
-18.6 Character-Led Learning and Onboarding
-------------------------------------------
-[ ] Character-led tutorials
-[ ] Character-led onboarding
-
-
-18.7 Comics and Visual Storytelling
------------------------------------
-[ ] Comics (The Resting Leaf, featuring Nexus Cast characters, and supporting stories)
-
-
-18.8 Relaxation and Live Rooms
-------------------------------
-[ ] Relaxation rooms
-[ ] Instrumental background audio
-[ ] Sponsored relaxation sessions
-[ ] Live wellness rooms
-[ ] Seasonal themed rooms
-
-
-
-================================================================================
-19. PROMOTIONS, ADVERTISING, AND MONETIZATION
-================================================================================
-
-
-19.1 Listing Tiers and Visibility
----------------------------------
-[ ] Free listing
-[ ] Claimed listing
-[ ] Premium listing
-[ ] Featured listing
-[ ] Sponsored listing
-
-
-19.2 Sponsored Placement
-------------------------
-[ ] Sponsored disclosure
-[ ] Paid placement
-[ ] Directory first placement
-[ ] Search boost
-[ ] Category sponsorship
-[ ] Location sponsorship
-[ ] Banner ads
-[ ] Hero carousel ads
-[ ] Promo cards
-[ ] Deal cards
-
-
-19.3 Deals and Offers
----------------------
-[ ] Last-minute deals
-[ ] Off-peak deals
-[ ] New customer offers
-[ ] Birthday offers
-[ ] Voucher campaigns
-
-
-19.4 Sales Products
--------------------
-[ ] Gift card sales
-[ ] Membership sales
-[ ] Package sales
-[ ] Subscription passes
-
-
-19.5 Business Monetization
---------------------------
-[ ] Business subscription plans
-[ ] Therapist subscription plans
-[ ] Analytics upgrade
-[ ] Booking tool upgrade
-[ ] Media upgrade
-[ ] Profile customization upgrade
-[ ] Verification service fee
-[ ] Review request tool
-[ ] Lead generation
-
-
-19.6 Tracking and Analytics
----------------------------
-[ ] Contact-click tracking
-[ ] Call-click tracking
-[ ] Direction-click tracking
-[ ] Promo performance analytics
-[ ] Ad performance analytics
-
-
-19.7 Affiliate and Sponsored Content
-------------------------------------
-[ ] Affiliate product links
-[ ] Sponsored articles
-[ ] Sponsored reviews with disclosure
-[ ] Editorial independence labels
-
-
-
-================================================================================
-20. STATISTICS, ANALYTICS, REPORTS, AND DASHBOARDS
-================================================================================
-
-
-20.1 Public Statistics
-----------------------
-[ ] Public statistics subject to policy
-[ ] Profile view count
-[ ] Save count
-[ ] Follow count
-[ ] Review count
-[ ] Rating average
-[ ] Verified booking count where approved
-[ ] Response rate
-[ ] Response time
-[ ] No public disclosure of private intake, client cancellation history, compensation, or sensitive small-count data
-
-
-20.2 Client Analytics
----------------------
-[ ] Private booking count
-[ ] Private completed-service count
-[ ] Monthly and yearly spending
-[ ] Service, product, travel, tip, fee, tax, refund, and discount totals
-[ ] Provider and Service Family distribution
-[ ] Total duration
-[ ] Average cost
-[ ] Loyalty progress
-[ ] Review and rating activity
-[ ] Personal export
-
-
-20.3 Provider Booking Analytics
--------------------------------
-[ ] Booking request count
-[ ] Quote acceptance
-[ ] Confirmation rate
-[ ] Completion rate
-[ ] Cancellation
-[ ] Client no-show
-[ ] Provider cancellation
-[ ] Provider no-show
-[ ] Average lead time
-[ ] Response time
-[ ] Walk-in versus advance booking
-[ ] Group booking
-[ ] Home-service demand
-[ ] Waitlist conversion
-[ ] Repeat client within provider scope
-
-
-20.4 Schedule and Resource Analytics
-------------------------------------
-[ ] Therapist utilization
-[ ] Room and station utilization
-[ ] Treatment-support utilization
-[ ] Device and facility utilization
-[ ] Queue waiting time
-[ ] Travel time
-[ ] Capacity
-[ ] Fully booked periods
-[ ] Schedule conflict
-[ ] Maintenance downtime
-
-
-20.5 Service and Product Analytics
-----------------------------------
-[ ] Service demand
-[ ] Service duration
-[ ] Therapist demand
-[ ] Product choice
-[ ] Product upgrade
-[ ] Client-supplied item
-[ ] Service performance
-[ ] Product sales
-[ ] Promotion conversion
-
-
-20.6 Finance and Compensation Analytics
----------------------------------------
-[ ] Gross booking sales
-[ ] Collected amount
-[ ] Outstanding balance
-[ ] Deposit
-[ ] Refund
-[ ] Chargeback
-[ ] Tax summary
-[ ] Platform fee
-[ ] Provider payout
-[ ] Therapist compensation
-[ ] Tip
-[ ] Discount
-[ ] Loyalty redemption
-[ ] Reconciliation status
-
-
-20.7 Search and Click Analytics
--------------------------------
-[ ] Search appearance count
-[ ] Contact-click count
-[ ] Direction-click count
-[ ] Call-click count
-[ ] Website-click count
-[ ] Social-click count
-[ ] Geographic analytics
-[ ] Device analytics
-
-
-20.8 Privacy-Preserving Intake Analytics
-----------------------------------------
-[ ] Eligibility-result count
-[ ] Form-completion rate
-[ ] Abandonment rate
-[ ] Common adaptation category
-[ ] Language use
-[ ] Average completion time
-[ ] Small-count suppression
-[ ] Anonymization
-[ ] No identifiable health answer
-[ ] No cross-provider client history
-
-
-20.9 Reports and Dashboards
----------------------------
-[ ] Trend reports
-[ ] User dashboard
-[ ] Provider dashboard
-[ ] Therapist dashboard
-[ ] Operator dashboard
-[ ] Finance dashboard
-[ ] Admin dashboard
-[ ] Exportable reports
-[ ] Permission-aware data scope
-
-
-================================================================================
-21. ADMIN, STEWARD, EDITOR, AND MODERATOR TOOLS
-================================================================================
-
-
-21.1 Admin Dashboard and Management
------------------------------------
-[x] Admin dashboard
-[ ] Listing management
-[ ] User management
-[ ] Spa management
-[ ] Therapist management
-[ ] Review management
-[ ] Discussion management
-[ ] Media management
-
-
-21.2 Queues
------------
-[ ] Contribution queue
-[ ] Verification queue
-[ ] Claim queue
-[ ] Dispute queue
-[ ] Abuse report queue
-
-
-21.3 Listing and Data Tools
----------------------------
-[ ] Duplicate merge tools
-[ ] Closed listing tools
-[ ] Historical record tools
-[ ] Source management
-[ ] Taxonomy management (aligned with classification documents)
-[ ] Massage type management
-[ ] Service tag management
-[ ] Amenity management
-[ ] Location management
-
-
-21.4 Roles and Permissions
---------------------------
-[ ] Role management
-[ ] Permission management
-[ ] Steward assignment
-[ ] Editor assignment
-
-
-21.5 Internal Review and History
---------------------------------
-[ ] Moderator notes
-[ ] Internal comments
-[ ] Audit log
-[ ] Version history
-[ ] Revert changes
-
-
-21.6 Bulk and Cleanup Tools
----------------------------
-[ ] Bulk edit
-[ ] Bulk import
-[ ] CSV export
-[ ] Data cleanup tools
-
-
-21.7 Filters and Moderation
----------------------------
-[ ] Spam filters
-[ ] Sensitive content filters
-
-
-21.8 Advertising and Analytics Management
------------------------------------------
-[ ] Advertising management
-[ ] Sponsored placement management
-[ ] Analytics management
-
-
-21.9 Platform Operations
-------------------------
-[ ] Platform announcements
-[ ] Newsletter management
-[ ] Support ticket management
-
-
-
-================================================================================
-22. APIS, INTEGRATIONS, AUTOMATION, AND TECHNICAL SERVICES
-================================================================================
-
-
-22.1 APIs
----------
-[ ] First-Party App API
-[ ] Partner API
-[ ] Approved Public API
-[ ] Owner and therapist API scopes
-[ ] Listing API
-[ ] Review API
-[ ] Media API
-[ ] Product API
-[ ] Booking API
-[ ] Scheduling API
-[ ] Payment API
-[ ] Loyalty API
-[ ] Provider-finance API where approved
-
-
-22.2 API Operations
--------------------
-[ ] OpenAPI contract
-[ ] Webhooks
-[ ] API keys
-[ ] OAuth or token scopes
-[ ] API quotas
-[ ] API logs
-[ ] API rate limits
-[ ] Revocation
-[ ] Versioning
-[ ] Partner testing environment
-[ ] Audit
-
-
-22.3 Booking API Capabilities
------------------------------
-[ ] Personal plan
-[ ] Booking request
-[ ] Participant service lines
-[ ] Availability
-[ ] Therapist selection
-[ ] Assignment
-[ ] Eligibility outcome
-[ ] Private-intake access through restricted scope only
-[ ] Consent
-[ ] Waitlist
-[ ] Walk-in
-[ ] Queue
-[ ] Payment
-[ ] Refund
-[ ] Feedback
-[ ] Rebooking
-[ ] Booking event
-[ ] Provider finance where permitted
-
-
-22.4 Calendar and Booking Integrations
---------------------------------------
-[ ] Third-party booking integration
-[ ] External booking link
-[ ] Calendar synchronization
-[ ] Google Calendar integration
-[ ] Microsoft calendar integration
-[ ] iCalendar feed
-[ ] Conflict handling
-[ ] Webhook
-[ ] No private intake in generic calendar content
-
-
-22.5 Map and Travel Integrations
---------------------------------
-[ ] Google Maps integration
-[ ] Apple Maps integration
-[ ] Geocoding
-[ ] Service-area validation
-[ ] Distance calculation
-[ ] Travel fee input
-[ ] Provider location tracking only under approved safety and privacy rules
-
-
-22.6 Social and Tracking Integrations
--------------------------------------
-[ ] Social media booking links
-[ ] Facebook booking link
-[ ] Instagram booking link
-[ ] Meta Pixel support subject to privacy policy
-[ ] Analytics tracking
-[ ] Consent-aware marketing attribution
-
-
-22.7 Communication Integrations
--------------------------------
-[ ] Email service
-[ ] SMS service
-[ ] Push notification service
-[ ] OTP
-[ ] International email or app verification
-[ ] Translated notifications
-[ ] Sensitive-data suppression
-
-
-22.8 Payment and Storage Integrations
--------------------------------------
-[ ] Payment gateway
-[ ] Payout provider
-[ ] External e-wallet
-[ ] Bank-transfer verification
-[ ] Storage integration
-[ ] Protected media
-[ ] Financial-document rendering
-
-
-22.9 Processing and AI
-----------------------
-[ ] Image processing
-[ ] Video processing
-[ ] AI moderation
-[ ] AI summary generation
-[ ] AI duplicate detection
-[ ] AI taxonomy suggestions
-[ ] AI review-quality assistance
-[ ] AI safety flagging
-[ ] Booking-note translation
-[ ] Human review for high-impact outcomes
-
-
-22.10 Data and Security Systems
--------------------------------
-[ ] Data export
-[ ] Data import
-[ ] Backup
-[ ] Restore
-[ ] Audit logging
-[ ] Security monitoring
-[ ] Encryption and key management
-[ ] Retention jobs
-[ ] Legal hold
-[ ] Anonymization
-[ ] Clients do not connect directly to Azure DocumentDB
-
-
-22.11 Browser Extensions
-------------------------
-[ ] Firefox extension
-[ ] Chrome extension
-[ ] Deferred until separately approved
-
-
-================================================================================
-23. LEGAL, POLICY, AND COMPLIANCE
-================================================================================
-
-
-23.1 Core Legal Pages
----------------------
-[ ] Terms of Use
-[ ] Privacy Policy
-[ ] Community Guidelines
-[ ] Accessibility
-[ ] Cookie policy
-[ ] Copyright
-[ ] Licensing
-[ ] Disclaimer
-
-
-23.2 Content, Review, and Advertising Policies
-----------------------------------------------
-[ ] Review policy
-[ ] Rating policy
-[ ] Reputation policy
-[ ] Sponsored-content policy
-[ ] Advertising policy
-[ ] AI-generated-content policy
-[ ] Media-upload policy
-[ ] Editorial independence
-
-
-23.3 Safety, Sensitive Service, and Verification Policies
----------------------------------------------------------
-[ ] Safety policy
-[ ] Verification policy
-[ ] Sensitive, intimate, sensual, sexual-wellness, adult, clinical, and disputed-service access and visibility policy
-[ ] Age and guardian policy
-[ ] Consent policy
-[ ] Professional-boundary policy
-[ ] Solicitation and exploitation prevention
-[ ] Sensitive-topic handling
-[ ] Media safety
-
-
-23.4 Claim, Correction, and Dispute Policies
---------------------------------------------
-[ ] Owner claim policy
-[ ] Therapist claim policy
-[ ] Seller claim policy
-[ ] Takedown policy
-[ ] Correction policy
-[ ] Duplicate and merge policy
-[ ] Dispute policy
-[ ] Appeal policy
-
-
-23.5 Data, Intake, and Account Policies
----------------------------------------
-[ ] Booking privacy notice
-[ ] Client intake policy
-[ ] Minimum disclosure
-[ ] Provider confidentiality
-[ ] Data retention
-[ ] Anonymization
-[ ] Legal hold
-[ ] Account deletion
-[ ] Data export
-[ ] Provider legacy-import responsibility
-[ ] Law-enforcement request process
-
-
-23.6 Booking and Commerce Policies
-----------------------------------
-[ ] Booking policy
-[ ] Cancellation policy
-[ ] No-show policy
-[ ] Payment policy
-[ ] Refund policy
-[ ] Payout policy
-[ ] Tip policy
-[ ] Provider-loyalty policy
-[ ] Gift-card policy
-[ ] Voucher policy
-[ ] Financial-document policy
-[ ] Country-specific invoice configuration
-[ ] Transparent commission and booking-fee disclosure
-
-
-23.7 Contributor and Moderation Policies
-----------------------------------------
-[ ] Contributor policy
-[ ] Moderation policy
-[ ] Conflict-of-interest policy
-[ ] Reward anti-abuse
-[ ] Booking-risk review
-[ ] Fraud and chargeback handling
-
-
-================================================================================
-24. LAUNCH, GROWTH, OUTREACH, AND OPERATIONS
-================================================================================
-
-
-24.1 Data Collection and Verification
--------------------------------------
-[ ] Manual listing collection
-[ ] Listing verification workflow
-[ ] Local research workflow
-[ ] Visit-based verification
-
-
-24.2 Onboarding
----------------
-[ ] Contributor onboarding
-[ ] Owner onboarding
-[ ] Therapist onboarding
-[ ] Steward onboarding
-[ ] Moderator onboarding
-
-
-24.3 Launch Planning
---------------------
-[ ] Launch checklist
-[ ] Data quality checklist
-[ ] SEO content plan
-[ ] Social media plan
-[ ] Social media account creation
-[ ] Outreach plan
-[ ] Spa owner outreach
-[ ] Therapist outreach
-[ ] Reviewer outreach
-
-
-24.4 Communications and Support
--------------------------------
-[ ] Newsletter
-[ ] Feedback collection
-[ ] Bug reporting
-[ ] Support contact form
-[ ] Help center
-[ ] FAQ center
-
-
-24.5 Campaign and Product Tracking
-----------------------------------
-[ ] Promo campaign tracking
-[ ] Changelog
-[ ] Public release notes
-[ ] Final implementation records
-[ ] Decision log
-[ ] Simple checklist
-[ ] Status page
-[ ] Roadmap page
-[ ] Feature request form
-
-
-24.6 Post-Launch Operations
----------------------------
-[ ] Post-launch monitoring
-[ ] Data cleanup schedule
-[ ] Moderation schedule
-[ ] Backup/recovery process
-
-
-
-================================================================================
-25. AI-ASSISTED FEATURES AND PLATFORM ASSISTANCE
-================================================================================
-
-
-25.1 Development AI
--------------------
-[ ] Codex-assisted coding
-[ ] Antigravity-assisted coding
-[ ] Documentation synchronization
-[ ] Test generation and maintenance
-[ ] Implementation record updates
-[ ] Changelog updates
-[ ] Checklist and roadmap updates
-[ ] File-size and placement checks
-[ ] Duplicate-code detection
-[ ] Security review assistance
-
-
-25.2 User Assistance
---------------------
-[ ] Business-name brainstorming tool
-[ ] Business-name explorer and availability checker
-[ ] Profile-description assistance
-[ ] Service-menu wording assistance
-[ ] Article brainstorming and drafting
-[ ] Review organization and rewriting assistance
-[ ] Search assistance
-[ ] Comparison summaries
-[ ] Support assistance
-[ ] Neural Agent conversations (supporting brand element)
-
-
-25.3 Editorial and Data Assistance
-----------------------------------
-[ ] Translation drafts
-[ ] Summary generation
-[ ] Metadata suggestions
-[ ] Service mapping suggestions (respecting Service Classification)
-[ ] Taxonomy suggestions (respecting stable codes from classification documents)
-[ ] Duplicate record suggestions
-[ ] Missing-source detection
-[ ] Media metadata assistance
-
-
-25.4 Moderation and Safety Assistance
--------------------------------------
-[ ] Spam signals
-[ ] Suspicious review signals
-[ ] Coded-language detection
-[ ] Harassment and threat signals
-[ ] Sensitive-media classification
-[ ] Unsafe HTML detection
-[ ] Moderation queue prioritization
-
-
-25.5 AI Governance & Monetization
----------------------------------
-[ ] Platform AI usage transparency documentation
-[ ] AI-generated label
-[ ] AI-assisted label
-[ ] AI-edited label
-[ ] AI-enhanced label
-[ ] AI-translated label
-[ ] Human-review status
-[ ] Provider and model abstraction
-[ ] Prompt versioning
-[ ] Privacy and data minimization
-[ ] Human approval for high-impact actions
-[ ] Tiered AI usage limits based on subscription plans to prevent abuse
-[ ] Variable AI intelligence scaling based on Ember spend (e.g., users allocate Embers to unlock more capable AI models for brainstorming)
-
-================================================================================
-26. ACCOUNT, MEMBERSHIP, REGISTRATION, AND AUTHENTICATION
-================================================================================
-
-26.1 Account and Membership
----------------------------
-[ ] Shared network account
-[~] Separate Massage Nexus membership
-[~] Massage Nexus eligibility record
-[x] Public browsing without registration
-[x] User is a client by default
-[ ] Additional professional and platform roles on the same account
-[ ] Membership suspension separate from network-account suspension
-[ ] Account deletion grace period
-[ ] Re-created account treated according to deletion policy
-[ ] Public display name separate from username
-[ ] Public User Profile separate from private User Workspace
-
-26.2 Registration and Verification
-----------------------------------
-[x] Branded registration page
-[x] Lowercase alphanumeric username
-[x] Username starts with a letter
-[x] Protected and reserved username families
-[x] Email address registration
-[x] Email verification before normal member access
-[x] Age and eligibility confirmation
-[x] Terms acceptance record
-[x] Privacy acknowledgment record
-[x] Marketing consent kept optional and separate
-[ ] Registration rate limiting
-[ ] Duplicate account signals
-[~] Accessible registration errors
-[ ] Multilingual registration guidance
-
-26.3 Authentication and Recovery
---------------------------------
-[x] Login by username or email
-[x] Secure password hashing
-[x] Compromised-password rejection
-[x] Project-specific expected-password rejection
-[x] Remember me
-[x] Logout
-[x] Password recovery
-[x] Session rotation
-[ ] Session and device list
-[ ] Remote session revocation
-[ ] Security notifications
-[ ] TOTP
-[ ] Recovery codes
-[ ] Passkeys
-[ ] Device biometric use through passkeys
-[ ] Approved external identities
-[ ] Account-recovery escalation
-[ ] Recycled phone-number protection
-
-26.4 Profile Identity and Avatar
---------------------------------
-[ ] Branded default avatars
-[ ] Deterministic default-avatar assignment
-[ ] Uploaded avatar
-[ ] Animated avatar
-[ ] Avatar moderation
-[ ] Public cover image
-[ ] Bio
-[ ] Pronouns where voluntarily provided
-[ ] Gender kept optional and privacy-controlled
-[ ] Language and regional preferences
-[ ] Time zone
-[ ] Account security history
-[ ] Public and private visibility controls
-
-================================================================================
-27. COMMENTS
-================================================================================
-
-27.1 Comment Targets
---------------------
-[ ] Article comments
-[ ] News comments
-[ ] Review comments
-[ ] Spa comments
-[ ] Therapist comments
-[ ] Service comments
-[ ] Product comments
-[ ] Seller comments
-[ ] Comic comments
-[ ] Public research-page comments
-[ ] Public statistics-page comments
-[ ] Approved media comments
-
-27.2 Comment Behavior
----------------------
-[ ] Short-form comment
-[ ] Reply
-[ ] Limited visible nesting
-[ ] Parent reference
-[ ] Comment permalink
-[ ] Draft comment
-[ ] Edit comment
-[ ] Edited label
-[ ] Moderator-visible revision history
-[ ] User deletion
-[ ] Moderator removal
-[ ] Closed comments
-[ ] Pinned comment
-[ ] Spoiler label
-[ ] NSFW classification
-[ ] Public, member, target-participant, restricted, and moderator visibility
-
-27.3 Comment Roles and Interaction
-----------------------------------
-[ ] Provider Response label
-[ ] Therapist Response label
-[ ] Author Response label
-[ ] Staff Response label
-[ ] Moderator Notice label
-[ ] Helpful reaction
-[ ] Like reaction
-[ ] Mention
-[ ] Reply notification
-[ ] Translation on demand
-[ ] Show Original
-[ ] Machine-translation label
-[ ] Report comment
-[ ] Appeal eligible moderation action
-[ ] Redirect factual claim to Correction
-[ ] Redirect technical or account problem to Support
-[ ] Redirect long conversation to Discussion
-[ ] Invite substantive experience into Review workflow
-
-================================================================================
-28. NEWS AND TIMELY REPORTING
-================================================================================
-
-28.1 News Types
+16.1 News Types
 ---------------
 [ ] Standard News
 [ ] Brief update
@@ -3190,7 +2296,7 @@ complete a website feature.
 [ ] Press release source
 [ ] Sponsored or partner content
 
-28.2 News Records and Workflow
+16.2 News Records and Workflow
 ------------------------------
 [ ] Headline
 [ ] Short description
@@ -3219,204 +2325,483 @@ complete a website feature.
 [ ] Distribution and social variants
 [ ] News archive
 [ ] Developing-story update monitoring
+[ ] Create the initial News source and monitoring workflow
+[ ] Publish News when timely and sufficiently verified
+
 
 ================================================================================
-29. MASSAGE CAMPUS AND LEARNING
+17. MEDIA, DOCUMENTS, UPLOADS, AND DOWNLOADS
 ================================================================================
 
-29.1 Campus Structure
----------------------
-[ ] Campus homepage
-[ ] Course catalog
-[ ] Subject area
-[ ] Learning path
-[ ] Course
-[ ] Module
-[ ] Lesson
-[ ] Guide
-[ ] Glossary
-[ ] Demonstration
-[ ] Reading
-[ ] Video
-[ ] Audio
-[ ] Download
-[ ] Discussion connection
-[ ] Instructor or author profile
-[ ] Source and reference list
-[ ] Prerequisite
-[ ] Difficulty
-[ ] Estimated duration
-[ ] Language
-[ ] Accessibility information
+17.1 Galleries
+--------------
+[ ] Spa photo gallery
+[ ] Therapist photo gallery
+[ ] Service photo gallery
+[ ] Video gallery
+[ ] Document gallery
 
-29.2 Learning Topics
+17.2 Upload Types
+-----------------
+[ ] Menu uploads
+[ ] Price list uploads
+[ ] Certificate uploads
+[ ] Business permit uploads
+[ ] Verification document uploads
+[ ] User-uploaded media
+[ ] Owner-uploaded media
+[ ] Therapist-uploaded media
+[ ] Editor-uploaded media
+[ ] Mobile photo upload
+[ ] Mobile video upload
+
+17.3 Media Labels
+-----------------
+[ ] Official media label
+[ ] Community media label
+[ ] Source label
+[ ] Copyright/permission label
+[ ] AI-generated label
+[ ] AI-edited label
+[ ] AI-enhanced label
+[ ] Original/source-unknown label
+
+17.4 Media Visibility and Protected Delivery
+--------------------------------------------
+[ ] Public visibility
+[ ] Restricted visibility
+[ ] Private server-side authorization
+[ ] Short-lived protected media links
+[ ] No direct private storage path in HTML or JavaScript
+[ ] No public directory listing
+[ ] Optional viewer watermarking
+[ ] Native screenshot blocking where supported as an additional control
+[ ] Members-only visibility
+[ ] Owner-only visibility
+[ ] Moderator-only visibility
+[ ] Selected-user visibility
+
+17.5 Media Moderation and Quality
+---------------------------------
+[ ] Media moderation
+[ ] Blur/sensitive media handling
+[ ] Duplicate media detection
+[ ] Image quality checks
+[ ] Video quality checks
+
+17.6 Media Metadata
+-------------------
+[ ] Caption
+[ ] Alt text
+[ ] Tags
+[ ] Location metadata
+[ ] Upload date
+[ ] Approval status
+
+17.7 Media Requests
+-------------------
+[ ] Report media
+[ ] Remove media request
+
+17.8 Free Downloads and Brand Resources
+---------------------------------------
+[ ] Free wallpaper downloads
+[ ] Free rotating wallpapers
+[ ] Free instrumental/background sounds
+[ ] Download section for free brand/resources
+
+
+================================================================================
+18. CONTRIBUTIONS, DATA RESEARCH, PROVENANCE, AND VERIFICATION
+================================================================================
+
+18.1 Listing Submissions and Edits
+----------------------------------
+[ ] Submit new listing
+[ ] Suggest edit
+[ ] Suggest closure
+[ ] Suggest reopening
+[ ] Suggest moved location
+[ ] Suggest renamed business
+[ ] Suggest duplicate merge
+
+18.2 Add Information
 --------------------
-[ ] First-time spa guidance
-[ ] Massage and service types
-[ ] Spa etiquette
-[ ] Hygiene and cleanliness
-[ ] Safety and contraindications
-[ ] Consent and professional boundaries
-[ ] Communication and pressure preferences
-[ ] Aftercare
-[ ] Client preparation
-[ ] Therapist professional development
-[ ] Provider operations
-[ ] Booking and service flow
-[ ] Reviews and Ratings
-[ ] Data research and verification
-[ ] Translation and terminology
-[ ] Accessibility and inclusive service
-[ ] Products, tools, oils, linens, and equipment
-[ ] Local and international spa culture
-[ ] Massage Nexus contributor training
-[ ] Moderator and Support training
+[ ] Add contact information
+[ ] Add operating hours
+[ ] Add holiday hours
+[ ] Add service menu
+[ ] Add price list
+[ ] Add amenities
+[ ] Add parking information
+[ ] Add therapist information
+[ ] Add photos
+[ ] Add videos
+[ ] Add documents
+[ ] Add social media links
+[ ] Add website links
 
-29.3 Learning Participation
----------------------------
-[ ] Enroll
-[ ] Save lesson
-[ ] Continue learning
-[ ] Lesson progress
-[ ] Course progress
-[ ] Learning history
-[ ] Quiz attempt
-[ ] Assessment attempt
-[ ] Feedback
-[ ] Passing rule
-[ ] Retry rule
-[ ] Completion signal
-[ ] Campus badge
-[ ] Learning streak
-[ ] Learning reminder
-[ ] Campus Discussion
-[ ] Campus Comment
-[ ] Instructor response
-[ ] Report learning content
-[ ] Suggest correction
-[ ] Translation contribution
-[ ] Downloadable completion record
-[ ] Clear statement that completion is not a professional license
-
-29.4 Campus Administration
----------------------------
-[ ] Course editor
-[ ] Module editor
-[ ] Lesson editor
-[ ] Question bank
-[ ] Assessment builder
-[ ] Glossary management
-[ ] Instructor management
-[ ] Enrollment analytics
-[ ] Completion analytics
-[ ] Content review
-[ ] Source review
-[ ] Translation review
-[ ] Accessibility review
-[ ] Versioning and retirement
-[ ] Learning-path prerequisites
-[ ] Anti-cheating controls where needed
-[ ] Campus Support
-
-================================================================================
-30. SURVEYS, POLLS, QUIZZES, ASSESSMENTS, AND FEEDBACK
-================================================================================
-
-30.1 Surveys
+18.3 Reports
 ------------
-[ ] User-needs survey
-[ ] Provider-needs survey
-[ ] Therapist-needs survey
-[ ] Advertiser survey
-[ ] Contributor survey
-[ ] Correspondent survey
-[ ] Translation survey
-[ ] Accessibility survey
-[ ] Support satisfaction survey
-[ ] Booking satisfaction survey
-[ ] Platform usability survey
-[ ] Market research survey
-[ ] Periodic maintenance survey
-[ ] Exit survey
-[ ] Anonymous survey
-[ ] Identified survey
-[ ] Invitation-only survey
-[ ] Public survey
+[ ] Report incorrect information
+[ ] Report unsafe information
+[ ] Report adult-service solicitation
+[ ] Report fake profile
+[ ] Report impersonation
+[ ] Report spam
+[ ] Report harassment
 
-30.2 Polls
-----------
-[ ] Single-choice poll
-[ ] Multiple-choice poll
-[ ] Ranked-choice poll
-[ ] Image poll
-[ ] Time-limited poll
-[ ] Article poll
-[ ] News poll
-[ ] Discussion poll
-[ ] Campus poll
-[ ] Campaign poll
-[ ] Provider poll
-[ ] Public result
-[ ] Result hidden until participation
-[ ] Result embargo
-[ ] Minimum-response threshold
-[ ] Anti-manipulation controls
+18.4 Contribution Workflow
+--------------------------
+[ ] Contribution approval workflow
+[ ] Contribution rejection reason
+[ ] Contribution edit history
+[ ] Contributor credit
+[ ] Contributor points
+[ ] Contributor badges
 
-30.3 Quizzes and Assessments
-----------------------------
-[ ] Question bank
-[ ] Multiple-choice question
-[ ] Multiple-answer question
-[ ] True or false question
-[ ] Matching question
-[ ] Ordering question
-[ ] Scenario question
-[ ] Image question
-[ ] Short-answer question
-[ ] Manual review question
-[ ] Randomized question order
-[ ] Attempt limit
-[ ] Time limit
-[ ] Passing score
-[ ] Partial credit
-[ ] Immediate feedback
-[ ] Delayed feedback
-[ ] Explanation
-[ ] Retake
-[ ] Question difficulty
-[ ] Question source
-[ ] Question translation
-[ ] Assessment version
-[ ] Progress and completion
-[ ] Badge or reward connection
-[ ] Clear separation from official credential
+18.5 Review Roles and Trust
+---------------------------
+[ ] Steward review
+[ ] Editor review
+[ ] Moderator review
+[ ] Source tracking
+[ ] Confidence score
+[ ] Verification level
+[ ] Community-assisted data improvement
 
-30.4 Feedback and Research Controls
------------------------------------
-[ ] Purpose statement
-[ ] Consent
-[ ] Audience and sampling
-[ ] Anonymous or identified response
-[ ] Sensitive-question controls
-[ ] Incentive
-[ ] Duplicate-response protection
-[ ] Withdrawal where applicable
-[ ] Data-retention rule
+18.6 Research Sources
+---------------------
+[ ] Direct visit
+[ ] Interview
+[ ] Provider confirmation
+[ ] Therapist confirmation
+[ ] Official government source
+[ ] Official organization source
+[ ] Official website
+[ ] Official social account
+[ ] Menu
+[ ] Price list
+[ ] Public document
+[ ] Map lead
+[ ] Directory lead
+[ ] Community tip
+[ ] Correspondent report
+[ ] Photograph
+[ ] Video
+[ ] Historical source
+[ ] Archived page
+[ ] Personal observation
+[ ] Public-record search
+
+18.7 Field-Level Provenance
+---------------------------
+[ ] Source record
+[ ] Source type
+[ ] Source owner
+[ ] Source URL or reference
+[ ] Observation date
+[ ] Retrieval date
+[ ] Verification date
+[ ] Verifier
+[ ] Confidence
+[ ] Freshness
+[ ] Contradiction
+[ ] Public or private evidence
+[ ] Permission
+[ ] Revision
+[ ] Superseded source
+[ ] Fact status
+[ ] Provider-stated label
+[ ] Community-reported label
+[ ] Verified label
+[ ] Unknown or unconfirmed state
+
+18.8 Research Operations
+------------------------
+[ ] Research assignment
+[ ] City coverage
+[ ] District coverage
+[ ] Country coverage
+[ ] Tourism-region coverage
+[ ] Missing-establishment campaign
+[ ] Opening check
+[ ] Closure check
+[ ] Move and rename check
+[ ] Hours check
+[ ] Contact check
+[ ] Menu and price check
+[ ] Social-account check
+[ ] Duplicate check
+[ ] Historical record
+[ ] Field visit
+[ ] Interview request
+[ ] Provider outreach
+[ ] Correspondent scheduling
+[ ] Evidence redaction
+[ ] Contradiction resolution
 [ ] Public methodology
-[ ] Privacy threshold
-[ ] Export
-[ ] Analysis
-[ ] Cross-period comparison
-[ ] Publication approval
-[ ] AI-assisted theme extraction
-[ ] Human review of AI analysis
-[ ] Do not claim representativeness without appropriate method
+[ ] Research coverage analytics
+[ ] Source freshness reminders
+[ ] AI candidate extraction
+[ ] AI comparison
+[ ] Human verification
+[ ] Manual listing collection
+[ ] Listing verification workflow
+[ ] Local research workflow
+[ ] Visit-based verification
+[ ] Create initial Mandaluyong and Metro Manila records
+[ ] Verify active, closed, moved, renamed, disputed, and historical records
+[ ] Conduct field visits, interviews, provider outreach, and source checks
+[ ] Maintain data freshness, correction, verification, and historical records
+
+18.9 Contribution Interfaces
+----------------------------
+[ ] Contributor tools
+[ ] Correspondent tools
+[ ] Researcher tools
+[ ] Steward tools
+[ ] Contributor onboarding
+[ ] Steward onboarding
+
 
 ================================================================================
-31. SUPPORT, TICKETING, COMPLAINTS, AND TECHNICAL PROBLEMS
+19. TRUST, VERIFICATION, SAFETY, AND MODERATION
 ================================================================================
 
-31.1 Public Support Center
+19.1 Verification
+-----------------
+[ ] User verification
+[ ] Therapist verification
+[ ] Spa verification
+[ ] Owner verification
+[ ] Business document verification
+[ ] Credential verification
+[ ] License/certification verification
+[ ] ID verification
+[ ] Photo verification
+[ ] Phone verification
+[ ] Email verification
+[ ] In-person verification status
+[ ] Verification levels
+
+19.2 Trust Badges and Labels
+----------------------------
+[ ] Trust badges
+[ ] Claimed badge
+[ ] Verified badge
+[ ] Historical badge
+[ ] Disputed badge
+[ ] Warning label
+[ ] Safety label
+[ ] Source label
+[ ] Editorial label
+[ ] Sponsored label
+[ ] AI media label
+
+19.3 Safety and Risk Controls
+-----------------------------
+[ ] Sensitive-service access and visibility policy
+[ ] Coded-language detection
+[ ] Exploitation-risk moderation
+[ ] Harassment reporting
+[ ] Spam reporting
+[ ] Fake review detection
+[ ] Fake profile detection
+[ ] Impersonation reporting
+[ ] Suspicious listing review
+[ ] Sensitive content review
+
+19.4 Moderator and Public Notes
+-------------------------------
+[ ] Moderator notes
+[ ] Public correction notes
+
+19.5 Disputes and Appeals
+-------------------------
+[ ] Dispute workflow
+[ ] Appeals workflow
+
+19.6 Security and Access
+------------------------
+[ ] Audit trail
+[ ] Role-based access control
+[ ] Private document protection
+[ ] Data privacy controls
+[ ] Abuse-prevention rules
+
+19.7 Trust and Moderation Operations
+------------------------------------
+[ ] Create moderation queues, escalation, and appeals
+[ ] Maintain continuous moderation
+[ ] Trust and Safety case management
+[ ] Privacy case management
+[ ] Security case management
+[ ] Restricted-evidence controls
+[ ] High-impact action confirmation
+[ ] Moderator onboarding
+[ ] Moderation schedule
+
+
+================================================================================
+20. ADMINISTRATION, DATA GOVERNANCE, AND INTERNAL CONTROLS
+================================================================================
+
+20.1 Admin Dashboard and Management
+-----------------------------------
+[x] Admin dashboard
+[ ] Listing management
+[ ] User management
+[ ] Spa management
+[ ] Therapist management
+[ ] Review management
+[ ] Discussion management
+[ ] Media management
+
+20.2 Queues
+-----------
+[ ] Contribution queue
+[ ] Verification queue
+[ ] Claim queue
+[ ] Dispute queue
+[ ] Abuse report queue
+
+20.3 Listing and Data Tools
+---------------------------
+[ ] Duplicate merge tools
+[ ] Closed listing tools
+[ ] Historical record tools
+[ ] Source management
+[ ] Taxonomy management (aligned with classification documents)
+[ ] Massage type management
+[ ] Service tag management
+[ ] Amenity management
+[ ] Location management
+[~] Create the initial reference and taxonomy datasets
+
+20.4 Roles and Permissions
+--------------------------
+[ ] Role management
+[ ] Permission management
+[ ] Steward assignment
+[ ] Editor assignment
+
+20.5 Internal Review and History
+--------------------------------
+[ ] Moderator notes
+[ ] Internal comments
+[ ] Audit log
+[ ] Version history
+[ ] Revert changes
+
+20.6 Bulk and Cleanup Tools
+---------------------------
+[ ] Bulk edit
+[ ] Bulk import
+[ ] CSV export
+[ ] Data cleanup tools
+[ ] Data cleanup schedule
+
+20.7 Filters and Moderation
+---------------------------
+[ ] Spam filters
+[ ] Sensitive content filters
+
+
+================================================================================
+21. LEGAL, POLICY, AND COMPLIANCE
+================================================================================
+
+21.1 Core Legal Pages
+---------------------
+[ ] Terms of Use
+[ ] Privacy Policy
+[ ] Community Guidelines
+[ ] Accessibility
+[ ] Cookie policy
+[ ] Copyright
+[ ] Licensing
+[ ] Disclaimer
+
+21.2 Content, Review, and Advertising Policies
+----------------------------------------------
+[ ] Review policy
+[ ] Rating policy
+[ ] Reputation policy
+[ ] Sponsored-content policy
+[ ] Advertising policy
+[ ] AI-generated-content policy
+[ ] Media-upload policy
+[ ] Editorial independence
+
+21.3 Safety, Sensitive Service, and Verification Policies
+---------------------------------------------------------
+[ ] Safety policy
+[ ] Verification policy
+[ ] Sensitive, intimate, sensual, sexual-wellness, adult, clinical, and disputed-service access and visibility policy
+[ ] Age and guardian policy
+[ ] Consent policy
+[ ] Professional-boundary policy
+[ ] Solicitation and exploitation prevention
+[ ] Sensitive-topic handling
+[ ] Media safety
+
+21.4 Claim, Correction, and Dispute Policies
+--------------------------------------------
+[ ] Owner claim policy
+[ ] Therapist claim policy
+[ ] Seller claim policy
+[ ] Takedown policy
+[ ] Correction policy
+[ ] Duplicate and merge policy
+[ ] Dispute policy
+[ ] Appeal policy
+
+21.5 Data, Intake, and Account Policies
+---------------------------------------
+[ ] Booking privacy notice
+[ ] Client intake policy
+[ ] Minimum disclosure
+[ ] Provider confidentiality
+[ ] Data retention
+[ ] Anonymization
+[ ] Legal hold
+[ ] Account deletion
+[ ] Data export
+[ ] Provider legacy-import responsibility
+[ ] Law-enforcement request process
+
+21.6 Booking and Commerce Policies
+----------------------------------
+[ ] Booking policy
+[ ] Cancellation policy
+[ ] No-show policy
+[ ] Payment policy
+[ ] Refund policy
+[ ] Payout policy
+[ ] Tip policy
+[ ] Provider-loyalty policy
+[ ] Gift-card policy
+[ ] Voucher policy
+[ ] Financial-document policy
+[ ] Country-specific invoice configuration
+[ ] Transparent commission and booking-fee disclosure
+
+21.7 Contributor and Moderation Policies
+----------------------------------------
+[ ] Contributor policy
+[ ] Moderation policy
+[ ] Conflict-of-interest policy
+[ ] Reward anti-abuse
+[ ] Booking-risk review
+[ ] Fraud and chargeback handling
+
+
+================================================================================
+22. SUPPORT, TICKETING, COMPLAINTS, AND TECHNICAL PROBLEMS
+================================================================================
+
+22.1 Public Support Center
 --------------------------
 [ ] Support homepage
 [ ] Searchable Help
@@ -3436,8 +2821,14 @@ complete a website feature.
 [ ] Contact Support
 [ ] Create ticket
 [ ] Multilingual Support content
+[ ] Create Help and Support articles
+[ ] Bug reporting
+[ ] Support contact form
+[ ] Help center
+[ ] FAQ center
+[ ] Feature request form
 
-31.2 AI Support
+22.2 AI Support
 ---------------
 [ ] Approved knowledge retrieval
 [ ] Intent classification
@@ -3456,7 +2847,7 @@ complete a website feature.
 [ ] Do not promise refund, ranking, verification, or restoration
 [ ] Do not close serious complaints automatically
 
-31.3 Tickets
+22.3 Tickets
 ------------
 [ ] Public ticket reference
 [ ] Private identifier
@@ -3486,7 +2877,7 @@ complete a website feature.
 [ ] Satisfaction
 [ ] Retention class
 
-31.4 Complaint and Technical Workflows
+22.4 Complaint and Technical Workflows
 --------------------------------------
 [ ] General complaint
 [ ] Provider complaint
@@ -3512,11 +2903,11 @@ complete a website feature.
 [ ] Requester notification
 [ ] Appeal or reopen
 
-31.5 Support Workspaces and Analytics
+22.5 Support Operations and Analytics
 -------------------------------------
 [ ] User ticket history
-[ ] Provider Support workspace
-[ ] Advertiser Support workspace
+[ ] Provider support tools
+[ ] Advertiser support tools
 [ ] Support-agent queue
 [ ] Specialist queue
 [ ] Trust and Safety queue
@@ -3533,432 +2924,673 @@ complete a website feature.
 [ ] Bug-conversion analytics
 [ ] Satisfaction analytics
 [ ] Backlog monitoring
+[ ] Maintain continuous Support operations
+
 
 ================================================================================
-32. ROLE-SPECIFIC WORKSPACES
+23. MASSAGE CAMPUS AND LEARNING
 ================================================================================
 
-32.1 User Workspace
--------------------
-[~] Personal dashboard
-[~] Public-profile controls
-[ ] Bookings
-[ ] Manual service history
-[ ] Receipts
-[ ] Private notes
-[ ] Preferences
-[ ] Saved items
-[ ] Followed items
-[ ] Lists
-[ ] Budget
-[ ] Personal analytics
-[ ] Provider loyalty
-[ ] Massage Nexus rewards
-[ ] Reviews
-[ ] Ratings
-[ ] Comments
-[ ] Discussions
-[ ] Contributions
-[ ] Support tickets
-[ ] Account security
-[ ] Privacy controls
-[ ] Export and deletion
-
-32.2 Professional and Commercial Workspaces
--------------------------------------------
-[~] Therapist Workspace
-[~] Operator Workspace
-[ ] Reception Workspace
-[ ] Manager Workspace
-[ ] Finance Workspace
-[ ] Owner Workspace
-[ ] Seller Workspace
-[ ] Advertiser Workspace
-[ ] School or training Workspace
-[ ] Branded Portal Workspace
-[ ] Multi-branch Workspace
-[ ] Multi-provider Workspace
-
-32.3 Contribution and Editorial Workspaces
-------------------------------------------
-[ ] Contributor Workspace
-[ ] Correspondent Workspace
-[ ] Researcher Workspace
-[ ] Translator Workspace
-[ ] Review Editor Workspace
-[x] Article Editor Workspace
-[ ] News Editor Workspace
-[ ] Campus Editor Workspace
-[ ] Media Editor Workspace
-[ ] Steward Workspace
-[ ] Assignment queue
-[x] Drafts
-[ ] Evidence
-[x] Sources
-[ ] Corrections
-[ ] Review decisions
-[ ] Publication
-[x] Credit and attribution
-
-32.4 Internal Workspaces
-------------------------
-[ ] Support Agent Workspace
-[ ] Moderator Workspace
-[ ] Trust and Safety Workspace
-[ ] Privacy Workspace
-[ ] Security Workspace
-[x] Administrator Workspace
-[ ] Taxonomy Workspace
-[ ] Analytics Workspace
-[ ] Advertising Administration
-[ ] Payment and Finance Administration
-[ ] System status
-[ ] Audit history
-[ ] Restricted evidence
-[ ] High-impact confirmation
-[ ] Permission and role management
-
-================================================================================
-33. LOCALIZATION AND TRANSLATION
-================================================================================
-
-33.1 Language and Locale
-------------------------
-[ ] English source and fallback
-[ ] Filipino
-[ ] Approved Taglish style
-[ ] Cebuano
-[ ] Hiligaynon
-[ ] Indonesian
-[ ] Spanish
-[ ] Brazilian Portuguese
-[ ] Japanese
-[ ] Thai
-[ ] Vietnamese
-[ ] Korean
-[ ] Traditional Chinese
-[ ] Simplified Chinese
-[ ] French
-[ ] German
-[ ] Arabic
-[ ] Later market-specific languages
-[ ] Locale registry
-[ ] Language selector
-[ ] Browser-language suggestion
-[ ] Universal language preference
-[ ] Massage Nexus override
-[ ] Regional formatting
-[ ] Time zone
-[ ] Right-to-left support when Arabic activates
-
-33.2 Static Interface Translation
----------------------------------
-[ ] Semantic translation keys
-[ ] Namespace
-[ ] Source text
-[ ] Context
-[ ] Placeholder definition
-[ ] Pluralization
-[ ] Maximum length
-[ ] HTML permission
-[ ] Sensitivity
-[ ] Source revision
-[ ] Coverage by critical workflow
-[ ] Fallback test
-[ ] Placeholder test
-[ ] Published-language readiness
-
-33.3 Dynamic and User Content Translation
------------------------------------------
-[ ] Original language preservation
-[ ] Source revision
-[ ] Translate on demand
-[ ] Show Original
-[ ] AI-translated label
-[ ] Translation cache
-[ ] Stale after edit
-[ ] Community suggestion
-[ ] Human review
-[ ] Translation memory
-[ ] Glossary
-[ ] Do-not-translate terms
-[ ] Provider and model provenance
-[ ] Report poor translation
-
-33.4 High-Risk Translation
---------------------------
-[ ] Legal translation
-[ ] Privacy translation
-[ ] Security translation
-[ ] Payment translation
-[ ] Booking intake translation
-[ ] Consent translation
-[ ] Eligibility translation
-[ ] Safety translation
-[ ] Health-related translation
-[ ] Human review requirement
-[ ] Exact accepted document version and locale
-[ ] Original text preserved
-[ ] Material-update invalidation
-
-================================================================================
-34. DATA RESEARCH, PROVENANCE, AND VERIFICATION
-================================================================================
-
-34.1 Research Sources
+23.1 Campus Structure
 ---------------------
-[ ] Direct visit
-[ ] Interview
-[ ] Provider confirmation
-[ ] Therapist confirmation
-[ ] Official government source
-[ ] Official organization source
-[ ] Official website
-[ ] Official social account
-[ ] Menu
-[ ] Price list
-[ ] Public document
-[ ] Map lead
-[ ] Directory lead
-[ ] Community tip
-[ ] Correspondent report
-[ ] Photograph
+[ ] Campus homepage
+[ ] Course catalog
+[ ] Subject area
+[ ] Learning path
+[ ] Course
+[ ] Module
+[ ] Lesson
+[ ] Guide
+[ ] Glossary
+[ ] Demonstration
+[ ] Reading
 [ ] Video
-[ ] Historical source
-[ ] Archived page
-[ ] Personal observation
-[ ] Public-record search
+[ ] Audio
+[ ] Download
+[ ] Discussion connection
+[ ] Instructor or author profile
+[ ] Source and reference list
+[ ] Prerequisite
+[ ] Difficulty
+[ ] Estimated duration
+[ ] Language
+[ ] Accessibility information
 
-34.2 Field-Level Provenance
+23.2 Learning Topics
+--------------------
+[ ] First-time spa guidance
+[ ] Massage and service types
+[ ] Spa etiquette
+[ ] Hygiene and cleanliness
+[ ] Safety and contraindications
+[ ] Consent and professional boundaries
+[ ] Communication and pressure preferences
+[ ] Aftercare
+[ ] Client preparation
+[ ] Therapist professional development
+[ ] Provider operations
+[ ] Booking and service flow
+[ ] Reviews and Ratings
+[ ] Data research and verification
+[ ] Translation and terminology
+[ ] Accessibility and inclusive service
+[ ] Products, tools, oils, linens, and equipment
+[ ] Local and international spa culture
+[ ] Massage Nexus contributor training
+[ ] Moderator and Support training
+
+23.3 Learning Participation
 ---------------------------
-[ ] Source record
-[ ] Source type
-[ ] Source owner
-[ ] Source URL or reference
-[ ] Observation date
-[ ] Retrieval date
-[ ] Verification date
-[ ] Verifier
-[ ] Confidence
-[ ] Freshness
-[ ] Contradiction
-[ ] Public or private evidence
-[ ] Permission
-[ ] Revision
-[ ] Superseded source
-[ ] Fact status
-[ ] Provider-stated label
-[ ] Community-reported label
-[ ] Verified label
-[ ] Unknown or unconfirmed state
+[ ] Enroll
+[ ] Save lesson
+[ ] Continue learning
+[ ] Lesson progress
+[ ] Course progress
+[ ] Learning history
+[ ] Quiz attempt
+[ ] Assessment attempt
+[ ] Feedback
+[ ] Passing rule
+[ ] Retry rule
+[ ] Completion signal
+[ ] Campus badge
+[ ] Learning streak
+[ ] Learning reminder
+[ ] Campus Discussion
+[ ] Campus Comment
+[ ] Instructor response
+[ ] Report learning content
+[ ] Suggest correction
+[ ] Translation contribution
+[ ] Downloadable completion record
+[ ] Clear statement that completion is not a professional license
 
-34.3 Research Operations
-------------------------
-[ ] Research assignment
-[ ] City coverage
-[ ] District coverage
-[ ] Country coverage
-[ ] Tourism-region coverage
-[ ] Missing-establishment campaign
-[ ] Opening check
-[ ] Closure check
-[ ] Move and rename check
-[ ] Hours check
-[ ] Contact check
-[ ] Menu and price check
-[ ] Social-account check
-[ ] Duplicate check
-[ ] Historical record
-[ ] Field visit
-[ ] Interview request
-[ ] Provider outreach
-[ ] Correspondent scheduling
-[ ] Evidence redaction
-[ ] Contradiction resolution
-[ ] Public methodology
-[ ] Research coverage analytics
-[ ] Source freshness reminders
-[ ] AI candidate extraction
-[ ] AI comparison
-[ ] Human verification
-
-================================================================================
-35. CACHE AND TEMPORARY DATA
-================================================================================
-
-35.1 Application and Public Cache
----------------------------------
-[ ] Configuration cache
-[ ] Route cache
-[ ] Compiled-view cache
-[ ] Reference and taxonomy cache
-[ ] Public profile cache
-[ ] Directory cache
-[ ] Search cache
-[ ] Common-query cache
-[ ] Public Statistics cache
-[ ] Support knowledge cache
-[ ] External-service response cache
-[ ] AI-result cache
-[ ] Translation cache
-[ ] Media derivative cache
-[ ] CDN cache
-[ ] Immutable static asset cache
-
-35.2 Cache Scope and Invalidation
----------------------------------
-[ ] Environment in cache key
-[ ] Capability in cache key
-[ ] Target identifier in cache key
-[ ] Locale in cache key
-[ ] Permission class in cache key
-[ ] Source revision in cache key
-[ ] Filter and page in cache key
-[ ] Public and private cache separation
-[ ] Direct invalidation
-[ ] Event-driven invalidation
-[ ] Revisioned key
-[ ] Time-to-live
-[ ] Group invalidation
-[ ] CDN purge
-[ ] Visibility-change purge
-[ ] Deletion purge
-[ ] Translation stale handling
-[ ] Permission-change invalidation
-
-35.3 Private, Mobile, and Desktop Temporary Data
-------------------------------------------------
-[ ] Session store
-[ ] Rate-limit counters
-[ ] Distributed locks
-[ ] One-time state
-[ ] Verification state
-[ ] Private short-lived cache
-[ ] Mobile offline cache
-[ ] Mobile draft queue
-[ ] Mobile logout cleanup
-[ ] Desktop local cache
-[ ] Desktop encrypted workspace
-[ ] Import staging
-[ ] Export staging
-[ ] Temporary media processing
-[ ] Storage limits
-[ ] User clear-cache control
-[ ] Account separation
-[ ] Conflict handling
-[ ] No uncontrolled production database copy
-
-35.4 Performance and Failure
-----------------------------
-[ ] Cache hit and miss
-[ ] Cache latency
-[ ] Cache size
-[ ] Eviction
-[ ] Stale response monitoring
-[ ] Invalidation failure monitoring
-[ ] Cache stampede protection
-[ ] Single-flight request
-[ ] Jittered expiry
-[ ] Background refresh
-[ ] Stale-while-revalidate
-[ ] Retry-storm protection
-[ ] Safe authoritative fallback
-[ ] Safe degraded mode
-[ ] No authorization bypass
-[ ] No stale private-data exposure
-
-
-================================================================================
-5. DATA, CONTENT, AND OPERATIONAL READINESS
-================================================================================
-
-[ ] Create the initial authoritative collections, indexes, constraints, and audit records
-[~] Create the initial reference and taxonomy datasets
-[ ] Create initial Mandaluyong and Metro Manila records
-[ ] Verify active, closed, moved, renamed, disputed, and historical records
-[ ] Conduct field visits, interviews, provider outreach, and source checks
-[ ] Create the initial Article backlog
-[ ] Create the initial News source and monitoring workflow
-[ ] Create the initial daily comic backlog
+23.4 Campus Administration
+--------------------------
+[ ] Course editor
+[ ] Module editor
+[ ] Lesson editor
+[ ] Question bank
+[ ] Assessment builder
+[ ] Glossary management
+[ ] Instructor management
+[ ] Enrollment analytics
+[ ] Completion analytics
+[ ] Content review
+[ ] Source review
+[ ] Translation review
+[ ] Accessibility review
+[ ] Versioning and retirement
+[ ] Learning-path prerequisites
+[ ] Anti-cheating controls where needed
+[ ] Campus Support
+[ ] School and training management interface
 [ ] Create initial Massage Campus lessons, quizzes, and feedback
-[ ] Create Help and Support articles
-[ ] Create moderation queues, escalation, and appeals
+
+
+================================================================================
+24. SURVEYS, POLLS, QUIZZES, ASSESSMENTS, AND FEEDBACK
+================================================================================
+
+24.1 Surveys
+------------
+[ ] User-needs survey
+[ ] Provider-needs survey
+[ ] Therapist-needs survey
+[ ] Advertiser survey
+[ ] Contributor survey
+[ ] Correspondent survey
+[ ] Translation survey
+[ ] Accessibility survey
+[ ] Support satisfaction survey
+[ ] Booking satisfaction survey
+[ ] Platform usability survey
+[ ] Market research survey
+[ ] Periodic maintenance survey
+[ ] Exit survey
+[ ] Anonymous survey
+[ ] Identified survey
+[ ] Invitation-only survey
+[ ] Public survey
+
+24.2 Polls
+----------
+[ ] Single-choice poll
+[ ] Multiple-choice poll
+[ ] Ranked-choice poll
+[ ] Image poll
+[ ] Time-limited poll
+[ ] Article poll
+[ ] News poll
+[ ] Discussion poll
+[ ] Campus poll
+[ ] Campaign poll
+[ ] Provider poll
+[ ] Public result
+[ ] Result hidden until participation
+[ ] Result embargo
+[ ] Minimum-response threshold
+[ ] Anti-manipulation controls
+
+24.3 Quizzes and Assessments
+----------------------------
+[ ] Question bank
+[ ] Multiple-choice question
+[ ] Multiple-answer question
+[ ] True or false question
+[ ] Matching question
+[ ] Ordering question
+[ ] Scenario question
+[ ] Image question
+[ ] Short-answer question
+[ ] Manual review question
+[ ] Randomized question order
+[ ] Attempt limit
+[ ] Time limit
+[ ] Passing score
+[ ] Partial credit
+[ ] Immediate feedback
+[ ] Delayed feedback
+[ ] Explanation
+[ ] Retake
+[ ] Question difficulty
+[ ] Question source
+[ ] Question translation
+[ ] Assessment version
+[ ] Progress and completion
+[ ] Badge or reward connection
+[ ] Clear separation from official credential
+
+24.4 Feedback and Research Controls
+-----------------------------------
+[ ] Purpose statement
+[ ] Consent
+[ ] Audience and sampling
+[ ] Anonymous or identified response
+[ ] Sensitive-question controls
+[ ] Incentive
+[ ] Duplicate-response protection
+[ ] Withdrawal where applicable
+[ ] Data-retention rule
+[ ] Public methodology
+[ ] Privacy threshold
+[ ] Export
+[ ] Analysis
+[ ] Cross-period comparison
+[ ] Publication approval
+[ ] AI-assisted theme extraction
+[ ] Human review of AI analysis
+[ ] Do not claim representativeness without appropriate method
+[ ] Feedback collection
+[ ] Conduct periodic user, provider, therapist, advertiser, accessibility, and Support surveys
+
+
+================================================================================
+25. PROMOTIONS, ADVERTISING, AND MONETIZATION
+================================================================================
+
+25.1 Listing Tiers and Visibility
+---------------------------------
+[ ] Free listing
+[ ] Claimed listing
+[ ] Premium listing
+[ ] Featured listing
+[ ] Sponsored listing
+
+25.2 Sponsored Placement
+------------------------
+[ ] Sponsored disclosure
+[ ] Paid placement
+[ ] Directory first placement
+[ ] Search boost
+[ ] Category sponsorship
+[ ] Location sponsorship
+[ ] Banner ads
+[ ] Hero carousel ads
+[ ] Promo cards
+[ ] Deal cards
+
+25.3 Deals and Offers
+---------------------
+[ ] Last-minute deals
+[ ] Off-peak deals
+[ ] New customer offers
+[ ] Birthday offers
+[ ] Voucher campaigns
+
+25.4 Sales Products
+-------------------
+[ ] Gift card sales
+[ ] Membership sales
+[ ] Package sales
+[ ] Subscription passes
+
+25.5 Business Monetization
+--------------------------
+[ ] Business subscription plans
+[ ] Therapist subscription plans
+[ ] Analytics upgrade
+[ ] Booking tool upgrade
+[ ] Media upgrade
+[ ] Profile customization upgrade
+[ ] Verification service fee
+[ ] Review request tool
+[ ] Lead generation
+
+25.6 Tracking and Analytics
+---------------------------
+[ ] Contact-click tracking
+[ ] Call-click tracking
+[ ] Direction-click tracking
+[ ] Promo performance analytics
+[ ] Ad performance analytics
+
+25.7 Affiliate and Sponsored Content
+------------------------------------
+[ ] Affiliate product links
+[ ] Sponsored articles
+[ ] Sponsored reviews with disclosure
+[ ] Editorial independence labels
+
+25.8 Advertising Management
+---------------------------
+[ ] Advertiser management interface
+[ ] Advertising management
+[ ] Sponsored placement management
+
+
+================================================================================
+26. STATISTICS, ANALYTICS, REPORTS, AND DASHBOARDS
+================================================================================
+
+26.1 Public Statistics
+----------------------
+[ ] Public statistics subject to policy
+[ ] Profile view count
+[ ] Save count
+[ ] Follow count
+[ ] Review count
+[ ] Rating average
+[ ] Verified booking count where approved
+[ ] Response rate
+[ ] Response time
+[ ] No public disclosure of private intake, client cancellation history, compensation, or sensitive small-count data
 [ ] Create initial public methodology
+[ ] Publish eligible public Statistics with methodology and privacy thresholds
+
+26.2 Client Analytics
+---------------------
+[ ] Private booking count
+[ ] Private completed-service count
+[ ] Monthly and yearly spending
+[ ] Service, product, travel, tip, fee, tax, refund, and discount totals
+[ ] Provider and Service Family distribution
+[ ] Total duration
+[ ] Average cost
+[ ] Loyalty progress
+[ ] Review and rating activity
+[ ] Personal export
+
+26.3 Provider Booking Analytics
+-------------------------------
+[ ] Booking request count
+[ ] Quote acceptance
+[ ] Confirmation rate
+[ ] Completion rate
+[ ] Cancellation
+[ ] Client no-show
+[ ] Provider cancellation
+[ ] Provider no-show
+[ ] Average lead time
+[ ] Response time
+[ ] Walk-in versus advance booking
+[ ] Group booking
+[ ] Home-service demand
+[ ] Waitlist conversion
+[ ] Repeat client within provider scope
+
+26.4 Schedule and Resource Analytics
+------------------------------------
+[ ] Therapist utilization
+[ ] Room and station utilization
+[ ] Treatment-support utilization
+[ ] Device and facility utilization
+[ ] Queue waiting time
+[ ] Travel time
+[ ] Capacity
+[ ] Fully booked periods
+[ ] Schedule conflict
+[ ] Maintenance downtime
+
+26.5 Service and Product Analytics
+----------------------------------
+[ ] Service demand
+[ ] Service duration
+[ ] Therapist demand
+[ ] Product choice
+[ ] Product upgrade
+[ ] Client-supplied item
+[ ] Service performance
+[ ] Product sales
+[ ] Promotion conversion
+
+26.6 Finance and Compensation Analytics
+---------------------------------------
+[ ] Gross booking sales
+[ ] Collected amount
+[ ] Outstanding balance
+[ ] Deposit
+[ ] Refund
+[ ] Chargeback
+[ ] Tax summary
+[ ] Platform fee
+[ ] Provider payout
+[ ] Therapist compensation
+[ ] Tip
+[ ] Discount
+[ ] Loyalty redemption
+[ ] Reconciliation status
+
+26.7 Search and Click Analytics
+-------------------------------
+[ ] Search appearance count
+[ ] Contact-click count
+[ ] Direction-click count
+[ ] Call-click count
+[ ] Website-click count
+[ ] Social-click count
+[ ] Geographic analytics
+[ ] Device analytics
+
+26.8 Privacy-Preserving Intake Analytics
+----------------------------------------
+[ ] Eligibility-result count
+[ ] Form-completion rate
+[ ] Abandonment rate
+[ ] Common adaptation category
+[ ] Language use
+[ ] Average completion time
+[ ] Small-count suppression
+[ ] Anonymization
+[ ] No identifiable health answer
+[ ] No cross-provider client history
+
+26.9 Reports and Dashboards
+---------------------------
+[ ] Trend reports
+[ ] User dashboard
+[ ] Provider dashboard
+[ ] Therapist dashboard
+[ ] Operator dashboard
+[ ] Finance dashboard
+[ ] Admin dashboard
+[ ] Exportable reports
+[ ] Permission-aware data scope
+[ ] Analytics management
 [ ] Create initial analytics event and metric definitions
-[ ] Create provider claim and onboarding material
-[ ] Create launch social, newsletter, campaign, and press material
-[ ] Prepare backups, restore tests, incident response, and operational dashboards
-
-================================================================================
-6. RELEASE READINESS
-================================================================================
-
-6.1 Massage Nexus Version 1.00 - First Launch
-----------------------------------------------
-[x] Public browsing foundation
-[x] User registration
-[x] Email verification before normal member access
-[x] Login by username or email
-[x] Remember me and logout
-[x] Password recovery
-[ ] Replace temporary spa sample content with MongoDB-backed establishment records
-[ ] Generate random 16-character base62 establishment _id values
-[ ] Generate unique establishment_slug values separately from _id and title
-[ ] List and view persisted spa profiles
-[ ] Allow a verified member to create and save a private spa draft
-[ ] Allow the draft owner to view, edit, and safely delete an unused private draft
-[ ] Allow the draft owner to submit the spa for review
-[ ] Add My Spa Submissions with draft, pending, returned, approved, rejected, withdrawn, and
-    archived states and understandable reasons or next actions
-[ ] Allow the submitter to view, edit, and withdraw a returned or pending submission
-[ ] Add duplicate screening before publication
-[ ] Add spa-submission review to the existing Admin Workspace unified queue
-[ ] Add a minimum administrator or reviewer permission for every moderation action
-[ ] Approve, reject, return, restore, and escalate spa submissions
-[ ] Publish only an approved submission
-[ ] Preserve source, revision, moderation, and actor history
-[ ] Prevent cross-user viewing or modification of private drafts and submissions
-[ ] Route published-spa edits through accepted revision and permission rules
-[ ] Support closure, archive, duplicate, merge, removal request, restoration, and soft deletion
-[ ] Prevent ordinary users and operators from permanently erasing public history or evidence
-[ ] Add validation, authorization, rate-limit, abuse, identifier-collision, and slug-collision tests
-[ ] Verify accessible forms, understandable errors, responsive layouts, backup, restore, rollback,
-    and production-safe error handling
-[ ] Release Massage Nexus Version 1.00
-
-6.2 Later Release Gates
------------------------
-[ ] Complete Development Baseline milestone
-[ ] Complete Account, Language, Policy, Privacy, and Security milestone
-[ ] Complete the Internal Data and Research milestone
-[ ] Complete the Internal Content and Campus milestone
-[ ] Complete the broader private-web milestone
-[ ] Release the public directory and community expansion under an assigned post-1.00 version
-[ ] Release the provider and workspace expansion under an assigned post-1.00 version
-[ ] Release the booking expansion under an assigned post-1.00 version
-[ ] Release the commercial web expansion under an assigned post-1.00 version
-[ ] Release first-party Mobile application
-[ ] Release the general Desktop Application when its release gate passes
-[ ] Complete a separate readiness gate for each international market
-
-================================================================================
-7. CONTINUING OPERATIONS
-================================================================================
-
-[ ] Publish Articles at the accepted cadence
-[ ] Publish News when timely and sufficiently verified
-[ ] Publish The Resting Leaf at the accepted cadence
-[ ] Maintain social media and newsletter activity
-[ ] Maintain continuous moderation and Support
-[ ] Maintain provider, therapist, seller, advertiser, contributor, and correspondent outreach
-[ ] Maintain data freshness, correction, verification, and historical records
 [ ] Compute daily operational aggregates
 [ ] Compute weekly and monthly reports
-[ ] Publish eligible public Statistics with methodology and privacy thresholds
-[ ] Monitor security, privacy, outages, performance, queues, cache, email, payments, and integrations
-[ ] Apply PHP, Laravel, package, browser, server, mobile, and desktop updates
-[ ] Run backups and restoration tests
-[ ] Refactor code, tests, prompts, and documentation when they become difficult to maintain
-[ ] Split documents only when a clear subject or maintainability boundary exists
-[ ] Conduct periodic user, provider, therapist, advertiser, accessibility, and Support surveys
-[ ] Retire, redesign, or narrow low-value features based on evidence
+
+
+================================================================================
+27. POINTS, BADGES, RANKINGS, REPUTATION, AND GAMIFICATION
+================================================================================
+
+27.1 Massage Nexus Platform Rewards
+-----------------------------------
+[ ] Nexus Points
+[ ] Embers
+[ ] Inklings
+[ ] User statistics
+[ ] Campaign missions
+[ ] Shared reward events
+[ ] Reward caps
+[ ] Reward reversal
+[ ] Anti-abuse key
+[ ] Human review for disputed rewards
+
+27.2 Badge and Rank Systems
+---------------------------
+[ ] Badge system
+[ ] Rank-path system
+[ ] Contributor rank
+[ ] Reviewer rank
+[ ] Steward rank
+[ ] Booking milestone badges
+[ ] Progress and hidden badges
+[ ] Anchored milestone sequence where applicable
+
+27.3 Example Badges
+-------------------
+[ ] Verified reviewer
+[ ] Helpful reviewer
+[ ] Top contributor
+[ ] Trusted contributor
+[ ] Founder or early contributor
+[ ] First Booking
+[ ] First Completed Massage
+[ ] Five Completed Sessions
+[ ] Multilingual Booker
+[ ] Group Organizer
+[ ] Series Completer
+[ ] Wellness Budget Keeper
+
+27.4 Ranking
+------------
+[ ] Spa rating rank
+[ ] Therapist rating rank
+[ ] Service popularity rank
+[ ] Trending listing rank
+[ ] Ranking context and eligibility
+[ ] Sponsored placement excluded from organic trust ranking
+
+27.5 Reputation Boundary
+------------------------
+[ ] Community Reputation
+[ ] Trust signals
+[ ] Quality signals
+[ ] Abuse penalties after review
+[ ] Booking completion alone does not automatically create Reputation
+[ ] Cancellation history is not automatically public Reputation
+[ ] Internal booking risk remains separate
+
+27.6 Provider Loyalty
+---------------------
+[ ] Visit stamp
+[ ] Service count
+[ ] Spend-based progress
+[ ] Provider points
+[ ] Package balance
+[ ] Tiered loyalty
+[ ] Membership
+[ ] Hybrid program
+[ ] Program version
+[ ] Expiry
+[ ] Branch restriction
+[ ] Reward redemption
+[ ] Provider loyalty separate from Nexus Points, Embers, Inklings, badges, Reputation, ratings, and reviews
+
+27.7 Reward-Eligible Booking Events
+-----------------------------------
+[ ] Completed booking
+[ ] Partially completed eligible service line
+[ ] First confirmed booking
+[ ] New provider or Service Family milestone
+[ ] Completed series or course
+[ ] Post-service rating
+[ ] Approved review
+[ ] Reward held during dispute
+[ ] No normal reward for cancelled, no-show, fake, duplicated, or unverified manual history
+[ ] Provider-false-completion detection
+[ ] Reward farming detection
+
+27.8 Leaderboards and Awards
+----------------------------
+[ ] Contribution leaderboard
+[ ] Local area leaderboard
+[ ] Monthly contributor highlights
+[ ] Annual awards
+
+27.9 Quizzes and Experiences
+----------------------------
+[ ] Quizzes and tests
+[ ] Gamified quiz pop-ups
+[ ] Character-led quizzes
+[ ] Story-based gamification
+[ ] Spa management mini-game concept
+[ ] Wellness journey gamification
+
+
+================================================================================
+28. AI-ASSISTED FEATURES AND PLATFORM ASSISTANCE
+================================================================================
+
+28.1 User Assistance
+--------------------
+[ ] Business-name brainstorming tool
+[ ] Business-name explorer and availability checker
+[ ] Profile-description assistance
+[ ] Service-menu wording assistance
+[ ] Article brainstorming and drafting
+[ ] Review organization and rewriting assistance
+[ ] Search assistance
+[ ] Comparison summaries
+[ ] Support assistance
+[ ] Neural Agent conversations (supporting brand element)
+
+28.2 Editorial and Data Assistance
+----------------------------------
+[ ] Translation drafts
+[ ] Summary generation
+[ ] Metadata suggestions
+[ ] Service mapping suggestions (respecting Service Classification)
+[ ] Taxonomy suggestions (respecting stable codes from classification documents)
+[ ] Duplicate record suggestions
+[ ] Missing-source detection
+[ ] Media metadata assistance
+
+28.3 Moderation and Safety Assistance
+-------------------------------------
+[ ] Spam signals
+[ ] Suspicious review signals
+[ ] Coded-language detection
+[ ] Harassment and threat signals
+[ ] Sensitive-media classification
+[ ] Unsafe HTML detection
+[ ] Moderation queue prioritization
+
+28.4 AI Governance & Monetization
+---------------------------------
+[ ] Platform AI usage transparency documentation
+[ ] AI-generated label
+[ ] AI-assisted label
+[ ] AI-edited label
+[ ] AI-enhanced label
+[ ] AI-translated label
+[ ] Human-review status
+[ ] Provider and model abstraction
+[ ] Prompt versioning
+[ ] Privacy and data minimization
+[ ] Human approval for high-impact actions
+[ ] Tiered AI usage limits based on subscription plans to prevent abuse
+[ ] Variable AI intelligence scaling based on Ember spend (e.g., users allocate Embers to unlock more capable AI models for brainstorming)
+
+
+================================================================================
+29. NEURAL AGENTS, NEXUS CAST, MASCOTS, AI PERSONAS, AND COMICS
+================================================================================
+
+29.1 Four Separate Systems
+--------------------------
+[ ] Neural Agents — editorial writing-voice personas (tone, humor, article-writing style, chat style) used for written content such as articles and review-organization assistance. They are not visual characters and do not appear on-screen.
+[ ] Nexus Cast — recurring illustrated visual characters used in comics, mockups, and staged marketing or demonstration scenes. They are visual actors, not writers, and are not Neural Agents.
+[ ] Mascots — non-human brand characters (e.g., Nexus, Embi, Leafy) used for onboarding, gamification, badges, and playful interface moments.
+[ ] AI personas / chat experiences — conversational surfaces that may draw on a Neural Agent's voice; these are a delivery channel, not a fourth character roster.
+
+29.2 Neural Agent Writing-Style Fields
+--------------------------------------
+[ ] Neural Agent profile (see the Neural Agent Profile reference)
+[ ] article_writing_style
+[ ] tone
+[ ] humor_style
+[ ] comment_style
+[ ] chat_style
+[ ] personality
+[ ] interest and preference fields used to color writing voice
+
+29.3 Nexus Cast and Mascot Visual Profile Fields
+------------------------------------------------
+[ ] Character profiles
+[ ] Character gender identity
+[ ] Character gender presentation
+[ ] Character cultural background
+[ ] Character personality
+[ ] Character interests
+[ ] Character favorite activities
+[ ] Character visual style
+
+29.4 Character Roles
+--------------------
+[ ] Neural Agent role in written content
+[ ] Nexus Cast role in visual/staged content
+[ ] Mascot role in gamification and onboarding
+[ ] AI persona role in chat
+
+29.5 AI Attribution and Disclosure
+----------------------------------
+[ ] AI byline handling
+[ ] AI article author display
+[ ] AI translation credit
+[ ] AI image credit
+[ ] AI-generated content disclosure
+
+29.6 Character-Led Learning and Onboarding
+------------------------------------------
+[ ] Character-led tutorials
+[ ] Character-led onboarding
+
+29.7 Comics and Visual Storytelling
+-----------------------------------
+[ ] Comics (The Resting Leaf, featuring Nexus Cast characters, and supporting stories)
+[ ] Create the initial daily comic backlog
+[ ] Publish The Resting Leaf at the accepted cadence
+
+29.8 Relaxation and Live Rooms
+------------------------------
+[ ] Relaxation rooms
+[ ] Instrumental background audio
+[ ] Sponsored relaxation sessions
+[ ] Live wellness rooms
+[ ] Seasonal themed rooms
+
+
+================================================================================
+30. GROWTH, COMMUNICATIONS, AND OUTREACH
+================================================================================
+
+30.1 Audience and Campaign Planning
+-----------------------------------
+[ ] SEO content plan
+[ ] Social media plan
+[ ] Social media account creation
+[ ] Outreach plan
+[ ] Spa owner outreach
+[ ] Therapist outreach
+[ ] Reviewer outreach
+[ ] Create launch social, newsletter, campaign, and press material
+
+30.2 Onboarding and Outreach
+----------------------------
+[ ] Owner onboarding
+[ ] Therapist onboarding
+[ ] Maintain provider, therapist, seller, advertiser, contributor, and correspondent outreach
+
+30.3 Public Communications
+--------------------------
+[ ] Newsletter
+[ ] Maintain social media and newsletter activity
+[ ] Public release notes
+
+30.4 Campaign Tracking
+----------------------
+[ ] Promo campaign tracking
