@@ -21,7 +21,7 @@
   | Light class | Add dark variant |
   |---|---|
   | `bg-white` (page surface/card) | `dark:bg-ink-900` |
-  | `bg-white/95` (header) | `dark:bg-charcoal-900/95` |
+  | `bg-white/95` (header) | `dark:bg-ink-900/95` (headers share the ink-900 surface tier with sidebar/cards — do not use charcoal for headers) |
   | `bg-slate-50`, `bg-ink-50/50` (canvas) | `dark:bg-charcoal-950` |
   | `bg-ink-50` (tint/hover) | `dark:bg-ink-800` (same for `hover:`) |
   | `bg-ember-50` | `dark:bg-ember-950` |
@@ -30,7 +30,8 @@
   | `text-ink-900` | `dark:text-ink-100` |
   | `text-ink-800`, `text-ink-700` | `dark:text-ink-200` |
   | `text-ink-600` | `dark:text-ink-300` |
-  | `text-ink-500`, `text-ink-400` | `dark:text-ink-400` |
+  | `text-ink-500` | `dark:text-ink-400` |
+  | `text-ink-400` (fine print on dark cards) | `dark:text-ink-300` (ink-400 on ink-900 fails WCAG AA — always lighten) |
   | `text-ember-600` | `dark:text-ember-400` |
   | `hover:text-ember-700` | `dark:hover:text-ember-300` |
   | `text-leaf-700` | `dark:text-leaf-300` |
@@ -663,7 +664,7 @@ git commit -m "feat: move all workspace pages onto the workspace shell layout"
 
 Apply the Global Constraints dark-variant mapping to every class list in each file. Layout-specific notes:
 
-- `layouts/app.blade.php` body: `bg-slate-50 ... text-charcoal-900` → append `dark:bg-charcoal-950 dark:text-ink-50`. Header: `bg-white/95` → append `dark:bg-charcoal-900/95`, `border-ink-100` → append `dark:border-ink-800`. Mobile menu `bg-white` → `dark:bg-charcoal-900`. The footer is already dark (`bg-ink-950`) — leave every footer class untouched.
+- `layouts/app.blade.php` body: `bg-slate-50 ... text-charcoal-900` → append `dark:bg-charcoal-950 dark:text-ink-50`. Header: `bg-white/95` → append `dark:bg-ink-900/95`, `border-ink-100` → append `dark:border-ink-800`. Mobile menu `bg-white` → `dark:bg-ink-900`. The footer is already dark (`bg-ink-950`) — leave every footer class untouched. Anywhere a static `<x-logo>` sits on a theme-toggleable surface, render the pair `<x-logo ... class="dark:hidden" />` + `<x-logo dark ... class="hidden dark:block" />` so the correct variant shows per theme.
 - `identity-capsule.blade.php`: the `mn-identity-capsule` gradient works on both themes — only adjust plain text/border/surface classes inside it per the mapping.
 - Widgets: mechanical application of the mapping; no structural edits.
 
