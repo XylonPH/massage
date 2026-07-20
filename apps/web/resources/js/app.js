@@ -203,3 +203,47 @@ if (quiz) {
         quiz.querySelector('[data-quiz-incorrect]').toggleAttribute('hidden', correct);
     });
 }
+
+// Theme switch: light → dark → system. The inline head script in
+// partials/theme-init.blade.php already applied the stored theme pre-paint;
+// this block keeps the <html> class, button icons, and labels in sync.
+const THEME_KEY = 'mn-theme';
+const themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
+function currentThemeMode() {
+    const stored = localStorage.getItem(THEME_KEY);
+    return stored === 'light' || stored === 'dark' ? stored : 'system';
+}
+
+function applyTheme() {
+    const mode = currentThemeMode();
+    const dark = mode === 'dark' || (mode === 'system' && themeMedia.matches);
+    document.documentElement.classList.toggle('dark', dark);
+    document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+        button.dataset.themeState = mode;
+        const label = button.dataset[`label${mode.charAt(0).toUpperCase()}${mode.slice(1)}`];
+        if (label) button.setAttribute('aria-label', label);
+        button.querySelectorAll('[data-theme-icon]').forEach((icon) => {
+            icon.toggleAttribute('hidden', icon.dataset.themeIcon !== mode);
+        });
+    });
+}
+
+document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+        const order = ['light', 'dark', 'system'];
+        const next = order[(order.indexOf(currentThemeMode()) + 1) % order.length];
+        if (next === 'system') {
+            localStorage.removeItem(THEME_KEY);
+        } else {
+            localStorage.setItem(THEME_KEY, next);
+        }
+        applyTheme();
+    });
+});
+
+themeMedia.addEventListener('change', () => {
+    if (currentThemeMode() === 'system') applyTheme();
+});
+
+applyTheme();

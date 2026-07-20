@@ -9,6 +9,7 @@
     @endif
     {{-- Cache-busted by file mtime so browsers pick up a replaced favicon.ico without a manual hard refresh. --}}
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : 0 }}" sizes="any">
+    @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased">
@@ -54,6 +55,7 @@
             </nav>
 
             <div class="ml-auto hidden items-center gap-2.5 xl:flex">
+                <x-theme-toggle />
                 @auth
                     <x-identity-capsule :user="auth()->user()" />
                     <form method="post" action="{{ route('logout') }}">
@@ -86,6 +88,7 @@
                 <a href="{{ route('article.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.articles') }}</a>
                 <a href="{{ route('campus.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.campus') }}</a>
                 <a href="{{ route('promo.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.promos') }}</a>
+                <div class="pt-2"><x-theme-toggle class="size-11" /></div>
                 @auth
                     @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
                         <a href="{{ route('workspace.home') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.workspace') }}</a>

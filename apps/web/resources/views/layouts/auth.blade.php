@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') · {{ config('app.name') }}</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : 0 }}" sizes="any">
+    @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased">
+    <x-theme-toggle class="absolute right-4 top-4 z-10" />
     <div class="flex min-h-screen">
         {{-- Branded panel --}}
         <aside class="relative hidden w-[44%] overflow-hidden bg-ink-950 lg:flex lg:flex-col lg:justify-between" aria-hidden="true">
