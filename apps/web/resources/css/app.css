@@ -63,6 +63,16 @@
 }
 
 @layer components {
+    .mn-identity-capsule {
+        background-image:
+            radial-gradient(circle at 15% 20%, rgb(249 100 16 / 0.95), transparent 38%),
+            radial-gradient(circle at 85% 75%, rgb(62 145 74 / 0.82), transparent 38%),
+            linear-gradient(120deg, var(--color-ink-950), var(--color-ink-700), var(--color-ember-700), var(--color-ink-950));
+        background-size: 180% 180%;
+        isolation: isolate;
+        animation: mn-identity-shimmer 10s ease-in-out infinite;
+    }
+
     .mn-editor-button {
         border-radius: 0.375rem;
         color: var(--color-ink-700);
@@ -189,5 +199,17 @@
         border: 0;
         border-top: 1px solid var(--color-ink-200);
         margin-block: 2rem;
+    }
+}
+
+@keyframes mn-identity-shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mn-identity-capsule {
+        animation: none;
+        background-position: 50% 50%;
     }
 }

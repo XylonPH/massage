@@ -18,19 +18,33 @@
 
     {{-- ===================== Header ===================== --}}
     <header class="sticky top-0 z-40 border-b border-ink-100 bg-white/95 shadow-sm backdrop-blur">
-        <div class="mx-auto flex h-16 max-w-[1600px] items-center gap-6 px-4 sm:px-6 lg:px-8">
-            <a href="{{ route('home') }}" class="shrink-0" aria-label="{{ config('app.name') }}">
-                <x-logo size="h-12" />
+        <div class="mx-auto flex h-[4.5rem] max-w-[1600px] items-center gap-5 px-4 sm:px-6 lg:px-8">
+            <a href="{{ route('home') }}" class="group relative -ml-2 shrink-0 overflow-hidden rounded-2xl border border-transparent px-2 py-1.5 transition hover:border-ember-100 hover:bg-gradient-to-r hover:from-ink-50 hover:to-ember-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500" aria-label="{{ config('app.name') }}">
+                <span class="pointer-events-none absolute -left-5 top-1/2 size-12 -translate-y-1/2 rounded-full bg-ember-200/0 blur-xl transition group-hover:bg-ember-200/70" aria-hidden="true"></span>
+                <x-logo size="h-11" class="relative" />
+                <span class="pointer-events-none absolute inset-x-4 bottom-0 h-0.5 origin-left rounded-full bg-gradient-to-r from-ink-700 via-ember-500 to-leaf-500 opacity-65 transition group-hover:scale-x-110 group-hover:opacity-100" aria-hidden="true"></span>
             </a>
 
-            <nav class="hidden flex-1 items-center gap-1 lg:flex" aria-label="{{ __('navigation.main_navigation') }}">
-                @foreach ([
+            @php
+                $mainNavigation = [
                     ['href' => route('home'), 'label' => __('navigation.home'), 'active' => request()->routeIs('home')],
                     ['href' => route('directory.index'), 'label' => __('navigation.directory'), 'active' => request()->is('directory*') || request()->is('spa*')],
                     ['href' => route('article.index'), 'label' => __('navigation.articles'), 'active' => request()->is('article*')],
                     ['href' => route('campus.index'), 'label' => __('navigation.campus'), 'active' => request()->is('campus*')],
                     ['href' => route('promo.index'), 'label' => __('navigation.promos'), 'active' => request()->is('promo*')],
-                ] as $item)
+                ];
+
+                if (auth()->check() && auth()->user()->isActive() && auth()->user()->hasVerifiedEmail()) {
+                    $mainNavigation[] = [
+                        'href' => route('workspace.home'),
+                        'label' => __('navigation.workspace'),
+                        'active' => request()->is('workspace*'),
+                    ];
+                }
+            @endphp
+
+            <nav class="hidden flex-1 items-center gap-1 xl:flex" aria-label="{{ __('navigation.main_navigation') }}">
+                @foreach ($mainNavigation as $item)
                     <a href="{{ $item['href'] }}"
                        @if ($item['active']) aria-current="page" @endif
                        class="rounded-lg px-3 py-2 text-sm font-semibold transition {{ $item['active'] ? 'text-ember-600' : 'text-ink-800 hover:bg-ink-50 hover:text-ink-950' }}">
@@ -39,23 +53,13 @@
                 @endforeach
             </nav>
 
-            <div class="ml-auto hidden items-center gap-2.5 lg:flex">
+            <div class="ml-auto hidden items-center gap-2.5 xl:flex">
                 @auth
-                    @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
-                        <a href="{{ route('workspace.home') }}" class="rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-800 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
-                            {{ __('navigation.workspace') }}
-                        </a>
-                    @endif
-                    <span class="inline-flex items-center gap-2 rounded-lg bg-ink-50 px-3 py-2 text-sm font-semibold text-ink-800">
-                        <span class="flex size-6 items-center justify-center rounded-full bg-ember-100 text-xs font-bold text-ember-700" aria-hidden="true">
-                            {{ strtoupper(substr(auth()->user()->username, 0, 1)) }}
-                        </span>
-                        {{ __('auth.logged_in_as', ['username' => auth()->user()->username]) }}
-                    </span>
+                    <x-identity-capsule :user="auth()->user()" />
                     <form method="post" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50">
-                            {{ __('auth.log_out') }}
+                        <button type="submit" class="inline-flex size-10 items-center justify-center rounded-full border border-ink-200 text-ink-600 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500" aria-label="{{ __('auth.log_out') }}" title="{{ __('auth.log_out') }}">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3M10 12h11m0 0-3-3m3 3-3 3"/></svg>
                         </button>
                     </form>
                 @else
@@ -69,13 +73,13 @@
             </div>
 
             <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu"
-                    class="ml-auto inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 lg:hidden">
+                    class="ml-auto inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 xl:hidden">
                 <span class="sr-only">{{ __('navigation.open_menu') }}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-6" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
             </button>
         </div>
 
-        <div id="mobile-menu" hidden class="border-t border-ink-100 bg-white lg:hidden">
+        <div id="mobile-menu" hidden class="border-t border-ink-100 bg-white xl:hidden">
             <nav class="space-y-1 px-4 py-3" aria-label="{{ __('navigation.main_navigation') }}">
                 <a href="{{ route('home') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.home') }}</a>
                 <a href="{{ route('directory.index') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.directory') }}</a>
@@ -86,11 +90,13 @@
                     @if (auth()->user()->isActive() && auth()->user()->hasVerifiedEmail())
                         <a href="{{ route('workspace.home') }}" class="block rounded-lg px-3 py-2 text-sm font-semibold text-ink-900 hover:bg-ink-50">{{ __('navigation.workspace') }}</a>
                     @endif
-                    <div class="flex items-center justify-between gap-2.5 pt-2">
-                        <span class="text-sm font-semibold text-ink-800">{{ __('auth.logged_in_as', ['username' => auth()->user()->username]) }}</span>
+                    <div class="flex items-center gap-2.5 pt-2">
+                        <x-identity-capsule :user="auth()->user()" class="min-w-0 flex-1" />
                         <form method="post" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800">{{ __('auth.log_out') }}</button>
+                            <button type="submit" class="inline-flex size-11 items-center justify-center rounded-full border border-ink-200 text-ink-700" aria-label="{{ __('auth.log_out') }}">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3M10 12h11m0 0-3-3m3 3-3 3"/></svg>
+                            </button>
                         </form>
                     </div>
                 @else
@@ -162,7 +168,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-start gap-3 lg:items-end">
-                    <x-logo dark size="h-11" />
+                    <x-logo dark size="h-14" />
                     <p class="text-sm text-ink-300 lg:text-right">{{ __('footer.tagline') }}</p>
                     <p class="text-sm font-semibold text-ember-400">{{ __('footer.motto') }}</p>
                 </div>

@@ -16,8 +16,8 @@
     @if ($heroImage)
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
             <img src="{{ asset($heroImage) }}" alt="" class="size-full object-cover object-center">
-            <div class="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/30"></div>
-            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-ink-950/90 via-ink-950/60 to-ink-950/10"></div>
+            <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/55 to-transparent"></div>
         </div>
     @else
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -28,16 +28,18 @@
         </div>
     @endif
 
-    <div class="relative mx-auto max-w-[1600px] px-4 pb-8 pt-7 sm:px-6 lg:px-8 lg:pt-10">
-        <div class="max-w-2xl">
-            <h1 class="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                {{ __('home.hero_title_find') }}
-                <span class="text-ember-400">{{ __('home.hero_title_massage') }}</span><span class="text-ember-400">.</span>
-            </h1>
-            <p class="mt-2 max-w-xl text-base text-ink-200 sm:text-lg">{{ __('home.hero_subtitle') }}</p>
-        </div>
+    <div class="relative mx-auto min-w-0 max-w-[1600px] px-4 pb-8 pt-7 sm:px-6 lg:px-8 lg:pt-10">
+        <div class="grid min-w-0 items-start gap-6 lg:grid-cols-[minmax(0,1fr)_20rem] xl:grid-cols-[minmax(0,1fr)_22rem]">
+            <div class="min-w-0">
+                <div class="max-w-2xl">
+                    <h1 class="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                        {{ __('home.hero_title_find') }}
+                        <span class="text-ember-400">{{ __('home.hero_title_massage') }}</span><span class="text-ember-400">.</span>
+                    </h1>
+                    <p class="mt-2 max-w-xl text-base text-ink-200 sm:text-lg">{{ __('home.hero_subtitle') }}</p>
+                </div>
 
-        <div class="mt-6 flex flex-wrap gap-1" role="tablist" aria-label="{{ __('home.search_legend') }}">
+                <div class="mt-6 flex max-w-full flex-nowrap gap-1 overflow-x-auto" role="tablist" aria-label="{{ __('home.search_legend') }}">
             @foreach ([
                 ['type' => 'spa', 'label' => __('home.search_tab_spas'), 'placeholder' => __('home.search_placeholder_spa')],
                 ['type' => 'therapist', 'label' => __('home.search_tab_therapists'), 'placeholder' => __('home.search_placeholder_therapist')],
@@ -51,22 +53,22 @@
                     {{ $tab['label'] }}
                 </button>
             @endforeach
-        </div>
+                </div>
 
-        <form action="{{ url('/search') }}" method="get" class="rounded-2xl rounded-tl-none bg-white p-3 shadow-2xl shadow-ink-950/40 sm:p-4">
+                <form action="{{ route('directory.index') }}" method="get" class="min-w-0 max-w-full rounded-2xl rounded-tl-none bg-white p-3 shadow-2xl shadow-ink-950/40 sm:p-4">
             <input type="hidden" name="type" value="spa" data-search-type>
-            <fieldset>
+            <fieldset class="min-w-0">
                 <legend class="sr-only">{{ __('home.search_legend') }}</legend>
-                <div class="flex flex-col gap-3 lg:flex-row">
-                    <label class="flex flex-1 items-center gap-3 rounded-xl border border-ink-200 px-4 py-3 transition focus-within:border-ember-400 focus-within:ring-2 focus-within:ring-ember-100">
+                <div class="flex min-w-0 flex-col gap-3 lg:flex-row">
+                    <label class="flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-ink-200 px-4 py-3 transition focus-within:border-ember-400 focus-within:ring-2 focus-within:ring-ember-100">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5 shrink-0 text-ink-400" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/></svg>
                         <span class="sr-only">{{ __('home.search_placeholder') }}</span>
-                        <input type="search" name="q" data-search-query placeholder="{{ __('home.search_placeholder_spa') }}" class="w-full border-0 p-0 text-sm text-ink-950 placeholder-ink-400 focus:outline-none focus:ring-0">
+                        <input type="search" name="q" data-search-query placeholder="{{ __('home.search_placeholder_spa') }}" class="min-w-0 w-full border-0 p-0 text-sm text-ink-950 placeholder-ink-400 focus:outline-none focus:ring-0">
                     </label>
-                    <label class="flex flex-1 items-center gap-3 rounded-xl border border-ink-200 px-4 py-3 transition focus-within:border-ember-400 focus-within:ring-2 focus-within:ring-ember-100 lg:max-w-xs">
+                    <label class="flex min-w-0 flex-1 items-center gap-3 rounded-xl border border-ink-200 px-4 py-3 transition focus-within:border-ember-400 focus-within:ring-2 focus-within:ring-ember-100 lg:max-w-xs">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-5 shrink-0 text-ink-400" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
                         <span class="sr-only">{{ __('home.location_placeholder') }}</span>
-                        <input type="text" name="location" placeholder="{{ __('home.location_placeholder') }}" class="w-full border-0 p-0 text-sm text-ink-950 placeholder-ink-400 focus:outline-none focus:ring-0">
+                        <input type="text" name="location" placeholder="{{ __('home.location_placeholder') }}" class="min-w-0 w-full border-0 p-0 text-sm text-ink-950 placeholder-ink-400 focus:outline-none focus:ring-0">
                     </label>
                     <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-ember-500 px-8 py-3 text-sm font-bold text-white shadow-md shadow-ember-500/30 transition hover:bg-ember-600">
                         {{ __('home.search_button') }}
@@ -89,7 +91,56 @@
                     @endforeach
                 </div>
             </fieldset>
-        </form>
+                </form>
+
+                <nav aria-label="{{ __('home.popular_searches') }}" class="mt-4 flex min-w-0 max-w-full flex-col gap-2.5 rounded-2xl border border-white/15 bg-ink-950/35 px-4 py-3 text-white shadow-lg shadow-ink-950/20 backdrop-blur-sm sm:flex-row sm:items-center">
+                    <span class="inline-flex shrink-0 items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-ember-300">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m13 2-1 7h7l-8 13 1-8H5l8-12Z"/></svg>
+                        {{ __('home.popular_searches') }}
+                    </span>
+                    <span class="hidden h-5 w-px bg-white/20 sm:block" aria-hidden="true"></span>
+                    <span class="flex min-w-0 flex-wrap gap-2">
+                        @foreach (array_slice($massageTypes, 0, 4) as $massageType)
+                            <a href="{{ route('directory.index', ['service' => \Illuminate\Support\Str::slug($massageType['name'])]) }}" class="rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white transition hover:border-ember-300 hover:bg-ember-500 hover:text-white">
+                                {{ $massageType['name'] }}
+                            </a>
+                        @endforeach
+                        <a href="{{ route('directory.index') }}" class="inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-xs font-bold text-ink-100 transition hover:text-ember-300">
+                            {{ __('home.explore_all') }}
+                            <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </span>
+                </nav>
+            </div>
+
+            {{-- Wellness Journey stats --}}
+            <section aria-labelledby="stats-heading" class="relative min-w-0 overflow-hidden rounded-2xl border border-white/30 bg-white/95 p-5 text-ink-950 shadow-2xl shadow-ink-950/30 backdrop-blur">
+                <svg class="pointer-events-none absolute -right-6 -top-6 size-32 text-ink-950/[0.04]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 15C6 8 11 4 19 4c0 8-4 13-11 13-1 0-2-.5-2-2Z"/></svg>
+                <h2 id="stats-heading" class="text-lg font-black">{{ __('home.stats_title') }}</h2>
+                <p class="mt-0.5 text-xs text-ink-500">{{ __('home.stats_subtitle') }}</p>
+                <dl class="mt-4 grid grid-cols-2 gap-2.5 lg:grid-cols-1 xl:grid-cols-2">
+                    @foreach ([
+                        ['value' => $stats['spas'], 'label' => __('home.stats_spas'), 'icon' => 'M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6'],
+                        ['value' => $stats['therapists'], 'label' => __('home.stats_therapists'), 'icon' => 'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1'],
+                        ['value' => $stats['reviews'], 'label' => __('home.stats_reviews'), 'icon' => 'm12 3 2.7 5.6 6.3.8-4.6 4.3 1.2 6.1L12 16.9 6.4 19.8l1.2-6.1L3 9.4l6.3-.8L12 3Z'],
+                        ['value' => $stats['articles'], 'label' => __('home.stats_articles'), 'icon' => 'M12 6.25c-2.5-1.7-5.5-1.9-8-.75v13c2.5-1.15 5.5-.95 8 .75 2.5-1.7 5.5-1.9 8-.75v-13c-2.5-1.15-5.5-.95-8 .75Zm0 0V19.5'],
+                    ] as $stat)
+                        <div class="rounded-xl bg-ink-50 p-3">
+                            <span class="flex size-8 items-center justify-center rounded-lg bg-white shadow-sm">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="size-4 text-ember-500" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $stat['icon'] }}"/></svg>
+                            </span>
+                            <dt class="sr-only">{{ $stat['label'] }}</dt>
+                            <dd class="mt-2 text-xl font-black leading-none">{{ $stat['value'] }}</dd>
+                            <dd class="mt-1 text-xs text-ink-500">{{ $stat['label'] }}</dd>
+                        </div>
+                    @endforeach
+                </dl>
+                <a href="{{ url('/statistics') }}" class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-ember-600 transition hover:text-ember-700">
+                    {{ __('home.view_all_statistics') }}
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
+                </a>
+            </section>
+        </div>
     </div>
 </section>
 
@@ -371,36 +422,6 @@
 
         {{-- ===================== Sidebar ===================== --}}
         <aside class="min-w-0 space-y-4">
-
-            {{-- Wellness Journey stats --}}
-            <section aria-labelledby="stats-heading" class="relative overflow-hidden rounded-2xl bg-ink-950 p-4 text-white shadow-md">
-                <svg class="pointer-events-none absolute -right-6 -top-6 size-32 text-white/[0.06]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 15C6 8 11 4 19 4c0 8-4 13-11 13-1 0-2-.5-2-2Z"/></svg>
-                <h2 id="stats-heading" class="text-base font-bold">{{ __('home.stats_title') }}</h2>
-                <p class="text-xs text-ink-300">{{ __('home.stats_subtitle') }}</p>
-                <dl class="mt-3 space-y-2.5">
-                    @foreach ([
-                        ['value' => $stats['spas'], 'label' => __('home.stats_spas'), 'icon' => 'M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6'],
-                        ['value' => $stats['therapists'], 'label' => __('home.stats_therapists'), 'icon' => 'M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1'],
-                        ['value' => $stats['reviews'], 'label' => __('home.stats_reviews'), 'icon' => 'm12 3 2.7 5.6 6.3.8-4.6 4.3 1.2 6.1L12 16.9 6.4 19.8l1.2-6.1L3 9.4l6.3-.8L12 3Z'],
-                        ['value' => $stats['articles'], 'label' => __('home.stats_articles'), 'icon' => 'M12 6.25c-2.5-1.7-5.5-1.9-8-.75v13c2.5-1.15 5.5-.95 8 .75 2.5-1.7 5.5-1.9 8-.75v-13c-2.5-1.15-5.5-.95-8 .75Zm0 0V19.5'],
-                    ] as $stat)
-                        <div class="flex items-center gap-2.5">
-                            <span class="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="size-4.5 text-ember-400" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $stat['icon'] }}"/></svg>
-                            </span>
-                            <div>
-                                <dt class="sr-only">{{ $stat['label'] }}</dt>
-                                <dd class="text-lg font-black leading-tight">{{ $stat['value'] }}</dd>
-                                <dd class="text-xs text-ink-300">{{ $stat['label'] }}</dd>
-                            </div>
-                        </div>
-                    @endforeach
-                </dl>
-                <a href="{{ url('/statistics') }}" class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-ember-400 transition hover:text-ember-300">
-                    {{ __('home.view_all_statistics') }}
-                    <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-                </a>
-            </section>
 
             {{-- Premium Spotlight (sponsored) --}}
             <section aria-labelledby="spotlight-heading" class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">

@@ -95,5 +95,10 @@ return [
     'back_to_login' => 'Back to login',
 
     'logged_in_as' => 'Signed in as :username',
+    'starting_rank' => 'New Guest',
+    'embers' => 'Embers',
+    'inklings' => 'Inklings',
+    'open_profile_summary' => 'Open :name profile and reward summary',
+    'reward_balance_summary' => ':embers Embers and :inklings Inklings',
     'log_out' => 'Log out',
 ];

@@ -25,6 +25,8 @@ return [
     'filter_promos' => 'Promos',
     'filter_verified' => 'Verified',
     'filter_home_service' => 'Home Service',
+    'popular_searches' => 'Popular right now',
+    'explore_all' => 'Explore all',
 
     'featured_spas' => 'Featured Spas',
     'featured_therapists' => 'Featured Therapists',

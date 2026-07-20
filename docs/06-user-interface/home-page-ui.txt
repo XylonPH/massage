@@ -1,7 +1,7 @@
 Title: Massage Nexus Homepage UI
-Version: 1.32
+Version: 1.34
 Date Created: 2026-07-01
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 Homepage UI Documentation
 =========================
@@ -11,7 +11,7 @@ The homepage is the main public entry point of Massage Nexus and should function
 Page Layout Overview
 --------------------
 
-The homepage is divided into four major layout areas: the top header/navigation area, the main content area, the right sidebar, and the footer. The top header contains branding, navigation, and account access; the main content area contains search, featured listings, browse sections, articles, reviews, promos, products, trending items, and profile updates. The right sidebar contains platform statistics, sponsored placements, engagement widgets, quizzes, quotes, and campaign cards. The footer contains secondary navigation, business links, therapist links, social links, legal links, language selection, copyright, and the footer logo.
+The homepage is divided into four major layout areas: the top header/navigation area, the hero area, the main content and right sidebar, and the footer. The top header contains branding, navigation, and account access; the hero contains the primary search experience and Wellness Journey statistics; the main content contains featured listings, browse sections, articles, reviews, promos, products, trending items, and profile updates; and the right sidebar contains sponsored placements, engagement widgets, quizzes, quotes, and campaign cards. The footer contains secondary navigation, business links, therapist links, social links, legal links, language selection, copyright, and the footer logo.
 
 --------------------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ The homepage is divided into four major layout areas: the top header/navigation 
 
 Placement: Top of the page, fixed or visually prominent across the full width of the screen.
 
-The top header contains the Massage Nexus logo on the left, followed by the main public navigation links: Home, Directory, Articles, Campus, and Promos. The extra duplicate brand text beside the logo should be removed so the header does not repeat the application name unnecessarily. On the right side, guests see Log In and Sign Up buttons, while logged-in users see their avatar, display name, user badge or rank summary, notifications, messages, and dashboard/account menu.
+The top header contains the Massage Nexus logo on the left, followed by the main public navigation links: Home, Directory, Articles, Campus, and Promos. For an authenticated, verified, active member, Workspace appears as the final item in this same navigation rather than as a visually separate action button. The logo uses a slightly enlarged horizontal lockup with restrained Ink & Ember hover treatment; it must remain recognizable as branding rather than resemble a primary action button. The extra duplicate brand text beside the logo should be removed so the header does not repeat the application name unnecessarily. On the right side, guests see Log In and Sign Up buttons, while logged-in users see their avatar or branded default-avatar fallback, display name, rank and reward summary, and log-out control. Notifications, messages, and a broader account menu remain later integrations rather than placeholder controls.
 
 --------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ The top header contains the Massage Nexus logo on the left, followed by the main
 
 Placement: Immediately below the top navigation, occupying the most visible upper portion of the homepage.
 
-The search area is the primary homepage action and should remain the first major thing users notice. Immediately above the search panel, a row of target-type tabs (Spas, Therapists, Services, Articles, Reviews, Products) lets the user choose what they are searching for before they type; selecting a tab updates the search field's placeholder text and the hidden search-type parameter submitted with the query, so results open already scoped to that type instead of requiring a second filtering step after the results page loads. The panel itself contains a query field for the selected type plus a location field labeled with wording such as “City, area, or landmark,” not zip code. This section may use a branded Ink & Ember gradient background, an optional photographic hero image (with a dark navy overlay preserving text contrast) as a brand-approved alternative treatment, or a premium sponsored hero placement behind or beside the search panel, allowing paying listings to receive high visibility without removing the search-first purpose of the homepage.
+The search area is the primary homepage action and should remain the first major thing users notice. Immediately above the search panel, a row of target-type tabs (Spas, Therapists, Services, Articles, Reviews, Products) lets the user choose what they are searching for before they type; selecting a tab updates the search field's placeholder text and the hidden search-type parameter submitted with the query, so results open already scoped to that type instead of requiring a second filtering step after the results page loads. The panel itself contains a query field for the selected type plus a location field labeled with wording such as “City, area, or landmark,” not zip code. A compact translucent discovery strip beneath the panel uses otherwise empty hero space for a small set of popular massage-type links plus an Explore All action; it supports discovery without competing with search or inventing personalized recommendations. This section may use a branded Ink & Ember gradient background, an optional photographic hero image (with a graduated navy overlay preserving text contrast while keeping the subjects visible) as a brand-approved alternative treatment, or a premium sponsored hero placement behind or beside the search panel, allowing paying listings to receive high visibility without removing the search-first purpose of the homepage. The preferred photographic source is a wide 21:9 image with calm visual detail, no embedded text or logos, and enough compositional breathing room for the heading and search interface. The implementation reads public/images/hero/home.webp first, with JPG and PNG fallbacks.
 
 --------------------------------------------------------------------------------
 
@@ -155,16 +155,16 @@ Freshly Updated Profiles displays listings with meaningful recent updates, such 
 16. Wellness Journey Panel
 ==========================
 
-Placement: Top of the right sidebar, aligned near the search/hero area.
+Placement: Right side of the search/hero area on wide screens and below the search panel on narrower screens.
 
-The statistics panel shows platform activity numbers such as total spas, therapists, reviews, or other useful public counters. It should include a subtle visual accent, background pattern, icon, or illustration so it does not look plain. The purpose is to create confidence that the platform has growing coverage and active information.
+The statistics panel shows platform activity numbers such as total spas, therapists, reviews, or other useful public counters. It should include a subtle visual accent, background pattern, icon, or illustration so it does not look plain. The purpose is to create confidence that the platform has growing coverage and active information. Moving this panel into the hero makes Premium Spotlight the first card in the normal right sidebar.
 
 --------------------------------------------------------------------------------
 
 17. Sponsored Placement Blocks
 ==============================
 
-Placement: Right sidebar and selected homepage areas, especially after the statistics panel and between engagement widgets.
+Placement: Right sidebar and selected homepage areas, beginning with Premium Spotlight below the hero and continuing between engagement widgets.
 
 Sponsored placement blocks provide tasteful monetization spaces without making the homepage look overloaded with advertisements. These blocks may promote premium listings, wellness products, campaigns, campus content, therapist education, or advertiser messages. Each placement should be clearly labeled as Sponsored or Advertisement Space and should not interrupt the user’s ability to search, browse, or read.
 
@@ -213,7 +213,7 @@ The Spa Day section appears when the annual Spa Day campaign is active or near i
 
 Placement: Top-right account area, replacing Log In and Sign Up.
 
-When a normal registered user is logged in, the header should show the user’s avatar, display name, and a compact identity label such as Member, Verified Member, Premium User, rank, or point summary. The user menu should provide shortcuts to dashboard, saved listings, messages, notifications, profile, settings, and log out. Owners, therapists, editors, moderators, and administrators should use the same login area, but their dashboard menu should change based on role.
+When a normal registered user is logged in, the header uses one curved identity capsule linking to the profile area. It shows the user’s moderated avatar when available, the branded non-gendered Massage Nexus default avatar otherwise, display name, selected rank, and compact Ember and Inkling balances. Until the reward ledger and avatar media integration exist, the honest starting display is New Guest with zero balances and the branded fallback; no simulated earned balance is shown. A slow Ink, Ember, and Leaf background movement gives the capsule identity without distracting from navigation, and the animation is disabled when reduced motion is requested. Log out remains a separate clearly labeled control. Future account-menu integration may add saved listings, messages, notifications, profile, and settings without turning different roles into separate login identities. Owners, therapists, editors, moderators, and administrators use the same capsule; their workspace content changes automatically according to effective access.
 
 --------------------------------------------------------------------------------
 
