@@ -19,7 +19,8 @@
                class="fixed inset-y-0 left-0 z-40 hidden w-[17rem] shrink-0 flex-col border-r border-ink-100 bg-white lg:static lg:flex dark:border-ink-800 dark:bg-ink-900">
             <div class="flex h-[4.5rem] items-center border-b border-ink-100 px-5 dark:border-ink-800">
                 <a href="{{ route('home') }}" aria-label="{{ config('app.name') }}">
-                    <x-logo size="h-10" />
+                    <x-logo size="h-10" class="dark:hidden" />
+                    <x-logo dark size="h-10" class="hidden dark:block" />
                 </a>
             </div>
 
@@ -44,7 +45,7 @@
 
         {{-- ============ Main column ============ --}}
         <div class="min-w-0 flex-1">
-            <header class="sticky top-0 z-30 border-b border-ink-100 bg-white/95 backdrop-blur dark:border-ink-800 dark:bg-charcoal-900/95">
+            <header class="sticky top-0 z-30 border-b border-ink-100 bg-white/95 backdrop-blur dark:border-ink-800 dark:bg-ink-900/95">
                 <div class="flex h-[4.5rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
                     <button type="button" data-menu-toggle aria-expanded="false" aria-controls="workspace-sidebar"
                             class="inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 lg:hidden dark:text-ink-200 dark:hover:bg-ink-800">

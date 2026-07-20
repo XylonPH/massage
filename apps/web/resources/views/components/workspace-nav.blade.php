@@ -48,7 +48,7 @@
 
 <nav aria-label="{{ __('workspace.title') }}" {{ $attributes }}>
     @foreach ($groups as $group)
-        <h2 class="{{ $loop->first ? '' : 'mt-5' }} px-3 text-xs font-bold uppercase tracking-[0.14em] text-ink-400 dark:text-ink-400">{{ $group['heading'] }}</h2>
+        <h2 class="{{ $loop->first ? '' : 'mt-5' }} px-3 text-xs font-bold uppercase tracking-[0.14em] text-ink-400">{{ $group['heading'] }}</h2>
         <ul class="mt-1.5 space-y-0.5">
             @foreach ($group['items'] as $item)
                 <li>
