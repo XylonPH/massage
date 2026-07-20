@@ -24,11 +24,11 @@
         <input id="username" name="username" type="text" required autofocus autocomplete="username"
                value="{{ old('username') }}"
                minlength="4" maxlength="30" pattern="[a-z][a-z0-9]{3,29}"
-               aria-describedby="username-hint username-availability"
+               aria-describedby="username-hint username-availability{{ $errors->has('username') ? ' username-error' : '' }}"
                data-username-check="{{ route('register.check-username') }}"
                class="w-full rounded-xl border {{ $errors->has('username') ? 'border-ember-400' : 'border-ink-200' }} bg-white px-4 py-3 text-sm lowercase text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
         @error('username')
-            <p class="mt-1.5 text-xs font-semibold text-ember-600">{{ $message }}</p>
+            <p id="username-error" data-server-validation-error class="mt-1.5 text-xs font-semibold text-ember-600">{{ $message }}</p>
         @enderror
         <p id="username-availability" data-username-availability aria-live="polite"
            data-checking="{{ __('auth.username_checking') }}"

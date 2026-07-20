@@ -125,6 +125,8 @@ if (usernameInput && usernameAvailability) {
     let debounceTimer;
     let controller;
 
+    const getServerError = () => usernameInput.parentElement.querySelector('[data-server-validation-error]');
+
     const setStatus = (text, tone) => {
         usernameAvailability.textContent = text;
         usernameAvailability.className = `mt-1.5 text-xs font-semibold ${tone}`;
@@ -149,17 +151,18 @@ if (usernameInput && usernameAvailability) {
 
     usernameInput.addEventListener('input', () => {
         // Clear server-side error immediately on new input
-        const serverError = usernameInput.parentElement.querySelector('p.text-ember-600:not([data-username-availability])');
+        const serverError = getServerError();
         if (serverError) {
             serverError.remove();
             usernameInput.classList.remove('border-ember-400');
             usernameInput.classList.add('border-ink-200');
         }
-        
+
         clearTimeout(debounceTimer);
+        controller?.abort();
+        setStatus('', 'text-ink-400');
         const value = usernameInput.value.toLowerCase();
         if (!pattern.test(value)) {
-            setStatus('', 'text-ink-400');
             return;
         }
         debounceTimer = setTimeout(() => checkAvailability(value), 400);
@@ -167,6 +170,10 @@ if (usernameInput && usernameAvailability) {
 
     usernameInput.addEventListener('blur', () => {
         clearTimeout(debounceTimer);
+        if (getServerError()) {
+            setStatus('', 'text-ink-400');
+            return;
+        }
         const value = usernameInput.value.toLowerCase();
         if (pattern.test(value)) checkAvailability(value);
     });

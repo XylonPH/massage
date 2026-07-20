@@ -59,15 +59,14 @@ class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmail
                 $user->{$user->getKeyName()} = Str::random(16);
             }
 
-            $user->status_account ??= 'pending_email_verification';
-            $user->status_membership ??= 'pending_eligibility';
+            $user->status_account ??= 'PND';
+            $user->status_membership ??= 'PEL';
         });
     }
 
     protected function casts(): array
     {
         return [
-            'birth_date' => 'date',
             'email_verified_at' => 'datetime',
             'terms_accepted_at' => 'datetime',
             'privacy_acknowledged_at' => 'datetime',
@@ -83,7 +82,7 @@ class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmail
 
     public function isActive(): bool
     {
-        return $this->status_account === 'active' && $this->status_membership === 'active';
+        return $this->status_account === 'ACT' && $this->status_membership === 'ACT';
     }
 
     public function sendPasswordResetNotification($token): void

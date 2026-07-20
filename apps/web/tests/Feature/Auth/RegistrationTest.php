@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
+use Symfony\Component\Uid\UuidV4;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
 
@@ -34,6 +36,17 @@ class RegistrationTest extends TestCase
             'birth_date' => '1990-05-15',
             'terms_accepted' => '1',
         ], $overrides);
+    }
+
+    public function test_application_uuid_generation_avoids_the_incompatible_ramsey_runtime(): void
+    {
+        $uuid = Str::uuid();
+
+        $this->assertInstanceOf(UuidV4::class, $uuid);
+        $this->assertMatchesRegularExpression(
+            '/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/',
+            (string) $uuid,
+        );
     }
 
     public function test_valid_registration_creates_a_pending_user_and_sends_verification(): void
@@ -132,6 +145,10 @@ class RegistrationTest extends TestCase
         $response = $this->post('/register', $this->validPayload());
 
         $response->assertSessionHasErrors('username');
+        $this->withViewErrors(['username' => 'The username has already been taken.']);
+        $this->view('auth.register')
+            ->assertSee('id="username-error"', false)
+            ->assertSee('data-server-validation-error', false);
     }
 
     public function test_duplicate_email_is_case_insensitive(): void

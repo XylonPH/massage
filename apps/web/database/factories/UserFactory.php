@@ -28,8 +28,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= 'a factory-generated test passphrase 2026',
             'birth_date' => fake()->dateTimeBetween('-60 years', '-19 years')->format('Y-m-d'),
-            'status_account' => 'active',
-            'status_membership' => 'active',
+            'status_account' => 'ACT',
+            'status_membership' => 'ACT',
             'terms_accepted_at' => now(),
             'terms_accepted_version' => config('legal.terms_version'),
             'privacy_acknowledged_at' => now(),
@@ -44,8 +44,8 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
-            'status_account' => 'pending_email_verification',
-            'status_membership' => 'pending_eligibility',
+            'status_account' => 'PND',
+            'status_membership' => 'PEL',
         ]);
     }
 }

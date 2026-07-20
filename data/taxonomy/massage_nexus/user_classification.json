@@ -1,0 +1,33 @@
+[
+    {
+        "_id": 501,
+        "field_name": "status_membership",
+        "field_label": "Membership Status",
+        "field_description": "Massage Nexus membership state.",
+        "type_field": "DDL",
+        "type_sql": "ENUM",
+        "is_translatable": true,
+        "field_option": [
+            {
+                "option_code": "PEL",
+                "option_label": "Pending Eligibility",
+                "option_description": "Pending eligibility check."
+            },
+            {
+                "option_code": "ACT",
+                "option_label": "Active",
+                "option_description": "Active membership."
+            },
+            {
+                "option_code": "RST",
+                "option_label": "Restricted",
+                "option_description": "Membership restricted."
+            },
+            {
+                "option_code": "END",
+                "option_label": "Ended",
+                "option_description": "Membership ended."
+            }
+        ]
+    }
+]

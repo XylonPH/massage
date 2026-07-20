@@ -106,7 +106,7 @@ class RegisterController extends Controller
             'username' => $validated['username'],
             'email' => $validated['email'],
             'password' => $validated['password'],
-            'birth_date' => Carbon::parse($validated['birth_date']),
+            'birth_date' => $validated['birth_date'],
             'terms_accepted_at' => now(),
             'terms_accepted_version' => config('legal.terms_version'),
             'privacy_acknowledged_at' => now(),

@@ -61,8 +61,8 @@ $user_main_record_default = [
 	'bio' => null,
 	'email_verified_at' => null,
 	'is_marketing_email_opt_in' => false,
-	'status_account' => 'pending_email_verification',
-	'status_membership' => 'pending_eligibility',
+	'status_account' => 'PND',
+	'status_membership' => 'PEL',
 	'remember_token' => null,
 ];
 
@@ -94,8 +94,8 @@ $user_main = [
 	'privacy_acknowledged_at' => '2026-07-20T00:59:00Z',
 	'privacy_acknowledged_version' => '2026-07-18.1',
 	'is_marketing_email_opt_in' => false,
-	'status_account' => 'active', // pending_email_verification, active, locked, suspended, deleted
-	'status_membership' => 'active', // pending_eligibility, active, restricted, ended
+	'status_account' => 'ACT', // PND, ACT, LCK, SUS, DEL
+	'status_membership' => 'ACT', // PEL, ACT, RST, END
 
 	# Audit
 	'created_at' => $created_at,
@@ -185,8 +185,8 @@ $user_main_field_property = [
 	'privacy_acknowledged_at' => ['field_label' => 'Privacy Acknowledged At', 'field_description' => 'UTC timestamp of the recorded Privacy Notice acknowledgment for the cached current version.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 	'privacy_acknowledged_version' => ['field_label' => 'Privacy Acknowledged Version', 'field_description' => 'Cached acknowledged Privacy Notice version string. Full history belongs to user_policy.', 'is_mandatory' => true],
 	'is_marketing_email_opt_in' => ['field_label' => 'Marketing Email Opt-In', 'field_description' => 'Separate, optional, unchecked-by-default marketing email consent. Grant and withdrawal history belongs to user_policy.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN'],
-	'status_account' => ['field_label' => 'Account Status', 'field_description' => 'Account lifecycle state: pending_email_verification, active, locked, suspended, or deleted.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true, 'is_indexed' => true],
-	'status_membership' => ['field_label' => 'Membership Status', 'field_description' => 'Massage Nexus membership state: pending_eligibility, active, restricted, or ended. Separate from the shared network account state.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true, 'is_indexed' => true],
+	'status_account' => ['field_label' => 'Account Status', 'field_description' => 'Account lifecycle state taxonomy code (e.g. PND, ACT, LCK, SUS, DEL).', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true, 'is_indexed' => true],
+	'status_membership' => ['field_label' => 'Membership Status', 'field_description' => 'Massage Nexus membership state taxonomy code (e.g. PEL, ACT, RST, END). Separate from the shared network account state.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true, 'is_indexed' => true],
 
 	# Audit
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this user record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
