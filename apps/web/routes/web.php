@@ -20,6 +20,7 @@ Route::get('/spa/{establishment_slug}', [SpaProfileController::class, 'show'])->
 
 Route::get('/therapist/{therapist_slug}', [TherapistProfileController::class, 'show'])->name('therapist.show');
 
+Route::get('/service/{service_slug}', [\App\Http\Controllers\ServiceProfileController::class, 'show'])->name('service.show');
 Route::prefix('article')->name('article.')->group(function () {
     Route::get('/', [PublicArticleController::class, 'index'])->name('index');
     Route::get('/category', [PublicArticleController::class, 'categoryIndex'])->name('category.index');

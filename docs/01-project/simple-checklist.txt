@@ -120,7 +120,7 @@ complete a website feature.
 
 1.1 Platform Surfaces
 ---------------------
-[ ] Service profile module
+[x] Service profile module
 [~] Spa or establishment profile module
 [ ] Therapist profile module
 [ ] Product profile module

@@ -44,6 +44,7 @@ Rules:
 - a quote with unresolved attribution doubt should remain unpublished rather than published with
   a guessed source;
 - translated quote text follows the Translation System; the original language remains preserved.
+- currently, quotes are in English only; whether to translate or use language-specific quotes is pending future decision.
 
 ================================================================================
 3. PLACEMENT AND ROTATION
@@ -52,7 +53,9 @@ Rules:
 Current placement is the homepage right sidebar (Quote of the Day). Future approved placements
 may include Relaxation Rooms, Campus pages, or newsletters without changing quote ownership.
 
-Rotation is time-based (normally daily) from the approved active pool, respecting display
+Users can hide the right sidebar module if they wish not to see it, and this preference will be saved in their settings.
+
+Rotation is once a day from the approved active pool, respecting display
 windows. Rotation does not depend on per-user completion state because there is nothing for the
 user to complete.
 
