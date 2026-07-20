@@ -49,7 +49,7 @@ remain permission-aware, so authorized administrative tools may still appear wit
 ================================================================================
 
 These thresholds apply to ordinary hand-written application code, not project documentation.
-Documentation follows docs/02-governance/documentation-writing-and-management-standard.txt.
+Documentation follows docs/02-governance/documentation-standard.txt.
 
 Target size for ordinary hand-written code:
 Under 250 lines where practical
@@ -254,7 +254,7 @@ docs/
 |
 +-- 02-governance/
 |   +-- ai-assisted-development-workflow.txt
-|   +-- documentation-writing-and-management-standard.txt
+|   +-- documentation-standard.txt
 |   +-- edit-system.txt
 |   +-- github-development-and-repository-operations.txt
 |   +-- shared-project-standards.txt
@@ -301,7 +301,7 @@ docs/
 |   +-- spa-profile-ui.txt
 |
 +-- 07-accounts/
-|   +-- account-identity-registration-and-authentication-system.txt
+|   +-- account-and-authentication-system.txt
 |
 +-- 08-community/
 |   +-- comment-system.txt
@@ -362,8 +362,8 @@ docs/
 |
 +-- 18-policy/
 |   +-- nsfw-mature-and-restricted-content-policy.txt
-|   +-- privacy-notice-and-data-protection-requirements.txt
-|   +-- security-architecture-and-information-disclosure-policy.txt
+|   +-- privacy-and-data-protection.txt
+|   +-- security-and-information-disclosure-policy.txt
 |   +-- terms-of-use-requirements.txt
 |
 +-- 19-reference/

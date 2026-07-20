@@ -1,11 +1,11 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.52
+Document Version: 0.63
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description:
 This document defines the general authenticated User Workspace for Massage Nexus and the
-relationship between the shared network account, Massage Nexus membership, personal client
-context, professional contexts, language, security, research, translation, analytics, and
+relationship between the shared network account, Massage Nexus membership, additive personal,
+professional, operational, and administrative capabilities, language, security, research, translation, analytics, and
 content-access preferences. It also preserves the consolidated Client Service History,
 analytics, budgeting, data-portability, import, export, and therapist-identity-portability
 direction.
@@ -15,8 +15,8 @@ This document incorporates and supersedes:
 - Massage Nexus - 35 - Client Service History Analytics and Data Portability v0.10
 
 Every registered user is considered a client by default. Therapist, establishment operator,
-seller, contributor, advertiser, editor, moderator, and administrator capabilities are
-additional roles or managed contexts attached to that same user account.
+seller, contributor, advertiser, editor, moderator, and administrator capabilities are additive
+roles, direct permissions, or scoped assignments attached to that same user account.
 
 This document also includes the complete Client Service History, analytics, budgeting,
 data-portability, import, export, and therapist-identity-portability direction formerly stored
@@ -24,7 +24,8 @@ in a separate planning document.
 
 The workspace begins at /workspace. It is one permission-aware system rather than several unrelated websites for members, therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators.
 
-A user sees only the areas and actions available to that account and its current context.
+A user sees the combined areas and actions allowed by the account's effective permissions and
+record assignments. The user does not choose a role or context to make those capabilities appear.
 
 ================================================================================
 0. SHARED NETWORK ACCOUNT AND MASSAGE NEXUS MEMBERSHIP
@@ -80,7 +81,7 @@ The User Workspace should:
 - avoid exposing private information through public routes.
 
 ================================================================================
-2. ONE ACCOUNT, SEVERAL CONTEXTS
+2. ONE ACCOUNT, ADDITIVE RESPONSIBILITIES
 ================================================================================
 
 One user may be:
@@ -99,19 +100,14 @@ One user may be:
 - moderator;
 - administrator.
 
-The workspace should not force the user to sign in separately for each role.
+The workspace does not force the user to sign in separately for each role, and it does not expose
+a role or context switcher. Navigation, dashboard cards, queues, and managed records are composed
+automatically from all effective permissions and scoped assignments.
 
-The interface may provide a context switcher.
-
-Examples:
-
-Personal
-The Resting Leaf
-Independent Therapist Practice
-Massage Nexus Editorial
-Advertising Organization
-
-Changing context changes available navigation and managed records. It does not change the person's account identity.
+For example, one person may simultaneously see ordinary client activity, their own practitioner
+profile, two establishments they manage, and an assigned editorial queue. They should not need to
+select "therapist," "operator," or "editor" first. Every record action still performs its own
+authorization check; hiding navigation is not authorization.
 
 ================================================================================
 3. WORKSPACE ROOT
@@ -128,7 +124,7 @@ Suggested default:
 The home page may show:
 
 - greeting;
-- current context;
+- relevant account and assignment summary;
 - important alerts;
 - upcoming booking;
 - pending task;
@@ -146,8 +142,9 @@ The dashboard should not display every possible card to every user.
 Current implementation state (2026-07-20): the workspace shell is implemented behind
 auth + verified + EnsureActiveMember. /workspace redirects to /workspace/home, which renders a
 Personal-context dashboard (greeting via display name with username fallback, account summary,
-My Reviews and My Articles counts linking to their existing workspace areas, and a claim
-invitation card). /workspace/profile edits the public display_name and bio (user_main structure
+My Reviews and My Articles counts linking to workspace-integrated areas, a direct New Article
+action, and a claim invitation card). /workspace/profile edits the public display_name and bio
+(user_main structure
 guide records both fields), and /workspace/setting shows account facts and toggles the separate
 marketing email opt-in. Context switching, notifications, messages, saved, following, history,
 booking, and the remaining areas stay unimplemented; the dashboard names them as coming.
@@ -177,6 +174,7 @@ Activity
 - Booking History;
 - Budget and Analytics;
 - Reviews;
+- Articles;
 - Ratings;
 - Discussions;
 - Media.
@@ -665,6 +663,9 @@ Current implemented Review workspace routes are /workspace/review, /workspace/re
 /spa/{establishment_slug}/review or /therapist/{therapist-slug}/review. My, rejected, received,
 response, report, and revision routes remain planned until their owning workflows are implemented.
 
+The implemented Review list and form use the same workspace navigation shell. Review is not a
+separate global header destination.
+
 Users may:
 
 - start review;
@@ -769,7 +770,7 @@ The contributor should see:
 
 Routes:
 
-/workspace/claim
+/workspace/contribution
 /workspace/verification
 
 Users may:
@@ -781,6 +782,10 @@ Users may:
 - respond to a request;
 - see decision;
 - appeal where allowed.
+
+An ownership, investment, management, operator, self, or representative declaration is submitted
+as reviewable information. It does not create an establishment relationship or access assignment
+until the corresponding verification and authorization decisions are completed.
 
 Private documents remain outside public storage.
 
@@ -838,8 +843,8 @@ Routes:
 
 Booking is governed by Massage Nexus - 31 - Booking and Appointment System v1.00.
 
-The Personal context shows the user's bookings as a client by default. Provider, therapist, or
-operator booking-management tools appear only in an authorized managed context.
+The workspace shows the user's client bookings by default. Provider, therapist, or operator
+booking-management tools appear automatically when the account has the corresponding scoped access.
 
 Initial implementation may show only personal appointment plans, external booking links,
 inquiry status, or request-and-approval booking before live scheduling and payment are enabled.
@@ -1180,7 +1185,7 @@ Phase 3
 - social login;
 - booking and calendar;
 - payments;
-- advertiser context;
+- advertiser capabilities;
 - mobile coverage.
 
 ================================================================================
@@ -1188,23 +1193,26 @@ Phase 3
 ================================================================================
 
 - /workspace is the single authenticated workspace root.
-- Role-specific areas are permission-aware views, not separate websites.
-- One account may hold several roles and contexts.
+- Capability areas are permission-aware views, not separate role workspaces or websites.
+- One account may hold several additive roles, direct permissions, and record assignments.
 - Every user is considered a client by default.
-- Client identity and service history remain available in Personal context even when the user also holds professional or administrative roles.
+- Client identity and service history remain available even when the user also holds professional or administrative capabilities.
 - Private information is not exposed merely because a workspace page exists.
 - Workspace actions use the shared Edit System.
 - Managed-record permission is checked per record.
 - Public profile and private identity remain separate.
 - Mobile clients use the same backend permission system.
 - The workspace should show only relevant navigation and cards.
+- The workspace has no role or context switcher; the interface combines all effective access automatically.
+- Ownership, investment, management, operational access, and administrative access are distinct concepts.
+- One establishment may have several investors, owners, managers, operators, and representatives; one user may relate to several establishments.
+- Contributions and relationship declarations never grant workspace access without review.
 
 ================================================================================
 37. OPEN DECISIONS
 ================================================================================
 
 - final workspace navigation;
-- context-switcher design;
 - first-release workspace modules;
 - dashboard card priorities;
 - exact public profile privacy settings;
@@ -1238,10 +1246,8 @@ This means the account may:
 - add professional, business, contributor, or administrative roles later.
 
 Client is not an exclusive role. A therapist remains a client when booking for themselves.
-An establishment owner remains a client in Personal context. An administrator remains a client
-outside administrative actions.
-
-Professional and managed contexts must not replace or erase the user's Personal client context.
+An establishment owner remains a client. An administrator remains a client outside administrative
+actions. Professional and managed capabilities must not replace or erase the user's client activity.
 
 ================================================================================
 39. HISTORY TYPES

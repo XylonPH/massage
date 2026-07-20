@@ -28,8 +28,8 @@ Related Documents:
 - docs/13-localization/translation-system.txt
 - docs/14-research/data-research-provenance-and-field-verification-system.txt
 - docs/15-business/branded-portal.txt
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
-- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
+- docs/18-policy/privacy-and-data-protection.txt
+- docs/18-policy/security-and-information-disclosure-policy.txt
 
 The spa profile is the normalized public record used for discovery, comparison, services, prices, therapists, facilities, booking enablement, reviews, ratings, corrections, and establishment history. It is not a branded website, database schema, field catalog, form specification, or public help document. Detailed classification definitions remain in Spa Classification.
 

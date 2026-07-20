@@ -2,7 +2,7 @@ Title: Massage Nexus Roadmap
 Document Version: 1.74
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
-Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, role-specific workspaces, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
+Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
 1. ROADMAP RULES
@@ -31,6 +31,12 @@ logout, and password recovery. Pre-coding planning is sufficiently complete for 
 development. Documentation review and technical hardening continue alongside implementation
 rather than blocking all coding. The immediate product target is Massage Nexus Version 1.00,
 the first launch, with persistent, permission-aware spa submission and lifecycle management.
+
+The unified workspace foundation now resolves additive global and record-scoped access, hides
+administrative panels from ordinary members, combines authorized areas without a role selector,
+and accepts authenticated establishment and practitioner contributions with separately reviewed
+relationship declarations and access requests. Reviewer queues, decisions, relationship creation,
+and per-record management editors remain dependencies before the submission lifecycle is complete.
 
 ================================================================================
 PHASE 0. PROJECT DEFINITION, BRAND, AND PLANNING FOUNDATION

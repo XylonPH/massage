@@ -11,7 +11,7 @@ use Throwable;
 
 /**
  * Checks the password against the Have I Been Pwned k-anonymity range API,
- * per docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ * per docs/07-accounts/account-and-authentication-system.txt
  * section 5.2 ("appears in an approved compromised-password source").
  *
  * This intentionally fails OPEN: if the check service is unreachable, a

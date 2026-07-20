@@ -76,6 +76,8 @@ return [
     'listing_therapist_empty_title' => 'No managed practitioner profiles yet',
     'listing_therapist_empty_text' => 'When you claim your therapist profile, its management tools open here: public profile, services and prices, availability, service area, credentials, and official review responses.',
     'listing_therapist_claim_action' => 'Claim your therapist profile',
+    'listing_therapist_unnamed' => 'Unnamed practitioner',
+    'listing_therapist_access_active' => 'Profile access active',
 
     'claim_route_note' => 'Claiming verifies that you are the establishment operator or the practitioner before management access is granted.',
 

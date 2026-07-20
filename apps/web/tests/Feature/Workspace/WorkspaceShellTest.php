@@ -2,6 +2,9 @@
 
 namespace Tests\Feature\Workspace;
 
+use App\Models\AccessAssignment;
+use App\Models\Establishment;
+use App\Models\Practitioner;
 use App\Models\User;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
@@ -10,9 +13,34 @@ class WorkspaceShellTest extends TestCase
 {
     use InteractsWithMongoUsers;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        AccessAssignment::query()->delete();
+        Establishment::query()->delete();
+        Practitioner::query()->delete();
+    }
+
+    protected function tearDown(): void
+    {
+        AccessAssignment::query()->delete();
+        Establishment::query()->delete();
+        Practitioner::query()->delete();
+
+        parent::tearDown();
+    }
+
     public function test_guest_is_redirected_to_login(): void
     {
         $this->get('/workspace/home')->assertRedirect('/login');
+    }
+
+    public function test_administrative_panels_use_the_shared_workspace_login(): void
+    {
+        foreach (['editorial', 'moderation', 'system'] as $panel) {
+            $this->get("/workspace/{$panel}")->assertRedirect('/login');
+        }
     }
 
     public function test_unverified_user_cannot_enter_the_workspace(): void
@@ -33,7 +61,18 @@ class WorkspaceShellTest extends TestCase
         $this->actingAs($user)->get('/workspace')->assertRedirect('/workspace/home');
     }
 
-    public function test_active_member_sees_personal_dashboard(): void
+    public function test_global_header_uses_one_workspace_entry_instead_of_feature_shortcuts(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->get('/')
+            ->assertOk()
+            ->assertSee(route('workspace.home', [], false), false)
+            ->assertDontSee(route('workspace.article.index', [], false), false)
+            ->assertDontSee(route('workspace.review.index', [], false), false);
+    }
+
+    public function test_active_member_sees_adaptive_dashboard_without_administrative_areas(): void
     {
         $user = User::factory()->create(['username' => 'workspacefan1']);
 
@@ -45,6 +84,8 @@ class WorkspaceShellTest extends TestCase
         $response->assertSee(__('workspace.card_claim_title'));
         $response->assertSee(__('workspace.nav_listing_spa'));
         $response->assertSee(__('workspace.nav_listing_therapist'));
+        $response->assertSee(__('workspace.nav_contributions'));
+        $response->assertDontSee(__('workspace.administration_title'));
     }
 
     public function test_dashboard_greets_with_display_name_when_set(): void
@@ -110,10 +151,84 @@ class WorkspaceShellTest extends TestCase
             ->assertSee(route('workspace.contribution.practitioner.create', [], false), false);
     }
 
-    public function test_claim_and_help_routes_render_coming_soon(): void
+    public function test_legacy_claim_routes_redirect_into_the_authenticated_workspace(): void
     {
-        foreach (['/help', '/help/claim'] as $path) {
-            $this->get($path)->assertStatus(200)->assertSee(__('common.coming_soon_badge'));
+        foreach (['/claim', '/claim/spa', '/claim/therapist', '/contribute'] as $path) {
+            $this->get($path)->assertRedirect('/workspace/contribution/establishment/new');
         }
+
+        $this->get('/help')->assertStatus(200)->assertSee(__('common.coming_soon_badge'));
+    }
+
+    public function test_ordinary_member_cannot_open_administrative_panels(): void
+    {
+        $user = User::factory()->create();
+
+        foreach (['editorial', 'moderation', 'system'] as $panel) {
+            $this->actingAs($user)->get("/workspace/{$panel}")->assertForbidden();
+        }
+    }
+
+    public function test_founder_assignment_automatically_adds_all_administrative_areas(): void
+    {
+        $user = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $user->getKey(),
+            'role_workspace' => 'FND',
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'effective_at' => now()->subMinute(),
+        ]);
+
+        $response = $this->actingAs($user)->get('/workspace/home');
+
+        $response->assertOk()
+            ->assertSee(__('workspace.administration_title'))
+            ->assertSee('/workspace/editorial', false)
+            ->assertSee('/workspace/moderation', false)
+            ->assertSee('/workspace/system', false);
+
+        $this->actingAs($user)->get('/workspace/editorial')->assertOk();
+    }
+
+    public function test_scoped_access_combines_multiple_establishments_without_a_context_switcher(): void
+    {
+        $user = User::factory()->create();
+        $first = Establishment::query()->create(['display_name' => ['eng' => 'Calm One']]);
+        $second = Establishment::query()->create(['display_name' => ['eng' => 'Calm Two']]);
+
+        foreach ([$first, $second] as $establishment) {
+            AccessAssignment::query()->create([
+                'user_id' => (string) $user->getKey(),
+                'permission_code_list' => ['establishment.manage'],
+                'scope_access' => 'EST',
+                'scope_record_id' => (string) $establishment->getKey(),
+                'status_access_assignment' => 'ACT',
+            ]);
+        }
+
+        $this->actingAs($user)->get('/workspace/listing/spa')
+            ->assertOk()
+            ->assertSee('Calm One')
+            ->assertSee('Calm Two');
+    }
+
+    public function test_practitioner_assignment_appears_without_changing_workspace_mode(): void
+    {
+        $user = User::factory()->create();
+        $practitioner = Practitioner::query()->create([
+            'practitioner_name' => ['eng' => ['text' => 'Maya Santos']],
+        ]);
+        AccessAssignment::query()->create([
+            'user_id' => (string) $user->getKey(),
+            'role_workspace' => 'THP',
+            'scope_access' => 'PRA',
+            'scope_record_id' => (string) $practitioner->getKey(),
+            'status_access_assignment' => 'ACT',
+        ]);
+
+        $this->actingAs($user)->get('/workspace/listing/therapist')
+            ->assertOk()
+            ->assertSee('Maya Santos');
     }
 }

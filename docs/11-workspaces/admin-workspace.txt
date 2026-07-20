@@ -1,24 +1,29 @@
 Title: Massage Nexus Admin Workspace
-Document Version: 0.50
+Document Version: 0.60
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
 
 Related Documents:
-- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/07-accounts/account-and-authentication-system.txt
 - docs/02-governance/edit-system.txt
 - docs/16-operations/support-and-ticketing-system.txt
 - docs/14-research/analytics-statistics-and-measurement-system.txt
 - docs/02-governance/ai-assisted-development-workflow.txt
 - docs/02-governance/testing-and-quality-assurance-strategy.txt
-- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/security-and-information-disclosure-policy.txt
+- docs/18-policy/privacy-and-data-protection.txt
 - docs/18-policy/nsfw-mature-and-restricted-content-policy.txt
 - docs/04-architecture/cache-and-temporary-data-strategy.txt
 - docs/13-localization/translation-system.txt
 - docs/06-user-interface/admin-workspace-ui.txt
 
 The Admin Workspace is part of /workspace and is shown only through permissions. It should not rely on an unprotected /admin shortcut. It brings together data administration, moderation, verification, editorial management, user access, taxonomy, media, integrations, system operations, analytics, audit, and support.
+
+Administrative capability is not a user-selected workspace mode. The unified workspace automatically
+adds the permitted administrative navigation and dashboard areas alongside the user's ordinary and
+other assigned capabilities. There is no admin-role dropdown or context switcher. Every panel and
+record action still enforces authorization on the server.
 
 This document defines administrative capabilities, workflow boundaries, states, decisions, and safeguards. Screen layout, components, responsive behavior, and detailed interaction patterns are defined in Massage Nexus Admin Workspace User Interface.
 

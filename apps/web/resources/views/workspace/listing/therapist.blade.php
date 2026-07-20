@@ -21,6 +21,18 @@
                     </a>
                     <p class="mt-3 text-xs text-ink-400">{{ __('workspace.claim_route_note') }}</p>
                 </div>
+            @else
+                <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                    @foreach ($practitioners as $practitioner)
+                        <article class="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm">
+                            <h2 class="text-xl font-black text-ink-950">{{ data_get($practitioner->practitioner_name, 'eng.text', __('workspace.listing_therapist_unnamed')) }}</h2>
+                            @if (data_get($practitioner->short_description, 'eng.text'))
+                                <p class="mt-2 text-sm text-ink-600">{{ data_get($practitioner->short_description, 'eng.text') }}</p>
+                            @endif
+                            <p class="mt-4 text-xs font-bold uppercase tracking-wider text-leaf-700">{{ __('workspace.listing_therapist_access_active') }}</p>
+                        </article>
+                    @endforeach
+                </div>
             @endif
         </div>
     </div>

@@ -20,7 +20,7 @@
                 <a href="{{ route('home') }}"><x-logo dark size="h-11" /></a>
             </div>
             <div class="relative p-10">
-                <h2 class="max-w-md text-3xl font-black leading-tight tracking-tight text-white">{{ __('auth.aside_title') }}</h2>
+                <h2 class="max-w-md text-3xl font-black leading-tight tracking-tight text-white">{!! __('auth.aside_title') !!}</h2>
                 <ul class="mt-8 space-y-5">
                     @foreach ([
                         ['text' => __('auth.aside_point_discover'), 'icon' => 'm9 12 2 2 4-4m5.6 2a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0Z'],

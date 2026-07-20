@@ -13,7 +13,7 @@ Related Documents:
 - docs/09-content/review-writing.txt
 - docs/12-booking/booking-and-appointment-system.txt
 - docs/14-research/data-research-provenance-and-field-verification-system.txt
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/privacy-and-data-protection.txt
 
 This document is separate from the Review Writing guide. A review is written experience content. A rating is the score or reaction connected to a target.
 

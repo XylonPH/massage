@@ -34,7 +34,7 @@ Common starting points:
 - Intended repository layout: `docs/01-project/file-and-folder-structure.txt`
 - Shared standards: `docs/02-governance/shared-project-standards.txt`
 - Development workflow: `docs/02-governance/ai-assisted-development-workflow.txt`
-- Documentation rules: `docs/02-governance/documentation-writing-and-management-standard.txt`
+- Documentation rules: `docs/02-governance/documentation-standard.txt`
 - Testing strategy: `docs/02-governance/testing-and-quality-assurance-strategy.txt`
 - Technology direction: `docs/04-architecture/technology-stack.txt`
 - Runtime AI architecture: `docs/04-architecture/runtime-ai-system.txt`
@@ -87,7 +87,7 @@ Do not create unsolicited implementation plans, implementation-note files, hando
 
 Before creating, moving, renaming, splitting, merging, or substantially editing documentation, read:
 
-`docs/02-governance/documentation-writing-and-management-standard.txt`
+`docs/02-governance/documentation-standard.txt`
 
 When documentation changes:
 

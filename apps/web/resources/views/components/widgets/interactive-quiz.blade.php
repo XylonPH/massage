@@ -5,7 +5,7 @@
         <div class="relative flex items-center justify-between">
             <span class="inline-flex items-center gap-1.5 rounded-full bg-ember-100/80 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-ember-700">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-9.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm-.75 4.5a.75.75 0 0 1 1.5 0v2.5a.75.75 0 0 1-1.5 0V11Z"/></svg>
-                {{ __('widget.quiz_label', 'Pop Quiz') }}
+                {{ __('widget.quiz_label') }}
             </span>
             <span class="text-xs font-semibold text-ink-400">1 min</span>
         </div>

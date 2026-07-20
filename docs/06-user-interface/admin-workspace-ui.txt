@@ -1,5 +1,5 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.20
+Document Version: 0.30
 Date Created: 2026-07-19
 Revision Date: 2026-07-20
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
@@ -21,6 +21,11 @@ Related Documents:
 ================================================================================
 
 The Admin Workspace User Interface provides authorized administrators with a consistent way to inspect queues, compare changes, review evidence, make decisions, manage operational systems, and understand the result of each action.
+
+These tools are integrated into the unified /workspace experience. The user does not select an
+"administrator" persona or switch away from their client, practitioner, operator, or other work.
+Navigation and dashboard cards are composed automatically from effective permissions. Security
+contexts described below concern authentication strength and risk isolation; they are not role selectors.
 
 This document owns:
 

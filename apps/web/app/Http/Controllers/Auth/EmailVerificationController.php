@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
- * Per docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ * Per docs/07-accounts/account-and-authentication-system.txt
  * section 6, an unverified user is never logged in, so verification here is
  * driven entirely by the signed link rather than Laravel's default
  * EmailVerificationRequest (which assumes an authenticated user).

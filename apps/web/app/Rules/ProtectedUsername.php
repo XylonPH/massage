@@ -8,7 +8,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 /**
  * Rejects usernames that imply platform authority, ownership, administration,
  * moderation, security, billing, legal authority, official brand status, or
- * system operation, per docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ * system operation, per docs/07-accounts/account-and-authentication-system.txt
  * sections 4.4 and 4.5. This is a curated starting registry, not the full
  * "maintained protected-name registry" the spec anticipates long-term.
  */

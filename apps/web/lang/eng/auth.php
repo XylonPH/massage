@@ -45,7 +45,7 @@ return [
     'log_in_link' => 'Log in',
     'back_to_home' => 'Back to home',
 
-    'aside_title' => 'Find Your Next Great Massage.',
+    'aside_title' => 'Find Your Next Great <span class="text-ember-500">Massage.</span>',
     'aside_point_discover' => 'Discover verified spas and skilled therapists near you',
     'aside_point_book' => 'Book appointments and keep your service history in one place',
     'aside_point_learn' => 'Learn with Massage Campus courses, guides, and quizzes',

@@ -1,6 +1,6 @@
 <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
     <div class="flex items-center justify-between">
-        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.trending_spas', 'Trending Spas') }}</h3>
+        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.trending_spas') }}</h3>
         <span class="inline-flex items-center gap-1 rounded-md bg-leaf-50 px-2 py-1 text-xs font-bold text-leaf-700">
             <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M12.577 4.878a.75.75 0 0 1 .919-.53l4.78 1.281a.75.75 0 0 1 .531.919l-1.281 4.78a.75.75 0 0 1-1.448-.387l.81-3.022a19.407 19.407 0 0 0-5.594 5.203.75.75 0 0 1-1.139.093L7 10.06l-4.72 4.72a.75.75 0 0 1-1.06-1.061l5.25-5.25a.75.75 0 0 1 1.06 0l4.07 4.07a20.923 20.923 0 0 1 5.187-4.872l-3.213-.86a.75.75 0 0 1-.53-.919Z" clip-rule="evenodd"/></svg>
             Top 3

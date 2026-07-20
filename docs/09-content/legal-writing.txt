@@ -65,9 +65,9 @@ publication.
 
 The current internal authorities include:
 - docs/18-policy/terms-of-use-requirements.txt;
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt;
+- docs/18-policy/privacy-and-data-protection.txt;
 - docs/18-policy/nsfw-mature-and-restricted-content-policy.txt;
-- docs/18-policy/security-architecture-and-information-disclosure-policy.txt.
+- docs/18-policy/security-and-information-disclosure-policy.txt.
 
 Future requirement documents may govern Community Guidelines, review and contribution rules,
 media uploads, cookies, copyright complaints, accessibility, bookings, cancellations, refunds,
@@ -677,11 +677,11 @@ Open decisions:
 ================================================================================
 
 - docs/18-policy/terms-of-use-requirements.txt owns future Terms content requirements.
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt owns privacy architecture and
+- docs/18-policy/privacy-and-data-protection.txt owns privacy architecture and
   future Privacy Notice content requirements.
 - docs/18-policy/nsfw-mature-and-restricted-content-policy.txt owns NSFW classification, access,
   moderation, and publication requirements.
-- docs/18-policy/security-architecture-and-information-disclosure-policy.txt owns public and
+- docs/18-policy/security-and-information-disclosure-policy.txt owns public and
   internal security-disclosure boundaries.
 - docs/13-localization/translation-system.txt owns legal and high-risk translation workflow.
 - docs/01-project/site-structure-map.txt owns public legal routes.

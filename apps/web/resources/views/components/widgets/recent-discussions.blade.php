@@ -1,6 +1,6 @@
 <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
     <div class="flex items-center justify-between">
-        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.recent_discussions', 'Community Buzz') }}</h3>
+        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.recent_discussions') }}</h3>
     </div>
 
     <ul class="mt-5 divide-y divide-ink-50">

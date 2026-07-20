@@ -19,7 +19,7 @@
  *   personal-profile record for one registered user. Account, credential,
  *   contact, and membership responsibilities stay embedded in this one
  *   collection for the initial implementation, per
- *   docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ *   docs/07-accounts/account-and-authentication-system.txt
  *   section 18, which also records the later split candidates (sessions,
  *   passkeys, security events, external identities).
  * - This guide documents the fields the application already reads and writes

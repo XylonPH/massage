@@ -942,16 +942,17 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - TOTP two-factor authentication
 - Recovery codes
 - Passkeys through WebAuthn
-- One account with several permission-aware contexts
+- One account with additive roles, permissions, and scoped record assignments
 
 
 8.2 User as Client by Default
 -----------------------------
 - Every registered user is a client by default
-- Personal context remains available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
-- Professional or managed roles do not replace the Personal client context
+- Ordinary client capabilities remain available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
+- Professional, operational, and administrative capabilities do not replace ordinary client capabilities
 - One user account may manage several establishments, affiliations, or organizations
-- Context switcher
+- Automatic permission-aware dashboard and navigation composition with no role or context switcher
+- Ownership, investment, management, representation, and workspace access stored and reviewed separately
 
 
 8.3 Public User Profile
@@ -2009,18 +2010,17 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Payout and tax configuration later
 
 
-15.2 Permission-Aware Workspaces
---------------------------------
-- One User Workspace
-- Personal client context
-- Therapist managed context
-- Establishment operator context
-- Seller context
-- Contributor context
-- Advertiser context
-- Editor, moderator, and administrator contexts
-- Context switcher
+15.2 Permission-Aware Capability Areas
+--------------------------------------
+- One unified User Workspace
+- Ordinary client capabilities
+- Practitioner-profile management
+- Establishment operations
+- Seller, contributor, and advertiser tools
+- Editorial, moderation, and administration tools
+- Automatic combined dashboard and navigation with no role or context switcher
 - Reception, therapist, manager, finance, and owner permissions
+- Separate relationship records and scoped access assignments
 
 
 15.3 Profile and Service Management
@@ -3717,11 +3717,11 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 - Backlog monitoring
 
 ================================================================================
-32. ROLE-SPECIFIC WORKSPACES
+32. UNIFIED ADAPTIVE WORKSPACE
 ================================================================================
 
-32.1 User Workspace
--------------------
+32.1 Shared Personal Capabilities
+---------------------------------
 - Personal dashboard
 - Public-profile controls
 - Bookings
@@ -3746,33 +3746,35 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 - Privacy controls
 - Export and deletion
 
-32.2 Professional and Commercial Workspaces
--------------------------------------------
-- Therapist Workspace
-- Operator Workspace
-- Reception Workspace
-- Manager Workspace
-- Finance Workspace
-- Owner Workspace
-- Seller Workspace
-- Advertiser Workspace
-- School or training Workspace
-- Branded Portal Workspace
-- Multi-branch Workspace
-- Multi-provider Workspace
+32.2 Professional and Commercial Capability Areas
+--------------------------------------------------
+- Practitioner-profile management
+- Establishment operations
+- Reception and scheduling
+- Management and finance
+- Ownership and investor relationship records
+- Seller operations
+- Advertising operations
+- School or training operations
+- Branded Portal administration
+- Multi-branch and multi-provider management
+- Several establishments combined automatically according to scoped access
+- No role or context selector
 
-32.3 Contribution and Editorial Workspaces
-------------------------------------------
-- Contributor Workspace
-- Correspondent Workspace
-- Researcher Workspace
-- Translator Workspace
-- Review Editor Workspace
-- Article Editor Workspace
-- News Editor Workspace
-- Campus Editor Workspace
-- Media Editor Workspace
-- Steward Workspace
+32.3 Contribution and Editorial Capability Areas
+-------------------------------------------------
+- Authenticated establishment and practitioner contributions
+- Relationship declarations and separate access requests
+- Contributor tools
+- Correspondent tools
+- Research tools
+- Translation tools
+- Review editing
+- Article editing
+- News editing
+- Campus editing
+- Media editing
+- Stewardship tools
 - Assignment queue
 - Drafts
 - Evidence
@@ -3782,16 +3784,16 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 - Publication
 - Credit and attribution
 
-32.4 Internal Workspaces
-------------------------
-- Support Agent Workspace
-- Moderator Workspace
-- Trust and Safety Workspace
-- Privacy Workspace
-- Security Workspace
-- Administrator Workspace
-- Taxonomy Workspace
-- Analytics Workspace
+32.4 Administrative and Internal Capability Areas
+--------------------------------------------------
+- Support operations
+- Moderation
+- Trust and Safety
+- Privacy operations
+- Security operations
+- Platform administration
+- Taxonomy administration
+- Analytics and measurement tools
 - Advertising Administration
 - Payment and Finance Administration
 - System status
@@ -3799,6 +3801,7 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 - Restricted evidence
 - High-impact confirmation
 - Permission and role management
+- Permission-filtered navigation and dashboards shown automatically within /workspace
 
 ================================================================================
 33. LOCALIZATION AND TRANSLATION

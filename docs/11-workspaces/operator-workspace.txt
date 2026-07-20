@@ -1,5 +1,5 @@
 Title: Massage Nexus Operator Workspace
-Document Version: 0.41
+Document Version: 0.51
 Date Created: 2026-07-16
 Revision Date: 2026-07-20
 Document Description: Defines the private, permission-aware Operator Workspace used by authorized people to manage one or more establishment profiles, branches, public business information, services, staff relationships, media, booking operations, verification, documents, and analytics without controlling independent community or editorial content.
@@ -7,15 +7,15 @@ Document Description: Defines the private, permission-aware Operator Workspace u
 Related Documents:
 - docs/02-governance/edit-system.txt
 - docs/05-directory/spa-profile.txt
-- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/07-accounts/account-and-authentication-system.txt
 - docs/12-booking/booking-and-appointment-system.txt
 - docs/12-booking/provider-scheduling-resource-and-walk-in-management.txt
 - docs/14-research/data-research-provenance-and-field-verification-system.txt
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
-- docs/18-policy/security-architecture-and-information-disclosure-policy.txt
+- docs/18-policy/privacy-and-data-protection.txt
+- docs/18-policy/security-and-information-disclosure-policy.txt
 
-The accepted workspace name is Operator Workspace. Operator is the broad functional term for an
-authorized person using it; the person may be a legal owner, branch manager, franchise operator,
+Operator Workspace names the establishment-operation capability area inside the unified workspace.
+Operator is a broad functional term for an authorized person using it; the person may be a legal owner, branch manager, franchise operator,
 hotel or resort representative, administrator, receptionist, marketing staff member, finance
 staff member, agency representative, or another authorized participant.
 
@@ -63,7 +63,7 @@ The Operator Workspace should:
 One person may hold several permission groups.
 
 ================================================================================
-3. WORKSPACE ACCESS AND CONTEXT
+3. WORKSPACE ACCESS AND ASSIGNMENT
 ================================================================================
 
 Primary route family:
@@ -75,22 +75,20 @@ Possible later shortcut:
 
 /workspace/establishment
 
-The context switcher may allow the user to move among:
+There is no role or context switcher. The establishment list combines every establishment for
+which the user has effective scoped access. Personal, practitioner, editorial, or other authorized
+areas remain visible alongside it when applicable.
 
-- personal account;
-- one establishment;
-- another branch;
-- independent therapist practice;
-- seller organization;
-- advertising organization.
+Legal ownership, beneficial investment, business management, and Massage Nexus operational access
+are distinct. An operator may be an owner, investor, manager, employee, or authorized representative,
+but the operator label does not prove ownership. One establishment may have several people in each
+relationship type, and one person may hold relationships or access assignments across several establishments.
 
-Changing context changes available records and actions. It does not change the user's account identity.
-
-Current implementation state (2026-07-20): /workspace/listing/spa is implemented inside the
-workspace shell for every active member. Because claim records do not exist yet, it renders the
-managed-establishment empty state with the /claim/spa route as the entry point, matching the
-rule that management authority comes from the claim workflow rather than a pre-assigned role.
-Per-establishment management routes and the dashboard below remain unimplemented.
+Current implementation state (2026-07-20): /workspace/listing/spa is implemented and resolves
+explicit establishment-scoped access assignments. Active members without such assignments receive
+an empty state leading to /workspace/contribution/establishment/new. The authenticated contribution
+form records public details, a declared establishment relationship, and an optional access request
+for review; it does not grant management authority. Per-establishment editing routes remain unimplemented.
 
 ================================================================================
 4. DASHBOARD
@@ -116,7 +114,9 @@ The establishment dashboard may show:
 - assigned tasks;
 - system alerts.
 
-Only information related to the current establishment should appear.
+Each establishment card, task, and action must identify its establishment and enforce that record's
+scope. When several establishments are assigned, their relevant information may be combined without
+requiring the user to switch contexts.
 
 ================================================================================
 5. PROFILE MANAGEMENT
@@ -966,6 +966,10 @@ Phase 3
 - The workspace supports owners, managers, and authorized staff.
 - It is part of the single /workspace system.
 - Establishment-specific permission is required.
+- The interface combines all authorized establishments and does not use a role or context switcher.
+- Ownership, investment, management, representation, and workspace access remain separate records and decisions.
+- An establishment may have several investors or operators, and a person may be connected to several establishments.
+- A contribution or declared relationship never grants operator access before review.
 - The establishment controls official provider information, not independent reviews or universal Service identity.
 - establishment_service stores exact provider menu items.
 - Therapist universal identity remains separate from establishment affiliation.

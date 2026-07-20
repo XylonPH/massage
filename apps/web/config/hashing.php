@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Massage Nexus uses Argon2id per the accepted password policy in
-    | docs/07-accounts/account-identity-registration-and-authentication-system.txt
+    | docs/07-accounts/account-and-authentication-system.txt
     | section 5.4. Passwords are never stored in plaintext or reversibly
     | encrypted; this is the one-way hashing driver used to verify them.
     |

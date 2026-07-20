@@ -1,6 +1,6 @@
 <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm">
     <div class="flex items-center justify-between">
-        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.recent_reviews', 'Recent Reviews') }}</h3>
+        <h3 class="text-base font-black tracking-tight text-ink-950">{{ __('widget.recent_reviews') }}</h3>
     </div>
 
     <div class="mt-5 space-y-4">

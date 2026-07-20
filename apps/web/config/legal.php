@@ -7,7 +7,7 @@ return [
     | Versioned Policy Acceptance
     |--------------------------------------------------------------------------
     |
-    | docs/07-accounts/account-identity-registration-and-authentication-system.txt
+    | docs/07-accounts/account-and-authentication-system.txt
     | requires a versioned Terms acceptance and Privacy acknowledgment record.
     | The actual Terms of Use and Privacy Notice documents have not been
     | drafted yet (docs/01-project/simple-checklist.txt still lists Terms of

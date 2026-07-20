@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Workspace;
 
 use App\Http\Controllers\Controller;
 use App\Models\Establishment;
+use App\Models\Practitioner;
 use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -30,10 +31,16 @@ class ListingController extends Controller
         ]);
     }
 
-    public function therapistIndex(Request $request): View
+    public function therapistIndex(Request $request, WorkspaceAccess $workspaceAccess): View
     {
+        $practitionerIds = $workspaceAccess->scopedRecordIds(
+            $request->user(),
+            'practitioner.manage',
+            'PRA',
+        );
+
         return view('workspace.listing.therapist', [
-            'practitioners' => [],
+            'practitioners' => Practitioner::query()->whereIn('_id', $practitionerIds)->get(),
         ]);
     }
 }

@@ -11,7 +11,7 @@ Related Documents:
 - docs/05-directory/service-profile.txt
 - docs/05-directory/spa-profile.txt
 - docs/05-directory/therapist-classification.txt
-- docs/07-accounts/account-identity-registration-and-authentication-system.txt
+- docs/07-accounts/account-and-authentication-system.txt
 - docs/08-community/rating-system.txt
 - docs/08-community/reputation-system.txt
 - docs/09-content/review-writing.txt
@@ -25,7 +25,7 @@ Related Documents:
 - docs/13-localization/translation-system.txt
 - docs/14-research/data-research-provenance-and-field-verification-system.txt
 - docs/15-business/branded-portal.txt
-- docs/18-policy/privacy-notice-and-data-protection-requirements.txt
+- docs/18-policy/privacy-and-data-protection.txt
 
 The therapist profile is the normalized public professional record used for discovery, services, affiliations, prices, availability, booking enablement, credentials, reviews, ratings, corrections, and professional history. It connects to, but remains distinct from, the therapist's user account, professional-context relationship records, private workspace, booking records, and branded website.
 

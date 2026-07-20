@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.45
+Document Version: 2.56
 Date Created: 2026-07-10
 Revision Date: 2026-07-20
 
@@ -106,7 +106,8 @@ Directory discovery route style:
 /directory/{directory-group}/{directory-slug}
 
 Workspace route style:
-Every registered user is a client by default in Personal context.
+Every registered user has ordinary client capabilities by default. Additional permitted areas are
+combined automatically; there is no role or context selector.
 /workspace
 /workspace/{workspace-area}
 /workspace/{workspace-area}/{workspace-section}
@@ -157,8 +158,6 @@ A branded portal does not require a public first-level /portal route. Portal adm
 /review
 /chat
 /user
-/contribute
-/claim
 /verify
 /report
 /newsletter
@@ -196,8 +195,6 @@ massagenexus.com
     /review
     /chat
     /user
-    /contribute
-    /claim
     /verify
     /report
     /newsletter
@@ -1595,35 +1592,12 @@ media-guidelines
 review-response-guidelines
 
 ================================================================================
-23. CONTRIBUTION, CLAIMING, VERIFICATION, AND REPORTING
+23. AUTHENTICATED CONTRIBUTION, VERIFICATION, AND REPORTING
 ================================================================================
 
-/contribute
-/contribute/spa
-/contribute/therapist
-/contribute/product
-/contribute/seller
-/contribute/service
-/contribute/media
-/contribute/correction
-/contribute/closure
-/contribute/duplicate
-/contribute/source
-/contribute/translation
-/contribute/article
-/contribute/review
-/contribute/status
-/contribute/history
-
-/claim
-/claim/spa
-/claim/spa/{establishment_slug}
-/claim/therapist
-/claim/therapist/{therapist-slug}
-/claim/seller
-/claim/seller/{seller-slug}
-/claim/status
-/claim/history
+Contribution forms, status, and history belong under /workspace/contribution. Public profile actions
+may invite a person to contribute or claim, but an unauthenticated person must sign in before the
+form opens. Legacy /contribute and /claim paths redirect to that authenticated flow.
 
 /verify
 /verify/profile
@@ -2038,7 +2012,6 @@ document areas.
 /workspace/loyalty
 /workspace/finance
 /workspace/listing
-/workspace/claim
 /workspace/affiliation
 /workspace/service
 /workspace/media
@@ -2364,11 +2337,12 @@ reward
 /workspace/finance/reconciliation
 /workspace/finance/export
 
-Personal context shows the user's client bookings and history by default.
-Provider, therapist, scheduling, loyalty, and finance tools appear only in authorized managed contexts.
+The user's client bookings and history appear by default. Provider, practitioner, scheduling,
+loyalty, finance, editorial, moderation, and administrative tools appear automatically only when
+the account has corresponding effective access.
 
 ================================================================================
-35. WORKSPACE LISTING, CLAIM, AND AFFILIATION AREAS
+35. WORKSPACE LISTING, CONTRIBUTION, ACCESS, AND AFFILIATION AREAS
 ================================================================================
 
 /workspace/listing
@@ -2447,18 +2421,18 @@ Provider, therapist, scheduling, loyalty, and finance tools appear only in autho
 /workspace/listing/therapist/{therapist-id}/response
 /workspace/listing/therapist/{therapist-id}/history
 
-/workspace/claim
-/workspace/claim/spa
-/workspace/claim/therapist
-/workspace/claim/seller
-/workspace/claim/product
-/workspace/claim/pending
-/workspace/claim/approved
-/workspace/claim/rejected
-/workspace/claim/history
-/workspace/claim/document
-/workspace/claim/contact
-/workspace/claim/proof
+/workspace/contribution
+/workspace/contribution/establishment/new
+/workspace/contribution/practitioner/new
+/workspace/contribution/status
+/workspace/contribution/history
+
+Relationship declarations, proof, verification, and access requests may be attached to a
+contribution or existing listing. Ownership, investment, management, representation, and workspace
+access are separate records and decisions. No contribution or declaration grants access by itself.
+
+Legacy public entry paths such as /contribute, /claim, /claim/spa, and /claim/therapist redirect
+into the authenticated workspace contribution flow. They are not public submission workspaces.
 
 /workspace/affiliation
 /workspace/affiliation/spa
@@ -2745,8 +2719,13 @@ Current web implementation (2026-07-20):
 - /workspace/article/new, /workspace/article/{article-id}/edit,
   /workspace/article/{article-id}/revision, and the POST submit action provide private author-owned
   drafting and review submission for active verified members.
+- Article lists, editing, revisions, Review lists, and Review editing use the unified workspace
+  navigation shell. Article and Review do not receive separate shortcuts in the global header.
+- The Article editor supports controlled visual and HTML editing, anonymous public attribution, and
+  permission-scoped proposed publication times without bypassing editorial approval.
 - Category/tag discovery is implemented publicly. Workspace media, reaction, analytics, and the
-  editorial review/publish controls remain separate follow-up work and must not be represented as live.
+  editorial decision, final publication, and scheduled publishing controls remain separate follow-up
+  work and must not be represented as live.
 
 /workspace/campus
 /workspace/campus/home
@@ -3332,8 +3311,6 @@ Real public pages:
 /room/{room-slug}
 /review/{review-slug}
 /user/{user-slug}
-/contribute
-/claim
 /verify
 /report
 /newsletter
@@ -3382,7 +3359,6 @@ Workspace pages:
 /workspace/loyalty
 /workspace/finance
 /workspace/listing
-/workspace/claim
 /workspace/affiliation
 /workspace/service
 /workspace/media

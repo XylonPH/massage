@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Notifications\PasswordResetLink;
 use App\Support\Workspace\WorkspaceAccess;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
@@ -17,7 +18,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
 
 /**
  * The account, credential, contact, and membership record boundaries here
- * follow docs/07-accounts/account-identity-registration-and-authentication-system.txt
+ * follow docs/07-accounts/account-and-authentication-system.txt
  * section 18 (Conceptual Record Responsibilities). These stay embedded in
  * one collection for the initial implementation, per that document's
  * guidance to avoid premature collection splitting.
@@ -29,7 +30,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
     'is_marketing_email_opt_in',
 ])]
 #[Hidden(['password', 'remember_token'])]
-class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmailContract
+class User extends MongoAuthenticatable implements FilamentUser, HasName, MustVerifyEmailContract
 {
     use HasFactory, MustVerifyEmail, Notifiable;
 
@@ -76,6 +77,11 @@ class User extends MongoAuthenticatable implements FilamentUser, MustVerifyEmail
     public function publicName(): string
     {
         return $this->display_name ?: $this->username;
+    }
+
+    public function getFilamentName(): string
+    {
+        return $this->publicName();
     }
 
     public function isActive(): bool

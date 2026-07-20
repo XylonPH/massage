@@ -484,10 +484,11 @@ Use:
 3.5 User as Client by Default
 -----------------------------
 [x] Every registered user is a client by default
-[ ] Personal context remains available to therapists, operators, sellers, contributors, advertisers, editors, moderators, and administrators
-[ ] Professional or managed roles do not replace the Personal client context
-[ ] One user account may manage several establishments, affiliations, or organizations
-[ ] Context switcher
+[~] Ordinary client capabilities remain available when professional, operational, or administrative access is added
+[~] Professional and managed capabilities do not replace ordinary client capabilities
+[~] One user account can combine several scoped establishment, practitioner, or administrative assignments
+[x] No role or context switcher; navigation and dashboard areas are composed automatically from effective access
+[x] Administrative panels deny ordinary users and require explicit active assignments
 
 3.6 Public User Profile
 -----------------------
@@ -1884,18 +1885,18 @@ Use:
 [ ] Payout and tax configuration
 [ ] Create provider claim and onboarding material
 
-13.2 Permission-Aware Management Contexts
------------------------------------------
-[ ] One personal account area
-[ ] Personal client context
-[ ] Therapist managed context
-[ ] Establishment operator context
-[ ] Seller context
-[ ] Contributor context
-[ ] Advertiser context
-[ ] Editor, moderator, and administrator contexts
-[ ] Context switcher
+13.2 Permission-Aware Management Capabilities
+---------------------------------------------
+[~] One unified account workspace
+[~] Ordinary client capabilities
+[~] Practitioner-profile management
+[~] Establishment operations
+[ ] Seller and advertiser tools
+[~] Contributor tools
+[~] Editorial, moderation, and administration tools
+[x] Automatic combined dashboard and navigation with no role or context switcher
 [ ] Reception, therapist, manager, finance, and owner permissions
+[x] Separate establishment relationship records and scoped access assignments
 
 13.3 Profile and Service Management
 -----------------------------------
@@ -2421,9 +2422,13 @@ Use:
 18. CONTRIBUTIONS, DATA RESEARCH, PROVENANCE, AND VERIFICATION
 ================================================================================
 
-18.1 Listing Submissions and Edits
+18.1 Authenticated Listing Submissions and Edits
 ----------------------------------
-[ ] Submit new listing
+[~] Submit a new establishment or practitioner contribution from /workspace
+[x] Require sign-in, verified email, and active membership before contribution
+[x] Record establishment owner, investor, manager, operator, or representative declarations separately from access
+[x] Record practitioner self or representative declarations separately from access
+[x] Keep access requests pending; a declaration never grants management authority automatically
 [ ] Suggest edit
 [ ] Suggest closure
 [ ] Suggest reopening
@@ -2459,7 +2464,7 @@ Use:
 
 18.4 Contribution Workflow
 --------------------------
-[ ] Contribution approval workflow
+[~] Contribution approval workflow (member submission and pending status implemented; reviewer decision interface pending)
 [ ] Contribution rejection reason
 [ ] Contribution edit history
 [ ] Contributor credit
@@ -2655,7 +2660,7 @@ Use:
 
 20.1 Admin Dashboard and Management
 -----------------------------------
-[x] Admin dashboard
+[~] Permission-aware admin foundation and dashboard entry cards
 [ ] Listing management
 [ ] User management
 [ ] Spa management

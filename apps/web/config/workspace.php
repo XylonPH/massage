@@ -17,6 +17,8 @@ return [
         'EAD' => ['workspace.editorial.access', 'article.schedule'],
         'MOD' => ['workspace.moderation.access'],
         'SYS' => ['workspace.system.access'],
+        'OPR' => ['establishment.manage'],
+        'THP' => ['practitioner.manage'],
     ],
 
     'administrative_area_list' => [
