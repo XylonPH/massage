@@ -10,6 +10,7 @@ _id
 accessed_at
 accessibility_feature_list
 accessibility_information
+account_preference
 action_category
 action_type
 actor_ip_address
@@ -46,6 +47,7 @@ assignment_reason
 attribution_name
 author_credit_list
 author_user_id_list
+avatar_media_image_id
 bed_mat_chair_setup
 birth_date
 border_config
@@ -103,6 +105,7 @@ day_pattern
 decided_at
 decision_note
 decision_reason
+default_avatar_key
 default_value
 department
 detected_person_list
@@ -147,6 +150,7 @@ exercise_description
 experience_year_count
 expires_at
 expiry_date
+fallback_language_id
 fci
 fee_label
 field_description
@@ -194,6 +198,7 @@ identifier_masked
 image_title
 image_variant_list
 included_product_list
+interface_language_id
 internal_note
 internal_role
 interval_list
@@ -805,6 +810,7 @@ updated_by_user_id
 uploaded_by_user_id
 usage_count
 user_id
+user_slug
 username
 valid_from
 valid_until

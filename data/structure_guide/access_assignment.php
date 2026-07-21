@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Access Assignment Structure Guide
- * Version: 0.30
+ * Version: 0.40
  * Collection: access_assignment
  * Description: Stores one additive role or direct-permission assignment for a user within an optional scope.
  * Purpose: Documents the access_assignment record shape for review, validation, comparison, and implementation without acting as runtime authorization code, a migration, or a seed.
@@ -10,10 +10,11 @@
  * - Personal user capabilities do not require an assignment.
  * - Only active assignments inside their effective and expiry window grant access.
  * - Establishment ownership or management belongs to establishment_person or organization_establishment; this collection owns only permissions.
+ * - role_workspace and permission_code_list use data/taxonomy/massage_nexus/workspace_access.json.
  */
 
 $created_at = '2026-07-20T10:31:38Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-21T13:09:31Z';
 $access_assignment_default = [
     'permission_code_list' => [],
     'scope_access' => 'GBL',
@@ -23,8 +24,8 @@ $access_assignment_default = [
 $access_assignment = [
     '_id' => 'Aa7K2pQ9xR4tV8zN', // Canonical 16-character assignment identifier.
     'user_id' => 'U2pR7vX4kT9mC5qL', // User receiving the assignment.
-    'role_workspace' => 'editor', // Optional workspace role bundle.
-    'permission_code_list' => ['article.publish'], // Direct permission codes added by this assignment.
+    'role_workspace' => 'EAD', // Optional Editorial Administrator workspace role bundle.
+    'permission_code_list' => ['article.schedule'], // Direct permission codes added by this assignment.
     'scope_access' => 'GBL', // Scope code; GBL means global.
     'scope_record_id' => null, // Scoped record identifier; omitted or null for GBL.
     'status_access_assignment' => 'ACT', // Current assignment lifecycle or approval status.
@@ -57,17 +58,17 @@ $access_assignment_field_order = [
 $access_assignment_embedded_structure = [];
 
 $access_assignment_field_property = [
-    '_id' => ['field_label' => 'Access Assignment ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'is_mandatory' => true, 'is_indexed' => true],
-    'user_id' => ['field_label' => 'User ID', 'field_description' => 'user_main._id receiving the assignment.', 'type_data' => 'S', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-    'role_workspace' => ['field_label' => 'Workspace Role', 'field_description' => 'Optional role bundle from workspace access taxonomy.', 'type_data' => 'S'],
-    'permission_code_list' => ['field_label' => 'Permission Code List', 'field_description' => 'Stable application permission codes granted directly.', 'type_data' => 'A'],
-    'scope_access' => ['field_label' => 'Access Scope', 'field_description' => 'Global or record-bound assignment scope.', 'type_data' => 'S', 'is_mandatory' => true, 'is_indexed' => true],
-    'scope_record_id' => ['field_label' => 'Scope Record ID', 'field_description' => 'Target identifier required for a non-global scope.', 'type_data' => 'S', 'is_relational' => true, 'is_indexed' => true],
-    'status_access_assignment' => ['field_label' => 'Assignment Status', 'field_description' => 'Current assignment approval and lifecycle state.', 'type_data' => 'S', 'is_mandatory' => true, 'is_indexed' => true],
+    '_id' => ['field_label' => 'Access Assignment ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true, 'is_indexed' => true],
+    'user_id' => ['field_label' => 'User ID', 'field_description' => 'user_main._id receiving the assignment.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+    'role_workspace' => ['field_label' => 'Workspace Role', 'field_description' => 'Optional role bundle from workspace access taxonomy.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'permission_code_list' => ['field_label' => 'Permission Code List', 'field_description' => 'Stable namespaced application capability codes granted directly.', 'type_data' => 'A', 'type_field' => 'TAG', 'default_value' => []],
+    'scope_access' => ['field_label' => 'Access Scope', 'field_description' => 'Global or record-bound assignment scope.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
+    'scope_record_id' => ['field_label' => 'Scope Record ID', 'field_description' => 'Target identifier required for a non-global scope.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true, 'is_indexed' => true],
+    'status_access_assignment' => ['field_label' => 'Assignment Status', 'field_description' => 'Current assignment approval and lifecycle state.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
     'effective_at' => ['field_label' => 'Effective At', 'field_description' => 'UTC time when the assignment begins granting access.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'expires_at' => ['field_label' => 'Expires At', 'field_description' => 'Optional UTC time when the assignment stops granting access.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_indexed' => true],
-    'assigned_by_user_id' => ['field_label' => 'Assigned By User ID', 'field_description' => 'user_main._id of the assigning actor.', 'type_data' => 'S', 'is_mandatory' => true, 'is_relational' => true],
-    'assignment_reason' => ['field_label' => 'Assignment Reason', 'field_description' => 'Required explanation for granting access.', 'type_data' => 'S', 'max_character' => 1000, 'is_mandatory' => true],
+    'assigned_by_user_id' => ['field_label' => 'Assigned By User ID', 'field_description' => 'user_main._id of the assigning actor.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true],
+    'assignment_reason' => ['field_label' => 'Assignment Reason', 'field_description' => 'Required explanation for granting access.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 1000, 'is_mandatory' => true],
     'revoked_at' => ['field_label' => 'Revoked At', 'field_description' => 'UTC time when the assignment was revoked.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC record creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC record update time.', 'type_data' => 'S', 'type_field' => 'DTS'],
@@ -91,7 +92,7 @@ $access_assignment_index_list = [
 
 $access_assignment_boundary = [
     'owns' => ['assignment scope, role, direct permissions, effective window, status, and audit fields'],
-    'references' => ['user_main through user_id and assigned_by_user_id', 'a scoped target through scope_record_id'],
+    'reference_field_list' => ['user_id', 'scope_record_id', 'assigned_by_user_id'],
     'does_not_own' => ['personal user capabilities', 'establishment ownership or management facts', 'application authorization implementation'],
 ];
 

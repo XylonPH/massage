@@ -1,7 +1,7 @@
 Title: Massage Nexus Account Identity Registration and Authentication System
-Document Version: 1.31
+Document Version: 1.41
 Date Created: 2026-07-18
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 DOCUMENT PURPOSE
 ----------------
@@ -57,6 +57,10 @@ A future visit to another network site may reuse universal settings, but the use
 - configure genuinely site-specific preferences.
 
 1.3 Universal and Site-Specific Settings
+
+The authoritative profile, preference, Settings-interface, avatar, cover, and detailed booking-
+preference boundaries are defined in docs/07-accounts/user-profile-and-preference-system.txt.
+This section preserves the account-architecture summary.
 
 Universal settings should not be repeatedly requested by every network site unless a user
 chooses to override them:
@@ -649,6 +653,9 @@ use Laravel authentication while preserving the architecture needed for later fe
 13. LANGUAGE, TIME ZONE, LOCATION, AND ONBOARDING
 ================================================================================
 
+Current preference storage and the Settings interface follow
+docs/07-accounts/user-profile-and-preference-system.txt.
+
 13.1 Automatic Suggestions
 
 The system may suggest:
@@ -707,6 +714,10 @@ Public display identity and private legal or recovery identity remain separate.
 ================================================================================
 15. DEFAULT AVATAR AND USER MEDIA
 ================================================================================
+
+The complete user-profile and media-reference boundary is defined in
+docs/07-accounts/user-profile-and-preference-system.txt. This section preserves the account and
+authentication requirements that affect onboarding and safe identity presentation.
 
 15.1 Default Avatar
 
@@ -877,6 +888,8 @@ user_main:
   accessibility, notification, community, and content-visibility preferences where applicable;
 - a current convenience flag may summarize whether a required policy step is outstanding, but it
   is not the authoritative evidence that the user accepted or acknowledged a particular version.
+- the accepted profile fields, embedded account_preference shape, media references, and Settings
+  distinction are defined in docs/07-accounts/user-profile-and-preference-system.txt.
 
 user_policy:
 - history-preserving records of the user's required policy acceptance, privacy or policy
@@ -912,7 +925,8 @@ Profile:
 - public Massage Nexus identity and visibility-controlled information.
 
 Preference:
-- universal and site-specific current settings, initially bounded within user_main.
+- universal and site-specific current settings, initially bounded within user_main as the embedded
+  account_preference object; detailed reusable booking preferences belong to client_booking_default.
 
 Session and device:
 - active authentication sessions and recognized devices.

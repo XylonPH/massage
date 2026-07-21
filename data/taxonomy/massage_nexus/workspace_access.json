@@ -9,11 +9,15 @@
         "is_translatable": true,
         "field_option": [
             { "option_code": "FND", "option_label": "Founder", "option_description": "Highest project decision responsibility, still subject to audit and high-risk safeguards." },
+            { "option_code": "PLT", "option_label": "Platform Administrator", "option_description": "Broad platform responsibility whose effective access still depends on specifically mapped or directly granted permissions." },
             { "option_code": "EAD", "option_label": "Editorial Administrator", "option_description": "Administers approved editorial areas according to granted permissions." },
-            { "option_code": "MOD", "option_label": "Moderator", "option_description": "Handles assigned moderation work according to granted permissions." },
-            { "option_code": "VRF", "option_label": "Verifier", "option_description": "Reviews assigned claims, credentials, contacts, or evidence according to granted permissions." },
+            { "option_code": "MOD", "option_label": "Moderation Administrator", "option_description": "Handles assigned moderation work according to granted permissions." },
+            { "option_code": "VRF", "option_label": "Verification Administrator", "option_description": "Reviews assigned claims, credentials, contacts, or evidence according to granted permissions." },
             { "option_code": "DAT", "option_label": "Data Administrator", "option_description": "Maintains approved structured records and taxonomy according to granted permissions." },
+            { "option_code": "UAD", "option_label": "User Access Administrator", "option_description": "Administers approved account, assignment, permission, and access-support workflows under critical safeguards." },
             { "option_code": "SYS", "option_label": "System Administrator", "option_description": "Handles approved technical and system operations under critical safeguards." },
+            { "option_code": "ADV", "option_label": "Advertising Administrator", "option_description": "Administers approved advertising, sponsor, creative, placement, and campaign workflows." },
+            { "option_code": "SUP", "option_label": "Support Administrator", "option_description": "Handles approved user support, escalation, and account-recovery workflows without unrestricted private-data access." },
             { "option_code": "TRN", "option_label": "Translator", "option_description": "Translates assigned languages and content without automatic publication authority." },
             { "option_code": "STW", "option_label": "Steward", "option_description": "Maintains specifically assigned community-managed records." },
             { "option_code": "OPR", "option_label": "Establishment Operator", "option_description": "Performs approved operational work for one or more establishments without implying ownership." },
@@ -133,6 +137,23 @@
             { "option_code": "NON", "option_label": "No Existing Relationship", "option_description": "The user is contributing public information without claiming to be or represent the practitioner." },
             { "option_code": "SLF", "option_label": "Self", "option_description": "The user declares that the practitioner profile represents them." },
             { "option_code": "REP", "option_label": "Authorized Representative", "option_description": "The user declares authority to represent the practitioner, subject to verification." }
+        ]
+    },
+    {
+        "_id": 510,
+        "field_name": "permission_code_list",
+        "field_label": "Permission Code List",
+        "field_description": "Selects additive runtime capabilities granted by an access assignment or included by a workspace role. Namespaced dotted codes intentionally remain descriptive and stable rather than using short taxonomy abbreviations. An option documents a supported capability but does not grant it without an active server-evaluated assignment.",
+        "type_field": "TAG",
+        "type_sql": "JSON",
+        "is_translatable": true,
+        "field_option": [
+            { "option_code": "workspace.editorial.access", "option_label": "Access Editorial Workspace", "option_description": "Allows entry to the current permission-gated Editorial Workspace and its implemented review and management surfaces." },
+            { "option_code": "workspace.moderation.access", "option_label": "Access Moderation Workspace", "option_description": "Allows entry to the current permission-gated Moderation Workspace surface." },
+            { "option_code": "workspace.system.access", "option_label": "Access System Workspace", "option_description": "Allows entry to the current permission-gated System Workspace surface; high-risk actions still require their own safeguards." },
+            { "option_code": "article.schedule", "option_label": "Schedule Article", "option_description": "Allows proposing or setting an Article publication schedule through an implemented Article workflow." },
+            { "option_code": "establishment.manage", "option_label": "Manage Assigned Establishment", "option_description": "Allows management of establishment records within the assignment scope and applicable record authorization." },
+            { "option_code": "practitioner.manage", "option_label": "Manage Assigned Practitioner", "option_description": "Allows management of practitioner records within the assignment scope and applicable record authorization." }
         ]
     }
 ]

@@ -1,19 +1,25 @@
-Massage Nexus User Rewards, Gamification, Ranks, and Roles
-==========================================================
+Massage Nexus User Rewards and Gamification
+============================================
 
 Field            | Value
 -----------------+-----------------------------------------------------------
-Title            | Massage Nexus User Rewards, Gamification, Ranks, and Roles
+Title            | Massage Nexus User Rewards and Gamification
 Document Version | 1.70
 Date Created     | 2026-07-07
-Revision Date    | 2026-07-20
+Revision Date    | 2026-07-21
 
 Document Description
 --------------------
 
-This document records the current working system for Massage Nexus rewards, gamification currencies, points, badges, rank paths, user statistics, rating rewards, and user roles.
+This document records the current working system for Massage Nexus rewards, gamification currencies, points, user statistics, rating rewards, booking and business-support rewards, AI privilege redemption, mascots, Easter eggs, and mini-games.
 
-It is still a planning document. Exact costs, full badge artwork, final rank requirements, final permission rules, monetization limits, and AI quota rules remain open for later discussion.
+Badges are authoritative in docs/08-community/badge-system.txt. Rank Paths are authoritative in
+docs/08-community/rank-path-system.txt. Reputation and rating behavior are authoritative in their
+separate Reputation System and Rating System documents. Workspace roles and permissions are
+authoritative in the Admin Workspace, access_assignment structure guide, and workspace-access
+taxonomy; they are not gamification.
+
+It is still a planning document. Exact costs, monetization limits, AI quota rules, and several game mechanics remain open for later discussion.
 
 Core User Progression Concepts
 ------------------------------
@@ -26,9 +32,9 @@ Contribution Count | Raw count of actions a user has completed.
 Nexus Points       | Permanent lifetime value of useful approved activity.
 Embers             | Spendable reward currency.
 Inklings           | Second gamification, exploration, seasonal, mascot, and game-board currency.
-Badges             | Visible proof icons for achievements, milestones, roles, verification, or participation.
-Rank Paths         | Fictional internal progression systems where users can grow in multiple themed paths.
-Roles              | Account identity, permission category, or system category.
+Badges             | Separate visible achievement and recognition system defined in the Badge System.
+Rank Paths         | Separate fictional progression system defined in the Rank Path System.
+Roles              | Separate authorization responsibility defined by effective access assignments.
 User Statistics    | Visible or internal counts such as reviews written, comments posted, ratings made, photos uploaded, bookings completed, or events attended.
 
 Contribution Count
@@ -181,73 +187,12 @@ Possible sources:
 
 Inklings may also use larger numbers for better reward feel.
 
-Xylon Calibrated Experience Score
----------------------------------
+Rating Formula and Badge Milestones
+-----------------------------------
 
-Xylon Calibrated Experience Score, abbreviated XCES, is the working name for the reusable weighted experience-rating formula.
-
-It is not only for Massage Nexus. It may be reused in other Xylon projects where experience-based targets need fairer scoring over time.
-
-XCES is designed for things that can improve, decline, or vary by experience, such as:
-
-- spas;
-- therapists;
-- restaurants;
-- service providers;
-- locations;
-- other experience-based entities.
-
-XCES may also be adapted for product ratings, but product ratings normally do not need recency decay unless product versions change.
-
-Core idea:
-
-Code block (text):
-    XCES = Σ(rᵢ × wᵢ) ÷ Σ(wᵢ)
-
-Where:
-
-Code block (text):
-    rᵢ = rating score
-    wᵢ = rating weight
-
-Expanded working weight:
-
-Code block (text):
-    wᵢ = actor_weight × trust_weight × source_weight × completeness_weight × recency_weight
-
-For Massage Nexus, XCES is defined in the Rating System document.
-
-Anchored Milestone Sequence
----------------------------
-
-Anchored Milestone Sequence, abbreviated AMS, is the working name for the reusable milestone progression sequence.
-
-It is not only for Massage Nexus and not only for badges. It may be used for:
-
-- badges;
-- achievements;
-- contribution milestones;
-- seasonal missions;
-- reward thresholds;
-- progression ladders;
-- activity goals;
-- gamified unlocks.
-
-Definition:
-
-An Anchored Milestone Sequence starts with one or more early engagement anchors, then continues with a generalized Fibonacci-style progression where later values are created by adding the two previous milestone values.
-
-Criteria-rating milestone example:
-
-Code block (text):
-    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
-
-Thumbs up/down milestone example:
-
-Code block (text):
-    1, 10, 50, 100, 150, 250, 400, 650, 1050...
-
-The first milestones encourage early participation. Later milestones become harder to reach without becoming too abruptly spaced.
+Xylon Calibrated Experience Score is defined only in docs/08-community/rating-system.txt.
+Anchored Milestone Sequence and badge milestone values are defined only in
+docs/08-community/badge-system.txt.
 
 Rating Rewards
 --------------
@@ -423,319 +368,20 @@ Translations may also be rated with thumbs up/down.
 
 Exact translation rewards and translation badges are unresolved.
 
-Badges
-------
-
-Badges are visible proof icons, usually small square or one-by-one images, showing achievements, participation, role status, verification, or milestones.
-
-Badge types:
-
-- Achievement Badges;
-- Contribution Badges;
-- Review Badges;
-- Rating Badges;
-- Campus Badges;
-- Event Badges;
-- Seasonal Badges;
-- Participation Badges;
-- Role Badges;
-- Verification Badges;
-- Legacy Badges.
-
-Verification badge meaning:
-
-A Verification Badge means a specific identity, claim, contact detail, credential, attendance, role, or business relationship was checked. It does not automatically mean the user has broader authority in all areas.
-
-Badge artwork style, badge rarity, icon templates, and visual consistency should be defined later.
-
-Rating Badges
--------------
-
-Rating badges should use AMS.
-
-Criteria Rating Milestones
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Applies to spa, therapist, and product criteria ratings.
-
-Milestone sequence:
-
-Code block (text):
-    1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
-
-Badge families:
-
-- Rating Milestone;
-- Spa Rating Milestone;
-- Therapist Rating Milestone;
-- Product Rating Milestone.
-
-Examples:
-
-- First Rating;
-- 10 Ratings;
-- First Spa Rating;
-- 10 Spa Ratings;
-- First Therapist Rating;
-- 10 Therapist Ratings;
-- First Product Rating;
-- 10 Product Ratings.
-
-Thumbs Up / Thumbs Down Milestones
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Applies to content reaction ratings.
-
-Milestone sequence:
-
-Code block (text):
-    1, 10, 50, 100, 150, 250, 400, 650, 1050...
-
-Badge families:
-
-- Article Rater;
-- Review Rater;
-- News Rater;
-- Guide Rater;
-- Comic Rater;
-- Comment Rater;
-- Discussion Rater;
-- Media Rater;
-- Translation Rater.
-
-Trusted Rater
-~~~~~~~~~~~~~
-
-Trusted Rater is a special badge for rating alignment.
-
-Current direction:
-
-- applies mainly to spa and therapist criteria ratings;
-- requires at least 30 eligible spa/therapist criteria ratings;
-- requires enough overlap with editorial-rated targets;
-- should measure alignment with editorial consensus, not community popularity alone;
-- suspicious exact-copy patterns should be flagged rather than rewarded.
-
-Exact math belongs in the Rating System document and related trust documentation.
-
-Review Badges
--------------
-
-Possible review badges:
-
-- First Review;
-- First Establishment Review;
-- First Practitioner Review;
-- First Product Review;
-- 10 Reviews;
-- 25 Reviews;
-- 50 Reviews;
-- 100 Reviews;
-- Detailed Reviewer;
-- Helpful Reviewer;
-- Photo Review Contributor;
-- Transparent Reviewer;
-- Multi-Visit Reviewer;
-- Review Correspondent;
-- Reviewer of the Year.
-
-Review badges should be refined in the badge system discussion.
-
-Received-Rating Badges and Awards
----------------------------------
-
-Spas and therapists may receive badges or award recognition based on ratings.
-
-Possible examples:
-
-- Highly Rated Spa;
-- Top Rated Spa;
-- Rising Spa;
-- Client Favorite;
-- Top Rated Therapist;
-- Rising Therapist;
-- Trusted Therapist;
-- Massage Nexus Award Nominee;
-- Massage Nexus Award Winner.
-
-Products do not need the same badge system yet.
-
-Quarterly or annual awards should be discussed in a separate Awards document.
-
-Rank Paths
-----------
-
-Rank Paths are fictional internal progression systems. They are not real-world credentials, licenses, or authority.
-
-A user can have progress in multiple rank paths at the same time. A user is not limited to one rank only.
-
-Users may choose which rank or path to display publicly, but progress in other paths should remain recorded.
-
-Rank progression may be based on:
-
-- Nexus Points;
-- activity type;
-- contribution counts;
-- path-specific requirements;
-- badges or milestones.
-
-Ranks should not be purchased directly with Embers. Embers may be used for rank cosmetics, not the rank itself.
-
-Path: Wellness Journey
-~~~~~~~~~~~~~~~~~~~~~~
-
-General user/client progression.
-
-1. New Guest
-2. Curious Visitor
-3. Calm Seeker
-4. Spa Explorer
-5. Table Regular
-6. Wellness Scout
-7. Service Mapper
-8. Local Guide
-9. Trusted Explorer
-10. Nexus Pathfinder
-11. Wellness Navigator
-12. Guardian of Calm
-
-Path: Spa Directory
-~~~~~~~~~~~~~~~~~~~
-
-For users who add spas, improve location records, correct profiles, and help map the directory.
-
-1. Street Scout
-2. Listing Finder
-3. Area Explorer
-4. Spa Spotter
-5. Branch Mapper
-6. Local Verifier
-7. District Guide
-8. City Pathfinder
-9. Regional Scout
-10. Directory Architect
-11. Nexus Cartographer
-12. Master Spa Navigator
-
-Path: Review and Community
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-For users who write reviews, comment helpfully, rate content, answer questions, and participate in discussions.
-
-1. First Voice
-2. Comment Regular
-3. Helpful Guest
-4. Review Writer
-5. Discussion Guide
-6. Community Voice
-7. Experience Analyst
-8. Trusted Reviewer
-9. Conversation Steward
-10. Public Insight Keeper
-11. Community Luminary
-12. Voice of the Nexus
-
-Path: Massage Campus
-~~~~~~~~~~~~~~~~~~~~
-
-For users who participate in lessons, quizzes, learning paths, glossary activity, and educational features.
-
-1. Campus Newcomer
-2. Technique Curious
-3. Pressure Student
-4. Bodywork Learner
-5. Wellness Scholar
-6. Technique Tracker
-7. Recovery Reader
-8. Massage Theorist
-9. Campus Mentor
-10. Bodywork Sage
-11. Knowledge Steward
-12. Master of Calm Study
-
-Path: Data Steward
-~~~~~~~~~~~~~~~~~~
-
-For users who correct data, check sources, improve profiles, report duplicates, and help keep records accurate.
-
-1. Detail Helper
-2. Correction Runner
-3. Info Gatherer
-4. Data Cleaner
-5. Listing Fixer
-6. Source Checker
-7. Accuracy Builder
-8. Profile Polisher
-9. Quality Keeper
-10. Data Steward
-11. Nexus Archivist
-12. Master Record Keeper
-
-Path: Outreach
-~~~~~~~~~~~~~~
-
-For users who participate in public events, campaigns, QR check-ins, launch activities, outreach, and community missions.
-
-1. Event Visitor
-2. QR Check-In
-3. Campaign Guest
-4. Outreach Friend
-5. Wellness Participant
-6. Event Regular
-7. Community Supporter
-8. Outreach Guide
-9. Campaign Steward
-10. Public Wellness Herald
-11. Nexus Ambassador
-12. Grand Outreach Champion
-
-The word “track” should be avoided for now. “Path” currently fits better.
-
-User Roles
-----------
-
-Roles are separate from points, badges, and ranks. Roles define account identity, permission, responsibility, or system category.
-
-A user may have more than one role.
-
-Working role list:
-
-- Guest;
-- Registered User;
-- User Reviewer;
-- Review Correspondent;
-- Contributor;
-- Business Owner;
-- Establishment Manager;
-- Practitioner;
-- Sponsor;
-- Steward;
-- Editor;
-- Content Reviewer;
-- Review Editor;
-- Moderator;
-- Admin;
-- Founder;
-- Neural Agent;
-- Model.
-
-Role notes:
-
-- Guest means a user who is not logged in. Guest commenting may be allowed later, but guest reviews and official ratings should not be enabled by default.
-- Registered User means a normal logged-in account.
-- User Reviewer means a registered user who writes reviews based on their own experience.
-- Review Correspondent means an assigned Massage Nexus person who visits, observes, gathers details, and contributes to editorial reviews.
-- Contributor means a user who submits useful corrections, listings, media, translations, or data improvements.
-- Business Owner should be used instead of simply Owner to avoid confusion with the platform owner.
-- Establishment Manager means the manager of a spa or establishment, not the manager of Massage Nexus.
-- Practitioner is preferred over Therapist as the role term, but rating documents may use Therapist when specifically referring to service rating.
-- Sponsor means an advertiser, brand, seller, campaign partner, or other sponsor account.
-- Steward means a trusted person helping maintain listings or public data.
-- Editor and Content Reviewer are different; exact differences will be defined later.
-- Review Editor handles review editing, approval, revision, and rejection.
-- Founder refers to the founder of Massage Nexus.
-- Neural Agent is a system/persona account type.
-- Model may refer to a visual/campaign/cast/profile model account type if needed.
+Badge and Rank Boundaries
+-------------------------
+
+Badge definitions, milestones, display, and award boundaries are maintained in
+docs/08-community/badge-system.txt. Fictional progression paths and titles are maintained in
+docs/08-community/rank-path-system.txt. Neither system grants workspace authority.
+
+Authorization Boundary
+----------------------
+
+Workspace roles, direct permissions, factual business relationships, account types, ordinary user
+activities, and fictional ranks are different concepts. Their authority no longer belongs in this
+gamification document. See docs/11-workspaces/admin-workspace.txt,
+data/taxonomy/massage_nexus/workspace_access.json, and data/structure_guide/access_assignment.php.
 
 Booking, Purchases, and Rewards
 -------------------------------
@@ -838,21 +484,8 @@ Unresolved Items for Later Discussion
 - final Inkling spending rules;
 - exact reward values for reviews, articles, media, translations, bookings, purchases, and contributions;
 - exact reward costs for cosmetics and features;
-- exact badge list;
-- badge artwork style;
-- badge icon template system;
-- rank path requirements;
-- whether users can display multiple rank titles at once;
-- which roles are public, internal, or system-only;
-- guest commenting rules;
-- editor versus content reviewer difference;
-- business owner versus establishment manager permissions;
 - AI quota and reward redemption rules;
 - mascot and Easter egg system;
 - Story Tiles;
 - Resting Leaf game design;
 - future game panel, mobile game, or gamification page;
-- awards system;
-- Massage Nexus yearly and quarterly awards;
-- product/shop/seller structure;
-- product versioning rules for ratings.

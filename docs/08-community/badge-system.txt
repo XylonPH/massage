@@ -1,0 +1,258 @@
+Title: Massage Nexus Badge System
+Document Version: 1.70
+Date Created: 2026-07-07
+Revision Date: 2026-07-21
+Document Description: Defines Massage Nexus badge meaning, families, milestone sequences, rating and review badges, verification and role-badge limits, received-rating recognition, public display, and the boundary between badges and permissions, ranks, reputation, rewards, and awards.
+
+Related Documents:
+- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/rank-path-system.txt
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/09-content/review-writing.txt
+- docs/11-workspaces/admin-workspace.txt
+
+================================================================================
+1. BADGE MEANING AND BOUNDARY
+================================================================================
+
+Badges are visible proof icons, normally small square or one-by-one images, showing an achievement,
+milestone, participation, approved role presentation, verification, event, season, or legacy status.
+
+Badges are separate from:
+- workspace roles and permissions, which require an effective access_assignment;
+- rank paths, which are fictional progression titles;
+- Reputation, which records trust signals;
+- Nexus Points, Embers, and Inklings, which are reward values;
+- awards, which may use a separate nomination and decision process.
+
+A badge never grants administrative, editorial, moderation, verification, establishment, or
+practitioner authority by itself. Revoking an access assignment must remove the authority even if a
+historical or presentation badge remains visible under an approved legacy rule.
+
+================================================================================
+2. BADGE FAMILIES
+================================================================================
+
+Accepted working families:
+- Achievement Badge;
+- Contribution Badge;
+- Review Badge;
+- Rating Badge;
+- Campus Badge;
+- Event Badge;
+- Seasonal Badge;
+- Participation Badge;
+- Role Badge;
+- Verification Badge;
+- Legacy Badge.
+
+Each badge definition should identify its stable key, family, title, description, eligibility rule,
+progress measure when applicable, public-display rule, artwork reference, lifecycle, and whether an
+award may expire or be revoked.
+
+Achievement and participation badges recognize completed actions. Role badges present an approved
+current or historical responsibility. Verification badges identify exactly what was checked.
+Legacy badges preserve recognition that is no longer earnable without misrepresenting current
+authority.
+
+================================================================================
+3. VERIFICATION AND ROLE BADGES
+================================================================================
+
+A Verification Badge means a specific identity, claim, contact detail, credential, attendance,
+role, or business relationship was checked. It does not mean the user has broader authority in all
+areas.
+
+A Role Badge may be shown only from an approved role or relationship record. Users cannot grant
+themselves Founder, Editor, Moderator, Verified, Owner, Practitioner, or similar badge presentation
+through public profile text.
+
+The badge must distinguish:
+- current and effective role presentation;
+- expired or ended historical recognition;
+- verified factual relationship;
+- platform access permission.
+
+These meanings must not be collapsed into one Verified badge.
+
+================================================================================
+4. ANCHORED MILESTONE SEQUENCE
+================================================================================
+
+Anchored Milestone Sequence, abbreviated AMS, is the working reusable milestone progression
+sequence. It may be used for badges, achievements, contribution milestones, seasonal missions,
+reward thresholds, progression ladders, activity goals, and gamified unlocks.
+
+An AMS starts with one or more early-engagement anchors, then continues with a generalized
+Fibonacci-style progression in which later values are created by adding the two previous milestone
+values. The early anchors are selected for the action's expected frequency and effort; one sequence
+is not forced onto every activity.
+
+Criteria-rating milestone sequence:
+
+1, 10, 20, 30, 50, 80, 130, 210, 340, 550...
+
+Thumbs-up/down milestone sequence:
+
+1, 10, 50, 100, 150, 250, 400, 650, 1050...
+
+The first milestones encourage early participation. Later milestones become harder without an
+abrupt gap. A badge family must identify the accepted anchors and eligibility filter; raw counts
+alone do not determine eligibility when abuse, duplication, connection, or moderation rules apply.
+
+================================================================================
+5. RATING BADGES
+================================================================================
+
+Rating badges use AMS and count only eligible independent ratings under the Rating System.
+
+Criteria-rating badge families:
+- Rating Milestone;
+- Spa Rating Milestone;
+- Therapist Rating Milestone;
+- Product Rating Milestone.
+
+Examples:
+- First Rating;
+- 10 Ratings;
+- First Spa Rating;
+- 10 Spa Ratings;
+- First Therapist Rating;
+- 10 Therapist Ratings;
+- First Product Rating;
+- 10 Product Ratings.
+
+Thumbs-up/down badge families:
+- Article Rater;
+- Review Rater;
+- News Rater;
+- Guide Rater;
+- Comic Rater;
+- Comment Rater;
+- Discussion Rater;
+- Media Rater;
+- Translation Rater.
+
+Self, connected, revoked, invalidated, quarantined, duplicate, and reward-farming ratings do not
+count. The Rating System owns rating-event eligibility and abuse checks; this document owns badge
+families and milestone values.
+
+================================================================================
+6. TRUSTED RATER
+================================================================================
+
+Trusted Rater is a special rating-alignment badge rather than a raw volume milestone.
+
+Current direction:
+- it applies mainly to spa and therapist criteria ratings;
+- it requires at least 30 eligible spa or therapist criteria ratings;
+- it requires sufficient overlap with editorial-rated targets;
+- it measures alignment with editorial consensus, not community popularity alone;
+- suspicious exact-copy or coordinated patterns are flagged rather than rewarded.
+
+The Rating System owns the alignment formula, comparison eligibility, minimum target diversity,
+reversal handling, and abuse controls.
+
+================================================================================
+7. REVIEW BADGES
+================================================================================
+
+Working review badges:
+- First Review;
+- First Establishment Review;
+- First Practitioner Review;
+- First Product Review;
+- 10 Reviews;
+- 25 Reviews;
+- 50 Reviews;
+- 100 Reviews;
+- Detailed Reviewer;
+- Helpful Reviewer;
+- Photo Review Contributor;
+- Transparent Reviewer;
+- Multi-Visit Reviewer;
+- Review Correspondent;
+- Reviewer of the Year.
+
+Volume milestones count only eligible published reviews. Quality badges require their own measured
+criteria and may not be inferred only from word count. Review Correspondent is shown only from an
+approved assignment; Reviewer of the Year is an award-style decision and requires a defined period,
+eligibility, and audit trail.
+
+================================================================================
+8. RECEIVED-RATING BADGES AND AWARDS
+================================================================================
+
+Spas and practitioners may receive badge or award recognition based on mature ratings.
+
+Working examples:
+- Highly Rated Spa;
+- Top Rated Spa;
+- Rising Spa;
+- Client Favorite;
+- Top Rated Therapist;
+- Rising Therapist;
+- Trusted Therapist;
+- Massage Nexus Award Nominee;
+- Massage Nexus Award Winner.
+
+Products do not require the same received-rating badge system yet.
+
+Received-rating recognition requires the Rating System's approved minimum independent sample,
+confidence, freshness, anti-manipulation, and connected-rating rules. A provisional high score or a
+small connected group cannot earn an official badge. Quarterly and annual award workflows remain a
+separate unresolved Awards specification.
+
+================================================================================
+9. DISPLAY AND ARTWORK
+================================================================================
+
+Users may choose which eligible badges to feature publicly, subject to a bounded display limit.
+Hiding a badge does not erase its authoritative award record. Revoked or invalidated badges must not
+remain presented as current.
+
+Artwork requires:
+- a consistent icon grid and safe area;
+- readable small-size silhouettes;
+- light and dark surface testing;
+- non-color meaning where status matters;
+- localized accessible name and description;
+- alt text that explains the badge meaning rather than decorative detail;
+- versioned source assets and derivative sizes.
+
+Badge artwork style, rarity, complete icon templates, and final display-slot limits remain open.
+
+================================================================================
+10. DATA DIRECTION
+================================================================================
+
+Badge definitions and user awards must not be embedded as growing arrays in user_main. The future
+data design should separate reusable badge definitions from user badge awards or progress. A public
+profile may cache a bounded presentation projection, but the award record remains authoritative.
+
+An award record should be able to preserve:
+- user or supported target;
+- badge definition;
+- qualifying milestone or decision;
+- source records or computed eligibility version;
+- awarded time and actor or job;
+- expiry, revocation, and reason;
+- public-display choice;
+- audit and recomputation information.
+
+Final collection names and structure guides remain unresolved.
+
+================================================================================
+11. OPEN DECISIONS
+================================================================================
+
+- exact complete badge catalogue;
+- badge artwork style, rarity, and icon template system;
+- featured badge display limit;
+- which role badges may remain as historical or legacy recognition;
+- final progress and award collection names;
+- recomputation and appeal workflow;
+- quarterly and annual Awards system;
+- badge effects, if any, on discovery that do not create circular popularity advantage.
+

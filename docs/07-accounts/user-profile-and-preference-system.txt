@@ -1,0 +1,248 @@
+Title: Massage Nexus User Profile and Preference System
+Document Version: 1.41
+Date Created: 2026-07-18
+Revision Date: 2026-07-21
+Document Description: Defines the public user-profile boundary, avatar and cover references, current account preferences, the Settings interface, detailed booking-preference separation, and the relationship of profiles to roles, badges, ranks, reputation, rewards, and user activity.
+
+Related Documents:
+- docs/07-accounts/account-and-authentication-system.txt
+- docs/11-workspaces/user-workspace.txt
+- docs/11-workspaces/admin-workspace.txt
+- docs/12-booking/booking-and-appointment-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
+
+================================================================================
+1. PROFILE, PREFERENCE, AND SETTINGS TERMINOLOGY
+================================================================================
+
+Profile means the user's public or visibility-controlled identity and presentation. It includes
+the display name, public slug, biography, avatar, cover image, and approved public activity.
+
+Preference means a saved user choice, such as interface language or time zone. A preference is a
+data concept, not a second workspace competing with Settings.
+
+Settings means the private interface where the user reviews account facts and changes preferences,
+privacy choices, security controls, notification choices, accessibility choices, and account
+actions. Massage Nexus uses one Settings area with subsections. It does not create separate
+Settings and Preferences menus that contain overlapping choices.
+
+Profile remains a separate workspace area because the user must be able to understand which
+information is public. Security and Privacy may appear as Settings subsections or dedicated pages
+without changing their separate data and authorization responsibilities.
+
+================================================================================
+2. USER_MAIN BOUNDARY
+================================================================================
+
+user_main owns:
+- project-local account identity and login data;
+- Massage Nexus membership state;
+- bounded current public-profile fields and media references;
+- a bounded embedded account_preference object normally loaded with the signed-in user;
+- current convenience values whose authoritative history belongs elsewhere.
+
+user_main does not own:
+- workspace roles or direct permissions;
+- detailed booking and intake defaults;
+- media binaries or complete media metadata;
+- policy-acceptance and consent history;
+- badges, rank progress, reputation events, or reward-ledger history;
+- article, review, rating, contribution, claim, booking, or other activity records.
+
+Do not create a separate ordinary user_preference collection while the current choices remain
+small, bounded, and normally loaded and updated with the user. Create a separate collection only
+when a preference area has an independent lifecycle, materially different security or retention,
+unbounded growth, separate search or indexing needs, or a workflow that should not update the
+account record.
+
+================================================================================
+3. PUBLIC PROFILE
+================================================================================
+
+The accepted public-profile direction includes:
+- username as the account handle;
+- user_slug as the stable public profile route value;
+- display_name with username fallback;
+- profile_biography;
+- default_avatar_key;
+- optional avatar_media_image_id;
+- optional cover_media_image_id;
+- visibility_scope for the profile surface.
+
+Public route direction:
+
+/user/{user-slug}
+
+The route is not implemented yet. Until it is implemented, the private Profile screen may edit only
+the currently supported fields.
+
+The profile may display approved public activity derived from authoritative records, including:
+- published Articles for which the user has a public byline;
+- published Reviews attributed to the user;
+- accepted public establishment, practitioner, translation, media, or data contributions;
+- public badges and the user's selected public rank title;
+- approved public role labels when the underlying assignment is effective and eligible for public display.
+
+Do not copy these activity lists into user_main. Query or build bounded projections from their
+authoritative collections. Removing a byline, unpublishing content, revoking an assignment,
+withdrawing public badge display, or changing visibility must update public presentation without
+requiring a second manually maintained profile list.
+
+Account authority and public presentation are separate. A user may not type Founder, Editor,
+Verified, or another protected authority label into their profile and thereby gain or imply that
+status. Public authority labels must be derived from approved records.
+
+================================================================================
+4. AVATAR AND COVER MEDIA
+================================================================================
+
+default_avatar_key identifies one approved deterministic Massage Nexus default avatar. It avoids
+creating a duplicate media file for every account.
+
+avatar_media_image_id and cover_media_image_id reference media_image records. The user record does
+not store raw binary data, permanent object-storage URLs, processing output, moderation results, or
+crop variants.
+
+The media record owns storage, format, dimensions, file size, crop and derivative information,
+processing state, moderation state, accessibility text, ownership, and consent metadata. Production
+binaries remain in approved object storage.
+
+Uploaded avatar and cover workflows require file validation, malware and content checks, image
+processing, moderation, accessible crop handling, deletion behavior, and a safe fallback to the
+default avatar. NSFW avatars and covers are prohibited because they appear in broad and incidental
+contexts. Animated avatars remain deferred and require a reduced-motion poster fallback.
+
+================================================================================
+5. EMBEDDED CURRENT ACCOUNT PREFERENCES
+================================================================================
+
+The initial accepted account_preference object contains:
+- interface_language_id: common_reference.language_main identifier for interface presentation;
+- fallback_language_id: optional common_reference.language_main identifier used when preferred
+  content or interface text is unavailable;
+- time_zone_id: common_reference.time_zone_main identifier used for local display and user-entered
+  date/time interpretation.
+
+These values may be suggested from the browser or device but remain editable. Absence means the
+application uses the documented site or device fallback; it does not mean the user explicitly chose
+that fallback.
+
+Later bounded preferences may include regional formats, content-language display, theme,
+accessibility presentation, notification delivery, message permissions, community display, and
+mature-content controls after their exact fields and privacy rules are accepted. Do not add empty
+placeholder keys before those contracts exist.
+
+Theme is currently a device-local light, dark, or system choice stored in browser local storage.
+Moving it into account_preference later should synchronize safely without removing the pre-paint
+device fallback needed to prevent theme flashing.
+
+Marketing email opt-in is not an ordinary preference. The current boolean is a convenience value;
+the grant and withdrawal history belongs to user_policy.
+
+================================================================================
+6. BOOKING PREFERENCES
+================================================================================
+
+Detailed reusable booking preferences do not belong in user_main. The Booking and Appointment
+System defines client_booking_default for reusable pressure, body-area, product, attire, draping,
+communication, accessibility, therapist-selection, language, and approved reusable-intake values.
+
+This separation is required because booking defaults may be sensitive, encrypted, time-limited,
+independently confirmed, and loaded only for booking or client-history workflows. A booking records
+the values actually selected for that appointment; changing a future default does not rewrite past
+bookings.
+
+The user interface may expose a Booking Preferences subsection under Settings and may also offer
+Save as my default inside a booking flow. Both surfaces update the same client_booking_default
+responsibility rather than duplicating values in user_main.
+
+================================================================================
+7. ROLES, PERMISSIONS, BADGES, RANKS, REPUTATION, AND REWARDS
+================================================================================
+
+Role or direct permission
+Stored as an access_assignment and evaluated by server-side authorization. The workspace role
+taxonomy is role_workspace in data/taxonomy/massage_nexus/workspace_access.json. Founder is FND.
+
+Badge
+An achievement, participation, verification, legacy, event, or role presentation record governed
+by docs/08-community/badge-system.txt. A badge does not grant authority unless an independent
+access assignment also exists.
+
+Rank path
+A fictional progression title governed by docs/08-community/rank-path-system.txt. Rank is not a
+credential, license, verification, or permission.
+
+Reputation
+A trust signal governed by docs/08-community/reputation-system.txt. Reputation may affect limited
+trust weighting but does not automatically grant an administrative role.
+
+Nexus Points, Embers, and Inklings
+Reward values governed by docs/08-community/user-rewards-and-gamification.txt. Authoritative balance
+changes belong in reward_ledger rather than mutable totals alone.
+
+user_main may later cache bounded display summaries for performance, but every cache must identify
+its authoritative source and must not become the only record of an assignment, award, progression,
+trust event, or balance change.
+
+================================================================================
+8. SETTINGS INFORMATION ARCHITECTURE
+================================================================================
+
+The private Settings area may use these subsections as they are implemented:
+- Account: username and verified contact facts, with links to controlled change workflows;
+- Language and Region: interface language, fallback language, time zone, and later regional format;
+- Appearance and Accessibility: theme, contrast, text, motion, and assistive presentation;
+- Notifications and Messages: delivery channels and who may contact the user;
+- Privacy and Public Activity: profile and activity visibility, personalization, and location use;
+- Booking Preferences: the separate client_booking_default workflow;
+- Security: password, sessions, devices, MFA, passkeys, and recovery;
+- Data and Account: export, deactivation, and deletion.
+
+The first-release screen may expose only implemented choices. It must not render a control that
+appears to save a preference when the server does not persist or apply it.
+
+================================================================================
+9. PRIVACY, SECURITY, AND ACCESSIBILITY
+================================================================================
+
+- Private identity, contact, eligibility, security, and booking-default data never becomes public
+  merely because a public profile exists.
+- Public profile fields require clear visibility labels and safe defaults.
+- Sensitive account changes require recent authentication where specified by the Account and
+  Authentication System.
+- Media upload and deletion must preserve audit, moderation, retention, and legal requirements.
+- Location permission is requested only when a user invokes a feature that genuinely needs it and
+  must have a manual alternative.
+- Default and uploaded avatar presentation must not infer gender.
+- Animated media must honor reduced-motion settings.
+- Profile and Settings forms must be keyboard accessible, localized, and explicit about saved state.
+
+================================================================================
+10. CURRENT IMPLEMENTATION AND ORDER
+================================================================================
+
+Implemented on 2026-07-21:
+- /workspace/profile edits display_name and profile_biography;
+- /workspace/setting shows username and verified email and changes marketing email opt-in;
+- the theme toggle uses device-local storage;
+- role-aware Administration navigation is derived from access_assignment.
+
+Not yet implemented:
+- public /user/{user-slug} profiles;
+- avatar and cover upload;
+- server-persisted language and time-zone preferences;
+- detailed Settings subsections;
+- client_booking_default management;
+- public badge, rank, reputation, and reward displays.
+
+Implementation order:
+1. Keep founder, editorial, and other authority in access_assignment.
+2. Add the bounded user_main profile and account_preference fields to runtime code when their
+   corresponding interface is implemented.
+3. Implement language and time-zone settings with application middleware that actually applies them.
+4. Implement media-image upload and moderation before enabling avatar and cover editing.
+5. Implement the public profile using derived, permission-filtered activity.
+6. Implement client_booking_default with Booking privacy and encryption rules.
+7. Add badge, rank, reputation, and reward displays only after their authoritative records exist.

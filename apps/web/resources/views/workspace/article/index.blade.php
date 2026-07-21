@@ -9,14 +9,14 @@
 
         <main class="min-w-0">
             @if (session('status'))
-                <div class="mb-5 rounded-xl border border-leaf-200 bg-leaf-50 p-4 font-semibold text-leaf-800" role="status">{{ session('status') }}</div>
+                <div class="mb-5 rounded-xl border border-leaf-200 bg-leaf-50 p-4 font-semibold text-leaf-800 dark:border-leaf-800 dark:bg-leaf-950 dark:text-leaf-300" role="status">{{ session('status') }}</div>
             @endif
 
             <div class="flex flex-col justify-between gap-4 border-b border-ink-100 pb-5 sm:flex-row sm:items-end">
                 <div>
                     <p class="text-xs font-bold uppercase tracking-[0.18em] text-ember-600">{{ __('navigation.workspace') }}</p>
-                    <h1 class="mt-1 text-3xl font-black tracking-tight text-ink-950">{{ __('article.workspace_title') }}</h1>
-                    <p class="mt-1 text-sm text-ink-600">{{ __('article.workspace_intro') }}</p>
+                    <h1 class="mt-1 text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50">{{ __('article.workspace_title') }}</h1>
+                    <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">{{ __('article.workspace_intro') }}</p>
                 </div>
                 <a href="{{ route('workspace.article.create') }}" class="inline-flex items-center justify-center rounded-xl bg-ember-500 px-5 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-ember-600">{{ __('article.new_article') }}</a>
             </div>
@@ -25,32 +25,38 @@
                 @foreach ([[null, __('article.all')], ['draft', __('article.drafts')], ['submitted', __('article.submitted')], ['published', __('article.published_tab')]] as [$key, $label])
                     @php($route = $key ? 'workspace.article.'.$key : 'workspace.article.index')
                     <a href="{{ route($route) }}" @if ($status === $key) aria-current="page" @endif
-                       class="rounded-lg px-4 py-2 text-sm font-bold {{ $status === $key ? 'bg-ink-900 text-white' : 'bg-white text-ink-700 shadow-sm ring-1 ring-ink-100 hover:bg-ink-50' }}">{{ $label }}</a>
+                       class="rounded-lg px-4 py-2 text-sm font-bold {{ $status === $key ? 'bg-ink-900 text-white dark:bg-white dark:text-ink-900' : 'bg-white text-ink-700 shadow-sm ring-1 ring-ink-100 hover:bg-ink-50 dark:bg-ink-900 dark:text-ink-200 dark:ring-ink-800 dark:hover:bg-ink-800' }}">{{ $label }}</a>
                 @endforeach
             </nav>
 
-            <div class="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+            <div class="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:border-ink-800 dark:bg-ink-900">
                 @if ($articles->isEmpty())
                     <div class="p-10 text-center">
-                        <p class="font-semibold text-ink-600">{{ __('article.no_workspace_articles') }}</p>
-                        <a href="{{ route('workspace.article.create') }}" class="mt-4 inline-flex rounded-lg bg-ink-950 px-4 py-2 text-sm font-bold text-white hover:bg-ink-800">{{ __('article.new_article') }}</a>
+                        <p class="font-semibold text-ink-600 dark:text-ink-300">{{ __('article.no_workspace_articles') }}</p>
+                        <a href="{{ route('workspace.article.create') }}" class="mt-4 inline-flex rounded-lg bg-ink-950 px-4 py-2 text-sm font-bold text-white hover:bg-ink-800 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200">{{ __('article.new_article') }}</a>
                     </div>
                 @else
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-ink-100">
-                            <thead class="bg-ink-50 text-left text-xs font-bold uppercase tracking-wider text-ink-600">
+                        <table class="min-w-full divide-y divide-ink-100 dark:divide-ink-800">
+                            <thead class="bg-ink-50 text-left text-xs font-bold uppercase tracking-wider text-ink-600 dark:bg-ink-800/50 dark:text-ink-400">
                                 <tr><th class="px-5 py-3">{{ __('article.title') }}</th><th class="px-5 py-3">{{ __('article.status') }}</th><th class="px-5 py-3">{{ __('article.last_updated') }}</th><th class="px-5 py-3">{{ __('article.actions') }}</th></tr>
                             </thead>
-                            <tbody class="divide-y divide-ink-100">
+                            <tbody class="divide-y divide-ink-100 dark:divide-ink-800">
                                 @foreach ($articles as $item)
                                     <tr>
-                                        <td class="px-5 py-4 font-bold text-ink-950">{{ $item->localized('article_title') }}</td>
-                                        <td class="px-5 py-4 text-sm text-ink-600">{{ $status === 'submitted' ? __('article.submitted') : (['D' => __('article.drafts'), 'S' => __('article.scheduled'), 'P' => __('article.published_tab'), 'U' => __('article.unpublished')][$item->status_publication] ?? $item->status_publication) }}</td>
-                                        <td class="px-5 py-4 text-sm text-ink-600">{{ $item->updated_at?->format('M j, Y g:i A') }}</td>
+                                        <td class="px-5 py-4 font-bold text-ink-950 dark:text-ink-50">{{ $item->localized('article_title') }}</td>
+                                        <td class="px-5 py-4 text-sm">
+                                            @if ($item->status_review === 'N')
+                                                <span class="inline-flex rounded-full border border-ember-200 bg-ember-50 px-2 py-1 text-xs font-bold text-ember-700 dark:border-ember-800 dark:bg-ember-950/50 dark:text-ember-300">{{ __('article.needs_revision') ?? 'Needs Revision' }}</span>
+                                            @else
+                                                <span class="text-ink-600 dark:text-ink-300">{{ $status === 'submitted' ? __('article.submitted') : (['D' => __('article.drafts'), 'S' => __('article.scheduled'), 'P' => __('article.published_tab'), 'U' => __('article.unpublished')][$item->status_publication] ?? $item->status_publication) }}</span>
+                                            @endif
+                                        </td>
+                                        <td class="px-5 py-4 text-sm text-ink-600 dark:text-ink-300">{{ $item->updated_at?->format('M j, Y g:i A') }}</td>
                                         <td class="px-5 py-4">
                                             <div class="flex gap-3 text-sm font-bold">
-                                                <a class="text-ember-700 hover:underline" href="{{ route('workspace.article.edit', $item) }}">{{ __('article.edit') }}</a>
-                                                <a class="text-ink-700 hover:underline" href="{{ route('workspace.article.revisions', $item) }}">{{ __('article.revisions') }}</a>
+                                                <a class="text-ember-700 hover:underline dark:text-ember-400" href="{{ route('workspace.article.edit', $item) }}">{{ __('article.edit') }}</a>
+                                                <a class="text-ink-700 hover:underline dark:text-ink-300" href="{{ route('workspace.article.revisions', $item) }}">{{ __('article.revisions') }}</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -58,7 +64,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="border-t border-ink-100 p-5">{{ $articles->links() }}</div>
+                    <div class="border-t border-ink-100 p-5 dark:border-ink-800">{{ $articles->links() }}</div>
                 @endif
             </div>
         </main>

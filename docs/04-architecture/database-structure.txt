@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.90
+Document Version: 2.00
 Date Created: 2026-07-12
 Revision Date: 2026-07-21
 
@@ -260,6 +260,12 @@ Detailed product specifications may remain embedded in the appropriate product o
 
 - booking_event
   Booking lifecycle and history events such as submission, confirmation, rescheduling, cancellation, completion, and no-show.
+
+- client_booking_default
+  Reusable user booking, service, communication, accessibility, therapist-selection, and approved
+  persistent-intake defaults. This collection is separate from user_main because these values may
+  be sensitive, encrypted, independently confirmed, time-limited, and loaded only by booking or
+  client-history workflows.
 
 Booking is a cross-domain capability and should not be stored as establishment_booking.
 

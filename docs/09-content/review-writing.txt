@@ -4,7 +4,7 @@ Massage Nexus Review Writing Guide
 Field            | Value
 -----------------+-----------------------------------
 Title            | Massage Nexus Review Writing Guide
-Document Version | 1.83
+Document Version | 1.84
 Date Created     | 2026-07-05
 Revision Date    | 2026-07-21
 
@@ -1043,7 +1043,7 @@ The Reputation System sets the current maximum reputation gain for one review at
 Review Badges
 -------------
 
-Review badges should be defined fully in the badge and gamification documentation.
+Review badges are defined in docs/08-community/badge-system.txt.
 
 The Review Writing guide may record review-related badge candidates and what they represent.
 
@@ -1102,7 +1102,7 @@ Multi-Visit Reviewer     | Awarded for reviews based on multiple visits or updat
 Review Correspondent     | Awarded or assigned to approved Massage Nexus Review Correspondents.
 Reviewer of the Year     | Annual recognition for outstanding review contribution.
 
-Badge visuals, badge tiers, badge rarity, badge style, icon production, and annual award presentation should be discussed in the badge and gamification documentation later.
+Badge visuals, badge tiers, badge rarity, badge style, icon production, and award boundaries belong in docs/08-community/badge-system.txt.
 
 Rank Path Reference
 -------------------
@@ -1115,7 +1115,7 @@ Working idea:
 - three accepted reviews may allow the user to display review-path progress;
 - higher review activity and review usefulness may support later review ranks.
 
-The full rank path system should remain in the rewards and gamification documentation.
+The full rank path system belongs in docs/08-community/rank-path-system.txt.
 
 Review Writing Guidance
 -----------------------

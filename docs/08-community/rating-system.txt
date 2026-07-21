@@ -1,7 +1,7 @@
 Title: Massage Nexus Rating System
-Document Version: 1.30
+Document Version: 1.40
 Date Created: 2026-07-09
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines Massage Nexus target ratings, content reactions, eligibility, anonymity, experience context, weighted scoring, public summaries, abuse controls, rating milestones, and connections to reviews, reputation, rewards, search, and future awards.
 
 Related Documents:
@@ -9,6 +9,7 @@ Related Documents:
 - docs/05-directory/spa-profile.txt
 - docs/05-directory/therapist-profile.txt
 - docs/08-community/reputation-system.txt
+- docs/08-community/badge-system.txt
 - docs/08-community/user-rewards-and-gamification.txt
 - docs/09-content/review-writing.txt
 - docs/12-booking/booking-and-appointment-system.txt
@@ -938,8 +939,8 @@ private history is not retained indefinitely merely because it may be useful.
 Rating Badges
 -------------
 
-User Rewards and Gamification owns Anchored Milestone Sequence values, badge families, and badge
-rewards. This system supplies eligible rating counts. Criteria milestones count eligible
+The Badge System owns Anchored Milestone Sequence values, badge families, and badge award rules.
+This system supplies eligible rating counts. Criteria milestones count eligible
 independent criteria ratings, not simple, self, connected, revoked, invalidated, quarantined,
 duplicate, or reward-farming ratings. Content-reaction milestones count only eligible retained
 Helpful or Not Helpful actions after applicable abuse and daily-cap rules.

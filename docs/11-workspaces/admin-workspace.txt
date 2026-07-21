@@ -1,5 +1,5 @@
 Title: Massage Nexus Admin Workspace
-Document Version: 0.71
+Document Version: 0.81
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
@@ -420,6 +420,22 @@ Routes:
 
 /workspace/system/role
 /workspace/system/permission
+
+Current machine-readable access taxonomy:
+
+data/taxonomy/massage_nexus/workspace_access.json
+
+It currently defines role_workspace, permission_code_list, scope_access, and
+status_access_assignment. Runtime role bundles are mapped in apps/web/config/workspace.php and
+effective assignments are stored in access_assignment. Founder uses FND; Editorial Administrator
+uses EAD.
+
+The implemented permission codes are workspace.editorial.access, workspace.moderation.access,
+workspace.system.access, article.schedule, establishment.manage, and practitioner.manage. The
+current Article approve-and-publish action is protected by workspace.editorial.access. Later action-
+level permissions should separate review, approval, publication, translation, merge, deletion, and
+other high-risk operations as those workflows are implemented; listing a future code in taxonomy
+must not imply that the server enforces it.
 
 The interface should support:
 

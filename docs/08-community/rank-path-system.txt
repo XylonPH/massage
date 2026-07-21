@@ -1,0 +1,201 @@
+Title: Massage Nexus Rank Path System
+Document Version: 1.70
+Date Created: 2026-07-07
+Revision Date: 2026-07-21
+Document Description: Defines the fictional Massage Nexus progression paths, their titles, progression inputs, public-display boundary, and separation from credentials, workspace roles, badges, reputation, and spendable rewards.
+
+Related Documents:
+- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/reputation-system.txt
+- docs/11-workspaces/user-workspace.txt
+
+================================================================================
+1. RANK PATH PRINCIPLES
+================================================================================
+
+Rank Paths are fictional internal progression systems. They are not real-world credentials,
+licenses, verification, employment titles, professional qualifications, or workspace authority.
+
+A user may progress in multiple paths at the same time. The account is not limited to one rank.
+Users may choose which eligible rank title to feature publicly, while progress in other paths
+remains recorded according to privacy settings.
+
+Rank progression may use:
+- Nexus Points;
+- eligible activity type;
+- approved contribution counts;
+- path-specific requirements;
+- badges or milestones.
+
+Ranks cannot be purchased directly with Embers or Inklings. Spendable currencies may unlock rank
+cosmetics but not the rank itself. Reputation and administrative roles do not automatically map to
+a fictional rank.
+
+The term Path is accepted. Avoid Track for this system unless a later naming decision replaces it.
+
+================================================================================
+2. WELLNESS JOURNEY PATH
+================================================================================
+
+General user and client progression:
+
+1. New Guest
+2. Curious Visitor
+3. Calm Seeker
+4. Spa Explorer
+5. Table Regular
+6. Wellness Scout
+7. Service Mapper
+8. Local Guide
+9. Trusted Explorer
+10. Nexus Pathfinder
+11. Wellness Navigator
+12. Guardian of Calm
+
+================================================================================
+3. SPA DIRECTORY PATH
+================================================================================
+
+For users who add establishments, improve location records, correct profiles, and help map the
+directory:
+
+1. Street Scout
+2. Listing Finder
+3. Area Explorer
+4. Spa Spotter
+5. Branch Mapper
+6. Local Verifier
+7. District Guide
+8. City Pathfinder
+9. Regional Scout
+10. Directory Architect
+11. Nexus Cartographer
+12. Master Spa Navigator
+
+The title Local Verifier is fictional progression and does not grant verification permission.
+
+================================================================================
+4. REVIEW AND COMMUNITY PATH
+================================================================================
+
+For users who write reviews, comment helpfully, rate content, answer questions, and participate in
+discussions:
+
+1. First Voice
+2. Comment Regular
+3. Helpful Guest
+4. Review Writer
+5. Discussion Guide
+6. Community Voice
+7. Experience Analyst
+8. Trusted Reviewer
+9. Conversation Steward
+10. Public Insight Keeper
+11. Community Luminary
+12. Voice of the Nexus
+
+Trusted Reviewer and Conversation Steward are fictional ranks unless a separately approved badge or
+access assignment exists. The interface must not imply moderation or editorial authority.
+
+================================================================================
+5. MASSAGE CAMPUS PATH
+================================================================================
+
+For users who participate in lessons, quizzes, learning paths, glossary activity, and educational
+features:
+
+1. Campus Newcomer
+2. Technique Curious
+3. Pressure Student
+4. Bodywork Learner
+5. Wellness Scholar
+6. Technique Tracker
+7. Recovery Reader
+8. Massage Theorist
+9. Campus Mentor
+10. Bodywork Sage
+11. Knowledge Steward
+12. Master of Calm Study
+
+Campus Mentor, Bodywork Sage, and Master of Calm Study are platform progression titles, not
+professional education credentials or authorization to teach.
+
+================================================================================
+6. DATA STEWARD PATH
+================================================================================
+
+For users who correct data, check sources, improve profiles, report duplicates, and help keep
+records accurate:
+
+1. Detail Helper
+2. Correction Runner
+3. Info Gatherer
+4. Data Cleaner
+5. Listing Fixer
+6. Source Checker
+7. Accuracy Builder
+8. Profile Polisher
+9. Quality Keeper
+10. Data Steward
+11. Nexus Archivist
+12. Master Record Keeper
+
+Data Steward is a fictional rank title here. The Steward access responsibility is a separate scoped
+assignment governed by the Edit System and Admin Workspace.
+
+================================================================================
+7. OUTREACH PATH
+================================================================================
+
+For users who participate in public events, campaigns, QR check-ins, launch activities, outreach,
+and community missions:
+
+1. Event Visitor
+2. QR Check-In
+3. Campaign Guest
+4. Outreach Friend
+5. Wellness Participant
+6. Event Regular
+7. Community Supporter
+8. Outreach Guide
+9. Campaign Steward
+10. Public Wellness Herald
+11. Nexus Ambassador
+12. Grand Outreach Champion
+
+Nexus Ambassador is fictional progression and does not create an employment, representative,
+sponsorship, or brand-ambassador relationship.
+
+================================================================================
+8. PROGRESSION AND DISPLAY DIRECTION
+================================================================================
+
+Each path requires a versioned progression definition. Exact thresholds remain unresolved. A
+definition should identify eligible event families, minimum quality or approval state, exclusions,
+milestones, demotion or correction behavior, and the title unlocked at each level.
+
+Revoked, rejected, duplicated, fraudulent, self-dealing, quarantined, or otherwise ineligible
+activity does not count merely because a raw activity counter increased. Correcting a source event
+must trigger safe recomputation without erasing history.
+
+The public profile may show one selected rank title and optionally a path icon or progress summary.
+It must label the title as Massage Nexus progression where confusion with a credential or authority
+is possible. Users may hide rank presentation without deleting progression history.
+
+Rank progress must not be embedded as an unbounded structure in user_main. The future authoritative
+progress record should support one user plus one path, progression-definition version, eligible
+totals, current level, selected-display state, recomputation time, and audit references. Final
+collection names and structure guides remain unresolved.
+
+================================================================================
+9. OPEN DECISIONS
+================================================================================
+
+- exact progression thresholds and eligible source events for each path;
+- whether every path retains twelve levels after calibration;
+- whether more than one title may be featured publicly;
+- rank icons, colors, and cosmetic unlocks;
+- final definition and user-progress collection names;
+- correction, recomputation, dispute, and migration rules;
+- whether additional paths are needed after the current five are implemented and measured.

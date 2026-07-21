@@ -1,5 +1,5 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.74
+Document Version: 0.84
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description:
@@ -216,6 +216,10 @@ Shown only when authorized.
 5. PERSONAL PROFILE
 ================================================================================
 
+Profile fields, avatar and cover references, public activity derivation, and the distinction from
+roles, badges, ranks, reputation, and rewards are authoritative in
+docs/07-accounts/user-profile-and-preference-system.txt.
+
 Routes:
 
 /workspace/profile
@@ -283,6 +287,10 @@ in separate sections.
 ================================================================================
 7. SETTINGS
 ================================================================================
+
+Settings is the single interface area for saved preferences and account controls; Massage Nexus
+does not add a second overlapping Preferences menu. The data boundaries and detailed booking-
+preference separation are authoritative in docs/07-accounts/user-profile-and-preference-system.txt.
 
 Routes:
 
