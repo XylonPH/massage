@@ -1,5 +1,5 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.30
+Document Version: 1.40
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
@@ -31,6 +31,11 @@ Each detailed PHP structure guide begins with one comment block that identifies:
 - Collection: the exact collection or table name, matching the snake_case filename;
 - Description: a short explanation of what one record in the collection represents;
 - Purpose: why the PHP-readable file exists and how it should be used.
+
+Write this metadata as a single leading PHP doc comment (`/** ... */`) with each metadata line
+starting with `*`, immediately after the opening `<?php` tag. Validation tooling matches this exact
+comment style; metadata written as `//` line comments or placed elsewhere in the file will fail
+validation even if the same information is present.
 
 Do not include an Author field. Git records authorship, and repeating the same author in every
 file adds no structural meaning.
@@ -87,6 +92,13 @@ Replace article_main with the exact collection name in every collection-specific
 Required arrays remain present even when they are currently empty, except for the explicitly
 conditional multilingual sample and legacy map.
 
+Validation tooling mechanically checks declaration order only from the sample record onward: the
+sample, field order, embedded structure, field-property map, subfield-property map, index list, and
+boundary must appear in that relative sequence. The timestamps, *_default, and
+$multilingual_text_sample are expected before the sample record by convention but are not currently
+order-checked by tooling; place them first regardless, since a future validator revision may enforce
+the full sequence.
+
 The collection variable, such as $article_main, is one fully populated sample record. It lists
 every possible top-level stored property using a representative sample value. Each property has a
 short inline comment explaining its meaning. A document-store record may omit sparse or
@@ -125,14 +137,21 @@ Every top-level and nested field-property entry must explicitly provide:
 
 Add the applicable contract attributes when they carry meaning, including type_sql,
 is_mandatory, is_relational, is_indexed, is_unique, is_translatable, visibility_scope,
-default_value, length or numeric limits, accepted formats, and validation constraints. Do not
-infer a field's type from its sample value: null is often only an illustrative absence and does
-not identify the stored type.
+default_value, length or numeric limits, accepted formats, and validation constraints. Length and
+numeric limits use these canonical keys: min_character and max_character for text length,
+min_number and max_number for numeric range. Accepted-format constraints use
+constraint_text_input (e.g., ['URL'], ['EMAIL']). Do not invent alternate key names such as
+character_limit or max_length for these same concepts. Do not infer a field's type from its sample
+value: null is often only an illustrative absence and does not identify the stored type.
 
 Field properties use standardized abbreviation codes. type_data denotes the primitive type (e.g.,
 S for String, I for Integer, B for Boolean, A for Array, O for Object). type_field denotes the
 semantic interface format (e.g., TXT for Text, JSE for JSON/Embedded, DDL for Dropdown/Enum,
-TGL for Tag List, CHK for Checkbox, NMB for Number, DTS for DateTime String).
+TGL for Tag List, CBL for Checkbox List, CHK for Checkbox, NMB for Number, DTS for DateTime
+String, DTP for Date Picker). This list is illustrative, not exhaustive: before introducing a new
+type_data or type_field code, search existing structure guides for a code that already covers the
+same concept and reuse it, the same way field names are checked against data/field_index.txt
+before a new one is added.
 
 The $multilingual_text_sample uses eng as its example language. It is strictly required by
 validation tooling if any field defines 'is_translatable' => true; otherwise, it is optional.
@@ -140,7 +159,14 @@ Do not add another language merely to make the generic sample appear multilingua
 collection sample records may demonstrate additional languages when useful.
 
 The optional *_legacy_name_map exists only for a collection derived from a legacy database or
-schema. New Massage Nexus collections do not include an empty or speculative legacy map.
+schema. New Massage Nexus collections do not include an empty or speculative legacy map. When
+present, it is a flat map from each old field name to its current replacement name, or to a short
+note when the replacement is conditional or split across more than one current field:
+
+$field_main_legacy_name_map = [
+    'field_title' => 'field_label',
+    'type_validation' => 'validation_rule_list or constraint_text_input, depending on meaning',
+];
 
 Every *_index_list entry uses this shape:
 
@@ -163,12 +189,31 @@ Every *_index_list entry uses this shape:
 index_key is the stable guide key. index_name is the intended physical database index name.
 type_index describes the overall index kind. Common values include STD (Standard), 2DSPHERE or 2D
 (Geospatial), TTL (Expiring), TEXT (Search), or MULTIKEY. type_index_mode describes how one field
-participates in the index. Compound fields use sort_order increments of 10. Collection-level index
-definitions belong here rather than only in relationship metadata.
+participates in the index. Collection-level index definitions belong here rather than only in
+relationship metadata.
+
+The index entry carries two distinct sort_order values. The entry-level sort_order (the one
+alongside index_key, index_name, and type_index) orders this index entry relative to the other
+entries in *_index_list. The sort_order nested inside each index_field_list item orders that
+field's position within its own compound index; compound fields use increments of 10 for this
+nested value.
 
 The *_boundary array identifies what the collection owns, which other collections or datasets it
 references, and what responsibilities remain outside it. Boundary entries must distinguish a
-stored reference from embedded ownership and must not invent unresolved relationships.
+stored reference from embedded ownership and must not invent unresolved relationships. Use exactly
+these three keys:
+
+$article_main_boundary = [
+    'owns' => ['the article_main record fields and embedded structures documented in this file'],
+    'reference_field_list' => ['language_original_id', 'author_user_id_list'],
+    'does_not_own' => ['records stored in referenced collections', 'runtime authorization, migration, seeding, or deployment behavior'],
+];
+
+reference_field_list names the actual stored fields that hold an identifier into another
+collection (a foreign-key-style reference). It does not include taxonomy-coded fields such as a
+type_* or status_* select: a taxonomy option code is owned classification data validated against a
+taxonomy JSON file, not a reference to another collection's record. When a collection owns no
+cross-collection references, use an empty array rather than omitting the key.
 
 The file ends with one return statement containing every declared structural array under a key
 matching its variable name. Include $multilingual_text_sample and *_legacy_name_map only when they

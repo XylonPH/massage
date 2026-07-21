@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Main Structure Guide
- * Version: 1.00
+ * Version: 1.10
  * Collection: establishment_main
  * Description: Stores one establishment or supported provider's public profile and directory classification record.
  * Purpose: Documents the establishment_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -12,7 +12,7 @@
  */
 
 $created_at = '2026-07-20T07:25:30Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-21T10:28:45Z';
 $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
@@ -204,7 +204,7 @@ $establishment_main_index_list = [
 
 $establishment_main_boundary = [
     'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, small contact lists, regular operating hours, and lifecycle'],
-    'references' => ['controlled classifications, geographic references, and primary media'],
+    'reference_field_list' => ['country_id', 'geographic_area_id_list', 'primary_media_image_id'],
     'does_not_own' => ['private addresses, organization or person relationships, services, bookings, evidence, reviews, or media records'],
 ];
 
