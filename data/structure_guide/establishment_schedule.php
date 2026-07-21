@@ -1,13 +1,18 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Schedule Structure Guide
- * Version: 1.50
+ * Version: 1.60
  * Collection: establishment_schedule
  * Description: Stores one effective version of an establishment's bounded weekly operating intervals and dated exceptions.
  * Purpose: Separates historied operating hours from establishment_main and provides the source for open-now calculations without storing an authoritative is_open_now flag.
+ *
+ * Notes:
+ * - Intervals within one day or exception must not overlap; crosses_midnight must agree with the local opening and closing times.
+ * - exception_date_start must not follow exception_date_end, and a closed exception must omit replacement intervals.
+ * - Application validation prevents overlapping active effective schedule versions for one establishment.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T11:11:28Z';
+$updated_at = '2026-07-21T11:14:49Z';
 $establishment_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_schedule = [
     '_id' => 'Oh7K2pQ9xR4tV8zN', // Canonical 16-character schedule identifier.
@@ -44,6 +49,7 @@ $establishment_schedule_embedded_structure = [
     'weekly_day_list' => ['day_of_week' => 'MON', 'is_closed' => false, 'is_appointment_only' => false, 'is_walk_in_available' => true, 'interval_list' => [], 'schedule_day_note' => null],
     'weekly_day_list.interval_list' => ['opens_at_local' => '10:00', 'closes_at_local' => '22:00', 'crosses_midnight' => false, 'type_access_period' => 'ALL', 'last_booking_at_local' => '21:00', 'last_walk_in_at_local' => '20:30'],
     'exception_list' => ['exception_date_start' => '2026-12-25', 'exception_date_end' => '2026-12-25', 'type_hour_exception' => 'CLO', 'is_closed' => true, 'interval_list' => [], 'schedule_exception_note' => 'Closed for the holiday.', 'first_observed_at' => '2026-12-01T00:00:00Z', 'last_confirmed_at' => '2026-12-20T00:00:00Z'],
+    'exception_list.interval_list' => ['opens_at_local' => '10:00', 'closes_at_local' => '14:00', 'crosses_midnight' => false, 'type_access_period' => 'ALL', 'last_booking_at_local' => '13:00', 'last_walk_in_at_local' => '12:30'],
 ];
 $establishment_schedule_field_property = [
     '_id' => ['field_label' => 'Operating Schedule ID', 'field_description' => 'Canonical identifier for one effective schedule version.', 'type_data' => 'S', 'type_field' => 'HDN', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
@@ -87,18 +93,24 @@ $establishment_schedule_subfield_property = [
     'exception_list.type_hour_exception' => ['field_label' => 'Hour Exception Type', 'field_description' => 'Controlled way in which the exception changes the weekly schedule.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'exception_list.is_closed' => ['field_label' => 'Exception Is Closed', 'field_description' => 'Whether the establishment is closed throughout the exception period.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'exception_list.interval_list' => ['field_label' => 'Exception Interval List', 'field_description' => 'Replacement operating intervals for a non-closed exception.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'exception_list.interval_list.opens_at_local' => ['field_label' => 'Exception Opens At Local', 'field_description' => 'Local wall-clock time at which the replacement interval begins.', 'type_data' => 'S', 'type_field' => 'TMI'],
+    'exception_list.interval_list.closes_at_local' => ['field_label' => 'Exception Closes At Local', 'field_description' => 'Local wall-clock time at which the replacement interval ends.', 'type_data' => 'S', 'type_field' => 'TMI'],
+    'exception_list.interval_list.crosses_midnight' => ['field_label' => 'Exception Crosses Midnight', 'field_description' => 'Whether the replacement interval closes on the following local calendar day.', 'type_data' => 'B', 'type_field' => 'CHK'],
+    'exception_list.interval_list.type_access_period' => ['field_label' => 'Exception Access Period Type', 'field_description' => 'Controlled client-access purpose supported during the replacement interval.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'exception_list.interval_list.last_booking_at_local' => ['field_label' => 'Exception Last Booking At Local', 'field_description' => 'Latest local booking start or cutoff time for the replacement interval.', 'type_data' => 'S', 'type_field' => 'TMI'],
+    'exception_list.interval_list.last_walk_in_at_local' => ['field_label' => 'Exception Last Walk-In At Local', 'field_description' => 'Latest local walk-in cutoff time for the replacement interval.', 'type_data' => 'S', 'type_field' => 'TMI'],
     'exception_list.schedule_exception_note' => ['field_label' => 'Schedule Exception Note', 'field_description' => 'Exception-specific public qualification that cannot be represented by the controlled fields.', 'type_data' => 'S', 'type_field' => 'TXA'],
     'exception_list.first_observed_at' => ['field_label' => 'Exception First Observed At', 'field_description' => 'UTC time when Massage Nexus first observed the exception.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'exception_list.last_confirmed_at' => ['field_label' => 'Exception Last Confirmed At', 'field_description' => 'Latest UTC time when adequate evidence confirmed the exception.', 'type_data' => 'S', 'type_field' => 'DTS'],
 ];
 $establishment_schedule_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
-    ['index_key' => 'owner_effective_status', 'index_name' => 'ix_establishment_schedule_owner_effective', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_from', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'status_schedule', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
+    ['index_key' => 'owner_effective_status', 'index_name' => 'ix_establishment_schedule_owner_effective', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_from', 'type_index_mode' => 'DES', 'sort_order' => 20], ['field_name' => 'status_schedule', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
 ];
 $establishment_schedule_boundary = [
     'owns' => ['versioned weekly operating intervals, dated exceptions, time zone, effective period, and freshness'],
     'reference_field_list' => ['establishment_id', 'time_zone_id', 'source_id_list'],
-    'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status', 'the lightweight operating_hours display snapshot embedded in establishment_main, which this collection supersedes as the historied authority'],
+    'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status', 'directory rendering or caching derived from this authoritative collection'],
 ];
 return [
     'establishment_schedule_default' => $establishment_schedule_default,

@@ -17,7 +17,10 @@
                             </a>
                         @endif
                         @if ($audience)
-                            <a href="{{ route('article.audience.show', $audience->slug()) }}" class="rounded-full bg-leaf-50 px-3 py-1.5 text-leaf-800 hover:bg-leaf-100">{{ __('article.target_audience', ['audience' => $audience->label()]) }}</a>
+                            <a href="{{ route('article.audience.show', $audience->slug()) }}" class="inline-flex items-center gap-1.5 rounded-full bg-leaf-50 px-3 py-1.5 text-leaf-800 hover:bg-leaf-100">
+                                <x-article-audience-icon :audience="$audience" class="size-4 shrink-0 text-leaf-600" />
+                                <span>{{ __('article.target_audience', ['audience' => $audience->label()]) }}</span>
+                            </a>
                         @endif
                     </div>
                     <h1 class="mt-5 text-balance text-4xl font-black leading-tight tracking-tight text-ink-950 sm:text-5xl">{{ $article->localized('article_title') }}</h1>

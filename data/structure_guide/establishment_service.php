@@ -1,14 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Service Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_service
  * Description: Stores provider menu offerings, packages, combinations, add-ons, and facility-access products.
  * Purpose: Preserves provider-specific commercial presentation while mapping it to normalized service_main records.
+ *
+ * Notes:
+ * - A component item must reference exactly one establishment_service_id or service_id; self-reference and package cycles are rejected.
+ * - Embedded price options retain only a bounded current and recent set; unbounded price history requires a separately accepted collection.
+ * - Facility access included in a package is represented as a service component until a dedicated included-facility taxonomy is accepted.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:48:10Z';
-$establishment_service_default = ['normalized_service_mapping_list' => [], 'duration_option_list' => [], 'price_option_list' => [], 'component_list' => [], 'type_booking_method' => [], 'client_restriction_list' => [], 'included_facility_list' => [], 'included_product_list' => [], 'is_featured' => false, 'status_establishment_service' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
+$updated_at = '2026-07-21T11:14:49Z';
+$establishment_service_default = ['normalized_service_mapping_list' => [], 'duration_option_list' => [], 'price_option_list' => [], 'component_list' => [], 'type_booking_method' => [], 'client_restriction_list' => [], 'included_product_list' => [], 'is_featured' => false, 'status_establishment_service' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $multilingual_text_sample = ['eng' => ['text' => 'Sample service text', 'method_translation' => 'HUM', 'status_review' => 'APR']];
 $establishment_service = [
     '_id' => 'EsrK2pQ9xR4tV7zN', // Canonical offering identifier.
@@ -23,13 +28,12 @@ $establishment_service = [
     'status_establishment_service' => 'ACT', // Offering availability status.
     'normalized_service_mapping_list' => [['service_id' => 'Sv8K2pQ9xR4tV7zN', 'type_service_mapping' => 'PRI', 'level_confidence' => 'H', 'status_review' => 'APR', 'mapped_by_user_id' => 'U2pR7vX4kT9mC5qL', 'mapped_at' => '2026-07-21T08:23:43Z', 'service_mapping_note' => null]], // Normalized service mappings.
     'duration_option_list' => [['duration_minute' => 90, 'preparation_minute' => 10, 'cleanup_minute' => 10, 'status_availability' => 'AVL', 'duration_option_note' => null]], // Bookable duration options.
-    'price_option_list' => [['amount' => 1800.00, 'currency_id' => 111, 'type_price' => 'REG', 'duration_minute' => 90, 'client_price_context' => null, 'mode_service_delivery' => 'OS', 'practitioner_id' => null, 'is_tax_included' => true, 'mandatory_fee_list' => [], 'effective_from' => '2026-07-01', 'effective_until' => null, 'status_price' => 'ACT', 'first_observed_at' => '2026-07-01T00:00:00Z', 'last_confirmed_at' => '2026-07-20T00:00:00Z']], // Effective-dated price options.
+    'price_option_list' => [['amount' => 1800.00, 'currency_id' => 111, 'type_price' => 'REG', 'duration_minute' => 90, 'client_price_context' => null, 'mode_service_delivery' => 'OS', 'practitioner_id' => null, 'is_tax_included' => true, 'mandatory_fee_list' => [['fee_label' => 'Service charge', 'amount' => 100.00, 'currency_id' => 111, 'is_tax_included' => false]], 'effective_from' => '2026-07-01', 'effective_until' => null, 'status_price' => 'ACT', 'first_observed_at' => '2026-07-01T00:00:00Z', 'last_confirmed_at' => '2026-07-20T00:00:00Z']], // Effective-dated price options.
     'component_list' => [['establishment_service_id' => null, 'service_id' => 'Sv8K2pQ9xR4tV7zN', 'component_name_snapshot' => 'Swedish massage', 'quantity' => 1, 'duration_minute' => 60, 'is_selectable' => false, 'is_optional' => false, 'sort_order' => 10]], // Package or combination components.
     'mode_service_delivery' => ['OS'], // Delivery modes.
     'type_booking_method' => ['PHN', 'WEB'], // Supported booking methods.
-    'client_restriction_list' => [], // Explicit restrictions.
-    'included_facility_list' => ['STM'], // Included facility codes.
-    'included_product_list' => [], // Included product references or snapshots.
+    'client_restriction_list' => [['minimum_age' => 18, 'maximum_age' => null, 'restriction_note' => 'Clients must be at least 18 years old.']], // Explicit structured restrictions.
+    'included_product_list' => [['product_id' => 'Pd8K2pQ9xR4tV7zN', 'product_name_snapshot' => 'Herbal massage balm', 'quantity' => 1]], // Included product references with source-time names.
     'is_featured' => true, // Featured display flag.
     'display_order' => 10, // Provider display order.
     'first_observed_at' => '2026-07-01T00:00:00Z', // First observation.
@@ -49,7 +53,7 @@ $establishment_service_field_order = [
     'short_description', 'full_description', 'menu_group_name', 'type_establishment_service',
     'status_establishment_service', 'normalized_service_mapping_list', 'duration_option_list',
     'price_option_list', 'component_list', 'mode_service_delivery', 'type_booking_method',
-    'client_restriction_list', 'included_facility_list', 'included_product_list', 'is_featured',
+    'client_restriction_list', 'included_product_list', 'is_featured',
     'display_order', 'first_observed_at', 'last_observed_active_at', 'first_observed_inactive_at',
     'first_confirmed_at', 'last_confirmed_at', 'research_source_id_list',
     'record_verification_id_list', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at',
@@ -58,7 +62,10 @@ $establishment_service_embedded_structure = [
     'normalized_service_mapping_list' => ['service_id' => 'Sv8K2pQ9xR4tV7zN', 'type_service_mapping' => 'PRI', 'level_confidence' => 'H', 'status_review' => 'APR', 'mapped_by_user_id' => 'U2pR7vX4kT9mC5qL', 'mapped_at' => '2026-07-21T08:23:43Z', 'service_mapping_note' => null],
     'duration_option_list' => ['duration_minute' => 90, 'preparation_minute' => 10, 'cleanup_minute' => 10, 'status_availability' => 'AVL', 'duration_option_note' => null],
     'price_option_list' => ['amount' => 1800.00, 'currency_id' => 111, 'type_price' => 'REG', 'duration_minute' => 90, 'client_price_context' => null, 'mode_service_delivery' => 'OS', 'practitioner_id' => null, 'is_tax_included' => true, 'mandatory_fee_list' => [], 'effective_from' => '2026-07-01', 'effective_until' => null, 'status_price' => 'ACT', 'first_observed_at' => '2026-07-01T00:00:00Z', 'last_confirmed_at' => '2026-07-20T00:00:00Z'],
+    'price_option_list.mandatory_fee_list' => ['fee_label' => 'Service charge', 'amount' => 100.00, 'currency_id' => 111, 'is_tax_included' => false],
     'component_list' => ['establishment_service_id' => null, 'service_id' => 'Sv8K2pQ9xR4tV7zN', 'component_name_snapshot' => 'Swedish massage', 'quantity' => 1, 'duration_minute' => 60, 'is_selectable' => false, 'is_optional' => false, 'sort_order' => 10],
+    'client_restriction_list' => ['minimum_age' => 18, 'maximum_age' => null, 'restriction_note' => 'Clients must be at least 18 years old.'],
+    'included_product_list' => ['product_id' => 'Pd8K2pQ9xR4tV7zN', 'product_name_snapshot' => 'Herbal massage balm', 'quantity' => 1],
 ];
 $establishment_service_field_property = [
     '_id' => ['field_label' => 'Establishment Service ID', 'field_description' => 'Canonical identifier for this provider-specific offering.', 'type_data' => 'S', 'type_field' => 'HDN', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
@@ -78,8 +85,7 @@ $establishment_service_field_property = [
     'mode_service_delivery' => ['field_label' => 'Service Delivery Modes', 'field_description' => 'Controlled delivery modes in which the offering is available.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON'],
     'type_booking_method' => ['field_label' => 'Booking Methods', 'field_description' => 'Controlled methods through which a client may request or complete a booking.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'default_value' => []],
     'client_restriction_list' => ['field_label' => 'Client Restriction List', 'field_description' => 'Explicit structured restrictions applying to client eligibility for the offering.', 'type_data' => 'A', 'type_field' => 'JSE', 'type_sql' => 'JSON', 'default_value' => []],
-    'included_facility_list' => ['field_label' => 'Included Facility List', 'field_description' => 'Controlled facility features included with the offering.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'default_value' => []],
-    'included_product_list' => ['field_label' => 'Included Product List', 'field_description' => 'Product references or bounded source snapshots included with the offering.', 'type_data' => 'A', 'type_field' => 'JSE', 'type_sql' => 'JSON', 'default_value' => []],
+    'included_product_list' => ['field_label' => 'Included Product List', 'field_description' => 'Bounded product references and source-time names included with the offering.', 'type_data' => 'A', 'type_field' => 'JSE', 'type_sql' => 'JSON', 'default_value' => [], 'is_relational' => true],
     'is_featured' => ['field_label' => 'Featured Offering', 'field_description' => 'Whether the provider has marked the offering for featured presentation.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN', 'default_value' => false],
     'display_order' => ['field_label' => 'Display Order', 'field_description' => 'Provider-controlled stable ordering value within its menu context.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
     'first_observed_at' => ['field_label' => 'First Observed At', 'field_description' => 'UTC time when Massage Nexus first observed the offering.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
@@ -96,8 +102,14 @@ $establishment_service_field_property = [
 ];
 $establishment_service_subfield_property = [
     'display_name.*.text' => ['field_label' => 'Display Name Text', 'field_description' => 'Localized display-name text keyed by three-letter language code.', 'type_data' => 'S', 'type_field' => 'TXT'],
+    'display_name.*.method_translation' => ['field_label' => 'Display Name Translation Method', 'field_description' => 'Controlled original production method for the localized display name.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'display_name.*.status_review' => ['field_label' => 'Display Name Review Status', 'field_description' => 'Controlled review state of the localized display name.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'short_description.*.text' => ['field_label' => 'Short Description Text', 'field_description' => 'Localized short-description text keyed by three-letter language code.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'short_description.*.method_translation' => ['field_label' => 'Short Description Translation Method', 'field_description' => 'Controlled original production method for the localized short description.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'short_description.*.status_review' => ['field_label' => 'Short Description Review Status', 'field_description' => 'Controlled review state of the localized short description.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'full_description.*.text' => ['field_label' => 'Full Description Text', 'field_description' => 'Localized full-description text keyed by three-letter language code.', 'type_data' => 'S', 'type_field' => 'RTE'],
+    'full_description.*.method_translation' => ['field_label' => 'Full Description Translation Method', 'field_description' => 'Controlled original production method for the localized full description.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'full_description.*.status_review' => ['field_label' => 'Full Description Review Status', 'field_description' => 'Controlled review state of the localized full description.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'normalized_service_mapping_list.service_id' => ['field_label' => 'Mapped Service', 'field_description' => 'Canonical service to which the provider offering is mapped.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true],
     'normalized_service_mapping_list.type_service_mapping' => ['field_label' => 'Service Mapping Type', 'field_description' => 'Controlled role of the canonical service in the offering mapping.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'normalized_service_mapping_list.level_confidence' => ['field_label' => 'Mapping Confidence', 'field_description' => 'Reviewed confidence that the provider wording maps to the canonical service.', 'type_data' => 'S', 'type_field' => 'DDL'],
@@ -119,6 +131,10 @@ $establishment_service_subfield_property = [
     'price_option_list.practitioner_id' => ['field_label' => 'Price Practitioner', 'field_description' => 'Optional practitioner for whom this specific amount applies.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'price_option_list.is_tax_included' => ['field_label' => 'Tax Included', 'field_description' => 'Whether mandatory tax is already included in the displayed amount.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'price_option_list.mandatory_fee_list' => ['field_label' => 'Mandatory Fee List', 'field_description' => 'Structured mandatory fees not already included in the displayed amount.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'price_option_list.mandatory_fee_list.fee_label' => ['field_label' => 'Mandatory Fee Label', 'field_description' => 'Source-facing name of the mandatory fee.', 'type_data' => 'S', 'type_field' => 'TXT'],
+    'price_option_list.mandatory_fee_list.amount' => ['field_label' => 'Mandatory Fee Amount', 'field_description' => 'Non-negative mandatory fee amount in the referenced currency.', 'type_data' => 'F', 'type_field' => 'NMB', 'min_number' => 0],
+    'price_option_list.mandatory_fee_list.currency_id' => ['field_label' => 'Mandatory Fee Currency', 'field_description' => 'Numeric common-reference currency identifier for the mandatory fee.', 'type_data' => 'I', 'type_field' => 'REF', 'is_relational' => true],
+    'price_option_list.mandatory_fee_list.is_tax_included' => ['field_label' => 'Mandatory Fee Tax Included', 'field_description' => 'Whether tax is already included in the mandatory fee amount.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'price_option_list.effective_from' => ['field_label' => 'Price Effective From', 'field_description' => 'Date on which the price option begins to apply.', 'type_data' => 'S', 'type_field' => 'DTI'],
     'price_option_list.effective_until' => ['field_label' => 'Price Effective Until', 'field_description' => 'Date after which the price option no longer applies.', 'type_data' => 'S', 'type_field' => 'DTI'],
     'price_option_list.status_price' => ['field_label' => 'Price Status', 'field_description' => 'Controlled lifecycle or availability state of the price option.', 'type_data' => 'S', 'type_field' => 'DDL'],
@@ -132,6 +148,12 @@ $establishment_service_subfield_property = [
     'component_list.is_selectable' => ['field_label' => 'Component Is Selectable', 'field_description' => 'Whether the client may choose this component from supported alternatives.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'component_list.is_optional' => ['field_label' => 'Component Is Optional', 'field_description' => 'Whether the component may be omitted from the offering.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'component_list.sort_order' => ['field_label' => 'Component Sort Order', 'field_description' => 'Stable display order of the component within the offering.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
+    'client_restriction_list.minimum_age' => ['field_label' => 'Minimum Client Age', 'field_description' => 'Minimum client age in whole years when the offering has an age restriction.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
+    'client_restriction_list.maximum_age' => ['field_label' => 'Maximum Client Age', 'field_description' => 'Maximum client age in whole years when the offering has an upper age restriction.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
+    'client_restriction_list.restriction_note' => ['field_label' => 'Client Restriction Note', 'field_description' => 'Source-supported eligibility restriction that is not represented by the numeric age bounds.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'included_product_list.product_id' => ['field_label' => 'Included Product', 'field_description' => 'Product included with the offering when a canonical product record exists.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'included_product_list.product_name_snapshot' => ['field_label' => 'Included Product Name Snapshot', 'field_description' => 'Source-time product name retained for provenance and display resilience.', 'type_data' => 'S', 'type_field' => 'TXT'],
+    'included_product_list.quantity' => ['field_label' => 'Included Product Quantity', 'field_description' => 'Non-negative quantity of the included product.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
 ];
 $establishment_service_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
@@ -140,7 +162,7 @@ $establishment_service_index_list = [
 ];
 $establishment_service_boundary = [
     'owns' => ['provider menu identity, price and duration options, package components, and normalized mappings'],
-    'reference_field_list' => ['establishment_id', 'research_source_id_list', 'record_verification_id_list'],
+    'reference_field_list' => ['establishment_id', 'normalized_service_mapping_list.service_id', 'normalized_service_mapping_list.mapped_by_user_id', 'price_option_list.currency_id', 'price_option_list.practitioner_id', 'price_option_list.mandatory_fee_list.currency_id', 'component_list.establishment_service_id', 'component_list.service_id', 'included_product_list.product_id', 'research_source_id_list', 'record_verification_id_list'],
     'does_not_own' => ['universal service identity, temporary promotions, bookings, or overall establishment price range'],
 ];
 return [

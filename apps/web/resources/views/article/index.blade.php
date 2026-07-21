@@ -76,7 +76,10 @@
             <h2 class="font-black text-ink-950 dark:text-ink-50">{{ __('article.browse_audiences') }}</h2>
             <div class="mt-4 flex flex-wrap gap-2">
                 @foreach ($audiences as $audience)
-                    <a class="rounded-full bg-leaf-50 px-3 py-1.5 text-sm font-semibold text-leaf-800 hover:bg-leaf-100 dark:bg-leaf-950 dark:text-leaf-100 dark:hover:bg-leaf-900" href="{{ route('article.audience.show', $audience->slug()) }}">{{ $audience->label() }}</a>
+                    <a class="inline-flex items-center gap-1.5 rounded-full bg-leaf-50 px-3 py-1.5 text-sm font-semibold text-leaf-800 hover:bg-leaf-100 dark:bg-leaf-950 dark:text-leaf-100 dark:hover:bg-leaf-900" href="{{ route('article.audience.show', $audience->slug()) }}">
+                        <x-article-audience-icon :audience="$audience" class="size-4 shrink-0 text-leaf-600 dark:text-leaf-400" />
+                        <span>{{ $audience->label() }}</span>
+                    </a>
                 @endforeach
             </div>
         </div>

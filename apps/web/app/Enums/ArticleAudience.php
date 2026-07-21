@@ -28,6 +28,18 @@ enum ArticleAudience: string
         return strtolower($this->label());
     }
 
+    public function iconName(): string
+    {
+        return match ($this) {
+            self::General => 'general',
+            self::Client => 'client',
+            self::Practitioner => 'practitioner',
+            self::Owner => 'owner',
+            self::Caregiver => 'caregiver',
+            self::Traveler => 'traveler',
+        };
+    }
+
     public static function fromSlug(string $slug): ?self
     {
         foreach (self::cases() as $case) {
