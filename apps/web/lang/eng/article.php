@@ -49,6 +49,8 @@ return [
     'editor_new_title' => 'Create an article draft',
     'editor_edit_title' => 'Edit article draft',
     'editor_intro' => 'Save work as a private draft, then submit it for editorial review when it is ready.',
+    'needs_revision' => 'Revision Requested',
+    'needs_revision_editor_hint' => 'An editor has reviewed this article and requested changes. Please check the revisions tab for their notes.',
     'fix_errors' => 'Please review the highlighted article details.',
     'link_prompt' => 'Enter an HTTPS, HTTP, email, page, or anchor link.',
     'unsaved_changes' => 'Unsaved changes',
