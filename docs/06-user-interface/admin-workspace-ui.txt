@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.30
+Document Version: 0.40
 Date Created: 2026-07-19
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
 
 Related Documents:
@@ -51,7 +51,7 @@ This document does not redefine:
 
 Those decisions remain in the Admin Workspace and the authoritative capability documents.
 
-The initial interface may use Filament, Livewire, Alpine.js, and Tailwind CSS if compatibility is approved. These UI requirements remain valid if the implementation framework changes.
+The interface is hand-built with Laravel Blade, Livewire, Alpine.js, and Tailwind CSS inside a shared branded workspace shell, rather than a packaged admin-panel framework. These UI requirements remain valid if the implementation framework changes.
 
 ================================================================================
 2. DESIGN DIRECTION
@@ -1178,7 +1178,9 @@ Phase 3
 - Audit is read-only in the interface.
 - Themes, Quotes, Surveys, Quizzes, Announcements, targeted cache invalidation, and aggregate
   recomputation use permission-scoped, domain-specific pages.
-- Filament is a working implementation choice, not a permanent UI requirement until compatibility is verified.
+- The workspace shell, editorial CRUD, and moderation/system placeholders are hand-built with Blade,
+  Livewire, and Alpine.js rather than a packaged admin-panel framework; Filament was evaluated and
+  removed. This is a working implementation choice, not a permanent UI requirement.
 
 ================================================================================
 31. OPEN DECISIONS
@@ -1196,7 +1198,7 @@ Phase 3
 - final table implementation and virtualization threshold;
 - final protected-document viewer;
 - final mobile support boundary for complex actions;
-- final Filament panel and plugin choices;
+- final moderation and system workspace UI beyond the current placeholder pages;
 - final dark-theme availability;
 - final notification delivery controls;
 - final provider-budget visualization;

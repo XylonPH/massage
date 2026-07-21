@@ -1,5 +1,5 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 2.02
+Document Version: 2.13
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 
@@ -236,7 +236,10 @@ docs/
 Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.
 
 tools/
-Contains project-maintenance scripts. Application runtime code does not belong here. The first active script is tools/script/build_field_index.php, which regenerates data/field_index.txt.
+Contains project-maintenance scripts. Application runtime code does not belong here. Active scripts
+include tools/script/build_field_index.php, which regenerates data/field_index.txt, and
+tools/script/validate_structure_guides.php, which checks every PHP structure guide against the
+required metadata, variables, field coverage, index shape, boundary, and return conventions.
 
 .github/
 Contains GitHub automation, issue forms, pull-request templates, and workflow files.
@@ -462,14 +465,12 @@ apps/web/app/
 +-- Enums/
 +-- Events/
 +-- Exceptions/
-+-- Filament/
-|   +-- Pages/
-|   +-- Resources/
-|   +-- Widgets/
 +-- Http/
 +-- Jobs/
 +-- Listeners/
 +-- Livewire/
+|   +-- Workspace/
+|       +-- Editorial/
 +-- Models/
 +-- Notifications/
 +-- Policies/
@@ -500,9 +501,6 @@ Responds to an Event, such as sending a notification after a booking is confirme
 
 Exceptions/
 Contains project-specific errors that need clearer handling.
-
-Filament/
-Contains administration resources, custom pages, and dashboard widgets used by the browser-based workspace.
 
 Http/
 Contains website and API request handling.

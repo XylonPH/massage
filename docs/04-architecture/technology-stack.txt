@@ -1,5 +1,5 @@
 Title: Massage Nexus: Technology Stack
-Document Version: 2.40
+Document Version: 2.50
 Date Created: 2026-06-30
 Revision Date: 2026-07-21
 
@@ -9,6 +9,7 @@ This document records the accepted and working technology direction for Massage 
 
 Version History
 ---------------
+- v2.50 (2026-07-21): Removed Filament from the stack: the Private Workspace and Administration entry in section 3 no longer names it as the working choice, and the "exact Filament use across operator, therapist, editorial, and administrator workspaces" line is removed from section 14 (Unresolved Decisions) as resolved. The editorial, moderation, and system areas under /workspace are standardized on hand-built Blade + Livewire + Alpine pages inside the shared branded workspace shell rather than Filament panels; moderation and system currently ship as permission-gated placeholder pages pending their own build-out, while editorial has full Livewire CRUD for Establishments, Services, and Quotes. livewire/livewire is now a direct Composer dependency (previously only pulled in transitively through Filament), currently pinned at ^4.1 with 4.3.3 installed; this is a v4 release rather than the v3 line originally planned, forced by Filament's own dependency chain while Filament was still present, and confirmed compatible with the existing Livewire usage before Filament was removed. A site-wide light/dark/system theme switch was added to the workspace shell.
 - v2.40 (2026-07-21): Added the missing apps/web/storage/app/restricted/ development path to section 7 (Storage and Media Security), aligning it with file-and-folder-structure.txt section 18 and this document's own Production Storage Containers list, both of which already treat restricted media as distinct from private documents.
 - v2.30 (2026-07-20): Implemented the Tiptap open-source core for the workspace Article editor through @tiptap/core 3.28.0, StarterKit, text-alignment, placeholder, and ProseMirror packages, built through the existing Vite pipeline. StarterKit supplies the link and underline extensions. The server-side controlled-HTML sanitizer remains authoritative.
 - v2.20 (2026-07-19): Replaced the obsolete OneDrive-era AI reference with the repository AI-Assisted Development Workflow and Runtime AI System authorities.
@@ -167,7 +168,7 @@ Laravel Public Directory:
 C:\code\multiplatform\massage\apps\web\public
 
 Laravel Version Policy:
-Use Composer lock files to preserve installed framework and package versions. Framework upgrades must be deliberate, tested, documented, and checked against PHP, Livewire, Filament, MongoDB integration, and production-hosting compatibility.
+Use Composer lock files to preserve installed framework and package versions. Framework upgrades must be deliberate, tested, documented, and checked against PHP, Livewire, MongoDB integration, and production-hosting compatibility.
 
 MongoDB Application Package:
 mongodb/laravel-mongodb 5.8.2 (official MongoDB package; PSR-4 namespace MongoDB\Laravel\), providing an Eloquent-compatible model and query builder for MongoDB. Verified compatible with Laravel 13.20.0, PHP 8.5.8, and MongoDB PHP extension 2.3.3.
@@ -185,7 +186,7 @@ Lightweight Browser Interaction:
 Alpine.js
 
 Version Policy:
-Use the current stable version compatible with the initialized Laravel, Livewire, Filament, and Vite stack.
+Use the current stable version compatible with the initialized Laravel, Livewire, and Vite stack.
 
 CSS Framework:
 Tailwind CSS
@@ -197,7 +198,7 @@ Frontend Asset Build Tool:
 Vite
 
 Private Workspace and Administration:
-Filament working choice, subject to compatibility review against Laravel 13.20.0, PHP 8.5.8, Livewire, MongoDB integration, and the accepted workspace architecture
+Hand-built Blade + Livewire + Alpine.js pages inside a shared branded workspace shell (resources/views/layouts/workspace.blade.php), replacing the earlier Filament working choice. The Editorial area under /workspace/editorial provides full Livewire CRUD for Establishments, Services, and Quotes; Moderation (/workspace/moderation) and System (/workspace/system) currently ship as branded placeholder pages, permission-gated the same way as the rest of the workspace. The shell includes a site-wide light/dark/system theme switch.
 
 Rich-Text Editor:
 Tiptap open-source core working choice
@@ -554,7 +555,6 @@ Verified installed components:
 - final native mobile start date;
 - whether a separate Windows application will ever be needed;
 - final production AI providers and fallback order;
-- final rich-text sanitization package;
-- exact Filament use across operator, therapist, editorial, and administrator workspaces.
+- final rich-text sanitization package.
 
 These unresolved choices do not block documentation, taxonomy preparation, API contracts, source asset organization, or continued Laravel foundation work. The local PHP, Apache, Laravel, PIE, MongoDB driver, and MongoDB server foundations are now installed and verified as working components, subject to application-level integration and testing.

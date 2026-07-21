@@ -1,7 +1,7 @@
 Title: Massage Nexus Maintenance and Continuous Operations
-Document Version: 0.10
+Document Version: 0.11
 Date Created: 2026-07-18
-Revision Date: 2026-07-19
+Revision Date: 2026-07-21
 Document Description: Defines how Massage Nexus is maintained after a stable public release, including content publishing, comics, social media, moderation, research freshness, analytics, AI-assisted operations, security, technical upgrades, refactoring, documentation, surveys, backups, incidents, and continuous improvement.
 
 Related Documents:
@@ -465,7 +465,6 @@ Maintain supported versions of:
 - Alpine.js;
 - Tailwind CSS;
 - Vite;
-- Filament where used;
 - Tiptap;
 - mobile frameworks later;
 - cloud services;
