@@ -33,7 +33,6 @@
             <x-form.field :label="__('editorial.display_enabled')">
                 <label class="mt-2 inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-ink-700 dark:text-ink-200">
                     <input type="checkbox" wire:model="state.is_display_enabled" class="size-4 rounded border-ink-300 text-ember-500 focus:ring-ember-400">
-                    {{ __('editorial.display_enabled') }}
                 </label>
             </x-form.field>
         </div>

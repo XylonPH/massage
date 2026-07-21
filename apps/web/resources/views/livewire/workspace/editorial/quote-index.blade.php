@@ -30,7 +30,7 @@
                     <tr class="border-b border-ink-100 last:border-0 dark:border-ink-800" wire:key="{{ $quote->getKey() }}">
                         <td class="max-w-md truncate px-5 py-3 font-semibold text-ink-950 dark:text-ink-50">{{ $quote->english_text }}</td>
                         <td class="px-5 py-3">
-                            <span class="rounded-full bg-ink-50 px-2.5 py-1 text-xs font-bold text-ink-700 dark:bg-ink-800 dark:text-ink-200">{{ $quote->status_record_lifecycle?->value ?? '—' }}</span>
+                            <span class="rounded-full bg-ink-50 px-2.5 py-1 text-xs font-bold text-ink-700 dark:bg-ink-800 dark:text-ink-200">{{ $quote->status_record_lifecycle?->getLabel() ?? '—' }}</span>
                         </td>
                         <td class="px-5 py-3 text-ink-600 dark:text-ink-300">{{ $quote->updated_at?->format('M j, Y') }}</td>
                         <td class="px-5 py-3 text-right">
