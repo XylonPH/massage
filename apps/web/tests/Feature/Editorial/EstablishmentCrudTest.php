@@ -169,4 +169,22 @@ class EstablishmentCrudTest extends TestCase
         $this->assertSame('09:00', $record->operating_hours[0]['open_time']);
         $this->assertSame('18:00', $record->operating_hours[0]['close_time']);
     }
+
+    public function test_editing_existing_establishment_does_not_pad_operating_hours(): void
+    {
+        $user = $this->editor();
+        $establishment = Establishment::query()->create([
+            'display_name' => ['eng' => 'Two-Day Spa'],
+            'type_spa' => 'DY',
+            'status_establishment' => 'OP',
+            'operating_hours' => [
+                ['day_of_week' => 'Monday', 'open_time' => '09:00', 'close_time' => '17:00'],
+                ['day_of_week' => 'Tuesday', 'open_time' => '09:00', 'close_time' => '17:00'],
+            ],
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
+            ->assertCount('state.operating_hours', 2);
+    }
 }
