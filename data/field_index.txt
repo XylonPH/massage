@@ -46,7 +46,6 @@ assignment_reason
 attribution_name
 author_credit_list
 author_user_id_list
-availability_reference_id
 bed_mat_chair_setup
 birth_date
 border_config
@@ -68,7 +67,6 @@ claimant_user_id
 cleanup_minute
 client_price_context
 client_restriction_list
-close_time
 closes_at_local
 collection_count
 color_config
@@ -78,15 +76,12 @@ component_list
 component_name_snapshot
 confidence_level
 constraint_text_input
-contact_channel_list
 contact_label
 contact_url
-contact_value
 contact_value_display
 contact_value_normalized
 contribution_id
-coordinate_latitude
-coordinate_longitude
+coordinates
 corroboration_count
 country_id
 couple_room_availability
@@ -153,6 +148,7 @@ experience_year_count
 expires_at
 expiry_date
 fci
+fee_label
 field_description
 field_label
 field_name
@@ -197,7 +193,6 @@ icon_config
 identifier_masked
 image_title
 image_variant_list
-included_facility_list
 included_product_list
 internal_note
 internal_role
@@ -281,12 +276,14 @@ level_treatment_privacy
 level_water_temperature
 lifespan_range
 lifespan_year
+location_point
 locker_availability
 mandatory_fee_list
 mapped_at
 mapped_by_user_id
 max_character
 max_number
+maximum_age
 measurement_range
 media_config
 menu_group_name
@@ -299,6 +296,7 @@ method_water_contact
 mime_type
 min_character
 min_number
+minimum_age
 mode_access
 mode_appearance
 mode_bathing_access
@@ -323,9 +321,7 @@ note_body
 observation_at
 observed_at
 official_name
-open_time
 opens_at_local
-operating_hours
 operator_filter
 organization_id
 organization_slug
@@ -343,7 +339,6 @@ payment_method_list
 percentage_interest
 performed_at
 permission_code_list
-person_id
 person_name_snapshot
 photographer_user_id_list
 placeholder_text
@@ -366,6 +361,8 @@ priority_level
 privacy_acknowledged_at
 privacy_acknowledged_version
 private_room_availability
+product_id
+product_name_snapshot
 professional_biography
 professional_start_date
 professional_start_date_precision
@@ -416,6 +413,7 @@ research_source_id_list
 resolution_type
 resolved_at
 restricted_detail_reference
+restriction_note
 result_summary
 resulting_access_assignment_id
 resulting_location_snapshot
@@ -575,6 +573,7 @@ training_description
 trait_score
 translator_user_id_list
 treatment_area_list
+type
 type_access_period
 type_account_finance
 type_account_requirement
