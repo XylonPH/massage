@@ -131,6 +131,7 @@ Route::prefix('workspace/article')
         Route::get('/{article}/edit', [WorkspaceArticleController::class, 'edit'])->name('edit');
         Route::put('/{article}', [WorkspaceArticleController::class, 'update'])->middleware('throttle:30,1')->name('update');
         Route::post('/{article}/submit', [WorkspaceArticleController::class, 'submit'])->middleware('throttle:10,1')->name('submit');
+        Route::post('/{article}/unpublish', [WorkspaceArticleController::class, 'unpublish'])->middleware('throttle:10,1')->name('unpublish');
         Route::get('/{article}/revision', [WorkspaceArticleController::class, 'revisions'])->name('revisions');
     });
 

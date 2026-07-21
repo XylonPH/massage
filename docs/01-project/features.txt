@@ -1,7 +1,7 @@
 Title: Massage Nexus Features
-Document Version: 2.73
+Document Version: 2.83
 Date Created: 2026-06-30
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
 
 Platform Scope: This file covers the public Massage Nexus website and its browser-based user, provider, seller, advertiser, contributor, research, translation, editorial, Support, moderation, and administration workspaces. It may mention mobile, desktop, APIs, and integrations where the website must support or connect to them, while platform-specific behavior remains in the separate application documents.
@@ -1774,7 +1774,7 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Visual editing and direct controlled-HTML source editing of the same article body
 - Article title-to-slug generation until the slug is manually changed
 - Required short description with a 255-character limit and live count
-- Live word count, reading estimate, unsaved-change state, and draft-readiness guidance
+- Icon-based formatting controls; live word and character counts; separate visual and spoken reading estimates; unsaved-change state; and draft-readiness guidance
 - Restricted WYSIWYG review editor
 - Sanitized rendered HTML
 - Editable structured content
@@ -1782,6 +1782,7 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Visual-reading and spoken/screen-reader duration estimates stored in seconds
 - Per-save revision snapshots with contributor revision notes and review-submission state
 - Permission-scoped proposed publication scheduling that does not bypass editorial approval
+- Original-content language selection at draft creation, with language identity locked after first save
 
 
 12.2 Article and Guide Types
@@ -1812,9 +1813,11 @@ This inventory groups the feature list into a cleaner logical structure while pr
 12.3 Article Metadata and Labels
 --------------------------------
 - Sponsored article labels
-- Multi-author support for articles
+- Ordered multi-author bylines supporting linked accounts and custom credited names
+- Shared Article ownership, kept separate from public author credit, for revision, submission, history, and unpublishing access
 - Controlled category, target-audience, NSFW-level, publication, review, visibility, and lifecycle labels
-- Ordered public source references with title, organization, URL, and optional publication identifier
+- Ordered structured public source references with separate title, organization, URL, and optional publication identifier controls
+- Database-backed relationship selection for Articles, organizations, establishments, practitioners, services, and products
 - Stable editorial tags separate from controlled article categories
 - Anonymous public article byline with internal authorship retained for review, safety, and audit
 

@@ -10,6 +10,7 @@ use App\Models\Article\ArticleBody;
 use App\Models\Article\Tag;
 use App\Models\User;
 use App\Support\Article\ArticleContent;
+use App\Support\Article\ArticleLanguage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -120,11 +121,17 @@ class ArticleController extends Controller
     {
         $article = Article::query()
             ->publiclyVisible()
-            ->where('article_slug.eng.text', $article_slug)
+            ->where(function (Builder $query) use ($article_slug): void {
+                foreach (ArticleLanguage::keys() as $index => $languageKey) {
+                    $index === 0
+                        ? $query->where("article_slug.{$languageKey}.text", $article_slug)
+                        : $query->orWhere("article_slug.{$languageKey}.text", $article_slug);
+                }
+            })
             ->firstOrFail();
         $body = ArticleBody::query()
             ->where('article_id', (string) $article->getKey())
-            ->where('language_id', 3049)
+            ->where('language_id', (int) $article->language_original_id)
             ->where('status_review', 'A')
             ->where('status_record_lifecycle', 'ACT')
             ->firstOrFail();
@@ -167,9 +174,11 @@ class ArticleController extends Controller
                 ->pluck('article_id')
                 ->all();
             $query->where(function (Builder $query) use ($regex, $bodyArticleIds): void {
-                $query
-                    ->where('article_title.eng.text', 'regex', $regex)
-                    ->orWhere('short_description.eng.text', 'regex', $regex);
+                foreach (ArticleLanguage::keys() as $index => $languageKey) {
+                    $method = $index === 0 ? 'where' : 'orWhere';
+                    $query->{$method}("article_title.{$languageKey}.text", 'regex', $regex)
+                        ->orWhere("short_description.{$languageKey}.text", 'regex', $regex);
+                }
                 if ($bodyArticleIds !== []) {
                     $query->orWhereIn('_id', $bodyArticleIds);
                 }
@@ -225,6 +234,24 @@ class ArticleController extends Controller
             return collect();
         }
 
-        return User::query()->whereIn('_id', $article->author_user_id_list ?? [])->get();
+        $credits = $article->author_credit_list;
+        if (is_array($credits) && $credits !== []) {
+            $linkedUsers = User::query()
+                ->whereIn('_id', collect($credits)->pluck('user_id')->filter()->all())
+                ->get()
+                ->keyBy(fn (User $user): string => (string) $user->getKey());
+
+            return collect($credits)->map(function (array $credit) use ($linkedUsers): array {
+                $user = filled($credit['user_id'] ?? null) ? $linkedUsers->get((string) $credit['user_id']) : null;
+
+                return [
+                    'name' => (string) ($credit['display_name'] ?? $user?->publicName() ?? ''),
+                    'username' => $user?->username,
+                ];
+            })->filter(fn (array $credit): bool => $credit['name'] !== '')->values();
+        }
+
+        return User::query()->whereIn('_id', $article->author_user_id_list ?? [])->get()
+            ->map(fn (User $user): array => ['name' => $user->publicName(), 'username' => $user->username]);
     }
 }

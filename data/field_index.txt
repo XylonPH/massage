@@ -29,6 +29,7 @@ archived_by_user_id
 article_body
 article_body_id
 article_id
+article_owner_user_id_list
 article_plain_text
 article_slug
 article_title
@@ -37,6 +38,7 @@ assigned_by_user_id
 assigned_user_id
 assignment_reason
 attribution_name
+author_credit_list
 author_user_id_list
 bed_mat_chair_setup
 bio

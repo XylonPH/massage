@@ -3,9 +3,9 @@ Massage Nexus Article Writing Guide and Working Topic Calendar
 
 Field            | Value
 -----------------+-----------
-Document Version | 2.22
+Document Version | 2.32
 Date Created     | 2026-07-04
-Revision Date    | 2026-07-20
+Revision Date    | 2026-07-21
 
 Document Description
 --------------------
@@ -201,7 +201,7 @@ Content and Media Structure References
 
 Use the current PHP-readable structure guides under docs/04-architecture/structure-guide/:
 
-- article_main.php for Article metadata, category, target audience, tags, credits, publication status, counters, visibility, and embedded record_note;
+- article_main.php for Article metadata, category, target audience, tags, ordered public byline credits, separate shared ownership, related database records, publication status, counters, visibility, and embedded record_note;
 - article_body.php for language-specific HTML Article bodies, language_id, visual/spoken reading durations, generated plain-text search projection, and translation handling;
 - article_revision.php for Article body snapshots, review decisions, approval history, and change tracking;
 - tag_main.php for stable editorial tag identity and multilingual public tag slugs;
@@ -219,7 +219,7 @@ Article drafting is part of the unified authenticated /workspace experience. My 
 editor, and revision history use the shared workspace navigation; they are not separate global
 header destinations or a role-specific sign-in area.
 
-The implemented visual editor uses the open-source Tiptap core with a compact formatting toolbar.
+The implemented visual editor uses the open-source Tiptap core with a compact icon toolbar.
 Authors may switch between the visual document and its HTML source. Both modes write the same
 article_body HTML, and the server-side ArticleContent allowlist remains authoritative when the
 draft is saved. Scripts, arbitrary CSS, unsafe links, and unapproved elements or attributes are
@@ -232,13 +232,25 @@ Current authoring behavior includes:
 - a required short description limited to 255 characters, with a visible character counter;
 - headings at levels two through four, paragraphs, emphasis, underline, strikethrough, lists,
   quotations, dividers, approved text alignment, links, undo, redo, and format clearing;
-- live word count, estimated visual reading time, unsaved-change feedback, and a non-blocking draft
-  readiness summary;
-- article classification, sources, revision notes, comment and sharing preferences in a compact
-  metadata rail;
+- live word and Unicode character counts, separate visual and spoken reading estimates,
+  unsaved-change feedback, and a non-blocking draft readiness summary;
+- selection of English, Filipino, Indonesian, Japanese, Portuguese, Spanish, Thai, or Vietnamese as
+  the original content language when the Article is created. The original language is locked after
+  first save so the Article body and its revisions remain attached to one language identity;
+- an ordered author_credit_list that permits registered accounts and custom displayed names.
+  author_user_id_list is derived from linked credits for public discovery and reputation, while
+  credit alone grants no edit permission;
+- article_owner_user_id_list for shared operational ownership. Owners can revise, submit, inspect
+  revision history, and unpublish; only the original creator manages the owner list, and the creator
+  cannot be removed;
+- structured repeated source records with separate title, organization, URL, and publication-
+  identifier controls instead of delimiter-encoded text;
+- database-backed selectors for related Articles, organizations, establishments, practitioners,
+  services, and products. A submitted relationship ID must resolve to an active record;
+- article classification, revision notes, comment and sharing preferences in a compact metadata rail;
 - anonymous publication preference through article_main.is_anonymous. Public article pages and
-  public author listings suppress the contributor identity, while internal authorship and audit
-  associations remain available to authorized reviewers and staff;
+  public author listings suppress author_credit_list, while ownership and audit associations remain
+  available to authorized reviewers and staff;
 - proposed publication scheduling for users with article.schedule. A future date may be recorded,
   but scheduling never bypasses editorial review or publication approval, and the publication job
   remains a separate workflow responsibility.

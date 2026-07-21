@@ -2,6 +2,7 @@
 
 namespace App\Models\Article;
 
+use App\Support\Article\ArticleLanguage;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -9,7 +10,8 @@ use MongoDB\Laravel\Eloquent\Model;
 
 #[Fillable([
     'article_title', 'article_slug', 'short_description', 'language_original_id',
-    'type_article_category', 'target_audience', 'tag_id_list', 'author_user_id_list', 'is_anonymous',
+    'type_article_category', 'target_audience', 'tag_id_list', 'author_user_id_list',
+    'author_credit_list', 'article_owner_user_id_list', 'is_anonymous',
     'editor_user_id_list', 'reviewer_user_id_list', 'photographer_user_id_list',
     'cover_media_image_id', 'related_article_id_list', 'related_organization_id_list',
     'related_establishment_id_list', 'related_practitioner_id_list', 'related_service_id_list',
@@ -72,7 +74,7 @@ class Article extends Model
             });
     }
 
-    public function localized(string $field, string $locale = 'eng'): string
+    public function localized(string $field, ?string $locale = null): string
     {
         $values = $this->getAttribute($field);
 
@@ -80,6 +82,7 @@ class Article extends Model
             return '';
         }
 
+        $locale ??= ArticleLanguage::keyForId((int) ($this->language_original_id ?? 3049));
         $preferred = $values[$locale]['text'] ?? $values['eng']['text'] ?? null;
 
         if (is_string($preferred)) {

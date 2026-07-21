@@ -154,7 +154,7 @@ if (form) {
     const title = form.querySelector('[data-article-title]');
     const slug = form.querySelector('[data-article-slug]');
     const description = form.querySelector('[data-article-description]');
-    const sourceInput = form.querySelector('#source_references');
+    const sourceList = form.querySelector('[data-source-list]');
     let slugIsAutomatic = slug?.dataset.slugAuto === 'true';
 
     const updateCounter = (input, target, maximum) => {
@@ -167,7 +167,7 @@ if (form) {
             title: (title?.value.trim().length || 0) >= 4,
             description: (description?.value.trim().length || 0) >= 20,
             body: stripHtml(bodyInput?.value || '').split(/\s+/u).filter(Boolean).length >= 20,
-            sources: (sourceInput?.value.trim().length || 0) > 0,
+            sources: Array.from(form.querySelectorAll('[name$="[source_title]"]')).some((input) => input.value.trim().length > 0),
         };
         Object.entries(checks).forEach(([key, complete]) => {
             const item = form.querySelector(`[data-readiness="${key}"]`);
@@ -189,7 +189,28 @@ if (form) {
         updateCounter(description, form.querySelector('[data-description-count]'), 255);
         updateReadiness();
     });
-    sourceInput?.addEventListener('input', updateReadiness);
+    sourceList?.addEventListener('input', updateReadiness);
+
+    form.addEventListener('click', (event) => {
+        const addAuthor = event.target.closest('[data-add-author]');
+        const addSource = event.target.closest('[data-add-source]');
+        const removeAuthor = event.target.closest('[data-remove-author]');
+        const removeSource = event.target.closest('[data-remove-source]');
+
+        if (addAuthor) appendTemplate('[data-author-template]', '[data-author-list]', 'author');
+        if (addSource) appendTemplate('[data-source-template]', '[data-source-list]', 'source');
+        if (removeAuthor && form.querySelectorAll('[data-author-row]').length > 1) removeAuthor.closest('[data-author-row]')?.remove();
+        if (removeSource) removeSource.closest('[data-source-row]')?.remove();
+        if (addSource || removeSource) updateReadiness();
+    });
+
+    form.addEventListener('change', (event) => {
+        const select = event.target.closest('[data-author-user]');
+        if (!select) return;
+        const nameInput = select.closest('[data-author-row]')?.querySelector('[name$="[display_name]"]');
+        const displayName = select.selectedOptions[0]?.dataset.displayName || '';
+        if (nameInput && displayName !== '') nameInput.value = displayName;
+    });
 
     updateCounter(title, form.querySelector('[data-title-count]'), 75);
     updateCounter(description, form.querySelector('[data-description-count]'), 255);
@@ -205,11 +226,27 @@ if (form) {
     function updateTextMetrics(text) {
         const words = text.trim() === '' ? [] : text.trim().split(/\s+/u);
         const wordCount = words.length;
-        const minutes = wordCount === 0 ? 0 : Math.max(1, Math.ceil(wordCount / 225));
+        const characterCount = Array.from(text).length;
+        const visualMinutes = wordCount === 0 ? 0 : Math.max(1, Math.ceil(wordCount / 225));
+        const spokenMinutes = wordCount === 0 ? 0 : Math.max(1, Math.ceil(wordCount / 150));
         const wordTarget = form.querySelector('[data-editor-word-count]');
-        const timeTarget = form.querySelector('[data-editor-reading-time]');
+        const characterTarget = form.querySelector('[data-editor-character-count]');
+        const visualTarget = form.querySelector('[data-editor-visual-reading-time]');
+        const spokenTarget = form.querySelector('[data-editor-spoken-reading-time]');
         if (wordTarget) wordTarget.textContent = String(wordCount);
-        if (timeTarget) timeTarget.textContent = `${minutes} min`;
+        if (characterTarget) characterTarget.textContent = String(characterCount);
+        if (visualTarget) visualTarget.textContent = `${visualMinutes} min`;
+        if (spokenTarget) spokenTarget.textContent = `${spokenMinutes} min`;
+    }
+
+    function appendTemplate(templateSelector, listSelector, prefix) {
+        const template = form.querySelector(templateSelector);
+        const list = form.querySelector(listSelector);
+        if (!template || !list) return;
+        const index = `${prefix}-${Date.now()}-${list.children.length}`;
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = template.innerHTML.replaceAll('__INDEX__', index).trim();
+        if (wrapper.firstElementChild) list.append(wrapper.firstElementChild);
     }
 
     function updateActiveButtons(editor) {

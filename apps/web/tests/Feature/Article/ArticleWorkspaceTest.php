@@ -8,6 +8,8 @@ use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
 
@@ -50,6 +52,9 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertSame('D', $article->status_publication);
         $this->assertSame('PVT', $article->visibility_scope);
         $this->assertSame([(string) $user->getKey()], $article->author_user_id_list);
+        $this->assertSame([(string) $user->getKey()], $article->article_owner_user_id_list);
+        $this->assertSame($user->publicName(), $article->author_credit_list[0]['display_name']);
+        $this->assertSame('Example Guide', $article->source_reference_list[0]['source_title']);
         $this->assertStringNotContainsString('script', $body->article_body);
         $this->assertStringNotContainsString('onclick', $body->article_body);
         $this->assertGreaterThan(0, $body->word_count);
@@ -67,6 +72,11 @@ class ArticleWorkspaceTest extends TestCase
             ->assertSee('data-editor-mode="visual"', false)
             ->assertSee('data-editor-mode="html"', false)
             ->assertSee('maxlength="255"', false)
+            ->assertSee('data-editor-character-count', false)
+            ->assertSee('data-editor-spoken-reading-time', false)
+            ->assertSee('data-add-author', false)
+            ->assertSee('data-add-source', false)
+            ->assertSee(__('article.language_spanish'))
             ->assertDontSee('name="scheduled_publish_at"', false);
     }
 
@@ -155,19 +165,103 @@ class ArticleWorkspaceTest extends TestCase
         $this->actingAs($other)->put('/workspace/article/'.$article->getKey(), $this->validPayload())->assertForbidden();
     }
 
+    public function test_creator_can_share_ownership_and_use_a_custom_multiple_author_byline(): void
+    {
+        $creator = User::factory()->create();
+        $coOwner = User::factory()->create();
+
+        $this->actingAs($creator)->post('/workspace/article', $this->validPayload([
+            'article_owner_user_id_list' => [(string) $creator->getKey(), (string) $coOwner->getKey()],
+            'author_credit_list' => [
+                ['user_id' => (string) $creator->getKey(), 'display_name' => 'Lead Writer'],
+                ['user_id' => null, 'display_name' => 'Guest Researcher'],
+            ],
+        ]))->assertRedirect();
+
+        $article = Article::query()->firstOrFail();
+        $this->assertSame(['Lead Writer', 'Guest Researcher'], collect($article->author_credit_list)->pluck('display_name')->all());
+        $this->assertSame([(string) $creator->getKey()], $article->author_user_id_list);
+        $this->assertContains((string) $coOwner->getKey(), $article->article_owner_user_id_list);
+
+        $this->actingAs($coOwner)->get('/workspace/article/'.$article->getKey().'/edit')->assertOk();
+        $this->actingAs($coOwner)->put('/workspace/article/'.$article->getKey(), $this->validPayload([
+            'article_title' => 'A Draft Revised by Its Co-owner',
+            'author_credit_list' => $article->author_credit_list,
+        ]))->assertRedirect();
+        $this->assertSame('A Draft Revised by Its Co-owner', $article->refresh()->localized('article_title'));
+        $this->assertContains((string) $creator->getKey(), $article->article_owner_user_id_list);
+        $this->assertContains((string) $coOwner->getKey(), $article->article_owner_user_id_list);
+
+        $article->forceFill(['status_publication' => 'P', 'visibility_scope' => 'PUB'])->save();
+        $this->actingAs($coOwner)->post('/workspace/article/'.$article->getKey().'/unpublish')->assertRedirect();
+        $this->assertSame('U', $article->refresh()->status_publication);
+        $this->assertSame('PVT', $article->visibility_scope);
+    }
+
+    public function test_original_language_and_structured_sources_are_saved_without_delimiters(): void
+    {
+        $user = User::factory()->create();
+        $serviceId = Str::random(16);
+        DB::connection('mongodb')->table('service_main')->insert([
+            '_id' => $serviceId,
+            'service_name' => ['eng' => ['text' => 'Test Massage Service']],
+            'status_record_lifecycle' => 'ACT',
+        ]);
+
+        try {
+            $this->assertSame(1, DB::connection('mongodb')->table('service_main')->where('_id', $serviceId)->count());
+            $this->assertSame(1, DB::connection('mongodb')->table('service_main')->where('_id', $serviceId)->where('status_record_lifecycle', 'ACT')->count());
+            $this->actingAs($user)->get('/workspace/article/new')->assertOk()->assertSee('Test Massage Service');
+            $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+                'article_title' => 'Gabay sa Unang Masahe',
+                'article_slug' => 'gabay-sa-unang-masahe',
+                'language_original_id' => 3600,
+                'related_service_id_list' => [$serviceId],
+                'source_reference_list' => [[
+                    'source_title' => 'Opisyal na Gabay',
+                    'source_organization' => 'Halimbawang Ahensya',
+                    'source_url' => 'https://example.test/gabay',
+                    'publication_identifier' => 'ISBN 123',
+                ]],
+            ]))->assertRedirect();
+
+            $article = Article::query()->firstOrFail();
+            $body = ArticleBody::query()->where('article_id', (string) $article->getKey())->firstOrFail();
+            $this->assertSame(3600, $article->language_original_id);
+            $this->assertSame('Gabay sa Unang Masahe', $article->article_title['fil']['text']);
+            $this->assertSame(3600, $body->language_id);
+            $this->assertSame([$serviceId], $article->related_service_id_list);
+            $this->assertSame('Halimbawang Ahensya', $article->source_reference_list[0]['source_organization']);
+        } finally {
+            DB::connection('mongodb')->table('service_main')->where('_id', $serviceId)->delete();
+        }
+    }
+
     /** @param array<string, mixed> $overrides @return array<string, mixed> */
     private function validPayload(array $overrides = []): array
     {
+        $user = auth()->user();
+
         return array_merge([
             'article_title' => 'A Complete Article Draft',
             'article_slug' => 'a-complete-article-draft',
             'short_description' => 'A concise description of this useful Massage Nexus article.',
+            'language_original_id' => 3049,
             'type_article_category' => 'FTM',
             'target_audience' => 'C',
             'level_nsfw' => 'N',
             'tags' => 'first massage, spa etiquette',
             'article_body' => '<h2>Before you book</h2><p>This article contains enough visible words to save safely.</p>',
-            'source_references' => 'Example Guide | Example Health Agency | https://example.test/guide |',
+            'author_credit_list' => [[
+                'user_id' => (string) $user->getKey(),
+                'display_name' => $user->publicName(),
+            ]],
+            'source_reference_list' => [[
+                'source_title' => 'Example Guide',
+                'source_organization' => 'Example Health Agency',
+                'source_url' => 'https://example.test/guide',
+                'publication_identifier' => null,
+            ]],
             'revision_note' => 'Initial test draft.',
             'is_commentable' => '1',
             'is_shareable' => '1',

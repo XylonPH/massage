@@ -1,0 +1,99 @@
+Title: Massage Nexus PHP Structure Guide Standard
+Document Version: 1.00
+Date Created: 2026-07-21
+Revision Date: 2026-07-21
+Document Description: Defines the required purpose, metadata, timestamps, field layers, ordering, validation, and maintenance workflow for PHP-readable database structure guides under docs/04-architecture/structure-guide/.
+
+================================================================================
+1. PURPOSE AND AUTHORITY
+================================================================================
+
+PHP structure guides are reviewable field-level descriptions of proposed or working database
+records. They are documentation expressed as PHP arrays. They are not migrations, seeds,
+runtime configuration, or proof that a proposed structure has been accepted or deployed.
+
+docs/04-architecture/database-structure.txt remains authoritative for database and collection
+boundaries. Current feature specifications govern feature meaning. Structure guides preserve
+the matching record shape and field semantics.
+
+================================================================================
+2. REQUIRED GUIDE METADATA
+================================================================================
+
+Each detailed PHP structure guide must identify:
+- title;
+- author;
+- collection;
+- version;
+- its documentation-only purpose;
+- relevant layer or boundary rules.
+
+Use a +0.10 version increment for an accepted field, semantic, relationship, validation, or
+record-shape revision. Preserve the existing version when only correcting a non-semantic
+typographical error.
+
+================================================================================
+3. GUIDE TIMESTAMPS
+================================================================================
+
+$created_at records when the guide was first created and must not change during later edits.
+
+$updated_at records the exact UTC time of the latest accepted semantic guide revision. Every
+change to fields, field descriptions, defaults, sample shapes, relationships, validation
+meaning, or lifecycle behavior must update this value at the time the guide is edited.
+
+Use ISO 8601 UTC format with seconds:
+
+YYYY-MM-DDTHH:MM:SSZ
+
+Do not use midnight, a date-only approximation, local time with a Z suffix, or the time of a
+previous revision unless that is the exact UTC edit time. Obtain the current UTC value from the
+system clock. The timestamp variables describe the guide revision; similarly named fields in a
+sample record remain illustrative record data.
+
+================================================================================
+4. FIELD LAYERS AND ORDER
+================================================================================
+
+Keep these concerns separate:
+- *_record_default contains defaults for stored record fields only;
+- the sample record demonstrates the intended stored shape and useful populated values;
+- *_field_order lists every top-level stored field once in the intended logical order;
+- *_field_property documents schema and interface metadata only.
+
+Do not place field-definition metadata inside record defaults. Do not introduce a sample-only
+top-level field that is absent from field order and field properties. Embedded records must have
+a stable documented shape when their members affect application behavior.
+
+Preserve established field names and semantics. Before introducing any new field name,
+including a nested field, check data/field_index.txt and follow AGENTS.md taxonomy and field
+governance. Reuse a field only when its existing meaning matches.
+
+================================================================================
+5. CHANGE WORKFLOW
+================================================================================
+
+For a structure change:
+1. read the affected feature specification and database boundary documentation;
+2. inspect data/field_index.txt before choosing a field name;
+3. update the relevant structure guide before implementing dependent application code;
+4. update the guide version and exact UTC $updated_at value;
+5. update defaults, sample, field order, field properties, and comments consistently;
+6. run php tools/script/build_field_index.php when a guide adds, renames, or removes a field;
+7. run PHP syntax validation for every modified guide;
+8. inspect the generated index diff and the final guide diff.
+
+Add or update taxonomy JSON in the same change when a new field has controlled or enumerated
+options. Do not create taxonomy entries for free text, identifiers, timestamps, or relationships
+that have no controlled option set.
+
+================================================================================
+6. COMPATIBILITY AND IMPLEMENTATION
+================================================================================
+
+Structure revisions should be additive and recoverable when existing data may already use an
+older shape. Document compatibility meaning where legacy fields remain temporarily supported.
+
+Application code must continue to validate input, authorize mutations, normalize embedded
+records, and constrain relationship identifiers. A PHP guide does not replace runtime security,
+validation, migrations, data backfills, tests, or rollout planning.

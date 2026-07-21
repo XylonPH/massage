@@ -33,7 +33,11 @@
                         @elseif ($authors->isNotEmpty())
                             <span>{{ __('article.written_by') }}
                                 @foreach ($authors as $author)
-                                    <a class="font-bold text-ink-800 hover:text-ember-600" href="{{ route('article.author.show', $author->username) }}">{{ $author->username }}</a>@if (! $loop->last), @endif
+                                    @if ($author['username'])
+                                        <a class="font-bold text-ink-800 hover:text-ember-600" href="{{ route('article.author.show', $author['username']) }}">{{ $author['name'] }}</a>
+                                    @else
+                                        <strong class="text-ink-800">{{ $author['name'] }}</strong>
+                                    @endif@if (! $loop->last), @endif
                                 @endforeach
                             </span>
                         @endif

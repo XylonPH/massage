@@ -1,7 +1,7 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.63
+Document Version: 0.73
 Date Created: 2026-07-16
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description:
 This document defines the general authenticated User Workspace for Massage Nexus and the
 relationship between the shared network account, Massage Nexus membership, additive personal,
@@ -139,14 +139,18 @@ The home page may show:
 
 The dashboard should not display every possible card to every user.
 
-Current implementation state (2026-07-20): the workspace shell is implemented behind
+Current implementation state (2026-07-21): the workspace shell is implemented behind
 auth + verified + EnsureActiveMember. /workspace redirects to /workspace/home, which renders a
 Personal-context dashboard (greeting via display name with username fallback, account summary,
 My Reviews and My Articles counts linking to workspace-integrated areas, a direct New Article
 action, and a claim invitation card). /workspace/profile edits the public display_name and bio
 (user_main structure
 guide records both fields), and /workspace/setting shows account facts and toggles the separate
-marketing email opt-in. Context switching, notifications, messages, saved, following, history,
+marketing email opt-in. The Article area supports private drafting, language selection, ordered
+custom or account-linked public bylines, shared owner access, structured sources, related database
+records, revision history, review submission, and owner-initiated unpublishing. Article credit and
+Article ownership are separate: appearing in a byline does not grant workspace access. Context
+switching, notifications, messages, saved, following, history,
 booking, and the remaining areas stay unimplemented; the dashboard names them as coming.
 
 ================================================================================

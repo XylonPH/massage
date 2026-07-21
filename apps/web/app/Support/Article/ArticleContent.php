@@ -104,7 +104,42 @@ class ArticleContent
             ];
         }
 
-        return array_slice($sources, 0, 30);
+        return $this->normalizeSources($sources);
+    }
+
+    /** @param array<int, mixed> $sources
+     * @return array<int, array{source_title: string, source_organization: ?string, source_url: ?string, publication_identifier: ?string}>
+     */
+    public function normalizeSources(array $sources): array
+    {
+        $normalized = [];
+
+        foreach (array_slice($sources, 0, 30) as $source) {
+            if (! is_array($source)) {
+                continue;
+            }
+
+            $title = trim((string) ($source['source_title'] ?? ''));
+            $organization = trim((string) ($source['source_organization'] ?? ''));
+            $url = trim((string) ($source['source_url'] ?? ''));
+            $identifier = trim((string) ($source['publication_identifier'] ?? ''));
+
+            if ($title === '' && $organization === '' && $url === '' && $identifier === '') {
+                continue;
+            }
+
+            $safeUrl = preg_match('~^https?://~i', $url) && filter_var($url, FILTER_VALIDATE_URL)
+                ? mb_substr($url, 0, 1000)
+                : null;
+            $normalized[] = [
+                'source_title' => mb_substr($title, 0, 200),
+                'source_organization' => $organization !== '' ? mb_substr($organization, 0, 200) : null,
+                'source_url' => $safeUrl,
+                'publication_identifier' => $identifier !== '' ? mb_substr($identifier, 0, 120) : null,
+            ];
+        }
+
+        return $normalized;
     }
 
     private function cleanChildren(DOMNode $parent): void

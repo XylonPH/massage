@@ -4,7 +4,7 @@
  * Author: Xylon Reyes
  *
  * Collection: article_main
- * Version: 1.60
+ * Version: 1.70
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
@@ -23,7 +23,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-06T00:00:00Z';
+$updated_at = '2026-07-20T18:33:12Z';
 
 /**
  * Default field-property values for this structure guide.
@@ -70,6 +70,8 @@ $article_main_record_default = [
 	'target_audience' => 'G', // G = General
 	'tag_id_list' => [],
 	'author_user_id_list' => [],
+	'author_credit_list' => [],
+	'article_owner_user_id_list' => [],
 	'is_anonymous' => false,
 	'editor_user_id_list' => [],
 	'reviewer_user_id_list' => [],
@@ -146,8 +148,19 @@ $article_main = [
 	'tag_id_list' => ['T3gH7kM2pR9vX4cN', 'T8qL1sF6wB3nJ5dP', 'T5xC9mK4rV2hN7zQ'], // tag records are stored in a separate tag collection
 
 	# Credits
-	'author_user_id_list' => ['U5rK8mP2xN7qL4vA', 'U9cF3hJ6sD1wB8nM'], // human users or Neural Agent user accounts credited as authors
-	'is_anonymous' => false, // when true, public surfaces hide author identities while retaining them privately for ownership, review, audit, safety, and abuse handling
+	'author_user_id_list' => ['U5rK8mP2xN7qL4vA'], // derived list of linked users in author_credit_list for discovery, reputation, and compatibility
+	'author_credit_list' => [
+		[
+			'user_id' => 'U5rK8mP2xN7qL4vA', // optional link to a registered user or Neural Agent account
+			'display_name' => 'Xylon Reyes', // public byline name retained as an intentional credit snapshot
+		],
+		[
+			'user_id' => null, // null permits a credited person who does not have a Massage Nexus account
+			'display_name' => 'Jordan Santos',
+		],
+	], // ordered public byline credits; order is the displayed author order
+	'article_owner_user_id_list' => ['U5rK8mP2xN7qL4vA', 'U8dQ4nV2kM7pR1xC'], // users authorized to revise, submit, and unpublish this Article
+	'is_anonymous' => false, // when true, public surfaces hide author_credit_list while internal ownership, review, audit, safety, and abuse handling remain available
 	'editor_user_id_list' => ['U2pR7vX4kT9mC5qL'], // users who edited structure, clarity, grammar, or publication quality
 	'reviewer_user_id_list' => ['U6nH1sW8dK3yP9fR'], // users who reviewed factual, safety, professional, or policy accuracy
 	'photographer_user_id_list' => ['U4bM9xQ2jV7cL5tN'], // optional article-level photo credit when applicable
@@ -219,6 +232,8 @@ $article_main_field_order = [
 	'target_audience',
 	'tag_id_list',
 	'author_user_id_list',
+	'author_credit_list',
+	'article_owner_user_id_list',
 	'is_anonymous',
 	'editor_user_id_list',
 	'reviewer_user_id_list',
@@ -361,14 +376,28 @@ $article_main_field_property = [
 	# Credits
 	'author_user_id_list' => [
 		'field_label' => 'Author User ID List',
-		'field_description' => 'Ordered list of user IDs credited as authors. Neural Agents are represented as ordinary user records when credited.',
+		'field_description' => 'Derived ordered list of registered user IDs represented in author_credit_list. Supports author discovery, reputation attribution, Neural Agent author pages, and compatibility; it does not grant Article control.',
+		'type_data' => 'A',
+		'is_relational' => true,
+	],
+	'author_credit_list' => [
+		'field_label' => 'Author Credit List',
+		'field_description' => 'Ordered public byline entries. Each embedded entry contains display_name and an optional user_id. A null user_id permits a custom credited person without a Massage Nexus account. Credit is not ownership or authorization.',
+		'type_data' => 'A',
+		'type_field' => 'JSE',
+		'is_mandatory' => true,
+	],
+	'article_owner_user_id_list' => [
+		'field_label' => 'Article Owner User ID List',
+		'field_description' => 'List of active registered users authorized to revise, submit, and unpublish the Article. The creator remains an owner. Public credit and anonymity do not change ownership.',
 		'type_data' => 'A',
 		'is_relational' => true,
 		'is_mandatory' => true,
+		'is_indexed' => true,
 	],
 	'is_anonymous' => [
 		'field_label' => 'Anonymous Public Authorship',
-		'field_description' => 'When true, public Article surfaces suppress author identity and display an anonymous byline. Internal ownership, editorial review, audit, safety, and abuse handling continue to use author_user_id_list.',
+		'field_description' => 'When true, public Article surfaces suppress author_credit_list and display an anonymous byline. Internal ownership, editorial review, audit, safety, and abuse handling continue to use article_owner_user_id_list and audit fields.',
 		'type_data' => 'B',
 		'type_field' => 'CHK',
 		'type_sql' => 'BOOLEAN',

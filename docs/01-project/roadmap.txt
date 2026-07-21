@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.74
+Document Version: 1.84
 Date Created: 2026-07-16
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -362,12 +362,16 @@ Editorial content:
 - content editing, revisions, sources, media, reactions, and translations;
 - reading-duration and accessibility handling.
 
-Current Article foundation checkpoint (2026-07-20):
+Current Article foundation checkpoint (2026-07-21):
 - the public web application has MongoDB-backed Article listing, search, category, tag, author,
   Neural Agent, audience, archive, and detail routes;
 - active verified members can create and update private drafts inside the unified workspace, use a
-  rich visual editor or controlled HTML source mode, generate slugs, keep revision snapshots,
-  record sources, choose anonymous public attribution, and submit the latest revision for review;
+  rich visual editor or controlled HTML source mode, generate slugs, select an original content
+  language, keep revision snapshots, record structured sources, relate active database records,
+  manage ordered custom or account-linked bylines, share operational ownership separately from
+  public credit, choose anonymous public attribution, and submit the latest revision for review;
+- shared Article owners can revise, inspect history, submit, and unpublish; the original creator
+  controls owner membership and always remains an owner;
 - authorized editorial users can record a proposed future publication time, but editorial review
   decisions, final publication controls, and the scheduled publishing job remain Phase 6 dependencies
   of the editorial/admin capabilities, while reactions, comments, saves, media management, analytics,

@@ -87,6 +87,38 @@ class ArticlePagesTest extends TestCase
             ->assertDontSee('First Massage Guide');
     }
 
+    public function test_public_byline_preserves_linked_and_custom_author_credits_in_order(): void
+    {
+        [$article] = $this->createArticle('first-massage-guide', true);
+        $article->forceFill([
+            'author_credit_list' => [
+                ['user_id' => (string) $this->author->getKey(), 'display_name' => 'Lead Writer'],
+                ['user_id' => null, 'display_name' => 'Guest Researcher'],
+            ],
+        ])->save();
+
+        $this->get('/article/first-massage-guide')
+            ->assertOk()
+            ->assertSeeInOrder(['Lead Writer', 'Guest Researcher']);
+    }
+
+    public function test_public_detail_resolves_the_original_filipino_slug_and_body(): void
+    {
+        [$article, $body] = $this->createArticle('first-massage-guide', true);
+        $article->forceFill([
+            'article_title' => ['fil' => ['text' => 'Gabay sa Unang Masahe']],
+            'article_slug' => ['fil' => ['text' => 'gabay-sa-unang-masahe']],
+            'short_description' => ['fil' => ['text' => 'Isang praktikal na gabay.']],
+            'language_original_id' => 3600,
+        ])->save();
+        $body->forceFill(['language_id' => 3600])->save();
+
+        $this->get('/article/gabay-sa-unang-masahe')
+            ->assertOk()
+            ->assertSee('Gabay sa Unang Masahe')
+            ->assertSee('Safe article body');
+    }
+
     public function test_future_scheduled_article_is_not_public_before_its_time(): void
     {
         [$article] = $this->createArticle('first-massage-guide', true);

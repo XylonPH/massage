@@ -8,6 +8,7 @@ use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
 use App\Models\User;
 use App\Support\Article\ArticleContent;
+use App\Support\Article\ArticleLanguage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -21,6 +22,8 @@ class SaveArticleDraft
         $isNew = ! $article;
         $article ??= new Article;
         $userId = (string) $user->getKey();
+        $languageId = (int) $input['language_original_id'];
+        $languageKey = ArticleLanguage::keyForId($languageId);
         $html = $this->content->sanitize((string) $input['article_body']);
         $metrics = $this->content->metrics($html);
 
@@ -36,22 +39,30 @@ class SaveArticleDraft
         );
         $oldTagIds = $article->exists ? ($article->tag_id_list ?? []) : [];
         $tagIds = $this->resolveTags((string) ($input['tags'] ?? ''), $userId);
-        $translated = static fn (string $text): array => [
-            'eng' => ['text' => $text, 'method_translation' => 'HUM', 'status_review' => 'P'],
-        ];
+        $authorCredits = $this->resolveAuthorCredits($input['author_credit_list'] ?? []);
+        $authorUserIds = collect($authorCredits)->pluck('user_id')->filter()->unique()->values()->all();
+        $ownerIds = $this->resolveOwnerIds($input, $article, $userId, $isNew);
 
         $article->fill([
-            'article_title' => $translated(trim((string) $input['article_title'])),
-            'article_slug' => $translated($slug),
-            'short_description' => $translated(trim((string) $input['short_description'])),
-            'language_original_id' => 3049,
+            'article_title' => $this->localizedValue($article, 'article_title', $languageKey, trim((string) $input['article_title'])),
+            'article_slug' => $this->localizedValue($article, 'article_slug', $languageKey, $slug),
+            'short_description' => $this->localizedValue($article, 'short_description', $languageKey, trim((string) $input['short_description'])),
+            'language_original_id' => $languageId,
             'type_article_category' => $input['type_article_category'],
             'target_audience' => $input['target_audience'],
             'tag_id_list' => $tagIds,
-            'author_user_id_list' => $isNew ? [$userId] : $article->author_user_id_list,
+            'author_user_id_list' => $authorUserIds,
+            'author_credit_list' => $authorCredits,
+            'article_owner_user_id_list' => $ownerIds,
             'reading_duration_visual' => $metrics['visual_seconds'],
             'reading_duration_spoken' => $metrics['spoken_seconds'],
-            'source_reference_list' => $this->content->parseSources($input['source_references'] ?? null),
+            'source_reference_list' => $this->content->normalizeSources($input['source_reference_list'] ?? []),
+            'related_article_id_list' => $input['related_article_id_list'] ?? [],
+            'related_organization_id_list' => $input['related_organization_id_list'] ?? [],
+            'related_establishment_id_list' => $input['related_establishment_id_list'] ?? [],
+            'related_practitioner_id_list' => $input['related_practitioner_id_list'] ?? [],
+            'related_service_id_list' => $input['related_service_id_list'] ?? [],
+            'related_product_id_list' => $input['related_product_id_list'] ?? [],
             'is_commentable' => (bool) ($input['is_commentable'] ?? false),
             'is_shareable' => (bool) ($input['is_shareable'] ?? false),
             'is_anonymous' => (bool) ($input['is_anonymous'] ?? false),
@@ -70,12 +81,6 @@ class SaveArticleDraft
                 'editor_user_id_list' => [],
                 'reviewer_user_id_list' => [],
                 'photographer_user_id_list' => [],
-                'related_article_id_list' => [],
-                'related_organization_id_list' => [],
-                'related_establishment_id_list' => [],
-                'related_practitioner_id_list' => [],
-                'related_service_id_list' => [],
-                'related_product_id_list' => [],
                 'view_count' => 0,
                 'comment_count' => 0,
                 'save_count' => 0,
@@ -93,7 +98,7 @@ class SaveArticleDraft
 
         $body = ArticleBody::query()->firstOrNew([
             'article_id' => (string) $article->getKey(),
-            'language_id' => 3049,
+            'language_id' => $languageId,
         ]);
         $body->fill([
             'article_body' => $html,
@@ -119,7 +124,7 @@ class SaveArticleDraft
         ArticleRevision::query()->create([
             'article_id' => (string) $article->getKey(),
             'article_body_id' => (string) $body->getKey(),
-            'language_id' => 3049,
+            'language_id' => $languageId,
             'revision_number' => $nextRevision,
             'article_body' => $html,
             'word_count' => $metrics['word_count'],
@@ -145,7 +150,13 @@ class SaveArticleDraft
         $suffix = 2;
 
         while (Article::query()
-            ->where('article_slug.eng.text', $slug)
+            ->where(function ($query) use ($slug): void {
+                foreach (ArticleLanguage::keys() as $index => $key) {
+                    $index === 0
+                        ? $query->where("article_slug.{$key}.text", $slug)
+                        : $query->orWhere("article_slug.{$key}.text", $slug);
+                }
+            })
             ->when($ignoreId, fn ($query) => $query->where('_id', '!=', $ignoreId))
             ->exists()) {
             $ending = '-'.$suffix++;
@@ -153,6 +164,59 @@ class SaveArticleDraft
         }
 
         return $slug;
+    }
+
+    /** @param array<int, mixed> $credits
+     * @return array<int, array{user_id: ?string, display_name: string}>
+     */
+    private function resolveAuthorCredits(array $credits): array
+    {
+        return collect($credits)
+            ->filter(static fn (mixed $credit): bool => is_array($credit))
+            ->map(static fn (array $credit): array => [
+                'user_id' => filled($credit['user_id'] ?? null) ? (string) $credit['user_id'] : null,
+                'display_name' => mb_substr(trim((string) ($credit['display_name'] ?? '')), 0, 100),
+            ])
+            ->filter(static fn (array $credit): bool => $credit['display_name'] !== '')
+            ->take(10)
+            ->values()
+            ->all();
+    }
+
+    /** @param array<string, mixed> $input
+     * @return array<int, string>
+     */
+    private function resolveOwnerIds(array $input, Article $article, string $userId, bool $isNew): array
+    {
+        $creatorId = $isNew ? $userId : (string) ($article->created_by_user_id ?: $userId);
+
+        if (! $isNew && $creatorId !== $userId) {
+            $existingOwners = $article->article_owner_user_id_list;
+            $existingOwners = is_array($existingOwners) && $existingOwners !== []
+                ? $existingOwners
+                : ($article->author_user_id_list ?? [$creatorId]);
+
+            return array_values(array_unique($existingOwners));
+        }
+
+        return array_values(array_unique(array_filter([
+            $creatorId,
+            ...($input['article_owner_user_id_list'] ?? []),
+        ])));
+    }
+
+    /** @return array<string, array{text: string, method_translation: string, status_review: string}> */
+    private function localizedValue(Article $article, string $field, string $languageKey, string $text): array
+    {
+        $values = $article->getAttribute($field);
+        $values = is_array($values) ? $values : [];
+        $values[$languageKey] = [
+            'text' => $text,
+            'method_translation' => 'HUM',
+            'status_review' => 'P',
+        ];
+
+        return $values;
     }
 
     /** @return array<int, string> */

@@ -1,7 +1,7 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.61
+Document Version: 1.71
 Date Created: 2026-07-12
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 PURPOSE
 
@@ -263,9 +263,10 @@ Do not create separate establishment_review, practitioner_review, and product_re
 13. EDITORIAL, PUBLICATION, ANNOUNCEMENT, AND QUOTE COLLECTIONS
 
 - article_main
-  Article identity, credits, classification, relationships, and publication state. The long article
-  body is not stored here. A type_content discriminator is unnecessary because the collection owns
-  only Articles.
+  Article identity, ordered public byline credits, separate owner-user authorization references,
+  classification, structured sources, related-record references, and publication state. Credit does
+  not grant ownership. The long article body is not stored here. A type_content discriminator is
+  unnecessary because the collection owns only Articles.
 
 - article_body
   Language-specific long article body referenced by article_main.

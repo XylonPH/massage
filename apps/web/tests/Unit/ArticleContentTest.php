@@ -47,4 +47,21 @@ class ArticleContentTest extends TestCase
         $this->assertStringNotContainsString('color:', $html);
         $this->assertStringNotContainsString('position:', $html);
     }
+
+    #[Test]
+    public function it_normalizes_structured_source_records_without_delimiter_parsing(): void
+    {
+        $content = new ArticleContent;
+        $sources = $content->normalizeSources([[
+            'source_title' => 'A title containing | a pipe',
+            'source_organization' => 'Example Publisher',
+            'source_url' => 'https://example.test/source',
+            'publication_identifier' => 'DOI 10.1234/example',
+        ]]);
+
+        $this->assertSame('A title containing | a pipe', $sources[0]['source_title']);
+        $this->assertSame('Example Publisher', $sources[0]['source_organization']);
+        $this->assertSame('https://example.test/source', $sources[0]['source_url']);
+        $this->assertSame('DOI 10.1234/example', $sources[0]['publication_identifier']);
+    }
 }

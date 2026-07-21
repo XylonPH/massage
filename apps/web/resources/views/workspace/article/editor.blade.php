@@ -3,6 +3,13 @@
 @section('title', $article ? __('article.editor_edit_title') : __('article.editor_new_title'))
 
 @section('content')
+@php
+    $sourceRows = old('source_reference_list', $sources);
+    $sourceRows = is_array($sourceRows) && $sourceRows !== [] ? array_values($sourceRows) : [['source_title' => '', 'source_organization' => '', 'source_url' => '', 'publication_identifier' => '']];
+    $creditRows = old('author_credit_list', $authorCredits);
+    $creditRows = is_array($creditRows) ? array_values($creditRows) : [];
+    $selectedOwnerIds = old('article_owner_user_id_list', $ownerIds);
+@endphp
 <div class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
     <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
         <aside class="min-w-0"><x-workspace-nav active="articles" /></aside>
@@ -96,7 +103,7 @@
                                         ['heading3', __('article.toolbar_heading_3')],
                                         ['heading4', __('article.toolbar_heading_4')],
                                     ] as [$action, $label])
-                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button">{{ $label }}</button>
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
                                     @endforeach
                                     <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
                                     @foreach ([
@@ -105,24 +112,24 @@
                                         ['underline', __('article.toolbar_underline')],
                                         ['strike', __('article.toolbar_strike')],
                                     ] as [$action, $label])
-                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button">{{ $label }}</button>
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
                                     @endforeach
                                     <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
-                                    <button type="button" data-editor-action="bulletList" class="mn-editor-button">{{ __('article.toolbar_bullets') }}</button>
-                                    <button type="button" data-editor-action="orderedList" class="mn-editor-button">{{ __('article.toolbar_numbered') }}</button>
-                                    <button type="button" data-editor-action="blockquote" class="mn-editor-button">{{ __('article.toolbar_quote') }}</button>
-                                    <button type="button" data-editor-action="horizontalRule" class="mn-editor-button">{{ __('article.toolbar_rule') }}</button>
+                                    @foreach ([['bulletList', __('article.toolbar_bullets')], ['orderedList', __('article.toolbar_numbered')], ['blockquote', __('article.toolbar_quote')], ['horizontalRule', __('article.toolbar_rule')]] as [$action, $label])
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
+                                    @endforeach
                                     <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
-                                    <button type="button" data-editor-action="alignLeft" class="mn-editor-button" aria-label="{{ __('article.toolbar_align_left') }}">{{ __('article.toolbar_align_left_short') }}</button>
-                                    <button type="button" data-editor-action="alignCenter" class="mn-editor-button" aria-label="{{ __('article.toolbar_align_center') }}">{{ __('article.toolbar_align_center_short') }}</button>
-                                    <button type="button" data-editor-action="alignRight" class="mn-editor-button" aria-label="{{ __('article.toolbar_align_right') }}">{{ __('article.toolbar_align_right_short') }}</button>
+                                    @foreach ([['alignLeft', __('article.toolbar_align_left')], ['alignCenter', __('article.toolbar_align_center')], ['alignRight', __('article.toolbar_align_right')]] as [$action, $label])
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
+                                    @endforeach
                                     <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
-                                    <button type="button" data-editor-action="link" class="mn-editor-button">{{ __('article.toolbar_link') }}</button>
-                                    <button type="button" data-editor-action="unlink" class="mn-editor-button">{{ __('article.toolbar_unlink') }}</button>
-                                    <button type="button" data-editor-action="clear" class="mn-editor-button">{{ __('article.toolbar_clear') }}</button>
+                                    @foreach ([['link', __('article.toolbar_link')], ['unlink', __('article.toolbar_unlink')], ['clear', __('article.toolbar_clear')]] as [$action, $label])
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
+                                    @endforeach
                                     <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
-                                    <button type="button" data-editor-action="undo" class="mn-editor-button">{{ __('article.toolbar_undo') }}</button>
-                                    <button type="button" data-editor-action="redo" class="mn-editor-button">{{ __('article.toolbar_redo') }}</button>
+                                    @foreach ([['undo', __('article.toolbar_undo')], ['redo', __('article.toolbar_redo')]] as [$action, $label])
+                                        <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
+                                    @endforeach
                                 </div>
                                 <div data-article-editor
                                      data-read-only="{{ $article?->status_publication === 'P' ? 'true' : 'false' }}"
@@ -140,14 +147,146 @@
 
                             <textarea name="article_body" data-article-body hidden>{{ old('article_body', $body?->article_body ?? '<p></p>') }}</textarea>
                             <div class="flex flex-wrap items-center justify-between gap-2 border-t border-ink-200 bg-ink-50 px-4 py-2 text-xs text-ink-500">
-                                <div class="flex gap-4">
+                                <div class="flex flex-wrap gap-x-4 gap-y-1">
                                     <span>{{ __('article.word_count') }}: <strong data-editor-word-count class="text-ink-800">0</strong></span>
-                                    <span>{{ __('article.reading_estimate') }}: <strong data-editor-reading-time class="text-ink-800">0 min</strong></span>
+                                    <span>{{ __('article.character_count') }}: <strong data-editor-character-count class="text-ink-800">0</strong></span>
+                                    <span>{{ __('article.visual_reading_estimate') }}: <strong data-editor-visual-reading-time class="text-ink-800">0 min</strong></span>
+                                    <span>{{ __('article.spoken_reading_estimate') }}: <strong data-editor-spoken-reading-time class="text-ink-800">0 min</strong></span>
                                 </div>
                                 <span data-editor-save-state class="font-semibold text-ink-500">{{ __('article.draft_state') }}</span>
                             </div>
                             <noscript><p class="p-4 font-semibold text-ember-700">{{ __('article.javascript_required') }}</p></noscript>
                         </section>
+
+                        <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm" aria-labelledby="article-attribution-title">
+                            <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                                <div>
+                                    <h2 id="article-attribution-title" class="font-black text-ink-950">{{ __('article.attribution_access_title') }}</h2>
+                                    <p class="mt-1 text-sm text-ink-500">{{ __('article.attribution_access_hint') }}</p>
+                                </div>
+                                <div class="w-full sm:w-56">
+                                    <label for="language_original_id" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500">{{ __('article.language_label') }}</label>
+                                    <select id="language_original_id" @if (! $article) name="language_original_id" @else disabled @endif required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm">
+                                        @foreach ($languages as $languageId => $language)
+                                            <option value="{{ $languageId }}" @selected((int) old('language_original_id', $article?->language_original_id ?? 3049) === $languageId)>{{ __($language['label_key']) }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($article)<input type="hidden" name="language_original_id" value="{{ $article->language_original_id }}">@endif
+                                    <p class="mt-1 text-xs text-ink-400">{{ $article ? __('article.language_locked_hint') : __('article.language_hint') }}</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 grid gap-5 lg:grid-cols-2">
+                                <div>
+                                    <div class="flex items-center justify-between gap-3">
+                                        <div>
+                                            <h3 class="text-sm font-black text-ink-900">{{ __('article.byline_title') }}</h3>
+                                            <p class="mt-0.5 text-xs text-ink-500">{{ __('article.byline_hint') }}</p>
+                                        </div>
+                                        <button type="button" data-add-author class="rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-700 hover:bg-ink-50">{{ __('article.add_author') }}</button>
+                                    </div>
+                                    <div class="mt-3 space-y-3" data-author-list>
+                                        @foreach ($creditRows as $index => $credit)
+                                            <div class="grid gap-2 rounded-xl border border-ink-100 bg-ink-50 p-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_auto]" data-author-row>
+                                                <div>
+                                                    <label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.linked_account_label') }}</label>
+                                                    <select name="author_credit_list[{{ $index }}][user_id]" data-author-user class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm">
+                                                        <option value="">{{ __('article.custom_author_option') }}</option>
+                                                        @foreach ($userOptions as $option)
+                                                            <option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}" @selected(($credit['user_id'] ?? null) === $option['id'])>{{ '@'.$option['username'] }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.byline_name_label') }}</label>
+                                                    <input name="author_credit_list[{{ $index }}][display_name]" value="{{ $credit['display_name'] ?? '' }}" maxlength="100" required class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm">
+                                                </div>
+                                                <button type="button" data-remove-author class="self-end rounded-lg p-2 text-ink-400 hover:bg-white hover:text-ember-700" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">×</button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-sm font-black text-ink-900">{{ __('article.shared_ownership_title') }}</h3>
+                                    <p class="mt-0.5 text-xs leading-5 text-ink-500">{{ __('article.shared_ownership_hint') }}</p>
+                                    @if ($canManageOwnership)
+                                        <select name="article_owner_user_id_list[]" multiple size="7" class="mt-3 w-full rounded-xl border border-ink-200 px-3 py-2 text-sm">
+                                            @foreach ($userOptions as $option)
+                                                <option value="{{ $option['id'] }}" @selected(in_array($option['id'], $selectedOwnerIds, true))>{{ '@'.$option['username'].' — '.$option['display_name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        <p class="mt-1 text-xs text-ink-400">{{ __('article.shared_ownership_creator_hint') }}</p>
+                                    @else
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            @foreach ($userOptions->whereIn('id', $ownerIds) as $option)
+                                                <span class="rounded-full bg-ink-100 px-3 py-1 text-xs font-semibold text-ink-700">{{ '@'.$option['username'] }}</span>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm" aria-labelledby="article-sources-title">
+                            <div class="flex items-start justify-between gap-3">
+                                <div>
+                                    <h2 id="article-sources-title" class="font-black text-ink-950">{{ __('article.source_label') }}</h2>
+                                    <p class="mt-1 text-sm text-ink-500">{{ __('article.source_hint') }}</p>
+                                </div>
+                                <button type="button" data-add-source class="shrink-0 rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-700 hover:bg-ink-50">{{ __('article.add_source') }}</button>
+                            </div>
+                            <div class="mt-4 space-y-3" data-source-list>
+                                @foreach ($sourceRows as $index => $source)
+                                    <div class="rounded-xl border border-ink-100 bg-ink-50 p-3" data-source-row>
+                                        <div class="grid gap-3 md:grid-cols-2">
+                                            <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_title_label') }}</label><input name="source_reference_list[{{ $index }}][source_title]" value="{{ $source['source_title'] ?? '' }}" maxlength="200" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div>
+                                            <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_organization_label') }}</label><input name="source_reference_list[{{ $index }}][source_organization]" value="{{ $source['source_organization'] ?? '' }}" maxlength="200" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div>
+                                            <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_url_label') }}</label><input name="source_reference_list[{{ $index }}][source_url]" value="{{ $source['source_url'] ?? '' }}" type="url" maxlength="1000" placeholder="https://" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div>
+                                            <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_identifier_label') }}</label><input name="source_reference_list[{{ $index }}][publication_identifier]" value="{{ $source['publication_identifier'] ?? '' }}" maxlength="120" placeholder="DOI, ISBN, report number…" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div>
+                                        </div>
+                                        <button type="button" data-remove-source class="mt-2 text-xs font-bold text-ember-700 hover:underline">{{ __('article.remove_source') }}</button>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+
+                        <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm" aria-labelledby="article-related-title">
+                            <h2 id="article-related-title" class="font-black text-ink-950">{{ __('article.related_records_title') }}</h2>
+                            <p class="mt-1 text-sm text-ink-500">{{ __('article.related_records_hint') }}</p>
+                            <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                @foreach ([
+                                    'related_article_id_list' => __('article.related_articles_label'),
+                                    'related_organization_id_list' => __('article.related_organizations_label'),
+                                    'related_establishment_id_list' => __('article.related_establishments_label'),
+                                    'related_practitioner_id_list' => __('article.related_practitioners_label'),
+                                    'related_service_id_list' => __('article.related_services_label'),
+                                    'related_product_id_list' => __('article.related_products_label'),
+                                ] as $field => $label)
+                                    @php($selectedRelated = old($field, $article?->{$field} ?? []))
+                                    <div>
+                                        <label for="{{ $field }}" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500">{{ $label }}</label>
+                                        <select id="{{ $field }}" name="{{ $field }}[]" multiple size="5" class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm">
+                                            @foreach ($relatedOptions[$field] as $option)
+                                                <option value="{{ $option['id'] }}" @selected(in_array($option['id'], $selectedRelated, true))>{{ $option['label'] }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($relatedOptions[$field] === [])<p class="mt-1 text-xs text-ink-400">{{ __('article.no_related_records') }}</p>@endif
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+
+                        <template data-author-template>
+                            <div class="grid gap-2 rounded-xl border border-ink-100 bg-ink-50 p-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_auto]" data-author-row>
+                                <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.linked_account_label') }}</label><select name="author_credit_list[__INDEX__][user_id]" data-author-user class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"><option value="">{{ __('article.custom_author_option') }}</option>@foreach ($userOptions as $option)<option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}">{{ '@'.$option['username'] }}</option>@endforeach</select></div>
+                                <div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.byline_name_label') }}</label><input name="author_credit_list[__INDEX__][display_name]" maxlength="100" required class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div>
+                                <button type="button" data-remove-author class="self-end rounded-lg p-2 text-ink-400 hover:bg-white hover:text-ember-700" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">×</button>
+                            </div>
+                        </template>
+                        <template data-source-template>
+                            <div class="rounded-xl border border-ink-100 bg-ink-50 p-3" data-source-row><div class="grid gap-3 md:grid-cols-2"><div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_title_label') }}</label><input name="source_reference_list[__INDEX__][source_title]" maxlength="200" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div><div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_organization_label') }}</label><input name="source_reference_list[__INDEX__][source_organization]" maxlength="200" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div><div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_url_label') }}</label><input name="source_reference_list[__INDEX__][source_url]" type="url" maxlength="1000" placeholder="https://" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div><div><label class="mb-1 block text-xs font-semibold text-ink-500">{{ __('article.source_identifier_label') }}</label><input name="source_reference_list[__INDEX__][publication_identifier]" maxlength="120" placeholder="DOI, ISBN, report number…" class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm"></div></div><button type="button" data-remove-source class="mt-2 text-xs font-bold text-ember-700 hover:underline">{{ __('article.remove_source') }}</button></div>
+                        </template>
                     </div>
 
                     <aside class="min-w-0 space-y-4 xl:sticky xl:top-20">
@@ -209,11 +348,6 @@
                             <h2 class="font-black text-ink-950">{{ __('article.editorial_details_title') }}</h2>
                             <div class="mt-4 space-y-4">
                                 <div>
-                                    <label for="source_references" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500">{{ __('article.source_label') }}</label>
-                                    <textarea id="source_references" name="source_references" rows="5" maxlength="15000" class="w-full rounded-lg border border-ink-200 px-3 py-2 font-mono text-xs leading-5" aria-describedby="source-hint">{{ old('source_references', $sources) }}</textarea>
-                                    <p id="source-hint" class="mt-1 text-xs leading-5 text-ink-400">{{ __('article.source_hint') }}</p>
-                                </div>
-                                <div>
                                     <label for="revision_note" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500">{{ __('article.revision_note_label') }}</label>
                                     <textarea id="revision_note" name="revision_note" rows="2" maxlength="1000" class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm">{{ old('revision_note') }}</textarea>
                                 </div>
@@ -237,6 +371,9 @@
                             @if ($article && $article->status_publication !== 'P')
                                 <button type="submit" form="submit-article-form" class="rounded-xl border border-ember-300 bg-ember-50 px-5 py-3 text-sm font-bold text-ember-800 hover:bg-ember-100">{{ __('article.submit_review') }}</button>
                             @endif
+                            @if ($article?->status_publication === 'P')
+                                <button type="submit" form="unpublish-article-form" class="rounded-xl border border-ember-300 bg-ember-50 px-5 py-3 text-sm font-bold text-ember-800 hover:bg-ember-100">{{ __('article.unpublish') }}</button>
+                            @endif
                             <a href="{{ route('workspace.article.index') }}" class="text-center text-sm font-bold text-ink-500 hover:text-ink-800">{{ __('article.back_to_articles') }}</a>
                         </div>
                     </aside>
@@ -245,6 +382,9 @@
 
             @if ($article && $article->status_publication !== 'P')
                 <form id="submit-article-form" method="post" action="{{ route('workspace.article.submit', $article) }}">@csrf</form>
+            @endif
+            @if ($article?->status_publication === 'P')
+                <form id="unpublish-article-form" method="post" action="{{ route('workspace.article.unpublish', $article) }}">@csrf</form>
             @endif
         </main>
     </div>
