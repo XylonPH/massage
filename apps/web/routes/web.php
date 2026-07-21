@@ -159,13 +159,14 @@ Route::prefix('workspace/editorial')
     ->group(function () {
         Route::get('/', EditorialHome::class)->name('home');
         Route::get('/establishment', EstablishmentIndex::class)->name('establishment.index');
+        Route::get('/establishment/new', \App\Livewire\Workspace\Editorial\EstablishmentForm::class)->name('establishment.create');
+        Route::get('/establishment/{establishment}/edit', \App\Livewire\Workspace\Editorial\EstablishmentForm::class)->name('establishment.edit');
         Route::get('/service', ServiceIndex::class)->name('service.index');
         Route::get('/service/new', \App\Livewire\Workspace\Editorial\ServiceForm::class)->name('service.create');
         Route::get('/service/{service}/edit', \App\Livewire\Workspace\Editorial\ServiceForm::class)->name('service.edit');
         Route::get('/quote', QuoteIndex::class)->name('quote.index');
         Route::get('/quote/new', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.create');
         Route::get('/quote/{quote}/edit', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.edit');
-        // Additional Establishment/Service routes are added by later tasks.
     });
 
 Route::middleware('guest')->group(function () {
