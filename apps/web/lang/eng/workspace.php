@@ -17,7 +17,7 @@ return [
     'nav_contributions' => 'My Contributions',
     'nav_managed' => 'Managed Work',
     'nav_listing_spa' => 'My Establishments',
-    'nav_listing_therapist' => 'My Practitioner Profiles',
+    'nav_listing_therapist' => 'My Practitioner Profile',
     'nav_administration' => 'Administration',
 
     'card_account_title' => 'Account',
@@ -77,7 +77,7 @@ return [
     'listing_spa_unnamed' => 'Unnamed establishment',
     'listing_spa_access_active' => 'Management access active',
 
-    'listing_therapist_title' => 'My Practitioner Profiles',
+    'listing_therapist_title' => 'My Practitioner Profile',
     'listing_therapist_intro' => 'Professional profiles you manage appear here with services, schedule, credentials, and review responses.',
     'listing_therapist_empty_title' => 'No managed practitioner profiles yet',
     'listing_therapist_empty_text' => 'When you claim your therapist profile, its management tools open here: public profile, services and prices, availability, service area, credentials, and official review responses.',

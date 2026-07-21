@@ -23,8 +23,8 @@
             ['key' => 'settings', 'label' => __('workspace.nav_settings'), 'route' => 'workspace.setting.edit'],
         ]],
         ['heading' => __('workspace.nav_activity'), 'items' => [
-            ['key' => 'reviews', 'label' => __('workspace.nav_reviews'), 'route' => 'workspace.review.index'],
             ['key' => 'articles', 'label' => __('workspace.nav_articles'), 'route' => 'workspace.article.index'],
+            ['key' => 'reviews', 'label' => __('workspace.nav_reviews'), 'route' => 'workspace.review.index'],
             ['key' => 'contributions', 'label' => __('workspace.nav_contributions'), 'route' => 'workspace.contribution.index'],
         ]],
         ['heading' => __('workspace.nav_managed'), 'items' => [
