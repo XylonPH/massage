@@ -17,7 +17,9 @@ $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
     'landmark_list' => [],
+    'contact_channel_list' => [],
     'treatment_area_list' => [],
+    'operating_hours' => [],
     'amenity_list' => [],
     'accessibility_feature_list' => [],
     'payment_method_list' => [],
@@ -65,8 +67,14 @@ $establishment_main = [
     'parking_note' => ['eng' => ['text' => 'Limited paid parking is available.']], // Multilingual parking information.
     'landmark_list' => [ // Bounded nearby public landmarks.
         ['landmark_name' => 'Sample Mall', 'walking_duration_minute' => 5, 'direction_note' => ['eng' => ['text' => 'Walk east from the main entrance.']]],
-    ], // Bounded nearby public landmarks.
+    ],
+    'contact_channel_list' => [ // Bounded contact channels.
+        ['type_contact_channel' => 'EML', 'type_contact_number' => '', 'contact_label' => 'Front Desk', 'contact_value' => 'hello@sample.com', 'contact_url' => 'mailto:hello@sample.com', 'status_contact_channel' => 'ACT'],
+    ],
     'treatment_area_list' => [['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4]], // Bounded public treatment-area summary.
+    'operating_hours' => [ // Regular weekly hours.
+        ['day_of_week' => 'Monday', 'open_time' => '09:00', 'close_time' => '18:00'],
+    ],
     'amenity_list' => ['PRK', 'WIFI', 'TOWL'], // Confirmed public amenity codes.
     'accessibility_feature_list' => ['SFE', 'ELV'], // Confirmed accessibility codes.
     'payment_method_list' => ['CSH', 'CC'], // Accepted payment-method codes.
@@ -84,7 +92,7 @@ $establishment_main_field_order = [
     'target_client_focus', 'country_id', 'geographic_area_id_list', 'street_address', 'building_name',
     'floor_label', 'unit_label', 'postal_code', 'address_public', 'level_address_visibility',
     'coordinate_latitude', 'coordinate_longitude', 'type_coordinate', 'level_coordinate_confidence',
-    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'amenity_list',
+    'direction_note', 'parking_note', 'landmark_list', 'contact_channel_list', 'treatment_area_list', 'operating_hours', 'amenity_list',
     'accessibility_feature_list', 'payment_method_list', 'primary_media_image_id',
     'status_record_lifecycle', 'created_at', 'updated_at', 'last_confirmed_at',
 ];
@@ -95,7 +103,20 @@ $establishment_main_embedded_structure = [
         'walking_duration_minute' => 5,
         'direction_note' => ['eng' => ['text' => 'Walk east from the main entrance.']],
     ],
+    'contact_channel_list' => [
+        'type_contact_channel' => 'EML',
+        'type_contact_number' => '',
+        'contact_label' => 'Front Desk',
+        'contact_value' => 'hello@sample.com',
+        'contact_url' => 'mailto:hello@sample.com',
+        'status_contact_channel' => 'ACT',
+    ],
     'treatment_area_list' => ['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4],
+    'operating_hours' => [
+        'day_of_week' => 'Monday',
+        'open_time' => '09:00',
+        'close_time' => '18:00',
+    ],
 ];
 
 $establishment_main_field_property = [
@@ -130,7 +151,9 @@ $establishment_main_field_property = [
     'direction_note' => ['field_label' => 'Direction Note', 'field_description' => 'Multilingual arrival directions.', 'type_data' => 'O', 'is_translatable' => true],
     'parking_note' => ['field_label' => 'Parking Note', 'field_description' => 'Multilingual parking information.', 'type_data' => 'O', 'is_translatable' => true],
     'landmark_list' => ['field_label' => 'Landmark List', 'field_description' => 'Bounded nearby public landmarks.', 'type_data' => 'A'],
+    'contact_channel_list' => ['field_label' => 'Contact Channel List', 'field_description' => 'Bounded public contact channels.', 'type_data' => 'A'],
     'treatment_area_list' => ['field_label' => 'Treatment Area List', 'field_description' => 'Bounded public treatment-area summary; individual bookable resources are separate.', 'type_data' => 'A'],
+    'operating_hours' => ['field_label' => 'Operating Hours', 'field_description' => 'Bounded regular weekly operating hours.', 'type_data' => 'A'],
     'amenity_list' => ['field_label' => 'Amenity List', 'field_description' => 'Confirmed public amenity codes.', 'type_data' => 'A'],
     'accessibility_feature_list' => ['field_label' => 'Accessibility Feature List', 'field_description' => 'Confirmed public accessibility codes.', 'type_data' => 'A'],
     'payment_method_list' => ['field_label' => 'Payment Method List', 'field_description' => 'Accepted payment-method codes.', 'type_data' => 'A'],
@@ -145,10 +168,19 @@ $establishment_main_subfield_property = [
     'landmark_list.landmark_name' => ['field_label' => 'Landmark Name', 'field_description' => 'Public landmark name.', 'type_data' => 'S', 'is_mandatory' => true],
     'landmark_list.walking_duration_minute' => ['field_label' => 'Walking Duration Minute', 'field_description' => 'Approximate non-negative walk duration.', 'type_data' => 'I', 'min_number' => 0],
     'landmark_list.direction_note' => ['field_label' => 'Landmark Direction Note', 'field_description' => 'Multilingual directions from the landmark.', 'type_data' => 'O', 'is_translatable' => true],
+    'contact_channel_list.type_contact_channel' => ['field_label' => 'Contact Channel Type', 'field_description' => 'Controlled contact channel type.', 'type_data' => 'S', 'is_mandatory' => true],
+    'contact_channel_list.type_contact_number' => ['field_label' => 'Contact Number Type', 'field_description' => 'Controlled contact number type if applicable.', 'type_data' => 'S'],
+    'contact_channel_list.contact_label' => ['field_label' => 'Contact Label', 'field_description' => 'Public contact label.', 'type_data' => 'S', 'is_mandatory' => true],
+    'contact_channel_list.contact_value' => ['field_label' => 'Contact Value', 'field_description' => 'Public contact value.', 'type_data' => 'S', 'is_mandatory' => true],
+    'contact_channel_list.contact_url' => ['field_label' => 'Contact URL', 'field_description' => 'Public contact URL.', 'type_data' => 'S'],
+    'contact_channel_list.status_contact_channel' => ['field_label' => 'Contact Channel Status', 'field_description' => 'Controlled status.', 'type_data' => 'S'],
     'treatment_area_list.type_treatment_area' => ['field_label' => 'Treatment Area Type', 'field_description' => 'Controlled treatment-area type.', 'type_data' => 'S', 'is_mandatory' => true],
     'treatment_area_list.level_treatment_privacy' => ['field_label' => 'Treatment Privacy Level', 'field_description' => 'Controlled privacy level.', 'type_data' => 'S'],
     'treatment_area_list.type_treatment_capacity' => ['field_label' => 'Treatment Capacity Type', 'field_description' => 'Controlled capacity class.', 'type_data' => 'S'],
     'treatment_area_list.quantity' => ['field_label' => 'Quantity', 'field_description' => 'Non-negative count when confirmed.', 'type_data' => 'I', 'min_number' => 0],
+    'operating_hours.day_of_week' => ['field_label' => 'Day of Week', 'field_description' => 'Day name or holiday identifier.', 'type_data' => 'S', 'is_mandatory' => true],
+    'operating_hours.open_time' => ['field_label' => 'Open Time', 'field_description' => 'Opening time.', 'type_data' => 'S'],
+    'operating_hours.close_time' => ['field_label' => 'Close Time', 'field_description' => 'Closing time.', 'type_data' => 'S'],
 ];
 
 $establishment_main_index_list = [
@@ -165,15 +197,15 @@ $establishment_main_index_list = [
         'index_field_list' => [['field_name' => 'country_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'type_spa', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'status_establishment', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'status_record_lifecycle', 'type_index_mode' => 'ASC', 'sort_order' => 40]], 'sort_order' => 30,
     ],
     [
-        'index_key' => 'coordinate', 'index_name' => 'ix_establishment_main_coordinate', 'type_index' => 'GEO', 'is_unique' => false, 'is_sparse' => true,
+        'index_key' => 'coordinate', 'index_name' => 'ix_establishment_main_coordinate', 'type_index' => '2DSPHERE', 'is_unique' => false, 'is_sparse' => true,
         'index_field_list' => [['field_name' => 'coordinate_longitude', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'coordinate_latitude', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 40,
     ],
 ];
 
 $establishment_main_boundary = [
-    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, and lifecycle'],
+    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, small contact lists, regular operating hours, and lifecycle'],
     'references' => ['controlled classifications, geographic references, and primary media'],
-    'does_not_own' => ['contact channels, operating schedules, private addresses, organization or person relationships, services, bookings, evidence, reviews, or media records'],
+    'does_not_own' => ['private addresses, organization or person relationships, services, bookings, evidence, reviews, or media records'],
 ];
 
 return [
