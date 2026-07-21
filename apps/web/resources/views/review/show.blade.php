@@ -6,14 +6,14 @@
 @section('content')
 <article class="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
     @if ($item['target'])
-        <a href="{{ $item['target']['route'] }}" class="text-sm font-bold text-ember-700 hover:underline">← {{ __('review.back_to_target', ['target' => $item['target']['name']]) }}</a>
+        <a href="{{ $item['target']['route'] }}" class="text-sm font-bold text-ember-700 hover:underline dark:text-ember-300">← {{ __('review.back_to_target', ['target' => $item['target']['name']]) }}</a>
     @endif
-    <p class="mt-6 text-sm font-bold uppercase tracking-wider text-ember-700">{{ __('review.reviewed_target', ['target' => $item['target']['name'] ?? __('review.target_unavailable')]) }}</p>
-    <h1 class="mt-3 text-4xl font-black leading-tight text-ink-950 sm:text-5xl">{{ $item['title'] }}</h1>
+    <p class="mt-6 text-sm font-bold uppercase tracking-wider text-ember-700 dark:text-ember-300">{{ __('review.reviewed_target', ['target' => $item['target']['name'] ?? __('review.target_unavailable')]) }}</p>
+    <h1 class="mt-3 text-4xl font-black leading-tight text-ink-950 sm:text-5xl dark:text-ink-50">{{ $item['title'] }}</h1>
 
-    <div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink-500">
-        <span class="flex size-10 items-center justify-center rounded-full bg-ember-100 font-black text-ember-700" aria-hidden="true">{{ $item['initials'] }}</span>
-        <span class="font-bold text-ink-800">{{ $item['byline'] }}</span>
+    <div class="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink-500 dark:text-ink-400">
+        <span class="flex size-10 items-center justify-center rounded-full bg-ember-100 font-black text-ember-700 dark:bg-ember-900 dark:text-ember-300" aria-hidden="true">{{ $item['initials'] }}</span>
+        <span class="font-bold text-ink-800 dark:text-ink-200">{{ $item['byline'] }}</span>
         <span>{{ __('review.published_on', ['date' => optional($item['published_at'])->format('M j, Y')]) }}</span>
         <span>{{ __('review.reading_time', ['seconds' => $item['reading_duration_visual']]) }}</span>
     </div>
@@ -31,13 +31,13 @@
         </div>
     </section>
 
-    <div class="mt-8 whitespace-pre-line text-lg leading-8 text-ink-800">{{ $item['body'] }}</div>
+    <div class="mt-8 whitespace-pre-line text-lg leading-8 text-ink-800 dark:text-ink-200">{{ $item['body'] }}</div>
 
-    <dl class="mt-10 grid gap-3 rounded-2xl border border-ink-100 bg-white p-6 text-sm sm:grid-cols-2">
-        @if ($item['date_experience'])<div><dt class="font-bold text-ink-500">{{ __('review.date_experience_label') }}</dt><dd class="mt-1 text-ink-900">{{ $item['date_experience']->format('M j, Y') }}</dd></div>@endif
-        @if ($item['service_received'])<div><dt class="font-bold text-ink-500">{{ __('review.service_received_label') }}</dt><dd class="mt-1 text-ink-900">{{ $item['service_received'] }}</dd></div>@endif
-        @if ($item['amount_paid'] !== null)<div><dt class="font-bold text-ink-500">{{ __('review.amount_paid_label') }}</dt><dd class="mt-1 text-ink-900">₱{{ number_format((float) $item['amount_paid'], 2) }}</dd></div>@endif
-        <div><dt class="font-bold text-ink-500">{{ __('review.disclosure_label') }}</dt><dd class="mt-1 text-ink-900">{{ $item['disclosure'] }}</dd></div>
+    <dl class="mt-10 grid gap-3 rounded-2xl border border-ink-100 bg-white p-6 text-sm sm:grid-cols-2 dark:border-ink-800 dark:bg-ink-900">
+        @if ($item['date_experience'])<div><dt class="font-bold text-ink-500 dark:text-ink-400">{{ __('review.date_experience_label') }}</dt><dd class="mt-1 text-ink-900 dark:text-ink-100">{{ $item['date_experience']->format('M j, Y') }}</dd></div>@endif
+        @if ($item['service_received'])<div><dt class="font-bold text-ink-500 dark:text-ink-400">{{ __('review.service_received_label') }}</dt><dd class="mt-1 text-ink-900 dark:text-ink-100">{{ $item['service_received'] }}</dd></div>@endif
+        @if ($item['amount_paid'] !== null)<div><dt class="font-bold text-ink-500 dark:text-ink-400">{{ __('review.amount_paid_label') }}</dt><dd class="mt-1 text-ink-900 dark:text-ink-100">₱{{ number_format((float) $item['amount_paid'], 2) }}</dd></div>@endif
+        <div><dt class="font-bold text-ink-500 dark:text-ink-400">{{ __('review.disclosure_label') }}</dt><dd class="mt-1 text-ink-900 dark:text-ink-100">{{ $item['disclosure'] }}</dd></div>
     </dl>
 </article>
 @endsection

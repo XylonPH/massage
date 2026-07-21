@@ -3,11 +3,11 @@
 @section('title', __('navigation.sign_up'))
 
 @section('content')
-<h1 class="text-2xl font-black tracking-tight text-ink-950">{{ __('auth.register_title') }}</h1>
-<p class="mt-1.5 text-sm text-ink-500">{{ __('auth.register_subtitle') }}</p>
+<h1 class="text-2xl font-black tracking-tight text-ink-950 dark:text-ink-50">{{ __('auth.register_title') }}</h1>
+<p class="mt-1.5 text-sm text-ink-500 dark:text-ink-400">{{ __('auth.register_subtitle') }}</p>
 
 @if ($errors->any())
-    <div class="mt-5 rounded-xl border border-ember-200 bg-ember-50 px-4 py-3 text-sm text-ember-800" role="alert">
+    <div class="mt-5 rounded-xl border border-ember-200 bg-ember-50 px-4 py-3 text-sm text-ember-800 dark:border-ember-800 dark:bg-ember-950 dark:text-ember-100" role="alert">
         <ul class="list-inside list-disc space-y-1">
             @foreach ($errors->all() as $message)
                 <li>{{ $message }}</li>
@@ -20,89 +20,89 @@
     @csrf
 
     <div>
-        <label for="username" class="mb-1.5 block text-sm font-bold text-ink-900">{{ __('auth.username_label') }}</label>
+        <label for="username" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('auth.username_label') }}</label>
         <input id="username" name="username" type="text" required autofocus autocomplete="username"
                value="{{ old('username') }}"
                minlength="4" maxlength="30" pattern="[a-z][a-z0-9]{3,29}"
                aria-describedby="username-hint username-availability{{ $errors->has('username') ? ' username-error' : '' }}"
                data-username-check="{{ route('register.check-username') }}"
-               class="w-full rounded-xl border {{ $errors->has('username') ? 'border-ember-400' : 'border-ink-200' }} bg-white px-4 py-3 text-sm lowercase text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+               class="w-full rounded-xl border {{ $errors->has('username') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm lowercase text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50 dark:placeholder:text-ink-400">
         @error('username')
-            <p id="username-error" data-server-validation-error class="mt-1.5 text-xs font-semibold text-ember-600">{{ $message }}</p>
+            <p id="username-error" data-server-validation-error class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
         @enderror
         <p id="username-availability" data-username-availability aria-live="polite"
            data-checking="{{ __('auth.username_checking') }}"
            class="mt-1.5 text-xs font-semibold"></p>
-        <p id="username-hint" class="mt-1.5 text-xs text-ink-400">{{ __('auth.username_hint') }}</p>
+        <p id="username-hint" class="mt-1.5 text-xs text-ink-400 dark:text-ink-300">{{ __('auth.username_hint') }}</p>
     </div>
 
     <div>
-        <label for="email" class="mb-1.5 block text-sm font-bold text-ink-900">{{ __('auth.email_label') }}</label>
+        <label for="email" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('auth.email_label') }}</label>
         <input id="email" name="email" type="email" required autocomplete="email"
                value="{{ old('email') }}"
-               class="w-full rounded-xl border {{ $errors->has('email') ? 'border-ember-400' : 'border-ink-200' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+               class="w-full rounded-xl border {{ $errors->has('email') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50 dark:placeholder:text-ink-400">
         @error('email')
-            <p class="mt-1.5 text-xs font-semibold text-ember-600">{{ $message }}</p>
+            <p class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
         @enderror
     </div>
 
     <div>
-        <label for="password" class="mb-1.5 block text-sm font-bold text-ink-900">{{ __('auth.password_label') }}</label>
+        <label for="password" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('auth.password_label') }}</label>
         <div class="relative">
             <input id="password" name="password" type="password" required autocomplete="new-password"
                    minlength="15" maxlength="128" data-strength-input
                    aria-describedby="password-hint"
-                   class="w-full rounded-xl border border-ink-200 bg-white px-4 py-3 pr-12 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+                   class="w-full rounded-xl border border-ink-200 bg-white px-4 py-3 pr-12 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-50 dark:placeholder:text-ink-400">
             <button type="button" data-password-toggle="password" aria-pressed="false"
-                    class="absolute inset-y-0 right-0 flex items-center px-3.5 text-ink-400 transition hover:text-ink-700">
+                    class="absolute inset-y-0 right-0 flex items-center px-3.5 text-ink-400 transition hover:text-ink-700 dark:text-ink-300 dark:hover:text-ink-200">
                 <span class="sr-only">{{ __('auth.show_password') }}</span>
                 <svg data-eye="closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg>
                 <svg data-eye="open" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18M10.6 5.8A9.8 9.8 0 0 1 12 5.5c6 0 9.5 6.5 9.5 6.5a17.4 17.4 0 0 1-2.7 3.5m-2.2 1.9A9 9 0 0 1 12 18.5C6 18.5 2.5 12 2.5 12a17 17 0 0 1 4-4.5M10 10.1a3 3 0 0 0 4 4.4"/></svg>
             </button>
         </div>
-        <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink-100">
+        <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink-100 dark:bg-ink-800">
             <div data-strength-meter class="h-1.5 rounded-full" style="width: 0" aria-hidden="true"></div>
         </div>
-        <p data-strength-text aria-live="polite" class="mt-1 text-xs font-semibold text-ink-500"
+        <p data-strength-text aria-live="polite" class="mt-1 text-xs font-semibold text-ink-500 dark:text-ink-400"
            data-too-short="{{ __('auth.strength_too_short') }}"
            data-fair="{{ __('auth.strength_fair') }}"
            data-good="{{ __('auth.strength_good') }}"
            data-strong="{{ __('auth.strength_strong') }}"></p>
         @error('password')
-            <p class="mt-1 text-xs font-semibold text-ember-600">{{ $message }}</p>
+            <p class="mt-1 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
         @enderror
-        <p id="password-hint" class="mt-1 text-xs text-ink-400">{{ __('auth.password_hint') }}</p>
+        <p id="password-hint" class="mt-1 text-xs text-ink-400 dark:text-ink-300">{{ __('auth.password_hint') }}</p>
     </div>
 
     <div>
-        <label for="password_confirmation" class="mb-1.5 block text-sm font-bold text-ink-900">{{ __('auth.password_confirmation_label') }}</label>
+        <label for="password_confirmation" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('auth.password_confirmation_label') }}</label>
         <input id="password_confirmation" name="password_confirmation" type="password" required autocomplete="new-password"
                minlength="15" maxlength="128"
-               class="w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+               class="w-full rounded-xl border border-ink-200 bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-50 dark:placeholder:text-ink-400">
     </div>
 
     <div>
-        <label for="birth_date" class="mb-1.5 block text-sm font-bold text-ink-900">{{ __('auth.birth_date_label') }}</label>
+        <label for="birth_date" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('auth.birth_date_label') }}</label>
         <input id="birth_date" name="birth_date" type="date" required autocomplete="bday"
                value="{{ old('birth_date') }}"
                max="{{ now()->subYears(18)->toDateString() }}"
                aria-describedby="birth-date-hint"
-               class="w-full rounded-xl border {{ $errors->has('birth_date') ? 'border-ember-400' : 'border-ink-200' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100">
+               class="w-full rounded-xl border {{ $errors->has('birth_date') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50 dark:placeholder:text-ink-400">
         @error('birth_date')
-            <p class="mt-1.5 text-xs font-semibold text-ember-600">{{ $message }}</p>
+            <p class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
         @enderror
-        <p id="birth-date-hint" class="mt-1.5 text-xs text-ink-400">{{ __('auth.birth_date_hint') }}</p>
+        <p id="birth-date-hint" class="mt-1.5 text-xs text-ink-400 dark:text-ink-300">{{ __('auth.birth_date_hint') }}</p>
     </div>
 
-    <div class="space-y-3 rounded-xl bg-ink-50 p-4">
-        <label class="flex cursor-pointer items-start gap-2.5 text-sm text-ink-700">
+    <div class="space-y-3 rounded-xl bg-ink-50 p-4 dark:bg-ink-800">
+        <label class="flex cursor-pointer items-start gap-2.5 text-sm text-ink-700 dark:text-ink-200">
             <input type="checkbox" name="terms_accepted" value="1" required class="mt-0.5 size-4 shrink-0 rounded accent-ember-500">
             <span>{!! __('auth.terms_acceptance', [
-                'terms' => '<a href="'.url('/legal/terms').'" class="font-bold text-ember-600 hover:text-ember-700">'.__('auth.terms_of_use').'</a>',
-                'privacy' => '<a href="'.url('/legal/privacy').'" class="font-bold text-ember-600 hover:text-ember-700">'.__('auth.privacy_notice').'</a>',
+                'terms' => '<a href="'.url('/legal/terms').'" class="font-bold text-ember-600 hover:text-ember-700 dark:text-ember-400 dark:hover:text-ember-300">'.__('auth.terms_of_use').'</a>',
+                'privacy' => '<a href="'.url('/legal/privacy').'" class="font-bold text-ember-600 hover:text-ember-700 dark:text-ember-400 dark:hover:text-ember-300">'.__('auth.privacy_notice').'</a>',
             ]) !!}</span>
         </label>
-        <label class="flex cursor-pointer items-start gap-2.5 text-sm text-ink-500">
+        <label class="flex cursor-pointer items-start gap-2.5 text-sm text-ink-500 dark:text-ink-400">
             <input type="checkbox" name="marketing_opt_in" value="1" class="mt-0.5 size-4 shrink-0 rounded accent-ember-500">
             <span>{{ __('auth.marketing_opt_in') }}</span>
         </label>
@@ -113,8 +113,8 @@
     </button>
 </form>
 
-<p class="mt-6 text-center text-sm text-ink-500">
+<p class="mt-6 text-center text-sm text-ink-500 dark:text-ink-400">
     {{ __('auth.have_account') }}
-    <a href="{{ route('login') }}" class="font-bold text-ember-600 transition hover:text-ember-700">{{ __('auth.log_in_link') }}</a>
+    <a href="{{ route('login') }}" class="font-bold text-ember-600 transition hover:text-ember-700 dark:text-ember-400 dark:hover:text-ember-300">{{ __('auth.log_in_link') }}</a>
 </p>
 @endsection

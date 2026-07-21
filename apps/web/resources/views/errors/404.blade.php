@@ -7,22 +7,22 @@
     <div class="flex min-h-[60vh] flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-lg text-center">
             <div class="mb-8 flex justify-center">
-                <div class="relative flex size-24 items-center justify-center rounded-full bg-ember-50">
+                <div class="relative flex size-24 items-center justify-center rounded-full bg-ember-50 dark:bg-ember-950">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-12 text-ember-500" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
                 </div>
             </div>
-            
-            <h1 class="text-4xl font-black tracking-tight text-ink-950 sm:text-5xl">
+
+            <h1 class="text-4xl font-black tracking-tight text-ink-950 sm:text-5xl dark:text-ink-50">
                 {{ __('common.404_heading') }}
             </h1>
-            
-            <p class="mt-4 text-lg font-semibold text-ink-900">
+
+            <p class="mt-4 text-lg font-semibold text-ink-900 dark:text-ink-100">
                 {{ __('common.404_message') }}
             </p>
-            
-            <p class="mt-2 text-sm text-ink-500">
+
+            <p class="mt-2 text-sm text-ink-500 dark:text-ink-400">
                 {{ __('common.404_description') }}
             </p>
             

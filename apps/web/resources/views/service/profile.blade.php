@@ -78,8 +78,8 @@
         <div class="flex-1 lg:max-w-[1000px]">
             @if($service->english_overview)
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2">Overview</h2>
-                <div class="prose prose-ink max-w-none text-ink-600 leading-relaxed">
+                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2 dark:text-ink-100 dark:border-ink-800">Overview</h2>
+                <div class="prose prose-ink max-w-none text-ink-600 leading-relaxed dark:text-ink-300">
                     {{-- Assuming text for now, could be markdown/html depending on editor --}}
                     {{ $service->english_overview }}
                 </div>
@@ -87,17 +87,17 @@
             @endif
 
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2">What to Expect</h2>
-                <div class="rounded-xl bg-ink-50 p-6 border border-ink-100 text-ink-500 text-center">
-                    Detailed sequence and preparation information for this service is not yet available. 
+                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2 dark:text-ink-100 dark:border-ink-800">What to Expect</h2>
+                <div class="rounded-xl bg-ink-50 p-6 border border-ink-100 text-ink-500 text-center dark:bg-ink-800 dark:border-ink-800 dark:text-ink-400">
+                    Detailed sequence and preparation information for this service is not yet available.
                     <button class="text-amethyst-600 font-semibold hover:underline ml-2">Suggest Information</button>
                 </div>
             </section>
-            
+
             <section class="mb-12">
-                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2">Safety and Professional Scope</h2>
-                <div class="rounded-xl bg-amber-50 p-6 border border-amber-200">
-                    <p class="text-amber-800 text-sm">
+                <h2 class="text-2xl font-bold text-ink-900 mb-6 border-b border-ink-100 pb-2 dark:text-ink-100 dark:border-ink-800">Safety and Professional Scope</h2>
+                <div class="rounded-xl bg-amber-50 p-6 border border-amber-200 dark:bg-amber-950 dark:border-amber-800">
+                    <p class="text-amber-800 text-sm dark:text-amber-100">
                         <strong class="font-bold">Important:</strong> A service profile must not imply diagnosis, treatment, cure, rehabilitation, or medical authority beyond the documented legal and professional scope. Please consult a qualified healthcare professional regarding any medical conditions.
                     </p>
                 </div>
@@ -107,43 +107,43 @@
 
         {{-- Sidebar --}}
         <aside class="w-full lg:w-[320px] xl:w-[400px] shrink-0 space-y-8">
-            <div class="rounded-xl border border-ink-200 bg-white shadow-sm overflow-hidden">
-                <div class="border-b border-ink-100 bg-ink-50 px-5 py-4">
-                    <h3 class="font-bold text-ink-900">Service Classification</h3>
+            <div class="rounded-xl border border-ink-200 bg-white shadow-sm overflow-hidden dark:border-ink-700 dark:bg-ink-900">
+                <div class="border-b border-ink-100 bg-ink-50 px-5 py-4 dark:border-ink-800 dark:bg-ink-800">
+                    <h3 class="font-bold text-ink-900 dark:text-ink-100">Service Classification</h3>
                 </div>
                 <div class="p-5">
                     <dl class="space-y-4 text-sm">
                         @if($service->group_service_sector)
                         <div>
-                            <dt class="font-medium text-ink-500 mb-1">Sector</dt>
-                            <dd class="text-ink-900">{{ $service->group_service_sector }}</dd>
+                            <dt class="font-medium text-ink-500 mb-1 dark:text-ink-400">Sector</dt>
+                            <dd class="text-ink-900 dark:text-ink-100">{{ $service->group_service_sector }}</dd>
                         </div>
                         @endif
                         @if($service->group_service_domain)
                         <div>
-                            <dt class="font-medium text-ink-500 mb-1">Domain</dt>
-                            <dd class="text-ink-900">{{ $service->group_service_domain }}</dd>
+                            <dt class="font-medium text-ink-500 mb-1 dark:text-ink-400">Domain</dt>
+                            <dd class="text-ink-900 dark:text-ink-100">{{ $service->group_service_domain }}</dd>
                         </div>
                         @endif
                         @if($service->group_service_family)
                         <div>
-                            <dt class="font-medium text-ink-500 mb-1">Family</dt>
-                            <dd class="text-ink-900">{{ $service->group_service_family }}</dd>
+                            <dt class="font-medium text-ink-500 mb-1 dark:text-ink-400">Family</dt>
+                            <dd class="text-ink-900 dark:text-ink-100">{{ $service->group_service_family }}</dd>
                         </div>
                         @endif
                     </dl>
                 </div>
             </div>
-            
-            <div class="rounded-xl border border-ink-200 bg-white shadow-sm overflow-hidden">
-                <div class="border-b border-ink-100 bg-ink-50 px-5 py-4">
-                    <h3 class="font-bold text-ink-900">Therapists offering this</h3>
+
+            <div class="rounded-xl border border-ink-200 bg-white shadow-sm overflow-hidden dark:border-ink-700 dark:bg-ink-900">
+                <div class="border-b border-ink-100 bg-ink-50 px-5 py-4 dark:border-ink-800 dark:bg-ink-800">
+                    <h3 class="font-bold text-ink-900 dark:text-ink-100">Therapists offering this</h3>
                 </div>
-                <div class="p-5 text-center text-ink-500 text-sm">
+                <div class="p-5 text-center text-ink-500 text-sm dark:text-ink-400">
                     No verified therapists available in your area yet.
                 </div>
             </div>
-            
+
             <x-widgets.sidebar-container :content-length="3000" />
         </aside>
     </div>

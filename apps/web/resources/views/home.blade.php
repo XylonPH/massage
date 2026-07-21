@@ -159,7 +159,7 @@
                 <x-section-heading id="featured-spas" :title="__('home.featured_spas')" :href="url('/directory/spa')" />
                 <div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
                     @foreach ($featuredSpas as $spa)
-                        <article class="group min-w-0 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:border-ink-200">
+                        <article class="group min-w-0 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl hover:border-ink-200 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-ink-700">
                             <a href="{{ route('spa.show', ['establishment_slug' => $spa['slug']]) }}" class="block">
                                 <div class="relative flex h-32 items-center justify-center bg-gradient-to-br {{ $spa['gradient'] }} shadow-[inset_0_0_40px_rgba(0,0,0,0.2)]">
                                     <x-pictogram :name="$spa['icon']" class="size-12 text-white/50 transition duration-500 group-hover:scale-110 group-hover:text-white/70" />
@@ -176,17 +176,17 @@
                                     </div>
                                 </div>
                                 <div class="p-4">
-                                    <h3 class="text-[15px] font-black text-ink-950 transition group-hover:text-ember-600 truncate">{{ $spa['name'] }}</h3>
+                                    <h3 class="text-[15px] font-black text-ink-950 transition group-hover:text-ember-600 truncate dark:text-ink-50 dark:group-hover:text-ember-400">{{ $spa['name'] }}</h3>
                                     <div class="mt-1 flex items-center gap-1.5 text-[13px]">
-                                        <span class="font-black text-ink-900">{{ number_format($spa['rating'], 1) }}</span>
+                                        <span class="font-black text-ink-900 dark:text-ink-100">{{ number_format($spa['rating'], 1) }}</span>
                                         <x-rating :value="$spa['rating']" size="size-3.5" />
-                                        <span class="font-semibold text-ink-400">({{ $spa['review_count'] }})</span>
+                                        <span class="font-semibold text-ink-400 dark:text-ink-300">({{ $spa['review_count'] }})</span>
                                     </div>
-                                    <p class="mt-2.5 truncate text-xs font-semibold text-ink-500">{{ $spa['area'] }}</p>
-                                    <p class="mt-0.5 truncate text-xs text-ink-500">{{ $spa['services'] }}</p>
+                                    <p class="mt-2.5 truncate text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $spa['area'] }}</p>
+                                    <p class="mt-0.5 truncate text-xs text-ink-500 dark:text-ink-400">{{ $spa['services'] }}</p>
                                     <p class="mt-1.5 text-[0.7rem] font-semibold">
-                                        <span class="text-leaf-600">{{ __('common.open') }}</span>
-                                        <span class="text-ink-400"> · {{ __('common.closes_at', ['time' => $spa['closes']]) }}</span>
+                                        <span class="text-leaf-600 dark:text-leaf-400">{{ __('common.open') }}</span>
+                                        <span class="text-ink-400 dark:text-ink-300"> · {{ __('common.closes_at', ['time' => $spa['closes']]) }}</span>
                                     </p>
                                 </div>
                             </a>
@@ -200,23 +200,23 @@
                 <x-section-heading id="featured-therapists" :title="__('home.featured_therapists')" :href="url('/directory/therapist')" accent="leaf" />
                 <div class="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
                     @foreach ($featuredTherapists as $therapist)
-                        <article class="min-w-0 rounded-2xl border border-ink-100 bg-white p-5 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl">
+                        <article class="min-w-0 rounded-2xl border border-ink-100 bg-white p-5 text-center shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl dark:border-ink-800 dark:bg-ink-900 dark:hover:border-ink-700">
                             <span class="mx-auto flex size-[72px] items-center justify-center rounded-full text-xl font-black {{ $therapist['tone'] }} shadow-sm">{{ $therapist['initials'] }}</span>
-                            <h3 class="mt-4 text-[15px] font-black text-ink-950">
+                            <h3 class="mt-4 text-[15px] font-black text-ink-950 dark:text-ink-50">
                                 @if (!empty($therapist['slug']))
-                                    <a href="{{ route('therapist.show', ['therapist_slug' => $therapist['slug']]) }}" class="transition hover:text-ember-600">{{ $therapist['name'] }}</a>
+                                    <a href="{{ route('therapist.show', ['therapist_slug' => $therapist['slug']]) }}" class="transition hover:text-ember-600 dark:hover:text-ember-400">{{ $therapist['name'] }}</a>
                                 @else
                                     {{ $therapist['name'] }}
                                 @endif
                             </h3>
                             <div class="mt-1.5 flex items-center justify-center gap-1.5 text-[13px]">
-                                <span class="font-black text-ink-900">{{ number_format($therapist['rating'], 1) }}</span>
+                                <span class="font-black text-ink-900 dark:text-ink-100">{{ number_format($therapist['rating'], 1) }}</span>
                                 <x-rating :value="$therapist['rating']" size="size-3.5" />
-                                <span class="font-semibold text-ink-400">({{ $therapist['review_count'] }})</span>
+                                <span class="font-semibold text-ink-400 dark:text-ink-300">({{ $therapist['review_count'] }})</span>
                             </div>
-                            <p class="mt-2 text-[13px] font-semibold text-ink-500">{{ $therapist['specialties'] }}</p>
-                            <p class="mt-0.5 truncate text-xs text-ink-400">{{ $therapist['area'] }}</p>
-                            <p class="mt-3 inline-block rounded-full bg-leaf-50 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-leaf-700">
+                            <p class="mt-2 text-[13px] font-semibold text-ink-500 dark:text-ink-400">{{ $therapist['specialties'] }}</p>
+                            <p class="mt-0.5 truncate text-xs text-ink-400 dark:text-ink-300">{{ $therapist['area'] }}</p>
+                            <p class="mt-3 inline-block rounded-full bg-leaf-50 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-leaf-700 dark:bg-leaf-950 dark:text-leaf-300">
                                 {{ $therapist['availability'] === 'today' ? __('common.available_today') : __('common.available_tomorrow') }}
                             </p>
                         </article>
@@ -231,7 +231,7 @@
                     <ul class="flex flex-wrap gap-2">
                         @foreach ($areas as $area)
                             <li>
-                                <a href="{{ url('/directory/area/'.\Illuminate\Support\Str::slug($area)) }}" class="inline-block rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700">
+                                <a href="{{ url('/directory/area/'.\Illuminate\Support\Str::slug($area)) }}" class="inline-block rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ember-950 dark:hover:text-ember-300">
                                     {{ $area }}
                                 </a>
                             </li>
@@ -250,9 +250,9 @@
                     <ul class="grid grid-cols-4 gap-2.5">
                         @foreach ($massageTypes as $type)
                             <li>
-                                <a href="{{ url('/directory/type-spa/'.\Illuminate\Support\Str::slug($type['name'])) }}" class="group flex flex-col items-center gap-1.5 rounded-xl border border-ink-100 bg-white px-2 py-3 text-center shadow-sm transition hover:border-leaf-300 hover:bg-leaf-50">
-                                    <x-pictogram :name="$type['icon']" class="size-6 text-ink-500 transition group-hover:text-leaf-600" />
-                                    <span class="text-xs font-semibold text-ink-700 group-hover:text-leaf-800">{{ $type['name'] }}</span>
+                                <a href="{{ url('/directory/type-spa/'.\Illuminate\Support\Str::slug($type['name'])) }}" class="group flex flex-col items-center gap-1.5 rounded-xl border border-ink-100 bg-white px-2 py-3 text-center shadow-sm transition hover:border-leaf-300 hover:bg-leaf-50 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-leaf-800 dark:hover:bg-leaf-950">
+                                    <x-pictogram :name="$type['icon']" class="size-6 text-ink-500 transition group-hover:text-leaf-600 dark:text-ink-400 dark:group-hover:text-leaf-400" />
+                                    <span class="text-xs font-semibold text-ink-700 group-hover:text-leaf-800 dark:text-ink-200 dark:group-hover:text-leaf-100">{{ $type['name'] }}</span>
                                 </a>
                             </li>
                         @endforeach
@@ -265,15 +265,15 @@
                 <x-section-heading id="latest-articles" :title="__('home.latest_articles')" :href="route('article.index')" />
                 <div class="grid gap-5 sm:grid-cols-3">
                     @foreach ($articles as $article)
-                        <article class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl">
+                        <article class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl dark:border-ink-800 dark:bg-ink-900 dark:hover:border-ink-700">
                             <a href="{{ ! empty($article['slug']) ? route('article.show', $article['slug']) : route('article.index') }}" class="block">
                                 <div class="flex h-32 items-center justify-center bg-gradient-to-br {{ $article['tone'] }} shadow-[inset_0_0_40px_rgba(0,0,0,0.1)]">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-10 text-white/50 transition duration-500 group-hover:scale-110 group-hover:text-white/70" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-2.5-1.7-5.5-1.9-8-.75v13c2.5-1.15 5.5-.95 8 .75 2.5-1.7 5.5-1.9 8-.75v-13c-2.5-1.15-5.5-.95-8 .75Zm0 0V19.5"/></svg>
                                 </div>
                                 <div class="p-5">
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-ember-600">{{ $article['category'] }}</p>
-                                    <h3 class="mt-2 text-[15px] font-black leading-snug text-ink-950 transition group-hover:text-ember-600">{{ $article['title'] }}</h3>
-                                    <p class="mt-3 text-[11px] font-semibold text-ink-400">{{ $article['date'] }}</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-ember-600 dark:text-ember-400">{{ $article['category'] }}</p>
+                                    <h3 class="mt-2 text-[15px] font-black leading-snug text-ink-950 transition group-hover:text-ember-600 dark:text-ink-50 dark:group-hover:text-ember-400">{{ $article['title'] }}</h3>
+                                    <p class="mt-3 text-[11px] font-semibold text-ink-400 dark:text-ink-300">{{ $article['date'] }}</p>
                                 </div>
                             </a>
                         </article>
@@ -286,17 +286,17 @@
                 <x-section-heading id="latest-reviews" :title="__('home.latest_reviews')" :href="url('/review')" accent="leaf" />
                 <div class="grid gap-5 sm:grid-cols-3">
                     @foreach ($latestReviews as $review)
-                        <article class="group rounded-2xl border border-ink-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl">
+                        <article class="group rounded-2xl border border-ink-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl dark:border-ink-800 dark:bg-ink-900 dark:hover:border-ink-700">
                             <div class="flex items-center gap-3">
                                 <span class="flex size-11 shrink-0 items-center justify-center rounded-full text-[15px] font-black {{ $review['tone'] }}">{{ $review['initials'] }}</span>
                                 <div class="min-w-0">
-                                    <p class="truncate text-[15px] font-black text-ink-950">{{ $review['reviewer'] }}</p>
-                                    <p class="text-[11px] text-ink-400">{{ __('home.reviewed') }} <span class="font-bold text-ink-600">{{ $review['target'] }}</span></p>
+                                    <p class="truncate text-[15px] font-black text-ink-950 dark:text-ink-50">{{ $review['reviewer'] }}</p>
+                                    <p class="text-[11px] text-ink-400 dark:text-ink-300">{{ __('home.reviewed') }} <span class="font-bold text-ink-600 dark:text-ink-300">{{ $review['target'] }}</span></p>
                                 </div>
                             </div>
                             <x-rating :value="$review['rating']" size="size-3.5" class="mt-3.5" />
-                            <p class="mt-2.5 text-[13px] leading-relaxed font-medium text-ink-600">“{{ $review['excerpt'] }}”</p>
-                            <p class="mt-3 text-[11px] font-semibold text-ink-400">{{ $review['time'] }}</p>
+                            <p class="mt-2.5 text-[13px] leading-relaxed font-medium text-ink-600 dark:text-ink-300">“{{ $review['excerpt'] }}”</p>
+                            <p class="mt-3 text-[11px] font-semibold text-ink-400 dark:text-ink-300">{{ $review['time'] }}</p>
                         </article>
                     @endforeach
                 </div>
@@ -307,14 +307,14 @@
                 <x-section-heading id="promos-deals" :title="__('home.promos_deals')" :href="route('promo.index')" />
                 <div class="grid gap-5 sm:grid-cols-3">
                     @foreach ($promos as $promo)
-                        <article class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl">
+                        <article class="group overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-ink-200 hover:shadow-xl dark:border-ink-800 dark:bg-ink-900 dark:hover:border-ink-700">
                             <div class="bg-gradient-to-r {{ $promo['tone'] }} px-5 py-6">
                                 <p class="text-[26px] font-black tracking-tight text-white">{{ $promo['offer'] }}</p>
                             </div>
                             <div class="p-5">
-                                <h3 class="text-[15px] font-black text-ink-950">{{ $promo['business'] }}</h3>
-                                <p class="mt-1.5 text-[13px] text-ink-600 font-medium">{{ $promo['description'] }}</p>
-                                <p class="mt-3 text-[11px] font-semibold text-ink-400">{{ __('home.valid_until', ['date' => $promo['valid_until']]) }}</p>
+                                <h3 class="text-[15px] font-black text-ink-950 dark:text-ink-50">{{ $promo['business'] }}</h3>
+                                <p class="mt-1.5 text-[13px] text-ink-600 font-medium dark:text-ink-300">{{ $promo['description'] }}</p>
+                                <p class="mt-3 text-[11px] font-semibold text-ink-400 dark:text-ink-300">{{ __('home.valid_until', ['date' => $promo['valid_until']]) }}</p>
                             </div>
                         </article>
                     @endforeach
@@ -326,14 +326,14 @@
                 <x-section-heading id="wellness-finds" :title="__('home.wellness_finds')" :href="url('/directory/product')" accent="leaf" />
                 <div class="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-4">
                     @foreach ($wellnessFinds as $product)
-                        <article class="group min-w-0 rounded-2xl border border-ink-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg">
+                        <article class="group min-w-0 rounded-2xl border border-ink-100 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-ink-800 dark:bg-ink-900">
                             <div class="flex h-24 items-center justify-center rounded-xl bg-gradient-to-br {{ $product['tone'] }}">
                                 <x-pictogram :name="$product['icon']" class="size-9 transition group-hover:scale-110" />
                             </div>
-                            <h3 class="mt-3 truncate text-sm font-bold leading-snug text-ink-950">{{ $product['name'] }}</h3>
+                            <h3 class="mt-3 truncate text-sm font-bold leading-snug text-ink-950 dark:text-ink-50">{{ $product['name'] }}</h3>
                             <div class="mt-1.5 flex items-center justify-between">
-                                <p class="text-sm font-black text-ember-600">{{ $product['price'] }}</p>
-                                <div class="flex items-center gap-1 text-xs text-ink-500">
+                                <p class="text-sm font-black text-ember-600 dark:text-ember-400">{{ $product['price'] }}</p>
+                                <div class="flex items-center gap-1 text-xs text-ink-500 dark:text-ink-400">
                                     <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5 text-ember-400" aria-hidden="true"><path d="M9.05 2.93c.3-.92 1.6-.92 1.9 0l1.28 3.95a1 1 0 0 0 .95.69h4.16c.97 0 1.37 1.24.59 1.81l-3.37 2.44a1 1 0 0 0-.36 1.12l1.28 3.95c.3.92-.75 1.69-1.54 1.12l-3.36-2.44a1 1 0 0 0-1.18 0l-3.36 2.44c-.79.57-1.84-.2-1.54-1.12l1.28-3.95a1 1 0 0 0-.36-1.12L2.05 9.38c-.78-.57-.38-1.81.6-1.81h4.15a1 1 0 0 0 .95-.69l1.3-3.95Z"/></svg>
                                     {{ number_format($product['rating'], 1) }}
                                 </div>
@@ -347,19 +347,19 @@
             <div class="grid gap-8 md:grid-cols-2">
                 <section aria-labelledby="trending-spas">
                     <x-section-heading id="trending-spas" :title="__('home.trending_spas')" :href="url('/directory/spa')" />
-                    <ol class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+                    <ol class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:divide-ink-800 dark:border-ink-800 dark:bg-ink-900">
                         @foreach ($trendingSpas as $item)
                             <li>
-                                <a href="{{ route('spa.show', ['establishment_slug' => $item['slug']]) }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50">
-                                    <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-ember-50 text-sm font-black text-ember-600">{{ $item['rank'] }}</span>
+                                <a href="{{ route('spa.show', ['establishment_slug' => $item['slug']]) }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50 dark:hover:bg-ink-800">
+                                    <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-ember-50 text-sm font-black text-ember-600 dark:bg-ember-950 dark:text-ember-400">{{ $item['rank'] }}</span>
                                     <span class="min-w-0 flex-1">
-                                        <span class="block truncate text-sm font-bold text-ink-950">{{ $item['name'] }}</span>
-                                        <span class="block text-xs text-ink-400">{{ $item['area'] }}</span>
+                                        <span class="block truncate text-sm font-bold text-ink-950 dark:text-ink-50">{{ $item['name'] }}</span>
+                                        <span class="block text-xs text-ink-400 dark:text-ink-300">{{ $item['area'] }}</span>
                                     </span>
                                     <span class="flex shrink-0 items-center gap-1 text-xs">
-                                        <span class="font-bold text-ink-900">{{ number_format($item['rating'], 1) }}</span>
+                                        <span class="font-bold text-ink-900 dark:text-ink-100">{{ number_format($item['rating'], 1) }}</span>
                                         <x-rating :value="$item['rating']" size="size-3" />
-                                        <span class="text-ink-400">({{ $item['review_count'] }})</span>
+                                        <span class="text-ink-400 dark:text-ink-300">({{ $item['review_count'] }})</span>
                                     </span>
                                 </a>
                             </li>
@@ -369,18 +369,18 @@
 
                 <section aria-labelledby="trending-therapists">
                     <x-section-heading id="trending-therapists" :title="__('home.trending_therapists')" :href="url('/directory/therapist')" accent="leaf" />
-                    <ol class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+                    <ol class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:divide-ink-800 dark:border-ink-800 dark:bg-ink-900">
                         @foreach ($trendingTherapists as $item)
                             <li>
-                                <a href="{{ url('/directory/therapist') }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50">
-                                    <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-leaf-50 text-sm font-black text-leaf-600">{{ $item['rank'] }}</span>
+                                <a href="{{ url('/directory/therapist') }}" class="flex items-center gap-4 px-4 py-3.5 transition hover:bg-ink-50 dark:hover:bg-ink-800">
+                                    <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-leaf-50 text-sm font-black text-leaf-600 dark:bg-leaf-950 dark:text-leaf-400">{{ $item['rank'] }}</span>
                                     <span class="flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-bold {{ $item['tone'] }}">{{ $item['initials'] }}</span>
                                     <span class="min-w-0 flex-1">
-                                        <span class="block truncate text-sm font-bold text-ink-950">{{ $item['name'] }}</span>
-                                        <span class="block text-xs text-ink-400">{{ $item['area'] }}</span>
+                                        <span class="block truncate text-sm font-bold text-ink-950 dark:text-ink-50">{{ $item['name'] }}</span>
+                                        <span class="block text-xs text-ink-400 dark:text-ink-300">{{ $item['area'] }}</span>
                                     </span>
                                     <span class="flex shrink-0 items-center gap-1 text-xs">
-                                        <span class="font-bold text-ink-900">{{ number_format($item['rating'], 1) }}</span>
+                                        <span class="font-bold text-ink-900 dark:text-ink-100">{{ number_format($item['rating'], 1) }}</span>
                                         <x-rating :value="$item['rating']" size="size-3" />
                                     </span>
                                 </a>
@@ -394,15 +394,15 @@
             <div class="grid gap-8 md:grid-cols-2">
                 <section aria-labelledby="new-listings">
                     <x-section-heading id="new-listings" :title="__('home.new_on_platform')" :href="url('/directory/new')" />
-                    <ul class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+                    <ul class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:divide-ink-800 dark:border-ink-800 dark:bg-ink-900">
                         @foreach ($newListings as $listing)
                             <li class="flex items-center gap-4 px-4 py-3.5">
-                                <span class="rounded-full px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide {{ $listing['type'] === 'Spa' ? 'bg-ink-100 text-ink-700' : 'bg-leaf-100 text-leaf-700' }}">{{ $listing['type'] }}</span>
+                                <span class="rounded-full px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide {{ $listing['type'] === 'Spa' ? 'bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-200' : 'bg-leaf-100 text-leaf-700 dark:bg-leaf-900 dark:text-leaf-300' }}">{{ $listing['type'] }}</span>
                                 <span class="min-w-0 flex-1">
-                                    <span class="block truncate text-sm font-bold text-ink-950">{{ $listing['name'] }}</span>
-                                    <span class="block truncate text-xs text-ink-400">{{ $listing['area'] }}</span>
+                                    <span class="block truncate text-sm font-bold text-ink-950 dark:text-ink-50">{{ $listing['name'] }}</span>
+                                    <span class="block truncate text-xs text-ink-400 dark:text-ink-300">{{ $listing['area'] }}</span>
                                 </span>
-                                <span class="shrink-0 text-xs text-ink-400">{{ $listing['added'] }}</span>
+                                <span class="shrink-0 text-xs text-ink-400 dark:text-ink-300">{{ $listing['added'] }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -410,14 +410,14 @@
 
                 <section aria-labelledby="updated-profiles">
                     <x-section-heading id="updated-profiles" :title="__('home.freshly_updated')" :href="url('/directory/updated')" accent="leaf" />
-                    <ul class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+                    <ul class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:divide-ink-800 dark:border-ink-800 dark:bg-ink-900">
                         @foreach ($updatedProfiles as $profile)
                             <li class="px-4 py-3.5">
                                 <div class="flex items-center justify-between gap-3">
-                                    <p class="truncate text-sm font-bold text-ink-950">{{ $profile['name'] }}</p>
-                                    <p class="shrink-0 text-xs text-ink-400">{{ $profile['updated'] }}</p>
+                                    <p class="truncate text-sm font-bold text-ink-950 dark:text-ink-50">{{ $profile['name'] }}</p>
+                                    <p class="shrink-0 text-xs text-ink-400 dark:text-ink-300">{{ $profile['updated'] }}</p>
                                 </div>
-                                <p class="mt-0.5 truncate text-xs text-ink-500">{{ $profile['change'] }}</p>
+                                <p class="mt-0.5 truncate text-xs text-ink-500 dark:text-ink-400">{{ $profile['change'] }}</p>
                             </li>
                         @endforeach
                     </ul>
@@ -429,10 +429,10 @@
         <aside class="min-w-0 space-y-4">
 
             {{-- Premium Spotlight (sponsored) --}}
-            <section aria-labelledby="spotlight-heading" class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm">
+            <section aria-labelledby="spotlight-heading" class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:border-ink-800 dark:bg-ink-900">
                 <div class="flex items-center justify-between px-5 pt-4 pb-1">
-                    <h2 id="spotlight-heading" class="text-[15px] font-black text-ink-950">{{ __('home.premium_spotlight') }}</h2>
-                    <span class="rounded-full bg-ember-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-ember-600">{{ __('common.sponsored') }}</span>
+                    <h2 id="spotlight-heading" class="text-[15px] font-black text-ink-950 dark:text-ink-50">{{ __('home.premium_spotlight') }}</h2>
+                    <span class="rounded-full bg-ember-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-widest text-ember-600 dark:bg-ember-950 dark:text-ember-400">{{ __('common.sponsored') }}</span>
                 </div>
                 <div class="p-5">
                     <a href="{{ route('spa.show', ['establishment_slug' => 'the-resting-leaf']) }}" class="group block">
@@ -440,30 +440,30 @@
                             <x-pictogram name="leaf" class="size-12 text-white/50 transition duration-500 group-hover:scale-110 group-hover:text-white/70" />
                             <span class="absolute left-3 top-3 rounded-full bg-ember-500 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-widest text-white">{{ __('common.premium') }}</span>
                         </div>
-                        <h3 class="mt-4 text-base font-black tracking-tight text-ink-950 transition group-hover:text-ember-600">The Resting Leaf</h3>
+                        <h3 class="mt-4 text-base font-black tracking-tight text-ink-950 transition group-hover:text-ember-600 dark:text-ink-50 dark:group-hover:text-ember-400">The Resting Leaf</h3>
                     </a>
                     <div class="mt-1.5 flex items-center gap-1.5 text-sm">
-                        <span class="font-black text-ink-900">4.8</span>
+                        <span class="font-black text-ink-900 dark:text-ink-100">4.8</span>
                         <x-rating :value="4.8" size="size-4" />
-                        <span class="font-semibold text-ink-400">(342)</span>
+                        <span class="font-semibold text-ink-400 dark:text-ink-300">(342)</span>
                     </div>
-                    <p class="mt-2 text-[13px] font-semibold text-ink-500">Mandaluyong City, Metro Manila</p>
-                    <p class="mt-1 text-xs text-ink-500"><span class="font-bold text-ember-600">{{ __('home.signature') }}:</span> Relaxation, Aromatherapy, Hot Stone</p>
-                    <a href="{{ route('spa.show', ['establishment_slug' => 'the-resting-leaf']) }}" class="mt-5 block rounded-xl border-2 border-ember-100 px-4 py-2.5 text-center text-sm font-black text-ember-600 transition hover:bg-ember-50 hover:border-ember-200">
+                    <p class="mt-2 text-[13px] font-semibold text-ink-500 dark:text-ink-400">Mandaluyong City, Metro Manila</p>
+                    <p class="mt-1 text-xs text-ink-500 dark:text-ink-400"><span class="font-bold text-ember-600 dark:text-ember-400">{{ __('home.signature') }}:</span> Relaxation, Aromatherapy, Hot Stone</p>
+                    <a href="{{ route('spa.show', ['establishment_slug' => 'the-resting-leaf']) }}" class="mt-5 block rounded-xl border-2 border-ember-100 px-4 py-2.5 text-center text-sm font-black text-ember-600 transition hover:bg-ember-50 hover:border-ember-200 dark:border-ember-800 dark:text-ember-400 dark:hover:bg-ember-950 dark:hover:border-ember-700">
                         {{ __('common.view_profile') }}
                     </a>
                 </div>
             </section>
 
             {{-- Community Pulse --}}
-            <section aria-labelledby="pulse-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm">
-                <h2 id="pulse-heading" class="text-base font-bold text-ink-950">{{ __('home.community_pulse') }}</h2>
+            <section aria-labelledby="pulse-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm dark:border-ink-800 dark:bg-ink-900">
+                <h2 id="pulse-heading" class="text-base font-bold text-ink-950 dark:text-ink-50">{{ __('home.community_pulse') }}</h2>
                 <form data-poll class="mt-3">
                     <div data-poll-form>
-                        <p class="text-sm font-semibold text-ink-700">{{ __('home.pulse_question') }}</p>
+                        <p class="text-sm font-semibold text-ink-700 dark:text-ink-200">{{ __('home.pulse_question') }}</p>
                         <div class="mt-3 space-y-2">
                             @foreach (['weekly' => __('home.pulse_option_weekly'), 'monthly' => __('home.pulse_option_monthly'), 'occasionally' => __('home.pulse_option_occasionally'), 'first_time' => __('home.pulse_option_first_time')] as $value => $label)
-                                <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-ink-200 px-3.5 py-2.5 text-sm text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 has-checked:border-ember-400 has-checked:bg-ember-50">
+                                <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-ink-200 px-3.5 py-2.5 text-sm text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 has-checked:border-ember-400 has-checked:bg-ember-50 dark:border-ink-700 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ember-950 dark:has-checked:border-ember-600 dark:has-checked:bg-ember-950">
                                     <input type="radio" name="pulse_answer" value="{{ $value }}" class="size-4 accent-ember-500">
                                     {{ $label }}
                                 </label>
@@ -471,45 +471,45 @@
                         </div>
                         <button type="submit" class="mt-3 w-full rounded-xl bg-ink-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-ink-800">{{ __('home.pulse_vote') }}</button>
                     </div>
-                    <p data-poll-result hidden class="rounded-xl bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800">{{ __('home.pulse_thanks') }}</p>
+                    <p data-poll-result hidden class="rounded-xl bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800 dark:bg-leaf-950 dark:text-leaf-100">{{ __('home.pulse_thanks') }}</p>
                 </form>
             </section>
 
             {{-- Campus Quiz --}}
-            <section aria-labelledby="quiz-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm">
+            <section aria-labelledby="quiz-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm dark:border-ink-800 dark:bg-ink-900">
                 <div class="flex items-center gap-2">
-                    <span class="flex size-8 items-center justify-center rounded-lg bg-leaf-100">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4.5 text-leaf-700" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3 2 8l10 5 10-5-10-5Zm-6 7.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+                    <span class="flex size-8 items-center justify-center rounded-lg bg-leaf-100 dark:bg-leaf-900">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4.5 text-leaf-700 dark:text-leaf-300" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3 2 8l10 5 10-5-10-5Zm-6 7.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
                     </span>
-                    <h2 id="quiz-heading" class="text-base font-bold text-ink-950">{{ __('home.campus_quiz') }}</h2>
+                    <h2 id="quiz-heading" class="text-base font-bold text-ink-950 dark:text-ink-50">{{ __('home.campus_quiz') }}</h2>
                 </div>
                 <form data-quiz data-quiz-answer="hot_stone" class="mt-3">
-                    <p class="text-sm font-semibold text-ink-700">{{ __('home.quiz_question') }}</p>
+                    <p class="text-sm font-semibold text-ink-700 dark:text-ink-200">{{ __('home.quiz_question') }}</p>
                     <div class="mt-3 space-y-2">
                         @foreach (['swedish' => __('home.quiz_option_swedish'), 'hot_stone' => __('home.quiz_option_hot_stone'), 'shiatsu' => __('home.quiz_option_shiatsu'), 'hilot' => __('home.quiz_option_hilot')] as $value => $label)
-                            <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-ink-200 px-3.5 py-2.5 text-sm text-ink-700 transition hover:border-leaf-300 hover:bg-leaf-50 has-checked:border-leaf-400 has-checked:bg-leaf-50">
+                            <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-ink-200 px-3.5 py-2.5 text-sm text-ink-700 transition hover:border-leaf-300 hover:bg-leaf-50 has-checked:border-leaf-400 has-checked:bg-leaf-50 dark:border-ink-700 dark:text-ink-200 dark:hover:border-leaf-800 dark:hover:bg-leaf-950 dark:has-checked:border-leaf-600 dark:has-checked:bg-leaf-950">
                                 <input type="radio" name="quiz_answer" value="{{ $value }}" class="size-4 accent-leaf-600">
                                 {{ $label }}
                             </label>
                         @endforeach
                     </div>
                     <button type="submit" class="mt-3 w-full rounded-xl bg-leaf-600 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-leaf-700">{{ __('home.quiz_submit') }}</button>
-                    <p data-quiz-correct hidden class="mt-3 rounded-xl bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800">{{ __('home.quiz_correct') }}</p>
-                    <p data-quiz-incorrect hidden class="mt-3 rounded-xl bg-ember-50 px-4 py-3 text-sm font-semibold text-ember-800">{{ __('home.quiz_incorrect') }}</p>
+                    <p data-quiz-correct hidden class="mt-3 rounded-xl bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800 dark:bg-leaf-950 dark:text-leaf-100">{{ __('home.quiz_correct') }}</p>
+                    <p data-quiz-incorrect hidden class="mt-3 rounded-xl bg-ember-50 px-4 py-3 text-sm font-semibold text-ember-800 dark:bg-ember-950 dark:text-ember-100">{{ __('home.quiz_incorrect') }}</p>
                 </form>
-                <a href="{{ route('campus.index') }}" class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-leaf-700 transition hover:text-leaf-800">
+                <a href="{{ route('campus.index') }}" class="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-leaf-700 transition hover:text-leaf-800 dark:text-leaf-300 dark:hover:text-leaf-100">
                     {{ __('home.quiz_more') }}
                     <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
                 </a>
             </section>
 
             {{-- Quote of the Day --}}
-            <section aria-labelledby="quote-heading" class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-leaf-50 to-ink-50 p-4 shadow-sm">
-                <h2 id="quote-heading" class="text-base font-bold text-ink-950">{{ __('home.quote_of_the_day') }}</h2>
+            <section aria-labelledby="quote-heading" class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-leaf-50 to-ink-50 p-4 shadow-sm dark:from-leaf-950 dark:to-charcoal-950">
+                <h2 id="quote-heading" class="text-base font-bold text-ink-950 dark:text-ink-50">{{ __('home.quote_of_the_day') }}</h2>
                 <blockquote class="mt-3">
                     <svg viewBox="0 0 24 24" fill="currentColor" class="size-6 text-ember-400" aria-hidden="true"><path d="M9.6 5C6 6.7 4 9.5 4 13.1c0 3 1.8 5 4.3 5 2 0 3.6-1.5 3.6-3.5 0-1.9-1.4-3.3-3.2-3.3h-.6c.4-1.9 1.6-3.4 3.5-4.5L9.6 5Zm9 0c-3.6 1.7-5.6 4.5-5.6 8.1 0 3 1.8 5 4.3 5 2 0 3.6-1.5 3.6-3.5 0-1.9-1.4-3.3-3.2-3.3h-.6c.4-1.9 1.6-3.4 3.5-4.5L18.6 5Z"/></svg>
-                    <p class="mt-2 text-base font-semibold italic leading-relaxed text-ink-800">“{{ $quote['text'] }}”</p>
-                    <footer class="mt-2 text-sm text-ink-500">— {{ $quote['author'] }}</footer>
+                    <p class="mt-2 text-base font-semibold italic leading-relaxed text-ink-800 dark:text-ink-200">“{{ $quote['text'] }}”</p>
+                    <footer class="mt-2 text-sm text-ink-500 dark:text-ink-400">— {{ $quote['author'] }}</footer>
                 </blockquote>
             </section>
 
