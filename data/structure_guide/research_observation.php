@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Research Observation Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: research_observation
  * Description: Stores one sourced assertion or observation independently from the accepted value of a target record.
  * Purpose: Preserves exact wording, uncertainty, historical context, mapping confidence, contradictions, visibility, and review state for later verification or contribution workflows.
  */
 
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-21T10:48:10Z';
 $research_observation_default = ['target_field_path' => null, 'related_record_list' => [], 'is_firsthand' => false, 'is_hearsay' => false, 'corroboration_count' => 0, 'validation_required' => true, 'visibility_scope' => 'PRV', 'status_review' => 'PND', 'status_record_lifecycle' => 'ACT'];
 $research_observation = [
     '_id' => 'Ro7K2pQ9xR4tV8zN', // Canonical 16-character observation identifier.
@@ -46,15 +46,15 @@ $research_observation = [
 $research_observation_field_order = ['_id', 'target_collection', 'target_record_id', 'target_field_path', 'related_record_list', 'type_observation', 'original_statement', 'normalized_summary', 'source_id', 'source_posted_at', 'observation_at', 'effective_at', 'type_date_precision', 'type_date_qualifier', 'is_firsthand', 'is_hearsay', 'level_confidence_extraction', 'level_confidence_mapping', 'corroboration_count', 'status_review', 'validation_required', 'type_verification_recommended', 'visibility_scope', 'record_verification_id', 'moderation_id', 'contribution_id', 'internal_note', 'created_at', 'created_by_user_id', 'updated_at', 'status_record_lifecycle'];
 $research_observation_embedded_structure = ['related_record_list' => ['target_collection' => 'practitioner_main', 'target_record_id' => 'Pr7K2pQ9xR4tV8zN']];
 $research_observation_field_property = [
-    '_id' => ['field_label' => 'Observation ID', 'field_description' => 'Canonical sourced-observation identifier.', 'type_data' => 'S', 'type_field' => 'HDN'],
-    'target_collection' => ['field_label' => 'Target Collection', 'field_description' => 'Collection whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'DDL'],
-    'target_record_id' => ['field_label' => 'Target Record', 'field_description' => 'Specific record whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'REF'],
+    '_id' => ['field_label' => 'Observation ID', 'field_description' => 'Canonical sourced-observation identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_indexed' => true],
+    'target_collection' => ['field_label' => 'Target Collection', 'field_description' => 'Collection whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
+    'target_record_id' => ['field_label' => 'Target Record', 'field_description' => 'Specific record whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'REF', 'is_indexed' => true],
     'target_field_path' => ['field_label' => 'Target Field Path', 'field_description' => 'Optional mapped field path for the candidate fact.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'related_record_list' => ['field_label' => 'Related Record List', 'field_description' => 'Other records mentioned by the assertion.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'type_observation' => ['field_label' => 'Observation Type', 'field_description' => 'Controlled category of sourced assertion.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'original_statement' => ['field_label' => 'Original Statement', 'field_description' => 'Exact limited excerpt or original research field note.', 'type_data' => 'S', 'type_field' => 'TXA'],
     'normalized_summary' => ['field_label' => 'Normalized Summary', 'field_description' => 'Neutral candidate-fact summary.', 'type_data' => 'S', 'type_field' => 'TXA'],
-    'source_id' => ['field_label' => 'Research Source', 'field_description' => 'Authoritative research-source reference.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'source_id' => ['field_label' => 'Research Source', 'field_description' => 'Authoritative research-source reference.', 'type_data' => 'S', 'type_field' => 'REF', 'is_indexed' => true],
     'source_posted_at' => ['field_label' => 'Source Posted At', 'field_description' => 'UTC time the source statement was posted.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'observation_at' => ['field_label' => 'Observation At', 'field_description' => 'Time the underlying observation reportedly occurred.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'effective_at' => ['field_label' => 'Effective At', 'field_description' => 'Claimed effective time when supported.', 'type_data' => 'S', 'type_field' => 'DTS'],
@@ -65,7 +65,7 @@ $research_observation_field_property = [
     'level_confidence_extraction' => ['field_label' => 'Extraction Confidence', 'field_description' => 'Confidence that the statement was extracted correctly.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'level_confidence_mapping' => ['field_label' => 'Mapping Confidence', 'field_description' => 'Confidence that the assertion maps to the target fact.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'corroboration_count' => ['field_label' => 'Corroboration Count', 'field_description' => 'Count of independently reviewed supporting observations.', 'type_data' => 'I', 'type_field' => 'NMB'],
-    'status_review' => ['field_label' => 'Review Status', 'field_description' => 'Human review state of the observation.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'status_review' => ['field_label' => 'Review Status', 'field_description' => 'Human review state of the observation.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
     'validation_required' => ['field_label' => 'Validation Required', 'field_description' => 'Whether authoritative confirmation remains required.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'type_verification_recommended' => ['field_label' => 'Recommended Verification Type', 'field_description' => 'Recommended verification procedure for the candidate fact.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Maximum permitted audience for the observation.', 'type_data' => 'S', 'type_field' => 'DDL'],

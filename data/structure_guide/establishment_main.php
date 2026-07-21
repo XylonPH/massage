@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Main Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_main
  * Description: Stores one establishment or supported provider's public profile and directory classification record.
  * Purpose: Documents the establishment_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -12,10 +12,11 @@
  */
 
 $created_at = '2026-07-20T07:25:30Z';
-$updated_at = '2026-07-21T10:38:00Z';
+$updated_at = '2026-07-21T10:48:10Z';
 $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
+    'previous_slug_list' => [],
     'landmark_list' => [],
     'contact_channel_list' => [],
     'treatment_area_list' => [],
@@ -24,6 +25,7 @@ $establishment_main_default = [
     'accessibility_feature_list' => [],
     'payment_method_list' => [],
     'status_record_lifecycle' => 'ACT',
+    'revision_number' => 1,
 ];
 
 $multilingual_text_sample = [
@@ -37,6 +39,9 @@ $multilingual_text_sample = [
 $establishment_main = [
     '_id' => 'Es7K2pQ9xR4tV8zN', // Canonical 16-character establishment identifier.
     'establishment_slug' => 'sample-wellness-spa', // Unique readable public route value.
+    'previous_slug_list' => [ // Retired public slugs preserved for redirect resolution after a rename or merge (docs/02-governance/edit-system.txt section 19).
+        ['slug' => 'old-sample-wellness-spa', 'retired_at' => '2026-06-01T00:00:00Z'],
+    ],
     'display_name' => ['eng' => ['text' => 'Sample Wellness Spa']], // Approved multilingual operating name.
     'official_name' => 'Sample Wellness Spa Incorporated', // Supported official or registered place name when publishable.
     'short_description' => ['eng' => ['text' => 'A calm neighborhood wellness spa.']], // Concise multilingual public summary.
@@ -80,13 +85,14 @@ $establishment_main = [
     'payment_method_list' => ['CSH', 'CC'], // Accepted payment-method codes.
     'primary_media_image_id' => 'Im7K2pQ9xR4tV8zN', // Primary public image reference.
     'status_record_lifecycle' => 'ACT', // Database record lifecycle state.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => '2026-07-21T04:08:58Z', // UTC record creation time.
     'updated_at' => '2026-07-21T04:08:58Z', // UTC record update time.
     'last_confirmed_at' => '2026-07-21T04:08:58Z', // UTC time public facts were last confirmed.
 ];
 
 $establishment_main_field_order = [
-    '_id', 'establishment_slug', 'display_name', 'official_name', 'short_description', 'full_description', 'type_spa',
+    '_id', 'establishment_slug', 'previous_slug_list', 'display_name', 'official_name', 'short_description', 'full_description', 'type_spa',
     'level_spa_market', 'type_physical_setting', 'mode_service_delivery', 'mode_access',
     'type_establishment_operation', 'status_establishment', 'type_client_access',
     'target_client_focus', 'country_id', 'geographic_area_id_list', 'street_address', 'building_name',
@@ -94,10 +100,14 @@ $establishment_main_field_order = [
     'coordinate_latitude', 'coordinate_longitude', 'type_coordinate', 'level_coordinate_confidence',
     'direction_note', 'parking_note', 'landmark_list', 'contact_channel_list', 'treatment_area_list', 'operating_hours', 'amenity_list',
     'accessibility_feature_list', 'payment_method_list', 'primary_media_image_id',
-    'status_record_lifecycle', 'created_at', 'updated_at', 'last_confirmed_at',
+    'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at', 'last_confirmed_at',
 ];
 
 $establishment_main_embedded_structure = [
+    'previous_slug_list' => [
+        'slug' => 'old-sample-wellness-spa',
+        'retired_at' => '2026-06-01T00:00:00Z',
+    ],
     'landmark_list' => [
         'landmark_name' => 'Sample Mall',
         'walking_duration_minute' => 5,
@@ -122,6 +132,7 @@ $establishment_main_embedded_structure = [
 $establishment_main_field_property = [
     '_id' => ['field_label' => 'Establishment ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_indexed' => true],
     'establishment_slug' => ['field_label' => 'Establishment Slug', 'field_description' => 'Unique readable public route value.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_indexed' => true],
+    'previous_slug_list' => ['field_label' => 'Previous Slug List', 'field_description' => 'Bounded list of retired public slugs preserved so old URLs can resolve to a durable redirect after a rename or merge (docs/02-governance/edit-system.txt section 19).', 'type_data' => 'A', 'type_field' => 'JSE'],
     'display_name' => ['field_label' => 'Display Name', 'field_description' => 'Approved multilingual public operating name.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true, 'is_mandatory' => true],
     'official_name' => ['field_label' => 'Official Name', 'field_description' => 'Supported official or registered place name when publishable.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'short_description' => ['field_label' => 'Short Description', 'field_description' => 'Concise multilingual public summary.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
@@ -144,27 +155,30 @@ $establishment_main_field_property = [
     'postal_code' => ['field_label' => 'Postal Code', 'field_description' => 'Postal code.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'address_public' => ['field_label' => 'Public Address', 'field_description' => 'Approved public destination or privacy-reduced area.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'level_address_visibility' => ['field_label' => 'Address Visibility Level', 'field_description' => 'Controlled amount of address detail permitted for display.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
-    'coordinate_latitude' => ['field_label' => 'Latitude', 'field_description' => 'Public entrance or approved privacy-reduced latitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -90, 'max_number' => 90],
-    'coordinate_longitude' => ['field_label' => 'Longitude', 'field_description' => 'Public entrance or approved privacy-reduced longitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -180, 'max_number' => 180],
+    'coordinate_latitude' => ['field_label' => 'Latitude', 'field_description' => 'Public entrance or approved privacy-reduced latitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -90, 'max_number' => 90, 'is_indexed' => true],
+    'coordinate_longitude' => ['field_label' => 'Longitude', 'field_description' => 'Public entrance or approved privacy-reduced longitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -180, 'max_number' => 180, 'is_indexed' => true],
     'type_coordinate' => ['field_label' => 'Coordinate Type', 'field_description' => 'Controlled meaning of the stored coordinate.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'level_coordinate_confidence' => ['field_label' => 'Coordinate Confidence', 'field_description' => 'Controlled confidence that the point represents its stated coordinate type.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'direction_note' => ['field_label' => 'Direction Note', 'field_description' => 'Multilingual arrival directions.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
     'parking_note' => ['field_label' => 'Parking Note', 'field_description' => 'Multilingual parking information.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
     'landmark_list' => ['field_label' => 'Landmark List', 'field_description' => 'Bounded nearby public landmarks.', 'type_data' => 'A', 'type_field' => 'JSE'],
-    'contact_channel_list' => ['field_label' => 'Contact Channel List', 'field_description' => 'Bounded public contact channels.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'contact_channel_list' => ['field_label' => 'Contact Channel List', 'field_description' => 'Lightweight bounded display snapshot of public contact channels for directory rendering; establishment_contact is the historied, verified, and sourced authority.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'treatment_area_list' => ['field_label' => 'Treatment Area List', 'field_description' => 'Bounded public treatment-area summary; individual bookable resources are separate.', 'type_data' => 'A', 'type_field' => 'JSE'],
-    'operating_hours' => ['field_label' => 'Operating Hours', 'field_description' => 'Bounded regular weekly operating hours.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'operating_hours' => ['field_label' => 'Operating Hours', 'field_description' => 'Lightweight bounded display snapshot of regular weekly operating hours for directory rendering; establishment_schedule is the historied, versioned authority and the source for open-now calculations.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'amenity_list' => ['field_label' => 'Amenity List', 'field_description' => 'Confirmed public amenity codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'accessibility_feature_list' => ['field_label' => 'Accessibility Feature List', 'field_description' => 'Confirmed public accessibility codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'payment_method_list' => ['field_label' => 'Payment Method List', 'field_description' => 'Accepted payment-method codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'primary_media_image_id' => ['field_label' => 'Primary Media Image ID', 'field_description' => 'Primary public image reference.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle independent of operating status.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC record creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC record update time.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'last_confirmed_at' => ['field_label' => 'Last Confirmed At', 'field_description' => 'UTC time public facts were last confirmed.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_indexed' => true],
 ];
 
 $establishment_main_subfield_property = [
+    'previous_slug_list.slug' => ['field_label' => 'Previous Slug', 'field_description' => 'A formerly active establishment_slug value.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
+    'previous_slug_list.retired_at' => ['field_label' => 'Slug Retired At', 'field_description' => 'UTC time this slug stopped being the current public slug.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
     'landmark_list.landmark_name' => ['field_label' => 'Landmark Name', 'field_description' => 'Public landmark name.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
     'landmark_list.walking_duration_minute' => ['field_label' => 'Walking Duration Minute', 'field_description' => 'Approximate non-negative walk duration.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'landmark_list.direction_note' => ['field_label' => 'Landmark Direction Note', 'field_description' => 'Multilingual directions from the landmark.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
@@ -203,9 +217,16 @@ $establishment_main_index_list = [
 ];
 
 $establishment_main_boundary = [
-    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, small contact lists, regular operating hours, and lifecycle'],
+    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, a lightweight display snapshot of contact channels and operating hours, retired-slug history, and lifecycle'],
     'reference_field_list' => ['country_id', 'geographic_area_id_list', 'primary_media_image_id'],
-    'does_not_own' => ['private addresses, organization or person relationships, services, bookings, evidence, reviews, or media records'],
+    'does_not_own' => [
+        'historied, verified, and sourced contact channels, owned by establishment_contact',
+        'versioned weekly operating intervals and dated exceptions, owned by establishment_schedule',
+        'establishment-person and establishment-practitioner relationships, owned by establishment_person and establishment_practitioner',
+        'provider menu offerings and pricing, owned by establishment_service',
+        'sourced lifecycle and history events, owned by establishment_event',
+        'private addresses, organization relationships, bookings, evidence, reviews, or media records',
+    ],
 ];
 
 return [

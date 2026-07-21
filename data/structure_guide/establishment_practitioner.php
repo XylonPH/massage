@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment–Practitioner Affiliation Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_practitioner
  * Description: Stores effective-dated practitioner affiliation facts specific to one establishment.
  * Purpose: Separates roster, employment, booking, price, confirmation, and dispute context from practitioner identity.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:38:00Z';
-$establishment_practitioner_default = ['is_public_roster' => false, 'is_public_booking' => false, 'eligible_establishment_service_id_list' => [], 'status_affiliation' => 'UNK', 'status_record_lifecycle' => 'ACT'];
+$updated_at = '2026-07-21T10:48:10Z';
+$establishment_practitioner_default = ['is_public_roster' => false, 'is_public_booking' => false, 'eligible_establishment_service_id_list' => [], 'status_affiliation' => 'UNK', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_practitioner = [
     '_id' => 'EprK2pQ9xR4tV7zN', // Canonical affiliation identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Establishment endpoint.
@@ -42,22 +42,23 @@ $establishment_practitioner = [
     'public_note' => null, // Public note.
     'internal_note' => 'Start date remains unknown.', // Restricted note.
     'status_record_lifecycle' => 'ACT', // Database lifecycle.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
-$establishment_practitioner_field_order = ['_id', 'establishment_id', 'practitioner_id', 'status_affiliation', 'type_work_arrangement', 'public_title', 'position_affiliation', 'department', 'is_public_roster', 'is_public_booking', 'status_user_confirmation', 'status_dispute', 'eligible_establishment_service_id_list', 'price_surcharge_list', 'availability_reference_id', 'started_at', 'started_at_precision', 'started_at_qualifier', 'ended_at', 'ended_at_precision', 'ended_at_qualifier', 'first_observed_active_at', 'last_observed_active_at', 'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at', 'record_verification_id_list', 'research_source_id_list', 'public_note', 'internal_note', 'status_record_lifecycle', 'created_at', 'updated_at'];
+$establishment_practitioner_field_order = ['_id', 'establishment_id', 'practitioner_id', 'status_affiliation', 'type_work_arrangement', 'public_title', 'position_affiliation', 'department', 'is_public_roster', 'is_public_booking', 'status_user_confirmation', 'status_dispute', 'eligible_establishment_service_id_list', 'price_surcharge_list', 'availability_reference_id', 'started_at', 'started_at_precision', 'started_at_qualifier', 'ended_at', 'ended_at_precision', 'ended_at_qualifier', 'first_observed_active_at', 'last_observed_active_at', 'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at', 'record_verification_id_list', 'research_source_id_list', 'public_note', 'internal_note', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at'];
 $establishment_practitioner_embedded_structure = ['price_surcharge_list' => ['establishment_service_id' => 'EsrK2pQ9xR4tV7zN', 'amount' => 200.00, 'currency_id' => 111, 'effective_from' => '2026-07-01', 'effective_until' => null, 'status_price' => 'ACT']];
 $establishment_practitioner_field_property = [
-    '_id' => ['field_label' => 'Affiliation ID', 'field_description' => 'Canonical identifier for the establishment-practitioner affiliation.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true],
-    'establishment_id' => ['field_label' => 'Establishment', 'field_description' => 'Establishment participating in the affiliation.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true],
-    'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Practitioner participating in the affiliation.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true],
-    'status_affiliation' => ['field_label' => 'Affiliation Status', 'field_description' => 'Controlled current state of the affiliation.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    '_id' => ['field_label' => 'Affiliation ID', 'field_description' => 'Canonical identifier for the establishment-practitioner affiliation.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
+    'establishment_id' => ['field_label' => 'Establishment', 'field_description' => 'Establishment participating in the affiliation.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+    'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Practitioner participating in the affiliation.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+    'status_affiliation' => ['field_label' => 'Affiliation Status', 'field_description' => 'Controlled current state of the affiliation.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
     'type_work_arrangement' => ['field_label' => 'Work Arrangement', 'field_description' => 'Controlled work arrangement in this establishment context.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'public_title' => ['field_label' => 'Public Title', 'field_description' => 'Approved establishment-specific practitioner title.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'position_affiliation' => ['field_label' => 'Affiliation Position', 'field_description' => 'Controlled practitioner position within the establishment.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'department' => ['field_label' => 'Department', 'field_description' => 'Department or unit associated with the affiliation.', 'type_data' => 'S', 'type_field' => 'TXT'],
-    'is_public_roster' => ['field_label' => 'Public Roster', 'field_description' => 'Whether the practitioner may appear on the public establishment roster.', 'type_data' => 'B', 'type_field' => 'CHK'],
-    'is_public_booking' => ['field_label' => 'Public Booking', 'field_description' => 'Whether public booking may present this affiliation.', 'type_data' => 'B', 'type_field' => 'CHK'],
+    'is_public_roster' => ['field_label' => 'Public Roster', 'field_description' => 'Whether the practitioner may appear on the public establishment roster.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false, 'is_indexed' => true],
+    'is_public_booking' => ['field_label' => 'Public Booking', 'field_description' => 'Whether public booking may present this affiliation.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false, 'is_indexed' => true],
     'status_user_confirmation' => ['field_label' => 'User Confirmation Status', 'field_description' => 'Current user-confirmation state for the affiliation.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'status_dispute' => ['field_label' => 'Dispute Status', 'field_description' => 'Current dispute state for the affiliation facts.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'eligible_establishment_service_id_list' => ['field_label' => 'Eligible Offerings', 'field_description' => 'Provider offerings the practitioner may deliver in this context.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
@@ -79,9 +80,10 @@ $establishment_practitioner_field_property = [
     'research_source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Provenance references for the affiliation.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'public_note' => ['field_label' => 'Public Affiliation Note', 'field_description' => 'Approved public clarification of the affiliation.', 'type_data' => 'S', 'type_field' => 'TXA'],
     'internal_note' => ['field_label' => 'Internal Affiliation Note', 'field_description' => 'Restricted operational clarification.', 'type_data' => 'S', 'type_field' => 'TXA'],
-    'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle independent from affiliation status.', 'type_data' => 'S', 'type_field' => 'DDL'],
-    'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC creation time.', 'type_data' => 'S', 'type_field' => 'DTS'],
-    'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC update time.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle independent from affiliation status.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'ACT', 'is_indexed' => true],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'is_mandatory' => true, 'min_number' => 1],
+    'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+    'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC update time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
 ];
 $establishment_practitioner_subfield_property = [
     'price_surcharge_list.establishment_service_id' => ['field_label' => 'Establishment Service ID', 'field_description' => 'Offering to which the adjustment applies.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true],

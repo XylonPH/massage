@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Practitioner Credential Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: practitioner_credential
  * Description: Stores individual licenses, certificates, education, memberships, and competency credentials.
  * Purpose: Gives each credential independent evidence, verification, visibility, expiry, and lifecycle.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-21T10:48:10Z';
 $practitioner_credential_default = ['related_service_id_list' => [], 'related_capability_id_list' => [], 'status_credential_lifecycle' => 'UN', 'status_credential_verification' => 'SD', 'visibility_scope' => 'PRV', 'status_record_lifecycle' => 'ACT'];
 $practitioner_credential = [
     '_id' => 'PcrK2pQ9xR4tV7zN', // Canonical credential identifier.
@@ -49,14 +49,14 @@ $practitioner_credential = [
 $practitioner_credential_field_order = ['_id', 'practitioner_id', 'type_credential', 'credential_name', 'credential_title_display', 'credential_number', 'credential_number_masked', 'issuing_organization_id', 'issuing_organization_name_snapshot', 'issuing_country_id', 'issuing_geographic_area_id', 'jurisdiction_note', 'related_service_id_list', 'related_capability_id_list', 'issued_at', 'issued_at_precision', 'issued_at_qualifier', 'valid_from', 'expires_at', 'status_credential_lifecycle', 'status_credential_verification', 'method_verification', 'verified_at', 'verified_by_user_id', 'last_checked_at', 'first_observed_at', 'last_confirmed_at', 'document_id_list', 'research_source_id_list', 'visibility_scope', 'public_display_note', 'internal_note', 'status_record_lifecycle', 'created_at', 'updated_at'];
 $practitioner_credential_embedded_structure = [];
 $practitioner_credential_field_property = [
-    '_id' => ['field_label' => 'Credential ID', 'field_description' => 'Canonical credential record identifier.', 'type_data' => 'S', 'type_field' => 'HDN'],
-    'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Practitioner who holds the credential.', 'type_data' => 'S', 'type_field' => 'REF'],
-    'type_credential' => ['field_label' => 'Credential Type', 'field_description' => 'Controlled credential category.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    '_id' => ['field_label' => 'Credential ID', 'field_description' => 'Canonical credential record identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_indexed' => true],
+    'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Practitioner who holds the credential.', 'type_data' => 'S', 'type_field' => 'REF', 'is_indexed' => true],
+    'type_credential' => ['field_label' => 'Credential Type', 'field_description' => 'Controlled credential category.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
     'credential_name' => ['field_label' => 'Credential Name', 'field_description' => 'Credential name as stated by the source.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'credential_title_display' => ['field_label' => 'Display Credential Title', 'field_description' => 'Approved public credential title.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'credential_number' => ['field_label' => 'Credential Number', 'field_description' => 'Restricted full credential identifier when collection is justified.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'credential_number_masked' => ['field_label' => 'Masked Credential Number', 'field_description' => 'Display-safe masked credential identifier.', 'type_data' => 'S', 'type_field' => 'TXT'],
-    'issuing_organization_id' => ['field_label' => 'Issuing Organization', 'field_description' => 'Canonical issuer organization reference.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'issuing_organization_id' => ['field_label' => 'Issuing Organization', 'field_description' => 'Canonical issuer organization reference.', 'type_data' => 'S', 'type_field' => 'REF', 'is_indexed' => true],
     'issuing_organization_name_snapshot' => ['field_label' => 'Issuer Name Snapshot', 'field_description' => 'Source-time issuer name when a reference is absent or insufficient.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'issuing_country_id' => ['field_label' => 'Issuing Country', 'field_description' => 'Common-reference issuing-country identifier.', 'type_data' => 'I', 'type_field' => 'REF'],
     'issuing_geographic_area_id' => ['field_label' => 'Issuing Geographic Area', 'field_description' => 'Optional issuing-area reference.', 'type_data' => 'I', 'type_field' => 'REF'],
@@ -67,8 +67,8 @@ $practitioner_credential_field_property = [
     'issued_at_precision' => ['field_label' => 'Issue Date Precision', 'field_description' => 'Controlled precision of the issue date.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'issued_at_qualifier' => ['field_label' => 'Issue Date Qualifier', 'field_description' => 'Controlled qualifier of the issue date.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'valid_from' => ['field_label' => 'Valid From', 'field_description' => 'Credential validity start date.', 'type_data' => 'S', 'type_field' => 'DTI'],
-    'expires_at' => ['field_label' => 'Expires At', 'field_description' => 'Credential expiry date when applicable.', 'type_data' => 'S', 'type_field' => 'DTI'],
-    'status_credential_lifecycle' => ['field_label' => 'Credential Lifecycle Status', 'field_description' => 'Controlled real-world credential lifecycle.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'expires_at' => ['field_label' => 'Expires At', 'field_description' => 'Credential expiry date when applicable.', 'type_data' => 'S', 'type_field' => 'DTI', 'is_indexed' => true],
+    'status_credential_lifecycle' => ['field_label' => 'Credential Lifecycle Status', 'field_description' => 'Controlled real-world credential lifecycle.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
     'status_credential_verification' => ['field_label' => 'Credential Verification Status', 'field_description' => 'Controlled verification result for the credential.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'method_verification' => ['field_label' => 'Verification Method', 'field_description' => 'Controlled method used to verify the credential.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'verified_at' => ['field_label' => 'Verified At', 'field_description' => 'UTC time formal verification was completed.', 'type_data' => 'S', 'type_field' => 'DTS'],

@@ -209,6 +209,18 @@ foreach ($guideFiles as $file) {
                         $error($file, "index entry {$position} field {$fieldPosition} is missing {$key}");
                     }
                 }
+
+                // A field driving an index but not marked is_indexed in field_property is an easy
+                // drift point: the two structures are maintained separately and nothing else
+                // catches them falling out of sync. Only top-level field names are checked; dotted
+                // subfield paths are not currently used in any index_field_list.
+                $indexedFieldName = is_array($indexField) ? ($indexField['field_name'] ?? null) : null;
+                if (is_string($indexedFieldName) && !str_contains($indexedFieldName, '.') && is_array($fieldProperties)) {
+                    $property = $fieldProperties[$indexedFieldName] ?? null;
+                    if (is_array($property) && ($property['is_indexed'] ?? false) !== true) {
+                        $error($file, "field {$indexedFieldName} drives index entry {$position} but is not marked is_indexed in {$collection}_field_property");
+                    }
+                }
             }
         }
     }

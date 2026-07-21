@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Event Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_event
  * Description: Stores evidence-aware establishment lifecycle and history events without overwriting current identity.
  * Purpose: Represents uncertain, approximate, historical, and independently sourced business events.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:38:00Z';
-$establishment_event_default = ['status_verification' => 'U', 'level_confidence' => 'U', 'status_record_lifecycle' => 'ACT'];
+$updated_at = '2026-07-21T10:48:10Z';
+$establishment_event_default = ['status_verification' => 'U', 'level_confidence' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_event = [
     '_id' => 'Ee8K2pQ9xR4tV7zN', // Canonical event identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Event subject.
@@ -35,10 +35,11 @@ $establishment_event = [
     'research_source_id_list' => ['Sr8K2pQ9xR4tV7zN'], // Supporting sources.
     'related_establishment_id' => null, // Related predecessor, successor, or merged place.
     'status_record_lifecycle' => 'ACT', // Database lifecycle.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
-$establishment_event_field_order = ['_id', 'establishment_id', 'type_business_event', 'effective_date', 'type_date_precision', 'type_date_qualifier', 'effective_until', 'previous_name', 'resulting_name', 'previous_location_snapshot', 'resulting_location_snapshot', 'reason', 'public_note', 'internal_note', 'reported_at', 'first_observed_at', 'last_observed_at', 'first_confirmed_at', 'last_confirmed_at', 'level_confidence', 'status_verification', 'record_verification_id_list', 'research_source_id_list', 'related_establishment_id', 'status_record_lifecycle', 'created_at', 'updated_at'];
+$establishment_event_field_order = ['_id', 'establishment_id', 'type_business_event', 'effective_date', 'type_date_precision', 'type_date_qualifier', 'effective_until', 'previous_name', 'resulting_name', 'previous_location_snapshot', 'resulting_location_snapshot', 'reason', 'public_note', 'internal_note', 'reported_at', 'first_observed_at', 'last_observed_at', 'first_confirmed_at', 'last_confirmed_at', 'level_confidence', 'status_verification', 'record_verification_id_list', 'research_source_id_list', 'related_establishment_id', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at'];
 $establishment_event_embedded_structure = [];
 $establishment_event_field_property = [
     '_id' => ['field_label' => 'Establishment Event ID', 'field_description' => 'Canonical identifier for the sourced establishment event.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
@@ -66,6 +67,7 @@ $establishment_event_field_property = [
     'research_source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references providing provenance for the event.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'related_establishment_id' => ['field_label' => 'Related Establishment', 'field_description' => 'Predecessor, successor, merged, split, or otherwise event-related establishment.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from event verification.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'ACT'],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the event record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the event record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
 ];

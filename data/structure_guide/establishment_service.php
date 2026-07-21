@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Service Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_service
  * Description: Stores provider menu offerings, packages, combinations, add-ons, and facility-access products.
  * Purpose: Preserves provider-specific commercial presentation while mapping it to normalized service_main records.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:38:00Z';
-$establishment_service_default = ['normalized_service_mapping_list' => [], 'duration_option_list' => [], 'price_option_list' => [], 'component_list' => [], 'type_booking_method' => [], 'client_restriction_list' => [], 'included_facility_list' => [], 'included_product_list' => [], 'is_featured' => false, 'status_establishment_service' => 'ACT', 'status_record_lifecycle' => 'ACT'];
+$updated_at = '2026-07-21T10:48:10Z';
+$establishment_service_default = ['normalized_service_mapping_list' => [], 'duration_option_list' => [], 'price_option_list' => [], 'component_list' => [], 'type_booking_method' => [], 'client_restriction_list' => [], 'included_facility_list' => [], 'included_product_list' => [], 'is_featured' => false, 'status_establishment_service' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $multilingual_text_sample = ['eng' => ['text' => 'Sample service text', 'method_translation' => 'HUM', 'status_review' => 'APR']];
 $establishment_service = [
     '_id' => 'EsrK2pQ9xR4tV7zN', // Canonical offering identifier.
@@ -40,6 +40,7 @@ $establishment_service = [
     'research_source_id_list' => ['Sr8K2pQ9xR4tV7zN'], // Source records.
     'record_verification_id_list' => [], // Verification records.
     'status_record_lifecycle' => 'ACT', // Database lifecycle.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
@@ -51,7 +52,7 @@ $establishment_service_field_order = [
     'client_restriction_list', 'included_facility_list', 'included_product_list', 'is_featured',
     'display_order', 'first_observed_at', 'last_observed_active_at', 'first_observed_inactive_at',
     'first_confirmed_at', 'last_confirmed_at', 'research_source_id_list',
-    'record_verification_id_list', 'status_record_lifecycle', 'created_at', 'updated_at',
+    'record_verification_id_list', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at',
 ];
 $establishment_service_embedded_structure = [
     'normalized_service_mapping_list' => ['service_id' => 'Sv8K2pQ9xR4tV7zN', 'type_service_mapping' => 'PRI', 'level_confidence' => 'H', 'status_review' => 'APR', 'mapped_by_user_id' => 'U2pR7vX4kT9mC5qL', 'mapped_at' => '2026-07-21T08:23:43Z', 'service_mapping_note' => null],
@@ -89,6 +90,7 @@ $establishment_service_field_property = [
     'research_source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references supporting the provider offering facts.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'is_relational' => true],
     'record_verification_id_list' => ['field_label' => 'Verification Records', 'field_description' => 'Record-verification references supporting or challenging offering facts.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from offering availability.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'ACT'],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the offering record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the offering record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 ];

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Zenith Theme Structure Guide
- * Version: 1.13
+ * Version: 1.23
  * Collection: theme_main
  * Description: Stores one reusable visual-theme definition and its configurable design values.
  * Purpose: Documents the theme_main record shape for review, validation, comparison, and implementation without acting as runtime configuration.
@@ -28,7 +28,7 @@
 
 # Variable
 $created_at = '2026-06-24T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T10:48:10Z';
 /**
  * Default theme_main property values.
  * These defaults are interpreted by the application and should not be repeated
@@ -316,6 +316,7 @@ $theme_main_field_property = [
 		'type_data' => 'I',
 		'type_sql' => 'INT',
 		'is_mandatory' => true,
+		'is_indexed' => true,
 	],
 	'theme_key' => [
 		'field_label' => 'Theme Key',

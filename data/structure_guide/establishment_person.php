@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment–Person Relationship Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_person
  * Description: Stores effective-dated owner, investor, founder, operator, manager, representative, and non-practitioner staff relationships.
  * Purpose: Preserves human relationship facts independently from practitioner identity, user accounts, claims, and workspace access.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:38:00Z';
-$establishment_person_default = ['is_public' => false, 'visibility_scope' => 'PRV', 'status_relationship' => 'ACT', 'status_record_lifecycle' => 'ACT'];
+$updated_at = '2026-07-21T10:48:10Z';
+$establishment_person_default = ['is_public' => false, 'visibility_scope' => 'PRV', 'status_relationship' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_person = [
     '_id' => 'Ep8K2pQ9xR4tV7zN', // Canonical relationship identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Related establishment.
@@ -39,6 +39,7 @@ $establishment_person = [
     'claim_id' => null, // Related claim when applicable.
     'internal_note' => 'Do not infer workspace access.', // Restricted note.
     'status_record_lifecycle' => 'ACT', // Database lifecycle.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
@@ -49,7 +50,7 @@ $establishment_person_field_order = [
     'effective_until', 'type_date_precision', 'type_date_qualifier', 'first_observed_at',
     'last_observed_active_at', 'first_observed_inactive_at', 'first_confirmed_at', 'last_confirmed_at',
     'record_verification_id_list', 'research_source_id_list', 'document_id_list', 'claim_id',
-    'internal_note', 'status_record_lifecycle', 'created_at', 'updated_at',
+    'internal_note', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at',
 ];
 $establishment_person_embedded_structure = [];
 $establishment_person_field_property = [
@@ -82,6 +83,7 @@ $establishment_person_field_property = [
     'claim_id' => ['field_label' => 'Related Claim', 'field_description' => 'Claim record from which this relationship may have been reviewed; a claim is not itself proof.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
     'internal_note' => ['field_label' => 'Internal Note', 'field_description' => 'Restricted operational note that must not be exposed publicly.', 'type_data' => 'S', 'type_field' => 'TXA', 'type_sql' => 'TEXT', 'visibility_scope' => 'PRV'],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from the relationship state.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'ACT', 'is_indexed' => true],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the relationship record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the relationship record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 ];

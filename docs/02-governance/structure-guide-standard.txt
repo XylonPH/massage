@@ -1,5 +1,5 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.40
+Document Version: 1.51
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
@@ -99,6 +99,14 @@ $multilingual_text_sample are expected before the sample record by convention bu
 order-checked by tooling; place them first regardless, since a future validator revision may enforce
 the full sequence.
 
+A collection whose records can be changed by more than one actor requires the optimistic-concurrency
+token mandated by docs/02-governance/edit-system.txt section 16: updated_at alone is insufficient.
+Use a top-level revision_number integer field as the canonical name and shape for this token: it
+starts at 1 on creation, increments by exactly 1 on every accepted revision, and is never reused or
+decremented. Place it immediately before created_at in *_default, the sample record, and
+*_field_order. A collection that is never shared for concurrent editing (a pure lookup table with no
+edit workflow, for example) may omit it; document that reasoning in the guide's Notes when it applies.
+
 The collection variable, such as $article_main, is one fully populated sample record. It lists
 every possible top-level stored property using a representative sample value. Each property has a
 short inline comment explaining its meaning. A document-store record may omit sparse or
@@ -109,6 +117,13 @@ property is absent. It contains only fields with real omission defaults; it is n
 sample record. Application queries, filtering, conditional formatting, validation, and display
 logic must treat an omitted property as its documented default. For example, when a field defaults
 to "test", a filter for that field equal to "test" must include records where the field is omitted.
+
+Persistence code must omit a property whose value equals its documented omission default and must
+remove an already stored property when an update changes it back to that default. The same rule
+applies to default-valued properties inside embedded objects, including multilingual text values.
+Empty arrays, empty strings, false, zero, and null must not be stored merely as placeholders when
+the guide documents them as omission defaults. A null or empty value may be stored only when the
+feature contract gives its presence a meaning that is distinct from omission.
 
 The *_field_order array lists every top-level stored property exactly once in intended logical
 order. Validation tooling enforces a strict key-equality check: the keys in the sample record,
@@ -197,6 +212,12 @@ alongside index_key, index_name, and type_index) orders this index entry relativ
 entries in *_index_list. The sort_order nested inside each index_field_list item orders that
 field's position within its own compound index; compound fields use increments of 10 for this
 nested value.
+
+Every top-level field named in an index_field_list's field_name must be marked is_indexed => true on
+that field's *_field_property entry. Validation tooling enforces this cross-check for top-level
+field names; the two structures are maintained separately and nothing else keeps them in sync when
+a field is added to or removed from an index. This check does not currently follow dotted subfield
+paths into *_subfield_property.
 
 The *_boundary array identifies what the collection owns, which other collections or datasets it
 references, and what responsibilities remain outside it. Boundary entries must distinguish a

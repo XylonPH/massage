@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Contact Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_contact
  * Description: Stores one current or historical official contact channel for an establishment.
  * Purpose: Separates independently verified and historied business contact channels from establishment_main and from research-source URLs.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T10:38:00Z';
-$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PUB', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'status_record_lifecycle' => 'ACT'];
+$updated_at = '2026-07-21T10:48:10Z';
+$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PUB', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_contact = [
     '_id' => 'Ec7K2pQ9xR4tV8zN', // Canonical 16-character contact identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Owning establishment_main identifier.
@@ -35,6 +35,7 @@ $establishment_contact = [
     'source_id_list' => ['Sr7K2pQ9xR4tV8zN'], // Supporting sources.
     'internal_note' => null, // Restricted operational note.
     'status_record_lifecycle' => 'ACT', // Database lifecycle state.
+    'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
     'created_at' => $created_at, // UTC record creation time.
     'updated_at' => $updated_at, // UTC record update time.
 ];
@@ -45,7 +46,7 @@ $establishment_contact_field_order = [
     'type_date_qualifier', 'first_observed_at', 'last_observed_active_at',
     'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at',
     'record_verification_id', 'source_id_list', 'internal_note', 'status_record_lifecycle',
-    'created_at', 'updated_at',
+    'revision_number', 'created_at', 'updated_at',
 ];
 $establishment_contact_embedded_structure = [];
 $establishment_contact_field_property = [
@@ -74,6 +75,7 @@ $establishment_contact_field_property = [
     'source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references supporting the channel and its observed state.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'is_relational' => true],
     'internal_note' => ['field_label' => 'Internal Note', 'field_description' => 'Restricted operational note that must not be exposed as contact content.', 'type_data' => 'S', 'type_field' => 'TXA', 'type_sql' => 'TEXT', 'visibility_scope' => 'PRV'],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from channel activity.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'ACT'],
+    'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the contact record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the contact record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 ];
@@ -86,7 +88,7 @@ $establishment_contact_index_list = [
 $establishment_contact_boundary = [
     'owns' => ['official establishment contact channel, effective history, observation, confirmation, and verification references'],
     'reference_field_list' => ['establishment_id', 'record_verification_id', 'source_id_list'],
-    'does_not_own' => ['research-source URL merely citing the establishment', 'private practitioner contact', 'establishment identity', 'verification evidence'],
+    'does_not_own' => ['research-source URL merely citing the establishment', 'private practitioner contact', 'establishment identity', 'verification evidence', 'the lightweight contact_channel_list display snapshot embedded in establishment_main, which this collection supersedes as the historied authority'],
 ];
 return [
     'establishment_contact_default' => $establishment_contact_default,

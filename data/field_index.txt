@@ -357,6 +357,7 @@ preparation_minute
 preview_media_image_id_list
 previous_location_snapshot
 previous_name
+previous_slug_list
 price_option_list
 price_surcharge_list
 primary_establishment_id
@@ -420,6 +421,7 @@ resulting_access_assignment_id
 resulting_location_snapshot
 resulting_name
 retention_until
+retired_at
 review_body
 review_count
 review_id
@@ -456,6 +458,7 @@ shadow_config
 share_count
 short_description
 shower_availability
+slug
 snapshot_new
 snapshot_previous
 snapshot_record
