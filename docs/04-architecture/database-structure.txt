@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-12
 Revision Date: 2026-07-21
 
@@ -185,7 +185,7 @@ consent from user_policy; bounded ordinary preferences remain in user_main.
   One current or historical official establishment contact channel with its own normalization,
   effective period, observation, confirmation, verification, visibility, and lifecycle.
 
-- establishment_operating_schedule
+- establishment_schedule
   One effective version of bounded weekly operating intervals and dated exceptions. Open-now is
   derived from establishment status, time zone, effective schedule, and current exceptions; it is
   not stored as an authoritative boolean.

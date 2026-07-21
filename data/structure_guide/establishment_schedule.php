@@ -1,15 +1,15 @@
 <?php
 /**
- * Title: Massage Nexus Establishment Operating Schedule Structure Guide
- * Version: 1.10
- * Collection: establishment_operating_schedule
+ * Title: Massage Nexus Establishment Schedule Structure Guide
+ * Version: 1.20
+ * Collection: establishment_schedule
  * Description: Stores one effective version of an establishment's bounded weekly operating intervals and dated exceptions.
  * Purpose: Separates historied operating hours from establishment_main and provides the source for open-now calculations without storing an authoritative is_open_now flag.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T09:49:12Z';
-$establishment_operating_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'status_record_lifecycle' => 'ACT'];
-$establishment_operating_schedule = [
+$updated_at = '2026-07-21T10:20:37Z';
+$establishment_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'status_record_lifecycle' => 'ACT'];
+$establishment_schedule = [
     '_id' => 'Oh7K2pQ9xR4tV8zN', // Canonical 16-character schedule identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Owning establishment_main identifier.
     'time_zone_id' => 255, // Numeric common_reference.time_zone_main identifier for Asia/Manila.
@@ -30,18 +30,18 @@ $establishment_operating_schedule = [
     'created_at' => $created_at, // UTC record creation time.
     'updated_at' => $updated_at, // UTC record update time.
 ];
-$establishment_operating_schedule_field_order = [
+$establishment_schedule_field_order = [
     '_id', 'establishment_id', 'time_zone_id', 'type_business_hours', 'effective_from', 'effective_until',
     'type_date_precision', 'type_date_qualifier', 'weekly_day_list', 'exception_list', 'status_schedule',
     'first_observed_at', 'last_observed_at', 'first_confirmed_at', 'last_confirmed_at', 'source_id_list',
     'status_record_lifecycle', 'created_at', 'updated_at',
 ];
-$establishment_operating_schedule_embedded_structure = [
+$establishment_schedule_embedded_structure = [
     'weekly_day_list' => ['day_of_week' => 'MON', 'is_closed' => false, 'is_appointment_only' => false, 'is_walk_in_available' => true, 'interval_list' => [], 'schedule_day_note' => null],
     'weekly_day_list.interval_list' => ['opens_at_local' => '10:00', 'closes_at_local' => '22:00', 'crosses_midnight' => false, 'type_access_period' => 'ALL', 'last_booking_at_local' => '21:00', 'last_walk_in_at_local' => '20:30'],
     'exception_list' => ['exception_date_start' => '2026-12-25', 'exception_date_end' => '2026-12-25', 'type_hour_exception' => 'CLO', 'is_closed' => true, 'interval_list' => [], 'schedule_exception_note' => 'Closed for the holiday.', 'first_observed_at' => '2026-12-01T00:00:00Z', 'last_confirmed_at' => '2026-12-20T00:00:00Z'],
 ];
-$establishment_operating_schedule_field_property = [
+$establishment_schedule_field_property = [
     '_id' => ['field_label' => 'Operating Schedule ID', 'field_description' => 'Canonical identifier for one effective schedule version.', 'type_data' => 'S', 'type_field' => 'HDN', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
     'establishment_id' => ['field_label' => 'Establishment', 'field_description' => 'Establishment whose operating schedule is represented.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
     'time_zone_id' => ['field_label' => 'Time Zone', 'field_description' => 'Numeric common-reference time-zone identifier used to interpret every local time in the schedule.', 'type_data' => 'I', 'type_field' => 'REF', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_relational' => true],
@@ -62,7 +62,7 @@ $establishment_operating_schedule_field_property = [
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the schedule record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
     'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the schedule record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 ];
-$establishment_operating_schedule_subfield_property = [
+$establishment_schedule_subfield_property = [
     'weekly_day_list.day_of_week' => ['field_label' => 'Day of Week', 'field_description' => 'Controlled weekday represented by this day item.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'weekly_day_list.is_closed' => ['field_label' => 'Day Is Closed', 'field_description' => 'Whether no operating interval applies for the day.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'weekly_day_list.is_appointment_only' => ['field_label' => 'Day Is Appointment Only', 'field_description' => 'Whether client service during the day requires an appointment.', 'type_data' => 'B', 'type_field' => 'CHK'],
@@ -84,18 +84,18 @@ $establishment_operating_schedule_subfield_property = [
     'exception_list.first_observed_at' => ['field_label' => 'Exception First Observed At', 'field_description' => 'UTC time when Massage Nexus first observed the exception.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'exception_list.last_confirmed_at' => ['field_label' => 'Exception Last Confirmed At', 'field_description' => 'Latest UTC time when adequate evidence confirmed the exception.', 'type_data' => 'S', 'type_field' => 'DTS'],
 ];
-$establishment_operating_schedule_index_list = [
+$establishment_schedule_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
-    ['index_key' => 'owner_effective_status', 'index_name' => 'ix_establishment_operating_schedule_owner_effective', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_from', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'status_schedule', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
+    ['index_key' => 'owner_effective_status', 'index_name' => 'ix_establishment_schedule_owner_effective', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_from', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'status_schedule', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
 ];
-$establishment_operating_schedule_boundary = ['owns' => ['versioned weekly operating intervals, dated exceptions, time zone, effective period, and freshness'], 'references' => ['establishment_main', 'common_reference.time_zone_main', 'research_source'], 'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status']];
+$establishment_schedule_boundary = ['owns' => ['versioned weekly operating intervals, dated exceptions, time zone, effective period, and freshness'], 'references' => ['establishment_main', 'common_reference.time_zone_main', 'research_source'], 'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status']];
 return [
-    'establishment_operating_schedule_default' => $establishment_operating_schedule_default,
-    'establishment_operating_schedule' => $establishment_operating_schedule,
-    'establishment_operating_schedule_field_order' => $establishment_operating_schedule_field_order,
-    'establishment_operating_schedule_embedded_structure' => $establishment_operating_schedule_embedded_structure,
-    'establishment_operating_schedule_field_property' => $establishment_operating_schedule_field_property,
-    'establishment_operating_schedule_subfield_property' => $establishment_operating_schedule_subfield_property,
-    'establishment_operating_schedule_index_list' => $establishment_operating_schedule_index_list,
-    'establishment_operating_schedule_boundary' => $establishment_operating_schedule_boundary,
+    'establishment_schedule_default' => $establishment_schedule_default,
+    'establishment_schedule' => $establishment_schedule,
+    'establishment_schedule_field_order' => $establishment_schedule_field_order,
+    'establishment_schedule_embedded_structure' => $establishment_schedule_embedded_structure,
+    'establishment_schedule_field_property' => $establishment_schedule_field_property,
+    'establishment_schedule_subfield_property' => $establishment_schedule_subfield_property,
+    'establishment_schedule_index_list' => $establishment_schedule_index_list,
+    'establishment_schedule_boundary' => $establishment_schedule_boundary,
 ];

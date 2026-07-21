@@ -1,7 +1,7 @@
 Title: Massage Nexus Spa Profile Guide
-Document Version: 0.90
+Document Version: 1.00
 Date Created: 2026-07-14
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, and lifecycle of a Massage Nexus spa profile. It distinguishes the public establishment record from the Operator Workspace, Branded Portal, organization record, booking engine, and private operational data.
 
 Related Documents:
@@ -818,7 +818,7 @@ The current structure-guide boundary is:
 - establishment_main owns current public identity, classification, approved location, bounded
   treatment-area/amenity/accessibility summaries, lifecycle, and freshness;
 - establishment_contact owns current and historical official business contact channels;
-- establishment_operating_schedule owns effective weekly hours and dated exceptions;
+- establishment_schedule owns effective weekly hours and dated exceptions;
 - establishment_service owns provider menu items, packages, combinations, add-ons, duration
   options, effective prices, and mappings to service_main;
 - organization_establishment, establishment_person, and establishment_practitioner own their
