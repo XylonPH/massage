@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Schedule Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: establishment_schedule
  * Description: Stores one effective version of an establishment's bounded weekly operating intervals and dated exceptions.
  * Purpose: Separates historied operating hours from establishment_main and provides the source for open-now calculations without storing an authoritative is_open_now flag.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T10:20:37Z';
+$updated_at = '2026-07-21T10:38:00Z';
 $establishment_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'status_record_lifecycle' => 'ACT'];
 $establishment_schedule = [
     '_id' => 'Oh7K2pQ9xR4tV8zN', // Canonical 16-character schedule identifier.
@@ -88,7 +88,11 @@ $establishment_schedule_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
     ['index_key' => 'owner_effective_status', 'index_name' => 'ix_establishment_schedule_owner_effective', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_from', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'status_schedule', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
 ];
-$establishment_schedule_boundary = ['owns' => ['versioned weekly operating intervals, dated exceptions, time zone, effective period, and freshness'], 'references' => ['establishment_main', 'common_reference.time_zone_main', 'research_source'], 'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status']];
+$establishment_schedule_boundary = [
+    'owns' => ['versioned weekly operating intervals, dated exceptions, time zone, effective period, and freshness'],
+    'reference_field_list' => ['establishment_id', 'time_zone_id', 'source_id_list'],
+    'does_not_own' => ['bookable availability', 'staff or resource schedules', 'authoritative is_open_now boolean', 'establishment operating status'],
+];
 return [
     'establishment_schedule_default' => $establishment_schedule_default,
     'establishment_schedule' => $establishment_schedule,

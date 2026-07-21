@@ -68,6 +68,7 @@ claimant_user_id
 cleanup_minute
 client_price_context
 client_restriction_list
+close_time
 closes_at_local
 collection_count
 color_config
@@ -77,8 +78,10 @@ component_list
 component_name_snapshot
 confidence_level
 constraint_text_input
+contact_channel_list
 contact_label
 contact_url
+contact_value
 contact_value_display
 contact_value_normalized
 contribution_id
@@ -320,7 +323,9 @@ note_body
 observation_at
 observed_at
 official_name
+open_time
 opens_at_local
+operating_hours
 operator_filter
 organization_id
 organization_slug

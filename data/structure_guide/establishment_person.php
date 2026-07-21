@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Establishment–Person Relationship Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: establishment_person
  * Description: Stores effective-dated owner, investor, founder, operator, manager, representative, and non-practitioner staff relationships.
  * Purpose: Preserves human relationship facts independently from practitioner identity, user accounts, claims, and workspace access.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-21T10:38:00Z';
 $establishment_person_default = ['is_public' => false, 'visibility_scope' => 'PRV', 'status_relationship' => 'ACT', 'status_record_lifecycle' => 'ACT'];
 $establishment_person = [
     '_id' => 'Ep8K2pQ9xR4tV7zN', // Canonical relationship identifier.
@@ -58,11 +58,11 @@ $establishment_person_field_property = [
     'person_id' => ['field_label' => 'Private Person', 'field_description' => 'Optional canonical private-person reference when a separate private identity record exists.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true, 'is_indexed' => true],
     'user_id' => ['field_label' => 'User Account', 'field_description' => 'Optional user account associated with the person; it does not grant workspace access.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
     'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Optional public practitioner profile associated with the person.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
-    'person_name_snapshot' => ['field_label' => 'Person Name Snapshot', 'field_description' => 'Minimal source-time name retained when no canonical person reference is available.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(200)', 'max_length' => 200],
+    'person_name_snapshot' => ['field_label' => 'Person Name Snapshot', 'field_description' => 'Minimal source-time name retained when no canonical person reference is available.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(200)', 'max_character' => 200],
     'type_establishment_person_relationship' => ['field_label' => 'Relationship Type', 'field_description' => 'Controlled factual role the person has or had with the establishment.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'is_mandatory' => true, 'is_indexed' => true],
-    'public_title' => ['field_label' => 'Public Title', 'field_description' => 'Approved title that may be displayed publicly for this relationship.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_length' => 160],
-    'internal_role' => ['field_label' => 'Internal Role', 'field_description' => 'Restricted operational description that clarifies the person\'s role without granting permission.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_length' => 160, 'visibility_scope' => 'PRV'],
-    'department' => ['field_label' => 'Department', 'field_description' => 'Department or business unit associated with this relationship when known.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_length' => 160],
+    'public_title' => ['field_label' => 'Public Title', 'field_description' => 'Approved title that may be displayed publicly for this relationship.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_character' => 160],
+    'internal_role' => ['field_label' => 'Internal Role', 'field_description' => 'Restricted operational description that clarifies the person\'s role without granting permission.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_character' => 160, 'visibility_scope' => 'PRV'],
+    'department' => ['field_label' => 'Department', 'field_description' => 'Department or business unit associated with this relationship when known.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(160)', 'max_character' => 160],
     'percentage_interest' => ['field_label' => 'Ownership Interest Percentage', 'field_description' => 'Restricted supported ownership interest expressed from 0 through 100; absence means unknown, not zero.', 'type_data' => 'F', 'type_field' => 'NMB', 'type_sql' => 'DECIMAL(5,2)', 'min_number' => 0, 'max_number' => 100, 'visibility_scope' => 'PRV'],
     'is_public' => ['field_label' => 'Public Relationship', 'field_description' => 'Whether the relationship is approved for public presentation.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN', 'default_value' => false],
     'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Maximum audience permitted to access the relationship record.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'PRV', 'is_indexed' => true],
@@ -91,7 +91,11 @@ $establishment_person_index_list = [
     ['index_key' => 'relationship_lookup', 'index_name' => 'ix_establishment_person_target_type_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'person_id', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'type_establishment_person_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'status_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 40]], 'sort_order' => 20],
     ['index_key' => 'visibility', 'index_name' => 'ix_establishment_person_visibility_lifecycle', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'visibility_scope', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_record_lifecycle', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 30],
 ];
-$establishment_person_boundary = ['owns' => ['effective-dated person relationships and minimal identity snapshots'], 'references' => ['future private person identity, user, practitioner, claim, evidence, and verification records'], 'does_not_own' => ['private legal identity, practitioner affiliation facts, authentication, or workspace permissions']];
+$establishment_person_boundary = [
+    'owns' => ['effective-dated person relationships and minimal identity snapshots'],
+    'reference_field_list' => ['establishment_id', 'person_id', 'user_id', 'practitioner_id', 'record_verification_id_list', 'research_source_id_list', 'document_id_list', 'claim_id'],
+    'does_not_own' => ['private legal identity, practitioner affiliation facts, authentication, or workspace permissions'],
+];
 return [
     'establishment_person_default' => $establishment_person_default,
     'establishment_person' => $establishment_person,

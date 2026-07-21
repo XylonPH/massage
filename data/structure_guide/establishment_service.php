@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Service Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: establishment_service
  * Description: Stores provider menu offerings, packages, combinations, add-ons, and facility-access products.
  * Purpose: Preserves provider-specific commercial presentation while mapping it to normalized service_main records.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-21T10:38:00Z';
 $establishment_service_default = ['normalized_service_mapping_list' => [], 'duration_option_list' => [], 'price_option_list' => [], 'component_list' => [], 'type_booking_method' => [], 'client_restriction_list' => [], 'included_facility_list' => [], 'included_product_list' => [], 'is_featured' => false, 'status_establishment_service' => 'ACT', 'status_record_lifecycle' => 'ACT'];
 $multilingual_text_sample = ['eng' => ['text' => 'Sample service text', 'method_translation' => 'HUM', 'status_review' => 'APR']];
 $establishment_service = [
@@ -136,7 +136,11 @@ $establishment_service_index_list = [
     ['index_key' => 'establishment_slug', 'index_name' => 'uq_establishment_service_establishment_slug', 'type_index' => 'CMP', 'is_unique' => true, 'is_sparse' => true, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'establishment_service_slug', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 20],
     ['index_key' => 'menu_filter', 'index_name' => 'ix_establishment_service_establishment_status_group_type', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_establishment_service', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'menu_group_name', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'type_establishment_service', 'type_index_mode' => 'ASC', 'sort_order' => 40]], 'sort_order' => 30],
 ];
-$establishment_service_boundary = ['owns' => ['provider menu identity, price and duration options, package components, and normalized mappings'], 'references' => ['establishment_main, service_main, practitioner, research source, and verification records'], 'does_not_own' => ['universal service identity, temporary promotions, bookings, or overall establishment price range']];
+$establishment_service_boundary = [
+    'owns' => ['provider menu identity, price and duration options, package components, and normalized mappings'],
+    'reference_field_list' => ['establishment_id', 'research_source_id_list', 'record_verification_id_list'],
+    'does_not_own' => ['universal service identity, temporary promotions, bookings, or overall establishment price range'],
+];
 return [
     'establishment_service_default' => $establishment_service_default,
     'multilingual_text_sample' => $multilingual_text_sample,

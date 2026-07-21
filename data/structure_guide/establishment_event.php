@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Event Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: establishment_event
  * Description: Stores evidence-aware establishment lifecycle and history events without overwriting current identity.
  * Purpose: Represents uncertain, approximate, historical, and independently sourced business events.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-21T10:38:00Z';
 $establishment_event_default = ['status_verification' => 'U', 'level_confidence' => 'U', 'status_record_lifecycle' => 'ACT'];
 $establishment_event = [
     '_id' => 'Ee8K2pQ9xR4tV7zN', // Canonical event identifier.
@@ -74,5 +74,9 @@ $establishment_event_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
     ['index_key' => 'event_history', 'index_name' => 'ix_establishment_event_establishment_effective_type', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_date', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'type_business_event', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
 ];
-$establishment_event_boundary = ['owns' => ['independently sourced establishment lifecycle and history events'], 'references' => ['establishment, research source, and verification records'], 'does_not_own' => ['current establishment status or organization relationship history']];
+$establishment_event_boundary = [
+    'owns' => ['independently sourced establishment lifecycle and history events'],
+    'reference_field_list' => ['establishment_id', 'record_verification_id_list', 'research_source_id_list', 'related_establishment_id'],
+    'does_not_own' => ['current establishment status or organization relationship history'],
+];
 return ['establishment_event_default' => $establishment_event_default, 'establishment_event' => $establishment_event, 'establishment_event_field_order' => $establishment_event_field_order, 'establishment_event_embedded_structure' => $establishment_event_embedded_structure, 'establishment_event_field_property' => $establishment_event_field_property, 'establishment_event_subfield_property' => $establishment_event_subfield_property, 'establishment_event_index_list' => $establishment_event_index_list, 'establishment_event_boundary' => $establishment_event_boundary];
