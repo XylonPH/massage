@@ -1,18 +1,21 @@
 <?php
 /**
  * Title: Massage Nexus Establishment–Person Relationship Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_person
  * Description: Stores effective-dated owner, investor, founder, operator, manager, representative, and non-practitioner staff relationships.
  * Purpose: Preserves human relationship facts independently from practitioner identity, user accounts, claims, and workspace access.
+ *
+ * Notes:
+ * - At least one of user_id, practitioner_id, or person_name_snapshot must identify the person; multiple identifiers must resolve to the same human.
+ * - A person may have both an establishment_person business relationship and an establishment_practitioner clinical affiliation; neither record replaces the other.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:48:10Z';
+$updated_at = '2026-07-21T11:14:49Z';
 $establishment_person_default = ['is_public' => false, 'visibility_scope' => 'PRV', 'status_relationship' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_person = [
     '_id' => 'Ep8K2pQ9xR4tV7zN', // Canonical relationship identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Related establishment.
-    'person_id' => null, // Optional future canonical private-person reference.
     'user_id' => null, // Optional user-account reference when known.
     'practitioner_id' => 'P8rC3mL7xT1qV5nK', // Optional public practitioner reference.
     'person_name_snapshot' => 'Sample Person', // Minimal source-time identity snapshot.
@@ -44,7 +47,7 @@ $establishment_person = [
     'updated_at' => $updated_at, // UTC update time.
 ];
 $establishment_person_field_order = [
-    '_id', 'establishment_id', 'person_id', 'user_id', 'practitioner_id', 'person_name_snapshot',
+    '_id', 'establishment_id', 'user_id', 'practitioner_id', 'person_name_snapshot',
     'type_establishment_person_relationship', 'public_title', 'internal_role', 'department',
     'percentage_interest', 'is_public', 'visibility_scope', 'status_relationship', 'effective_from',
     'effective_until', 'type_date_precision', 'type_date_qualifier', 'first_observed_at',
@@ -56,7 +59,6 @@ $establishment_person_embedded_structure = [];
 $establishment_person_field_property = [
     '_id' => ['field_label' => 'Relationship ID', 'field_description' => 'Canonical identifier for this establishment-person relationship record.', 'type_data' => 'S', 'type_field' => 'HDN', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
     'establishment_id' => ['field_label' => 'Establishment', 'field_description' => 'Establishment to which the person relationship applies; this reference already defines its scope.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-    'person_id' => ['field_label' => 'Private Person', 'field_description' => 'Optional canonical private-person reference when a separate private identity record exists.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true, 'is_indexed' => true],
     'user_id' => ['field_label' => 'User Account', 'field_description' => 'Optional user account associated with the person; it does not grant workspace access.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
     'practitioner_id' => ['field_label' => 'Practitioner', 'field_description' => 'Optional public practitioner profile associated with the person.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
     'person_name_snapshot' => ['field_label' => 'Person Name Snapshot', 'field_description' => 'Minimal source-time name retained when no canonical person reference is available.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(200)', 'max_character' => 200],
@@ -90,12 +92,12 @@ $establishment_person_field_property = [
 $establishment_person_subfield_property = [];
 $establishment_person_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
-    ['index_key' => 'relationship_lookup', 'index_name' => 'ix_establishment_person_target_type_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'person_id', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'type_establishment_person_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'status_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 40]], 'sort_order' => 20],
+    ['index_key' => 'relationship_lookup', 'index_name' => 'ix_establishment_person_target_type_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'type_establishment_person_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'status_relationship', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
     ['index_key' => 'visibility', 'index_name' => 'ix_establishment_person_visibility_lifecycle', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'visibility_scope', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_record_lifecycle', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 30],
 ];
 $establishment_person_boundary = [
     'owns' => ['effective-dated person relationships and minimal identity snapshots'],
-    'reference_field_list' => ['establishment_id', 'person_id', 'user_id', 'practitioner_id', 'record_verification_id_list', 'research_source_id_list', 'document_id_list', 'claim_id'],
+    'reference_field_list' => ['establishment_id', 'user_id', 'practitioner_id', 'record_verification_id_list', 'research_source_id_list', 'document_id_list', 'claim_id'],
     'does_not_own' => ['private legal identity, practitioner affiliation facts, authentication, or workspace permissions'],
 ];
 return [

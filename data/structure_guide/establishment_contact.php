@@ -1,14 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Contact Structure Guide
- * Version: 1.40
+ * Version: 1.50
  * Collection: establishment_contact
  * Description: Stores one current or historical official contact channel for an establishment.
  * Purpose: Separates independently verified and historied business contact channels from establishment_main and from research-source URLs.
+ *
+ * Notes:
+ * - Unverified or unknown channels remain private until an authorized publication decision changes visibility_scope.
+ * - Persistence validates channel-specific normalization, URL schemes, effective_from <= effective_until, and coherent observation and confirmation timestamps.
+ * - Application validation prevents overlapping active duplicates for the same establishment, channel type, and normalized value.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T11:11:28Z';
-$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PUB', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
+$updated_at = '2026-07-21T11:14:49Z';
+$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PRV', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_contact = [
     '_id' => 'Ec7K2pQ9xR4tV8zN', // Canonical 16-character contact identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Owning establishment_main identifier.
@@ -19,8 +24,8 @@ $establishment_contact = [
     'contact_value_normalized' => '+63281234567', // Normalized comparison and action value.
     'contact_url' => 'tel:+63281234567', // Validated safe action URL.
     'is_primary' => true, // Primary channel for its purpose or type.
-    'visibility_scope' => 'PUB', // Public or restricted audience rule.
-    'status_contact_channel' => 'ACT', // Observed channel activity state.
+    'visibility_scope' => 'PRV', // Private until an authorized publication decision approves broader visibility.
+    'status_contact_channel' => 'AC', // Observed channel activity state.
     'effective_from' => '2026-01-01', // Date the channel became effective when known.
     'effective_until' => null, // Date the channel ended; historical records remain retained.
     'type_date_precision' => 'D', // Precision of effective dates.
@@ -61,7 +66,7 @@ $establishment_contact_field_property = [
     'contact_value_normalized' => ['field_label' => 'Normalized Contact Value', 'field_description' => 'Canonical comparison and action value after channel-specific normalization.', 'type_data' => 'S', 'type_field' => 'TXT', 'type_sql' => 'VARCHAR(500)', 'is_indexed' => true, 'max_character' => 500],
     'contact_url' => ['field_label' => 'Contact URL', 'field_description' => 'Validated action URL appropriate to the channel, including tel, mailto, https, or an approved platform URL.', 'type_data' => 'S', 'type_field' => 'URL', 'type_sql' => 'VARCHAR(2048)', 'max_character' => 2048, 'constraint_text_input' => ['URL']],
     'is_primary' => ['field_label' => 'Primary Contact', 'field_description' => 'Whether this is the primary channel for its contact type or purpose.', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN', 'default_value' => false],
-    'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Maximum audience allowed to view or use the channel.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'PUB'],
+    'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Maximum audience allowed to view or use the channel; absence means private until publication is authorized.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'PRV'],
     'status_contact_channel' => ['field_label' => 'Contact Channel Status', 'field_description' => 'Observed activity state of the channel independent from record lifecycle.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'UNK', 'is_indexed' => true],
     'effective_from' => ['field_label' => 'Effective From', 'field_description' => 'Date on which the contact channel became effective when known.', 'type_data' => 'S', 'type_field' => 'DTI', 'type_sql' => 'DATE'],
     'effective_until' => ['field_label' => 'Effective Until', 'field_description' => 'Date on which the channel ceased to apply; historical records remain retained.', 'type_data' => 'S', 'type_field' => 'DTI', 'type_sql' => 'DATE'],
@@ -92,7 +97,7 @@ $establishment_contact_index_list = [
 $establishment_contact_boundary = [
     'owns' => ['official establishment contact channel, effective history, observation, confirmation, and verification references'],
     'reference_field_list' => ['establishment_id', 'record_verification_id', 'source_id_list'],
-    'does_not_own' => ['research-source URL merely citing the establishment', 'private practitioner contact', 'establishment identity', 'verification evidence', 'the lightweight contact_channel_list display snapshot embedded in establishment_main, which this collection supersedes as the historied authority'],
+    'does_not_own' => ['research-source URL merely citing the establishment', 'private practitioner contact', 'establishment identity', 'verification evidence', 'directory rendering or caching derived from this authoritative collection'],
 ];
 return [
     'establishment_contact_default' => $establishment_contact_default,

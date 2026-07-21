@@ -7,7 +7,34 @@ $guideDirectory = $repository . '/data/structure_guide';
 $guideFiles = glob($guideDirectory . '/*.php') ?: [];
 sort($guideFiles);
 
+$arguments = array_slice($argv, 1);
+$strict = in_array('--strict', $arguments, true);
+$selectedCollections = [];
+foreach ($arguments as $argument) {
+    if (str_starts_with($argument, '--collection=')) {
+        $selectedCollections[] = substr($argument, strlen('--collection='));
+    }
+}
+if ($selectedCollections !== []) {
+    $guideFiles = array_values(array_filter(
+        $guideFiles,
+        static fn (string $file): bool => in_array(pathinfo($file, PATHINFO_FILENAME), $selectedCollections, true),
+    ));
+}
+
 $errors = [];
+
+$fieldSystemPath = $repository . '/data/taxonomy/shared/field_and_form_system.json';
+$fieldSystem = json_decode((string) file_get_contents($fieldSystemPath), true, 512, JSON_THROW_ON_ERROR);
+$allowedCodeList = [];
+foreach ($fieldSystem as $fieldDefinition) {
+    $fieldName = $fieldDefinition['field_name'] ?? null;
+    if (!in_array($fieldName, ['type_data', 'type_field'], true)) {
+        continue;
+    }
+
+    $allowedCodeList[$fieldName] = array_column($fieldDefinition['field_option'] ?? [], 'option_code');
+}
 
 $error = static function (string $file, string $message) use (&$errors): void {
     $errors[] = basename($file) . ': ' . $message;
@@ -148,7 +175,27 @@ foreach ($guideFiles as $file) {
 
     if (is_array($fieldProperties)) {
         $hasTranslatableField = false;
-        foreach ($fieldProperties as $metadata) {
+        foreach ($fieldProperties as $fieldName => $metadata) {
+            if (!is_array($metadata)) {
+                $error($file, "field property {$fieldName} must be an array");
+                continue;
+            }
+
+            if ($strict) {
+                foreach (['field_label', 'field_description', 'type_data', 'type_field'] as $requiredProperty) {
+                    if (!array_key_exists($requiredProperty, $metadata) || $metadata[$requiredProperty] === '') {
+                        $error($file, "field property {$fieldName} is missing {$requiredProperty}");
+                    }
+                }
+
+                foreach (['type_data', 'type_field'] as $codeFieldName) {
+                    $code = $metadata[$codeFieldName] ?? null;
+                    if (is_string($code) && !in_array($code, $allowedCodeList[$codeFieldName] ?? [], true)) {
+                        $error($file, "field property {$fieldName} uses unknown {$codeFieldName} code {$code}");
+                    }
+                }
+            }
+
             if (is_array($metadata) && ($metadata['is_translatable'] ?? false) === true) {
                 $hasTranslatableField = true;
             }
@@ -158,11 +205,58 @@ foreach ($guideFiles as $file) {
         }
     }
 
+    if (is_array($subfieldProperties)) {
+        foreach ($subfieldProperties as $fieldPath => $metadata) {
+            if (!is_array($metadata)) {
+                $error($file, "subfield property {$fieldPath} must be an array");
+                continue;
+            }
+
+            if ($strict) {
+                foreach (['field_label', 'field_description', 'type_data', 'type_field'] as $requiredProperty) {
+                    if (!array_key_exists($requiredProperty, $metadata) || $metadata[$requiredProperty] === '') {
+                        $error($file, "subfield property {$fieldPath} is missing {$requiredProperty}");
+                    }
+                }
+
+                foreach (['type_data', 'type_field'] as $codeFieldName) {
+                    $code = $metadata[$codeFieldName] ?? null;
+                    if (is_string($code) && !in_array($code, $allowedCodeList[$codeFieldName] ?? [], true)) {
+                        $error($file, "subfield property {$fieldPath} uses unknown {$codeFieldName} code {$code}");
+                    }
+                }
+            }
+        }
+    }
+
     if (is_array($record) && is_array($defaults)) {
         foreach (array_keys($defaults) as $fieldName) {
             if (!array_key_exists($fieldName, $record)) {
                 $error($file, "default field {$fieldName} is absent from the sample record");
             }
+        }
+
+        if ($strict && is_array($fieldProperties)) {
+            foreach ($fieldProperties as $fieldName => $metadata) {
+                if (is_array($metadata) && array_key_exists('default_value', $metadata)) {
+                    if (!array_key_exists($fieldName, $defaults)) {
+                        $error($file, "field property {$fieldName} declares default_value but {$collection}_default omits it");
+                    } elseif ($metadata['default_value'] !== $defaults[$fieldName]) {
+                        $error($file, "field property {$fieldName} default_value does not match {$collection}_default");
+                    }
+                }
+            }
+        }
+    }
+
+    if ($strict && is_array($fieldOrder) && in_array('revision_number', $fieldOrder, true)) {
+        $revisionPosition = array_search('revision_number', $fieldOrder, true);
+        $createdPosition = array_search('created_at', $fieldOrder, true);
+        if ($createdPosition === false || $revisionPosition !== $createdPosition - 1) {
+            $error($file, 'revision_number must appear immediately before created_at in field order');
+        }
+        if (!is_array($defaults) || ($defaults['revision_number'] ?? null) !== 1) {
+            $error($file, 'revision_number omission default must be 1');
         }
     }
 
@@ -222,7 +316,23 @@ foreach ($guideFiles as $file) {
                     }
                 }
             }
+
+            if (($index['type_index'] ?? null) === 'GEO') {
+                $indexFields = $index['index_field_list'] ?? [];
+                if (count($indexFields) !== 1 || ($indexFields[0]['type_index_mode'] ?? null) !== '2DS') {
+                    $error($file, "geospatial index entry {$position} must contain one 2DS field");
+                }
+                if (($index['is_sparse'] ?? null) !== true) {
+                    $error($file, "geospatial index entry {$position} must document inherently sparse behavior");
+                }
+            }
         }
+    }
+
+
+    $boundary = $variables["{$collection}_boundary"] ?? null;
+    if ($strict && is_array($boundary) && array_keys($boundary) !== ['owns', 'reference_field_list', 'does_not_own']) {
+        $error($file, 'boundary must contain owns, reference_field_list, and does_not_own in canonical order');
     }
 }
 

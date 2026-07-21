@@ -1,5 +1,5 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.51
+Document Version: 1.60
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
@@ -152,7 +152,7 @@ Every top-level and nested field-property entry must explicitly provide:
 
 Add the applicable contract attributes when they carry meaning, including type_sql,
 is_mandatory, is_relational, is_indexed, is_unique, is_translatable, visibility_scope,
-default_value, length or numeric limits, accepted formats, and validation constraints. Length and
+default_value, taxonomy_field_name, length or numeric limits, accepted formats, and validation constraints. Length and
 numeric limits use these canonical keys: min_character and max_character for text length,
 min_number and max_number for numeric range. Accepted-format constraints use
 constraint_text_input (e.g., ['URL'], ['EMAIL']). Do not invent alternate key names such as
@@ -160,13 +160,19 @@ character_limit or max_length for these same concepts. Do not infer a field's ty
 value: null is often only an illustrative absence and does not identify the stored type.
 
 Field properties use standardized abbreviation codes. type_data denotes the primitive type (e.g.,
-S for String, I for Integer, B for Boolean, A for Array, O for Object). type_field denotes the
-semantic interface format (e.g., TXT for Text, JSE for JSON/Embedded, DDL for Dropdown/Enum,
-TGL for Tag List, CBL for Checkbox List, CHK for Checkbox, NMB for Number, DTS for DateTime
-String, DTP for Date Picker). This list is illustrative, not exhaustive: before introducing a new
-type_data or type_field code, search existing structure guides for a code that already covers the
-same concept and reuse it, the same way field names are checked against data/field_index.txt
-before a new one is added.
+S for String, I for Integer, F for Float, B for Boolean, A for Array, O for Object). type_field
+denotes the semantic interface format (e.g., TXT for Text, JSE for JSON/Embedded, DDL for
+Dropdown/Enum, TAG for a tag or multi-value selection list, CHK for Checkbox, NMB for Number,
+DTS for DateTime String, DTI for Date Input, and DTP for Date Picker). These examples are
+illustrative, not exhaustive. The current option codes in
+data/taxonomy/shared/field_and_form_system.json are authoritative; validators must reject an
+unknown code rather than infer or silently accept it.
+
+A DDL, TAG, or other taxonomy-controlled field whose stored field name differs from the canonical
+taxonomy field it reuses must declare taxonomy_field_name in its field-property metadata. For
+example, started_at_precision may declare taxonomy_field_name => 'type_date_precision'. Do not
+duplicate an existing option set merely to support a contextual field name. When the stored field
+name already matches the taxonomy field name, taxonomy_field_name may be omitted.
 
 The $multilingual_text_sample uses eng as its example language. It is strictly required by
 validation tooling if any field defines 'is_translatable' => true; otherwise, it is optional.
@@ -202,10 +208,18 @@ Every *_index_list entry uses this shape:
 ];
 
 index_key is the stable guide key. index_name is the intended physical database index name.
-type_index describes the overall index kind. Common values include STD (Standard), 2DSPHERE or 2D
-(Geospatial), TTL (Expiring), TEXT (Search), or MULTIKEY. type_index_mode describes how one field
+type_index describes the overall index kind. Use the current taxonomy codes, including STD for a
+standard index, CMP for a compound index, TXT for a text index, GEO for a geospatial index, TTL for
+an expiring index, and WLD for a wildcard index. type_index_mode describes how one field
 participates in the index. Collection-level index definitions belong here rather than only in
 relationship metadata.
+
+A MongoDB 2dsphere index uses one field containing a GeoJSON object or supported legacy coordinate
+pair. It must not list separate scalar latitude and longitude fields. The preferred GeoJSON shape
+is one object such as location_point => ['type' => 'Point', 'coordinates' => [longitude,
+latitude]], with type_index => 'GEO' and that one field using type_index_mode => '2DS'. A GeoJSON
+coordinates array stores longitude before latitude. MongoDB 2dsphere indexes are inherently sparse;
+is_sparse remains true in the guide to communicate that effective behavior.
 
 The index entry carries two distinct sort_order values. The entry-level sort_order (the one
 alongside index_key, index_name, and type_index) orders this index entry relative to the other
@@ -233,8 +247,9 @@ $article_main_boundary = [
 reference_field_list names the actual stored fields that hold an identifier into another
 collection (a foreign-key-style reference). It does not include taxonomy-coded fields such as a
 type_* or status_* select: a taxonomy option code is owned classification data validated against a
-taxonomy JSON file, not a reference to another collection's record. When a collection owns no
-cross-collection references, use an empty array rather than omitting the key.
+taxonomy JSON file, not a reference to another collection's record. Include dotted paths for
+references stored inside embedded objects or list items. When a collection owns no cross-collection
+references, use an empty array rather than omitting the key.
 
 The file ends with one return statement containing every declared structural array under a key
 matching its variable name. Include $multilingual_text_sample and *_legacy_name_map only when they
@@ -263,7 +278,8 @@ For a structure change:
    properties, index list, boundary, return statement, and comments consistently;
 6. run php tools/script/build_field_index.php when a guide adds, renames, or removes a field;
 7. run PHP syntax validation for every modified guide;
-8. run php tools/script/validate_structure_guides.php;
+8. run php tools/script/validate_structure_guides.php, then run strict validation for every
+   modified guide with --strict and one --collection=collection_name argument per guide;
 9. inspect the generated index diff and the final guide diff.
 
 Add or update taxonomy JSON in the same change when a new field has controlled or enumerated

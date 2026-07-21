@@ -1,13 +1,17 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Event Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_event
  * Description: Stores evidence-aware establishment lifecycle and history events without overwriting current identity.
  * Purpose: Represents uncertain, approximate, historical, and independently sourced business events.
+ *
+ * Notes:
+ * - related_establishment_id is used only when an event has one unambiguous counterpart; multi-party or direction-sensitive event relationships require separate reviewed event records until a structured relationship model is accepted.
+ * - status_verification is the denormalized current summary and must be synchronized from the applicable record_verification history.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:48:10Z';
+$updated_at = '2026-07-21T11:14:49Z';
 $establishment_event_default = ['status_verification' => 'U', 'level_confidence' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_event = [
     '_id' => 'Ee8K2pQ9xR4tV7zN', // Canonical event identifier.
@@ -65,7 +69,7 @@ $establishment_event_field_property = [
     'status_verification' => ['field_label' => 'Verification Status', 'field_description' => 'Current verification result for the event.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'U'],
     'record_verification_id_list' => ['field_label' => 'Verification Records', 'field_description' => 'Record-verification references supporting or challenging the event.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'research_source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references providing provenance for the event.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
-    'related_establishment_id' => ['field_label' => 'Related Establishment', 'field_description' => 'Predecessor, successor, merged, split, or otherwise event-related establishment.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'related_establishment_id' => ['field_label' => 'Related Establishment', 'field_description' => 'Single unambiguous counterpart establishment for this event; omit it when the relationship is multi-party or its direction cannot be represented safely.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from event verification.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'ACT'],
     'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'is_mandatory' => true, 'min_number' => 1],
     'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the event record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
@@ -74,7 +78,7 @@ $establishment_event_field_property = [
 $establishment_event_subfield_property = [];
 $establishment_event_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
-    ['index_key' => 'event_history', 'index_name' => 'ix_establishment_event_establishment_effective_type', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_date', 'type_index_mode' => 'DESC', 'sort_order' => 20], ['field_name' => 'type_business_event', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
+    ['index_key' => 'event_history', 'index_name' => 'ix_establishment_event_establishment_effective_type', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'establishment_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'effective_date', 'type_index_mode' => 'DES', 'sort_order' => 20], ['field_name' => 'type_business_event', 'type_index_mode' => 'ASC', 'sort_order' => 30]], 'sort_order' => 20],
 ];
 $establishment_event_boundary = [
     'owns' => ['independently sourced establishment lifecycle and history events'],

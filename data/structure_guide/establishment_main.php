@@ -1,26 +1,25 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Main Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_main
  * Description: Stores one establishment or supported provider's public profile and directory classification record.
  * Purpose: Documents the establishment_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
  * Notes:
  * - Public location and contact values must not expose private residential addresses or personal channels.
+ * - Contact channels and operating schedules are loaded from their authoritative collections; they are not duplicated as unsourced snapshots here.
  * - The current public Spa page may use synthetic records until persistent establishment work is complete.
  */
 
 $created_at = '2026-07-20T07:25:30Z';
-$updated_at = '2026-07-21T10:48:10Z';
+$updated_at = '2026-07-21T11:14:49Z';
 $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
     'previous_slug_list' => [],
     'landmark_list' => [],
-    'contact_channel_list' => [],
     'treatment_area_list' => [],
-    'operating_hours' => [],
     'amenity_list' => [],
     'accessibility_feature_list' => [],
     'payment_method_list' => [],
@@ -64,8 +63,7 @@ $establishment_main = [
     'postal_code' => '1200', // Postal code.
     'address_public' => 'Makati City, Metro Manila', // Approved public destination or privacy-reduced area.
     'level_address_visibility' => 'FUL', // Approved address-detail visibility.
-    'coordinate_latitude' => 14.5547, // Public entrance or approved privacy-reduced latitude.
-    'coordinate_longitude' => 121.0244, // Public entrance or approved privacy-reduced longitude.
+    'location_point' => ['type' => 'Point', 'coordinates' => [121.0244, 14.5547]], // GeoJSON public entrance or approved privacy-reduced point; longitude precedes latitude.
     'type_coordinate' => 'ENT', // Meaning of the stored coordinate.
     'level_coordinate_confidence' => 'H', // Confidence in the mapped point.
     'direction_note' => ['eng' => ['text' => 'Use the entrance beside the pharmacy.']], // Multilingual arrival directions.
@@ -73,13 +71,7 @@ $establishment_main = [
     'landmark_list' => [ // Bounded nearby public landmarks.
         ['landmark_name' => 'Sample Mall', 'walking_duration_minute' => 5, 'direction_note' => ['eng' => ['text' => 'Walk east from the main entrance.']]],
     ],
-    'contact_channel_list' => [ // Bounded contact channels.
-        ['type_contact_channel' => 'EML', 'type_contact_number' => '', 'contact_label' => 'Front Desk', 'contact_value' => 'hello@sample.com', 'contact_url' => 'mailto:hello@sample.com', 'status_contact_channel' => 'ACT'],
-    ],
     'treatment_area_list' => [['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4]], // Bounded public treatment-area summary.
-    'operating_hours' => [ // Regular weekly hours.
-        ['day_of_week' => 'Monday', 'open_time' => '09:00', 'close_time' => '18:00'],
-    ],
     'amenity_list' => ['PRK', 'WIFI', 'TOWL'], // Confirmed public amenity codes.
     'accessibility_feature_list' => ['SFE', 'ELV'], // Confirmed accessibility codes.
     'payment_method_list' => ['CSH', 'CC'], // Accepted payment-method codes.
@@ -97,8 +89,8 @@ $establishment_main_field_order = [
     'type_establishment_operation', 'status_establishment', 'type_client_access',
     'target_client_focus', 'country_id', 'geographic_area_id_list', 'street_address', 'building_name',
     'floor_label', 'unit_label', 'postal_code', 'address_public', 'level_address_visibility',
-    'coordinate_latitude', 'coordinate_longitude', 'type_coordinate', 'level_coordinate_confidence',
-    'direction_note', 'parking_note', 'landmark_list', 'contact_channel_list', 'treatment_area_list', 'operating_hours', 'amenity_list',
+    'location_point', 'type_coordinate', 'level_coordinate_confidence',
+    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'amenity_list',
     'accessibility_feature_list', 'payment_method_list', 'primary_media_image_id',
     'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at', 'last_confirmed_at',
 ];
@@ -108,25 +100,16 @@ $establishment_main_embedded_structure = [
         'slug' => 'old-sample-wellness-spa',
         'retired_at' => '2026-06-01T00:00:00Z',
     ],
+    'location_point' => [
+        'type' => 'Point',
+        'coordinates' => [121.0244, 14.5547],
+    ],
     'landmark_list' => [
         'landmark_name' => 'Sample Mall',
         'walking_duration_minute' => 5,
         'direction_note' => ['eng' => ['text' => 'Walk east from the main entrance.']],
     ],
-    'contact_channel_list' => [
-        'type_contact_channel' => 'EML',
-        'type_contact_number' => '',
-        'contact_label' => 'Front Desk',
-        'contact_value' => 'hello@sample.com',
-        'contact_url' => 'mailto:hello@sample.com',
-        'status_contact_channel' => 'ACT',
-    ],
     'treatment_area_list' => ['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4],
-    'operating_hours' => [
-        'day_of_week' => 'Monday',
-        'open_time' => '09:00',
-        'close_time' => '18:00',
-    ],
 ];
 
 $establishment_main_field_property = [
@@ -155,16 +138,13 @@ $establishment_main_field_property = [
     'postal_code' => ['field_label' => 'Postal Code', 'field_description' => 'Postal code.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'address_public' => ['field_label' => 'Public Address', 'field_description' => 'Approved public destination or privacy-reduced area.', 'type_data' => 'S', 'type_field' => 'TXT'],
     'level_address_visibility' => ['field_label' => 'Address Visibility Level', 'field_description' => 'Controlled amount of address detail permitted for display.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_indexed' => true],
-    'coordinate_latitude' => ['field_label' => 'Latitude', 'field_description' => 'Public entrance or approved privacy-reduced latitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -90, 'max_number' => 90, 'is_indexed' => true],
-    'coordinate_longitude' => ['field_label' => 'Longitude', 'field_description' => 'Public entrance or approved privacy-reduced longitude.', 'type_data' => 'D', 'type_field' => 'NMB', 'min_number' => -180, 'max_number' => 180, 'is_indexed' => true],
+    'location_point' => ['field_label' => 'Location Point', 'field_description' => 'GeoJSON Point for the public entrance or approved privacy-reduced location, storing longitude before latitude.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_indexed' => true],
     'type_coordinate' => ['field_label' => 'Coordinate Type', 'field_description' => 'Controlled meaning of the stored coordinate.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'level_coordinate_confidence' => ['field_label' => 'Coordinate Confidence', 'field_description' => 'Controlled confidence that the point represents its stated coordinate type.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'direction_note' => ['field_label' => 'Direction Note', 'field_description' => 'Multilingual arrival directions.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
     'parking_note' => ['field_label' => 'Parking Note', 'field_description' => 'Multilingual parking information.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
     'landmark_list' => ['field_label' => 'Landmark List', 'field_description' => 'Bounded nearby public landmarks.', 'type_data' => 'A', 'type_field' => 'JSE'],
-    'contact_channel_list' => ['field_label' => 'Contact Channel List', 'field_description' => 'Lightweight bounded display snapshot of public contact channels for directory rendering; establishment_contact is the historied, verified, and sourced authority.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'treatment_area_list' => ['field_label' => 'Treatment Area List', 'field_description' => 'Bounded public treatment-area summary; individual bookable resources are separate.', 'type_data' => 'A', 'type_field' => 'JSE'],
-    'operating_hours' => ['field_label' => 'Operating Hours', 'field_description' => 'Lightweight bounded display snapshot of regular weekly operating hours for directory rendering; establishment_schedule is the historied, versioned authority and the source for open-now calculations.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'amenity_list' => ['field_label' => 'Amenity List', 'field_description' => 'Confirmed public amenity codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'accessibility_feature_list' => ['field_label' => 'Accessibility Feature List', 'field_description' => 'Confirmed public accessibility codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'payment_method_list' => ['field_label' => 'Payment Method List', 'field_description' => 'Accepted payment-method codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
@@ -179,22 +159,16 @@ $establishment_main_field_property = [
 $establishment_main_subfield_property = [
     'previous_slug_list.slug' => ['field_label' => 'Previous Slug', 'field_description' => 'A formerly active establishment_slug value.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
     'previous_slug_list.retired_at' => ['field_label' => 'Slug Retired At', 'field_description' => 'UTC time this slug stopped being the current public slug.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+    'location_point.type' => ['field_label' => 'GeoJSON Geometry Type', 'field_description' => 'GeoJSON geometry discriminator, fixed to Point for an establishment location.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
+    'location_point.coordinates' => ['field_label' => 'GeoJSON Coordinates', 'field_description' => 'Two-number GeoJSON coordinate array ordered as longitude then latitude.', 'type_data' => 'A', 'type_field' => 'JSE', 'is_mandatory' => true],
+    'location_point.coordinates.*' => ['field_label' => 'GeoJSON Coordinate Number', 'field_description' => 'One floating-point longitude or latitude member of the ordered coordinate pair.', 'type_data' => 'F', 'type_field' => 'NMB', 'is_mandatory' => true],
     'landmark_list.landmark_name' => ['field_label' => 'Landmark Name', 'field_description' => 'Public landmark name.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
     'landmark_list.walking_duration_minute' => ['field_label' => 'Walking Duration Minute', 'field_description' => 'Approximate non-negative walk duration.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'landmark_list.direction_note' => ['field_label' => 'Landmark Direction Note', 'field_description' => 'Multilingual directions from the landmark.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
-    'contact_channel_list.type_contact_channel' => ['field_label' => 'Contact Channel Type', 'field_description' => 'Controlled contact channel type.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true],
-    'contact_channel_list.type_contact_number' => ['field_label' => 'Contact Number Type', 'field_description' => 'Controlled contact number type if applicable.', 'type_data' => 'S', 'type_field' => 'DDL'],
-    'contact_channel_list.contact_label' => ['field_label' => 'Contact Label', 'field_description' => 'Public contact label.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
-    'contact_channel_list.contact_value' => ['field_label' => 'Contact Value', 'field_description' => 'Public contact value.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true],
-    'contact_channel_list.contact_url' => ['field_label' => 'Contact URL', 'field_description' => 'Public contact URL.', 'type_data' => 'S', 'type_field' => 'URL'],
-    'contact_channel_list.status_contact_channel' => ['field_label' => 'Contact Channel Status', 'field_description' => 'Controlled status.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'treatment_area_list.type_treatment_area' => ['field_label' => 'Treatment Area Type', 'field_description' => 'Controlled treatment-area type.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true],
     'treatment_area_list.level_treatment_privacy' => ['field_label' => 'Treatment Privacy Level', 'field_description' => 'Controlled privacy level.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'treatment_area_list.type_treatment_capacity' => ['field_label' => 'Treatment Capacity Type', 'field_description' => 'Controlled capacity class.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'treatment_area_list.quantity' => ['field_label' => 'Quantity', 'field_description' => 'Non-negative count when confirmed.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
-    'operating_hours.day_of_week' => ['field_label' => 'Day of Week', 'field_description' => 'Day name or holiday identifier.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true],
-    'operating_hours.open_time' => ['field_label' => 'Open Time', 'field_description' => 'Opening time.', 'type_data' => 'S', 'type_field' => 'TMI'],
-    'operating_hours.close_time' => ['field_label' => 'Close Time', 'field_description' => 'Closing time.', 'type_data' => 'S', 'type_field' => 'TMI'],
 ];
 
 $establishment_main_index_list = [
@@ -211,17 +185,17 @@ $establishment_main_index_list = [
         'index_field_list' => [['field_name' => 'country_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'type_spa', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'status_establishment', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'status_record_lifecycle', 'type_index_mode' => 'ASC', 'sort_order' => 40]], 'sort_order' => 30,
     ],
     [
-        'index_key' => 'coordinate', 'index_name' => 'ix_establishment_main_coordinate', 'type_index' => '2DSPHERE', 'is_unique' => false, 'is_sparse' => true,
-        'index_field_list' => [['field_name' => 'coordinate_longitude', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'coordinate_latitude', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 40,
+        'index_key' => 'location_point', 'index_name' => 'ix_establishment_main_location_point', 'type_index' => 'GEO', 'is_unique' => false, 'is_sparse' => true,
+        'index_field_list' => [['field_name' => 'location_point', 'type_index_mode' => '2DS', 'sort_order' => 10]], 'sort_order' => 40,
     ],
 ];
 
 $establishment_main_boundary = [
-    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, a lightweight display snapshot of contact channels and operating hours, retired-slug history, and lifecycle'],
+    'owns' => ['public establishment identity, directory classification, current public location, bounded facility summaries, retired-slug history, and lifecycle'],
     'reference_field_list' => ['country_id', 'geographic_area_id_list', 'primary_media_image_id'],
     'does_not_own' => [
-        'historied, verified, and sourced contact channels, owned by establishment_contact',
-        'versioned weekly operating intervals and dated exceptions, owned by establishment_schedule',
+        'contact channels, owned by establishment_contact',
+        'weekly operating intervals and dated exceptions, owned by establishment_schedule',
         'establishment-person and establishment-practitioner relationships, owned by establishment_person and establishment_practitioner',
         'provider menu offerings and pricing, owned by establishment_service',
         'sourced lifecycle and history events, owned by establishment_event',
