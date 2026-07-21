@@ -2,6 +2,7 @@ Title: Massage Nexus PHP Structure Guide Standard
 Document Version: 1.00
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
+
 Document Description: Defines the required purpose, metadata, timestamps, field layers, ordering, validation, and maintenance workflow for PHP-readable database structure guides under docs/04-architecture/structure-guide/.
 
 ================================================================================

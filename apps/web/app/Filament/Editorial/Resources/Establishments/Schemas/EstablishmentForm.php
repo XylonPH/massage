@@ -51,12 +51,12 @@ class EstablishmentForm
                         Tab::make('Classification')
                             ->schema([
                                 Select::make('type_spa')
-                                    ->label('Spa Type')
+                                    ->label('Establishment Type')
                                     ->options(self::getTaxonomyOptions('type_spa'))
                                     ->searchable()
                                     ->required(),
                                 Select::make('level_spa_market')
-                                    ->label('Spa Market Class')
+                                    ->label('Market Class')
                                     ->options(self::getTaxonomyOptions('level_spa_market')),
                                 Select::make('type_physical_setting')
                                     ->label('Physical Setting')
@@ -86,7 +86,7 @@ class EstablishmentForm
                                     ->multiple()
                                     ->options(self::getTaxonomyOptions('target_client_focus')),
                             ])->columns(2),
-                        Tab::make('Location & Contact')
+                        Tab::make('Location')
                             ->schema([
                                 Textarea::make('address_public')
                                     ->label('Public Address')
@@ -104,11 +104,11 @@ class EstablishmentForm
                                     ->minValue(-180)
                                     ->maxValue(180),
                                 Textarea::make('direction_note.eng')
-                                    ->label('Directions (English)')
+                                    ->label('Directions')
                                     ->rows(2)
                                     ->columnSpanFull(),
                                 Textarea::make('parking_note.eng')
-                                    ->label('Parking Information (English)')
+                                    ->label('Parking Information')
                                     ->rows(2)
                                     ->columnSpanFull(),
                                 Repeater::make('landmark_list')
@@ -125,6 +125,9 @@ class EstablishmentForm
                                     ->columns(2)
                                     ->defaultItems(0)
                                     ->columnSpanFull(),
+                            ])->columns(2),
+                        Tab::make('Contact')
+                            ->schema([
                                 Repeater::make('contact_channel_list')
                                     ->label('Public Business Contact Channels')
                                     ->helperText('Do not enter private personal contact details.')
@@ -158,6 +161,35 @@ class EstablishmentForm
                                     ->defaultItems(0)
                                     ->columnSpanFull(),
                             ])->columns(2),
+                        Tab::make('Operating Hours')
+                            ->schema([
+                                Repeater::make('operating_hours')
+                                    ->label('Regular Operating Hours')
+                                    ->schema([
+                                        Select::make('day_of_week')
+                                            ->label('Day')
+                                            ->options([
+                                                'Monday' => 'Monday',
+                                                'Tuesday' => 'Tuesday',
+                                                'Wednesday' => 'Wednesday',
+                                                'Thursday' => 'Thursday',
+                                                'Friday' => 'Friday',
+                                                'Saturday' => 'Saturday',
+                                                'Sunday' => 'Sunday',
+                                                'Public Holidays' => 'Public Holidays',
+                                            ])
+                                            ->required(),
+                                        TextInput::make('open_time')
+                                            ->label('Opening Time')
+                                            ->type('time'),
+                                        TextInput::make('close_time')
+                                            ->label('Closing Time')
+                                            ->type('time'),
+                                    ])
+                                    ->columns(3)
+                                    ->defaultItems(7)
+                                    ->columnSpanFull(),
+                            ]),
                         Tab::make('Facilities')
                             ->schema([
                                 Repeater::make('treatment_area_list')
@@ -226,11 +258,28 @@ class EstablishmentForm
                                     ->label('General Amenities')
                                     ->multiple()
                                     ->inline()
+                                    ->icons([
+                                        'WIFI' => 'heroicon-o-wifi',
+                                        'PRK' => 'heroicon-o-truck',
+                                        'WTEA' => 'heroicon-o-cup',
+                                        'SLIP' => 'heroicon-o-shoe',
+                                        'TOWL' => 'heroicon-o-stop',
+                                        'SROB' => 'heroicon-o-user',
+                                        'WSHR' => 'heroicon-o-home',
+                                        'LOUNGE' => 'heroicon-o-sofa',
+                                    ])
                                     ->options(self::getTaxonomyOptions('amenities')),
                                 ToggleButtons::make('accessibility_information')
                                     ->label('Accessibility Features')
                                     ->multiple()
                                     ->inline()
+                                    ->icons([
+                                        'SFE' => 'heroicon-o-arrow-right-circle',
+                                        'ELV' => 'heroicon-o-arrows-up-down',
+                                        'AWA' => 'heroicon-o-home',
+                                        'ATR' => 'heroicon-o-sparkles',
+                                        'AP' => 'heroicon-o-truck',
+                                    ])
                                     ->options(self::getTaxonomyOptions('accessibility_information')),
                             ])->columns(2),
                     ])->columnSpanFull(),

@@ -57,6 +57,7 @@ class Establishment extends Model
         'bed_mat_chair_setup',
         'air_conditioning_information',
         'accessibility_information',
+        'operating_hours',
     ];
 
     protected $casts = [
@@ -68,6 +69,7 @@ class Establishment extends Model
         'landmark_list' => 'array',
         'treatment_area_list' => 'array',
         'contact_channel_list' => 'array',
+        'operating_hours' => 'array',
     ];
 
     protected static function boot()
