@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 1.71
+Document Version: 1.80
 Date Created: 2026-07-12
 Revision Date: 2026-07-21
 
@@ -168,14 +168,31 @@ consent from user_policy; bounded ordinary preferences remain in user_main.
 - organization_establishment
   Relationship between an organization and an establishment, including branch and operating relationships.
 
-- establishment_user
-  Factual user-to-establishment relationships such as owner, investor, manager, or authorized
-  operator. One establishment may have several related users, one user may relate to several
-  establishments, and separate relationship records may coexist. These records do not grant
+- establishment_person
+  Factual person-to-establishment relationships such as legal owner, beneficial owner, investor,
+  founder, operator, manager, representative, or non-practitioner staff member. The relationship
+  may carry a minimal name snapshot when no canonical private-person record exists, plus optional
+  user or practitioner references. It does not own private legal identity and does not grant
   workspace access; operational authority is assigned separately through access_assignment.
 
 - establishment_main
-  One establishment or supported provider profile, using Establishment as the technical term and Spa as an appropriate public label.
+  One establishment or supported provider identity and current public profile, including current
+  classification, approved public location, bounded treatment-area/amenity/accessibility summaries,
+  primary media reference, lifecycle, and freshness. Contact channels, operating schedules,
+  services, relationships, evidence, observations, and media records are separate.
+
+- establishment_contact
+  One current or historical official establishment contact channel with its own normalization,
+  effective period, observation, confirmation, verification, visibility, and lifecycle.
+
+- establishment_operating_schedule
+  One effective version of bounded weekly operating intervals and dated exceptions. Open-now is
+  derived from establishment status, time zone, effective schedule, and current exceptions; it is
+  not stored as an authoritative boolean.
+
+- establishment_event
+  One independently sourced establishment lifecycle or history event, including uncertain or
+  approximate openings, closures, relocation, renaming, renovation, and operator changes.
 
 - establishment_service
   One actual establishment menu item, including ordinary, branded, combined, package, add-on, seasonal, or custom-named offerings.
@@ -188,7 +205,7 @@ consent from user_policy; bounded ordinary preferences remain in user_main.
   active disaffiliation or dispute must immediately remove the practitioner from public
   discovery and availability pools rather than waiting for a moderation pass.
 
-Regular bounded profile details may initially remain embedded in establishment_main.
+Bounded treatment-area and facility summaries may remain embedded in establishment_main.
 
 A separate treatment-area collection should be created only when treatment areas become independently bookable, searchable, media-rich, availability-controlled, or managed as resources.
 
@@ -198,10 +215,17 @@ A separate treatment-area collection should be created only when treatment areas
   One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label. Proposed structure; see data/structure_guide/practitioner_main.php.
 
 - practitioner_service
-  Relationship between a practitioner and a normalized service or capability.
+  Relationship between a practitioner and a normalized service.
+
+- practitioner_capability
+  Evidence-aware professional capability that is not equivalent to one service or credential.
 
 - practitioner_credential
   Individual credential, training, certification, or license record with its own lifecycle and verification needs.
+
+- practitioner_contact
+  One approved professional practitioner contact channel with explicit visibility, context,
+  effective history, and verification. Private personal channels are not stored here.
 
 Full practitioner profiles must not be embedded inside establishment_main.
 
@@ -311,13 +335,22 @@ across these domains without forcing their authoritative records into one generi
 claim_main - Shared ownership or management claim workflow for approved claimable targets. A claim
 declaration is not an active establishment relationship or access assignment until the applicable
 review creates or updates those separate records.
-verification_main - Shared verification process and result history.
+record_verification - Shared cross-target, field-aware verification process and result history.
 contribution_main - Authenticated user or staff proposal to add, correct, translate, enrich, or
 update a record. A contribution may declare a submitter relationship and request workspace access,
 but neither declaration grants authority before authorized review.
-revision_main - Approved and restorable revision history for supported targets.
+record_revision - Approved and restorable generic revision history for targets without a more
+specialized revision collection. article_revision remains authoritative for Article body revisions.
 moderation_main - Moderation case or review workflow.
 moderation_action - Human decision, administrative action, AI recommendation, escalation, reversal, or other action inside a moderation case.
+
+research_source - Reusable source identity, locator, publication/access dates, reliability,
+visibility, and retention context.
+research_observation - One sourced assertion kept independently from an accepted target value,
+including exact wording, uncertainty, firsthand/hearsay state, confidence, review, and workflow
+references. Establishment- and practitioner-specific observation duplicates are not created.
+document_main - Secure metadata, protected storage reference, access, redaction, verification, and
+retention for claim, credential, permit, identity, health, and other evidence documents.
 
 AI may assist with classification, comparison, flagging, and recommendations, but the system must remain operable through manual review when AI is unavailable.
 

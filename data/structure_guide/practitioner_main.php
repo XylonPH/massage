@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Practitioner Main Structure Guide
- * Version: 0.20
+ * Version: 1.00
  * Collection: practitioner_main
  * Description: Stores one practitioner professional profile independently of a user account or employer.
  * Purpose: Documents the practitioner_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -29,7 +29,7 @@
  * - Services and capabilities live in practitioner_service; credentials live
  *   in practitioner_credential; reviews and ratings live in the shared
  *   review/rating domain. Verification is faceted and owned by
- *   verification_main; this collection stores no blanket verified flag
+ *   record_verification; this collection stores no blanket verified flag
  *   (docs/05-directory/therapist-profile.txt sections 1 and 12).
  * - Location and service-area representation is deferred pending the shared
  *   location reference integration; only free-text summary display is used by
@@ -38,7 +38,7 @@
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T08:49:01Z';
 /**
  * Actual record-level defaults for practitioner_main.
  * Sparse-default storage may omit these values in actual database records.
@@ -65,7 +65,7 @@ $multilingual_text_sample = [
 	'eng' => [
 		'text' => 'Sample practitioner text',
 		'method_translation' => 'HUM',
-		'status_review' => 'A',
+		'status_review' => 'APR',
 	],
 ];
 
@@ -84,36 +84,39 @@ $practitioner_main = [
 		'eng' => [
 			'text' => 'Maya Santos',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'APR',
 		],
 	], // approved public professional name; multilingual bounded text for transliteration support
 	'practitioner_slug' => [ // Multilingual URL-safe slug text for public therapist routes. Values should use kebab-case. The stable _id, not the slug, prevents duplicate records.
 		'eng' => [
 			'text' => 'maya-santos',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'APR',
 		],
 	], // multilingual public URL slug text; values must be kebab-case
 	'short_description' => [ // Optional multilingual professional summary for the identity header, listing cards, and search snippets. Each language text value should not exceed 255 characters.
 		'eng' => [
 			'text' => 'Calm, detail-focused therapist specializing in Swedish and deep tissue massage for stress recovery.',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'APR',
 		],
 	], // optional; maximum 255 characters per language text value
 	'biography' => [ // Optional longer public professional biography. Multilingual text; machine translation must remain identified per the Translation System.
 		'eng' => [
 			'text' => 'Maya has practiced professional massage for over nine years across spa and independent settings. She focuses on pressure communication, careful draping, and helping first-time clients feel at ease.',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'APR',
 		],
 	], // optional longer public biography; multilingual text
 
 	# Parent / Classification
-	'language_original_id' => 'L8pD3sW6nC1yH5qR', // original authored language of name/biography source content
+	'language_original_id' => 3049, // numeric common_reference language identifier; 3049 = English
 	'type_practice_setting' => ['SP', 'PS', 'CR'], // multi-select; Spa, Private Studio, Client Residence
 	'type_specialty_focus' => ['RLX', 'DP', 'STR'], // multi-select; Relaxation, Deep Pressure, Stress Relief
 	'target_client_focus' => ['GP', 'OW', 'AT'], // multi-select; General Public, Office Workers, Athletes
+	'professional_start_date' => '2017-01-01', // best supported professional-practice start date
+	'professional_start_date_precision' => 'Y', // shared date precision for professional_start_date
+	'professional_start_date_qualifier' => 'APP', // shared date qualifier; never infer an exact start from first observation
 	'status_therapist_practice' => 'AC', // AC = Active, IN = Inactive, RT = Retired, UN = Unknown
 
 	# Claim
@@ -163,6 +166,9 @@ $practitioner_main_field_order = [
 	'type_practice_setting',
 	'type_specialty_focus',
 	'target_client_focus',
+	'professional_start_date',
+	'professional_start_date_precision',
+	'professional_start_date_qualifier',
 	'status_therapist_practice',
 	'is_claimed',
 	'rating_official',
@@ -270,6 +276,9 @@ $practitioner_main_field_property = [
 		'type_data' => 'A',
 		'type_field' => 'TGL',
 	],
+	'professional_start_date' => ['field_label' => 'Professional Start Date', 'field_description' => 'Best supported practice start date; distinct from first observation.', 'type_data' => 'S', 'type_field' => 'DTE'],
+	'professional_start_date_precision' => ['field_label' => 'Professional Start Date Precision', 'field_description' => 'Shared type_date_precision code for the professional start date.', 'type_data' => 'S'],
+	'professional_start_date_qualifier' => ['field_label' => 'Professional Start Date Qualifier', 'field_description' => 'Shared type_date_qualifier code for the professional start date.', 'type_data' => 'S'],
 	'status_therapist_practice' => [
 		'field_label' => 'Professional Practice Status',
 		'field_description' => 'Overall current practice status for the therapist. Separate from per-context Availability Status and from person life status. Options owned by practitioner_classification.json.',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Access Assignment Structure Guide
- * Version: 0.20
+ * Version: 0.30
  * Collection: access_assignment
  * Description: Stores one additive role or direct-permission assignment for a user within an optional scope.
  * Purpose: Documents the access_assignment record shape for review, validation, comparison, and implementation without acting as runtime authorization code, a migration, or a seed.
@@ -9,11 +9,11 @@
  * Notes:
  * - Personal user capabilities do not require an assignment.
  * - Only active assignments inside their effective and expiry window grant access.
- * - Establishment ownership or management belongs to establishment_user.
+ * - Establishment ownership or management belongs to establishment_person or organization_establishment; this collection owns only permissions.
  */
 
 $created_at = '2026-07-20T10:31:38Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T08:49:01Z';
 $access_assignment_default = [
     'permission_code_list' => [],
     'scope_access' => 'GBL',

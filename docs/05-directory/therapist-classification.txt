@@ -1,5 +1,5 @@
 Title: Massage Nexus Therapist Classification
-Document Version: 1.40
+Document Version: 1.50
 Date Created: 2026-07-11
 Revision Date: 2026-07-20
 Document Description: Defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus, including recommended snake_case field names, stable option codes, labels, and internal descriptions.
@@ -298,3 +298,15 @@ RV   | Revoked   | Credential has been formally withdrawn or cancelled.
 UN   | Unknown   | Current lifecycle condition cannot be confirmed.
 
 A public profile summary should be derived from individual credential records rather than stored as one conflicting profile-level status.
+
+RELATED STRUCTURE TAXONOMY
+
+data/taxonomy/massage_nexus/establishment_research.json defines the controlled fields needed by
+the accepted relationship guides: status_affiliation, status_dispute, type_credential,
+type_capability, and status_capability. Existing type_work_arrangement, position_affiliation,
+status_credential_verification, and status_credential_lifecycle fields in this document remain
+authoritative and are not duplicated.
+
+Work arrangement and position belong to establishment_practitioner when they describe an
+establishment-specific context. Credential verification and lifecycle belong to each
+practitioner_credential record. A practitioner-wide boolean must not substitute for those records.

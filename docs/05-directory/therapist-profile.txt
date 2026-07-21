@@ -1,5 +1,5 @@
 Title: Massage Nexus Therapist Profile Guide
-Document Version: 0.61
+Document Version: 0.70
 Date Created: 2026-07-14
 Revision Date: 2026-07-21
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, privacy, and lifecycle of a Massage Nexus therapist profile. It distinguishes the public professional record from the user account, professional-context relationships, Therapist Workspace, booking engine, and branded website.
@@ -955,3 +955,17 @@ Open items requiring later legal, implementation, or market validation:
 - country-specific invoice and tax support;
 - exact intake-retention rules;
 - premium workspace and Branded Portal limits.
+
+DATABASE RESPONSIBILITY NOTE
+
+practitioner_main owns the public professional identity and profile, not private legal identity.
+practitioner_contact owns approved professional contact channels with explicit visibility and
+context. practitioner_service maps a practitioner to normalized services;
+practitioner_capability owns non-service capabilities; practitioner_credential owns individual
+credentials and their lifecycle; establishment_practitioner owns establishment-specific roster,
+work arrangement, position, booking, confirmation, dispute, and effective-date facts.
+
+The common-reference language relationship remains numeric. Verification is faceted through
+record_verification; credential evidence uses document_main; uncertain sourced claims use
+research_observation. No blanket verified or certified boolean proves every facet, and a first
+observation never becomes an inferred professional or affiliation start date.

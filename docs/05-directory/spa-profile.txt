@@ -1,5 +1,5 @@
 Title: Massage Nexus Spa Profile Guide
-Document Version: 0.80
+Document Version: 0.90
 Date Created: 2026-07-14
 Revision Date: 2026-07-20
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, and lifecycle of a Massage Nexus spa profile. It distinguishes the public establishment record from the Operator Workspace, Branded Portal, organization record, booking engine, and private operational data.
@@ -811,3 +811,24 @@ Open items requiring later legal, implementation, or market validation:
 - public confidence and freshness wording by field type;
 - market-specific rules for permit and certificate display;
 - final profile completeness measurement and missing-information prompts.
+
+DATABASE RESPONSIBILITY NOTE
+
+The current structure-guide boundary is:
+- establishment_main owns current public identity, classification, approved location, bounded
+  treatment-area/amenity/accessibility summaries, lifecycle, and freshness;
+- establishment_contact owns current and historical official business contact channels;
+- establishment_operating_schedule owns effective weekly hours and dated exceptions;
+- establishment_service owns provider menu items, packages, combinations, add-ons, duration
+  options, effective prices, and mappings to service_main;
+- organization_establishment, establishment_person, and establishment_practitioner own their
+  distinct effective-dated relationships;
+- establishment_event preserves independently sourced lifecycle and history events;
+- research_source and research_observation preserve provenance and uncertain source assertions;
+- record_verification, document_main, claim_main, media_image, and media_video retain their shared
+  cross-target responsibilities.
+
+Contact channels and weekly hours are no longer embedded as authoritative fields in
+establishment_main. The current application demo may continue to expose legacy embedded values
+until persistence integration is implemented; that compatibility shape does not change database
+ownership. Open-now remains derived and is never a manually maintained authoritative boolean.

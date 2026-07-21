@@ -1,130 +1,56 @@
 <?php
 /**
- * Title: Massage Nexus Claim Main Structure Guide
- * Version: 1.10
+ * Title: Massage Nexus Claim Structure Guide
+ * Version: 2.00
  * Collection: claim_main
- * Description: Stores one reviewed claim of authority or relationship to a governed record.
- * Purpose: Documents the claim_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
- *
- * Notes:
- * - claim_main stores ownership or management claims for claimable targets
- *   such as establishments or practitioner profiles.
+ * Description: Stores one reviewed claim of relationship and requested authority over a supported target.
+ * Purpose: Separates declared relationship, evidence, verification, decision, dispute, revocation, and resulting workspace access.
  */
-
 $created_at = '2026-07-20T12:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
-$claim_main_default = [
-	'status_claim' => 'PEN', // PEN = Pending
-	'type_relationship' => 'MGR', // MGR = Manager
-	'reviewer_user_id' => null,
-	'reviewed_at' => null,
-	'is_revoked' => false,
-];
-
+$updated_at = '2026-07-21T08:49:01Z';
+$claim_main_default = ['claimant_organization_id' => null, 'requested_permission_code_list' => [], 'document_id_list' => [], 'record_verification_id_list' => [], 'status_claim' => 'PND', 'resulting_access_assignment_id' => null, 'status_record_lifecycle' => 'ACT'];
 $claim_main = [
-	# Primary
-	'_id' => 'C7xK2pQ9xR4tY8zA', // Claim ID.
-
-	# Target
-	'target_collection' => 'establishment_main', // Target Collection.
-	'target_record_id' => 'E6sQ2nW9kD4vH7pM', // Target Record ID.
-	
-	# Submission
-	'claimant_user_id' => 'U5rK8mP2xN7qL4vA', // User claiming the profile
-	'type_relationship' => 'OWN', // OWN = Owner, MGR = Manager, PR = Public Relations, EMP = Employee
-	'claim_evidence_note' => 'I am the registered owner, here is the DTI registration.', // Claim Evidence Note.
-	
-	# Status & Review
-	'status_claim' => 'APR', // PEN = Pending, APR = Approved, REJ = Rejected, REV = Revoked
-	'reviewer_user_id' => 'U2pR7vX4kT9mC5qL', // Administrator who reviewed it
-	'reviewed_at' => '2026-07-20T14:45:00Z', // Reviewed At.
-	'decision_note' => 'Ownership verified via provided documents.', // Decision Note.
-	
-	# Lifecycle
-	'is_revoked' => false, // Is Revoked.
-	
-	# Audit
-	'created_at' => $created_at, // Created At.
-	'updated_at' => $updated_at, // Updated At.
+    '_id' => 'Cl7K2pQ9xR4tV8zN', // Canonical claim identifier.
+    'target_collection' => 'establishment_main', // Claimed target collection.
+    'target_record_id' => 'Es7K2pQ9xR4tV8zN', // Claimed target identifier.
+    'claimant_user_id' => 'U5rK8mP2xN7qL4vA', // Claimant account.
+    'claimant_organization_id' => 'Or8K2pQ9xR4tV7zN', // Optional represented organization.
+    'type_claim_relationship' => 'OWN', // Declared relationship; not proof by itself.
+    'requested_role_workspace' => 'operator', // Requested role bundle.
+    'requested_permission_code_list' => ['establishment.edit'], // Requested additive authority.
+    'claim_statement' => 'I am authorized to administer this establishment.', // Claimant statement.
+    'submitted_at' => '2026-07-20T12:00:00Z', // Submission time.
+    'document_id_list' => ['Do8K2pQ9xR4tV7zN'], // Protected evidence documents.
+    'record_verification_id_list' => ['Vr8K2pQ9xR4tV7zN'], // Verification processes and results.
+    'status_claim' => 'APR', // Claim workflow and decision state.
+    'reviewer_user_id' => 'U2pR7vX4kT9mC5qL', // Authorized reviewer.
+    'decided_at' => '2026-07-20T14:45:00Z', // Decision time.
+    'decision_reason' => 'Authority supported by reviewed evidence.', // Minimum safe decision reason.
+    'dispute_opened_at' => null, // Dispute start when applicable.
+    'dispute_resolved_at' => null, // Dispute resolution when applicable.
+    'revoked_at' => null, // Authority revocation time.
+    'revoked_by_user_id' => null, // Revoking actor.
+    'revocation_reason' => null, // Revocation reason.
+    'resulting_access_assignment_id' => 'Aa7K2pQ9xR4tV8zN', // Separately authorized access assignment.
+    'status_record_lifecycle' => 'ACT', // Database lifecycle.
+    'created_at' => $created_at, // UTC creation time.
+    'updated_at' => $updated_at, // UTC update time.
 ];
-
-$claim_main_field_order = [
-	'_id',
-	'target_collection',
-	'target_record_id',
-	'claimant_user_id',
-	'type_relationship',
-	'claim_evidence_note',
-	'status_claim',
-	'reviewer_user_id',
-	'reviewed_at',
-	'decision_note',
-	'is_revoked',
-	'created_at',
-	'updated_at',
-];
-
+$claim_main_field_order = array_keys($claim_main);
 $claim_main_embedded_structure = [];
-
-$claim_main_field_property = [
-	'_id' => ['field_label' => 'Claim ID', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
-	
-	'target_collection' => ['field_label' => 'Target Collection', 'type_data' => 'S', 'is_mandatory' => true, 'is_indexed' => true],
-	'target_record_id' => ['field_label' => 'Target Record ID', 'type_data' => 'S', 'is_relational' => true, 'is_mandatory' => true, 'is_indexed' => true],
-	
-	'claimant_user_id' => ['field_label' => 'Claimant User ID', 'type_data' => 'S', 'is_relational' => true, 'is_indexed' => true],
-	'type_relationship' => ['field_label' => 'Relationship Type', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true],
-	'claim_evidence_note' => ['field_label' => 'Claim Evidence Note', 'type_data' => 'S'],
-	
-	'status_claim' => ['field_label' => 'Claim Status', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_mandatory' => true, 'is_indexed' => true],
-	'reviewer_user_id' => ['field_label' => 'Reviewer User ID', 'type_data' => 'S', 'is_relational' => true, 'is_indexed' => true],
-	'reviewed_at' => ['field_label' => 'Reviewed At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'decision_note' => ['field_label' => 'Decision Note', 'type_data' => 'S'],
-	
-	'is_revoked' => ['field_label' => 'Is Revoked', 'type_data' => 'B', 'type_field' => 'CHK', 'type_sql' => 'BOOLEAN'],
-	
-	'created_at' => ['field_label' => 'Created At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true, 'is_indexed' => true],
-	'updated_at' => ['field_label' => 'Updated At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-];
-
+$claim_main_field_property = [];
+foreach ($claim_main as $field_name => $sample_value) {
+    $claim_main_field_property[$field_name] = ['field_label' => ucwords(str_replace('_', ' ', $field_name)), 'field_description' => 'Claim field: ' . str_replace('_', ' ', $field_name) . '.', 'type_data' => is_array($sample_value) ? 'A' : 'S'];
+}
+$claim_main_field_property['_id']['is_mandatory'] = true;
+$claim_main_field_property['target_collection']['is_mandatory'] = true;
+$claim_main_field_property['target_record_id']['is_mandatory'] = true;
+$claim_main_field_property['claimant_user_id']['is_mandatory'] = true;
 $claim_main_subfield_property = [];
-
 $claim_main_index_list = [
-    [
-        'index_key' => 'primary',
-        'index_name' => '_id_',
-        'type_index' => 'STD',
-        'is_unique' => true,
-        'is_sparse' => false,
-        'index_field_list' => [
-            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
-        ],
-        'sort_order' => 10,
-    ],
+    ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
+    ['index_key' => 'target_status', 'index_name' => 'ix_claim_main_target_status_submitted', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'target_collection', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'target_record_id', 'type_index_mode' => 'ASC', 'sort_order' => 20], ['field_name' => 'status_claim', 'type_index_mode' => 'ASC', 'sort_order' => 30], ['field_name' => 'submitted_at', 'type_index_mode' => 'DESC', 'sort_order' => 40]], 'sort_order' => 20],
+    ['index_key' => 'claimant_status', 'index_name' => 'ix_claim_main_claimant_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'claimant_user_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_claim', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 30],
 ];
-
-$claim_main_boundary = [
-    'owns' => [
-        'the claim_main record fields and embedded structures documented in this file',
-    ],
-    'reference_field_list' => [
-        'target_record_id',
-        'claimant_user_id',
-        'reviewer_user_id',
-    ],
-    'does_not_own' => [
-        'records stored in referenced collections',
-        'runtime authorization, migration, seeding, or deployment behavior',
-    ],
-];
-
-return [
-    'claim_main_default' => $claim_main_default,
-    'claim_main' => $claim_main,
-    'claim_main_field_order' => $claim_main_field_order,
-    'claim_main_embedded_structure' => $claim_main_embedded_structure,
-    'claim_main_field_property' => $claim_main_field_property,
-    'claim_main_subfield_property' => $claim_main_subfield_property,
-    'claim_main_index_list' => $claim_main_index_list,
-    'claim_main_boundary' => $claim_main_boundary,
-];
+$claim_main_boundary = ['owns' => ['declared relationship, requested authority, evidence references, decision, dispute, revocation, and access-assignment reference'], 'references' => ['claim target, user, organization, document_main, record_verification, and access_assignment'], 'does_not_own' => ['target facts, binary evidence, verification details, or workspace permissions; approval alone never grants access']];
+return compact('claim_main_default', 'claim_main', 'claim_main_field_order', 'claim_main_embedded_structure', 'claim_main_field_property', 'claim_main_subfield_property', 'claim_main_index_list', 'claim_main_boundary');

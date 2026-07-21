@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Media Image Structure Guide
- * Version: 1.12
+ * Version: 1.20
  * Collection: media_image
  * Description: Stores one image asset record, its renditions, attribution, relationships, and lifecycle.
  * Purpose: Documents the media_image record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -24,7 +24,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-21T04:27:07Z';
+$updated_at = '2026-07-21T08:49:01Z';
 /**
  * Multilingual short-text sample.
  * Used by content_title, short_description, caption_text, alt_text, and similar
@@ -35,7 +35,7 @@ $multilingual_text_sample = [
 	'eng' => [
 		'text' => 'Sample text', // required when this language value exists
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
-		'status_review' => 'A', // optional; A = Approved
+		'status_review' => 'APR', // optional; APR = Approved
 	],
 ];
 
@@ -58,7 +58,7 @@ $media_image_default = [
 	'detected_person_list' => [],
 	'recognized_person_list' => [],
 	'visibility_scope' => 'INH',
-	'status_review' => 'P',
+	'status_review' => 'PND',
 	'status_record_lifecycle' => 'ACT',
 ];
 
@@ -67,11 +67,11 @@ $media_image_default = [
  */
 $media_image = [
 	# Primary
-	'_id' => 7001, // Physical MongoDB identity for the media_image record.
+	'_id' => 'Im7K2pQ9xR4tV8zN', // Canonical 16-character media image identifier.
 
 	# Core File
 	'image_title' => [ // Optional multilingual title for identifying the image internally or publicly.
-		'eng' => ['text' => 'Warm Massage Room Cover Image', 'method_translation' => 'HUM', 'status_review' => 'A'],
+		'eng' => ['text' => 'Warm Massage Room Cover Image', 'method_translation' => 'HUM', 'status_review' => 'APR'],
 	],
 	'file_name' => 'warm-massage-room-cover.webp', // Stored file name including extension.
 	'file_extension' => 'webp', // Lowercase file extension without the leading period.
@@ -84,26 +84,26 @@ $media_image = [
 
 	# Description
 	'alt_text' => [ // Multilingual alternative text for accessibility and image understanding.
-		'eng' => ['text' => 'Warm massage room with folded towels and soft lighting.', 'method_translation' => 'HUM', 'status_review' => 'A'],
+		'eng' => ['text' => 'Warm massage room with folded towels and soft lighting.', 'method_translation' => 'HUM', 'status_review' => 'APR'],
 	],
 	'caption_text' => [ // Optional multilingual caption for displaying the image in public contexts.
-		'eng' => ['text' => 'A calm treatment room helps first-time clients feel more comfortable.', 'method_translation' => 'HUM', 'status_review' => 'A'],
+		'eng' => ['text' => 'A calm treatment room helps first-time clients feel more comfortable.', 'method_translation' => 'HUM', 'status_review' => 'APR'],
 	],
 
 	# Classification / Relationship
-	'tag_id_list' => [301, 410], // List of tag IDs attached to the image.
-	'related_organization_id_list' => [201], // Organization IDs related to the image.
-	'related_establishment_id_list' => [301], // Establishment IDs related to the image.
+	'tag_id_list' => ['Tg7K2pQ9xR4tV8zN', 'Tg8K2pQ9xR4tV8zN'], // List of tag IDs attached to the image.
+	'related_organization_id_list' => ['Or8K2pQ9xR4tV7zN'], // Organization IDs related to the image.
+	'related_establishment_id_list' => ['Es7K2pQ9xR4tV8zN'], // Establishment IDs related to the image.
 	'related_practitioner_id_list' => [], // Practitioner IDs related to the image.
-	'related_service_id_list' => [601], // Service IDs related to the image.
+	'related_service_id_list' => ['Sv8K2pQ9xR4tV7zN'], // Service IDs related to the image.
 	'related_product_id_list' => [], // Product IDs related to the image.
 	'level_nsfw' => 'N', // Image sensitivity classification for moderation and display handling.
 
 	# Credit / Source
 	'method_media_creation' => 'PH', // PH = photographed, AI = AI generated, IL = illustrated, ED = edited/composited, IMP = imported
-	'creator_user_id_list' => [504], // User IDs credited with creating the image or visual work.
-	'photographer_user_id_list' => [504], // User IDs credited as photographers for the image.
-	'editor_user_id_list' => [506], // User IDs credited with editing, compositing, or post-processing the image.
+	'creator_user_id_list' => ['U5rK8mP2xN7qL4vA'], // User IDs credited with creating the image or visual work.
+	'photographer_user_id_list' => ['U5rK8mP2xN7qL4vA'], // User IDs credited as photographers for the image.
+	'editor_user_id_list' => ['U2pR7vX4kT9mC5qL'], // User IDs credited with editing, compositing, or post-processing the image.
 	'ai_tool_name' => null, // Name of the AI tool used when the image was generated or AI-assisted.
 	'source_media_image_id' => null, // Reference to an original media_image record when this image is edited or derived from another image.
 	'source_url' => null, // Original external source URL when the image is imported or externally sourced.
@@ -132,7 +132,7 @@ $media_image = [
 	'recognized_person_list' => [ // Optional recognized or proposed person/entity links in the image, subject to confirmation and privacy rules.
 		[
 			'target_collection' => 'practitioner_main',
-			'target_id' => 401,
+			'target_id' => 'P8rC3mL7xT1qV5nK',
 			'confidence_level' => 0.74,
 			'is_confirmed' => false,
 		],
@@ -140,14 +140,14 @@ $media_image = [
 
 	# Handling
 	'visibility_scope' => 'PUB', // Visibility rule for the image record.
-	'status_review' => 'A', // Moderation or approval review status for the image.
+	'status_review' => 'APR', // Moderation or approval review status for the image.
 	'status_record_lifecycle' => 'ACT', // Database lifecycle state for the image record.
 
 	# Audit
 	'created_at' => $created_at, // UTC timestamp when this image record was created.
-	'created_by_user_id' => 504, // User ID that created this image record.
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA', // User ID that created this image record.
 	'updated_at' => $updated_at, // UTC timestamp when this image record was last updated.
-	'updated_by_user_id' => 506, // User ID that last updated this image record.
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that last updated this image record.
 ];
 
 $media_image_field_order = [
@@ -208,14 +208,14 @@ $media_image_embedded_structure = [
 	],
 	'recognized_person_list' => [
 		'target_collection' => 'practitioner_main',
-		'target_id' => 401,
+		'target_id' => 'P8rC3mL7xT1qV5nK',
 		'confidence_level' => 0.74,
 		'is_confirmed' => false,
 	],
 ];
 
 $media_image_field_property = [
-	'_id' => ['field_label' => 'Media Image ID', 'field_description' => 'Physical MongoDB identity for the media_image record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
+	'_id' => ['field_label' => 'Media Image ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
 	'image_title' => ['field_label' => 'Image Title', 'field_description' => 'Optional multilingual title for identifying the image internally or publicly.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
 	'file_name' => ['field_label' => 'File Name', 'field_description' => 'Stored file name including extension.', 'is_mandatory' => true, 'max_character' => 255],
 	'file_extension' => ['field_label' => 'File Extension', 'field_description' => 'Lowercase file extension without the leading period.', 'max_character' => 20],
@@ -239,7 +239,7 @@ $media_image_field_property = [
 	'photographer_user_id_list' => ['field_label' => 'Photographer User ID List', 'field_description' => 'User IDs credited as photographers for the image.', 'type_data' => 'A', 'is_relational' => true],
 	'editor_user_id_list' => ['field_label' => 'Editor User ID List', 'field_description' => 'User IDs credited with editing, compositing, or post-processing the image.', 'type_data' => 'A', 'is_relational' => true],
 	'ai_tool_name' => ['field_label' => 'AI Tool Name', 'field_description' => 'Name of the AI tool used when the image was generated or AI-assisted.', 'max_character' => 100],
-	'source_media_image_id' => ['field_label' => 'Source Media Image ID', 'field_description' => 'Reference to an original media_image record when this image is edited or derived from another image.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'source_media_image_id' => ['field_label' => 'Source Media Image ID', 'field_description' => 'Reference to an original media_image record when this image is edited or derived from another image.', 'type_data' => 'S', 'is_relational' => true],
 	'source_url' => ['field_label' => 'Source URL', 'field_description' => 'Original external source URL when the image is imported or externally sourced.', 'max_character' => 1000],
 	'image_variant_list' => ['field_label' => 'Image Variant List', 'field_description' => 'Embedded list of derived image files such as thumbnails, small versions, cropped versions, or compressed versions.', 'type_data' => 'A', 'type_field' => 'JSE'],
 	'detected_person_list' => ['field_label' => 'Detected Person List', 'field_description' => 'Optional machine-detected person regions in the image. Does not confirm identity by itself.', 'type_data' => 'A', 'type_field' => 'JSE'],
@@ -248,9 +248,9 @@ $media_image_field_property = [
 	'status_review' => ['field_label' => 'Review Status', 'field_description' => 'Moderation or approval review status for the image.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state for the image record.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this image record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
-	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this image record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this image record.', 'type_data' => 'S', 'is_relational' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this image record was last updated.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this image record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this image record.', 'type_data' => 'S', 'is_relational' => true],
 ];
 
 $media_image_subfield_property = [

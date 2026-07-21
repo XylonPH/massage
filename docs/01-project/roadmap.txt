@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.94
+Document Version: 1.95
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -344,6 +344,14 @@ Profiles:
 - Seller Profiles;
 - branches, locations, service areas, hours, contact, facilities, menus, prices, media, status,
   trust, source, and historical information.
+
+Current directory data-model checkpoint (2026-07-21):
+- establishment identity, contact, operating schedule, events, provider menu services,
+  organization/person/practitioner relationships, practitioner services/capabilities/credentials,
+  research sources/observations, secure documents, generic verification, and generic revision
+  boundaries have PHP structure guides and the required project taxonomy;
+- runtime persistence, migrations, imports, forms, routes, booking resources, private-person
+  identity storage, and public UI integration remain later implementation work.
 
 PHASE 5 EXIT GATE — DIRECTORY DISCOVERY FOUNDATION
 

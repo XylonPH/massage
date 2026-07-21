@@ -1,5 +1,5 @@
 Document Title: Massage Nexus: Spa Classification
-Document Version: 1.65
+Document Version: 1.70
 Date Created: 2026-07-11
 Revision Date: 2026-07-19
 
@@ -284,3 +284,18 @@ TR   | Tourists          | Is prepared for travelers through location, language,
 OW   | Office Workers    | Supports workplace stress, occupational strain, sitting, standing, or commuting fatigue.
 
 Client Focus describes intentional service relevance and does not restrict access unless Client Access says otherwise.
+
+RELATED STRUCTURE TAXONOMY
+--------------------------
+
+The authoritative project taxonomy file is
+data/taxonomy/massage_nexus/establishment_research.json for the additional controlled fields used
+by establishment research structures: type_coordinate, level_address_visibility,
+type_hour_exception, type_access_period, organization/person relationship types and status,
+provider-menu service type and status, price type, availability, affiliation/dispute, credential,
+capability, verification, observation, secure-document, redaction, retention, and claim fields.
+
+These fields supplement rather than replace the classification fields in this document. Facility,
+amenity, treatment-area, and accessibility summaries reuse the existing establishment taxonomy.
+Current establishment_main samples use DY, B, CU, OS, AP, IN, OP, OA, and GP; the older stale
+DAY/MID/COM/ONS/APO/IND/OPN/PUB/GEN sample spellings are not accepted option codes.

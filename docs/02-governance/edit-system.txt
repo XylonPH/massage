@@ -1,5 +1,5 @@
 Title: Massage Nexus Edit System
-Document Version: 1.01
+Document Version: 1.10
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: Defines the shared rules for creating, editing, correcting, reviewing, applying, publishing, merging, restoring, and auditing Massage Nexus records while keeping accepted data separate from drafts and unapproved proposals. Feature-specific specifications remain authoritative for their fields, forms, permissions, and publication rules.
@@ -157,7 +157,7 @@ Drafts and proposed changes
 - remain separate from the accepted target until application succeeds.
 
 Accepted revision history
-- uses revision_main for supported records without a more authoritative specialized revision model;
+- uses record_revision for supported records without a more authoritative specialized revision model;
 - uses a feature-specific revision collection, such as article_revision, when the domain requires
   content-specific fields or decisions;
 - must not duplicate full authoritative history across both generic and specialized collections
@@ -175,7 +175,7 @@ Moderation
 
 Autosave
 - uses short-lived private storage selected by the owning feature;
-- is not written to revision_main or audit_log for every save interval or keystroke.
+- is not written to record_revision or audit_log for every save interval or keystroke.
 
 Current structure-guide gap
 The contribution_main structure guide currently stores an opaque proposed_data object and does not
@@ -882,7 +882,7 @@ quality expectations follow docs/02-governance/testing-and-quality-assurance-str
 - Current accepted data remains separate from drafts and unapproved proposals.
 - contribution_main is the shared proposal boundary; specialized domains may own their drafts and
   submissions when documented.
-- revision_main is the generic accepted-history boundary; specialized revision collections take
+- record_revision is the generic accepted-history boundary; specialized revision collections take
   precedence for their domain.
 - audit_log is append-only operational history and does not replace revisions.
 - Moderation cases, verification, contribution review, publication, and public Reviews remain
@@ -913,7 +913,7 @@ quality expectations follow docs/02-governance/testing-and-quality-assurance-str
 
 - final embedded Change Operation schema and field names for contribution_main, including migration
   from opaque proposed_data;
-- detailed revision_main structure and the domain list using specialized revisions;
+- detailed record_revision structure and the domain list using specialized revisions;
 - Application Result field names and taxonomy codes;
 - soft-remove storage mechanism: lifecycle status, framework soft-delete timestamp, or synchronized
   dual mechanism by domain;

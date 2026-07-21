@@ -1,5 +1,5 @@
 Title: Massage Nexus Data Research Provenance and Field Verification System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
 Revision Date: 2026-07-19
 Status: Internal Planning Draft
@@ -877,3 +877,31 @@ Before each market launch, recheck current wellness market data, internet-use an
 market data, local business and licensing rules, privacy and mapping rules, official crawler
 and search documentation, source-site terms, professional associations, and local language
 terminology.
+
+================================================================================
+31. ACCEPTED DATA-STRUCTURE BOUNDARIES
+================================================================================
+
+The accepted cross-target research structures are:
+- research_source for reusable source identity, locator, publication/access dates, reliability,
+  visibility, and retention context;
+- research_observation for one exact sourced assertion or field observation, its normalized
+  candidate fact, uncertainty, firsthand/hearsay state, confidence, corroboration, review, and
+  related workflow references;
+- record_verification for one cross-target and optionally field-specific verification procedure
+  and result;
+- document_main for secure evidence metadata, protected object-storage reference, access,
+  redaction, verification, and retention;
+- contribution_main, moderation_main, moderation_action, record_revision, and audit_log for their
+  existing proposal, safety review, action, restorable history, and operational-history roles.
+
+research_observation is independent from the final accepted target value. It may describe an
+establishment, practitioner, service, organization, relationship, media record, or another
+approved target. Do not create establishment_observation or practitioner_observation duplicates.
+Do not store entire discussion threads or perform forum scraping as part of this structure work.
+
+Dates retain their distinct meanings: effective time, source publication, assertion, observation,
+confirmation, formal verification, and last check are not interchangeable. Conflicting assertions
+remain available for review; they are not silently collapsed into one confident fact. Restricted
+health, identity, ownership, or conduct assertions default to private handling and require a
+documented purpose, minimum necessary collection, controlled access, and retention rule.
