@@ -1,5 +1,5 @@
 Title: Massage Nexus Edit System
-Document Version: 1.00
+Document Version: 1.01
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: Defines the shared rules for creating, editing, correcting, reviewing, applying, publishing, merging, restoring, and auditing Massage Nexus records while keeping accepted data separate from drafts and unapproved proposals. Feature-specific specifications remain authoritative for their fields, forms, permissions, and publication rules.
@@ -9,10 +9,13 @@ Related Documents:
 - docs/01-project/roadmap.txt
 - docs/01-project/site-structure-map.txt
 - docs/02-governance/shared-project-standards.txt
+- docs/02-governance/testing-and-quality-assurance-strategy.txt
+- docs/04-architecture/api-system.txt
 - docs/04-architecture/database-structure.txt
 - docs/04-architecture/runtime-ai-system.txt
 - docs/04-architecture/structure-guide/contribution_main.php
 - docs/04-architecture/structure-guide/audit_log.php
+- data/taxonomy/massage_nexus/workspace_access.json
 - docs/11-workspaces/user-workspace.txt
 - docs/11-workspaces/admin-workspace.txt
 - docs/13-localization/language-strategy.txt
@@ -30,6 +33,10 @@ The Edit System is the shared behavioral contract used by feature-specific forms
 It is not one giant universal form, one universal database record, or a separate role-specific
 workspace. Service, establishment, practitioner, Article, Review, media, translation, taxonomy,
 and other domains keep the interfaces and rules appropriate to their content.
+
+Admin, editorial, workspace, API, import, and system mutation surfaces are Edit System clients.
+They do not form a parallel authority model and must preserve the same validation, authorization,
+concurrency, revision, audit, and application guarantees.
 
 The owning feature specification determines:
 - which fields exist;
@@ -64,8 +71,8 @@ Every Edit System implementation must preserve these invariants:
 - temporary autosaves do not create permanent revision noise;
 - direct authority does not bypass provenance, audit, conflict detection, or high-risk safeguards;
 - AI output remains attributable, reviewable, and subject to the same permissions as human work;
-- record lifecycle, review decision, publication state, visibility, and technical job state remain
-  separate concerns;
+- record lifecycle, review decision, publication state, visibility, technical application or job
+  state, and contribution status remain separate concerns;
 - restoring an earlier state creates a new current revision and does not erase intervening history.
 
 ================================================================================
@@ -80,6 +87,8 @@ The accepted state currently used by the platform. Public visibility is a separa
 
 Edit Session
 A bounded period in which an authenticated user or approved system works from a known base state.
+Edit Session identity supports autosave recovery, collaboration awareness, and conflict context.
+It is not itself an accepted revision or contribution status.
 
 Temporary Autosave
 Short-lived private recovery state. It is not an accepted revision or submitted proposal.
@@ -126,6 +135,10 @@ Conflict
 A condition in which the base state used by an editor is no longer current or another authorized
 decision has already changed the same work.
 
+Application Result
+The technical outcome of applying accepted operations to the target after authorization succeeds.
+Application Result is not contribution status, publication state, or lifecycle state.
+
 Review
 In this document, review means an approval or verification decision about proposed work. It must
 not be confused with the separate public Massage Nexus Review feature at /workspace/review.
@@ -164,9 +177,16 @@ Autosave
 - uses short-lived private storage selected by the owning feature;
 - is not written to revision_main or audit_log for every save interval or keystroke.
 
+Current structure-guide gap
+The contribution_main structure guide currently stores an opaque proposed_data object and does not
+yet document base-revision concurrency fields, a stable Change Operation array, collaborators, or
+application result. Until those fields are documented in the structure guide and taxonomy as
+needed, selective approval and atomic multi-operation application against the shared collection
+are not implementable. A single opaque proposed-data object is insufficient when reviewers may
+accept some changes and reject others.
+
 Before selective approval is implemented, contribution_main must document a stable embedded Change
-Operation shape. A single opaque proposed-data object is insufficient when reviewers may accept
-some changes and reject others.
+Operation shape that satisfies Section 12.
 
 ================================================================================
 5. RECORDS AND DOMAINS COVERED
@@ -331,7 +351,7 @@ session length, and privacy risks justify it.
 Autosave must:
 
 - preserve the latest deliberate save and never silently replace it with an older browser state;
-- identify the user, target, base revision, edit session, and saved time;
+- identify the user, target, base revision or concurrency token, Edit Session, and saved time;
 - remain private to explicitly authorized users;
 - use bounded size, frequency, and retention;
 - recover after interruption without publishing or submitting automatically;
@@ -378,7 +398,8 @@ Publication validation includes:
 - safe media, links, HTML, and embeds;
 - no blocking scheduled, visibility, lifecycle, or incident condition.
 
-Interface validation improves usability but never replaces server validation.
+Interface validation improves usability but never replaces server validation. User-facing
+validation messages must use translation keys.
 
 ================================================================================
 12. CHANGE SETS AND SELECTIVE APPROVAL
@@ -397,15 +418,21 @@ boundary. It must retain:
 - reviewer notes and submitter-visible response where appropriate;
 - creation, update, submission, decision, and final-disposition times.
 
-Each independently reviewable Change Operation must retain a structure similar to JSON Patch (RFC 6902) for stability, including:
+Each independently reviewable Change Operation must use a stable envelope inspired by JSON Patch
+(RFC 6902) path addressing, not pure RFC 6902 as the complete operation vocabulary. The Massage
+Nexus operation set includes at least:
 
-- stable field or embedded-item path (e.g., "/address_public");
-- operation type such as add, replace, remove, relate, reorder, merge, or restore;
+- stable field or embedded-item path using JSON Pointer style (e.g., "/address_public");
+- operation type from the Edit System vocabulary, such as add, replace, remove, relate, reorder,
+  merge, or restore;
 - base or old value where safe and necessary;
 - proposed value;
 - source or evidence references;
 - validation and conflict result;
 - reviewer decision and reason when decisions are granular.
+
+RFC 6902 defines only add, remove, replace, move, copy, and test. Domain operations such as
+relate, reorder, merge, and restore are Massage Nexus extensions and must be documented as such.
 
 Embedded arrays must use stable item identity when items can be added, removed, or reordered. A
 positional array index alone is not a safe durable target for concurrent change review.
@@ -415,14 +442,42 @@ it. A displayed Partially Approved outcome should be derived from mixed operatio
 a separately governed taxonomy field is approved. Interface wording must not create an unsupported
 database status.
 
+Selective-approval disposition defaults:
+
+1. All accepted operations for one decision apply as one atomic unit, or as one approved
+   asynchronous job with idempotent finalization.
+2. Rejected operations never mutate the accepted target.
+3. Rejected and returned operation payloads remain retained for authorized audit and submitter
+   visibility according to privacy rules; they are not deleted merely because other operations
+   were accepted.
+4. When any operation is accepted and application succeeds, contribution status becomes Approved
+   (APR) for the contribution decision. Mixed accept/reject is represented by per-operation
+   decisions, not by inventing a Partially Approved contribution status code.
+5. When no operation is accepted and the reviewer declines the proposal, contribution status
+   becomes Rejected (REJ).
+6. When the reviewer requires submitter changes, contribution status becomes Returned (RET).
+7. A later resubmission may reuse the same contribution only when the owning feature allows it;
+   otherwise the submitter opens a new contribution that may reference the prior one.
+
 Before showing old or proposed values to a reviewer, the system must apply that reviewer's field
 permissions and redact values outside the permitted scope.
+
+Proposal confidentiality:
+
+- drafts and unapproved proposed values are private to the submitter, explicitly authorized
+  collaborators, and staff with the applicable review or investigation permission;
+- rejected proposals remain visible to the submitter and authorized reviewers as retained history
+  unless legal erasure or retention policy requires removal;
+- staff search, export, notification, and AI processing of proposal payloads must respect the same
+  field-level redaction and purpose limits as accepted-record access;
+- public surfaces must not expose unapproved proposed values.
 
 ================================================================================
 13. WORKFLOW AND STATUS MODEL
 ================================================================================
 
-Shared contributions use status_contribution from workspace_access.json:
+Shared contributions use status_contribution from
+data/taxonomy/massage_nexus/workspace_access.json:
 
 - Draft (DFT);
 - Pending Review (PND);
@@ -454,11 +509,23 @@ These dimensions remain orthogonal:
 - visibility scope;
 - verification state;
 - moderation state;
-- technical application or job state.
+- technical application or job state (Application Result).
 
-Approval does not imply public visibility unless the feature's approved workflow applies and
-publishes in the same controlled operation. A failed asynchronous application must not be presented
-as successfully applied merely because review approval occurred.
+Application Result must be recorded separately from status_contribution. At minimum, implementations
+must distinguish:
+
+- pending application: review approved or direct edit authorized, target not yet updated;
+- applied: accepted operations written and revision/audit relationships completed;
+- failed application: authorized work could not be applied; accepted data must remain consistent
+  with the last successful application;
+- cancelled or superseded: application will not proceed because a later authorized decision or
+  cancellation replaced it.
+
+Exact Application Result field names and taxonomy codes remain an open structure decision, but the
+states above are required behavioral outcomes. Approval does not imply public visibility unless the
+feature's approved workflow applies and publishes in the same controlled operation. A failed
+asynchronous application must not be presented as successfully applied merely because review
+approval occurred.
 
 ================================================================================
 14. ATOMIC APPLICATION AND IDEMPOTENCY
@@ -466,23 +533,30 @@ as successfully applied merely because review approval occurred.
 
 For an ordinary synchronous approval or direct edit, the following must succeed as one database
 transaction or equivalent recoverable atomic unit. Because the primary data store is MongoDB, the
-production environment must be configured as a Replica Set to support these multi-document ACID
-transactions.
+production environment must support multi-document ACID transactions (Replica Set or equivalent
+deployment requirement documented with database architecture and operations).
 
-1. recheck authorization, target state, and base revision;
+1. recheck authorization, target state, and base revision or concurrency token;
 2. validate the accepted operations against the current field contract;
 3. apply accepted values to the target;
 4. create the accepted revision where required;
-5. finalize the contribution or direct-edit result;
+5. finalize the contribution or direct-edit result and Application Result;
 6. write the append-only audit event;
 7. enqueue notifications or downstream work through a reliable post-commit mechanism.
 
-Failure must not leave accepted data changed without its revision and audit relationship. Repeated
-requests must use idempotency protection so a retry does not apply an operation twice.
+Failure must not leave accepted data changed without its revision and audit relationship.
+Notification or search-index failures after a successful commit must not reverse the accepted write;
+they are retried or reconciled as downstream work.
+
+Repeated requests must use idempotency protection so a retry does not apply an operation twice.
+Idempotency keys should be scoped to actor or client, action, target, and a stable request or
+payload identity; implementations must define storage, in-flight behavior, and retention or TTL for
+those keys. A retry of an in-flight request must not create a second concurrent application of the
+same accepted work.
 
 Large imports, scheduled publication, cross-system updates, and other asynchronous applications may
 use an approved job. The job must preserve the approval reference, idempotency, progress, failure,
-retry, cancellation, reconciliation, and final application result separately from review status.
+retry, cancellation, reconciliation, and final Application Result separately from review status.
 
 ================================================================================
 15. REVISION HISTORY, COMPARISON, AND RESTORATION
@@ -520,8 +594,11 @@ field-level authorization and redaction.
 Optimistic concurrency control is required for shared drafts, submissions, accepted records, and
 review decisions that can be changed by more than one actor.
 
-The server must compare the submitted base revision or concurrency token (e.g., the exact UTC
-`$updated_at` timestamp or a dedicated integer `version` field) with the current state at:
+The required concurrency token is an integer version field, an accepted revision identifier, or
+another monotonic server-owned token. updated_at may assist diagnostics and display but must not be
+the sole concurrency token for shared writes.
+
+The server must compare the submitted base revision or concurrency token with the current state at:
 
 - deliberate draft save where collaborators share a draft;
 - submission;
@@ -624,10 +701,12 @@ Archive
 Retains the record internally but removes it from ordinary active use.
 
 Soft Remove
-Hides the record while preserving authorized recovery. Implementations must use Laravel's native
-`SoftDeletes` trait (`deleted_at` column) to ensure consistent framework support. Soft deletion
-acts independently of the `status_record_lifecycle` field; a soft-deleted record is hidden from
-normal queries regardless of its lifecycle state.
+Hides the record from ordinary active use and normal queries while preserving authorized recovery
+and history. Soft remove is not permanent erasure. Implementations must preserve a recoverable
+hidden state; the exact mechanism (lifecycle status such as status_record_lifecycle DEL, a
+framework soft-delete timestamp, or both with explicit synchronization rules) remains an open
+decision and must be consistent within each domain once chosen. Soft remove remains distinct from
+Archive, Restrict, Close, and Permanent Erasure.
 
 Restrict
 Limits access without asserting that the record never existed.
@@ -696,7 +775,7 @@ review outcome. The feature must remain operable when AI is unavailable.
 
 Possible notifications include draft recovery, submission receipt, assignment, return for
 information, approval, rejection, withdrawal, conflict, stale source, stale translation, merge,
-restore, and a direct change to a followed record.
+restore, application failure, and a direct change to a followed record.
 
 Notifications must be permission-aware and must not expose sensitive proposed values, evidence, or
 private record identity on lock screens, email subjects, or unauthorized channels. Users control
@@ -735,7 +814,7 @@ Audit writing and audit viewing use separate access. Audit entries are append-on
 - target and action;
 - actor user, system, or API client;
 - result, reason, permission, and correlation reference;
-- contribution, revision, moderation, or verification reference;
+- contribution, revision, moderation, verification, or application reference;
 - redacted before/after reference where justified;
 - time and source application;
 - IP or device context only where justified by risk and retention policy.
@@ -775,24 +854,31 @@ An Edit System implementation is not complete until tests cover the applicable b
 - authorized and unauthorized actors at action, record, field, and scope level;
 - revoked, expired, suspended, and conflicting assignments;
 - accepted data remaining unchanged before approval;
-- stale-base rejection and field-level conflict behavior;
+- stale-base rejection and field-level conflict behavior using version or revision tokens;
 - selective approval and rejected-operation isolation;
-- atomic target, revision, contribution, and audit results;
-- idempotent retry and asynchronous failure reconciliation;
+- contribution status versus Application Result separation, including failed application after
+  approval;
+- atomic target, revision, contribution, and audit results, including multi-document transaction
+  failure paths where used;
+- idempotent retry, in-flight duplicate submission, and asynchronous failure reconciliation;
 - draft privacy, collaboration, autosave recovery, and retention;
+- proposal confidentiality and reviewer field redaction;
 - server validation, sanitization, source, file, and relationship rules;
 - direct edit, reviewed edit, withdrawal, return, rejection, approval, merge, and restore;
 - redaction in public history, audit, notifications, exports, and reviewer views;
 - accessibility for keyboard, screen reader, touch, zoom, errors, status, and confirmation;
 - regression of public routes, search, APIs, relationships, and translations.
 
-Important user-facing workflows require manual verification in addition to automated tests.
+Important user-facing workflows require manual verification in addition to automated tests. Broader
+quality expectations follow docs/02-governance/testing-and-quality-assurance-strategy.txt.
 
 ================================================================================
 26. CURRENT ACCEPTED DECISIONS
 ================================================================================
 
 - One shared Edit System governs feature-specific forms without creating one universal form.
+- Admin, editorial, workspace, API, import, and system mutation surfaces are clients of the same
+  contract.
 - Current accepted data remains separate from drafts and unapproved proposals.
 - contribution_main is the shared proposal boundary; specialized domains may own their drafts and
   submissions when documented.
@@ -808,16 +894,29 @@ Important user-facing workflows require manual verification in addition to autom
 - The workspace reflects combined permissions without role-context switching.
 - Sources and provenance are supported at field or claim level where accuracy depends on evidence.
 - Shared records use optimistic concurrency and cannot silently overwrite newer work.
+- The required concurrency token is a server-owned version, revision identifier, or equivalent
+  monotonic token; updated_at alone is insufficient.
+- Change Operations use JSON Pointer-style paths and a Massage Nexus operation vocabulary. They are
+  inspired by JSON Patch (RFC 6902) but are not limited to pure RFC 6902 operations.
+- Selective approval applies accepted operations atomically, retains rejected operation history for
+  authorized audiences, and does not invent a Partially Approved contribution status code.
 - Approval application is atomic or uses an explicit idempotent asynchronous job.
+- Application Result is orthogonal to contribution status; approval is not success of application.
 - AI suggestions remain attributable drafts until an authorized workflow accepts them.
 - Changelog, revision history, audit, moderation history, and temporary working state are distinct.
+- Soft remove is recoverable hide from ordinary use and is distinct from archive, restrict, close,
+  and permanent erasure; the exact storage mechanism remains open.
 
 ================================================================================
-27. OPEN DECISIONS (RESOLVED AND PENDING)
+27. OPEN DECISIONS
 ================================================================================
 
-- final embedded Change Operation schema for contribution_main: Adopt JSON Patch (RFC 6902) format;
+- final embedded Change Operation schema and field names for contribution_main, including migration
+  from opaque proposed_data;
 - detailed revision_main structure and the domain list using specialized revisions;
+- Application Result field names and taxonomy codes;
+- soft-remove storage mechanism: lifecycle status, framework soft-delete timestamp, or synchronized
+  dual mechanism by domain;
 - retention periods for autosaves, drafts, rejected evidence, IP/device audit context, and exports;
 - exact field-level direct-edit matrices for each domain;
 - actions requiring second approval or separation of duties;
@@ -828,4 +927,6 @@ Important user-facing workflows require manual verification in addition to autom
 - exact merge approval matrix and cross-collection reconciliation jobs;
 - which domains support future-dated application or publication;
 - collaboration rules beyond explicit shared draft ownership;
-- approved AI comparison, assistance, provider, retention, and disclosure behavior.
+- approved AI comparison, assistance, provider, retention, and disclosure behavior;
+- idempotency-key storage layout, TTL, and client-correlation conventions beyond the behavioral
+  requirements in Section 14.
