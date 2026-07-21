@@ -1,5 +1,5 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.10
+Document Version: 1.20
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
@@ -25,27 +25,35 @@ the matching record shape and field semantics.
 2. REQUIRED GUIDE METADATA
 ================================================================================
 
-Each detailed PHP structure guide must identify:
-- title;
-- author;
-- collection;
-- version;
-- its documentation-only purpose;
-- relevant layer or boundary rules.
+Each detailed PHP structure guide begins with one comment block that identifies:
+- Title: a readable title that is not merely the raw filename;
+- Version: the version of that individual structure-guide file;
+- Collection: the exact collection or table name, matching the snake_case filename;
+- Description: a short explanation of what one record in the collection represents;
+- Purpose: why the PHP-readable file exists and how it should be used.
 
-Use a +0.10 version increment for an accepted field, semantic, relationship, validation, or
-record-shape revision. Preserve the existing version when only correcting a non-semantic
-typographical error.
+Do not include an Author field. Git records authorship, and repeating the same author in every
+file adds no structural meaning.
+
+Every accepted saved revision updates the file version. Use the size of the change to select the
+increment:
+- +0.01 for a non-semantic correction to wording, comments, formatting, or examples;
+- +0.10 for accepted field, default, order, embedded shape, index, boundary, relationship,
+  validation, or other structural guidance;
+- +1.00 for a fundamental redesign that replaces the governing record model.
+
+An undiscussed or exploratory collection may begin below 1.00. A structure discussed and accepted
+as the governing direction may begin at or be promoted to 1.00. Do not lower an existing version.
 
 ================================================================================
 3. GUIDE TIMESTAMPS
 ================================================================================
 
-$created_at records when the guide was first created and must not change during later edits.
+$created_at records the exact UTC date and time when the guide file was first created and must not
+change during later edits. A new guide sets $updated_at to the same value as $created_at.
 
-$updated_at records the exact UTC time of the latest accepted semantic guide revision. Every
-change to fields, field descriptions, defaults, sample shapes, relationships, validation
-meaning, or lifecycle behavior must update this value at the time the guide is edited.
+$updated_at records the exact UTC time of the latest accepted guide revision. Every saved change
+to the file updates this value to the actual current UTC time.
 
 Use ISO 8601 UTC format with seconds:
 
@@ -57,18 +65,89 @@ system clock. The timestamp variables describe the guide revision; similarly nam
 sample record remain illustrative record data.
 
 ================================================================================
-4. FIELD LAYERS AND ORDER
+4. REQUIRED VARIABLES AND ORDER
 ================================================================================
 
-Keep these concerns separate:
-- *_record_default contains defaults for stored record fields only;
-- the sample record demonstrates the intended stored shape and useful populated values;
-- *_field_order lists every top-level stored field once in the intended logical order;
-- *_field_property documents schema and interface metadata only.
+For a collection named article_main, use this order and naming pattern:
+1. $created_at and $updated_at;
+2. $article_main_default and $multilingual_text_sample, in either order, with the multilingual
+   sample present only when at least one field is multilingual;
+3. $article_main;
+4. $article_main_field_order;
+5. $article_main_embedded_structure;
+6. $article_main_field_property;
+7. $article_main_subfield_property;
+8. $article_main_legacy_name_map, only when an actual legacy structure requires mapping;
+9. $article_main_index_list;
+10. $article_main_boundary;
+11. one final return statement.
 
-Do not place field-definition metadata inside record defaults. Do not introduce a sample-only
-top-level field that is absent from field order and field properties. Embedded records must have
-a stable documented shape when their members affect application behavior.
+Replace article_main with the exact collection name in every collection-specific variable.
+Required arrays remain present even when they are currently empty, except for the explicitly
+conditional multilingual sample and legacy map.
+
+The collection variable, such as $article_main, is one fully populated sample record. It lists
+every possible top-level stored property using a representative sample value. Each property has a
+short inline comment explaining its meaning. A document-store record may omit sparse or
+non-applicable properties, but the sample variable must not omit a possible property.
+
+The *_default array contains the authoritative values implied when the corresponding stored
+property is absent. It contains only fields with real omission defaults; it is not a complete
+sample record. Application queries, filtering, conditional formatting, validation, and display
+logic must treat an omitted property as its documented default. For example, when a field defaults
+to "test", a filter for that field equal to "test" must include records where the field is omitted.
+
+The *_field_order array lists every top-level stored property exactly once in intended logical
+order. It must contain the same top-level property names as the complete sample record and the
+top-level field-property array.
+
+The *_embedded_structure array shows the complete shape of each embedded object or list item.
+The *_field_property array describes every top-level property's data contract. The
+*_subfield_property array describes every nested property using an unambiguous dotted path or
+another clearly documented path notation. Keep stored defaults separate from field-definition
+metadata.
+
+The optional $multilingual_text_sample uses eng as its example language. Do not add another
+language merely to make the generic sample appear multilingual. Actual collection sample records
+may demonstrate additional languages when useful.
+
+The optional *_legacy_name_map exists only for a collection derived from a legacy database or
+schema. New Massage Nexus collections do not include an empty or speculative legacy map.
+
+Every *_index_list entry uses this shape:
+
+[
+    'index_key' => 'article_slug_unique',
+    'index_name' => 'uq_article_main_article_slug',
+    'type_index' => 'STD',
+    'is_unique' => true,
+    'is_sparse' => false,
+    'index_field_list' => [
+        [
+            'field_name' => 'article_slug',
+            'type_index_mode' => 'ASC',
+            'sort_order' => 10,
+        ],
+    ],
+    'sort_order' => 10,
+];
+
+index_key is the stable guide key. index_name is the intended physical database index name.
+type_index describes the overall index kind. type_index_mode describes how one field participates
+in the index. Compound fields use sort_order increments of 10. Collection-level index definitions
+belong here rather than only in relationship metadata.
+
+The *_boundary array identifies what the collection owns, which other collections or datasets it
+references, and what responsibilities remain outside it. Boundary entries must distinguish a
+stored reference from embedded ownership and must not invent unresolved relationships.
+
+The file ends with one return statement containing every declared structural array under a key
+matching its variable name. Include $multilingual_text_sample and *_legacy_name_map only when they
+exist. Do not return a different anonymous schema in place of the named variables.
+
+Do not introduce a sample-only field that is absent from field order and field properties.
+Embedded records must have a stable documented shape when their members affect application
+behavior.
 
 Preserve established field names and semantics. Before introducing any new field name,
 including a nested field, check data/field_index.txt and follow AGENTS.md taxonomy and field
@@ -83,10 +162,12 @@ For a structure change:
 2. inspect data/field_index.txt before choosing a field name;
 3. update the relevant structure guide before implementing dependent application code;
 4. update the guide version and exact UTC $updated_at value;
-5. update defaults, sample, field order, field properties, and comments consistently;
+5. update defaults, sample, field order, embedded structure, field properties, subfield
+   properties, index list, boundary, return statement, and comments consistently;
 6. run php tools/script/build_field_index.php when a guide adds, renames, or removes a field;
 7. run PHP syntax validation for every modified guide;
-8. inspect the generated index diff and the final guide diff.
+8. run php tools/script/validate_structure_guides.php;
+9. inspect the generated index diff and the final guide diff.
 
 Add or update taxonomy JSON in the same change when a new field has controlled or enumerated
 options. Do not create taxonomy entries for free text, identifiers, timestamps, or relationships

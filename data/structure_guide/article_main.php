@@ -1,17 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Article Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.80
  * Collection: article_main
- * Version: 1.70
+ * Description: Stores one Article identity, publication, ownership, classification, and relationship record.
+ * Purpose: Documents the article_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
+ *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
@@ -23,25 +25,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-20T18:33:12Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'INH', // default: inherit visibility
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Multilingual short-text sample.
  * Used by article_title, short_description, caption_text, alt_text, and similar
@@ -53,12 +37,7 @@ $multilingual_text_sample = [
 		'text' => 'Sample text', // required when this language value exists
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
 		'status_review' => 'A', // optional; A = Approved
-	],
-	'fil' => [
-		'text' => 'Halimbawang teksto',
-		'method_translation' => 'HUM',
-		'status_review' => 'A',
-	],
+	]
 ];
 
 /**
@@ -66,7 +45,7 @@ $multilingual_text_sample = [
  * These are defaults for stored Article records, not field-definition metadata.
  * Sparse-default storage may omit these values in actual database records.
  */
-$article_main_record_default = [
+$article_main_default = [
 	'target_audience' => 'G', // G = General
 	'tag_id_list' => [],
 	'author_user_id_list' => [],
@@ -109,11 +88,11 @@ $article_main = [
 	'_id' => 'A7mK2pQ9xR4tV8zN', // canonical application-generated 16-character Base62 identifier
 
 	# Core
-	'article_title' => [
+	'article_title' => [ // Public multilingual title of the article.
 		'eng' => [
 			'text' => 'What Actually Happens During Your First Massage',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'A', // Editorial or approval review state of the Article record.
 		],
 		'fil' => [
 			'text' => 'Ano ang Totoong Nangyayari sa Una Mong Masahe',
@@ -121,7 +100,7 @@ $article_main = [
 			'status_review' => 'A',
 		],
 	], // required public title; multilingual bounded text
-	'article_slug' => [
+	'article_slug' => [ // Multilingual URL-safe slug text for public article routes. Values should use kebab-case.
 		'eng' => [
 			'text' => 'what-actually-happens-during-your-first-massage',
 			'method_translation' => 'HUM',
@@ -133,7 +112,7 @@ $article_main = [
 			'status_review' => 'A',
 		],
 	], // multilingual public URL slug text; values must be kebab-case
-	'short_description' => [
+	'short_description' => [ // Optional multilingual preview description for listing cards, search snippets, and social previews. Each language text value should not exceed 255 characters.
 		'eng' => [
 			'text' => 'A beginner-friendly guide to what usually happens before, during, and after a first massage appointment.',
 			'method_translation' => 'HUM',
@@ -149,7 +128,7 @@ $article_main = [
 
 	# Credits
 	'author_user_id_list' => ['U5rK8mP2xN7qL4vA'], // derived list of linked users in author_credit_list for discovery, reputation, and compatibility
-	'author_credit_list' => [
+	'author_credit_list' => [ // Ordered public byline entries. Each embedded entry contains display_name and an optional user_id. A null user_id permits a custom credited person without a Massage Nexus account. Credit is not ownership or authorization.
 		[
 			'user_id' => 'U5rK8mP2xN7qL4vA', // optional link to a registered user or Neural Agent account
 			'display_name' => 'Xylon Reyes', // public byline name retained as an intentional credit snapshot
@@ -171,17 +150,17 @@ $article_main = [
 	'related_organization_id_list' => ['O3gK8pV1xR6mN4cT'], // organization-level relationship, e.g. Nuat Thai brand/company
 	'related_establishment_id_list' => ['E6sQ2nW9kD4vH7pM'], // branch/location-level relationship
 	'related_practitioner_id_list' => ['P8rC3mL7xT1qV5nK'], // practitioner-level relationship; public UI may call them therapist/masseur/masseuse
-	'related_service_id_list' => ['S4vN9kR2pD7mX5cQ', 'S1hM6qT8wC3nL9yP'],
-	'related_product_id_list' => ['D7xP2mK5vR9cN4qT'],
+	'related_service_id_list' => ['S4vN9kR2pD7mX5cQ', 'S1hM6qT8wC3nL9yP'], // Related massage, spa, or wellness service IDs.
+	'related_product_id_list' => ['D7xP2mK5vR9cN4qT'], // Related wellness product IDs.
 
 	# Cached Statistic
-	'view_count' => 1280,
-	'comment_count' => 16,
-	'save_count' => 84,
-	'share_count' => 21,
+	'view_count' => 1280, // Cached total number of recorded views for this Article.
+	'comment_count' => 16, // Cached total number of comments for this Article.
+	'save_count' => 84, // Cached total number of user saves or bookmarks for this Article.
+	'share_count' => 21, // Cached total number of share actions for this Article.
 	'reading_duration_visual' => 420, // optional fallback visual-reading estimate in seconds
 	'reading_duration_spoken' => 630, // optional fallback read-aloud or screen-reader estimate in seconds
-	'source_reference_list' => [
+	'source_reference_list' => [ // Ordered, bounded list of public references used to research or substantiate the article. Empty means no external source was used.
 		[
 			'source_title' => 'Massage Therapy: What You Need To Know',
 			'source_organization' => 'National Center for Complementary and Integrative Health',
@@ -198,25 +177,25 @@ $article_main = [
 	'visibility_scope' => 'PUB', // PUB = Public
 	'level_nsfw' => 'N', // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
-	'record_note' => [
+	'record_note' => [ // Embedded internal notes attached to this Article record.
 		[
 			'type_record_note' => 'ED', // ED = Editorial Note
 			'note_body' => 'Check if this guide needs an updated beginner checklist before launch.',
-			'created_at' => '2026-07-06T08:15:00Z',
-			'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
+			'created_at' => '2026-07-06T08:15:00Z', // UTC timestamp when this Article record was created.
+			'created_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that created this article record.
 		],
 	], // embedded internal notes for this record; not public article body
 
 	# Audit
 	'created_at' => $created_at,
 	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'updated_at' => $updated_at,
-	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
-	'scheduled_publish_at' => null,
-	'published_at' => '2026-07-12T00:00:00Z',
-	'published_by_user_id' => 'U2pR7vX4kT9mC5qL',
-	'archived_at' => null,
-	'archived_by_user_id' => null,
+	'updated_at' => $updated_at, // UTC timestamp when this Article record was last updated.
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that last updated this article record.
+	'scheduled_publish_at' => null, // UTC timestamp when scheduled content should be published.
+	'published_at' => '2026-07-12T00:00:00Z', // UTC timestamp when content was published.
+	'published_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that published the article.
+	'archived_at' => null, // UTC timestamp when content was archived.
+	'archived_by_user_id' => null, // User ID that archived the article.
 ];
 
 /**
@@ -488,4 +467,71 @@ $article_main_field_property = [
 	'published_by_user_id' => ['field_label' => 'Published By User ID', 'field_description' => 'User ID that published the article.', 'type_data' => 'S', 'is_relational' => true],
 	'archived_at' => ['field_label' => 'Archived At', 'field_description' => 'UTC timestamp when content was archived.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived the article.', 'type_data' => 'S', 'is_relational' => true],
+];
+
+$article_main_subfield_property = [
+	'source_reference_list.source_title' => ['field_label' => 'Source Title', 'field_description' => 'Human-readable title of the cited work or resource.', 'type_data' => 'S', 'is_mandatory' => true],
+	'source_reference_list.source_organization' => ['field_label' => 'Source Organization', 'field_description' => 'Optional publisher, agency, institution, or organization.', 'type_data' => 'S'],
+	'source_reference_list.source_url' => ['field_label' => 'Source URL', 'field_description' => 'Optional canonical HTTPS URL.', 'type_data' => 'S'],
+	'source_reference_list.publication_identifier' => ['field_label' => 'Publication Identifier', 'field_description' => 'Optional DOI, ISBN, report number, or comparable identifier.', 'type_data' => 'S'],
+	'record_note.type_record_note' => ['field_label' => 'Record Note Type', 'field_description' => 'Controlled note-purpose code.', 'type_data' => 'S', 'is_mandatory' => true],
+	'record_note.note_body' => ['field_label' => 'Note Body', 'field_description' => 'Internal note text.', 'type_data' => 'S', 'is_mandatory' => true],
+	'record_note.created_at' => ['field_label' => 'Note Created At', 'field_description' => 'UTC note creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+	'record_note.created_by_user_id' => ['field_label' => 'Note Created By User ID', 'field_description' => 'User that created the note.', 'type_data' => 'S', 'is_relational' => true, 'is_mandatory' => true],
+];
+
+$article_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$article_main_boundary = [
+    'owns' => [
+        'the article_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'language_original_id',
+        'tag_id_list',
+        'author_user_id_list',
+        'article_owner_user_id_list',
+        'editor_user_id_list',
+        'reviewer_user_id_list',
+        'photographer_user_id_list',
+        'cover_media_image_id',
+        'related_article_id_list',
+        'related_organization_id_list',
+        'related_establishment_id_list',
+        'related_practitioner_id_list',
+        'related_service_id_list',
+        'related_product_id_list',
+        'created_by_user_id',
+        'updated_by_user_id',
+        'published_by_user_id',
+        'archived_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'article_main_default' => $article_main_default,
+    'article_main' => $article_main,
+    'article_main_field_order' => $article_main_field_order,
+    'article_main_embedded_structure' => $article_main_embedded_structure,
+    'article_main_field_property' => $article_main_field_property,
+    'article_main_subfield_property' => $article_main_subfield_property,
+    'article_main_index_list' => $article_main_index_list,
+    'article_main_boundary' => $article_main_boundary,
 ];

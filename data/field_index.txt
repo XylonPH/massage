@@ -17,6 +17,7 @@ actor_user_id
 address_public
 ai_tool_name
 air_conditioning_information
+akc
 alt_text
 alternative_name_list
 amenities
@@ -45,6 +46,7 @@ bio
 biography
 birth_date
 border_config
+bounding_box
 caption_text
 care_description
 category_report_list
@@ -56,6 +58,7 @@ collection_count
 color_config
 comment_count
 component_config
+confidence_level
 constraint_text_input
 contact_channel_list
 contact_label
@@ -76,6 +79,7 @@ day_pattern
 decision_note
 default_value
 detected_person_list
+detected_person_number
 direction_note
 display_end_date
 display_name
@@ -94,9 +98,11 @@ establishment_slug
 evidence_note
 exercise_description
 expires_at
+fci
 field_description
 field_label
 field_name
+field_note
 field_option
 field_reference
 file_extension
@@ -122,6 +128,7 @@ group_service_domain
 group_service_family
 group_service_sector
 group_ukc_registry
+height
 height_cm
 height_pixel
 icon_config
@@ -133,6 +140,7 @@ is_appealed
 is_auto_complete
 is_claimed
 is_commentable
+is_confirmed
 is_display_enabled
 is_escalated
 is_favorite
@@ -167,10 +175,12 @@ level_spa_market
 level_therapist_service_market
 level_treatment_privacy
 level_water_temperature
+lifespan_range
 lifespan_year
 locker_availability
 max_character
 max_number
+measurement_range
 media_config
 method_hair_removal
 method_media_creation
@@ -195,6 +205,8 @@ mode_skin_care_delivery
 mode_temperature_pattern
 mode_therapist_booking
 moderation_id
+multilingual_text
+note_body
 operator_filter
 orientation_sexual
 origin_country_id_list
@@ -215,6 +227,7 @@ privacy_acknowledged_at
 privacy_acknowledged_version
 private_room_availability
 proposed_data
+publication_identifier
 published_at
 published_by_user_id
 quote_text
@@ -262,7 +275,10 @@ scope_access
 scope_product_use
 scope_record_id
 section_fci_registry
+service_description_overview
+service_name
 service_received
+service_slug
 shadow_config
 share_count
 short_description
@@ -272,6 +288,7 @@ snapshot_previous
 source_article_body_id
 source_media_image_id
 source_media_video_id
+source_organization
 source_reference_list
 source_title
 source_url
@@ -335,6 +352,7 @@ target_audience_media
 target_client_focus
 target_collection
 target_hair_care
+target_id
 target_nail_care
 target_record_id
 target_record_label
@@ -343,11 +361,14 @@ target_skin_concern
 temperament_description
 terms_accepted_at
 terms_accepted_version
+text
 theme_description
 theme_key
 theme_label
 theme_note
 thumbnail_media_image_id
+time_end
+time_start
 training_description
 trait_score
 translator_user_id_list
@@ -434,6 +455,7 @@ type_hair_service_action
 type_hash_algorithm
 type_hydrotherapy_equipment
 type_image_color_profile
+type_image_variant
 type_import_source
 type_income
 type_index
@@ -557,6 +579,7 @@ type_trivia
 type_validation_rule
 type_vehicle
 type_verification
+type_video_variant
 type_work_arrangement
 typography_config
 updated_at
@@ -576,5 +599,8 @@ visibility_scope
 walking_duration_minute
 watch_scope
 weight_kg
+width
 width_pixel
 word_count
+x
+y

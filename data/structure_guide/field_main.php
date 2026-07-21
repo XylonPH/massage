@@ -1,11 +1,12 @@
 <?php
 /**
  * Title: Zenith Field Catalog Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 15.15
  * Collection: field_main
+ * Description: Stores one canonical reusable field definition and its default data contract.
+ * Purpose: Documents the field_main record shape for review, validation, comparison, and implementation without acting as runtime code or a seed.
  *
- * Purpose:
+ * Notes:
  * This file is a PHP-readable visual guide for the current field_main structure.
  * It is not a seed file, not a runtime migration script, and not a replacement
  * for the canonical Zenith documents. It exists so the Field Catalog can be
@@ -28,15 +29,14 @@
 
 # Variable
 $created_at = '2018-08-20T14:18:39Z';
-$updated_at = '2026-06-24T00:00:00Z';
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Default field-property values.
  *
  * These defaults are interpreted by the application and should not be repeated
  * inside each field property unless the value is intentionally different.
  */
-$field_property_default = [
+$field_main_default = [
 	'type_data' => 'S', // default runtime value shape is String
 	'type_field' => 'TXT', // default suggested UI control is Text Box
 	'format_text' => 'TXT', // default text format is Plain Text
@@ -52,6 +52,7 @@ $field_property_default = [
 	'is_system' => false, // default: user/editable field, not system-owned
 	'collection_count' => 0, // default cached collection usage count
 	'form_count' => 0, // default cached form usage count
+	'field_note' => null, // default: no internal note
 ];
 
 /**
@@ -84,14 +85,14 @@ $field_main = [
 	'field_name' => 'field_name', // required but in the UI auto-typed based on field_label; stable technical field name in snake_case
 
 	# Basic
-	'field_label' => [
+	'field_label' => [ // User-facing multilingual label for the reusable field.
 		'eng' => [
 			'text' => 'Field Name', // required user-facing label
 			'method_translation' => 'HUM', // optional; how this text was produced when tracked
 			'status_review' => 'APR', // optional; approved review status when review is managed
 	],
 	], // required but empty by default
-	'field_description' => [
+	'field_description' => [ // Multilingual explanation of actual field use. It should explain purpose, stored value, and effect on validation, forms, generation, import/export, lookup behavior, or database mapping.
 		'eng' => [
 			'text' => 'Stores the stable technical name of a reusable Field Catalog entry. Used by forms, database collections, import/export, validation, generation, and structure comparison to identify the field meaning without relying on the visible label.',
 			'method_translation' => 'HUM', // optional; how this text was produced when tracked
@@ -105,7 +106,7 @@ $field_main = [
 	# Form
 	'type_field' => 'TXT', // default: TXT; suggested UI control, not the only allowed local control
 	'format_text' => 'TXT', // default: TXT; TXT, HTML, MD, BBC, JSON, XML, YAML, CSV
-	'placeholder_text' => [
+	'placeholder_text' => [ // Optional multilingual placeholder or input hint.
 		'eng' => [
 			'text' => 'Example: project_name',
 			'method_translation' => 'HUM',
@@ -238,6 +239,7 @@ $field_main_field_order = [
 	'is_system',
 	'collection_count',
 	'form_count',
+	'field_note',
 	'created_at',
 	'updated_at',
 ];
@@ -1661,6 +1663,13 @@ $field_main_field_property = [
 	],
 
 	# Audit
+	'field_note' => [
+		'field_label' => 'Field Note',
+		'field_description' => 'Optional internal plain-text note about this field definition.',
+		'type_data' => 'S',
+		'type_field' => 'TXA',
+	],
+
 	'created_at' => [
 		'field_label' => 'Created At',
 		'field_description' => 'Exact timestamp when the Field Catalog record was created. Default is the current timestamp when the record is first inserted.',
@@ -2261,6 +2270,21 @@ $field_main_legacy_name_map = [
  * - relationship dependency authority;
  * - generated-project runtime data.
  */
+
+$field_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
 $field_main_boundary = [
 	'belongs_in_field_main' => [
 		'canonical field meaning',
@@ -2312,13 +2336,14 @@ $field_main_boundary = [
 ];
 
 return [
-	'field_property_default' => $field_property_default,
-	'multilingual_text_sample' => $multilingual_text_sample,
-	'field_main' => $field_main,
-	'field_main_field_order' => $field_main_field_order,
-	'field_main_embedded_structure' => $field_main_embedded_structure,
-	'field_main_field_property' => $field_main_field_property,
-	'field_main_subfield_property' => $field_main_subfield_property,
-	'field_main_legacy_name_map' => $field_main_legacy_name_map,
-	'field_main_boundary' => $field_main_boundary,
+    'field_main_default' => $field_main_default,
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'field_main' => $field_main,
+    'field_main_field_order' => $field_main_field_order,
+    'field_main_embedded_structure' => $field_main_embedded_structure,
+    'field_main_field_property' => $field_main_field_property,
+    'field_main_subfield_property' => $field_main_subfield_property,
+    'field_main_legacy_name_map' => $field_main_legacy_name_map,
+    'field_main_index_list' => $field_main_index_list,
+    'field_main_boundary' => $field_main_boundary,
 ];

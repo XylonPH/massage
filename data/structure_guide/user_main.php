@@ -1,17 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus User Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 0.20
  * Collection: user_main
- * Version: 0.10
+ * Description: Stores one Massage Nexus account, credential, membership, consent cache, and basic profile record.
+ * Purpose: Documents the user_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
+ *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
@@ -33,30 +35,12 @@
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-20T00:00:00Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'PRV', // default: private account data
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Actual record-level defaults for user_main.
  * Sparse-default storage may omit these values in actual database records.
  */
-$user_main_record_default = [
+$user_main_default = [
 	'display_name' => null, // public profile falls back to username until set
 	'bio' => null,
 	'email_verified_at' => null,
@@ -83,23 +67,23 @@ $user_main = [
 
 	# Contact / Credential
 	'email' => 'wellnessfan7@example.test', // stored lowercase; unique
-	'email_verified_at' => '2026-07-20T01:00:00Z',
+	'email_verified_at' => '2026-07-20T01:00:00Z', // UTC timestamp of successful email verification. Null while pending.
 	'password' => 'argon2id-hash-placeholder', // Argon2id hash via Laravel hashed cast
-	'remember_token' => null,
+	'remember_token' => null, // Rotating remember-me token managed by the framework.
 
 	# Membership / Eligibility
 	'birth_date' => '1990-05-15', // date-only Y-m-d string per Shared Project Standards 8.6 (never midnight UTC); age always derived; 18+ eligibility
-	'terms_accepted_at' => '2026-07-20T00:59:00Z',
-	'terms_accepted_version' => '2026-07-18.1',
-	'privacy_acknowledged_at' => '2026-07-20T00:59:00Z',
-	'privacy_acknowledged_version' => '2026-07-18.1',
-	'is_marketing_email_opt_in' => false,
+	'terms_accepted_at' => '2026-07-20T00:59:00Z', // UTC timestamp of the recorded Terms acceptance for the cached current version.
+	'terms_accepted_version' => '2026-07-18.1', // Cached accepted Terms version string. Full acceptance history belongs to user_policy.
+	'privacy_acknowledged_at' => '2026-07-20T00:59:00Z', // UTC timestamp of the recorded Privacy Notice acknowledgment for the cached current version.
+	'privacy_acknowledged_version' => '2026-07-18.1', // Cached acknowledged Privacy Notice version string. Full history belongs to user_policy.
+	'is_marketing_email_opt_in' => false, // Separate, optional, unchecked-by-default marketing email consent. Grant and withdrawal history belongs to user_policy.
 	'status_account' => 'ACT', // PND, ACT, LCK, SUS, DEL
 	'status_membership' => 'ACT', // PEL, ACT, RST, END
 
 	# Audit
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
+	'created_at' => $created_at, // UTC timestamp when this user record was created.
+	'updated_at' => $updated_at, // UTC timestamp when this user record was last updated.
 ];
 
 /**
@@ -130,6 +114,9 @@ $user_main_field_order = [
  * Field-property guide for user_main.
  * These are field-definition properties, not stored record defaults.
  */
+
+$user_main_embedded_structure = [];
+
 $user_main_field_property = [
 	# Primary
 	'_id' => [
@@ -191,4 +178,42 @@ $user_main_field_property = [
 	# Audit
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this user record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this user record was last updated.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+];
+
+$user_main_subfield_property = [];
+
+$user_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$user_main_boundary = [
+    'owns' => [
+        'the user_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'user_main_default' => $user_main_default,
+    'user_main' => $user_main,
+    'user_main_field_order' => $user_main_field_order,
+    'user_main_embedded_structure' => $user_main_embedded_structure,
+    'user_main_field_property' => $user_main_field_property,
+    'user_main_subfield_property' => $user_main_subfield_property,
+    'user_main_index_list' => $user_main_index_list,
+    'user_main_boundary' => $user_main_boundary,
 ];

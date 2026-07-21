@@ -1,35 +1,20 @@
 <?php
 /**
  * Title: Massage Nexus Review Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.10
  * Collection: review_main
- * Version: 1.00
- * This file is a PHP-readable visual structure guide. It is not a seed file,
- * runtime migration, or generated production schema.
+ * Description: Stores one experience-based written review and its publication and moderation state.
+ * Purpose: Documents the review_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
- * Current scope:
+ * Notes:
  * - One shared review collection serves establishment and practitioner targets.
- * - Product reviews may reuse this structure when that public feature is built.
- * - The written review and its moderation/publication state live here.
  * - The target score and bounded criterion entries live in rating_main.
  * - Public anonymity hides the byline only; author identity remains internal.
  */
 
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-20T00:00:00Z';
-
-$field_property_default = [
-	'type_data' => 'S',
-	'type_field' => 'TXT',
-	'format_text' => 'TXT',
-	'is_translatable' => false,
-	'is_mandatory' => false,
-	'is_relational' => false,
-	'is_indexed' => false,
-];
-
-$review_main_record_default = [
+$updated_at = '2026-07-21T04:24:17Z';
+$review_main_default = [
 	'type_review' => 'USR',
 	'author_user_id_list' => [],
 	'is_anonymous' => false,
@@ -49,51 +34,51 @@ $review_main_record_default = [
 
 $review_main = [
 	# Primary and public identity
-	'_id' => 'R7mQ2vK9xP4nH8sD',
-	'review_title' => 'Quiet, careful service with excellent pressure control',
-	'review_slug' => 'quiet-careful-service-with-excellent-pressure-control',
-	'short_description' => 'A detailed first-hand review of a calm home-service massage experience.',
+	'_id' => 'R7mQ2vK9xP4nH8sD', // Opaque application-generated 16-character review identifier.
+	'review_title' => 'Quiet, careful service with excellent pressure control', // User-facing title summarizing the reviewed experience.
+	'review_slug' => 'quiet-careful-service-with-excellent-pressure-control', // Unique lowercase public route slug generated from the review title.
+	'short_description' => 'A detailed first-hand review of a calm home-service massage experience.', // Plain-text preview derived from the review body when the author does not supply one.
 
 	# Authored content
-	'review_body' => "The session began with a clear conversation about pressure and focus areas.\n\nThe therapist checked in without interrupting the flow and adjusted carefully when asked.",
+	'review_body' => "The session began with a clear conversation about pressure and focus areas.\n\nThe therapist checked in without interrupting the flow and adjusted carefully when asked.", // The Review Author's original substantive first-hand review text.
 	'language_original_id' => 3049, // English in common_reference.language_main
-	'type_review' => 'USR',
+	'type_review' => 'USR', // User or editorial review classification from review_and_rating taxonomy.
 
 	# Target and authorship
-	'target_collection' => 'practitioner_main',
-	'target_record_id' => 'P4rK8mN2xV7qL5dA',
-	'author_user_id_list' => ['U5rK8mP2xN7qL4vA'],
-	'is_anonymous' => false,
+	'target_collection' => 'practitioner_main', // Authoritative collection containing the reviewed target, initially establishment_main or practitioner_main.
+	'target_record_id' => 'P4rK8mN2xV7qL5dA', // Stable target _id from target_collection.
+	'author_user_id_list' => ['U5rK8mP2xN7qL4vA'], // Ordered registered-user IDs credited internally as Review Authors.
+	'is_anonymous' => false, // Hides the public byline while retaining internal author identity.
 
 	# Experience context
-	'date_experience' => '2026-07-18',
-	'service_received' => '90-minute deep tissue massage',
-	'amount_paid' => 1400.00,
-	'currency_id' => 111,
-	'type_review_disclosure' => 'SFP',
+	'date_experience' => '2026-07-18', // Optional calendar date on which the reviewed experience occurred; it cannot be in the future.
+	'service_received' => '90-minute deep tissue massage', // Optional concise user-entered description of the service experienced.
+	'amount_paid' => 1400.00, // Optional non-negative amount paid for the reviewed experience, interpreted with currency_id.
+	'currency_id' => 111, // Stable numeric identifier from common_reference.currency_main for amount_paid.
+	'type_review_disclosure' => 'SFP', // Circumstance disclosure from review_and_rating taxonomy.
 
 	# Rating relationship and computed reading metadata
-	'rating_id' => 'G8nV3xQ6mK2pR9tL',
-	'reading_duration_visual' => 48,
-	'reading_duration_spoken' => 72,
+	'rating_id' => 'G8nV3xQ6mK2pR9tL', // One-to-one rating_main event submitted with this review.
+	'reading_duration_visual' => 48, // Computed silent-reading estimate in whole seconds.
+	'reading_duration_spoken' => 72, // Computed spoken or screen-reader estimate in whole seconds.
 
 	# Safety, moderation, and publication
-	'level_nsfw' => 'N',
-	'status_publication' => 'P',
-	'status_review' => 'APR',
-	'visibility_scope' => 'PUB',
-	'status_record_lifecycle' => 'ACT',
-	'record_note' => [],
+	'level_nsfw' => 'N', // Shared sensitive-content level controlling warnings, filters, and moderation routing.
+	'status_publication' => 'P', // Draft, published, scheduled, or unpublished state independent from moderation approval.
+	'status_review' => 'APR', // Shared moderation or editorial approval state.
+	'visibility_scope' => 'PUB', // Shared record visibility boundary.
+	'status_record_lifecycle' => 'ACT', // Shared lifecycle state independent from publication and moderation.
+	'record_note' => [], // Bounded internal notes using the standard record-note structure.
 
 	# Workflow and audit
-	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'updated_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'submitted_at' => '2026-07-19T08:00:00Z',
-	'submitted_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'published_at' => '2026-07-20T08:00:00Z',
-	'published_by_user_id' => 'U2pR7vX4kT9mC5qL',
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA', // Registered user that created the review record.
+	'updated_by_user_id' => 'U5rK8mP2xN7qL4vA', // Last registered user that changed the review record.
+	'submitted_at' => '2026-07-19T08:00:00Z', // UTC timestamp when the review entered moderation.
+	'submitted_by_user_id' => 'U5rK8mP2xN7qL4vA', // Registered user that submitted the review for moderation.
+	'published_at' => '2026-07-20T08:00:00Z', // UTC timestamp when the approved review became public.
+	'published_by_user_id' => 'U2pR7vX4kT9mC5qL', // Authorized user or system actor that published the approved review.
+	'created_at' => $created_at, // UTC creation timestamp.
+	'updated_at' => $updated_at, // UTC last-update timestamp.
 ];
 
 $review_main_field_order = [
@@ -107,6 +92,8 @@ $review_main_field_order = [
 	'updated_by_user_id', 'submitted_at', 'submitted_by_user_id', 'published_at',
 	'published_by_user_id', 'created_at', 'updated_at',
 ];
+
+$review_main_embedded_structure = [];
 
 $review_main_field_property = [
 	'_id' => ['field_label' => 'Review ID', 'field_description' => 'Opaque application-generated 16-character review identifier.', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_indexed' => true],
@@ -142,4 +129,52 @@ $review_main_field_property = [
 	'published_by_user_id' => ['field_label' => 'Published By User ID', 'field_description' => 'Authorized user or system actor that published the approved review.', 'is_relational' => true],
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC creation timestamp.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true, 'is_indexed' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC last-update timestamp.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+];
+
+$review_main_subfield_property = [];
+
+$review_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$review_main_boundary = [
+    'owns' => [
+        'the review_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'language_original_id',
+        'target_record_id',
+        'author_user_id_list',
+        'currency_id',
+        'rating_id',
+        'created_by_user_id',
+        'updated_by_user_id',
+        'submitted_by_user_id',
+        'published_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'review_main_default' => $review_main_default,
+    'review_main' => $review_main,
+    'review_main_field_order' => $review_main_field_order,
+    'review_main_embedded_structure' => $review_main_embedded_structure,
+    'review_main_field_property' => $review_main_field_property,
+    'review_main_subfield_property' => $review_main_subfield_property,
+    'review_main_index_list' => $review_main_index_list,
+    'review_main_boundary' => $review_main_boundary,
 ];

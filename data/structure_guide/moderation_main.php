@@ -1,37 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Moderation Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.10
  * Collection: moderation_main
- * Version: 1.00
- * This file is a PHP-readable visual structure guide.
+ * Description: Stores one moderation case and its current workflow state.
+ * Purpose: Documents the moderation_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
- * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
- * - *_field_property describes schema/field metadata only.
- *
- * Current scope:
- * - moderation_main stores the state, assignment, and resolution of a moderation
- *   case (e.g. for a reported review, media, or user).
- * - Individual actions, decisions, and history within the case are stored in
- *   moderation_action.
+ * Notes:
+ * - moderation_main stores the state, assignment, and resolution of a case.
+ * - Individual actions and decisions are stored in moderation_action.
  */
 
-# Variable
 $created_at = '2026-07-20T12:00:00Z';
-$updated_at = '2026-07-20T12:00:00Z';
-
-$field_property_default = [
-	'type_data' => 'S',
-	'type_field' => 'TXT',
-	'is_translatable' => false,
-	'is_mandatory' => false,
-	'is_relational' => false,
-	'is_indexed' => false,
-];
-
-$moderation_main_record_default = [
+$updated_at = '2026-07-21T04:24:17Z';
+$moderation_main_default = [
 	'status_moderation' => 'OPN', // OPN = Open
 	'priority_level' => 'M', // M = Medium
 	'category_report_list' => [],
@@ -46,22 +28,22 @@ $moderation_main_record_default = [
 
 $moderation_main = [
 	# Primary
-	'_id' => 'M4sK2pQ9xR7tV8zW',
+	'_id' => 'M4sK2pQ9xR7tV8zW', // Moderation Case ID.
 
 	# Target
 	'target_collection' => 'review_main', // e.g. review_main, media_image, user_main
-	'target_record_id' => 'R9mP2xR4tV8zN7qL',
+	'target_record_id' => 'R9mP2xR4tV8zN7qL', // The identifier of the reported or moderated record.
 	
 	# Case Details
 	'status_moderation' => 'URV', // OPN = Open, URV = Under Review, RES = Resolved, CLS = Closed
 	'priority_level' => 'H', // H = High, M = Medium, L = Low
 	'category_report_list' => ['SPAM', 'HARASSMENT'], // The policy violations reported
-	'is_escalated' => true,
-	'is_appealed' => false,
+	'is_escalated' => true, // Is Escalated.
+	'is_appealed' => false, // Is Appealed.
 	
 	# Assignment
 	'assigned_user_id' => 'U2pR7vX4kT9mC5qL', // Administrator handling the case
-	'assigned_at' => '2026-07-20T12:15:00Z',
+	'assigned_at' => '2026-07-20T12:15:00Z', // Assigned At.
 	
 	# Resolution
 	'resolved_at' => null, // Timestamp of resolution
@@ -71,8 +53,8 @@ $moderation_main = [
 	'related_moderation_id_list' => ['M8nP3yT1qR9wV2kM'], // Related cases, e.g. multiple reports on the same user
 	
 	# Audit
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
+	'created_at' => $created_at, // Created At.
+	'updated_at' => $updated_at, // Updated At.
 ];
 
 $moderation_main_field_order = [
@@ -92,6 +74,8 @@ $moderation_main_field_order = [
 	'created_at',
 	'updated_at',
 ];
+
+$moderation_main_embedded_structure = [];
 
 $moderation_main_field_property = [
 	'_id' => ['field_label' => 'Moderation Case ID', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
@@ -115,4 +99,46 @@ $moderation_main_field_property = [
 	
 	'created_at' => ['field_label' => 'Created At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true, 'is_indexed' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+];
+
+$moderation_main_subfield_property = [];
+
+$moderation_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$moderation_main_boundary = [
+    'owns' => [
+        'the moderation_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'target_record_id',
+        'assigned_user_id',
+        'related_moderation_id_list',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'moderation_main_default' => $moderation_main_default,
+    'moderation_main' => $moderation_main,
+    'moderation_main_field_order' => $moderation_main_field_order,
+    'moderation_main_embedded_structure' => $moderation_main_embedded_structure,
+    'moderation_main_field_property' => $moderation_main_field_property,
+    'moderation_main_subfield_property' => $moderation_main_subfield_property,
+    'moderation_main_index_list' => $moderation_main_index_list,
+    'moderation_main_boundary' => $moderation_main_boundary,
 ];

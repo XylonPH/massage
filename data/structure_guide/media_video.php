@@ -1,17 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Media Video Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.12
  * Collection: media_video
- * Version: 1.01
+ * Description: Stores one video asset record, its renditions, attribution, relationships, and lifecycle.
+ * Purpose: Documents the media_video record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
+ *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
@@ -22,25 +24,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-06T00:00:00Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'INH', // default: inherit visibility
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:27:07Z';
 /**
  * Multilingual short-text sample.
  * Used by content_title, short_description, caption_text, alt_text, and similar
@@ -53,17 +37,12 @@ $multilingual_text_sample = [
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
 		'status_review' => 'A', // optional; A = Approved
 	],
-	'fil' => [
-		'text' => 'Halimbawang teksto',
-		'method_translation' => 'HUM',
-		'status_review' => 'A',
-	],
 ];
 
 /**
  * Actual record-level defaults for media_video.
  */
-$media_video_record_default = [
+$media_video_default = [
 	'tag_id_list' => [],
 	'related_organization_id_list' => [],
 	'related_establishment_id_list' => [],
@@ -90,49 +69,49 @@ $media_video_record_default = [
  */
 $media_video = [
 	# Primary
-	'_id' => 8001,
+	'_id' => 8001, // Physical MongoDB identity for the media_video record.
 
 	# Core File
-	'video_title' => [
+	'video_title' => [ // Optional multilingual title for identifying the video internally or publicly.
 		'eng' => ['text' => 'First Massage Consultation Demo', 'method_translation' => 'HUM', 'status_review' => 'A'],
 	],
-	'file_name' => 'first-massage-consultation-demo.mp4',
-	'file_extension' => 'mp4',
-	'mime_type' => 'video/mp4',
-	'file_size_byte' => 52428800,
+	'file_name' => 'first-massage-consultation-demo.mp4', // Stored file name including extension.
+	'file_extension' => 'mp4', // Lowercase file extension without the leading period.
+	'mime_type' => 'video/mp4', // Internet media type for the video file.
+	'file_size_byte' => 52428800, // File size in bytes.
 	'duration' => 185, // duration in seconds
-	'width_pixel' => 1920,
-	'height_pixel' => 1080,
-	'storage_path' => 'storage/upload/media/video/2026/07/first-massage-consultation-demo.mp4',
-	'storage_url' => null,
+	'width_pixel' => 1920, // Video frame width in pixels.
+	'height_pixel' => 1080, // Video frame height in pixels.
+	'storage_path' => 'storage/upload/media/video/2026/07/first-massage-consultation-demo.mp4', // Internal/local storage path used by the application.
+	'storage_url' => null, // Public, CDN, or external URL when the file is served outside local/internal storage.
 
 	# Description
-	'caption_text' => [
+	'caption_text' => [ // Optional multilingual caption for displaying the video in public contexts.
 		'eng' => ['text' => 'A short demonstration of asking about pressure, comfort, and allergies before a massage.', 'method_translation' => 'HUM', 'status_review' => 'A'],
 	],
 
 	# Classification / Relationship
-	'tag_id_list' => [301, 602],
-	'related_organization_id_list' => [201],
-	'related_establishment_id_list' => [301],
-	'related_practitioner_id_list' => [401],
-	'related_service_id_list' => [601],
-	'related_product_id_list' => [],
-	'level_nsfw' => 'N',
+	'tag_id_list' => [301, 602], // List of tag IDs attached to the video.
+	'related_organization_id_list' => [201], // Organization IDs related to the video.
+	'related_establishment_id_list' => [301], // Establishment IDs related to the video.
+	'related_practitioner_id_list' => [401], // Practitioner IDs related to the video.
+	'related_service_id_list' => [601], // Service IDs related to the video.
+	'related_product_id_list' => [], // Product IDs related to the video.
+	'level_nsfw' => 'N', // Video sensitivity classification for moderation and display handling.
 
 	# Credit / Source
 	'method_media_creation' => 'VD', // VD = video recorded, AI = AI generated, ED = edited/composited, IMP = imported
-	'creator_user_id_list' => [507],
-	'videographer_user_id_list' => [507],
-	'editor_user_id_list' => [506],
-	'ai_tool_name' => null,
-	'source_media_video_id' => null,
-	'source_url' => null,
+	'creator_user_id_list' => [507], // User IDs credited with creating the video or visual work.
+	'videographer_user_id_list' => [507], // User IDs credited as videographers for the video.
+	'editor_user_id_list' => [506], // User IDs credited with editing, compositing, or post-processing the video.
+	'ai_tool_name' => null, // Name of the AI tool used when the video was generated or AI-assisted.
+	'source_media_video_id' => null, // Reference to an original media_video record when this video is edited or derived from another video.
+	'source_url' => null, // Original external source URL when the video is imported or externally sourced.
 
 	# Thumbnail / Variant / Recognition
-	'thumbnail_media_image_id' => 7003,
-	'preview_media_image_id_list' => [7004, 7005, 7006],
-	'video_variant_list' => [
+	'thumbnail_media_image_id' => 7003, // Reference to the main thumbnail image for this video.
+	'preview_media_image_id_list' => [7004, 7005, 7006], // List of media_image IDs used as preview frames or screenshots for this video.
+	'video_variant_list' => [ // Embedded list of derived video files such as alternate resolutions or compressed encodes.
 		[
 			'type_video_variant' => '720', // 720 = 720p encode
 			'file_name' => 'first-massage-consultation-demo-720p.mp4',
@@ -146,7 +125,7 @@ $media_video = [
 			'storage_url' => null,
 		],
 	],
-	'detected_person_list' => [
+	'detected_person_list' => [ // Optional machine-detected person appearances in the video. Does not confirm identity by itself.
 		[
 			'detected_person_number' => 1,
 			'confidence_level' => 0.87,
@@ -154,7 +133,7 @@ $media_video = [
 			'time_end' => 38,
 		],
 	],
-	'recognized_person_list' => [
+	'recognized_person_list' => [ // Optional recognized or proposed person/entity links in the video, subject to confirmation and privacy rules.
 		[
 			'target_collection' => 'practitioner_main',
 			'target_id' => 401,
@@ -164,15 +143,15 @@ $media_video = [
 	],
 
 	# Handling
-	'visibility_scope' => 'PUB',
-	'status_review' => 'A',
-	'status_record_lifecycle' => 'ACT',
+	'visibility_scope' => 'PUB', // Visibility rule for the video record.
+	'status_review' => 'A', // Moderation or approval review status for the video.
+	'status_record_lifecycle' => 'ACT', // Database lifecycle state for the video record.
 
 	# Audit
-	'created_at' => $created_at,
-	'created_by_user_id' => 507,
-	'updated_at' => $updated_at,
-	'updated_by_user_id' => 506,
+	'created_at' => $created_at, // UTC timestamp when this video record was created.
+	'created_by_user_id' => 507, // User ID that created this video record.
+	'updated_at' => $updated_at, // UTC timestamp when this video record was last updated.
+	'updated_by_user_id' => 506, // User ID that last updated this video record.
 ];
 
 $media_video_field_order = [
@@ -282,4 +261,77 @@ $media_video_field_property = [
 	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this video record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this video record was last updated.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this video record.', 'type_data' => 'I', 'type_sql' => 'INT', 'is_relational' => true],
+];
+
+$media_video_subfield_property = [
+	'video_variant_list.type_video_variant' => ['field_label' => 'Video Variant Type', 'field_description' => 'Controlled rendition purpose or resolution code.', 'type_data' => 'S', 'is_mandatory' => true],
+	'video_variant_list.file_name' => ['field_label' => 'Variant File Name', 'field_description' => 'Stored rendition filename.', 'type_data' => 'S', 'is_mandatory' => true],
+	'video_variant_list.file_extension' => ['field_label' => 'Variant File Extension', 'field_description' => 'Normalized rendition extension.', 'type_data' => 'S', 'is_mandatory' => true],
+	'video_variant_list.mime_type' => ['field_label' => 'Variant MIME Type', 'field_description' => 'Rendition media type.', 'type_data' => 'S', 'is_mandatory' => true],
+	'video_variant_list.file_size_byte' => ['field_label' => 'Variant File Size', 'field_description' => 'Rendition size in bytes.', 'type_data' => 'I', 'min_number' => 0],
+	'video_variant_list.duration' => ['field_label' => 'Variant Duration', 'field_description' => 'Rendition duration in seconds.', 'type_data' => 'I', 'min_number' => 0],
+	'video_variant_list.width_pixel' => ['field_label' => 'Variant Width', 'field_description' => 'Rendition width in pixels.', 'type_data' => 'I', 'min_number' => 1],
+	'video_variant_list.height_pixel' => ['field_label' => 'Variant Height', 'field_description' => 'Rendition height in pixels.', 'type_data' => 'I', 'min_number' => 1],
+	'video_variant_list.storage_path' => ['field_label' => 'Variant Storage Path', 'field_description' => 'Private storage path for the rendition.', 'type_data' => 'S'],
+	'video_variant_list.storage_url' => ['field_label' => 'Variant Storage URL', 'field_description' => 'Optional approved delivery URL.', 'type_data' => 'S'],
+	'detected_person_list.detected_person_number' => ['field_label' => 'Detected Person Number', 'field_description' => 'Stable ordinal within this detection result.', 'type_data' => 'I'],
+	'detected_person_list.confidence_level' => ['field_label' => 'Detection Confidence', 'field_description' => 'Detection confidence from zero to one.', 'type_data' => 'D', 'min_number' => 0, 'max_number' => 1],
+	'detected_person_list.time_start' => ['field_label' => 'Detection Start', 'field_description' => 'Start time in seconds.', 'type_data' => 'I', 'min_number' => 0],
+	'detected_person_list.time_end' => ['field_label' => 'Detection End', 'field_description' => 'End time in seconds.', 'type_data' => 'I', 'min_number' => 0],
+	'recognized_person_list.target_collection' => ['field_label' => 'Recognized Target Collection', 'field_description' => 'Collection containing the proposed recognized person.', 'type_data' => 'S'],
+	'recognized_person_list.target_id' => ['field_label' => 'Recognized Target ID', 'field_description' => 'Identifier of the proposed recognized person.', 'type_data' => 'S', 'is_relational' => true],
+	'recognized_person_list.confidence_level' => ['field_label' => 'Recognition Confidence', 'field_description' => 'Recognition confidence from zero to one.', 'type_data' => 'D', 'min_number' => 0, 'max_number' => 1],
+	'recognized_person_list.is_confirmed' => ['field_label' => 'Recognition Confirmed', 'field_description' => 'Whether an authorized review confirmed the match.', 'type_data' => 'B'],
+];
+
+$media_video_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$media_video_boundary = [
+    'owns' => [
+        'the media_video record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'tag_id_list',
+        'related_organization_id_list',
+        'related_establishment_id_list',
+        'related_practitioner_id_list',
+        'related_service_id_list',
+        'related_product_id_list',
+        'creator_user_id_list',
+        'videographer_user_id_list',
+        'editor_user_id_list',
+        'source_media_video_id',
+        'thumbnail_media_image_id',
+        'preview_media_image_id_list',
+        'created_by_user_id',
+        'updated_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'media_video_default' => $media_video_default,
+    'media_video' => $media_video,
+    'media_video_field_order' => $media_video_field_order,
+    'media_video_embedded_structure' => $media_video_embedded_structure,
+    'media_video_field_property' => $media_video_field_property,
+    'media_video_subfield_property' => $media_video_subfield_property,
+    'media_video_index_list' => $media_video_index_list,
+    'media_video_boundary' => $media_video_boundary,
 ];

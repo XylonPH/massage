@@ -1,31 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Claim Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.10
  * Collection: claim_main
- * Version: 1.00
- * This file is a PHP-readable visual structure guide.
+ * Description: Stores one reviewed claim of authority or relationship to a governed record.
+ * Purpose: Documents the claim_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
- * Current scope:
+ * Notes:
  * - claim_main stores ownership or management claims for claimable targets
- *   like establishments or practitioner profiles.
+ *   such as establishments or practitioner profiles.
  */
 
-# Variable
 $created_at = '2026-07-20T12:00:00Z';
-$updated_at = '2026-07-20T12:00:00Z';
-
-$field_property_default = [
-	'type_data' => 'S',
-	'type_field' => 'TXT',
-	'is_translatable' => false,
-	'is_mandatory' => false,
-	'is_relational' => false,
-	'is_indexed' => false,
-];
-
-$claim_main_record_default = [
+$updated_at = '2026-07-21T04:24:17Z';
+$claim_main_default = [
 	'status_claim' => 'PEN', // PEN = Pending
 	'type_relationship' => 'MGR', // MGR = Manager
 	'reviewer_user_id' => null,
@@ -35,29 +23,29 @@ $claim_main_record_default = [
 
 $claim_main = [
 	# Primary
-	'_id' => 'C7xK2pQ9xR4tY8zA',
+	'_id' => 'C7xK2pQ9xR4tY8zA', // Claim ID.
 
 	# Target
-	'target_collection' => 'establishment_main',
-	'target_record_id' => 'E6sQ2nW9kD4vH7pM',
+	'target_collection' => 'establishment_main', // Target Collection.
+	'target_record_id' => 'E6sQ2nW9kD4vH7pM', // Target Record ID.
 	
 	# Submission
 	'claimant_user_id' => 'U5rK8mP2xN7qL4vA', // User claiming the profile
 	'type_relationship' => 'OWN', // OWN = Owner, MGR = Manager, PR = Public Relations, EMP = Employee
-	'claim_evidence_note' => 'I am the registered owner, here is the DTI registration.',
+	'claim_evidence_note' => 'I am the registered owner, here is the DTI registration.', // Claim Evidence Note.
 	
 	# Status & Review
 	'status_claim' => 'APR', // PEN = Pending, APR = Approved, REJ = Rejected, REV = Revoked
 	'reviewer_user_id' => 'U2pR7vX4kT9mC5qL', // Administrator who reviewed it
-	'reviewed_at' => '2026-07-20T14:45:00Z',
-	'decision_note' => 'Ownership verified via provided documents.',
+	'reviewed_at' => '2026-07-20T14:45:00Z', // Reviewed At.
+	'decision_note' => 'Ownership verified via provided documents.', // Decision Note.
 	
 	# Lifecycle
-	'is_revoked' => false,
+	'is_revoked' => false, // Is Revoked.
 	
 	# Audit
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
+	'created_at' => $created_at, // Created At.
+	'updated_at' => $updated_at, // Updated At.
 ];
 
 $claim_main_field_order = [
@@ -75,6 +63,8 @@ $claim_main_field_order = [
 	'created_at',
 	'updated_at',
 ];
+
+$claim_main_embedded_structure = [];
 
 $claim_main_field_property = [
 	'_id' => ['field_label' => 'Claim ID', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
@@ -95,4 +85,46 @@ $claim_main_field_property = [
 	
 	'created_at' => ['field_label' => 'Created At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true, 'is_indexed' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+];
+
+$claim_main_subfield_property = [];
+
+$claim_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$claim_main_boundary = [
+    'owns' => [
+        'the claim_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'target_record_id',
+        'claimant_user_id',
+        'reviewer_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'claim_main_default' => $claim_main_default,
+    'claim_main' => $claim_main,
+    'claim_main_field_order' => $claim_main_field_order,
+    'claim_main_embedded_structure' => $claim_main_embedded_structure,
+    'claim_main_field_property' => $claim_main_field_property,
+    'claim_main_subfield_property' => $claim_main_subfield_property,
+    'claim_main_index_list' => $claim_main_index_list,
+    'claim_main_boundary' => $claim_main_boundary,
 ];

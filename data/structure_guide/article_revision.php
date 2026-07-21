@@ -1,17 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Article Revision Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.30
  * Collection: article_revision
- * Version: 1.20
+ * Description: Stores one immutable proposed or accepted revision of Article content or metadata.
+ * Purpose: Documents the article_revision record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
+ *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
@@ -23,29 +25,11 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-06T00:00:00Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'INH', // default: inherit visibility
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Actual record-level defaults for article_revision.
  */
-$article_revision_record_default = [
+$article_revision_default = [
 	'revision_number' => 1,
 	'revision_note' => null,
 	'review_note' => null,
@@ -58,35 +42,35 @@ $article_revision_record_default = [
  */
 $article_revision = [
 	# Primary
-	'_id' => 'R9cM4xK1pT7vN2qH',
+	'_id' => 'R9cM4xK1pT7vN2qH', // Canonical application-generated 16-character Base62 identifier for the article_revision record.
 
 	# Parent
-	'article_id' => 'A7mK2pQ9xR4tV8zN',
-	'article_body_id' => 'B6qN1xT8mR3vK9cP',
+	'article_id' => 'A7mK2pQ9xR4tV8zN', // Reference to the owning article_main record.
+	'article_body_id' => 'B6qN1xT8mR3vK9cP', // Reference to the article body being revised.
 	'language_id' => 3049, // English in common_reference.language_main; common_reference IDs remain numeric
 
 	# Revision Snapshot
-	'revision_number' => 2,
-	'article_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, areas of discomfort, and privacy preferences.</p>',
-	'word_count' => 1630,
-	'reading_duration_visual' => 435,
-	'reading_duration_spoken' => 652,
-	'revision_note' => 'Expanded the consultation paragraph and clarified privacy wording.',
-	'review_note' => 'Approved after safety wording update.',
-	'status_review' => 'A',
+	'revision_number' => 2, // Sequential revision number for the article body language version.
+	'article_body' => '<h2 class="mn-section-title">Before the massage begins</h2><p>Your therapist may ask about pressure, allergies, areas of discomfort, and privacy preferences.</p>', // Snapshot of the controlled/theme-aware HTML article body at this revision.
+	'word_count' => 1630, // Count of visible words in this revision snapshot after HTML and media placement tokens are removed.
+	'reading_duration_visual' => 435, // Visual-reading estimate in seconds for this revision snapshot.
+	'reading_duration_spoken' => 652, // Read-aloud, screen-reader, or text-to-speech estimate in seconds for this revision snapshot.
+	'revision_note' => 'Expanded the consultation paragraph and clarified privacy wording.', // Internal note explaining what changed in this revision.
+	'review_note' => 'Approved after safety wording update.', // Reviewer note explaining approval, rejection, or requested changes.
+	'status_review' => 'A', // Review state for this revision.
 
 	# Handling
-	'status_record_lifecycle' => 'ACT',
+	'status_record_lifecycle' => 'ACT', // Database lifecycle state for this revision record.
 
 	# Audit
-	'created_at' => $created_at,
-	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'submitted_at' => '2026-07-06T09:30:00Z',
-	'submitted_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'reviewed_at' => '2026-07-06T10:00:00Z',
-	'reviewed_by_user_id' => 'U6nH1sW8dK3yP9fR',
-	'approved_at' => '2026-07-06T10:30:00Z',
-	'approved_by_user_id' => 'U6nH1sW8dK3yP9fR',
+	'created_at' => $created_at, // UTC timestamp when this revision record was created.
+	'created_by_user_id' => 'U5rK8mP2xN7qL4vA', // User ID that created this revision.
+	'submitted_at' => '2026-07-06T09:30:00Z', // UTC timestamp when this revision was submitted for review.
+	'submitted_by_user_id' => 'U5rK8mP2xN7qL4vA', // User ID that submitted this revision for review.
+	'reviewed_at' => '2026-07-06T10:00:00Z', // UTC timestamp when this revision was reviewed.
+	'reviewed_by_user_id' => 'U6nH1sW8dK3yP9fR', // User ID that reviewed this revision.
+	'approved_at' => '2026-07-06T10:30:00Z', // UTC timestamp when this revision was approved.
+	'approved_by_user_id' => 'U6nH1sW8dK3yP9fR', // User ID that approved this revision.
 ];
 
 $article_revision_field_order = [
@@ -112,6 +96,8 @@ $article_revision_field_order = [
 	'approved_at',
 	'approved_by_user_id',
 ];
+
+$article_revision_embedded_structure = [];
 
 $article_revision_field_property = [
 	'_id' => ['field_label' => 'Article Revision ID', 'field_description' => 'Canonical application-generated 16-character Base62 identifier for the article_revision record.', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
@@ -146,4 +132,50 @@ $article_revision_field_property = [
 	'reviewed_by_user_id' => ['field_label' => 'Reviewed By User ID', 'field_description' => 'User ID that reviewed this revision.', 'type_data' => 'S', 'is_relational' => true],
 	'approved_at' => ['field_label' => 'Approved At', 'field_description' => 'UTC timestamp when this revision was approved.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'approved_by_user_id' => ['field_label' => 'Approved By User ID', 'field_description' => 'User ID that approved this revision.', 'type_data' => 'S', 'is_relational' => true],
+];
+
+$article_revision_subfield_property = [];
+
+$article_revision_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$article_revision_boundary = [
+    'owns' => [
+        'the article_revision record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'article_id',
+        'article_body_id',
+        'language_id',
+        'created_by_user_id',
+        'submitted_by_user_id',
+        'reviewed_by_user_id',
+        'approved_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'article_revision_default' => $article_revision_default,
+    'article_revision' => $article_revision,
+    'article_revision_field_order' => $article_revision_field_order,
+    'article_revision_embedded_structure' => $article_revision_embedded_structure,
+    'article_revision_field_property' => $article_revision_field_property,
+    'article_revision_subfield_property' => $article_revision_subfield_property,
+    'article_revision_index_list' => $article_revision_index_list,
+    'article_revision_boundary' => $article_revision_boundary,
 ];

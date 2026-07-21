@@ -1,31 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Verification Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.10
  * Collection: verification_main
- * Version: 1.00
- * This file is a PHP-readable visual structure guide.
+ * Description: Stores one reviewed verification request and its evidence decision state.
+ * Purpose: Documents the verification_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
- * Current scope:
- * - verification_main stores the shared verification process and result
- *   history (e.g. verifying an establishment, practitioner, or contact).
+ * Notes:
+ * - verification_main stores the shared verification process and result history
+ *   for establishments, practitioners, contacts, and other supported targets.
  */
 
-# Variable
 $created_at = '2026-07-20T12:00:00Z';
-$updated_at = '2026-07-20T12:00:00Z';
-
-$field_property_default = [
-	'type_data' => 'S',
-	'type_field' => 'TXT',
-	'is_translatable' => false,
-	'is_mandatory' => false,
-	'is_relational' => false,
-	'is_indexed' => false,
-];
-
-$verification_main_record_default = [
+$updated_at = '2026-07-21T04:24:17Z';
+$verification_main_default = [
 	'status_verification' => 'PEN', // PEN = Pending
 	'type_evidence_list' => [],
 	'reviewer_user_id' => null,
@@ -36,31 +24,31 @@ $verification_main_record_default = [
 
 $verification_main = [
 	# Primary
-	'_id' => 'V5mK2pQ9xR4tY8zB',
+	'_id' => 'V5mK2pQ9xR4tY8zB', // Verification ID.
 
 	# Target
-	'target_collection' => 'establishment_main',
-	'target_record_id' => 'E6sQ2nW9kD4vH7pM',
+	'target_collection' => 'establishment_main', // Target Collection.
+	'target_record_id' => 'E6sQ2nW9kD4vH7pM', // Target Record ID.
 	'type_verification' => 'LIC', // LIC = License, GOV = Government ID, CON = Contact Info, OPN = Open Status
 	
 	# Submission
 	'submitter_user_id' => 'U5rK8mP2xN7qL4vA', // User who requested verification
 	'type_evidence_list' => ['DOC', 'URL'], // E.g., Document upload, external link
-	'evidence_note' => 'Attached business permit for the current year.',
+	'evidence_note' => 'Attached business permit for the current year.', // Evidence Note.
 	
 	# Status & Review
 	'status_verification' => 'APR', // PEN = Pending, APR = Approved, REJ = Rejected, REV = Revoked
 	'reviewer_user_id' => 'U2pR7vX4kT9mC5qL', // Administrator who reviewed it
-	'reviewed_at' => '2026-07-20T14:30:00Z',
-	'decision_note' => 'Valid business permit checked.',
+	'reviewed_at' => '2026-07-20T14:30:00Z', // Reviewed At.
+	'decision_note' => 'Valid business permit checked.', // Decision Note.
 	
 	# Lifecycle
 	'expires_at' => '2027-12-31T23:59:59Z', // Verification might be time-bound
-	'is_revoked' => false,
+	'is_revoked' => false, // Is Revoked.
 	
 	# Audit
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
+	'created_at' => $created_at, // Created At.
+	'updated_at' => $updated_at, // Updated At.
 ];
 
 $verification_main_field_order = [
@@ -80,6 +68,8 @@ $verification_main_field_order = [
 	'created_at',
 	'updated_at',
 ];
+
+$verification_main_embedded_structure = [];
 
 $verification_main_field_property = [
 	'_id' => ['field_label' => 'Verification ID', 'type_data' => 'S', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_system' => true, 'is_indexed' => true],
@@ -102,4 +92,46 @@ $verification_main_field_property = [
 	
 	'created_at' => ['field_label' => 'Created At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true, 'is_indexed' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+];
+
+$verification_main_subfield_property = [];
+
+$verification_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$verification_main_boundary = [
+    'owns' => [
+        'the verification_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'target_record_id',
+        'submitter_user_id',
+        'reviewer_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'verification_main_default' => $verification_main_default,
+    'verification_main' => $verification_main,
+    'verification_main_field_order' => $verification_main_field_order,
+    'verification_main_embedded_structure' => $verification_main_embedded_structure,
+    'verification_main_field_property' => $verification_main_field_property,
+    'verification_main_subfield_property' => $verification_main_subfield_property,
+    'verification_main_index_list' => $verification_main_index_list,
+    'verification_main_boundary' => $verification_main_boundary,
 ];

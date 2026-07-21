@@ -49,14 +49,45 @@ foreach (glob("$repo/data/taxonomy/massage_nexus/*.json") as $f) {
 // bounded embedded objects; every stored field name still belongs in the
 // canonical index.
 foreach (glob("$repo/data/structure_guide/*.php") as $f) {
-    $srcText = file_get_contents($f);
-    if (preg_match_all('/\$[A-Za-z0-9_]+_field_order\s*=\s*\[(.*?)\];/s', $srcText, $matches)) {
-        foreach ($matches[1] as $fieldOrder) {
-            preg_match_all("/'([A-Za-z0-9_]+)'/", $fieldOrder, $mm);
+    $variables = (static function (string $guidePath): array {
+        include $guidePath;
 
-            foreach ($mm[1] as $name) {
+        $defined = get_defined_vars();
+        unset($defined['guidePath']);
+
+        return $defined;
+    })($f);
+
+    foreach ($variables as $variableName => $value) {
+        if (!str_ends_with($variableName, '_field_order') || !is_array($value)) {
+            continue;
+        }
+
+        foreach ($value as $name) {
+            if (is_string($name) && preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name)) {
                 $add($name, 'collection: data/structure_guide/' . basename($f));
             }
+        }
+    }
+
+    // Nested fields live in the collection-specific subfield-property array.
+    // The canonical field index stores bare field names rather than full paths.
+    $collection = pathinfo($f, PATHINFO_FILENAME);
+    $subfieldProperty = $variables[$collection . '_subfield_property'] ?? [];
+
+    foreach (array_keys($subfieldProperty) as $path) {
+        if (!is_string($path)) {
+            continue;
+        }
+
+        $segments = array_values(array_filter(
+            explode('.', $path),
+            static fn (string $segment): bool => $segment !== '' && $segment !== '*'
+        ));
+        $name = end($segments);
+
+        if (is_string($name) && preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name)) {
+            $add($name, 'collection subfield: data/structure_guide/' . basename($f));
         }
     }
 }

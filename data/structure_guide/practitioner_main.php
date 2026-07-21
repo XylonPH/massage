@@ -1,17 +1,19 @@
 <?php
 /**
  * Title: Massage Nexus Practitioner Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 0.20
  * Collection: practitioner_main
- * Version: 0.10
+ * Description: Stores one practitioner professional profile independently of a user account or employer.
+ * Purpose: Documents the practitioner_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
+ *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
@@ -36,30 +38,12 @@
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-20T00:00:00Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'INH', // default: inherit visibility
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Actual record-level defaults for practitioner_main.
  * Sparse-default storage may omit these values in actual database records.
  */
-$practitioner_main_record_default = [
+$practitioner_main_default = [
 	'type_practice_setting' => [],
 	'type_specialty_focus' => [],
 	'target_client_focus' => [],
@@ -77,6 +61,14 @@ $practitioner_main_record_default = [
 	'record_note' => [],
 ];
 
+$multilingual_text_sample = [
+	'eng' => [
+		'text' => 'Sample practitioner text',
+		'method_translation' => 'HUM',
+		'status_review' => 'A',
+	],
+];
+
 /**
  * practitioner_main sample record.
  * This sample intentionally includes populated values so the intended shape can
@@ -88,28 +80,28 @@ $practitioner_main = [
 	'_id' => 'P8rC3mL7xT1qV5nK', // canonical application-generated 16-character Base62 identifier
 
 	# Core
-	'practitioner_name' => [
+	'practitioner_name' => [ // Approved public professional name. Multilingual bounded text so transliterations remain connected to the original name. Private legal names are never stored here.
 		'eng' => [
 			'text' => 'Maya Santos',
 			'method_translation' => 'HUM',
 			'status_review' => 'A',
 		],
 	], // approved public professional name; multilingual bounded text for transliteration support
-	'practitioner_slug' => [
+	'practitioner_slug' => [ // Multilingual URL-safe slug text for public therapist routes. Values should use kebab-case. The stable _id, not the slug, prevents duplicate records.
 		'eng' => [
 			'text' => 'maya-santos',
 			'method_translation' => 'HUM',
 			'status_review' => 'A',
 		],
 	], // multilingual public URL slug text; values must be kebab-case
-	'short_description' => [
+	'short_description' => [ // Optional multilingual professional summary for the identity header, listing cards, and search snippets. Each language text value should not exceed 255 characters.
 		'eng' => [
 			'text' => 'Calm, detail-focused therapist specializing in Swedish and deep tissue massage for stress recovery.',
 			'method_translation' => 'HUM',
 			'status_review' => 'A',
 		],
 	], // optional; maximum 255 characters per language text value
-	'biography' => [
+	'biography' => [ // Optional longer public professional biography. Multilingual text; machine translation must remain identified per the Translation System.
 		'eng' => [
 			'text' => 'Maya has practiced professional massage for over nine years across spa and independent settings. She focuses on pressure communication, careful draping, and helping first-time clients feel at ease.',
 			'method_translation' => 'HUM',
@@ -131,31 +123,31 @@ $practitioner_main = [
 	'rating_official' => 4.9, // cached official Rating System score; null until the display threshold is met
 	'rating_count' => 214, // cached count of eligible rating events; distinct from review_count
 	'review_count' => 128, // cached count of published reviews
-	'view_count' => 5420,
-	'save_count' => 310,
-	'follow_count' => 96,
+	'view_count' => 5420, // Cached total number of recorded profile views.
+	'save_count' => 310, // Cached total number of user saves/bookmarks for this profile.
+	'follow_count' => 96, // Cached total number of users following this profile. Follower identities remain private workspace data.
 
 	# Handling
 	'visibility_scope' => 'PUB', // PUB = Public
 	'level_nsfw' => 'N', // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
-	'record_note' => [
+	'record_note' => [ // Embedded internal notes attached to this profile record. Never public.
 		[
 			'type_record_note' => 'AD', // AD = Admin Note
 			'note_body' => 'Profile created from verified field research; awaiting practitioner claim contact.',
-			'created_at' => '2026-07-20T08:00:00Z',
-			'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
+			'created_at' => '2026-07-20T08:00:00Z', // UTC timestamp when this profile record was created.
+			'created_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that created this profile record.
 		],
 	], // embedded internal notes for this record; never public
 
 	# Audit
 	'created_at' => $created_at,
 	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'updated_at' => $updated_at,
-	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
+	'updated_at' => $updated_at, // UTC timestamp when this profile record was last updated.
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that last updated this profile record.
 	'last_confirmed_at' => '2026-07-18T00:00:00Z', // freshness timestamp per docs/05-directory/therapist-profile.txt section 12
-	'archived_at' => null,
-	'archived_by_user_id' => null,
+	'archived_at' => null, // UTC timestamp when the profile record was archived.
+	'archived_by_user_id' => null, // User ID that archived the profile record.
 ];
 
 /**
@@ -200,6 +192,9 @@ $practitioner_main_field_order = [
  * data/taxonomy/massage_nexus/practitioner_classification.json and are not
  * duplicated here.
  */
+
+$practitioner_main_embedded_structure = [];
+
 $practitioner_main_field_property = [
 	# Primary
 	'_id' => [
@@ -315,4 +310,48 @@ $practitioner_main_field_property = [
 	'last_confirmed_at' => ['field_label' => 'Last Confirmed At', 'field_description' => 'UTC timestamp when profile facts were last confirmed through research, claim activity, or verification. Freshness expectations vary by field per the provenance system.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'archived_at' => ['field_label' => 'Archived At', 'field_description' => 'UTC timestamp when the profile record was archived.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived the profile record.', 'type_data' => 'S', 'is_relational' => true],
+];
+
+$practitioner_main_subfield_property = [];
+
+$practitioner_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$practitioner_main_boundary = [
+    'owns' => [
+        'the practitioner_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'language_original_id',
+        'created_by_user_id',
+        'updated_by_user_id',
+        'archived_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'practitioner_main_default' => $practitioner_main_default,
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'practitioner_main' => $practitioner_main,
+    'practitioner_main_field_order' => $practitioner_main_field_order,
+    'practitioner_main_embedded_structure' => $practitioner_main_embedded_structure,
+    'practitioner_main_field_property' => $practitioner_main_field_property,
+    'practitioner_main_subfield_property' => $practitioner_main_subfield_property,
+    'practitioner_main_index_list' => $practitioner_main_index_list,
+    'practitioner_main_boundary' => $practitioner_main_boundary,
 ];

@@ -1,17 +1,17 @@
 <?php
 /**
  * Title: Massage Nexus Quote Main Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 0.31
  * Collection: quote_main
- * Version: 0.20
+ * Description: Stores one curated quotation, attribution, classification, and display lifecycle record.
+ * Purpose: Documents the quote_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
+ * Notes:
  * This file is a PHP-readable visual structure guide.
  * It is not a seed file, not a runtime migration script, and not a generated
  * production schema. It exists so the database structure can be reviewed in a
  * familiar PHP array format before implementation.
  *
- * Purpose:
  * quote_main stores the approved quotes shown in the homepage Quote of the Day
  * section (docs/06-user-interface/home-page-ui.txt, section 20). The homepage
  * currently renders one temporary hard-coded quote from the sample-content
@@ -21,7 +21,7 @@
  * languages, authors, sources, active dates, seasonal use, and moderation.
  *
  * Layer rule:
- * - *_record_default contains defaults for actual stored record fields only.
+ * - *_default contains omission defaults for actual stored record fields only.
  * - *_field_property describes schema/field metadata only.
  * - Do not mix field-definition metadata into record defaults.
  *
@@ -50,25 +50,7 @@
 
 # Variable
 $created_at = '2026-07-19T00:00:00Z';
-$updated_at = '2026-07-19T00:00:00Z';
-
-/**
- * Default field-property values for this structure guide.
- * These describe field-definition metadata, not stored record defaults.
- */
-$field_property_default = [
-	'type_data' => 'S', // default runtime value shape is String
-	'type_field' => 'TXT', // default suggested UI control is Text Box
-	'format_text' => 'TXT', // default text format is Plain Text
-	'is_translatable' => false, // default: stored field value is not multilingual
-	'is_mandatory' => false, // default: not required
-	'is_relational' => false, // default: not normally a reference field
-	'is_indexed' => false, // default: no common indexing suggestion
-	'status_record_lifecycle' => 'ACT', // default: Active
-	'visibility_scope' => 'INH', // default: inherit visibility
-	'level_nsfw' => 'N', // default: None
-];
-
+$updated_at = '2026-07-21T04:27:07Z';
 /**
  * Multilingual short-text sample.
  * Used by quote_text. English is shown as sample data only; the original
@@ -80,11 +62,6 @@ $multilingual_text_sample = [
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
 		'status_review' => 'A', // optional; A = Approved
 	],
-	'fil' => [
-		'text' => 'Halimbawang teksto',
-		'method_translation' => 'HUM',
-		'status_review' => 'A',
-	],
 ];
 
 /**
@@ -92,7 +69,7 @@ $multilingual_text_sample = [
  * These are defaults for stored quote records, not field-definition metadata.
  * Sparse-default storage may omit these values in actual database records.
  */
-$quote_main_record_default = [
+$quote_main_default = [
 	'type_quote_category' => [], // taxonomy codes from type_quote_category
 	'attribution_name' => null, // null when the quote is anonymous or proverb-like
 	'source_title' => null,
@@ -116,11 +93,11 @@ $quote_main = [
 	'_id' => 'Q8mR3xN6pK1vT9cH', // canonical application-generated 16-character Base62 identifier
 
 	# Core
-	'quote_text' => [
+	'quote_text' => [ // Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.
 		'eng' => [
 			'text' => 'Your body hears everything your mind says.',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'A', // Editorial approval state of the quote. Only Approved quotes are eligible for public display. Uses the same option codes as article_main.status_review.
 		],
 		'fil' => [
 			'text' => 'Naririnig ng iyong katawan ang lahat ng sinasabi ng iyong isip.',
@@ -147,22 +124,22 @@ $quote_main = [
 	'status_review' => 'A', // P = Pending, A = Approved, N = Needs Changes, R = Rejected; only Approved quotes are publicly displayed
 	'level_nsfw' => 'N', // N = None; quotes shown on the homepage must remain None
 	'status_record_lifecycle' => 'ACT', // ACT = Active; archived or retired quotes leave rotation without deleting history
-	'record_note' => [
+	'record_note' => [ // Embedded internal notes attached to this quote record, including attribution-verification notes.
 		[
 			'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
 			'note_body' => 'Attribution confirmed against two published interviews.',
-			'created_at' => '2026-07-19T00:00:00Z',
-			'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
+			'created_at' => '2026-07-19T00:00:00Z', // UTC timestamp when this quote record was created.
+			'created_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that created this quote record.
 		],
 	], // embedded internal notes for this record; not public text
 
 	# Audit
 	'created_at' => $created_at,
 	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'updated_at' => $updated_at,
-	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
-	'archived_at' => null,
-	'archived_by_user_id' => null,
+	'updated_at' => $updated_at, // UTC timestamp when this quote record was last updated.
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that last updated this quote record.
+	'archived_at' => null, // UTC timestamp when this quote record was archived.
+	'archived_by_user_id' => null, // User ID that archived this quote record.
 ];
 
 /**
@@ -324,3 +301,52 @@ $quote_main_field_property = [
  *   same-language quote text with the same attribution_name; exact-match unique
  *   indexing of long multilingual text is intentionally not suggested.
  */
+
+$quote_main_subfield_property = [
+	'record_note.type_record_note' => ['field_label' => 'Record Note Type', 'field_description' => 'Controlled note-purpose code.', 'type_data' => 'S', 'is_mandatory' => true],
+	'record_note.note_body' => ['field_label' => 'Note Body', 'field_description' => 'Internal note text.', 'type_data' => 'S', 'is_mandatory' => true],
+	'record_note.created_at' => ['field_label' => 'Note Created At', 'field_description' => 'UTC note creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+	'record_note.created_by_user_id' => ['field_label' => 'Note Created By User ID', 'field_description' => 'User that created the note.', 'type_data' => 'S', 'is_relational' => true, 'is_mandatory' => true],
+];
+
+$quote_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
+$quote_main_boundary = [
+    'owns' => [
+        'the quote_main record fields and embedded structures documented in this file',
+    ],
+    'reference_field_list' => [
+        'language_original_id',
+        'created_by_user_id',
+        'updated_by_user_id',
+        'archived_by_user_id',
+    ],
+    'does_not_own' => [
+        'records stored in referenced collections',
+        'runtime authorization, migration, seeding, or deployment behavior',
+    ],
+];
+
+return [
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'quote_main_default' => $quote_main_default,
+    'quote_main' => $quote_main,
+    'quote_main_field_order' => $quote_main_field_order,
+    'quote_main_embedded_structure' => $quote_main_embedded_structure,
+    'quote_main_field_property' => $quote_main_field_property,
+    'quote_main_subfield_property' => $quote_main_subfield_property,
+    'quote_main_index_list' => $quote_main_index_list,
+    'quote_main_boundary' => $quote_main_boundary,
+];

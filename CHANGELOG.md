@@ -13,6 +13,9 @@ individual entries.
 - Added PHP-readable database structure guides under `data/structure_guide/`, including a new
   proposed `quote_main` guide for the homepage Quote of the Day feature, with their maintenance
   standard under `docs/02-governance/`.
+- Standardized every PHP structure guide around complete sample, omission-default, field-order,
+  embedded-structure, field-property, subfield-property, index, boundary, and return declarations;
+  added an automated guide validator and expanded field-index generation to include nested fields.
 - Organized the current project specifications under the repository `docs/` directory.
 - Added repository-wide contributor instructions in `AGENTS.md`.
 - Added the initial public website pages and a temporary sample spa-profile data source.

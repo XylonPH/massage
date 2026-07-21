@@ -1,12 +1,12 @@
 <?php
 /**
  * Title: Zenith Theme Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 1.13
  * Collection: theme_main
- * Version: 1.03
+ * Description: Stores one reusable visual-theme definition and its configurable design values.
+ * Purpose: Documents the theme_main record shape for review, validation, comparison, and implementation without acting as runtime configuration.
  *
- * Purpose:
+ * Notes:
  * This file is a PHP-readable visual guide for the current theme_main structure.
  * It is not a seed file, not a runtime migration script, and not a replacement
  * for the canonical Zenith documents. It exists so reusable visual theme structure
@@ -28,14 +28,13 @@
 
 # Variable
 $created_at = '2026-06-24T00:00:00Z';
-$updated_at = '2026-06-24T05:44:00Z';
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Default theme_main property values.
  * These defaults are interpreted by the application and should not be repeated
  * inside each stored theme_main record unless intentionally different.
  */
-$theme_main_property_default = [
+$theme_main_default = [
 	'status_record_lifecycle' => 'ACT', // default: Active; UI label: Theme Status
 	'mode_appearance' => 'LGT', // default: Light appearance mode
 	'supported_ecosystem_list' => [], // default: renderer decides or theme is treated as generally reusable
@@ -72,12 +71,12 @@ $theme_main = [
 	'theme_key' => 'default_light', // required stable theme key in snake_case
 
 	# Basic
-	'theme_label' => [
+	'theme_label' => [ // User-facing name of the theme.
 		'eng' => [
 			'text' => 'Default Light', // maximum 75 characters per language value
 		],
 	],
-	'theme_description' => [
+	'theme_description' => [ // Short explanation of the theme.
 		'eng' => [
 			'text' => 'A clean light theme for generated application interfaces.', // maximum 255 characters per language value
 		],
@@ -88,7 +87,7 @@ $theme_main = [
 	'status_record_lifecycle' => 'ACT', // default: ACT; UI label: Theme Status
 
 	# Color
-	'color_config' => [
+	'color_config' => [ // Color palette values. Hex strings without #.
 		'primary_color' => '2563EB', // main action/brand color; HEX without #
 		'secondary_color' => '64748B', // supporting neutral/secondary color; HEX without #
 		'accent_color' => '7C3AED', // emphasis/highlight color used sparingly; HEX without #
@@ -112,7 +111,7 @@ $theme_main = [
 	],
 
 	# Typography
-	'typography_config' => [
+	'typography_config' => [ // Typography defaults for the theme.
 		'font_family' => 'Segoe UI', // preferred UI font family; renderer may substitute when unavailable
 		'base_font_size' => 10, // default body/control font size
 		'heading_font_size' => 16, // primary page/section heading size
@@ -125,7 +124,7 @@ $theme_main = [
 	],
 
 	# Spacing
-	'spacing_config' => [
+	'spacing_config' => [ // Spacing and padding defaults.
 		'page_padding' => 16, // default outer page padding
 		'panel_padding' => 12, // default panel/container padding
 		'card_padding' => 12, // default card/stat tile padding
@@ -136,7 +135,7 @@ $theme_main = [
 	],
 
 	# Border
-	'border_config' => [
+	'border_config' => [ // Border radius and width defaults.
 		'border_radius' => 8, // default rounded corner radius
 		'border_radius_small' => 4, // small controls/compact chips
 		'border_radius_large' => 12, // dialogs/large panels
@@ -144,14 +143,14 @@ $theme_main = [
 	],
 
 	# Shadow
-	'shadow_config' => [
+	'shadow_config' => [ // Shadow style defaults.
 		'card_shadow' => 'SOFT', // default card shadow depth/style
 		'dialog_shadow' => 'MED', // default modal/dialog shadow depth/style
 		'popover_shadow' => 'SOFT', // menus/dropdowns/popovers shadow depth/style
 	],
 
 	# Icon
-	'icon_config' => [
+	'icon_config' => [ // Icon style defaults.
 		'icon_style' => 'OUTLINE', // preferred icon family/style
 		'icon_size' => 18, // default icon size in pixels
 		'icon_stroke_width' => 2, // stroke width for outline icons
@@ -159,7 +158,7 @@ $theme_main = [
 
 	# Motion / Animation
 	'is_animated' => true, // enables use of animation_config; false means renderers should minimize theme motion
-	'animation_config' => [
+	'animation_config' => [ // Motion and animation settings.
 		'duration_short_ms' => 120, // quick hover/focus/inline motion duration
 		'duration_medium_ms' => 200, // normal component transition duration
 		'duration_long_ms' => 320, // slower page/dialog transition duration
@@ -175,7 +174,7 @@ $theme_main = [
 	],
 
 	# Media
-	'media_config' => [
+	'media_config' => [ // Image and video display settings.
 		'image_corner_radius' => 8, // default image corner radius
 		'image_fit_mode' => 'COVER', // default image fill/crop behavior
 		'image_placeholder_style' => 'MUTED', // placeholder/skeleton style before image loads
@@ -185,7 +184,7 @@ $theme_main = [
 	],
 
 	# Charts / Graphs
-	'chart_config' => [
+	'chart_config' => [ // Graph and chart defaults.
 		'chart_palette' => 'DEFAULT', // named chart palette; series_color_list can override concrete colors
 		'grid_line_color' => 'E2E8F0', // chart grid line color; HEX without #
 		'axis_text_color' => '64748B', // chart axis label color; HEX without #
@@ -202,7 +201,7 @@ $theme_main = [
 	],
 
 	# Components
-	'component_config' => [
+	'component_config' => [ // Common component size defaults.
 		'button_height' => 32, // default button height
 		'input_height' => 30, // default text input height
 		'combo_box_height' => 30, // default dropdown/combo-box height
@@ -221,9 +220,9 @@ $theme_main = [
 	'theme_note' => 'Default reusable light application theme.', // internal note; not multilingual
 
 	# Audit
-	'created_at' => $created_at,
-	'updated_at' => $updated_at,
-	'updated_by_device_id' => 1,
+	'created_at' => $created_at, // Date and time when the theme record was created.
+	'updated_at' => $updated_at, // Date and time when the theme record was last updated.
+	'updated_by_device_id' => 1, // Device that last updated the theme record.
 ];
 
 /**
@@ -630,6 +629,34 @@ $theme_main_component_config_property = [
 /**
  * Boundary guide.
  */
+
+$theme_main_subfield_property = [
+    'color_config' => $theme_main_color_config_property,
+    'typography_config' => $theme_main_typography_config_property,
+    'spacing_config' => $theme_main_spacing_config_property,
+    'border_config' => $theme_main_border_config_property,
+    'shadow_config' => $theme_main_shadow_config_property,
+    'icon_config' => $theme_main_icon_config_property,
+    'animation_config' => $theme_main_animation_config_property,
+    'media_config' => $theme_main_media_config_property,
+    'chart_config' => $theme_main_chart_config_property,
+    'component_config' => $theme_main_component_config_property,
+];
+
+$theme_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
 $theme_main_boundary = [
 	'belongs_in_theme_main' => [
 		'Reusable visual theme identity and description.',
@@ -657,21 +684,23 @@ $theme_main_boundary = [
 ];
 
 return [
-	'theme_main' => $theme_main,
-	'theme_main_property_default' => $theme_main_property_default,
-	'multilingual_text_sample' => $multilingual_text_sample,
-	'theme_main_field_order' => $theme_main_field_order,
-	'theme_main_embedded_structure' => $theme_main_embedded_structure,
-	'theme_main_field_property' => $theme_main_field_property,
-	'theme_main_color_config_property' => $theme_main_color_config_property,
-	'theme_main_typography_config_property' => $theme_main_typography_config_property,
-	'theme_main_spacing_config_property' => $theme_main_spacing_config_property,
-	'theme_main_border_config_property' => $theme_main_border_config_property,
-	'theme_main_shadow_config_property' => $theme_main_shadow_config_property,
-	'theme_main_icon_config_property' => $theme_main_icon_config_property,
-	'theme_main_animation_config_property' => $theme_main_animation_config_property,
-	'theme_main_media_config_property' => $theme_main_media_config_property,
-	'theme_main_chart_config_property' => $theme_main_chart_config_property,
-	'theme_main_component_config_property' => $theme_main_component_config_property,
-	'theme_main_boundary' => $theme_main_boundary,
+    'theme_main_default' => $theme_main_default,
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'theme_main' => $theme_main,
+    'theme_main_field_order' => $theme_main_field_order,
+    'theme_main_embedded_structure' => $theme_main_embedded_structure,
+    'theme_main_field_property' => $theme_main_field_property,
+    'theme_main_color_config_property' => $theme_main_color_config_property,
+    'theme_main_typography_config_property' => $theme_main_typography_config_property,
+    'theme_main_spacing_config_property' => $theme_main_spacing_config_property,
+    'theme_main_border_config_property' => $theme_main_border_config_property,
+    'theme_main_shadow_config_property' => $theme_main_shadow_config_property,
+    'theme_main_icon_config_property' => $theme_main_icon_config_property,
+    'theme_main_animation_config_property' => $theme_main_animation_config_property,
+    'theme_main_media_config_property' => $theme_main_media_config_property,
+    'theme_main_chart_config_property' => $theme_main_chart_config_property,
+    'theme_main_component_config_property' => $theme_main_component_config_property,
+    'theme_main_subfield_property' => $theme_main_subfield_property,
+    'theme_main_index_list' => $theme_main_index_list,
+    'theme_main_boundary' => $theme_main_boundary,
 ];

@@ -1,13 +1,14 @@
 <?php
 /**
  * Title: Zenith Dog Breed Common Reference Structure Guide
- * Author: Xylon Reyes
- *
+ * Version: 2.12
  * Collection: dog_breed_main
- * Database: common_reference
- * Version: 2.02
+ * Description: Stores one canonical reusable dog-breed reference record.
+ * Purpose: Documents the dog_breed_main record shape for review, validation, comparison, and implementation without replacing its authoritative reference data.
  *
- * Purpose:
+ * Notes:
+ * Database: common_reference
+ *
  * This file is a PHP-readable visual guide for the current dog_breed_main structure.
  * It is not a seed file, not a runtime migration script, and not a replacement
  * for the canonical Zenith documents. It exists so the Dog Breed Common
@@ -35,12 +36,11 @@
 
 # Variable
 $created_at = '2026-06-19T11:44:00Z';
-$updated_at = '2026-07-01T20:08:26Z';
-
+$updated_at = '2026-07-21T04:24:17Z';
 /**
  * Default document values for dog_breed_main.
  */
-$dog_breed_property_default = [
+$dog_breed_main_default = [
 	'status_record_lifecycle' => 'ACT',
 ];
 
@@ -1498,6 +1498,21 @@ $dog_breed_main_readiness_rule = [
 /**
  * Boundaries.
  */
+
+$dog_breed_main_index_list = [
+    [
+        'index_key' => 'primary',
+        'index_name' => '_id_',
+        'type_index' => 'STD',
+        'is_unique' => true,
+        'is_sparse' => false,
+        'index_field_list' => [
+            ['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10],
+        ],
+        'sort_order' => 10,
+    ],
+];
+
 $dog_breed_main_boundary = [
 	'belongs_in_dog_breed_main' => [
 		'canonical dog breed identity and display names',
@@ -1518,14 +1533,15 @@ $dog_breed_main_boundary = [
 ];
 
 return [
-	'dog_breed_property_default' => $dog_breed_property_default,
-	'multilingual_text_sample' => $multilingual_text_sample,
-	'dog_breed_main' => $dog_breed_main,
-	'dog_breed_main_field_order' => $dog_breed_main_field_order,
-	'dog_breed_main_embedded_structure' => $dog_breed_main_embedded_structure,
-	'dog_breed_main_field_property' => $dog_breed_main_field_property,
-	'dog_breed_main_subfield_property' => $dog_breed_main_subfield_property,
-	'dog_breed_main_taxonomy_field_map' => $dog_breed_main_taxonomy_field_map,
-	'dog_breed_main_readiness_rule' => $dog_breed_main_readiness_rule,
-	'dog_breed_main_boundary' => $dog_breed_main_boundary,
+    'dog_breed_main_default' => $dog_breed_main_default,
+    'multilingual_text_sample' => $multilingual_text_sample,
+    'dog_breed_main' => $dog_breed_main,
+    'dog_breed_main_field_order' => $dog_breed_main_field_order,
+    'dog_breed_main_embedded_structure' => $dog_breed_main_embedded_structure,
+    'dog_breed_main_field_property' => $dog_breed_main_field_property,
+    'dog_breed_main_subfield_property' => $dog_breed_main_subfield_property,
+    'dog_breed_main_taxonomy_field_map' => $dog_breed_main_taxonomy_field_map,
+    'dog_breed_main_readiness_rule' => $dog_breed_main_readiness_rule,
+    'dog_breed_main_index_list' => $dog_breed_main_index_list,
+    'dog_breed_main_boundary' => $dog_breed_main_boundary,
 ];
