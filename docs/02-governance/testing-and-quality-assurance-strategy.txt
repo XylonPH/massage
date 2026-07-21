@@ -1,23 +1,23 @@
 Title: Massage Nexus Testing and Quality Assurance Strategy
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-19
-Document Description: Defines the cross-project testing and quality approach used by AI and human reviewers without duplicating feature-specific validation rules. Validation remains inside the relevant system specification and implementation, while this document defines test layers, organization, automation, release gates, test data, manual review, and maintenance.
+Revision Date: 2026-07-21
+Document Description: Defines the project-wide testing and quality approach used by AI and human reviewers without duplicating capability-specific validation rules. Validation remains inside the relevant system specification and implementation, while this document defines test layers, organization, automation, release gates, test data, manual review, and maintenance.
 
 Related Documents:
-- Massage Nexus Documentation Writing and Management Standard
-- Massage Nexus AI-Assisted Development Workflow
-- Massage Nexus Runtime AI System
-- Massage Nexus Security Architecture and Information Disclosure Policy
-- Massage Nexus Privacy Notice and Data Protection Requirements
-- Massage Nexus Maintenance and Continuous Operations
+- docs/02-governance/documentation-standard.txt — Massage Nexus Documentation Standard
+- docs/02-governance/ai-assisted-development-workflow.txt — Massage Nexus AI-Assisted Development Workflow
+- docs/04-architecture/runtime-ai-system.txt — Massage Nexus Runtime AI System
+- docs/18-policy/security-and-information-disclosure-policy.txt — Massage Nexus Security and Information Disclosure Policy
+- docs/18-policy/privacy-and-data-protection.txt — Massage Nexus Privacy and Data Protection
+- docs/16-operations/maintenance-and-continuous-operations.txt — Massage Nexus Maintenance and Continuous Operations
 - individual capability specifications and implementation records
 
 ================================================================================
 1. DOCUMENT BOUNDARY
 ================================================================================
 
-Create one compact cross-project testing strategy because AI, CI, release work, and maintenance
+Create one compact project-wide testing strategy because AI, CI, release work, and maintenance
 need consistent quality rules.
 
 Do not create one generic validation document.
@@ -60,7 +60,7 @@ Testing should provide confidence that:
 - upgrades do not break existing behavior;
 - migrations preserve data;
 - failures are recoverable;
-- releases can be rolled back.
+- releases can be rolled back or recovered safely.
 
 Automated tests reduce repetitive manual work. They do not eliminate manual review.
 
@@ -83,6 +83,8 @@ Cross-cutting suites may cover:
 - accessibility;
 - performance;
 - integration;
+- API and provider contracts;
+- data and documentation integrity;
 - release smoke tests;
 - backup and restore.
 
@@ -122,6 +124,27 @@ Examples:
 - payment provider;
 - search;
 - AI provider.
+
+API and Contract Tests
+Test stable interfaces between application layers, clients, providers, and external integrations.
+
+Examples:
+- request and response shapes;
+- authentication and authorization contracts;
+- provider adapters;
+- webhook signatures, replay handling, ordering, and idempotency;
+- backward-compatible API and stored-data changes.
+
+Data and Documentation Validation
+Test machine-readable project definitions and documentation-derived artifacts.
+
+Examples:
+- PHP structure-guide syntax and field-index generation;
+- JSON parsing and schema validation;
+- taxonomy code and identifier uniqueness;
+- documentation cross-references and repository paths;
+- translation-key and placeholder completeness;
+- generated-artifact drift.
 
 Browser or End-to-End Tests
 Test critical flows through a real browser where necessary.
@@ -170,6 +193,13 @@ tests/
   - Storage/
   - Payment/
   - Ai/
+- Contract/
+  - Api/
+  - Provider/
+- DataIntegrity/
+  - StructureGuide/
+  - Taxonomy/
+  - Translation/
 - Browser/
   - CriticalFlow/
 - Security/
@@ -210,6 +240,10 @@ For each rule, consider:
 - external-provider failure.
 
 Not every rule needs every case. The capability specification determines relevance.
+
+Repository validation should also cover the machine-readable sources affected by a change. When
+documentation, structure guides, taxonomies, translations, or generated indexes act as technical
+inputs, validate their syntax, uniqueness, references, and generated output as part of the change.
 
 ================================================================================
 7. CLIENT AND SERVER VALIDATION
@@ -318,13 +352,14 @@ Automated checks:
 - labels;
 - landmarks;
 - contrast where tooling supports it;
-- keyboard focus;
+- focusable controls and detectable focus-rule violations;
 - heading structure;
 - image alternatives;
 - form errors.
 
 Manual checks:
 - keyboard-only operation;
+- visible focus and logical focus order;
 - screen reader;
 - zoom;
 - mobile;
@@ -356,7 +391,10 @@ Test when relevant:
 - backup and restore.
 
 Define measured targets when real usage exists.
-Assert that query counts remain stable using `Model::preventLazyLoading()` in test environments to avoid N+1 query degradations.
+Enable `Model::preventLazyLoading()` in appropriate test or non-production environments to detect
+unexpected relationship lazy loading. It does not assert query-count stability. Use query listeners,
+MongoDB command monitoring, profiling, explain plans, or explicit query-budget assertions when a
+test must detect query-count, aggregation, or index-usage regressions.
 
 Do not optimize without measurement.
 
@@ -391,6 +429,8 @@ Test:
 ================================================================================
 
 Use provider abstractions and fakes for ordinary automated tests.
+Routine automated tests must deny or avoid real network access unless the test is explicitly marked
+as an authorized sandbox integration test.
 
 External services:
 - email;
@@ -410,6 +450,9 @@ Test:
 - rate limit;
 - duplicate callback;
 - signature;
+- replay;
+- out-of-order delivery;
+- idempotency;
 - retry;
 - provider outage;
 - fallback;
@@ -439,7 +482,26 @@ Test data should:
 - support cleanup;
 - remain separate from production.
 
-AI must use standard Laravel factories to generate synthetic data rather than hardcoding arrays of fake data inside test files.
+Use standard Laravel factories for persisted models and related model graphs when factories make the
+scenario clearer and more maintainable. Explicit arrays, fixtures, or builders remain appropriate for
+request payloads, malformed input, exact boundary values, provider contracts, and pure unit tests.
+
+Test Database Isolation
+
+The current Laravel test configuration uses an in-memory SQLite connection as the default relational
+test connection and `massage_test` for MongoDB-backed application data. Tests must state or make clear
+which persistence layer they exercise.
+
+MongoDB tests must:
+- fail closed unless the selected database is explicitly recognized as a test database;
+- never connect to development, staging, or production data;
+- create required indexes and schema validators before relying on them;
+- clean every collection modified by the test or use an equally isolated database lifecycle;
+- avoid assuming that clearing `user_main` also isolates other capability collections.
+
+MongoDB-mutating tests must run serially until per-worker database names and complete cleanup are
+implemented. When parallel execution is introduced, each worker must receive a unique test database
+and clean it after execution.
 
 ================================================================================
 16. AI ROLE
@@ -485,10 +547,19 @@ During development:
 7. browser smoke test for critical flows;
 8. staging verification before production.
 
+Current local baseline for the Laravel application:
+- `composer test`;
+- `vendor/bin/pint --test`;
+- `npm run build` when frontend assets or their dependencies are affected.
+
+Configured CI must run the same baseline or a stricter approved equivalent. Add static analysis,
+browser, accessibility, security, and performance commands only after their tools and configuration
+exist in the repository.
+
 Do not rerun the entire suite after every minor edit when a targeted test provides the needed
 feedback.
 
-CI runs the approved broader suite.
+When CI is configured, it runs the approved broader suite.
 
 ================================================================================
 18. RELEASE GATES
@@ -498,7 +569,7 @@ A release should not proceed when:
 - critical tests fail;
 - security or privacy regression is unresolved;
 - migration is not tested;
-- rollback is unavailable;
+- neither rollback nor a documented forward-recovery procedure is available for affected changes;
 - production debug information may leak;
 - critical localized flows are incomplete;
 - backup is not current;
@@ -521,7 +592,8 @@ Critical
 - privacy breach;
 - data corruption;
 - payment duplication;
-- inaccessible core service;
+- core service unavailable;
+- an essential flow unusable by people with disabilities without a reasonable workaround;
 - prohibited content exposure;
 - complete outage.
 
@@ -543,7 +615,9 @@ Low
 - wording;
 - low-impact inconsistency.
 
-Severity guides priority. It does not replace judgment.
+Severity guides priority. It does not replace judgment. Priority also considers affected scope,
+exploitability, exposure, reversibility, legal or regulatory impact, available workarounds, and the
+time sensitivity of the affected capability.
 
 ================================================================================
 20. MANUAL ACCEPTANCE
@@ -582,6 +656,13 @@ Use:
 - one release checklist for a major release;
 - specialized test plans only for complex or high-risk systems.
 
+Execution evidence should record:
+- commands and relevant environment or service versions;
+- pass, fail, and skipped results;
+- known flaky or quarantined tests;
+- required manual checks;
+- useful logs, screenshots, or reports when generated.
+
 Split test documentation when one system has independent areas.
 
 Example:
@@ -619,17 +700,36 @@ Review:
 
 Test-count growth is not a goal. Useful confidence is the goal.
 
+Flaky-Test Policy
+
+- A retry may help diagnose a failure but must not silently convert an unexplained failure into a
+  passing release gate.
+- Quarantine requires an owner, linked issue or implementation record, failure evidence, scope, and
+  review or expiry date.
+- Track recurrence and fix the root cause; do not delete the test or weaken its assertions merely to
+  restore a green suite.
+- Remove quarantine promptly after the test is stable.
+
+Coverage Policy
+
+- Use coverage reports to identify important untested behavior, not as proof of correctness.
+- Prefer coverage of critical paths, changed code, authorization, privacy, and failure handling over
+  an arbitrary repository-wide percentage.
+- Do not establish a mandatory numeric threshold until the measurement method, exclusions, baseline,
+  and enforcement consequences are accepted.
+- Coverage does not replace assertion quality, mutation resistance, exploratory testing, or review.
+
 ================================================================================
 23. CURRENT DIRECTIONS
 ================================================================================
 
-- Maintain one compact cross-project testing strategy.
+- Maintain one compact project-wide testing strategy.
 - Keep validation rules inside the relevant capability specification and implementation.
 - Do not create a generic implementation-strategy document.
 - Organize tests by capability and responsibility.
 - Split large test files and specialized plans by coherent workflow.
-- Use unit, feature, integration, browser, security, privacy, localization, accessibility,
-  performance, migration, and manual testing as needed.
+- Use unit, feature, integration, API and contract, data-integrity, browser, security, privacy,
+  localization, accessibility, performance, migration, and manual testing as needed.
 - Use synthetic data and fake external providers.
 - Let AI generate and run tests, but require honest execution results and human review for
   business meaning and release decisions.
@@ -637,17 +737,33 @@ Test-count growth is not a goal. Useful confidence is the goal.
 - Treat automated tests as support for, not replacement of, manual product review.
 
 ================================================================================
-24. OPEN DECISIONS (RESOLVED)
+24. CURRENT TOOLING AND OPEN DECISIONS
 ================================================================================
 
-- final test runner and CI configuration: Pest for testing, GitHub Actions for CI;
-- browser testing tool: Laravel Dusk (or Playwright if beyond Laravel ecosystem);
-- static analysis tools: PHPStan with Larastan;
-- code coverage target, if any;
-- performance targets;
-- staging data strategy;
-- test database configuration;
+Current Implemented Tooling
+
+- PHPUnit 12, executed through Laravel's `php artisan test` command and the Composer `test` script;
+- Laravel Pint for PHP formatting validation;
+- the frontend production build through `npm run build`;
+- PHPUnit Unit and Feature suites;
+- in-memory SQLite as the default relational test connection;
+- `massage_test` as the configured MongoDB test database.
+
+The repository does not currently contain an automated CI workflow, Pest, Laravel Dusk, Playwright,
+PHPStan, or Larastan. Do not report those tools as implemented until their dependencies,
+configuration, executable commands, and required CI jobs exist and pass.
+
+Open Decisions
+
+- CI provider, workflow triggers, supported runtime matrix, MongoDB service setup, caching, secrets,
+  artifact retention, and required branch checks;
+- whether PHPUnit remains the direct runner or Pest is adopted as an additional interface;
+- browser testing tool and initial critical-flow coverage;
+- static analysis tool, configuration level, baseline policy, and enforcement schedule;
+- code coverage measurement and any future target;
+- measured performance budgets and representative datasets;
+- staging-data strategy;
+- complete MongoDB collection-isolation and parallel-worker strategy;
 - release smoke-test list;
-- accessibility testing tools;
-- security testing schedule;
-- flaky-test policy.
+- automated accessibility tools and supported browser matrix;
+- security testing schedule, dependency scanning, and responsible review ownership.
