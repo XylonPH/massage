@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'title' => 'Editorial',
+    'intro' => 'Manage the public catalog: establishments, services, and quotes.',
+    'establishments' => 'Establishments',
+    'services' => 'Services',
+    'quotes' => 'Quotes',
+    'search_placeholder' => 'Search…',
+    'new' => 'New',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'delete_confirm' => 'Delete this record? This cannot be undone.',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'created' => 'Record created.',
+    'updated' => 'Record updated.',
+    'deleted' => 'Record deleted.',
+    'empty_title' => 'Nothing here yet',
+    'empty_text' => 'Records you create will appear in this list.',
+    'name' => 'Name',
+    'status' => 'Status',
+    'updated_at' => 'Updated',
+    'actions' => 'Actions',
+];

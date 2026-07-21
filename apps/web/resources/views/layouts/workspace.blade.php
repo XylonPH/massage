@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@hasSection('title')@yield('title') · {{ config('app.name') }}@else{{ config('app.name') }}@endif</title>
+    <title>@hasSection('title')@yield('title') · {{ config('app.name') }}@else{{ ($title ?? null) ? $title.' · '.config('app.name') : config('app.name') }}@endif</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : 0 }}" sizes="any">
     @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -68,6 +68,7 @@
             </header>
 
             <main id="main-content" class="px-4 py-8 sm:px-6 lg:px-8">
+                {{ $slot ?? '' }}
                 @yield('content')
             </main>
         </div>

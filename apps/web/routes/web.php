@@ -20,6 +20,11 @@ use App\Http\Controllers\Web\Workspace\ProfileController as WorkspaceProfileCont
 use App\Http\Controllers\Web\Workspace\ReviewController as WorkspaceReviewController;
 use App\Http\Controllers\Web\Workspace\SettingController as WorkspaceSettingController;
 use App\Http\Middleware\EnsureActiveMember;
+use App\Http\Middleware\EnsureWorkspacePermission;
+use App\Livewire\Workspace\Editorial\EditorialHome;
+use App\Livewire\Workspace\Editorial\EstablishmentIndex;
+use App\Livewire\Workspace\Editorial\QuoteIndex;
+use App\Livewire\Workspace\Editorial\ServiceIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -146,6 +151,17 @@ Route::prefix('workspace/review')
         Route::get('/{review}/edit', [WorkspaceReviewController::class, 'edit'])->name('edit');
         Route::put('/{review}', [WorkspaceReviewController::class, 'update'])->middleware('throttle:20,1')->name('update');
         Route::post('/{review}/submit', [WorkspaceReviewController::class, 'submit'])->middleware('throttle:10,1')->name('submit');
+    });
+
+Route::prefix('workspace/editorial')
+    ->name('workspace.editorial.')
+    ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.editorial.access'])
+    ->group(function () {
+        Route::get('/', EditorialHome::class)->name('home');
+        Route::get('/establishment', EstablishmentIndex::class)->name('establishment.index');
+        Route::get('/service', ServiceIndex::class)->name('service.index');
+        Route::get('/quote', QuoteIndex::class)->name('quote.index');
+        // Additional Establishment/Service/Quote routes are added by later tasks.
     });
 
 Route::middleware('guest')->group(function () {
