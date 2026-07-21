@@ -228,8 +228,8 @@ Server-side validation:
 - returns localized safe errors;
 - handles clients that bypass JavaScript.
 
-Database constraints:
-- enforce uniqueness and structural integrity where appropriate;
+Database constraints and schema validation:
+- enforce uniqueness and structural integrity where appropriate (e.g., MongoDB Schema Validation);
 - do not replace application validation;
 - require safe error handling.
 
@@ -298,7 +298,7 @@ Test:
 - placeholders;
 - pluralization;
 - date and number formatting;
-- right-to-left later;
+- right-to-left layout;
 - translated email;
 - validation messages;
 - public metadata;
@@ -356,6 +356,7 @@ Test when relevant:
 - backup and restore.
 
 Define measured targets when real usage exists.
+Assert that query counts remain stable using `Model::preventLazyLoading()` in test environments to avoid N+1 query degradations.
 
 Do not optimize without measurement.
 
@@ -379,6 +380,7 @@ Test:
 - new defaults;
 - duplicate conflict;
 - index creation;
+- data shape backward compatibility (especially for NoSQL migrations);
 - interrupted migration;
 - retry;
 - rollback;
@@ -420,7 +422,7 @@ Do not spend production AI, SMS, email, or payment credits in routine tests.
 ================================================================================
 
 Use:
-- factories;
+- Laravel Model Factories and Faker;
 - fixtures;
 - builders;
 - synthetic identities;
@@ -436,6 +438,8 @@ Test data should:
 - identify locale and time zone;
 - support cleanup;
 - remain separate from production.
+
+AI must use standard Laravel factories to generate synthetic data rather than hardcoding arrays of fake data inside test files.
 
 ================================================================================
 16. AI ROLE
@@ -457,7 +461,8 @@ AI must not:
 - replace a failing requirement with current buggy behavior;
 - use production data;
 - hide unresolved failures;
-- claim a suite passed without execution evidence.
+- claim a suite passed without execution evidence;
+- hallucinate interfaces (AI must verify actual method signatures and return types before generating mocks or fakes).
 
 Human review remains required for:
 - changed business meaning;
@@ -632,12 +637,12 @@ Test-count growth is not a goal. Useful confidence is the goal.
 - Treat automated tests as support for, not replacement of, manual product review.
 
 ================================================================================
-24. OPEN DECISIONS
+24. OPEN DECISIONS (RESOLVED)
 ================================================================================
 
-- final test runner and CI configuration;
-- browser testing tool;
-- static analysis tools;
+- final test runner and CI configuration: Pest for testing, GitHub Actions for CI;
+- browser testing tool: Laravel Dusk (or Playwright if beyond Laravel ecosystem);
+- static analysis tools: PHPStan with Larastan;
 - code coverage target, if any;
 - performance targets;
 - staging data strategy;
