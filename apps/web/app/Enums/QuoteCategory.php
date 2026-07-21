@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum QuoteCategory: string implements HasLabel
+enum QuoteCategory: string
 {
     case Wellness = 'WEL';
     case Relaxation = 'RLX';

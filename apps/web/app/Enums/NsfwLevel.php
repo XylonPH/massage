@@ -2,10 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasColor;
-use Filament\Support\Contracts\HasLabel;
-
-enum NsfwLevel: string implements HasColor, HasLabel
+enum NsfwLevel: string
 {
     case None = 'N';
     case Suggestive = 'S';

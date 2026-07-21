@@ -3,10 +3,6 @@
 namespace App\Models;
 
 use App\Notifications\PasswordResetLink;
-use App\Support\Workspace\WorkspaceAccess;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasName;
-use Filament\Panel;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -30,7 +26,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
     'is_marketing_email_opt_in',
 ])]
 #[Hidden(['password', 'remember_token'])]
-class User extends MongoAuthenticatable implements FilamentUser, HasName, MustVerifyEmailContract
+class User extends MongoAuthenticatable implements MustVerifyEmailContract
 {
     use HasFactory, MustVerifyEmail, Notifiable;
 
@@ -39,15 +35,6 @@ class User extends MongoAuthenticatable implements FilamentUser, HasName, MustVe
     protected $table = 'user_main';
 
     protected $primaryKey = '_id';
-
-    public function canAccessPanel(Panel $panel): bool
-    {
-        if (! $this->hasVerifiedEmail() || ! $this->isActive()) {
-            return false;
-        }
-
-        return app(WorkspaceAccess::class)->canAccessPanel($this, $panel->getId());
-    }
 
     protected static function boot(): void
     {
@@ -77,11 +64,6 @@ class User extends MongoAuthenticatable implements FilamentUser, HasName, MustVe
     public function publicName(): string
     {
         return $this->display_name ?: $this->username;
-    }
-
-    public function getFilamentName(): string
-    {
-        return $this->publicName();
     }
 
     public function isActive(): bool
