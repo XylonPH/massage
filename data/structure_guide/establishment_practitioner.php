@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment–Practitioner Affiliation Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_practitioner
  * Description: Stores effective-dated practitioner affiliation facts specific to one establishment.
  * Purpose: Separates roster, employment, booking, price, confirmation, and dispute context from practitioner identity.
  */
 $created_at = '2026-07-21T08:23:43Z';
-$updated_at = '2026-07-21T10:48:10Z';
-$establishment_practitioner_default = ['is_public_roster' => false, 'is_public_booking' => false, 'eligible_establishment_service_id_list' => [], 'status_affiliation' => 'UNK', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
+$updated_at = '2026-07-21T11:11:28Z';
+$establishment_practitioner_default = ['is_public_roster' => false, 'is_public_booking' => false, 'eligible_establishment_service_id_list' => [], 'status_affiliation' => 'UNK', 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_practitioner = [
     '_id' => 'EprK2pQ9xR4tV7zN', // Canonical affiliation identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Establishment endpoint.
@@ -37,6 +37,8 @@ $establishment_practitioner = [
     'last_checked_at' => '2026-07-20T00:00:00Z', // Latest check attempt.
     'first_confirmed_at' => null, // First adequate confirmation.
     'last_confirmed_at' => null, // Latest adequate confirmation.
+    'level_confidence' => 'U', // Reviewed confidence that the affiliation facts are accurate.
+    'status_verification' => 'U', // Current verification result for the affiliation.
     'record_verification_id_list' => [], // Verification records.
     'research_source_id_list' => ['Sr8K2pQ9xR4tV7zN'], // Supporting sources.
     'public_note' => null, // Public note.
@@ -46,7 +48,7 @@ $establishment_practitioner = [
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
-$establishment_practitioner_field_order = ['_id', 'establishment_id', 'practitioner_id', 'status_affiliation', 'type_work_arrangement', 'public_title', 'position_affiliation', 'department', 'is_public_roster', 'is_public_booking', 'status_user_confirmation', 'status_dispute', 'eligible_establishment_service_id_list', 'price_surcharge_list', 'availability_reference_id', 'started_at', 'started_at_precision', 'started_at_qualifier', 'ended_at', 'ended_at_precision', 'ended_at_qualifier', 'first_observed_active_at', 'last_observed_active_at', 'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at', 'record_verification_id_list', 'research_source_id_list', 'public_note', 'internal_note', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at'];
+$establishment_practitioner_field_order = ['_id', 'establishment_id', 'practitioner_id', 'status_affiliation', 'type_work_arrangement', 'public_title', 'position_affiliation', 'department', 'is_public_roster', 'is_public_booking', 'status_user_confirmation', 'status_dispute', 'eligible_establishment_service_id_list', 'price_surcharge_list', 'availability_reference_id', 'started_at', 'started_at_precision', 'started_at_qualifier', 'ended_at', 'ended_at_precision', 'ended_at_qualifier', 'first_observed_active_at', 'last_observed_active_at', 'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at', 'level_confidence', 'status_verification', 'record_verification_id_list', 'research_source_id_list', 'public_note', 'internal_note', 'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at'];
 $establishment_practitioner_embedded_structure = ['price_surcharge_list' => ['establishment_service_id' => 'EsrK2pQ9xR4tV7zN', 'amount' => 200.00, 'currency_id' => 111, 'effective_from' => '2026-07-01', 'effective_until' => null, 'status_price' => 'ACT']];
 $establishment_practitioner_field_property = [
     '_id' => ['field_label' => 'Affiliation ID', 'field_description' => 'Canonical identifier for the establishment-practitioner affiliation.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
@@ -76,6 +78,8 @@ $establishment_practitioner_field_property = [
     'last_checked_at' => ['field_label' => 'Last Checked At', 'field_description' => 'Latest UTC time the affiliation was checked.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'first_confirmed_at' => ['field_label' => 'First Confirmed At', 'field_description' => 'UTC time adequate evidence first confirmed the affiliation.', 'type_data' => 'S', 'type_field' => 'DTS'],
     'last_confirmed_at' => ['field_label' => 'Last Confirmed At', 'field_description' => 'Latest UTC time adequate evidence confirmed the affiliation.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'level_confidence' => ['field_label' => 'Confidence Level', 'field_description' => 'Reviewed confidence that the affiliation facts are accurate.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'U'],
+    'status_verification' => ['field_label' => 'Verification Status', 'field_description' => 'Current verification result for the affiliation.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'U'],
     'record_verification_id_list' => ['field_label' => 'Verification Records', 'field_description' => 'Verification references for the affiliation.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'research_source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Provenance references for the affiliation.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'public_note' => ['field_label' => 'Public Affiliation Note', 'field_description' => 'Approved public clarification of the affiliation.', 'type_data' => 'S', 'type_field' => 'TXA'],

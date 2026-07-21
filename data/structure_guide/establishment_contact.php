@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Contact Structure Guide
- * Version: 1.30
+ * Version: 1.40
  * Collection: establishment_contact
  * Description: Stores one current or historical official contact channel for an establishment.
  * Purpose: Separates independently verified and historied business contact channels from establishment_main and from research-source URLs.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T10:48:10Z';
-$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PUB', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
+$updated_at = '2026-07-21T11:11:28Z';
+$establishment_contact_default = ['is_primary' => false, 'visibility_scope' => 'PUB', 'status_contact_channel' => 'UNK', 'effective_from' => null, 'effective_until' => null, 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_contact = [
     '_id' => 'Ec7K2pQ9xR4tV8zN', // Canonical 16-character contact identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Owning establishment_main identifier.
@@ -31,6 +31,8 @@ $establishment_contact = [
     'last_checked_at' => '2026-07-21T07:00:00Z', // Latest check attempt regardless of result.
     'first_confirmed_at' => '2026-01-06T07:00:00Z', // First adequate confirmation.
     'last_confirmed_at' => '2026-07-21T07:00:00Z', // Latest adequate confirmation.
+    'level_confidence' => 'H', // Reviewed confidence that the channel value and status are accurate.
+    'status_verification' => 'V', // Current verification result for the channel.
     'record_verification_id' => 'Vr7K2pQ9xR4tV8zN', // Latest relevant verification result.
     'source_id_list' => ['Sr7K2pQ9xR4tV8zN'], // Supporting sources.
     'internal_note' => null, // Restricted operational note.
@@ -45,7 +47,7 @@ $establishment_contact_field_order = [
     'status_contact_channel', 'effective_from', 'effective_until', 'type_date_precision',
     'type_date_qualifier', 'first_observed_at', 'last_observed_active_at',
     'first_observed_inactive_at', 'last_checked_at', 'first_confirmed_at', 'last_confirmed_at',
-    'record_verification_id', 'source_id_list', 'internal_note', 'status_record_lifecycle',
+    'level_confidence', 'status_verification', 'record_verification_id', 'source_id_list', 'internal_note', 'status_record_lifecycle',
     'revision_number', 'created_at', 'updated_at',
 ];
 $establishment_contact_embedded_structure = [];
@@ -71,6 +73,8 @@ $establishment_contact_field_property = [
     'last_checked_at' => ['field_label' => 'Last Checked At', 'field_description' => 'Latest UTC time an activity check was attempted regardless of result.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
     'first_confirmed_at' => ['field_label' => 'First Confirmed At', 'field_description' => 'UTC time when adequate evidence first confirmed the channel.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
     'last_confirmed_at' => ['field_label' => 'Last Confirmed At', 'field_description' => 'Latest UTC time when adequate evidence confirmed the channel.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+    'level_confidence' => ['field_label' => 'Confidence Level', 'field_description' => 'Reviewed confidence that the channel value and observed status are accurate.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'U'],
+    'status_verification' => ['field_label' => 'Verification Status', 'field_description' => 'Current verification result for the channel.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'U'],
     'record_verification_id' => ['field_label' => 'Verification Record', 'field_description' => 'Latest relevant record-verification result for this channel.', 'type_data' => 'S', 'type_field' => 'REF', 'type_sql' => 'CHAR(16)', 'is_relational' => true],
     'source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references supporting the channel and its observed state.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'is_relational' => true],
     'internal_note' => ['field_label' => 'Internal Note', 'field_description' => 'Restricted operational note that must not be exposed as contact content.', 'type_data' => 'S', 'type_field' => 'TXA', 'type_sql' => 'TEXT', 'visibility_scope' => 'PRV'],

@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Schedule Structure Guide
- * Version: 1.40
+ * Version: 1.50
  * Collection: establishment_schedule
  * Description: Stores one effective version of an establishment's bounded weekly operating intervals and dated exceptions.
  * Purpose: Separates historied operating hours from establishment_main and provides the source for open-now calculations without storing an authoritative is_open_now flag.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T10:48:10Z';
-$establishment_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
+$updated_at = '2026-07-21T11:11:28Z';
+$establishment_schedule_default = ['effective_until' => null, 'weekly_day_list' => [], 'exception_list' => [], 'status_schedule' => 'ACT', 'level_confidence' => 'U', 'status_verification' => 'U', 'status_record_lifecycle' => 'ACT', 'revision_number' => 1];
 $establishment_schedule = [
     '_id' => 'Oh7K2pQ9xR4tV8zN', // Canonical 16-character schedule identifier.
     'establishment_id' => 'Es7K2pQ9xR4tV8zN', // Owning establishment_main identifier.
@@ -25,6 +25,8 @@ $establishment_schedule = [
     'last_observed_at' => '2026-07-20T00:00:00Z', // Latest observation of the schedule.
     'first_confirmed_at' => '2026-01-03T00:00:00Z', // First adequate confirmation.
     'last_confirmed_at' => '2026-07-20T00:00:00Z', // Latest adequate confirmation.
+    'level_confidence' => 'H', // Reviewed confidence that the weekly pattern and exceptions are accurate.
+    'status_verification' => 'V', // Current verification result for this schedule version.
     'source_id_list' => ['Sr7K2pQ9xR4tV8zN'], // Supporting sources.
     'status_record_lifecycle' => 'ACT', // Database lifecycle state.
     'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
@@ -34,7 +36,8 @@ $establishment_schedule = [
 $establishment_schedule_field_order = [
     '_id', 'establishment_id', 'time_zone_id', 'type_business_hours', 'effective_from', 'effective_until',
     'type_date_precision', 'type_date_qualifier', 'weekly_day_list', 'exception_list', 'status_schedule',
-    'first_observed_at', 'last_observed_at', 'first_confirmed_at', 'last_confirmed_at', 'source_id_list',
+    'first_observed_at', 'last_observed_at', 'first_confirmed_at', 'last_confirmed_at',
+    'level_confidence', 'status_verification', 'source_id_list',
     'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at',
 ];
 $establishment_schedule_embedded_structure = [
@@ -58,6 +61,8 @@ $establishment_schedule_field_property = [
     'last_observed_at' => ['field_label' => 'Last Observed At', 'field_description' => 'Latest UTC time when Massage Nexus observed this schedule version.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
     'first_confirmed_at' => ['field_label' => 'First Confirmed At', 'field_description' => 'UTC time when adequate evidence first confirmed this schedule version.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
     'last_confirmed_at' => ['field_label' => 'Last Confirmed At', 'field_description' => 'Latest UTC time when adequate evidence confirmed this schedule version.', 'type_data' => 'S', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
+    'level_confidence' => ['field_label' => 'Confidence Level', 'field_description' => 'Reviewed confidence that the weekly pattern and exceptions are accurate.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'U'],
+    'status_verification' => ['field_label' => 'Verification Status', 'field_description' => 'Current verification result for this schedule version.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'U'],
     'source_id_list' => ['field_label' => 'Research Sources', 'field_description' => 'Research-source references supporting the schedule and exceptions.', 'type_data' => 'A', 'type_field' => 'TAG', 'type_sql' => 'JSON', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from schedule activation.', 'type_data' => 'S', 'type_field' => 'DDL', 'type_sql' => 'VARCHAR(8)', 'default_value' => 'ACT'],
     'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'is_mandatory' => true, 'min_number' => 1],
