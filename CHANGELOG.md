@@ -10,8 +10,9 @@ individual entries.
   files under `data/taxonomy/shared/`, machine-readable Massage Nexus classification data under
   `data/taxonomy/massage_nexus/`, shared reference datasets under `data/common_reference/`, and
   theme configuration data under `data/theme/`.
-- Added PHP-readable database structure guides under `docs/04-architecture/structure-guide/`,
-  including a new proposed `quote_main` guide for the homepage Quote of the Day feature.
+- Added PHP-readable database structure guides under `data/structure_guide/`, including a new
+  proposed `quote_main` guide for the homepage Quote of the Day feature, with their maintenance
+  standard under `docs/02-governance/`.
 - Organized the current project specifications under the repository `docs/` directory.
 - Added repository-wide contributor instructions in `AGENTS.md`.
 - Added the initial public website pages and a temporary sample spa-profile data source.

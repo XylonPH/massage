@@ -1,7 +1,7 @@
 Title: Massage Nexus Therapist Profile Guide
 Document Version: 0.61
 Date Created: 2026-07-14
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines the public purpose, content, presentation, evidence, management boundaries, privacy, and lifecycle of a Massage Nexus therapist profile. It distinguishes the public professional record from the user account, professional-context relationships, Therapist Workspace, booking engine, and branded website.
 
 Related Documents:
@@ -924,7 +924,7 @@ contact on an unclaimed profile, which instead shows the unclaimed notice and in
 route; service-area display without a private address for home service; and keyboard-accessible
 tabs and text-labeled states. Reviews and ratings on the page are served by the shared review
 domain. The proposed collection structure is recorded in
-docs/04-architecture/structure-guide/practitioner_main.php.
+data/structure_guide/practitioner_main.php.
 
 Current working decisions:
 - therapist profile identity is independent of employment;

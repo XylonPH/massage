@@ -1,7 +1,7 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 1.92
+Document Version: 2.02
 Date Created: 2026-07-16
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 Document Description: This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
 
@@ -123,6 +123,7 @@ massage/
 |   +-- media/
 |
 +-- data/
+|   +-- structure_guide/
 |   +-- taxonomy/
 |   |   +-- shared/
 |   |   +-- massage_nexus/
@@ -207,6 +208,15 @@ Contains shared event or webhook definitions.
 data/
 Contains machine-readable repository source data that supports development, validation, import, seeding, and build processes. These files are not part of the Azure runtime deployment package, which is built from apps/web/ only, and they must never be placed under apps/web/public/.
 
+data/structure_guide/
+Contains PHP-readable database structure guides such as field_main.php, theme_main.php,
+article_main.php, article_body.php, article_revision.php, tag_main.php, media_image.php,
+media_video.php, dog_breed_main.php, quote_main.php, practitioner_main.php, and user_main.php.
+These are human- and AI-readable machine-readable source artifacts kept in PHP array form for
+review and field-index validation. They are not runtime application code, import data, seed files,
+migrations, finalized contracts, or production schemas. Each snake_case filename is the technical
+collection name it documents; version notes remain inside the file.
+
 data/taxonomy/shared/
 Contains the Shared Taxonomy reusable field definitions, split into semantically grouped JSON files. Each file is a flat JSON array of field-definition records preserving the original record shape, so files can be concatenated or imported directly. The record source is the Zenith Shared Taxonomy export; groupings are organizational and do not change record content.
 
@@ -225,9 +235,6 @@ Generated bare list of every known field name (from the taxonomy files and PHP s
 docs/
 Contains current internal project documentation. Public help content may be drafted here but is not automatically published merely because it exists in this folder.
 
-docs/04-architecture/structure-guide/
-Contains PHP-readable database structure guides (field_main.php, theme_main.php, article_main.php, article_body.php, article_revision.php, tag_main.php, media_image.php, media_video.php, dog_breed_main.php, quote_main.php, practitioner_main.php, user_main.php). These are human- and AI-readable documentation artifacts kept in PHP array form for review; they are not runtime application code, not seed files, and not migrations, and they must not be placed in production application PHP directories merely because they use PHP syntax.
-
 tools/
 Contains project-maintenance scripts. Application runtime code does not belong here. The first active script is tools/script/build_field_index.php, which regenerates data/field_index.txt.
 
@@ -239,8 +246,6 @@ Contains GitHub automation, issue forms, pull-request templates, and workflow fi
 ================================================================================
 
 Folders are numbered for logical browsing order; this numbering is a Massage Nexus-specific choice, not a Shared Project Standards requirement. Individual document filenames inside each folder stay unnumbered and unversioned per the Documentation Writing and Management Standard (lowercase, dash-separated, .txt). Only the topic folder gets a number.
-
-Exception: the PHP-readable database structure guides under docs/04-architecture/structure-guide/ use snake_case .php filenames because each filename is the technical collection name it documents (for example quote_main.php documents the quote_main collection). They remain unversioned in the filename; version notes live inside each file.
 
 docs/
 |
@@ -258,6 +263,7 @@ docs/
 |   +-- edit-system.txt
 |   +-- github-development-and-repository-operations.txt
 |   +-- shared-project-standards.txt
+|   +-- structure-guide-standard.txt
 |   +-- testing-and-quality-assurance-strategy.txt
 |
 +-- 03-brand/
@@ -273,17 +279,6 @@ docs/
 |   +-- database-structure.txt
 |   +-- runtime-ai-system.txt
 |   +-- technology-stack.txt
-|   +-- structure-guide/
-|       +-- article_body.php
-|       +-- article_main.php
-|       +-- article_revision.php
-|       +-- tag_main.php
-|       +-- dog_breed_main.php
-|       +-- field_main.php
-|       +-- media_image.php
-|       +-- media_video.php
-|       +-- quote_main.php
-|       +-- theme_main.php
 |
 +-- 05-directory/
 |   +-- product-classification.txt

@@ -1,7 +1,7 @@
 Title: Massage Nexus Legal and Public Policy Writing Guide
 Document Version: 0.20
 Date Created: 2026-07-20
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
 
 ================================================================================
@@ -686,7 +686,7 @@ Open decisions:
 - docs/13-localization/translation-system.txt owns legal and high-risk translation workflow.
 - docs/01-project/site-structure-map.txt owns public legal routes.
 - docs/04-architecture/database-structure.txt owns database and collection boundaries.
-- docs/04-architecture/structure-guide/article_main.php,
-  docs/04-architecture/structure-guide/article_body.php, and
-  docs/04-architecture/structure-guide/article_revision.php govern Articles only and are not
+- data/structure_guide/article_main.php,
+  data/structure_guide/article_body.php, and
+  data/structure_guide/article_revision.php govern Articles only and are not
   legal-publication structures.

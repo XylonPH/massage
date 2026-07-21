@@ -49,7 +49,7 @@
             { "option_code": "P", "option_label": "Published", "option_description": "Published and available according to visibility rules." },
             { "option_code": "U", "option_label": "Unpublished", "option_description": "Removed from publication without deleting its history." }
         ],
-        "source_document": "docs/04-architecture/structure-guide/article_main.php"
+        "source_document": "data/structure_guide/article_main.php"
     },
     {
         "field_name": "type_quote_category",
@@ -83,7 +83,7 @@
                 "option_description": "Motivational and encouraging quotes."
             }
         ],
-        "source_document": "docs/04-architecture/structure-guide/quote_main.php"
+        "source_document": "data/structure_guide/quote_main.php"
     },
     {
         "field_name": "type_record_note",
@@ -112,6 +112,6 @@
                 "option_description": "Note documenting a correction to the record."
             }
         ],
-        "source_document": "docs/04-architecture/structure-guide/article_main.php"
+        "source_document": "data/structure_guide/article_main.php"
     }
 ]
