@@ -35,7 +35,8 @@ Each detailed PHP structure guide begins with one comment block that identifies:
 Do not include an Author field. Git records authorship, and repeating the same author in every
 file adds no structural meaning.
 
-Every accepted saved revision updates the file version. Use the size of the change to select the
+Every accepted saved revision updates the file version. The Version value must strictly follow the
+major.two-digit-minor format (e.g., 1.00 or 1.10). Use the size of the change to select the
 increment:
 - +0.01 for a non-semantic correction to wording, comments, formatting, or examples;
 - +0.10 for accepted field, default, order, embedded shape, index, boundary, relationship,
@@ -98,18 +99,26 @@ logic must treat an omitted property as its documented default. For example, whe
 to "test", a filter for that field equal to "test" must include records where the field is omitted.
 
 The *_field_order array lists every top-level stored property exactly once in intended logical
-order. It must contain the same top-level property names as the complete sample record and the
-top-level field-property array.
+order. Validation tooling enforces a strict key-equality check: the keys in the sample record,
+*_field_order, and *_field_property must match exactly. Furthermore, every key inside *_default
+must exist in the sample record.
 
-The *_embedded_structure array shows the complete shape of each embedded object or list item.
+The *_embedded_structure array shows the complete shape of each embedded object or list item. If
+populated, validation tooling strictly requires *_subfield_property to be populated as well.
 The *_field_property array describes every top-level property's data contract. The
 *_subfield_property array describes every nested property using an unambiguous dotted path or
 another clearly documented path notation. Keep stored defaults separate from field-definition
 metadata.
 
-The optional $multilingual_text_sample uses eng as its example language. Do not add another
-language merely to make the generic sample appear multilingual. Actual collection sample records
-may demonstrate additional languages when useful.
+Field properties use standardized abbreviation codes. type_data denotes the primitive type (e.g.,
+S for String, I for Integer, B for Boolean, A for Array, O for Object). type_field denotes the
+semantic interface format (e.g., TXT for Text, JSE for JSON/Embedded, DDL for Dropdown/Enum,
+TGL for Tag List, CHK for Checkbox, NMB for Number, DTS for DateTime String).
+
+The $multilingual_text_sample uses eng as its example language. It is strictly required by
+validation tooling if any field defines 'is_translatable' => true; otherwise, it is optional.
+Do not add another language merely to make the generic sample appear multilingual. Actual
+collection sample records may demonstrate additional languages when useful.
 
 The optional *_legacy_name_map exists only for a collection derived from a legacy database or
 schema. New Massage Nexus collections do not include an empty or speculative legacy map.
@@ -133,9 +142,10 @@ Every *_index_list entry uses this shape:
 ];
 
 index_key is the stable guide key. index_name is the intended physical database index name.
-type_index describes the overall index kind. type_index_mode describes how one field participates
-in the index. Compound fields use sort_order increments of 10. Collection-level index definitions
-belong here rather than only in relationship metadata.
+type_index describes the overall index kind. Common values include STD (Standard), 2DSPHERE or 2D
+(Geospatial), TTL (Expiring), TEXT (Search), or MULTIKEY. type_index_mode describes how one field
+participates in the index. Compound fields use sort_order increments of 10. Collection-level index
+definitions belong here rather than only in relationship metadata.
 
 The *_boundary array identifies what the collection owns, which other collections or datasets it
 references, and what responsibilities remain outside it. Boundary entries must distinguish a
@@ -151,7 +161,9 @@ behavior.
 
 Preserve established field names and semantics. Before introducing any new field name,
 including a nested field, check data/field_index.txt and follow AGENTS.md taxonomy and field
-governance. Reuse a field only when its existing meaning matches.
+governance. The indexing tool flattens all nested paths into bare field names. This guarantees
+that a field name carries the exact same semantic contract across the entire database, whether at
+the root level or nested deeply. Reuse a field only when its existing meaning matches.
 
 ================================================================================
 5. CHANGE WORKFLOW
@@ -181,5 +193,8 @@ Structure revisions should be additive and recoverable when existing data may al
 older shape. Document compatibility meaning where legacy fields remain temporarily supported.
 
 Application code must continue to validate input, authorize mutations, normalize embedded
-records, and constrain relationship identifiers. A PHP guide does not replace runtime security,
-validation, migrations, data backfills, tests, or rollout planning.
+records, and constrain relationship identifiers. In Laravel implementations, Eloquent Models
+corresponding to a structure guide should define sparse omission defaults inside their `$attributes`
+model array or accessor methods to ensure runtime queries match the guide's `*_default`
+specifications. A PHP guide does not replace runtime security, validation, migrations, data
+backfills, tests, or rollout planning.
