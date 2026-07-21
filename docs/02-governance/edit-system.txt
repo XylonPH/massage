@@ -13,8 +13,8 @@ Related Documents:
 - docs/04-architecture/api-system.txt
 - docs/04-architecture/database-structure.txt
 - docs/04-architecture/runtime-ai-system.txt
-- docs/04-architecture/structure-guide/contribution_main.php
-- docs/04-architecture/structure-guide/audit_log.php
+- data/structure_guide/contribution_main.php
+- data/structure_guide/audit_log.php
 - data/taxonomy/massage_nexus/workspace_access.json
 - docs/11-workspaces/user-workspace.txt
 - docs/11-workspaces/admin-workspace.txt

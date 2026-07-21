@@ -2,7 +2,7 @@ Brand and Visual Identity
 =========================
 Document Version: 1.80
 Date Created: 2026-07-01
-Revision Date: 2026-07-19
+Revision Date: 2026-07-21
 
 
 About the Logo
@@ -22,7 +22,7 @@ Ink & Ember was chosen as the visual theme because it gives Massage Nexus a stro
 
 The theme supports wellness through controlled green accents, which suggest balance, care, recovery, and natural calm. Together, the colors create a modern massage and wellness platform that feels bold but not aggressive, calm but not boring, and premium without feeling unreachable. Ink & Ember helps Massage Nexus stand out as a serious digital platform while still keeping the warmth and comfort expected from a spa and massage-related brand.
 
-Specifications for Ink & Ember are stored in the repository at data/theme/theme_main.json, with the matching PHP-readable structure guide at docs/04-architecture/structure-guide/theme_main.php. The original planning export remains at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\zenith_main\theme_main v1.01.json; the repository copy is the working reference.
+Specifications for Ink & Ember are stored in the repository at data/theme/theme_main.json, with the matching PHP-readable structure guide at data/structure_guide/theme_main.php. The original planning export remains at C:\Users\Xylon\OneDrive\Documents\text\JSON Data\zenith_main\theme_main v1.01.json; the repository copy is the working reference.
 
 The accepted canonical Ink & Ember appearance is the implemented Massage Nexus website: Instrument Sans typography with a deep navy ink scale (deep navy 16294A family with 0B1830 for the darkest surfaces), ember orange F96410 (FD8336 on dark surfaces), leaf green 3E914A (62AE6C on dark surfaces), and light F8FAFC page backgrounds. The ink_and_ember_light and ink_and_ember_dark records in data/theme/theme_main.json follow these values, and both appearance modes use the same color roles: primary navy ink, secondary supporting ink blue, accent ember, success leaf. Earlier drafts that used ink black 171717 with royal blue 2563EB are superseded.
 

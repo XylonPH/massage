@@ -195,7 +195,7 @@ A separate treatment-area collection should be created only when treatment areas
 8. PRACTITIONER COLLECTIONS
 
 - practitioner_main
-  One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label. Proposed structure; see docs/04-architecture/structure-guide/practitioner_main.php.
+  One practitioner profile, using Practitioner as the technical term and Therapist as an appropriate public label. Proposed structure; see data/structure_guide/practitioner_main.php.
 
 - practitioner_service
   Relationship between a practitioner and a normalized service or capability.
@@ -300,7 +300,7 @@ Do not create separate establishment_review, practitioner_review, and product_re
 - quote_main
   Approved quotes for the homepage Quote of the Day section, including multilingual quote text, attribution, categories, display window, review status, and lifecycle. Proposed structure; see the structure guide below.
 
-PHP-readable structure guides for these and other collections are maintained under docs/04-architecture/structure-guide/. The guides record proposed or working field-level structure in reviewable PHP array form; this document remains the authority for database and collection boundaries, and the guides do not by themselves make a structure an accepted decision.
+PHP-readable structure guides for these and other collections are maintained under data/structure_guide/. The guides record proposed or working field-level structure in reviewable PHP array form; this document remains the authority for database and collection boundaries, and the guides do not by themselves make a structure an accepted decision.
 
 The former generic content_main, content_body, and content_revision direction is retired. Shared
 editorial workflows, media, reactions, moderation, translation, search, and analytics may operate

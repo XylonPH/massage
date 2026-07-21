@@ -1,13 +1,13 @@
 Title: Massage Nexus Quote System
 Document Version: 0.10
 Date Created: 2026-07-20
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Status: Internal Planning Draft
 Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
 
 Related Documents:
 - docs/06-user-interface/home-page-ui.txt (section 20, Quote of the Day)
-- docs/04-architecture/structure-guide/quote_main.php
+- data/structure_guide/quote_main.php
 - docs/04-architecture/database-structure.txt
 - docs/11-workspaces/admin-workspace.txt (Editorial Management, Quote administration)
 - docs/13-localization/translation-system.txt
@@ -64,7 +64,7 @@ user to complete.
 ================================================================================
 
 The proposed collection is quote_main; see the structure guide at
-docs/04-architecture/structure-guide/quote_main.php. Quote categories come from
+data/structure_guide/quote_main.php. Quote categories come from
 type_quote_category in data/taxonomy/massage_nexus/content_classification.json.
 
 Administration (attribution, source, language, category, display window, duplication review,

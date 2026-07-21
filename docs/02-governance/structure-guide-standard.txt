@@ -1,9 +1,9 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.00
+Document Version: 1.10
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
-Document Description: Defines the required purpose, metadata, timestamps, field layers, ordering, validation, and maintenance workflow for PHP-readable database structure guides under docs/04-architecture/structure-guide/.
+Document Description: Defines the required purpose, metadata, timestamps, field layers, ordering, validation, and maintenance workflow for PHP-readable database structure guides under data/structure_guide/.
 
 ================================================================================
 1. PURPOSE AND AUTHORITY
@@ -12,6 +12,10 @@ Document Description: Defines the required purpose, metadata, timestamps, field 
 PHP structure guides are reviewable field-level descriptions of proposed or working database
 records. They are documentation expressed as PHP arrays. They are not migrations, seeds,
 runtime configuration, or proof that a proposed structure has been accepted or deployed.
+
+They live under data/structure_guide/ because they are machine-readable repository source
+artifacts consumed by validation and field-index tooling. Their location does not make them
+runtime data, import datasets, finalized contracts, or production schemas.
 
 docs/04-architecture/database-structure.txt remains authoritative for database and collection
 boundaries. Current feature specifications govern feature meaning. Structure guides preserve

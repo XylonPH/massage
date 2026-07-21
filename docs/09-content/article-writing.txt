@@ -199,7 +199,7 @@ Articles themselves do not use the non-star 1 to 10 rating asset set because art
 Content and Media Structure References
 --------------------------------------
 
-Use the current PHP-readable structure guides under docs/04-architecture/structure-guide/:
+Use the current PHP-readable structure guides under data/structure_guide/:
 
 - article_main.php for Article metadata, category, target audience, tags, ordered public byline credits, separate shared ownership, related database records, publication status, counters, visibility, and embedded record_note;
 - article_body.php for language-specific HTML Article bodies, language_id, visual/spoken reading durations, generated plain-text search projection, and translation handling;

@@ -48,14 +48,14 @@ foreach (glob("$repo/data/taxonomy/massage_nexus/*.json") as $f) {
 // A guide may define more than one order array when the collection contains
 // bounded embedded objects; every stored field name still belongs in the
 // canonical index.
-foreach (glob("$repo/docs/04-architecture/structure-guide/*.php") as $f) {
+foreach (glob("$repo/data/structure_guide/*.php") as $f) {
     $srcText = file_get_contents($f);
     if (preg_match_all('/\$[A-Za-z0-9_]+_field_order\s*=\s*\[(.*?)\];/s', $srcText, $matches)) {
         foreach ($matches[1] as $fieldOrder) {
             preg_match_all("/'([A-Za-z0-9_]+)'/", $fieldOrder, $mm);
 
             foreach ($mm[1] as $name) {
-                $add($name, 'collection: docs/04-architecture/structure-guide/' . basename($f));
+                $add($name, 'collection: data/structure_guide/' . basename($f));
             }
         }
     }

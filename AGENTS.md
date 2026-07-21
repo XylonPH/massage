@@ -39,19 +39,19 @@ Common starting points:
 - Technology direction: `docs/04-architecture/technology-stack.txt`
 - Runtime AI architecture: `docs/04-architecture/runtime-ai-system.txt`
 - Database boundaries: `docs/04-architecture/database-structure.txt`
-- Structure-guide maintenance: `docs/04-architecture/structure-guide-standard.txt`
-- Collection-level structure guides (PHP-readable): `docs/04-architecture/structure-guide/`
+- Structure-guide maintenance: `docs/02-governance/structure-guide-standard.txt`
+- Collection-level structure guides (PHP-readable): `data/structure_guide/`
 - Security, privacy, and policy: `docs/18-policy/`
 
 For a capability, locate its specification in the matching numbered `docs/` subfolder before implementing it. Search by exact feature, domain term, route, model, or filename rather than reading unrelated documents.
 
 ## Machine-readable data and taxonomy governance
 
-Machine-readable repository source data lives under `data/` (not under `apps/web/`, and never under `apps/web/public/`): shared taxonomy field definitions in `data/taxonomy/shared/`, Massage Nexus classification data in `data/taxonomy/massage_nexus/`, shared reference datasets in `data/common_reference/`, and theme configuration in `data/theme/`. These files support development, validation, import, and seeding; they are not part of the deployed application package.
+Machine-readable repository source data lives under `data/` (not under `apps/web/`, and never under `apps/web/public/`): PHP-readable collection structure guides in `data/structure_guide/`, shared taxonomy field definitions in `data/taxonomy/shared/`, Massage Nexus classification data in `data/taxonomy/massage_nexus/`, shared reference datasets in `data/common_reference/`, and theme configuration in `data/theme/`. These files support development, validation, import, seeding, or build tooling as appropriate to their type; they are not part of the deployed application package.
 
 Before creating any new field name of any kind, check `data/field_index.txt` first — a bare generated list of every known field name, so an existence check costs one small file read. To find where a listed name is defined, run `php tools/script/build_field_index.php --where field_name` instead of searching manually. Regenerate the index with `php tools/script/build_field_index.php` in the same change whenever a taxonomy file or structure guide adds, renames, or removes a field. For a new controlled or enumerated field, additionally search the existing taxonomy JSON files under `data/taxonomy/` by field name, label, description, meaning, and option values. Reuse or extend an existing field when it answers the same semantic question; create a new field only when the concept is genuinely distinct, and add it to the appropriate taxonomy JSON file rather than leaving the option list only in application code, a structure guide, or documentation. The classification documents under `docs/05-directory/` remain the authority for Massage Nexus classification content; update the matching JSON file in `data/taxonomy/massage_nexus/` in the same change when a classification document changes. Option codes must stay unique within their field, and code meanings must never be reused after retirement.
 
-Before creating or modifying a PHP structure guide, read `docs/04-architecture/structure-guide-standard.txt` and apply its metadata, timestamp, field-order, and index-maintenance rules.
+Before creating or modifying a PHP structure guide, read `docs/02-governance/structure-guide-standard.txt` and apply its metadata, timestamp, field-order, and index-maintenance rules.
 
 ## Working method
 
