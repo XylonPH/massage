@@ -1,0 +1,92 @@
+[
+    {
+        "_id":  510,
+        "field_name":  "type_coordinate",
+        "field_label":  "Coordinate Type",
+        "selection_rule":  "Single-select per coordinate",
+        "field_description":  "Meaning of a geographic point stored for a Massage Nexus place.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ENT",
+                                 "option_label":  "Public Entrance",
+                                 "option_description":  "Approved public entrance."
+                             },
+                             {
+                                 "option_code":  "BLD",
+                                 "option_label":  "Building",
+                                 "option_description":  "Containing building."
+                             },
+                             {
+                                 "option_code":  "CTR",
+                                 "option_label":  "Approximate Center",
+                                 "option_description":  "Approximate center when no entrance is confirmed."
+                             },
+                             {
+                                 "option_code":  "ARA",
+                                 "option_label":  "Area Only",
+                                 "option_description":  "Privacy-reduced general area."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "_id":  511,
+        "field_name":  "level_address_visibility",
+        "field_label":  "Address Visibility Level",
+        "selection_rule":  "Single-select per place",
+        "field_description":  "Maximum address detail permitted for display.",
+        "field_option":  [
+                             {
+                                 "option_code":  "FUL",
+                                 "option_label":  "Full Address",
+                                 "option_description":  "Full approved address may be displayed."
+                             },
+                             {
+                                 "option_code":  "STR",
+                                 "option_label":  "Street Level",
+                                 "option_description":  "Street and locality only."
+                             },
+                             {
+                                 "option_code":  "ARA",
+                                 "option_label":  "Area Level",
+                                 "option_description":  "Locality or privacy-reduced area only."
+                             },
+                             {
+                                 "option_code":  "HID",
+                                 "option_label":  "Hidden",
+                                 "option_description":  "No address detail may be displayed."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-classification.txt"
+    },
+    {
+        "_id":  540,
+        "field_name":  "level_coordinate_confidence",
+        "field_label":  "Coordinate Confidence Level",
+        "selection_rule":  "Single-select per stored coordinate",
+        "field_description":  "Confidence that a stored point accurately represents its stated coordinate type.",
+        "field_option":  [
+                             {
+                                 "option_code":  "H",
+                                 "option_label":  "High",
+                                 "option_description":  "Point is supported with high confidence."
+                             },
+                             {
+                                 "option_code":  "M",
+                                 "option_label":  "Medium",
+                                 "option_description":  "Point is plausible but retains material uncertainty."
+                             },
+                             {
+                                 "option_code":  "L",
+                                 "option_label":  "Low",
+                                 "option_description":  "Point is approximate or weakly supported."
+                             },
+                             {
+                                 "option_code":  "U",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Coordinate confidence has not been established."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-classification.txt"
+    }
+]

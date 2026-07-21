@@ -1,7 +1,7 @@
 Massage Nexus: Service Classification
-Document Version: 2.00
+Document Version: 2.10
 Date Created: 2026-07-11
-Revision Date: 2026-07-17
+Revision Date: 2026-07-21
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -349,7 +349,7 @@ Pressure adaptation to preference, tolerance, feedback, body area, or session ne
 10. MASSAGE MEDIUM
 ================================================================================
 
-Field Name: type_massage_medium
+Field Name: type_massage_contact_medium
 Field Label: Massage Medium
 Selection: Multi-select where applicable
 

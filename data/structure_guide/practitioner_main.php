@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Practitioner Main Structure Guide
- * Version: 1.00
+ * Version: 1.10
  * Collection: practitioner_main
  * Description: Stores one practitioner professional profile independently of a user account or employer.
  * Purpose: Documents the practitioner_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -38,7 +38,7 @@
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-21T09:49:12Z';
 /**
  * Actual record-level defaults for practitioner_main.
  * Sparse-default storage may omit these values in actual database records.
@@ -101,7 +101,7 @@ $practitioner_main = [
 			'status_review' => 'APR',
 		],
 	], // optional; maximum 255 characters per language text value
-	'biography' => [ // Optional longer public professional biography. Multilingual text; machine translation must remain identified per the Translation System.
+	'professional_biography' => [ // Optional longer public professional biography. Multilingual text; machine translation must remain identified per the Translation System.
 		'eng' => [
 			'text' => 'Maya has practiced professional massage for over nine years across spa and independent settings. She focuses on pressure communication, careful draping, and helping first-time clients feel at ease.',
 			'method_translation' => 'HUM',
@@ -161,7 +161,7 @@ $practitioner_main_field_order = [
 	'practitioner_name',
 	'practitioner_slug',
 	'short_description',
-	'biography',
+	'professional_biography',
 	'language_original_id',
 	'type_practice_setting',
 	'type_specialty_focus',
@@ -240,8 +240,8 @@ $practitioner_main_field_property = [
 		'is_translatable' => true,
 		'max_character' => 255,
 	],
-	'biography' => [
-		'field_label' => 'Biography',
+	'professional_biography' => [
+		'field_label' => 'Professional Biography',
 		'field_description' => 'Optional longer public professional biography. Multilingual text; machine translation must remain identified per the Translation System.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',

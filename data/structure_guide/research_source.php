@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Research Source Structure Guide
- * Version: 1.00
+ * Version: 1.01
  * Collection: research_source
  * Description: Stores one reusable source identity and its provenance, reliability, access, and lifecycle metadata.
  * Purpose: Documents sources independently from observations so several assertions may cite the same thread, website, interview, visit, document, or media item.
  */
 
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T08:15:45Z';
+$updated_at = '2026-07-21T09:49:12Z';
 $research_source_default = ['source_url' => null, 'source_author_snapshot' => null, 'status_source_reliability' => 'UNK', 'visibility_scope' => 'PRV', 'status_record_lifecycle' => 'ACT'];
 $research_source = [
     '_id' => 'Sr7K2pQ9xR4tV8zN', // Canonical 16-character source identifier.
@@ -56,4 +56,4 @@ $research_source_index_list = [
     ['index_key' => 'source_url_lookup', 'index_name' => 'ix_research_source_url', 'type_index' => 'STD', 'is_unique' => false, 'is_sparse' => true, 'index_field_list' => [['field_name' => 'source_url', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 20],
 ];
 $research_source_boundary = ['owns' => ['source identity, locator, publication/access context, reliability, visibility, and retention metadata'], 'references' => ['common_reference.language_main', 'user_main'], 'does_not_own' => ['assertions extracted from the source', 'accepted target facts', 'large source captures or restricted documents']];
-return compact('research_source_default', 'research_source', 'research_source_field_order', 'research_source_embedded_structure', 'research_source_field_property', 'research_source_subfield_property', 'research_source_index_list', 'research_source_boundary');
+return ['research_source_default' => $research_source_default, 'research_source' => $research_source, 'research_source_field_order' => $research_source_field_order, 'research_source_embedded_structure' => $research_source_embedded_structure, 'research_source_field_property' => $research_source_field_property, 'research_source_subfield_property' => $research_source_subfield_property, 'research_source_index_list' => $research_source_index_list, 'research_source_boundary' => $research_source_boundary];

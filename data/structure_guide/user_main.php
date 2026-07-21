@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus User Main Structure Guide
- * Version: 0.20
+ * Version: 0.30
  * Collection: user_main
  * Description: Stores one Massage Nexus account, credential, membership, consent cache, and basic profile record.
  * Purpose: Documents the user_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -26,7 +26,7 @@
  *   passkeys, security events, external identities).
  * - This guide documents the fields the application already reads and writes
  *   (App\Models\User) plus the personal-profile fields introduced by the User
- *   Workspace (display_name, bio). Password hashes are Argon2id; plaintext or
+ *   Workspace (display_name, profile_biography). Password hashes are Argon2id; plaintext or
  *   reversible storage is prohibited.
  * - Policy-acceptance grant/withdrawal history beyond the cached versions here
  *   belongs to user_policy. Roles and permissions remain an unresolved later
@@ -35,14 +35,14 @@
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T09:49:12Z';
 /**
  * Actual record-level defaults for user_main.
  * Sparse-default storage may omit these values in actual database records.
  */
 $user_main_default = [
 	'display_name' => null, // public profile falls back to username until set
-	'bio' => null,
+	'profile_biography' => null,
 	'email_verified_at' => null,
 	'is_marketing_email_opt_in' => false,
 	'status_account' => 'PND',
@@ -63,7 +63,7 @@ $user_main = [
 	# Identity
 	'username' => 'wellnessfan7', // lowercase letters and digits, starts with a letter, 4-30 chars, unique
 	'display_name' => 'Wellness Fan', // optional public display name; public profile falls back to username
-	'bio' => 'Weekend spa explorer. Always chasing the perfect Swedish massage.', // optional public biography text
+	'profile_biography' => 'Weekend spa explorer. Always chasing the perfect Swedish massage.', // Optional public account-profile biography text.
 
 	# Contact / Credential
 	'email' => 'wellnessfan7@example.test', // stored lowercase; unique
@@ -93,7 +93,7 @@ $user_main_field_order = [
 	'_id',
 	'username',
 	'display_name',
-	'bio',
+	'profile_biography',
 	'email',
 	'email_verified_at',
 	'password',
@@ -145,9 +145,9 @@ $user_main_field_property = [
 		'max_character' => 60,
 		'visibility_scope' => 'PUB',
 	],
-	'bio' => [
-		'field_label' => 'Bio',
-		'field_description' => 'Optional public biography text for the user profile.',
+	'profile_biography' => [
+		'field_label' => 'Profile Biography',
+		'field_description' => 'Optional public biography text for the user account profile, distinct from a practitioner professional biography.',
 		'type_field' => 'TXA',
 		'max_character' => 1000,
 		'visibility_scope' => 'PUB',

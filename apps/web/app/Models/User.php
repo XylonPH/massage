@@ -20,7 +20,7 @@ use MongoDB\Laravel\Auth\User as MongoAuthenticatable;
  * guidance to avoid premature collection splitting.
  */
 #[Fillable([
-    'username', 'display_name', 'bio', 'email', 'password', 'birth_date',
+    'username', 'display_name', 'profile_biography', 'email', 'password', 'birth_date',
     'terms_accepted_at', 'terms_accepted_version',
     'privacy_acknowledged_at', 'privacy_acknowledged_version',
     'is_marketing_email_opt_in',

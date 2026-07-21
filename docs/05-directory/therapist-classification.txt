@@ -1,7 +1,7 @@
 Title: Massage Nexus Therapist Classification
-Document Version: 1.50
+Document Version: 1.60
 Date Created: 2026-07-11
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 Document Description: Defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus, including recommended snake_case field names, stable option codes, labels, and internal descriptions.
 
 This is a compact taxonomy reference, not public documentation, a database schema, a therapist-profile specification, a credential schema, or a scheduling system. Some fields apply to the therapist generally; Work Arrangement, Provider Rank, Therapist Service Market Class, Client Access, and Booking Requirement may instead apply to a specific establishment affiliation or independent-practice context.
@@ -301,9 +301,9 @@ A public profile summary should be derived from individual credential records ra
 
 RELATED STRUCTURE TAXONOMY
 
-data/taxonomy/massage_nexus/establishment_research.json defines the controlled fields needed by
-the accepted relationship guides: status_affiliation, status_dispute, type_credential,
-type_capability, and status_capability. Existing type_work_arrangement, position_affiliation,
+data/taxonomy/massage_nexus/practitioner_professional.json defines status_affiliation,
+type_credential, type_capability, and status_capability. The related status_dispute field is in
+data/taxonomy/massage_nexus/research_verification.json. Existing type_work_arrangement, position_affiliation,
 status_credential_verification, and status_credential_lifecycle fields in this document remain
 authoritative and are not duplicated.
 

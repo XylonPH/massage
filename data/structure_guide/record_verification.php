@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Record Verification Structure Guide
- * Version: 1.00
+ * Version: 1.01
  * Collection: record_verification
  * Description: Stores one cross-target, optionally field-specific verification process and result.
  * Purpose: Documents how Massage Nexus verifies a record, relationship, field, claim, credential, contact, document, or other supported fact without storing the authoritative target or unrestricted evidence.
@@ -10,7 +10,7 @@
  */
 
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T08:15:45Z';
+$updated_at = '2026-07-21T09:49:12Z';
 
 $record_verification_default = [
     'target_field_path' => null,
@@ -107,4 +107,4 @@ $record_verification_boundary = [
     'does_not_own' => ['authoritative target fact', 'source assertion', 'unrestricted evidence binary', 'claim workflow', 'workspace permission'],
 ];
 
-return compact('record_verification_default', 'record_verification', 'record_verification_field_order', 'record_verification_embedded_structure', 'record_verification_field_property', 'record_verification_subfield_property', 'record_verification_index_list', 'record_verification_boundary');
+return ['record_verification_default' => $record_verification_default, 'record_verification' => $record_verification, 'record_verification_field_order' => $record_verification_field_order, 'record_verification_embedded_structure' => $record_verification_embedded_structure, 'record_verification_field_property' => $record_verification_field_property, 'record_verification_subfield_property' => $record_verification_subfield_property, 'record_verification_index_list' => $record_verification_index_list, 'record_verification_boundary' => $record_verification_boundary];

@@ -1009,8 +1009,8 @@
         "source_document": "docs/05-directory/service-classification.txt"
     },
     {
-        "field_name": "type_massage_medium",
-        "field_label": "Massage Medium",
+        "field_name": "type_massage_contact_medium",
+        "field_label": "Massage Contact Medium",
         "selection_rule": "Multi-select where applicable",
         "field_description": "The generic medium involved in massage contact. A named or branded product is linked through the service-product relationship and Product Classification; it is not a Massage Medium option.",
         "classification_note": [

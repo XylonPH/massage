@@ -1,7 +1,7 @@
 Document Title: Massage Nexus: Product Classification
-Document Version: 1.40
+Document Version: 1.50
 Date Created: 2026-07-11
-Revision Date: 2026-07-17
+Revision Date: 2026-07-21
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -74,7 +74,7 @@ A Product Category or Product Type does not prove that every service of a named 
 3. MASSAGE MEDIUM FORM
 ================================================================================
 
-Field Name: type_massage_medium_form
+Field Name: type_massage_product_form
 Field Label: Massage Medium Form
 Selection: Single-select per product
 
@@ -100,7 +100,7 @@ Field Label: Massage Oil Base
 Selection: Multi-select where a formulation combines bases
 
 Applies primarily to:
-MM - Massage Medium where type_massage_medium_form is OIL
+MM - Massage Medium where type_massage_product_form is OIL
 
 Code | Label                      | Description
 -----|----------------------------|------------------------------------------------------------

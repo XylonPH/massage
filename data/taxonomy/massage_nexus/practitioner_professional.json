@@ -1,0 +1,162 @@
+[
+    {
+        "_id":  521,
+        "field_name":  "status_affiliation",
+        "field_label":  "Affiliation Status",
+        "selection_rule":  "Single-select per practitioner affiliation",
+        "field_description":  "Evidence-aware state of a practitioner-establishment affiliation.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Supported as active."
+                             },
+                             {
+                                 "option_code":  "INA",
+                                 "option_label":  "Inactive",
+                                 "option_description":  "Appears inactive."
+                             },
+                             {
+                                 "option_code":  "END",
+                                 "option_label":  "Ended",
+                                 "option_description":  "Has a supported end."
+                             },
+                             {
+                                 "option_code":  "DSP",
+                                 "option_label":  "Disputed",
+                                 "option_description":  "Disputed."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Unknown."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "_id":  523,
+        "field_name":  "type_credential",
+        "field_label":  "Credential Type",
+        "selection_rule":  "Single-select per credential",
+        "field_description":  "Kind of professional credential.",
+        "field_option":  [
+                             {
+                                 "option_code":  "LIC",
+                                 "option_label":  "Professional License",
+                                 "option_description":  "Professional license."
+                             },
+                             {
+                                 "option_code":  "NCC",
+                                 "option_label":  "National Competency Certificate",
+                                 "option_description":  "Government-recognized competency certificate."
+                             },
+                             {
+                                 "option_code":  "TRC",
+                                 "option_label":  "Training Certificate",
+                                 "option_description":  "Completed training certificate."
+                             },
+                             {
+                                 "option_code":  "DIP",
+                                 "option_label":  "Diploma",
+                                 "option_description":  "Diploma."
+                             },
+                             {
+                                 "option_code":  "DEG",
+                                 "option_label":  "Degree",
+                                 "option_description":  "Academic degree."
+                             },
+                             {
+                                 "option_code":  "ACC",
+                                 "option_label":  "Accreditation",
+                                 "option_description":  "Accreditation."
+                             },
+                             {
+                                 "option_code":  "MEM",
+                                 "option_label":  "Professional Membership",
+                                 "option_description":  "Professional membership."
+                             },
+                             {
+                                 "option_code":  "FST",
+                                 "option_label":  "First-Aid Certification",
+                                 "option_description":  "First-aid or emergency certification."
+                             },
+                             {
+                                 "option_code":  "SPC",
+                                 "option_label":  "Specialty Method Certification",
+                                 "option_description":  "Specialty-method certification."
+                             },
+                             {
+                                 "option_code":  "EST",
+                                 "option_label":  "Establishment Training",
+                                 "option_description":  "Establishment-issued training."
+                             },
+                             {
+                                 "option_code":  "CED",
+                                 "option_label":  "Continuing Education",
+                                 "option_description":  "Continuing education."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "_id":  524,
+        "field_name":  "type_capability",
+        "field_label":  "Practitioner Capability Type",
+        "selection_rule":  "Single-select per capability",
+        "field_description":  "Class of capability that is not itself a service or credential.",
+        "field_option":  [
+                             {
+                                 "option_code":  "MET",
+                                 "option_label":  "Method",
+                                 "option_description":  "Professional method."
+                             },
+                             {
+                                 "option_code":  "EQP",
+                                 "option_label":  "Equipment",
+                                 "option_description":  "Equipment use."
+                             },
+                             {
+                                 "option_code":  "CLI",
+                                 "option_label":  "Client Context",
+                                 "option_description":  "Defined client context."
+                             },
+                             {
+                                 "option_code":  "SET",
+                                 "option_label":  "Practice Setting",
+                                 "option_description":  "Professional setting."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "_id":  525,
+        "field_name":  "status_capability",
+        "field_label":  "Capability Status",
+        "selection_rule":  "Single-select per capability",
+        "field_description":  "Current supported state of a capability.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Supported as active."
+                             },
+                             {
+                                 "option_code":  "INA",
+                                 "option_label":  "Inactive",
+                                 "option_description":  "Appears inactive."
+                             },
+                             {
+                                 "option_code":  "DSP",
+                                 "option_label":  "Disputed",
+                                 "option_description":  "Disputed."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Unknown."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/therapist-classification.txt"
+    }
+]

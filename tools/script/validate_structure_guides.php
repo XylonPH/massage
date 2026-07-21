@@ -40,6 +40,16 @@ foreach ($guideFiles as $file) {
         $error($file, 'Version metadata must use major.two-digit-minor format');
     }
 
+    foreach ([
+        '/\$' . preg_quote($collection, '/') . '_field_order\s*=\s*array_keys\s*\(/' => 'field order must be declared explicitly, not derived with array_keys()',
+        '/\$' . preg_quote($collection, '/') . '_field_property\s*=\s*\[\s*\]\s*;[\s\S]*?foreach\s*\(/' => 'field properties must be declared explicitly, not generated with foreach',
+        '/return\s+compact\s*\(/' => 'the final return map must be declared explicitly, not generated with compact()',
+    ] as $pattern => $message) {
+        if (preg_match($pattern, $source)) {
+            $error($file, $message);
+        }
+    }
+
     foreach (['created_at', 'updated_at'] as $timestampName) {
         if (!preg_match('/^\$' . $timestampName . "\s*=\s*'([0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z)';\s*$/m", $source)) {
             $error($file, "missing or invalid \${$timestampName}");
@@ -141,7 +151,6 @@ foreach ($guideFiles as $file) {
         foreach ($fieldProperties as $metadata) {
             if (is_array($metadata) && ($metadata['is_translatable'] ?? false) === true) {
                 $hasTranslatableField = true;
-                break;
             }
         }
         if ($hasTranslatableField && !isset($variables['multilingual_text_sample'])) {

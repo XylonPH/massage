@@ -28,14 +28,14 @@
             </div>
 
             <div>
-                <label for="bio" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.bio_label') }}</label>
-                <textarea id="bio" name="bio" rows="5" maxlength="1000"
-                          aria-describedby="bio-hint"
-                          class="w-full rounded-xl border {{ $errors->has('bio') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">{{ old('bio', $user->bio) }}</textarea>
-                @error('bio')
+                <label for="profile_biography" class="mb-1.5 block text-sm font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.bio_label') }}</label>
+                <textarea id="profile_biography" name="profile_biography" rows="5" maxlength="1000"
+                          aria-describedby="profile-biography-hint"
+                          class="w-full rounded-xl border {{ $errors->has('profile_biography') ? 'border-ember-400 dark:border-ember-500' : 'border-ink-200 dark:border-ink-700' }} bg-white px-4 py-3 text-sm text-ink-950 transition focus:border-ember-400 focus:outline-none focus:ring-2 focus:ring-ember-100 dark:bg-ink-900 dark:text-ink-50">{{ old('profile_biography', $user->profile_biography) }}</textarea>
+                @error('profile_biography')
                     <p class="mt-1.5 text-xs font-semibold text-ember-600 dark:text-ember-400">{{ $message }}</p>
                 @enderror
-                <p id="bio-hint" class="mt-1.5 text-xs text-ink-400 dark:text-ink-300">{{ __('workspace.bio_hint') }}</p>
+                <p id="profile-biography-hint" class="mt-1.5 text-xs text-ink-400 dark:text-ink-300">{{ __('workspace.bio_hint') }}</p>
             </div>
 
             <button type="submit" class="rounded-xl bg-ember-500 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-ember-500/25 transition hover:bg-ember-600">

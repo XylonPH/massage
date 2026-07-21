@@ -99,8 +99,8 @@
         "source_document": "docs/05-directory/product-classification.txt"
     },
     {
-        "field_name": "type_massage_medium_form",
-        "field_label": "Massage Medium Form",
+        "field_name": "type_massage_product_form",
+        "field_label": "Massage Product Form",
         "selection_rule": "Single-select per product",
         "field_description": "Physical form of a massage medium product. Balms, liniments, rubs, patches, and comparable concentrated topical preparations remain under TP - Topical Care Product.",
         "applies_to_category": [

@@ -1,0 +1,237 @@
+[
+    {
+        "_id":  514,
+        "field_name":  "type_organization_establishment_relationship",
+        "field_label":  "OrganizationÃ¢â‚¬â€œEstablishment Relationship Type",
+        "selection_rule":  "Single-select per effective relationship",
+        "field_description":  "Specific role an organization has in relation to an establishment.",
+        "field_option":  [
+                             {
+                                 "option_code":  "BRD",
+                                 "option_label":  "Brand",
+                                 "option_description":  "Supplies the public brand."
+                             },
+                             {
+                                 "option_code":  "CHN",
+                                 "option_label":  "Chain",
+                                 "option_description":  "Groups the place in a chain."
+                             },
+                             {
+                                 "option_code":  "OPR",
+                                 "option_label":  "Legal Operator",
+                                 "option_description":  "Legally operates the place according to supported evidence."
+                             },
+                             {
+                                 "option_code":  "OWN",
+                                 "option_label":  "Owner Organization",
+                                 "option_description":  "Owns the place according to supported evidence."
+                             },
+                             {
+                                 "option_code":  "MGT",
+                                 "option_label":  "Management Company",
+                                 "option_description":  "Manages the place."
+                             },
+                             {
+                                 "option_code":  "FRR",
+                                 "option_label":  "Franchisor",
+                                 "option_description":  "Grants the franchise."
+                             },
+                             {
+                                 "option_code":  "FRE",
+                                 "option_label":  "Franchisee",
+                                 "option_description":  "Holds the franchise."
+                             },
+                             {
+                                 "option_code":  "HOT",
+                                 "option_label":  "Hotel",
+                                 "option_description":  "Related hotel identity."
+                             },
+                             {
+                                 "option_code":  "RES",
+                                 "option_label":  "Resort",
+                                 "option_description":  "Related resort identity."
+                             },
+                             {
+                                 "option_code":  "CLI",
+                                 "option_label":  "Clinic",
+                                 "option_description":  "Related clinic identity."
+                             },
+                             {
+                                 "option_code":  "TRN",
+                                 "option_label":  "Training Institution",
+                                 "option_description":  "Related training institution."
+                             },
+                             {
+                                 "option_code":  "PAR",
+                                 "option_label":  "Parent Organization",
+                                 "option_description":  "Supported parent organization."
+                             },
+                             {
+                                 "option_code":  "AFF",
+                                 "option_label":  "Affiliate Organization",
+                                 "option_description":  "Supported affiliation."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  515,
+        "field_name":  "type_establishment_person_relationship",
+        "field_label":  "EstablishmentÃ¢â‚¬â€œPerson Relationship Type",
+        "selection_rule":  "Single-select per effective relationship",
+        "field_description":  "Non-practitioner or ownership role a person has at an establishment.",
+        "field_option":  [
+                             {
+                                 "option_code":  "OWN",
+                                 "option_label":  "Legal Owner",
+                                 "option_description":  "Supported legal owner."
+                             },
+                             {
+                                 "option_code":  "BEN",
+                                 "option_label":  "Beneficial Owner",
+                                 "option_description":  "Supported beneficial owner."
+                             },
+                             {
+                                 "option_code":  "INV",
+                                 "option_label":  "Investor",
+                                 "option_description":  "Supported investor."
+                             },
+                             {
+                                 "option_code":  "FND",
+                                 "option_label":  "Founder",
+                                 "option_description":  "Founder."
+                             },
+                             {
+                                 "option_code":  "OPR",
+                                 "option_label":  "Operator",
+                                 "option_description":  "Operator."
+                             },
+                             {
+                                 "option_code":  "BRM",
+                                 "option_label":  "Branch Manager",
+                                 "option_description":  "Branch manager."
+                             },
+                             {
+                                 "option_code":  "GMM",
+                                 "option_label":  "General Manager",
+                                 "option_description":  "General manager."
+                             },
+                             {
+                                 "option_code":  "REP",
+                                 "option_label":  "Authorized Representative",
+                                 "option_description":  "Authorized representative."
+                             },
+                             {
+                                 "option_code":  "REC",
+                                 "option_label":  "Reception Staff",
+                                 "option_description":  "Reception staff."
+                             },
+                             {
+                                 "option_code":  "MKT",
+                                 "option_label":  "Marketing Staff",
+                                 "option_description":  "Marketing or public-relations staff."
+                             },
+                             {
+                                 "option_code":  "FIN",
+                                 "option_label":  "Finance Staff",
+                                 "option_description":  "Finance staff."
+                             },
+                             {
+                                 "option_code":  "HRS",
+                                 "option_label":  "Human Resources Staff",
+                                 "option_description":  "Human-resources or staff-coordination role."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  516,
+        "field_name":  "status_relationship",
+        "field_label":  "Relationship Status",
+        "selection_rule":  "Single-select per relationship",
+        "field_description":  "Evidence-aware current state of a domain relationship.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Currently supported as active."
+                             },
+                             {
+                                 "option_code":  "INA",
+                                 "option_label":  "Inactive",
+                                 "option_description":  "Appears inactive."
+                             },
+                             {
+                                 "option_code":  "END",
+                                 "option_label":  "Ended",
+                                 "option_description":  "Has a supported end."
+                             },
+                             {
+                                 "option_code":  "DSP",
+                                 "option_label":  "Disputed",
+                                 "option_description":  "Disputed or contradicted."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Current state unknown."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  534,
+        "field_name":  "type_registration_identifier",
+        "field_label":  "Registration Identifier Type",
+        "selection_rule":  "Single-select per registration identifier",
+        "field_description":  "Kind of organization registration identifier represented by a masked value.",
+        "field_option":  [
+                             {
+                                 "option_code":  "SEC",
+                                 "option_label":  "Corporate Registration",
+                                 "option_description":  "Corporate or securities-regulator registration."
+                             },
+                             {
+                                 "option_code":  "DTI",
+                                 "option_label":  "Trade Registration",
+                                 "option_description":  "Sole-proprietor or trade-name registration."
+                             },
+                             {
+                                 "option_code":  "TAX",
+                                 "option_label":  "Tax Registration",
+                                 "option_description":  "Tax authority registration."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  539,
+        "field_name":  "status_organization",
+        "field_label":  "Organization Status",
+        "selection_rule":  "Single-select per organization",
+        "field_description":  "Real-world operating or legal state of an organization.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Organization is currently active according to supported information."
+                             },
+                             {
+                                 "option_code":  "INA",
+                                 "option_label":  "Inactive",
+                                 "option_description":  "Organization appears inactive."
+                             },
+                             {
+                                 "option_code":  "DIS",
+                                 "option_label":  "Dissolved",
+                                 "option_description":  "Organization has been formally dissolved."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Current organization state cannot be confirmed."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    }
+]

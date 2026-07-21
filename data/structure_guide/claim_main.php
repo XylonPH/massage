@@ -1,13 +1,13 @@
 <?php
 /**
  * Title: Massage Nexus Claim Structure Guide
- * Version: 2.00
+ * Version: 2.10
  * Collection: claim_main
  * Description: Stores one reviewed claim of relationship and requested authority over a supported target.
  * Purpose: Separates declared relationship, evidence, verification, decision, dispute, revocation, and resulting workspace access.
  */
 $created_at = '2026-07-20T12:00:00Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-21T09:49:12Z';
 $claim_main_default = ['claimant_organization_id' => null, 'requested_permission_code_list' => [], 'document_id_list' => [], 'record_verification_id_list' => [], 'status_claim' => 'PND', 'resulting_access_assignment_id' => null, 'status_record_lifecycle' => 'ACT'];
 $claim_main = [
     '_id' => 'Cl7K2pQ9xR4tV8zN', // Canonical claim identifier.
@@ -36,16 +36,35 @@ $claim_main = [
     'created_at' => $created_at, // UTC creation time.
     'updated_at' => $updated_at, // UTC update time.
 ];
-$claim_main_field_order = array_keys($claim_main);
+$claim_main_field_order = ['_id', 'target_collection', 'target_record_id', 'claimant_user_id', 'claimant_organization_id', 'type_claim_relationship', 'requested_role_workspace', 'requested_permission_code_list', 'claim_statement', 'submitted_at', 'document_id_list', 'record_verification_id_list', 'status_claim', 'reviewer_user_id', 'decided_at', 'decision_reason', 'dispute_opened_at', 'dispute_resolved_at', 'revoked_at', 'revoked_by_user_id', 'revocation_reason', 'resulting_access_assignment_id', 'status_record_lifecycle', 'created_at', 'updated_at'];
 $claim_main_embedded_structure = [];
-$claim_main_field_property = [];
-foreach ($claim_main as $field_name => $sample_value) {
-    $claim_main_field_property[$field_name] = ['field_label' => ucwords(str_replace('_', ' ', $field_name)), 'field_description' => 'Claim field: ' . str_replace('_', ' ', $field_name) . '.', 'type_data' => is_array($sample_value) ? 'A' : 'S'];
-}
-$claim_main_field_property['_id']['is_mandatory'] = true;
-$claim_main_field_property['target_collection']['is_mandatory'] = true;
-$claim_main_field_property['target_record_id']['is_mandatory'] = true;
-$claim_main_field_property['claimant_user_id']['is_mandatory'] = true;
+$claim_main_field_property = [
+    '_id' => ['field_label' => 'Claim ID', 'field_description' => 'Canonical identifier for the claim review record.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_unique' => true, 'is_indexed' => true],
+    'target_collection' => ['field_label' => 'Target Collection', 'field_description' => 'Supported collection containing the record over which authority is claimed.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
+    'target_record_id' => ['field_label' => 'Target Record', 'field_description' => 'Identifier of the specific establishment, practitioner, or other supported claim target.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+    'claimant_user_id' => ['field_label' => 'Claimant User', 'field_description' => 'User account that submitted the claim.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
+    'claimant_organization_id' => ['field_label' => 'Claimant Organization', 'field_description' => 'Optional organization the claimant states they represent.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'type_claim_relationship' => ['field_label' => 'Claimed Relationship Type', 'field_description' => 'Controlled relationship asserted by the claimant; this declaration is not proof by itself.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true],
+    'requested_role_workspace' => ['field_label' => 'Requested Workspace Role', 'field_description' => 'Requested responsibility bundle; approval remains subject to independent authorization.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'requested_permission_code_list' => ['field_label' => 'Requested Permission Codes', 'field_description' => 'Specific additive permissions requested beyond or within the role bundle.', 'type_data' => 'A', 'type_field' => 'TAG', 'default_value' => []],
+    'claim_statement' => ['field_label' => 'Claim Statement', 'field_description' => 'Claimant-authored explanation of the asserted authority and relationship.', 'type_data' => 'S', 'type_field' => 'TXA', 'is_mandatory' => true],
+    'submitted_at' => ['field_label' => 'Submitted At', 'field_description' => 'UTC time when the claim entered review.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true, 'is_indexed' => true],
+    'document_id_list' => ['field_label' => 'Evidence Documents', 'field_description' => 'Protected document references submitted or collected as claim evidence.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true, 'default_value' => [], 'visibility_scope' => 'PRV'],
+    'record_verification_id_list' => ['field_label' => 'Verification Records', 'field_description' => 'Verification processes and results used when reviewing the claim.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true, 'default_value' => []],
+    'status_claim' => ['field_label' => 'Claim Status', 'field_description' => 'Controlled workflow and decision state of the claim.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'PND', 'is_indexed' => true],
+    'reviewer_user_id' => ['field_label' => 'Reviewer User', 'field_description' => 'Authorized user responsible for the current or final claim decision.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'decided_at' => ['field_label' => 'Decided At', 'field_description' => 'UTC time when the current claim decision was recorded.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'decision_reason' => ['field_label' => 'Decision Reason', 'field_description' => 'Minimum safe explanation supporting approval, rejection, return, or another decision.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'dispute_opened_at' => ['field_label' => 'Dispute Opened At', 'field_description' => 'UTC time when the claim decision or resulting authority was formally disputed.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'dispute_resolved_at' => ['field_label' => 'Dispute Resolved At', 'field_description' => 'UTC time when the related dispute was resolved.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'revoked_at' => ['field_label' => 'Revoked At', 'field_description' => 'UTC time when previously accepted authority resulting from the claim was revoked.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'revoked_by_user_id' => ['field_label' => 'Revoked By User', 'field_description' => 'Authorized user who recorded the revocation.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'revocation_reason' => ['field_label' => 'Revocation Reason', 'field_description' => 'Minimum safe explanation for the authority revocation.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'resulting_access_assignment_id' => ['field_label' => 'Resulting Access Assignment', 'field_description' => 'Separately authorized access assignment created after approval; the claim never grants access directly.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
+    'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state independent from claim workflow status.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'ACT'],
+    'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC time when the claim record was created.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+    'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC time when the claim record was last changed.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
+];
 $claim_main_subfield_property = [];
 $claim_main_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
@@ -53,4 +72,4 @@ $claim_main_index_list = [
     ['index_key' => 'claimant_status', 'index_name' => 'ix_claim_main_claimant_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'claimant_user_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_claim', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 30],
 ];
 $claim_main_boundary = ['owns' => ['declared relationship, requested authority, evidence references, decision, dispute, revocation, and access-assignment reference'], 'references' => ['claim target, user, organization, document_main, record_verification, and access_assignment'], 'does_not_own' => ['target facts, binary evidence, verification details, or workspace permissions; approval alone never grants access']];
-return compact('claim_main_default', 'claim_main', 'claim_main_field_order', 'claim_main_embedded_structure', 'claim_main_field_property', 'claim_main_subfield_property', 'claim_main_index_list', 'claim_main_boundary');
+return ['claim_main_default' => $claim_main_default, 'claim_main' => $claim_main, 'claim_main_field_order' => $claim_main_field_order, 'claim_main_embedded_structure' => $claim_main_embedded_structure, 'claim_main_field_property' => $claim_main_field_property, 'claim_main_subfield_property' => $claim_main_subfield_property, 'claim_main_index_list' => $claim_main_index_list, 'claim_main_boundary' => $claim_main_boundary];

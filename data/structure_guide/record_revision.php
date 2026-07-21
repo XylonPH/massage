@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Record Revision Structure Guide
- * Version: 1.00
+ * Version: 1.01
  * Collection: record_revision
  * Description: Stores one immutable, restorable revision snapshot for a supported non-specialized record.
  * Purpose: Documents generic record revision history without replacing specialized revision collections such as article_revision or the operational audit trail.
  */
 
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T08:15:45Z';
+$updated_at = '2026-07-21T09:49:12Z';
 $record_revision_default = ['revision_note' => null, 'status_review' => 'NR', 'status_record_lifecycle' => 'ACT'];
 
 $record_revision = [
@@ -51,4 +51,4 @@ $record_revision_index_list = [
 ];
 $record_revision_boundary = ['owns' => ['immutable restorable snapshot and revision metadata'], 'references' => ['supported target record', 'contribution_main', 'earlier record_revision', 'user_main'], 'does_not_own' => ['current target record', 'operational audit event', 'source evidence', 'specialized article revision workflow']];
 
-return compact('record_revision_default', 'record_revision', 'record_revision_field_order', 'record_revision_embedded_structure', 'record_revision_field_property', 'record_revision_subfield_property', 'record_revision_index_list', 'record_revision_boundary');
+return ['record_revision_default' => $record_revision_default, 'record_revision' => $record_revision, 'record_revision_field_order' => $record_revision_field_order, 'record_revision_embedded_structure' => $record_revision_embedded_structure, 'record_revision_field_property' => $record_revision_field_property, 'record_revision_subfield_property' => $record_revision_subfield_property, 'record_revision_index_list' => $record_revision_index_list, 'record_revision_boundary' => $record_revision_boundary];

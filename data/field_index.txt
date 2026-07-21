@@ -48,8 +48,6 @@ author_credit_list
 author_user_id_list
 availability_reference_id
 bed_mat_chair_setup
-bio
-biography
 birth_date
 border_config
 bounding_box
@@ -67,6 +65,8 @@ claim_id
 claim_statement
 claimant_organization_id
 claimant_user_id
+cleanup_minute
+client_price_context
 client_restriction_list
 closes_at_local
 collection_count
@@ -74,6 +74,7 @@ color_config
 comment_count
 component_config
 component_list
+component_name_snapshot
 confidence_level
 constraint_text_input
 contact_label
@@ -122,9 +123,10 @@ document_title
 dog_breed_key
 dog_breed_name
 download_scope
-duration
 duration_minute
 duration_option_list
+duration_option_note
+duration_second
 editor_user_id_list
 effective_at
 effective_date
@@ -144,6 +146,7 @@ exception_date_end
 exception_date_start
 exception_list
 exercise_description
+experience_year_count
 expires_at
 expiry_date
 fci
@@ -216,6 +219,7 @@ is_indexed
 is_locked
 is_mandatory
 is_marketing_email_opt_in
+is_optional
 is_primary
 is_public
 is_public_booking
@@ -223,9 +227,11 @@ is_public_roster
 is_publicly_displayed_at_source
 is_relational
 is_responsive
+is_selectable
 is_shareable
 is_system
 is_system_generated
+is_tax_included
 is_translatable
 is_walk_in_available
 is_workspace_access_requested
@@ -273,6 +279,9 @@ level_water_temperature
 lifespan_range
 lifespan_year
 locker_availability
+mandatory_fee_list
+mapped_at
+mapped_by_user_id
 max_character
 max_number
 measurement_range
@@ -303,11 +312,10 @@ mode_temperature_pattern
 mode_therapist_booking
 moderation_id
 multilingual_text
-name
+name_variant_text
 next_review_at
 normalized_service_mapping_list
 normalized_summary
-note
 note_body
 observation_at
 observed_at
@@ -334,13 +342,13 @@ person_id
 person_name_snapshot
 photographer_user_id_list
 placeholder_text
-platform_code
 point_count
 position_affiliation
 postal_code
 practitioner_id
 practitioner_name
 practitioner_slug
+preparation_minute
 preview_media_image_id_list
 previous_location_snapshot
 previous_name
@@ -352,9 +360,11 @@ priority_level
 privacy_acknowledged_at
 privacy_acknowledged_version
 private_room_availability
+professional_biography
 professional_start_date
 professional_start_date_precision
 professional_start_date_qualifier
+profile_biography
 proposed_data
 public_display_note
 public_note
@@ -390,7 +400,6 @@ related_product_id_list
 related_record_list
 related_service_id_list
 relationship_note
-relationship_scope
 relationship_title
 remember_token
 reported_at
@@ -425,6 +434,8 @@ role_workspace
 room_types
 sauna_availability
 save_count
+schedule_day_note
+schedule_exception_note
 scheduled_publish_at
 scope_access
 scope_product_use
@@ -432,6 +443,7 @@ scope_record_id
 section_fci_registry
 service_description_overview
 service_id
+service_mapping_note
 service_name
 service_received
 service_slug
@@ -666,9 +678,9 @@ type_location
 type_location_source
 type_manual_massage_tool
 type_massage_basis
-type_massage_medium
-type_massage_medium_form
+type_massage_contact_medium
 type_massage_oil_base
+type_massage_product_form
 type_media_image
 type_media_quality
 type_media_version
@@ -787,7 +799,6 @@ uploaded_by_user_id
 usage_count
 user_id
 username
-username_or_handle
 valid_from
 valid_until
 validation_required
@@ -808,4 +819,3 @@ width_pixel
 word_count
 x
 y
-year_experience

@@ -1,0 +1,192 @@
+[
+    {
+        "_id":  517,
+        "field_name":  "type_establishment_service",
+        "field_label":  "Establishment Service Type",
+        "selection_rule":  "Single-select per menu offering",
+        "field_description":  "Commercial presentation of a provider menu item.",
+        "field_option":  [
+                             {
+                                 "option_code":  "SVC",
+                                 "option_label":  "Service",
+                                 "option_description":  "Ordinary service."
+                             },
+                             {
+                                 "option_code":  "COM",
+                                 "option_label":  "Combination",
+                                 "option_description":  "Combined treatment."
+                             },
+                             {
+                                 "option_code":  "PKG",
+                                 "option_label":  "Package",
+                                 "option_description":  "Multi-component package."
+                             },
+                             {
+                                 "option_code":  "ADD",
+                                 "option_label":  "Add-On",
+                                 "option_description":  "Supplementary offering."
+                             },
+                             {
+                                 "option_code":  "FAC",
+                                 "option_label":  "Facility Access",
+                                 "option_description":  "Commercial facility access."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  518,
+        "field_name":  "status_establishment_service",
+        "field_label":  "Establishment Service Status",
+        "selection_rule":  "Single-select per menu offering",
+        "field_description":  "Observed lifecycle of a provider menu item.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Currently available."
+                             },
+                             {
+                                 "option_code":  "TMP",
+                                 "option_label":  "Temporarily Unavailable",
+                                 "option_description":  "Temporarily unavailable."
+                             },
+                             {
+                                 "option_code":  "INA",
+                                 "option_label":  "Inactive",
+                                 "option_description":  "Appears inactive."
+                             },
+                             {
+                                 "option_code":  "END",
+                                 "option_label":  "Ended",
+                                 "option_description":  "Has ended."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Current state unknown."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  519,
+        "field_name":  "type_price",
+        "field_label":  "Price Type",
+        "selection_rule":  "Single-select per effective price",
+        "field_description":  "Commercial meaning of a provider price.",
+        "field_option":  [
+                             {
+                                 "option_code":  "REG",
+                                 "option_label":  "Regular",
+                                 "option_description":  "Ordinary menu price."
+                             },
+                             {
+                                 "option_code":  "DSC",
+                                 "option_label":  "Discounted",
+                                 "option_description":  "Current discounted menu price."
+                             },
+                             {
+                                 "option_code":  "MEM",
+                                 "option_label":  "Member",
+                                 "option_description":  "Eligible-member price."
+                             },
+                             {
+                                 "option_code":  "PKG",
+                                 "option_label":  "Package",
+                                 "option_description":  "Package price."
+                             },
+                             {
+                                 "option_code":  "SUR",
+                                 "option_label":  "Surcharge",
+                                 "option_description":  "Additional charge."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  520,
+        "field_name":  "status_availability",
+        "field_label":  "Availability Status",
+        "selection_rule":  "Single-select per option or resource",
+        "field_description":  "Current supported availability.",
+        "field_option":  [
+                             {
+                                 "option_code":  "AVL",
+                                 "option_label":  "Available",
+                                 "option_description":  "Available."
+                             },
+                             {
+                                 "option_code":  "UNA",
+                                 "option_label":  "Unavailable",
+                                 "option_description":  "Unavailable."
+                             },
+                             {
+                                 "option_code":  "LIM",
+                                 "option_label":  "Limited",
+                                 "option_description":  "Available under limited conditions."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Cannot be confirmed."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  535,
+        "field_name":  "type_service_mapping",
+        "field_label":  "Service Mapping Type",
+        "selection_rule":  "Single-select per normalized service mapping",
+        "field_description":  "Role a normalized service plays in a provider menu mapping.",
+        "field_option":  [
+                             {
+                                 "option_code":  "PRI",
+                                 "option_label":  "Primary",
+                                 "option_description":  "Primary normalized meaning."
+                             },
+                             {
+                                 "option_code":  "CMP",
+                                 "option_label":  "Component",
+                                 "option_description":  "Included component meaning."
+                             },
+                             {
+                                 "option_code":  "ALT",
+                                 "option_label":  "Alternate",
+                                 "option_description":  "Plausible alternate mapping awaiting resolution."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  536,
+        "field_name":  "status_price",
+        "field_label":  "Price Status",
+        "selection_rule":  "Single-select per effective price",
+        "field_description":  "Current lifecycle state of one effective price option.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Currently effective."
+                             },
+                             {
+                                 "option_code":  "SCH",
+                                 "option_label":  "Scheduled",
+                                 "option_description":  "Scheduled for a future effective date."
+                             },
+                             {
+                                 "option_code":  "END",
+                                 "option_label":  "Ended",
+                                 "option_description":  "No longer effective."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Current state cannot be confirmed."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    }
+]

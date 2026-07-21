@@ -1,5 +1,5 @@
 Title: Massage Nexus PHP Structure Guide Standard
-Document Version: 1.20
+Document Version: 1.30
 Date Created: 2026-07-21
 Revision Date: 2026-07-21
 
@@ -109,6 +109,25 @@ The *_field_property array describes every top-level property's data contract. T
 *_subfield_property array describes every nested property using an unambiguous dotted path or
 another clearly documented path notation. Keep stored defaults separate from field-definition
 metadata.
+
+The sample, field order, field-property map, embedded structure, subfield-property map, index
+list, boundary, and final return map must be written explicitly. Do not derive these structures
+with array_keys(), foreach, compact(), inferred primitive types, generated labels, or generated
+descriptions. Explicit declarations are intentional review surfaces: a reviewer must be able to
+inspect each field's meaning and contract without executing the guide or reverse-engineering a
+template.
+
+Every top-level and nested field-property entry must explicitly provide:
+- field_label;
+- field_description, describing the field's actual meaning rather than repeating its name;
+- type_data;
+- type_field.
+
+Add the applicable contract attributes when they carry meaning, including type_sql,
+is_mandatory, is_relational, is_indexed, is_unique, is_translatable, visibility_scope,
+default_value, length or numeric limits, accepted formats, and validation constraints. Do not
+infer a field's type from its sample value: null is often only an illustrative absence and does
+not identify the stored type.
 
 Field properties use standardized abbreviation codes. type_data denotes the primitive type (e.g.,
 S for String, I for Integer, B for Boolean, A for Array, O for Object). type_field denotes the

@@ -1,14 +1,14 @@
 <?php
 /**
  * Title: Massage Nexus Research Observation Structure Guide
- * Version: 1.00
+ * Version: 1.10
  * Collection: research_observation
  * Description: Stores one sourced assertion or observation independently from the accepted value of a target record.
  * Purpose: Preserves exact wording, uncertainty, historical context, mapping confidence, contradictions, visibility, and review state for later verification or contribution workflows.
  */
 
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T08:15:45Z';
+$updated_at = '2026-07-21T09:49:12Z';
 $research_observation_default = ['target_field_path' => null, 'related_record_list' => [], 'is_firsthand' => false, 'is_hearsay' => false, 'corroboration_count' => 0, 'validation_required' => true, 'visibility_scope' => 'PRV', 'status_review' => 'PND', 'status_record_lifecycle' => 'ACT'];
 $research_observation = [
     '_id' => 'Ro7K2pQ9xR4tV8zN', // Canonical 16-character observation identifier.
@@ -45,14 +45,39 @@ $research_observation = [
 ];
 $research_observation_field_order = ['_id', 'target_collection', 'target_record_id', 'target_field_path', 'related_record_list', 'type_observation', 'original_statement', 'normalized_summary', 'source_id', 'source_posted_at', 'observation_at', 'effective_at', 'type_date_precision', 'type_date_qualifier', 'is_firsthand', 'is_hearsay', 'level_confidence_extraction', 'level_confidence_mapping', 'corroboration_count', 'status_review', 'validation_required', 'type_verification_recommended', 'visibility_scope', 'record_verification_id', 'moderation_id', 'contribution_id', 'internal_note', 'created_at', 'created_by_user_id', 'updated_at', 'status_record_lifecycle'];
 $research_observation_embedded_structure = ['related_record_list' => ['target_collection' => 'practitioner_main', 'target_record_id' => 'Pr7K2pQ9xR4tV8zN']];
-$research_observation_field_property = [];
-foreach ($research_observation as $field_name => $sample_value) {
-    $research_observation_field_property[$field_name] = ['field_label' => ucwords(str_replace('_', ' ', $field_name)), 'field_description' => 'Stored research observation property: ' . $field_name . '.', 'type_data' => is_array($sample_value) ? 'A' : (is_bool($sample_value) ? 'B' : (is_int($sample_value) ? 'I' : 'S'))];
-}
-$research_observation_field_property['_id']['is_mandatory'] = true;
-$research_observation_field_property['target_collection']['is_mandatory'] = true;
-$research_observation_field_property['target_record_id']['is_mandatory'] = true;
-$research_observation_field_property['source_id']['is_mandatory'] = true;
+$research_observation_field_property = [
+    '_id' => ['field_label' => 'Observation ID', 'field_description' => 'Canonical sourced-observation identifier.', 'type_data' => 'S', 'type_field' => 'HDN'],
+    'target_collection' => ['field_label' => 'Target Collection', 'field_description' => 'Collection whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'target_record_id' => ['field_label' => 'Target Record', 'field_description' => 'Specific record whose fact the observation discusses.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'target_field_path' => ['field_label' => 'Target Field Path', 'field_description' => 'Optional mapped field path for the candidate fact.', 'type_data' => 'S', 'type_field' => 'TXT'],
+    'related_record_list' => ['field_label' => 'Related Record List', 'field_description' => 'Other records mentioned by the assertion.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'type_observation' => ['field_label' => 'Observation Type', 'field_description' => 'Controlled category of sourced assertion.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'original_statement' => ['field_label' => 'Original Statement', 'field_description' => 'Exact limited excerpt or original research field note.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'normalized_summary' => ['field_label' => 'Normalized Summary', 'field_description' => 'Neutral candidate-fact summary.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'source_id' => ['field_label' => 'Research Source', 'field_description' => 'Authoritative research-source reference.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'source_posted_at' => ['field_label' => 'Source Posted At', 'field_description' => 'UTC time the source statement was posted.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'observation_at' => ['field_label' => 'Observation At', 'field_description' => 'Time the underlying observation reportedly occurred.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'effective_at' => ['field_label' => 'Effective At', 'field_description' => 'Claimed effective time when supported.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'type_date_precision' => ['field_label' => 'Date Precision', 'field_description' => 'Controlled precision of the claimed date.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'type_date_qualifier' => ['field_label' => 'Date Qualifier', 'field_description' => 'Controlled exactness qualifier for timing.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'is_firsthand' => ['field_label' => 'Firsthand', 'field_description' => 'Whether the source claims direct observation.', 'type_data' => 'B', 'type_field' => 'CHK'],
+    'is_hearsay' => ['field_label' => 'Hearsay', 'field_description' => 'Whether the source repeats another person\'s account.', 'type_data' => 'B', 'type_field' => 'CHK'],
+    'level_confidence_extraction' => ['field_label' => 'Extraction Confidence', 'field_description' => 'Confidence that the statement was extracted correctly.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'level_confidence_mapping' => ['field_label' => 'Mapping Confidence', 'field_description' => 'Confidence that the assertion maps to the target fact.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'corroboration_count' => ['field_label' => 'Corroboration Count', 'field_description' => 'Count of independently reviewed supporting observations.', 'type_data' => 'I', 'type_field' => 'NMB'],
+    'status_review' => ['field_label' => 'Review Status', 'field_description' => 'Human review state of the observation.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'validation_required' => ['field_label' => 'Validation Required', 'field_description' => 'Whether authoritative confirmation remains required.', 'type_data' => 'B', 'type_field' => 'CHK'],
+    'type_verification_recommended' => ['field_label' => 'Recommended Verification Type', 'field_description' => 'Recommended verification procedure for the candidate fact.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Maximum permitted audience for the observation.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'record_verification_id' => ['field_label' => 'Verification Record', 'field_description' => 'Verification result produced from review.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'moderation_id' => ['field_label' => 'Moderation Case', 'field_description' => 'Moderation case for safety or policy review.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'contribution_id' => ['field_label' => 'Contribution', 'field_description' => 'Contribution created from an accepted candidate fact.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'internal_note' => ['field_label' => 'Internal Observation Note', 'field_description' => 'Restricted research guidance.', 'type_data' => 'S', 'type_field' => 'TXA'],
+    'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC creation time.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'created_by_user_id' => ['field_label' => 'Created By User', 'field_description' => 'Researcher or extraction-system actor reference.', 'type_data' => 'S', 'type_field' => 'REF'],
+    'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC update time.', 'type_data' => 'S', 'type_field' => 'DTS'],
+    'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle independent from review status.', 'type_data' => 'S', 'type_field' => 'DDL'],
+];
 $research_observation_subfield_property = [
     'related_record_list.target_collection' => ['field_label' => 'Related Target Collection', 'field_description' => 'Collection of a related mentioned record.', 'type_data' => 'S'],
     'related_record_list.target_record_id' => ['field_label' => 'Related Target Record ID', 'field_description' => 'Identifier of a related mentioned record.', 'type_data' => 'S'],
@@ -63,4 +88,4 @@ $research_observation_index_list = [
     ['index_key' => 'source_lookup', 'index_name' => 'ix_research_observation_source', 'type_index' => 'STD', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'source_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 30],
 ];
 $research_observation_boundary = ['owns' => ['source assertion, exact excerpt or field note, normalized candidate fact, uncertainty, mapping, review, and workflow references'], 'references' => ['supported target records', 'research_source', 'record_verification', 'moderation_main', 'contribution_main', 'user_main'], 'does_not_own' => ['accepted target value', 'source identity', 'verification result', 'moderation decision', 'restricted evidence binary']];
-return compact('research_observation_default', 'research_observation', 'research_observation_field_order', 'research_observation_embedded_structure', 'research_observation_field_property', 'research_observation_subfield_property', 'research_observation_index_list', 'research_observation_boundary');
+return ['research_observation_default' => $research_observation_default, 'research_observation' => $research_observation, 'research_observation_field_order' => $research_observation_field_order, 'research_observation_embedded_structure' => $research_observation_embedded_structure, 'research_observation_field_property' => $research_observation_field_property, 'research_observation_subfield_property' => $research_observation_subfield_property, 'research_observation_index_list' => $research_observation_index_list, 'research_observation_boundary' => $research_observation_boundary];

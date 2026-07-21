@@ -65,7 +65,7 @@ foreach (glob("$repo/data/structure_guide/*.php") as $f) {
 
         foreach ($value as $name) {
             if (is_string($name) && preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name)) {
-                $add($name, 'collection: data/structure_guide/' . basename($f));
+                $add($name, 'collection field: data/structure_guide/' . basename($f) . ' -> ' . $name);
             }
         }
     }
@@ -87,7 +87,7 @@ foreach (glob("$repo/data/structure_guide/*.php") as $f) {
         $name = end($segments);
 
         if (is_string($name) && preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name)) {
-            $add($name, 'collection subfield: data/structure_guide/' . basename($f));
+            $add($name, 'collection subfield: data/structure_guide/' . basename($f) . ' -> ' . $path);
         }
     }
 }

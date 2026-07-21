@@ -1,0 +1,327 @@
+[
+    {
+        "_id":  522,
+        "field_name":  "status_dispute",
+        "field_label":  "Dispute Status",
+        "selection_rule":  "Single-select per disputable relationship",
+        "field_description":  "Whether a relationship is disputed and resolved.",
+        "field_option":  [
+                             {
+                                 "option_code":  "NON",
+                                 "option_label":  "None",
+                                 "option_description":  "No dispute recorded."
+                             },
+                             {
+                                 "option_code":  "OPN",
+                                 "option_label":  "Open",
+                                 "option_description":  "Dispute open."
+                             },
+                             {
+                                 "option_code":  "RES",
+                                 "option_label":  "Resolved",
+                                 "option_description":  "Dispute resolved."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/therapist-classification.txt"
+    },
+    {
+        "_id":  526,
+        "field_name":  "type_verification",
+        "field_label":  "Verification Type",
+        "selection_rule":  "Single-select per verification",
+        "field_description":  "Purpose of a cross-target verification procedure.",
+        "field_option":  [
+                             {
+                                 "option_code":  "BID",
+                                 "option_label":  "Business Identity",
+                                 "option_description":  "Business identity."
+                             },
+                             {
+                                 "option_code":  "CON",
+                                 "option_label":  "Contact Control",
+                                 "option_description":  "Contact control or operation."
+                             },
+                             {
+                                 "option_code":  "OWN",
+                                 "option_label":  "Ownership",
+                                 "option_description":  "Ownership assertion."
+                             },
+                             {
+                                 "option_code":  "AUT",
+                                 "option_label":  "Authority",
+                                 "option_description":  "Authority to represent or administer."
+                             },
+                             {
+                                 "option_code":  "DOC",
+                                 "option_label":  "Document",
+                                 "option_description":  "Document support."
+                             },
+                             {
+                                 "option_code":  "CRD",
+                                 "option_label":  "Credential",
+                                 "option_description":  "Professional credential."
+                             },
+                             {
+                                 "option_code":  "OPS",
+                                 "option_label":  "Operating Status",
+                                 "option_description":  "Operating status."
+                             },
+                             {
+                                 "option_code":  "LOC",
+                                 "option_label":  "Location",
+                                 "option_description":  "Place or coordinate."
+                             }
+                         ],
+        "source_document":  "docs/14-research/data-research-provenance-and-field-verification-system.txt"
+    },
+    {
+        "_id":  527,
+        "field_name":  "method_verification",
+        "field_label":  "Verification Method",
+        "selection_rule":  "Single-select per verification action",
+        "field_description":  "Primary procedure used to verify a fact.",
+        "field_option":  [
+                             {
+                                 "option_code":  "OTP",
+                                 "option_label":  "One-Time Passcode",
+                                 "option_description":  "One-time passcode."
+                             },
+                             {
+                                 "option_code":  "CAL",
+                                 "option_label":  "Telephone Call",
+                                 "option_description":  "Telephone call."
+                             },
+                             {
+                                 "option_code":  "EML",
+                                 "option_label":  "Email",
+                                 "option_description":  "Email exchange."
+                             },
+                             {
+                                 "option_code":  "DOC",
+                                 "option_label":  "Document Review",
+                                 "option_description":  "Document review."
+                             },
+                             {
+                                 "option_code":  "ISR",
+                                 "option_label":  "Issuer Check",
+                                 "option_description":  "Issuer check."
+                             },
+                             {
+                                 "option_code":  "ORG",
+                                 "option_label":  "Organization Confirmation",
+                                 "option_description":  "Authorized organization confirmation."
+                             },
+                             {
+                                 "option_code":  "FVI",
+                                 "option_label":  "Field Visit",
+                                 "option_description":  "In-person field visit."
+                             },
+                             {
+                                 "option_code":  "SYS",
+                                 "option_label":  "Qualified System Check",
+                                 "option_description":  "Approved automated check."
+                             }
+                         ],
+        "source_document":  "docs/14-research/data-research-provenance-and-field-verification-system.txt"
+    },
+    {
+        "_id":  528,
+        "field_name":  "type_observation",
+        "field_label":  "Research Observation Type",
+        "selection_rule":  "Single-select per research observation",
+        "field_description":  "Primary subject class of a sourced assertion.",
+        "field_option":  [
+                             {
+                                 "option_code":  "STA",
+                                 "option_label":  "Operating Status",
+                                 "option_description":  "Operating-status assertion."
+                             },
+                             {
+                                 "option_code":  "CON",
+                                 "option_label":  "Contact",
+                                 "option_description":  "Contact assertion."
+                             },
+                             {
+                                 "option_code":  "HOU",
+                                 "option_label":  "Operating Hours",
+                                 "option_description":  "Hours assertion."
+                             },
+                             {
+                                 "option_code":  "SVC",
+                                 "option_label":  "Service",
+                                 "option_description":  "Service assertion."
+                             },
+                             {
+                                 "option_code":  "PRI",
+                                 "option_label":  "Price",
+                                 "option_description":  "Price assertion."
+                             },
+                             {
+                                 "option_code":  "AFF",
+                                 "option_label":  "Affiliation",
+                                 "option_description":  "Affiliation assertion."
+                             },
+                             {
+                                 "option_code":  "OWN",
+                                 "option_label":  "Ownership",
+                                 "option_description":  "Ownership assertion."
+                             },
+                             {
+                                 "option_code":  "EVT",
+                                 "option_label":  "Event",
+                                 "option_description":  "Business-event assertion."
+                             },
+                             {
+                                 "option_code":  "MED",
+                                 "option_label":  "Media",
+                                 "option_description":  "Media assertion."
+                             },
+                             {
+                                 "option_code":  "SEN",
+                                 "option_label":  "Sensitive",
+                                 "option_description":  "Restricted assertion requiring heightened review."
+                             }
+                         ],
+        "source_document":  "docs/14-research/data-research-provenance-and-field-verification-system.txt"
+    },
+    {
+        "_id":  529,
+        "field_name":  "type_document",
+        "field_label":  "Secure Document Type",
+        "selection_rule":  "Single-select per document",
+        "field_description":  "Purpose or legal category of protected evidence.",
+        "field_option":  [
+                             {
+                                 "option_code":  "BPR",
+                                 "option_label":  "Business Permit",
+                                 "option_description":  "Business permit."
+                             },
+                             {
+                                 "option_code":  "REG",
+                                 "option_label":  "Business Registration",
+                                 "option_description":  "Business registration."
+                             },
+                             {
+                                 "option_code":  "CLR",
+                                 "option_label":  "Local Clearance",
+                                 "option_description":  "Local clearance."
+                             },
+                             {
+                                 "option_code":  "SAN",
+                                 "option_label":  "Sanitary Permit",
+                                 "option_description":  "Sanitary permit."
+                             },
+                             {
+                                 "option_code":  "FIR",
+                                 "option_label":  "Fire Safety",
+                                 "option_description":  "Fire-safety document."
+                             },
+                             {
+                                 "option_code":  "AUT",
+                                 "option_label":  "Authorization",
+                                 "option_description":  "Authorization evidence."
+                             },
+                             {
+                                 "option_code":  "IDE",
+                                 "option_label":  "Identity Evidence",
+                                 "option_description":  "Restricted identity evidence."
+                             },
+                             {
+                                 "option_code":  "CRE",
+                                 "option_label":  "Credential Evidence",
+                                 "option_description":  "Credential evidence."
+                             },
+                             {
+                                 "option_code":  "MNU",
+                                 "option_label":  "Menu or Price",
+                                 "option_description":  "Menu or price document."
+                             },
+                             {
+                                 "option_code":  "CON",
+                                 "option_label":  "Contract",
+                                 "option_description":  "Contract."
+                             },
+                             {
+                                 "option_code":  "INS",
+                                 "option_label":  "Insurance",
+                                 "option_description":  "Insurance document."
+                             },
+                             {
+                                 "option_code":  "HLT",
+                                 "option_label":  "Health Evidence",
+                                 "option_description":  "Highly restricted health evidence."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  530,
+        "field_name":  "status_redaction",
+        "field_label":  "Redaction Status",
+        "selection_rule":  "Single-select per document",
+        "field_description":  "State of a document redaction workflow.",
+        "field_option":  [
+                             {
+                                 "option_code":  "NR",
+                                 "option_label":  "Not Reviewed",
+                                 "option_description":  "Not assessed."
+                             },
+                             {
+                                 "option_code":  "REQ",
+                                 "option_label":  "Required",
+                                 "option_description":  "Redaction required."
+                             },
+                             {
+                                 "option_code":  "RED",
+                                 "option_label":  "Redacted",
+                                 "option_description":  "Redacted derivative exists."
+                             },
+                             {
+                                 "option_code":  "APR",
+                                 "option_label":  "Approved",
+                                 "option_description":  "Approved for stated audience."
+                             },
+                             {
+                                 "option_code":  "N",
+                                 "option_label":  "Not Applicable",
+                                 "option_description":  "No redaction workflow applies."
+                             }
+                         ],
+        "source_document":  "docs/04-architecture/database-structure.txt"
+    },
+    {
+        "_id":  531,
+        "field_name":  "category_retention",
+        "field_label":  "Retention Category",
+        "selection_rule":  "Single-select per protected record",
+        "field_description":  "Retention rule applied to secure evidence.",
+        "field_option":  [
+                             {
+                                 "option_code":  "VRF",
+                                 "option_label":  "Verification Evidence",
+                                 "option_description":  "Verification-evidence retention."
+                             },
+                             {
+                                 "option_code":  "CLM",
+                                 "option_label":  "Claim Evidence",
+                                 "option_description":  "Claim and dispute retention."
+                             },
+                             {
+                                 "option_code":  "LEG",
+                                 "option_label":  "Legal or Compliance",
+                                 "option_description":  "Legal or compliance retention."
+                             },
+                             {
+                                 "option_code":  "HLT",
+                                 "option_label":  "Health Evidence",
+                                 "option_description":  "Heightened health-data minimization."
+                             },
+                             {
+                                 "option_code":  "TMP",
+                                 "option_label":  "Temporary",
+                                 "option_description":  "Short-term purpose retention."
+                             }
+                         ],
+        "source_document":  "docs/18-policy/privacy-and-data-protection.txt"
+    }
+]

@@ -1,0 +1,132 @@
+[
+    {
+        "_id":  512,
+        "field_name":  "type_hour_exception",
+        "field_label":  "Operating-Hour Exception Type",
+        "selection_rule":  "Single-select per dated exception",
+        "field_description":  "How a dated exception changes an effective weekly schedule.",
+        "field_option":  [
+                             {
+                                 "option_code":  "CLO",
+                                 "option_label":  "Closed",
+                                 "option_description":  "Closed for the exception period."
+                             },
+                             {
+                                 "option_code":  "MOD",
+                                 "option_label":  "Modified Hours",
+                                 "option_description":  "Replacement intervals apply."
+                             },
+                             {
+                                 "option_code":  "AON",
+                                 "option_label":  "Appointment Only",
+                                 "option_description":  "Appointment-only access applies."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-profile.txt"
+    },
+    {
+        "_id":  513,
+        "field_name":  "type_access_period",
+        "field_label":  "Access Period Type",
+        "selection_rule":  "Single-select per operating interval",
+        "field_description":  "Client-access purpose of one operating interval.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ALL",
+                                 "option_label":  "All Supported Access",
+                                 "option_description":  "Normal supported access rules apply."
+                             },
+                             {
+                                 "option_code":  "APT",
+                                 "option_label":  "Appointment",
+                                 "option_description":  "Appointment access."
+                             },
+                             {
+                                 "option_code":  "WKI",
+                                 "option_label":  "Walk-In",
+                                 "option_description":  "Walk-in access."
+                             },
+                             {
+                                 "option_code":  "ADM",
+                                 "option_label":  "Administrative",
+                                 "option_description":  "Not client service time."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-profile.txt"
+    },
+    {
+        "_id":  537,
+        "field_name":  "status_schedule",
+        "field_label":  "Schedule Status",
+        "selection_rule":  "Single-select per effective schedule",
+        "field_description":  "Activation state of an operating-schedule version.",
+        "field_option":  [
+                             {
+                                 "option_code":  "ACT",
+                                 "option_label":  "Active",
+                                 "option_description":  "Current effective schedule."
+                             },
+                             {
+                                 "option_code":  "SCH",
+                                 "option_label":  "Scheduled",
+                                 "option_description":  "Future schedule."
+                             },
+                             {
+                                 "option_code":  "END",
+                                 "option_label":  "Ended",
+                                 "option_description":  "Former schedule version."
+                             },
+                             {
+                                 "option_code":  "UNK",
+                                 "option_label":  "Unknown",
+                                 "option_description":  "Schedule state cannot be confirmed."
+                             }
+                         ],
+        "source_document":  "docs/05-directory/spa-profile.txt"
+    },
+    {
+        "_id":  538,
+        "field_name":  "type_booking_method",
+        "field_label":  "Booking Method Type",
+        "selection_rule":  "Multi-select per offering",
+        "field_description":  "Supported client method for requesting or arranging a provider offering.",
+        "field_option":  [
+                             {
+                                 "option_code":  "PHN",
+                                 "option_label":  "Telephone",
+                                 "option_description":  "Booking by telephone."
+                             },
+                             {
+                                 "option_code":  "SMS",
+                                 "option_label":  "SMS",
+                                 "option_description":  "Booking by text message."
+                             },
+                             {
+                                 "option_code":  "WEB",
+                                 "option_label":  "Website",
+                                 "option_description":  "Booking through an approved website."
+                             },
+                             {
+                                 "option_code":  "MSG",
+                                 "option_label":  "Messaging",
+                                 "option_description":  "Booking through an approved messaging platform."
+                             },
+                             {
+                                 "option_code":  "WKI",
+                                 "option_label":  "Walk-In",
+                                 "option_description":  "Arrangement in person without advance booking."
+                             },
+                             {
+                                 "option_code":  "MNI",
+                                 "option_label":  "Massage Nexus Inquiry",
+                                 "option_description":  "Unconfirmed inquiry through Massage Nexus."
+                             },
+                             {
+                                 "option_code":  "MNB",
+                                 "option_label":  "Massage Nexus Booking",
+                                 "option_description":  "Confirmed booking through Massage Nexus when enabled."
+                             }
+                         ],
+        "source_document":  "docs/12-booking/booking-and-appointment-system.txt"
+    }
+]

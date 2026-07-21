@@ -1,0 +1,77 @@
+[
+    {
+        "_id":  532,
+        "field_name":  "type_claim_relationship",
+        "field_label":  "Claim Relationship Type",
+        "selection_rule":  "Single-select per claim",
+        "field_description":  "Relationship declared by a claimant; declaration is not proof.",
+        "field_option":  [
+                             {
+                                 "option_code":  "OWN",
+                                 "option_label":  "Owner",
+                                 "option_description":  "Claims an ownership relationship."
+                             },
+                             {
+                                 "option_code":  "OPR",
+                                 "option_label":  "Operator",
+                                 "option_description":  "Claims an operating relationship."
+                             },
+                             {
+                                 "option_code":  "MGR",
+                                 "option_label":  "Manager",
+                                 "option_description":  "Claims a management relationship."
+                             },
+                             {
+                                 "option_code":  "REP",
+                                 "option_label":  "Authorized Representative",
+                                 "option_description":  "Claims authorized representation."
+                             },
+                             {
+                                 "option_code":  "PRC",
+                                 "option_label":  "Practitioner",
+                                 "option_description":  "Claims the practitioner identity or affiliation."
+                             }
+                         ],
+        "source_document":  "docs/11-workspaces/operator-workspace.txt"
+    },
+    {
+        "_id":  533,
+        "field_name":  "status_claim",
+        "field_label":  "Claim Status",
+        "selection_rule":  "Single-select per claim",
+        "field_description":  "Workflow and decision state of a claim.",
+        "field_option":  [
+                             {
+                                 "option_code":  "PND",
+                                 "option_label":  "Pending",
+                                 "option_description":  "Awaiting review."
+                             },
+                             {
+                                 "option_code":  "APR",
+                                 "option_label":  "Approved",
+                                 "option_description":  "Approved after review; access still requires an assignment."
+                             },
+                             {
+                                 "option_code":  "REJ",
+                                 "option_label":  "Rejected",
+                                 "option_description":  "Rejected after review."
+                             },
+                             {
+                                 "option_code":  "DSP",
+                                 "option_label":  "Disputed",
+                                 "option_description":  "Decision or relationship is disputed."
+                             },
+                             {
+                                 "option_code":  "REV",
+                                 "option_label":  "Revoked",
+                                 "option_description":  "Previously approved authority was revoked."
+                             },
+                             {
+                                 "option_code":  "WDR",
+                                 "option_label":  "Withdrawn",
+                                 "option_description":  "Withdrawn by claimant."
+                             }
+                         ],
+        "source_document":  "docs/11-workspaces/operator-workspace.txt"
+    }
+]

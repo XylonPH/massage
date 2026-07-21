@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Secure Document Structure Guide
- * Version: 1.00
+ * Version: 1.01
  * Collection: document_main
  * Description: Stores secure metadata and storage references for one document used by a supported target, claim, credential, or verification.
  * Purpose: Keeps document identity, access, redaction, verification, and retention separate from target records and from the binary file itself.
@@ -9,7 +9,7 @@
  * Privacy: Full identifiers, signatures, health evidence, identity evidence, and unredacted files require restricted access. Public display at a physical location does not authorize online publication.
  */
 $created_at = '2026-07-21T08:15:45Z';
-$updated_at = '2026-07-21T08:15:45Z';
+$updated_at = '2026-07-21T09:49:12Z';
 $document_main_default = ['target_reference_list' => [], 'document_number' => null, 'document_number_masked' => null, 'expiry_date' => null, 'visibility_scope' => 'PRV', 'status_verification' => 'U', 'status_redaction' => 'NR', 'retention_until' => null, 'status_record_lifecycle' => 'ACT'];
 $document_main = [
     '_id' => 'Do7K2pQ9xR4tV8zN', // Canonical 16-character document identifier.
@@ -78,4 +78,4 @@ $document_main_index_list = [
     ['index_key' => 'checksum_lookup', 'index_name' => 'ix_document_main_checksum', 'type_index' => 'STD', 'is_unique' => false, 'is_sparse' => true, 'index_field_list' => [['field_name' => 'checksum', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 30],
 ];
 $document_main_boundary = ['owns' => ['document metadata, secure storage reference, access, redaction, verification, and retention'], 'references' => ['supported targets', 'organization_main', 'research_source', 'user_main'], 'does_not_own' => ['binary file', 'claim decision', 'credential record', 'verification process', 'public publication permission inferred from source display']];
-return compact('document_main_default', 'document_main', 'document_main_field_order', 'document_main_embedded_structure', 'document_main_field_property', 'document_main_subfield_property', 'document_main_index_list', 'document_main_boundary');
+return ['document_main_default' => $document_main_default, 'document_main' => $document_main, 'document_main_field_order' => $document_main_field_order, 'document_main_embedded_structure' => $document_main_embedded_structure, 'document_main_field_property' => $document_main_field_property, 'document_main_subfield_property' => $document_main_subfield_property, 'document_main_index_list' => $document_main_index_list, 'document_main_boundary' => $document_main_boundary];

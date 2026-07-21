@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Media Video Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: media_video
  * Description: Stores one video asset record, its renditions, attribution, relationships, and lifecycle.
  * Purpose: Documents the media_video record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -24,7 +24,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-21T09:49:12Z';
 /**
  * Multilingual short-text sample.
  * Used by content_title, short_description, caption_text, alt_text, and similar
@@ -79,7 +79,7 @@ $media_video = [
 	'file_extension' => 'mp4', // Lowercase file extension without the leading period.
 	'mime_type' => 'video/mp4', // Internet media type for the video file.
 	'file_size_byte' => 52428800, // File size in bytes.
-	'duration' => 185, // duration in seconds
+	'duration_second' => 185, // Video duration in seconds.
 	'width_pixel' => 1920, // Video frame width in pixels.
 	'height_pixel' => 1080, // Video frame height in pixels.
 	'storage_path' => 'storage/upload/media/video/2026/07/first-massage-consultation-demo.mp4', // Internal/local storage path used by the application.
@@ -118,7 +118,7 @@ $media_video = [
 			'file_extension' => 'mp4',
 			'mime_type' => 'video/mp4',
 			'file_size_byte' => 18432000,
-			'duration' => 185,
+			'duration_second' => 185,
 			'width_pixel' => 1280,
 			'height_pixel' => 720,
 			'storage_path' => 'storage/upload/media/video/2026/07/first-massage-consultation-demo-720p.mp4',
@@ -161,7 +161,7 @@ $media_video_field_order = [
 	'file_extension',
 	'mime_type',
 	'file_size_byte',
-	'duration',
+	'duration_second',
 	'width_pixel',
 	'height_pixel',
 	'storage_path',
@@ -202,7 +202,7 @@ $media_video_embedded_structure = [
 		'file_extension' => 'mp4',
 		'mime_type' => 'video/mp4',
 		'file_size_byte' => 18432000,
-		'duration' => 185,
+		'duration_second' => 185,
 		'width_pixel' => 1280,
 		'height_pixel' => 720,
 		'storage_path' => 'storage/upload/media/video/sample-720p.mp4',
@@ -229,7 +229,7 @@ $media_video_field_property = [
 	'file_extension' => ['field_label' => 'File Extension', 'field_description' => 'Lowercase file extension without the leading period.', 'max_character' => 20],
 	'mime_type' => ['field_label' => 'MIME Type', 'field_description' => 'Internet media type for the video file.', 'max_character' => 100],
 	'file_size_byte' => ['field_label' => 'File Size Byte', 'field_description' => 'File size in bytes.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'BIGINT', 'min_number' => 0],
-	'duration' => ['field_label' => 'Duration', 'field_description' => 'Video duration in seconds.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
+	'duration_second' => ['field_label' => 'Duration Seconds', 'field_description' => 'Video duration expressed explicitly in whole seconds.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 0],
 	'width_pixel' => ['field_label' => 'Width Pixel', 'field_description' => 'Video frame width in pixels.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 1],
 	'height_pixel' => ['field_label' => 'Height Pixel', 'field_description' => 'Video frame height in pixels.', 'type_data' => 'I', 'type_field' => 'NMB', 'type_sql' => 'INT', 'min_number' => 1],
 	'storage_path' => ['field_label' => 'Storage Path', 'field_description' => 'Internal/local storage path used by the application.', 'max_character' => 500],
@@ -269,7 +269,7 @@ $media_video_subfield_property = [
 	'video_variant_list.file_extension' => ['field_label' => 'Variant File Extension', 'field_description' => 'Normalized rendition extension.', 'type_data' => 'S', 'is_mandatory' => true],
 	'video_variant_list.mime_type' => ['field_label' => 'Variant MIME Type', 'field_description' => 'Rendition media type.', 'type_data' => 'S', 'is_mandatory' => true],
 	'video_variant_list.file_size_byte' => ['field_label' => 'Variant File Size', 'field_description' => 'Rendition size in bytes.', 'type_data' => 'I', 'min_number' => 0],
-	'video_variant_list.duration' => ['field_label' => 'Variant Duration', 'field_description' => 'Rendition duration in seconds.', 'type_data' => 'I', 'min_number' => 0],
+	'video_variant_list.duration_second' => ['field_label' => 'Variant Duration Seconds', 'field_description' => 'Rendition duration expressed explicitly in whole seconds.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
 	'video_variant_list.width_pixel' => ['field_label' => 'Variant Width', 'field_description' => 'Rendition width in pixels.', 'type_data' => 'I', 'min_number' => 1],
 	'video_variant_list.height_pixel' => ['field_label' => 'Variant Height', 'field_description' => 'Rendition height in pixels.', 'type_data' => 'I', 'min_number' => 1],
 	'video_variant_list.storage_path' => ['field_label' => 'Variant Storage Path', 'field_description' => 'Private storage path for the rendition.', 'type_data' => 'S'],

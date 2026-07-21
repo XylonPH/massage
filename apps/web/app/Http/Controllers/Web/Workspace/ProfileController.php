@@ -18,12 +18,12 @@ class ProfileController extends Controller
     {
         $validated = $request->validate([
             'display_name' => ['nullable', 'string', 'max:60'],
-            'bio' => ['nullable', 'string', 'max:1000'],
+            'profile_biography' => ['nullable', 'string', 'max:1000'],
         ]);
 
         $request->user()->forceFill([
             'display_name' => $validated['display_name'] ?: null,
-            'bio' => $validated['bio'] ?: null,
+            'profile_biography' => $validated['profile_biography'] ?: null,
         ])->save();
 
         return redirect()

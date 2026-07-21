@@ -103,14 +103,14 @@ class WorkspaceShellTest extends TestCase
 
         $response = $this->actingAs($user)->put('/workspace/profile', [
             'display_name' => 'Calm Explorer',
-            'bio' => 'Weekend spa explorer.',
+            'profile_biography' => 'Weekend spa explorer.',
         ]);
 
         $response->assertRedirect('/workspace/profile');
 
         $user->refresh();
         $this->assertSame('Calm Explorer', $user->display_name);
-        $this->assertSame('Weekend spa explorer.', $user->bio);
+        $this->assertSame('Weekend spa explorer.', $user->profile_biography);
     }
 
     public function test_profile_update_rejects_overlong_display_name(): void
