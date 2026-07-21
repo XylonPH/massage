@@ -13,11 +13,13 @@ use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
 use App\Models\User;
 use App\Support\Article\ArticleLanguage;
+use App\Support\Article\PendingArticleRevisions;
 use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -41,25 +43,35 @@ class ArticleController extends Controller
     public function index(Request $request, ?string $status = null): View
     {
         $userId = (string) $request->user()->getKey();
-        $articleIds = $this->ownedArticles($userId)
-            ->pluck('_id')
-            ->all();
-        $submittedIds = ArticleRevision::query()
-            ->whereIn('article_id', $articleIds)
-            ->orderByDesc('revision_number')
-            ->get()
-            ->unique('article_id')
-            ->filter(fn (ArticleRevision $revision): bool => $revision->submitted_at !== null && $revision->status_review === 'P')
+        $submittedIds = PendingArticleRevisions::all()
             ->pluck('article_id')
+            ->map(static fn (mixed $id): string => (string) $id)
             ->values()
             ->all();
         $query = $this->ownedArticles($userId);
 
+        if ($status === 'submitted') {
+            $page = LengthAwarePaginator::resolveCurrentPage();
+            $submittedArticles = collect($submittedIds)
+                ->map(fn (string $articleId): ?Article => Article::query()->find($articleId))
+                ->filter(fn (?Article $article): bool => $article !== null && $this->isOwner($article, $userId))
+                ->sortByDesc(fn (Article $article) => $article->updated_at)
+                ->values();
+            $articles = new LengthAwarePaginator(
+                $submittedArticles->forPage($page, 15)->values(),
+                $submittedArticles->count(),
+                15,
+                $page,
+                ['path' => $request->url(), 'query' => $request->query()],
+            );
+
+            return view('workspace.article.index', compact('articles', 'status'));
+        }
+
         match ($status) {
             'draft' => $submittedIds === []
-                ? $query->where('status_publication', 'D')
-                : $query->where('status_publication', 'D')->whereNotIn('_id', $submittedIds),
-            'submitted' => $query->whereIn('_id', $submittedIds)->where('status_review', 'P'),
+                ? $query->whereSparseDefault('status_publication', 'D')
+                : $query->whereSparseDefault('status_publication', 'D')->whereNotIn('_id', $submittedIds),
             'published' => $query->where('status_publication', 'P'),
             default => null,
         };
@@ -116,6 +128,7 @@ class ArticleController extends Controller
     {
         $this->authorizeOwner($request, $article);
         abort_if($article->status_publication === 'P', 409, __('article.published_read_only'));
+        abort_if(PendingArticleRevisions::forArticle((string) $article->getKey()), 409, __('article.already_submitted'));
 
         $body = ArticleBody::query()
             ->where('article_id', (string) $article->getKey())
@@ -221,16 +234,22 @@ class ArticleController extends Controller
             'categories' => ArticleCategory::cases(),
             'audiences' => ArticleAudience::cases(),
             'canSchedule' => $canSchedule,
+            'isSubmitted' => $article !== null && PendingArticleRevisions::forArticle((string) $article->getKey()) !== null,
         ];
     }
 
     private function authorizeOwner(Request $request, Article $article): void
     {
         $userId = (string) $request->user()->getKey();
+        abort_unless($this->isOwner($article, $userId), 403);
+    }
+
+    private function isOwner(Article $article, string $userId): bool
+    {
         $owners = $article->article_owner_user_id_list;
         $owners = is_array($owners) && $owners !== [] ? $owners : ($article->author_user_id_list ?? []);
 
-        abort_unless(in_array($userId, $owners, true), 403);
+        return in_array($userId, $owners, true);
     }
 
     private function ownedArticles(string $userId): Builder
@@ -266,7 +285,9 @@ class ArticleController extends Controller
      */
     private function recordOptions(string $collection, array $labelFields, array $selectedIds, ?string $excludeId = null): array
     {
-        $query = DB::connection('mongodb')->table($collection)->where('status_record_lifecycle', 'ACT');
+        $query = DB::connection('mongodb')->table($collection)->where(function ($query): void {
+            $query->where('status_record_lifecycle', 'ACT')->orWhereNull('status_record_lifecycle');
+        });
         if ($excludeId) {
             $query->where('_id', '!=', $excludeId);
         }

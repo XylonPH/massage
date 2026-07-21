@@ -62,6 +62,27 @@ enum ArticleCategory: string
         };
     }
 
+    public function iconName(): string
+    {
+        return match ($this) {
+            self::PlatformCommunity => 'platform-community',
+            self::FirstTime => 'first-time',
+            self::ChoosingBookingReviews => 'choosing-booking',
+            self::SafetyBoundariesTrust => 'safety-trust',
+            self::HygieneComfort => 'hygiene-comfort',
+            self::MassageTechniques => 'massage-techniques',
+            self::PressureRecovery => 'pressure-recovery',
+            self::BodyPostureStress => 'body-posture',
+            self::WellnessSelfCare => 'wellness-self-care',
+            self::OilsProductsHome => 'oils-products',
+            self::SpecialCare => 'special-care',
+            self::LocalGlobalCulture => 'local-global-culture',
+            self::SpaBusiness => 'spa-business',
+            self::PractitionerCareer => 'practitioner-career',
+            self::FictionSeasonal => 'fiction-seasonal',
+        };
+    }
+
     public static function fromSlug(string $slug): ?self
     {
         foreach (self::cases() as $case) {

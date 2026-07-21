@@ -19,8 +19,8 @@
                class="fixed inset-y-0 left-0 z-40 hidden w-[17rem] shrink-0 flex-col border-r border-ink-100 bg-white lg:static lg:flex dark:border-ink-800 dark:bg-ink-900">
             <div class="flex h-[4.5rem] items-center border-b border-ink-100 px-5 dark:border-ink-800">
                 <a href="{{ route('home') }}" aria-label="{{ config('app.name') }}">
-                    <x-logo size="h-10" class="dark:hidden" />
-                    <x-logo dark size="h-10" class="hidden dark:block" />
+                    <span class="dark:hidden"><x-logo size="h-10" /></span>
+                    <span class="hidden dark:block"><x-logo dark size="h-10" /></span>
                 </a>
             </div>
 

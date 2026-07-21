@@ -1,5 +1,5 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.40
+Document Version: 0.41
 Date Created: 2026-07-19
 Revision Date: 2026-07-21
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
@@ -567,6 +567,12 @@ list, queue, preview, scheduling, and approval components, but each page must sh
 label and domain-specific requirements. The interface must not imply that these records share one
 generic content collection. Announcement previews must identify the statement as first-party and
 must not use an independent-News presentation.
+
+The current Article review screen implements the first focused editorial slice: a pending count on
+the Editorial landing page, an Article queue containing the latest submitted revision, a safe
+rendered snapshot, reviewer note, and explicit Approve and Publish, Request Changes, and Reject
+actions. It does not yet claim to implement assignment, side-by-side comparison, bulk actions,
+stale-work detection, or the complete readiness checklist described above.
 
 Quote pages should expose attribution, source, language, display window, approval, and duplicate
 review. Survey and Quiz pages should expose question structure, audience, availability, translation,

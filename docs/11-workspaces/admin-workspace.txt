@@ -1,5 +1,5 @@
 Title: Massage Nexus Admin Workspace
-Document Version: 0.70
+Document Version: 0.71
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
@@ -621,6 +621,7 @@ Routes:
 /workspace/editorial/dashboard
 /workspace/editorial/content
 /workspace/editorial/article
+/workspace/editorial/article/{article-id}/review
 /workspace/editorial/news
 /workspace/editorial/comic
 /workspace/editorial/legal
@@ -683,6 +684,14 @@ Editorial review should show:
 - accessibility completeness, including alt text, captions, and transcript where applicable;
 - public preview, metadata, and social preview;
 - publication schedule;
+
+Current Article implementation (2026-07-21): /workspace/editorial includes an Article review-queue
+card and /workspace/editorial/article lists the latest pending submitted revision for each Article.
+The permission-gated review page renders the submitted snapshot and supports approve-and-publish,
+request-changes, and reject decisions. Requests for changes and rejection require a reviewer note;
+approval records reviewer/approver audit fields on the revision and body and publication fields on
+article_main. Broader assignment, comparison, bulk queue, checklist, and second-approval controls
+remain governed by this specification and are not implied to be implemented by the initial screen.
 - correction, retraction, and archive history.
 
 Editorial decisions may include:

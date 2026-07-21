@@ -22,8 +22,8 @@
         <div class="mx-auto flex h-[4.5rem] max-w-[1600px] items-center gap-5 px-4 sm:px-6 lg:px-8">
             <a href="{{ route('home') }}" class="group relative -ml-2 shrink-0 overflow-hidden rounded-2xl border border-transparent px-2 py-1.5 transition hover:border-ember-100 hover:bg-gradient-to-r hover:from-ink-50 hover:to-ember-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500 dark:hover:border-ember-800 dark:hover:from-ink-800 dark:hover:to-ember-950" aria-label="{{ config('app.name') }}">
                 <span class="pointer-events-none absolute -left-5 top-1/2 size-12 -translate-y-1/2 rounded-full bg-ember-200/0 blur-xl transition group-hover:bg-ember-200/70" aria-hidden="true"></span>
-                <x-logo size="h-11" class="relative dark:hidden" />
-                <x-logo dark size="h-11" class="relative hidden dark:block" />
+                <span class="relative dark:hidden"><x-logo size="h-11" /></span>
+                <span class="relative hidden dark:block"><x-logo dark size="h-11" /></span>
                 <span class="pointer-events-none absolute inset-x-4 bottom-0 h-0.5 origin-left rounded-full bg-gradient-to-r from-ink-700 via-ember-500 to-leaf-500 opacity-65 transition group-hover:scale-x-110 group-hover:opacity-100" aria-hidden="true"></span>
             </a>
 

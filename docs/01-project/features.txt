@@ -1,5 +1,5 @@
 Title: Massage Nexus Features
-Document Version: 2.93
+Document Version: 2.94
 Date Created: 2026-06-30
 Revision Date: 2026-07-21
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
@@ -1781,6 +1781,8 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Searchable plain text
 - Visual-reading and spoken/screen-reader duration estimates stored in seconds
 - Per-save revision snapshots with contributor revision notes and review-submission state
+- Contributor draft, submitted, and published views that treat omitted sparse status fields as their documented defaults
+- Permission-gated editorial Article queue with safe submitted-revision preview, reviewer notes, approve-and-publish, request-changes, and rejection decisions
 - Permission-scoped proposed publication scheduling that does not bypass editorial approval
 - Original-content language selection at draft creation, with language identity locked after first save
 

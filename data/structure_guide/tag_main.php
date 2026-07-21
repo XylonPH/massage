@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Tag Main Structure Guide
- * Version: 1.10
+ * Version: 1.11
  * Collection: tag_main
  * Description: Stores one reusable multilingual editorial tag.
  * Purpose: Documents the tag_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -12,7 +12,7 @@
  */
 
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T10:36:14Z';
 $tag_main_default = [
 	'usage_count' => 0,
 	'status_record_lifecycle' => 'ACT',
@@ -21,15 +21,15 @@ $tag_main_default = [
 $multilingual_text_sample = [
 	'eng' => [
 		'text' => 'first massage',
-		'method_translation' => 'HUM',
-		'status_review' => 'A',
+		'method_translation' => 'HUM', // optional; omit when the Human Translation default applies
+		'status_review' => 'A', // optional; omit when the Approved default applies
 	],
 ];
 
 $tag_main = [
 	'_id' => 'T3gH7kM2pR9vX4cN', // Canonical application-generated 16-character Base62 identifier for the tag_main record.
 	'tag_title' => [ // Short multilingual public label for the editorial tag.
-		'eng' => ['text' => 'first massage', 'method_translation' => 'HUM', 'status_review' => 'A'],
+		'eng' => ['text' => 'first massage', 'method_translation' => 'HUM', 'status_review' => 'A'], // fully populated guide sample; sparse records store only text when both defaults apply
 	],
 	'tag_slug' => [ // Multilingual URL-safe slug used by public tag routes. Each language value must be unique among active tags.
 		'eng' => ['text' => 'first-massage', 'method_translation' => 'HUM', 'status_review' => 'A'],

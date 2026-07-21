@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Article Revision Structure Guide
- * Version: 1.30
+ * Version: 1.31
  * Collection: article_revision
  * Description: Stores one immutable proposed or accepted revision of Article content or metadata.
  * Purpose: Documents the article_revision record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -20,14 +20,17 @@
  * - article_revision stores body snapshots for review, rollback, and editorial
  *   revision history.
  * - It focuses on article_body revisions, not general audit logging.
+ * - review_note records the editorial decision about this exact immutable snapshot;
+ *   it is distinct from article_main.record_note, which contains Article-wide notes.
  * - References to common_reference records retain that dataset's numeric identifier type.
  */
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T10:36:14Z';
 /**
  * Actual record-level defaults for article_revision.
+ * Actual records omit these values, and writers unset them when a value returns to default.
  */
 $article_revision_default = [
 	'revision_number' => 1,

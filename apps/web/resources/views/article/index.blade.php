@@ -31,7 +31,10 @@
                         <div class="flex flex-1 flex-col p-6">
                             <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-ink-500 dark:text-ink-400">
                                 @if ($item['category'])
-                                    <a href="{{ route('article.category.show', $item['category']->slug()) }}" class="rounded-full bg-ink-50 px-2.5 py-1 text-ink-700 hover:bg-ink-100 dark:bg-ink-800 dark:text-ink-200 dark:hover:bg-ink-700">{{ $item['category']->label() }}</a>
+                                    <a href="{{ route('article.category.show', $item['category']->slug()) }}" class="inline-flex items-center gap-1.5 rounded-full bg-ink-50 px-2.5 py-1 text-ink-700 hover:bg-ink-100 dark:bg-ink-800 dark:text-ink-200 dark:hover:bg-ink-700">
+                                        <x-article-category-icon :category="$item['category']" class="size-3.5 shrink-0 text-ember-600 dark:text-ember-400" />
+                                        <span>{{ $item['category']->label() }}</span>
+                                    </a>
                                 @endif
                                 @if ($item['level_nsfw'] !== 'N')
                                     <span class="rounded-full bg-ember-50 px-2.5 py-1 text-ember-700 dark:bg-ember-950 dark:text-ember-300">{{ __('article.sensitive_notice') }}</span>
@@ -60,7 +63,12 @@
             <h2 class="font-black text-ink-950 dark:text-ink-50">{{ __('article.browse_categories') }}</h2>
             <ul class="mt-4 space-y-2 text-sm">
                 @foreach ($categories as $category)
-                    <li><a class="text-ink-700 hover:text-ember-600 dark:text-ink-200 dark:hover:text-ember-400" href="{{ route('article.category.show', $category->slug()) }}">{{ $category->label() }}</a></li>
+                    <li>
+                        <a class="inline-flex items-center gap-2 text-ink-700 hover:text-ember-600 dark:text-ink-200 dark:hover:text-ember-400" href="{{ route('article.category.show', $category->slug()) }}">
+                            <x-article-category-icon :category="$category" class="size-4 shrink-0 text-ember-600 dark:text-ember-400" />
+                            <span>{{ $category->label() }}</span>
+                        </a>
+                    </li>
                 @endforeach
             </ul>
         </div>

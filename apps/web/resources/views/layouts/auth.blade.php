@@ -48,8 +48,8 @@
         <main class="flex flex-1 flex-col overflow-y-auto">
             <div class="flex items-center justify-between gap-2.5 p-6 lg:justify-end">
                 <a href="{{ route('home') }}" class="lg:hidden">
-                    <x-logo size="h-12" class="dark:hidden" />
-                    <x-logo dark size="h-12" class="hidden dark:block" />
+                    <span class="dark:hidden"><x-logo size="h-12" /></span>
+                    <span class="hidden dark:block"><x-logo dark size="h-12" /></span>
                 </a>
                 <div class="flex items-center gap-2.5">
                     <x-theme-toggle />

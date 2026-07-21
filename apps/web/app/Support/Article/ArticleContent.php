@@ -131,12 +131,12 @@ class ArticleContent
             $safeUrl = preg_match('~^https?://~i', $url) && filter_var($url, FILTER_VALIDATE_URL)
                 ? mb_substr($url, 0, 1000)
                 : null;
-            $normalized[] = [
-                'source_title' => mb_substr($title, 0, 200),
+            $normalized[] = array_filter([
+                'source_title' => $title !== '' ? mb_substr($title, 0, 200) : null,
                 'source_organization' => $organization !== '' ? mb_substr($organization, 0, 200) : null,
                 'source_url' => $safeUrl,
                 'publication_identifier' => $identifier !== '' ? mb_substr($identifier, 0, 120) : null,
-            ];
+            ], static fn (mixed $value): bool => $value !== null && $value !== '');
         }
 
         return $normalized;

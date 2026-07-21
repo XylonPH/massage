@@ -67,29 +67,20 @@ class SaveArticleDraft
             'is_shareable' => (bool) ($input['is_shareable'] ?? false),
             'is_anonymous' => (bool) ($input['is_anonymous'] ?? false),
             'level_nsfw' => $input['level_nsfw'],
+            'status_review' => 'P',
             'updated_by_user_id' => $userId,
         ]);
 
         if (array_key_exists('scheduled_publish_at', $input)) {
-            $article->scheduled_publish_at = filled($input['scheduled_publish_at'])
-                ? $input['scheduled_publish_at']
-                : null;
+            if (filled($input['scheduled_publish_at'])) {
+                $article->scheduled_publish_at = $input['scheduled_publish_at'];
+            } else {
+                $article->unset('scheduled_publish_at');
+            }
         }
 
         if ($isNew) {
             $article->fill([
-                'editor_user_id_list' => [],
-                'reviewer_user_id_list' => [],
-                'photographer_user_id_list' => [],
-                'view_count' => 0,
-                'comment_count' => 0,
-                'save_count' => 0,
-                'share_count' => 0,
-                'status_publication' => 'D',
-                'status_review' => 'P',
-                'visibility_scope' => 'PVT',
-                'status_record_lifecycle' => 'ACT',
-                'record_note' => [],
                 'created_by_user_id' => $userId,
             ]);
         }
@@ -106,21 +97,20 @@ class SaveArticleDraft
             'word_count' => $metrics['word_count'],
             'reading_duration_visual' => $metrics['visual_seconds'],
             'reading_duration_spoken' => $metrics['spoken_seconds'],
-            'translator_user_id_list' => [],
-            'source_article_body_id' => null,
-            'method_translation' => null,
             'status_review' => 'P',
-            'status_record_lifecycle' => 'ACT',
             'updated_by_user_id' => $userId,
         ]);
+        $body->unset(['reviewed_at', 'reviewed_by_user_id', 'approved_at', 'approved_by_user_id']);
         if (! $body->exists) {
             $body->created_by_user_id = $userId;
         }
         $body->save();
 
-        $nextRevision = ((int) ArticleRevision::query()
-            ->where('article_body_id', (string) $body->getKey())
-            ->max('revision_number')) + 1;
+        $revisionQuery = ArticleRevision::query()->where('article_body_id', (string) $body->getKey());
+        $latestRevisionNumber = $revisionQuery->max('revision_number');
+        $nextRevision = $latestRevisionNumber === null
+            ? $revisionQuery->count() + 1
+            : ((int) $latestRevisionNumber) + 1;
         ArticleRevision::query()->create([
             'article_id' => (string) $article->getKey(),
             'article_body_id' => (string) $body->getKey(),
@@ -131,9 +121,6 @@ class SaveArticleDraft
             'reading_duration_visual' => $metrics['visual_seconds'],
             'reading_duration_spoken' => $metrics['spoken_seconds'],
             'revision_note' => trim((string) ($input['revision_note'] ?? '')) ?: ($isNew ? 'Initial draft.' : null),
-            'review_note' => null,
-            'status_review' => 'P',
-            'status_record_lifecycle' => 'ACT',
             'created_at' => now(),
             'created_by_user_id' => $userId,
         ]);
@@ -167,16 +154,22 @@ class SaveArticleDraft
     }
 
     /** @param array<int, mixed> $credits
-     * @return array<int, array{user_id: ?string, display_name: string}>
+     * @return array<int, array{user_id?: string, display_name: string}>
      */
     private function resolveAuthorCredits(array $credits): array
     {
         return collect($credits)
             ->filter(static fn (mixed $credit): bool => is_array($credit))
-            ->map(static fn (array $credit): array => [
-                'user_id' => filled($credit['user_id'] ?? null) ? (string) $credit['user_id'] : null,
-                'display_name' => mb_substr(trim((string) ($credit['display_name'] ?? '')), 0, 100),
-            ])
+            ->map(static function (array $credit): array {
+                $resolved = [
+                    'display_name' => mb_substr(trim((string) ($credit['display_name'] ?? '')), 0, 100),
+                ];
+                if (filled($credit['user_id'] ?? null)) {
+                    $resolved['user_id'] = (string) $credit['user_id'];
+                }
+
+                return $resolved;
+            })
             ->filter(static fn (array $credit): bool => $credit['display_name'] !== '')
             ->take(10)
             ->values()
@@ -205,16 +198,12 @@ class SaveArticleDraft
         ])));
     }
 
-    /** @return array<string, array{text: string, method_translation: string, status_review: string}> */
+    /** @return array<string, array{text: string}> */
     private function localizedValue(Article $article, string $field, string $languageKey, string $text): array
     {
         $values = $article->getAttribute($field);
         $values = is_array($values) ? $values : [];
-        $values[$languageKey] = [
-            'text' => $text,
-            'method_translation' => 'HUM',
-            'status_review' => 'P',
-        ];
+        $values[$languageKey] = ['text' => $text];
 
         return $values;
     }
@@ -237,11 +226,9 @@ class SaveArticleDraft
             $tag = Tag::query()->where('tag_slug.eng.text', $slug)->first();
             if (! $tag) {
                 $tag = Tag::query()->create([
-                    'tag_title' => ['eng' => ['text' => mb_substr($label, 0, 60), 'method_translation' => 'HUM', 'status_review' => 'A']],
-                    'tag_slug' => ['eng' => ['text' => $slug, 'method_translation' => 'HUM', 'status_review' => 'A']],
+                    'tag_title' => ['eng' => ['text' => mb_substr($label, 0, 60)]],
+                    'tag_slug' => ['eng' => ['text' => $slug]],
                     'language_original_id' => 3049,
-                    'usage_count' => 0,
-                    'status_record_lifecycle' => 'ACT',
                     'created_by_user_id' => $userId,
                     'updated_by_user_id' => $userId,
                 ]);
@@ -261,7 +248,12 @@ class SaveArticleDraft
         foreach (array_diff($oldIds, $newIds) as $id) {
             $tag = Tag::query()->find($id);
             if ($tag && $tag->usage_count > 0) {
-                $tag->decrement('usage_count');
+                if ($tag->usage_count === 1) {
+                    $tag->unset('usage_count');
+                    $tag->save();
+                } else {
+                    $tag->decrement('usage_count');
+                }
             }
         }
     }

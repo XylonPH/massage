@@ -2,8 +2,9 @@
     <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ __('editorial.title') }}</h1>
     <p class="mt-1 text-sm text-ink-600 dark:text-ink-300">{{ __('editorial.intro') }}</p>
 
-    <div class="mt-6 grid gap-4 sm:grid-cols-3">
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         @foreach ([
+            ['count' => $articleCount, 'label' => __('editorial.article_review_queue'), 'route' => route('workspace.editorial.article.index')],
             ['count' => $establishmentCount, 'label' => __('editorial.establishments'), 'route' => route('workspace.editorial.establishment.index')],
             ['count' => $serviceCount, 'label' => __('editorial.services'), 'route' => route('workspace.editorial.service.index')],
             ['count' => $quoteCount, 'label' => __('editorial.quotes'), 'route' => route('workspace.editorial.quote.index')],

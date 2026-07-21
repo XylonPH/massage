@@ -21,9 +21,14 @@ use App\Http\Controllers\Web\Workspace\ReviewController as WorkspaceReviewContro
 use App\Http\Controllers\Web\Workspace\SettingController as WorkspaceSettingController;
 use App\Http\Middleware\EnsureActiveMember;
 use App\Http\Middleware\EnsureWorkspacePermission;
+use App\Livewire\Workspace\Editorial\ArticleIndex as EditorialArticleIndex;
+use App\Livewire\Workspace\Editorial\ArticleReview as EditorialArticleReview;
 use App\Livewire\Workspace\Editorial\EditorialHome;
+use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Livewire\Workspace\Editorial\EstablishmentIndex;
+use App\Livewire\Workspace\Editorial\QuoteForm;
 use App\Livewire\Workspace\Editorial\QuoteIndex;
+use App\Livewire\Workspace\Editorial\ServiceForm;
 use App\Livewire\Workspace\Editorial\ServiceIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -158,28 +163,30 @@ Route::prefix('workspace/editorial')
     ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.editorial.access'])
     ->group(function () {
         Route::get('/', EditorialHome::class)->name('home');
+        Route::get('/article', EditorialArticleIndex::class)->name('article.index');
+        Route::get('/article/{article}/review', EditorialArticleReview::class)->name('article.review');
         Route::get('/establishment', EstablishmentIndex::class)->name('establishment.index');
-        Route::get('/establishment/new', \App\Livewire\Workspace\Editorial\EstablishmentForm::class)->name('establishment.create');
-        Route::get('/establishment/{establishment}/edit', \App\Livewire\Workspace\Editorial\EstablishmentForm::class)->name('establishment.edit');
+        Route::get('/establishment/new', EstablishmentForm::class)->name('establishment.create');
+        Route::get('/establishment/{establishment}/edit', EstablishmentForm::class)->name('establishment.edit');
         Route::get('/service', ServiceIndex::class)->name('service.index');
-        Route::get('/service/new', \App\Livewire\Workspace\Editorial\ServiceForm::class)->name('service.create');
-        Route::get('/service/{service}/edit', \App\Livewire\Workspace\Editorial\ServiceForm::class)->name('service.edit');
+        Route::get('/service/new', ServiceForm::class)->name('service.create');
+        Route::get('/service/{service}/edit', ServiceForm::class)->name('service.edit');
         Route::get('/quote', QuoteIndex::class)->name('quote.index');
-        Route::get('/quote/new', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.create');
-        Route::get('/quote/{quote}/edit', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.edit');
+        Route::get('/quote/new', QuoteForm::class)->name('quote.create');
+        Route::get('/quote/{quote}/edit', QuoteForm::class)->name('quote.edit');
     });
 
 Route::view('/workspace/moderation', 'workspace.admin-placeholder', [
-        'areaKey' => 'moderation',
-        'areaTitle' => __('workspace.admin_moderation_title'),
-    ])
+    'areaKey' => 'moderation',
+    'areaTitle' => __('workspace.admin_moderation_title'),
+])
     ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.moderation.access'])
     ->name('workspace.moderation.home');
 
 Route::view('/workspace/system', 'workspace.admin-placeholder', [
-        'areaKey' => 'system',
-        'areaTitle' => __('workspace.admin_system_title'),
-    ])
+    'areaKey' => 'system',
+    'areaTitle' => __('workspace.admin_system_title'),
+])
     ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.system.access'])
     ->name('workspace.system.home');
 

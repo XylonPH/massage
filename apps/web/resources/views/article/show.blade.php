@@ -11,7 +11,10 @@
                 <div>
                     <div class="flex flex-wrap items-center gap-2 text-sm font-bold text-ink-600">
                         @if ($category)
-                            <a href="{{ route('article.category.show', $category->slug()) }}" class="rounded-full bg-ink-50 px-3 py-1.5 hover:bg-ink-100">{{ $category->label() }}</a>
+                            <a href="{{ route('article.category.show', $category->slug()) }}" class="inline-flex items-center gap-1.5 rounded-full bg-ink-50 px-3 py-1.5 hover:bg-ink-100">
+                                <x-article-category-icon :category="$category" class="size-4 shrink-0 text-ember-600" />
+                                <span>{{ $category->label() }}</span>
+                            </a>
                         @endif
                         @if ($audience)
                             <a href="{{ route('article.audience.show', $audience->slug()) }}" class="rounded-full bg-leaf-50 px-3 py-1.5 text-leaf-800 hover:bg-leaf-100">{{ __('article.target_audience', ['audience' => $audience->label()]) }}</a>

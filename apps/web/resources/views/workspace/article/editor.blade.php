@@ -368,8 +368,11 @@
                             @if (! $article || $article->status_publication !== 'P')
                                 <button class="rounded-xl bg-ink-950 px-5 py-3 text-sm font-bold text-white shadow-sm hover:bg-ink-800">{{ __('article.save_draft') }}</button>
                             @endif
-                            @if ($article && $article->status_publication !== 'P')
+                            @if ($article && $article->status_publication !== 'P' && ! $isSubmitted)
                                 <button type="submit" form="submit-article-form" class="rounded-xl border border-ember-300 bg-ember-50 px-5 py-3 text-sm font-bold text-ember-800 hover:bg-ember-100">{{ __('article.submit_review') }}</button>
+                            @endif
+                            @if ($isSubmitted)
+                                <p class="rounded-xl border border-leaf-200 bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800 dark:border-leaf-800 dark:bg-leaf-950 dark:text-leaf-200">{{ __('article.awaiting_editorial_review') }}</p>
                             @endif
                             @if ($article?->status_publication === 'P')
                                 <button type="submit" form="unpublish-article-form" class="rounded-xl border border-ember-300 bg-ember-50 px-5 py-3 text-sm font-bold text-ember-800 hover:bg-ember-100">{{ __('article.unpublish') }}</button>
@@ -380,7 +383,7 @@
                 </div>
             </form>
 
-            @if ($article && $article->status_publication !== 'P')
+            @if ($article && $article->status_publication !== 'P' && ! $isSubmitted)
                 <form id="submit-article-form" method="post" action="{{ route('workspace.article.submit', $article) }}">@csrf</form>
             @endif
             @if ($article?->status_publication === 'P')

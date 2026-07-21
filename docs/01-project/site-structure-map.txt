@@ -1,7 +1,7 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.56
+Document Version: 2.57
 Date Created: 2026-07-10
-Revision Date: 2026-07-20
+Revision Date: 2026-07-21
 
 Document Description:
 This document maps the public website structure, profile page areas, content destinations, user-facing paths, unified workspace areas, system-facing routes, reserved route keywords, future Massage Campus areas, future Branded Portal entry points, and the accepted Booking and Appointment System surfaces for Massage Nexus. It is a site structure map, not a visible navigation menu, database schema, implementation schedule, or SEO XML sitemap.
@@ -2684,6 +2684,7 @@ archive-file
 /workspace/editorial/dashboard
 /workspace/editorial/content
 /workspace/editorial/article
+/workspace/editorial/article/{article-id}/review
 /workspace/editorial/news
 /workspace/editorial/comic
 /workspace/editorial/legal
@@ -2714,7 +2715,7 @@ archive-file
 /workspace/article/reaction
 /workspace/article/analytics
 
-Current web implementation (2026-07-20):
+Current web implementation (2026-07-21):
 - /workspace/article, /draft, /submitted, and /published provide the initial contributor dashboard.
 - /workspace/article/new, /workspace/article/{article-id}/edit,
   /workspace/article/{article-id}/revision, and the POST submit action provide private author-owned
@@ -2723,9 +2724,10 @@ Current web implementation (2026-07-20):
   navigation shell. Article and Review do not receive separate shortcuts in the global header.
 - The Article editor supports controlled visual and HTML editing, anonymous public attribution, and
   permission-scoped proposed publication times without bypassing editorial approval.
-- Category/tag discovery is implemented publicly. Workspace media, reaction, analytics, and the
-  editorial decision, final publication, and scheduled publishing controls remain separate follow-up
-  work and must not be represented as live.
+- Category/tag discovery is implemented publicly. The permission-gated Editorial area now includes
+  the Article queue and submitted-revision screen with approve-and-publish, request-changes, and
+  reject decisions. Workspace media, reaction, analytics, advanced editorial comparison/assignment,
+  and the scheduled publishing job remain separate follow-up work and must not be represented as live.
 
 /workspace/campus
 /workspace/campus/home

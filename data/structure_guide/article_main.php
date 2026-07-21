@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Article Main Structure Guide
- * Version: 1.80
+ * Version: 1.81
  * Collection: article_main
  * Description: Stores one Article identity, publication, ownership, classification, and relationship record.
  * Purpose: Documents the article_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -18,6 +18,9 @@
  * - Do not mix field-definition metadata into record defaults.
  * Current scope:
  * - article_main stores article identity, metadata, relationships, and publication state.
+ * - A private draft has an article_main identity before editorial approval so ownership,
+ *   revisions, and workflow can reference one stable Article. Public queries expose it only
+ *   after approval and publication.
  * - News, Reviews, Comics, Legal documents, and Announcements use separate collections.
  * - The long HTML article body is not stored here; use article_body.
  * - References to common_reference records retain that dataset's numeric identifier type.
@@ -25,7 +28,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-21T04:24:17Z';
+$updated_at = '2026-07-21T10:36:14Z';
 /**
  * Multilingual short-text sample.
  * Used by article_title, short_description, caption_text, alt_text, and similar
@@ -44,6 +47,7 @@ $multilingual_text_sample = [
  * Actual record-level defaults for article_main.
  * These are defaults for stored Article records, not field-definition metadata.
  * Sparse-default storage may omit these values in actual database records.
+ * Writers must also unset a stored property when it is changed back to one of these values.
  */
 $article_main_default = [
 	'target_audience' => 'G', // G = General
@@ -75,7 +79,7 @@ $article_main_default = [
 	'visibility_scope' => 'PVT', // PVT = Private until published
 	'level_nsfw' => 'N', // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
-	'record_note' => [],
+	'record_note' => [], // Article-wide internal notes; omit when empty. Revision decisions use article_revision.review_note.
 ];
 
 /**

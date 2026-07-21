@@ -50,7 +50,7 @@ class ArticleController extends Controller
     {
         $tag = Tag::query()
             ->where('tag_slug.eng.text', $tag_slug)
-            ->where('status_record_lifecycle', 'ACT')
+            ->whereSparseDefault('status_record_lifecycle', 'ACT')
             ->firstOrFail();
 
         return $this->listing(
@@ -133,7 +133,7 @@ class ArticleController extends Controller
             ->where('article_id', (string) $article->getKey())
             ->where('language_id', (int) $article->language_original_id)
             ->where('status_review', 'A')
-            ->where('status_record_lifecycle', 'ACT')
+            ->whereSparseDefault('status_record_lifecycle', 'ACT')
             ->firstOrFail();
 
         Article::query()->where('_id', $article->getKey())->increment('view_count');
@@ -198,7 +198,7 @@ class ArticleController extends Controller
             'search' => $search,
             'categories' => ArticleCategory::cases(),
             'audiences' => ArticleAudience::cases(),
-            'popularTags' => Tag::query()->where('status_record_lifecycle', 'ACT')->orderByDesc('usage_count')->limit(18)->get(),
+            'popularTags' => Tag::query()->whereSparseDefault('status_record_lifecycle', 'ACT')->orderByDesc('usage_count')->limit(18)->get(),
         ]);
     }
 

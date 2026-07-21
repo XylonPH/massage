@@ -2,6 +2,7 @@
 
 namespace App\Models\Article;
 
+use App\Models\Concerns\HasSparseDefaults;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model;
@@ -15,6 +16,8 @@ use MongoDB\Laravel\Eloquent\Model;
 ])]
 class ArticleBody extends Model
 {
+    use HasSparseDefaults;
+
     protected $connection = 'mongodb';
 
     protected $table = 'article_body';
@@ -41,6 +44,23 @@ class ArticleBody extends Model
             'reading_duration_spoken' => 'integer',
             'reviewed_at' => 'datetime',
             'approved_at' => 'datetime',
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    protected function sparseDefaults(): array
+    {
+        return [
+            'article_body' => '',
+            'article_plain_text' => '',
+            'word_count' => 0,
+            'reading_duration_visual' => null,
+            'reading_duration_spoken' => null,
+            'translator_user_id_list' => [],
+            'source_article_body_id' => null,
+            'method_translation' => null,
+            'status_review' => 'P',
+            'status_record_lifecycle' => 'ACT',
         ];
     }
 }

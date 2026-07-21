@@ -2,6 +2,7 @@
 
 namespace App\Models\Article;
 
+use App\Models\Concerns\HasSparseDefaults;
 use App\Support\Article\ArticleLanguage;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -24,6 +25,8 @@ use MongoDB\Laravel\Eloquent\Model;
 ])]
 class Article extends Model
 {
+    use HasSparseDefaults;
+
     protected $connection = 'mongodb';
 
     protected $table = 'article_main';
@@ -59,13 +62,50 @@ class Article extends Model
         ];
     }
 
+    /** @return array<string, mixed> */
+    protected function sparseDefaults(): array
+    {
+        return [
+            'target_audience' => 'G',
+            'tag_id_list' => [],
+            'author_user_id_list' => [],
+            'author_credit_list' => [],
+            'article_owner_user_id_list' => [],
+            'is_anonymous' => false,
+            'editor_user_id_list' => [],
+            'reviewer_user_id_list' => [],
+            'photographer_user_id_list' => [],
+            'related_article_id_list' => [],
+            'related_organization_id_list' => [],
+            'related_establishment_id_list' => [],
+            'related_practitioner_id_list' => [],
+            'related_service_id_list' => [],
+            'related_product_id_list' => [],
+            'view_count' => 0,
+            'comment_count' => 0,
+            'save_count' => 0,
+            'share_count' => 0,
+            'reading_duration_visual' => null,
+            'reading_duration_spoken' => null,
+            'source_reference_list' => [],
+            'is_commentable' => true,
+            'is_shareable' => true,
+            'status_publication' => 'D',
+            'status_review' => 'P',
+            'visibility_scope' => 'PVT',
+            'level_nsfw' => 'N',
+            'status_record_lifecycle' => 'ACT',
+            'record_note' => [],
+        ];
+    }
+
     public function scopePubliclyVisible(Builder $query): Builder
     {
         return $query
             ->where('status_publication', 'P')
             ->where('status_review', 'A')
             ->where('visibility_scope', 'PUB')
-            ->where('status_record_lifecycle', 'ACT')
+            ->whereSparseDefault('status_record_lifecycle', 'ACT')
             ->where(function (Builder $query): void {
                 $query->whereNull('scheduled_publish_at')->orWhere('scheduled_publish_at', '<=', now());
             })

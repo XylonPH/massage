@@ -2,6 +2,7 @@
 
 namespace App\Models\Article;
 
+use App\Models\Concerns\HasSparseDefaults;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model;
@@ -15,6 +16,8 @@ use MongoDB\Laravel\Eloquent\Model;
 ])]
 class ArticleRevision extends Model
 {
+    use HasSparseDefaults;
+
     protected $connection = 'mongodb';
 
     protected $table = 'article_revision';
@@ -46,6 +49,18 @@ class ArticleRevision extends Model
             'submitted_at' => 'datetime',
             'reviewed_at' => 'datetime',
             'approved_at' => 'datetime',
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    protected function sparseDefaults(): array
+    {
+        return [
+            'revision_number' => 1,
+            'revision_note' => null,
+            'review_note' => null,
+            'status_review' => 'P',
+            'status_record_lifecycle' => 'ACT',
         ];
     }
 }

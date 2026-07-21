@@ -8,6 +8,7 @@ use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
 use App\Models\User;
+use App\Support\Article\PendingArticleRevisions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Tests\Concerns\InteractsWithMongoUsers;
@@ -60,6 +61,18 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertGreaterThan(0, $body->word_count);
         $this->assertSame(1, ArticleRevision::query()->where('article_id', (string) $article->getKey())->count());
         $this->assertSame(2, Tag::query()->count());
+
+        $this->assertArrayNotHasKey('status_publication', $article->getAttributes());
+        $this->assertArrayNotHasKey('status_review', $article->getAttributes());
+        $this->assertArrayNotHasKey('visibility_scope', $article->getAttributes());
+        $this->assertArrayNotHasKey('level_nsfw', $article->getAttributes());
+        $this->assertArrayNotHasKey('is_commentable', $article->getAttributes());
+        $this->assertArrayNotHasKey('is_shareable', $article->getAttributes());
+        $this->assertArrayNotHasKey('status_record_lifecycle', $body->getAttributes());
+        $this->assertSame(['text' => 'A Complete Article Draft'], $article->article_title['eng']);
+        $tag = Tag::query()->firstOrFail();
+        $this->assertSame(['text' => $tag->localized('tag_title')], $tag->tag_title['eng']);
+        $this->assertArrayNotHasKey('status_record_lifecycle', $tag->getAttributes());
     }
 
     public function test_editor_is_integrated_with_workspace_and_supports_rich_and_html_modes(): void
@@ -146,6 +159,12 @@ class ArticleWorkspaceTest extends TestCase
             ->assertRedirect(route('workspace.article.submitted'));
         $latest = ArticleRevision::query()->where('article_id', (string) $article->getKey())->orderByDesc('revision_number')->firstOrFail();
         $this->assertNotNull($latest->submitted_at);
+        $this->assertArrayNotHasKey('status_review', $latest->getAttributes());
+        $this->assertCount(1, PendingArticleRevisions::all());
+        $this->assertSame((string) $article->getKey(), (string) PendingArticleRevisions::all()->first()->article_id);
+        $this->actingAs($user)->get('/workspace/article/submitted')
+            ->assertOk()
+            ->assertSee('Updated Article Title');
 
         $this->actingAs($user)->put('/workspace/article/'.$article->getKey(), $this->validPayload([
             'article_title' => 'A New Unsubmitted Revision',

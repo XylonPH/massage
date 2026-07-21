@@ -417,12 +417,12 @@
             {
                 "option_code": "U",
                 "option_label": "Unverified",
-                "option_description": "Select Unverified for Verification Status."
+                "option_description": "Unverified means the record or field has not been verified."
             },
             {
                 "option_code": "D",
                 "option_label": "Disputed",
-                "option_description": "Select Disputed for Verification Status."
+                "option_description": "Disputed means the record or field has been challenged and is under review."
             }
         ]
     },

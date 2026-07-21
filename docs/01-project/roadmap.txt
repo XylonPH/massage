@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.95
+Document Version: 1.96
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -388,9 +388,11 @@ Current Article foundation checkpoint (2026-07-21):
   public credit, choose anonymous public attribution, and submit the latest revision for review;
 - shared Article owners can revise, inspect history, submit, and unpublish; the original creator
   controls owner membership and always remains an owner;
-- authorized editorial users can record a proposed future publication time, but editorial review
-  decisions, final publication controls, and the scheduled publishing job remain Phase 6 dependencies
-  of the editorial/admin capabilities, while reactions, comments, saves, media management, analytics,
+- authorized editorial users can record a proposed future publication time and use the initial
+  permission-gated Article queue to approve and publish, request changes, or reject the latest
+  submitted revision; advanced comparison, assignment, readiness, second-approval, and the scheduled
+  publishing job remain Phase 6 dependencies of the editorial/admin capabilities, while reactions,
+  comments, saves, media management, analytics,
   translations, corrections, and archive operations remain later Article increments.
 
 News:

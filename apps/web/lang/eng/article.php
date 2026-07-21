@@ -143,6 +143,8 @@ return [
     'submit_review' => 'Submit for editorial review',
     'draft_saved' => 'Article draft saved.',
     'submitted_for_review' => 'Article submitted for editorial review.',
+    'awaiting_editorial_review' => 'This revision is awaiting editorial review. Saving changes creates a new draft revision and withdraws it from the submitted view.',
+    'already_submitted' => 'This Article revision is already awaiting editorial review.',
     'published_read_only' => 'Published articles are read-only in the contributor workspace.',
     'unpublish' => 'Unpublish article',
     'unpublished_successfully' => 'The article is no longer public and can be revised again.',
