@@ -1147,6 +1147,7 @@ use App\Models\Establishment;
 use App\Rules\PublicContactUrl;
 use App\Support\Taxonomy\TaxonomyOptions;
 use Illuminate\Contracts\View\View;
+use Illuminate\Validation\Rule;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -1181,7 +1182,11 @@ class EstablishmentForm extends Component
         'landmark_list' => ['landmark_name' => '', 'walking_duration_minute' => null],
         'contact_channel_list' => ['type_contact_channel' => '', 'type_contact_number' => '', 'contact_label' => '', 'contact_value' => '', 'contact_url' => '', 'status_contact_channel' => ''],
         'treatment_area_list' => ['treatment_area_name' => '', 'type_treatment_area' => '', 'level_treatment_privacy' => '', 'type_treatment_capacity' => '', 'treatment_area_note' => ''],
+        'operating_hours' => ['day_of_week' => '', 'open_time' => null, 'close_time' => null],
     ];
+
+    /** Fixed value list for the operating_hours day_of_week select — not taxonomy-driven, mirrors the Filament source form verbatim. */
+    private const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Public Holidays'];
 
     public function mount(?string $establishment = null): void
     {
@@ -1207,6 +1212,14 @@ class EstablishmentForm extends Component
 
         foreach (self::REPEATERS as $field => $blank) {
             $this->state[$field] = $record?->getAttribute($field) ?? [];
+        }
+
+        // Filament's source form defaulted new establishments to 7 blank operating_hours rows
+        // (Monday–Sunday); replicate that so the Livewire form doesn't regress the authoring experience.
+        if ($record === null) {
+            foreach (array_slice(self::DAYS_OF_WEEK, 0, 7) as $day) {
+                $this->state['operating_hours'][] = ['day_of_week' => $day, 'open_time' => null, 'close_time' => null];
+            }
         }
     }
 
@@ -1245,6 +1258,9 @@ class EstablishmentForm extends Component
             'state.contact_channel_list.*.contact_url' => ['required', 'string', 'max:2048', new PublicContactUrl],
             'state.treatment_area_list.*.treatment_area_name' => ['required', 'string', 'max:255'],
             'state.treatment_area_list.*.treatment_area_note' => ['nullable', 'string', 'max:255'],
+            'state.operating_hours.*.day_of_week' => ['required', 'string', Rule::in(self::DAYS_OF_WEEK)],
+            'state.operating_hours.*.open_time' => ['nullable', 'date_format:H:i'],
+            'state.operating_hours.*.close_time' => ['nullable', 'date_format:H:i'],
         ];
     }
 
@@ -1301,17 +1317,22 @@ class EstablishmentForm extends Component
         return view('livewire.workspace.editorial.establishment-form', [
             'taxonomy' => $taxonomy,
             'lifecycleOptions' => collect(\App\Enums\RecordLifecycleStatus::cases())->mapWithKeys(fn ($c) => [$c->value => $c->name])->all(),
+            'dayOfWeekOptions' => collect(self::DAYS_OF_WEEK)->mapWithKeys(fn ($d) => [$d => $d])->all(),
         ])->title(__('editorial.establishments'));
     }
 }
 ```
 
-Form view `establishment-form.blade.php` — six tab panels inside `<div x-data="{ tab: 'identity' }">` with `<x-editorial.tab-bar :tabs="[...]"/>`, mirroring the Filament tab layout exactly (field-per-tab mapping below). Every field uses the Task 3 primitives; selects get `:options="$taxonomy['<field>']"` with `:placeholder="__('editorial.select_placeholder')"`; multi-selects use `<x-form.toggle-group :options="$taxonomy['<field>']" model="state.<field>" />`. Tab-to-field mapping (same as the Filament form):
+Form view `establishment-form.blade.php` — eight tab panels inside `<div x-data="{ tab: 'identity' }">` with `<x-editorial.tab-bar :tabs="[...]"/>`, mirroring the current Filament tab layout exactly — Filament's source form (`app/Filament/Editorial/Resources/Establishments/Schemas/EstablishmentForm.php`, as of the `operating_hours` addition) now splits the old combined Location tab into separate Location and Contact tabs and adds a dedicated Operating Hours tab; port that structure, not the older 6-tab layout. Every field uses the Task 3 primitives; selects get `:options="$taxonomy['<field>']"` with `:placeholder="__('editorial.select_placeholder')"`; multi-selects use `<x-form.toggle-group :options="$taxonomy['<field>']" model="state.<field>" />`. Tab-to-field mapping (same as the Filament form):
 
 1. `identity`: display_name_eng (input, required), short_description_eng (textarea rows 3), description_eng (textarea rows 8), email, contact_number, status_record_lifecycle (select `$lifecycleOptions`).
 2. `classification` (2-col grid): type_spa (required), level_spa_market, type_physical_setting, type_establishment_operation, status_establishment (required) — all selects.
 3. `access`: mode_service_delivery (toggle-group), mode_access (select), type_client_access (select), target_client_focus (toggle-group).
-4. `location`: address_public (textarea rows 2, full width), coordinate_latitude + coordinate_longitude (2-col, `type="number" step="any"`), direction_note_eng (textarea), parking_note_eng (textarea), then the two repeaters:
+4. `location`: address_public (textarea rows 2, full width), coordinate_latitude + coordinate_longitude (2-col, `type="number" step="any"`), direction_note_eng (textarea), parking_note_eng (textarea), then the landmark_list repeater only.
+5. `contact`: contact_channel_list repeater only (moved out of `location`).
+6. `hours`: operating_hours repeater — day_of_week (`<x-form.select :options="$dayOfWeekOptions" />`, required), open_time and close_time (`<x-form.input type="time" />`), 3-column row layout, no add/remove needed to feel required (still wire the generic addRow/removeRow so extra custom hours, e.g. a second Public Holidays entry, can be added) — see the operating-hours repeater markup below.
+7. `facilities`: treatment_area_list repeater (fields: treatment_area_name input required, type_treatment_area / level_treatment_privacy / type_treatment_capacity selects, treatment_area_note input), then 3-col grid of the eleven facility selects (room_types + bed_mat_chair_setup as toggle-groups; the nine availability/information fields as selects).
+8. `amenities`: amenities toggle-group, accessibility_information toggle-group.
 
 Repeater markup pattern (landmark example — contact channels and treatment areas repeat this pattern with their fields):
 
@@ -1333,8 +1354,28 @@ Repeater markup pattern (landmark example — contact channels and treatment are
 </div>
 ```
 
-5. `facilities`: treatment_area_list repeater (fields: treatment_area_name input required, type_treatment_area / level_treatment_privacy / type_treatment_capacity selects, treatment_area_note input), then 3-col grid of the eleven facility selects (room_types + bed_mat_chair_setup as toggle-groups; the nine availability/information fields as selects).
-6. `amenities`: amenities toggle-group, accessibility_information toggle-group.
+Operating-hours repeater markup (same structural pattern, three fields per row, day select instead of a free-text name):
+
+```blade
+<div class="space-y-3">
+    <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.operating_hours') }}</p>
+    @foreach ($state['operating_hours'] as $i => $row)
+        <div class="grid gap-3 rounded-xl border border-ink-100 p-3 sm:grid-cols-[1fr_1fr_1fr_auto] dark:border-ink-800" wire:key="hours-{{ $i }}">
+            <x-form.field :label="__('editorial.day_of_week')" :error="$errors->first('state.operating_hours.'.$i.'.day_of_week')">
+                <x-form.select wire:model="state.operating_hours.{{ $i }}.day_of_week" :options="$dayOfWeekOptions" :placeholder="__('editorial.select_placeholder')" />
+            </x-form.field>
+            <x-form.field :label="__('editorial.open_time')" :error="$errors->first('state.operating_hours.'.$i.'.open_time')">
+                <x-form.input wire:model="state.operating_hours.{{ $i }}.open_time" type="time" />
+            </x-form.field>
+            <x-form.field :label="__('editorial.close_time')" :error="$errors->first('state.operating_hours.'.$i.'.close_time')">
+                <x-form.input wire:model="state.operating_hours.{{ $i }}.close_time" type="time" />
+            </x-form.field>
+            <button type="button" wire:click="removeRow('operating_hours', {{ $i }})" class="self-end rounded-lg border border-ink-200 px-3 py-2 text-sm font-semibold text-ink-500 transition hover:border-ember-300 hover:text-ember-600 dark:border-ink-700 dark:text-ink-400">{{ __('editorial.remove') }}</button>
+        </div>
+    @endforeach
+    <button type="button" wire:click="addRow('operating_hours')" class="rounded-lg border border-dashed border-ink-300 px-4 py-2 text-sm font-semibold text-ink-600 transition hover:border-ember-400 hover:text-ember-600 dark:border-ink-600 dark:text-ink-300">{{ __('editorial.add_row') }}</button>
+</div>
+```
 
 Lang additions:
 
@@ -1342,7 +1383,9 @@ Lang additions:
 'tab_identity' => 'Identity',
 'tab_classification' => 'Classification',
 'tab_access' => 'Access & delivery',
-'tab_location' => 'Location & contact',
+'tab_location' => 'Location',
+'tab_contact' => 'Contact',
+'tab_hours' => 'Operating hours',
 'tab_facilities' => 'Facilities',
 'tab_amenities' => 'Amenities & accessibility',
 'select_placeholder' => '— Select —',
@@ -1351,6 +1394,10 @@ Lang additions:
 'landmarks' => 'Nearby landmarks',
 'landmark_name' => 'Landmark name',
 'walking_minutes' => 'Walking time (minutes)',
+'operating_hours' => 'Regular operating hours',
+'day_of_week' => 'Day',
+'open_time' => 'Opening time',
+'close_time' => 'Closing time',
 'contact_channels' => 'Public business contact channels',
 'treatment_areas' => 'Treatment areas',
 ```
@@ -1381,12 +1428,46 @@ public function test_landmark_repeater_rows_persist(): void
 
 (Replace `'DAY'`/`'OPR'` with real option codes from `TaxonomyOptions::for('type_spa')` / `for('status_establishment')` — look them up in `data/taxonomy/massage_nexus/establishment_classification.json` while writing the test; validation only requires non-empty strings, so any real code works.)
 
-- [ ] **Step 1: Write `EstablishmentCrudTest`. Run: expected FAIL.**
+Add a second repeater round-trip test for the new field, mirroring the landmark one:
+
+```php
+public function test_new_establishment_defaults_to_seven_operating_hours_rows(): void
+{
+    $user = $this->editor();
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+        ->assertCount('state.operating_hours', 7)
+        ->assertSet('state.operating_hours.0.day_of_week', 'Monday');
+}
+
+public function test_operating_hours_persist(): void
+{
+    $user = $this->editor();
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+        ->set('state.display_name_eng', 'Calm Springs')
+        ->set('state.type_spa', 'DAY')
+        ->set('state.status_establishment', 'OPR')
+        ->set('state.operating_hours.0.open_time', '09:00')
+        ->set('state.operating_hours.0.close_time', '18:00')
+        ->call('save');
+
+    $record = Establishment::query()->first();
+    $this->assertSame('09:00', $record->operating_hours[0]['open_time']);
+    $this->assertSame('18:00', $record->operating_hours[0]['close_time']);
+}
+```
+
+(Same `'DAY'`/`'OPR'` placeholder note applies. `assertCount` on a Livewire property asserts the array count.)
+
+- [ ] **Step 1: Write `EstablishmentCrudTest`, including the two operating-hours tests above. Run: expected FAIL.**
 - [ ] **Step 2: Implement `EstablishmentIndex` (Task 4 pattern, search `display_name.eng`). Run index tests: PASS.**
-- [ ] **Step 3: Implement `EstablishmentForm` component (code above).**
-- [ ] **Step 4: Implement `establishment-form.blade.php` per the tab mapping. Add routes (`/establishment/new` → `establishment.create`, `/establishment/{establishment}/edit` → `establishment.edit`) and lang keys.**
+- [ ] **Step 3: Implement `EstablishmentForm` component (code above, including the `operating_hours` repeater entry, `DAYS_OF_WEEK` constant, the 7-row default in `mount()`, and the validation rules).**
+- [ ] **Step 4: Implement `establishment-form.blade.php` per the 8-tab mapping (including the split Location/Contact tabs and the new Operating Hours tab with its repeater markup). Add routes (`/establishment/new` → `establishment.create`, `/establishment/{establishment}/edit` → `establishment.edit`) and lang keys.**
 - [ ] **Step 5: Run: `php artisan test --filter=EstablishmentCrudTest` — expected PASS. Full suite PASS.**
-- [ ] **Step 6: Manual check: create an establishment through the browser exercising all six tabs and all three repeaters; verify dark mode rendering of tabs/repeaters/toggle groups.**
+- [ ] **Step 6: Manual check: create an establishment through the browser exercising all eight tabs and all four repeaters (landmarks, contact channels, treatment areas, operating hours — confirming the 7-row default appears on a new record); verify dark mode rendering of tabs/repeaters/toggle groups.**
 - [ ] **Step 7: Commit**
 
 ```bash
