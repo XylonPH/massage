@@ -161,7 +161,9 @@ Route::prefix('workspace/editorial')
         Route::get('/establishment', EstablishmentIndex::class)->name('establishment.index');
         Route::get('/service', ServiceIndex::class)->name('service.index');
         Route::get('/quote', QuoteIndex::class)->name('quote.index');
-        // Additional Establishment/Service/Quote routes are added by later tasks.
+        Route::get('/quote/new', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.create');
+        Route::get('/quote/{quote}/edit', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.edit');
+        // Additional Establishment/Service routes are added by later tasks.
     });
 
 Route::middleware('guest')->group(function () {
