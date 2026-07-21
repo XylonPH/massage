@@ -1,5 +1,5 @@
 Title: Massage Nexus Features
-Document Version: 2.83
+Document Version: 2.93
 Date Created: 2026-06-30
 Revision Date: 2026-07-21
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
@@ -1977,9 +1977,16 @@ This inventory groups the feature list into a cleaner logical structure while pr
 
 14.4 Contribution Workflow
 --------------------------
+- Shared Edit System contract separating accepted records, drafts, contributions, revisions,
+  moderation cases, and append-only audit events
+- Permission-, scope-, target-, action-, and field-aware direct versus reviewed editing
+- Stable granular Change Operations with base revision, proposed value, source, validation,
+  conflict, and per-operation review decisions
 - Contribution approval workflow
 - Contribution rejection reason
 - Contribution edit history
+- Optimistic concurrency, selective approval, atomic application, idempotent retry, and restoration
+- Private draft and autosave recovery without permanent revision noise
 - Contributor credit
 - Contributor points
 - Contributor badges

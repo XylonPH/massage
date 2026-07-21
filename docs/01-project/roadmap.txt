@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.84
+Document Version: 1.94
 Date Created: 2026-07-16
 Revision Date: 2026-07-21
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -209,6 +209,14 @@ Core data:
 - normalized services separated from provider menu items and therapist capabilities;
 - status, history, move, rename, closure, dispute, duplicate, merge, and archival behavior;
 - media, source, translation, revision, and audit relationships.
+
+Shared Edit System delivery inside Phase 4:
+- foundation: private drafts, basic direct and suggested edits, validation, scoped permission,
+  accepted revision creation, append-only audit, and initial Service and establishment editing;
+- review and evidence: stable granular Change Operations, source and provenance, optimistic
+  conflicts, reviewer assignment, selective approval, translation integration, and media editing;
+- advanced operations: merge and restore, bounded bulk edit and import, API and system edits,
+  advanced comparison, idempotent asynchronous application, and attributable AI assistance.
 
 Version 1.00 spa slice:
 - persistent establishment_main records backed by MongoDB rather than temporary sample content;
