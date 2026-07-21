@@ -142,7 +142,14 @@ class ArticleController extends Controller
             'submitted_at' => now(),
             'submitted_by_user_id' => (string) $request->user()->getKey(),
             'status_review' => 'P',
-        ])->save();
+        ]);
+        $revision->unset(['reviewed_at', 'reviewed_by_user_id', 'review_note', 'approved_at', 'approved_by_user_id']);
+        $revision->save();
+
+        $body->forceFill(['status_review' => 'P']);
+        $body->unset(['reviewed_at', 'reviewed_by_user_id', 'approved_at', 'approved_by_user_id']);
+        $body->save();
+
         $article->forceFill(['status_review' => 'P'])->save();
 
         return redirect()->route('workspace.article.submitted')->with('status', __('article.submitted_for_review'));

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Article;
 
+use App\Livewire\Workspace\Editorial\ArticleReview;
 use App\Models\AccessAssignment;
 use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
@@ -11,6 +12,7 @@ use App\Models\User;
 use App\Support\Article\PendingArticleRevisions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
 
@@ -171,6 +173,42 @@ class ArticleWorkspaceTest extends TestCase
         ]))->assertRedirect();
         $this->actingAs($user)->get('/workspace/article/draft')->assertOk()->assertSee('A New Unsubmitted Revision');
         $this->actingAs($user)->get('/workspace/article/submitted')->assertOk()->assertDontSee('A New Unsubmitted Revision');
+    }
+
+    public function test_resubmitting_a_revision_after_requested_changes_reaches_editorial_queue(): void
+    {
+        $author = User::factory()->create();
+        $editor = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $editor->getKey(),
+            'role_workspace' => 'EAD',
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'effective_at' => now()->subMinute(),
+        ]);
+
+        $this->actingAs($author)->post('/workspace/article', $this->validPayload());
+        $article = Article::query()->firstOrFail();
+        $this->actingAs($author)->post('/workspace/article/'.$article->getKey().'/submit')
+            ->assertRedirect(route('workspace.article.submitted'));
+
+        Livewire::actingAs($editor)
+            ->test(ArticleReview::class, ['article' => (string) $article->getKey()])
+            ->set('reviewNote', 'Please clarify the second paragraph.')
+            ->call('requestChanges')
+            ->assertRedirect(route('workspace.editorial.article.index'));
+        $this->assertSame('N', $article->refresh()->status_review);
+        $this->assertSame(0, PendingArticleRevisions::all()->count());
+
+        // Author resubmits the same revision as-is, without saving a new draft first.
+        $this->actingAs($author)->post('/workspace/article/'.$article->getKey().'/submit')
+            ->assertRedirect(route('workspace.article.submitted'));
+
+        $this->assertCount(1, PendingArticleRevisions::all());
+        $this->assertSame((string) $article->getKey(), (string) PendingArticleRevisions::all()->first()->article_id);
+        $this->actingAs($editor)->get('/workspace/editorial/article')->assertOk()->assertSee('A Complete Article Draft');
+        $this->actingAs($author)->get('/workspace/article/submitted')->assertOk()->assertSee('A Complete Article Draft');
+        $this->actingAs($author)->get('/workspace/article/draft')->assertOk()->assertDontSee('A Complete Article Draft');
     }
 
     public function test_member_cannot_edit_another_authors_article(): void
