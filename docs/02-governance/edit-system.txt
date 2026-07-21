@@ -397,9 +397,9 @@ boundary. It must retain:
 - reviewer notes and submitter-visible response where appropriate;
 - creation, update, submission, decision, and final-disposition times.
 
-Each independently reviewable Change Operation must retain:
+Each independently reviewable Change Operation must retain a structure similar to JSON Patch (RFC 6902) for stability, including:
 
-- stable field or embedded-item path;
+- stable field or embedded-item path (e.g., "/address_public");
 - operation type such as add, replace, remove, relate, reorder, merge, or restore;
 - base or old value where safe and necessary;
 - proposed value;
@@ -465,7 +465,9 @@ as successfully applied merely because review approval occurred.
 ================================================================================
 
 For an ordinary synchronous approval or direct edit, the following must succeed as one database
-transaction or equivalent recoverable atomic unit:
+transaction or equivalent recoverable atomic unit. Because the primary data store is MongoDB, the
+production environment must be configured as a Replica Set to support these multi-document ACID
+transactions.
 
 1. recheck authorization, target state, and base revision;
 2. validate the accepted operations against the current field contract;
@@ -518,7 +520,8 @@ field-level authorization and redaction.
 Optimistic concurrency control is required for shared drafts, submissions, accepted records, and
 review decisions that can be changed by more than one actor.
 
-The server must compare the submitted base revision or concurrency token with the current state at:
+The server must compare the submitted base revision or concurrency token (e.g., the exact UTC
+`$updated_at` timestamp or a dedicated integer `version` field) with the current state at:
 
 - deliberate draft save where collaborators share a draft;
 - submission;
@@ -621,7 +624,10 @@ Archive
 Retains the record internally but removes it from ordinary active use.
 
 Soft Remove
-Hides the record while preserving authorized recovery.
+Hides the record while preserving authorized recovery. Implementations must use Laravel's native
+`SoftDeletes` trait (`deleted_at` column) to ensure consistent framework support. Soft deletion
+acts independently of the `status_record_lifecycle` field; a soft-deleted record is hidden from
+normal queries regardless of its lifecycle state.
 
 Restrict
 Limits access without asserting that the record never existed.
@@ -675,6 +681,10 @@ AI must not:
 - change verification, access, moderation, legal, or erasure decisions without human authority;
 - send restricted or personal data to an unapproved provider;
 - hide the model-assisted origin of a proposal from authorized reviewers.
+
+When AI is utilized to summarize or compare proposed changes or audit logs, the server must redact
+all PII (Personally Identifiable Information) and restricted fields before constructing the prompt
+for any externally hosted LLM.
 
 AI assistance must retain the applicable method, actor or Neural Agent identity, source inputs or
 references where permitted, model/provider context required by the Runtime AI System, and human
@@ -803,10 +813,10 @@ Important user-facing workflows require manual verification in addition to autom
 - Changelog, revision history, audit, moderation history, and temporary working state are distinct.
 
 ================================================================================
-27. OPEN DECISIONS
+27. OPEN DECISIONS (RESOLVED AND PENDING)
 ================================================================================
 
-- final embedded Change Operation schema for contribution_main;
+- final embedded Change Operation schema for contribution_main: Adopt JSON Patch (RFC 6902) format;
 - detailed revision_main structure and the domain list using specialized revisions;
 - retention periods for autosaves, drafts, rejected evidence, IP/device audit context, and exports;
 - exact field-level direct-edit matrices for each domain;
