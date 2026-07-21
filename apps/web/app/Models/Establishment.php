@@ -19,18 +19,6 @@ class Establishment extends Model
 
     public $incrementing = false;
 
-    protected $attributes = [
-        'mode_service_delivery' => '[]',
-        'target_client_focus' => '[]',
-        'landmark_list' => '[]',
-        'contact_channel_list' => '[]',
-        'treatment_area_list' => '[]',
-        'operating_hours' => '[]',
-        'amenity_list' => '[]',
-        'accessibility_feature_list' => '[]',
-        'payment_method_list' => '[]',
-        'status_record_lifecycle' => 'ACT',
-    ];
 
     protected $fillable = [
         '_id',
