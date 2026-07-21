@@ -58,4 +58,24 @@ class EditorialAccessTest extends TestCase
             ->assertSee(route('workspace.editorial.service.index', [], false), false)
             ->assertSee(route('workspace.editorial.quote.index', [], false), false);
     }
+
+    public function test_moderation_and_system_placeholders_are_permission_gated(): void
+    {
+        $member = User::factory()->create();
+        $founder = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $founder->getKey(),
+            'role_workspace' => 'FND',
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'effective_at' => now()->subMinute(),
+        ]);
+
+        foreach (['moderation', 'system'] as $area) {
+            $this->actingAs($member)->get("/workspace/{$area}")->assertForbidden();
+            $this->actingAs($founder)->get("/workspace/{$area}")
+                ->assertOk()
+                ->assertSee(__('workspace.admin_placeholder_text'));
+        }
+    }
 }

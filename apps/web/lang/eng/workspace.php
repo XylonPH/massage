@@ -47,6 +47,7 @@ return [
     'admin_moderation_text' => 'Review community and directory submissions that require moderation.',
     'admin_system_title' => 'System administration',
     'admin_system_text' => 'Manage protected platform configuration and operational records.',
+    'admin_placeholder_text' => 'This area is being prepared. Its tools will appear here as they are built.',
 
     'profile_title' => 'Public Profile',
     'profile_intro' => 'Control how you appear in reviews, discussions, and your future public profile page. Your username stays your permanent handle.',

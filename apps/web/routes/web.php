@@ -169,6 +169,20 @@ Route::prefix('workspace/editorial')
         Route::get('/quote/{quote}/edit', \App\Livewire\Workspace\Editorial\QuoteForm::class)->name('quote.edit');
     });
 
+Route::view('/workspace/moderation', 'workspace.admin-placeholder', [
+        'areaKey' => 'moderation',
+        'areaTitle' => __('workspace.admin_moderation_title'),
+    ])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.moderation.access'])
+    ->name('workspace.moderation.home');
+
+Route::view('/workspace/system', 'workspace.admin-placeholder', [
+        'areaKey' => 'system',
+        'areaTitle' => __('workspace.admin_system_title'),
+    ])
+    ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.system.access'])
+    ->name('workspace.system.home');
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
