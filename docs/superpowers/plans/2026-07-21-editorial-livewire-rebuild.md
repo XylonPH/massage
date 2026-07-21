@@ -6,7 +6,7 @@
 
 **Architecture:** Full-page Livewire 3 components under `app/Livewire/Workspace/Editorial/`, rendered in the `layouts.workspace` shell from Plan A (`docs/superpowers/plans/2026-07-21-workspace-shell-and-theme.md` — must be complete first). Access is enforced by a route middleware checking `WorkspaceAccess` permissions. Taxonomy dropdown options come from a shared `TaxonomyOptions` support class. Filament is deleted last, once all replacement tests pass. Spec: `docs/superpowers/specs/2026-07-21-workspace-unification-design.md`.
 
-**Tech Stack:** Laravel 13, Livewire 3 (bundles Alpine.js for tabs/confirm dialogs), mongodb/laravel-mongodb models, Tailwind v4, PHPUnit.
+**Tech Stack:** Laravel 13, Livewire 4 (installed as `^4.1` — Filament 5.7's own requirement forces this over the originally-planned v3; verified during B1 that `#[Url]`, `WithPagination`, `redirectRoute(..., navigate: true)`, `wire:navigate`, and `wire:confirm` are all present and unchanged in 4.3.3, so every later task's example code remains valid as written), bundles Alpine.js for tabs/confirm dialogs, mongodb/laravel-mongodb models, Tailwind v4, PHPUnit.
 
 ## Global Constraints
 
