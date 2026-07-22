@@ -1,19 +1,13 @@
-Massage Nexus Review Writing Guide
-==================================
-
-Field            | Value
------------------+-----------------------------------
-Title            | Massage Nexus Review Writing Guide
-Document Version | 1.84
-Date Created     | 2026-07-05
-Revision Date    | 2026-07-22
-
-Document Description
---------------------
-
-This document defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System. It is separate from the Article Writing guide because reviews are experience-based, while articles are topic-based editorial content.
-
-This is not the public user guide for how to write reviews. A shorter public-facing guide may be created later for normal users, reviewers, business owners, practitioners, and product owners.
+Title: Massage Nexus Review Writing Guide
+Document Version: 1.84
+Date Created: 2026-07-05
+Revision Date: 2026-07-22
+Document Description: Defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System.
+Related Documents:
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/09-content/article-writing.txt
+- docs/09-content/quote-system.txt
 
 Reviews use the separate review_main domain. They are not stored in article_main, news_main, or a
 generic content_main collection and do not require a type_content discriminator. Shared reactions,

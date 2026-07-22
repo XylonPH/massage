@@ -42,8 +42,7 @@ Rules:
   platform voice;
 - a quote with unresolved attribution doubt should remain unpublished rather than published with
   a guessed source;
-- translated quote text follows the Translation System; the original language remains preserved.
-- currently, quotes are in English only; whether to translate or use language-specific quotes is pending future decision.
+- translated quote text follows docs/13-localization/translation-system.txt; the original language remains preserved in language_original_id. When a quote lacks a translation in the visitor's UI locale, fallback logic presents the original language or English fallback before hiding the module.
 
 ================================================================================
 3. PLACEMENT AND ROTATION

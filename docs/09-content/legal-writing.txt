@@ -3,6 +3,10 @@ Document Version: 1.00
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
+Related Documents:
+- docs/18-policy/
+- docs/09-content/news-writing.txt
+- docs/09-content/article-writing.txt
 
 ================================================================================
 1. PURPOSE

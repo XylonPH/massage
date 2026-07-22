@@ -29,6 +29,8 @@ amenity_list
 amount
 amount_paid
 animation_config
+announcement_body
+announcement_title
 approved_at
 approved_by_user_id
 archived_at
@@ -117,6 +119,7 @@ display_order
 display_start_date
 dispute_opened_at
 dispute_resolved_at
+document_body
 document_id_list
 document_number
 document_number_masked
@@ -202,6 +205,7 @@ interface_language_id
 internal_note
 internal_role
 interval_list
+is_active_version
 is_animated
 is_anonymous
 is_appealed
@@ -223,6 +227,7 @@ is_locked
 is_mandatory
 is_marketing_email_opt_in
 is_optional
+is_pinned
 is_primary
 is_public
 is_public_booking
@@ -319,6 +324,8 @@ mode_therapist_booking
 moderation_id
 multilingual_text
 name_variant_text
+news_body
+news_headline
 next_review_at
 normalized_service_mapping_list
 normalized_summary
@@ -377,6 +384,7 @@ proposed_data
 public_display_note
 public_note
 public_title
+publication_date
 publication_identifier
 published_at
 published_by_user_id
@@ -589,6 +597,7 @@ type_activity_result
 type_address_component
 type_address_usage
 type_allergen
+type_announcement_category
 type_area
 type_article_category
 type_author_role
@@ -681,6 +690,7 @@ type_interview
 type_journal_entry
 type_language
 type_language_scope
+type_legal_document
 type_legislature_structure
 type_license
 type_life_event
@@ -699,6 +709,7 @@ type_media_version
 type_nail_service_action
 type_name_variant
 type_narrative_pov
+type_news_category
 type_observation
 type_organization
 type_organization_establishment_relationship
@@ -818,6 +829,7 @@ validation_required
 validation_rule_list
 verified_at
 verified_by_user_id
+version_identifier
 video_title
 video_variant_list
 videographer_user_id_list
