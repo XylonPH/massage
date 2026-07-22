@@ -67,6 +67,30 @@ class ContributionValidationTest extends TestCase
             ->assertHasErrors(['state.parking_availability_list.0']);
     }
 
+    public function test_contact_channel_type_contact_number_rejects_an_unknown_code(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_number', 'NOT_A_REAL_CODE')
+            ->call('nextStep')
+            ->assertHasErrors(['state.contact_channel_list.0.type_contact_number']);
+    }
+
+    public function test_treatment_area_type_treatment_area_rejects_an_unknown_code(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->call('addRow', 'treatment_area_list')
+            ->set('state.treatment_area_list.0.type_treatment_area', 'NOT_A_REAL_CODE')
+            ->call('nextStep')
+            ->assertHasErrors(['state.treatment_area_list.0.type_treatment_area']);
+    }
+
     public function test_landmark_list_is_capped_at_twenty_rows(): void
     {
         $test = Livewire::actingAs(User::factory()->create())
