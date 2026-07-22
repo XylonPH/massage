@@ -66,15 +66,17 @@
         </x-form.field>
     </div>
 
-    <x-form.field :label="__('editorial.est_direction_note_eng')" :error="$errors->first('state.direction_note_eng')">
-        <x-form.textarea wire:model="state.direction_note_eng" rows="2" />
+    @include('livewire.workspace.establishment-form._language-switcher')
+
+    <x-form.field :label="__('editorial.est_direction_note_eng')" :error="$errors->first('state.direction_note_'.$activeLanguageTab)">
+        <x-form.textarea wire:model="state.direction_note_{{ $activeLanguageTab }}" rows="2" />
     </x-form.field>
 
     <x-form.field :label="__('editorial.est_parking_availability')">
         <x-form.toggle-group :options="$taxonomy['parking_availability']" model="state.parking_availability_list" />
     </x-form.field>
-    <x-form.field :label="__('editorial.est_parking_note_eng')" :error="$errors->first('state.parking_note_eng')">
-        <x-form.textarea wire:model="state.parking_note_eng" rows="2" />
+    <x-form.field :label="__('editorial.est_parking_note_eng')" :error="$errors->first('state.parking_note_'.$activeLanguageTab)">
+        <x-form.textarea wire:model="state.parking_note_{{ $activeLanguageTab }}" rows="2" />
     </x-form.field>
 
     <div class="space-y-3">

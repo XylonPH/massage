@@ -81,7 +81,7 @@ class DuplicateEstablishmentFinderTest extends TestCase
      * first, which doesn't exist for this shape, so it fell all the way through to
      * 'display_name.eng' at the top level, which also doesn't exist here.
      */
-    public function test_finds_a_match_using_the_current_namespaced_flat_string_contribution_shape(): void
+    public function test_finds_a_match_using_the_pre_task_17_namespaced_flat_string_contribution_shape(): void
     {
         Contribution::query()->create([
             'type_contribution' => 'ADD',
@@ -91,6 +91,38 @@ class DuplicateEstablishmentFinderTest extends TestCase
             'proposed_data' => [
                 'establishment' => [
                     'display_name' => ['eng' => 'Harbor Calm Spa'],
+                    'address_public' => 'Makati City',
+                ],
+                'contact_channel_list' => [],
+                'operating_schedule' => [],
+                'event_list' => [],
+            ],
+        ]);
+
+        $matches = (new DuplicateEstablishmentFinder)->find('Harbor Calm Spa');
+
+        $this->assertCount(1, $matches);
+        $this->assertSame('contribution', $matches->first()['source']);
+        $this->assertSame('Harbor Calm Spa', $matches->first()['display_name']);
+        $this->assertSame('Makati City', $matches->first()['address_public']);
+    }
+
+    /**
+     * Task 17 changed EstablishmentForm::submitContribution() to write
+     * proposed_data.establishment.display_name.{lang} as the guide's
+     * {text, method_translation, status_review} object rather than a flat string.
+     * This is the shape every real contribution produces from now on.
+     */
+    public function test_finds_a_match_using_the_current_namespaced_multilingual_object_contribution_shape(): void
+    {
+        Contribution::query()->create([
+            'type_contribution' => 'ADD',
+            'target_collection' => 'establishment_main',
+            'submitted_by_user_id' => 'Us7K2pQ9xR4tV8zN',
+            'status_contribution' => 'PND',
+            'proposed_data' => [
+                'establishment' => [
+                    'display_name' => ['eng' => ['text' => 'Harbor Calm Spa', 'method_translation' => 'HUM', 'status_review' => 'P']],
                     'address_public' => 'Makati City',
                 ],
                 'contact_channel_list' => [],

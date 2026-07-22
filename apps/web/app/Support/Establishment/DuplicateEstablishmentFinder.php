@@ -53,19 +53,35 @@ class DuplicateEstablishmentFinder
 
     /**
      * Resolves a pending contribution's display name across every shape it may be
-     * stored in: the current namespaced+flat-string shape produced by
-     * EstablishmentForm::submitContribution() (`establishment.display_name.eng` as a
-     * plain string) is tried first since that is what real submissions produce now,
-     * falling back to the pre-Task-15 flat shapes for any older pending contribution
-     * still sitting in PND status (`display_name.eng.text` or `display_name.eng`).
+     * stored in. Tried in newest-to-oldest order so older still-pending contributions
+     * keep matching correctly across each schema change:
+     *   1. `establishment.display_name.eng.text` — current shape (Task 17+), the
+     *      guide's {text, method_translation, status_review} object, namespaced under
+     *      'establishment' by Task 15.
+     *   2. `establishment.display_name.eng` — Task 15/16 namespaced-but-flat-string
+     *      shape (no per-language object wrapper yet).
+     *   3. `display_name.eng.text` / `display_name.eng` — pre-Task-15 shapes, not yet
+     *      namespaced under 'establishment'.
+     * Each candidate is skipped (rather than returned) when it resolves to an array,
+     * since that means the path landed one level too shallow for that shape (e.g.
+     * path 2 hitting the Task 17 object) instead of a leaf string.
      */
     private function resolveDisplayName(Contribution $contribution): string
     {
-        return (string) data_get(
-            $contribution->proposed_data,
+        foreach ([
+            'establishment.display_name.eng.text',
             'establishment.display_name.eng',
-            data_get($contribution->proposed_data, 'display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng'))
-        );
+            'display_name.eng.text',
+            'display_name.eng',
+        ] as $path) {
+            $value = data_get($contribution->proposed_data, $path);
+
+            if (is_string($value) && $value !== '') {
+                return $value;
+            }
+        }
+
+        return '';
     }
 
     private function normalize(string $name): string

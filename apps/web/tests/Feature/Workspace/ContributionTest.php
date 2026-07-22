@@ -61,7 +61,7 @@ class ContributionTest extends TestCase
         $this->assertSame('MGR', $contribution->type_establishment_relationship);
         $this->assertSame('PND', $contribution->status_contribution);
         $this->assertTrue($contribution->is_workspace_access_requested);
-        $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng'));
+        $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng.text'));
         $this->assertSame('123 Bay Street, Manila', data_get($contribution->proposed_data, 'establishment.address_public'));
         $this->assertSame(0, UserAccess::query()->where('user_id', (string) $user->getKey())->count());
     }
@@ -592,6 +592,29 @@ class ContributionTest extends TestCase
         $this->assertSame(0, Contribution::query()->count());
 
         Establishment::query()->delete();
+    }
+
+    public function test_contributor_can_submit_display_name_in_a_second_language(): void
+    {
+        $user = User::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 3)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.display_name_fil', 'Harbor Calm Spa (Filipino)')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('duplicateAcknowledged', true)
+            ->call('save');
+
+        $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
+        $this->assertSame('Harbor Calm Spa (Filipino)', data_get($contribution->proposed_data, 'establishment.display_name.fil.text'));
+        $this->assertSame('HUM', data_get($contribution->proposed_data, 'establishment.display_name.fil.method_translation'));
+        $this->assertSame('P', data_get($contribution->proposed_data, 'establishment.display_name.fil.status_review'));
+        $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng.text'));
     }
 
     public function test_duplicate_check_cannot_be_bypassed_by_setting_current_step_directly(): void

@@ -53,13 +53,19 @@ class EstablishmentForm extends Component
     /** Declared relationship options for the contribution flow; mirrors the retired simple contribution form. */
     private const RELATIONSHIP_TYPES = ['NON', 'OWN', 'INV', 'MGR', 'OPR', 'REP'];
 
-    /** Translated field -> flat English state key. */
+    /** Governed languages per docs/13-localization/language-strategy.txt, internal codes. */
+    private const LANGUAGES = ['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'];
+
+    /** Which language tab of the translatable fields is currently shown in the form; shared across the Identity and Location tabs. */
+    public string $activeLanguageTab = 'eng';
+
+    /** Translated field -> state-key prefix (language code is appended, e.g. display_name_eng, display_name_fil). */
     private const TRANSLATED_FIELDS = [
-        'display_name' => 'display_name_eng',
-        'short_description' => 'short_description_eng',
-        'description' => 'description_eng',
-        'direction_note' => 'direction_note_eng',
-        'parking_note' => 'parking_note_eng',
+        'display_name' => 'display_name',
+        'short_description' => 'short_description',
+        'description' => 'description',
+        'direction_note' => 'direction_note',
+        'parking_note' => 'parking_note',
     ];
 
     /** Scalar/plain fields copied verbatim between $state and the model. */
@@ -202,8 +208,14 @@ class EstablishmentForm extends Component
         $record = $establishment !== null ? Establishment::query()->findOrFail($establishment) : null;
 
         $this->state = [];
-        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
-            $this->state[$stateKey] = $record?->getAttribute($field)['eng'] ?? '';
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKeyPrefix) {
+            foreach (self::LANGUAGES as $lang) {
+                // Establishment model stores each translated field as a flat lang => string
+                // map (see App\Models\Establishment's $casts), not the guide's
+                // {lang: {text, method_translation, status_review}} object shape used for
+                // proposed_data.establishment in submitContribution() below.
+                $this->state["{$stateKeyPrefix}_{$lang}"] = $record?->getAttribute($field)[$lang] ?? '';
+            }
         }
 
         foreach (self::PLAIN_FIELDS as $field) {
@@ -390,9 +402,15 @@ class EstablishmentForm extends Component
             ? Establishment::query()->findOrFail($this->establishment)
             : new Establishment;
 
-        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKeyPrefix) {
             $value = $record->getAttribute($field) ?? [];
-            $value['eng'] = $this->state[$stateKey] ?: null;
+            foreach (self::LANGUAGES as $lang) {
+                if (filled($this->state["{$stateKeyPrefix}_{$lang}"] ?? null)) {
+                    $value[$lang] = $this->state["{$stateKeyPrefix}_{$lang}"];
+                } else {
+                    unset($value[$lang]);
+                }
+            }
             $record->setAttribute($field, $value);
         }
 
@@ -444,12 +462,23 @@ class EstablishmentForm extends Component
         }
 
         $establishment = [];
-        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKeyPrefix) {
             // establishment_main's structure guide names this field full_description;
             // the shared TRANSLATED_FIELDS key stays 'description' because that is the
             // literal Establishment model field used by the direct-edit save() path.
             $outputField = $field === 'description' ? 'full_description' : $field;
-            $establishment[$outputField] = ['eng' => $this->state[$stateKey] ?: null];
+
+            $translations = [];
+            foreach (self::LANGUAGES as $lang) {
+                if (filled($this->state["{$stateKeyPrefix}_{$lang}"] ?? null)) {
+                    $translations[$lang] = [
+                        'text' => $this->state["{$stateKeyPrefix}_{$lang}"],
+                        'method_translation' => 'HUM',
+                        'status_review' => 'P',
+                    ];
+                }
+            }
+            $establishment[$outputField] = $translations;
         }
         foreach (self::PLAIN_FIELDS as $field) {
             if (in_array($field, self::CONTRIBUTION_NON_ESTABLISHMENT_PLAIN_FIELDS, true)) {

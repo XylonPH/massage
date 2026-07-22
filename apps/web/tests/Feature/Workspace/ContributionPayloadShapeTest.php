@@ -159,6 +159,6 @@ class ContributionPayloadShapeTest extends TestCase
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
 
         $this->assertArrayNotHasKey('description', $contribution->proposed_data['establishment']);
-        $this->assertSame('A calm neighborhood spa.', data_get($contribution->proposed_data, 'establishment.full_description.eng'));
+        $this->assertSame('A calm neighborhood spa.', data_get($contribution->proposed_data, 'establishment.full_description.eng.text'));
     }
 }

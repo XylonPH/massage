@@ -160,4 +160,10 @@ return [
     'est_air_conditioning_information' => 'Air-Conditioning',
     'est_amenities' => 'General Amenities',
     'est_accessibility_information' => 'Accessibility Features',
+    'lang_eng' => 'English',
+    'lang_fil' => 'Filipino',
+    'lang_spa' => 'Spanish',
+    'lang_kor' => 'Korean',
+    'lang_zho_hant' => 'Chinese (Traditional)',
+    'lang_zho_hans' => 'Chinese (Simplified)',
 ];
