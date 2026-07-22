@@ -60,8 +60,12 @@
                     </div>
                     <div class="flex shrink-0 items-center gap-2.5">
                         @yield('page-actions')
-                        <a href="{{ route('home') }}" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 hover:text-ink-950 sm:block dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ink-50">
-                            {{ __('workspace.back_to_site') }}
+                        <a href="{{ route('home') }}" title="{{ __('workspace.back_to_site') }}" aria-label="{{ __('workspace.back_to_site') }}"
+                           class="inline-flex items-center justify-center rounded-xl border border-ink-200 bg-white p-2.5 text-ink-700 shadow-sm transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-600 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ink-800 dark:hover:text-ember-400">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
                         </a>
                     </div>
                 </div>

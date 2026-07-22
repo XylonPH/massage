@@ -31,7 +31,7 @@ return [
     'card_articles_text' => '{0} No articles yet.|{1} :count article.|[2,*] :count articles.',
     'card_claim_title' => 'Run a spa or practice professionally?',
     'card_claim_text' => 'Contribute an establishment and declare your relationship to it. Management access is reviewed separately before it is granted.',
-    'card_claim_action' => 'Contribute an establishment',
+    'card_claim_action' => 'Add a Spa',
     'quick_actions_title' => 'Quick actions',
     'open' => 'Open',
     'back_to_site' => 'Back to site',
