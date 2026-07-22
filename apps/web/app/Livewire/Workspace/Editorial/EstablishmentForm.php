@@ -6,6 +6,7 @@ use App\Enums\RecordLifecycleStatus;
 use App\Models\Contribution;
 use App\Models\Establishment;
 use App\Rules\PublicContactUrl;
+use App\Support\Address\AddressLookup;
 use App\Support\Taxonomy\TaxonomyOptions;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\RateLimiter;
@@ -51,7 +52,10 @@ class EstablishmentForm extends Component
 
     /** Scalar/plain fields copied verbatim between $state and the model. */
     private const PLAIN_FIELDS = [
-        'email', 'contact_number', 'address_public', 'coordinate_latitude',
+        'email', 'contact_number', 'address_public',
+        'official_name', 'country_id', 'region_id', 'city_name', 'street_address',
+        'building_name', 'floor_label', 'unit_label', 'postal_code',
+        'coordinate_latitude',
         'coordinate_longitude', 'type_spa', 'level_spa_market',
         'type_physical_setting', 'type_establishment_operation',
         'status_establishment', 'mode_access', 'type_client_access',
@@ -72,7 +76,7 @@ class EstablishmentForm extends Component
 
     /** Repeater fields with their blank-row shapes. */
     private const REPEATERS = [
-        'landmark_list' => ['landmark_name' => '', 'walking_duration_minute' => null],
+        'landmark_list' => ['landmark_name' => '', 'walking_duration_minute' => null, 'direction_note_eng' => ''],
         'contact_channel_list' => ['type_contact_channel' => '', 'type_contact_number' => '', 'contact_label' => '', 'contact_value' => '', 'contact_url' => '', 'status_contact_channel' => ''],
         'treatment_area_list' => ['treatment_area_name' => '', 'type_treatment_area' => '', 'level_treatment_privacy' => '', 'type_treatment_capacity' => '', 'treatment_area_note' => ''],
         'operating_hours' => ['day_of_week' => '', 'open_time' => null, 'close_time' => null],
@@ -128,6 +132,33 @@ class EstablishmentForm extends Component
         abort_unless(array_key_exists($repeater, self::REPEATERS), 400);
         unset($this->state[$repeater][$index]);
         $this->state[$repeater] = array_values($this->state[$repeater]);
+    }
+
+    public function composeAddressPublic(): void
+    {
+        $lookup = app(AddressLookup::class);
+        $parts = array_filter([
+            $this->state['street_address'] ?? null,
+            $this->state['city_name'] ?? null,
+            filled($this->state['region_id'] ?? null) ? ($lookup->regions((int) $this->state['country_id'])[(string) $this->state['region_id']] ?? null) : null,
+            filled($this->state['country_id'] ?? null) ? ($lookup->countries()[(string) $this->state['country_id']] ?? null) : null,
+        ]);
+
+        $this->state['address_public'] = implode(', ', $parts);
+    }
+
+    public function updatedStateCountryId(): void
+    {
+        $this->state['region_id'] = '';
+        $this->state['city_name'] = '';
+    }
+
+    /** @return array<string, string> */
+    public function citiesForSelectedRegion(): array
+    {
+        return filled($this->state['region_id'] ?? null)
+            ? app(AddressLookup::class)->cities((int) $this->state['region_id'])
+            : [];
     }
 
     public function nextStep(): void

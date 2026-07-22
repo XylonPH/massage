@@ -5,6 +5,8 @@ namespace Tests\Feature\Workspace;
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Models\AccessAssignment;
 use App\Models\Contribution;
+use App\Models\Reference\Country;
+use App\Models\Reference\Region;
 use App\Models\User;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
@@ -241,5 +243,30 @@ class ContributionTest extends TestCase
             ->set('state.status_establishment', 'OP')
             ->call('nextStep')
             ->assertHasNoErrors(['state.date_closed']);
+    }
+
+    public function test_location_tab_offers_region_select_and_auto_composes_address(): void
+    {
+        Country::query()->getConnection()->getCollection('country_main')->insertOne([
+            '_id' => 608, 'country_name' => ['eng' => ['text' => 'Philippines']],
+        ]);
+        Region::query()->getConnection()->getCollection('region_main')->insertOne([
+            '_id' => 1, 'country_id' => 608, 'region_name' => ['eng' => ['text' => 'National Capital Region']],
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->call('composeAddressPublic');
+
+        $test->assertSet('state.address_public', '123 Bay Street, Makati, National Capital Region, Philippines');
+
+        Region::query()->getConnection()->getCollection('region_main')->deleteMany([]);
+        Country::query()->getConnection()->getCollection('country_main')->deleteMany([]);
     }
 }
