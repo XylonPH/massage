@@ -2461,7 +2461,7 @@ Use:
 
 18.1 Authenticated Listing Submissions and Edits
 ----------------------------------
-[~] Submit a new establishment or practitioner contribution from /workspace
+[~] Submit a new establishment or practitioner contribution from /workspace (establishment side now guide-conformant end-to-end via the Add a Spa form, docs/06-user-interface/add-spa-form-ui.txt; practitioner contribution and reviewer-decision UI remain unbuilt)
 [x] Require sign-in, verified email, and active membership before contribution
 [x] Record establishment owner, investor, manager, operator, or representative declarations separately from access
 [x] Record practitioner self or representative declarations separately from access

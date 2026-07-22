@@ -1,7 +1,7 @@
 Title: Massage Nexus: Database Structure
-Document Version: 2.20
+Document Version: 2.30
 Date Created: 2026-07-12
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 
 PURPOSE
 
@@ -20,6 +20,14 @@ Primary operational database:
 
 Shared reference database:
 - common_reference
+
+The Laravel application (apps/web/) connects to common_reference through the dedicated
+`mongodb_reference` Eloquent connection (apps/web/config/database.php), read-only, to resolve
+country_main, region_main, and city_main records for establishment location fields
+(App\Models\Reference\Country/Region/City, consumed by App\Support\Address\AddressLookup). The
+`reference:sync` console command is the only writer, idempotently upserting
+data/common_reference/*.json into common_reference; request-time application code never writes to
+it.
 
 Shared identity database, when connected identity is implemented:
 - common_identity

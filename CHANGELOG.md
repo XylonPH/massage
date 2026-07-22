@@ -6,6 +6,12 @@ individual entries.
 
 ## Unreleased
 
+- Redesigned the "Add a Spa" establishment contribution form as a 3-step Livewire wizard (who you
+  are, spa details, review and submit) shared with the direct-edit editorial establishment form,
+  with 6-language multilingual capture, dynamic physical-premises and closed-date rules, an
+  in-person visit-request eligibility check, a duplicate-establishment warning with required
+  acknowledgement, and a guide-conformant `proposed_data` contribution payload including a GeoJSON
+  `location_point`. Documented in `docs/06-user-interface/add-spa-form-ui.txt`.
 - Added the repository `data/` area: Shared Taxonomy field definitions split into grouped JSON
   files under `data/taxonomy/shared/`, machine-readable Massage Nexus classification data under
   `data/taxonomy/massage_nexus/`, shared reference datasets under `data/common_reference/`, and

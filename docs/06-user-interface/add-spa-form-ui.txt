@@ -1,0 +1,367 @@
+Title: Massage Nexus Add a Spa Form (Establishment Contribution and Editorial Establishment Form)
+Document Version: 1.00
+Date Created: 2026-07-23
+Revision Date: 2026-07-23
+Document Description: Describes the actual current behavior of the shared EstablishmentForm Livewire component that powers both the public member "Add a Spa" contribution flow (/workspace/contribution/establishment/new) and the direct-edit editorial establishment form (/workspace/editorial/establishment/{new|edit}) — its step structure, field-by-field intent per tab, dynamic UI rules, duplicate-check timing, validation, submission shape, and the reference-data dependency used for country/region/city selection.
+
+Related Documents:
+- docs/02-governance/edit-system.txt
+- data/structure_guide/establishment_main.php
+- data/structure_guide/user_contribution.php
+- docs/04-architecture/database-structure.txt
+- docs/13-localization/language-strategy.txt
+
+================================================================================
+1. PURPOSE AND BOUNDARY
+================================================================================
+
+One Livewire component, App\Livewire\Workspace\Editorial\EstablishmentForm, serves two distinct
+callers that share the same field set and taxonomy but differ in flow chrome, validation scope,
+and save target:
+
+- Contribution mode (isContribution = true): reached at /workspace/contribution/establishment/new
+  (route workspace.contribution.establishment.create; the legacy /claim and /contribute paths
+  redirect here). Any signed-in member can submit a proposal for a new establishment. Page title
+  and heading read "Add a Spa" (lang eng/workspace.php: contribution_establishment_title). The
+  component is presented as a 3-step wizard and never edits accepted data directly.
+- Editorial (direct-edit) mode (isContribution = false): reached at /workspace/editorial/establishment/new
+  and /workspace/editorial/establishment/{establishment}/edit, gated by editorial workspace access.
+  The component shows all spa-detail tabs at once (no wizard chrome, no Who You Are or Review
+  steps) and writes directly to the establishment_main-backed Establishment model.
+
+isContribution is derived once in mount() from request()->routeIs('workspace.contribution.establishment.create'),
+not from a prop the caller sets directly.
+
+This document does not restate general Edit System rules (drafts, revisions, audit, conflict
+detection) — see docs/02-governance/edit-system.txt. It describes what this specific form actually
+does today.
+
+================================================================================
+2. STEP STRUCTURE
+================================================================================
+
+$currentStep (1-3) only advances in contribution mode; nextStep()/prevStep() are no-ops when
+isContribution is false, so editorial mode stays on step 1 forever and the parent Blade template
+(resources/views/livewire/workspace/editorial/establishment-form.blade.php) falls through to the
+"else" branch (the full tab set) for every editorial render regardless of $currentStep.
+
+Contribution mode steps:
+
+1. Who You Are (_who-you-are.blade.php) — declared relationship and optional access request.
+2. Spa Details (the tab set: Identity, Classification, Access, Location, Contact, Hours,
+   Facilities*, Amenities). *Facilities is present only when hasPhysicalPremises() is true
+   (section 4.2).
+3. Review and Submit (_review-submit.blade.php) — summary, duplicate warning, visit request,
+   submission note.
+
+Next/Back on steps 1 and 2 call nextStep()/prevStep(). nextStep() validates only the current
+step's rule subset (rulesForStep()) before advancing; step 1 validates only
+type_establishment_relationship, is_workspace_access_requested, and relationship_note. Advancing
+past step 2 into step 3 always triggers checkForDuplicates() (section 5).
+
+Editorial mode shows one flat page: a shared tab bar (Alpine x-data="{ tab: 'identity' }") switches
+between the eight tab partials, a Cancel link returns to the editorial establishment index, and a
+single Save button submits the whole form (wire:submit="save").
+
+================================================================================
+3. STEP 1: WHO YOU ARE (CONTRIBUTION ONLY)
+================================================================================
+
+- type_establishment_relationship: required select, one of NON (no relationship), OWN, INV, MGR,
+  OPR, REP (declared relationship codes, mirrors the retired simple contribution form).
+- relationship_note: optional free text, max 1000 characters.
+- is_workspace_access_requested: checkbox requesting a separately reviewed scoped workspace access
+  grant. Requesting access while type_establishment_relationship is NON is rejected at submission
+  time (see section 8) with an inline error on is_workspace_access_requested — a relationship
+  declaration alone never grants access, and "None" cannot pair with an access request.
+
+================================================================================
+4. STEP 2: SPA DETAIL TABS
+================================================================================
+
+4.1 Identity
+- Multilingual display_name (required, English), short_description, and description, each behind
+  the shared 6-language switcher (section 6). description maps to the establishment_main field
+  full_description in both the direct-edit save path and the contribution proposed_data payload.
+- email, contact_number, and status_record_lifecycle are rendered only in editorial mode
+  (@unless ($isContribution) in _tab-identity.blade.php). Contributors never see or set them:
+  email/contact_number belong to establishment_contact, not establishment_main, and
+  status_record_lifecycle is system-owned, set by editorial review, never by a contributor.
+
+4.2 Classification
+- type_spa (required), level_spa_market, type_physical_setting, type_establishment_operation,
+  status_establishment (required) — single-select taxonomy fields.
+- date_opened with a precision select (Day/Month/Year) and an "approximate" checkbox that maps to
+  date_opened_qualifier (APP when checked, EXA otherwise) at save/submit time.
+- date_closed (with its own precision and approximate checkbox) is rendered only when
+  status_establishment is one of TC (Temporarily Closed), PC (Permanently Closed), or RL
+  (Relocated). The same three codes are enforced server-side: state.date_closed uses
+  Rule::requiredIf(in_array(status_establishment, ['TC','PC','RL'])) and must be
+  after_or_equal:state.date_opened.
+
+4.3 Access and Delivery
+- mode_service_delivery: multi-select toggle group, live-bound (wire:model.live) because it feeds
+  hasPhysicalPremises() (section 4.2 of the dynamic rules, below).
+- mode_access, type_client_access: single-select.
+- target_client_focus: multi-select toggle group.
+
+4.4 Location
+- official_name; country_id and region_id are live cascading selects sourced from AddressLookup
+  (section 9); changing country_id clears region_id and city_name (updatedStateCountryId()).
+- city_name renders as a select populated from AddressLookup::cities(region_id) only when that
+  lookup returns rows; otherwise it falls back to a free-text input (section 9 covers why).
+- street_address, building_name, floor_label, unit_label, postal_code.
+- A "compose address" button (composeAddressPublic()) builds address_public by joining
+  street_address, city_name, the resolved region label, and the resolved country label with
+  commas, skipping blank parts. address_public remains directly editable afterward.
+- An interactive map picker (resources/js/establishment-map.js, loaded via @push('scripts') in the
+  parent shell) binds coordinate_latitude/coordinate_longitude; the same two fields are also
+  editable as plain number inputs.
+- direction_note (multilingual, behind the language switcher).
+- parking_availability_list (multi-select toggle group) and parking_note (multilingual).
+- landmark_list repeater (max 20 rows): landmark_name (required), walking_duration_minute, and a
+  single-language direction_note_eng field — unlike the top-level translated fields, landmark
+  direction notes are not exposed in all 6 languages in this form.
+
+4.5 Contact
+- contact_channel_list repeater (max 20 rows): type_contact_channel (required select),
+  type_contact_number (rendered only when the row's channel type is in PHONE_CHANNEL_CODES, i.e.
+  'PHN' — channelNeedsPhoneType()), status_contact_channel, contact_label (required, max 100),
+  contact_value (required, max 255; its HTML input type switches to "email" when the channel type
+  is 'EML' via channelValueInputType(), otherwise "text"), and contact_url (required, max 2048,
+  validated by the PublicContactUrl rule, which rejects unsafe/non-public destinations).
+
+4.6 Hours
+- operating_hours repeater (max 20 rows): day_of_week (select constrained to a fixed list Monday
+  through Sunday plus "Public Holidays" — not taxonomy-driven), open_time/close_time (time inputs),
+  is_closed. Checking is_closed on a row live-clears that row's open_time and close_time
+  (updatedState() pattern-matches the operating_hours.{i}.is_closed key). A brand-new establishment
+  or contribution (no existing record) is pre-seeded with 7 blank rows, Monday through Sunday, to
+  match the retired Filament form's authoring experience.
+
+4.7 Facilities (hidden entirely when hasPhysicalPremises() is false — section 5.1)
+- treatment_area_list repeater (max 20 rows): treatment_area_name (required), type_treatment_area,
+  level_treatment_privacy, type_treatment_capacity, treatment_area_note.
+- room_types, bed_mat_chair_setup (multi-select toggle groups).
+- shower_availability, sauna_availability, steam_room_availability, jacuzzi_availability,
+  locker_availability, couple_room_availability, private_room_availability,
+  curtain_divider_information, air_conditioning_information (single-select each).
+
+4.8 Amenities
+- amenity_list, accessibility_feature_list (multi-select toggle groups).
+
+================================================================================
+5. DYNAMIC RULES
+================================================================================
+
+5.1 Physical-premises hide/strip
+hasPhysicalPremises() returns false only when BOTH:
+- type_spa is one of HOME_SERVICE_ONLY_TYPES = ['HP' (Home Service Provider), 'MB' (Mobile Spa)],
+  AND
+- mode_service_delivery does NOT include 'OS' (On-Site Service).
+In every other combination (including any other type_spa, or an HP/MB establishment that also
+delivers on-site) the Facilities tab and its fields are treated as present.
+
+When false:
+- the Facilities tab is omitted from the tab bar and its content is not rendered
+  (`$this->hasPhysicalPremises() ? __('editorial.tab_facilities') : null` in the parent shell;
+  `@if ($this->hasPhysicalPremises())` wrapping _tab-facilities.blade.php).
+- at save() (direct edit) and submitContribution() time, every field in PHYSICAL_PREMISES_FIELDS
+  (shower/sauna/steam_room/jacuzzi/locker/couple_room/private_room availability,
+  curtain_divider_information, air_conditioning_information, room_types, bed_mat_chair_setup,
+  amenity_list, accessibility_feature_list) is force-reset to null (scalars) or [] (list fields),
+  and treatment_area_list is force-cleared to [] — server-side, unconditionally, regardless of
+  what the client actually submitted. This is verified even if a client bypasses the UI and
+  submits shower_availability directly; the stripped value is never persisted or proposed.
+
+5.2 Closed-date visibility
+Covered in section 4.2: the date_closed block (and its server-side required-when rule) is tied to
+status_establishment being TC, PC, or RL, not to any other flag.
+
+5.3 Contact-channel-type adaptation
+Covered in section 4.5: type_contact_number visibility (PHN codes) and contact_value's HTML input
+type (email vs text, driven by EML) both key off the row's own type_contact_channel value.
+
+5.4 Visit-request eligibility
+visitEligible() resolves the current country_id and region_id through AddressLookup and compares
+the resolved labels against two hardcoded constants: VISIT_ELIGIBLE_COUNTRY_LABEL = 'Philippines'
+and VISIT_ELIGIBLE_REGION_LABEL = 'National Capital Region'. The in-person verification-visit
+request block on the Review step (is_visit_requested, and — when checked — a required
+visit_preferred_time_note up to 500 characters) is shown only when both labels match exactly. No
+other country/region is currently eligible.
+
+================================================================================
+6. MULTILINGUAL CAPTURE
+================================================================================
+
+The governed language set (LANGUAGES, matching docs/13-localization/language-strategy.txt internal
+codes) is eng, fil, spa, kor, zho_hant, zho_hans. A single shared language-switcher partial
+(_language-switcher.blade.php) drives one component property, $activeLanguageTab, used by both the
+Identity tab and the Location tab, so the selected language stays in sync across those two tabs.
+
+TRANSLATED_FIELDS (display_name, short_description, description, direction_note, parking_note)
+each expose one $state key per language (e.g. display_name_eng, display_name_fil, ...). Only
+display_name_eng is required; every other language/field combination is optional and simply
+omitted from the saved record when blank.
+
+Storage shape differs by save path:
+- Direct edit (save()): each Establishment model attribute is written as a flat `lang => string`
+  map (App\Models\Establishment's casts), e.g. display_name: {"eng": "...", "fil": "..."}.
+- Contribution (submitContribution()): each translated field is written into proposed_data as a
+  `lang => {text, method_translation, status_review}` object per data/structure_guide's governed
+  shape, e.g. display_name: {"eng": {"text": "...", "method_translation": "HUM",
+  "status_review": "P"}}. method_translation is always "HUM" (human) and status_review is always
+  "P" (pending) for a fresh member submission; there is no AI-assisted or pre-approved path here.
+
+landmark_list.direction_note is the one exception noted in section 4.4: it is captured in English
+only (direction_note_eng) and wrapped as {"eng": {"text": ...}} (or {"eng": null} when blank) at
+submission time — it is not exposed across all 6 languages in this form.
+
+================================================================================
+7. STEP 3: REVIEW AND SUBMIT (CONTRIBUTION ONLY)
+================================================================================
+
+- A read-only summary card shows display_name_eng and address_public.
+- Duplicate warning (section 8) when duplicateCandidates is non-empty.
+- Visit-request block (section 5.4) when visitEligible() is true.
+- submission_note: optional free text to the reviewer, max 2000 characters, separate from
+  relationship_note.
+- Back returns to step 2 without discarding entered data; Submit calls save().
+
+================================================================================
+8. DUPLICATE-CHECK FLOW
+================================================================================
+
+DuplicateEstablishmentFinder::find($displayName) normalizes the name (lowercase, non-alphanumeric
+collapsed to single spaces) and matches it, case/punctuation-insensitively, against:
+- every live Establishment's display_name.eng, and
+- every pending Contribution (target_collection = establishment_main, status_contribution = PND),
+  resolving that contribution's proposed display name across four possible historical payload
+  shapes (establishment.display_name.eng.text, establishment.display_name.eng,
+  display_name.eng.text, display_name.eng) so older still-pending contributions keep matching.
+Results are capped at 5 total (live matches first, then pending contributions).
+
+Timing and duplicateAcknowledged handling:
+- checkForDuplicates() (resets duplicateAcknowledged to false, then recomputes duplicateCandidates)
+  runs automatically the moment nextStep() advances the wizard into step 3. A changed display name
+  therefore always requires a fresh acknowledgement of whatever the new candidate set is.
+- refreshDuplicateCandidates() (recomputes duplicateCandidates WITHOUT touching
+  duplicateAcknowledged) also runs defensively at the start of every save() call in contribution
+  mode, before validate(). This closes the path where a client sets currentStep to 3 directly
+  (skipping nextStep() and therefore skipping checkForDuplicates()) — duplicateCandidates would
+  otherwise remain at its mount()-time empty collection and let the required-acknowledgement rule
+  be bypassed. Because this defensive refresh does not reset duplicateAcknowledged, a submitter who
+  legitimately stepped through review and ticked the box is not blocked by it.
+- rules(): duplicateAcknowledged is required ('accepted') only when duplicateCandidates is
+  non-empty at validation time; otherwise it is nullable/boolean and has no effect.
+- Returning to step 2 and changing the display name to something that still matches a (possibly
+  different) candidate set resets duplicateAcknowledged to false again on the next advance to step
+  3, forcing re-acknowledgement of the new set.
+
+The Review step's duplicate block lists each candidate's display_name and address_public and
+requires ticking "This is a different spa." (duplicateAcknowledged) before Submit will pass
+validation.
+
+================================================================================
+9. REFERENCE DATA AND GRACEFUL DEGRADATION (COUNTRY/REGION/CITY)
+================================================================================
+
+App\Support\Address\AddressLookup reads country_main, region_main, and city_main through the
+read-only reference models App\Models\Reference\{Country,Region,City}, all pinned to the
+`mongodb_reference` Eloquent connection (apps/web/config/database.php), pointed at the
+common_reference database (see docs/04-architecture/database-structure.txt section 1). These
+models never write; the only writer is the `reference:sync` console command
+(App\Console\Commands\SyncReferenceData), which idempotently upserts data/common_reference/*.json.
+
+- countries()/regions($countryId) build id-label maps sorted by label, falling back to the raw
+  *_key value when a label is unavailable in English.
+- cities($regionId) is expected to return an empty array today: city_main is not yet populated —
+  it is owned by the separate "PH Geographic Reference Data" project. The Location tab checks
+  count($cities) and falls back to a free-text city_name input whenever the lookup returns no rows,
+  so the form degrades gracefully rather than presenting an empty, unusable dropdown. Once
+  city_main is seeded, matching regions automatically get a proper city select with no form changes
+  required.
+
+================================================================================
+10. VALIDATION SUMMARY
+================================================================================
+
+Beyond the field-level rules already called out per tab (required display_name_eng/type_spa/
+status_establishment, the date_closed conditional-required rule, contact_channel_list's required
+sub-fields, the 20-row cap on every repeater), notable cross-cutting validation:
+
+- Every taxonomy-backed select/multi-select validates against Rule::in(array_keys(TaxonomyOptions::for(...)))
+  for that specific field — an out-of-taxonomy code is always rejected server-side regardless of
+  what the client renders.
+- coordinate_latitude/coordinate_longitude are nullable but bounded (-90..90 / -180..180) when
+  present.
+- Contribution-only rules (added to the base rule set only when isContribution is true):
+  type_establishment_relationship (required, in RELATIONSHIP_TYPES), is_workspace_access_requested
+  (nullable boolean), relationship_note (max 1000), submission_note (max 2000),
+  visit_preferred_time_note (max 500, required_if is_visit_requested is true), and
+  duplicateAcknowledged (section 8).
+- Submission rate limiting: submitContribution() enforces RateLimiter key
+  "contribution-establishment:{user_id}", capped at 10 attempts per 60-second decay window; a
+  limited user gets a generic 'form' error and no Contribution row is created.
+- is_workspace_access_requested combined with type_establishment_relationship === 'NON' is rejected
+  in submitContribution() itself (not the rules() array) before the rate limiter is even checked.
+
+================================================================================
+11. SUBMISSION RESULT
+================================================================================
+
+11.1 Editorial (direct edit)
+save() fills and saves an Establishment model directly (creates when $establishment is null,
+otherwise updates the existing record) on the massage_main connection, flashes an
+editorial_status session message, and redirects to workspace.editorial.establishment.index. No
+contribution record is created.
+
+11.2 Contribution
+submitContribution() writes one App\Models\Contribution row (table contribution_main on the
+mongodb connection — the structure guide's user_contribution.php documents the target shape, but
+runtime code still uses the legacy contribution_main collection per that guide's own migration
+note; field names also currently differ in a few places, e.g. runtime is_workspace_access_requested
+and status_contribution versus the guide's is_user_access_requested and
+status_user_contribution) with:
+
+- type_contribution: 'ADD', target_collection: 'establishment_main', target_record_id: null;
+- proposed_data, namespaced by target collection rather than one flat object:
+  - proposed_data.establishment: every establishment_main-owned field this form collects,
+    excluding email, contact_number, region_id, city_name, and status_record_lifecycle
+    (CONTRIBUTION_NON_ESTABLISHMENT_PLAIN_FIELDS — those either belong to a different collection or
+    are system/reviewer-owned) and excluding coordinate_latitude/coordinate_longitude (folded into
+    location_point instead). Includes a GeoJSON location_point ({"type": "Point",
+    "coordinates": [longitude, latitude]}, longitude first, matching establishment_main's
+    documented ordering) only when both coordinates are numeric.
+  - proposed_data.contact_channel_list and proposed_data.operating_schedule: sibling top-level keys,
+    not nested under "establishment", because those facts are owned by establishment_contact and
+    establishment_schedule respectively, not establishment_main.
+  - proposed_data.event_list: derived opening/closing business events (type_business_event OP/CL)
+    built from date_opened/date_closed plus their precision/qualifier, only when a date is present.
+- type_establishment_relationship, is_workspace_access_requested, relationship_note,
+  submission_note;
+- duplicate_candidate_establishment_id_list (the flagged candidate IDs at submission time),
+  duplicate_acknowledged;
+- is_visit_requested, visit_preferred_time_note;
+- status_contribution: 'PND' (Pending), submitted_at: now().
+
+After the Contribution is created, event(new EstablishmentContributionSubmitted($contribution)) is
+dispatched (no listener is registered for it yet), a 'status' flash message is set, and the
+browser is redirected to workspace.contribution.index. Nothing on any public establishment or spa
+listing page changes as a result of this submission — the proposal only becomes a live
+establishment_main record after a separate, not-yet-built editorial review/apply step (see
+docs/02-governance/edit-system.txt sections 12-14).
+
+================================================================================
+12. KNOWN GAPS (NOT BUILT BY THIS FORM)
+================================================================================
+
+- No reviewer decision interface exists yet for these contributions (approve/reject/return);
+  Contribution rows accumulate in status PND.
+- No selective per-field approval (Edit System section 12's Change Operation model) — proposed_data
+  remains one opaque object per contribution.
+- Practitioner contribution uses a separate, simpler controller-based flow
+  (WorkspaceContributionController), not this component.
+- Runtime storage (contribution_main, is_workspace_access_requested, status_contribution) has not
+  yet migrated to the user_contribution structure guide's exact collection name and field names
+  (section 11.2).
