@@ -1,9 +1,9 @@
 <?php
 /**
  * Title: Massage Nexus Quote Main Structure Guide
- * Version: 0.31
+ * Version: 0.40
  * Collection: quote_main
- * Description: Stores one curated quotation, attribution, classification, and display lifecycle record.
+ * Description: Stores one curated quotation, attribution, category, and lifecycle record.
  * Purpose: Documents the quote_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
  *
  * Notes:
@@ -16,9 +16,7 @@
  * section (docs/06-user-interface/home-page-ui.txt, section 20). The homepage
  * currently renders one temporary hard-coded quote from the sample-content
  * provider (apps/web/app/Support/Demo/SampleContent.php); this guide defines
- * the collection that replaces that temporary source. Per the homepage
- * documentation, quotes come from a database so they can support categories,
- * languages, authors, sources, active dates, seasonal use, and moderation.
+ * the collection that replaces that temporary source.
  *
  * Layer rule:
  * - *_default contains omission defaults for actual stored record fields only.
@@ -28,20 +26,21 @@
  * Scope decisions:
  * - A quote is short approved text with attribution; it is not article content
  *   and does not use article_main or article_body.
- * - References to common_reference records retain that dataset's numeric identifier type.
- * - Publication and scheduling behavior is represented by status_review,
- *   is_display_enabled, and the optional display_start_date/display_end_date
- *   window. A quote is eligible for homepage rotation only when review status
- *   is Approved, display is enabled, lifecycle is Active, and the current date
- *   falls inside the display window when one is set.
- * - Recurring seasonal scheduling (for example every December) is deliberately
- *   deferred; a seasonal or campaign relationship may be added later when the
- *   campaign system exists. Do not add speculative recurrence fields now.
- * - Relationships to author, contributor, content, media, theme, campaign, or
- *   occasion records are deliberately omitted because the current homepage
- *   feature only displays quote text and a plain attribution name.
+ * - language_id is numeric per shared standard §9.3.1 (common_reference.language_main
+ *   retains its numeric identifier contract). This field records the language in which
+ *   the quote was originally expressed and drives locale-matching and fallback display.
+ * - type_quote_category is single-select; each quote belongs to exactly one category.
+ * - Publication eligibility is determined by per-language status_review inside quote_text
+ *   and the record-level status_record_lifecycle. No separate is_display_enabled toggle
+ *   or display date-window fields are stored; scheduling and seasonal selection are
+ *   application-logic concerns deferred to a future campaign or scheduling system.
  * - Rotation fairness (which quote shows on which day) is application logic,
  *   not stored state; no display counters are stored.
+ * - record_note embedded repeaters are not used; the quote system is not an editorial
+ *   workflow-heavy system requiring embedded audit notes on individual records.
+ * - archived_at / archived_by_user_id are not stored; status_record_lifecycle is
+ *   the authoritative lifecycle state and does not require a separate archive timestamp.
+ * - References to common_reference records retain that dataset's numeric identifier type.
  *
  * Identifier note:
  * The sample follows the accepted application-generated opaque 16-character
@@ -50,17 +49,17 @@
 
 # Variable
 $created_at = '2026-07-19T00:00:00Z';
-$updated_at = '2026-07-21T04:27:07Z';
+$updated_at = '2026-07-22T03:52:00Z';
 /**
  * Multilingual short-text sample.
  * Used by quote_text. English is shown as sample data only; the original
- * language of the quote is controlled by language_original_id.
+ * language of the quote is controlled by language_id.
  */
 $multilingual_text_sample = [
 	'eng' => [
 		'text' => 'Sample text', // required when this language value exists
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
-		'status_review' => 'A', // optional; A = Approved
+		'status_review' => 'APR', // optional; APR = Approved
 	],
 ];
 
@@ -70,17 +69,12 @@ $multilingual_text_sample = [
  * Sparse-default storage may omit these values in actual database records.
  */
 $quote_main_default = [
-	'type_quote_category' => [], // taxonomy codes from type_quote_category
-	'attribution_name' => null, // null when the quote is anonymous or proverb-like
+	'type_quote_category' => null, // single taxonomy code from type_quote_category
+	'attribution_name' => null,    // null when the quote is anonymous or proverb-like
 	'source_title' => null,
 	'source_url' => null,
-	'display_start_date' => null, // null means no window start restriction
-	'display_end_date' => null, // null means no window end restriction
-	'is_display_enabled' => true,
-	'status_review' => 'P', // P = Pending
-	'level_nsfw' => 'N', // N = None
+	'level_nsfw' => 'N',           // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
-	'record_note' => [],
 ];
 
 /**
@@ -97,49 +91,33 @@ $quote_main = [
 		'eng' => [
 			'text' => 'Your body hears everything your mind says.',
 			'method_translation' => 'HUM',
-			'status_review' => 'A', // Editorial approval state of the quote. Only Approved quotes are eligible for public display. Uses the same option codes as article_main.status_review.
+			'status_review' => 'APR', // APR = Approved; only Approved language entries are eligible for public display
 		],
 		'fil' => [
 			'text' => 'Naririnig ng iyong katawan ang lahat ng sinasabi ng iyong isip.',
 			'method_translation' => 'HUM',
-			'status_review' => 'A',
+			'status_review' => 'APR',
 		],
 	], // required multilingual quote text; the displayed language follows the visitor's interface language with fallback rules
 
 	# Parent / Classification
-	'language_original_id' => 3049, // English in common_reference.language_main; common_reference IDs remain numeric
-	'type_quote_category' => ['WEL', 'MOT'], // multi-select codes from type_quote_category (see data/taxonomy/massage_nexus/content_classification.json)
+	'language_id' => 3049, // English in common_reference.language_main; the language in which the quote was originally expressed. common_reference IDs remain numeric per shared standard §9.3.1.
+	'type_quote_category' => 'WEL', // single taxonomy code from type_quote_category (see data/taxonomy/massage_nexus/content_classification.json)
 
 	# Attribution / Source
 	'attribution_name' => 'Naomi Judd', // public attribution exactly as displayed; null for anonymous or traditional sayings
 	'source_title' => null, // optional title of the book, speech, interview, or work the quote comes from
 	'source_url' => null, // optional reference URL used for editorial verification; not necessarily displayed publicly
 
-	# Scheduling / Display Eligibility
-	'display_start_date' => null, // optional first calendar date the quote may be shown; local platform date, no time component
-	'display_end_date' => null, // optional last calendar date the quote may be shown; supports seasonal or campaign-window use
-	'is_display_enabled' => true, // manual homepage-rotation switch independent of review and lifecycle
-
 	# Handling
-	'status_review' => 'A', // P = Pending, A = Approved, N = Needs Changes, R = Rejected; only Approved quotes are publicly displayed
 	'level_nsfw' => 'N', // N = None; quotes shown on the homepage must remain None
-	'status_record_lifecycle' => 'ACT', // ACT = Active; archived or retired quotes leave rotation without deleting history
-	'record_note' => [ // Embedded internal notes attached to this quote record, including attribution-verification notes.
-		[
-			'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
-			'note_body' => 'Attribution confirmed against two published interviews.',
-			'created_at' => '2026-07-19T00:00:00Z', // UTC timestamp when this quote record was created.
-			'created_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that created this quote record.
-		],
-	], // embedded internal notes for this record; not public text
+	'status_record_lifecycle' => 'ACT', // ACT = Active; retired or soft-deleted quotes leave rotation without deleting history
 
 	# Audit
 	'created_at' => $created_at,
 	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
-	'updated_at' => $updated_at, // UTC timestamp when this quote record was last updated.
-	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL', // User ID that last updated this quote record.
-	'archived_at' => null, // UTC timestamp when this quote record was archived.
-	'archived_by_user_id' => null, // User ID that archived this quote record.
+	'updated_at' => $updated_at,
+	'updated_by_user_id' => 'U2pR7vX4kT9mC5qL',
 ];
 
 /**
@@ -148,38 +126,25 @@ $quote_main = [
 $quote_main_field_order = [
 	'_id',
 	'quote_text',
-	'language_original_id',
+	'language_id',
 	'type_quote_category',
 	'attribution_name',
 	'source_title',
 	'source_url',
-	'display_start_date',
-	'display_end_date',
-	'is_display_enabled',
-	'status_review',
 	'level_nsfw',
 	'status_record_lifecycle',
-	'record_note',
 	'created_at',
 	'created_by_user_id',
 	'updated_at',
 	'updated_by_user_id',
-	'archived_at',
-	'archived_by_user_id',
 ];
 
 /**
- * Embedded structures owned by quote_main.
- * record_note reuses the shared embedded note shape also used by article_main.
+ * quote_main has no embedded repeater structures.
+ * The record_note pattern used in article_main and the earlier quote_main draft
+ * was removed; the quote system does not require embedded editorial audit notes.
  */
-$quote_main_embedded_structure = [
-	'record_note' => [
-		'type_record_note' => 'ED', // ED = Editorial, RV = Review, AD = Admin, CR = Correction
-		'note_body' => 'Internal note text for editors, reviewers, or administrators.',
-		'created_at' => '2026-07-19T00:00:00Z',
-		'created_by_user_id' => 'U2pR7vX4kT9mC5qL',
-	],
-];
+$quote_main_embedded_structure = [];
 
 /**
  * Field-property guide for quote_main.
@@ -201,7 +166,7 @@ $quote_main_field_property = [
 	# Core
 	'quote_text' => [
 		'field_label' => 'Quote Text',
-		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.',
+		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution. Each language entry carries its own status_review; only Approved language entries are eligible for public display.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',
 		'is_translatable' => true,
@@ -210,18 +175,20 @@ $quote_main_field_property = [
 	],
 
 	# Parent / Classification
-	'language_original_id' => [
+	'language_id' => [
 		'field_label' => 'Original Language ID',
-		'field_description' => 'Numeric reference to common_reference.language_main for the language in which the quote was originally expressed. The original does not have to be English.',
+		'field_description' => 'Numeric reference to common_reference.language_main for the language in which the quote was originally expressed. The original does not have to be English. Drives locale-matching and fallback display per the Translation System.',
 		'type_data' => 'I',
 		'type_sql' => 'INT',
 		'is_relational' => true,
+		'is_indexed' => true,
 	],
 	'type_quote_category' => [
 		'field_label' => 'Quote Category',
-		'field_description' => 'Multi-select editorial categories for rotation, filtering, and seasonal selection. Option codes are owned by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json; this guide intentionally does not duplicate the option list.',
-		'type_data' => 'A',
-		'type_field' => 'CBL', // check-box list of taxonomy options
+		'field_description' => 'Single editorial category for rotation and filtering. Option codes are owned by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json; each quote belongs to exactly one category.',
+		'type_data' => 'S',
+		'type_field' => 'DDL', // single-select dropdown
+		'type_sql' => 'VARCHAR',
 		'is_indexed' => true,
 	],
 
@@ -243,71 +210,33 @@ $quote_main_field_property = [
 		'max_character' => 500,
 	],
 
-	# Scheduling / Display Eligibility
-	'display_start_date' => [
-		'field_label' => 'Display Start Date',
-		'field_description' => 'Optional first calendar date on which the quote may appear in homepage rotation. Stored as a date-only value interpreted in the platform display time zone; do not store it as midnight UTC.',
-		'type_field' => 'DTP', // date picker
-		'type_sql' => 'DATE',
-	],
-	'display_end_date' => [
-		'field_label' => 'Display End Date',
-		'field_description' => 'Optional last calendar date on which the quote may appear in homepage rotation. Supports seasonal or campaign-window use without a recurrence system.',
-		'type_field' => 'DTP',
-		'type_sql' => 'DATE',
-	],
-	'is_display_enabled' => [
-		'field_label' => 'Display Enabled',
-		'field_description' => 'Manual switch controlling homepage-rotation eligibility. A quote is displayed only when this is true, status_review is Approved, status_record_lifecycle is Active, and the current date is inside the display window when one is set.',
-		'type_data' => 'B',
-		'type_field' => 'TGL',
-		'type_sql' => 'TINYINT',
-		'is_indexed' => true,
-	],
-
 	# Handling
-	'status_review' => [
-		'field_label' => 'Review Status',
-		'field_description' => 'Editorial approval state of the quote. Only Approved quotes are eligible for public display. Uses the same option codes as article_main.status_review.',
-		'type_field' => 'DDL',
-		'type_sql' => 'ENUM',
-		'field_option' => [
-			['option_code' => 'P', 'option_label' => 'Pending', 'option_description' => 'Waiting for review.', 'sort_order' => 10],
-			['option_code' => 'A', 'option_label' => 'Approved', 'option_description' => 'Reviewed and approved.', 'sort_order' => 20],
-			['option_code' => 'N', 'option_label' => 'Needs Changes', 'option_description' => 'Reviewed but requires revision.', 'sort_order' => 30],
-			['option_code' => 'R', 'option_label' => 'Rejected', 'option_description' => 'Reviewed and rejected.', 'sort_order' => 40],
-		],
-		'is_indexed' => true,
-	],
 	'level_nsfw' => ['field_label' => 'NSFW Level', 'field_description' => 'Content-sensitivity level. Homepage quotes must remain None; the field exists for consistency with shared record handling.', 'type_field' => 'DDL', 'type_sql' => 'ENUM'],
-	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state such as active, inactive, archived, or deleted. Archiving or retiring removes the quote from rotation while preserving history.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
-	'record_note' => ['field_label' => 'Record Note', 'field_description' => 'Embedded internal notes attached to this quote record, including attribution-verification notes.', 'type_data' => 'A', 'type_field' => 'JSE'],
+	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state such as active, inactive, or soft-deleted. Retiring removes the quote from rotation while preserving history. Archiving is expressed through this field, not a separate archived_at timestamp.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 
 	# Audit
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this quote record was created.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this quote record.', 'type_data' => 'S', 'is_relational' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this quote record was last updated.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
 	'updated_by_user_id' => ['field_label' => 'Updated By User ID', 'field_description' => 'User ID that last updated this quote record.', 'type_data' => 'S', 'is_relational' => true],
-	'archived_at' => ['field_label' => 'Archived At', 'field_description' => 'UTC timestamp when this quote record was archived.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],
-	'archived_by_user_id' => ['field_label' => 'Archived By User ID', 'field_description' => 'User ID that archived this quote record.', 'type_data' => 'S', 'is_relational' => true],
 ];
+
+/**
+/**
+ * quote_main has no embedded subfield property map.
+ * Present as an empty array to satisfy structure guide validation requirements.
+ */
+$quote_main_subfield_property = [];
 
 /**
  * Indexing suggestions.
  * Actual indexes belong to the implementing migration, not this guide.
- * - Rotation query index: is_display_enabled + status_review + status_record_lifecycle,
- *   optionally with display_start_date/display_end_date.
+ * - Rotation query index: status_record_lifecycle + language_id.
+ * - Category filtering index: type_quote_category.
  * - Duplicate screening relies on editorial search plus an import-time check on
  *   same-language quote text with the same attribution_name; exact-match unique
  *   indexing of long multilingual text is intentionally not suggested.
  */
-
-$quote_main_subfield_property = [
-	'record_note.type_record_note' => ['field_label' => 'Record Note Type', 'field_description' => 'Controlled note-purpose code.', 'type_data' => 'S', 'is_mandatory' => true],
-	'record_note.note_body' => ['field_label' => 'Note Body', 'field_description' => 'Internal note text.', 'type_data' => 'S', 'is_mandatory' => true],
-	'record_note.created_at' => ['field_label' => 'Note Created At', 'field_description' => 'UTC note creation time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true],
-	'record_note.created_by_user_id' => ['field_label' => 'Note Created By User ID', 'field_description' => 'User that created the note.', 'type_data' => 'S', 'is_relational' => true, 'is_mandatory' => true],
-];
 
 $quote_main_index_list = [
     [
@@ -328,10 +257,9 @@ $quote_main_boundary = [
         'the quote_main record fields and embedded structures documented in this file',
     ],
     'reference_field_list' => [
-        'language_original_id',
+        'language_id',
         'created_by_user_id',
         'updated_by_user_id',
-        'archived_by_user_id',
     ],
     'does_not_own' => [
         'records stored in referenced collections',

@@ -1,8 +1,8 @@
 Title: Massage Nexus Quote System
-Document Version: 0.21
+Document Version: 0.22
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
-Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
+Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, category, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
 
 Related Documents:
 - docs/06-user-interface/home-page-ui.txt (section 20, Quote of the Day)
@@ -32,9 +32,8 @@ Each quote should preserve:
 - the quote text, multilingual where translated;
 - attribution as a person, work, Anonymous, Traditional or Proverb, or Attribution Unverified;
 - source context where known;
-- category from the type_quote_category taxonomy;
-- optional display window for seasonal or campaign use;
-- review and lifecycle status.
+- exactly one category from the type_quote_category taxonomy;
+- review status per language entry and overall lifecycle status.
 
 Rules:
 - do not invent attributions or attach a famous name to an unverified quote;
@@ -42,7 +41,7 @@ Rules:
   platform voice;
 - a quote with unresolved attribution doubt should remain unpublished rather than published with
   a guessed source;
-- translated quote text follows docs/13-localization/translation-system.txt; the original language remains preserved in language_original_id. When a quote lacks a translation in the visitor's UI locale, fallback logic presents the original language or English fallback before hiding the module.
+- translated quote text follows docs/13-localization/translation-system.txt; the original language is recorded in language_id (a numeric reference to common_reference.language_main per shared standard §9.3.1). When a quote lacks a translation in the visitor's UI locale, fallback logic presents the original language or English fallback before hiding the module.
 
 Anonymous means the creator intentionally published without a name or cannot be identified after
 reasonable verification. Traditional or Proverb means the text belongs to a documented cultural
@@ -96,22 +95,21 @@ complete. Hiding the module is a user display preference and does not alter the 
 4. STORAGE AND ADMINISTRATION
 ================================================================================
 
-The proposed collection is quote_main; see the structure guide at
-data/structure_guide/quote_main.php. Quote categories come from
+The collection is quote_main; see the structure guide at
+data/structure_guide/quote_main.php. Quote categories (single-select) come from
 type_quote_category in data/taxonomy/massage_nexus/content_classification.json.
 Before dynamic rotation is released, the structure guide and runtime form must represent the
 source-verification and publication-right basis required by section 2; source_title and source_url
 alone are not sufficient approval evidence.
 
-Administration (attribution, source, language, category, display window, duplication review,
-approval, scheduling, retirement, correction) belongs to the Admin Workspace editorial area per
+Administration (attribution, source, language, category, duplication review, approval,
+retirement, correction) belongs to the Admin Workspace editorial area per
 docs/11-workspaces/admin-workspace.txt. The homepage currently renders one temporary hard-coded
 sample quote; replacing it with quote_main-backed rotation is pending implementation.
 
-The shared status_review taxonomy in
-data/taxonomy/shared/record_lifecycle_and_review.json is the canonical review-status vocabulary.
-The existing quote_main guide and runtime enum still use the older P/A/N/R codes; they require a
-coordinated structure, code, and data migration before dynamic rotation is released.
+Display eligibility is determined by the per-language status_review inside quote_text and the
+record-level status_record_lifecycle. No separate display-enabled toggle or date-window
+scheduling fields are stored; seasonal or campaign scheduling is deferred to a future system.
 
 A material wording or attribution correction must preserve an audit record and remove the
 incorrect version from rotation immediately. Do not silently rewrite a previously displayed

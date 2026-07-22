@@ -54,8 +54,8 @@
     {
         "field_name": "type_quote_category",
         "field_label": "Quote Category",
-        "selection_rule": "Multi-select per quote record",
-        "field_description": "Editorial category of a homepage Quote of the Day record, used for rotation, filtering, and seasonal selection. The option list follows the quote themes named in docs/06-user-interface/home-page-ui.txt section 20 (wellness, relaxation, massage, self-care, motivational). Proposed with the quote_main structure guide; not yet an accepted decision.",
+        "selection_rule": "Single-select per quote record",
+        "field_description": "Editorial category of a homepage Quote of the Day record, used for rotation and filtering. Each quote belongs to exactly one category. The option list follows the quote themes named in docs/06-user-interface/home-page-ui.txt section 20 (wellness, relaxation, massage, self-care, motivational). Proposed with the quote_main structure guide; not yet an accepted decision.",
         "field_option": [
             {
                 "option_code": "WEL",
