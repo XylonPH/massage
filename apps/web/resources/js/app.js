@@ -1,4 +1,9 @@
 import './article-editor';
+import { createBodyPainMapper } from './components/body-pain-mapper';
+
+window.initThreeBodyMapper = function (container, onSelectRegion) {
+    return createBodyPainMapper(container, onSelectRegion);
+};
 
 // Cookie consent banner: writes a real first-party cookie recording the
 // user's choice. Only a session-identity cookie is currently set by the
