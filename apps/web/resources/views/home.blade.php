@@ -423,24 +423,7 @@
             </section>
 
             {{-- Community Pulse --}}
-            <section aria-labelledby="pulse-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm dark:border-ink-800 dark:bg-ink-900">
-                <h2 id="pulse-heading" class="text-base font-bold text-ink-950 dark:text-ink-50">{{ __('home.community_pulse') }}</h2>
-                <form data-poll class="mt-3">
-                    <div data-poll-form>
-                        <p class="text-sm font-semibold text-ink-700 dark:text-ink-200">{{ __('home.pulse_question') }}</p>
-                        <div class="mt-3 space-y-2">
-                            @foreach (['weekly' => __('home.pulse_option_weekly'), 'monthly' => __('home.pulse_option_monthly'), 'occasionally' => __('home.pulse_option_occasionally'), 'first_time' => __('home.pulse_option_first_time')] as $value => $label)
-                                <label class="flex cursor-pointer items-center gap-2.5 rounded-xl border border-ink-200 px-3.5 py-2.5 text-sm text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 has-checked:border-ember-400 has-checked:bg-ember-50 dark:border-ink-700 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ember-950 dark:has-checked:border-ember-600 dark:has-checked:bg-ember-950">
-                                    <input type="radio" name="pulse_answer" value="{{ $value }}" class="size-4 accent-ember-500">
-                                    {{ $label }}
-                                </label>
-                            @endforeach
-                        </div>
-                        <button type="submit" class="mt-3 w-full rounded-xl bg-ink-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-ink-800">{{ __('home.pulse_vote') }}</button>
-                    </div>
-                    <p data-poll-result hidden class="rounded-xl bg-leaf-50 px-4 py-3 text-sm font-semibold text-leaf-800 dark:bg-leaf-950 dark:text-leaf-100">{{ __('home.pulse_thanks') }}</p>
-                </form>
-            </section>
+            <x-community-pulse />
 
             {{-- Campus Quiz --}}
             <section aria-labelledby="quiz-heading" class="rounded-2xl border border-ink-100 bg-white p-4 shadow-sm dark:border-ink-800 dark:bg-ink-900">
