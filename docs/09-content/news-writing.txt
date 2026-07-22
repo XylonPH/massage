@@ -1,7 +1,7 @@
 Title: Massage Nexus News Writing Guide
-Document Version: 0.20
+Document Version: 1.00
 Date Created: 2026-07-18
-Revision Date: 2026-07-20
+Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus researches, writes, edits, updates, corrects, translates, labels, and publishes timely news about the platform, massage, spas, therapists, wellness businesses, regulation, research, events, products, and related communities. It distinguishes News from Articles, announcements, opinion, sponsored content, Reviews, and unverified social-media claims.
 
 ================================================================================

@@ -3,9 +3,9 @@ Massage Nexus Article Writing Guide and Working Topic Calendar
 
 Field            | Value
 -----------------+-----------
-Document Version | 2.33
+Document Version | 2.40
 Date Created     | 2026-07-04
-Revision Date    | 2026-07-21
+Revision Date    | 2026-07-22
 
 Document Description
 --------------------

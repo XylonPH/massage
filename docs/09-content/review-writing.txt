@@ -6,7 +6,7 @@ Field            | Value
 Title            | Massage Nexus Review Writing Guide
 Document Version | 1.84
 Date Created     | 2026-07-05
-Revision Date    | 2026-07-21
+Revision Date    | 2026-07-22
 
 Document Description
 --------------------
@@ -387,7 +387,7 @@ The working rating structure is:
 - spa, therapist, and product targets may support criteria-based ratings;
 - review content itself may be rated by other users using thumbs up/down only.
 
-The detailed rating system is defined in Massage Nexus - 14 - Rating System v1.10.md.
+The detailed rating system is defined in docs/08-community/rating-system.txt.
 
 Relevant rating concepts include:
 
@@ -1026,7 +1026,7 @@ A review may affect reputation through:
 - repeated accuracy or inaccuracy;
 - suspicious behavior.
 
-Review-related reputation effects should follow Massage Nexus - 16 - Reputation System v1.70.md.
+Review-related reputation effects should follow docs/08-community/reputation-system.txt.
 
 Important rules:
 

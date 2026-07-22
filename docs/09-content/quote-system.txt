@@ -1,8 +1,7 @@
 Title: Massage Nexus Quote System
 Document Version: 0.10
 Date Created: 2026-07-20
-Revision Date: 2026-07-21
-Status: Internal Planning Draft
+Revision Date: 2026-07-22
 Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
 
 Related Documents:

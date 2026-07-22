@@ -1,7 +1,7 @@
 Title: Massage Nexus Legal and Public Policy Writing Guide
-Document Version: 0.20
+Document Version: 1.00
 Date Created: 2026-07-20
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
 
 ================================================================================
