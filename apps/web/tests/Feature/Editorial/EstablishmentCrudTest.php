@@ -207,4 +207,24 @@ class EstablishmentCrudTest extends TestCase
         $this->assertSame('IR', $record->shower_availability);
         $this->assertSame(['PRK_ONS_FREE'], $record->parking_availability_list);
     }
+
+    public function test_editing_establishment_preserves_approximate_date_qualifier(): void
+    {
+        $user = $this->editor();
+        $establishment = Establishment::query()->create([
+            'display_name' => ['eng' => 'Old Name'],
+            'type_spa' => 'DY',
+            'status_establishment' => 'OP',
+            'date_opened' => '2020-01-01',
+            'date_opened_qualifier' => 'APP',
+        ]);
+
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
+            ->assertSet('date_opened_is_approximate', true)
+            ->set('state.display_name_eng', 'New Name')
+            ->call('save');
+
+        $this->assertSame('APP', $establishment->refresh()->date_opened_qualifier);
+    }
 }

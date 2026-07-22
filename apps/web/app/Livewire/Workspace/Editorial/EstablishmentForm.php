@@ -97,6 +97,9 @@ class EstablishmentForm extends Component
             $this->state[$field] = $record?->getAttribute($field) ?? ($field === 'status_record_lifecycle' ? 'ACT' : '');
         }
 
+        $this->date_opened_is_approximate = $this->state['date_opened_qualifier'] === 'APP';
+        $this->date_closed_is_approximate = $this->state['date_closed_qualifier'] === 'APP';
+
         foreach (self::LIST_FIELDS as $field) {
             $this->state[$field] = $record?->getAttribute($field) ?? [];
         }

@@ -199,6 +199,25 @@ class ContributionTest extends TestCase
         $response->assertDontSee(__('editorial.est_status_record_lifecycle'));
     }
 
+    public function test_contribution_identity_tab_actually_hides_the_fields_at_step_two(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2);
+
+        $test->assertDontSee(__('editorial.est_status_record_lifecycle'));
+        $test->assertDontSee(__('editorial.est_email'));
+    }
+
+    public function test_editorial_identity_tab_still_shows_the_fields(): void
+    {
+        Livewire::actingAs($this->editorForWizardTest())
+            ->test(EstablishmentForm::class)
+            ->assertSee(__('editorial.est_status_record_lifecycle'))
+            ->assertSee(__('editorial.est_email'));
+    }
+
     public function test_closed_date_is_required_when_status_is_permanently_closed(): void
     {
         Livewire::actingAs(User::factory()->create())
