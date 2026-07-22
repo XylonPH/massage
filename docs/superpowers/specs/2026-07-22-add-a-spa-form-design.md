@@ -136,10 +136,12 @@ One shared Livewire component (`EstablishmentForm`), same two modes as today
   optional) — this stores multilingual **data** now; translating the *form
   interface itself* into those languages is Phase 4, unrelated.
 - **Classification**: type, market level, physical setting, operation type,
-  operating status, plus **opened date** and, only when the selected status is
-  a closed/ceased code, **closed date** — each a date input with a precision
-  selector (year / month / exact day) and an "approximate" checkbox, matching
-  `establishment_event`'s `type_date_precision`/`type_date_qualifier` model.
+  operating status, plus **opened date** and, only when
+  `status_establishment` is `TC` (Temporarily Closed), `PC` (Permanently
+  Closed), or `RL` (Relocated), **closed date** — each a date input with a
+  precision selector (year / month / exact day) and an "approximate" checkbox,
+  matching `establishment_event`'s
+  `type_date_precision`/`type_date_qualifier` model.
 - **Access**: delivery modes, access mode, client access, client focus —
   unchanged from today except chip styling (section 5).
 - **Location**: country select (default Philippines) → region select,
@@ -276,11 +278,18 @@ flat, partially-shaped object:
 
 ```
 proposed_data:
-  establishment: { …fields exactly matching establishment_main guide field order… }
+  establishment: { …guide fields the contributor can propose… }
   contact_channel_list: [ …establishment_contact-shaped rows… ]
   operating_schedule: [ …establishment_schedule-shaped rows… ]
   event_list: [ …opening/closure events, establishment_event-shaped, only when dates were entered… ]
 ```
+
+`proposed_data.establishment` excludes the guide's system-owned fields that a
+contributor never sets directly — `_id`, `establishment_slug`,
+`previous_slug_list`, `status_record_lifecycle`, `revision_number`,
+`created_at`, `updated_at`, `last_confirmed_at` — those are assigned when a
+reviewer approves the contribution and the record is actually created, not at
+submission time. Every other guide field is eligible.
 
 Top-level `Contribution` fields keep: `type_establishment_relationship`,
 `is_workspace_access_requested`, `relationship_note`, `submission_note`,
