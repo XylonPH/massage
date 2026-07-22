@@ -21,6 +21,4 @@ class Region extends Model
     protected $keyType = 'int';
 
     public $timestamps = false;
-
-    protected $fillable = ['_id', 'country_id', 'region_name', 'region_key'];
 }

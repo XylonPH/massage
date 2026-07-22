@@ -22,6 +22,4 @@ class City extends Model
     protected $keyType = 'int';
 
     public $timestamps = false;
-
-    protected $fillable = ['_id', 'region_id', 'city_name', 'city_key'];
 }

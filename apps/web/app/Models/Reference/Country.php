@@ -22,6 +22,4 @@ class Country extends Model
     protected $keyType = 'int';
 
     public $timestamps = false;
-
-    protected $fillable = ['_id', 'country_name', 'country_key'];
 }

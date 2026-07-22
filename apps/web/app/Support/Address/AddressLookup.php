@@ -14,7 +14,7 @@ class AddressLookup
         return Country::query()
             ->get()
             ->mapWithKeys(fn (Country $country) => [
-                (string) $country->getKey() => (string) data_get($country->country_name, 'eng.text', $country->country_key),
+                (string) $country->getKey() => $this->label($country, 'country_name', 'country_key'),
             ])
             ->sort()
             ->all();
@@ -27,7 +27,7 @@ class AddressLookup
             ->where('country_id', $countryId)
             ->get()
             ->mapWithKeys(fn (Region $region) => [
-                (string) $region->getKey() => (string) data_get($region->region_name, 'eng.text', $region->region_key),
+                (string) $region->getKey() => $this->label($region, 'region_name', 'region_key'),
             ])
             ->sort()
             ->all();
@@ -45,9 +45,14 @@ class AddressLookup
             ->where('region_id', $regionId)
             ->get()
             ->mapWithKeys(fn (City $city) => [
-                (string) $city->getKey() => (string) data_get($city->city_name, 'eng.text', $city->city_key ?? ''),
+                (string) $city->getKey() => $this->label($city, 'city_name', 'city_key'),
             ])
             ->sort()
             ->all();
+    }
+
+    private function label(mixed $model, string $nameField, string $keyField): string
+    {
+        return (string) data_get($model->{$nameField}, 'eng.text', $model->{$keyField} ?? '');
     }
 }
