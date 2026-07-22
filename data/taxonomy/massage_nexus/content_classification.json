@@ -55,35 +55,55 @@
         "field_name": "type_quote_category",
         "field_label": "Quote Category",
         "selection_rule": "Single-select per quote record",
-        "field_description": "Editorial category of a homepage Quote of the Day record, used for rotation and filtering. Each quote belongs to exactly one category. The option list follows the quote themes named in docs/06-user-interface/home-page-ui.txt section 20 (wellness, relaxation, massage, self-care, motivational). Proposed with the quote_main structure guide; not yet an accepted decision.",
+        "field_description": "Editorial category of a homepage Quote of the Day record, used for rotation, visual theme styling, and filtering. Each quote belongs to exactly one category.",
         "field_option": [
             {
-                "option_code": "WEL",
-                "option_label": "Wellness",
-                "option_description": "General wellness, health, and balanced-living quotes."
+                "option_code": "RRL",
+                "option_label": "Rest and Relaxation",
+                "option_description": "Quotes focused on rest, stillness, decompression, and quiet relaxation."
             },
             {
-                "option_code": "RLX",
-                "option_label": "Relaxation",
-                "option_description": "Calm, rest, and relaxation quotes."
+                "option_code": "MNP",
+                "option_label": "Mindfulness and Presence",
+                "option_description": "Quotes centered on being present, awareness, breath, and inner calm."
             },
             {
-                "option_code": "MSG",
-                "option_label": "Massage",
-                "option_description": "Quotes about massage, touch, and bodywork."
+                "option_code": "MEW",
+                "option_label": "Mental and Emotional Wellness",
+                "option_description": "Quotes encouraging mental health, emotional clarity, peace of mind, and stress reduction."
             },
             {
-                "option_code": "SLF",
-                "option_label": "Self-Care",
-                "option_description": "Self-care and personal-restoration quotes."
+                "option_code": "PHV",
+                "option_label": "Physical Health and Vitality",
+                "option_description": "Quotes about body awareness, posture, energy, physical wellness, and vitality."
             },
             {
-                "option_code": "MOT",
-                "option_label": "Motivational",
-                "option_description": "Motivational and encouraging quotes."
+                "option_code": "HRC",
+                "option_label": "Healing and Recovery",
+                "option_description": "Quotes on body recovery, therapeutic healing, gentle care, and restoration."
+            },
+            {
+                "option_code": "SCB",
+                "option_label": "Self-Care and Balance",
+                "option_description": "Quotes about personal boundaries, self-kindness, lifestyle balance, and daily self-care."
+            },
+            {
+                "option_code": "RSM",
+                "option_label": "Resilience and Motivation",
+                "option_description": "Quotes inspiring inner strength, perseverance, positive outlook, and motivation."
+            },
+            {
+                "option_code": "CNC",
+                "option_label": "Compassion and Connection",
+                "option_description": "Quotes highlighting human warmth, empathy, touch, community, and connection."
+            },
+            {
+                "option_code": "SPR",
+                "option_label": "Spiritual Reflection",
+                "option_description": "Quotes offering deeper reflection, gratitude, harmony, and contemplative wisdom."
             }
         ],
-        "source_document": "data/structure_guide/quote_main.php"
+        "source_document": "docs/09-content/quote-system.txt"
     },
     {
         "field_name": "type_record_note",

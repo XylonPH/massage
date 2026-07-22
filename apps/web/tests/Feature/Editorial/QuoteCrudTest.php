@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Editorial;
 
+use App\Livewire\Workspace\Editorial\QuoteForm;
+use App\Livewire\Workspace\Editorial\QuoteIndex;
 use App\Models\AccessAssignment;
 use App\Models\Quote;
 use App\Models\User;
@@ -44,11 +46,21 @@ class QuoteCrudTest extends TestCase
     public function test_index_lists_and_searches_quotes(): void
     {
         $user = $this->editor();
-        Quote::query()->create(['quote_text' => ['eng' => ['text' => 'Stillness heals.']]]);
-        Quote::query()->create(['quote_text' => ['eng' => ['text' => 'Movement restores.']]]);
+        Quote::query()->create([
+            'quote_text' => ['eng' => ['text' => 'Stillness heals.']],
+            'language_original_id' => 3049,
+            'type_quote_category' => 'RRL',
+            'attribution_label' => 'Anonymous',
+        ]);
+        Quote::query()->create([
+            'quote_text' => ['eng' => ['text' => 'Movement restores.']],
+            'language_original_id' => 3049,
+            'type_quote_category' => 'RRL',
+            'attribution_label' => 'Anonymous',
+        ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\QuoteIndex::class)
+            ->test(QuoteIndex::class)
             ->assertSee('Stillness heals.')
             ->assertSee('Movement restores.')
             ->set('search', 'Stillness')
@@ -61,46 +73,54 @@ class QuoteCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\QuoteForm::class)
-            ->set('state.english_text', 'Rest is productive.')
-            ->set('state.attribution_name', 'Unknown')
+            ->test(QuoteForm::class)
+            ->set('translations.eng.text', 'Rest is productive.')
+            ->set('state.attribution_label', 'Unknown')
             ->call('save')
             ->assertRedirect(route('workspace.editorial.quote.index'));
 
         $this->assertSame(1, Quote::query()->count());
-        $this->assertSame('Rest is productive.', Quote::query()->first()->english_text);
+        $this->assertSame('Rest is productive.', Quote::query()->first()->original_text);
     }
 
-    public function test_create_requires_english_text(): void
+    public function test_create_requires_original_language_text(): void
     {
         Livewire::actingAs($this->editor())
-            ->test(\App\Livewire\Workspace\Editorial\QuoteForm::class)
-            ->set('state.english_text', '')
+            ->test(QuoteForm::class)
+            ->set('translations.eng.text', '')
             ->call('save')
-            ->assertHasErrors(['state.english_text' => 'required']);
+            ->assertHasErrors(['translations.eng.text']);
     }
 
     public function test_editor_can_update_a_quote(): void
     {
         $user = $this->editor();
-        $quote = Quote::query()->create(['quote_text' => ['eng' => ['text' => 'Old text.']]]);
+        $quote = Quote::query()->create([
+            'quote_text' => ['eng' => ['text' => 'Old text.']],
+            'language_original_id' => 3049,
+            'type_quote_category' => 'RRL',
+        ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\QuoteForm::class, ['quote' => (string) $quote->getKey()])
-            ->assertSet('state.english_text', 'Old text.')
-            ->set('state.english_text', 'New text.')
+            ->test(QuoteForm::class, ['quote' => (string) $quote->getKey()])
+            ->assertSet('translations.eng.text', 'Old text.')
+            ->set('translations.eng.text', 'New text.')
             ->call('save');
 
-        $this->assertSame('New text.', $quote->refresh()->english_text);
+        $this->assertSame('New text.', $quote->refresh()->original_text);
     }
 
     public function test_editor_can_delete_a_quote(): void
     {
         $user = $this->editor();
-        $quote = Quote::query()->create(['quote_text' => ['eng' => ['text' => 'Doomed.']]]);
+        $quote = Quote::query()->create([
+            'quote_text' => ['eng' => ['text' => 'Doomed.']],
+            'language_original_id' => 3049,
+            'type_quote_category' => 'RRL',
+        ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\QuoteIndex::class)
+            ->test(QuoteIndex::class)
             ->call('deleteRecord', (string) $quote->getKey());
 
         $this->assertSame(0, Quote::query()->count());

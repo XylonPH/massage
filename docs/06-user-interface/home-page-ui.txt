@@ -173,6 +173,177 @@ Sponsored placement blocks provide tasteful monetization spaces without making t
 18. Community Pulse
 ===================
 
+
+Homepage UI Documentation
+=========================
+
+The homepage is the main public entry point of Massage Nexus and should function as a content-rich directory portal rather than a simple marketing landing page. It should help users immediately search, browse, discover, compare, read, and engage with spas, therapists, articles, promos, products, polls, quizzes, reviews, and platform activity. The homepage should feel active and useful even before a user logs in, while also changing parts of the interface when a registered user, owner, therapist, editor, or administrator is logged in.
+
+Page Layout Overview
+--------------------
+
+The homepage is divided into four major layout areas: the top header/navigation area, the hero area, the main content and right sidebar, and the footer. The top header contains branding, navigation, and account access; the hero contains the primary search experience and Wellness Journey statistics; the main content contains featured listings, browse sections, articles, reviews, promos, products, trending items, and profile updates; and the right sidebar contains sponsored placements, engagement widgets, quizzes, quotes, and campaign cards. The footer contains secondary navigation, business links, therapist links, social links, legal links, language selection, copyright, and the footer logo.
+
+--------------------------------------------------------------------------------
+
+1. Top Header and Navigation
+============================
+
+Placement: Top of the page, fixed or visually prominent across the full width of the screen.
+
+The top header contains the Massage Nexus logo on the left, followed by the main public navigation links: Home, Directory, Articles, Campus, and Promos. For an authenticated, verified, active member, Workspace appears as the final item in this same navigation rather than as a visually separate action button. The logo uses a slightly enlarged horizontal lockup with restrained Ink & Ember hover treatment; it must remain recognizable as branding rather than resemble a primary action button. The extra duplicate brand text beside the logo should be removed so the header does not repeat the application name unnecessarily. On the right side, guests see Log In and Sign Up buttons, while logged-in users see their avatar or branded default-avatar fallback, display name, rank and reward summary, and log-out control. Notifications, messages, and a broader account menu remain later integrations rather than placeholder controls.
+
+--------------------------------------------------------------------------------
+
+2. Search and Sponsored Hero Area
+=================================
+
+Placement: Immediately below the top navigation, occupying the most visible upper portion of the homepage.
+
+The search area is the primary homepage action and should remain the first major thing users notice. Immediately above the search panel, a row of target-type tabs (Spas, Therapists, Services, Articles, Reviews, Products) lets the user choose what they are searching for before they type; selecting a tab updates the search field's placeholder text and the hidden search-type parameter submitted with the query, so results open already scoped to that type instead of requiring a second filtering step after the results page loads. The panel itself contains a query field for the selected type plus a location field labeled with wording such as “City, area, or landmark,” not zip code. A compact translucent discovery strip beneath the panel uses otherwise empty hero space for a small set of popular massage-type links plus an Explore All action; it supports discovery without competing with search or inventing personalized recommendations. This section may use a branded Ink & Ember gradient background, an optional photographic hero image (with a graduated navy overlay preserving text contrast while keeping the subjects visible) as a brand-approved alternative treatment, or a premium sponsored hero placement behind or beside the search panel, allowing paying listings to receive high visibility without removing the search-first purpose of the homepage. The preferred photographic source is a wide 21:9 image with calm visual detail, no embedded text or logos, and enough compositional breathing room for the heading and search interface. The implementation reads public/images/hero/home.webp first, with JPG and PNG fallbacks.
+
+--------------------------------------------------------------------------------
+
+3. Search Quick Filters
+=======================
+
+Placement: Inside or directly below the main search panel.
+
+Quick filters appear as small action buttons below the search fields and help users narrow results quickly without opening advanced filters. Suggested quick filters include Open Now, Near Me, Promos, Verified, and Home Service. If a user clicks Near Me, the website may request browser location permission; if the user refuses, the system should fall back to manual city, area, or landmark search.
+
+--------------------------------------------------------------------------------
+
+4. Featured Spas
+================
+
+Placement: Main content area, directly below the search/hero area and before browse sections.
+
+Featured Spas should appear high on the homepage because this section can support premium visibility, sponsored placement, or selected editorial promotion. Each spa card should show the spa image, name, location, rating, review or comment count, open/closed status, opening or closing time, signature services, and labels such as Premium or Verified. Adult-oriented or sensual-service listings may exist elsewhere in the broader directory if handled responsibly, but they should not be allowed in homepage Featured Spas or premium hero placements.
+
+--------------------------------------------------------------------------------
+
+5. Featured Therapists
+======================
+
+Placement: Main content area, beside or after Featured Spas.
+
+Featured Therapists highlights selected or premium therapist profiles and should appear near the top of the homepage for visibility. Each therapist card should show a profile image, therapist name, rating, review or comment count, specialties, location or service area, availability hint if available, and verification label. This section gives therapists direct visibility separate from spa profiles and can later support premium therapist placement.
+
+--------------------------------------------------------------------------------
+
+6. Browse by Area
+=================
+
+Placement: Main content area, below Featured Spas and Featured Therapists.
+
+Browse by Area allows users to explore listings by city, district, neighborhood, region, or service area without typing into the search box. It should appear before Browse by Massage Type because location is often one of the first practical concerns when choosing a spa or therapist. Area chips should be simple, clickable, and easy to update based on available data or user location.
+
+--------------------------------------------------------------------------------
+
+7. Browse by Massage Type
+=========================
+
+Placement: Main content area, below Browse by Area.
+
+Browse by Massage Type allows users to explore service categories such as Swedish, Shiatsu, Thai, Hilot, Reflexology, Hot Stone, Deep Tissue, Aromatherapy, Ventosa, and other massage-related categories. Each massage type may use a small icon or visual marker to make the section easier to scan. Clicking a type should lead to a filtered directory page or service category page showing relevant spas, therapists, articles, and possibly products.
+
+--------------------------------------------------------------------------------
+
+8. Latest Articles
+==================
+
+Placement: Main content area, below the browse sections.
+
+Latest Articles displays recent guide-style, educational, or editorial content related to massage, spa visits, wellness, aftercare, safety, service types, and platform usage. Each article item should show a thumbnail image, article title, date, category, and optionally a short one-line excerpt if space allows. The section should include a View All link leading to the Articles area.
+
+Current web behavior: the section reads the three newest public, approved, active Article records from article_main and links each card to its public Article detail route. Until the first eligible database Article exists, the clearly fictional SampleContent cards remain a temporary empty-state fallback; they link to the Article index rather than pretending to be published database records.
+
+--------------------------------------------------------------------------------
+
+9. Latest Reviews
+=================
+
+Placement: Main content area, near Latest Articles.
+
+Latest Reviews makes the homepage feel active by showing recent user experiences from spa or therapist reviews. Each review card should show the reviewer display name or avatar, rating, related spa or therapist, short excerpt, and time posted. The section should focus on review activity rather than giving permanent free promotion to a listing.
+
+--------------------------------------------------------------------------------
+
+10. Promos and Deals
+====================
+
+Placement: Main content area, below Latest Articles and Latest Reviews.
+
+Promos and Deals displays active discounts, packages, vouchers, free upgrades, limited-time offers, or seasonal bundles. Each promo card should show an image, offer label such as “15% Off” or “Free Upgrade,” business name, short description, and validity period. If there are no active promos, this section can be hidden or replaced with a neutral discovery section so the homepage does not look empty.
+
+--------------------------------------------------------------------------------
+
+11. Wellness Finds
+==================
+
+Placement: Main content area, near Promos and Deals.
+
+Wellness Finds is the homepage preview of product discovery, even if the full shop feature is not emphasized in the main navigation yet. It can display massage oils, spa tools, towels, aromatherapy items, eye pillows, aftercare products, or other wellness-related items. Each item should show a product image, name, price, rating, and possibly seller or sponsor label when applicable.
+
+--------------------------------------------------------------------------------
+
+12. Trending Spas
+=================
+
+Placement: Main content area, below promos/products or in a compact list row.
+
+Trending Spas shows listings currently receiving notable attention based on views, searches, saves, reviews, follows, clicks, or other engagement signals. The wording “Trending” is preferred over “Most Popular” because it feels current and temporary rather than permanently ranking the same listings. Each item can show rank number, thumbnail, spa name, location, rating, and review count.
+
+--------------------------------------------------------------------------------
+
+13. Trending Therapists
+=======================
+
+Placement: Main content area, beside or near Trending Spas.
+
+Trending Therapists shows therapist profiles currently receiving notable attention from users. Each item can show rank number, avatar, therapist name, location or service area, rating, and review count. This section should rotate based on a defined time period such as this week or this month so it does not become a static free promotion area.
+
+--------------------------------------------------------------------------------
+
+14. New on Massage Nexus
+========================
+
+Placement: Main content area, below trending sections.
+
+New on Massage Nexus displays recently added spa, therapist, service, product, or article records for a limited time. This replaces the more plain label “Recently Added” and gives the section a more branded feel. Items should only remain here within a defined recency window so the homepage does not become a permanent promotional space for old additions.
+
+--------------------------------------------------------------------------------
+
+15. Freshly Updated Profiles
+============================
+
+Placement: Main content area, beside or near New on Massage Nexus.
+
+Freshly Updated Profiles displays listings with meaningful recent updates, such as updated hours, new services, new photos, revised contact details, ownership claim changes, verification updates, or status changes. The system should not show tiny internal edits or insignificant corrections here. This section helps users see that the platform is actively maintained and that listing information is being refreshed.
+
+--------------------------------------------------------------------------------
+
+16. Wellness Journey Panel
+==========================
+
+Placement: Right side of the search/hero area on wide screens and below the search panel on narrower screens.
+
+The statistics panel shows platform activity numbers such as total spas, therapists, reviews, or other useful public counters. It should include a subtle visual accent, background pattern, icon, or illustration so it does not look plain. The purpose is to create confidence that the platform has growing coverage and active information. Moving this panel into the hero makes Premium Spotlight the first card in the normal right sidebar.
+
+--------------------------------------------------------------------------------
+
+17. Sponsored Placement Blocks
+==============================
+
+Placement: Right sidebar and selected homepage areas, beginning with Premium Spotlight below the hero and continuing between engagement widgets.
+
+Sponsored placement blocks provide tasteful monetization spaces without making the homepage look overloaded with advertisements. These blocks may promote premium listings, wellness products, campaigns, campus content, therapist education, or advertiser messages. Each placement should be clearly labeled as Sponsored or Advertisement Space and should not interrupt the user’s ability to search, browse, or read.
+
+--------------------------------------------------------------------------------
+
+18. Community Pulse
+===================
+
 Placement: Right sidebar, after an initial sponsored placement.
 
 Community Pulse is a rotating poll or survey widget that asks users a short question and encourages quick participation. After a user answers, the system shows the result briefly, then after a short delay a new unanswered item replaces the completed one in place if the user is still on the page. Rotation is per user and completion-aware: any page showing the widget serves items the user has not yet answered, never items they already completed. This feature helps collect lightweight user opinions and makes the homepage feel interactive. Participation rules, result recording, and rotation behavior are owned by docs/08-community/survey-system.txt.
@@ -193,9 +364,9 @@ Campus Quiz shows a short quiz question connected to Wellness Campus learning. W
 
 Placement: Right sidebar, usually below the quiz and sponsored placements.
 
-Quote of the Day displays a rotating wellness, relaxation, massage, self-care, or motivational quote from an approved quote collection. The quote should come from a database rather than a plain text file so it can support categories, languages, authors, sources, active dates, seasonal use, and moderation. This section gives the homepage a calmer editorial touch between more functional sections.
+Quote of the Day displays a rotating wellness, relaxation, massage, self-care, or motivational quote from the quote_main collection using the reusable `<x-quote-panel />` component and `QuoteRotationService`. The quote supports 9 category theme treatments (`RRL`, `MNP`, `MEW`, `PHV`, `HRC`, `SCB`, `RSM`, `CNC`, `SPR`), multilingual texts, original language fallbacks, and deterministic daily rotation cached for 24 hours. This section gives the homepage a calmer editorial touch between more functional sections.
 
-The proposed database structure for this feature is the quote_main collection, documented in the PHP-readable structure guide at data/structure_guide/quote_main.php, with its quote categories defined by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json. The current implementation still renders one temporary hard-coded sample quote; replacing it with quote_main-backed rotation is pending implementation. Quote sourcing, attribution, rotation, and administration rules are owned by docs/09-content/quote-system.txt. Unlike Community Pulse and Campus Quiz, quotes have nothing for the user to complete, so quote rotation is time-based rather than completion-aware.
+The database structure for this feature is the quote_main collection, documented in the structure guide at data/structure_guide/quote_main.php, with its quote categories defined by the type_quote_category taxonomy record in data/taxonomy/massage_nexus/content_classification.json. Quote sourcing, attribution, rotation, caching, and administration rules are owned by docs/09-content/quote-system.txt. Unlike Community Pulse and Campus Quiz, quotes have nothing for the user to complete, so quote rotation is time-based rather than completion-aware.
 
 --------------------------------------------------------------------------------
 

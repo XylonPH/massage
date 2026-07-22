@@ -50,7 +50,7 @@
 
 # Variable
 $created_at = '2026-07-19T00:00:00Z';
-$updated_at = '2026-07-22T04:52:00Z';
+$updated_at = '2026-07-22T14:00:00Z';
 /**
  * Multilingual short-text sample.
  * Used by quote_text. English is shown as sample data only; the original
@@ -70,7 +70,7 @@ $multilingual_text_sample = [
  */
 $quote_main_default = [
 	'type_quote_category' => null, // single taxonomy code from type_quote_category
-	'attribution_name' => null,    // null when the quote is anonymous or proverb-like
+	'attribution_label' => null,   // null when the quote is anonymous or unattributed
 	'source_title' => null,
 	'source_url' => null,
 	'visibility_scope' => 'PUB',   // PUB = Public
@@ -89,7 +89,7 @@ $quote_main = [
 	'_id' => 'Q8mR3xN6pK1vT9cH', // canonical application-generated 16-character Base62 identifier
 
 	# Core
-	'quote_text' => [ // Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.
+	'quote_text' => [ // Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_label, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.
 		'eng' => [
 			'text' => 'Your body hears everything your mind says.',
 			'method_translation' => 'HUM',
@@ -102,10 +102,10 @@ $quote_main = [
 
 	# Parent / Classification
 	'language_id' => 3049, // English in common_reference.language_main; the language in which the quote was originally expressed. common_reference IDs remain numeric per shared standard §9.3.1.
-	'type_quote_category' => 'WEL', // single taxonomy code from type_quote_category (see data/taxonomy/massage_nexus/content_classification.json)
+	'type_quote_category' => 'RRL', // single taxonomy code from type_quote_category (see data/taxonomy/massage_nexus/content_classification.json)
 
 	# Attribution / Source
-	'attribution_name' => 'Naomi Judd', // public attribution exactly as displayed; null for anonymous or traditional sayings
+	'attribution_label' => 'Naomi Judd', // public attribution exactly as displayed (person, proverb, scripture, work, Anonymous); null for unattributed sayings
 	'source_title' => null, // optional title of the book, speech, interview, or work the quote comes from
 	'source_url' => null, // optional reference URL used for editorial verification; not necessarily displayed publicly
 
@@ -130,7 +130,7 @@ $quote_main_field_order = [
 	'quote_text',
 	'language_id',
 	'type_quote_category',
-	'attribution_name',
+	'attribution_label',
 	'source_title',
 	'source_url',
 	'visibility_scope',
@@ -170,7 +170,7 @@ $quote_main_field_property = [
 	# Core
 	'quote_text' => [
 		'field_label' => 'Quote Text',
-		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.',
+		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_label, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',
 		'is_translatable' => true,
@@ -197,9 +197,9 @@ $quote_main_field_property = [
 	],
 
 	# Attribution / Source
-	'attribution_name' => [
-		'field_label' => 'Attribution Name',
-		'field_description' => 'Public attribution shown with the quote, exactly as displayed. Null represents an anonymous, traditional, or unattributed quote. This is display text, not a reference to a person record; a person or author relationship may be added later only if the platform starts profiling quoted people.',
+	'attribution_label' => [
+		'field_label' => 'Attribution Label',
+		'field_description' => 'Public attribution shown with the quote, exactly as displayed (e.g. person name, proverb label, scripture reference, organization, book work, Anonymous). Null represents an unattributed quote.',
 		'max_character' => 150,
 	],
 	'source_title' => [
@@ -240,7 +240,7 @@ $quote_main_subfield_property = [];
  * - Rotation query index: status_record_lifecycle + language_id.
  * - Category filtering index: type_quote_category.
  * - Duplicate screening relies on editorial search plus an import-time check on
- *   same-language quote text with the same attribution_name; exact-match unique
+ *   same-language quote text with the same attribution_label; exact-match unique
  *   indexing of long multilingual text is intentionally not suggested.
  */
 

@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Editorial;
 
+use App\Livewire\Workspace\Editorial\EstablishmentForm;
+use App\Livewire\Workspace\Editorial\EstablishmentIndex;
 use App\Models\AccessAssignment;
 use App\Models\Establishment;
 use App\Models\User;
@@ -48,7 +50,7 @@ class EstablishmentCrudTest extends TestCase
         Establishment::query()->create(['display_name' => ['eng' => 'Ocean Breeze']]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentIndex::class)
+            ->test(EstablishmentIndex::class)
             ->assertSee('Calm Springs')
             ->assertSee('Ocean Breeze')
             ->set('search', 'Calm')
@@ -61,7 +63,7 @@ class EstablishmentCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+            ->test(EstablishmentForm::class)
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -78,7 +80,7 @@ class EstablishmentCrudTest extends TestCase
     public function test_create_requires_display_name_type_spa_and_status_establishment(): void
     {
         Livewire::actingAs($this->editor())
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+            ->test(EstablishmentForm::class)
             ->set('state.display_name_eng', '')
             ->set('state.type_spa', '')
             ->set('state.status_establishment', '')
@@ -100,7 +102,7 @@ class EstablishmentCrudTest extends TestCase
         ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
+            ->test(EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
             ->assertSet('state.display_name_eng', 'Old Name')
             ->set('state.display_name_eng', 'New Name')
             ->call('save');
@@ -118,7 +120,7 @@ class EstablishmentCrudTest extends TestCase
         ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentIndex::class)
+            ->test(EstablishmentIndex::class)
             ->call('deleteRecord', (string) $establishment->getKey());
 
         $this->assertSame(0, Establishment::query()->count());
@@ -129,7 +131,7 @@ class EstablishmentCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+            ->test(EstablishmentForm::class)
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -147,7 +149,7 @@ class EstablishmentCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+            ->test(EstablishmentForm::class)
             ->assertCount('state.operating_hours', 7)
             ->assertSet('state.operating_hours.0.day_of_week', 'Monday');
     }
@@ -157,7 +159,7 @@ class EstablishmentCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class)
+            ->test(EstablishmentForm::class)
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -184,7 +186,7 @@ class EstablishmentCrudTest extends TestCase
         ]);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
+            ->test(EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
             ->assertCount('state.operating_hours', 2);
     }
 }

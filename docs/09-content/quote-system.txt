@@ -1,8 +1,8 @@
 Title: Massage Nexus Quote System
-Document Version: 0.22
+Document Version: 1.00
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
-Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, category, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
+Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, category taxonomy (9 categories: RRL, MNP, MEW, PHV, HRC, SCB, RSM, CNC, SPR), approval, deterministic daily rotation, display placement, storage (quote_main), caching, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
 
 Related Documents:
 - docs/06-user-interface/home-page-ui.txt (section 20, Quote of the Day)
@@ -29,10 +29,10 @@ the completion-rotation behavior defined for Surveys and Quizzes. Quote rotation
 ================================================================================
 
 Each quote should preserve:
-- the quote text, multilingual where translated;
-- attribution as a person, work, Anonymous, Traditional or Proverb, or Attribution Unverified;
-- source context where known;
-- exactly one category from the type_quote_category taxonomy;
+- the quote text, multilingual where translated (quote_text JSON array per language with text, method_translation, status_review);
+- attribution_label as a person, work, Anonymous, Traditional or Proverb, or scripture/organization reference;
+- source context (source_title, source_url) where known;
+- exactly one category from the type_quote_category taxonomy (RRL, MNP, MEW, PHV, HRC, SCB, RSM, CNC, SPR);
 - review status per language entry and overall lifecycle status.
 
 Rules:
@@ -102,10 +102,9 @@ Before dynamic rotation is released, the structure guide and runtime form must r
 source-verification and publication-right basis required by section 2; source_title and source_url
 alone are not sufficient approval evidence.
 
-Administration (attribution, source, language, category, duplication review, approval,
-retirement, correction) belongs to the Admin Workspace editorial area per
-docs/11-workspaces/admin-workspace.txt. The homepage currently renders one temporary hard-coded
-sample quote; replacing it with quote_main-backed rotation is pending implementation.
+Administration (attribution_label, source_title, source_url, language_original_id, type_quote_category, duplication review, approval,
+retirement, correction) belongs to the Admin Workspace editorial area (`/workspace/editorial/quote`) per
+docs/11-workspaces/admin-workspace.txt. Livewire components `QuoteIndex` and `QuoteForm` manage quotes with real-time category filtering, translation tab management, duplicate detection, and live component preview.
 
 Quotes are curated directly by administrators and editors; there is no community submission or review workflow.
 

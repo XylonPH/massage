@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Editorial;
 
+use App\Livewire\Workspace\Editorial\ServiceForm;
+use App\Livewire\Workspace\Editorial\ServiceIndex;
 use App\Models\AccessAssignment;
 use App\Models\Service;
 use App\Models\User;
@@ -48,7 +50,7 @@ class ServiceCrudTest extends TestCase
         Service::query()->create(['service_slug' => 'deep-tissue', 'service_name' => ['eng' => 'Deep Tissue'], 'group_service_family' => 'massage']);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\ServiceIndex::class)
+            ->test(ServiceIndex::class)
             ->assertSee('Thai Massage')
             ->assertSee('Deep Tissue')
             ->set('search', 'Thai')
@@ -61,7 +63,7 @@ class ServiceCrudTest extends TestCase
         $user = $this->editor();
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\ServiceForm::class)
+            ->test(ServiceForm::class)
             ->set('state.english_name', 'Hot Stone')
             ->set('state.service_slug', 'hot-stone')
             ->set('state.group_service_family', 'massage')
@@ -77,7 +79,7 @@ class ServiceCrudTest extends TestCase
     public function test_create_requires_english_name_slug_and_family(): void
     {
         Livewire::actingAs($this->editor())
-            ->test(\App\Livewire\Workspace\Editorial\ServiceForm::class)
+            ->test(ServiceForm::class)
             ->set('state.english_name', '')
             ->set('state.service_slug', '')
             ->set('state.group_service_family', '')
@@ -95,7 +97,7 @@ class ServiceCrudTest extends TestCase
         $service = Service::query()->create(['service_slug' => 'old-slug', 'service_name' => ['eng' => 'Old Name'], 'group_service_family' => 'massage']);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\ServiceForm::class, ['service' => (string) $service->getKey()])
+            ->test(ServiceForm::class, ['service' => (string) $service->getKey()])
             ->assertSet('state.english_name', 'Old Name')
             ->set('state.english_name', 'New Name')
             ->call('save');
@@ -109,7 +111,7 @@ class ServiceCrudTest extends TestCase
         $service = Service::query()->create(['service_slug' => 'doomed', 'service_name' => ['eng' => 'Doomed'], 'group_service_family' => 'massage']);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\ServiceIndex::class)
+            ->test(ServiceIndex::class)
             ->call('deleteRecord', (string) $service->getKey());
 
         $this->assertSame(0, Service::query()->count());
@@ -121,7 +123,7 @@ class ServiceCrudTest extends TestCase
         Service::query()->create(['service_slug' => 'thai-massage', 'service_name' => ['eng' => 'Thai'], 'group_service_family' => 'massage']);
 
         Livewire::actingAs($user)
-            ->test(\App\Livewire\Workspace\Editorial\ServiceForm::class)
+            ->test(ServiceForm::class)
             ->set('state.english_name', 'Another')
             ->set('state.service_slug', 'thai-massage')
             ->set('state.group_service_family', 'massage')

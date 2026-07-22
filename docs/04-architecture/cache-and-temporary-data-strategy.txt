@@ -1,7 +1,7 @@
 Title: Massage Nexus Cache and Temporary Data Strategy
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus uses application, query, page, API, translation, media, session, rate-limit, search, analytics, support, mobile, and desktop caches to improve speed and resilience without making stale data authoritative or leaking private information.
 
 Related Documents:
@@ -23,10 +23,10 @@ Related Documents:
 - Authoritative records remain in their designated data store.
 - Cache failure must not corrupt authoritative data.
 - Cache keys include locale, permission, revision, target, and environment where relevant.
-- Public and private representations use different keys.
-- Important changes use explicit invalidation.
-- Time-to-live is a safety limit, not the only consistency method.
-- Secrets, passwords, recovery codes, full payment data, and unprotected intake are not cached.
+- Sensitive personal data, tokens, passwords, private notes, and draft content must not be cached publicly.
+- Invalidation must happen when authoritative data changes.
+- Stale content is tolerated only where explicitly allowed.
+- Memory budgets are respected.
 - Cache stampede and retry storms are controlled.
 - Hit rate, latency, size, errors, and stale responses are monitored.
 
@@ -44,6 +44,7 @@ Possible areas:
 - taxonomy and references;
 - language resources;
 - translation results;
+- daily quote rotation (quote:daily:{placement}:{locale}:{dateString});
 - search results;
 - external API responses;
 - analytics aggregates;
@@ -63,12 +64,6 @@ Do not use one undifferentiated cache namespace.
 ================================================================================
 
 A key may include:
-- environment;
-- application;
-- capability;
-- target type;
-- target identifier;
-- representation;
 - locale;
 - audience or permission class;
 - source revision;

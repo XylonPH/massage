@@ -19,7 +19,6 @@ class Establishment extends Model
 
     public $incrementing = false;
 
-
     protected $fillable = [
         '_id',
         'display_name',

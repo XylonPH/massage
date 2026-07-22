@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Enums\ArticleCategory;
 use App\Models\Article\Article;
+use App\Services\Quote\QuoteRotationService;
 use App\Support\Demo\SampleContent;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index(): View
+    public function index(QuoteRotationService $quoteRotationService): View
     {
         return view('home', [
             'featuredSpas' => SampleContent::featuredSpas(),
@@ -25,7 +26,7 @@ class HomeController extends Controller
             'newListings' => SampleContent::newListings(),
             'updatedProfiles' => SampleContent::updatedProfiles(),
             'stats' => SampleContent::stats(),
-            'quote' => SampleContent::quote(),
+            'quote' => $quoteRotationService->resolveDailyQuote('home'),
         ]);
     }
 

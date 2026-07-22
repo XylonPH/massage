@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Enums\NsfwLevel;
+use App\Enums\QuoteCategory;
 use App\Enums\RecordLifecycleStatus;
-use App\Enums\ReviewStatus;
+use App\Support\Article\ArticleLanguage;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use MongoDB\Laravel\Eloquent\Model;
@@ -17,7 +19,6 @@ class Quote extends Model
 
     protected $table = 'quote_main';
 
-    // Per documentation: application-generated 16-character Base62 identifier
     protected $keyType = 'string';
 
     public $incrementing = false;
@@ -27,30 +28,22 @@ class Quote extends Model
         'quote_text',
         'language_original_id',
         'type_quote_category',
-        'attribution_name',
+        'attribution_label',
         'source_title',
         'source_url',
-        'display_start_date',
-        'display_end_date',
-        'is_display_enabled',
-        'status_review',
+        'visibility_scope',
         'level_nsfw',
         'status_record_lifecycle',
-        'record_note',
+        'published_at',
         'created_by_user_id',
         'updated_by_user_id',
-        'archived_at',
-        'archived_by_user_id',
     ];
 
     protected $casts = [
-        'display_start_date' => 'date',
-        'display_end_date' => 'date',
-        'is_display_enabled' => 'boolean',
-        'status_review' => ReviewStatus::class,
+        'language_original_id' => 'integer',
+        'published_at' => 'datetime',
         'level_nsfw' => NsfwLevel::class,
         'status_record_lifecycle' => RecordLifecycleStatus::class,
-        'archived_at' => 'datetime',
     ];
 
     protected static function boot()
@@ -59,29 +52,130 @@ class Quote extends Model
 
         static::creating(function ($model) {
             if (empty($model->{$model->getKeyName()})) {
-                // Generate a 16-character Base62 ID using Str::random or similar
                 $model->{$model->getKeyName()} = Str::random(16);
+            }
+            if (empty($model->published_at)) {
+                $model->published_at = now();
             }
         });
     }
 
     /**
-     * Helper to easily get/set the English quote text since it is stored as an array
-     * under the 'eng' key: ['eng' => ['text' => '...', 'method_translation' => 'HUM', 'status_review' => 'A']]
+     * Scope query to eligible public quotes for rotation.
      */
-    public function getEnglishTextAttribute()
+    public function scopeEligiblePublic(Builder $query): Builder
     {
-        return $this->quote_text['eng']['text'] ?? null;
+        return $query
+            ->where('status_record_lifecycle', RecordLifecycleStatus::Active->value)
+            ->where(function (Builder $q): void {
+                $q->whereNull('visibility_scope')->orWhere('visibility_scope', 'PUB');
+            })
+            ->where(function (Builder $q): void {
+                $q->whereNull('level_nsfw')->orWhere('level_nsfw', NsfwLevel::None->value);
+            })
+            ->where(function (Builder $q): void {
+                $q->whereNull('published_at')->orWhere('published_at', '<=', now());
+            });
     }
 
-    public function setEnglishTextAttribute($value)
+    /**
+     * Returns the Category Enum.
+     */
+    public function getCategoryEnumAttribute(): ?QuoteCategory
     {
-        $current = $this->quote_text ?? [];
-        $current['eng'] = [
-            'text' => $value,
-            'method_translation' => 'HUM',
-            'status_review' => 'A', // Assuming standard entry is approved for the translation array itself
+        return QuoteCategory::tryFrom((string) $this->type_quote_category);
+    }
+
+    /**
+     * Get the original language 3-letter ISO key (e.g. 'eng', 'fil', 'ceb', 'kor', 'spa', 'zho').
+     */
+    public function getOriginalLanguageKeyAttribute(): string
+    {
+        $id = (int) ($this->language_original_id ?? 3049);
+        $map = [
+            3049 => 'eng',
+            3600 => 'fil',
+            1458 => 'ceb',
+            7142 => 'kor',
+            12559 => 'spa',
+            17097 => 'zho',
         ];
-        $this->quote_text = $current;
+
+        return $map[$id] ?? ArticleLanguage::keyForId($id);
+    }
+
+    /**
+     * Get the original text stored for the original language_id.
+     */
+    public function getOriginalTextAttribute(): ?string
+    {
+        $key = $this->original_language_key;
+        if (isset($this->quote_text[$key]['text'])) {
+            return $this->quote_text[$key]['text'];
+        }
+
+        // Fallback: first available text in array
+        if (is_array($this->quote_text)) {
+            foreach ($this->quote_text as $langData) {
+                if (! empty($langData['text'])) {
+                    return $langData['text'];
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Get quote text for a specific locale, falling back gracefully.
+     *
+     * @return array{text: string, is_original: bool, language_key: string, original_text: string|null, original_language_key: string}
+     */
+    public function getResolvedDisplay(?string $requestedLocale = null): array
+    {
+        $requestedLocale ??= app()->getLocale();
+
+        $originalKey = $this->original_language_key;
+        $originalText = $this->original_text ?? '';
+
+        // Standardize locale string if zho-hans or zho-hant
+        $langKey = match (strtolower($requestedLocale)) {
+            'zh-cn', 'zho-hans', 'zh-hans' => 'zho-hans',
+            'zh-tw', 'zho-hant', 'zh-hant' => 'zho-hant',
+            default => strtolower(substr($requestedLocale, 0, 3)),
+        };
+
+        // 1. Direct match on requested locale in quote_text
+        if (isset($this->quote_text[$langKey]['text']) && filled($this->quote_text[$langKey]['text'])) {
+            $isOriginal = ($langKey === $originalKey || str_starts_with($langKey, $originalKey));
+
+            return [
+                'text' => $this->quote_text[$langKey]['text'],
+                'is_original' => $isOriginal,
+                'language_key' => $langKey,
+                'original_text' => $originalText,
+                'original_language_key' => $originalKey,
+            ];
+        }
+
+        // 2. Check general language key if requested key is subvariant (e.g. zho for zho-hans)
+        if (str_starts_with($langKey, 'zho') && isset($this->quote_text['zho']['text'])) {
+            return [
+                'text' => $this->quote_text['zho']['text'],
+                'is_original' => str_starts_with($originalKey, 'zho'),
+                'language_key' => 'zho',
+                'original_text' => $originalText,
+                'original_language_key' => $originalKey,
+            ];
+        }
+
+        // 3. Fallback: Display original text with original language indicated
+        return [
+            'text' => $originalText,
+            'is_original' => true,
+            'language_key' => $originalKey,
+            'original_text' => $originalText,
+            'original_language_key' => $originalKey,
+        ];
     }
 }

@@ -504,14 +504,8 @@
             </section>
 
             {{-- Quote of the Day --}}
-            <section aria-labelledby="quote-heading" class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-leaf-50 to-ink-50 p-4 shadow-sm dark:from-leaf-950 dark:to-charcoal-950">
-                <h2 id="quote-heading" class="text-base font-bold text-ink-950 dark:text-ink-50">{{ __('home.quote_of_the_day') }}</h2>
-                <blockquote class="mt-3">
-                    <svg viewBox="0 0 24 24" fill="currentColor" class="size-6 text-ember-400" aria-hidden="true"><path d="M9.6 5C6 6.7 4 9.5 4 13.1c0 3 1.8 5 4.3 5 2 0 3.6-1.5 3.6-3.5 0-1.9-1.4-3.3-3.2-3.3h-.6c.4-1.9 1.6-3.4 3.5-4.5L9.6 5Zm9 0c-3.6 1.7-5.6 4.5-5.6 8.1 0 3 1.8 5 4.3 5 2 0 3.6-1.5 3.6-3.5 0-1.9-1.4-3.3-3.2-3.3h-.6c.4-1.9 1.6-3.4 3.5-4.5L18.6 5Z"/></svg>
-                    <p class="mt-2 text-base font-semibold italic leading-relaxed text-ink-800 dark:text-ink-200">“{{ $quote['text'] }}”</p>
-                    <footer class="mt-2 text-sm text-ink-500 dark:text-ink-400">— {{ $quote['author'] }}</footer>
-                </blockquote>
-            </section>
+            <x-quote-panel :quote="$quote" />
+
 
             {{-- Upcoming Campaign --}}
             <section aria-labelledby="campaign-heading" class="relative overflow-hidden rounded-2xl bg-ink-950 p-4 text-white shadow-md">

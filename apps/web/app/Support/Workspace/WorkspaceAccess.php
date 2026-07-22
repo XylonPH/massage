@@ -2,19 +2,19 @@
 
 namespace App\Support\Workspace;
 
-use App\Models\AccessAssignment;
 use App\Models\User;
+use App\Models\UserAccess;
 use Illuminate\Support\Collection;
 
 class WorkspaceAccess
 {
-    /** @var array<string, Collection<int, AccessAssignment>> */
+    /** @var array<string, Collection<int, UserAccess>> */
     private array $assignmentCache = [];
 
     public function can(User $user, string $permission, string $scope = 'GBL', ?string $scopeRecordId = null): bool
     {
         return $this->assignments($user)->contains(
-            fn (AccessAssignment $assignment): bool => $this->assignmentMatchesScope($assignment, $scope, $scopeRecordId)
+            fn (UserAccess $assignment): bool => $this->assignmentMatchesScope($assignment, $scope, $scopeRecordId)
                 && in_array($permission, $this->assignmentPermissions($assignment), true),
         );
     }
@@ -30,7 +30,7 @@ class WorkspaceAccess
     public function scopedRecordIds(User $user, string $permission, string $scope): array
     {
         return $this->assignments($user)
-            ->filter(fn (AccessAssignment $assignment): bool => $assignment->scope_access === $scope
+            ->filter(fn (UserAccess $assignment): bool => $assignment->scope_access === $scope
                 && filled($assignment->scope_record_id)
                 && in_array($permission, $this->assignmentPermissions($assignment), true))
             ->pluck('scope_record_id')
@@ -55,19 +55,19 @@ class WorkspaceAccess
             ->all();
     }
 
-    /** @return Collection<int, AccessAssignment> */
+    /** @return Collection<int, UserAccess> */
     private function assignments(User $user): Collection
     {
         $userId = (string) $user->getKey();
 
-        return $this->assignmentCache[$userId] ??= AccessAssignment::query()
+        return $this->assignmentCache[$userId] ??= UserAccess::query()
             ->where('user_id', $userId)
             ->effective()
             ->get();
     }
 
     /** @return list<string> */
-    private function assignmentPermissions(AccessAssignment $assignment): array
+    private function assignmentPermissions(UserAccess $assignment): array
     {
         $rolePermissions = config("workspace.role_permission_map.{$assignment->role_workspace}", []);
 
@@ -77,7 +77,7 @@ class WorkspaceAccess
         ]));
     }
 
-    private function assignmentMatchesScope(AccessAssignment $assignment, string $scope, ?string $scopeRecordId): bool
+    private function assignmentMatchesScope(UserAccess $assignment, string $scope, ?string $scopeRecordId): bool
     {
         if ($assignment->scope_access === 'GBL') {
             return true;

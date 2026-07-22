@@ -55,7 +55,7 @@ article_title
 assigned_at
 assigned_user_id
 attire_preference
-attribution_name
+attribution_label
 authenticated_at
 author_credit_list
 author_user_id_list

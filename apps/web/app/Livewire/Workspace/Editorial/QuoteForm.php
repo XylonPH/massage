@@ -5,53 +5,76 @@ namespace App\Livewire\Workspace\Editorial;
 use App\Enums\NsfwLevel;
 use App\Enums\QuoteCategory;
 use App\Enums\RecordLifecycleStatus;
-use App\Enums\ReviewStatus;
 use App\Models\Quote;
+use App\Services\Quote\QuoteRotationService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 #[Layout('layouts.workspace', ['navActive' => 'admin-editorial'])]
 class QuoteForm extends Component
 {
-    public ?string $quote = null;
+    public ?string $quoteId = null;
 
     /** @var array<string, mixed> */
     public array $state = [
-        'english_text' => '',
-        'attribution_name' => '',
+        'language_original_id' => 3049,
+        'type_quote_category' => 'RRL',
+        'attribution_label' => '',
         'source_title' => '',
         'source_url' => '',
-        'language_original_id' => 3049,
-        'type_quote_category' => [],
-        'is_display_enabled' => true,
-        'display_start_date' => null,
-        'display_end_date' => null,
-        'status_review' => 'P',
+        'visibility_scope' => 'PUB',
         'level_nsfw' => 'N',
         'status_record_lifecycle' => 'ACT',
+        'published_at' => '',
     ];
+
+    /** @var array<string, array{text: string, method_translation: string, status_review: string}> */
+    public array $translations = [
+        'eng' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'fil' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'ceb' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'kor' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'spa' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'zho-hans' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+        'zho-hant' => ['text' => '', 'method_translation' => 'HUM', 'status_review' => 'A'],
+    ];
+
+    public ?string $duplicateWarning = null;
 
     public function mount(?string $quote = null): void
     {
-        $this->quote = $quote;
+        $this->quoteId = $quote;
 
         if ($quote !== null) {
+            /** @var Quote $record */
             $record = Quote::query()->findOrFail($quote);
             $this->state = [
-                'english_text' => $record->english_text ?? '',
-                'attribution_name' => $record->attribution_name ?? '',
+                'language_original_id' => (int) ($record->language_original_id ?? 3049),
+                'type_quote_category' => is_array($record->type_quote_category) ? ($record->type_quote_category[0] ?? 'RRL') : ($record->type_quote_category ?? 'RRL'),
+                'attribution_label' => $record->attribution_label ?? '',
                 'source_title' => $record->source_title ?? '',
                 'source_url' => $record->source_url ?? '',
-                'language_original_id' => $record->language_original_id ?? 3049,
-                'type_quote_category' => $record->type_quote_category ?? [],
-                'is_display_enabled' => (bool) ($record->is_display_enabled ?? true),
-                'display_start_date' => $record->display_start_date?->format('Y-m-d'),
-                'display_end_date' => $record->display_end_date?->format('Y-m-d'),
-                'status_review' => $record->status_review?->value ?? 'P',
+                'visibility_scope' => $record->visibility_scope ?? 'PUB',
                 'level_nsfw' => $record->level_nsfw?->value ?? 'N',
                 'status_record_lifecycle' => $record->status_record_lifecycle?->value ?? 'ACT',
+                'published_at' => $record->published_at?->format('Y-m-d\TH:i') ?? '',
             ];
+
+            if (is_array($record->quote_text)) {
+                foreach ($record->quote_text as $langKey => $val) {
+                    if (is_array($val) && isset($val['text'])) {
+                        $this->translations[$langKey] = [
+                            'text' => $val['text'] ?? '',
+                            'method_translation' => $val['method_translation'] ?? 'HUM',
+                            'status_review' => $val['status_review'] ?? 'A',
+                        ];
+                    }
+                }
+            }
+        } else {
+            $this->state['published_at'] = now()->format('Y-m-d\TH:i');
         }
     }
 
@@ -59,56 +82,149 @@ class QuoteForm extends Component
     protected function rules(): array
     {
         return [
-            'state.english_text' => ['required', 'string', 'max:500'],
-            'state.attribution_name' => ['nullable', 'string', 'max:150'],
+            'state.language_original_id' => ['required', 'integer'],
+            'state.type_quote_category' => ['required', 'string'],
+            'state.attribution_label' => ['nullable', 'string', 'max:150'],
             'state.source_title' => ['nullable', 'string', 'max:200'],
             'state.source_url' => ['nullable', 'url', 'max:500'],
-            'state.language_original_id' => ['required', 'integer'],
-            'state.type_quote_category' => ['array'],
-            'state.is_display_enabled' => ['boolean'],
-            'state.display_start_date' => ['nullable', 'date'],
-            'state.display_end_date' => ['nullable', 'date', 'after_or_equal:state.display_start_date'],
-            'state.status_review' => ['required', 'string'],
+            'state.visibility_scope' => ['required', 'string'],
             'state.level_nsfw' => ['required', 'string'],
             'state.status_record_lifecycle' => ['required', 'string'],
+            'state.published_at' => ['nullable', 'string'],
+            'translations.*.text' => ['nullable', 'string', 'max:500'],
+            'translations.*.method_translation' => ['nullable', 'string'],
+            'translations.*.status_review' => ['nullable', 'string'],
         ];
     }
 
-    public function save(): void
+    public function updated($propertyName): void
+    {
+        $this->checkForDuplicates();
+    }
+
+    public function checkForDuplicates(): void
+    {
+        $this->duplicateWarning = null;
+        $origLangKey = $this->getOriginalLangKeyProperty();
+
+        $text = trim($this->translations[$origLangKey]['text'] ?? '');
+        if ($text === '') {
+            return;
+        }
+
+        $attr = trim($this->state['attribution_label'] ?? '');
+
+        $query = Quote::query()
+            ->where("quote_text.{$origLangKey}.text", 'like', $text);
+
+        if ($this->quoteId) {
+            $query->where('_id', '!=', $this->quoteId);
+        }
+
+        if ($attr !== '') {
+            $query->where('attribution_label', $attr);
+        }
+
+        $match = $query->first();
+        if ($match) {
+            $this->duplicateWarning = "A quote with matching text in {$origLangKey} already exists (ID: {$match->getKey()}).";
+        }
+    }
+
+    public function getOriginalLangKeyProperty(): string
+    {
+        $map = [
+            3049 => 'eng',
+            3600 => 'fil',
+            1458 => 'ceb',
+            7142 => 'kor',
+            12559 => 'spa',
+            17097 => 'zho-hans',
+        ];
+
+        return $map[(int) $this->state['language_original_id']] ?? 'eng';
+    }
+
+    public function save(QuoteRotationService $rotationService): void
     {
         $this->validate();
 
-        $record = $this->quote !== null
-            ? Quote::query()->findOrFail($this->quote)
+        $origKey = $this->getOriginalLangKeyProperty();
+
+        // Ensure original language has text
+        if (empty(trim($this->translations[$origKey]['text'] ?? ''))) {
+            $this->addError("translations.{$origKey}.text", "Original language ({$origKey}) quote text is required.");
+
+            return;
+        }
+
+        $record = $this->quoteId !== null
+            ? Quote::query()->findOrFail($this->quoteId)
             : new Quote;
 
-        $record->english_text = $this->state['english_text'];
+        // Build filtered quote_text payload
+        $quoteTextPayload = [];
+        foreach ($this->translations as $langKey => $val) {
+            if (filled(trim($val['text'] ?? ''))) {
+                $quoteTextPayload[$langKey] = [
+                    'text' => trim($val['text']),
+                    'method_translation' => $val['method_translation'] ?? 'HUM',
+                    'status_review' => $val['status_review'] ?? 'A',
+                ];
+            }
+        }
+
         $record->fill([
-            'attribution_name' => $this->state['attribution_name'] ?: null,
-            'source_title' => $this->state['source_title'] ?: null,
-            'source_url' => $this->state['source_url'] ?: null,
+            'quote_text' => $quoteTextPayload,
             'language_original_id' => (int) $this->state['language_original_id'],
-            'type_quote_category' => array_values($this->state['type_quote_category']),
-            'is_display_enabled' => (bool) $this->state['is_display_enabled'],
-            'display_start_date' => $this->state['display_start_date'] ?: null,
-            'display_end_date' => $this->state['display_end_date'] ?: null,
-            'status_review' => $this->state['status_review'],
+            'type_quote_category' => $this->state['type_quote_category'],
+            'attribution_label' => filled($this->state['attribution_label']) ? trim($this->state['attribution_label']) : null,
+            'source_title' => filled($this->state['source_title']) ? trim($this->state['source_title']) : null,
+            'source_url' => filled($this->state['source_url']) ? trim($this->state['source_url']) : null,
+            'visibility_scope' => $this->state['visibility_scope'],
             'level_nsfw' => $this->state['level_nsfw'],
             'status_record_lifecycle' => $this->state['status_record_lifecycle'],
+            'published_at' => filled($this->state['published_at']) ? Carbon::parse($this->state['published_at']) : now(),
         ]);
+
         $record->save();
 
-        session()->flash('editorial_status', $this->quote !== null ? __('editorial.updated') : __('editorial.created'));
+        $rotationService->clearCache();
+
+        session()->flash('editorial_status', $this->quoteId !== null ? 'Quote record updated successfully.' : 'Quote record created successfully.');
         $this->redirectRoute('workspace.editorial.quote.index', navigate: true);
     }
 
     public function render(): View
     {
+        $origKey = $this->getOriginalLangKeyProperty();
+        $text = $this->translations[$origKey]['text'] ?? '';
+
+        $previewQuote = [
+            'category' => QuoteCategory::tryFrom($this->state['type_quote_category']),
+            'text' => filled($text) ? $text : 'Your quote text preview will appear here...',
+            'attribution_label' => $this->state['attribution_label'] ?: 'Author or Source',
+            'source_title' => $this->state['source_title'] ?: null,
+            'source_url' => $this->state['source_url'] ?: null,
+            'language_key' => $origKey,
+            'is_original' => true,
+            'original_text' => $text,
+            'original_language_key' => $origKey,
+        ];
+
         return view('livewire.workspace.editorial.quote-form', [
-            'categoryOptions' => collect(QuoteCategory::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
-            'reviewOptions' => collect(ReviewStatus::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
-            'nsfwOptions' => collect(NsfwLevel::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
-            'lifecycleOptions' => collect(RecordLifecycleStatus::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
-        ])->title(__('editorial.quotes'));
+            'categoryOptions' => QuoteCategory::cases(),
+            'nsfwOptions' => NsfwLevel::cases(),
+            'lifecycleOptions' => RecordLifecycleStatus::cases(),
+            'languages' => [
+                3049 => 'English (eng)',
+                3600 => 'Filipino (fil)',
+                1458 => 'Cebuano (ceb)',
+                7142 => 'Korean (kor)',
+                12559 => 'Spanish (spa)',
+                17097 => 'Chinese (zho-hans / zho-hant)',
+            ],
+            'previewQuote' => $previewQuote,
+        ])->title($this->quoteId ? 'Edit Quote' : 'New Quote');
     }
 }

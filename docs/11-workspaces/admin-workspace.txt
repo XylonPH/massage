@@ -677,8 +677,7 @@ domain specification. The shared workspace and queue patterns do not merge these
 generic content collection. announcement_main is the current working collection name for official
 first-party announcements; it is not independent News.
 
-Quote administration includes attribution, source, language, category, display window,
-duplication review, approval, scheduling, retirement, and correction. Survey and Quiz
+Quote administration (`/workspace/editorial/quote`) includes attribution_label, source_title, source_url, original language selection (language_original_id), 9 category options (type_quote_category), display window (published_at), visibility scope, duplication review, approval, scheduling, retirement, and Livewire form/index management with live component preview. Survey and Quiz
 administration includes draft, question and response structure, audience, availability window,
 translation, accessibility, moderation, scoring or result rules where applicable, preview,
 publication, closure, export authorization, and archive. Their final schemas remain owned by their

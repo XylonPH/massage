@@ -9,9 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EnsureWorkspacePermission
 {
-    public function __construct(private WorkspaceAccess $workspaceAccess)
-    {
-    }
+    public function __construct(private WorkspaceAccess $workspaceAccess) {}
 
     public function handle(Request $request, Closure $next, string $permission): Response
     {
