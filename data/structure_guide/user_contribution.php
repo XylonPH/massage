@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus User Contribution Structure Guide
- * Version: 1.00
+ * Version: 1.10
  * Collection: user_contribution
  * Description: Stores one user or staff proposal to add, correct, translate, enrich, or update a supported record.
  * Purpose: Documents the accepted shared user-contribution proposal, review, and decision boundary without acting as runtime workflow code or a migration.
@@ -13,12 +13,15 @@
  */
 
 $created_at = '2026-07-20T10:31:38Z';
-$updated_at = '2026-07-22T02:51:15Z';
+$updated_at = '2026-07-22T15:35:00Z';
 
 $user_contribution_default = [
     'is_user_access_requested' => false,
     'status_user_contribution' => 'DFT',
     'revision_number' => 1,
+    'duplicate_candidate_establishment_id_list' => [],
+    'duplicate_acknowledged' => false,
+    'is_visit_requested' => false,
 ];
 
 $user_contribution = [
@@ -32,6 +35,11 @@ $user_contribution = [
     'type_practitioner_relationship' => null, // Optional submitter-declared practitioner relationship.
     'is_user_access_requested' => false, // Whether separate scoped user access is also requested.
     'relationship_note' => 'I manage the listed branch.', // Optional declaration explanation.
+    'submission_note' => 'Photos available on request.', // Optional free-text note to the reviewer, separate from the relationship note.
+    'duplicate_candidate_establishment_id_list' => ['Es7K2pQ9xR4tV8zN'], // Establishment IDs the duplicate check flagged at submission time.
+    'duplicate_acknowledged' => true, // Whether the submitter confirmed this is not one of the flagged candidates.
+    'is_visit_requested' => false, // Whether the submitter requested an in-person verification visit.
+    'visit_preferred_time_note' => null, // Optional free-text preferred time when is_visit_requested is true.
     'status_user_contribution' => 'SUB', // Current proposal workflow state.
     'submitted_at' => '2026-07-22T02:51:15Z', // UTC review-submission time.
     'reviewer_user_id' => null, // Assigned reviewer.
@@ -46,7 +54,7 @@ $user_contribution = [
 $user_contribution_field_order = [
     '_id', 'type_contribution', 'target_collection', 'target_record_id', 'submitted_by_user_id',
     'proposed_data', 'type_establishment_relationship', 'type_practitioner_relationship',
-    'is_user_access_requested', 'relationship_note', 'status_user_contribution', 'submitted_at',
+    'is_user_access_requested', 'relationship_note', 'submission_note', 'duplicate_candidate_establishment_id_list', 'duplicate_acknowledged', 'is_visit_requested', 'visit_preferred_time_note', 'status_user_contribution', 'submitted_at',
     'reviewer_user_id', 'reviewed_at', 'decision_note', 'resulting_revision_id', 'revision_number',
     'created_at', 'updated_at',
 ];
@@ -66,6 +74,11 @@ $user_contribution_field_property = [
     'type_practitioner_relationship' => ['field_label' => 'Declared Practitioner Relationship', 'field_description' => 'Optional submitter declaration that requires independent verification.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'is_user_access_requested' => ['field_label' => 'User Access Requested', 'field_description' => 'Whether the submitter requests a separately reviewed scoped access grant.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
     'relationship_note' => ['field_label' => 'Relationship Note', 'field_description' => 'Optional explanation supporting a declared relationship or access request.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 1000],
+    'submission_note' => ['field_label' => 'Submission Note', 'field_description' => 'Optional free-text note to the reviewer, separate from the relationship note.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 2000],
+    'duplicate_candidate_establishment_id_list' => ['field_label' => 'Duplicate Candidates', 'field_description' => 'Establishment references the duplicate check flagged as possible matches at submission time.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
+    'duplicate_acknowledged' => ['field_label' => 'Duplicate Acknowledged', 'field_description' => 'Whether the submitter confirmed the proposal is not one of the flagged duplicate candidates.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
+    'is_visit_requested' => ['field_label' => 'Visit Requested', 'field_description' => 'Whether the submitter requested an in-person verification visit.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
+    'visit_preferred_time_note' => ['field_label' => 'Visit Preferred Time', 'field_description' => 'Optional free-text preferred time for the requested visit.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 500],
     'status_user_contribution' => ['field_label' => 'User Contribution Status', 'field_description' => 'Current proposal review and lifecycle state.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'DFT', 'is_mandatory' => true, 'is_indexed' => true],
     'submitted_at' => ['field_label' => 'Submitted At', 'field_description' => 'UTC time the proposal entered review.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_indexed' => true],
     'reviewer_user_id' => ['field_label' => 'Reviewer User', 'field_description' => 'user_main._id assigned to review the proposal.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true, 'is_indexed' => true],

@@ -185,6 +185,8 @@ dog_breed_key
 dog_breed_name
 download_scope
 draping_preference
+duplicate_acknowledged
+duplicate_candidate_establishment_id_list
 duration_minute
 duration_option_list
 duration_option_note
@@ -336,6 +338,7 @@ is_system_generated
 is_tax_included
 is_translatable
 is_user_access_requested
+is_visit_requested
 is_walk_in_available
 issue_date
 issued_at
@@ -756,6 +759,7 @@ steam_room_availability
 storage_path
 storage_url
 street_address
+submission_note
 submitted_at
 submitted_by_user_id
 subscription_ends_at
@@ -1077,6 +1081,7 @@ visibility_activity
 visibility_gender
 visibility_handedness
 visibility_scope
+visit_preferred_time_note
 walking_duration_minute
 watch_scope
 weekly_day_list
