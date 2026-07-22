@@ -11,7 +11,10 @@ use MongoDB\Laravel\Eloquent\Model;
     'submitted_by_user_id', 'proposed_data',
     'type_establishment_relationship', 'type_practitioner_relationship',
     'is_workspace_access_requested',
-    'relationship_note', 'status_contribution', 'submitted_at',
+    'relationship_note', 'submission_note',
+    'duplicate_candidate_establishment_id_list', 'duplicate_acknowledged',
+    'is_visit_requested', 'visit_preferred_time_note',
+    'status_contribution', 'submitted_at',
     'reviewed_at', 'reviewer_user_id', 'decision_note',
 ])]
 class Contribution extends Model
@@ -39,6 +42,9 @@ class Contribution extends Model
         return [
             'proposed_data' => 'array',
             'is_workspace_access_requested' => 'boolean',
+            'duplicate_candidate_establishment_id_list' => 'array',
+            'duplicate_acknowledged' => 'boolean',
+            'is_visit_requested' => 'boolean',
             'submitted_at' => 'datetime',
             'reviewed_at' => 'datetime',
         ];
