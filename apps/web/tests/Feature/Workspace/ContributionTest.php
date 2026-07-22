@@ -617,6 +617,40 @@ class ContributionTest extends TestCase
         $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng.text'));
     }
 
+    /**
+     * Regression test for the reported browser reproduction: fill display_name_eng,
+     * switch $activeLanguageTab to 'fil', then set display_name_fil, and confirm
+     * display_name_eng is untouched.
+     *
+     * Caveat (documented, not silently claimed as full coverage): the actual reported
+     * bug is a CLIENT-side defect — a single DOM input element whose wire:model
+     * attribute string was re-interpolated per active language could end up with two
+     * live Livewire input bindings on the same node after a morphdom patch, so typing
+     * after a tab switch wrote into both the old and new language's state key. Livewire
+     * ::test() drives the component purely server-side via named ->set() calls; it
+     * never renders real DOM, never runs morphdom, and never attaches/re-attaches a
+     * wire:model input listener, so it cannot fail from that specific defect class
+     * regardless of which Blade structure produced the page — a single dynamically
+     * rebound element or six statically bound elements are indistinguishable to this
+     * test harness. This test still has value as a server-side safety net (proving
+     * activeLanguageTab and per-language state keys are properly decoupled on the
+     * component itself) and as a guard against a logic-level regression, but the actual
+     * fix verification for this bug was done against a real browser (see task-17-report.md).
+     */
+    public function test_switching_language_tabs_does_not_corrupt_the_previously_active_languages_state(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.display_name_eng', 'ENGLISH-TEXT')
+            ->set('activeLanguageTab', 'fil')
+            ->set('state.display_name_fil', 'FILIPINO-TEXT');
+
+        $test->assertSet('state.display_name_eng', 'ENGLISH-TEXT');
+        $test->assertSet('state.display_name_fil', 'FILIPINO-TEXT');
+    }
+
     public function test_duplicate_check_cannot_be_bypassed_by_setting_current_step_directly(): void
     {
         Establishment::query()->create([

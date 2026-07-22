@@ -68,16 +68,25 @@
 
     @include('livewire.workspace.establishment-form._language-switcher', ['switcherLabel' => __('editorial.tab_location')])
 
-    <x-form.field :label="__('editorial.est_direction_note_eng')" :error="$errors->first('state.direction_note_'.$activeLanguageTab)">
-        <x-form.textarea wire:model="state.direction_note_{{ $activeLanguageTab }}" rows="2" />
-    </x-form.field>
+    {{-- See _tab-identity.blade.php for why these are six statically-bound elements per field (one per language, toggled via x-show) rather than one element with a re-interpolated wire:model string. --}}
+    @foreach (['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'] as $lang)
+        <div x-show="$wire.activeLanguageTab === '{{ $lang }}'" wire:key="direction-note-field-{{ $lang }}">
+            <x-form.field :label="__('editorial.est_direction_note_eng')" :error="$errors->first('state.direction_note_'.$lang)">
+                <x-form.textarea wire:model="state.direction_note_{{ $lang }}" rows="2" />
+            </x-form.field>
+        </div>
+    @endforeach
 
     <x-form.field :label="__('editorial.est_parking_availability')">
         <x-form.toggle-group :options="$taxonomy['parking_availability']" model="state.parking_availability_list" />
     </x-form.field>
-    <x-form.field :label="__('editorial.est_parking_note_eng')" :error="$errors->first('state.parking_note_'.$activeLanguageTab)">
-        <x-form.textarea wire:model="state.parking_note_{{ $activeLanguageTab }}" rows="2" />
-    </x-form.field>
+    @foreach (['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'] as $lang)
+        <div x-show="$wire.activeLanguageTab === '{{ $lang }}'" wire:key="parking-note-field-{{ $lang }}">
+            <x-form.field :label="__('editorial.est_parking_note_eng')" :error="$errors->first('state.parking_note_'.$lang)">
+                <x-form.textarea wire:model="state.parking_note_{{ $lang }}" rows="2" />
+            </x-form.field>
+        </div>
+    @endforeach
 
     <div class="space-y-3">
         <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.landmarks') }}</p>
