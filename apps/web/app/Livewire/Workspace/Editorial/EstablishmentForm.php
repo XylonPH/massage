@@ -25,6 +25,11 @@ class EstablishmentForm extends Component
 
     public ?string $relationship_note = null;
 
+    /** 1 = who-you-are, 2 = spa details tabs, 3 = review and submit. Editorial mode never advances past 1 (no wizard chrome shown). */
+    public int $currentStep = 1;
+
+    public ?string $submission_note = null;
+
     /** @var array<string, mixed> */
     public array $state = [];
 
@@ -50,12 +55,15 @@ class EstablishmentForm extends Component
         'steam_room_availability', 'jacuzzi_availability', 'locker_availability',
         'couple_room_availability', 'private_room_availability',
         'curtain_divider_information', 'air_conditioning_information',
+        'date_opened', 'date_opened_precision', 'date_opened_qualifier',
+        'date_closed', 'date_closed_precision', 'date_closed_qualifier',
     ];
 
     /** Multi-select array fields. */
     private const LIST_FIELDS = [
-        'mode_service_delivery', 'target_client_focus', 'amenities',
-        'room_types', 'bed_mat_chair_setup', 'accessibility_information',
+        'mode_service_delivery', 'target_client_focus', 'amenity_list',
+        'room_types', 'bed_mat_chair_setup', 'accessibility_feature_list',
+        'parking_availability_list',
     ];
 
     /** Repeater fields with their blank-row shapes. */
@@ -113,6 +121,36 @@ class EstablishmentForm extends Component
         abort_unless(array_key_exists($repeater, self::REPEATERS), 400);
         unset($this->state[$repeater][$index]);
         $this->state[$repeater] = array_values($this->state[$repeater]);
+    }
+
+    public function nextStep(): void
+    {
+        if (! $this->isContribution) {
+            return;
+        }
+
+        $this->validate($this->rulesForStep($this->currentStep));
+        $this->currentStep = min(3, $this->currentStep + 1);
+    }
+
+    public function prevStep(): void
+    {
+        if (! $this->isContribution) {
+            return;
+        }
+
+        $this->currentStep = max(1, $this->currentStep - 1);
+    }
+
+    /** @return array<string, mixed> */
+    private function rulesForStep(int $step): array
+    {
+        $rules = $this->rules();
+
+        return match ($step) {
+            1 => array_intersect_key($rules, array_flip(['type_establishment_relationship', 'is_workspace_access_requested', 'relationship_note'])),
+            default => $rules,
+        };
     }
 
     /** @return array<string, mixed> */
@@ -249,7 +287,8 @@ class EstablishmentForm extends Component
             'steam_room_availability', 'jacuzzi_availability',
             'locker_availability', 'couple_room_availability',
             'private_room_availability', 'curtain_divider_information',
-            'air_conditioning_information', 'amenities', 'accessibility_information',
+            'air_conditioning_information', 'amenity_list', 'accessibility_feature_list',
+            'parking_availability',
         ] as $field) {
             $taxonomy[$field] = TaxonomyOptions::for($field);
         }

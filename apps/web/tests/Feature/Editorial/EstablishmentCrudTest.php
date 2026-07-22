@@ -189,4 +189,22 @@ class EstablishmentCrudTest extends TestCase
             ->test(EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
             ->assertCount('state.operating_hours', 2);
     }
+
+    public function test_editor_can_set_facility_and_parking_fields(): void
+    {
+        $user = $this->editor();
+
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('state.display_name_eng', 'Calm Springs')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('state.shower_availability', 'IR')
+            ->set('state.parking_availability_list', ['PRK_ONS_FREE'])
+            ->call('save');
+
+        $record = Establishment::query()->first();
+        $this->assertSame('IR', $record->shower_availability);
+        $this->assertSame(['PRK_ONS_FREE'], $record->parking_availability_list);
+    }
 }

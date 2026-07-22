@@ -148,4 +148,33 @@ class ContributionTest extends TestCase
             ->assertOk()
             ->assertDontSee('Other User Spa');
     }
+
+    public function test_contribution_mode_starts_on_step_one(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->assertSet('currentStep', 1);
+    }
+
+    public function test_editorial_mode_has_no_step_concept(): void
+    {
+        Livewire::actingAs($this->editorForWizardTest())
+            ->test(EstablishmentForm::class)
+            ->assertSet('currentStep', 1);
+    }
+
+    private function editorForWizardTest(): User
+    {
+        $user = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $user->getKey(),
+            'role_workspace' => 'EAD',
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'effective_at' => now()->subMinute(),
+        ]);
+
+        return $user;
+    }
 }
