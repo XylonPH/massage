@@ -271,7 +271,10 @@
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="size-10 text-white/50 transition duration-500 group-hover:scale-110 group-hover:text-white/70" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25c-2.5-1.7-5.5-1.9-8-.75v13c2.5-1.15 5.5-.95 8 .75 2.5-1.7 5.5-1.9 8-.75v-13c-2.5-1.15-5.5-.95-8 .75Zm0 0V19.5"/></svg>
                                 </div>
                                 <div class="p-5">
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-ember-600 dark:text-ember-400">{{ $article['category'] }}</p>
+                                    <div class="flex items-center gap-1.5 text-ember-600 dark:text-ember-400">
+                                        <x-article-category-icon :category="$article['category']" class="size-3.5 shrink-0" />
+                                        <span class="text-[10px] font-black uppercase tracking-widest">{{ $article['category'] }}</span>
+                                    </div>
                                     <h3 class="mt-2 text-[15px] font-black leading-snug text-ink-950 transition group-hover:text-ember-600 dark:text-ink-50 dark:group-hover:text-ember-400">{{ $article['title'] }}</h3>
                                     <p class="mt-3 text-[11px] font-semibold text-ink-400 dark:text-ink-300">{{ $article['date'] }}</p>
                                 </div>

@@ -5,7 +5,8 @@
                 {{ __('home.quote_of_the_day') }}
             </h2>
             @if ($category)
-                <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold {{ $badgeClass }}">
+                <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold {{ $badgeClass }}">
+                    <x-quote-category-icon :category="$category" class="size-3.5 shrink-0 opacity-90" />
                     <span>{{ $category->getLabel() }}</span>
                 </span>
             @endif
