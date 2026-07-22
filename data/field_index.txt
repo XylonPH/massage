@@ -84,6 +84,7 @@ bounding_box
 browser_summary
 building_name
 calculated_at
+calculation_key
 calculation_version
 cancelled_at
 capability_name
@@ -198,7 +199,9 @@ ended_at
 ended_at_precision
 ended_at_qualifier
 entitlement_code
-entitlement_code_list
+entitlement_definition_list
+entitlement_limit
+entitlement_usage
 establishment_id
 establishment_service_id
 establishment_service_slug
@@ -273,6 +276,7 @@ inkling_balance
 interface_language_id
 internal_note
 internal_role
+interval_entitlement_reset
 interval_list
 ip_address
 ip_address_masked
@@ -888,6 +892,7 @@ type_goal
 type_government
 type_grooming_action
 type_hair_service_action
+type_handedness
 type_hash_algorithm
 type_hour_exception
 type_hydrotherapy_equipment
@@ -1042,6 +1047,7 @@ updated_by_device_id
 updated_by_user_id
 uploaded_by_user_id
 usage_count
+usage_resets_at
 used_at
 user_agent_summary
 user_contribution_id

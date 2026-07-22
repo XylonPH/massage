@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Practitioner Main Structure Guide
- * Version: 1.10
+ * Version: 1.20
  * Collection: practitioner_main
  * Description: Stores one practitioner professional profile independently of a user account or employer.
  * Purpose: Documents the practitioner_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -33,12 +33,15 @@
  *   (docs/05-directory/therapist-profile.txt sections 1 and 12).
  * - Location and service-area representation is deferred pending the shared
  *   location reference integration; only free-text summary display is used by
+ *   (docs/05-directory/therapist-profile.txt sections 1 and 12).
+ * - Location and service-area representation is deferred pending the shared
+ *   location reference integration; only free-text summary display is used by
  *   the current demo layer.
  */
 
 # Variable
 $created_at = '2026-07-20T00:00:00Z';
-$updated_at = '2026-07-21T09:49:12Z';
+$updated_at = '2026-07-22T04:04:00Z';
 /**
  * Actual record-level defaults for practitioner_main.
  * Sparse-default storage may omit these values in actual database records.
@@ -47,6 +50,7 @@ $practitioner_main_default = [
 	'type_practice_setting' => [],
 	'type_specialty_focus' => [],
 	'target_client_focus' => [],
+	'type_handedness' => 'UN', // UN = Unknown
 	'status_therapist_practice' => 'UN', // UN = Unknown
 	'is_claimed' => false,
 	'rating_official' => null, // no official score until the Rating System display threshold is met
@@ -60,6 +64,7 @@ $practitioner_main_default = [
 	'status_record_lifecycle' => 'ACT', // ACT = Active
 	'record_note' => [],
 ];
+
 
 $multilingual_text_sample = [
 	'eng' => [
@@ -117,6 +122,7 @@ $practitioner_main = [
 	'professional_start_date' => '2017-01-01', // best supported professional-practice start date
 	'professional_start_date_precision' => 'Y', // shared date precision for professional_start_date
 	'professional_start_date_qualifier' => 'APP', // shared date qualifier; never infer an exact start from first observation
+	'type_handedness' => 'RH', // RH = Right-Handed, LH = Left-Handed, AM = Ambidextrous, UN = Unknown
 	'status_therapist_practice' => 'AC', // AC = Active, IN = Inactive, RT = Retired, UN = Unknown
 
 	# Claim
@@ -169,6 +175,7 @@ $practitioner_main_field_order = [
 	'professional_start_date',
 	'professional_start_date_precision',
 	'professional_start_date_qualifier',
+	'type_handedness',
 	'status_therapist_practice',
 	'is_claimed',
 	'rating_official',
@@ -279,6 +286,13 @@ $practitioner_main_field_property = [
 	'professional_start_date' => ['field_label' => 'Professional Start Date', 'field_description' => 'Best supported practice start date; distinct from first observation.', 'type_data' => 'S', 'type_field' => 'DTE'],
 	'professional_start_date_precision' => ['field_label' => 'Professional Start Date Precision', 'field_description' => 'Shared type_date_precision code for the professional start date.', 'type_data' => 'S'],
 	'professional_start_date_qualifier' => ['field_label' => 'Professional Start Date Qualifier', 'field_description' => 'Shared type_date_qualifier code for the professional start date.', 'type_data' => 'S'],
+	'type_handedness' => [
+		'field_label' => 'Handedness',
+		'field_description' => 'The dominant working hand of the practitioner. Relevant for clients who have a preference, couple-room pairing decisions, and workplace ergonomic planning. Options owned by practitioner_classification.json.',
+		'type_data' => 'S',
+		'type_field' => 'DDL',
+		'type_sql' => 'ENUM',
+	],
 	'status_therapist_practice' => [
 		'field_label' => 'Professional Practice Status',
 		'field_description' => 'Overall current practice status for the therapist. Separate from per-context Availability Status and from person life status. Options owned by practitioner_classification.json.',
