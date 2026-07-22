@@ -3,11 +3,11 @@
 namespace Tests\Feature\Workspace;
 
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
-use App\Models\AccessAssignment;
 use App\Models\Contribution;
 use App\Models\Reference\Country;
 use App\Models\Reference\Region;
 use App\Models\User;
+use App\Models\UserAccess;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
@@ -21,13 +21,13 @@ class ContributionTest extends TestCase
         parent::setUp();
 
         Contribution::query()->delete();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
     }
 
     protected function tearDown(): void
     {
         Contribution::query()->delete();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
 
         parent::tearDown();
     }
@@ -62,7 +62,7 @@ class ContributionTest extends TestCase
         $this->assertTrue($contribution->is_workspace_access_requested);
         $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'display_name.eng'));
         $this->assertSame('123 Bay Street, Manila', data_get($contribution->proposed_data, 'address_public'));
-        $this->assertSame(0, AccessAssignment::query()->where('user_id', (string) $user->getKey())->count());
+        $this->assertSame(0, UserAccess::query()->where('user_id', (string) $user->getKey())->count());
     }
 
     public function test_public_information_contributor_cannot_request_management_access(): void
@@ -100,11 +100,11 @@ class ContributionTest extends TestCase
     public function test_editorial_route_still_renders_direct_edit_form_without_relationship_tab(): void
     {
         $editor = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $editor->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 
@@ -130,7 +130,7 @@ class ContributionTest extends TestCase
         $this->assertSame('practitioner_main', $contribution->target_collection);
         $this->assertSame('SLF', $contribution->type_practitioner_relationship);
         $this->assertSame('Maya Santos', data_get($contribution->proposed_data, 'practitioner_name.eng.text'));
-        $this->assertSame(0, AccessAssignment::query()->count());
+        $this->assertSame(0, UserAccess::query()->count());
     }
 
     public function test_member_sees_only_their_own_contributions(): void
@@ -181,11 +181,11 @@ class ContributionTest extends TestCase
     private function editorForWizardTest(): User
     {
         $user = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 
@@ -243,6 +243,21 @@ class ContributionTest extends TestCase
             ->set('state.status_establishment', 'OP')
             ->call('nextStep')
             ->assertHasNoErrors(['state.date_closed']);
+    }
+
+    public function test_contact_channel_hides_phone_type_for_email_channels(): void
+    {
+        $user = User::factory()->create();
+
+        $test = Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML');
+
+        $this->assertFalse($test->instance()->channelNeedsPhoneType('EML'));
+        $this->assertTrue($test->instance()->channelNeedsPhoneType('PHN'));
     }
 
     public function test_location_tab_offers_region_select_and_auto_composes_address(): void

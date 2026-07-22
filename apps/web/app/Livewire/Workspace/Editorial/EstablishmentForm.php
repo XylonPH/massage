@@ -85,6 +85,22 @@ class EstablishmentForm extends Component
     /** Fixed value list for the operating_hours day_of_week select — not taxonomy-driven, mirrors the Filament source form verbatim. */
     private const DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Public Holidays'];
 
+    /** Codes from type_contact_channel that represent a phone number and therefore need the number-type subfield. Confirmed against data/taxonomy/shared/person_identity_and_contact.json. */
+    private const PHONE_CHANNEL_CODES = ['PHN'];
+
+    public function channelNeedsPhoneType(string $channelType): bool
+    {
+        return in_array($channelType, self::PHONE_CHANNEL_CODES, true);
+    }
+
+    public function channelValueInputType(string $channelType): string
+    {
+        return match ($channelType) {
+            'EML' => 'email',
+            default => 'text',
+        };
+    }
+
     public function mount(?string $establishment = null): void
     {
         $this->establishment = $establishment;
@@ -225,7 +241,7 @@ class EstablishmentForm extends Component
             'state.coordinate_longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'state.landmark_list.*.landmark_name' => ['required', 'string', 'max:255'],
             'state.landmark_list.*.walking_duration_minute' => ['nullable', 'numeric', 'min:0'],
-            'state.contact_channel_list.*.type_contact_channel' => ['required', 'string'],
+            'state.contact_channel_list.*.type_contact_channel' => ['required', 'string', Rule::in(array_keys(TaxonomyOptions::for('type_contact_channel')))],
             'state.contact_channel_list.*.contact_label' => ['required', 'string', 'max:100'],
             'state.contact_channel_list.*.contact_value' => ['required', 'string', 'max:255'],
             'state.contact_channel_list.*.contact_url' => ['required', 'string', 'max:2048', new PublicContactUrl],

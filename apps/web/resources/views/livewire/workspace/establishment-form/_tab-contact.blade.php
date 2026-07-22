@@ -6,9 +6,11 @@
             <x-form.field :label="__('editorial.est_type_contact_channel')" :error="$errors->first('state.contact_channel_list.'.$i.'.type_contact_channel')">
                 <x-form.select wire:model="state.contact_channel_list.{{ $i }}.type_contact_channel" :options="$taxonomy['type_contact_channel']" :placeholder="__('editorial.select_placeholder')" />
             </x-form.field>
-            <x-form.field :label="__('editorial.est_type_contact_number')" :error="$errors->first('state.contact_channel_list.'.$i.'.type_contact_number')">
-                <x-form.select wire:model="state.contact_channel_list.{{ $i }}.type_contact_number" :options="$taxonomy['type_contact_number']" :placeholder="__('editorial.select_placeholder')" />
-            </x-form.field>
+            @if ($this->channelNeedsPhoneType($row['type_contact_channel'] ?? ''))
+                <x-form.field :label="__('editorial.est_type_contact_number')" :error="$errors->first('state.contact_channel_list.'.$i.'.type_contact_number')">
+                    <x-form.select wire:model="state.contact_channel_list.{{ $i }}.type_contact_number" :options="$taxonomy['type_contact_number']" :placeholder="__('editorial.select_placeholder')" />
+                </x-form.field>
+            @endif
             <x-form.field :label="__('editorial.est_status_contact_channel')" :error="$errors->first('state.contact_channel_list.'.$i.'.status_contact_channel')">
                 <x-form.select wire:model="state.contact_channel_list.{{ $i }}.status_contact_channel" :options="$taxonomy['status_contact_channel']" :placeholder="__('editorial.select_placeholder')" />
             </x-form.field>
@@ -16,7 +18,7 @@
                 <x-form.input wire:model="state.contact_channel_list.{{ $i }}.contact_label" maxlength="100" />
             </x-form.field>
             <x-form.field :label="__('editorial.est_contact_value')" :error="$errors->first('state.contact_channel_list.'.$i.'.contact_value')">
-                <x-form.input wire:model="state.contact_channel_list.{{ $i }}.contact_value" maxlength="255" />
+                <x-form.input wire:model="state.contact_channel_list.{{ $i }}.contact_value" type="{{ $this->channelValueInputType($row['type_contact_channel'] ?? '') }}" maxlength="255" />
             </x-form.field>
             <x-form.field :label="__('editorial.est_contact_url')" :error="$errors->first('state.contact_channel_list.'.$i.'.contact_url')">
                 <x-form.input wire:model="state.contact_channel_list.{{ $i }}.contact_url" maxlength="2048" />
