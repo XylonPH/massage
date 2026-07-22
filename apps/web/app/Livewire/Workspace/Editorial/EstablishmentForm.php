@@ -3,12 +3,15 @@
 namespace App\Livewire\Workspace\Editorial;
 
 use App\Enums\RecordLifecycleStatus;
+use App\Events\EstablishmentContributionSubmitted;
 use App\Models\Contribution;
 use App\Models\Establishment;
 use App\Rules\PublicContactUrl;
 use App\Support\Address\AddressLookup;
+use App\Support\Establishment\DuplicateEstablishmentFinder;
 use App\Support\Taxonomy\TaxonomyOptions;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -34,6 +37,15 @@ class EstablishmentForm extends Component
     public bool $date_opened_is_approximate = false;
 
     public bool $date_closed_is_approximate = false;
+
+    /** @var Collection<int, array{id: string, display_name: string, address_public: ?string, source: string}> */
+    public Collection $duplicateCandidates;
+
+    public bool $duplicateAcknowledged = false;
+
+    public bool $is_visit_requested = false;
+
+    public ?string $visit_preferred_time_note = null;
 
     /** @var array<string, mixed> */
     public array $state = [];
@@ -100,6 +112,24 @@ class EstablishmentForm extends Component
     /** Codes from type_contact_channel that represent a phone number and therefore need the number-type subfield. Confirmed against data/taxonomy/shared/person_identity_and_contact.json. */
     private const PHONE_CHANNEL_CODES = ['PHN'];
 
+    /**
+     * PLAIN_FIELDS entries that data/structure_guide/establishment_main.php does not own,
+     * so they are excluded when building proposed_data.establishment (see
+     * data/structure_guide/user_contribution.php: "proposed_data follows the target
+     * collection's field contracts"). email/contact_number belong to establishment_contact
+     * and are already hidden from the contribution UI's identity tab; region_id/city_name
+     * are Location-tab inputs already folded into address_public; status_record_lifecycle
+     * is system-owned and set by editorial review, never by a contributor.
+     */
+    private const CONTRIBUTION_NON_ESTABLISHMENT_PLAIN_FIELDS = [
+        'email', 'contact_number', 'region_id', 'city_name', 'status_record_lifecycle',
+    ];
+
+    /** Countries/regions eligible for an in-person verification visit request. */
+    private const VISIT_ELIGIBLE_COUNTRY_LABEL = 'Philippines';
+
+    private const VISIT_ELIGIBLE_REGION_LABEL = 'National Capital Region';
+
     public function channelNeedsPhoneType(string $channelType): bool
     {
         return in_array($channelType, self::PHONE_CHANNEL_CODES, true);
@@ -111,6 +141,23 @@ class EstablishmentForm extends Component
             'EML' => 'email',
             default => 'text',
         };
+    }
+
+    public function checkForDuplicates(): void
+    {
+        $this->duplicateCandidates = app(DuplicateEstablishmentFinder::class)
+            ->find($this->state['display_name_eng'] ?? '');
+    }
+
+    public function visitEligible(): bool
+    {
+        $lookup = app(AddressLookup::class);
+        $countryLabel = $lookup->countries()[(string) ($this->state['country_id'] ?? '')] ?? null;
+        $regionLabel = filled($this->state['country_id'] ?? null)
+            ? ($lookup->regions((int) $this->state['country_id'])[(string) ($this->state['region_id'] ?? '')] ?? null)
+            : null;
+
+        return $countryLabel === self::VISIT_ELIGIBLE_COUNTRY_LABEL && $regionLabel === self::VISIT_ELIGIBLE_REGION_LABEL;
     }
 
     public function hasPhysicalPremises(): bool
@@ -131,6 +178,8 @@ class EstablishmentForm extends Component
 
     public function mount(?string $establishment = null): void
     {
+        $this->duplicateCandidates = collect();
+
         $this->establishment = $establishment;
         $this->isContribution = request()->routeIs('workspace.contribution.establishment.create');
 
@@ -213,6 +262,10 @@ class EstablishmentForm extends Component
 
         $this->validate($this->rulesForStep($this->currentStep));
         $this->currentStep = min(3, $this->currentStep + 1);
+
+        if ($this->currentStep === 3) {
+            $this->checkForDuplicates();
+        }
     }
 
     public function prevStep(): void
@@ -284,6 +337,11 @@ class EstablishmentForm extends Component
             $rules['type_establishment_relationship'] = ['required', Rule::in(self::RELATIONSHIP_TYPES)];
             $rules['is_workspace_access_requested'] = ['nullable', 'boolean'];
             $rules['relationship_note'] = ['nullable', 'string', 'max:1000'];
+            $rules['submission_note'] = ['nullable', 'string', 'max:2000'];
+            $rules['visit_preferred_time_note'] = ['nullable', 'string', 'max:500', 'required_if:is_visit_requested,true'];
+            $rules['duplicateAcknowledged'] = $this->duplicateCandidates->isNotEmpty()
+                ? ['accepted']
+                : ['nullable', 'boolean'];
         }
 
         return $rules;
@@ -359,32 +417,87 @@ class EstablishmentForm extends Component
             $this->state['treatment_area_list'] = [];
         }
 
-        $proposedData = [];
+        $establishment = [];
         foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
-            $proposedData[$field] = ['eng' => $this->state[$stateKey] ?: null];
+            // establishment_main's structure guide names this field full_description;
+            // the shared TRANSLATED_FIELDS key stays 'description' because that is the
+            // literal Establishment model field used by the direct-edit save() path.
+            $outputField = $field === 'description' ? 'full_description' : $field;
+            $establishment[$outputField] = ['eng' => $this->state[$stateKey] ?: null];
         }
         foreach (self::PLAIN_FIELDS as $field) {
-            $proposedData[$field] = $this->state[$field] === '' ? null : $this->state[$field];
+            if (in_array($field, self::CONTRIBUTION_NON_ESTABLISHMENT_PLAIN_FIELDS, true)) {
+                continue;
+            }
+            if (in_array($field, ['coordinate_latitude', 'coordinate_longitude'], true)) {
+                continue;
+            }
+            $establishment[$field] = $this->state[$field] === '' ? null : $this->state[$field];
+        }
+        if (is_numeric($this->state['coordinate_latitude'] ?? null) && is_numeric($this->state['coordinate_longitude'] ?? null)) {
+            $establishment['location_point'] = [
+                'type' => 'Point',
+                'coordinates' => [(float) $this->state['coordinate_longitude'], (float) $this->state['coordinate_latitude']],
+            ];
         }
         foreach (self::LIST_FIELDS as $field) {
-            $proposedData[$field] = array_values($this->state[$field] ?? []);
+            $establishment[$field] = array_values($this->state[$field] ?? []);
         }
-        foreach (array_keys(self::REPEATERS) as $field) {
-            $proposedData[$field] = array_values($this->state[$field] ?? []);
+        $establishment['landmark_list'] = array_map(
+            fn (array $row) => [
+                'landmark_name' => $row['landmark_name'],
+                'walking_duration_minute' => $row['walking_duration_minute'],
+                'direction_note' => ['eng' => $row['direction_note_eng'] ?: null],
+            ],
+            array_values($this->state['landmark_list'] ?? []),
+        );
+        $establishment['treatment_area_list'] = array_values($this->state['treatment_area_list'] ?? []);
+
+        $contactChannelList = array_values($this->state['contact_channel_list'] ?? []);
+        $operatingSchedule = array_values($this->state['operating_hours'] ?? []);
+
+        $eventList = [];
+        if (filled($this->state['date_opened'] ?? null)) {
+            $eventList[] = [
+                'type_business_event' => 'OP',
+                'effective_date' => $this->state['date_opened'],
+                'type_date_precision' => $this->state['date_opened_precision'] ?: 'U',
+                'type_date_qualifier' => $this->state['date_opened_qualifier'] ?: 'EXA',
+            ];
+        }
+        if (filled($this->state['date_closed'] ?? null)) {
+            $eventList[] = [
+                'type_business_event' => 'CL',
+                'effective_date' => $this->state['date_closed'],
+                'type_date_precision' => $this->state['date_closed_precision'] ?: 'U',
+                'type_date_qualifier' => $this->state['date_closed_qualifier'] ?: 'EXA',
+            ];
         }
 
-        Contribution::query()->create([
+        $contribution = Contribution::query()->create([
             'type_contribution' => 'ADD',
             'target_collection' => 'establishment_main',
             'target_record_id' => null,
             'submitted_by_user_id' => (string) auth()->id(),
-            'proposed_data' => $proposedData,
+            'proposed_data' => [
+                'establishment' => $establishment,
+                'contact_channel_list' => $contactChannelList,
+                'operating_schedule' => $operatingSchedule,
+                'event_list' => $eventList,
+            ],
             'type_establishment_relationship' => $this->type_establishment_relationship,
             'is_workspace_access_requested' => $this->is_workspace_access_requested,
             'relationship_note' => filled($this->relationship_note) ? trim($this->relationship_note) : null,
+            'submission_note' => filled($this->submission_note) ? trim($this->submission_note) : null,
+            'duplicate_candidate_establishment_id_list' => $this->duplicateCandidates->pluck('id')->all(),
+            'duplicate_acknowledged' => $this->duplicateAcknowledged,
+            'is_visit_requested' => $this->is_visit_requested,
+            'visit_preferred_time_note' => filled($this->visit_preferred_time_note) ? trim($this->visit_preferred_time_note) : null,
             'status_contribution' => 'PND',
             'submitted_at' => now(),
         ]);
+
+        event(new EstablishmentContributionSubmitted($contribution));
 
         session()->flash('status', __('workspace.contribution_submitted'));
         $this->redirectRoute('workspace.contribution.index', navigate: true);

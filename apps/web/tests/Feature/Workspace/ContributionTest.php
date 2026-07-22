@@ -4,6 +4,7 @@ namespace Tests\Feature\Workspace;
 
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Models\Contribution;
+use App\Models\Establishment;
 use App\Models\Reference\Country;
 use App\Models\Reference\Region;
 use App\Models\User;
@@ -60,8 +61,8 @@ class ContributionTest extends TestCase
         $this->assertSame('MGR', $contribution->type_establishment_relationship);
         $this->assertSame('PND', $contribution->status_contribution);
         $this->assertTrue($contribution->is_workspace_access_requested);
-        $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'display_name.eng'));
-        $this->assertSame('123 Bay Street, Manila', data_get($contribution->proposed_data, 'address_public'));
+        $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng'));
+        $this->assertSame('123 Bay Street, Manila', data_get($contribution->proposed_data, 'establishment.address_public'));
         $this->assertSame(0, UserAccess::query()->where('user_id', (string) $user->getKey())->count());
     }
 
@@ -328,6 +329,152 @@ class ContributionTest extends TestCase
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) auth()->id())->first();
-        $this->assertNull(data_get($contribution->proposed_data, 'shower_availability'));
+        $this->assertNull(data_get($contribution->proposed_data, 'establishment.shower_availability'));
+    }
+
+    public function test_entering_review_step_populates_duplicate_candidates_when_a_display_name_matches(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep');
+
+        $test->assertSet('currentStep', 3);
+        $this->assertCount(1, $test->instance()->duplicateCandidates);
+
+        Establishment::query()->delete();
+    }
+
+    public function test_entering_review_step_leaves_duplicate_candidates_empty_when_no_match(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'A Totally Unique Spa Name')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep');
+
+        $this->assertCount(0, $test->instance()->duplicateCandidates);
+    }
+
+    public function test_duplicate_acknowledgement_is_required_before_submit_when_candidates_exist(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->call('save')
+            ->assertHasErrors(['duplicateAcknowledged']);
+
+        $this->assertSame(0, Contribution::query()->count());
+
+        Establishment::query()->delete();
+    }
+
+    public function test_duplicate_acknowledgement_is_not_required_when_no_candidates_exist(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'A Totally Unique Spa Name')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->call('save')
+            ->assertHasNoErrors(['duplicateAcknowledged']);
+
+        $this->assertSame(1, Contribution::query()->count());
+    }
+
+    public function test_visit_request_is_eligible_only_for_philippines_ncr(): void
+    {
+        Country::query()->getConnection()->getCollection('country_main')->insertOne([
+            '_id' => 608, 'country_name' => ['eng' => ['text' => 'Philippines']],
+        ]);
+        Region::query()->getConnection()->getCollection('region_main')->insertMany([
+            ['_id' => 1, 'country_id' => 608, 'region_name' => ['eng' => ['text' => 'National Capital Region']]],
+            ['_id' => 2, 'country_id' => 608, 'region_name' => ['eng' => ['text' => 'Central Luzon']]],
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1);
+
+        $this->assertTrue($test->instance()->visitEligible());
+
+        $test->set('state.region_id', 2);
+        $this->assertFalse($test->instance()->visitEligible());
+
+        Region::query()->getConnection()->getCollection('region_main')->deleteMany([]);
+        Country::query()->getConnection()->getCollection('country_main')->deleteMany([]);
+    }
+
+    public function test_visit_preferred_time_note_is_required_when_visit_is_requested(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 3)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'A Totally Unique Spa Name')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('is_visit_requested', true)
+            ->set('visit_preferred_time_note', '')
+            ->call('save')
+            ->assertHasErrors(['visit_preferred_time_note']);
+
+        $this->assertSame(0, Contribution::query()->count());
+    }
+
+    public function test_review_step_shows_duplicate_warning_and_requires_acknowledgement(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep');
+
+        $test->assertSee(__('workspace.add_spa_duplicate_warning_title'));
+        $test->assertSee('Makati City');
+        $test->assertDontSee(__('editorial.tab_identity'));
+
+        Establishment::query()->delete();
     }
 }

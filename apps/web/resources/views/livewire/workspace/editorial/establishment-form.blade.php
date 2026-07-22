@@ -14,6 +14,8 @@
     <form wire:submit="save" class="mt-6 space-y-5 rounded-2xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
         @if ($isContribution && $currentStep === 1)
             @include('livewire.workspace.establishment-form._who-you-are')
+        @elseif ($isContribution && $currentStep === 3)
+            @include('livewire.workspace.establishment-form._review-submit')
         @else
             <div x-data="{ tab: 'identity' }">
                 <x-editorial.tab-bar :tabs="array_filter([
@@ -46,10 +48,6 @@
                     <button type="submit" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('editorial.save') }}</button>
                 @endif
             </div>
-        @endif
-
-        @if ($isContribution && $currentStep === 3)
-            @include('livewire.workspace.establishment-form._review-submit')
         @endif
     </form>
 </div>
