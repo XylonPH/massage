@@ -189,4 +189,38 @@ class ContributionTest extends TestCase
 
         return $user;
     }
+
+    public function test_contribution_identity_tab_hides_email_contact_and_lifecycle_fields(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/workspace/contribution/establishment/new');
+
+        $response->assertDontSee(__('editorial.est_status_record_lifecycle'));
+    }
+
+    public function test_closed_date_is_required_when_status_is_permanently_closed(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.status_establishment', 'PC')
+            ->set('state.date_closed', '')
+            ->call('nextStep')
+            ->assertHasErrors(['state.date_closed' => 'required']);
+    }
+
+    public function test_closed_date_not_required_when_status_is_operating(): void
+    {
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.display_name_eng', 'Calm Springs')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->assertHasNoErrors(['state.date_closed']);
+    }
 }

@@ -30,6 +30,10 @@ class EstablishmentForm extends Component
 
     public ?string $submission_note = null;
 
+    public bool $date_opened_is_approximate = false;
+
+    public bool $date_closed_is_approximate = false;
+
     /** @var array<string, mixed> */
     public array $state = [];
 
@@ -165,6 +169,15 @@ class EstablishmentForm extends Component
             'state.type_spa' => ['required', 'string'],
             'state.status_establishment' => ['required', 'string'],
             'state.status_record_lifecycle' => ['required', 'string'],
+            'state.date_opened' => ['nullable', 'date'],
+            'state.date_opened_precision' => ['nullable', 'string', Rule::in(['D', 'M', 'Y', 'U'])],
+            'state.date_opened_qualifier' => ['nullable', 'string', Rule::in(['EXA', 'APP', 'BFR', 'AFT', 'RNG', 'OPS', 'OPE'])],
+            'state.date_closed' => [
+                Rule::requiredIf(in_array($this->state['status_establishment'] ?? null, ['TC', 'PC', 'RL'], true)),
+                'nullable', 'date', 'after_or_equal:state.date_opened',
+            ],
+            'state.date_closed_precision' => ['nullable', 'string', Rule::in(['D', 'M', 'Y', 'U'])],
+            'state.date_closed_qualifier' => ['nullable', 'string', Rule::in(['EXA', 'APP', 'BFR', 'AFT', 'RNG', 'OPS', 'OPE'])],
             'state.coordinate_latitude' => ['nullable', 'numeric', 'between:-90,90'],
             'state.coordinate_longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'state.landmark_list.*.landmark_name' => ['required', 'string', 'max:255'],
@@ -191,6 +204,9 @@ class EstablishmentForm extends Component
 
     public function save(): void
     {
+        $this->state['date_opened_qualifier'] = $this->date_opened_is_approximate ? 'APP' : 'EXA';
+        $this->state['date_closed_qualifier'] = $this->date_closed_is_approximate ? 'APP' : 'EXA';
+
         $this->validate();
 
         if ($this->isContribution) {
