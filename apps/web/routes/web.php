@@ -12,13 +12,16 @@ use App\Http\Controllers\SpaProfileController;
 use App\Http\Controllers\TherapistProfileController;
 use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
 use App\Http\Controllers\Web\Public\ReviewController as PublicReviewController;
+use App\Http\Controllers\Web\Public\UserProfileController;
 use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
 use App\Http\Controllers\Web\Workspace\ContributionController as WorkspaceContributionController;
 use App\Http\Controllers\Web\Workspace\HomeController as WorkspaceHomeController;
 use App\Http\Controllers\Web\Workspace\ListingController as WorkspaceListingController;
 use App\Http\Controllers\Web\Workspace\ProfileController as WorkspaceProfileController;
 use App\Http\Controllers\Web\Workspace\ReviewController as WorkspaceReviewController;
+use App\Http\Controllers\Web\Workspace\SessionController as WorkspaceSessionController;
 use App\Http\Controllers\Web\Workspace\SettingController as WorkspaceSettingController;
+use App\Http\Controllers\Web\Workspace\SystemUserController;
 use App\Http\Middleware\EnsureActiveMember;
 use App\Http\Middleware\EnsureWorkspacePermission;
 use App\Livewire\Workspace\Editorial\ArticleIndex as EditorialArticleIndex;
@@ -51,6 +54,7 @@ Route::post('/therapist/{therapist_slug}/review', [WorkspaceReviewController::cl
     ->name('therapist.review.store');
 
 Route::get('/service/{service_slug}', [ServiceProfileController::class, 'show'])->name('service.show');
+Route::get('/user/{username}', [UserProfileController::class, 'show'])->name('user.show');
 Route::prefix('article')->name('article.')->group(function () {
     Route::get('/', [PublicArticleController::class, 'index'])->name('index');
     Route::get('/category', [PublicArticleController::class, 'categoryIndex'])->name('category.index');
@@ -79,18 +83,15 @@ Route::get('/legal/terms', [LegalController::class, 'terms'])->name('legal.terms
 Route::get('/legal/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
 Route::get('/legal/cookie', [LegalController::class, 'cookies'])->name('legal.cookies');
 
-// Planned public sections that are not built yet render a shared
-// coming-soon page so header navigation never leads to a 404.
-Route::view('/directory/{path?}', 'coming-soon', ['sectionKey' => 'navigation.directory'])
-    ->where('path', '.*')
-    ->name('directory.index');
+use App\Http\Controllers\Web\Public\CampusController;
+use App\Http\Controllers\Web\Public\DirectoryController;
+use App\Http\Controllers\Web\Public\PromoController;
 
-foreach ([
-    'campus' => 'navigation.campus',
-    'promo' => 'navigation.promos',
-] as $path => $sectionKey) {
-    Route::view("/{$path}", 'coming-soon', ['sectionKey' => $sectionKey])->name(str_replace('-', '_', $path).'.index');
-}
+// Public Directory, Promos, and Campus Showcase Pages
+Route::get('/directory', [DirectoryController::class, 'index'])->name('directory.index');
+Route::get('/promo', [PromoController::class, 'index'])->name('promo.index');
+Route::get('/promos', [PromoController::class, 'index'])->name('promos.index');
+Route::get('/campus', [CampusController::class, 'index'])->name('campus.index');
 
 Route::view('/help/{subpath?}', 'coming-soon', ['sectionKey' => 'navigation.help'])
     ->where('subpath', '.*')
@@ -115,6 +116,10 @@ Route::prefix('workspace')
         Route::put('/profile', [WorkspaceProfileController::class, 'update'])->middleware('throttle:20,1')->name('profile.update');
         Route::get('/setting', [WorkspaceSettingController::class, 'edit'])->name('setting.edit');
         Route::put('/setting', [WorkspaceSettingController::class, 'update'])->middleware('throttle:20,1')->name('setting.update');
+        Route::delete('/setting/session/others', [WorkspaceSessionController::class, 'destroyOthers'])->name('setting.session.destroy-others');
+        Route::delete('/setting/session/{session}', [WorkspaceSessionController::class, 'destroy'])->name('setting.session.destroy');
+        Route::put('/setting/device/{device}', [WorkspaceSessionController::class, 'updateDevice'])->name('setting.device.update');
+        Route::delete('/setting/device/{device}', [WorkspaceSessionController::class, 'distrustDevice'])->name('setting.device.distrust');
         Route::get('/listing/spa', [WorkspaceListingController::class, 'spaIndex'])->name('listing.spa');
         Route::get('/listing/therapist', [WorkspaceListingController::class, 'therapistIndex'])->name('listing.therapist');
         Route::get('/contribution', [WorkspaceContributionController::class, 'index'])->name('contribution.index');
@@ -180,12 +185,17 @@ Route::view('/workspace/moderation', 'workspace.admin-placeholder', [
     ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.moderation.access'])
     ->name('workspace.moderation.home');
 
-Route::view('/workspace/system', 'workspace.admin-placeholder', [
-    'areaKey' => 'system',
-    'areaTitle' => __('workspace.admin_system_title'),
-])
+Route::prefix('workspace/system')->name('workspace.system.')
     ->middleware(['auth', 'verified', EnsureActiveMember::class, EnsureWorkspacePermission::class.':workspace.system.access'])
-    ->name('workspace.system.home');
+    ->group(function () {
+        Route::get('/', [SystemUserController::class, 'index'])->name('home');
+        Route::get('/user', [SystemUserController::class, 'index'])->name('user.index');
+        Route::get('/user/{user}', [SystemUserController::class, 'show'])->name('user.show');
+        Route::put('/user/{user}/status', [SystemUserController::class, 'updateStatus'])->name('user.status');
+        Route::post('/user/{user}/access', [SystemUserController::class, 'storeAccess'])->name('user.access.store');
+        Route::delete('/user/{user}/access/{assignment}', [SystemUserController::class, 'destroyAccess'])->name('user.access.destroy');
+        Route::delete('/user/{user}/session/{session}', [SystemUserController::class, 'destroySession'])->name('user.session.destroy');
+    });
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
