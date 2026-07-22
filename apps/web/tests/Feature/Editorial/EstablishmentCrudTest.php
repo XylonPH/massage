@@ -58,6 +58,16 @@ class EstablishmentCrudTest extends TestCase
             ->assertDontSee('Ocean Breeze');
     }
 
+    public function test_language_switcher_aria_label_matches_its_own_tab_not_identity_on_every_tab(): void
+    {
+        $user = $this->editor();
+
+        $test = Livewire::actingAs($user)->test(EstablishmentForm::class);
+
+        $test->assertSee('aria-label="'.__('editorial.tab_identity').' language"', false);
+        $test->assertSee('aria-label="'.__('editorial.tab_location').' language"', false);
+    }
+
     public function test_editor_can_create_an_establishment_with_only_required_fields(): void
     {
         $user = $this->editor();

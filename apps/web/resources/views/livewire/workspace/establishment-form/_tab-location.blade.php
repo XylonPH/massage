@@ -66,7 +66,7 @@
         </x-form.field>
     </div>
 
-    @include('livewire.workspace.establishment-form._language-switcher')
+    @include('livewire.workspace.establishment-form._language-switcher', ['switcherLabel' => __('editorial.tab_location')])
 
     <x-form.field :label="__('editorial.est_direction_note_eng')" :error="$errors->first('state.direction_note_'.$activeLanguageTab)">
         <x-form.textarea wire:model="state.direction_note_{{ $activeLanguageTab }}" rows="2" />

@@ -1,6 +1,6 @@
 {{-- Identity --}}
 <div x-show="tab === 'identity'" class="mt-5 space-y-5">
-    @include('livewire.workspace.establishment-form._language-switcher')
+    @include('livewire.workspace.establishment-form._language-switcher', ['switcherLabel' => __('editorial.tab_identity')])
 
     <x-form.field :label="__('editorial.est_display_name_eng')" :error="$errors->first('state.display_name_'.$activeLanguageTab)">
         <x-form.input wire:model="state.display_name_{{ $activeLanguageTab }}" maxlength="255" />
