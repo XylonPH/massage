@@ -1,4 +1,3 @@
-@vite(['resources/js/establishment-map.js'])
 <div class="mx-auto max-w-5xl">
     @if ($isContribution)
         <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ __('workspace.contribution_establishment_title') }}</h1>
@@ -54,3 +53,6 @@
         @endif
     </form>
 </div>
+@push('scripts')
+    @vite(['resources/js/establishment-map.js'])
+@endpush
