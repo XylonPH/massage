@@ -689,4 +689,43 @@ class ContributionTest extends TestCase
 
         Establishment::query()->delete();
     }
+
+    /**
+     * Regression test for a 500 error found during manual Task 20 browser verification:
+     * submitting a real contribution end-to-end (not a synthetic Contribution::create
+     * with hand-built proposed_data) produces the real current shape — a multilingual
+     * {text, method_translation, status_review} object under
+     * establishment.display_name.eng — and the "My Contributions" list page must render
+     * that correctly instead of throwing when Blade's htmlspecialchars() receives an
+     * array. A synthetic-fixture test would not have caught this because it's easy to
+     * hand-build proposed_data in the old, already-fixed shape by mistake; only a real
+     * submission through the actual Livewire component reliably produces the current
+     * shape.
+     */
+    public function test_my_contributions_page_renders_a_real_end_to_end_establishment_submission(): void
+    {
+        $user = User::factory()->create();
+
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('state.display_name_eng', 'Verification Spa')
+            ->set('state.address_public', '123 Verification Street, Manila')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('type_establishment_relationship', 'NON')
+            ->call('save')
+            ->assertRedirect(route('workspace.contribution.index'));
+
+        $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
+        // Confirms the real shape this regression is guarding against: a nested
+        // multilingual object, not a flat string.
+        $this->assertIsArray(data_get($contribution->proposed_data, 'establishment.display_name.eng'));
+        $this->assertSame('Verification Spa', data_get($contribution->proposed_data, 'establishment.display_name.eng.text'));
+
+        $this->actingAs($user)
+            ->get('/workspace/contribution')
+            ->assertOk()
+            ->assertSee('Verification Spa');
+    }
 }

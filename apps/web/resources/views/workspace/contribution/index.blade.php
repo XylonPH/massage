@@ -32,7 +32,7 @@
                             <p class="mt-3 text-xs text-ink-500 dark:text-ink-400">{{ __('workspace.contribution_relationship_summary', ['relationship' => __('workspace.practitioner_relationship_'.$contribution->type_practitioner_relationship)]) }}</p>
                         @else
                             <p class="text-xs font-bold uppercase tracking-wider text-ember-700 dark:text-ember-400">{{ __('workspace.contribution_type_establishment') }}</p>
-                            <h2 class="mt-1 text-xl font-black text-ink-950 dark:text-ink-50">{{ data_get($contribution->proposed_data, 'establishment.display_name.eng', data_get($contribution->proposed_data, 'display_name.eng')) }}</h2>
+                            <h2 class="mt-1 text-xl font-black text-ink-950 dark:text-ink-50">{{ data_get($contribution->proposed_data, 'establishment.display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng')) }}</h2>
                             <p class="mt-2 text-sm text-ink-600 dark:text-ink-300">{{ data_get($contribution->proposed_data, 'establishment.address_public', data_get($contribution->proposed_data, 'address_public')) }}</p>
                             <p class="mt-3 text-xs text-ink-500 dark:text-ink-400">{{ __('workspace.contribution_relationship_summary', ['relationship' => __('workspace.establishment_relationship_'.$contribution->type_establishment_relationship)]) }}</p>
                         @endif
