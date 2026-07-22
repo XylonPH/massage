@@ -120,6 +120,12 @@ return [
             'database' => env('MONGODB_DATABASE', 'massage_main'),
         ],
 
+        'mongodb_reference' => [
+            'driver' => 'mongodb',
+            'dsn' => env('MONGODB_URI', 'mongodb://127.0.0.1:27018'),
+            'database' => env('MONGODB_REFERENCE_DATABASE', 'common_reference'),
+        ],
+
     ],
 
     /*
