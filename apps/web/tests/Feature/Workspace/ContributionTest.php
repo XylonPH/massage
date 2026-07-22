@@ -260,6 +260,22 @@ class ContributionTest extends TestCase
         $this->assertTrue($test->instance()->channelNeedsPhoneType('PHN'));
     }
 
+    public function test_contact_channel_type_toggles_the_rendered_fields(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML');
+
+        $test->assertDontSee(__('editorial.est_type_contact_number'));
+
+        $test->set('state.contact_channel_list.0.type_contact_channel', 'PHN');
+
+        $test->assertSee(__('editorial.est_type_contact_number'));
+    }
+
     public function test_location_tab_offers_region_select_and_auto_composes_address(): void
     {
         Country::query()->getConnection()->getCollection('country_main')->insertOne([
