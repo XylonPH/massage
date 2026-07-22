@@ -4,12 +4,17 @@
         mapperInstance: null,
 
         initMapper() {
-            if (typeof window.initThreeBodyMapper === 'function') {
-                this.mapperInstance = window.initThreeBodyMapper(this.$refs.canvasContainer, (data) => {
-                    this.selectedRegion = data.id;
-                    this.selectedName = data.name;
-                });
-            }
+            const tryInit = () => {
+                if (typeof window.initThreeBodyMapper === 'function' && this.$refs.canvasContainer) {
+                    this.mapperInstance = window.initThreeBodyMapper(this.$refs.canvasContainer, (data) => {
+                        this.selectedRegion = data.id;
+                        this.selectedName = data.name;
+                    });
+                } else {
+                    setTimeout(tryInit, 100);
+                }
+            };
+            this.$nextTick(tryInit);
         },
         selectRegion(id, name) {
             this.selectedRegion = id;
