@@ -269,6 +269,20 @@ class ContributionTest extends TestCase
             ->assertHasNoErrors(['state.date_closed']);
     }
 
+    public function test_closed_date_field_appears_live_when_status_changes_to_closed(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2);
+
+        $test->assertDontSee(__('editorial.est_date_closed'));
+
+        $test->set('state.status_establishment', 'PC');
+
+        $test->assertSee(__('editorial.est_date_closed'));
+    }
+
     public function test_contact_channel_hides_phone_type_for_email_channels(): void
     {
         $user = User::factory()->create();

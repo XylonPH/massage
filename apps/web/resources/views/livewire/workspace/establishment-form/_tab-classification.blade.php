@@ -13,7 +13,7 @@
         <x-form.select wire:model="state.type_establishment_operation" :options="$taxonomy['type_establishment_operation']" :placeholder="__('editorial.select_placeholder')" />
     </x-form.field>
     <x-form.field :label="__('editorial.est_status_establishment')" :error="$errors->first('state.status_establishment')">
-        <x-form.select wire:model="state.status_establishment" :options="$taxonomy['status_establishment']" :placeholder="__('editorial.select_placeholder')" />
+        <x-form.select wire:model.live="state.status_establishment" :options="$taxonomy['status_establishment']" :placeholder="__('editorial.select_placeholder')" />
     </x-form.field>
 
     <x-form.field :label="__('editorial.est_date_opened')" :error="$errors->first('state.date_opened')">
