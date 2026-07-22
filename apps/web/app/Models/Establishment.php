@@ -44,10 +44,6 @@ class Establishment extends Model
         'type_client_access',
         'target_client_focus',
         'status_record_lifecycle',
-        // 'amenities'/'accessibility_information' below are retired guide field names, kept fillable only
-        // for apps/web/app/Support/Demo/SampleContent.php and the public spa page (spa/profile.blade.php)
-        // until a separate plan migrates the whole Establishment model to the guide field shape.
-        'amenities',
         'room_types',
         'shower_availability',
         'sauna_availability',
@@ -59,7 +55,6 @@ class Establishment extends Model
         'curtain_divider_information',
         'bed_mat_chair_setup',
         'air_conditioning_information',
-        'accessibility_information',
         'operating_hours',
         'amenity_list',
         'accessibility_feature_list',
