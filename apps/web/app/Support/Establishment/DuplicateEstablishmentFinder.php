@@ -40,15 +40,32 @@ class DuplicateEstablishmentFinder
             ->where('target_collection', 'establishment_main')
             ->where('status_contribution', 'PND')
             ->get(['_id', 'proposed_data'])
-            ->filter(fn (Contribution $contribution) => $this->normalize((string) data_get($contribution->proposed_data, 'establishment.display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng', '')))) === $normalized)
+            ->filter(fn (Contribution $contribution) => $this->normalize((string) $this->resolveDisplayName($contribution)) === $normalized)
             ->map(fn (Contribution $contribution) => [
                 'id' => (string) $contribution->getKey(),
-                'display_name' => (string) data_get($contribution->proposed_data, 'establishment.display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng', ''))),
+                'display_name' => (string) $this->resolveDisplayName($contribution),
                 'address_public' => data_get($contribution->proposed_data, 'establishment.address_public', data_get($contribution->proposed_data, 'address_public')),
                 'source' => 'contribution',
             ]);
 
         return $liveMatches->concat($pendingMatches)->take(self::MAX_RESULTS)->values();
+    }
+
+    /**
+     * Resolves a pending contribution's display name across every shape it may be
+     * stored in: the current namespaced+flat-string shape produced by
+     * EstablishmentForm::submitContribution() (`establishment.display_name.eng` as a
+     * plain string) is tried first since that is what real submissions produce now,
+     * falling back to the pre-Task-15 flat shapes for any older pending contribution
+     * still sitting in PND status (`display_name.eng.text` or `display_name.eng`).
+     */
+    private function resolveDisplayName(Contribution $contribution): string
+    {
+        return (string) data_get(
+            $contribution->proposed_data,
+            'establishment.display_name.eng',
+            data_get($contribution->proposed_data, 'display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng'))
+        );
     }
 
     private function normalize(string $name): string

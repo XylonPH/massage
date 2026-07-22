@@ -477,4 +477,122 @@ class ContributionTest extends TestCase
 
         Establishment::query()->delete();
     }
+
+    public function test_acknowledging_then_submitting_the_same_candidate_set_still_succeeds(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->set('duplicateAcknowledged', true)
+            ->call('save')
+            ->assertHasNoErrors(['duplicateAcknowledged']);
+
+        $this->assertSame(1, Contribution::query()->count());
+
+        Establishment::query()->delete();
+    }
+
+    public function test_returning_to_step_two_and_removing_the_duplicate_resets_stale_acknowledgement(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->set('duplicateAcknowledged', true);
+
+        $test->assertSet('duplicateAcknowledged', true);
+
+        $test->call('prevStep')
+            ->set('state.display_name_eng', 'A Totally Unique Spa Name')
+            ->call('nextStep');
+
+        $test->assertSet('duplicateAcknowledged', false);
+        $this->assertCount(0, $test->instance()->duplicateCandidates);
+
+        Establishment::query()->delete();
+    }
+
+    public function test_returning_to_step_two_and_switching_to_a_different_duplicate_requires_re_acknowledgement(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Lotus Wellness Spa'],
+            'address_public' => 'Quezon City',
+        ]);
+
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->set('duplicateAcknowledged', true);
+
+        $test->assertSet('duplicateAcknowledged', true);
+
+        $test->call('prevStep')
+            ->set('state.display_name_eng', 'Lotus Wellness Spa')
+            ->call('nextStep');
+
+        $test->assertSet('duplicateAcknowledged', false);
+        $this->assertCount(1, $test->instance()->duplicateCandidates);
+        $this->assertSame('Lotus Wellness Spa', $test->instance()->duplicateCandidates->first()['display_name']);
+
+        $test->call('save')->assertHasErrors(['duplicateAcknowledged']);
+        $this->assertSame(0, Contribution::query()->count());
+
+        Establishment::query()->delete();
+    }
+
+    public function test_duplicate_check_cannot_be_bypassed_by_setting_current_step_directly(): void
+    {
+        Establishment::query()->create([
+            'display_name' => ['eng' => 'Harbor Calm Spa'],
+            'address_public' => 'Makati City',
+        ]);
+
+        // currentStep is set directly to 3, skipping nextStep() entirely, so
+        // duplicateCandidates never gets populated through the normal path.
+        Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 3)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->call('save')
+            ->assertHasErrors(['duplicateAcknowledged']);
+
+        $this->assertSame(0, Contribution::query()->count());
+
+        Establishment::query()->delete();
+    }
 }

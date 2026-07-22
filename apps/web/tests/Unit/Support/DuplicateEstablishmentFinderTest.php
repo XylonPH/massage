@@ -54,7 +54,7 @@ class DuplicateEstablishmentFinderTest extends TestCase
         $this->assertCount(0, $matches);
     }
 
-    public function test_finds_a_match_using_the_current_flat_contribution_shape(): void
+    public function test_finds_a_match_using_the_pre_task_15_flat_contribution_shape(): void
     {
         Contribution::query()->create([
             'type_contribution' => 'ADD',
@@ -71,5 +71,39 @@ class DuplicateEstablishmentFinderTest extends TestCase
 
         $this->assertCount(1, $matches);
         $this->assertSame('Taguig City', $matches->first()['address_public']);
+    }
+
+    /**
+     * The real shape EstablishmentForm::submitContribution() produces: proposed_data
+     * is namespaced under 'establishment', and display_name.eng is a plain string
+     * (not the older {text: ...} object). This is the exact scenario that was broken
+     * before this fix — the finder's fallback chain tried 'establishment.display_name.eng.text'
+     * first, which doesn't exist for this shape, so it fell all the way through to
+     * 'display_name.eng' at the top level, which also doesn't exist here.
+     */
+    public function test_finds_a_match_using_the_current_namespaced_flat_string_contribution_shape(): void
+    {
+        Contribution::query()->create([
+            'type_contribution' => 'ADD',
+            'target_collection' => 'establishment_main',
+            'submitted_by_user_id' => 'Us7K2pQ9xR4tV8zN',
+            'status_contribution' => 'PND',
+            'proposed_data' => [
+                'establishment' => [
+                    'display_name' => ['eng' => 'Harbor Calm Spa'],
+                    'address_public' => 'Makati City',
+                ],
+                'contact_channel_list' => [],
+                'operating_schedule' => [],
+                'event_list' => [],
+            ],
+        ]);
+
+        $matches = (new DuplicateEstablishmentFinder)->find('Harbor Calm Spa');
+
+        $this->assertCount(1, $matches);
+        $this->assertSame('contribution', $matches->first()['source']);
+        $this->assertSame('Harbor Calm Spa', $matches->first()['display_name']);
+        $this->assertSame('Makati City', $matches->first()['address_public']);
     }
 }

@@ -143,7 +143,23 @@ class EstablishmentForm extends Component
         };
     }
 
+    /** Called when the user advances into the review step: a changed name means any earlier acknowledgement no longer applies to the current candidate set. */
     public function checkForDuplicates(): void
+    {
+        $this->duplicateAcknowledged = false;
+        $this->refreshDuplicateCandidates();
+    }
+
+    /**
+     * Recomputes duplicateCandidates without resetting duplicateAcknowledged. Used
+     * defensively at submission time (see save()) so that a client that bypassed
+     * nextStep() and never populated duplicateCandidates cannot skip the
+     * acknowledgement requirement by leaving it at its mount()-time empty default.
+     * Unlike checkForDuplicates(), this must not reset duplicateAcknowledged, or a
+     * legitimate submitter who already stepped through review and ticked the
+     * acknowledgement box would have it silently cleared right before validation.
+     */
+    private function refreshDuplicateCandidates(): void
     {
         $this->duplicateCandidates = app(DuplicateEstablishmentFinder::class)
             ->find($this->state['display_name_eng'] ?? '');
@@ -351,6 +367,16 @@ class EstablishmentForm extends Component
     {
         $this->state['date_opened_qualifier'] = $this->date_opened_is_approximate ? 'APP' : 'EXA';
         $this->state['date_closed_qualifier'] = $this->date_closed_is_approximate ? 'APP' : 'EXA';
+
+        if ($this->isContribution) {
+            // Defensive: makes the duplicateAcknowledged rule authoritative at
+            // submission time regardless of how currentStep got set (e.g. a client
+            // that never called nextStep() and so never populated duplicateCandidates
+            // via checkForDuplicates()). Does not touch duplicateAcknowledged itself,
+            // so a submitter who already reviewed and acknowledged the same candidate
+            // set is not blocked by this refresh.
+            $this->refreshDuplicateCandidates();
+        }
 
         $this->validate();
 
