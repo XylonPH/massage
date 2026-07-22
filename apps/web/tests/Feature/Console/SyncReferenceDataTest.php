@@ -1,15 +1,32 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Feature\Console;
 
+use App\Models\Reference\Country;
 use App\Models\Reference\Region;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class SyncReferenceDataTest extends TestCase
 {
     protected function tearDown(): void
     {
-        Region::query()->getConnection()->getCollection('region_main')->deleteMany([]);
+        $collections = [
+            'country_main',
+            'region_main',
+            'area_hierarchy_profile',
+            'currency_main',
+            'language_main',
+            'time_zone_main',
+            'dog_breed_main',
+        ];
+
+        foreach ($collections as $collection) {
+            DB::connection('mongodb_reference')->getCollection($collection)->deleteMany([]);
+        }
+
         parent::tearDown();
     }
 
@@ -38,5 +55,15 @@ class SyncReferenceDataTest extends TestCase
         $this->artisan('reference:sync', ['--dry-run' => true])->assertExitCode(0);
 
         $this->assertSame(0, Region::query()->count());
+    }
+
+    public function test_sync_maps_dataset_id_fields_to_mongo_id(): void
+    {
+        $this->artisan('reference:sync')->assertExitCode(0);
+
+        $philippines = Country::query()->find(608);
+        $this->assertNotNull($philippines);
+        $this->assertSame('philippines', $philippines->country_key);
+        $this->assertNull($philippines->country_id ?? null);
     }
 }
