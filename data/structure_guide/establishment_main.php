@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Main Structure Guide
- * Version: 1.40
+ * Version: 1.50
  * Collection: establishment_main
  * Description: Stores one establishment or supported provider's public profile and directory classification record.
  * Purpose: Documents the establishment_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -13,7 +13,7 @@
  */
 
 $created_at = '2026-07-20T07:25:30Z';
-$updated_at = '2026-07-21T11:14:49Z';
+$updated_at = '2026-07-22T05:16:05Z';
 $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
@@ -72,9 +72,27 @@ $establishment_main = [
         ['landmark_name' => 'Sample Mall', 'walking_duration_minute' => 5, 'direction_note' => ['eng' => ['text' => 'Walk east from the main entrance.']]],
     ],
     'treatment_area_list' => [['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4]], // Bounded public treatment-area summary.
+    'shower_availability' => 'IR', // Shower access classification.
+    'sauna_availability' => 'NA', // Sauna access classification.
+    'steam_room_availability' => 'NA', // Steam room access classification.
+    'jacuzzi_availability' => 'NA', // Jacuzzi access classification.
+    'locker_availability' => 'NR', // Locker access classification.
+    'couple_room_availability' => 'NA', // Couple-room access classification.
+    'private_room_availability' => 'IR', // Private-room access classification.
+    'curtain_divider_information' => 'NA', // Curtain/divider classification.
+    'air_conditioning_information' => 'NA', // Air-conditioning classification.
+    'room_types' => ['ER'], // Confirmed room-type codes.
+    'bed_mat_chair_setup' => [], // Confirmed bed/mat/chair setup codes.
     'amenity_list' => ['PRK', 'WIFI', 'TOWL'], // Confirmed public amenity codes.
     'accessibility_feature_list' => ['SFE', 'ELV'], // Confirmed accessibility codes.
     'payment_method_list' => ['CSH', 'CC'], // Accepted payment-method codes.
+    'parking_availability_list' => ['PRK_ONS_FREE'], // Confirmed parking availability codes.
+    'date_opened' => '2024-03-01', // Best-supported opening date.
+    'date_opened_precision' => 'M', // Precision of date_opened.
+    'date_opened_qualifier' => 'EXA', // Qualifier of date_opened.
+    'date_closed' => null, // Best-supported closure date, when applicable.
+    'date_closed_precision' => null, // Precision of date_closed.
+    'date_closed_qualifier' => null, // Qualifier of date_closed.
     'primary_media_image_id' => 'Im7K2pQ9xR4tV8zN', // Primary public image reference.
     'status_record_lifecycle' => 'ACT', // Database record lifecycle state.
     'revision_number' => 1, // Monotonic optimistic-concurrency token; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).
@@ -90,8 +108,8 @@ $establishment_main_field_order = [
     'target_client_focus', 'country_id', 'geographic_area_id_list', 'street_address', 'building_name',
     'floor_label', 'unit_label', 'postal_code', 'address_public', 'level_address_visibility',
     'location_point', 'type_coordinate', 'level_coordinate_confidence',
-    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'amenity_list',
-    'accessibility_feature_list', 'payment_method_list', 'primary_media_image_id',
+    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'shower_availability', 'sauna_availability', 'steam_room_availability', 'jacuzzi_availability', 'locker_availability', 'couple_room_availability', 'private_room_availability', 'curtain_divider_information', 'air_conditioning_information', 'room_types', 'bed_mat_chair_setup', 'amenity_list',
+    'accessibility_feature_list', 'payment_method_list', 'parking_availability_list', 'date_opened', 'date_opened_precision', 'date_opened_qualifier', 'date_closed', 'date_closed_precision', 'date_closed_qualifier', 'primary_media_image_id',
     'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at', 'last_confirmed_at',
 ];
 
@@ -145,9 +163,27 @@ $establishment_main_field_property = [
     'parking_note' => ['field_label' => 'Parking Note', 'field_description' => 'Multilingual parking information.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_translatable' => true],
     'landmark_list' => ['field_label' => 'Landmark List', 'field_description' => 'Bounded nearby public landmarks.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'treatment_area_list' => ['field_label' => 'Treatment Area List', 'field_description' => 'Bounded public treatment-area summary; individual bookable resources are separate.', 'type_data' => 'A', 'type_field' => 'JSE'],
+    'shower_availability' => ['field_label' => 'Shower Availability', 'field_description' => 'Controlled shower-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'sauna_availability' => ['field_label' => 'Sauna Availability', 'field_description' => 'Controlled sauna-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'steam_room_availability' => ['field_label' => 'Steam Room Availability', 'field_description' => 'Controlled steam-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'jacuzzi_availability' => ['field_label' => 'Jacuzzi Availability', 'field_description' => 'Controlled jacuzzi-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'locker_availability' => ['field_label' => 'Locker Availability', 'field_description' => 'Controlled locker-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'couple_room_availability' => ['field_label' => 'Couple Room Availability', 'field_description' => 'Controlled couple-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'private_room_availability' => ['field_label' => 'Private Room Availability', 'field_description' => 'Controlled private-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'curtain_divider_information' => ['field_label' => 'Curtain/Divider Information', 'field_description' => 'Controlled curtain-or-divider classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'air_conditioning_information' => ['field_label' => 'Air-Conditioning Information', 'field_description' => 'Controlled air-conditioning classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'room_types' => ['field_label' => 'Room Types', 'field_description' => 'Confirmed treatment-room-type codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
+    'bed_mat_chair_setup' => ['field_label' => 'Bed/Mat/Chair Setup', 'field_description' => 'Confirmed bed, mat, or chair setup codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'amenity_list' => ['field_label' => 'Amenity List', 'field_description' => 'Confirmed public amenity codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'accessibility_feature_list' => ['field_label' => 'Accessibility Feature List', 'field_description' => 'Confirmed public accessibility codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'payment_method_list' => ['field_label' => 'Payment Method List', 'field_description' => 'Accepted payment-method codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
+    'parking_availability_list' => ['field_label' => 'Parking Availability', 'field_description' => 'Confirmed parking-availability codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
+    'date_opened' => ['field_label' => 'Date Opened', 'field_description' => 'Best-supported opening date, denormalized from the authoritative establishment_event opening record for display and query.', 'type_data' => 'S', 'type_field' => 'DTI'],
+    'date_opened_precision' => ['field_label' => 'Date Opened Precision', 'field_description' => 'Controlled precision of date_opened, matching establishment_event.type_date_precision.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'date_opened_qualifier' => ['field_label' => 'Date Opened Qualifier', 'field_description' => 'Controlled qualifier of date_opened, matching establishment_event.type_date_qualifier.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'date_closed' => ['field_label' => 'Date Closed', 'field_description' => 'Best-supported closure date when the establishment has ceased, relocated, or is temporarily closed; denormalized from the authoritative establishment_event closure record.', 'type_data' => 'S', 'type_field' => 'DTI'],
+    'date_closed_precision' => ['field_label' => 'Date Closed Precision', 'field_description' => 'Controlled precision of date_closed.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'date_closed_qualifier' => ['field_label' => 'Date Closed Qualifier', 'field_description' => 'Controlled qualifier of date_closed.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'primary_media_image_id' => ['field_label' => 'Primary Media Image ID', 'field_description' => 'Primary public image reference.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle independent of operating status.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
     'revision_number' => ['field_label' => 'Revision Number', 'field_description' => 'Monotonic optimistic-concurrency token that increments by one on every accepted revision; the required concurrency token distinct from updated_at (docs/02-governance/edit-system.txt section 16).', 'type_data' => 'I', 'type_field' => 'NMB', 'is_mandatory' => true, 'min_number' => 1],
