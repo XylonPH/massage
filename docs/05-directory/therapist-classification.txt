@@ -1,7 +1,7 @@
 Title: Massage Nexus Therapist Classification
-Document Version: 1.60
+Document Version: 1.70
 Date Created: 2026-07-11
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines the controlled fields and option sets used to classify massage therapists and their professional service contexts in Massage Nexus, including recommended snake_case field names, stable option codes, labels, and internal descriptions.
 
 This is a compact taxonomy reference, not public documentation, a database schema, a therapist-profile specification, a credential schema, or a scheduling system. Some fields apply to the therapist generally; Work Arrangement, Provider Rank, Therapist Service Market Class, Client Access, and Booking Requirement may instead apply to a specific establishment affiliation or independent-practice context.
@@ -298,6 +298,28 @@ RV   | Revoked   | Credential has been formally withdrawn or cancelled.
 UN   | Unknown   | Current lifecycle condition cannot be confirmed.
 
 A public profile summary should be derived from individual credential records rather than stored as one conflicting profile-level status.
+
+================================================================================
+13. HANDEDNESS
+================================================================================
+
+Field Name: type_handedness
+Field Label: Handedness
+Selection: Single-select per person or practitioner profile
+
+Code | Label          | Description
+-----|----------------|------------------------------------------------------------
+RH   | Right-Handed   | Dominant hand is the right hand.
+LH   | Left-Handed    | Dominant hand is the left hand.
+AM   | Ambidextrous   | Works effectively with either hand without a meaningful dominant side.
+UN   | Unknown        | Handedness has not been recorded or confirmed.
+
+For practitioner_main, handedness describes the practitioner's dominant working hand and may help
+with an explicitly requested client preference, couple-room pairing, or workplace ergonomics. It
+does not prove skill, suitability, accessibility, or service capability. user_main reuses the same
+controlled field for the person's optional self-declared handedness with a separate privacy choice.
+An active verified Self relationship may synchronize the value only through an explicit audited
+choice; one profile never silently overwrites the other.
 
 RELATED STRUCTURE TAXONOMY
 

@@ -65,7 +65,11 @@ class ArticleController extends Controller
                 ['path' => $request->url(), 'query' => $request->query()],
             );
 
-            return view('workspace.article.index', compact('articles', 'status'));
+            return view('workspace.article.index', [
+                'articles' => $articles,
+                'status' => $status,
+                'submittedArticleIds' => $submittedIds,
+            ]);
         }
 
         match ($status) {
@@ -79,6 +83,7 @@ class ArticleController extends Controller
         return view('workspace.article.index', [
             'articles' => $query->orderByDesc('updated_at')->paginate(15),
             'status' => $status,
+            'submittedArticleIds' => $submittedIds,
         ]);
     }
 
@@ -174,12 +179,44 @@ class ArticleController extends Controller
     {
         $this->authorizeOwner($request, $article);
 
+        $revisionQuery = ArticleRevision::query()
+            ->where('article_id', (string) $article->getKey())
+            ->orderByDesc('revision_number');
+        $availableRevisions = (clone $revisionQuery)->get();
+        $selectedRevision = $availableRevisions->first();
+
+        if ($request->query->has('revision')) {
+            $selectedRevision = $availableRevisions->first(
+                fn (ArticleRevision $revision): bool => $revision->revision_number === $request->integer('revision')
+            );
+            abort_unless($selectedRevision, 404);
+        }
+
+        $comparisonRevision = $selectedRevision
+            ? $availableRevisions->first(
+                fn (ArticleRevision $revision): bool => $revision->revision_number < $selectedRevision->revision_number
+            )
+            : null;
+
+        if ($request->query->has('compare')) {
+            $comparisonRevision = $request->query('compare') === ''
+                ? null
+                : $availableRevisions->first(
+                    fn (ArticleRevision $revision): bool => $revision->revision_number === $request->integer('compare')
+                );
+            abort_if($request->query('compare') !== '' && ! $comparisonRevision, 404);
+        }
+
+        if ($comparisonRevision?->revision_number === $selectedRevision?->revision_number) {
+            $comparisonRevision = null;
+        }
+
         return view('workspace.article.revisions', [
             'article' => $article,
-            'revisions' => ArticleRevision::query()
-                ->where('article_id', (string) $article->getKey())
-                ->orderByDesc('revision_number')
-                ->paginate(20),
+            'revisions' => $revisionQuery->paginate(20),
+            'availableRevisions' => $availableRevisions,
+            'selectedRevision' => $selectedRevision,
+            'comparisonRevision' => $comparisonRevision,
         ]);
     }
 

@@ -19,6 +19,10 @@ class ArticleReview extends Component
 
     public string $reviewNote = '';
 
+    public bool $showApprovalConfirmation = false;
+
+    public bool $approvalConfirmed = false;
+
     public function mount(string $article): void
     {
         $this->authorizeEditorialAccess();
@@ -26,8 +30,31 @@ class ArticleReview extends Component
         $this->article = $article;
     }
 
+    public function requestApproval(): void
+    {
+        $this->authorizeEditorialAccess();
+        abort_unless(PendingArticleRevisions::forArticle($this->article), 409, __('editorial.article_already_reviewed'));
+
+        $this->resetErrorBag('approvalConfirmed');
+        $this->approvalConfirmed = false;
+        $this->showApprovalConfirmation = true;
+    }
+
+    public function cancelApproval(): void
+    {
+        $this->resetErrorBag('approvalConfirmed');
+        $this->approvalConfirmed = false;
+        $this->showApprovalConfirmation = false;
+    }
+
     public function approve(): void
     {
+        if (! $this->showApprovalConfirmation || ! $this->approvalConfirmed) {
+            $this->addError('approvalConfirmed', __('editorial.approval_confirmation_required'));
+
+            return;
+        }
+
         $this->decide('A');
     }
 
@@ -104,10 +131,17 @@ class ArticleReview extends Component
         $article = Article::query()->findOrFail($this->article);
         $revision = PendingArticleRevisions::forArticle($this->article);
         abort_unless($revision instanceof ArticleRevision, 404);
+        $previousRevision = ArticleRevision::query()
+            ->where('article_id', $this->article)
+            ->get()
+            ->filter(fn (ArticleRevision $candidate): bool => $candidate->revision_number < $revision->revision_number)
+            ->sortByDesc('revision_number')
+            ->first();
 
         return view('livewire.workspace.editorial.article-review', [
             'record' => $article,
             'revision' => $revision,
+            'previousRevision' => $previousRevision,
         ])->title(__('editorial.review_article'));
     }
 }

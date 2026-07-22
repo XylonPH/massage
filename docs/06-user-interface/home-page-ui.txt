@@ -1,7 +1,7 @@
 Title: Massage Nexus Homepage UI
-Version: 1.34
+Version: 1.44
 Date Created: 2026-07-01
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 
 Homepage UI Documentation
 =========================
@@ -213,7 +213,7 @@ The Spa Day section appears when the annual Spa Day campaign is active or near i
 
 Placement: Top-right account area, replacing Log In and Sign Up.
 
-When a normal registered user is logged in, the header uses one curved identity capsule linking to the profile area. It shows the user’s moderated avatar when available, the branded non-gendered Massage Nexus default avatar otherwise, display name, selected rank, and compact Ember and Inkling balances. Until the reward ledger and avatar media integration exist, the honest starting display is New Guest with zero balances and the branded fallback; no simulated earned balance is shown. A slow Ink, Ember, and Leaf background movement gives the capsule identity without distracting from navigation, and the animation is disabled when reduced motion is requested. Log out remains a separate clearly labeled control. Future account-menu integration may add saved listings, messages, notifications, profile, and settings without turning different roles into separate login identities. Owners, therapists, editors, moderators, and administrators use the same capsule; their workspace content changes automatically according to effective access.
+When a normal registered user is logged in, the header uses one curved identity capsule linking to the profile area. It shows the user’s moderated avatar when available, the branded non-gendered Massage Nexus default avatar otherwise, display name, primary eligible public role when applicable, selected Rank after authoritative user_rank integration, and compact Ember and Inkling balances from the user_reward summary. Until those integrations exist, the honest fallback is Member with zero balances and the branded avatar; New Guest must not be presented as a calculated Rank when no Rank record exists. Founder and other official roles are visually distinct from fictional Rank progression. A slow Ink, Ember, and Leaf background movement gives the capsule identity without distracting from navigation, and the animation is disabled when reduced motion is requested. Log out remains a separate clearly labeled control. Future account-menu integration may add saved listings, messages, notifications, profile, and settings without turning different roles into separate login identities. Owners, therapists, editors, moderators, and administrators use the same capsule; their workspace content changes automatically according to effective user_access.
 
 --------------------------------------------------------------------------------
 

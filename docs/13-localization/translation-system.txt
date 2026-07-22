@@ -1,7 +1,7 @@
 Title: Massage Nexus Translation and Localization Management System
-Document Version: 0.40
+Document Version: 0.50
 Date Created: 2026-07-16
-Revision Date: 2026-07-19
+Revision Date: 2026-07-22
 Status: Internal Planning Draft
 
 Related Documents:
@@ -15,6 +15,8 @@ Related Documents:
 - Massage Nexus - NSFW Mature and Restricted Content Policy v0.10
 - Massage Nexus - Analytics Statistics and Measurement System v0.10
 - Shared Project Standards v2.60
+- docs/08-community/reward-system.txt
+- docs/08-community/badge-system.txt
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -539,6 +541,11 @@ Community contributors cannot directly publish high-risk text.
 
 Language proficiency claims do not automatically grant permission. Trust is based on reviewed
 work, role, and area.
+
+Approved translation work may emit a reward event, but docs/08-community/reward-system.txt owns
+shared eligibility, amounts, caps, and accounting. This document owns translation completeness,
+accuracy, readability, authorship, approval, usefulness, and editor-confirmation facts supplied to
+that formula. Translation badges remain authoritative in the Badge System.
 
 ================================================================================
 16. AI EXPORT AND IMPORT

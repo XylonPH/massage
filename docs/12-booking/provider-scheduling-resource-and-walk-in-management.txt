@@ -1,7 +1,7 @@
 Title: Massage Nexus Provider Scheduling, Resource and Walk-In Management
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-17
-Revision Date: 2026-07-17
+Revision Date: 2026-07-22
 Status: Internal Planning Reference
 Shared Standard Reference: Shared Project Standards v2.60
 
@@ -13,7 +13,7 @@ Related Documents:
 - Massage Nexus - 11 - Product Classification v1.40
 - Massage Nexus - Rating System v1.10
 - Massage Nexus - Reputation System v1.70
-- Massage Nexus - User Rewards and Gamification v1.60
+- docs/08-community/reward-system.txt
 - Massage Nexus - Translation System v0.10
 - Shared Project Standards v2.60
 

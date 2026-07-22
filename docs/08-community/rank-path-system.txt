@@ -1,11 +1,14 @@
 Title: Massage Nexus Rank Path System
-Document Version: 1.70
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines the fictional Massage Nexus progression paths, their titles, progression inputs, public-display boundary, and separation from credentials, workspace roles, badges, reputation, and spendable rewards.
 
 Related Documents:
-- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
 - docs/08-community/badge-system.txt
 - docs/08-community/reputation-system.txt
 - docs/11-workspaces/user-workspace.txt
@@ -96,7 +99,7 @@ discussions:
 12. Voice of the Nexus
 
 Trusted Reviewer and Conversation Steward are fictional ranks unless a separately approved badge or
-access assignment exists. The interface must not imply moderation or editorial authority.
+user access grant exists. The interface must not imply moderation or editorial authority.
 
 ================================================================================
 5. MASSAGE CAMPUS PATH
@@ -183,10 +186,10 @@ The public profile may show one selected rank title and optionally a path icon o
 It must label the title as Massage Nexus progression where confusion with a credential or authority
 is possible. Users may hide rank presentation without deleting progression history.
 
-Rank progress must not be embedded as an unbounded structure in user_main. The future authoritative
-progress record should support one user plus one path, progression-definition version, eligible
-totals, current level, selected-display state, recomputation time, and audit references. Final
-collection names and structure guides remain unresolved.
+rank_path_main stores each versioned path and its bounded level definitions. user_rank stores one
+user plus one path, progression-definition version, eligible totals, current level,
+selected-display state, recomputation time, and audit references. Rank progress is not embedded as
+an unbounded structure in user_main; user_main may cache the selected public Rank code and level.
 
 ================================================================================
 9. OPEN DECISIONS
@@ -196,6 +199,5 @@ collection names and structure guides remain unresolved.
 - whether every path retains twelve levels after calibration;
 - whether more than one title may be featured publicly;
 - rank icons, colors, and cosmetic unlocks;
-- final definition and user-progress collection names;
 - correction, recomputation, dispute, and migration rules;
 - whether additional paths are needed after the current five are implemented and measured.

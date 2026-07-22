@@ -95,11 +95,21 @@ class EditorialAccessTest extends TestCase
             'word_count' => 5,
             'created_by_user_id' => (string) $author->getKey(),
         ]);
-        $revision = ArticleRevision::query()->create([
+        ArticleRevision::query()->create([
             'article_id' => (string) $article->getKey(),
             'article_body_id' => (string) $body->getKey(),
             'language_id' => 3049,
             'revision_number' => 1,
+            'article_body' => '<h2>Earlier body</h2><p>Content before the editorial revision.</p>',
+            'word_count' => 7,
+            'created_at' => now()->subMinutes(5),
+            'created_by_user_id' => (string) $author->getKey(),
+        ]);
+        $revision = ArticleRevision::query()->create([
+            'article_id' => (string) $article->getKey(),
+            'article_body_id' => (string) $body->getKey(),
+            'language_id' => 3049,
+            'revision_number' => 2,
             'article_body' => $body->article_body,
             'word_count' => 5,
             'created_at' => now()->subMinute(),
@@ -116,6 +126,15 @@ class EditorialAccessTest extends TestCase
         Livewire::actingAs($editor)
             ->test(ArticleReview::class, ['article' => (string) $article->getKey()])
             ->assertSee('Ready for Editorial Review')
+            ->assertSee('Content before the editorial revision.')
+            ->assertSee('Safe editorial content.')
+            ->assertSeeHtml('data-revision-comparison')
+            ->call('approve')
+            ->assertHasErrors('approvalConfirmed')
+            ->call('requestApproval')
+            ->assertSet('showApprovalConfirmation', true)
+            ->assertSee(__('editorial.approval_dialog_title'))
+            ->set('approvalConfirmed', true)
             ->call('approve')
             ->assertRedirect(route('workspace.editorial.article.index'));
 

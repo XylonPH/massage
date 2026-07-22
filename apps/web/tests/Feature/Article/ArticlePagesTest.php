@@ -45,7 +45,10 @@ class ArticlePagesTest extends TestCase
             ->assertOk()
             ->assertSee('First Massage Guide')
             ->assertSee('Safe article body')
-            ->assertSee('Example Health Agency');
+            ->assertSee('Example Health Agency')
+            ->assertSee('data-article-overview', false)
+            ->assertSee(__('article.spoken_reading'))
+            ->assertSee('dark:prose-invert', false);
 
         $this->get('/article/private-draft')->assertNotFound();
         $this->assertSame(1, Article::query()->find($published->getKey())->view_count);

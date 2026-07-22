@@ -1,7 +1,7 @@
 Title: Massage Nexus Quiz System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-20
-Revision Date: 2026-07-20
+Revision Date: 2026-07-22
 Status: Internal Planning Draft
 Document Description: Defines platform quizzes, including the homepage Campus Quiz widget, participation rules, per-user completion rotation, result recording, rewards references, and administration. The relationship between casual quiz results and formal Massage Campus learner progress is an explicitly open decision, and exact question schemas and collections remain deferred.
 
@@ -9,7 +9,9 @@ Related Documents:
 - docs/06-user-interface/home-page-ui.txt (section 19, Campus Quiz)
 - docs/10-education/massage-campus.txt
 - docs/11-workspaces/admin-workspace.txt (Editorial Management, Quiz administration)
-- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/inkling-system.txt
 - docs/13-localization/translation-system.txt
 - docs/18-policy/accessibility-and-inclusive-design-requirements.txt
 
@@ -68,10 +70,10 @@ hijacked by the swap.
 
 - user quiz results are recorded per user and visible to that user as personal history;
 - quiz results are private by default and are not public profile content;
-- quiz completion may earn rewards per the User Rewards and Gamification document (Campus quiz
-  completion is an accepted Nexus Points and Inklings source there), subject to its caps and
+- quiz completion may earn rewards per the Reward System (Campus quiz completion is a possible
+  Nexus Points and Inklings source), subject to its caps and
   anti-farming rules;
-- correctness may gate rewards or reward size; that detail belongs to the rewards document.
+- correctness may gate rewards or reward size; that detail belongs to the Reward System.
 
 Open decision — Campus integration: whether casual quiz results (homepage and general-page
 quizzes) are stored together with, feed into, or remain fully separate from formal Massage

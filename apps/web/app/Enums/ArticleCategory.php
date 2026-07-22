@@ -41,6 +41,27 @@ enum ArticleCategory: string
         };
     }
 
+    public function description(): string
+    {
+        return match ($this) {
+            self::PlatformCommunity => 'Articles about Massage Nexus as a platform — launch notes, editorial identity, brand-world content, community purpose, and how the site positions itself in the wellness space.',
+            self::FirstTime => 'Beginner-friendly guides covering what to expect before, during, and after a massage. Includes advice on manners, comfort, clothing, tipping, and normal spa behavior.',
+            self::ChoosingBookingReviews => 'Decision-making articles that help readers compare spas, understand pricing, book appointments wisely, read reviews critically, and avoid poor-fit choices.',
+            self::SafetyBoundariesTrust => 'Articles about consent, professional limits, ethical conduct, red flags, and protecting the dignity and safety of both clients and practitioners.',
+            self::HygieneComfort => 'Practical guides on linens, room cleanliness, oils, sanitation, skin concerns, bodily noises, and the visible signals that tell you a service environment is well maintained.',
+            self::MassageTechniques => 'Plain-language explainers about massage modalities, bodywork traditions, technique differences, and how to choose a style that suits your needs.',
+            self::PressureRecovery => 'Articles covering pressure preferences, post-session soreness, hydration, heat and ice, exercise timing, and knowing when discomfort during or after a massage is not normal.',
+            self::BodyPostureStress => 'Accessible body-education content on muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and how the body recovers.',
+            self::WellnessSelfCare => 'Habit-based articles about burnout, sleep, digital fatigue, rest routines, and small daily resets that support wellbeing between spa visits.',
+            self::OilsProductsHome => 'Guides on massage oils, balms, aromatherapy, hydrotherapy tools, home-care supplies, and practical wellness products for everyday use.',
+            self::SpecialCare => 'Content focused on pregnancy, seniors, children, disability, limited mobility, illness recovery, and caregiving — all centered on dignity and appropriate, safe touch.',
+            self::LocalGlobalCulture => 'Articles exploring local massage terms, credentials, cultural practices, travel etiquette, international spa customs, and what to expect when visiting wellness venues abroad.',
+            self::SpaBusiness => 'Business-facing content about starting, managing, pricing, staffing, marketing, and improving spa or massage establishment operations.',
+            self::PractitionerCareer => 'Practitioner-focused articles on technique refinement, ergonomics, professional boundaries, client communication, safety, and career development.',
+            self::FictionSeasonal => 'Imaginative, seasonal, comic-adjacent, or pop-culture articles that connect clearly to massage, touch, recovery, or wellness in an entertaining way.',
+        };
+    }
+
     public function slug(): string
     {
         return match ($this) {

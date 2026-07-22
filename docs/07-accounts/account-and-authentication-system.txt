@@ -1,7 +1,7 @@
 Title: Massage Nexus Account Identity Registration and Authentication System
-Document Version: 1.41
+Document Version: 1.50
 Date Created: 2026-07-18
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 
 DOCUMENT PURPOSE
 ----------------
@@ -649,6 +649,12 @@ Microsoft Entra External ID is a future customer-identity option to evaluate bef
 second network site or production federation is finalized. Initial local implementation may
 use Laravel authentication while preserving the architecture needed for later federation.
 
+External login identities are stored in user_external_identity. A provider-confirmed public
+Facebook page, Instagram profile, YouTube channel, X account, or other creator profile is stored
+separately in user_social_connection because login authority and public social presentation are
+different responsibilities. Public social connections require provider-supported connection or
+verification rather than an unrestricted user-entered URL.
+
 ================================================================================
 13. LANGUAGE, TIME ZONE, LOCATION, AND ONBOARDING
 ================================================================================
@@ -904,7 +910,9 @@ Do not create a separate user_consent collection under the current direction. Ad
 collections are created only when an independently growing, secured, searched, retained, or
 operated responsibility requires one.
 
-The following remain conceptual responsibilities rather than final additional collection names:
+The complete accepted user collection family is defined in
+docs/07-accounts/user-profile-and-preference-system.txt. Authentication-specific responsibilities
+use these final collection names:
 
 Network account:
 - global identity and lifecycle.
@@ -912,29 +920,34 @@ Network account:
 Credential:
 - password hash and credential state.
 
-External identity:
+user_external_identity:
 - provider, stable provider subject, linking state.
 
-Contact:
-- email or mobile number and verification state.
+user_contact:
+- personal email, mobile number, approved messaging channel, verification, replacement, and
+  lifecycle history;
+- user_main may retain a synchronized primary login-email cache for authentication.
 
-Site membership:
-- Massage Nexus eligibility, status, roles, and current policy-compliance requirement.
+user_access:
+- global or scoped roles and direct permissions, separate from membership and profile identity.
 
 Profile:
 - public Massage Nexus identity and visibility-controlled information.
 
-Preference:
+Preferences:
 - universal and site-specific current settings, initially bounded within user_main as the embedded
-  account_preference object; detailed reusable booking preferences belong to client_booking_default.
+  account, appearance, accessibility, notification, privacy, community, and booking-preference
+  objects;
+- time-sensitive intake and signed booking snapshots remain in their booking-domain records.
 
-Session and device:
+user_session and user_device:
 - active authentication sessions and recognized devices.
 
-Passkey:
+user_mfa_method, user_recovery_code, and user_passkey:
+- configured multifactor methods and individually hashed recovery codes;
 - WebAuthn public credential information.
 
-Security event:
+user_security_event:
 - login, reset, contact change, MFA, passkey, recovery, and administrative action history.
 
 Media asset:

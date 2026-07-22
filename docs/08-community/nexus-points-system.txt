@@ -1,0 +1,73 @@
+Title: Massage Nexus Points System
+Document Version: 1.80
+Date Created: 2026-07-07
+Revision Date: 2026-07-22
+Document Description: Defines Nexus Points as the permanent, non-spendable measure of a user's lifetime useful approved activity and separates them from currencies, trust, ranks, badges, statistics, and authority.
+
+Related Documents:
+- docs/08-community/reward-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
+- docs/08-community/reputation-system.txt
+- docs/07-accounts/user-profile-and-preference-system.txt
+
+================================================================================
+1. MEANING
+================================================================================
+
+Nexus Points are the permanent lifetime value of useful approved activity. They are non-spendable
+and do not decrease when a user redeems Embers, Inklings, cosmetics, feature credits, or paid-plan
+benefits.
+
+Nexus Points are not:
+- raw contribution or participation counts;
+- a cash balance or transferable asset;
+- Reputation or proof of trust;
+- a badge, Rank, professional credential, verification, or role;
+- moderation, editorial, administrative, establishment, or practitioner authority;
+- a benefit that can be purchased directly.
+
+"Permanent" means an earned valid award is not consumed. Fraud, duplication, invalidation, or an
+incorrect award may still create an audited correction or reversal in user_reward.
+
+================================================================================
+2. POSSIBLE SOURCES
+================================================================================
+
+Versioned reward rules may award Nexus Points for:
+- approved establishment or practitioner submissions;
+- approved profile corrections and data improvements;
+- approved articles, reviews, media, or translations;
+- useful comments and discussion participation;
+- eligible content, spa, therapist, or product ratings;
+- eligible completed-experience ratings;
+- confirmed valid reports;
+- eligible Campus quizzes or polls;
+- verified event, campaign, or outreach participation;
+- eligible bookings or purchases.
+
+An action being listed as a possible source does not guarantee an award. The Reward System owns
+shared eligibility, exact schedules, caps, anti-abuse, idempotency, and reversal rules. The source
+domain owns whether the underlying activity is approved and valid.
+
+================================================================================
+3. DISPLAY AND PROGRESSION
+================================================================================
+
+The public profile may show the user's lifetime Nexus Point total when their profile visibility
+permits it. user_main may cache this rebuildable total for display; user_reward remains authoritative.
+
+Rank Paths may use eligible Nexus Points as one progression input, together with path-specific
+activity and quality requirements. A large point total alone does not grant Rank, Reputation,
+badges, verification, authority, or organic visibility.
+
+================================================================================
+4. OPEN DECISIONS
+================================================================================
+
+- exact Nexus Point awards outside the accepted rating schedule;
+- whether any source families need lifetime or rolling caps;
+- final public presentation and explanatory text;
+- point corrections and appeal thresholds requiring human review.

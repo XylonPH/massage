@@ -14,7 +14,7 @@
             { "option_code": "MOD", "option_label": "Moderation Administrator", "option_description": "Handles assigned moderation work according to granted permissions." },
             { "option_code": "VRF", "option_label": "Verification Administrator", "option_description": "Reviews assigned claims, credentials, contacts, or evidence according to granted permissions." },
             { "option_code": "DAT", "option_label": "Data Administrator", "option_description": "Maintains approved structured records and taxonomy according to granted permissions." },
-            { "option_code": "UAD", "option_label": "User Access Administrator", "option_description": "Administers approved account, assignment, permission, and access-support workflows under critical safeguards." },
+            { "option_code": "UAD", "option_label": "User Access Administrator", "option_description": "Administers approved account, grant, permission, and access-support workflows under critical safeguards." },
             { "option_code": "SYS", "option_label": "System Administrator", "option_description": "Handles approved technical and system operations under critical safeguards." },
             { "option_code": "ADV", "option_label": "Advertising Administrator", "option_description": "Administers approved advertising, sponsor, creative, placement, and campaign workflows." },
             { "option_code": "SUP", "option_label": "Support Administrator", "option_description": "Handles approved user support, escalation, and account-recovery workflows without unrestricted private-data access." },
@@ -30,7 +30,7 @@
         "_id": 503,
         "field_name": "scope_access",
         "field_label": "Access Scope",
-        "field_description": "Identifies the boundary within which a workspace access assignment applies. The related scope_record_id supplies the specific record when the scope is not global.",
+        "field_description": "Identifies the boundary within which a user access grant applies. The related scope_record_id supplies the specific record when the scope is not global.",
         "type_field": "DDL",
         "type_sql": "ENUM",
         "is_translatable": true,
@@ -45,17 +45,18 @@
     },
     {
         "_id": 504,
-        "field_name": "status_access_assignment",
-        "field_label": "Access Assignment Status",
-        "field_description": "Lifecycle state of a role or direct-permission assignment. Only active assignments within their effective and expiry times grant access.",
+        "field_name": "status_user_access",
+        "field_label": "User Access Status",
+        "field_description": "Lifecycle state of a role or direct-permission grant. Only active grants within their effective and expiry times grant access.",
         "type_field": "DDL",
         "type_sql": "ENUM",
         "is_translatable": true,
         "field_option": [
-            { "option_code": "PND", "option_label": "Pending", "option_description": "Assignment has been proposed but does not grant access." },
-            { "option_code": "ACT", "option_label": "Active", "option_description": "Assignment currently grants its approved access." },
-            { "option_code": "EXP", "option_label": "Expired", "option_description": "Assignment passed its approved expiry and no longer grants access." },
-            { "option_code": "REV", "option_label": "Revoked", "option_description": "Assignment was withdrawn and no longer grants access." }
+            { "option_code": "PND", "option_label": "Pending", "option_description": "Grant has been proposed but does not grant access." },
+            { "option_code": "ACT", "option_label": "Active", "option_description": "Grant currently provides its approved access." },
+            { "option_code": "EXP", "option_label": "Expired", "option_description": "Grant passed its approved expiry and no longer provides access." },
+            { "option_code": "REV", "option_label": "Revoked", "option_description": "Grant was withdrawn and no longer provides access." },
+            { "option_code": "DEN", "option_label": "Denied", "option_description": "A proposed grant was denied and never became effective." }
         ]
     },
     {
@@ -79,7 +80,7 @@
         "_id": 506,
         "field_name": "status_establishment_relationship",
         "field_label": "Establishment Relationship Status",
-        "field_description": "Current verification and lifecycle state of one user-to-establishment relationship. It does not describe the user's separate workspace access assignment.",
+        "field_description": "Current verification and lifecycle state of one user-to-establishment relationship. It does not describe the user's separate user access grant.",
         "type_field": "DDL",
         "type_sql": "ENUM",
         "is_translatable": true,
@@ -109,15 +110,15 @@
     },
     {
         "_id": 508,
-        "field_name": "status_contribution",
-        "field_label": "Contribution Status",
+        "field_name": "status_user_contribution",
+        "field_label": "User Contribution Status",
         "field_description": "Workflow state of a contribution from private draft through review and final disposition.",
         "type_field": "DDL",
         "type_sql": "ENUM",
         "is_translatable": true,
         "field_option": [
             { "option_code": "DFT", "option_label": "Draft", "option_description": "Private contribution not yet submitted for review." },
-            { "option_code": "PND", "option_label": "Pending Review", "option_description": "Submitted contribution awaiting an authorized review decision." },
+            { "option_code": "SUB", "option_label": "Submitted", "option_description": "Submitted contribution awaiting an authorized review decision." },
             { "option_code": "RET", "option_label": "Returned", "option_description": "Reviewer requested clarification or revision from the submitter." },
             { "option_code": "APR", "option_label": "Approved", "option_description": "Authorized reviewer accepted the applicable proposed information." },
             { "option_code": "REJ", "option_label": "Rejected", "option_description": "Authorized reviewer declined the contribution with a recorded reason." },
@@ -143,7 +144,7 @@
         "_id": 510,
         "field_name": "permission_code_list",
         "field_label": "Permission Code List",
-        "field_description": "Selects additive runtime capabilities granted by an access assignment or included by a workspace role. Namespaced dotted codes intentionally remain descriptive and stable rather than using short taxonomy abbreviations. An option documents a supported capability but does not grant it without an active server-evaluated assignment.",
+        "field_description": "Selects additive runtime capabilities granted by user_access or included by a workspace role. Namespaced dotted codes intentionally remain descriptive and stable rather than using short taxonomy abbreviations. An option documents a supported capability but does not grant it without an active server-evaluated grant.",
         "type_field": "TAG",
         "type_sql": "JSON",
         "is_translatable": true,
@@ -152,8 +153,8 @@
             { "option_code": "workspace.moderation.access", "option_label": "Access Moderation Workspace", "option_description": "Allows entry to the current permission-gated Moderation Workspace surface." },
             { "option_code": "workspace.system.access", "option_label": "Access System Workspace", "option_description": "Allows entry to the current permission-gated System Workspace surface; high-risk actions still require their own safeguards." },
             { "option_code": "article.schedule", "option_label": "Schedule Article", "option_description": "Allows proposing or setting an Article publication schedule through an implemented Article workflow." },
-            { "option_code": "establishment.manage", "option_label": "Manage Assigned Establishment", "option_description": "Allows management of establishment records within the assignment scope and applicable record authorization." },
-            { "option_code": "practitioner.manage", "option_label": "Manage Assigned Practitioner", "option_description": "Allows management of practitioner records within the assignment scope and applicable record authorization." }
+            { "option_code": "establishment.manage", "option_label": "Manage Assigned Establishment", "option_description": "Allows management of establishment records within the user-access grant scope and applicable record authorization." },
+            { "option_code": "practitioner.manage", "option_label": "Manage Assigned Practitioner", "option_description": "Allows management of practitioner records within the user-access grant scope and applicable record authorization." }
         ]
     }
 ]

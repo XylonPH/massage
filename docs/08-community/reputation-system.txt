@@ -4,9 +4,9 @@ Massage Nexus Reputation System
 Field            | Value
 -----------------+--------------------------------
 Title            | Massage Nexus Reputation System
-Document Version | 1.80
+Document Version | 2.00
 Date Created     | 2026-07-07
-Revision Date    | 2026-07-20
+Revision Date    | 2026-07-22
 
 Document Description
 --------------------
@@ -14,6 +14,17 @@ Document Description
 This document defines the Massage Nexus reputation system: the score scale, reputation labels, level thresholds, scoring principles, trust signals, penalties, formula, rating-weight connection, and visual label direction.
 
 Reputation is separate from Nexus Points, Embers, Inklings, badges, contribution count, rank paths, roles, verification, moderation authority, and paid status.
+
+Related Documents
+-----------------
+
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
+- docs/08-community/rating-system.txt
 
 Core Principle
 --------------
@@ -388,6 +399,17 @@ Code block (text):
     A Nexus Pillar with no trusted activity for 365+ days may keep the Nexus Pillar label,
     but rating trust weight may temporarily use Trusted Touch or Guiding Hand weight
     until the user produces new validated activity.
+
+Data Responsibility
+-------------------
+
+user_reputation stores one immutable gain, penalty, reversal, or correction event. Each event
+preserves user, category, source record, raw and weighted value, formula version, idempotency key,
+status, reversal relationship, and occurrence time.
+
+user_main caches the current score, level code, reputation status, and calculation time for normal
+profile display. The summary is rebuildable and is never the only evidence for a trust change.
+Corrections append reversing or replacement events instead of rewriting historical events.
 
 Visual Label Asset Direction
 ----------------------------

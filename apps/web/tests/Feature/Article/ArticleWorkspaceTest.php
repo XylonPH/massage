@@ -153,9 +153,16 @@ class ArticleWorkspaceTest extends TestCase
 
         $this->actingAs($user)->put('/workspace/article/'.$article->getKey(), $this->validPayload([
             'article_title' => 'Updated Article Title',
+            'article_body' => '<h2>Before you arrive</h2><p>This revised article body makes the comparison visible to its author.</p>',
             'revision_note' => 'Improved the introduction.',
         ]))->assertRedirect();
         $this->assertSame(2, ArticleRevision::query()->where('article_id', (string) $article->getKey())->count());
+
+        $this->actingAs($user)->get('/workspace/article/'.$article->getKey().'/revision?revision=2&compare=1')
+            ->assertOk()
+            ->assertSee('data-revision-comparison', false)
+            ->assertSee('This revised article body makes the comparison visible to its author.')
+            ->assertSee('This article contains enough visible words to save safely.');
 
         $this->actingAs($user)->post('/workspace/article/'.$article->getKey().'/submit')
             ->assertRedirect(route('workspace.article.submitted'));
@@ -220,6 +227,7 @@ class ArticleWorkspaceTest extends TestCase
 
         $this->actingAs($other)->get('/workspace/article/'.$article->getKey().'/edit')->assertForbidden();
         $this->actingAs($other)->put('/workspace/article/'.$article->getKey(), $this->validPayload())->assertForbidden();
+        $this->actingAs($other)->get('/workspace/article/'.$article->getKey().'/revision')->assertForbidden();
     }
 
     public function test_creator_can_share_ownership_and_use_a_custom_multiple_author_byline(): void

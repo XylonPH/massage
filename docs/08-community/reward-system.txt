@@ -1,0 +1,200 @@
+Title: Massage Nexus Reward System
+Document Version: 1.80
+Date Created: 2026-07-07
+Revision Date: 2026-07-22
+Document Description: Defines shared reward eligibility, award schedules, limits, anti-abuse rules, and authoritative reward-event accounting across Nexus Points, Embers, and Inklings.
+
+Related Documents:
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
+- docs/08-community/rating-system.txt
+- docs/08-community/reputation-system.txt
+- docs/07-accounts/user-profile-and-preference-system.txt
+- docs/09-content/article-writing.txt
+- docs/09-content/review-writing.txt
+- docs/13-localization/translation-system.txt
+- docs/15-business/monetization-strategy.txt
+
+================================================================================
+1. RESPONSIBILITY AND BOUNDARIES
+================================================================================
+
+This document owns rules shared by more than one reward unit: eligibility, award schedules,
+limits, idempotency, reversals, and the user_reward event model. The focused currency documents
+own the meaning, earning boundary, and uses of each unit.
+
+Massage Nexus keeps the following concepts separate:
+
+Concept            | Meaning
+-------------------+-----------------------------------------------------------------------
+Contribution Count | Rebuildable factual count of qualifying user activity.
+Nexus Points       | Permanent, non-spendable lifetime value of approved activity.
+Embers             | Spendable platform reward currency.
+Inklings           | Exploration, seasonal, mascot, and game-progress currency.
+Badges             | Visible achievements and recognition.
+Rank Paths         | Fictional platform progression titles.
+Reputation         | Community-tested trust quality that may rise or fall.
+Roles              | Authorization from effective user_access, never from rewards.
+User Statistics    | Visible or internal factual activity and participation totals.
+
+A reward never grants workspace authority, professional credentials, verification, moderation
+power, rating weight, or Reputation by itself. Payment and reward spending do not purchase those
+trust or authority outcomes.
+
+================================================================================
+2. SHARED ELIGIBILITY
+================================================================================
+
+An activity may produce a reward only when its governing feature marks it eligible and the reward
+rule is active for that activity, source, user, and time. Publication, booking completion, rating
+validity, contribution approval, or another domain fact remains authoritative in that domain's
+record; user_reward records the resulting reward event.
+
+Shared exclusions include rejected, fraudulent, copied, duplicated, self-dealing, connected,
+revoked, invalidated, quarantined, replayed, or reward-farming activity unless a focused
+specification defines a narrow exception. A scoring weight does not imply reward eligibility, and
+receiving a reward does not increase the source item's rating weight or the user's Reputation.
+
+Reward rules must define:
+- eligible source and lifecycle state;
+- reward unit and amount or versioned formula;
+- user, target, period, and daily limits;
+- idempotency scope;
+- reversal or correction behavior;
+- abuse and conflict-of-interest exclusions;
+- whether the award is immediate, provisional, or delayed until approval;
+- whether later source changes can create a bounded supplemental event.
+
+Minor edits, repeated submissions, source imports, retries, and revoke-then-resubmit flows must not
+replay an already granted reward. Manual personal-history records earn no reward by default.
+
+================================================================================
+3. RATING REWARDS
+================================================================================
+
+The Rating System owns target eligibility, rating modes, experience verification, Xylon Calibrated
+Experience Score behavior, connection rules, and the 83-day spa and therapist cycle. This document
+owns the reward amounts and reward-ledger limits.
+
+Content reaction reward:
+
+Action                                      | Nexus Points | Embers | Inklings
+--------------------------------------------+--------------+--------+---------
+Thumbs up/down on an eligible content item  | 1            | 10     | 5
+
+Eligible content may include an article, review, news item, guide, comic, comment, discussion,
+media item, or translation. Only the first 25 otherwise eligible thumbs-up/down actions by one user
+per UTC reward-ledger day earn rewards. The user may continue reacting after the cap without an
+additional reward.
+
+Experience and product rating rewards:
+
+Action                                  | Nexus Points | Embers | Inklings
+----------------------------------------+--------------+--------+---------
+Eligible simple spa/therapist/product   | 5            | 50     | 20
+Eligible criteria-based rating          | 10           | 100    | 40
+
+A criteria-based reward requires at least three eligible target criteria. Honest Not Observed and
+Not Applicable answers do not reduce the reward merely because the criterion could not be judged.
+
+One verified-experience bonus may stack with the applicable base reward:
+
+Source or condition                                | Nexus Points | Embers | Inklings
+---------------------------------------------------+--------------+--------+---------
+Massage Nexus verified completed experience        | +2           | +20    | +10
+Confirmed external or on-site experience           | +1           | +10    | +5
+User-entered personal history                       | 0            | 0      | 0
+Self or connected rating                            | 0            | 0      | 0
+Revoked, invalidated, quarantined, or duplicate     | 0            | 0      | 0
+
+The base reward and experience bonus are independent user_reward events so a source upgrade,
+duplicate import, edit, reversal, or retry cannot replay either part.
+
+Same-target session limits:
+- same user + same spa + same UTC reward-ledger day: one rewarded spa session rating;
+- same user + same therapist + same UTC reward-ledger day: one rewarded therapist session rating.
+
+Spa and therapist rating eligibility may refresh after a new valid experience in a new 83-day
+cycle. Product-rating rewards do not recur by default unless an approved product-version rule later
+defines a genuinely new target version.
+
+================================================================================
+4. REVIEW, ARTICLE, MEDIA, AND TRANSLATION REWARDS
+================================================================================
+
+Reviews earn more than simple ratings because they require more effort, observation, writing, and
+usefulness. The Review Writing Guide owns review publication, quality factors, AI assistance,
+multi-author credit, revisions, and abuse handling.
+
+Provisional review maximums:
+
+Review type                    | Nexus Points | Embers             | Inklings
+-------------------------------+--------------+--------------------+-------------------
+User establishment review      | 500          | To be recalibrated | To be recalibrated
+User practitioner review       | 500          | To be recalibrated | To be recalibrated
+User product review            | 300          | To be recalibrated | To be recalibrated
+Editorial review               | 1,500 total  | To be decided      | To be decided
+
+These are ceilings, not automatic grants. Ember and Inkling values remain unresolved and should
+use a gratifying visible scale consistent with their redemption costs. Multi-author rewards are
+shared among credited authors rather than duplicated in full. Main review rewards are normally
+granted after accepted publication; a later major update can earn additional credit only under an
+approved new-experience rule.
+
+Article, media, and translation rewards remain separate from review rewards. Their focused domain
+documents own qualifying work and quality factors. Approved publication, originality, usefulness,
+research or source quality, human-written effort, completeness, accuracy, readability, media value,
+revision quality, and editor confirmation may inform a versioned reward formula. Reading duration
+does not itself earn a reward. AI-generated or AI-cleaned portions do not receive the same
+user-writing credit as fully user-written work unless a later rule explicitly allows it.
+
+Exact article, media, translation, booking, purchase, and contribution amounts remain unresolved.
+
+================================================================================
+5. BOOKINGS, PURCHASES, EVENTS, AND CAMPAIGNS
+================================================================================
+
+Eligible bookings, completed experiences, purchases, events, campaigns, polls, quizzes, QR scans,
+and other site activity may emit rewards, badge progress, participation statistics, or game
+progress. Booking and purchasing do not automatically become contribution counts. Provider-specific
+loyalty remains separate from Massage Nexus rewards.
+
+The source domain must emit or expose a stable qualifying fact. Booking, payment, and campaign code
+must not directly manipulate balances. Cancelled, no-show, fake, duplicated, refunded where the
+rule requires reversal, or unverified manual-history activity receives no normal positive reward.
+
+Social-media actions receive serious rewards only when Massage Nexus can verify the action through
+a supported connected identity, platform API, official campaign link, QR event, or comparable
+platform-confirmed mechanism. A screenshot alone is not sufficient evidence for a material reward.
+
+================================================================================
+6. AUTHORITATIVE DATA AND RECONCILIATION
+================================================================================
+
+user_reward stores one immutable earn, spend, expiry, correction, reversal, adjustment, or migration
+event for Nexus Points, Embers, or Inklings. Each event identifies the user, reward unit, signed
+amount, resulting balance when applicable, source collection and record, reason, rule or formula
+version, unique idempotency key, lifecycle status, occurrence time, optional expiry, and reversal
+relationship.
+
+Corrections append reversing or replacement events; they do not rewrite settled history. Reward
+events and source records must be retained long enough for reconciliation, disputes, fraud review,
+and required financial or policy obligations.
+
+user_main caches lifetime Nexus Points and current Ember and Inkling balances with their calculation
+time for ordinary profile, header, and workspace display. The projection is rebuildable and is
+never sufficient by itself for reconciliation, dispute resolution, expiry, or reversal.
+
+================================================================================
+7. OPEN DECISIONS
+================================================================================
+
+- final review Ember and Inkling awards;
+- exact article, media, translation, contribution, booking, purchase, event, and campaign awards;
+- reward dispute, appeal, and human-review workflow;
+- expiry policy, if any, for Embers or Inklings;
+- final earning limits by source family;
+- final social-platform verification integrations.

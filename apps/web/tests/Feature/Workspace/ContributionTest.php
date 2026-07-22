@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Workspace;
 
+use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Models\AccessAssignment;
 use App\Models\Contribution;
 use App\Models\User;
+use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
 
@@ -38,13 +40,18 @@ class ContributionTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)->post('/workspace/contribution/establishment', [
-            'display_name' => 'Harbor Calm Spa',
-            'address_public' => '123 Bay Street, Manila',
-            'type_establishment_relationship' => 'MGR',
-            'is_workspace_access_requested' => '1',
-            'relationship_note' => 'I manage daily operations.',
-        ])->assertRedirect('/workspace/contribution');
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.address_public', '123 Bay Street, Manila')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('type_establishment_relationship', 'MGR')
+            ->set('is_workspace_access_requested', true)
+            ->set('relationship_note', 'I manage daily operations.')
+            ->call('save')
+            ->assertRedirect(route('workspace.contribution.index'));
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
         $this->assertSame('establishment_main', $contribution->target_collection);
@@ -52,6 +59,7 @@ class ContributionTest extends TestCase
         $this->assertSame('PND', $contribution->status_contribution);
         $this->assertTrue($contribution->is_workspace_access_requested);
         $this->assertSame('Harbor Calm Spa', data_get($contribution->proposed_data, 'display_name.eng'));
+        $this->assertSame('123 Bay Street, Manila', data_get($contribution->proposed_data, 'address_public'));
         $this->assertSame(0, AccessAssignment::query()->where('user_id', (string) $user->getKey())->count());
     }
 
@@ -59,18 +67,50 @@ class ContributionTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->actingAs($user)
-            ->from('/workspace/contribution/establishment/new')
-            ->post('/workspace/contribution/establishment', [
-                'display_name' => 'Community Spa',
-                'address_public' => 'Quezon City',
-                'type_establishment_relationship' => 'NON',
-                'is_workspace_access_requested' => '1',
-            ])
-            ->assertRedirect('/workspace/contribution/establishment/new')
-            ->assertSessionHasErrors('is_workspace_access_requested');
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('state.display_name_eng', 'Community Spa')
+            ->set('state.address_public', 'Quezon City')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('type_establishment_relationship', 'NON')
+            ->set('is_workspace_access_requested', true)
+            ->call('save')
+            ->assertHasErrors('is_workspace_access_requested');
 
         $this->assertSame(0, Contribution::query()->count());
+    }
+
+    public function test_contribution_route_renders_the_robust_establishment_form(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)
+            ->get('/workspace/contribution/establishment/new')
+            ->assertOk()
+            ->assertSeeLivewire(EstablishmentForm::class)
+            ->assertSee(__('workspace.contribution_establishment_title'))
+            ->assertSee(__('workspace.contribution_relationship_tab'))
+            ->assertSee(__('workspace.contribution_submit'));
+    }
+
+    public function test_editorial_route_still_renders_direct_edit_form_without_relationship_tab(): void
+    {
+        $editor = User::factory()->create();
+        AccessAssignment::query()->create([
+            'user_id' => (string) $editor->getKey(),
+            'role_workspace' => 'EAD',
+            'scope_access' => 'GBL',
+            'status_access_assignment' => 'ACT',
+            'effective_at' => now()->subMinute(),
+        ]);
+
+        $this->actingAs($editor)
+            ->get('/workspace/editorial/establishment/new')
+            ->assertOk()
+            ->assertSeeLivewire(EstablishmentForm::class)
+            ->assertDontSee(__('workspace.contribution_relationship_tab'));
     }
 
     public function test_practitioner_can_submit_own_profile_for_review(): void

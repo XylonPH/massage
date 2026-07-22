@@ -1,7 +1,7 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 2.13
+Document Version: 2.23
 Date Created: 2026-07-16
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 
 Document Description: This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
 
@@ -302,12 +302,17 @@ docs/
 |   +-- account-and-authentication-system.txt
 |
 +-- 08-community/
+|   +-- badge-system.txt
 |   +-- comment-system.txt
 |   +-- discussion-system.txt
+|   +-- ember-system.txt
+|   +-- inkling-system.txt
+|   +-- nexus-points-system.txt
+|   +-- rank-path-system.txt
 |   +-- rating-system.txt
 |   +-- reputation-system.txt
+|   +-- reward-system.txt
 |   +-- survey-system.txt
-|   +-- user-rewards-and-gamification.txt
 |
 +-- 09-content/
 |   +-- article-calendar.txt

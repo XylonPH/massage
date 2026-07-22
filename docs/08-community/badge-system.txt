@@ -1,11 +1,14 @@
 Title: Massage Nexus Badge System
-Document Version: 1.70
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus badge meaning, families, milestone sequences, rating and review badges, verification and role-badge limits, received-rating recognition, public display, and the boundary between badges and permissions, ranks, reputation, rewards, and awards.
 
 Related Documents:
-- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
 - docs/08-community/rank-path-system.txt
 - docs/08-community/rating-system.txt
 - docs/08-community/reputation-system.txt
@@ -20,14 +23,14 @@ Badges are visible proof icons, normally small square or one-by-one images, show
 milestone, participation, approved role presentation, verification, event, season, or legacy status.
 
 Badges are separate from:
-- workspace roles and permissions, which require an effective access_assignment;
+- workspace roles and permissions, which require effective user_access;
 - rank paths, which are fictional progression titles;
 - Reputation, which records trust signals;
 - Nexus Points, Embers, and Inklings, which are reward values;
 - awards, which may use a separate nomination and decision process.
 
 A badge never grants administrative, editorial, moderation, verification, establishment, or
-practitioner authority by itself. Revoking an access assignment must remove the authority even if a
+practitioner authority by itself. Revoking user access must remove the authority even if a
 historical or presentation badge remains visible under an approved legacy rule.
 
 ================================================================================
@@ -241,7 +244,10 @@ An award record should be able to preserve:
 - public-display choice;
 - audit and recomputation information.
 
-Final collection names and structure guides remain unresolved.
+badge_main is the reusable definition collection. user_badge stores one user's award, progress,
+featured-display choice, expiry, revocation, and source eligibility. A bounded projection in
+user_main may cache badge count and up to six featured badge identifiers, but user_badge remains
+authoritative.
 
 ================================================================================
 11. OPEN DECISIONS
@@ -251,8 +257,6 @@ Final collection names and structure guides remain unresolved.
 - badge artwork style, rarity, and icon template system;
 - featured badge display limit;
 - which role badges may remain as historical or legacy recognition;
-- final progress and award collection names;
 - recomputation and appeal workflow;
 - quarterly and annual Awards system;
 - badge effects, if any, on discovery that do not create circular popularity advantage.
-

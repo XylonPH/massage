@@ -207,6 +207,34 @@
         border-top: 1px solid var(--color-ink-200);
         margin-block: 2rem;
     }
+
+    .dark .mn-article-body {
+        color: var(--color-ink-200);
+    }
+
+    .dark .mn-article-body h2,
+    .dark .mn-article-body h3,
+    .dark .mn-article-body h4 {
+        color: white;
+    }
+
+    .dark .mn-article-body a {
+        color: var(--color-ember-400);
+    }
+
+    .dark .mn-article-body blockquote,
+    .dark .mn-article-body .mn-callout {
+        background: color-mix(in srgb, var(--color-ember-950) 65%, transparent);
+        color: var(--color-ink-200);
+    }
+
+    .dark .mn-article-body figcaption {
+        color: var(--color-ink-400);
+    }
+
+    .dark .mn-article-body hr {
+        border-top-color: var(--color-ink-700);
+    }
 }
 
 @keyframes mn-identity-shimmer {

@@ -1,9 +1,16 @@
 <div class="mx-auto max-w-5xl">
-    <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ $establishment ? __('editorial.edit') : __('editorial.new') }} — {{ __('editorial.establishments') }}</h1>
+    @if ($isContribution)
+        <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ __('workspace.contribution_establishment_title') }}</h1>
+        <p class="mt-2 text-sm text-ink-600 dark:text-ink-300">{{ __('workspace.contribution_establishment_intro') }}</p>
+    @else
+        <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ $establishment ? __('editorial.edit') : __('editorial.new') }} — {{ __('editorial.establishments') }}</h1>
+    @endif
+
+    @error('form')<p class="mt-4 text-sm text-red-700 dark:text-red-300" role="alert">{{ $message }}</p>@enderror
 
     <form wire:submit="save" class="mt-6 space-y-5 rounded-2xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
         <div x-data="{ tab: 'identity' }">
-            <x-editorial.tab-bar :tabs="[
+            <x-editorial.tab-bar :tabs="array_merge([
                 'identity' => __('editorial.tab_identity'),
                 'classification' => __('editorial.tab_classification'),
                 'access' => __('editorial.tab_access'),
@@ -12,7 +19,7 @@
                 'hours' => __('editorial.tab_hours'),
                 'facilities' => __('editorial.tab_facilities'),
                 'amenities' => __('editorial.tab_amenities'),
-            ]" />
+            ], $isContribution ? ['relationship' => __('workspace.contribution_relationship_tab')] : [])" />
 
             {{-- Identity --}}
             <div x-show="tab === 'identity'" class="mt-5 space-y-5">
@@ -238,11 +245,41 @@
                     <x-form.toggle-group :options="$taxonomy['accessibility_information']" model="state.accessibility_information" />
                 </x-form.field>
             </div>
+
+            {{-- Relationship & access (contribution flow only) --}}
+            @if ($isContribution)
+                <div x-show="tab === 'relationship'" x-cloak class="mt-5 space-y-5">
+                    <x-form.field :label="__('workspace.contribution_relationship_label')" :error="$errors->first('type_establishment_relationship')">
+                        <x-form.select wire:model="type_establishment_relationship" :options="$relationshipOptions" />
+                    </x-form.field>
+                    <p class="text-sm text-ink-500 dark:text-ink-400">{{ __('workspace.contribution_relationship_hint') }}</p>
+
+                    <x-form.field :label="__('workspace.contribution_relationship_note_label')" :error="$errors->first('relationship_note')">
+                        <x-form.textarea wire:model="relationship_note" rows="3" maxlength="1000" />
+                    </x-form.field>
+
+                    <div class="rounded-xl border border-ink-200 bg-ink-50 p-4 dark:border-ink-700 dark:bg-ink-800">
+                        <label class="flex items-start gap-3">
+                            <input type="checkbox" wire:model="is_workspace_access_requested" class="mt-1 rounded border-ink-300 text-ember-600 focus:ring-ember-500">
+                            <span>
+                                <span class="block font-bold text-ink-900 dark:text-ink-100">{{ __('workspace.contribution_access_label') }}</span>
+                                <span class="mt-1 block text-sm text-ink-600 dark:text-ink-300">{{ __('workspace.contribution_access_hint') }}</span>
+                            </span>
+                        </label>
+                        @error('is_workspace_access_requested')<p class="mt-2 text-sm text-red-700 dark:text-red-300">{{ $message }}</p>@enderror
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div class="flex items-center justify-end gap-2.5 border-t border-ink-100 pt-5 dark:border-ink-800">
-            <a href="{{ route('workspace.editorial.establishment.index') }}" wire:navigate class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800">{{ __('editorial.cancel') }}</a>
-            <button type="submit" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('editorial.save') }}</button>
+            @if ($isContribution)
+                <a href="{{ route('workspace.contribution.index') }}" wire:navigate class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800">{{ __('workspace.contribution_cancel') }}</a>
+                <button type="submit" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('workspace.contribution_submit') }}</button>
+            @else
+                <a href="{{ route('workspace.editorial.establishment.index') }}" wire:navigate class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800">{{ __('editorial.cancel') }}</a>
+                <button type="submit" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('editorial.save') }}</button>
+            @endif
         </div>
     </form>
 </div>

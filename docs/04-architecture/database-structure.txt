@@ -1,7 +1,7 @@
 Title: Massage Nexus: Database Structure
-Document Version: 2.00
+Document Version: 2.20
 Date Created: 2026-07-12
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 
 PURPOSE
 
@@ -76,7 +76,7 @@ Examples:
 - article_main
 - article_body
 - audit_log
-- reward_ledger
+- user_reward
 
 Database hierarchy, site navigation, URL routes, and file-and-folder structure may differ. They should not be forced to mirror one another.
 
@@ -138,27 +138,105 @@ If the actual data contract differs, create a different specifically named field
 
 Before creating any new field name, check the field-name index at data/field_index.txt first. It is a bare generated list of every field name known to the taxonomy files and the PHP structure guides, kept location-free so it stays small and cheap to read. To find where a listed name is defined, run: php tools/script/build_field_index.php --where field_name. Regenerate the index with the same script in the same change whenever a taxonomy file or structure guide adds, renames, or removes a field.
 
-6. CORE IDENTITY AND ACCOUNT COLLECTION
+6. USER, IDENTITY, ACCESS, SECURITY, AND PERSONALIZATION COLLECTIONS
 
 - user_main
-  Project-local Massage Nexus user account, profile identity, membership state, and bounded current
-  preferences that are normally loaded and updated with the account.
+  Project-local account, public profile, private birth date, optional gender identity and
+  privacy-controlled type_handedness, bounded
+  account and booking preferences, primary references, membership state, and rebuildable summaries.
+
+- user_contact
+  One personal email, telephone, SMS, or approved messaging channel with verification,
+  replacement, primary-use, and lifecycle history.
+
+- user_address
+  One labeled private personal or booking address with protected exact details, confirmation,
+  default-use, and lifecycle information.
 
 - user_policy
   Append-only or otherwise history-preserving user records for versioned policy acceptance,
   acknowledgment, optional consent, withdrawal, and the evidence needed to establish what decision
-  occurred. Published legal or policy text does not belong in this collection.
+  occurred. Published legal or policy text remains in legal_main.
 
-- access_assignment
-  Additive workspace role and direct-permission assignments. An assignment may be global or scoped
+- user_access
+  Additive workspace role and direct-permission grants. A grant may be global or scoped
   to one establishment, practitioner, language, editorial area, or Massage Campus course. Effective
-  and expiry times, assigner, reason, and lifecycle state belong here rather than in user_main.
+  and expiry times, grantor, reason, public-role eligibility, and lifecycle state belong here.
   Ordinary personal user capabilities require no assignment. Ownership, investment, management,
   and other factual establishment relationships do not belong in this collection.
 
-Additional user collections are deferred until saved-item, follow, notification, security-history,
-and other independently growing workflows are designed. Do not create user_consent merely to split
-consent from user_policy; bounded ordinary preferences remain in user_main.
+- user_practitioner
+  Verified current and historical Self link between a user account and practitioner_main. Scoped
+  authority to manage another practitioner remains in user_access and does not create a Self link.
+
+- user_external_identity
+  Stable external authentication-provider subject linked to the user account.
+
+- user_social_connection
+  Provider-confirmed Facebook, Instagram, YouTube, X, or another approved social profile or channel,
+  with private-by-default public-display choice and connection lifecycle.
+
+- user_session
+  One active or historical authenticated session with expiry and revocation state.
+
+- user_device
+  One user-recognized device summary without invasive fingerprinting.
+
+- user_mfa_method
+  One configured multifactor-authentication method.
+
+- user_recovery_code
+  One individually hashed, single-use recovery code.
+
+- user_passkey
+  One WebAuthn public-key credential; biometric templates never enter Massage Nexus storage.
+
+- user_security_event
+  Append-only login, recovery, contact-change, session, MFA, passkey, and security-action history.
+
+- user_saved_item
+  One private-by-default saved supported target.
+
+- user_follow
+  One private-by-default user-to-target following relationship.
+
+- user_notification
+  One in-product notification with safe target references and read, archived, or expiry state.
+  Email, push, and SMS delivery logs remain outside this collection.
+
+- subscription_plan
+  Reusable commercial subscription definition and included entitlement codes for a supported
+  personal or business audience.
+
+- user_subscription
+  One personal subscription lifecycle. Premium membership is commercial status, not authority.
+
+- user_entitlement
+  One effective feature entitlement sourced from a subscription, promotion, authorized grant, or
+  migration. It never grants a workspace role or trust signal.
+
+- badge_main
+  Reusable badge definition.
+
+- user_badge
+  One badge award, progress, display choice, expiry, or revocation record for a user.
+
+- rank_path_main
+  Reusable versioned Rank Path and level definition.
+
+- user_rank
+  One immutable calculated user-rank interval in one Rank Path. Current selected presentation is a
+  rebuildable user_main summary.
+
+- user_reputation
+  One immutable reputation gain, penalty, reversal, or correction event.
+
+- user_reward
+  One immutable Nexus Point, Ember, or Inkling earn, spend, expiry, reversal, or adjustment event.
+
+Do not create user_consent or user_preference. Policy decisions belong to user_policy; all bounded
+current preferences, including one global reusable booking-preference set, remain in user_main.
+Complete boundaries are defined in docs/07-accounts/user-profile-and-preference-system.txt.
 
 7. ORGANIZATION AND ESTABLISHMENT COLLECTIONS
 
@@ -173,7 +251,7 @@ consent from user_policy; bounded ordinary preferences remain in user_main.
   founder, operator, manager, representative, or non-practitioner staff member. The relationship
   may carry a minimal name snapshot when no canonical private-person record exists, plus optional
   user or practitioner references. It does not own private legal identity and does not grant
-  workspace access; operational authority is assigned separately through access_assignment.
+  workspace access; operational authority is assigned separately through user_access.
 
 - establishment_main
   One establishment or supported provider identity and current public profile, including current
@@ -261,11 +339,9 @@ Detailed product specifications may remain embedded in the appropriate product o
 - booking_event
   Booking lifecycle and history events such as submission, confirmation, rescheduling, cancellation, completion, and no-show.
 
-- client_booking_default
-  Reusable user booking, service, communication, accessibility, therapist-selection, and approved
-  persistent-intake defaults. This collection is separate from user_main because these values may
-  be sensitive, encrypted, independently confirmed, time-limited, and loaded only by booking or
-  client-history workflows.
+Reusable bounded booking preferences belong to user_main.booking_preference. Current safety,
+health, consent, and intake answers remain protected booking or intake records and do not become
+ordinary account preferences.
 
 Booking is a cross-domain capability and should not be stored as establishment_booking.
 
@@ -339,10 +415,10 @@ across these domains without forcing their authoritative records into one generi
 14. CLAIM, VERIFICATION, CONTRIBUTION, MODERATION, AND HISTORY
 
 claim_main - Shared ownership or management claim workflow for approved claimable targets. A claim
-declaration is not an active establishment relationship or access assignment until the applicable
+declaration is not an active establishment relationship or user access grant until the applicable
 review creates or updates those separate records.
 record_verification - Shared cross-target, field-aware verification process and result history.
-contribution_main - Authenticated user or staff proposal to add, correct, translate, enrich, or
+user_contribution - Authenticated user or staff proposal to add, correct, translate, enrich, or
 update a record. A contribution may declare a submitter relationship and request workspace access,
 but neither declaration grants authority before authorized review.
 record_revision - Approved and restorable generic revision history for targets without a more
@@ -367,8 +443,9 @@ Restoring an older revision creates a new current revision based on the earlier 
 - audit_log
   Immutable operational trail for important record, administrative, security, approval, restoration, and system actions.
 
-- reward_ledger
-  Authoritative reason-based history of Nexus Points, Embers, Inklings, and other tracked balance changes.
+- user_reward
+  Authoritative immutable reason-based history of Nexus Points, Embers, Inklings, and other
+  supported user reward changes. Current summaries may be cached in user_main.
 
 - analytics_event
   High-volume raw analytics events eligible for scheduled archival.
@@ -428,7 +505,7 @@ Working retention direction, not yet final:
 - older analytics: archived or retained as smaller summaries;
 - audit records: 24 months readily accessible to administrators, then moved to archive storage under a longer internal retention rule;
 - revision history: retained, with older snapshots eligible for cold archive while remaining restorable;
-- reward ledger: authoritative history retained, with older entries eligible for cold archive only when reconciliation and dispute retrieval remain possible.
+- user reward history: authoritative events retained, with older entries eligible for cold archive only when reconciliation and dispute retrieval remain possible.
 
 Owner-facing documentation must clearly state the immediately accessible analytics period. It must not imply that five years of detailed analytics are instantly available when only two years are retained in the active system.
 
@@ -440,11 +517,11 @@ The following should normally remain embedded or use shared systems until detail
 - bounded multilingual names and short descriptions;
 - basic classifications and current status;
 - primary address;
-- small bounded contact and social-link lists;
+- provider or establishment contact lists that are genuinely bounded within their owner;
 - regular weekly hours;
 - small facility and amenity reference lists;
 - service-delivery modes and access rules;
-- bounded booking preferences;
+- bounded user booking preferences inside user_main;
 - bounded product specifications;
 - cached counts and summaries.
 
@@ -455,13 +532,13 @@ The following reuse shared or cross-target collections rather than spa-specific 
 - reactions;
 - claims;
 - verification;
-- contributions;
+- user contributions;
 - moderation;
 - revisions;
 - media;
 - booking;
 - audit;
-- rewards;
+- user rewards;
 - analytics.
 
 20. UNRESOLVED COLLECTION QUESTIONS
@@ -470,8 +547,7 @@ The following reuse shared or cross-target collections rather than spa-specific 
 - Whether treatment areas require establishment_treatment_area.
 - Whether schedules remain embedded or later require schedule collections.
 - Final payment collection family.
-- Final account-support collections.
-- Final notification and messaging collections.
+- Final cross-user messaging collection family.
 - Final search and analytics storage.
 - Final archive technology and retention periods.
 - Final social-publishing module.

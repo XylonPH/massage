@@ -1,7 +1,7 @@
 Title: Massage Nexus Features
-Document Version: 2.94
+Document Version: 3.14
 Date Created: 2026-06-30
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
 
 Platform Scope: This file covers the public Massage Nexus website and its browser-based user, provider, seller, advertiser, contributor, research, translation, editorial, Support, moderation, and administration workspaces. It may mention mobile, desktop, APIs, and integrations where the website must support or connect to them, while platform-specific behavior remains in the separate application documents.
@@ -165,10 +165,10 @@ Data Research supports direct visits, interviews, official sources, provider con
 --------------------------------------------------
 
 27. Account, Membership, Registration, and Authentication
-Massage Nexus uses a shared network identity together with a separate Massage Nexus membership, eligibility, and policy-acceptance record. Registration, login, email verification, recovery, protected usernames, secure password hashing, sessions, devices, TOTP, passkeys, and later approved external identities belong to this feature. Public browsing remains available without registration, while normal member actions require the appropriate verification, standing, age, and permission.
+Massage Nexus uses a shared network identity together with a separate Massage Nexus membership, eligibility, and policy-acceptance record. Registration, login, email verification, recovery, protected usernames, secure password hashing, personal contacts and addresses, sessions, recognized devices, TOTP, recovery codes, passkeys, approved external identities, and provider-confirmed connected social profiles belong to this feature. Public browsing remains available without registration, while normal member actions require the appropriate verification, standing, age, policy compliance, and permission.
 
 28. User Profiles
-User Profiles give registered users a personal identity with approved visibility controls for activity, reviews, contributions, saves, follows, bookings, points, badges, and other supported information. Every registered user is considered a client by default, even when the same account also acts as a therapist, operator, seller, contributor, advertiser, editor, moderator, or administrator. The private User Workspace may preserve cross-provider bookings, manually recorded past services, imported history, reusable preferences, budgeting, analytics, loyalty progress, and data export without exposing those records on the public User Profile.
+User Profiles give registered users a personal identity with approved visibility controls for display name, biography, avatar, cover, optional gender and birthday presentation, activity, Reviews, contributions, Nexus Points, badges, selected Rank, Reputation, official public roles, optional Premium Member presentation, and provider-confirmed connected social profiles. Every registered user is considered a client by default, even when the same account also acts as a therapist, operator, seller, contributor, advertiser, editor, moderator, or administrator. The private User Workspace may preserve contacts, addresses, cross-provider bookings, manually recorded past services, imported history, reusable preferences, budgeting, analytics, loyalty progress, security controls, policy history, subscriptions, and data export without exposing those records on the public User Profile.
 
 29. User Workspace
 The private User Workspace organizes bookings, manually recorded service history, saved preferences, receipts, budgets, personal analytics, loyalty, exports, account controls, private notes, and other cross-provider records. It remains separate from the public User Profile. Every account retains its client context even when the same person also acts as a therapist, operator, seller, contributor, advertiser, editor, moderator, Support agent, or administrator.
@@ -942,7 +942,9 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - TOTP two-factor authentication
 - Recovery codes
 - Passkeys through WebAuthn
-- One account with additive roles, permissions, and scoped record assignments
+- One account with additive user access roles, permissions, and scoped record grants
+- Separately growing personal contacts and addresses with verified primary references
+- Provider-confirmed connected social profiles with independent public-display controls
 
 
 8.2 User as Client by Default
@@ -962,10 +964,16 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Avatar
 - Cover photo
 - Bio/about
+- Optional pronouns, gender, and RH/LH/ambidextrous handedness with privacy controls
+- Hidden, age, age-range, or month-and-day birthday presentation
 - Public activity controls
 - Public reviews
 - Public contributions
-- Public badges and Reputation
+- Public Nexus Points, featured badges, selected Rank, and Reputation
+- Official public role labels derived from effective user access
+- Optional Premium Member label that grants no authority or trust advantage
+- Connected Facebook, Instagram, YouTube, X, and other approved social profiles
+- Linked professional practitioner profile where verified
 - Public follows where permitted
 - Private profile settings
 
@@ -1469,7 +1477,7 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - provider_schedule_exception
 - booking_resource_reservation
 - booking_waitlist
-- client_booking_default
+- user_main booking preferences
 - payment_transaction
 - provider_payout
 - booking_financial_document
@@ -2032,7 +2040,7 @@ This inventory groups the feature list into a cleaner logical structure while pr
 - Editorial, moderation, and administration tools
 - Automatic combined dashboard and navigation with no role or context switcher
 - Reception, therapist, manager, finance, and owner permissions
-- Separate relationship records and scoped access assignments
+- Separate relationship records and scoped user access
 
 
 15.3 Profile and Service Management
@@ -2589,6 +2597,9 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 
 19.5 Business Monetization
 --------------------------
+- Personal Premium subscription plan
+- Personal subscription entitlements and limits
+- Optional public Premium Member presentation
 - Business subscription plans
 - Therapist subscription plans
 - Analytics upgrade

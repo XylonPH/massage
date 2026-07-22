@@ -1,7 +1,7 @@
 Title: Massage Nexus Data Research Provenance and Field Verification System
-Document Version: 0.20
+Document Version: 0.30
 Date Created: 2026-07-18
-Revision Date: 2026-07-19
+Revision Date: 2026-07-22
 Status: Internal Planning Draft
 
 Related Documents:
@@ -892,7 +892,7 @@ The accepted cross-target research structures are:
   and result;
 - document_main for secure evidence metadata, protected object-storage reference, access,
   redaction, verification, and retention;
-- contribution_main, moderation_main, moderation_action, record_revision, and audit_log for their
+- user_contribution, moderation_main, moderation_action, record_revision, and audit_log for their
   existing proposal, safety review, action, restorable history, and operational-history roles.
 
 research_observation is independent from the final accepted target value. It may describe an

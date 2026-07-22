@@ -8,6 +8,9 @@
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <p class="text-sm font-bold uppercase tracking-[0.2em] text-ember-300">{{ __('navigation.articles') }}</p>
         <h1 class="mt-3 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">{{ $heading }}</h1>
+        @if (!empty($categoryDescription))
+            <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-200">{{ $categoryDescription }}</p>
+        @endif
         <form action="{{ route('article.search') }}" method="get" role="search" class="mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row">
             <label for="article-search" class="sr-only">{{ __('article.search_placeholder') }}</label>
             <input id="article-search" name="q" value="{{ $search }}" maxlength="100" placeholder="{{ __('article.search_placeholder') }}"

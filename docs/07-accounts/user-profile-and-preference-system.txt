@@ -1,248 +1,616 @@
 Title: Massage Nexus User Profile and Preference System
-Document Version: 1.41
+Document Version: 2.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-21
-Document Description: Defines the public user-profile boundary, avatar and cover references, current account preferences, the Settings interface, detailed booking-preference separation, and the relationship of profiles to roles, badges, ranks, reputation, rewards, and user activity.
+Revision Date: 2026-07-22
+Document Description: Defines the complete Massage Nexus user-data collection family, public profile, personal identity including optional handedness, contacts, addresses, preferences, security records, connected social accounts, access, subscriptions, community standing, activity summaries, practitioner linkage, policy gating, and private Settings boundaries.
 
 Related Documents:
 - docs/07-accounts/account-and-authentication-system.txt
 - docs/11-workspaces/user-workspace.txt
 - docs/11-workspaces/admin-workspace.txt
 - docs/12-booking/booking-and-appointment-system.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
 - docs/08-community/badge-system.txt
 - docs/08-community/rank-path-system.txt
+- docs/08-community/reputation-system.txt
+- docs/15-business/monetization-strategy.txt
 
 ================================================================================
-1. PROFILE, PREFERENCE, AND SETTINGS TERMINOLOGY
+1. TERMINOLOGY AND ACCEPTED DIRECTION
 ================================================================================
 
-Profile means the user's public or visibility-controlled identity and presentation. It includes
-the display name, public slug, biography, avatar, cover image, and approved public activity.
+Profile means the user's public or visibility-controlled identity and presentation.
 
-Preference means a saved user choice, such as interface language or time zone. A preference is a
-data concept, not a second workspace competing with Settings.
+Preference means a bounded current choice saved with user_main. Massage Nexus does not create a
+separate user_preference collection. Account, appearance, accessibility, notification, privacy,
+community, and reusable booking preferences are embedded in user_main.
 
-Settings means the private interface where the user reviews account facts and changes preferences,
-privacy choices, security controls, notification choices, accessibility choices, and account
-actions. Massage Nexus uses one Settings area with subsections. It does not create separate
-Settings and Preferences menus that contain overlapping choices.
+Settings means the private interface through which the user changes preferences and controls.
+Settings is not a separate data owner.
 
-Profile remains a separate workspace area because the user must be able to understand which
-information is public. Security and Privacy may appear as Settings subsections or dedicated pages
-without changing their separate data and authorization responsibilities.
+User collection means a collection whose records belong to, secure, describe, or summarize a
+registered user. A user-facing aggregate may combine several collections, but the database does
+not duplicate unbounded histories inside user_main.
+
+Accepted collection names use the user_ prefix where the record is user-owned or user-scoped.
+The former access_assignment direction is renamed user_access. The former contribution_main
+direction is renamed user_contribution. The former client_booking_default collection is retired;
+bounded reusable booking preferences belong in user_main.
 
 ================================================================================
-2. USER_MAIN BOUNDARY
+2. USER COLLECTION FAMILY
+================================================================================
+
+Core account and identity:
+- user_main: account, bounded profile, bounded preferences, primary references, and summaries;
+- user_contact: personal contact channels, verification, replacement, and history;
+- user_address: reusable private personal and booking addresses;
+- user_policy: versioned policy and consent decisions;
+- user_practitioner: verified self-identity link between a user and practitioner_main.
+
+Authority and participation:
+- user_access: additive global or scoped roles and direct permissions;
+- user_contribution: user proposals to add, correct, translate, enrich, or update records;
+- user_saved_item: private saved targets and bounded organization metadata;
+- user_follow: private-by-default following relationships;
+- user_notification: one in-product notification and its inbox state; external delivery logs are
+  separate.
+
+Authentication and security:
+- user_external_identity: stable external login-provider identity links;
+- user_social_connection: provider-confirmed social profiles or channels eligible for display;
+- user_session: active and historical authentication sessions;
+- user_device: recognized-device summaries without invasive fingerprinting;
+- user_mfa_method: configured multifactor methods;
+- user_recovery_code: individually hashed, single-use recovery codes;
+- user_passkey: WebAuthn public-key credentials;
+- user_security_event: append-only security and recovery history.
+
+Commercial and feature access:
+- user_subscription: one personal subscription lifecycle;
+- user_entitlement: one effective feature entitlement from a subscription, promotion, authorized
+  grant, or migration;
+- subscription_plan: reusable plan definition shared by user subscriptions.
+
+Community standing:
+- user_reward: immutable Nexus Point, Ember, or Inkling balance event;
+- user_badge: one user badge award, progress, visibility, or revocation record;
+- badge_main: reusable badge definition;
+- user_rank: one immutable calculated rank interval in one versioned Rank Path;
+- rank_path_main: reusable versioned Rank Path definition;
+- user_reputation: one immutable reputation gain, penalty, reversal, or correction event.
+
+Article, Review, Rating, booking, message, claim, media, and managed-record collections remain in
+their owning domains. They reference user_main rather than becoming growing arrays in user_main.
+
+================================================================================
+3. USER_MAIN RESPONSIBILITY
 ================================================================================
 
 user_main owns:
-- project-local account identity and login data;
-- Massage Nexus membership state;
-- bounded current public-profile fields and media references;
-- a bounded embedded account_preference object normally loaded with the signed-in user;
-- current convenience values whose authoritative history belongs elsewhere.
+- account identifier, username, credential cache, account status, and membership status;
+- bounded public-profile identity and privacy controls;
+- private birth date and optional gender identity;
+- avatar and cover media references;
+- bounded account, appearance, accessibility, notification, privacy, community, and booking
+  preferences;
+- primary contact, booking-contact, address, and self-practitioner references;
+- bounded, derived access, activity, community, subscription, policy, and security summaries.
 
 user_main does not own:
-- workspace roles or direct permissions;
-- detailed booking and intake defaults;
-- media binaries or complete media metadata;
-- policy-acceptance and consent history;
-- badges, rank progress, reputation events, or reward-ledger history;
-- article, review, rating, contribution, claim, booking, or other activity records.
+- unbounded address, contact, policy, access, contribution, reward, badge, reputation, security,
+  notification, saved-item, follow, subscription, or social-connection history;
+- public professional practitioner identity, credentials, services, affiliations, availability,
+  professional contacts, service areas, or media gallery;
+- media binaries or processing metadata;
+- article, Review, Rating, booking, claim, message, or revision history.
 
-Do not create a separate ordinary user_preference collection while the current choices remain
-small, bounded, and normally loaded and updated with the user. Create a separate collection only
-when a preference area has an independent lifecycle, materially different security or retention,
-unbounded growth, separate search or indexing needs, or a workflow that should not update the
-account record.
+Derived summaries in user_main are caches. Every summary identifies its calculation time or source
+sequence and can be rebuilt from authoritative records. Authorization never relies only on the
+public access summary, and financial or reward reconciliation never relies only on displayed
+balances.
 
 ================================================================================
-3. PUBLIC PROFILE
+4. PUBLIC USER PROFILE
 ================================================================================
 
-The accepted public-profile direction includes:
-- username as the account handle;
-- user_slug as the stable public profile route value;
-- display_name with username fallback;
-- profile_biography;
-- default_avatar_key;
-- optional avatar_media_image_id;
-- optional cover_media_image_id;
-- visibility_scope for the profile surface.
-
-Public route direction:
+Public route:
 
 /user/{user-slug}
 
-The route is not implemented yet. Until it is implemented, the private Profile screen may edit only
-the currently supported fields.
+When the profile visibility permits the viewer, the profile may show:
+- approved display name and @username;
+- avatar and cover image;
+- biography;
+- optional pronouns;
+- optional gender according to the user's visibility choice;
+- optional handedness according to the user's visibility choice;
+- optional birthday presentation according to the user's display choice;
+- official public role labels derived from active user_access records;
+- optional Premium Member presentation derived from an active user_subscription;
+- Nexus Points;
+- featured badges and the full eligible public badge collection;
+- selected Rank Path title and level;
+- reputation score and label;
+- published Articles, Reviews, and accepted public contributions;
+- bounded public activity counts;
+- provider-confirmed social connections whose display is enabled;
+- the linked professional practitioner profile when applicable.
 
-The profile may display approved public activity derived from authoritative records, including:
-- published Articles for which the user has a public byline;
-- published Reviews attributed to the user;
-- accepted public establishment, practitioner, translation, media, or data contributions;
-- public badges and the user's selected public rank title;
-- approved public role labels when the underlying assignment is effective and eligible for public display.
+Public display-name rules:
+- optional;
+- minimum 2 and maximum 60 Unicode characters after normalization;
+- username is the fallback when absent;
+- cannot impersonate protected authority, verification, brand, or credential labels;
+- is not a legal-identity or credential claim.
 
-Do not copy these activity lists into user_main. Query or build bounded projections from their
-authoritative collections. Removing a byline, unpublishing content, revoking an assignment,
-withdrawing public badge display, or changing visibility must update public presentation without
-requiring a second manually maintained profile list.
+Biography rules:
+- optional;
+- when provided, minimum 20 and maximum 1,000 Unicode characters after normalization;
+- plain text or a tightly controlled safe rich-text subset only;
+- no executable markup, hidden tracking, impersonation, prohibited solicitation, or private data
+  belonging to another person;
+- subject to moderation, reporting, localization, and NSFW policy.
 
-Account authority and public presentation are separate. A user may not type Founder, Editor,
-Verified, or another protected authority label into their profile and thereby gain or imply that
-status. Public authority labels must be derived from approved records.
+Official roles are not user-entered text. Only public-eligible active user_access roles may appear.
+Direct permissions, internal scopes, grant reasons, and administrative notes never appear publicly.
 
-================================================================================
-4. AVATAR AND COVER MEDIA
-================================================================================
+Points, badges, selected rank, reputation, and eligible public roles are part of a visible public
+profile. A private or members-only profile applies its visibility boundary to the complete profile.
+Hiding a profile does not erase authoritative reward, award, rank, reputation, or access records.
 
-default_avatar_key identifies one approved deterministic Massage Nexus default avatar. It avoids
-creating a duplicate media file for every account.
-
-avatar_media_image_id and cover_media_image_id reference media_image records. The user record does
-not store raw binary data, permanent object-storage URLs, processing output, moderation results, or
-crop variants.
-
-The media record owns storage, format, dimensions, file size, crop and derivative information,
-processing state, moderation state, accessibility text, ownership, and consent metadata. Production
-binaries remain in approved object storage.
-
-Uploaded avatar and cover workflows require file validation, malware and content checks, image
-processing, moderation, accessible crop handling, deletion behavior, and a safe fallback to the
-default avatar. NSFW avatars and covers are prohibited because they appear in broad and incidental
-contexts. Animated avatars remain deferred and require a reduced-motion poster fallback.
-
-================================================================================
-5. EMBEDDED CURRENT ACCOUNT PREFERENCES
-================================================================================
-
-The initial accepted account_preference object contains:
-- interface_language_id: common_reference.language_main identifier for interface presentation;
-- fallback_language_id: optional common_reference.language_main identifier used when preferred
-  content or interface text is unavailable;
-- time_zone_id: common_reference.time_zone_main identifier used for local display and user-entered
-  date/time interpretation.
-
-These values may be suggested from the browser or device but remain editable. Absence means the
-application uses the documented site or device fallback; it does not mean the user explicitly chose
-that fallback.
-
-Later bounded preferences may include regional formats, content-language display, theme,
-accessibility presentation, notification delivery, message permissions, community display, and
-mature-content controls after their exact fields and privacy rules are accepted. Do not add empty
-placeholder keys before those contracts exist.
-
-Theme is currently a device-local light, dark, or system choice stored in browser local storage.
-Moving it into account_preference later should synchronize safely without removing the pre-paint
-device fallback needed to prevent theme flashing.
-
-Marketing email opt-in is not an ordinary preference. The current boolean is a convenience value;
-the grant and withdrawal history belongs to user_policy.
+Users may feature up to six eligible badges in a chosen order. The profile may provide a separate
+badge-cabinet view for all current public awards. Revoked, expired, invalidated, or private awards
+do not appear.
 
 ================================================================================
-6. BOOKING PREFERENCES
+5. GENDER, HANDEDNESS, BIRTH DATE, AND PERSONAL PRESENTATION
 ================================================================================
 
-Detailed reusable booking preferences do not belong in user_main. The Booking and Appointment
-System defines client_booking_default for reusable pressure, body-area, product, attire, draping,
-communication, accessibility, therapist-selection, language, and approved reusable-intake values.
+Gender identity is optional, privacy-controlled, and stored in user_main. It:
+- is not required for registration;
+- does not determine eligibility, role, Rank, Reputation, default avatar, practitioner capability,
+  booking eligibility, or service classification;
+- is never inferred from a name, image, external identity, or practitioner record;
+- may be hidden, members-only, or public;
+- uses the shared gender_identity taxonomy after its option wording is reviewed for current,
+  inclusive, non-duplicative meaning.
 
-This separation is required because booking defaults may be sensitive, encrypted, time-limited,
-independently confirmed, and loaded only for booking or client-history workflows. A booking records
-the values actually selected for that appointment; changing a future default does not rewrite past
-bookings.
+Pronouns are optional and separate from gender identity.
 
-The user interface may expose a Booking Preferences subsection under Settings and may also offer
-Save as my default inside a booking flow. Both surfaces update the same client_booking_default
-responsibility rather than duplicating values in user_main.
+type_handedness is optional, privacy-controlled, and stored in user_main. It reuses the existing
+RH (Right-Handed), LH (Left-Handed), AM (Ambidextrous), and UN (Unknown) controlled values used by
+practitioner_main. Omission means UN. Handedness:
+- is self-declared and is never inferred from writing, device use, images, bookings, or activity;
+- is private by default and may be hidden, members-only, or public through
+  privacy_preference.visibility_handedness;
+- does not determine eligibility, accessibility, therapist selection, service suitability, Rank,
+  Reputation, rewards, or authority;
+- is not a medical, disability, capability, or professional-skill claim.
 
-================================================================================
-7. ROLES, PERMISSIONS, BADGES, RANKS, REPUTATION, AND REWARDS
-================================================================================
+The exact birth_date remains a private user_main fact used for 18+ eligibility. Ordinary
+self-service changes are prohibited; correction requires recent authentication, support review,
+appropriate evidence when required, and a user_security_event.
 
-Role or direct permission
-Stored as an access_assignment and evaluated by server-side authorization. The workspace role
-taxonomy is role_workspace in data/taxonomy/massage_nexus/workspace_access.json. Founder is FND.
+The user may choose one birth-date presentation:
+- HID: hidden, the default;
+- AGE: derived current age;
+- RNG: derived age range;
+- MDY: month and day without year.
 
-Badge
-An achievement, participation, verification, legacy, event, or role presentation record governed
-by docs/08-community/badge-system.txt. A badge does not grant authority unless an independent
-access assignment also exists.
-
-Rank path
-A fictional progression title governed by docs/08-community/rank-path-system.txt. Rank is not a
-credential, license, verification, or permission.
-
-Reputation
-A trust signal governed by docs/08-community/reputation-system.txt. Reputation may affect limited
-trust weighting but does not automatically grant an administrative role.
-
-Nexus Points, Embers, and Inklings
-Reward values governed by docs/08-community/user-rewards-and-gamification.txt. Authoritative balance
-changes belong in reward_ledger rather than mutable totals alone.
-
-user_main may later cache bounded display summaries for performance, but every cache must identify
-its authoritative source and must not become the only record of an assignment, award, progression,
-trust event, or balance change.
+The full exact birth date is never published. Public presentation is derived at request time so it
+stays correct and does not create a second birth-date value.
 
 ================================================================================
-8. SETTINGS INFORMATION ARCHITECTURE
+6. MEDIA
 ================================================================================
 
-The private Settings area may use these subsections as they are implemented:
-- Account: username and verified contact facts, with links to controlled change workflows;
-- Language and Region: interface language, fallback language, time zone, and later regional format;
-- Appearance and Accessibility: theme, contrast, text, motion, and assistive presentation;
-- Notifications and Messages: delivery channels and who may contact the user;
-- Privacy and Public Activity: profile and activity visibility, personalization, and location use;
-- Booking Preferences: the separate client_booking_default workflow;
-- Security: password, sessions, devices, MFA, passkeys, and recovery;
-- Data and Account: export, deactivation, and deletion.
+default_avatar_key identifies one deterministic, non-gendered Massage Nexus default avatar.
+avatar_media_image_id and cover_media_image_id reference media_image records.
 
-The first-release screen may expose only implemented choices. It must not render a control that
-appears to save a preference when the server does not persist or apply it.
+media_image owns the binary-storage key, provider, format, dimensions, crop, derivative, processing,
+moderation, accessibility, ownership, consent, and lifecycle metadata. user_main does not store raw
+binaries or permanent object-storage URLs.
 
-================================================================================
-9. PRIVACY, SECURITY, AND ACCESSIBILITY
-================================================================================
+Avatar and cover media require file validation, malware scanning, safe decoding, size and dimension
+limits, moderation, accessible crop controls, deletion handling, and a safe fallback. NSFW avatars
+and covers are prohibited. Animated avatars require a static reduced-motion poster.
 
-- Private identity, contact, eligibility, security, and booking-default data never becomes public
-  merely because a public profile exists.
-- Public profile fields require clear visibility labels and safe defaults.
-- Sensitive account changes require recent authentication where specified by the Account and
-  Authentication System.
-- Media upload and deletion must preserve audit, moderation, retention, and legal requirements.
-- Location permission is requested only when a user invokes a feature that genuinely needs it and
-  must have a manual alternative.
-- Default and uploaded avatar presentation must not infer gender.
-- Animated media must honor reduced-motion settings.
-- Profile and Settings forms must be keyboard accessible, localized, and explicit about saved state.
+A practitioner may deliberately reuse the same media_image as an account avatar and professional
+profile image. Practitioner galleries remain professional media and do not become user avatars.
 
 ================================================================================
-10. CURRENT IMPLEMENTATION AND ORDER
+7. PREFERENCES EMBEDDED IN USER_MAIN
 ================================================================================
 
-Implemented on 2026-07-21:
-- /workspace/profile edits display_name and profile_biography;
-- /workspace/setting shows username and verified email and changes marketing email opt-in;
-- the theme toggle uses device-local storage;
-- role-aware Administration navigation is derived from access_assignment.
+account_preference may contain:
+- interface_language_id;
+- fallback_language_id;
+- preferred content languages;
+- time_zone_id;
+- regional date, time, number, currency, and measurement presentation.
 
-Not yet implemented:
-- public /user/{user-slug} profiles;
-- avatar and cover upload;
-- server-persisted language and time-zone preferences;
-- detailed Settings subsections;
-- client_booking_default management;
-- public badge, rank, reputation, and reward displays.
+appearance_preference may contain:
+- theme mode: system, light, or dark;
+- text scale;
+- increased-contrast preference;
+- reduced-motion preference;
+- eligible cosmetic selections.
 
-Implementation order:
-1. Keep founder, editorial, and other authority in access_assignment.
-2. Add the bounded user_main profile and account_preference fields to runtime code when their
-   corresponding interface is implemented.
-3. Implement language and time-zone settings with application middleware that actually applies them.
-4. Implement media-image upload and moderation before enabling avatar and cover editing.
-5. Implement the public profile using derived, permission-filtered activity.
-6. Implement client_booking_default with Booking privacy and encryption rules.
-7. Add badge, rank, reputation, and reward displays only after their authoritative records exist.
+notification_preference may contain:
+- enabled ordinary delivery channels;
+- category-level choices;
+- digest frequency;
+- quiet hours in the user's time zone.
+
+Security and legally required notices cannot be fully disabled.
+
+privacy_preference may contain:
+- profile visibility;
+- activity visibility;
+- gender visibility;
+- birth-date presentation;
+- social-connection presentation;
+- Premium Member presentation;
+- personalization and precise-location permission choices.
+
+booking_preference may contain one current global reusable default:
+- preferred booking language;
+- pressure and pressure-adjustment preferences;
+- focus and avoid body areas;
+- product, medium, fragrance, oil, and lotion preferences;
+- attire, undressing, treatment-contact, draping, and support preferences;
+- conversation and communication preferences;
+- therapist-selection preference;
+- relevant accessibility and assistance preferences;
+- last-confirmed time.
+
+The retired client_booking_default collection is not created. Multiple named booking presets are
+not supported under the current bounded user_main direction.
+
+Time-sensitive intake, current symptoms, injuries, pregnancy state, medication changes, safety
+answers, provider observations, signatures, and consent snapshots are not ordinary preferences.
+They remain protected per-booking or intake records and must be reconfirmed when required.
+
+A booking stores the values actually selected and disclosed for that booking. Changing user_main
+preferences never rewrites a historical booking snapshot.
+
+================================================================================
+8. PERSONAL CONTACTS AND ADDRESSES
+================================================================================
+
+user_contact stores one personal email, telephone, SMS, or approved messaging channel and its
+verification and replacement history. It supports multiple current or historical contacts.
+
+user_main may retain a synchronized normalized primary login-email cache for authentication and
+may reference the primary personal and booking contacts. user_contact remains authoritative for
+channel verification, replacement, retirement, and history.
+
+Personal contacts are private. A booking receives a snapshot of the selected verified channel.
+Changing or retiring a contact does not alter historical bookings.
+
+user_address stores one labeled private address such as Home, Work, Hotel, or Other. It supports
+multiple addresses, a default booking address, effective dates, confirmation, and protected access
+instructions. Exact address and coordinates are encrypted or otherwise protected at rest.
+
+For home service, the user explicitly selects an address. The booking stores a protected snapshot
+and releases only the minimum necessary information to authorized provider roles during the
+approved disclosure window. A personal address never becomes a public practitioner or establishment
+address automatically.
+
+An emergency contact describes another person and requires a separately justified,
+purpose-limited design before collection. It is not silently treated as an ordinary user_contact.
+
+================================================================================
+9. USER AND PRACTITIONER IDENTITY
+================================================================================
+
+practitioner_main remains the public professional identity and may exist before registration.
+user_practitioner records the verified Self link between one user and one practitioner profile.
+An active Self link is normally unique in both directions and originates from an approved claim and
+identity-verification workflow.
+
+The linked self-practitioner may opt into one-way reuse of eligible public account presentation:
+- avatar or cover media reference;
+- approved public display name;
+- biography source;
+- public gender presentation;
+- handedness when the user explicitly approves reuse;
+- derived age or birthday presentation.
+
+For an active verified Self link, user_main.type_handedness may be copied to the same person's
+practitioner_main.type_handedness only through an explicit, audited synchronization choice. An
+existing conflict is shown for confirmation rather than overwritten silently. A Steward editing
+somebody else's practitioner profile cannot change the linked person's user_main value, and a
+professional-profile edit cannot silently change private account identity data.
+
+Private birth date, personal contact, personal address, recovery identity, and security data never
+copy into practitioner_main. A personal contact may become a professional practitioner_contact only
+through an explicit, separately verified publish action. A personal address may become a public
+practice location or privacy-reduced service area only through a separate professional workflow.
+
+A user who maintains somebody else's practitioner profile is a scoped Steward, not that
+practitioner's identity. The Steward receives practitioner.manage through user_access. A factual
+employment, manager, representative, or establishment relationship remains in the appropriate
+relationship collection.
+
+================================================================================
+10. USER_ACCESS AND MANAGED RECORDS
+================================================================================
+
+user_access stores one additive role or direct-permission grant. It supports global, establishment,
+practitioner, language, editorial, course, and other approved scopes, plus effective, expiry,
+revocation, grantor, and reason fields.
+
+Examples:
+- Founder globally;
+- Practitioner for the user's verified practitioner profile;
+- Steward for one assigned practitioner or establishment;
+- Editor for an editorial responsibility;
+- temporary direct permission for one approved operation.
+
+user_main may cache one primary public-role code and bounded managed-record counts for presentation.
+Server authorization evaluates current effective user_access records, not the summary.
+
+Managed establishments are not embedded in user_main. Factual ownership, investment, management,
+employment, or representation remains in establishment_person or another accepted relationship
+collection. Operational permission remains in scoped user_access. The workspace combines all
+effective scopes without a role switcher.
+
+================================================================================
+11. POLICY RECORDS AND FEATURE GATING
+================================================================================
+
+user_policy stores one versioned user decision for a legal_main record: acceptance,
+acknowledgment, consent grant, refusal where permitted, or withdrawal. It preserves exact document,
+version, locale, action, presentation time, decision time, and approved evidence metadata.
+
+Terms, Privacy, and other policy acceptance fields are removed from user_main as authoritative
+facts. user_main may cache only policy-compliance status, outstanding required-action count, and
+last check time.
+
+legal_main identifies whether a published version requires new user action. When required action
+is outstanding:
+- public browsing remains available;
+- login may complete;
+- policy review, logout, support, privacy-rights, and essential security routes remain available;
+- ordinary workspace entry and protected mutations are blocked until the required decision;
+- rejection or refusal follows the specific policy's documented consequence.
+
+Cookie choices are distinct from Terms acceptance. Essential authentication and security cookies
+are not optional. Nonessential analytics, advertising, campaign, or third-party purposes remain
+disabled until permitted. Anonymous choices remain browser- or consent-token scoped; authenticated
+current choices are cached under user_main privacy_preference so they follow the user across
+devices, while versioned grant, refusal, and withdrawal history belongs to user_policy when legally
+and technically appropriate.
+
+================================================================================
+12. EXTERNAL IDENTITIES AND CONNECTED SOCIAL ACCOUNTS
+================================================================================
+
+user_external_identity stores a stable provider-subject link used for login or account linking.
+Email text alone never merges accounts. Priority providers remain Google, Apple, Microsoft, and
+Facebook, followed only by approved market-relevant providers.
+
+user_social_connection is separate because a login identity is not necessarily a public Facebook
+page, Instagram profile, YouTube channel, X account, or other creator profile. A social connection:
+- is established through the provider's supported authorization or verification flow, not an
+  unrestricted URL field;
+- stores the stable provider subject or channel identifier and provider-returned presentation;
+- supports multiple eligible channels where the provider permits it;
+- is private by default;
+- appears publicly only when the user enables display;
+- can be disconnected without deleting historical security evidence;
+- never grants Massage Nexus authority, verification, reputation, or professional credentials.
+
+Access and refresh credentials are encrypted or held through an approved secret store and never
+rendered in profile, logs, exports, or ordinary administration screens. Revocation, expiry, scope,
+and last synchronization are tracked.
+
+================================================================================
+13. SESSIONS, DEVICES, MFA, PASSKEYS, AND SECURITY HISTORY
+================================================================================
+
+user_session stores one active or historical authenticated session, including user, optional
+recognized device, authentication method, safe approximate client context, creation, last activity,
+expiry, and revocation. Raw reusable session secrets are never stored in readable form.
+
+user_device stores one user-recognized device summary. It does not authorize invasive or covert
+fingerprinting. A user may name, recognize, distrust, and remove a device.
+
+user_mfa_method stores one configured second-factor method. TOTP secrets are encrypted and never
+returned after confirmation. SMS is not the sole strong recovery method.
+
+user_recovery_code stores one individually hashed, single-use recovery code and its consumption or
+revocation state. Plain recovery codes are shown only once at generation.
+
+user_passkey stores WebAuthn credential ID, public key, signature counter, authenticator metadata,
+name, transports, and lifecycle. Massage Nexus never stores biometric templates.
+
+user_security_event stores append-only login, logout, failed authentication, password reset,
+contact change, session revocation, MFA, passkey, recovery, external-identity, suspicious-activity,
+and privileged support events. Sensitive values and reusable secrets are excluded.
+
+user_main may cache active-session count, passkey count, MFA-enabled state, and last security-event
+time. These values are not authoritative.
+
+================================================================================
+14. SAVED ITEMS, FOLLOWING, AND NOTIFICATIONS
+================================================================================
+
+user_saved_item stores one saved supported target, optional private note, folder label, and
+lifecycle. Saved items are private by default. Shared lists require a separate accepted sharing
+design.
+
+user_follow stores one user-to-target following relationship and a per-follow notification choice.
+It is private by default, including following another user. Public disclosure requires explicit
+later opt-in and never changes existing records automatically.
+
+user_notification stores one in-product notification and its unread, read, archived, or expired
+state. Email, SMS, and push delivery records remain in their delivery domain. Notification payloads
+use safe templates and references and do not copy private intake, exact residential address,
+recovery secret, or other sensitive content into unsafe channels.
+
+Preferences for these systems remain bounded in user_main; the growing records do not.
+
+================================================================================
+15. SUBSCRIPTIONS, PREMIUM PRESENTATION, AND ENTITLEMENTS
+================================================================================
+
+An ordinary registered user may remain on the free plan or purchase a personal premium plan.
+Premium is a commercial membership state, not a workspace role, Rank, Reputation level,
+verification, credential, or authority grant.
+
+subscription_plan defines reusable plan identity, audience, billing interval, price direction,
+limits, included entitlement codes, and public label eligibility. user_subscription records one
+user's subscription lifecycle. user_entitlement records one effective feature benefit and its
+source, limit, use window, and revocation.
+
+Possible personal premium benefits include:
+- ad-free browsing;
+- expanded saved lists and alerts;
+- enhanced comparison, travel, history, and budgeting tools;
+- increased personal profile customization or media limits;
+- approved premium AI allowance;
+- advanced but non-safety-critical booking convenience;
+- early access to selected nonessential features.
+
+Essential discovery, safety information, ordinary Reviews, account security, privacy controls,
+policy access, correction rights, and ordinary booking safety controls remain outside a paywall.
+
+An active subscriber may choose to show an approved Premium Member label. Payment does not increase
+Nexus Points, badges, Rank, Reputation, rating weight, organic visibility, moderation power, or
+workspace permission.
+
+================================================================================
+16. REWARDS, BADGES, RANKS, AND REPUTATION
+================================================================================
+
+user_reward is an immutable reason-based event for earning, spending, expiring, reversing, or
+adjusting Nexus Points, Embers, or Inklings. user_main caches lifetime points and current currency
+balances with a calculation time.
+
+badge_main owns reusable badge definitions. user_badge owns one user's award, progress, featured
+display choice, expiry, revocation, and source eligibility. A badge never grants authority by
+itself.
+
+rank_path_main owns versioned path and level definitions. user_rank stores an immutable calculated
+interval with path, level code, qualifying point total, calculation version, effective time, and
+end time. user_main caches the selected path and current level for primary public presentation.
+
+user_reputation stores immutable positive, negative, reversal, and correction events. user_main
+caches the current bounded 0-10,000 score, level code, status, and calculation time.
+
+Reward and reputation events include idempotency keys, badge awards use a user-and-badge uniqueness
+rule, and rank calculations use a calculation key so approval or recalculation retries do not apply
+twice. Rejected, fraudulent, duplicate, self-dealing, revoked, quarantined, or otherwise ineligible
+activity does not produce a lasting positive event.
+
+================================================================================
+17. USER CONTRIBUTIONS, EDITS, AND ACTIVITY
+================================================================================
+
+user_contribution records one user proposal and its target, proposed values, declarations, review
+state, reviewer, and decision. It replaces the contribution_main name.
+
+Ordinary proposal flow:
+
+user_contribution -> review -> accepted target update -> record_revision -> audit_log
+                  -> eligible user_reward/user_reputation/user_badge/user_rank updates
+
+An authorized Steward or editor may create a direct accepted record revision where the Edit System
+permits it. The revision and audit event still identify the actor. Privileged maintenance receives
+rewards only when the governing reward rule explicitly allows it.
+
+user_main activity_summary contains bounded, rebuildable counts, not record-ID arrays. Initial
+counts may include submitted and published Articles, submitted and published Reviews, submitted and
+accepted contributions, approved media, Ratings, Comments, and managed-record totals.
+
+As the related features are implemented, supported factual totals may also include establishments
+or practitioners added, discussions participated in, approved edits, reports, translations, events,
+quizzes, polls, completed bookings, and completed purchases. Only bounded totals needed for current
+profile or workspace presentation belong in user_main; detailed and unbounded history remains in
+the authoritative domain collections.
+
+These counts are factual statistics, not reward balances or trust scores. A qualifying action may
+increase a contribution count without earning Nexus Points, and it may earn a reward without being
+classified as a contribution. Bookings, purchases, events, polls, quizzes, and campaigns are
+participation statistics unless their governing specification explicitly classifies them as
+contributions. Nexus Points, Embers, Inklings, badges, Rank, Reputation, and user_access therefore
+remain separate from activity_summary.
+
+Created record, credited author, submitter, reviewer, publisher, and last editor are separate facts.
+Public activity shows only eligible published attribution and never exposes private drafts,
+rejected submissions, internal review, or hidden identity.
+
+================================================================================
+18. SETTINGS AND PROFILE INFORMATION ARCHITECTURE
+================================================================================
+
+Private user areas may include:
+- Overview;
+- Public Profile;
+- Personal Identity;
+- Contacts;
+- Addresses;
+- My Activity;
+- Managed Records;
+- Rewards, Badges, Rank, and Reputation;
+- Language and Region;
+- Appearance and Accessibility;
+- Notifications and Messages;
+- Privacy and Public Activity;
+- Booking Preferences;
+- Connected Accounts and Social Profiles;
+- Subscription and Entitlements;
+- Password, Sessions, Devices, MFA, Passkeys, and Recovery;
+- Policy Decisions;
+- Data Export and Account Deletion.
+
+The interface must clearly distinguish private personal information, booking-shared information,
+public account presentation, public professional practitioner information, and internal access.
+A control is not shown as saved unless the server persists and applies it.
+
+================================================================================
+19. PRIVACY, SECURITY, LOCALIZATION, AND ACCESSIBILITY
+================================================================================
+
+- Private identity, contact, address, security, policy, booking, and payment data never becomes
+  public merely because a profile exists.
+- Public fields use safe private defaults and explicit audience labels.
+- Sensitive changes require recent authentication and user_security_event creation.
+- Exact addresses, contact values, TOTP secrets, provider tokens, and protected recovery material
+  are encrypted, hashed, tokenized, or stored through an approved secret system as appropriate.
+- Public profile content and social presentation are localized and accessible.
+- Profile images include accessible text or are correctly marked decorative.
+- Animated media honors reduced motion.
+- Forms are keyboard accessible and announce validation, visibility, and saved state.
+- Data export and deletion apply collection-specific retention, legal-hold, attribution, fraud,
+  and transaction rules rather than deleting authoritative history blindly.
+
+================================================================================
+20. IMPLEMENTATION AND MIGRATION ORDER
+================================================================================
+
+Documentation and structure guides establish the accepted target state. Current runtime code still
+uses access_assignment, contribution_main, Terms fields in user_main, and device-local theme state.
+
+Safe future implementation order:
+1. Add target collections, indexes, taxonomies, validation, authorization, and tests.
+2. Backfill user_contact, user_policy, and user_access from current user_main and legacy records.
+3. Dual-read or migrate access_assignment to user_access without removing active Founder access.
+4. Dual-read or migrate contribution_main to user_contribution.
+5. Move reusable booking preferences into bounded user_main.booking_preference while preserving
+   booking snapshots and protected intake.
+6. Add policy gating and legal_main reacceptance metadata.
+7. Add media, public profile, social connections, and self-practitioner linking.
+8. Add sessions, devices, MFA, recovery codes, passkeys, and security-event management.
+9. Add rewards, badges, Rank, Reputation, subscriptions, and entitlements with authoritative event
+   records and rebuildable summaries.
+10. Add saved items, following, and notifications.
+
+Never rename or remove a live collection before the running application, migration, rollback,
+indexes, and active-account verification are ready.

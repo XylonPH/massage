@@ -1,14 +1,15 @@
 Title: Massage Nexus Survey System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-20
-Revision Date: 2026-07-20
+Revision Date: 2026-07-22
 Status: Internal Planning Draft
 Document Description: Defines platform polls and surveys, including the homepage Community Pulse widget, participation rules, per-user completion rotation, result recording, privacy boundaries, rewards references, and administration. Exact question schemas and collections remain deferred.
 
 Related Documents:
 - docs/06-user-interface/home-page-ui.txt (section 18, Community Pulse)
 - docs/11-workspaces/admin-workspace.txt (Editorial Management, Survey administration)
-- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/inkling-system.txt
 - docs/14-research/analytics-statistics-and-measurement-system.txt
 - docs/16-operations/maintenance-and-continuous-operations.txt
 - docs/13-localization/translation-system.txt
@@ -70,7 +71,7 @@ assistive technology (aria-live), and keyboard focus is not lost or hijacked by 
   users' individual answers;
 - sensitive topics require the same privacy, minimum-group, and retention rules as other
   measurement data;
-- poll participation may earn small rewards per the User Rewards and Gamification document,
+- poll participation may earn small rewards per the Reward System,
   subject to its caps and anti-farming rules; answering repeatedly is prevented by the one-answer
   rule rather than by reward caps alone.
 

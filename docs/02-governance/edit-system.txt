@@ -1,7 +1,7 @@
 Title: Massage Nexus Edit System
-Document Version: 1.10
+Document Version: 1.20
 Date Created: 2026-07-16
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines the shared rules for creating, editing, correcting, reviewing, applying, publishing, merging, restoring, and auditing Massage Nexus records while keeping accepted data separate from drafts and unapproved proposals. Feature-specific specifications remain authoritative for their fields, forms, permissions, and publication rules.
 
 Related Documents:
@@ -13,7 +13,7 @@ Related Documents:
 - docs/04-architecture/api-system.txt
 - docs/04-architecture/database-structure.txt
 - docs/04-architecture/runtime-ai-system.txt
-- data/structure_guide/contribution_main.php
+- data/structure_guide/user_contribution.php
 - data/structure_guide/audit_log.php
 - data/taxonomy/massage_nexus/workspace_access.json
 - docs/11-workspaces/user-workspace.txt
@@ -98,7 +98,7 @@ A deliberate private checkpoint controlled by the owning feature.
 
 Contribution or Change Set
 A grouped proposal to add, correct, translate, enrich, close, merge, or otherwise change a record.
-The shared contribution_main collection is the default proposal boundary when a specialized domain
+The shared user_contribution collection is the default proposal boundary when a specialized domain
 workflow does not own the proposal.
 
 Change Operation
@@ -152,7 +152,7 @@ Accepted current data
 - is never reconstructed solely from audit logs at normal read time.
 
 Drafts and proposed changes
-- use contribution_main when the shared contribution workflow owns the proposal;
+- use user_contribution when the shared contribution workflow owns the proposal;
 - may use a feature-specific draft or submission collection when specialized behavior requires it;
 - remain separate from the accepted target until application succeeds.
 
@@ -178,14 +178,14 @@ Autosave
 - is not written to record_revision or audit_log for every save interval or keystroke.
 
 Current structure-guide gap
-The contribution_main structure guide currently stores an opaque proposed_data object and does not
+The user_contribution structure guide currently stores an opaque proposed_data object and does not
 yet document base-revision concurrency fields, a stable Change Operation array, collaborators, or
 application result. Until those fields are documented in the structure guide and taxonomy as
 needed, selective approval and atomic multi-operation application against the shared collection
 are not implementable. A single opaque proposed-data object is insufficient when reviewers may
 accept some changes and reject others.
 
-Before selective approval is implemented, contribution_main must document a stable embedded Change
+Before selective approval is implemented, user_contribution must document a stable embedded Change
 Operation shape that satisfies Section 12.
 
 ================================================================================
@@ -476,7 +476,7 @@ Proposal confidentiality:
 13. WORKFLOW AND STATUS MODEL
 ================================================================================
 
-Shared contributions use status_contribution from
+Shared contributions use status_user_contribution from
 data/taxonomy/massage_nexus/workspace_access.json:
 
 - Draft (DFT);
@@ -511,7 +511,7 @@ These dimensions remain orthogonal:
 - moderation state;
 - technical application or job state (Application Result).
 
-Application Result must be recorded separately from status_contribution. At minimum, implementations
+Application Result must be recorded separately from status_user_contribution. At minimum, implementations
 must distinguish:
 
 - pending application: review approved or direct edit authorized, target not yet updated;
@@ -880,7 +880,7 @@ quality expectations follow docs/02-governance/testing-and-quality-assurance-str
 - Admin, editorial, workspace, API, import, and system mutation surfaces are clients of the same
   contract.
 - Current accepted data remains separate from drafts and unapproved proposals.
-- contribution_main is the shared proposal boundary; specialized domains may own their drafts and
+- user_contribution is the shared proposal boundary; specialized domains may own their drafts and
   submissions when documented.
 - record_revision is the generic accepted-history boundary; specialized revision collections take
   precedence for their domain.
@@ -911,7 +911,7 @@ quality expectations follow docs/02-governance/testing-and-quality-assurance-str
 27. OPEN DECISIONS
 ================================================================================
 
-- final embedded Change Operation schema and field names for contribution_main, including migration
+- final embedded Change Operation schema and field names for user_contribution, including migration
   from opaque proposed_data;
 - detailed record_revision structure and the domain list using specialized revisions;
 - Application Result field names and taxonomy codes;

@@ -2,21 +2,43 @@
 
 namespace App\Livewire\Workspace\Editorial;
 
+use App\Enums\RecordLifecycleStatus;
+use App\Models\Contribution;
 use App\Models\Establishment;
 use App\Rules\PublicContactUrl;
 use App\Support\Taxonomy\TaxonomyOptions;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\Rule;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('layouts.workspace', ['navActive' => 'admin-editorial'])]
 class EstablishmentForm extends Component
 {
     public ?string $establishment = null;
 
+    /** Whether this instance was reached through the member contribution route rather than editorial direct-edit. */
+    public bool $isContribution = false;
+
+    public string $type_establishment_relationship = 'NON';
+
+    public bool $is_workspace_access_requested = false;
+
+    public ?string $relationship_note = null;
+
     /** @var array<string, mixed> */
     public array $state = [];
+
+    /** Declared relationship options for the contribution flow; mirrors the retired simple contribution form. */
+    private const RELATIONSHIP_TYPES = ['NON', 'OWN', 'INV', 'MGR', 'OPR', 'REP'];
+
+    /** Translated field -> flat English state key. */
+    private const TRANSLATED_FIELDS = [
+        'display_name' => 'display_name_eng',
+        'short_description' => 'short_description_eng',
+        'description' => 'description_eng',
+        'direction_note' => 'direction_note_eng',
+        'parking_note' => 'parking_note_eng',
+    ];
 
     /** Scalar/plain fields copied verbatim between $state and the model. */
     private const PLAIN_FIELDS = [
@@ -50,16 +72,14 @@ class EstablishmentForm extends Component
     public function mount(?string $establishment = null): void
     {
         $this->establishment = $establishment;
+        $this->isContribution = request()->routeIs('workspace.contribution.establishment.create');
 
         $record = $establishment !== null ? Establishment::query()->findOrFail($establishment) : null;
 
-        $this->state = [
-            'display_name_eng' => $record?->display_name['eng'] ?? '',
-            'short_description_eng' => $record?->short_description['eng'] ?? '',
-            'description_eng' => $record?->description['eng'] ?? '',
-            'direction_note_eng' => $record?->direction_note['eng'] ?? '',
-            'parking_note_eng' => $record?->parking_note['eng'] ?? '',
-        ];
+        $this->state = [];
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
+            $this->state[$stateKey] = $record?->getAttribute($field)['eng'] ?? '';
+        }
 
         foreach (self::PLAIN_FIELDS as $field) {
             $this->state[$field] = $record?->getAttribute($field) ?? ($field === 'status_record_lifecycle' ? 'ACT' : '');
@@ -98,7 +118,7 @@ class EstablishmentForm extends Component
     /** @return array<string, mixed> */
     protected function rules(): array
     {
-        return [
+        $rules = [
             'state.display_name_eng' => ['required', 'string', 'max:255'],
             'state.short_description_eng' => ['nullable', 'string'],
             'state.description_eng' => ['nullable', 'string'],
@@ -121,17 +141,31 @@ class EstablishmentForm extends Component
             'state.operating_hours.*.open_time' => ['nullable', 'date_format:H:i'],
             'state.operating_hours.*.close_time' => ['nullable', 'date_format:H:i'],
         ];
+
+        if ($this->isContribution) {
+            $rules['type_establishment_relationship'] = ['required', Rule::in(self::RELATIONSHIP_TYPES)];
+            $rules['is_workspace_access_requested'] = ['nullable', 'boolean'];
+            $rules['relationship_note'] = ['nullable', 'string', 'max:1000'];
+        }
+
+        return $rules;
     }
 
     public function save(): void
     {
         $this->validate();
 
+        if ($this->isContribution) {
+            $this->submitContribution();
+
+            return;
+        }
+
         $record = $this->establishment !== null
             ? Establishment::query()->findOrFail($this->establishment)
             : new Establishment;
 
-        foreach (['display_name' => 'display_name_eng', 'short_description' => 'short_description_eng', 'description' => 'description_eng', 'direction_note' => 'direction_note_eng', 'parking_note' => 'parking_note_eng'] as $field => $stateKey) {
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
             $value = $record->getAttribute($field) ?? [];
             $value['eng'] = $this->state[$stateKey] ?: null;
             $record->setAttribute($field, $value);
@@ -152,6 +186,53 @@ class EstablishmentForm extends Component
 
         session()->flash('editorial_status', $this->establishment !== null ? __('editorial.updated') : __('editorial.created'));
         $this->redirectRoute('workspace.editorial.establishment.index', navigate: true);
+    }
+
+    private function submitContribution(): void
+    {
+        if ($this->is_workspace_access_requested && $this->type_establishment_relationship === 'NON') {
+            $this->addError('is_workspace_access_requested', __('workspace.contribution_access_relationship_required'));
+
+            return;
+        }
+
+        $rateLimitKey = 'contribution-establishment:'.auth()->id();
+        if (RateLimiter::tooManyAttempts($rateLimitKey, 10)) {
+            $this->addError('form', __('workspace.contribution_rate_limited'));
+
+            return;
+        }
+        RateLimiter::hit($rateLimitKey, 60);
+
+        $proposedData = [];
+        foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {
+            $proposedData[$field] = ['eng' => $this->state[$stateKey] ?: null];
+        }
+        foreach (self::PLAIN_FIELDS as $field) {
+            $proposedData[$field] = $this->state[$field] === '' ? null : $this->state[$field];
+        }
+        foreach (self::LIST_FIELDS as $field) {
+            $proposedData[$field] = array_values($this->state[$field] ?? []);
+        }
+        foreach (array_keys(self::REPEATERS) as $field) {
+            $proposedData[$field] = array_values($this->state[$field] ?? []);
+        }
+
+        Contribution::query()->create([
+            'type_contribution' => 'ADD',
+            'target_collection' => 'establishment_main',
+            'target_record_id' => null,
+            'submitted_by_user_id' => (string) auth()->id(),
+            'proposed_data' => $proposedData,
+            'type_establishment_relationship' => $this->type_establishment_relationship,
+            'is_workspace_access_requested' => $this->is_workspace_access_requested,
+            'relationship_note' => filled($this->relationship_note) ? trim($this->relationship_note) : null,
+            'status_contribution' => 'PND',
+            'submitted_at' => now(),
+        ]);
+
+        session()->flash('status', __('workspace.contribution_submitted'));
+        $this->redirectRoute('workspace.contribution.index', navigate: true);
     }
 
     public function render(): View
@@ -175,8 +256,13 @@ class EstablishmentForm extends Component
 
         return view('livewire.workspace.editorial.establishment-form', [
             'taxonomy' => $taxonomy,
-            'lifecycleOptions' => collect(\App\Enums\RecordLifecycleStatus::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
+            'lifecycleOptions' => collect(RecordLifecycleStatus::cases())->mapWithKeys(fn ($c) => [$c->value => $c->getLabel()])->all(),
             'dayOfWeekOptions' => collect(self::DAYS_OF_WEEK)->mapWithKeys(fn ($d) => [$d => $d])->all(),
-        ])->title(__('editorial.establishments'));
+            'relationshipOptions' => $this->isContribution
+                ? collect(self::RELATIONSHIP_TYPES)->mapWithKeys(fn ($t) => [$t => __('workspace.establishment_relationship_'.$t)])->all()
+                : [],
+        ])
+            ->layout('layouts.workspace', ['navActive' => $this->isContribution ? 'contributions' : 'admin-editorial'])
+            ->title($this->isContribution ? __('workspace.contribution_establishment_title') : __('editorial.establishments'));
     }
 }

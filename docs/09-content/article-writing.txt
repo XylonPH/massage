@@ -1,5 +1,5 @@
 Title: Massage Nexus Article Writing Guide
-Document Version: 2.50
+Document Version: 2.70
 Date Created: 2026-07-04
 Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus article-writing scope, quality, research, classification, safety, authorship, AI assistance, reading-duration handling, media planning, output structure, and current workspace implementation boundaries. The working topic calendar and reusable prompt library are maintained separately so growing inventories do not obscure the governing rules.
@@ -166,7 +166,8 @@ Article reactions should remain separate from article rewards. A user may receiv
 Article Rewards Reference
 -------------------------
 
-Article-related rewards should be defined fully in the User Rewards and Gamification documentation.
+Article-related rewards are governed by docs/08-community/reward-system.txt. Nexus Points, Embers,
+and Inklings are defined separately in their focused community-system documents.
 
 Current direction:
 
@@ -176,13 +177,8 @@ Current direction:
 - AI-generated or AI-assisted portions should not receive the same user-writing credit as fully user-written work unless policy later allows it;
 - reputation effects from article reactions should follow the Reputation System, not the reward table.
 
-Working reaction reward reference:
-
-Action                    | Nexus Points | Embers | Inklings
---------------------------+--------------+--------+---------
-Thumbs up/down on content | 1            | 10     | 5
-
-A daily reward cap should apply to thumbs up/down actions. Current working cap is 25 rewarded thumbs up/down actions per day. Users may continue reacting after the cap, but they should not receive additional Nexus Points, Embers, or Inklings for those extra reactions on that day.
+The Reward System owns the content-reaction reward table and daily cap. Users may continue reacting
+after the reward cap without receiving additional Nexus Points, Embers, or Inklings that day.
 
 Article author reputation effects should use weighted helpfulness signals, diminishing returns, per-item caps, and anti-abuse checks from the Reputation System. Article popularity alone should not be treated as proof of high author trust.
 
@@ -191,7 +187,8 @@ Related Rating and Reputation Documents
 
 Article reactions and article-author reputation effects should reference:
 
-- docs/08-community/rating-system.txt for content-reaction rating rules and reward caps;
+- docs/08-community/rating-system.txt for content-reaction eligibility and behavior;
+- docs/08-community/reward-system.txt for content-reaction reward amounts and caps;
 - docs/08-community/reputation-system.txt for weighted helpfulness signals, per-item caps, diminishing returns, and author reputation effects.
 
 Articles themselves do not use the non-star 1 to 10 rating asset set because articles are content-reaction targets, not experience or product targets.
@@ -256,8 +253,8 @@ Current authoring behavior includes:
   author_user_id_list is derived from linked credits for public discovery and reputation, while
   credit alone grants no edit permission;
 - article_owner_user_id_list for shared operational ownership. Owners can revise, submit, inspect
-  revision history, and unpublish; only the original creator manages the owner list, and the creator
-  cannot be removed;
+  revision history, compare any two stored body snapshots side by side, and unpublish; only the
+  original creator manages the owner list, and the creator cannot be removed;
 - structured repeated source records with separate title, organization, URL, and publication-
   identifier controls instead of delimiter-encoded text;
 - database-backed selectors for related Articles, organizations, establishments, practitioners,
@@ -272,10 +269,16 @@ Current authoring behavior includes:
 
 The current editorial implementation adds an Article review queue at /workspace/editorial/article
 for users with editorial workspace access. It shows each Article's latest submitted revision and
-opens a safe rendered review page. An editor can approve and publish, request changes with a note,
-or reject with a note. A request for changes returns the Article to the contributor's draft view;
-approval records the reviewer and approval audit fields and makes the Article public subject to any
-future scheduled time.
+opens a safe rendered review page that compares the submission with the immediately preceding body
+snapshot. An editor can approve and publish, request changes with a note, or reject with a note.
+Approval requires a separate confirmation dialog that identifies the exact revision, explains the
+publication effect, and requires an explicit acknowledgement. A request for changes returns the
+Article to the contributor's draft view; approval records the reviewer and approval audit fields and
+makes the Article public subject to any future scheduled time.
+
+The public Article detail page supports light and dark themes across its header, metadata, Article
+body, sources, interaction placeholder, and related-Article cards. It also provides an at-a-glance
+panel for category, audience, visual and spoken reading time, and publication date.
 
 Function of Neural Agents in Article Work
 -----------------------------------------

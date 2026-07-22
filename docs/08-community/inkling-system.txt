@@ -1,0 +1,91 @@
+Title: Massage Nexus Inkling System
+Document Version: 1.80
+Date Created: 2026-07-07
+Revision Date: 2026-07-22
+Document Description: Defines Inklings as the exploration, seasonal, mascot, story, and game-progress currency and records the accepted direction for playful site activities and modern game technology.
+
+Related Documents:
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
+- docs/10-education/quiz-system.txt
+- docs/08-community/survey-system.txt
+
+================================================================================
+1. MEANING
+================================================================================
+
+Inklings are the second Massage Nexus gamification currency. The earlier working name was Ink Drops;
+the accepted working name is Inklings.
+
+Inklings represent exploration, game-board activity, seasonal progress, mascot interactions,
+mini-games, story progress, challenges, and playful site participation. They are separate from
+permanent Nexus Points and the broader spendable-perk role of Embers. Like Embers, they may use a
+larger visible number scale when earning and redemption values remain coherent.
+
+================================================================================
+2. POSSIBLE SOURCES AND USES
+================================================================================
+
+Possible sources:
+- daily check-ins and Resting Leaf interactions;
+- mascot clicks and verified Easter-egg discovery;
+- Relaxation Room visits;
+- Campus quizzes and polls;
+- event QR scans and campaign participation;
+- mini-game and challenge activity;
+- eligible booking or purchase activity;
+- eligible rating and review actions under the Reward System.
+
+Possible uses:
+- game-board movement;
+- seasonal missions and challenge boards;
+- mascot events;
+- Resting Leaf check-ins;
+- hidden-site Easter eggs;
+- Story Tiles and hidden comic progress;
+- mini-game and event progress;
+- special unlocks in a game-oriented user panel.
+
+Logging in, clicking repeatedly, or replaying an already completed interaction must not become an
+unlimited farming route. Each source needs a versioned eligibility rule, idempotency scope, period
+limit, and abuse control under the Reward System.
+
+================================================================================
+3. MASCOTS, EASTER EGGS, AND MINI-GAMES
+================================================================================
+
+Possible experiences include:
+- a hidden mascot on selected pages;
+- mascot reactions and find-the-mascot challenges;
+- weekly or seasonal hidden-mascot events;
+- a badge after an approved discovery sequence;
+- hidden comic panels or Story Tiles;
+- mini-games connected to The Resting Leaf;
+- later native mobile game features.
+
+Rewarded discovery must be based on a server-verifiable event and must respect accessibility,
+reduced-motion, keyboard, touch, localization, privacy, and abuse-prevention requirements. Essential
+site features and important information must not require a game interaction.
+
+Flash and Java applets are not accepted directions. Web games should use modern maintained
+approaches such as HTML5, JavaScript or TypeScript, Canvas, WebGL, Phaser, PixiJS, or carefully
+justified Unity WebGL. Native mobile features may use the approved mobile stack.
+
+================================================================================
+4. ACCOUNTING AND OPEN DECISIONS
+================================================================================
+
+Every Inkling earn, spend, expiry, correction, or reversal is an immutable user_reward event under
+the Reward System. user_main may cache the current Inkling balance for display only.
+
+Open decisions:
+- final earning and spending rules;
+- final seasonal reset or expiry behavior;
+- mascot identity and interaction rules;
+- Story Tiles and hidden-comic design;
+- The Resting Leaf game design;
+- game-board, user-panel, and mobile direction;
+- final game catalogue, accessibility testing, and anti-farming limits.

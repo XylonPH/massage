@@ -586,23 +586,23 @@
     {
         "field_name": "type_handedness",
         "field_label": "Handedness",
-        "selection_rule": "Single-select per practitioner record",
-        "field_description": "The dominant working hand of the practitioner. Relevant for clients who have a strong preference, for pairing decisions in couple-room bookings, and for workplace ergonomic planning. Ambidextrous means the practitioner works effectively with either hand and has no meaningful dominant side.",
+        "selection_rule": "Single-select per person or practitioner record",
+        "field_description": "A person's dominant hand. On a practitioner profile this represents the dominant working hand and may support an explicit client preference, couple-room pairing, or workplace ergonomic planning. It does not prove skill, suitability, accessibility, or service capability.",
         "field_option": [
             {
                 "option_code": "RH",
                 "option_label": "Right-Handed",
-                "option_description": "Practitioner's dominant working hand is their right hand."
+                "option_description": "The person's dominant hand is their right hand."
             },
             {
                 "option_code": "LH",
                 "option_label": "Left-Handed",
-                "option_description": "Practitioner's dominant working hand is their left hand."
+                "option_description": "The person's dominant hand is their left hand."
             },
             {
                 "option_code": "AM",
                 "option_label": "Ambidextrous",
-                "option_description": "Practitioner works effectively with either hand without a meaningful dominant side."
+                "option_description": "The person works effectively with either hand without a meaningful dominant side."
             },
             {
                 "option_code": "UN",
@@ -610,6 +610,6 @@
                 "option_description": "Handedness has not been recorded or confirmed."
             }
         ],
-        "source_document": "data/structure_guide/practitioner_main.php"
+        "source_document": "docs/05-directory/therapist-classification.txt"
     }
 ]

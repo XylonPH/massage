@@ -38,6 +38,7 @@ class ArticleController extends Controller
             $request,
             Article::query()->where('type_article_category', $category->value),
             $category->label(),
+            $category->description(),
         );
     }
 
@@ -161,7 +162,7 @@ class ArticleController extends Controller
         ]);
     }
 
-    private function listing(Request $request, Builder $query, string $heading): View
+    private function listing(Request $request, Builder $query, string $heading, ?string $categoryDescription = null): View
     {
         $query->publiclyVisible();
         $search = trim((string) $request->query('q', ''));
@@ -195,6 +196,7 @@ class ArticleController extends Controller
         return view('article.index', [
             'articles' => $articles,
             'heading' => $heading,
+            'categoryDescription' => $categoryDescription,
             'search' => $search,
             'categories' => ArticleCategory::cases(),
             'audiences' => ArticleAudience::cases(),

@@ -1,7 +1,7 @@
 Title: Massage Nexus User Workspace
-Document Version: 0.84
+Document Version: 1.04
 Date Created: 2026-07-16
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description:
 This document defines the general authenticated User Workspace for Massage Nexus and the
 relationship between the shared network account, Massage Nexus membership, additive personal,
@@ -240,7 +240,11 @@ Possible fields:
 - public role labels;
 - languages;
 - location visibility;
-- website and social links;
+- provider-confirmed connected social profiles and channels;
+- Nexus Points, featured badges, selected Rank, Reputation, and official public role labels;
+- optional Premium Member presentation;
+- optional gender and derived birthday presentation according to privacy controls;
+- optional handedness according to privacy_preference.visibility_handedness;
 - public activity preference;
 - message preference;
 - pronouns where voluntarily provided;
@@ -265,6 +269,7 @@ Routes:
 /workspace/identity/email
 /workspace/identity/phone
 /workspace/identity/external-identity
+/workspace/identity/social-connection
 /workspace/identity/verification
 /workspace/identity/membership
 /workspace/identity/policy-acceptance
@@ -302,6 +307,9 @@ Routes:
 /workspace/setting/theme
 /workspace/setting/notification
 /workspace/setting/accessibility
+/workspace/setting/booking
+/workspace/setting/connected-account
+/workspace/setting/subscription
 /workspace/setting/deletion
 
 Settings may include:
@@ -323,6 +331,9 @@ Settings may include:
 - data personalization;
 - location permission;
 - account deletion.
+- one bounded reusable booking-preference set;
+- connected login identities and public social-profile visibility;
+- current personal subscription, entitlements, cancellation, and Premium-label visibility.
 
 ================================================================================
 8. SECURITY
@@ -797,7 +808,7 @@ Users may:
 - appeal where allowed.
 
 An ownership, investment, management, operator, self, or representative declaration is submitted
-as reviewable information. It does not create an establishment relationship or access assignment
+as reviewable information. It does not create an establishment relationship or user access grant
 until the corresponding verification and authorization decisions are completed.
 
 Private documents remain outside public storage.

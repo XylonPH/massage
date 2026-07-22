@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.97
+Document Version: 1.98
 Date Created: 2026-07-16
 Revision Date: 2026-07-22
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -147,6 +147,14 @@ Account and membership:
 - Argon2id password hashing;
 - TOTP, recovery codes, and passkeys after normal authentication is stable;
 - public User Profile separated from private User Workspace;
+- complete user_main preferences and rebuildable summaries, with growing contacts, addresses,
+  policies, access grants, contributions, social connections, security records, rewards, badges,
+  ranks, reputation events, subscriptions, and entitlements in their authoritative collections;
+- multiple verified personal contacts and labeled private booking addresses;
+- optional gender and birthday presentation controls, uploaded avatar and cover media, public
+  biography, connected social-profile display, and a verified Self practitioner link;
+- user_access for global and scoped authority, including Steward management of another
+  practitioner, without confusing official roles with Rank, reputation, or Premium;
 - roles and permissions for user, provider, therapist, seller, advertiser, contributor,
   researcher, translator, editor, Support, moderator, and administrator.
 
@@ -626,6 +634,9 @@ Purpose:
 Create sustainable revenue without turning Massage Nexus into a pay-to-trust directory.
 
 Commercial systems:
+- an ordinary personal-account Premium plan through subscription_plan, user_subscription, and
+  user_entitlement, with optional public Premium Member presentation and no authority or trust
+  effect;
 - provider subscriptions and premium tools;
 - seller offers, checkout, fulfillment, returns, and disputes where supported;
 - promotions, vouchers, gift cards, memberships, and passes;

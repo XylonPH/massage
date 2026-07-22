@@ -1,7 +1,7 @@
 Title: Massage Nexus Booking and Appointment System
-Document Version: 1.10
+Document Version: 1.30
 Date Created: 2026-07-17
-Revision Date: 2026-07-19
+Revision Date: 2026-07-22
 Status: Internal Planning Reference
 Shared Standard Reference: Shared Project Standards v2.60
 
@@ -13,7 +13,10 @@ Related Documents:
 - Massage Nexus - 11 - Product Classification v1.40
 - Massage Nexus - Rating System v1.10
 - Massage Nexus - Reputation System v1.70
-- Massage Nexus - User Rewards and Gamification v1.60
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
 - Massage Nexus - Translation System v0.10
 - Massage Nexus - 21 - User Workspace v0.20
 - Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
@@ -536,7 +539,7 @@ These stages describe implementation order. Planning decisions across all stages
 21. DEPENDENCIES AND FUTURE LINKED UPDATES
 ================================================================================
 
-Later coordinated updates are required for Spa Profile, Therapist Profile, Spa Classification delivery modes, Therapist Workspace, Operator Workspace, User Workspace, Translation System, Rating System, Reputation System, User Rewards and Gamification, API System, Site Structure Map, Privacy Policy, Terms of Use, Cancellation and Refund Policy, and Database Structure.
+Later coordinated updates are required for Spa Profile, Therapist Profile, Spa Classification delivery modes, Therapist Workspace, Operator Workspace, User Workspace, Translation System, Rating System, Reputation System, Reward System, API System, Site Structure Map, Privacy Policy, Terms of Use, Cancellation and Refund Policy, and Database Structure.
 
 Companion documents:
 - Massage Nexus - 32 - Client Intake Consent Privacy and Eligibility v0.10
@@ -637,7 +640,7 @@ Possible effects:
 - user statistic;
 - campaign mission.
 
-Exact values remain governed by User Rewards and Gamification.
+Exact values remain governed by the Reward System.
 Booking must emit a qualified reward event rather than directly edit balances without shared reward logic.
 
 ================================================================================
@@ -914,7 +917,7 @@ Payment and finance:
 - reconciliation_record
 
 History and client settings:
-- client_booking_default
+- user_main.booking_preference
 - client_service_history
 
 Loyalty and engagement:
@@ -1595,16 +1598,15 @@ Indexes:
 - expires_at.
 
 ================================================================================
-55. client_booking_default
+55. user_main.booking_preference
 ================================================================================
 
 Purpose:
-Reusable client preferences and approved persistent answers.
+One bounded current set of reusable user booking preferences embedded in user_main. Time-sensitive
+intake, current safety answers, provider observations, and signed consent remain separate booking
+records and are never promoted into ordinary account preferences.
 
-Fields:
-- _id
-- user_id
-- default_key
+Embedded fields:
 - preferred_language_id
 - pressure_preference
 - pressure_adjustment_preference_list
@@ -1615,14 +1617,12 @@ Fields:
 - communication_preference
 - accessibility_preference_encrypted
 - therapist_selection_preference
-- reusable_intake_answer_list_encrypted
 - last_confirmed_at
-- expires_at
-- status_lifecycle
-- updated_at
 
-Time-sensitive answers use expiry or are excluded.
-Unique: user_id + default_key.
+One user has one global reusable booking-preference set. A booking copies the selected effective
+values into its own participant or intake snapshot. Changing the account preference does not alter
+past bookings. Time-sensitive answers are always excluded and reconfirmed through the applicable
+booking flow.
 
 ================================================================================
 56. payment_transaction
@@ -2196,7 +2196,7 @@ Minimum initial set:
 - provider_availability_rule;
 - provider_schedule_exception;
 - booking_resource_reservation;
-- client_booking_default;
+- user_main.booking_preference;
 - payment_transaction;
 - client_service_history.
 

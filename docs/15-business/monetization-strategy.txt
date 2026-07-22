@@ -1,7 +1,7 @@
 Title: Massage Nexus Monetization Strategy
-Document Version: 0.10
+Document Version: 0.30
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus may generate revenue from providers, bookings, advertising, promotions, commerce, AI features, subscriptions, partnerships, data products, and future branded services without selling personal data, corrupting rankings, hiding sponsorship, or weakening user trust.
 
 Related Documents:
@@ -14,6 +14,9 @@ Related Documents:
 - Massage Nexus Security Architecture and Information Disclosure Policy
 - Massage Nexus Marketing and Growth Strategy
 - Massage Nexus Maintenance and Continuous Operations
+- docs/08-community/reward-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/nexus-points-system.txt
 
 ================================================================================
 1. MONETIZATION PRINCIPLES
@@ -259,6 +262,21 @@ Possible consumer premium features:
 - early access to selected features;
 - expanded media or organization tools.
 
+The initial personal-plan direction uses a free account tier plus an optional Premium membership.
+The final public plan name and price remain unresolved. Premium may add convenience, capacity,
+cosmetic, alert, reporting, organization, travel, and approved AI benefits, but it is not a
+workspace role and does not grant authority.
+
+Data responsibility:
+- subscription_plan defines the reusable plan and included entitlement codes;
+- user_subscription records one user's subscription lifecycle;
+- user_entitlement records one effective benefit, limit, period, source, and revocation;
+- user_main may cache the current plan code, subscription state, end time, and public-label choice.
+
+An active user may choose to display an approved Premium Member label on the public profile.
+Payment does not increase Nexus Points, badges, Rank, Reputation, rating weight, organic ranking,
+verification, moderation power, or user_access.
+
 Keep essential discovery, safety information, account security, privacy controls, and ordinary
 reviews outside a paywall.
 
@@ -297,6 +315,10 @@ Rules:
 
 Embers are not a transferable cash wallet unless a separately approved financial design permits
 it.
+
+The Ember System owns allowed Ember redemptions, prohibited trust and authority purchases, and
+reward accounting. This document owns prices, subscription allowances, paid credits, revenue
+limits, refunds, and the boundary between rewarded access and sustainable paid services.
 
 ================================================================================
 10. COMMERCE, PRODUCTS, AND AFFILIATES
@@ -649,6 +671,7 @@ Do not activate every model at once.
 - advertising provider or internal sales;
 - booking fee model;
 - consumer premium scope;
+- personal Premium plan name, price, limits, and launch entitlement set;
 - Ember pricing;
 - affiliate partners;
 - first paid research product;

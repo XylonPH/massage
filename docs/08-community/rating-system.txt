@@ -1,7 +1,7 @@
 Title: Massage Nexus Rating System
-Document Version: 1.40
+Document Version: 1.60
 Date Created: 2026-07-09
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus target ratings, content reactions, eligibility, anonymity, experience context, weighted scoring, public summaries, abuse controls, rating milestones, and connections to reviews, reputation, rewards, search, and future awards.
 
 Related Documents:
@@ -10,7 +10,7 @@ Related Documents:
 - docs/05-directory/therapist-profile.txt
 - docs/08-community/reputation-system.txt
 - docs/08-community/badge-system.txt
-- docs/08-community/user-rewards-and-gamification.txt
+- docs/08-community/reward-system.txt
 - docs/09-content/review-writing.txt
 - docs/12-booking/booking-and-appointment-system.txt
 - docs/14-research/data-research-provenance-and-field-verification-system.txt
@@ -688,10 +688,10 @@ Booking and Session Reward Rule
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Session ratings may earn rewards only when they come from a real qualifying activity and pass the
-reward, moderation, duplicate, and abuse checks in User Rewards and Gamification.
+reward, moderation, duplicate, and abuse checks in the Reward System.
 
-Reward eligibility and amounts are authoritative only in
-docs/08-community/user-rewards-and-gamification.txt. This document does not duplicate the reward
+Reward eligibility and amounts are authoritative only in docs/08-community/reward-system.txt. This
+document does not duplicate the reward
 table. Self, connected, manual-history, revoked, invalidated, quarantined, duplicate, and
 reward-period repeat ratings do not earn rating rewards unless the rewards specification records a
 narrow explicit exception; self-rating has no such exception.
@@ -878,11 +878,11 @@ assets do not change the XCES formula or criteria-rating structure.
 Rating Rewards
 --------------
 
-User Rewards and Gamification is the sole authority for rating reward amounts, verified-
+The Reward System is the sole authority for rating reward amounts, verified-
 experience bonuses, daily and periodic caps, and reward-ledger behavior. Rating reward values must
 not be duplicated here.
 
-This system supplies eligibility facts to the reward ledger. It must prevent repeat rewards for
+This system supplies eligibility facts to user_reward. It must prevent repeat rewards for
 editing, revoking and resubmitting, repeat target activity inside the reward period, duplicate or
 fake experiences, alternate accounts, self or connected ratings, invalidated ratings, and
 reward-farming behavior. A scoring weight does not imply reward eligibility, and reward receipt

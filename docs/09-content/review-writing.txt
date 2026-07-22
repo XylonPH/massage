@@ -1,5 +1,5 @@
 Title: Massage Nexus Review Writing Guide
-Document Version: 1.95
+Document Version: 2.05
 Date Created: 2026-07-05
 Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System.
@@ -8,6 +8,10 @@ Related Documents:
 - docs/08-community/reputation-system.txt
 - docs/08-community/badge-system.txt
 - docs/08-community/rank-path-system.txt
+- docs/08-community/reward-system.txt
+- docs/08-community/nexus-points-system.txt
+- docs/08-community/ember-system.txt
+- docs/08-community/inkling-system.txt
 - docs/09-content/article-writing.txt
 
 Reviews use the separate review_main domain. They are not stored in article_main, news_main, or a
@@ -1019,22 +1023,19 @@ minors, medical claims, or legal disputes.
 Review Rewards
 --------------
 
-Review rewards should be defined fully in the User Rewards and Gamification documentation.
+Review reward amounts, shared caps, reward events, and reconciliation are governed by
+docs/08-community/reward-system.txt. This section owns review-specific quality and credit factors.
 
 This section records the working review-specific recommendation only.
 
-Current reward concepts:
-
-- Nexus Points: lifetime contribution value;
-- Embers: spendable reward currency;
-- Inklings: working name for the game, exploration, seasonal, or mascot-related currency;
-- badges: visible achievement signals;
-- reputation: trust signal affected over time by quality, community response, and moderation outcomes.
+Nexus Points, Embers, Inklings, badges, and Reputation retain the distinct meanings and authority
+defined in their focused community-system documents. Review publication does not collapse them into
+one review score.
 
 Working Maximum Rewards
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Review rewards are still provisional and should be recalibrated in the User Rewards and Gamification documentation.
+Review rewards remain provisional and should be recalibrated in the Reward System.
 
 The important working principle is:
 

@@ -118,10 +118,7 @@ Route::prefix('workspace')
         Route::get('/listing/spa', [WorkspaceListingController::class, 'spaIndex'])->name('listing.spa');
         Route::get('/listing/therapist', [WorkspaceListingController::class, 'therapistIndex'])->name('listing.therapist');
         Route::get('/contribution', [WorkspaceContributionController::class, 'index'])->name('contribution.index');
-        Route::get('/contribution/establishment/new', [WorkspaceContributionController::class, 'createEstablishment'])->name('contribution.establishment.create');
-        Route::post('/contribution/establishment', [WorkspaceContributionController::class, 'storeEstablishment'])
-            ->middleware('throttle:10,1')
-            ->name('contribution.establishment.store');
+        Route::get('/contribution/establishment/new', EstablishmentForm::class)->name('contribution.establishment.create');
         Route::get('/contribution/practitioner/new', [WorkspaceContributionController::class, 'createPractitioner'])->name('contribution.practitioner.create');
         Route::post('/contribution/practitioner', [WorkspaceContributionController::class, 'storePractitioner'])
             ->middleware('throttle:10,1')

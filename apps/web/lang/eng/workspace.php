@@ -97,6 +97,8 @@ return [
     'contribution_practitioner_intro' => 'Provide accurate public information about a massage practitioner. Identity and representative declarations are verified before profile access is granted.',
     'contribution_name_label' => 'Establishment name',
     'contribution_address_label' => 'Public address or location',
+    'contribution_relationship_tab' => 'Your relationship',
+    'contribution_rate_limited' => 'Too many submissions. Please wait a moment before trying again.',
     'contribution_relationship_label' => 'Your relationship to this establishment',
     'contribution_relationship_hint' => 'Choose the factual relationship that best fits. More than one person may be connected to an establishment, and one person may be connected to several establishments.',
     'contribution_practitioner_relationship_hint' => 'Choose whether this is your own profile, you are an authorized representative, or you are only contributing public information.',
