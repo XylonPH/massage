@@ -91,7 +91,7 @@ return [
     'contribution_intro' => 'Submit directory information and follow its review status. A relationship declaration or access request never grants management access by itself.',
     'contribution_add_establishment' => 'Add an establishment',
     'contribution_add_practitioner' => 'Add a practitioner',
-    'contribution_establishment_title' => 'Contribute an establishment',
+    'contribution_establishment_title' => 'Add a Spa',
     'contribution_establishment_intro' => 'Provide the public details you know. If you are connected to the establishment, declare that relationship so it can be verified separately.',
     'add_spa_help_link' => 'Need help filling this out?',
     'contribution_practitioner_title' => 'Contribute a practitioner profile',

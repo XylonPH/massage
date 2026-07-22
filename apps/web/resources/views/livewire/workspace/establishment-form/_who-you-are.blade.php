@@ -22,6 +22,9 @@
     </div>
 
     <div class="flex justify-end border-t border-ink-100 pt-5 dark:border-ink-800">
-        <button type="button" wire:click="nextStep" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('editorial.next') }}</button>
+        <button type="button" wire:click="nextStep" class="inline-flex items-center gap-1.5 rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">
+            {{ __('editorial.next') }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14 M12 5l7 7-7 7"/></svg>
+        </button>
     </div>
 </div>

@@ -98,6 +98,29 @@ class ContributionTest extends TestCase
             ->assertSee(__('editorial.next'));
     }
 
+    public function test_page_title_is_add_a_spa_not_contribute_an_establishment(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/workspace/contribution/establishment/new');
+
+        $response->assertSee(__('workspace.contribution_establishment_title'));
+        $this->assertSame('Add a Spa', __('workspace.contribution_establishment_title'));
+    }
+
+    public function test_tab_labels_contain_no_ampersand(): void
+    {
+        $user = User::factory()->create();
+
+        $content = $this->actingAs($user)->get('/workspace/contribution/establishment/new')->getContent();
+        preg_match_all('/<span[^>]*class="truncate"[^>]*>([^<]*)<\/span>/', $content, $matches);
+
+        // Fallback direct check on the translated tab labels themselves:
+        foreach (['tab_identity', 'tab_classification', 'tab_access', 'tab_location', 'tab_contact', 'tab_hours', 'tab_amenities'] as $key) {
+            $this->assertStringNotContainsString('&', __('editorial.'.$key));
+        }
+    }
+
     public function test_editorial_route_still_renders_direct_edit_form_without_relationship_tab(): void
     {
         $editor = User::factory()->create();

@@ -42,7 +42,13 @@
     </x-form.field>
 
     <div class="flex items-center justify-between gap-2.5 border-t border-ink-100 pt-5 dark:border-ink-800">
-        <button type="button" wire:click="prevStep" class="rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800">{{ __('editorial.back') }}</button>
-        <button type="submit" class="rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">{{ __('workspace.contribution_submit') }}</button>
+        <button type="button" wire:click="prevStep" class="inline-flex items-center gap-1.5 rounded-lg border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:border-ink-300 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-200 dark:hover:bg-ink-800">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5 M12 19l-7-7 7-7"/></svg>
+            {{ __('editorial.back') }}
+        </button>
+        <button type="submit" class="inline-flex items-center gap-1.5 rounded-lg bg-ember-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ember-600">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            {{ __('workspace.contribution_submit') }}
+        </button>
     </div>
 </div>
