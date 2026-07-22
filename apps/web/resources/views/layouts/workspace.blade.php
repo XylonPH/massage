@@ -7,7 +7,6 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}?v={{ file_exists(public_path('favicon.ico')) ? filemtime(public_path('favicon.ico')) : 0 }}" sizes="any">
     @include('partials.theme-init')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @vite(['resources/js/establishment-map.js'])
 </head>
 <body data-workspace-shell class="min-h-screen bg-slate-50 font-sans text-charcoal-900 antialiased dark:bg-charcoal-950 dark:text-ink-50">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-ink-950 focus:px-4 focus:py-2 focus:text-white">

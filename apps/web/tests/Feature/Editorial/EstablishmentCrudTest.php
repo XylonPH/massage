@@ -4,9 +4,9 @@ namespace Tests\Feature\Editorial;
 
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Livewire\Workspace\Editorial\EstablishmentIndex;
-use App\Models\AccessAssignment;
 use App\Models\Establishment;
 use App\Models\User;
+use App\Models\UserAccess;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
@@ -18,13 +18,13 @@ class EstablishmentCrudTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Establishment::query()->delete();
     }
 
     protected function tearDown(): void
     {
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Establishment::query()->delete();
         parent::tearDown();
     }
@@ -32,11 +32,11 @@ class EstablishmentCrudTest extends TestCase
     private function editor(): User
     {
         $user = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 
@@ -226,5 +226,32 @@ class EstablishmentCrudTest extends TestCase
             ->call('save');
 
         $this->assertSame('APP', $establishment->refresh()->date_opened_qualifier);
+    }
+
+    public function test_editor_can_set_structured_address_fields(): void
+    {
+        $user = $this->editor();
+
+        Livewire::actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('state.display_name_eng', 'Calm Springs')
+            ->set('state.type_spa', 'DY')
+            ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.building_name', 'Tower A')
+            ->set('state.floor_label', '2nd Floor')
+            ->set('state.unit_label', 'Unit 201')
+            ->set('state.postal_code', '1200')
+            ->call('save');
+
+        $record = Establishment::query()->first();
+        $this->assertSame('Calm Springs Wellness Inc.', $record->official_name);
+        $this->assertSame(608, $record->country_id);
+        $this->assertSame('123 Bay Street', $record->street_address);
+        $this->assertSame('1200', $record->postal_code);
     }
 }
