@@ -1,7 +1,7 @@
 {{-- Access & delivery --}}
 <div x-show="tab === 'access'" x-cloak class="mt-5 space-y-5">
     <x-form.field :label="__('editorial.est_mode_service_delivery')">
-        <x-form.toggle-group :options="$taxonomy['mode_service_delivery']" model="state.mode_service_delivery" />
+        <x-form.toggle-group :options="$taxonomy['mode_service_delivery']" model="state.mode_service_delivery" :live="true" />
     </x-form.field>
     <div class="grid gap-5 sm:grid-cols-2">
         <x-form.field :label="__('editorial.est_mode_access')" :error="$errors->first('state.mode_access')">

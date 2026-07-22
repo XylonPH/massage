@@ -79,7 +79,19 @@ class EstablishmentForm extends Component
         'landmark_list' => ['landmark_name' => '', 'walking_duration_minute' => null, 'direction_note_eng' => ''],
         'contact_channel_list' => ['type_contact_channel' => '', 'type_contact_number' => '', 'contact_label' => '', 'contact_value' => '', 'contact_url' => '', 'status_contact_channel' => ''],
         'treatment_area_list' => ['treatment_area_name' => '', 'type_treatment_area' => '', 'level_treatment_privacy' => '', 'type_treatment_capacity' => '', 'treatment_area_note' => ''],
-        'operating_hours' => ['day_of_week' => '', 'open_time' => null, 'close_time' => null],
+        'operating_hours' => ['day_of_week' => '', 'open_time' => null, 'close_time' => null, 'is_closed' => false],
+    ];
+
+    /** type_spa codes that mean the spa has no physical premises (home-service/mobile-only) unless it also delivers on-site. */
+    private const HOME_SERVICE_ONLY_TYPES = ['HP', 'MB'];
+
+    /** @var list<string> Field names to strip from a submission when hasPhysicalPremises() is false. */
+    private const PHYSICAL_PREMISES_FIELDS = [
+        'shower_availability', 'sauna_availability', 'steam_room_availability',
+        'jacuzzi_availability', 'locker_availability', 'couple_room_availability',
+        'private_room_availability', 'curtain_divider_information',
+        'air_conditioning_information', 'room_types', 'bed_mat_chair_setup',
+        'amenity_list', 'accessibility_feature_list',
     ];
 
     /** Fixed value list for the operating_hours day_of_week select — not taxonomy-driven, mirrors the Filament source form verbatim. */
@@ -99,6 +111,22 @@ class EstablishmentForm extends Component
             'EML' => 'email',
             default => 'text',
         };
+    }
+
+    public function hasPhysicalPremises(): bool
+    {
+        $deliversOnSite = in_array('OS', $this->state['mode_service_delivery'] ?? [], true);
+        $homeServiceOnlyType = in_array($this->state['type_spa'] ?? '', self::HOME_SERVICE_ONLY_TYPES, true);
+
+        return $deliversOnSite || ! $homeServiceOnlyType;
+    }
+
+    public function updatedState(mixed $value, string $key): void
+    {
+        if (preg_match('/^operating_hours\.(\d+)\.is_closed$/', $key, $matches) && $value) {
+            $this->state['operating_hours'][(int) $matches[1]]['open_time'] = null;
+            $this->state['operating_hours'][(int) $matches[1]]['close_time'] = null;
+        }
     }
 
     public function mount(?string $establishment = null): void
@@ -132,7 +160,7 @@ class EstablishmentForm extends Component
         // (Monday–Sunday); replicate that so the Livewire form doesn't regress the authoring experience.
         if ($record === null) {
             foreach (array_slice(self::DAYS_OF_WEEK, 0, 7) as $day) {
-                $this->state['operating_hours'][] = ['day_of_week' => $day, 'open_time' => null, 'close_time' => null];
+                $this->state['operating_hours'][] = ['day_of_week' => $day, 'open_time' => null, 'close_time' => null, 'is_closed' => false];
             }
         }
     }
@@ -284,6 +312,13 @@ class EstablishmentForm extends Component
             $record->setAttribute($field, $value);
         }
 
+        if (! $this->hasPhysicalPremises()) {
+            foreach (self::PHYSICAL_PREMISES_FIELDS as $field) {
+                $this->state[$field] = in_array($field, self::LIST_FIELDS, true) ? [] : null;
+            }
+            $this->state['treatment_area_list'] = [];
+        }
+
         $plain = [];
         foreach (self::PLAIN_FIELDS as $field) {
             $plain[$field] = $this->state[$field] === '' ? null : $this->state[$field];
@@ -316,6 +351,13 @@ class EstablishmentForm extends Component
             return;
         }
         RateLimiter::hit($rateLimitKey, 60);
+
+        if (! $this->hasPhysicalPremises()) {
+            foreach (self::PHYSICAL_PREMISES_FIELDS as $field) {
+                $this->state[$field] = in_array($field, self::LIST_FIELDS, true) ? [] : null;
+            }
+            $this->state['treatment_area_list'] = [];
+        }
 
         $proposedData = [];
         foreach (self::TRANSLATED_FIELDS as $field => $stateKey) {

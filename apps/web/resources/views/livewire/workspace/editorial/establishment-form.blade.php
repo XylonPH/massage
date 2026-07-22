@@ -16,16 +16,16 @@
             @include('livewire.workspace.establishment-form._who-you-are')
         @else
             <div x-data="{ tab: 'identity' }">
-                <x-editorial.tab-bar :tabs="[
+                <x-editorial.tab-bar :tabs="array_filter([
                     'identity' => __('editorial.tab_identity'),
                     'classification' => __('editorial.tab_classification'),
                     'access' => __('editorial.tab_access'),
                     'location' => __('editorial.tab_location'),
                     'contact' => __('editorial.tab_contact'),
                     'hours' => __('editorial.tab_hours'),
-                    'facilities' => __('editorial.tab_facilities'),
+                    'facilities' => $this->hasPhysicalPremises() ? __('editorial.tab_facilities') : null,
                     'amenities' => __('editorial.tab_amenities'),
-                ]" />
+                ])" />
 
                 @include('livewire.workspace.establishment-form._tab-identity')
                 @include('livewire.workspace.establishment-form._tab-classification')

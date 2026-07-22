@@ -300,4 +300,34 @@ class ContributionTest extends TestCase
         Region::query()->getConnection()->getCollection('region_main')->deleteMany([]);
         Country::query()->getConnection()->getCollection('country_main')->deleteMany([]);
     }
+
+    public function test_facilities_tab_hidden_for_home_service_only_spa(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'HP')
+            ->set('state.mode_service_delivery', ['HM']);
+
+        $this->assertFalse($test->instance()->hasPhysicalPremises());
+    }
+
+    public function test_facility_fields_are_stripped_server_side_for_home_service_only_spa_even_if_submitted(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 3)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Mobile Massage Co')
+            ->set('state.type_spa', 'HP')
+            ->set('state.mode_service_delivery', ['HM'])
+            ->set('state.status_establishment', 'OP')
+            ->set('state.shower_availability', 'IR')
+            ->call('save');
+
+        $contribution = Contribution::query()->where('submitted_by_user_id', (string) auth()->id())->first();
+        $this->assertNull(data_get($contribution->proposed_data, 'shower_availability'));
+    }
 }

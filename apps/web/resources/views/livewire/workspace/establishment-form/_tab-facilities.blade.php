@@ -1,4 +1,5 @@
 {{-- Facilities --}}
+@if ($this->hasPhysicalPremises())
 <div x-show="tab === 'facilities'" x-cloak class="mt-5 space-y-5">
     <div class="space-y-3">
         <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.treatment_areas') }}</p>
@@ -63,3 +64,4 @@
         </x-form.field>
     </div>
 </div>
+@endif

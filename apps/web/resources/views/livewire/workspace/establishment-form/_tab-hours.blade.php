@@ -2,7 +2,11 @@
 <div x-show="tab === 'hours'" x-cloak class="mt-5 space-y-3">
     <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.operating_hours') }}</p>
     @foreach ($state['operating_hours'] as $i => $row)
-        <div class="grid gap-3 rounded-xl border border-ink-100 p-3 sm:grid-cols-[1fr_1fr_1fr_auto] dark:border-ink-800" wire:key="hours-{{ $i }}">
+        <div class="grid gap-3 rounded-xl border border-ink-100 p-3 sm:grid-cols-[auto_1fr_1fr_1fr_auto] dark:border-ink-800" wire:key="hours-{{ $i }}">
+            <label class="flex items-center gap-2 self-end pb-2 text-sm text-ink-700 dark:text-ink-300">
+                <input type="checkbox" wire:model.live="state.operating_hours.{{ $i }}.is_closed" class="rounded border-ink-300 text-ember-600 focus:ring-ember-500">
+                {{ __('editorial.closed_all_day') }}
+            </label>
             <x-form.field :label="__('editorial.day_of_week')" :error="$errors->first('state.operating_hours.'.$i.'.day_of_week')">
                 <x-form.select wire:model="state.operating_hours.{{ $i }}.day_of_week" :options="$dayOfWeekOptions" :placeholder="__('editorial.select_placeholder')" />
             </x-form.field>

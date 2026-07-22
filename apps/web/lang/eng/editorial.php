@@ -96,6 +96,7 @@ return [
     'day_of_week' => 'Day',
     'open_time' => 'Opening time',
     'close_time' => 'Closing time',
+    'closed_all_day' => 'Closed',
     'contact_channels' => 'Public business contact channels',
     'treatment_areas' => 'Treatment areas',
     'est_display_name_eng' => 'Establishment Name',
