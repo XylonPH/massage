@@ -7,6 +7,12 @@ use App\Models\Establishment;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
+/**
+ * Loads every Establishment and pending establishment Contribution into memory
+ * and normalizes/matches in PHP (no DB-side text index exists yet). Acceptable
+ * at current data volume; revisit with a text index if the establishment count
+ * grows large enough to matter.
+ */
 class DuplicateEstablishmentFinder
 {
     private const MAX_RESULTS = 5;
@@ -38,7 +44,7 @@ class DuplicateEstablishmentFinder
             ->map(fn (Contribution $contribution) => [
                 'id' => (string) $contribution->getKey(),
                 'display_name' => (string) data_get($contribution->proposed_data, 'establishment.display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng.text', data_get($contribution->proposed_data, 'display_name.eng', ''))),
-                'address_public' => data_get($contribution->proposed_data, 'establishment.address_public'),
+                'address_public' => data_get($contribution->proposed_data, 'establishment.address_public', data_get($contribution->proposed_data, 'address_public')),
                 'source' => 'contribution',
             ]);
 
@@ -47,6 +53,6 @@ class DuplicateEstablishmentFinder
 
     private function normalize(string $name): string
     {
-        return Str::of($name)->lower()->replaceMatches('/[^a-z0-9]+/', ' ')->trim()->squish()->toString();
+        return Str::of($name)->lower()->replaceMatches('/[^a-z0-9]+/', ' ')->squish()->toString();
     }
 }

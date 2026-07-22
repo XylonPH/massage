@@ -53,4 +53,23 @@ class DuplicateEstablishmentFinderTest extends TestCase
 
         $this->assertCount(0, $matches);
     }
+
+    public function test_finds_a_match_using_the_current_flat_contribution_shape(): void
+    {
+        Contribution::query()->create([
+            'type_contribution' => 'ADD',
+            'target_collection' => 'establishment_main',
+            'submitted_by_user_id' => 'Us7K2pQ9xR4tV8zN',
+            'status_contribution' => 'PND',
+            'proposed_data' => [
+                'display_name' => ['eng' => 'Sunset Wellness Spa'],
+                'address_public' => 'Taguig City',
+            ],
+        ]);
+
+        $matches = (new DuplicateEstablishmentFinder)->find('Sunset Wellness Spa');
+
+        $this->assertCount(1, $matches);
+        $this->assertSame('Taguig City', $matches->first()['address_public']);
+    }
 }
