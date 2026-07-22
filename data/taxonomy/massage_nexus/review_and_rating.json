@@ -16,7 +16,7 @@
         "selection_rule": "Single-select per review record",
         "field_description": "Discloses payment, advance notice, sponsorship, requested access, or other circumstances that may affect how a review experience was arranged or perceived.",
         "field_option": [
-            { "option_code": "SFP", "option_label": "Undisclosed Self-Paid Visit", "option_description": "The reviewer paid normally, did not announce the review, and received no review-related incentive." },
+            { "option_code": "SFP", "option_label": "Unannounced Self-Paid Visit", "option_description": "The reviewer paid normally, did not announce the review, received no review-related incentive, and must still disclose any material relationship or conflict." },
             { "option_code": "ANN", "option_label": "Announced Visit", "option_description": "The target knew in advance that the experience would be reviewed." },
             { "option_code": "SPO", "option_label": "Sponsored Visit", "option_description": "A sponsor funded or arranged the reviewed experience." },
             { "option_code": "DSC", "option_label": "Discounted Visit", "option_description": "The reviewer received a discount connected to the reviewed experience." },

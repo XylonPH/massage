@@ -1,5 +1,5 @@
 Title: Massage Nexus Legal and Public Policy Writing Guide
-Document Version: 1.00
+Document Version: 1.10
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus drafts, reviews, approves, versions, translates, publishes, corrects, archives, and presents public legal documents and public-facing policies. It governs writing and publication practice; it does not replace the substantive Terms, privacy, security, NSFW, or other policy requirements owned by docs/18-policy.
@@ -388,6 +388,11 @@ and negation require specific review after translation.
 Public legal and policy pages may use the shared editorial content system only after that system
 supports a Legal or Public Policy content type and the safeguards in this guide.
 
+Shared editorial components, localization helpers, rendering, search integration, and workspace
+tools may be reused. Reuse of tooling does not merge legal records into Article, News, or another
+content domain: the authoritative identity, immutable public version, legal metadata, approval,
+and supersession relationships remain owned by legal_main.
+
 Shared content identity and localized body storage may hold:
 - public title and slug;
 - summary;
@@ -556,6 +561,12 @@ implementation controls, or approvals remain unresolved.
 13. Monitor contact channels, legal changes, product changes, complaints, and correction needs.
 14. Replace or archive through a new controlled version when required.
 
+Each public legal document must have an assigned monitoring owner and review trigger. At minimum,
+review is triggered by a material product or data-flow change, vendor or processor change,
+jurisdiction expansion, regulator or law change, complaint pattern, broken rights channel,
+security or privacy incident, or approaching stated review date. The responsible owner and review
+date are internal operational metadata, not necessarily public text.
+
 Urgency may shorten scheduling but must not create invented approval or silently bypass required
 legal, privacy, security, or product review.
 
@@ -586,8 +597,11 @@ Do not silently delete or overwrite a version that users accepted or relied on.
 19. COMPLETED LEGAL DOCUMENT OUTPUT
 ================================================================================
 
-A requested public legal or policy draft should normally be delivered as a UTF-8 text file
-containing:
+A requested public legal or policy draft should normally be delivered as a UTF-8 text file with
+two explicitly separated parts: an Internal Publication Envelope and the Public Body. The
+Internal Publication Envelope is never published merely because the Public Body is approved.
+
+Internal Publication Envelope:
 
 Public Title:
 Document Class:
@@ -603,15 +617,21 @@ Acceptance or Acknowledgment Requirement:
 Supersedes:
 Public Change Summary:
 Public Route:
-Public Body:
 Related Controlling Documents:
 Sources Consulted:
 Required Reviewers:
 Unresolved Publication Blockers:
 
+Public Body:
+[only the user-facing controlling or explanatory text approved for publication]
+
 A draft must retain visible placeholders for unresolved facts and must say that it is not
 approved for public use. Do not fabricate a public version, effective date, reviewer, approval,
 acceptance requirement, or source.
+
+Privileged counsel advice, confidential legal strategy, protected investigation material,
+security-sensitive evidence, and private reviewer notes must remain outside the public body and
+outside any AI system not approved for that material.
 
 The Public Body may use clean controlled HTML when prepared for the content system. Internal
 review copies may remain plain text when that is easier to compare and approve.

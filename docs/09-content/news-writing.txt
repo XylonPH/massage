@@ -1,5 +1,5 @@
 Title: Massage Nexus News Writing Guide
-Document Version: 1.00
+Document Version: 1.10
 Date Created: 2026-07-18
 Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus researches, writes, edits, updates, corrects, translates, labels, and publishes timely news about the platform, massage, spas, therapists, wellness businesses, regulation, research, events, products, and related communities. It distinguishes News from Articles, announcements, opinion, sponsored content, Reviews, and unverified social-media claims.
@@ -132,6 +132,16 @@ For consequential claims:
 - distinguish what was observed from what was stated;
 - identify missing confirmation.
 
+Source evidence must be access-controlled and retained according to its sensitivity, dispute
+value, legal obligations, and approved retention policy. Anonymous-source identity, private
+communications, unpublished evidence, and embargoed material must not be placed in a public
+source list or sent to an unapproved AI provider.
+
+Reporters, editors, fact checkers, and approving staff must disclose financial, employment,
+family, ownership, competitive, advocacy, or personal relationships that could reasonably affect
+the story. A materially conflicted person should recuse from the relevant reporting or approval
+decision. Commercial disclosure alone does not cure an editorial conflict.
+
 Never invent:
 - a source;
 - interview;
@@ -221,6 +231,11 @@ Use when location is material.
 
 Publication and Update Time
 Show the original publication time and the latest material update time.
+
+Store publication, update, event, correction, and retraction timestamps in the project-standard
+UTC form. Public display may localize them, but must identify the displayed timezone when readers
+could otherwise misunderstand chronology. A date supplied by a source must not be silently
+substituted for the platform's observation, confirmation, or publication time.
 
 Lead
 State the most important confirmed development and why it matters.
@@ -497,6 +512,10 @@ or event.
 
 Generated illustration must be labeled and must not imitate evidence.
 
+Third-party text, photographs, video, audio, screenshots, documents, charts, and syndicated
+material require a recorded source and publication right. Attribution is not a substitute for a
+license, permission, public-domain basis, or legally reviewed quotation or reporting use.
+
 ================================================================================
 19. AI USE
 ================================================================================
@@ -529,7 +548,36 @@ AI must not:
 The reporter and editor remain accountable for the published story.
 
 ================================================================================
-20. MULTILINGUAL NEWS
+20. AGGREGATE NEWS AND AI-ASSISTED SYNTHESIS
+================================================================================
+
+Aggregate News combines several eligible reports, source records, data points, or related News
+items into a roundup, digest, timeline, comparison, trend summary, or continuing-story overview.
+It is a distinct editorial output, not an automatic replacement for the underlying reporting.
+
+AI may help cluster related items, remove duplicates, compare accounts, build chronology,
+identify disagreement, and draft a synthesis. Each material claim must remain traceable to the
+specific source or News record supporting it. The aggregate must identify its coverage period,
+geography or subject boundary, source count, material exclusions, last refresh time, and whether
+AI assisted the synthesis.
+
+Aggregate News must not:
+- merge separate incidents merely because their wording is similar;
+- turn repeated copying of one original report into apparent independent confirmation;
+- invent consensus, prevalence, causation, chronology, quotations, or missing facts;
+- conceal meaningful disagreement or minority evidence;
+- summarize a retracted, superseded, disputed, or materially corrected item as current fact;
+- expose protected source material, anonymous-source identity, private Review content, or
+  restricted evidence;
+- publish without accountable human editorial approval.
+
+The output should link the underlying eligible records and distinguish confirmed facts, reported
+claims, analysis, and unresolved matters. A correction or retraction in an underlying item must
+trigger review of every dependent aggregate. Live aggregates must display their latest material
+refresh time and preserve revision history.
+
+================================================================================
+21. MULTILINGUAL NEWS
 ================================================================================
 
 Preserve the source-language story and source revision.
@@ -551,7 +599,7 @@ A culturally adapted News explanation may add local context, but it must not cha
 confirmed facts.
 
 ================================================================================
-21. SPONSORED, AFFILIATE, AND COMMERCIAL MATERIAL
+22. SPONSORED, AFFILIATE, AND COMMERCIAL MATERIAL
 ================================================================================
 
 Clearly label:
@@ -573,7 +621,7 @@ A sponsor may not:
 Commercial relationships relevant to a story must be disclosed.
 
 ================================================================================
-22. PUBLICATION WORKFLOW
+23. PUBLICATION WORKFLOW
 ================================================================================
 
 1. identify the candidate story;
@@ -595,7 +643,7 @@ Urgency may shorten the workflow but must not remove verification, attribution, 
 responsibility.
 
 ================================================================================
-23. NEWS METADATA
+24. NEWS METADATA
 ================================================================================
 
 A News record may include:
@@ -630,11 +678,16 @@ A News record may include:
 
 Database fields are finalized separately.
 
+News Category, Story Type, Urgency, and correction or retraction state are controlled concepts.
+Before runtime implementation, their final field names, option codes, meanings, and compatibility
+rules must be added to the appropriate taxonomy JSON and structure guide; prose labels in this
+document are not database codes.
+
 ================================================================================
-24. NEWS CATEGORIES
+25. NEWS CATEGORIES
 ================================================================================
 
-Initial categories:
+Initial editorial categories, pending final taxonomy codes:
 - Massage Nexus;
 - Spa and Establishment;
 - Therapist and Profession;
@@ -655,7 +708,7 @@ Categories should remain broad enough to be useful and must not multiply merely 
 story.
 
 ================================================================================
-25. COMPLETED NEWS OUTPUT
+26. COMPLETED NEWS OUTPUT
 ================================================================================
 
 A requested completed News story should normally be delivered as a UTF-8 text file containing:
@@ -672,6 +725,8 @@ Author or Reporter:
 Editor:
 NSFW Level:
 Sponsorship or Conflict Disclosure:
+Aggregate Basis, if applicable:
+AI Assistance Label, if applicable:
 Related Massage Nexus Records:
 Visual Direction:
 News Body:
@@ -681,7 +736,7 @@ Sources:
 Do not claim a publication time, interview, source, or editorial approval that did not occur.
 
 ================================================================================
-26. QUALITY REVIEW
+27. QUALITY REVIEW
 ================================================================================
 
 Before approval, confirm:
@@ -697,9 +752,11 @@ Before approval, confirm:
 - privacy and safety are protected;
 - the story adds value beyond a copied press release;
 - correction and update monitoring are assigned.
+- aggregate claims remain traceable to eligible underlying sources or News records;
+- dependent aggregates were reviewed after any material source correction or retraction.
 
 ================================================================================
-27. CURRENT DIRECTIONS
+28. CURRENT DIRECTIONS
 ================================================================================
 
 - News remains separate from Articles, Reviews, announcements, opinion, and sponsored content.
@@ -717,3 +774,5 @@ Before approval, confirm:
 - AI assists research organization and writing but never invents reporting.
 - High-risk stories receive stronger factual, legal, privacy, safety, and translation review.
 - Provider profile status and News coverage may be linked but remain separate records.
+- Aggregate News may use AI-assisted synthesis, but it remains source-traceable, visibly labeled,
+  revision-aware, and human-approved.

@@ -1,5 +1,5 @@
 Title: Massage Nexus Quote System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
 Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
@@ -30,7 +30,7 @@ the completion-rotation behavior defined for Surveys and Quizzes. Quote rotation
 
 Each quote should preserve:
 - the quote text, multilingual where translated;
-- attribution (person, work, tradition, or Unknown/Anonymous where genuinely unattributable);
+- attribution as a person, work, Anonymous, Traditional or Proverb, or Attribution Unverified;
 - source context where known;
 - category from the type_quote_category taxonomy;
 - optional display window for seasonal or campaign use;
@@ -44,6 +44,31 @@ Rules:
   a guessed source;
 - translated quote text follows docs/13-localization/translation-system.txt; the original language remains preserved in language_original_id. When a quote lacks a translation in the visitor's UI locale, fallback logic presents the original language or English fallback before hiding the module.
 
+Anonymous means the creator intentionally published without a name or cannot be identified after
+reasonable verification. Traditional or Proverb means the text belongs to a documented cultural
+or oral tradition rather than one named speaker. Attribution Unverified means a claimed source is
+not sufficiently supported and blocks publication. These states must not be collapsed into one
+public "Unknown/Anonymous" label.
+
+Rights and Source Approval
+--------------------------
+
+Attribution does not by itself authorize republication. Before approval, every quote must record
+one supported publication basis:
+
+- original Massage Nexus text;
+- public-domain text;
+- licensed text;
+- permission obtained from the applicable rights holder;
+- a short quotation or excerpt approved under the applicable legal-review standard.
+
+Editorial verification should preserve the source edition, recording, interview, speech, or
+other exact context; page, timestamp, or location where practical; source URL or identifier;
+verification date; reviewer; and publication-right basis. A source title or URL may remain
+private when necessary, but the supporting evidence must exist and be accessible to authorized
+reviewers. A quote with uncertain attribution, uncertain wording, or unresolved rights must not
+enter the approved rotation pool.
+
 ================================================================================
 3. PLACEMENT AND ROTATION
 ================================================================================
@@ -53,9 +78,19 @@ may include Relaxation Rooms, Campus pages, or newsletters without changing quot
 
 Users can hide the right sidebar module if they wish not to see it, and this preference will be saved in their settings.
 
-Rotation is once a day from the approved active pool, respecting display
-windows. Rotation does not depend on per-user completion state because there is nothing for the
-user to complete.
+Rotation is once a day from the approved active pool, respecting display windows. The daily
+selection is global for the active locale rather than personalized per user. The platform timezone
+defined by deployment configuration controls the calendar-day boundary; public behavior must not
+depend on an editor's browser timezone.
+
+The selector should be deterministic for one locale and calendar day, avoid immediate repeats
+when at least two eligible quotes exist, and remain stable during the day even when a user reloads.
+If the locale-specific pool is empty, apply the Translation System fallback to an eligible source
+quote. If no eligible quote exists in any permitted fallback locale, hide the module rather than
+display an unapproved, expired, restricted, or hard-coded quotation.
+
+Rotation does not depend on per-user completion state because there is nothing for the user to
+complete. Hiding the module is a user display preference and does not alter the global selection.
 
 ================================================================================
 4. STORAGE AND ADMINISTRATION
@@ -64,17 +99,30 @@ user to complete.
 The proposed collection is quote_main; see the structure guide at
 data/structure_guide/quote_main.php. Quote categories come from
 type_quote_category in data/taxonomy/massage_nexus/content_classification.json.
+Before dynamic rotation is released, the structure guide and runtime form must represent the
+source-verification and publication-right basis required by section 2; source_title and source_url
+alone are not sufficient approval evidence.
 
 Administration (attribution, source, language, category, display window, duplication review,
 approval, scheduling, retirement, correction) belongs to the Admin Workspace editorial area per
 docs/11-workspaces/admin-workspace.txt. The homepage currently renders one temporary hard-coded
 sample quote; replacing it with quote_main-backed rotation is pending implementation.
 
+The shared status_review taxonomy in
+data/taxonomy/shared/record_lifecycle_and_review.json is the canonical review-status vocabulary.
+The existing quote_main guide and runtime enum still use the older P/A/N/R codes; they require a
+coordinated structure, code, and data migration before dynamic rotation is released.
+
+A material wording or attribution correction must preserve an audit record and remove the
+incorrect version from rotation immediately. Do not silently rewrite a previously displayed
+quotation when the correction changes its wording, speaker, source, or publication-right basis.
+Archived or withdrawn quotes remain unavailable to rotation while their authorized history is
+preserved under the retention policy.
+
 ================================================================================
 5. OPEN DECISIONS
 ================================================================================
 
-- final quote curation sources and licensing/copyright review workflow for quoted material;
 - whether user-suggested quotes are ever accepted through the contribution system;
-- exact rotation schedule and whether rotation is per-locale;
+- final per-locale translation policy and minimum eligible pool size;
 - additional placements beyond the homepage.

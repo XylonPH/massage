@@ -1,17 +1,24 @@
 Title: Massage Nexus Article Topic Calendar
-Document Version: 2.40
+Document Version: 2.50
 Date Created: 2026-07-04
 Revision Date: 2026-07-22
-Document Description: Working topic calendar, release dates, categories, target audiences, suggested Neural Agents, and word count targets for Massage Nexus published articles.
+Document Description: Maintains the working Massage Nexus Article backlog, proposed release dates, classifications, audiences, Neural Agent assignments, and target lengths. It is a planning inventory governed by docs/09-content/article-writing.txt and is not a permanent publication record.
 
 Related Documents:
 - docs/09-content/article-writing.txt
+- docs/09-content/article-writing-prompts.txt
 
 ================================================================================
 1. RELEASE CALENDAR NOTES
 ================================================================================
 
-Format: YYYY-MM-DD | Article Title | Category | Target Audience | Suggested Neural Agent | Suggested Word Count
+Format: Status | YYYY-MM-DD | Article Title | Category | Target Audience | Suggested Neural Agent | Suggested Word Count
+
+- Planned: The target date is still active and future-facing.
+- Written: A draft exists; this does not mean the Article has been approved or published.
+- Backlog: The original target date passed without publication and needs a new scheduling decision.
+- Rescheduled: An accepted replacement date has been assigned.
+- Published: Remove from this working calendar and record in the publication tracker.
 
 The calendar begins on World Massage Day, July 11, 2026. The dates are planning guides for release order and seasonal timing, not permanent publishing records. Once an article is published, remove it from this working list or move it to a separate published-content tracker. Some intentional date gaps may remain when a title fits better on a later occasion such as Mother's Day or Father's Day.
 
@@ -26,7 +33,7 @@ The location series should include one general guide about market fit, accessibi
 2. ARTICLE TOPIC CALENDAR AND CLASSIFICATION
 ================================================================================
 
-Written means the original line was marked with ?, which the source file defines as written already.
+Status records planning state only. Publication state remains authoritative in the Article system.
 
 Status  | Date       | Article Title                                                                                                      | Category                                           | Target Audience | Suggested Neural Agent | Suggested Word Count
 --------+------------+--------------------------------------------------------------------------------------------------------------------+----------------------------------------------------+-----------------+------------------------+---------------------
@@ -36,12 +43,12 @@ Written | 2026-07-13 | Spa Etiquette 101: What's Actually Expected of You       
 Written | 2026-07-14 | Questions to Ask Before Booking a Massage: A Practical Guide                                                       | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
 Written | 2026-07-15 | Choosing the Right Spa: A Practical Guide Before Booking                                                           | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
 Written | 2026-07-16 | Is It Rude to Fall Asleep During a Massage?                                                                        | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
-Planned | 2026-07-17 | Meet The Resting Leaf: Our Comic World Says Hi                                                                     | Platform and Community Identity                    | General         | Brio Nexus             | 700–1,200 words
+Backlog | 2026-07-17 | Meet The Resting Leaf: Our Comic World Says Hi                                                                     | Platform and Community Identity                    | General         | Brio Nexus             | 700–1,200 words
 Written | 2026-07-18 | Massage Is Not A Sexual Service: Why Boundaries Matter                                                             | Safety, Boundaries and Professional Trust          | General         | Atlas Blackwell        | 1,200–2,000 words
-Planned | 2026-07-19 | Red Flags During a Massage: When to Speak Up or Leave                                                              | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
-Planned | 2026-07-20 | 5 Green Flags and 3 Red Flags to Look for Before Booking a Neighborhood Spa                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
-Planned | 2026-07-21 | How to Tell Your Therapist the Pressure Is Too Hard or Too Soft                                                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
-Planned | 2026-07-22 | Underwear or Naked? Navigating Draping and Clothing Preferences on the Massage Table                               | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
+Backlog | 2026-07-19 | Red Flags During a Massage: When to Speak Up or Leave                                                              | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
+Backlog | 2026-07-20 | 5 Green Flags and 3 Red Flags to Look for Before Booking a Neighborhood Spa                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Avery Knox             | 900–1,500 words
+Backlog | 2026-07-21 | How to Tell Your Therapist the Pressure Is Too Hard or Too Soft                                                    | Pressure, Pain, Recovery and Aftercare             | Client    | Felix Tanaka           | 1,200–2,000 words
+Backlog | 2026-07-22 | Underwear or Naked? Navigating Draping and Clothing Preferences on the Massage Table                               | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
 Written | 2026-07-23 | Should You Shower Before or After a Massage?                                                                       | Hygiene, Cleanliness and Service Comfort           | Client          | Juno Reyes             | 900–1,500 words
 Planned | 2026-07-24 | How to Tell If a Spa Takes Hygiene Seriously                                                                       | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
 Planned | 2026-07-25 | Allergies, Oils, and Sensitive Skin: Questions Worth Asking Before You Book                                        | Hygiene, Cleanliness and Service Comfort           | Client          | Atlas Blackwell        | 900–1,500 words
@@ -51,7 +58,7 @@ Planned | 2026-07-28 | Hilot vs. Modern Massage: What's the Same, What's Differe
 Planned | 2026-07-29 | Foot Reflexology, Explained Without the Mysticism                                                                  | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-07-30 | Deep Tissue Massage: Why "More Pressure" Isn't Always "Better"                                                     | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-07-31 | How Often Should You Get a Massage?                                                                                | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
-Planned | 2026-08-01 | Post-Massage Soreness: When Is It Normal "Good Pain" vs. Bad Technique?                                            | Massage Types, Techniques and Traditions           | Client          | Kenji Navarro          | 900–1,500 words
+Planned | 2026-08-01 | Post-Massage Soreness: When Is It Normal "Good Pain" vs. Bad Technique?                                            | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-08-02 | One Bad Review Doesn't Tell the Whole Story — Here's How to Read Patterns                                          | Choosing Spas, Booking, Pricing and Reviews        | Client          | Avery Knox             | 900–1,500 words
 Planned | 2026-08-03 | How to Write a Review That Actually Helps the Next Person                                                          | Choosing Spas, Booking, Pricing and Reviews        | Client          | Felix Tanaka           | 900–1,500 words
 Planned | 2026-08-04 | Budget vs. Premium Spas: You're Not Always Paying for Better                                                       | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
@@ -70,7 +77,7 @@ Planned | 2026-08-16 | Which Massage Oil Is Right for Me?                       
 Planned | 2026-08-17 | Why Words Matter: Avoiding Suggestive Spa Marketing                                                                | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
 Planned | 2026-08-18 | Cancellation and No-Show Norms: What's Fair to Both Sides                                                          | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
 Planned | 2026-08-19 | Quick Kwento & Coffee: Wellness Habits That Fit Into a Busy Commuter's Schedule                                    | Everyday Wellness, Sleep and Self-Care             | General         | Maya Kestrel           | 900–1,500 words
-Planned | 2026-08-20 | The Role of Hydration: Why Therapists Tell You to Drink Water After Your Treatment                                 | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-08-20 | The Role of Hydration: Why Therapists Tell You to Drink Water After Your Treatment                                 | Pressure, Pain, Recovery and Aftercare             | Client    | Felix Tanaka           | 1,200–2,000 words
 Planned | 2026-08-21 | Heat vs. Ice: Which Should You Reach For When Back or Shoulder Pain Strikes?                                       | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-08-22 | Useful Massage Phrases for Travelers                                                                               | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
 Planned | 2026-08-23 | TESDA, DOH, Business Permits: What Massage Professionals Should Understand                                         | Spa Business, Design and Operations                | Owner           | Cassian Brooks         | 1,200–2,000 words
@@ -84,7 +91,7 @@ Planned | 2026-08-30 | Home Service vs. Spa Studio: Pros, Cons, and Safety Prepa
 Planned | 2026-08-31 | The Ergonomic Desk Audit: 5 Simple Adjustments to Prevent "Tech Neck" at Work                                      | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
 Planned | 2026-09-01 | Aromatherapy Massage: Relaxing or Overrated?                                                                       | Oils, Products and Home Wellness Tools             | Client          | Felix Tanaka           | 900–1,500 words
 Planned | 2026-09-02 | What to Know Before Visiting a Spa in Another Country                                                              | Local Practice, Credentials and Global Spa Culture | Traveler        | Noah Calder            | 1,100–1,800 words
-Planned | 2026-09-03 | Shaving, Scars, and Stretch Marks: Why Your Therapist Only Sees Your Muscle Map                                    | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
+Planned | 2026-09-03 | Shaving, Scars, and Stretch Marks: Why Your Therapist Only Sees Your Muscle Map                                    | First-Time Massage and Spa Etiquette               | Client    | Felix Tanaka           | 1,200–2,000 words
 Planned | 2026-09-04 | Starting a Spa Business Checklist: The Regulatory, Safety, and Equipment Essentials                                | Spa Business, Design and Operations                | Owner           | Felix Tanaka           | 1,200–2,000 words
 Planned | 2026-09-05 | Home Service Massage or Spa Visit: Which One Is Better for You                                                     | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 900–1,500 words
 Planned | 2026-09-06 | Massage for People with Diabetes: Safety Notes Before Booking                                                      | Special Care, Accessibility and Caregiving         | Client          | Nora Solis             | 1,200–2,000 words
@@ -106,7 +113,7 @@ Planned | 2026-09-21 | Massage for Teens: Sports, Stress, Posture, and Boundarie
 Planned | 2026-09-22 | The Contraindication Checklist: Visual Skin Indicators That Tell a Therapist to Work Around an Area                | Practitioner Practice and Career Development       | Practitioner    | Felix Tanaka           | 1,200–2,000 words
 Planned | 2026-09-23 | Involuntary Reflexes: Why Your Body Twitches Right Before You Fall Asleep on the Massage Table                     | Body, Posture and Stress Science                   | General         | Kenji Navarro          | 1,100–1,800 words
 Planned | 2026-09-24 | The Geek’s Guide to Getting a Massage: Resetting Muscles Strained by Long Gaming and Coding Sessions               | First-Time Massage and Spa Etiquette               | Client          | Juno Reyes             | 1,200–2,000 words
-Planned | 2026-09-25 | How to Price Massage Services Without Looking Cheap or Overpriced                                                  | Choosing Spas, Booking, Pricing and Reviews        | Client          | Noah Calder            | 900–1,500 words
+Planned | 2026-09-25 | How to Price Massage Services Without Looking Cheap or Overpriced                                                  | Spa Business, Design and Operations                | Owner          | Noah Calder            | 900–1,500 words
 Planned | 2026-09-26 | When Heat Therapy Is Not a Good Idea                                                                               | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-09-27 | Can I Take a Bath After a Massage? The Truth Behind the Common Advice                                              | Pressure, Pain, Recovery and Aftercare             | Client          | Kenji Navarro          | 900–1,500 words
 Planned | 2026-09-28 | What Should a Therapist Do If a Client Gets an Erection?                                                           | Safety, Boundaries and Professional Trust          | Client          | Atlas Blackwell        | 1,200–2,000 words

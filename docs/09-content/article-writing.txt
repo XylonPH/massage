@@ -1,10 +1,13 @@
 Title: Massage Nexus Article Writing Guide
-Document Version: 2.40
+Document Version: 2.50
 Date Created: 2026-07-04
 Revision Date: 2026-07-22
-Document Description: Defines Massage Nexus article-writing guidance, article topic scope, title selection, target article length ranges, Neural Agent use in article planning, approved article categories, target audience labels, research and source handling, visual direction, article NSFW levels, reading-duration handling, downloadable text-file output rules, article rating/reaction references, reputation-effect references, reward references, data-structure references, and reusable article prompts.
+Document Description: Defines Massage Nexus article-writing scope, quality, research, classification, safety, authorship, AI assistance, reading-duration handling, media planning, output structure, and current workspace implementation boundaries. The working topic calendar and reusable prompt library are maintained separately so growing inventories do not obscure the governing rules.
 Related Documents:
 - docs/09-content/article-calendar.txt
+- docs/09-content/article-writing-prompts.txt
+- data/taxonomy/massage_nexus/content_classification.json
+- data/common_reference/neural_agent.json
 - docs/09-content/the-resting-leaf.txt
 - docs/09-content/news-writing.txt
 - docs/09-content/legal-writing.txt
@@ -113,7 +116,7 @@ AI and Reading Duration
 
 If AI is not available, the system formula should compute reading duration.
 
-If AI is available, AI may recommend reading duration, but the system formula should remain available as a fallback and consistency check.
+AI may recommend whether the ordinary or dense-content divisor applies, but stored duration must be calculated by the deterministic system formula. AI must not replace the computed value with an unsupported estimate.
 
 Reading duration is an interface estimate, not a promise that every reader will finish at that exact time. Reading speed varies by person, language, device, complexity, and accessibility method.
 
@@ -205,6 +208,8 @@ Use the current PHP-readable structure guides under data/structure_guide/:
 - media_image.php and media_video.php for media metadata and relationships.
 
 
+The shared status_review taxonomy in data/taxonomy/shared/record_lifecycle_and_review.json is the canonical review-status vocabulary. Existing Article structures and runtime code that still use the older P/A/N/R review codes require a coordinated migration before those codes are treated as final.
+
 This guide does not define public article routes. The article slug remains required metadata, but route structure belongs in the latest Massage Nexus Site Structure Map and related implementation documentation.
 
 Articles use article_main, article_body, and article_revision. They do not use a generic content_main collection or a type_content discriminator. News, Reviews, Comics, public Legal documents, and Announcements remain separate domains. Article bodies are stored as controlled HTML in article_body, not as Markdown or plain text.
@@ -217,8 +222,8 @@ article_revision.review_note contains the decision about one exact revision, so 
 duplicates.
 
 Article persistence follows the structure-guide sparse-default rule. Values equal to documented
-omission defaultsâ€”including pending review, draft/private state, active lifecycle, zero counters,
-empty lists, no NSFW classification, and default multilingual Human/Approved metadataâ€”are omitted
+omission defaults—including pending review, draft/private state, active lifecycle, zero counters,
+empty lists, no NSFW classification, and default multilingual Human/Approved metadata—are omitted
 from actual records. Reads and filters must interpret absence as the default. Saving a record back
 to a default removes the stored property rather than writing the default explicitly.
 
@@ -285,7 +290,7 @@ Suggested Neural Agent Fit
 --------------------------
 
 Neural Agent    | Best Fit
-----------------+------------------------------------------------------------------------------------------------------------------------------
+-----------------+------------------------------------------------------------------------------------------------------------------------------
 Atlas Blackwell | Best for safety, trust, boundaries, serious risks, protective guidance, and strategic warnings.
 Avery Knox      | Best for skeptical reviews, red flags, weak claims, overhype, and dry corrective articles.
 Brio Nexus      | Best for playful, internet-native, weird, fictional, pop-culture, and experimental angles.
@@ -351,38 +356,49 @@ Prefer official agencies, primary sources, recognized professional organizations
 
 When sources are used, factual claims that depend on them should be attributed naturally in the article when appropriate, and every consulted source that materially informed the article should appear in the Sources section. Sources may be listed as None used when the article is original commentary, creative writing, general platform guidance, or a stable explanation that genuinely did not require external research.
 
+Editorial Risk and Specialist Review
+-------------------------------------
+
+Medical, clinical, pregnancy, disability, senior-care, child-safety, legal, regulatory, scientific, financial, and serious professional-conduct Articles require stronger source and reviewer handling. The Article assignment should identify the applicable risk subject, the required specialist or editorial reviewer, and any publication blocker before drafting begins.
+
+Risk handling is independent from NSFW classification. A medically important Article may be NSFW None while still requiring qualified medical or safety review. A sensitive Article must not receive a safer preview merely because its underlying purpose is educational.
+
 Article Category List
 ---------------------
 
-No. | Category                                           | Description
-----+----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-01  | Platform and Community Identity                    | Launch notes, platform explanations, editorial identity, brand-world setup, community purpose, and Massage Nexus positioning belong here.
-02  | First-Time Massage and Spa Etiquette               | Beginner-friendly guidance about what happens before, during, and after a massage, including manners, comfort, clothing, conversation, and normal spa behavior.
-03  | Choosing Spas, Booking, Pricing and Reviews        | Decision-making articles that help readers compare establishments, understand value, read reviews, book wisely, and avoid poor-fit choices.
-04  | Safety, Boundaries and Professional Trust          | Articles about consent, professional limits, sensitive situations, ethical conduct, public trust, red flags, and the protection of both clients and practitioners.
-05  | Hygiene, Cleanliness and Service Comfort           | Practical articles about linens, rooms, oils, sanitation, skin concerns, smells, bodily noises, service comfort, and visible cleanliness signals.
-06  | Massage Types, Techniques and Traditions           | Plain-language explainers about massage modalities, bodywork traditions, treatment formats, technique differences, and how to choose a suitable style.
-07  | Pressure, Pain, Recovery and Aftercare             | Articles about pressure, soreness, hydration, heat, ice, exercise timing, post-treatment recovery, and knowing when discomfort is not normal.
-08  | Body, Posture and Stress Science                   | Accessible body-education content about muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and recovery mechanisms.
-09  | Everyday Wellness, Sleep and Self-Care             | Habit-based wellness articles about burnout, sleep, digital fatigue, sensory overload, decompression, rest routines, and small resets between spa visits.
-10  | Oils, Products and Home Wellness Tools             | Guides about oils, balms, linens, tools, aromatherapy, hydrotherapy items, home-care supplies, and practical wellness finds.
-11  | Special Care, Accessibility and Caregiving         | Content for pregnancy, seniors, children, disability, limited mobility, illness recovery, family caregiving, home support, and dignity-centered care.
-12  | Local Practice, Credentials and Global Spa Culture | Articles about local massage terms, credentials, regulations, cultural practices, travel etiquette, public bathhouses, tipping abroad, and international spa expectations.
-13  | Spa Business, Design and Operations                | Business-facing content about starting, managing, designing, pricing, staffing, marketing, scheduling, complaint handling, and improving establishment operations.
-14  | Practitioner Practice and Career Development       | Practitioner-focused articles about technique, ergonomics, boundaries, client communication, professional conduct, safety, reputation, and continuing growth.
-15  | Fictional, Seasonal and Pop-Culture Features       | Imaginative, seasonal, comic-adjacent, supernatural, celebrity-style, or pop-culture articles that still connect clearly to massage, recovery, touch, or wellness.
+The codes below are the stable values owned by data/taxonomy/massage_nexus/content_classification.json. Labels and descriptions in this guide explain editorial use; code changes require a coordinated taxonomy and implementation update.
+
+Code | Category                                           | Description
+-----+----------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PCI | Platform and Community Identity                    | Launch notes, platform explanations, editorial identity, brand-world setup, community purpose, and Massage Nexus positioning belong here.
+FTM | First-Time Massage and Spa Etiquette               | Beginner-friendly guidance about what happens before, during, and after a massage, including manners, comfort, clothing, conversation, and normal spa behavior.
+CBR | Choosing Spas, Booking, Pricing and Reviews        | Decision-making articles that help readers compare establishments, understand value, read reviews, book wisely, and avoid poor-fit choices.
+SBT | Safety, Boundaries and Professional Trust          | Articles about consent, professional limits, sensitive situations, ethical conduct, public trust, red flags, and the protection of both clients and practitioners.
+HYG | Hygiene, Cleanliness and Service Comfort           | Practical articles about linens, rooms, oils, sanitation, skin concerns, smells, bodily noises, service comfort, and visible cleanliness signals.
+MTT | Massage Types, Techniques and Traditions           | Plain-language explainers about massage modalities, bodywork traditions, treatment formats, technique differences, and how to choose a suitable style.
+PRA | Pressure, Pain, Recovery and Aftercare             | Articles about pressure, soreness, hydration, heat, ice, exercise timing, post-treatment recovery, and knowing when discomfort is not normal.
+BPS | Body, Posture and Stress Science                   | Accessible body-education content about muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and recovery mechanisms.
+WSC | Everyday Wellness, Sleep and Self-Care             | Habit-based wellness articles about burnout, sleep, digital fatigue, sensory overload, decompression, rest routines, and small resets between spa visits.
+OPH | Oils, Products and Home Wellness Tools             | Guides about oils, balms, linens, tools, aromatherapy, hydrotherapy items, home-care supplies, and practical wellness finds.
+SAC | Special Care, Accessibility and Caregiving         | Content for pregnancy, seniors, children, disability, limited mobility, illness recovery, family caregiving, home support, and dignity-centered care.
+LPG | Local Practice, Credentials and Global Spa Culture | Articles about local massage terms, credentials, regulations, cultural practices, travel etiquette, public bathhouses, tipping abroad, and international spa expectations.
+SBO | Spa Business, Design and Operations                | Business-facing content about starting, managing, designing, pricing, staffing, marketing, scheduling, complaint handling, and improving establishment operations.
+PPC | Practitioner Practice and Career Development       | Practitioner-focused articles about technique, ergonomics, boundaries, client communication, professional conduct, safety, reputation, and continuing growth.
+FSP | Fictional, Seasonal and Pop-Culture Features       | Imaginative, seasonal, comic-adjacent, supernatural, celebrity-style, or pop-culture articles that still connect clearly to massage, recovery, touch, or wellness.
 
 Target Audience Labels
 ----------------------
 
-No. | Audience     | Description
-----+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-01  | General      | Broad readers interested in Massage Nexus, wellness culture, public awareness, humor, body education, platform updates, or practical self-care.
-02  | Client       | People who book, compare, visit, or consider massage and spa services, including first-time spa-goers and regular clients.
-03  | Practitioner | Massage therapists, bodyworkers, wellness practitioners, students, or people practicing hands-on care in professional or learning contexts.
-04  | Owner        | Spa owners, establishment managers, operators, marketers, and decision-makers responsible for service quality, reputation, staffing, pricing, or business operations.
-05  | Caregiver    | Family members or helpers supporting older adults, patients, children, bedridden persons, recovering loved ones, or dependent family members.
-06  | Traveler     | Readers visiting spas, bathhouses, wellness destinations, or massage providers outside their familiar area or culture.
+The codes below are the stable values owned by data/taxonomy/massage_nexus/content_classification.json.
+
+Code | Audience     | Description
+-----+--------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+G   | General      | Broad readers interested in Massage Nexus, wellness culture, public awareness, humor, body education, platform updates, or practical self-care.
+C   | Client       | People who book, compare, visit, or consider massage and spa services, including first-time spa-goers and regular clients.
+P   | Practitioner | Massage therapists, bodyworkers, wellness practitioners, students, or people practicing hands-on care in professional or learning contexts.
+O   | Owner        | Spa owners, establishment managers, operators, marketers, and decision-makers responsible for service quality, reputation, staffing, pricing, or business operations.
+V   | Caregiver    | Family members or helpers supporting older adults, patients, children, bedridden persons, recovering loved ones, or dependent family members.
+T   | Traveler     | Readers visiting spas, bathhouses, wellness destinations, or massage providers outside their familiar area or culture.
 
 Completed Article Text-File Output
 ----------------------------------
@@ -432,336 +448,7 @@ Code block (text):
 
 The Body remains clean article-ready HTML even though the containing deliverable is a .txt file. Reading Duration should be calculated from the final visible article body and should include both stored seconds and a readable display value.
 
-Reusable Prompt Roles
----------------------
+Reusable Prompt Library
+-----------------------
 
-Massage Nexus uses three different prompt types:
-
-1. Article Writing Thread Starter Prompt: Used once when opening a dedicated article-writing thread. It establishes editorial scope, categories, audiences, Neural Agents, research behavior, output-file rules, and expected article structure.
-2. Follow-Up Article Request Prompt: Used after the thread has been established whenever one or more specific articles should be created.
-3. Article Image Thread Starter and Image Request Prompts: Used in a separate media-creation thread and should not be mixed with article drafting.
-
-Reusable Follow-Up Prompt for Requesting an Article
----------------------------------------------------
-
-Use this after the Article Writing Thread Starter Prompt has already established the Massage Nexus context. The request may contain one article or several articles.
-
-Prompt
-~~~~~~
-
-Code block (text):
-    Create the following Massage Nexus article or articles using the established instructions for this thread.
-
-    Article Request 1
-    Topic or Working Idea: [TOPIC OR WORKING IDEA]
-    Working Title, if any: [OPTIONAL TITLE]
-    Category: [APPROVED CATEGORY, OR RECOMMEND ONE]
-    Target Audience: [General / Client / Practitioner / Owner / Caregiver / Traveler]
-    Suggested Neural Agent: [NAME, OR RECOMMEND ONE]
-    Target Length: [WORD RANGE, OR USE THE GUIDE]
-    Visual or Media Notes: [OPTIONAL]
-    Special Requirements: [OPTIONAL]
-
-    [Repeat the Article Request block when requesting more than one article.]
-
-    For each requested article:
-
-    - Research credible and current sources when external research would materially improve accuracy, completeness, cultural context, or usefulness.
-    - For medical, safety, legal, regulatory, country-specific, historical, statistical, pricing, travel, or location-sensitive topics, prioritize authoritative and current sources.
-    - Stable general knowledge, original commentary, and creative material may be written without external sources when research is not genuinely needed.
-    - Never fabricate a source. When no external source was used, write `Sources: None used`.
-    - Follow the selected Neural Agent's article-writing style, tone, humor, personality, and relevant preferences while keeping the article recognizably suitable for Massage Nexus.
-    - Write the Body in clean article-ready HTML without unnecessary inline styling.
-    - Position media tokens such as [media:image_1] or [media:video_1] where the suggested media belongs.
-    - Include a concise Visual Direction and one to five useful media suggestions. Images are preferred for Neural Agent-generated drafts unless video is genuinely necessary.
-    - Include the article NSFW Level and an NSFW Level for each suggested media item.
-    - Calculate visual and spoken reading duration from the final visible article body. Give both seconds and a readable display value.
-    - Create one downloadable UTF-8 `.txt` file per article. Do not paste the complete article into the chat unless file creation fails.
-
-    Use the final article title as the file name. Preserve spaces and readable capitalization. Do not slugify the file name. Remove or replace Windows-invalid characters: \ / : * ? " < > |. A colon should normally become ` -`. Add `.txt`.
-
-    Each file must use this structure:
-
-    Title: [not more than 75 characters]
-    File Name: [Windows-safe final title with .txt]
-    Slug: [not more than 100 characters]
-    Short Description: [not more than 255 characters]
-    Category: [approved category]
-    Target Audience: [approved target audience]
-    Tags: [comma-separated, lowercase; use hyphens inside multi-word tags]
-    Neural Agent: [selected writing-style basis]
-    NSFW Level: [None / Mild / Sensitive / Explicit]
-    Reading Duration:
-    - Visual: [seconds] ([readable duration])
-    - Spoken: [seconds] ([readable duration])
-    Visual Direction:
-    [concise hero-image or overall visual direction]
-    Media:
-    - image_1:
-      - placement: [body position or section]
-      - description: [what it should show or an image prompt]
-      - aspect ratio: [recommended ratio]
-      - NSFW Level: [None / Mild / Sensitive / Explicit]
-    - image_2: [optional]
-    - video_1: [optional and only when genuinely useful]
-    Body:
-    [clean article-ready HTML with correctly positioned media tokens]
-    Sources:
-    - [source title] | [organization or publication] | [URL or publication identifier]
-    or
-    Sources: None used
-
-Release Calendar Notes
-----------------------
-
-The working topic calendar inventory, release dates, categories, target audiences, suggested Neural Agents, and word count targets have been separated into `docs/09-content/article-calendar.txt` per Section 11 of docs/02-governance/documentation-standard.txt.
-
-Please consult [article-calendar.txt](file:///C:/code/multiplatform/massage/docs/09-content/article-calendar.txt) for the complete 300+ article working topic calendar.
-
-Reusable Starter Prompt for Article Writing Thread
---------------------------------------------------
-
-Code block (text):
-    This chat thread will be used to help me plan, draft, revise, and improve articles for Massage Nexus.
-    Massage Nexus is a massage, spa, wellness, and bodywork discovery platform. Its articles should help readers discover, understand, compare, discuss, and experience massage, spa, and wellness services with more confidence. Articles may cover spa-going guidance, massage education, practitioner professionalism, safety, boundaries, hygiene, local and global spa culture, wellness habits, caregiving, products, business operations, public awareness, and light fictional or pop-culture topics when they still connect clearly to massage, recovery, touch, service culture, bodywork, or wellness discovery.
-    This thread is not only for generating finished articles. It may also be used for brainstorming topics, improving titles, assigning target audience labels, selecting the best Neural Agent writing voice, planning media, rewriting weak sections, checking whether an article sounds too AI-written, and improving clarity, structure, tone, usefulness, and reader appeal.
-    Massage Nexus articles should not feel like generic SEO filler. They should be well worded, human, useful, distinctive, and clear enough for the intended target audience. A clinical topic may be clinical. A complicated topic may be properly complicated. A humorous topic may be playful. A business topic may be direct and practical. Do not force every article to begin the same way. Do not repeatedly summarize and conclude after every section. Avoid the common AI habit of sounding polished but empty.
-    Media placement tokens may be inserted inside the body where an image or video should appear, such as [media:image_1] or [media:video_1].
-    When I request one or more complete articles, create one downloadable UTF-8 text file per article rather than pasting the full article into the chat. Use the final article title as the file name, preserve spaces, do not slugify the file name, remove Windows-invalid characters, and include all metadata, visual planning, article-ready HTML, reading duration, and sources inside the file.
-    Use stable general knowledge when sufficient, but search credible resources whenever research would materially improve accuracy or completeness. Current legal, regulatory, medical, safety, scientific, country-specific, pricing, location, historical, and travel claims should use authoritative and current sources whenever available. Never invent sources. Sources may be `None used` for original commentary, creative material, or stable general guidance that genuinely required no external research.
-    Approved article categories:
-    01. Platform and Community Identity: Launch notes, platform explanations, editorial identity, brand-world setup, community purpose, and Massage Nexus positioning belong here.
-    02. First-Time Massage and Spa Etiquette: Beginner-friendly guidance about what happens before, during, and after a massage, including manners, comfort, clothing, conversation, and normal spa behavior.
-    03. Choosing Spas, Booking, Pricing and Reviews: Decision-making articles that help readers compare establishments, understand value, read reviews, book wisely, and avoid poor-fit choices.
-    04. Safety, Boundaries and Professional Trust: Articles about consent, professional limits, sensitive situations, ethical conduct, public trust, red flags, and the protection of both clients and practitioners.
-    05. Hygiene, Cleanliness and Service Comfort: Practical articles about linens, rooms, oils, sanitation, skin concerns, smells, bodily noises, service comfort, and visible cleanliness signals.
-    06. Massage Types, Techniques and Traditions: Plain-language explainers about massage modalities, bodywork traditions, treatment formats, technique differences, and how to choose a suitable style.
-    07. Pressure, Pain, Recovery and Aftercare: Articles about pressure, soreness, hydration, heat, ice, exercise timing, post-treatment recovery, and knowing when discomfort is not normal.
-    08. Body, Posture and Stress Science: Accessible body-education content about muscles, fascia, posture, breathing, nervous-system stress, inflammation, circulation, and recovery mechanisms.
-    09. Everyday Wellness, Sleep and Self-Care: Habit-based wellness articles about burnout, sleep, digital fatigue, sensory overload, decompression, rest routines, and small resets between spa visits.
-    10. Oils, Products and Home Wellness Tools: Guides about oils, balms, linens, tools, aromatherapy, hydrotherapy items, home-care supplies, and practical wellness finds.
-    11. Special Care, Accessibility and Caregiving: Content for pregnancy, seniors, children, disability, limited mobility, illness recovery, family caregiving, home support, and dignity-centered care.
-    12. Local Practice, Credentials and Global Spa Culture: Articles about local massage terms, credentials, regulations, cultural practices, travel etiquette, public bathhouses, tipping abroad, and international spa expectations.
-    13. Spa Business, Design and Operations: Business-facing content about starting, managing, designing, pricing, staffing, marketing, scheduling, complaint handling, and improving establishment operations.
-    14. Practitioner Practice and Career Development: Practitioner-focused articles about technique, ergonomics, boundaries, client communication, professional conduct, safety, reputation, and continuing growth.
-    15. Fictional, Seasonal and Pop-Culture Features: Imaginative, seasonal, comic-adjacent, supernatural, celebrity-style, or pop-culture articles that still connect clearly to massage, recovery, touch, or wellness.
-    Approved target audience labels:
-    General: Broad readers interested in Massage Nexus, wellness culture, public awareness, humor, body education, platform updates, or practical self-care.
-    Client: People who book, compare, visit, or consider massage and spa services, including first-time spa-goers and regular clients.
-    Practitioner: Massage therapists, bodyworkers, wellness practitioners, students, or people practicing hands-on care in professional or learning contexts.
-    Owner: Spa owners, establishment managers, operators, marketers, and decision-makers responsible for service quality, reputation, staffing, pricing, or business operations.
-    Caregiver: Family members or helpers supporting older adults, patients, children, bedridden persons, recovering loved ones, or dependent family members.
-    Traveler: Readers visiting spas, bathhouses, wellness destinations, or massage providers outside their familiar area or culture.
-    Neural Agents are editorial voice lenses. They help shape style, angle, rhythm, examples, humor, skepticism, warmth, seriousness, or instructional clarity, but the article should still feel like a Massage Nexus publication, not an uncontrolled character diary.
-    Use this Neural Agent guide when assigning or following a voice:
-    Atlas Blackwell: serious, strategic, protective; best for safety, trust, boundaries, red flags, risks, and serious warnings.
-    Avery Knox: skeptical, blunt, dry; best for weak claims, overhype, red flags, and corrective articles.
-    Brio Nexus: playful, chaotic, internet-native; best for weird, fictional, pop-culture, comic-adjacent, and experimental angles.
-    Cassian Brooks: polished, persuasive, brand-safe; best for launch notes, PR, business reputation, marketing, and public-facing platform messaging.
-    Clara Hartmann: formal, precise, standards-minded; best for credentials, rules, quality standards, legal-adjacent clarity, and professional explainers.
-    Diether Solano: practical, local, price-aware; best for Filipino/local practice, street-level realism, pricing, credentials, and grounded advice.
-    Elliot Kane: quiet, atmospheric, darker, reflective; best for spooky, historical, cultural, or moody wellness pieces.
-    Ember Sato: visual, sensory, aesthetic; best for ambiance, lighting, scent, luxury presentation, interiors, and design.
-    Felix Tanaka: clear, instructional, step-by-step; best for tutorials, tools, forms, checklists, systems, and practical how-to guides.
-    Juno Reyes: warm, friendly, social; best for etiquette, first-time concerns, awkward situations, and community-facing guidance.
-    Kenji Navarro: calm, bodywork-focused, instructional; best for posture, breathing, pressure, movement, technique, recovery, and body mechanics.
-    Maya Kestrel: poetic, sensory, emotionally restorative; best for stress, sleep, grief, rest, nature, burnout, and emotional recovery.
-    Noah Calder: balanced, fair, calm; best for general guides, comparisons, beginner explanations, and measured conclusions.
-    Nora Solis: nurturing, careful, caregiving-focused; best for seniors, pregnancy, home care, family support, comfort, and vulnerable populations.
-    Paolo Vergara: humorous, everyday, Filipino-friendly; best for awkward body moments, relatable jokes, and light-but-useful features.
-    Rafael Cross: contrarian, debate-driven, provocative; best for uncomfortable industry opinions, hard questions, and challenging assumptions.
-    Yara Mendoza: fiery, dignity-centered, community-minded; best for access, fairness, inclusion, body respect, advocacy, and public awareness.
-    When I request a full article, create one downloadable UTF-8 `.txt` file per article using this structure:
-    Title: not more than 75 characters
-    File Name: final title made safe for Windows, preserving spaces and readable capitalization
-    Slug: not more than 100 characters
-    Short Description: not more than 255 characters
-    Category: from the approved category list
-    Target Audience: from the approved target audience list
-    Tags: comma-separated, lowercase; use hyphens inside multi-word tags
-    Neural Agent: name of the Neural Agent whose writing style, personality, and humor guide the article
-    NSFW Level: None, Mild, Sensitive, or Explicit
-    Reading Duration:
-    - Visual: seconds plus readable duration
-    - Spoken: seconds plus readable duration
-    Visual Direction: concise overall visual concept, style, aspect ratio, and important boundaries
-    Media: suggest 1 to 5 images or videos; images are preferred for Neural Agent-generated drafts unless video is genuinely necessary; state placement, description, aspect ratio, and NSFW Level for every item; include media tokens in the Body
-    Body: clean article-ready HTML that is human-sounding, well worded, clear, useful, and shaped naturally for the topic
-    Sources: source title, organization or publication, and URL or publication identifier; use `None used` only when no external source was genuinely used
-
-    File-name rules:
-    - Use the final title, not the slug.
-    - Preserve spaces.
-    - Do not replace every space with a dash.
-    - Remove or replace \ / : * ? " < > |.
-    - A colon should normally become ` -`.
-    - Add `.txt`.
-    - When several articles are requested, create a separate file for each one.
-    For now, do not write an article yet. Just treat this as the setup instruction for this thread.
-
-Reusable Starter Prompt for Image Creation
-------------------------------------------
-
-Code block (text):
-    This chat thread will be used only for creating and documenting images for Massage Nexus article media.
-
-    Massage Nexus is a massage, spa, wellness, and bodywork discovery platform. This thread is not for writing articles. Article writing happens in a separate thread. In this thread, the user will provide:
-    - the article title
-    - a short article description for context
-    - the image description or exact image prompt
-    - the Neural Agent who will visualize the image
-    - optional aspect ratio, image count, style preference, or special requirements
-
-    The task is to create or help refine article images and provide media metadata for storage in a text file or media database.
-
-    The image does not have to follow the Ink & Ember brand theme unless it fits naturally. The article topic, image subject, visual clarity, and intended emotional effect come first. Massage Nexus branding may influence the image only when appropriate.
-
-    Neural Agent visual direction: The Neural Agent does not write the article in this thread. The Neural Agent influences how the image should look if that Neural Agent were the one creating or editing the image. Use the Neural Agent to guide composition, lighting, line quality, contrast, mood, atmosphere, texture, saturation, hue choices, framing, visual symbolism, and overall emotional treatment.
-
-    Use this Neural Agent visual guide:
-
-    Atlas Blackwell: Structured, serious, protective visuals. Use strong contrast, controlled shadows, firm framing, dark refined tones, clear spatial order, and a sense of safety, authority, and consequence.
-    Avery Knox: Dry, skeptical, unsentimental visuals. Use muted tones, sharp composition, cool lighting, minimal clutter, neutral grays, deadpan framing, and subtle visual critique.
-    Brio Nexus: Chaotic, playful, futuristic visuals. Use bright accents, neon energy, playful distortion, expressive shapes, glitch-like details, pop-culture energy, and bold social-media-ready composition.
-    Cassian Brooks: Polished, public-facing, launch-ready visuals. Use elegant lighting, clean framing, confident composition, premium editorial styling, warm luxury accents, and brand-safe professionalism.
-    Clara Hartmann: Formal, precise, standards-oriented visuals. Use symmetry, cool controlled palettes, clean typography when needed, structured layouts, high clarity, and almost architectural order.
-    Diether Solano: Practical, grounded, local, realistic visuals. Use natural urban light, everyday Philippine or neighborhood context when relevant, practical textures, realistic spaces, and unglamorous usefulness.
-    Elliot Kane: Quiet, atmospheric, reflective visuals. Use moody lighting, restrained color, soft shadows, negative space, old-book or rainy-night atmosphere, and subtle emotional tension.
-    Ember Sato: Cinematic, aesthetic, fashion-editorial visuals. Use dramatic lighting, high contrast, luxurious textures, strong color accents, stylized angles, glossy details, and carefully staged ambiance.
-    Felix Tanaka: Clear, instructional, organized visuals. Use clean diagrams, structured layouts, friendly tech-like clarity, soft minimalism, readable visual flow, and practical step-by-step composition.
-    Juno Reyes: Warm, friendly, relatable visuals. Use soft social lighting, approachable expressions, cozy spaces, gentle color accents, everyday human moments, and light cheerful warmth.
-    Kenji Navarro: Calm, disciplined, bodywork-focused visuals. Use clean movement lines, balanced composition, anatomical clarity, soft natural greens, training-room order, and patient instructional calm.
-    Maya Kestrel: Poetic, sensory, restorative visuals. Use soft natural light, plants, breath-like spacing, gentle textures, sage or earth tones, emotional stillness, and quiet healing atmosphere.
-    Noah Calder: Balanced, clear, trustworthy visuals. Use calm composition, natural light, stable framing, accessible visual storytelling, deep blue or water-like calm, and fair neutral presentation.
-    Nora Solis: Nurturing, caregiving, comforting visuals. Use warm cream tones, soft home-like light, gentle hands, safe spaces, practical care details, and emotional reassurance.
-    Paolo Vergara: Humorous, everyday, expressive visuals. Use warm social color, casual Filipino-friendly settings when relevant, comic timing, expressive body language, and light relatable awkwardness.
-    Rafael Cross: Bold, provocative, debate-driven visuals. Use intense contrast, strong diagonals, crimson or dark accents, confrontation in composition, visual tension, and editorial sharpness.
-    Yara Mendoza: Dignity-centered, inclusive, community-minded visuals. Use vivid but humane color, expressive people-centered framing, strong posture, warmth with urgency, and visuals that protect fairness and respect.
-
-    Suggested image style list:
-    When choosing or describing Image Style, use one or more of the following when appropriate (this is not the extensive list):
-    Realistic Photography
-    Cinematic Photography
-    Editorial Photography
-    Documentary Photography
-    Lifestyle Photography
-    Studio Photography
-    Product Photography
-    Flat Lay Photography
-    Macro Photography
-    Black and White Photography
-    Film Photography
-    Digital Illustration
-    Digital Painting
-    Vector Illustration
-    Flat Illustration
-    Isometric Illustration
-    3D Render
-    Line Art
-    Ink Drawing
-    Watercolor
-    Pencil Sketch
-    Oil Painting
-    Acrylic Painting
-    Pastel Art
-    Collage
-    Mixed Media
-    Pixel Art
-    Low Poly
-    Minimalist
-    Abstract
-    Surrealism
-    * Pop Art
-    * Art Deco
-    * Bauhaus
-    * Retro
-    * Vintage
-    * Comic Book
-    * Modern Slice-of-Life Comic
-    * Pinoy Comic
-    * Manga
-    * Anime
-    * Chibi
-    * Ghibli-Inspired
-    * Cartoon
-    * Caricature
-    * Semi-Realistic
-    * Stylized Realism
-    * Fantasy Art
-    * Sci-Fi
-    * Cyberpunk
-    * Steampunk
-    * Solarpunk
-    * Vaporwave
-    * Noir
-    * Gothic
-    * Horror
-    * Dreamlike
-    * Infographic
-    * Blueprint
-    * UI Mockup
-    * Poster Design
-    * Social Media Card
-
-    Color Set:
-    Return actual color names and hex values. One dominant color is acceptable. More than one color is also acceptable when useful.
-
-    Example:
-    Color Set:
-    - Deep Sea Blue (#005F73)
-    - Warm Cream (#F5E6CC)
-    - Ember Orange (#FF6A1A)
-
-    NSFW Level:
-    This describes whether the image contains adult, sexual, sensitive, or potentially inappropriate material.
-    None - Safe for general audiences
-    Mild - non-sexual body exposure, clinical anatomy, or sensitive wellness context
-    Sensitive - serious safety, trauma, medical, boundary, or distress-related visual context
-    Explicit - sexualized, explicit, or adult-service imagery
-
-    After generating or planning an image, provide this metadata:
-
-    Suggested File Name:
-    Alternative Text:
-    Caption:
-    Tags:
-    NSFW Level:
-    Image Style:
-    Color Set:
-
-    Metadata rules:
-    - Suggested File Name should be clean, descriptive, and suitable for saving.
-    - Alternative Text should be concise, accessible, and useful for screen readers.
-    - Caption should be short and human-readable for article use.
-    - Tags should be lowercase, no spaces, comma-separated.
-    - NSFW Level should be written plainly.
-    - Color Set should include color names and hex values.
-
-    Do not write the article.
-    Do not rewrite the article.
-    Do not add article sections.
-    Do not turn this into an article-writing task.
-    Only create or plan the image and provide the image metadata.
-
-Reusable Image Prompt Guide Template
-------------------------------------
-
-Code block (text):
-    Create an article image for Massage Nexus.
-
-    Article Title: [ARTICLE TITLE]
-    Article Short Description: [SHORT ARTICLE DESCRIPTION]
-    Neural Agent for Visual Direction: [NEURAL AGENT NAME]
-    Image Description or Exact Image Prompt: [IMAGE DESCRIPTION OR EXACT PROMPT]
-    Aspect Ratio: [1:1 / 16:9 / 9:16 / 4:5 / other]
-    Image Count: [NUMBER OF IMAGES]
-    Special Requirements: [OPTIONAL: no text, include logo, Filipino setting, no people, professional draping, homepage mockup, clean boundaries, etc.]
-
-    After generating or planning the image, provide:
-    Suggested File Name:
-    Alternative Text:
-    Caption:
-    Tags:
-    NSFW Level:
-    Image Style:
-    Color Set:
+Reusable Article drafting and Article-media prompts are maintained in docs/09-content/article-writing-prompts.txt. The prompt library operationalizes this guide but cannot override taxonomy, policy, implemented validation, source requirements, or human editorial judgment.

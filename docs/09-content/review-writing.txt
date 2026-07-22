@@ -1,5 +1,5 @@
 Title: Massage Nexus Review Writing Guide
-Document Version: 1.84
+Document Version: 1.94
 Date Created: 2026-07-05
 Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System.
@@ -30,7 +30,7 @@ The review tells users what the experience felt like: whether the place delivere
 Review Targets
 --------------
 
-Massage Nexus reviews currently focus on three main review targets:
+The approved Review direction includes three main targets:
 
 - establishment;
 - practitioner;
@@ -42,7 +42,10 @@ A practitioner review may discuss the individual practitioner, therapist, or wel
 
 A product review may discuss oils, tools, massage accessories, wellness products, spa-related items, or other approved products connected to the Massage Nexus ecosystem.
 
-For this version, organization reviews are not yet defined. Service received may be recorded as part of the review context, but the review target itself should remain establishment, practitioner, or product until a separate decision changes this.
+The current web implementation supports establishment and practitioner targets. Product Reviews
+remain approved future scope and must not be presented as implemented until their target,
+criteria, form, moderation, and public display are connected. Organization reviews are not yet
+defined. Service received may be recorded as Review context, but is not a separate Review target.
 
 Review, Comment, and Rating
 ---------------------------
@@ -122,7 +125,12 @@ The language should be easy enough for a general audience to understand. It can 
 Editorial Voice Preference
 --------------------------
 
-Raw dictated notes may be Taglish, scattered, repetitive, emotional, or out of sequence. The final written review should usually be polished English, while preserving the reviewer's actual experience and voice.
+Raw dictated notes may be Taglish, scattered, repetitive, emotional, or out of sequence. An
+editorial Review may be prepared as polished English when that is its chosen original language.
+A user Review must remain in its submitted original language unless the user intentionally edits
+or approves a rewrite. English polishing, translation, and the original submission are distinct;
+an AI or editor must not silently replace Taglish, Filipino, or another original-language Review
+with an English derivative.
 
 The preferred transformation is:
 
@@ -240,7 +248,7 @@ Review Length Standards
 General Length Range
 ~~~~~~~~~~~~~~~~~~~~
 
-- Quick review: 150 to 400 words.
+- Quick review: 150 to 599 words.
 - Standard review: 600 to 1,200 words.
 - Long narrative review or editorial review: 1,200 to 2,500 words.
 - Hard upper limit before splitting: around 3,000 words, unless intentionally written as a long-form feature.
@@ -366,9 +374,10 @@ The core required fields for a review submission are:
 - submission language;
 - NSFW level.
 
-Title is required when AI title generation is unavailable.
-
-Title may become optional when AI can generate or suggest a title, but a user-written title may still contribute to review quality scoring when it is relevant and useful.
+Title is required for the current Review record and submission workflow. AI may offer a
+user-triggered title suggestion before submission, but AI availability must not change whether an
+otherwise identical record is valid. A user-written title may still contribute to Review quality
+scoring when it is relevant and useful.
 
 Rating
 ~~~~~~
@@ -526,6 +535,11 @@ A review may have multiple Review Authors. In that case, public bylines may show
 
 If rewards apply to a multi-author review, rewards should be shared among credited authors, not duplicated in full for every credited account.
 
+Multi-author user Reviews remain future scope until each author can consent to credit, the system
+can distinguish authorship from edit ownership, anonymity choices are compatible, and reward and
+dispute responsibilities are defined. A list of credited names must not grant edit authority by
+itself.
+
 Editorial Reviews
 -----------------
 
@@ -568,9 +582,23 @@ Disclosure Types
 
 Reviews should disclose incentives, sponsorship, special access, and possible bias when relevant.
 
-Possible disclosure types include:
+Review disclosure is multidimensional. The final model must distinguish at least:
 
-- undisclosed self-paid visit;
+- arrangement or funding, such as self-paid, discounted, complimentary, sponsored, or paid;
+- prior notice and request origin, such as unannounced, announced, owner-requested,
+  practitioner-requested, or product-owner-requested;
+- coverage scope, such as one visit, multi-visit, one author, or multi-reviewer;
+- connected-party, employment, ownership, family, seller, or other material conflicts.
+
+These dimensions may overlap and must not be forced permanently into one mutually exclusive
+meaning. The current type_review_disclosure field is a single-select compatibility field and may
+record only the primary circumstance. Before the platform claims complete disclosure support,
+the taxonomy, structure guide, form, validation, display, and migration must represent the
+independent dimensions or an equivalent structured multi-disclosure model.
+
+Current and planned disclosure labels include:
+
+- unannounced self-paid visit;
 - announced visit;
 - sponsored visit;
 - discounted visit;
@@ -584,10 +612,13 @@ Possible disclosure types include:
 - multi-visit review;
 - multi-reviewer review.
 
-Undisclosed Self-Paid Visit
+Unannounced Self-Paid Visit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-An undisclosed self-paid visit means the reviewer paid normally, did not identify themselves as connected to Massage Nexus, and did not receive a discount, freebie, payment, special handling, or incentive in exchange for the review.
+An unannounced self-paid visit means the reviewer paid normally, did not identify themselves as
+connected to Massage Nexus, and did not receive a discount, freebie, payment, special handling,
+or incentive in exchange for the Review. Unannounced describes the visit arrangement; it does not
+mean the reviewer may omit a material conflict or later public disclosure.
 
 This is usually the strongest setup for reducing special-treatment bias.
 
@@ -738,6 +769,11 @@ Use this general policy:
 - convert or suggest as comment when the content is real but too short or too casual for a review.
 
 A rejected or revision-requested review should guide the user to the Review Writing guide or public review instructions.
+
+Publication, restriction, rejection, removal, and material correction decisions should provide a
+usable reason and the applicable appeal or correction route. Owners and practitioners may respond
+or request factual correction through approved tools, but dislike of criticism is not a removal
+basis and a response must not expose an anonymous Review Author.
 
 If a user repeatedly fails validation or repeatedly submits review content that cannot pass, the system should point them to the review guide more strongly.
 
@@ -890,6 +926,13 @@ Possible modes:
 - AI assistive: AI screens and recommends, human may approve;
 - AI automatic: AI approves low-risk reviews within configured rules.
 
+Automatic approval may apply only to clearly defined low-risk publication cases with audit,
+sampling, reversal, and human-escalation controls. AI must never make the sole final decision for
+serious allegations, threats, minors, explicit sexual content, private personal information,
+connected-party disputes, safety incidents, legal demands, meaningful account penalties, or
+material reputation penalties. AI-only rejection, removal, or punishment is prohibited for those
+cases.
+
 The detailed AI queue, quota, provider, retry, and budget system should be documented in the AI/API operations document later.
 
 For this review guide, the main principles are:
@@ -930,6 +973,45 @@ Possible AI output includes:
 - private feedback to the submitter.
 
 AI-generated title, short description, or cleanup should not count as user-written quality effort for reward purposes.
+
+Aggregate Review Summaries and AI Synthesis
+-------------------------------------------
+
+AI may also organize an editorial Review from several disclosed visits, test periods, Review
+Correspondents, or source-note sets. That editorial aggregation remains one authored Review: each
+material experience must be traceable internally, multi-visit and multi-reviewer context must be
+disclosed, credited authors must actually have contributed, and AI must not blend conflicting
+accounts into one invented experience or first-person voice.
+
+An aggregate Review summary synthesizes patterns across several eligible Reviews for one target,
+class, location, service, product, or defined comparison. It is platform-generated explanatory
+content, not a personal Review, not a new rating event, and not evidence that Massage Nexus had
+the underlying experiences.
+
+AI may help identify recurring themes, differences by period or context, rating distribution,
+frequently praised or criticized details, and unresolved disagreement. The summary must disclose
+that it is an aggregate, identify whether AI assisted, show the eligible Review count and coverage
+period, state important exclusions, link to the underlying public Reviews where appropriate, and
+display its last material refresh time.
+
+Aggregate synthesis must:
+- use only Reviews eligible under publication, moderation, visibility, NSFW, and rating rules;
+- avoid treating copied, connected, suspicious, superseded, withdrawn, or ineligible Reviews as
+  independent consensus;
+- preserve minority and conflicting experiences when material;
+- distinguish observation patterns from verified facts about the target;
+- avoid revealing anonymous authors, private visit details, moderation evidence, or restricted
+  content;
+- never create, alter, or average ratings outside the Rating System;
+- never invent quotations, visits, sample size, representativeness, or causation;
+- be reviewed again when an included Review is materially corrected, withdrawn, invalidated, or
+  reclassified.
+
+A target with too few eligible Reviews should show that there is insufficient evidence for an
+aggregate rather than generate a confident summary. Sponsored placement, owner preference, or
+payment must not control the aggregate conclusion. Human editorial or moderation review is
+required for high-risk summaries involving allegations, discrimination, safety, sexual conduct,
+minors, medical claims, or legal disputes.
 
 Review Rewards
 --------------
@@ -1253,6 +1335,10 @@ verified-visit evidence, connected-party relationship detection, owner or therap
 helpfulness reactions, reports, appeals, media attachments, rewards, AI screening, product reviews,
 or official XCES calculation. Until XCES and its minimum-signal rules are implemented, profile
 pages must show Not Enough Ratings instead of calculating a simple public average.
+
+It also does not yet provide AI-generated aggregate Review summaries. Such summaries remain
+blocked until eligibility, minimum-signal, privacy, correction propagation, labeling, refresh, and
+human-escalation rules in this guide are implemented.
 
 Related Documents and Remaining Planning Items
 ----------------------------------------------
