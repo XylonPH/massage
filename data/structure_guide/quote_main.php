@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Quote Main Structure Guide
- * Version: 0.40
+ * Version: 0.50
  * Collection: quote_main
  * Description: Stores one curated quotation, attribution, category, and lifecycle record.
  * Purpose: Documents the quote_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -49,7 +49,7 @@
 
 # Variable
 $created_at = '2026-07-19T00:00:00Z';
-$updated_at = '2026-07-22T03:52:00Z';
+$updated_at = '2026-07-22T04:52:00Z';
 /**
  * Multilingual short-text sample.
  * Used by quote_text. English is shown as sample data only; the original
@@ -73,6 +73,7 @@ $quote_main_default = [
 	'attribution_name' => null,    // null when the quote is anonymous or proverb-like
 	'source_title' => null,
 	'source_url' => null,
+	'visibility_scope' => 'PUB',   // PUB = Public
 	'level_nsfw' => 'N',           // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
 ];
@@ -110,6 +111,7 @@ $quote_main = [
 	'source_url' => null, // optional reference URL used for editorial verification; not necessarily displayed publicly
 
 	# Handling
+	'visibility_scope' => 'PUB', // PUB = Public; suppression can remove a quote from rotation without deleting it
 	'level_nsfw' => 'N', // N = None; quotes shown on the homepage must remain None
 	'status_record_lifecycle' => 'ACT', // ACT = Active; retired or soft-deleted quotes leave rotation without deleting history
 
@@ -131,6 +133,7 @@ $quote_main_field_order = [
 	'attribution_name',
 	'source_title',
 	'source_url',
+	'visibility_scope',
 	'level_nsfw',
 	'status_record_lifecycle',
 	'created_at',
@@ -211,6 +214,7 @@ $quote_main_field_property = [
 	],
 
 	# Handling
+	'visibility_scope' => ['field_label' => 'Visibility Scope', 'field_description' => 'Audience visibility rule for the quote record. Suppression can remove a quote from public rotation without deleting it or its history.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'level_nsfw' => ['field_label' => 'NSFW Level', 'field_description' => 'Content-sensitivity level. Homepage quotes must remain None; the field exists for consistency with shared record handling.', 'type_field' => 'DDL', 'type_sql' => 'ENUM'],
 	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state such as active, inactive, or soft-deleted. Retiring removes the quote from rotation while preserving history. Archiving is expressed through this field, not a separate archived_at timestamp.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 

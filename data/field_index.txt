@@ -1070,6 +1070,7 @@ videographer_user_id_list
 view_count
 visibility_activity
 visibility_gender
+visibility_handedness
 visibility_scope
 walking_duration_minute
 watch_scope
