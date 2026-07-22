@@ -58,6 +58,15 @@ class Establishment extends Model
         'air_conditioning_information',
         'accessibility_information',
         'operating_hours',
+        'amenity_list',
+        'accessibility_feature_list',
+        'parking_availability_list',
+        'date_opened',
+        'date_opened_precision',
+        'date_opened_qualifier',
+        'date_closed',
+        'date_closed_precision',
+        'date_closed_qualifier',
     ];
 
     protected $casts = [
