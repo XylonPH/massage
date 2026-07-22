@@ -91,8 +91,8 @@ class ContributionTest extends TestCase
             ->assertOk()
             ->assertSeeLivewire(EstablishmentForm::class)
             ->assertSee(__('workspace.contribution_establishment_title'))
-            ->assertSee(__('workspace.contribution_relationship_tab'))
-            ->assertSee(__('workspace.contribution_submit'));
+            ->assertSee(__('workspace.contribution_connection_label'))
+            ->assertSee(__('editorial.next'));
     }
 
     public function test_editorial_route_still_renders_direct_edit_form_without_relationship_tab(): void
@@ -110,7 +110,7 @@ class ContributionTest extends TestCase
             ->get('/workspace/editorial/establishment/new')
             ->assertOk()
             ->assertSeeLivewire(EstablishmentForm::class)
-            ->assertDontSee(__('workspace.contribution_relationship_tab'));
+            ->assertDontSee(__('workspace.contribution_connection_label'));
     }
 
     public function test_practitioner_can_submit_own_profile_for_review(): void
@@ -155,6 +155,18 @@ class ContributionTest extends TestCase
             ->test(EstablishmentForm::class)
             ->set('isContribution', true)
             ->assertSet('currentStep', 1);
+    }
+
+    public function test_who_you_are_step_shows_before_spa_details_and_review(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/workspace/contribution/establishment/new');
+
+        $response->assertOk();
+        $response->assertSee(__('workspace.add_spa_step_who_you_are'));
+        $response->assertSee(__('workspace.contribution_connection_label'));
+        $response->assertDontSee(__('editorial.tab_identity'));
     }
 
     public function test_editorial_mode_has_no_step_concept(): void

@@ -45,6 +45,8 @@ return [
     'delete_confirm' => 'Delete this record? This cannot be undone.',
     'save' => 'Save',
     'cancel' => 'Cancel',
+    'next' => 'Next',
+    'back' => 'Back',
     'created' => 'Record created.',
     'updated' => 'Record updated.',
     'deleted' => 'Record deleted.',
