@@ -1,13 +1,14 @@
 Title: Massage Nexus Review Writing Guide
-Document Version: 1.94
+Document Version: 1.95
 Date Created: 2026-07-05
 Revision Date: 2026-07-22
 Document Description: Defines Massage Nexus approach for writing, editing, evaluating, moderating, and rewarding reviews, including how review ratings and community reactions connect to the Rating System and Reputation System.
 Related Documents:
 - docs/08-community/rating-system.txt
 - docs/08-community/reputation-system.txt
+- docs/08-community/badge-system.txt
+- docs/08-community/rank-path-system.txt
 - docs/09-content/article-writing.txt
-- docs/09-content/quote-system.txt
 
 Reviews use the separate review_main domain. They are not stored in article_main, news_main, or a
 generic content_main collection and do not require a type_content discriminator. Shared reactions,
@@ -252,6 +253,8 @@ General Length Range
 - Standard review: 600 to 1,200 words.
 - Long narrative review or editorial review: 1,200 to 2,500 words.
 - Hard upper limit before splitting: around 3,000 words, unless intentionally written as a long-form feature.
+
+These ranges are targets, not prison bars. A shorter review is fine when the experience is simple and complete, while a longer review is fine when the experience needs more explanation, nuance, or comparison.
 
 Minimum Review Substance
 ~~~~~~~~~~~~~~~~~~~~~~~~

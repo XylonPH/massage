@@ -1,5 +1,5 @@
 Title: Massage Nexus Quote System
-Document Version: 0.20
+Document Version: 0.21
 Date Created: 2026-07-20
 Revision Date: 2026-07-22
 Document Description: Defines the Quote of the Day system, including quote sourcing, attribution, categories, approval, rotation, display placement, storage, and administration. Quotes are short curated text with attribution; they are not articles, news, reviews, announcements, or user-generated content.
@@ -120,7 +120,28 @@ Archived or withdrawn quotes remain unavailable to rotation while their authoriz
 preserved under the retention policy.
 
 ================================================================================
-5. OPEN DECISIONS
+5. AI USE
+================================================================================
+
+AI may assist with:
+- surfacing candidate quotes and possible sources for editorial review;
+- suggesting a fitting category from type_quote_category;
+- flagging likely duplicate or near-duplicate quotes already in the pool;
+- drafting translation candidates for editorial and specialist review;
+- identifying wording that may indicate misattribution or uncertain sourcing.
+
+AI must not:
+- invent, assume, or guess an attribution, source, or publication-right basis;
+- attach a well-known name to an unverified quote;
+- approve a quote or move it into the active rotation pool;
+- silently alter a previously displayed quote's wording, speaker, or source;
+- present a translation as approved before required review.
+
+AI output remains a research and drafting aid. Attribution, publication-right basis,
+category, and rotation eligibility still require the human review described in section 4.
+
+================================================================================
+6. OPEN DECISIONS
 ================================================================================
 
 - whether user-suggested quotes are ever accepted through the contribution system;

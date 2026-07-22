@@ -1,5 +1,5 @@
 Title: Massage Nexus News Writing Guide
-Document Version: 1.10
+Document Version: 1.11
 Date Created: 2026-07-18
 Revision Date: 2026-07-22
 Document Description: Defines how Massage Nexus researches, writes, edits, updates, corrects, translates, labels, and publishes timely news about the platform, massage, spas, therapists, wellness businesses, regulation, research, events, products, and related communities. It distinguishes News from Articles, announcements, opinion, sponsored content, Reviews, and unverified social-media claims.
@@ -311,7 +311,42 @@ Several timestamped updates rather than repeated near-duplicate articles.
 Length follows the evidence and reader need. Do not pad a simple update into a long feature.
 
 ================================================================================
-11. BREAKING AND DEVELOPING NEWS
+11. READING DURATION
+================================================================================
+
+News reading duration should be computed and displayed using the same method as
+docs/09-content/article-writing.txt, "Reading Duration Guidance."
+
+Reading duration is stored internally in seconds and displayed using minutes and seconds, not
+rounded minutes alone. If computation produces a decimal or millisecond value, round up to the
+next full second.
+
+Working Formula for Latin-Script Stories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For English, Filipino, Taglish, Spanish, Bisaya, and similar space-separated languages:
+
+Code block (text):
+    visual_reading_seconds = ceil((word_count / 225) * 60)
+    spoken_reading_seconds = ceil((word_count / 150) * 60)
+
+An investigation, data story, or other dense or heavily sourced piece may use the slower
+200-word dense-content visual divisor defined in the Article Writing Guide when the story reads
+more like a report than ordinary narrative News.
+
+For Korean, Japanese, Chinese, and other languages where word counting is unreliable, News
+follows the same temporary character-based fallback and future calibration priority defined in
+the Article Writing Guide.
+
+Reading duration counts visible News body content only. It does not count HTML tags, hidden
+metadata, database-only fields, media tokens, or internal notes. A Correction or Update Note is
+counted only when it is displayed as part of the visible story.
+
+Reading duration is an interface estimate, not a promise that every reader finishes in that
+exact time.
+
+================================================================================
+12. BREAKING AND DEVELOPING NEWS
 ================================================================================
 
 Breaking News is used only when immediate public attention is justified.
@@ -336,7 +371,7 @@ Rules:
 A developing story should be updated when facts materially change, not for minor wording.
 
 ================================================================================
-12. OPENINGS, CLOSURES, MOVES, AND PROVIDER NEWS
+13. OPENINGS, CLOSURES, MOVES, AND PROVIDER NEWS
 ================================================================================
 
 A provider opening, closure, move, rename, or ownership change may be both a profile update and a
@@ -356,7 +391,7 @@ Do not publish “now open” based only on a newly created social page or map l
 operating state and observation date.
 
 ================================================================================
-13. PEOPLE, CREDENTIALS, AND ALLEGATIONS
+14. PEOPLE, CREDENTIALS, AND ALLEGATIONS
 ================================================================================
 
 News about therapists, staff, owners, or other people requires a legitimate public-interest
@@ -382,7 +417,7 @@ For allegations:
 Public discussion is not a substitute for reporting or due process.
 
 ================================================================================
-14. HEALTH, SAFETY, AND SCIENCE
+15. HEALTH, SAFETY, AND SCIENCE
 ================================================================================
 
 Health and science News requires strong sourcing.
@@ -409,7 +444,7 @@ Urgent safety guidance should link to official advice and clarify when professio
 care is appropriate.
 
 ================================================================================
-15. DATA AND STATISTICS NEWS
+16. DATA AND STATISTICS NEWS
 ================================================================================
 
 A data story must define:
@@ -437,7 +472,7 @@ available research.
 Charts and rankings must preserve the same definitions used in the story.
 
 ================================================================================
-16. SOCIAL MEDIA AND USER SUBMISSIONS
+17. SOCIAL MEDIA AND USER SUBMISSIONS
 ================================================================================
 
 Social posts and user tips may identify a story but do not verify it.
@@ -456,7 +491,7 @@ User-submitted photos, videos, or messages require rights, privacy, authenticity
 review.
 
 ================================================================================
-17. CORRECTIONS, UPDATES, RETRACTIONS, AND REMOVAL
+18. CORRECTIONS, UPDATES, RETRACTIONS, AND REMOVAL
 ================================================================================
 
 Minor correction:
@@ -482,7 +517,7 @@ internal record and public explanation where appropriate.
 Do not silently rewrite a consequential error.
 
 ================================================================================
-18. MEDIA
+19. MEDIA
 ================================================================================
 
 News media may include:
@@ -517,7 +552,7 @@ material require a recorded source and publication right. Attribution is not a s
 license, permission, public-domain basis, or legally reviewed quotation or reporting use.
 
 ================================================================================
-19. AI USE
+20. AI USE
 ================================================================================
 
 AI may assist with:
@@ -548,7 +583,7 @@ AI must not:
 The reporter and editor remain accountable for the published story.
 
 ================================================================================
-20. AGGREGATE NEWS AND AI-ASSISTED SYNTHESIS
+21. AGGREGATE NEWS AND AI-ASSISTED SYNTHESIS
 ================================================================================
 
 Aggregate News combines several eligible reports, source records, data points, or related News
@@ -577,7 +612,7 @@ trigger review of every dependent aggregate. Live aggregates must display their 
 refresh time and preserve revision history.
 
 ================================================================================
-21. MULTILINGUAL NEWS
+22. MULTILINGUAL NEWS
 ================================================================================
 
 Preserve the source-language story and source revision.
@@ -599,7 +634,7 @@ A culturally adapted News explanation may add local context, but it must not cha
 confirmed facts.
 
 ================================================================================
-22. SPONSORED, AFFILIATE, AND COMMERCIAL MATERIAL
+23. SPONSORED, AFFILIATE, AND COMMERCIAL MATERIAL
 ================================================================================
 
 Clearly label:
@@ -621,7 +656,7 @@ A sponsor may not:
 Commercial relationships relevant to a story must be disclosed.
 
 ================================================================================
-23. PUBLICATION WORKFLOW
+24. PUBLICATION WORKFLOW
 ================================================================================
 
 1. identify the candidate story;
@@ -643,7 +678,7 @@ Urgency may shorten the workflow but must not remove verification, attribution, 
 responsibility.
 
 ================================================================================
-24. NEWS METADATA
+25. NEWS METADATA
 ================================================================================
 
 A News record may include:
@@ -684,7 +719,7 @@ rules must be added to the appropriate taxonomy JSON and structure guide; prose 
 document are not database codes.
 
 ================================================================================
-25. NEWS CATEGORIES
+26. NEWS CATEGORIES
 ================================================================================
 
 Initial editorial categories, pending final taxonomy codes:
@@ -708,7 +743,7 @@ Categories should remain broad enough to be useful and must not multiply merely 
 story.
 
 ================================================================================
-26. COMPLETED NEWS OUTPUT
+27. COMPLETED NEWS OUTPUT
 ================================================================================
 
 A requested completed News story should normally be delivered as a UTF-8 text file containing:
@@ -736,7 +771,7 @@ Sources:
 Do not claim a publication time, interview, source, or editorial approval that did not occur.
 
 ================================================================================
-27. QUALITY REVIEW
+28. QUALITY REVIEW
 ================================================================================
 
 Before approval, confirm:
@@ -756,7 +791,7 @@ Before approval, confirm:
 - dependent aggregates were reviewed after any material source correction or retraction.
 
 ================================================================================
-28. CURRENT DIRECTIONS
+29. CURRENT DIRECTIONS
 ================================================================================
 
 - News remains separate from Articles, Reviews, announcements, opinion, and sponsored content.
