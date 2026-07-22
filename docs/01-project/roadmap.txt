@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.96
+Document Version: 1.97
 Date Created: 2026-07-16
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -267,7 +267,29 @@ Passes when:
 - translations retain source revision and review state;
 - duplicate, correction, merge, closure, and history workflows work;
 - private evidence does not appear in public representations;
-- initial Mandaluyong and Metro Manila data can support real search and profile testing.
+SOFT LAUNCH — MASSAGE NEXUS VERSION 0.90 (BETA PREVIEW)
+
+Audience:
+Invited beta testers, early establishment operators, and internal reviewers.
+
+Purpose:
+Provide a functional testing deployment to gather real user feedback on member registration, spa submission (via the robust Livewire form), workspace access control, article draft creation, and baseline policy rendering before broad public PR launch. Static sample content is permitted on the public homepage during this phase.
+
+Required v0.90 capabilities:
+- browse public pages and view static/sample homepage content;
+- register, verify email, log in, log out, and recover passwords;
+- access user workspace with role-based area permissions enforced;
+- submit new establishments using the robust multi-tab form (`/workspace/contribution/establishment/new`);
+- create, edit, save, and preview article drafts in the Workspace Article Editor;
+- review published Terms of Service and Privacy Policy draft pages.
+
+Release gate for v0.90:
+- user authentication, workspace access, and authorization tests pass;
+- robust spa submission form persists entries to database;
+- article draft saving and workspace permissions are verified;
+- no security vulnerabilities or unhandled exception leaks exist.
+
+--------------------------------------------------------------------------------
 
 FIRST LAUNCH — MASSAGE NEXUS VERSION 1.00
 

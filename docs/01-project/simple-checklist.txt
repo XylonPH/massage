@@ -1,7 +1,7 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 2.25
+Document Version: 2.45
 Date Created: 2026-07-16
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: This is the master categorical completion checklist for Massage Nexus. Items are organized by the product or platform domain that owns them, regardless of implementation order, release target, or whether the work is one-time or recurring. Milestone order and release gates belong only in the Roadmap.
 
 Use:
@@ -463,6 +463,8 @@ Use:
 [ ] Passkeys
 [ ] Device biometric use through passkeys
 [ ] Approved external identities
+[ ] Provider-confirmed connected social profiles and channels
+[ ] Social connection visibility and disconnection controls
 [ ] Account-recovery escalation
 [ ] Recycled phone-number protection
 
@@ -477,6 +479,9 @@ Use:
 [ ] Bio
 [ ] Pronouns where voluntarily provided
 [ ] Gender kept optional and privacy-controlled
+[ ] Birthday presentation: hidden, age, age range, or month and day
+[ ] Multiple personal contacts with verification and replacement history
+[ ] Multiple labeled private addresses for booking and home service
 [ ] Language and regional preferences
 [ ] Time zone
 [ ] Account security history
@@ -487,9 +492,9 @@ Use:
 [x] Every registered user is a client by default
 [~] Ordinary client capabilities remain available when professional, operational, or administrative access is added
 [~] Professional and managed capabilities do not replace ordinary client capabilities
-[~] One user account can combine several scoped establishment, practitioner, or administrative assignments
+[~] One user account can combine several scoped establishment, practitioner, or administrative access grants
 [x] No role or context switcher; navigation and dashboard areas are composed automatically from effective access
-[x] Administrative panels deny ordinary users and require explicit active assignments
+[x] Administrative panels deny ordinary users and require explicit active user access
 
 3.6 Public User Profile
 -----------------------
@@ -501,7 +506,14 @@ Use:
 [ ] Public activity controls
 [ ] Public reviews
 [ ] Public contributions
-[ ] Public badges and Reputation
+[ ] Public Nexus Points
+[ ] Featured badges and full eligible badge cabinet
+[ ] Selected Rank title and level
+[ ] Reputation score and label
+[ ] Official public roles derived from effective user access
+[ ] Optional Premium Member label
+[ ] Connected Facebook, Instagram, YouTube, X, and other approved social profiles
+[ ] Verified linked practitioner profile
 [ ] Public follows where permitted
 [ ] Private profile settings
 [~] Public-profile controls
@@ -550,6 +562,7 @@ Use:
 [ ] Accessibility preferences
 [ ] Communication preference
 [ ] Reusable booking defaults
+[ ] Booking preferences embedded in user_main
 [ ] Expiring or always-reconfirmed safety answers
 [ ] Last-confirmed date
 
@@ -901,6 +914,16 @@ Use:
 [ ] Prevent ordinary users and operators from permanently erasing public history or evidence
 [ ] Test validation, authorization, rate limits, abuse controls, and identifier and slug collisions
 [ ] Verify accessible forms, understandable errors, responsive layouts, backup, restore, rollback, and production-safe errors
+
+6.14 Version 0.90 Soft Launch (Beta Preview) Gate
+-------------------------------------------------
+[ ] Allow public browsing with static/sample homepage content during beta testing
+[ ] Enable member registration, email verification, login/logout, and password recovery
+[ ] Enable robust multi-tab spa submission form for active verified members
+[ ] Persist member spa submissions to MongoDB establishment records
+[ ] Enable article draft creation, editing, and preview in Workspace Article Editor
+[ ] Enforce role-based area permissions across User Workspace
+[ ] Render stable public draft pages for Terms of Service and Privacy Policy
 
 
 ================================================================================
@@ -1666,7 +1689,7 @@ Use:
 [ ] provider_schedule_exception
 [ ] booking_resource_reservation
 [ ] booking_waitlist
-[ ] client_booking_default
+[ ] user_main booking_preference
 [ ] payment_transaction
 [ ] provider_payout
 [ ] booking_financial_document
@@ -1897,7 +1920,7 @@ Use:
 [~] Editorial, moderation, and administration tools
 [x] Automatic combined dashboard and navigation with no role or context switcher
 [ ] Reception, therapist, manager, finance, and owner permissions
-[x] Separate establishment relationship records and scoped access assignments
+[x] Separate establishment relationship records and scoped user access
 
 13.3 Profile and Service Management
 -----------------------------------
@@ -2226,6 +2249,9 @@ Use:
 [x] Contributor Submitted view that recognizes sparse pending-review defaults
 [x] Permission-gated editorial Article queue and submitted-revision review page
 [x] Editorial approve-and-publish, request-changes, and reject decisions with audit fields
+[x] Contributor and editorial side-by-side Article revision comparison
+[x] Explicit revision-aware approval and publication confirmation
+[x] Dark-theme public Article detail and at-a-glance reading context
 [x] Sparse-default Article, body, revision, tag, and multilingual-value persistence
 [x] Anonymous public article preference with protected internal authorship
 [x] Original Article language selection with stable body and revision language identity
@@ -3193,6 +3219,12 @@ Use:
 
 25.5 Business Monetization
 --------------------------
+[ ] Personal Premium subscription plan
+[ ] Personal subscription lifecycle
+[ ] Personal feature entitlements and limits
+[ ] Ad-free personal benefit
+[ ] Premium AI allowance
+[ ] Premium status kept separate from role, Rank, Reputation, and rating influence
 [ ] Business subscription plans
 [ ] Therapist subscription plans
 [ ] Analytics upgrade
