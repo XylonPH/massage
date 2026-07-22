@@ -311,14 +311,17 @@ git commit -m "docs(taxonomy): rename amenity/accessibility fields to match guid
 
 ---
 
-### Task 3: Create the missing `contribution_main` structure guide
+### Task 3: Extend the user_contribution structure guide with Add-a-Spa fields
+
+**Amended 2026-07-22 pre-execution:** the original task created `contribution_main.php`, but a concurrent agent renamed that guide to `user_contribution.php` (committed in 49f6629; runtime code still uses the legacy `contribution_main` collection per that guide's own Notes). Per user decision this task now extends the committed `user_contribution.php` instead. Runtime field names on the `Contribution` model (`is_workspace_access_requested`, `status_contribution`) intentionally differ from the guide's future names (`is_user_access_requested`, `status_user_contribution`) — that migration belongs to the other agent's work, not this task. The five NEW fields below use identical names in both guide and runtime.
 
 **Files:**
-- Create: `data/structure_guide/contribution_main.php`
+- Modify: `data/structure_guide/user_contribution.php`
+- Modify: `data/field_index.txt` (regenerated, not hand-edited)
 - Test: `apps/web/tests/Feature/Governance/ContributionGuideFieldsTest.php` (new)
 
 **Interfaces:**
-- Produces: the guide documents every field `App\Models\Contribution` uses today (`type_contribution`, `target_collection`, `target_record_id`, `submitted_by_user_id`, `proposed_data`, `type_establishment_relationship`, `type_practitioner_relationship`, `is_workspace_access_requested`, `relationship_note`, `status_contribution`, `submitted_at`, `reviewed_at`, `reviewer_user_id`, `decision_note`) plus the four fields Task 7 adds (`submission_note`, `duplicate_candidate_establishment_id_list`, `duplicate_acknowledged`, `is_visit_requested`, `visit_preferred_time_note`).
+- Produces: `user_contribution_field_order` additionally contains `submission_note`, `duplicate_candidate_establishment_id_list`, `duplicate_acknowledged`, `is_visit_requested`, `visit_preferred_time_note` — the same field names Task 7 adds to the runtime `Contribution` model.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -331,26 +334,18 @@ use Tests\TestCase;
 
 class ContributionGuideFieldsTest extends TestCase
 {
-    public function test_contribution_guide_exists_and_documents_current_and_new_fields(): void
+    public function test_user_contribution_guide_documents_the_add_a_spa_fields(): void
     {
-        $path = base_path('../../data/structure_guide/contribution_main.php');
-        $this->assertFileExists($path);
-
-        $guide = require $path;
+        $guide = require base_path('../../data/structure_guide/user_contribution.php');
 
         $expected = [
-            'type_contribution', 'target_collection', 'target_record_id',
-            'submitted_by_user_id', 'proposed_data', 'type_establishment_relationship',
-            'type_practitioner_relationship', 'is_workspace_access_requested',
-            'relationship_note', 'submission_note',
-            'duplicate_candidate_establishment_id_list', 'duplicate_acknowledged',
-            'is_visit_requested', 'visit_preferred_time_note',
-            'status_contribution', 'submitted_at', 'reviewed_at',
-            'reviewer_user_id', 'decision_note',
+            'submission_note', 'duplicate_candidate_establishment_id_list',
+            'duplicate_acknowledged', 'is_visit_requested', 'visit_preferred_time_note',
         ];
 
         foreach ($expected as $field) {
-            $this->assertContains($field, $guide['contribution_main_field_order'], "Missing field: {$field}");
+            $this->assertContains($field, $guide['user_contribution_field_order'], "Missing field: {$field}");
+            $this->assertArrayHasKey($field, $guide['user_contribution_field_property'], "Missing field property: {$field}");
         }
     }
 }
@@ -359,121 +354,44 @@ class ContributionGuideFieldsTest extends TestCase
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `php artisan test --filter=ContributionGuideFieldsTest`
-Expected: FAIL — file does not exist.
+Expected: FAIL — fields not present in the guide.
 
-- [ ] **Step 3: Write the guide file**
+- [ ] **Step 3: Edit the guide**
+
+In `data/structure_guide/user_contribution.php`:
+
+1. Change `* Version: 1.00` to `* Version: 1.10` (+0.10 structural change per structure-guide-standard).
+2. Set `$updated_at` to the actual current UTC time (`date -u +%Y-%m-%dT%H:%M:%SZ`); leave `$created_at` untouched.
+3. In `$user_contribution_default`, add:
 
 ```php
-<?php
-/**
- * Title: Massage Nexus Contribution Main Structure Guide
- * Version: 1.00
- * Collection: contribution_main
- * Description: Stores one member-submitted proposal to add or change a directory record, pending editorial review.
- * Purpose: Documents the contribution_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed. Written from the shape App\Models\Contribution already implements, plus the submission_note, duplicate-candidate, and visit-request fields the Add a Spa form redesign adds.
- *
- * Notes:
- * - proposed_data is an opaque object today; docs/02-governance/edit-system.txt section 4 records this as a known structure-guide gap pending a stable Change Operation shape.
- * - This guide governs the shared contribution workflow used by establishment and practitioner "ADD" contributions; other contribution types reuse the same shape.
- */
-$created_at = '2026-07-22T00:00:00Z';
-$updated_at = '2026-07-22T00:00:00Z';
-$contribution_main_default = [
-    'status_contribution' => 'PND',
-    'is_workspace_access_requested' => false,
     'duplicate_candidate_establishment_id_list' => [],
     'duplicate_acknowledged' => false,
     'is_visit_requested' => false,
-];
+```
 
-$contribution_main = [
-    '_id' => 'Cn7K2pQ9xR4tV8zN', // Canonical 16-character contribution identifier.
-    'type_contribution' => 'ADD', // Controlled contribution type.
-    'target_collection' => 'establishment_main', // Collection the proposal targets.
-    'target_record_id' => null, // Existing target record when this is a change to a current record; null for a new-record proposal.
-    'submitted_by_user_id' => 'Us7K2pQ9xR4tV8zN', // Submitting user.
-    'proposed_data' => ['display_name' => ['eng' => ['text' => 'Sample Wellness Spa']]], // Opaque proposed field data for the target collection; see Notes.
-    'type_establishment_relationship' => 'MGR', // Declared relationship when target_collection is establishment_main.
-    'type_practitioner_relationship' => null, // Declared relationship when target_collection is practitioner_main.
-    'is_workspace_access_requested' => true, // Whether the submitter requested workspace access alongside this contribution.
-    'relationship_note' => 'I manage daily operations.', // Optional submitter-provided relationship or verification note.
+4. In the `$user_contribution` sample record, after the `'relationship_note' => ...` line, add:
+
+```php
     'submission_note' => 'Photos available on request.', // Optional free-text note to the reviewer, separate from the relationship note.
     'duplicate_candidate_establishment_id_list' => ['Es7K2pQ9xR4tV8zN'], // Establishment IDs the duplicate check flagged at submission time.
     'duplicate_acknowledged' => true, // Whether the submitter confirmed this is not one of the flagged candidates.
     'is_visit_requested' => false, // Whether the submitter requested an in-person verification visit.
     'visit_preferred_time_note' => null, // Optional free-text preferred time when is_visit_requested is true.
-    'status_contribution' => 'PND', // Controlled workflow status from data/taxonomy/massage_nexus/workspace_access.json.
-    'submitted_at' => '2026-07-22T04:08:58Z', // UTC submission time.
-    'reviewed_at' => null, // UTC time of the reviewer decision.
-    'reviewer_user_id' => null, // Reviewing user.
-    'decision_note' => null, // Reviewer-provided note to the submitter.
-];
-
-$contribution_main_field_order = [
-    '_id', 'type_contribution', 'target_collection', 'target_record_id',
-    'submitted_by_user_id', 'proposed_data', 'type_establishment_relationship',
-    'type_practitioner_relationship', 'is_workspace_access_requested', 'relationship_note',
-    'submission_note', 'duplicate_candidate_establishment_id_list', 'duplicate_acknowledged',
-    'is_visit_requested', 'visit_preferred_time_note',
-    'status_contribution', 'submitted_at', 'reviewed_at', 'reviewer_user_id', 'decision_note',
-];
-
-$contribution_main_embedded_structure = [];
-
-$contribution_main_field_property = [
-    '_id' => ['field_label' => 'Contribution ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'is_mandatory' => true, 'is_indexed' => true],
-    'type_contribution' => ['field_label' => 'Contribution Type', 'field_description' => 'Controlled proposal type, such as add or correct.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'is_indexed' => true],
-    'target_collection' => ['field_label' => 'Target Collection', 'field_description' => 'Collection the proposal targets, such as establishment_main or practitioner_main.', 'type_data' => 'S', 'type_field' => 'TXT', 'is_mandatory' => true, 'is_indexed' => true],
-    'target_record_id' => ['field_label' => 'Target Record', 'field_description' => 'Existing target record reference for a change proposal; omitted for a new-record proposal.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true, 'is_indexed' => true],
-    'submitted_by_user_id' => ['field_label' => 'Submitted By', 'field_description' => 'Submitting user.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
-    'proposed_data' => ['field_label' => 'Proposed Data', 'field_description' => 'Opaque proposed field data for the target collection; see file Notes for the pending Change Operation gap.', 'type_data' => 'O', 'type_field' => 'JSE', 'is_mandatory' => true],
-    'type_establishment_relationship' => ['field_label' => 'Establishment Relationship', 'field_description' => 'Declared relationship to the target establishment.', 'type_data' => 'S', 'type_field' => 'DDL'],
-    'type_practitioner_relationship' => ['field_label' => 'Practitioner Relationship', 'field_description' => 'Declared relationship to the target practitioner.', 'type_data' => 'S', 'type_field' => 'DDL'],
-    'is_workspace_access_requested' => ['field_label' => 'Workspace Access Requested', 'field_description' => 'Whether the submitter requested workspace access alongside this contribution.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
-    'relationship_note' => ['field_label' => 'Relationship Note', 'field_description' => 'Optional submitter-provided relationship or verification note.', 'type_data' => 'S', 'type_field' => 'TXA'],
-    'submission_note' => ['field_label' => 'Submission Note', 'field_description' => 'Optional free-text note to the reviewer, separate from the relationship note.', 'type_data' => 'S', 'type_field' => 'TXA'],
-    'duplicate_candidate_establishment_id_list' => ['field_label' => 'Duplicate Candidates', 'field_description' => 'Establishment references the duplicate check flagged as possible matches at submission time.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
-    'duplicate_acknowledged' => ['field_label' => 'Duplicate Acknowledged', 'field_description' => 'Whether the submitter confirmed this is not one of the flagged duplicate candidates.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
-    'is_visit_requested' => ['field_label' => 'Visit Requested', 'field_description' => 'Whether the submitter requested an in-person verification visit.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
-    'visit_preferred_time_note' => ['field_label' => 'Visit Preferred Time', 'field_description' => 'Optional free-text preferred time for the requested visit.', 'type_data' => 'S', 'type_field' => 'TXA'],
-    'status_contribution' => ['field_label' => 'Contribution Status', 'field_description' => 'Controlled workflow status from data/taxonomy/massage_nexus/workspace_access.json.', 'type_data' => 'S', 'type_field' => 'DDL', 'is_mandatory' => true, 'default_value' => 'PND', 'is_indexed' => true],
-    'submitted_at' => ['field_label' => 'Submitted At', 'field_description' => 'UTC submission time.', 'type_data' => 'S', 'type_field' => 'DTS', 'is_mandatory' => true, 'is_indexed' => true],
-    'reviewed_at' => ['field_label' => 'Reviewed At', 'field_description' => 'UTC time of the reviewer decision.', 'type_data' => 'S', 'type_field' => 'DTS'],
-    'reviewer_user_id' => ['field_label' => 'Reviewer', 'field_description' => 'Reviewing user.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
-    'decision_note' => ['field_label' => 'Decision Note', 'field_description' => 'Reviewer-provided note to the submitter.', 'type_data' => 'S', 'type_field' => 'TXA'],
-];
-
-$contribution_main_subfield_property = [];
-
-$contribution_main_index_list = [
-    ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
-    ['index_key' => 'submitter_queue', 'index_name' => 'ix_contribution_main_submitter_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'submitted_by_user_id', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_contribution', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 20],
-    ['index_key' => 'review_queue', 'index_name' => 'ix_contribution_main_target_status', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'target_collection', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_contribution', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 30],
-];
-
-$contribution_main_boundary = [
-    'owns' => ['one member-submitted proposal to add or change a directory record, and its review workflow state'],
-    'reference_field_list' => ['target_record_id', 'submitted_by_user_id', 'reviewer_user_id', 'duplicate_candidate_establishment_id_list'],
-    'does_not_own' => [
-        'accepted current data, owned by the target collection (establishment_main, practitioner_main, and others)',
-        'accepted revision history, owned by record_revision or a specialized revision collection',
-        'audit events, owned by audit_log',
-    ],
-];
-
-return [
-    'contribution_main_default' => $contribution_main_default,
-    'contribution_main' => $contribution_main,
-    'contribution_main_field_order' => $contribution_main_field_order,
-    'contribution_main_embedded_structure' => $contribution_main_embedded_structure,
-    'contribution_main_field_property' => $contribution_main_field_property,
-    'contribution_main_subfield_property' => $contribution_main_subfield_property,
-    'contribution_main_index_list' => $contribution_main_index_list,
-    'contribution_main_boundary' => $contribution_main_boundary,
-];
 ```
 
-Replace `$created_at`/`$updated_at`/`submitted_at` sample values with the actual current UTC time before saving.
+5. In `$user_contribution_field_order`, insert `'submission_note', 'duplicate_candidate_establishment_id_list', 'duplicate_acknowledged', 'is_visit_requested', 'visit_preferred_time_note',` immediately after `'relationship_note',`.
+6. In `$user_contribution_field_property`, after the `'relationship_note' => [...]` entry, add:
+
+```php
+    'submission_note' => ['field_label' => 'Submission Note', 'field_description' => 'Optional free-text note to the reviewer, separate from the relationship note.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 2000],
+    'duplicate_candidate_establishment_id_list' => ['field_label' => 'Duplicate Candidates', 'field_description' => 'Establishment references the duplicate check flagged as possible matches at submission time.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
+    'duplicate_acknowledged' => ['field_label' => 'Duplicate Acknowledged', 'field_description' => 'Whether the submitter confirmed the proposal is not one of the flagged duplicate candidates.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
+    'is_visit_requested' => ['field_label' => 'Visit Requested', 'field_description' => 'Whether the submitter requested an in-person verification visit.', 'type_data' => 'B', 'type_field' => 'CHK', 'default_value' => false],
+    'visit_preferred_time_note' => ['field_label' => 'Visit Preferred Time', 'field_description' => 'Optional free-text preferred time for the requested visit.', 'type_data' => 'S', 'type_field' => 'TXA', 'max_character' => 500],
+```
+
+Change nothing else in the file — no renames, no reordering of existing entries, no edits to the other agent's field definitions.
 
 - [ ] **Step 4: Regenerate the field index**
 
@@ -487,8 +405,8 @@ Expected: PASS
 - [ ] **Step 6: Commit**
 
 ```bash
-git add data/structure_guide/contribution_main.php data/field_index.txt apps/web/tests/Feature/Governance/ContributionGuideFieldsTest.php
-git commit -m "docs(structure-guide): add the missing contribution_main structure guide"
+git add data/structure_guide/user_contribution.php data/field_index.txt apps/web/tests/Feature/Governance/ContributionGuideFieldsTest.php
+git commit -m "docs(structure-guide): add submission-note, duplicate-check, and visit-request fields to user_contribution"
 ```
 
 ---
