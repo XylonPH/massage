@@ -617,7 +617,7 @@
         "source_document": "docs/05-directory/spa-classification.txt"
     },
     {
-        "field_name": "amenities",
+        "field_name": "amenity_list",
         "field_label": "Amenities",
         "selection_rule": "Multi-select",
         "field_description": "General facilities and amenities available at the establishment.",
@@ -721,7 +721,7 @@
         ]
     },
     {
-        "field_name": "accessibility_information",
+        "field_name": "accessibility_feature_list",
         "field_label": "Accessibility Information",
         "selection_rule": "Multi-select",
         "field_description": "Accessibility features available.",
@@ -766,6 +766,21 @@
                 "option_label": "Service Animals Allowed",
                 "option_description": ""
             }
+        ]
+    },
+    {
+        "field_name": "parking_availability",
+        "field_label": "Parking Availability",
+        "selection_rule": "Multi-select",
+        "field_description": "Confirmed parking options available at or near the establishment.",
+        "field_option": [
+            { "option_code": "NONE", "option_label": "No Parking Available", "option_description": "" },
+            { "option_code": "PRK_ONS_FREE", "option_label": "Free On-Site Parking", "option_description": "" },
+            { "option_code": "PRK_ONS_PAID", "option_label": "Paid On-Site Parking", "option_description": "" },
+            { "option_code": "PRK_STR", "option_label": "Street Parking", "option_description": "" },
+            { "option_code": "PRK_NEARBY_PAID", "option_label": "Nearby Paid Lot", "option_description": "" },
+            { "option_code": "PRK_VALET", "option_label": "Valet Parking", "option_description": "" },
+            { "option_code": "PRK_MOTO_ONLY", "option_label": "Motorcycle Parking Only", "option_description": "" }
         ]
     },
     {

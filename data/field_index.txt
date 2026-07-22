@@ -11,7 +11,6 @@ aaguid
 access_summary
 accessed_at
 accessibility_feature_list
-accessibility_information
 account_preference
 action_category
 action_due_at
@@ -33,7 +32,6 @@ akc
 alt_text
 alternate_name_list
 alternative_name_list
-amenities
 amenity_list
 amount
 amount_paid
@@ -147,8 +145,14 @@ currency_id
 current_period_ends_at
 current_period_started_at
 curtain_divider_information
+date_closed
+date_closed_precision
+date_closed_qualifier
 date_established
 date_experience
+date_opened
+date_opened_precision
+date_opened_qualifier
 day_of_week
 day_pattern
 decided_at
@@ -454,6 +458,8 @@ original_statement
 own_practitioner_id
 ownership_percentage
 page_count
+parking_availability
+parking_availability_list
 parking_note
 part_of_day
 part_of_speech
