@@ -523,7 +523,6 @@ public_key
 public_note
 public_role_order
 public_title
-publication_date
 publication_identifier
 published_at
 published_by_user_id

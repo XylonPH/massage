@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus News Main Structure Guide
- * Version: 1.00
+ * Version: 1.10
  * Collection: news_main
  * Description: Stores timely news reports, industry updates, regulatory announcements, and journalistic stories with multi-language support.
  * Purpose: Documents the news_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -24,7 +24,7 @@ $multilingual_text_sample = [
 
 $news_main_default = [
 	'type_news_category' => [],
-	'publication_date' => '2026-07-22',
+	'published_at' => null,
 	'status_review' => 'P',
 	'level_nsfw' => 'N',
 	'status_record_lifecycle' => 'ACT',
@@ -50,7 +50,7 @@ $news_main = [
 	],
 
 	'type_news_category' => ['REG', 'IND'],
-	'publication_date' => '2026-07-22',
+	'published_at' => '2026-07-22T08:50:00Z',
 
 	'status_review' => 'A',
 	'level_nsfw' => 'N',
@@ -70,7 +70,7 @@ $news_main_field_order = [
 	'news_headline',
 	'news_body',
 	'type_news_category',
-	'publication_date',
+	'published_at',
 	'status_review',
 	'level_nsfw',
 	'status_record_lifecycle',
@@ -127,12 +127,13 @@ $news_main_field_property = [
 		'type_field' => 'CBL',
 		'is_indexed' => true,
 	],
-	'publication_date' => [
-		'field_label' => 'Publication Date',
-		'field_description' => 'Calendar date when news story was published.',
-		'type_field' => 'DTP',
-		'type_sql' => 'DATE',
+	'published_at' => [
+		'field_label' => 'Published At',
+		'field_description' => 'UTC timestamp when news story was or will be published. Supports future-dated scheduling.',
+		'type_field' => 'DTS',
+		'type_sql' => 'DATETIME',
 		'is_mandatory' => true,
+		'is_indexed' => true,
 	],
 	'status_review' => [
 		'field_label' => 'Review Status',

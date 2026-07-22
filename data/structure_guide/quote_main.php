@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Quote Main Structure Guide
- * Version: 0.50
+ * Version: 0.60
  * Collection: quote_main
  * Description: Stores one curated quotation, attribution, category, and lifecycle record.
  * Purpose: Documents the quote_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -26,14 +26,15 @@
  * Scope decisions:
  * - A quote is short approved text with attribution; it is not article content
  *   and does not use article_main or article_body.
+ * - Quotes are curated directly by administrators and editors; there is no community
+ *   submission or approval review workflow.
  * - language_id is numeric per shared standard §9.3.1 (common_reference.language_main
  *   retains its numeric identifier contract). This field records the language in which
  *   the quote was originally expressed and drives locale-matching and fallback display.
  * - type_quote_category is single-select; each quote belongs to exactly one category.
- * - Publication eligibility is determined by per-language status_review inside quote_text
- *   and the record-level status_record_lifecycle. No separate is_display_enabled toggle
- *   or display date-window fields are stored; scheduling and seasonal selection are
- *   application-logic concerns deferred to a future campaign or scheduling system.
+ * - published_at is an ISO 8601 UTC timestamp supporting future-dated publication.
+ *   A quote is eligible for rotation when published_at <= current UTC time,
+ *   visibility_scope is Public (PUB), and status_record_lifecycle is Active (ACT).
  * - Rotation fairness (which quote shows on which day) is application logic,
  *   not stored state; no display counters are stored.
  * - record_note embedded repeaters are not used; the quote system is not an editorial
@@ -59,7 +60,6 @@ $multilingual_text_sample = [
 	'eng' => [
 		'text' => 'Sample text', // required when this language value exists
 		'method_translation' => 'HUM', // optional; omit when default Human Translation applies
-		'status_review' => 'APR', // optional; APR = Approved
 	],
 ];
 
@@ -76,6 +76,7 @@ $quote_main_default = [
 	'visibility_scope' => 'PUB',   // PUB = Public
 	'level_nsfw' => 'N',           // N = None
 	'status_record_lifecycle' => 'ACT', // ACT = Active
+	'published_at' => null,        // null means publish immediately upon creation
 ];
 
 /**
@@ -92,12 +93,10 @@ $quote_main = [
 		'eng' => [
 			'text' => 'Your body hears everything your mind says.',
 			'method_translation' => 'HUM',
-			'status_review' => 'APR', // APR = Approved; only Approved language entries are eligible for public display
 		],
 		'fil' => [
 			'text' => 'Naririnig ng iyong katawan ang lahat ng sinasabi ng iyong isip.',
 			'method_translation' => 'HUM',
-			'status_review' => 'APR',
 		],
 	], // required multilingual quote text; the displayed language follows the visitor's interface language with fallback rules
 
@@ -116,6 +115,7 @@ $quote_main = [
 	'status_record_lifecycle' => 'ACT', // ACT = Active; retired or soft-deleted quotes leave rotation without deleting history
 
 	# Audit
+	'published_at' => $created_at, // UTC timestamp when the quote becomes eligible for rotation; supports future-dated scheduling
 	'created_at' => $created_at,
 	'created_by_user_id' => 'U5rK8mP2xN7qL4vA',
 	'updated_at' => $updated_at,
@@ -136,6 +136,7 @@ $quote_main_field_order = [
 	'visibility_scope',
 	'level_nsfw',
 	'status_record_lifecycle',
+	'published_at',
 	'created_at',
 	'created_by_user_id',
 	'updated_at',
@@ -169,7 +170,7 @@ $quote_main_field_property = [
 	# Core
 	'quote_text' => [
 		'field_label' => 'Quote Text',
-		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution. Each language entry carries its own status_review; only Approved language entries are eligible for public display.',
+		'field_description' => 'Multilingual quote text displayed in the homepage Quote of the Day section. Combined with attribution_name, this is the practical duplicate-prevention key: editors must search existing quote text before adding a record, and imports should reject an exact same-language text match with the same attribution.',
 		'type_data' => 'O',
 		'type_field' => 'JSE',
 		'is_translatable' => true,
@@ -219,6 +220,7 @@ $quote_main_field_property = [
 	'status_record_lifecycle' => ['field_label' => 'Record Lifecycle Status', 'field_description' => 'Database lifecycle state such as active, inactive, or soft-deleted. Retiring removes the quote from rotation while preserving history. Archiving is expressed through this field, not a separate archived_at timestamp.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 
 	# Audit
+	'published_at' => ['field_label' => 'Published At', 'field_description' => 'UTC timestamp when the quote becomes eligible for rotation. Supports future-dated scheduling; a quote with a future published_at date will not appear until that timestamp is reached.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_indexed' => true],
 	'created_at' => ['field_label' => 'Created At', 'field_description' => 'UTC timestamp when this quote record was created.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME', 'is_mandatory' => true],
 	'created_by_user_id' => ['field_label' => 'Created By User ID', 'field_description' => 'User ID that created this quote record.', 'type_data' => 'S', 'is_relational' => true],
 	'updated_at' => ['field_label' => 'Updated At', 'field_description' => 'UTC timestamp when this quote record was last updated.', 'type_field' => 'DTS', 'type_sql' => 'DATETIME'],

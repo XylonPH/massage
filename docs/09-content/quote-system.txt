@@ -107,10 +107,9 @@ retirement, correction) belongs to the Admin Workspace editorial area per
 docs/11-workspaces/admin-workspace.txt. The homepage currently renders one temporary hard-coded
 sample quote; replacing it with quote_main-backed rotation is pending implementation.
 
-Display eligibility is determined by the per-language status_review inside quote_text,
-the record-level visibility_scope (Public or suppressed), and the record-level
-status_record_lifecycle. No separate display-enabled toggle or date-window
-scheduling fields are stored; seasonal or campaign scheduling is deferred to a future system.
+Quotes are curated directly by administrators and editors; there is no community submission or review workflow.
+
+Display eligibility is determined by the record-level published_at timestamp (which supports future-dated scheduling), visibility_scope (Public or suppressed), and status_record_lifecycle (Active). A quote becomes eligible for rotation when published_at <= current UTC time, visibility_scope is Public (PUB), and status_record_lifecycle is Active (ACT).
 
 A material wording or attribution correction must preserve an audit record and remove the
 incorrect version from rotation immediately. Do not silently rewrite a previously displayed
