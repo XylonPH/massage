@@ -231,19 +231,21 @@ Featured Therapists highlights selected or premium therapist profiles and should
 
 --------------------------------------------------------------------------------
 
-6. Browse by Area
-=================
+6. Browse by Area (Removed from Homepage)
+========================================
 
-Placement: Main content area, below Featured Spas and Featured Therapists.
+Placement: Previously main content area below Featured Therapists; now moved exclusively to dedicated directory page (`/directory/area`).
 
-Browse by Area allows users to explore listings by city, district, neighborhood, region, or service area without typing into the search box. It should appear before Browse by Massage Type because location is often one of the first practical concerns when choosing a spa or therapist. Area chips should be simple, clickable, and easy to update based on available data or user location.
+Browse by Area allows users to explore listings by city, district, neighborhood, region, or service area without typing into the search box. The main search bar in the hero handles location queries directly, so this section was removed from the homepage to keep the layout concise and focused.
 
 --------------------------------------------------------------------------------
 
-7. Browse by Massage Type
-=========================
+7. Browse by Massage Type (Removed from Homepage)
+=================================================
 
-Placement: Main content area, below Browse by Area.
+Placement: Previously main content area below Browse by Area; now moved exclusively to dedicated directory page (`/directory/type-spa`).
+
+Browse by Massage Type allows users to explore service categories such as Swedish, Shiatsu, Thai, Hilot, Reflexology, Hot Stone, Deep Tissue, Aromatherapy, Ventosa, and other massage-related categories. To simplify homepage scanning, this section was removed from the main homepage layout and is accessible via the hero search tabs or the dedicated directory navigation.
 
 Browse by Massage Type allows users to explore service categories such as Swedish, Shiatsu, Thai, Hilot, Reflexology, Hot Stone, Deep Tissue, Aromatherapy, Ventosa, and other massage-related categories. Each massage type may use a small icon or visual marker to make the section easier to scan. Clicking a type should lead to a filtered directory page or service category page showing relevant spas, therapists, articles, and possibly products.
 

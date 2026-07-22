@@ -224,42 +224,6 @@
                 </div>
             </section>
 
-            {{-- Browse by Area / Massage Type --}}
-            <div class="grid gap-8 md:grid-cols-2">
-                <section aria-labelledby="browse-area">
-                    <x-section-heading id="browse-area" :title="__('home.browse_by_area')" :href="url('/directory/area')" />
-                    <ul class="flex flex-wrap gap-2">
-                        @foreach ($areas as $area)
-                            <li>
-                                <a href="{{ url('/directory/area/'.\Illuminate\Support\Str::slug($area)) }}" class="inline-block rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-semibold text-ink-700 transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ember-950 dark:hover:text-ember-300">
-                                    {{ $area }}
-                                </a>
-                            </li>
-                        @endforeach
-                        <li>
-                            <a href="{{ url('/directory/area') }}" class="inline-flex items-center gap-1 rounded-full bg-ink-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-ink-800">
-                                {{ __('home.more_areas') }}
-                                <svg viewBox="0 0 20 20" fill="currentColor" class="size-3.5" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h9.69L10.22 6.03a.75.75 0 1 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 1 1-1.06-1.06l3.22-3.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
-                            </a>
-                        </li>
-                    </ul>
-                </section>
-
-                <section aria-labelledby="browse-type">
-                    <x-section-heading id="browse-type" :title="__('home.browse_by_type')" :href="url('/directory/type-spa')" accent="leaf" />
-                    <ul class="grid grid-cols-4 gap-2.5">
-                        @foreach ($massageTypes as $type)
-                            <li>
-                                <a href="{{ url('/directory/type-spa/'.\Illuminate\Support\Str::slug($type['name'])) }}" class="group flex flex-col items-center gap-1.5 rounded-xl border border-ink-100 bg-white px-2 py-3 text-center shadow-sm transition hover:border-leaf-300 hover:bg-leaf-50 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-leaf-800 dark:hover:bg-leaf-950">
-                                    <x-pictogram :name="$type['icon']" class="size-6 text-ink-500 transition group-hover:text-leaf-600 dark:text-ink-400 dark:group-hover:text-leaf-400" />
-                                    <span class="text-xs font-semibold text-ink-700 group-hover:text-leaf-800 dark:text-ink-200 dark:group-hover:text-leaf-100">{{ $type['name'] }}</span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </section>
-            </div>
-
             {{-- Latest Articles --}}
             <section aria-labelledby="latest-articles">
                 <x-section-heading id="latest-articles" :title="__('home.latest_articles')" :href="route('article.index')" />
