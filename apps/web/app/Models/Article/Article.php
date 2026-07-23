@@ -14,7 +14,7 @@ use MongoDB\Laravel\Eloquent\Model;
     'type_article_category', 'target_audience', 'tag_id_list', 'author_user_id_list',
     'author_credit_list', 'article_owner_user_id_list', 'is_anonymous',
     'editor_user_id_list', 'reviewer_user_id_list', 'photographer_user_id_list',
-    'cover_media_image_id', 'related_article_id_list', 'related_organization_id_list',
+    'cover_media_image_id', 'featured_media_image_id', 'related_article_id_list', 'related_organization_id_list',
     'related_establishment_id_list', 'related_practitioner_id_list', 'related_service_id_list',
     'related_product_id_list', 'view_count', 'comment_count', 'save_count', 'share_count',
     'reading_duration_visual', 'reading_duration_spoken', 'source_reference_list',

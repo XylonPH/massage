@@ -203,6 +203,16 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function setFeaturedMedia(Request $request, Article $article, MediaImage $media_image): RedirectResponse
+    {
+        $this->authorizeOwner($request, $article);
+        abort_unless(in_array((string) $article->getKey(), $media_image->related_article_id_list ?? [], true), 422, __('article.featured_image_not_owned'));
+
+        $article->forceFill(['featured_media_image_id' => (string) $media_image->getKey()])->save();
+
+        return back()->with('status', __('article.draft_saved'));
+    }
+
     public function edit(Request $request, Article $article, WorkspaceAccess $workspaceAccess): View
     {
         $this->authorizeOwner($request, $article);
@@ -385,6 +395,9 @@ class ArticleController extends Controller
             'audiences' => ArticleAudience::cases(),
             'canSchedule' => $canSchedule,
             'isSubmitted' => $article !== null && PendingArticleRevisions::forArticle((string) $article->getKey()) !== null,
+            'articleImages' => $article
+                ? MediaImage::query()->where('related_article_id_list', (string) $article->getKey())->get()
+                : collect(),
         ];
     }
 

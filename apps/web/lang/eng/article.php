@@ -168,6 +168,8 @@ return [
     'unpublish' => 'Unpublish article',
     'unpublished_successfully' => 'The article is no longer public and can be revised again.',
     'media_limit_reached' => 'This article already has the maximum of 10 images.',
+    'featured_image_not_owned' => 'That image does not belong to this article.',
+    'set_as_featured' => 'Set as featured',
     'validation_body_visible_text' => 'The article body must contain visible readable text.',
     'toolbar_paragraph' => 'Paragraph',
     'toolbar_heading_2' => 'Heading 2',

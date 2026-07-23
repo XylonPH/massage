@@ -179,6 +179,22 @@
                             <noscript><p class="p-4 font-semibold text-ember-700 dark:text-ember-400">{{ __('article.javascript_required') }}</p></noscript>
                         </section>
 
+                        @if ($article)
+                            @if ($articleImages->isNotEmpty())
+                                <div class="mt-4 flex flex-wrap gap-3" data-article-image-gallery>
+                                    @foreach ($articleImages as $galleryImage)
+                                        <div class="relative">
+                                            <img src="{{ route('media.image.thumbnail', $galleryImage) }}" alt="{{ $galleryImage->localized('alt_text') }}" class="size-20 rounded-lg object-cover ring-2 {{ $article->featured_media_image_id === (string) $galleryImage->getKey() ? 'ring-ember-500' : 'ring-transparent' }}">
+                                            <form method="post" action="{{ route('workspace.article.media.featured', [$article, $galleryImage]) }}" class="absolute inset-x-0 bottom-0">
+                                                @csrf
+                                                <button type="submit" class="w-full rounded-b-lg bg-ink-950/70 py-0.5 text-[10px] font-bold text-white">{{ __('article.set_as_featured') }}</button>
+                                            </form>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        @endif
+
                         <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm dark:border-ink-800 dark:bg-ink-900" aria-labelledby="article-attribution-title">
                             <div class="border-b border-ink-100 pb-4 dark:border-ink-800">
                                 <h2 id="article-attribution-title" class="font-black text-ink-950 dark:text-ink-50">{{ __('article.attribution_access_title') }}</h2>
