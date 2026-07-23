@@ -12,8 +12,14 @@ export const ArticleImage = Node.create({
                 parseHTML: (element) => element.getAttribute('data-media-image-id'),
                 renderHTML: (attributes) => ({ 'data-media-image-id': attributes.mediaImageId }),
             },
-            src: { default: null },
-            alt: { default: '' },
+            src: {
+                default: null,
+                parseHTML: (element) => element.querySelector('img')?.getAttribute('src') ?? null,
+            },
+            alt: {
+                default: '',
+                parseHTML: (element) => element.querySelector('img')?.getAttribute('alt') ?? '',
+            },
         };
     },
 
