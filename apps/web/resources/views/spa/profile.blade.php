@@ -117,22 +117,31 @@
 </section>
 
 {{-- ===================== Tabs ===================== --}}
-<nav class="sticky top-16 z-30 border-b border-ink-100 bg-white/95 shadow-sm backdrop-blur dark:border-ink-800 dark:bg-ink-900/95" aria-label="{{ $spa['name'] }}">
+<div class="sticky top-16 z-30 border-b border-ink-100 bg-white/95 shadow-sm backdrop-blur dark:border-ink-800 dark:bg-ink-900/95" data-spa-tabs>
     <div class="mx-auto max-w-[1600px] overflow-x-auto px-4 sm:px-6 lg:px-8">
-        <ul class="flex gap-1 whitespace-nowrap py-1">
+        <div class="flex gap-1 whitespace-nowrap py-1" role="tablist" aria-label="{{ $spa['name'] }}">
             @foreach ([
-                ['href' => '#overview', 'label' => __('spa.tab_overview')],
-                ['href' => '#services', 'label' => __('spa.tab_services')],
-                ['href' => '#therapists', 'label' => __('spa.tab_therapists')],
-                ['href' => '#facilities', 'label' => __('spa.tab_facilities')],
-                ['href' => '#reviews', 'label' => __('spa.tab_reviews')],
-                ['href' => '#location', 'label' => __('spa.tab_location')],
+                ['key' => 'overview', 'label' => __('spa.tab_overview')],
+                ['key' => 'services', 'label' => __('spa.tab_services')],
+                ['key' => 'therapists', 'label' => __('spa.tab_therapists')],
+                ['key' => 'facilities', 'label' => __('spa.tab_facilities')],
+                ['key' => 'reviews', 'label' => __('spa.tab_reviews')],
+                ['key' => 'location', 'label' => __('spa.tab_location')],
             ] as $tab)
-                <li><a href="{{ $tab['href'] }}" class="inline-block rounded-lg px-3.5 py-2.5 text-sm font-semibold text-ink-600 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-300 dark:hover:bg-ink-800 dark:hover:text-ember-400">{{ $tab['label'] }}</a></li>
+                <button type="button"
+                        id="spa-tab-{{ $tab['key'] }}"
+                        role="tab"
+                        aria-controls="{{ $tab['key'] }}"
+                        aria-selected="{{ $loop->first ? 'true' : 'false' }}"
+                        tabindex="{{ $loop->first ? '0' : '-1' }}"
+                        data-spa-tab="{{ $tab['key'] }}"
+                        class="inline-block rounded-lg px-3.5 py-2.5 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500 {{ $loop->first ? 'bg-ember-50 text-ember-700 dark:bg-ember-950 dark:text-ember-300' : 'text-ink-600 hover:bg-ink-50 hover:text-ember-600 dark:text-ink-300 dark:hover:bg-ink-800 dark:hover:text-ember-400' }}">
+                    {{ $tab['label'] }}
+                </button>
             @endforeach
-        </ul>
+        </div>
     </div>
-</nav>
+</div>
 
 {{-- ===================== Body ===================== --}}
 <div class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
@@ -140,7 +149,7 @@
         <div class="min-w-0 space-y-9">
 
             {{-- Overview --}}
-            <section id="overview" aria-labelledby="overview-heading" class="scroll-mt-32">
+            <section id="overview" role="tabpanel" aria-labelledby="spa-tab-overview" tabindex="0" data-spa-tab-panel="overview">
                 <x-section-heading id="overview-heading" :title="__('spa.about_title', ['name' => $spa['name']])" />
                 <div class="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
                     <p class="leading-relaxed text-ink-700 dark:text-ink-200">{{ $spa['about'] }}</p>
@@ -160,7 +169,7 @@
                 </div>
             </section>
 
-            <section id="services" aria-labelledby="services-heading" class="scroll-mt-32">
+            <section id="services" role="tabpanel" aria-labelledby="spa-tab-services" tabindex="0" data-spa-tab-panel="services">
                 <x-section-heading id="services-heading" :title="__('spa.popular_services')" accent="leaf" />
                 <ul class="divide-y divide-ink-100 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:divide-ink-800 dark:border-ink-800 dark:bg-ink-900">
                     @foreach ($spa['services'] as $service)
@@ -180,7 +189,7 @@
             </section>
 
             {{-- Therapists --}}
-            <section id="therapists" aria-labelledby="therapists-heading" class="scroll-mt-32">
+            <section id="therapists" role="tabpanel" aria-labelledby="spa-tab-therapists" tabindex="0" data-spa-tab-panel="therapists">
                 <x-section-heading id="therapists-heading" :title="__('spa.therapists_title')" />
                 <div class="grid gap-4 sm:grid-cols-3">
                     @foreach ($spa['therapists'] as $therapist)
@@ -199,7 +208,7 @@
             </section>
 
             {{-- Facilities & Treatment Areas --}}
-            <section id="facilities" aria-labelledby="facilities-heading" class="scroll-mt-32">
+            <section id="facilities" role="tabpanel" aria-labelledby="spa-tab-facilities" tabindex="0" data-spa-tab-panel="facilities">
                 <x-section-heading id="facilities-heading" :title="__('spa.treatment_areas_title')" accent="leaf" />
                 <div class="grid gap-4 sm:grid-cols-3">
                     @foreach ($spa['treatment_areas'] as $area)
@@ -220,7 +229,7 @@
             </section>
 
             {{-- Reviews --}}
-            <section id="reviews" aria-labelledby="reviews-heading" class="scroll-mt-32">
+            <section id="reviews" role="tabpanel" aria-labelledby="spa-tab-reviews" tabindex="0" data-spa-tab-panel="reviews">
                 <x-section-heading id="reviews-heading" :title="__('spa.reviews_title')" />
                 <div class="rounded-2xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900">
                     <div class="flex flex-col gap-8 md:flex-row">
@@ -260,7 +269,7 @@
             </section>
 
             {{-- Location and public business contact --}}
-            <section id="location" aria-labelledby="location-heading" class="scroll-mt-32">
+            <section id="location" role="tabpanel" aria-labelledby="spa-tab-location" tabindex="0" data-spa-tab-panel="location">
                 <x-section-heading id="location-heading" :title="__('spa.location_title')" accent="leaf" />
                 <div class="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:border-ink-800 dark:bg-ink-900">
                     <div class="relative flex h-36 items-center justify-center bg-gradient-to-br from-ink-100 to-ink-200 dark:from-ink-800 dark:to-ink-900">

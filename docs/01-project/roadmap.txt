@@ -1,5 +1,5 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.98
+Document Version: 1.99
 Date Created: 2026-07-16
 Revision Date: 2026-07-22
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
@@ -132,7 +132,7 @@ Passes when:
 
 ================================================================================
 PHASE 3. ACCOUNT, LANGUAGE, LEGAL, PRIVACY, SECURITY, AND ACCESSIBILITY
-CURRENT STATE: IN PROGRESS; CORE REGISTRATION AND AUTHENTICATION IMPLEMENTED
+CURRENT STATE: IN PROGRESS; CORE ACCOUNT, PROFILE, SESSION, AND ACCESS ADMINISTRATION IMPLEMENTED
 ================================================================================
 
 Purpose:
@@ -166,8 +166,13 @@ Version 1.00 account slice:
 - secure password hashing and password-policy enforcement;
 - remember me, logout, session rotation, and password recovery.
 
-Session and device management, remote revocation, TOTP, recovery codes, passkeys, external
-identities, public User Profiles, and advanced role contexts may continue after Version 1.00.
+The current account slice also includes username-addressed visibility-controlled public profiles,
+profile and preference editing, light/dark/system color mode, session and coarse-device review,
+remote revocation, user_access role administration, and a protected Founder-visible User
+Management surface. Avatar and cover media remain deliberately pending while related media work is
+in progress. MFA enrollment, recovery codes, passkeys, external identities, social connections,
+recent-authentication gates, complete security-event history, and full administrative audit remain
+unfinished and may continue after Version 1.00.
 
 Language and translation:
 - English source and fallback;

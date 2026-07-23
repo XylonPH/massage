@@ -35,6 +35,12 @@ class PublicPagesTest extends TestCase
         $response->assertSee('The Resting Leaf');
         $response->assertSee(__('spa.popular_services'));
         $response->assertSee(__('spa.book_title'));
+        $response->assertSee('role="tablist"', false);
+        $response->assertSee('role="tab"', false);
+        $response->assertSee('data-spa-tab="overview"', false);
+        $response->assertSee('role="tabpanel"', false);
+        $response->assertSee('data-spa-tab-panel="location"', false);
+        $response->assertDontSee('href="#services"', false);
     }
 
     public function test_spa_profile_renders_location_directions_parking_and_public_contact_channels(): void

@@ -3,12 +3,12 @@
 namespace Tests\Feature\Article;
 
 use App\Livewire\Workspace\Editorial\ArticleReview;
-use App\Models\AccessAssignment;
 use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
 use App\Models\User;
+use App\Models\UserAccess;
 use App\Support\Article\PendingArticleRevisions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -25,13 +25,13 @@ class ArticleWorkspaceTest extends TestCase
         parent::setUp();
         $this->setUpInteractsWithMongoUsers();
         $this->clearArticles();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
     }
 
     protected function tearDown(): void
     {
         $this->clearArticles();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         $this->tearDownInteractsWithMongoUsers();
         parent::tearDown();
     }
@@ -124,12 +124,12 @@ class ArticleWorkspaceTest extends TestCase
     public function test_editorial_user_can_record_a_future_publication_time(): void
     {
         $user = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'EAD',
             'permission_code_list' => [],
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'assigned_by_user_id' => (string) $user->getKey(),
             'assignment_reason' => 'Article scheduling test.',
         ]);
@@ -186,11 +186,11 @@ class ArticleWorkspaceTest extends TestCase
     {
         $author = User::factory()->create();
         $editor = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $editor->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 

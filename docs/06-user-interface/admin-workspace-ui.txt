@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.41
+Document Version: 0.50
 Date Created: 2026-07-19
-Revision Date: 2026-07-21
+Revision Date: 2026-07-22
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
 
 Related Documents:
@@ -70,7 +70,8 @@ Visual direction:
 - use icons only with visible text or accessible labels;
 - never communicate state through color alone;
 - avoid unnecessary animation;
-- support light and dark administrative themes only when both meet contrast and data-visualization requirements.
+- support light and dark color modes only when both meet contrast and data-visualization
+  requirements; color mode is separate from Ink & Ember and seasonal visual themes.
 
 The interface must prioritize:
 
@@ -146,7 +147,7 @@ The administrator menu should include:
 - active sessions and devices;
 - interface language and time zone;
 - accessibility preferences;
-- theme where enabled;
+- color mode and eligible visual theme where enabled;
 - exit View-As when active;
 - log out.
 
@@ -201,7 +202,7 @@ Content
 - Publication Calendar
 
 People and Support
-- Users
+- User Management (visible to Founder and other explicitly authorized administrators)
 - Support Cases
 - View-As
 - Roles and Permissions
@@ -818,6 +819,11 @@ System operations should be separated into focused pages:
 - incident response.
 
 Do not create one giant settings form.
+
+Current implementation note: the unified workspace exposes a protected User Management entry to
+the Founder through effective user_access. Account search, status controls, role assignment and
+revocation, session review, and lockout safeguards are present. Full security-event history,
+recent-authentication gates, and administrative audit workflows remain unfinished.
 
 Each setting should show:
 

@@ -1,5 +1,5 @@
 Title: Massage Nexus Site Structure Map
-Document Version: 2.57
+Document Version: 2.58
 Date Created: 2026-07-10
 Revision Date: 2026-07-21
 
@@ -94,7 +94,7 @@ Entity route style:
 /therapist/{therapist-slug}
 /product/{product-slug}
 /seller/{seller-slug}
-/user/{user-slug}
+/user/{username}
 /article/{article-slug}
 /review/{review-slug}
 /promo/{promo-slug}
@@ -122,7 +122,7 @@ No public account route:
 /account
 
 User profile route:
-/user/{user-slug}
+/user/{username}
 
 API route options:
 api.massagenexus.com
@@ -1393,7 +1393,7 @@ quiet-break
 /review/tag
 /review/tag/{tag-slug}
 /review/author
-/review/author/{user-slug}
+/review/author/{username}
 /review/latest
 /review/trending
 /review/helpful
@@ -1504,15 +1504,15 @@ report-action
 ================================================================================
 
 /user
-/user/{user-slug}
-/user/{user-slug}/review
-/user/{user-slug}/rating
-/user/{user-slug}/comment
-/user/{user-slug}/article
-/user/{user-slug}/media
-/user/{user-slug}/badge
-/user/{user-slug}/reputation
-/user/{user-slug}/contribution
+/user/{username}
+/user/{username}/review
+/user/{username}/rating
+/user/{username}/comment
+/user/{username}/article
+/user/{username}/media
+/user/{username}/badge
+/user/{username}/reputation
+/user/{username}/contribution
 
 User profile page sections:
 profile-header
@@ -2103,7 +2103,7 @@ Access-view notes:
 /workspace/setting/security
 /workspace/setting/privacy
 /workspace/setting/language
-/workspace/setting/theme
+/workspace/setting/color-mode
 /workspace/setting/notification
 /workspace/setting/accessibility
 /workspace/setting/deletion
@@ -2985,6 +2985,8 @@ Current web implementation (2026-07-21):
 
 /workspace/system
 /workspace/system/dashboard
+/workspace/system/user
+/workspace/system/user/{user}
 /workspace/system/setting
 /workspace/system/language
 /workspace/system/theme
@@ -3312,7 +3314,7 @@ Real public pages:
 /comic/{comic-slug}
 /room/{room-slug}
 /review/{review-slug}
-/user/{user-slug}
+/user/{username}
 /verify
 /report
 /newsletter
@@ -3339,9 +3341,9 @@ Profile tabs or sections:
 /seller/{seller-slug}/product
 /seller/{seller-slug}/promo
 /seller/{seller-slug}/review
-/user/{user-slug}/review
-/user/{user-slug}/badge
-/user/{user-slug}/reputation
+/user/{username}/review
+/user/{username}/badge
+/user/{username}/reputation
 
 Workspace pages:
 /workspace/home

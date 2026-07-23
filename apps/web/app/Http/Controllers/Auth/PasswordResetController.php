@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Notifications\PasswordResetSuccessful;
 use App\Rules\NotCompromisedPassword;
 use App\Rules\NotObviousPassword;
+use App\Services\UserSessionManager;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -54,7 +55,7 @@ class PasswordResetController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(Request $request, UserSessionManager $sessions): RedirectResponse
     {
         $request->merge([
             'email' => Str::lower(trim((string) $request->input('email'))),
@@ -96,6 +97,7 @@ class PasswordResetController extends Controller
         }
 
         $resetUser->notify(new PasswordResetSuccessful);
+        $sessions->revokeAllFor($resetUser, (string) $resetUser->getKey());
 
         return redirect()
             ->route('login')

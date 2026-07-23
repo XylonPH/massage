@@ -1,5 +1,5 @@
 {{-- Contact --}}
-<div x-show="tab === 'contact'" x-cloak class="mt-5 space-y-3">
+<div x-show="tab === 'contact'" x-cloak wire:key="tab-content-contact" class="mt-5 space-y-3">
     <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.contact_channels') }}</p>
     @foreach ($state['contact_channel_list'] as $i => $row)
         <div class="grid gap-3 rounded-xl border border-ink-100 p-3 sm:grid-cols-2 lg:grid-cols-3 dark:border-ink-800" wire:key="contact-{{ $i }}">

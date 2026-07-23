@@ -4,9 +4,9 @@ namespace Tests\Feature\Editorial;
 
 use App\Livewire\Workspace\Editorial\QuoteForm;
 use App\Livewire\Workspace\Editorial\QuoteIndex;
-use App\Models\AccessAssignment;
 use App\Models\Quote;
 use App\Models\User;
+use App\Models\UserAccess;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
@@ -18,13 +18,13 @@ class QuoteCrudTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Quote::query()->delete();
     }
 
     protected function tearDown(): void
     {
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Quote::query()->delete();
         parent::tearDown();
     }
@@ -32,11 +32,11 @@ class QuoteCrudTest extends TestCase
     private function editor(): User
     {
         $user = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 

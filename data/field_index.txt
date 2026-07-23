@@ -107,6 +107,7 @@ code_hash
 code_set_id
 collection_count
 color_config
+color_mode
 comment_count
 communication_preference
 community_summary
@@ -793,7 +794,6 @@ text_scale_percent
 theme_description
 theme_key
 theme_label
-theme_mode
 theme_note
 therapist_selection_preference
 thumbnail_media_image_id
@@ -1063,7 +1063,6 @@ user_contribution_id
 user_device_id
 user_id
 user_session_id
-user_slug
 user_subscription_id
 username
 valid_from

@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+}
+
+html.high-contrast { filter: contrast(1.12); }
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';

@@ -1,5 +1,5 @@
 {{-- Operating hours --}}
-<div x-show="tab === 'hours'" x-cloak class="mt-5 space-y-3">
+<div x-show="tab === 'hours'" x-cloak wire:key="tab-content-hours" class="mt-5 space-y-3">
     <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.operating_hours') }}</p>
     @foreach ($state['operating_hours'] as $i => $row)
         <div class="grid gap-3 rounded-xl border border-ink-100 p-3 sm:grid-cols-[auto_1fr_1fr_1fr_auto] dark:border-ink-800" wire:key="hours-{{ $i }}">

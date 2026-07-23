@@ -118,18 +118,29 @@ class Article extends Model
     {
         $values = $this->getAttribute($field);
 
+        if (is_string($values)) {
+            return $values;
+        }
+
         if (! is_array($values)) {
             return '';
         }
 
         $locale ??= ArticleLanguage::keyForId((int) ($this->language_original_id ?? 3049));
-        $preferred = $values[$locale]['text'] ?? $values['eng']['text'] ?? null;
+        $candidate = $values[$locale] ?? $values['eng'] ?? null;
 
-        if (is_string($preferred)) {
-            return $preferred;
+        if (is_string($candidate)) {
+            return $candidate;
+        }
+
+        if (is_array($candidate) && is_string($candidate['text'] ?? null)) {
+            return $candidate['text'];
         }
 
         foreach ($values as $value) {
+            if (is_string($value)) {
+                return $value;
+            }
             if (is_array($value) && is_string($value['text'] ?? null)) {
                 return $value['text'];
             }

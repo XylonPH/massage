@@ -1,5 +1,5 @@
 Title: Massage Nexus User Profile and Preference System
-Document Version: 2.20
+Document Version: 2.40
 Date Created: 2026-07-18
 Revision Date: 2026-07-22
 Document Description: Defines the complete Massage Nexus user-data collection family, public profile, personal identity including optional handedness, contacts, addresses, preferences, security records, connected social accounts, access, subscriptions, community standing, activity summaries, practitioner linkage, policy gating, and private Settings boundaries.
@@ -36,7 +36,8 @@ registered user. A user-facing aggregate may combine several collections, but th
 not duplicate unbounded histories inside user_main.
 
 Accepted collection names use the user_ prefix where the record is user-owned or user-scoped.
-The former access_assignment direction is renamed user_access. The former contribution_main
+The former access_assignment collection has been migrated to user_access and removed after active
+Founder access was verified. The former contribution_main
 direction is renamed user_contribution. The former client_booking_default collection is retired;
 bounded reusable booking preferences belong in user_main.
 
@@ -119,7 +120,7 @@ balances.
 
 Public route:
 
-/user/{user-slug}
+/user/{username}
 
 When the profile visibility permits the viewer, the profile may show:
 - approved display name and @username;
@@ -234,7 +235,8 @@ account_preference may contain:
 - regional date, time, number, currency, and measurement presentation.
 
 appearance_preference may contain:
-- theme mode: system, light, or dark;
+- color mode: system, light, or dark; this controls interface brightness and is distinct from
+  branded or seasonal visual themes;
 - text scale;
 - increased-contrast preference;
 - reduced-motion preference;
@@ -595,19 +597,27 @@ A control is not shown as saved unless the server persists and applies it.
 20. IMPLEMENTATION AND MIGRATION ORDER
 ================================================================================
 
-Documentation and structure guides establish the accepted target state. Current runtime code still
-uses access_assignment, contribution_main, Terms fields in user_main, and device-local theme state.
+Documentation and structure guides establish the accepted target state. Runtime authorization now
+uses user_access exclusively after verified migration and removal of access_assignment. Optional
+profile fields and bounded preference groups are stored sparsely instead of as null values or empty
+arrays; username is the public route key and is not duplicated in user_slug. Public profiles,
+embedded profile/privacy/appearance/notification preferences, server-backed color-mode selection, session review and revocation, coarse
+recognized-device summaries, and protected administrator user/role/session surfaces are implemented.
+The runtime still uses contribution_main and Terms fields in user_main.
 
-Safe future implementation order:
+Safe implementation order and current progress:
 1. Add target collections, indexes, taxonomies, validation, authorization, and tests.
 2. Backfill user_contact, user_policy, and user_access from current user_main and legacy records.
-3. Dual-read or migrate access_assignment to user_access without removing active Founder access.
+3. [Implemented] Migrate access_assignment to user_access, verify active Founder access, and remove
+   the legacy collection.
 4. Dual-read or migrate contribution_main to user_contribution.
 5. Move reusable booking preferences into bounded user_main.booking_preference while preserving
    booking snapshots and protected intake.
 6. Add policy gating and legal_main reacceptance metadata.
-7. Add media, public profile, social connections, and self-practitioner linking.
-8. Add sessions, devices, MFA, recovery codes, passkeys, and security-event management.
+7. [Partially implemented] Public profiles are active. Media, social connections, and
+   self-practitioner linking remain pending; profile and cover media are deliberately outside this change.
+8. [Partially implemented] Session and coarse device management are active. MFA enrollment,
+   recovery codes, passkeys, recent-authentication gates, and security-event history remain pending.
 9. Add rewards, badges, Rank, Reputation, subscriptions, and entitlements with authoritative event
    records and rebuildable summaries.
 10. Add saved items, following, and notifications.

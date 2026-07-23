@@ -13,13 +13,17 @@ return new class extends Migration
 
         foreach ($legacyRecords as $legacyRecord) {
             $legacy = (array) $legacyRecord;
-            $id = $legacy['_id'] ?? null;
+            $id = $legacy['_id'] ?? $legacy['id'] ?? null;
 
             if ($id === null || DB::connection('mongodb')->table('user_access')->where('_id', $id)->exists()) {
                 continue;
             }
 
             $migrated = $legacy;
+            $migrated['_id'] = $id;
+            if (is_string($migrated['permission_code_list'] ?? null)) {
+                $migrated['permission_code_list'] = json_decode($migrated['permission_code_list'], true) ?: [];
+            }
             $migrated['status_user_access'] = $legacy['status_access_assignment'] ?? 'PND';
             $migrated['granted_by_user_id'] = $legacy['assigned_by_user_id'] ?? $legacy['user_id'] ?? null;
             $migrated['grant_reason'] = $legacy['assignment_reason'] ?? 'Migrated from the legacy access assignment record.';
@@ -28,6 +32,7 @@ return new class extends Migration
                 $migrated['status_access_assignment'],
                 $migrated['assigned_by_user_id'],
                 $migrated['assignment_reason'],
+                $migrated['id'],
             );
 
             DB::connection('mongodb')->table('user_access')->insert($migrated);
@@ -40,28 +45,13 @@ return new class extends Migration
         });
 
         Schema::connection('mongodb')->table('user_main', function (Blueprint $table): void {
-            $table->unique('user_slug');
             $table->index('visibility_scope');
         });
-
-        DB::connection('mongodb')->table('user_main')
-            ->whereNull('user_slug')
-            ->get()
-            ->each(function (object $user): void {
-                $values = (array) $user;
-                if (! isset($values['_id'], $values['username'])) {
-                    return;
-                }
-
-                DB::connection('mongodb')->table('user_main')
-                    ->where('_id', $values['_id'])
-                    ->update(['user_slug' => (string) $values['username']]);
-            });
     }
 
     public function down(): void
     {
         // The migration is intentionally additive. Retain migrated grants and
-        // user slugs so rolling application code back cannot destroy access.
+        // so rolling application code back cannot destroy access.
     }
 };

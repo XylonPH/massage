@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Workspace;
 
-use App\Models\AccessAssignment;
 use App\Models\Establishment;
 use App\Models\Practitioner;
 use App\Models\User;
+use App\Models\UserAccess;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
 
@@ -17,14 +17,14 @@ class WorkspaceShellTest extends TestCase
     {
         parent::setUp();
 
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Establishment::query()->delete();
         Practitioner::query()->delete();
     }
 
     protected function tearDown(): void
     {
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         Establishment::query()->delete();
         Practitioner::query()->delete();
 
@@ -172,11 +172,11 @@ class WorkspaceShellTest extends TestCase
     public function test_founder_assignment_automatically_adds_all_administrative_areas(): void
     {
         $user = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'FND',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 
@@ -198,12 +198,12 @@ class WorkspaceShellTest extends TestCase
         $second = Establishment::query()->create(['display_name' => ['eng' => 'Calm Two']]);
 
         foreach ([$first, $second] as $establishment) {
-            AccessAssignment::query()->create([
+            UserAccess::query()->create([
                 'user_id' => (string) $user->getKey(),
                 'permission_code_list' => ['establishment.manage'],
                 'scope_access' => 'EST',
                 'scope_record_id' => (string) $establishment->getKey(),
-                'status_access_assignment' => 'ACT',
+                'status_user_access' => 'ACT',
             ]);
         }
 
@@ -219,12 +219,12 @@ class WorkspaceShellTest extends TestCase
         $practitioner = Practitioner::query()->create([
             'practitioner_name' => ['eng' => ['text' => 'Maya Santos']],
         ]);
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'THP',
             'scope_access' => 'PRA',
             'scope_record_id' => (string) $practitioner->getKey(),
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
         ]);
 
         $this->actingAs($user)->get('/workspace/listing/therapist')

@@ -1,7 +1,7 @@
 @props(['tabs' => [], 'icons' => []])
 <div class="flex flex-wrap gap-1 border-b border-ink-100 dark:border-ink-800" role="tablist">
     @foreach ($tabs as $key => $label)
-        <button type="button" role="tab" @click="tab = '{{ $key }}'"
+        <button type="button" role="tab" wire:key="tab-btn-{{ $key }}" @click="tab = '{{ $key }}'"
                 :aria-selected="(tab === '{{ $key }}').toString()"
                 :class="tab === '{{ $key }}'
                     ? 'border-ember-500 text-ember-600 dark:text-ember-400'

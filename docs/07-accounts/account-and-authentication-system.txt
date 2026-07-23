@@ -1,5 +1,5 @@
 Title: Massage Nexus Account Identity Registration and Authentication System
-Document Version: 1.50
+Document Version: 1.70
 Date Created: 2026-07-18
 Revision Date: 2026-07-22
 
@@ -868,9 +868,11 @@ request responses remain generic, request and reset endpoints are rate-limited, 
 project password policy is reapplied, remember tokens rotate, and a security notification is
 sent after a successful reset.
 
-Session/device management beyond remember-token rotation and logout, TOTP, recovery codes,
-passkeys, and external identity providers remain unimplemented, matching their later position
-in the section 20 implementation order.
+Session review, remote revocation, password-reset revocation, and coarse user-recognized device
+summaries are implemented. Device records are private presentation/grouping data, do not use an
+invasive fingerprint, and never grant authentication. TOTP enrollment and challenge enforcement,
+recovery-code issuance, passkeys, recent-authentication gates, security-event history, and external
+identity providers remain unimplemented, matching their later position in the section 20 order.
 
 Registration submission (POST /register) is rate-limited, matching the password-recovery
 pattern above. A separate advisory endpoint (GET /register/check-username) lets the register

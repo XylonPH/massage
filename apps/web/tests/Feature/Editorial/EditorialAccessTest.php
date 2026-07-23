@@ -3,11 +3,11 @@
 namespace Tests\Feature\Editorial;
 
 use App\Livewire\Workspace\Editorial\ArticleReview;
-use App\Models\AccessAssignment;
 use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\User;
+use App\Models\UserAccess;
 use App\Support\Article\PendingArticleRevisions;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
@@ -20,7 +20,7 @@ class EditorialAccessTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         ArticleRevision::query()->delete();
         ArticleBody::query()->delete();
         Article::query()->delete();
@@ -28,7 +28,7 @@ class EditorialAccessTest extends TestCase
 
     protected function tearDown(): void
     {
-        AccessAssignment::query()->delete();
+        UserAccess::query()->delete();
         ArticleRevision::query()->delete();
         ArticleBody::query()->delete();
         Article::query()->delete();
@@ -37,11 +37,11 @@ class EditorialAccessTest extends TestCase
 
     private function grantEditorial(User $user): void
     {
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $user->getKey(),
             'role_workspace' => 'EAD',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
     }
@@ -147,23 +147,21 @@ class EditorialAccessTest extends TestCase
         $this->assertSame(0, PendingArticleRevisions::all()->count());
     }
 
-    public function test_moderation_and_system_placeholders_are_permission_gated(): void
+    public function test_moderation_and_system_areas_are_permission_gated(): void
     {
         $member = User::factory()->create();
         $founder = User::factory()->create();
-        AccessAssignment::query()->create([
+        UserAccess::query()->create([
             'user_id' => (string) $founder->getKey(),
             'role_workspace' => 'FND',
             'scope_access' => 'GBL',
-            'status_access_assignment' => 'ACT',
+            'status_user_access' => 'ACT',
             'effective_at' => now()->subMinute(),
         ]);
 
-        foreach (['moderation', 'system'] as $area) {
-            $this->actingAs($member)->get("/workspace/{$area}")->assertForbidden();
-            $this->actingAs($founder)->get("/workspace/{$area}")
-                ->assertOk()
-                ->assertSee(__('workspace.admin_placeholder_text'));
-        }
+        $this->actingAs($member)->get('/workspace/moderation')->assertForbidden();
+        $this->actingAs($founder)->get('/workspace/moderation')->assertOk()->assertSee(__('workspace.admin_placeholder_text'));
+        $this->actingAs($member)->get('/workspace/system')->assertForbidden();
+        $this->actingAs($founder)->get('/workspace/system')->assertOk()->assertSee(__('user.user_management'));
     }
 }

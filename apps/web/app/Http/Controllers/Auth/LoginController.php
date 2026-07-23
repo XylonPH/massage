@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Services\UserSessionManager;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, UserSessionManager $sessions): RedirectResponse
     {
         $validated = $request->validate([
             'identifier' => ['required', 'string'],
@@ -74,6 +75,7 @@ class LoginController extends Controller
         }
 
         $request->session()->regenerate();
+        $sessions->recordLogin($request, $user);
 
         return redirect()->intended(route('home'));
     }

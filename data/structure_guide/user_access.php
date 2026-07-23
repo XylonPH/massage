@@ -1,22 +1,22 @@
 <?php
 /**
  * Title: Massage Nexus User Access Structure Guide
- * Version: 1.00
+ * Version: 1.20
  * Collection: user_access
  * Description: Stores one additive global or scoped role or direct-permission grant for a user.
  * Purpose: Documents the accepted user_access record shape for authorization, public-role presentation, review, and migration planning without acting as runtime code or a migration.
  *
  * Notes:
- * - Runtime code currently uses the legacy access_assignment collection until a tested migration is implemented.
+ * - Runtime authorization uses user_access exclusively. The retired access_assignment collection was removed after every legacy grant was verified in user_access.
+ * - Fields holding empty lists or inapplicable optional values are omitted from stored documents and resolved through sparse runtime defaults where needed.
  * - Factual ownership, employment, management, investment, and representation do not belong here.
  * - Authorization evaluates effective user_access records; user_main access_summary is presentation-only.
  */
 
 $created_at = '2026-07-20T10:31:38Z';
-$updated_at = '2026-07-22T02:51:15Z';
+$updated_at = '2026-07-22T07:55:39Z';
 
 $user_access_default = [
-    'permission_code_list' => [],
     'scope_access' => 'GBL',
     'status_user_access' => 'PND',
     'is_role_public' => false,
@@ -30,17 +30,12 @@ $user_access = [
     'role_workspace' => 'FND', // Optional workspace role bundle.
     'permission_code_list' => ['article.schedule'], // Direct permission codes added by the grant.
     'scope_access' => 'GBL', // Global or supported record scope.
-    'scope_record_id' => null, // Required target identifier for a non-global scope.
     'status_user_access' => 'ACT', // Current grant lifecycle state.
     'effective_at' => '2026-07-22T02:51:15Z', // UTC time when access begins.
-    'expires_at' => null, // Optional UTC expiry time.
     'granted_by_user_id' => 'U9mC5qL2pR7vX4kT', // Authorized grantor.
     'grant_reason' => 'Approved project decision responsibility.', // Required grant explanation.
     'is_role_public' => true, // Whether this role is eligible for public presentation.
     'public_role_order' => 10, // Order among eligible public role labels.
-    'revoked_at' => null, // UTC revocation time.
-    'revoked_by_user_id' => null, // Authorized revoking user.
-    'revocation_reason' => null, // Required explanation when revoked.
     'revision_number' => 1, // Optimistic-concurrency token.
     'created_at' => '2026-07-22T02:51:15Z', // UTC record creation time.
     'updated_at' => '2026-07-22T02:51:15Z', // UTC latest accepted update time.
@@ -59,7 +54,7 @@ $user_access_field_property = [
     '_id' => ['field_label' => 'User Access ID', 'field_description' => 'Canonical application-generated 16-character identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_indexed' => true, 'is_unique' => true],
     'user_id' => ['field_label' => 'User', 'field_description' => 'user_main._id receiving the access grant.', 'type_data' => 'S', 'type_field' => 'REF', 'is_mandatory' => true, 'is_relational' => true, 'is_indexed' => true],
     'role_workspace' => ['field_label' => 'Workspace Role', 'field_description' => 'Optional role bundle from the workspace-access taxonomy.', 'type_data' => 'S', 'type_field' => 'DDL', 'taxonomy_field_name' => 'role_workspace', 'is_indexed' => true],
-    'permission_code_list' => ['field_label' => 'Permission Codes', 'field_description' => 'Stable namespaced direct permissions added by this grant.', 'type_data' => 'A', 'type_field' => 'TAG', 'taxonomy_field_name' => 'permission_code_list', 'default_value' => []],
+    'permission_code_list' => ['field_label' => 'Permission Codes', 'field_description' => 'Optional stable namespaced direct permissions added by this grant; omitted when no direct permissions apply.', 'type_data' => 'A', 'type_field' => 'TAG', 'taxonomy_field_name' => 'permission_code_list'],
     'scope_access' => ['field_label' => 'Access Scope', 'field_description' => 'Global or record-bound grant scope.', 'type_data' => 'S', 'type_field' => 'DDL', 'taxonomy_field_name' => 'scope_access', 'default_value' => 'GBL', 'is_mandatory' => true, 'is_indexed' => true],
     'scope_record_id' => ['field_label' => 'Scope Record', 'field_description' => 'Target record identifier required for a non-global scope.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true, 'is_indexed' => true],
     'status_user_access' => ['field_label' => 'User Access Status', 'field_description' => 'Current grant lifecycle and approval state.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'PND', 'is_mandatory' => true, 'is_indexed' => true],

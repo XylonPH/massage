@@ -1,7 +1,7 @@
 Title: Massage Nexus Spa Profile UI
-Document Version: 0.31
+Document Version: 0.41
 Date Created: 2026-07-18
-Revision Date: 2026-07-19
+Revision Date: 2026-07-23
 
 Spa Profile UI Documentation
 =============================
@@ -13,7 +13,7 @@ Status: this is a first implementation-based draft (planning version), not yet a
 Page Layout Overview
 ---------------------
 
-The spa profile page is divided into three layout areas: a dark Identity Header spanning the full width, a sticky in-page Tab Navigation bar directly beneath it, and a two-column Body below that pairs the main content column with a sticky Booking panel in the right rail on wide viewports. The page reuses the site-wide header and footer from the homepage layout.
+The spa profile page is divided into three layout areas: a dark Identity Header spanning the full width, a sticky Tab Navigation bar directly beneath it, and a two-column Body below that pairs the active tab panel in the main content column with a sticky Booking panel in the right rail on wide viewports. The page reuses the site-wide header and footer from the homepage layout.
 
 --------------------------------------------------------------------------------
 
@@ -40,14 +40,14 @@ A horizontal action row: Book Now (primary, links to the booking panel), Contact
 
 Placement: Immediately below the Identity Header, sticky beneath the site header while scrolling.
 
-An in-page anchor tab bar: Overview, Services & Rates, Therapists, Facilities, Reviews, Location. Clicking a tab scrolls to the matching section rather than loading a new page or an ajax panel. This is a reduced set compared to the Spa Profile Guide's eleven-item Main Sections/Tabs list: Availability and Booking is represented as the always-visible Booking panel rather than its own tab, Gallery and Public Documents is represented only by the header photo-grid preview, and Promotions and Updates, and About/Verification/Sources are not yet separate tabs (Verification appears as an untabbed section at the end of the main column; Promotions and Updates is not yet implemented on this page). These gaps are deferred, not rejected.
+A tab bar: Overview, Services & Rates, Therapists, Facilities, Reviews, Location. Selecting a tab replaces the main-column panel in place without scrolling the page. The tab list and panels use the ARIA tab pattern, and Left Arrow, Right Arrow, Home, and End keys move between tabs. When JavaScript is unavailable, the panels remain readable as ordinary consecutive sections. This is a reduced set compared to the Spa Profile Guide's eleven-item Main Sections/Tabs list: Availability and Booking is represented as the always-visible Booking panel rather than its own tab, Gallery and Public Documents is represented only by the header photo-grid preview, and Promotions and Updates, and About/Verification/Sources are not yet separate tabs (Verification appears as an untabbed section beneath the active panel; Promotions and Updates is not yet implemented on this page). These gaps are deferred, not rejected.
 
 --------------------------------------------------------------------------------
 
 4. Overview
 =============
 
-Placement: Main column, first section.
+Placement: Main column, initially active tab panel.
 
 Shows the about/description text and an amenities grid (icon, label, and an Available/Accepted status) sourced from the establishment's facility list.
 
@@ -56,7 +56,7 @@ Shows the about/description text and an amenities grid (icon, label, and an Avai
 5. Services & Rates
 ======================
 
-Placement: Main column, after Overview.
+Placement: Main column, Services & Rates tab panel.
 
 A list of provider menu items, each showing an icon tile, service name, duration in minutes, and price. A last-confirmed date appears below the list per the Spa Profile Guide's requirement that displayed prices carry a visible confirmation date.
 
@@ -65,7 +65,7 @@ A list of provider menu items, each showing an icon tile, service name, duration
 6. Therapists
 ===============
 
-Placement: Main column, after Services & Rates.
+Placement: Main column, Therapists tab panel.
 
 A card grid of therapists affiliated with the establishment: avatar initials, name, establishment-assigned title (Provider Rank context), specialties, and rating. Each card does not yet link to the therapist's own Massage Nexus profile; that link is a known gap against the Spa Profile Guide's therapist-card requirements.
 
@@ -74,7 +74,7 @@ A card grid of therapists affiliated with the establishment: avatar initials, na
 7. Facilities
 ===============
 
-Placement: Main column, after Therapists.
+Placement: Main column, Facilities tab panel.
 
 Currently shows Treatment Areas only (name, privacy level, capacity, and a short note per area). General facility/amenity display lives in the Overview section instead of here; consolidating both under one heading, or renaming this tab, is an open naming question.
 
@@ -83,7 +83,7 @@ Currently shows Treatment Areas only (name, privacy level, capacity, and a short
 8. Reviews
 ============
 
-Placement: Main column, after Facilities.
+Placement: Main column, Reviews tab panel.
 
 The section now reads approved Review records from review_main and their linked 1-to-10 rating events from rating_main. Rating count and review count remain separate. Until the Rating System's public XCES threshold and calculation are implemented, the profile says "Not enough ratings yet" instead of presenting an unexplained fixture average. Review cards show the public byline or anonymous label, publication date, exact score out of 10, title, and short description without star imagery. "Write a review" opens the authenticated Spa review form, and "View all reviews" opens the public list filtered to this Spa.
 
@@ -92,7 +92,7 @@ The section now reads approved Review records from review_main and their linked 
 9. Location and Contact
 =======================
 
-Placement: Main column, after Reviews.
+Placement: Main column, Location tab panel.
 
 A map tile opens a coordinate-based external map destination. The section shows the public address,
 entrance directions, parking information, a Get Directions action, and nearby landmarks with
@@ -106,7 +106,7 @@ URL schemes are removed before rendering. A real embedded map is not implemented
 10. Verification
 ==================
 
-Placement: Main column, final section, not part of the tab bar.
+Placement: Main column, beneath the active panel, not part of the tab bar.
 
 A compact strip noting claimed/owner-managed status and the last-confirmed date. This does not yet cover source notes or a fuller verification history as described in the Spa Profile Guide's About, Verification, and Sources section.
 

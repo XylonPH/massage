@@ -1,5 +1,5 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 2.46
+Document Version: 2.47
 Date Created: 2026-07-16
 Revision Date: 2026-07-22
 Document Description: This is the master categorical completion checklist for Massage Nexus. Items are organized by the product or platform domain that owns them, regardless of implementation order, release target, or whether the work is one-time or recurring. Milestone order and release gates belong only in the Roadmap.
@@ -420,12 +420,12 @@ Use:
 [~] Massage Nexus eligibility record
 [x] Public browsing without registration
 [x] User is a client by default
-[ ] Additional professional and platform roles on the same account
+[~] Additional professional and platform roles on the same account
 [ ] Membership suspension separate from network-account suspension
 [ ] Account deletion grace period
 [ ] Re-created account treated according to deletion policy
-[ ] Public display name separate from username
-[ ] Public User Profile separate from the private personal account area
+[x] Public display name separate from username
+[~] Public User Profile separate from the private personal account area
 [~] Personal dashboard
 
 3.2 Registration and Verification
@@ -458,8 +458,8 @@ Use:
 [x] Logout
 [x] Password recovery
 [x] Session rotation
-[ ] Session and device list
-[ ] Remote session revocation
+[x] Session and device list
+[x] Remote session revocation
 [ ] Security notifications
 [ ] TOTP
 [ ] Recovery codes
@@ -479,16 +479,16 @@ Use:
 [ ] Animated avatar
 [ ] Avatar moderation
 [ ] Public cover image
-[ ] Bio
-[ ] Pronouns where voluntarily provided
-[ ] Gender kept optional and privacy-controlled
-[ ] Birthday presentation: hidden, age, age range, or month and day
+[x] Biography/about text
+[x] Pronouns where voluntarily provided
+[x] Gender kept optional and privacy-controlled
+[~] Birthday presentation: hidden, age, age range, or month and day
 [ ] Multiple personal contacts with verification and replacement history
 [ ] Multiple labeled private addresses for booking and home service
-[ ] Language and regional preferences
-[ ] Time zone
+[~] Language and regional preferences
+[x] Time zone
 [ ] Account security history
-[ ] Public and private visibility controls
+[~] Public and private visibility controls
 
 3.5 User as Client by Default
 -----------------------------
@@ -501,11 +501,11 @@ Use:
 
 3.6 Public User Profile
 -----------------------
-[ ] User profile
-[ ] Display name
+[~] User profile
+[x] Display name
 [ ] Avatar
 [ ] Cover photo
-[ ] Bio/about
+[x] Bio/about
 [ ] Public activity controls
 [ ] Public reviews
 [ ] Public contributions
@@ -513,12 +513,12 @@ Use:
 [ ] Featured badges and full eligible badge cabinet
 [ ] Selected Rank title and level
 [ ] Reputation score and label
-[ ] Official public roles derived from effective user access
+[x] Official public roles derived from effective user access
 [ ] Optional Premium Member label
 [ ] Connected Facebook, Instagram, YouTube, X, and other approved social profiles
 [ ] Verified linked practitioner profile
 [ ] Public follows where permitted
-[ ] Private profile settings
+[~] Private profile settings
 [~] Public-profile controls
 
 3.7 Saved and Followed Items
@@ -2707,7 +2707,7 @@ Use:
 -----------------------------------
 [~] Permission-aware admin foundation and dashboard entry cards
 [ ] Listing management
-[ ] User management
+[~] User management
 [ ] Spa management
 [ ] Therapist management
 [ ] Review management

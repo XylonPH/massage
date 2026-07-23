@@ -17,7 +17,7 @@
         @elseif ($isContribution && $currentStep === 3)
             @include('livewire.workspace.establishment-form._review-submit')
         @else
-            <div x-data="{ tab: 'identity' }">
+            <div x-data="{ tab: 'identity' }" wire:key="spa-details-tabs">
                 @php($tabIcons = [
                     'identity' => 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0',
                     'classification' => 'M4 6h16M4 12h16M4 18h16',

@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus User Main Structure Guide
- * Version: 1.10
+ * Version: 1.30
  * Collection: user_main
  * Description: Stores one Massage Nexus account, bounded public profile, private identity facts, current preferences, primary references, and rebuildable user summaries.
  * Purpose: Documents the accepted user_main aggregate boundary for account loading, profile presentation, preferences, policy gating, and summary display without replacing authoritative growing user collections.
@@ -11,25 +11,20 @@
  * - Contacts, addresses, policy decisions, social connections, security records, subscriptions, rewards, badges, ranks, reputation events, and contributions remain authoritative in their own user_* collections.
  * - Article, Review, Rating, booking, claim, message, and media histories remain in their owning domains.
  * - Runtime code currently implements only a subset and requires a tested migration before using this complete target shape.
+ * - The permanent normalized username is also the public route key; a duplicate user_slug is not stored.
+ * - Empty optional groups, empty lists, and null optional profile fields are omitted from stored documents.
+ * - Light, dark, and system-following are color modes. Ink & Ember and seasonal designs are separate visual themes.
  */
 
 $created_at = '2026-07-18T12:36:56Z';
-$updated_at = '2026-07-22T04:55:26Z';
+$updated_at = '2026-07-22T07:55:39Z';
 
 $user_main_default = [
     'type_handedness' => 'UN',
     'visibility_scope' => 'PRV',
-    'account_preference' => [],
-    'appearance_preference' => ['theme_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false],
+    'appearance_preference' => ['color_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false],
     'notification_preference' => ['notification_channel_list' => ['WEB', 'EML'], 'notification_category_list' => ['SEC'], 'digest_frequency' => 'IMM', 'is_marketing_email_opt_in' => false],
     'privacy_preference' => ['visibility_activity' => 'PRV', 'visibility_gender' => 'PRV', 'visibility_handedness' => 'PRV', 'type_birth_date_display' => 'HID', 'is_social_connection_public' => false, 'is_premium_label_public' => false, 'is_analytics_cookie_allowed' => false, 'is_personalization_cookie_allowed' => false, 'is_marketing_cookie_allowed' => false],
-    'booking_preference' => [],
-    'access_summary' => [],
-    'activity_summary' => [],
-    'community_summary' => [],
-    'subscription_summary' => [],
-    'policy_summary' => [],
-    'security_summary' => [],
     'status_account' => 'PND',
     'status_membership' => 'PEL',
     'revision_number' => 1,
@@ -38,7 +33,6 @@ $user_main_default = [
 $user_main = [
     '_id' => 'U2pR7vX4kT9mC5qL', // Canonical 16-character account identifier.
     'username' => 'wellnessfan7', // Unique normalized account handle.
-    'user_slug' => 'wellness-fan-7', // Stable public profile route value.
     'display_name' => 'Wellness Fan', // Optional moderated public display name.
     'profile_biography' => 'Weekend spa explorer who enjoys thoughtful reviews and directory research.', // Optional public biography.
     'pronoun_text' => 'they/them', // Optional self-provided pronouns.
@@ -53,11 +47,11 @@ $user_main = [
         'interface_language_id' => 3049,
         'fallback_language_id' => 3049,
         'content_language_id_list' => [3049],
-        'time_zone_id' => 583,
+        'time_zone_id' => 255,
         'regional_format_code' => 'en-PH',
     ],
     'appearance_preference' => [
-        'theme_mode' => 'SYS',
+        'color_mode' => 'SYS',
         'text_scale_percent' => 100,
         'is_high_contrast' => false,
         'is_reduced_motion' => false,
@@ -160,7 +154,7 @@ $user_main = [
 ];
 
 $user_main_field_order = [
-    '_id', 'username', 'user_slug', 'display_name', 'profile_biography', 'pronoun_text',
+    '_id', 'username', 'display_name', 'profile_biography', 'pronoun_text',
     'gender_identity', 'type_handedness', 'birth_date', 'default_avatar_key', 'avatar_media_image_id',
     'cover_media_image_id', 'visibility_scope', 'account_preference', 'appearance_preference',
     'notification_preference', 'privacy_preference', 'booking_preference',
@@ -172,8 +166,8 @@ $user_main_field_order = [
 ];
 
 $user_main_embedded_structure = [
-    'account_preference' => ['interface_language_id' => 3049, 'fallback_language_id' => 3049, 'content_language_id_list' => [3049], 'time_zone_id' => 583, 'regional_format_code' => 'en-PH'],
-    'appearance_preference' => ['theme_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false],
+    'account_preference' => ['interface_language_id' => 3049, 'fallback_language_id' => 3049, 'content_language_id_list' => [3049], 'time_zone_id' => 255, 'regional_format_code' => 'en-PH'],
+    'appearance_preference' => ['color_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false],
     'notification_preference' => ['notification_channel_list' => ['WEB'], 'notification_category_list' => ['SEC'], 'digest_frequency' => 'IMM', 'is_marketing_email_opt_in' => false],
     'privacy_preference' => ['visibility_activity' => 'PUB', 'visibility_gender' => 'PUB', 'visibility_handedness' => 'PUB', 'type_birth_date_display' => 'AGE', 'is_social_connection_public' => true, 'is_premium_label_public' => false, 'is_analytics_cookie_allowed' => false, 'is_personalization_cookie_allowed' => false, 'is_marketing_cookie_allowed' => false, 'cookie_preference_decided_at' => '2026-07-22T02:51:15Z'],
     'booking_preference' => ['preferred_language_id' => 3049, 'level_booking_pressure_preference' => 'MED', 'pressure_adjustment_preference_list' => ['CHK'], 'body_area_preference_list' => [], 'product_preference_list' => [], 'attire_preference' => 'NOP', 'undressing_preference' => 'NOP', 'treatment_contact_preference' => 'ASK', 'draping_preference' => 'STD', 'treatment_support_preference' => 'NOP', 'communication_preference' => 'QET', 'therapist_selection_preference' => 'NPR', 'last_confirmed_at' => '2026-07-22T02:51:15Z'],
@@ -188,7 +182,6 @@ $user_main_embedded_structure = [
 $user_main_field_property = [
     '_id' => ['field_label' => 'User ID', 'field_description' => 'Canonical application-generated 16-character account identifier.', 'type_data' => 'S', 'type_field' => 'HDN', 'min_character' => 16, 'max_character' => 16, 'is_mandatory' => true, 'is_indexed' => true, 'is_unique' => true],
     'username' => ['field_label' => 'Username', 'field_description' => 'Unique normalized lowercase alphanumeric account handle.', 'type_data' => 'S', 'type_field' => 'TXT', 'min_character' => 3, 'max_character' => 30, 'is_mandatory' => true, 'is_indexed' => true, 'is_unique' => true],
-    'user_slug' => ['field_label' => 'User Slug', 'field_description' => 'Stable URL-safe public profile route value.', 'type_data' => 'S', 'type_field' => 'TXT', 'min_character' => 3, 'max_character' => 80, 'is_indexed' => true, 'is_unique' => true],
     'display_name' => ['field_label' => 'Display Name', 'field_description' => 'Optional moderated public name with username fallback.', 'type_data' => 'S', 'type_field' => 'TXT', 'min_character' => 2, 'max_character' => 60],
     'profile_biography' => ['field_label' => 'Profile Biography', 'field_description' => 'Optional user-provided public biography.', 'type_data' => 'S', 'type_field' => 'TXA', 'min_character' => 20, 'max_character' => 1000],
     'pronoun_text' => ['field_label' => 'Pronouns', 'field_description' => 'Optional self-provided pronoun presentation.', 'type_data' => 'S', 'type_field' => 'TXT', 'min_character' => 1, 'max_character' => 40],
@@ -200,7 +193,7 @@ $user_main_field_property = [
     'cover_media_image_id' => ['field_label' => 'Cover Media Image', 'field_description' => 'Optional uploaded cover media_image identifier.', 'type_data' => 'S', 'type_field' => 'REF', 'is_relational' => true],
     'visibility_scope' => ['field_label' => 'Profile Visibility', 'field_description' => 'Audience permitted to view the complete user profile.', 'type_data' => 'S', 'type_field' => 'DDL', 'default_value' => 'PRV', 'is_mandatory' => true, 'is_indexed' => true],
     'account_preference' => ['field_label' => 'Account Preferences', 'field_description' => 'Bounded current language, region, and time-zone choices.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => []],
-    'appearance_preference' => ['field_label' => 'Appearance Preferences', 'field_description' => 'Bounded current theme and accessible presentation choices.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => ['theme_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false]],
+    'appearance_preference' => ['field_label' => 'Appearance Preferences', 'field_description' => 'Bounded current color-mode and accessible presentation choices.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => ['color_mode' => 'SYS', 'text_scale_percent' => 100, 'is_high_contrast' => false, 'is_reduced_motion' => false]],
     'notification_preference' => ['field_label' => 'Notification Preferences', 'field_description' => 'Bounded current channel, category, digest, and marketing choices.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => ['notification_channel_list' => ['WEB', 'EML'], 'notification_category_list' => ['SEC'], 'digest_frequency' => 'IMM', 'is_marketing_email_opt_in' => false]],
     'privacy_preference' => ['field_label' => 'Privacy Preferences', 'field_description' => 'Bounded current public-presentation, cookie, and personalization choices.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => ['visibility_activity' => 'PRV', 'visibility_gender' => 'PRV', 'visibility_handedness' => 'PRV', 'type_birth_date_display' => 'HID', 'is_social_connection_public' => false, 'is_premium_label_public' => false, 'is_analytics_cookie_allowed' => false, 'is_personalization_cookie_allowed' => false, 'is_marketing_cookie_allowed' => false]],
     'booking_preference' => ['field_label' => 'Booking Preferences', 'field_description' => 'One bounded current reusable booking-preference set; excludes time-sensitive intake.', 'type_data' => 'O', 'type_field' => 'JSE', 'default_value' => [], 'visibility_scope' => 'PRV'],
@@ -231,7 +224,7 @@ $user_main_subfield_property = [
     'account_preference.content_language_id_list' => ['field_label' => 'Content Languages', 'field_description' => 'Ordered preferred content-language references.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'account_preference.time_zone_id' => ['field_label' => 'Time Zone', 'field_description' => 'Preferred time-zone reference for display and interpretation.', 'type_data' => 'I', 'type_field' => 'REF', 'is_relational' => true],
     'account_preference.regional_format_code' => ['field_label' => 'Regional Format', 'field_description' => 'Locale-style presentation code for dates, numbers, currency, and measurements.', 'type_data' => 'S', 'type_field' => 'TXT', 'max_character' => 20],
-    'appearance_preference.theme_mode' => ['field_label' => 'Theme Mode', 'field_description' => 'System, light, or dark appearance choice.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'appearance_preference.color_mode' => ['field_label' => 'Color Mode', 'field_description' => 'System-following, light, or dark interface brightness choice; not a branded or seasonal visual theme.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'appearance_preference.text_scale_percent' => ['field_label' => 'Text Scale', 'field_description' => 'Preferred interface text scale percentage.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 80, 'max_number' => 200],
     'appearance_preference.is_high_contrast' => ['field_label' => 'High Contrast', 'field_description' => 'Whether increased contrast is requested.', 'type_data' => 'B', 'type_field' => 'CHK'],
     'appearance_preference.is_reduced_motion' => ['field_label' => 'Reduced Motion', 'field_description' => 'Whether optional interface motion should be reduced.', 'type_data' => 'B', 'type_field' => 'CHK'],
@@ -305,9 +298,8 @@ $user_main_index_list = [
     ['index_key' => 'primary', 'index_name' => '_id_', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => '_id', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 10],
     ['index_key' => 'username_unique', 'index_name' => 'uq_user_main_username', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'username', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 20],
     ['index_key' => 'email_unique', 'index_name' => 'uq_user_main_email', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'email', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 30],
-    ['index_key' => 'slug_unique', 'index_name' => 'uq_user_main_user_slug', 'type_index' => 'STD', 'is_unique' => true, 'is_sparse' => true, 'index_field_list' => [['field_name' => 'user_slug', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 40],
-    ['index_key' => 'account_membership', 'index_name' => 'ix_user_main_account_membership', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'status_account', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_membership', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 50],
-    ['index_key' => 'profile_visibility', 'index_name' => 'ix_user_main_profile_visibility', 'type_index' => 'STD', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'visibility_scope', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 60],
+    ['index_key' => 'account_membership', 'index_name' => 'ix_user_main_account_membership', 'type_index' => 'CMP', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'status_account', 'type_index_mode' => 'ASC', 'sort_order' => 10], ['field_name' => 'status_membership', 'type_index_mode' => 'ASC', 'sort_order' => 20]], 'sort_order' => 40],
+    ['index_key' => 'profile_visibility', 'index_name' => 'ix_user_main_profile_visibility', 'type_index' => 'STD', 'is_unique' => false, 'is_sparse' => false, 'index_field_list' => [['field_name' => 'visibility_scope', 'type_index_mode' => 'ASC', 'sort_order' => 10]], 'sort_order' => 50],
 ];
 
 $user_main_boundary = [

@@ -1,0 +1,10 @@
+@extends('layouts.workspace', ['navActive' => 'admin-system'])
+@section('title', __('user.user_management'))
+@section('page-title', __('user.user_management'))
+@section('page-context', __('user.user_management_intro'))
+@section('content')
+<div class="mx-auto max-w-6xl">
+    <form method="get" class="flex gap-3"><label for="search" class="sr-only">{{ __('user.search_users') }}</label><input id="search" name="search" value="{{ $search }}" placeholder="{{ __('user.search_users') }}" class="min-w-0 flex-1 rounded-xl border border-ink-200 bg-white px-4 py-3 dark:border-ink-700 dark:bg-ink-900 dark:text-white"><button class="rounded-xl bg-ink-950 px-5 py-3 text-sm font-bold text-white dark:bg-ember-500">{{ __('user.search') }}</button></form>
+    <div class="mt-6 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm dark:border-ink-800 dark:bg-ink-900"><table class="w-full text-left text-sm"><thead class="bg-ink-50 text-xs uppercase tracking-wide text-ink-500 dark:bg-ink-950"><tr><th class="px-5 py-3">{{ __('user.user') }}</th><th class="px-5 py-3">{{ __('user.status') }}</th><th class="px-5 py-3">{{ __('user.member_since') }}</th></tr></thead><tbody class="divide-y divide-ink-100 dark:divide-ink-800">@forelse($users as $member)<tr><td class="px-5 py-4"><a href="{{ route('workspace.system.user.show', $member) }}" class="font-bold text-ember-700 dark:text-ember-300">{{ $member->publicName() }}</a><p class="text-xs text-ink-500">{{ '@'.$member->username }} · {{ $member->email }}</p></td><td class="px-5 py-4"><span class="inline-flex items-center rounded-md px-2.5 py-0.5 text-xs font-bold {{ $member->accountStatusBadgeClass() }}">{{ $member->accountStatusLabel() }}</span></td><td class="px-5 py-4 text-ink-500">{{ optional($member->created_at)->format('M j, Y') }}</td></tr>@empty<tr><td colspan="3" class="px-5 py-10 text-center text-ink-500">{{ __('user.no_users_found') }}</td></tr>@endforelse</tbody></table></div><div class="mt-5">{{ $users->links() }}</div>
+</div>
+@endsection

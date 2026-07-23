@@ -1,7 +1,7 @@
 Title: Massage Nexus Security Architecture and Information Disclosure Policy
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
+Revision Date: 2026-07-22
 Status: Internal Security Specification
 Publication Status: Internal; a separate limited public security page may be created later
 Authority: Current accepted security direction
@@ -298,6 +298,11 @@ No custom facial-recognition or fingerprint database.
 
 Passkeys use device-local biometric or PIN verification and store public credential
 information only.
+
+Current implementation boundary: password login, password recovery, verified-email gating,
+session rotation, coarse-device summaries, session review, and remote revocation are implemented.
+TOTP enrollment, recovery codes, passkeys, recent-authentication gates, security notifications,
+and complete security-event history remain required but unfinished.
 
 ================================================================================
 7. MOBILE NUMBER SECURITY

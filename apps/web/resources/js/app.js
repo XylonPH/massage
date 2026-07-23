@@ -88,6 +88,75 @@ if (searchTabs.length > 0) {
     });
 }
 
+// Spa profile tabs: reveal one profile section in place without moving the
+// page. The sections remain readable when JavaScript is unavailable.
+const spaTabList = document.querySelector('[data-spa-tabs] [role="tablist"]');
+if (spaTabList) {
+    const spaTabs = [...spaTabList.querySelectorAll('[data-spa-tab]')];
+    const spaTabPanels = [...document.querySelectorAll('[data-spa-tab-panel]')];
+    const activeClasses = ['bg-ember-50', 'text-ember-700', 'dark:bg-ember-950', 'dark:text-ember-300'];
+    const inactiveClasses = [
+        'text-ink-600',
+        'hover:bg-ink-50',
+        'hover:text-ember-600',
+        'dark:text-ink-300',
+        'dark:hover:bg-ink-800',
+        'dark:hover:text-ember-400',
+    ];
+    const getHashTarget = (hash) => {
+        if (!hash || hash === '#') return null;
+        try {
+            return document.getElementById(decodeURIComponent(hash.slice(1)));
+        } catch {
+            return null;
+        }
+    };
+
+    const activateSpaTab = (key, focusTab = false) => {
+        const nextTab = spaTabs.find((tab) => tab.dataset.spaTab === key);
+        const nextPanel = spaTabPanels.find((panel) => panel.dataset.spaTabPanel === key);
+        if (!nextTab || !nextPanel) return;
+
+        spaTabs.forEach((tab) => {
+            const active = tab === nextTab;
+            tab.setAttribute('aria-selected', String(active));
+            tab.setAttribute('tabindex', active ? '0' : '-1');
+            activeClasses.forEach((className) => tab.classList.toggle(className, active));
+            inactiveClasses.forEach((className) => tab.classList.toggle(className, !active));
+        });
+        spaTabPanels.forEach((panel) => panel.toggleAttribute('hidden', panel !== nextPanel));
+
+        if (focusTab) nextTab.focus();
+    };
+
+    spaTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateSpaTab(tab.dataset.spaTab));
+        tab.addEventListener('keydown', (event) => {
+            let nextIndex;
+            if (event.key === 'ArrowRight') nextIndex = (index + 1) % spaTabs.length;
+            if (event.key === 'ArrowLeft') nextIndex = (index - 1 + spaTabs.length) % spaTabs.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = spaTabs.length - 1;
+            if (nextIndex === undefined) return;
+
+            event.preventDefault();
+            activateSpaTab(spaTabs[nextIndex].dataset.spaTab, true);
+        });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => {
+            const target = getHashTarget(link.hash);
+            const panel = target?.closest('[data-spa-tab-panel]');
+            if (panel) activateSpaTab(panel.dataset.spaTabPanel);
+        });
+    });
+
+    const initialTarget = getHashTarget(window.location.hash);
+    const initialPanel = initialTarget?.closest('[data-spa-tab-panel]');
+    activateSpaTab(initialPanel?.dataset.spaTabPanel ?? 'overview');
+}
+
 // Password visibility toggle
 document.querySelectorAll('[data-password-toggle]').forEach((button) => {
     button.addEventListener('click', () => {

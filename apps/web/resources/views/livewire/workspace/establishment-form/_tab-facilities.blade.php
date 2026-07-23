@@ -1,6 +1,6 @@
 {{-- Facilities --}}
 @if ($this->hasPhysicalPremises())
-<div x-show="tab === 'facilities'" x-cloak class="mt-5 space-y-5">
+<div x-show="tab === 'facilities'" x-cloak wire:key="tab-content-facilities" class="mt-5 space-y-5">
     <div class="space-y-3">
         <p class="text-sm font-semibold text-ink-800 dark:text-ink-200">{{ __('editorial.treatment_areas') }}</p>
         @foreach ($state['treatment_area_list'] as $i => $row)

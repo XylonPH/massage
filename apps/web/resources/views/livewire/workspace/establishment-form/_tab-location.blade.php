@@ -1,5 +1,5 @@
 {{-- Location --}}
-<div x-show="tab === 'location'" x-cloak class="mt-5 space-y-5">
+<div x-show="tab === 'location'" x-cloak wire:key="tab-content-location" class="mt-5 space-y-5">
     <x-form.field :label="__('editorial.est_official_name')" :error="$errors->first('state.official_name')">
         <x-form.input wire:model="state.official_name" maxlength="255" />
     </x-form.field>
