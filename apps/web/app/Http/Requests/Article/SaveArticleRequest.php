@@ -73,7 +73,7 @@ class SaveArticleRequest extends FormRequest
             'target_audience' => ['required', Rule::enum(ArticleAudience::class)],
             'level_nsfw' => ['required', Rule::in(['N', 'M', 'S', 'E'])],
             'tags' => ['nullable', 'string', 'max:500'],
-            'article_body' => ['required', 'string', 'min:20', 'max:120000'],
+            'article_body' => ['required', 'string', 'max:120000'],
             'author_credit_list' => ['required', 'array', 'min:1', 'max:10'],
             'author_credit_list.*.user_id' => ['nullable', 'string', 'size:16'],
             'author_credit_list.*.display_name' => ['required', 'string', 'max:100'],
@@ -179,7 +179,9 @@ class SaveArticleRequest extends FormRequest
 
         return DB::connection('mongodb')->table($collection)
             ->whereIn('_id', $ids)
-            ->where('status_record_lifecycle', 'ACT')
+            ->where(function ($query): void {
+                $query->where('status_record_lifecycle', 'ACT')->orWhereNull('status_record_lifecycle');
+            })
             ->count() === count($ids);
     }
 

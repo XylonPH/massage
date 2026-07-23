@@ -102,6 +102,25 @@ class EstablishmentCrudTest extends TestCase
             ]);
     }
 
+    public function test_contribution_opens_and_marks_the_tab_containing_validation_errors(): void
+    {
+        $user = User::factory()->create();
+
+        Livewire::withQueryParams([])
+            ->actingAs($user)
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.display_name_eng', 'Calm Springs')
+            ->set('state.type_spa', '')
+            ->set('state.status_establishment', 'OP')
+            ->call('nextStep')
+            ->assertHasErrors(['state.type_spa' => 'required'])
+            ->assertSet('activeDetailTab', 'classification')
+            ->assertSee(__('editorial.detail_validation_opened_tab', ['tab' => __('editorial.tab_classification')]))
+            ->assertSeeHtml('>1</span>');
+    }
+
     public function test_editor_can_update_an_establishment(): void
     {
         $user = $this->editor();

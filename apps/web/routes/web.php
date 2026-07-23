@@ -138,6 +138,10 @@ Route::prefix('workspace/article')
         Route::get('/draft', [WorkspaceArticleController::class, 'drafts'])->name('draft');
         Route::get('/submitted', [WorkspaceArticleController::class, 'submitted'])->name('submitted');
         Route::get('/published', [WorkspaceArticleController::class, 'published'])->name('published');
+        Route::get('/lookup/{type}', [WorkspaceArticleController::class, 'lookup'])
+            ->whereIn('type', ['user', 'article', 'organization', 'establishment', 'practitioner', 'service', 'product'])
+            ->middleware('throttle:60,1')
+            ->name('lookup');
         Route::get('/new', [WorkspaceArticleController::class, 'create'])->name('create');
         Route::post('/', [WorkspaceArticleController::class, 'store'])->middleware('throttle:20,1')->name('store');
         Route::get('/{article}/edit', [WorkspaceArticleController::class, 'edit'])->name('edit');

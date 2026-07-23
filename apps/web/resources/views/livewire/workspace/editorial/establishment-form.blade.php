@@ -90,7 +90,26 @@
                 @include('livewire.workspace.establishment-form._review-submit')
             </div>
         @else
-            <div x-data="{ tab: 'identity', collapsed: false }" wire:key="spa-details-tabs"
+            @php
+                $detailTabErrorCounts = collect($errors->keys())
+                    ->map(fn ($field) => $this->tabForField($field))
+                    ->countBy()
+                    ->all();
+                $detailTabLabels = [
+                    'identity' => __('editorial.tab_identity'), 'classification' => __('editorial.tab_classification'),
+                    'access' => __('editorial.tab_access'), 'location' => __('editorial.tab_location'),
+                    'contact' => __('editorial.tab_contact'), 'hours' => __('editorial.tab_hours'),
+                    'facilities' => __('editorial.tab_facilities'), 'amenities' => __('editorial.tab_amenities'),
+                    'accessibility' => __('editorial.tab_accessibility'),
+                ];
+            @endphp
+            @if ($errors->any())
+                <div class="mb-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-900 dark:border-red-800 dark:bg-red-950/70 dark:text-red-100" role="alert" tabindex="-1">
+                    <p class="font-black">{{ trans_choice('editorial.detail_validation_summary', $errors->count(), ['count' => $errors->count()]) }}</p>
+                    <p class="mt-1">{{ __('editorial.detail_validation_opened_tab', ['tab' => $detailTabLabels[$activeDetailTab] ?? $detailTabLabels['identity']]) }}</p>
+                </div>
+            @endif
+            <div x-data="{ tab: $wire.entangle('activeDetailTab'), collapsed: false }" wire:key="spa-details-tabs"
                  :class="collapsed ? 'sm:grid-cols-[4.25rem_1fr]' : 'sm:grid-cols-[13rem_1fr] lg:grid-cols-[15rem_1fr]'"
                  class="grid gap-0 sm:items-start transition-all duration-300">
                 @php($tabIcons = [
@@ -126,7 +145,7 @@
                         'facilities' => $this->hasPhysicalPremises() ? __('editorial.tab_facilities') : null,
                         'amenities' => __('editorial.tab_amenities'),
                         'accessibility' => __('editorial.tab_accessibility'),
-                    ])" :icons="$tabIcons" />
+                    ])" :icons="$tabIcons" :error-counts="$detailTabErrorCounts" />
                 </div>
 
                 {{-- Pure White Form Body Container --}}

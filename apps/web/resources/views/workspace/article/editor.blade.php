@@ -9,6 +9,7 @@
     $creditRows = old('author_credit_list', $authorCredits);
     $creditRows = is_array($creditRows) ? array_values($creditRows) : [];
     $selectedOwnerIds = old('article_owner_user_id_list', $ownerIds);
+    $userOptionById = collect($userOptions)->keyBy('id');
 @endphp
 <div class="mx-auto max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8">
     <div class="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)]">
@@ -49,6 +50,8 @@
                   data-link-prompt="{{ __('article.link_prompt') }}"
                   data-unsaved-label="{{ __('article.unsaved_changes') }}"
                   data-saved-label="{{ __('article.draft_state') }}"
+                  data-minimum-submission-words="300"
+                  data-search-minimum-label="{{ __('article.search_minimum_characters') }}"
                   class="mt-5">
                 @csrf
                 @if ($article) @method('put') @endif
@@ -198,13 +201,15 @@
                                             @foreach ($creditRows as $index => $credit)
                                                 <div class="flex items-end gap-3 rounded-2xl border border-ink-100 bg-ink-50/70 p-3.5 dark:border-ink-800 dark:bg-ink-950/70" data-author-row>
                                                     <div class="flex-1 min-w-0">
-                                                        <label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.linked_account_label') }}</label>
-                                                        <select name="author_credit_list[{{ $index }}][user_id]" data-author-user class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white">
-                                                            <option value="">{{ __('article.custom_author_option') }}</option>
-                                                            @foreach ($userOptions as $option)
-                                                                <option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}" @selected(($credit['user_id'] ?? null) === $option['id'])>{{ '@'.$option['username'] }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        @php($linkedAuthor = filled($credit['user_id'] ?? null) ? $userOptionById->get($credit['user_id']) : null)
+                                                        <x-article.entity-picker
+                                                            :name="'author_credit_list['.$index.'][user_id]'"
+                                                            :label="__('article.linked_account_label')"
+                                                            :endpoint="route('workspace.article.lookup', 'user')"
+                                                            :selected="$linkedAuthor ? [$linkedAuthor] : []"
+                                                            :multiple="false"
+                                                            type="user"
+                                                            :placeholder="__('article.search_users_placeholder')" />
                                                     </div>
                                                     <div class="flex-1 min-w-0">
                                                         <label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.byline_name_label') }}</label>
@@ -226,11 +231,13 @@
                                         <p class="mt-0.5 text-xs leading-5 text-ink-500 dark:text-ink-400">{{ __('article.shared_ownership_hint') }}</p>
                                     </div>
                                     @if ($canManageOwnership)
-                                        <select name="article_owner_user_id_list[]" multiple size="6" class="mt-1 w-full rounded-2xl border border-ink-200 bg-white p-3 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white">
-                                            @foreach ($userOptions as $option)
-                                                <option value="{{ $option['id'] }}" @selected(in_array($option['id'], $selectedOwnerIds, true))>{{ '@'.$option['username'].' — '.$option['display_name'] }}</option>
-                                            @endforeach
-                                        </select>
+                                        <x-article.entity-picker
+                                            name="article_owner_user_id_list"
+                                            :label="__('article.shared_ownership_search_label')"
+                                            :endpoint="route('workspace.article.lookup', 'user')"
+                                            :selected="collect($selectedOwnerIds)->map(fn ($id) => $userOptionById->get($id))->filter()->values()->all()"
+                                            type="user"
+                                            :placeholder="__('article.search_users_placeholder')" />
                                         <p class="text-xs text-ink-400 dark:text-ink-500">{{ __('article.shared_ownership_creator_hint') }}</p>
                                     @else
                                         <div class="mt-1 flex flex-wrap gap-2">
@@ -271,22 +278,23 @@
                             <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ __('article.related_records_hint') }}</p>
                             <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                                 @foreach ([
-                                    'related_article_id_list' => __('article.related_articles_label'),
-                                    'related_organization_id_list' => __('article.related_organizations_label'),
-                                    'related_establishment_id_list' => __('article.related_establishments_label'),
-                                    'related_practitioner_id_list' => __('article.related_practitioners_label'),
-                                    'related_service_id_list' => __('article.related_services_label'),
-                                    'related_product_id_list' => __('article.related_products_label'),
-                                ] as $field => $label)
+                                    'related_article_id_list' => ['type' => 'article', 'label' => __('article.related_articles_label')],
+                                    'related_organization_id_list' => ['type' => 'organization', 'label' => __('article.related_organizations_label')],
+                                    'related_establishment_id_list' => ['type' => 'establishment', 'label' => __('article.related_establishments_label')],
+                                    'related_practitioner_id_list' => ['type' => 'practitioner', 'label' => __('article.related_practitioners_label')],
+                                    'related_service_id_list' => ['type' => 'service', 'label' => __('article.related_services_label')],
+                                    'related_product_id_list' => ['type' => 'product', 'label' => __('article.related_products_label')],
+                                ] as $field => $lookup)
                                     @php($selectedRelated = old($field, $article?->{$field} ?? []))
                                     <div>
-                                        <label for="{{ $field }}" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $label }}</label>
-                                        <select id="{{ $field }}" name="{{ $field }}[]" multiple size="5" class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                            @foreach ($relatedOptions[$field] as $option)
-                                                <option value="{{ $option['id'] }}" @selected(in_array($option['id'], $selectedRelated, true))>{{ $option['label'] }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if ($relatedOptions[$field] === [])<p class="mt-1 text-xs text-ink-400 dark:text-ink-500">{{ __('article.no_related_records') }}</p>@endif
+                                        @php($selectedOptions = collect($relatedOptions[$field])->whereIn('id', $selectedRelated)->values()->all())
+                                        <x-article.entity-picker
+                                            :name="$field"
+                                            :label="$lookup['label']"
+                                            :endpoint="route('workspace.article.lookup', ['type' => $lookup['type'], 'exclude' => $lookup['type'] === 'article' ? $article?->getKey() : null])"
+                                            :selected="$selectedOptions"
+                                            :type="$lookup['type']" />
+                                        @error($field)<p class="mt-1 text-xs font-semibold text-ember-700 dark:text-ember-300">{{ $message }}</p>@enderror
                                     </div>
                                 @endforeach
                             </div>
@@ -294,7 +302,7 @@
 
                         <template data-author-template>
                             <div class="flex items-end gap-3 rounded-2xl border border-ink-100 bg-ink-50/70 p-3.5 dark:border-ink-800 dark:bg-ink-950/70" data-author-row>
-                                <div class="flex-1 min-w-0"><label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.linked_account_label') }}</label><select name="author_credit_list[__INDEX__][user_id]" data-author-user class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white"><option value="">{{ __('article.custom_author_option') }}</option>@foreach ($userOptions as $option)<option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}">{{ '@'.$option['username'] }}</option>@endforeach</select></div>
+                                <div class="flex-1 min-w-0"><x-article.entity-picker :name="'author_credit_list[__INDEX__][user_id]'" :label="__('article.linked_account_label')" :endpoint="route('workspace.article.lookup', 'user')" :multiple="false" type="user" :placeholder="__('article.search_users_placeholder')" /></div>
                                 <div class="flex-1 min-w-0"><label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.byline_name_label') }}</label><input name="author_credit_list[__INDEX__][display_name]" maxlength="100" required class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white"></div>
                                 <button type="button" data-remove-author class="inline-flex size-9 shrink-0 items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-500 shadow-2xs transition hover:border-red-300 hover:bg-red-50 hover:text-red-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-400 dark:hover:border-red-800 dark:hover:bg-red-950 dark:hover:text-red-400" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">
                                     <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
@@ -313,7 +321,8 @@
                                 <div>
                                     <label for="type_article_category" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.category_label') }}</label>
                                     <select id="type_article_category" name="type_article_category" required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                        @foreach ($categories as $category)<option value="{{ $category->value }}" @selected(old('type_article_category', $article?->type_article_category ?? 'FTM') === $category->value)>{{ $category->label() }}</option>@endforeach
+                                        <option value="" disabled @selected(blank(old('type_article_category', $article?->type_article_category)))>{{ __('article.choose_category') }}</option>
+                                        @foreach ($categories as $category)<option value="{{ $category->value }}" @selected(old('type_article_category', $article?->type_article_category) === $category->value)>{{ $category->label() }}</option>@endforeach
                                     </select>
                                 </div>
                                 <div>

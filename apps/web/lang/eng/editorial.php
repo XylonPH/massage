@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'detail_validation_summary' => '{1} Fix :count field before continuing.|[2,*] Fix :count fields before continuing.',
+    'detail_validation_opened_tab' => 'The :tab tab containing the first problem has been opened.',
+    'tab_error_count' => '{1} :count error on this tab|[2,*] :count errors on this tab',
     'title' => 'Editorial',
     'intro' => 'Review submitted content and manage the public catalog.',
     'article' => 'Article',

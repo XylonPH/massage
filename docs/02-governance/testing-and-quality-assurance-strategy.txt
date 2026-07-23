@@ -1,7 +1,7 @@
 Title: Massage Nexus Testing and Quality Assurance Strategy
-Document Version: 0.20
+Document Version: 0.30
 Date Created: 2026-07-18
-Revision Date: 2026-07-21
+Revision Date: 2026-07-23
 Document Description: Defines the project-wide testing and quality approach used by AI and human reviewers without duplicating capability-specific validation rules. Validation remains inside the relevant system specification and implementation, while this document defines test layers, organization, automation, release gates, test data, manual review, and maintenance.
 
 Related Documents:
@@ -489,7 +489,9 @@ request payloads, malformed input, exact boundary values, provider contracts, an
 Test Database Isolation
 
 The current Laravel test configuration uses an in-memory SQLite connection as the default relational
-test connection and `massage_test` for MongoDB-backed application data. Tests must state or make clear
+test connection and `massage_automated_test` for MongoDB-backed application data. The separately
+configured `massage_test` database may be used for manual browser testing and must never be cleared
+by the automated suite. Tests must state or make clear
 which persistence layer they exercise.
 
 MongoDB tests must:
@@ -498,6 +500,11 @@ MongoDB tests must:
 - create required indexes and schema validators before relying on them;
 - clean every collection modified by the test or use an equally isolated database lifecycle;
 - avoid assuming that clearing `user_main` also isolates other capability collections.
+
+The PHPUnit bootstrap uses an automated-testing-specific configuration-cache path so a cached local
+browser configuration cannot silently redirect tests to `massage_test` or `massage_main`. The base
+TestCase additionally refuses to start unless the resolved application database is exactly
+`massage_automated_test`; a suffix-only check is not sufficient.
 
 MongoDB-mutating tests must run serially until per-worker database names and complete cleanup are
 implemented. When parallel execution is introduced, each worker must receive a unique test database
@@ -747,7 +754,8 @@ Current Implemented Tooling
 - the frontend production build through `npm run build`;
 - PHPUnit Unit and Feature suites;
 - in-memory SQLite as the default relational test connection;
-- `massage_test` as the configured MongoDB test database.
+- `massage_automated_test` as the configured automated MongoDB test database, separate from the
+  optional `massage_test` manual-testing database.
 
 The repository does not currently contain an automated CI workflow, Pest, Laravel Dusk, Playwright,
 PHPStan, or Larastan. Do not report those tools as implemented until their dependencies,

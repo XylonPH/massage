@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class EstablishmentForm extends Component
@@ -31,6 +32,8 @@ class EstablishmentForm extends Component
 
     /** 1 = who-you-are, 2 = spa details tabs, 3 = review and submit. Editorial mode never advances past 1 (no wizard chrome shown). */
     public int $currentStep = 1;
+
+    public string $activeDetailTab = 'identity';
 
     public ?string $submission_note = null;
 
@@ -288,11 +291,43 @@ class EstablishmentForm extends Component
             return;
         }
 
-        $this->validate($this->rulesForStep($this->currentStep));
+        $this->validateWithTabFocus($this->rulesForStep($this->currentStep));
         $this->currentStep = min(3, $this->currentStep + 1);
 
         if ($this->currentStep === 3) {
             $this->checkForDuplicates();
+        }
+    }
+
+    public function tabForField(string $field): string
+    {
+        $field = str_starts_with($field, 'state.') ? substr($field, 6) : $field;
+
+        return match (true) {
+            preg_match('/^(type_spa|level_spa_market|type_physical_setting|type_establishment_operation)/', $field) === 1 => 'classification',
+            preg_match('/^(mode_service_delivery|mode_access|type_client_access|target_client_focus)/', $field) === 1 => 'access',
+            preg_match('/^(official_name|country_id|region_id|city_name|street_address|building_name|floor_label|unit_label|postal_code|address_public|coordinate_|direction_note_|parking_|landmark_list)/', $field) === 1 => 'location',
+            str_starts_with($field, 'contact_channel_list') => 'contact',
+            str_starts_with($field, 'operating_hours') => 'hours',
+            preg_match('/^(treatment_area_list|room_types|bed_mat_chair_setup|shower_availability|sauna_availability|steam_room_availability|jacuzzi_availability|locker_availability|couple_room_availability|private_room_availability|curtain_divider_information|air_conditioning_information)/', $field) === 1 => 'facilities',
+            str_starts_with($field, 'amenity_list') => 'amenities',
+            str_starts_with($field, 'accessibility_feature_list') => 'accessibility',
+            default => 'identity',
+        };
+    }
+
+    /** @param array<string, mixed>|null $rules */
+    private function validateWithTabFocus(?array $rules = null): void
+    {
+        try {
+            $rules === null ? $this->validate() : $this->validate($rules);
+        } catch (ValidationException $exception) {
+            $firstField = array_key_first($exception->validator->errors()->messages());
+            if (is_string($firstField)) {
+                $this->activeDetailTab = $this->tabForField($firstField);
+            }
+
+            throw $exception;
         }
     }
 
@@ -427,7 +462,7 @@ class EstablishmentForm extends Component
             $this->refreshDuplicateCandidates();
         }
 
-        $this->validate();
+        $this->validateWithTabFocus();
 
         if ($this->isContribution) {
             $this->submitContribution();
