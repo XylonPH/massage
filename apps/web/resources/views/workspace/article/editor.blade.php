@@ -185,10 +185,7 @@
                                     @foreach ($articleImages as $galleryImage)
                                         <div class="relative">
                                             <img src="{{ route('media.image.thumbnail', $galleryImage) }}" alt="{{ $galleryImage->localized('alt_text') }}" class="size-20 rounded-lg object-cover ring-2 {{ $article->featured_media_image_id === (string) $galleryImage->getKey() ? 'ring-ember-500' : 'ring-transparent' }}">
-                                            <form method="post" action="{{ route('workspace.article.media.featured', [$article, $galleryImage]) }}" class="absolute inset-x-0 bottom-0">
-                                                @csrf
-                                                <button type="submit" class="w-full rounded-b-lg bg-ink-950/70 py-0.5 text-[10px] font-bold text-white">{{ __('article.set_as_featured') }}</button>
-                                            </form>
+                                            <button type="submit" form="feature-image-form-{{ $galleryImage->getKey() }}" class="absolute inset-x-0 bottom-0 w-full rounded-b-lg bg-ink-950/70 py-0.5 text-[10px] font-bold text-white">{{ __('article.set_as_featured') }}</button>
                                         </div>
                                     @endforeach
                                 </div>
@@ -456,6 +453,11 @@
             @endif
             @if ($article?->status_publication === 'P')
                 <form id="unpublish-article-form" method="post" action="{{ route('workspace.article.unpublish', $article) }}">@csrf</form>
+            @endif
+            @if ($article)
+                @foreach ($articleImages as $galleryImage)
+                    <form id="feature-image-form-{{ $galleryImage->getKey() }}" method="post" action="{{ route('workspace.article.media.featured', [$article, $galleryImage]) }}">@csrf</form>
+                @endforeach
             @endif
         </main>
     </div>
