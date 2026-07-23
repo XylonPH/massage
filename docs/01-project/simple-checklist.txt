@@ -1,5 +1,5 @@
 Title: Massage Nexus Simple Checklist
-Document Version: 2.47
+Document Version: 2.57
 Date Created: 2026-07-16
 Revision Date: 2026-07-22
 Document Description: This is the master categorical completion checklist for Massage Nexus. Items are organized by the product or platform domain that owns them, regardless of implementation order, release target, or whether the work is one-time or recurring. Milestone order and release gates belong only in the Roadmap.
@@ -303,7 +303,6 @@ Use:
 -----------------------
 [ ] Firefox extension
 [ ] Chrome extension
-[ ] Deferred until separately approved
 
 2.18 Application and Public Cache
 ---------------------------------
@@ -3090,9 +3089,22 @@ Use:
 
 24.1 Surveys
 ------------
+[ ] Implement stable survey identity, immutable published revision, and repeatable run lifecycle
+[ ] Derive survey audience eligibility from authoritative user relationships and access
+[ ] Implement Survey Workspace Available, In Progress, Completed, Closed, and Withdrawn views
+[ ] Share current run answers between Community Pulse and the dedicated full survey form
+[ ] Preserve native, Microsoft Forms, paper, and administrative response cohorts separately
+[ ] Implement controlled external import batches with exact form version, checksum, mapping, validation, and audit
+[ ] Implement survey administration for create, draft edit, duplicate, preview, translate, schedule, publish, close, withdraw, archive, aggregate, and export
 [ ] User-needs survey
+[ ] Client-needs survey
 [ ] Provider-needs survey
 [ ] Therapist-needs survey
+[ ] Establishment-operator survey
+[ ] Seller survey
+[ ] Campus learner survey
+[ ] Campus instructor survey
+[ ] Campus administrator survey
 [ ] Advertiser survey
 [ ] Contributor survey
 [ ] Correspondent survey
@@ -3111,6 +3123,12 @@ Use:
 
 24.2 Polls
 ----------
+[ ] Community Pulse guest preview without guest storage or counting
+[ ] Community Pulse authenticated submission and login prompt
+[ ] Per-user, per-run completion-aware question rotation
+[ ] Answer editing without duplicate response, aggregate participant, reward, or badge progress
+[ ] Result acknowledgment and minimum-20-response public aggregate behavior
+[ ] Accessible delayed replacement and no-eligible-question state
 [ ] Single-choice poll
 [ ] Multiple-choice poll
 [ ] Ranked-choice poll
@@ -3613,9 +3631,22 @@ Use:
 
 29.7 Comics and Visual Storytelling
 -----------------------------------
-[ ] Comics (The Resting Leaf, featuring Nexus Cast characters, and supporting stories)
+[ ] The Resting Leaf comic series (recurring 6-panel slice-of-life workplace wellness comic)
+[ ] Nexus Cast character world and setting (fictional Resting Leaf spa setting and Metro Manila outdoor locations)
+[ ] Primary Metro Manila Taglish dialogue composition and natural Taglish quality check
+[ ] Multilingual comic translation and fallback system (English, Filipino, etc.)
+[ ] Accessible comic transcripts and speech balloon text alternatives
+[ ] Public Comic Hub (/comic) with archive browsing, categories, search, and character filters
+[ ] Public Comic Reader (/comic/{comic-slug}) with 6-panel layout, high-res image zoom/lightbox, and speech balloon overlay
+[ ] Comic episode navigation (First, Previous, Next, Latest, Random episode)
+[ ] Story arc markers (standalone episodes, multi-part arcs like Part 1 / Part 2)
+[ ] Comic reader interactions (likes, bookmarks/saves to /workspace/saved/comic, social sharing)
+[ ] Comic comments and discussion threads (/comic/{comic-slug}/discussion)
+[ ] Workspace Editorial Comic Management (/workspace/editorial/comic) for listing, creation, and publication scheduling
+[ ] Workspace Comic Creation Tools (/workspace/comic/create, script writer, panel builder, cast and mascot selector)
+[ ] Canonical visual reference control and prompt-file system for character anti-drift production
 [ ] Create the initial daily comic backlog
-[ ] Publish The Resting Leaf at the accepted cadence
+[ ] Publish The Resting Leaf at the accepted cadence (Comic of the Day)
 
 29.8 Relaxation and Live Rooms
 ------------------------------

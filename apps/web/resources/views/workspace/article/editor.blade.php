@@ -336,7 +336,12 @@
                                     <label for="level_nsfw" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.nsfw_label') }}</label>
                                     <select id="level_nsfw" name="level_nsfw" required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
                                         <option value="" disabled @selected(blank(old('level_nsfw', $article?->level_nsfw)))>{{ __('article.choose_nsfw_level') }}</option>
-                                        @foreach (['N' => __('article.none'), 'M' => __('article.mild'), 'S' => __('article.sensitive'), 'E' => __('article.explicit')] as $code => $label)<option value="{{ $code }}" @selected(old('level_nsfw', $article?->level_nsfw) === $code)>{{ $label }}</option>@endforeach
+                                        @foreach ([
+                                            \App\Enums\NsfwLevel::None->value => __('article.none'),
+                                            \App\Enums\NsfwLevel::Mature->value => __('article.mild'),
+                                            \App\Enums\NsfwLevel::Suggestive->value => __('article.sensitive'),
+                                            \App\Enums\NsfwLevel::Explicit->value => __('article.explicit'),
+                                        ] as $code => $label)<option value="{{ $code }}" @selected(old('level_nsfw', $article?->level_nsfw) === $code)>{{ $label }}</option>@endforeach
                                     </select>
                                 </div>
                                 <div>

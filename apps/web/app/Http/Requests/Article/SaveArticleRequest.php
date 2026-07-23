@@ -4,6 +4,7 @@ namespace App\Http\Requests\Article;
 
 use App\Enums\ArticleAudience;
 use App\Enums\ArticleCategory;
+use App\Enums\NsfwLevel;
 use App\Models\Article\Article;
 use App\Models\User;
 use App\Support\Article\ArticleContent;
@@ -71,7 +72,7 @@ class SaveArticleRequest extends FormRequest
             'language_original_id' => ['required', 'integer', Rule::in(ArticleLanguage::ids())],
             'type_article_category' => ['required', Rule::enum(ArticleCategory::class)],
             'target_audience' => ['required', Rule::enum(ArticleAudience::class)],
-            'level_nsfw' => ['required', Rule::in(['N', 'M', 'S', 'E'])],
+            'level_nsfw' => ['required', Rule::enum(NsfwLevel::class)],
             'tags' => ['nullable', 'string', 'max:500'],
             'article_body' => ['required', 'string', 'max:120000'],
             'author_credit_list' => ['required', 'array', 'min:1', 'max:10'],

@@ -2537,7 +2537,21 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 
 18.7 Comics and Visual Storytelling
 -----------------------------------
-- Comics (The Resting Leaf, featuring Nexus Cast characters, and supporting stories)
+- The Resting Leaf comic series (recurring 6-panel slice-of-life workplace wellness comic)
+- Nexus Cast character world and setting (fictional Resting Leaf spa setting and Metro Manila outdoor locations)
+- Primary Metro Manila Taglish dialogue composition and natural Taglish quality check
+- Multilingual comic translation and fallback system (English, Filipino, etc.)
+- Accessible comic transcripts and speech balloon text alternatives
+- Public Comic Hub (/comic) with archive browsing, categories, search, and character filters
+- Public Comic Reader (/comic/{comic-slug}) with 6-panel layout, high-res image zoom/lightbox, and speech balloon overlay
+- Comic episode navigation (First, Previous, Next, Latest, Random episode)
+- Story arc markers (standalone episodes, multi-part arcs like Part 1 / Part 2)
+- Comic reader interactions (likes, bookmarks/saves to /workspace/saved/comic, social sharing)
+- Comic comments and discussion threads (/comic/{comic-slug}/discussion)
+- Workspace Editorial Comic Management (/workspace/editorial/comic) for listing, creation, and publication scheduling
+- Workspace Comic Creation Tools (/workspace/comic/create, script writer, panel builder, cast and mascot selector)
+- Canonical visual reference control and prompt-file system for character anti-drift production
+- Initial daily comic backlog creation and scheduled publication cadence (Comic of the Day)
 
 
 18.8 Relaxation and Live Rooms

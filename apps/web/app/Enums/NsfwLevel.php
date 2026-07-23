@@ -7,7 +7,7 @@ enum NsfwLevel: string
     case None = 'N';
     case Suggestive = 'S';
     case Mature = 'M';
-    case Explicit = 'X';
+    case Explicit = 'E';
 
     public function getLabel(): ?string
     {
