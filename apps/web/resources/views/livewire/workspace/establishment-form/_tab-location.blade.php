@@ -1,6 +1,6 @@
 {{-- Location --}}
 <div x-show="tab === 'location'" x-cloak wire:key="tab-content-location" class="mt-5 space-y-5">
-    <x-form.field :label="__('editorial.est_official_name')" :error="$errors->first('state.official_name')">
+    <x-form.field :label="__('editorial.est_official_name')" :help="__('editorial.est_official_name_hint')" :error="$errors->first('state.official_name')">
         <x-form.input wire:model="state.official_name" maxlength="255" />
     </x-form.field>
 
@@ -77,8 +77,17 @@
         </div>
     @endforeach
 
+    @php($parkingIcons = [
+        'NONE' => 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z M6 6l12 12',
+        'PRK_ONS_FREE' => 'M6 4h5a3 3 0 0 1 0 6H9v8H6Z M16 17l2 2 4-4',
+        'PRK_ONS_PAID' => 'M6 4h5a3 3 0 0 1 0 6H9v8H6Z M18 15v6 M16 17h4 M16 19h4',
+        'PRK_STR' => 'M4 20 8 4h2l-4 16Z M14 20l4-16h2l-4 16Z M9 12h6',
+        'PRK_NEARBY_PAID' => 'M12 21s-6-5.5-6-10a6 6 0 1 1 12 0c0 4.5-6 10-6 10Z M12 8v6 M10.5 9.5h2 M10.5 12.5h2',
+        'PRK_VALET' => 'M9 14a4 4 0 1 1 4-4 M13 10l7 7-2 2-1-1-1 1-2-2 2-2',
+        'PRK_MOTO_ONLY' => 'M5 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M17 17a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M5 15l3-5h4l2 5 M9 10l2-3h3',
+    ])
     <x-form.field :label="__('editorial.est_parking_availability')">
-        <x-form.toggle-group :options="$taxonomy['parking_availability']" model="state.parking_availability_list" />
+        <x-form.toggle-group :options="$taxonomy['parking_availability']" model="state.parking_availability_list" :icons="$parkingIcons" />
     </x-form.field>
     @foreach (['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'] as $lang)
         <div x-show="$wire.activeLanguageTab === '{{ $lang }}'" wire:key="parking-note-field-{{ $lang }}">

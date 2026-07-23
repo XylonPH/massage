@@ -3,7 +3,7 @@
         <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ __('workspace.contribution_establishment_title') }}</h1>
         <p class="mt-2 text-sm text-ink-600 dark:text-ink-300">{{ __('workspace.contribution_establishment_intro') }}</p>
         <p class="mt-2 text-sm">
-            <a href="{{ route('help.index', ['sectionKey' => 'navigation.help']) }}" class="font-semibold text-ember-600 hover:text-ember-700 dark:text-ember-400">{{ __('workspace.add_spa_help_link') }} &rarr;</a>
+            <a href="{{ route('help.index') }}" class="font-semibold text-ember-600 hover:text-ember-700 dark:text-ember-400">{{ __('workspace.add_spa_help_link') }} &rarr;</a>
         </p>
     @else
         <h1 class="text-2xl font-black text-ink-950 dark:text-ink-50">{{ $establishment ? __('editorial.edit') : __('editorial.new') }} — {{ __('editorial.establishments') }}</h1>
@@ -27,6 +27,7 @@
                     'hours' => 'M12 7v5l3 3 M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z',
                     'facilities' => 'M3 21h18M5 21V8l7-5 7 5v13',
                     'amenities' => 'M12 3l2.5 5.3 5.5.7-4 4 1 5.7-5-2.8-5 2.8 1-5.7-4-4 5.5-.7L12 3Z',
+                    'accessibility' => 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z M12 8v8 M8 12h8',
                 ])
                 <x-editorial.tab-bar :tabs="array_filter([
                     'identity' => __('editorial.tab_identity'),
@@ -37,6 +38,7 @@
                     'hours' => __('editorial.tab_hours'),
                     'facilities' => $this->hasPhysicalPremises() ? __('editorial.tab_facilities') : null,
                     'amenities' => __('editorial.tab_amenities'),
+                    'accessibility' => __('editorial.tab_accessibility'),
                 ])" :icons="$tabIcons" />
 
                 @include('livewire.workspace.establishment-form._tab-identity')
@@ -47,6 +49,7 @@
                 @include('livewire.workspace.establishment-form._tab-hours')
                 @include('livewire.workspace.establishment-form._tab-facilities')
                 @include('livewire.workspace.establishment-form._tab-amenities')
+                @include('livewire.workspace.establishment-form._tab-accessibility')
             </div>
 
             <div class="flex items-center justify-between gap-2.5 border-t border-ink-100 pt-5 dark:border-ink-800">

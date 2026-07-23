@@ -634,7 +634,7 @@
             },
             {
                 "option_code": "WTEA",
-                "option_label": "Welcome Tea/Drink",
+                "option_label": "Welcome Refreshment",
                 "option_description": ""
             },
             {
@@ -649,17 +649,17 @@
             },
             {
                 "option_code": "SROB",
-                "option_label": "Spa Robe/Gown",
+                "option_label": "Spa Robe",
                 "option_description": ""
             },
             {
                 "option_code": "WSHR",
-                "option_label": "Washroom/Toilet in facility",
+                "option_label": "Washroom in Facility",
                 "option_description": ""
             },
             {
                 "option_code": "LOUNGE",
-                "option_label": "Lounge/Waiting Area",
+                "option_label": "Waiting Lounge",
                 "option_description": ""
             }
         ]
@@ -694,13 +694,13 @@
     },
     {
         "field_name": "bed_mat_chair_setup",
-        "field_label": "Bed/Mat/Chair Setup",
+        "field_label": "Seating and Sleeping Setup",
         "selection_rule": "Multi-select",
         "field_description": "Treatment surface setups available.",
         "field_option": [
             {
                 "option_code": "MB",
-                "option_label": "Massage Bed/Table",
+                "option_label": "Massage Table",
                 "option_description": ""
             },
             {
@@ -715,7 +715,7 @@
             },
             {
                 "option_code": "RC",
-                "option_label": "Recliner/Lounge Chair",
+                "option_label": "Lounge Chair",
                 "option_description": ""
             }
         ]
@@ -728,17 +728,17 @@
         "field_option": [
             {
                 "option_code": "SFE",
-                "option_label": "Step-free / Ramped Entrance",
+                "option_label": "Ramped Entrance",
                 "option_description": ""
             },
             {
                 "option_code": "ELV",
-                "option_label": "Elevator / Lift Access",
+                "option_label": "Elevator Access",
                 "option_description": ""
             },
             {
                 "option_code": "AWA",
-                "option_label": "Accessible Washroom/Toilet",
+                "option_label": "Accessible Washroom",
                 "option_description": ""
             },
             {
@@ -748,7 +748,12 @@
             },
             {
                 "option_code": "AP",
-                "option_label": "Accessible Parking / Drop-off",
+                "option_label": "Accessible Parking",
+                "option_description": ""
+            },
+            {
+                "option_code": "ADO",
+                "option_label": "Accessible Drop-off",
                 "option_description": ""
             },
             {
@@ -757,8 +762,13 @@
                 "option_description": ""
             },
             {
-                "option_code": "VHC",
-                "option_label": "Visual/Hearing Communication Assistance",
+                "option_code": "VCA",
+                "option_label": "Visual Communication Assistance",
+                "option_description": ""
+            },
+            {
+                "option_code": "HCA",
+                "option_label": "Hearing Communication Assistance",
                 "option_description": ""
             },
             {
@@ -796,13 +806,13 @@
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared / Communal",
+                "option_label": "Shared",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available upon Request / Paid",
-                "option_description": ""
+                "option_label": "Available on Request",
+                "option_description": "May require an additional fee, depending on the establishment."
             },
             {
                 "option_code": "NA",
@@ -829,13 +839,13 @@
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared / Communal",
+                "option_label": "Shared",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available upon Request / Paid",
-                "option_description": ""
+                "option_label": "Available on Request",
+                "option_description": "May require an additional fee, depending on the establishment."
             },
             {
                 "option_code": "NA",
@@ -862,13 +872,13 @@
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared / Communal",
+                "option_label": "Shared",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available upon Request / Paid",
-                "option_description": ""
+                "option_label": "Available on Request",
+                "option_description": "May require an additional fee, depending on the establishment."
             },
             {
                 "option_code": "NA",
@@ -895,13 +905,13 @@
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared / Communal",
+                "option_label": "Shared",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available upon Request / Paid",
-                "option_description": ""
+                "option_label": "Available on Request",
+                "option_description": "May require an additional fee, depending on the establishment."
             },
             {
                 "option_code": "NA",
@@ -928,13 +938,13 @@
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared / Communal",
+                "option_label": "Shared",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available upon Request / Paid",
-                "option_description": ""
+                "option_label": "Available on Request",
+                "option_description": "May require an additional fee, depending on the establishment."
             },
             {
                 "option_code": "NA",
@@ -996,7 +1006,7 @@
     },
     {
         "field_name": "curtain_divider_information",
-        "field_label": "Curtain/Divider Information",
+        "field_label": "Room Divider Information",
         "selection_rule": "Single-select",
         "field_description": "",
         "field_option": [
@@ -1030,12 +1040,12 @@
         "field_option": [
             {
                 "option_code": "CA",
-                "option_label": "Centralized A/C",
+                "option_label": "Centralized Air Conditioning",
                 "option_description": ""
             },
             {
                 "option_code": "IR",
-                "option_label": "Individual Room A/C",
+                "option_label": "Individual Room Air Conditioning",
                 "option_description": ""
             },
             {
