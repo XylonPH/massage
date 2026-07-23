@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Media Image Structure Guide
- * Version: 1.20
+ * Version: 1.30
  * Collection: media_image
  * Description: Stores one image asset record, its renditions, attribution, relationships, and lifecycle.
  * Purpose: Documents the media_image record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -24,7 +24,7 @@
 
 # Variable
 $created_at = '2026-07-06T00:00:00Z';
-$updated_at = '2026-07-21T08:49:01Z';
+$updated_at = '2026-07-23T19:16:23Z';
 /**
  * Multilingual short-text sample.
  * Used by content_title, short_description, caption_text, alt_text, and similar
@@ -49,6 +49,7 @@ $media_image_default = [
 	'related_practitioner_id_list' => [],
 	'related_service_id_list' => [],
 	'related_product_id_list' => [],
+	'related_article_id_list' => [],
 	'creator_user_id_list' => [],
 	'photographer_user_id_list' => [],
 	'editor_user_id_list' => [],
@@ -97,6 +98,7 @@ $media_image = [
 	'related_practitioner_id_list' => [], // Practitioner IDs related to the image.
 	'related_service_id_list' => ['Sv8K2pQ9xR4tV7zN'], // Service IDs related to the image.
 	'related_product_id_list' => [], // Product IDs related to the image.
+	'related_article_id_list' => [], // Article IDs related to the image.
 	'level_nsfw' => 'N', // Image sensitivity classification for moderation and display handling.
 
 	# Credit / Source
@@ -169,6 +171,7 @@ $media_image_field_order = [
 	'related_practitioner_id_list',
 	'related_service_id_list',
 	'related_product_id_list',
+	'related_article_id_list',
 	'level_nsfw',
 	'method_media_creation',
 	'creator_user_id_list',
@@ -233,6 +236,7 @@ $media_image_field_property = [
 	'related_practitioner_id_list' => ['field_label' => 'Related Practitioner ID List', 'field_description' => 'Practitioner IDs related to the image.', 'type_data' => 'A', 'is_relational' => true],
 	'related_service_id_list' => ['field_label' => 'Related Service ID List', 'field_description' => 'Service IDs related to the image.', 'type_data' => 'A', 'is_relational' => true],
 	'related_product_id_list' => ['field_label' => 'Related Product ID List', 'field_description' => 'Product IDs related to the image.', 'type_data' => 'A', 'is_relational' => true],
+	'related_article_id_list' => ['field_label' => 'Related Article ID List', 'field_description' => 'Article IDs related to the image.', 'type_data' => 'A', 'is_relational' => true],
 	'level_nsfw' => ['field_label' => 'NSFW Level', 'field_description' => 'Image sensitivity classification for moderation and display handling.', 'type_field' => 'DDL', 'type_sql' => 'ENUM', 'is_indexed' => true],
 	'method_media_creation' => ['field_label' => 'Media Creation Method', 'field_description' => 'Classifies how the image was produced, such as photographed, AI generated, illustrated, edited, composited, or imported.', 'type_field' => 'DDL', 'type_sql' => 'ENUM'],
 	'creator_user_id_list' => ['field_label' => 'Creator User ID List', 'field_description' => 'User IDs credited with creating the image or visual work.', 'type_data' => 'A', 'is_relational' => true],
