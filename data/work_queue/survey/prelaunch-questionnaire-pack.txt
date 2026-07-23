@@ -1,0 +1,408 @@
+Massage Nexus Prelaunch Questionnaire Pack
+============================================
+
+Purpose: English source copy for four Microsoft Forms and matching printed questionnaires.
+Artifact type: Temporary reviewed work-queue candidate; not a governing specification.
+Created: 2026-07-23
+Source specification: docs/08-community/survey-system.txt
+Fieldwork guide: docs/14-research/survey-fieldwork-and-microsoft-forms-guide.txt
+
+Shared opening text
+-------------------
+
+Massage Nexus is being designed as a directory, information, booking, community, and learning
+platform for massage and related wellness services. This questionnaire asks what would make the
+platform useful and trustworthy for you. It takes about 7 to 10 minutes. Participation is voluntary.
+You may skip any optional question or stop before submitting. This initial form is in English.
+Responses will be analyzed in aggregate to guide product decisions. Do not enter names, telephone
+numbers, exact addresses, medical histories, or confidential business information in comment boxes.
+
+Consent question used in every form:
+CONSENT-01 | Required | Single choice
+I am at least 18 years old, I have read the explanation above, and I voluntarily agree to take part.
+Options: Yes, continue [YES] | No, end the form [NO]
+Branching: NO -> End of form.
+
+Shared closing text
+-------------------
+
+Thank you. Your response will be combined with other responses. If you want to volunteer for a
+separate follow-up conversation, use a separate contact form so your contact details are not linked
+automatically to this questionnaire.
+
+================================================================================
+FORM 1. CLIENT AND GENERAL USER
+================================================================================
+
+form_key: prelaunch_client_v1
+form_version: 1
+audience: Adults who use, have used, or may consider massage or spa services.
+recommended_sections: Eligibility; Current Behavior; Discovery and Trust; Booking; Content and Community; Final Comment.
+
+CLI-01 | Required | Single choice
+Which statement best describes you?
+Options: I currently use massage or spa services [CURRENT] | I used them before but not recently [PAST] | I am considering trying them [CONSIDERING] | I am unlikely to use them [UNLIKELY]
+
+CLI-02 | Optional | Single choice
+How often do you currently receive a professional massage or spa treatment?
+Options: Weekly or more often [WEEKLY] | Two or three times a month [MONTHLY_2_3] | About monthly [MONTHLY] | A few times a year [YEARLY_FEW] | Less than yearly [RARE] | Never [NEVER]
+
+CLI-03 | Optional | Multiple choice; maximum 4
+Why do you seek or consider massage?
+Options: Relaxation [RELAX] | Stress relief [STRESS] | Pain or discomfort relief [PAIN] | Sports recovery [SPORT] | Mobility or flexibility [MOBILITY] | Sleep support [SLEEP] | Social or leisure experience [LEISURE] | Professional recommendation [REFERRED] | I do not currently seek massage [NONE]
+
+CLI-04 | Required | Ranking; rank top 5
+Rank the five factors that matter most when choosing a provider.
+Options: Practitioner skill [SKILL] | Safety and professional boundaries [SAFETY] | Cleanliness [CLEAN] | Price [PRICE] | Location [LOCATION] | Availability [AVAILABILITY] | Reviews [REVIEWS] | Service selection [SERVICES] | Privacy [PRIVACY] | Ambience [AMBIENCE]
+
+CLI-05 | Required | Numeric scale 1-10
+How difficult is it to find reliable information about massage providers near you?
+Endpoints: 1 = Very easy | 10 = Very difficult
+
+CLI-06 | Required | Multiple choice; maximum 5
+Where do you currently look for a massage provider?
+Options: Search engine [SEARCH] | Maps app [MAPS] | Social media [SOCIAL] | Friend or family recommendation [REFERRAL] | Provider website [PROVIDER_SITE] | Walk-in or nearby signage [WALK_IN] | Booking marketplace [MARKETPLACE] | I do not currently look [NONE]
+
+CLI-07 | Required | Multiple choice; maximum 5
+Which profile information would most increase your trust?
+Options: Verified address and contact [CONTACT] | Practitioner identity and credentials [CREDENTIAL] | Current service menu and prices [MENU] | Recent independent reviews [REVIEWS] | Clear safety and privacy policies [POLICY] | Real photos [PHOTOS] | Availability [AVAILABILITY] | Ownership or operator information [OPERATOR]
+
+CLI-08 | Required | Single choice
+Which price presentation is most useful?
+Options: Exact current price [EXACT] | Price range [RANGE] | Starting price [STARTING] | Request a quote [QUOTE] | Price is less important than availability [LOW_PRIORITY]
+
+CLI-09 | Required | Numeric scale 1-10
+How valuable would side-by-side comparison of providers, services, prices, facilities, ratings, and availability be?
+Endpoints: 1 = Not valuable | 10 = Extremely valuable
+
+CLI-10 | Required | Single choice
+How would you prefer to book when online booking is available?
+Options: Choose exact time and practitioner immediately [INSTANT] | Request a time and wait for confirmation [REQUEST] | Message the provider first [MESSAGE] | Call the provider [CALL] | Walk in without booking [WALK_IN]
+
+CLI-11 | Required | Multiple choice; maximum 4
+What most often prevents you from booking?
+Options: Price uncertainty [PRICE] | Unclear availability [AVAILABILITY] | Safety or privacy concern [SAFETY] | Uncertain service quality [QUALITY] | Unsure which service to choose [CHOICE] | Difficult location or transport [LOCATION] | Complicated booking [COMPLEX] | No current need [NONE]
+
+CLI-12 | Required | Single choice
+Would you create a free account to save providers, reviews, preferences, and booking history?
+Options: Definitely [DEFINITE] | Probably [PROBABLY] | Not sure [UNSURE] | Probably not [PROBABLY_NOT] | Definitely not [NO]
+
+CLI-13 | Required | Multiple choice; maximum 5
+Which account features would you use?
+Options: Saved providers [SAVED] | Booking history [HISTORY] | Reusable booking preferences [PREFERENCES] | Review and contribution history [CONTRIBUTIONS] | Points and badges [REWARDS] | Personalized recommendations [RECOMMENDATIONS] | Course progress [CAMPUS] | None [NONE]
+
+CLI-14 | Required | Single choice
+How comfortable are you answering one short Community Pulse question while browsing?
+Options: Very comfortable [VERY] | Comfortable [COMFORTABLE] | Neutral [NEUTRAL] | Uncomfortable [UNCOMFORTABLE] | Very uncomfortable [VERY_UNCOMFORTABLE]
+
+CLI-15 | Required | Single choice
+Which Community Pulse result behavior do you prefer?
+Options: Show aggregate after I answer and enough people responded [AFTER_THRESHOLD] | Show only after the poll closes [AFTER_CLOSE] | Do not show public results [PRIVATE] | No preference [NO_PREFERENCE]
+
+CLI-16 | Required | Multiple choice; maximum 4
+Which content would you read?
+Options: Massage guides [GUIDES] | Spa and therapist reviews [REVIEWS] | Safety and etiquette [SAFETY] | Pricing explainers [PRICING] | Massage research and news [NEWS] | Product reviews [PRODUCTS] | Local provider updates [LOCAL] | Campus lessons [CAMPUS]
+
+CLI-17 | Required | Single choice
+Would you submit a review after a real experience?
+Options: Yes, usually [YES] | Maybe if prompted [MAYBE] | Only after an unusually good or bad experience [EXTREME] | Unlikely [UNLIKELY] | No [NO]
+
+CLI-18 | Required | Multiple choice; maximum 4
+What would make you more willing to submit useful information?
+Options: Simple form [SIMPLE] | Clear privacy controls [PRIVACY] | Points or Inklings [REWARD] | Badge progress [BADGE] | Visible impact on provider information [IMPACT] | Ability to edit later [EDIT] | Nothing [NONE]
+
+CLI-19 | Required | Single choice
+Which language presentation would you prefer when a translation is available?
+Options: My selected language first [SELECTED] | Original language first [ORIGINAL] | Side-by-side languages [SIDE_BY_SIDE] | English first [ENGLISH] | No preference [NO_PREFERENCE]
+
+CLI-20 | Required | Numeric scale 1-10
+How important is accessibility such as keyboard use, screen-reader support, clear contrast, captions, and scalable text?
+Endpoints: 1 = Not important to me | 10 = Essential
+
+CLI-21 | Required | Multiple choice; maximum 3
+Which paid personal benefits, if any, might interest you?
+Options: Ad reduction [AD_REDUCTION] | Extra AI assistance credits [AI_CREDIT] | Advanced planning or comparison tools [ADVANCED] | Profile cosmetics [COSMETIC] | Special event access [EVENT] | None [NONE]
+
+CLI-22 | Required | Single choice
+What should Massage Nexus build first for clients?
+Options: Accurate provider directory [DIRECTORY] | Better search and comparison [SEARCH] | Trustworthy reviews and ratings [REVIEWS] | Booking [BOOKING] | Guides and safety content [CONTENT] | Community participation [COMMUNITY]
+
+CLI-23 | Optional | Long text; maximum 1000 characters
+What is the biggest problem you have experienced when finding, choosing, or booking massage services?
+
+CLI-24 | Optional | Long text; maximum 1000 characters
+What would make you trust Massage Nexus enough to use it regularly?
+
+================================================================================
+FORM 2. THERAPIST OR PRACTITIONER
+================================================================================
+
+form_key: prelaunch_practitioner_v1
+form_version: 1
+audience: Adults who currently provide or are training to provide massage or related bodywork.
+recommended_sections: Eligibility; Professional Context; Profile and Discovery; Operations; Campus and Community; Final Comment.
+
+PRC-01 | Required | Single choice
+Which describes your current situation?
+Options: Employed by an establishment [EMPLOYED] | Independent or freelance [INDEPENDENT] | Both employed and independent [BOTH] | Student or trainee [TRAINEE] | Not currently practising [INACTIVE]
+
+PRC-02 | Required | Single choice
+How long have you practised or trained?
+Options: Less than 1 year [LT1] | 1-2 years [Y1_2] | 3-5 years [Y3_5] | 6-10 years [Y6_10] | More than 10 years [GT10]
+
+PRC-03 | Required | Multiple choice; maximum 5
+Where do clients currently discover you?
+Options: Establishment profile [ESTABLISHMENT] | Social media [SOCIAL] | Search or maps [SEARCH] | Referrals [REFERRAL] | Personal website [WEBSITE] | Booking platform [MARKETPLACE] | Walk-in traffic [WALK_IN] | I am not currently discoverable [NONE]
+
+PRC-04 | Required | Ranking; rank top 5
+Which public profile details matter most for representing you accurately?
+Options: Services and techniques [SERVICES] | Credentials [CREDENTIALS] | Work history and affiliations [HISTORY] | Availability [AVAILABILITY] | Service area [AREA] | Prices [PRICE] | Photos [PHOTOS] | Reviews [REVIEWS] | Biography [BIO] | Languages [LANGUAGES]
+
+PRC-05 | Required | Numeric scale 1-10
+How concerned are you about inaccurate or outdated online information about practitioners?
+Endpoints: 1 = Not concerned | 10 = Extremely concerned
+
+PRC-06 | Required | Multiple choice; maximum 4
+Which corrections should be easiest to submit?
+Options: Current workplace [WORKPLACE] | Contact channel [CONTACT] | Service list [SERVICES] | Availability [AVAILABILITY] | Credentials [CREDENTIALS] | Profile photo [PHOTO] | Professional status [STATUS] | Service area [AREA]
+
+PRC-07 | Required | Single choice
+Who should be allowed to manage a practitioner profile?
+Options: Practitioner only [SELF] | Practitioner plus approved manager [MANAGER] | Practitioner plus approved establishment staff [STAFF] | Any verified contributor with review [CONTRIBUTOR]
+
+PRC-08 | Required | Single choice
+If an approved manager or establishment staff member edits your profile, what should happen?
+Options: Changes require my approval [APPROVAL] | Trusted fields may publish and sensitive fields require approval [MIXED] | Authorized managers may publish all allowed fields [AUTHORIZED] | Not sure [UNSURE]
+
+PRC-09 | Required | Multiple choice; maximum 5
+Which work tools would be useful?
+Options: Availability calendar [CALENDAR] | Booking requests [BOOKING] | Service and price management [MENU] | Client intake preferences [INTAKE] | Review responses [RESPONSES] | Earnings or compensation view [FINANCE] | Learning progress [CAMPUS] | Profile analytics [ANALYTICS]
+
+PRC-10 | Required | Single choice
+Which booking model fits you best?
+Options: Instant booking [INSTANT] | Request and approve [REQUEST] | Establishment assigns clients [ASSIGNED] | Message before confirming [MESSAGE] | I do not want online booking [NONE]
+
+PRC-11 | Required | Multiple choice; maximum 4
+What booking information do you need before accepting?
+Options: Requested service [SERVICE] | Date and time [TIME] | Service location [LOCATION] | Pressure preference [PRESSURE] | Accessibility needs [ACCESSIBILITY] | Contraindication or intake confirmation [INTAKE] | Client contact channel [CONTACT] | Payment status [PAYMENT]
+
+PRC-12 | Required | Numeric scale 1-10
+How valuable would a reusable client preference summary be if the client chooses to share it for a booking?
+Endpoints: 1 = Not valuable | 10 = Extremely valuable
+
+PRC-13 | Required | Single choice
+How should reviews distinguish practitioner performance from establishment conditions?
+Options: Separate practitioner and establishment reviews [SEPARATE] | One review with separate criteria [CRITERIA] | Both approaches [BOTH] | No preference [NO_PREFERENCE]
+
+PRC-14 | Required | Multiple choice; maximum 4
+Which review protections matter most?
+Options: Verified experience label [VERIFIED] | Right to respond [RESPONSE] | Report abuse [REPORT] | Conflict disclosure [DISCLOSURE] | Edit and correction history [HISTORY] | No pay-to-remove reviews [NO_PAY_REMOVE] | Minimum evidence for serious claims [EVIDENCE]
+
+PRC-15 | Required | Single choice
+Would you answer short practitioner-targeted Community Pulse questions?
+Options: Yes regularly [REGULAR] | Sometimes [SOMETIMES] | Only when relevant to my work [RELEVANT] | Unlikely [UNLIKELY] | No [NO]
+
+PRC-16 | Required | Multiple choice; maximum 4
+Which Campus topics are most useful?
+Options: Technique refreshers [TECHNIQUE] | Professional boundaries [BOUNDARIES] | Communication [COMMUNICATION] | Business and pricing [BUSINESS] | Safety and contraindications [SAFETY] | Documentation [DOCUMENTATION] | Career development [CAREER] | Digital profile management [DIGITAL]
+
+PRC-17 | Required | Single choice
+How should the platform describe credentials?
+Options: Verify exact issuer and status [EXACT] | Let practitioners self-declare with labels [DECLARED] | Show only government-recognized credentials [GOVERNMENT] | Hide credentials [HIDE]
+
+PRC-18 | Required | Multiple choice; maximum 4
+Which recognition would motivate participation?
+Options: Contribution points [POINTS] | Inklings [INKLINGS] | Badges [BADGES] | Public role label [ROLE] | Useful profile analytics [ANALYTICS] | No reward needed [NONE]
+
+PRC-19 | Required | Numeric scale 1-10
+How important is it that rewards never determine professional verification, review weight, or workspace authority?
+Endpoints: 1 = Not important | 10 = Essential
+
+PRC-20 | Required | Single choice
+What should Massage Nexus build first for practitioners?
+Options: Accurate practitioner profiles [PROFILE] | Profile claim and correction [CLAIM] | Discovery and search [DISCOVERY] | Booking and schedule [BOOKING] | Reviews and responses [REVIEWS] | Campus learning [CAMPUS]
+
+PRC-21 | Optional | Long text; maximum 1000 characters
+What online problem most harms practitioners or makes clients misunderstand your work?
+
+PRC-22 | Optional | Long text; maximum 1000 characters
+What would persuade you to claim and maintain your practitioner profile?
+
+================================================================================
+FORM 3. SPA OR ESTABLISHMENT OPERATOR
+================================================================================
+
+form_key: prelaunch_establishment_operator_v1
+form_version: 1
+audience: Adults who own, operate, manage, or perform authorized administrative work for a massage or wellness establishment.
+recommended_sections: Eligibility; Establishment Context; Directory and Claim; Services and Booking; Reviews and Analytics; Final Comment.
+
+EOP-01 | Required | Single choice
+What is your relationship to an establishment?
+Options: Owner [OWNER] | Operator [OPERATOR] | Manager [MANAGER] | Authorized staff [STAFF] | Consultant or agency [AGENCY] | None of these [NONE]
+Branching: NONE -> End of form.
+
+EOP-02 | Required | Single choice
+How many locations do you help manage?
+Options: 1 [ONE] | 2-3 [TWO_THREE] | 4-10 [FOUR_TEN] | More than 10 [OVER_TEN]
+
+EOP-03 | Required | Single choice
+How are bookings currently handled?
+Options: Paper or manual log [PAPER] | Messaging app [MESSAGING] | Telephone [PHONE] | Spreadsheet [SHEET] | Booking software [SOFTWARE] | Walk-in only [WALK_IN] | Several methods [MIXED]
+
+EOP-04 | Required | Ranking; rank top 5
+Rank the most important establishment profile information.
+Options: Address and map [ADDRESS] | Contact channels [CONTACT] | Current hours [HOURS] | Services and prices [MENU] | Facilities and amenities [FACILITIES] | Practitioner roster [ROSTER] | Photos [PHOTOS] | Reviews [REVIEWS] | Booking availability [AVAILABILITY] | Policies [POLICIES]
+
+EOP-05 | Required | Numeric scale 1-10
+How difficult is it to keep your establishment information consistent across the internet?
+Endpoints: 1 = Very easy | 10 = Very difficult
+
+EOP-06 | Required | Multiple choice; maximum 5
+Which profile changes happen most often?
+Options: Hours [HOURS] | Service menu [MENU] | Prices [PRICES] | Practitioner roster [ROSTER] | Contact details [CONTACT] | Photos [PHOTOS] | Promotions [PROMOTIONS] | Policies [POLICIES] | Address or branch status [ADDRESS]
+
+EOP-07 | Required | Single choice
+What is the safest claim process for an existing establishment profile?
+Options: Document and contact verification [DOCUMENT] | Official email or telephone verification [CONTACT] | On-site verification [ONSITE] | Existing authorized manager invitation [INVITE] | A combination based on risk [RISK_BASED]
+
+EOP-08 | Required | Multiple choice; maximum 5
+Which staff access levels are needed?
+Options: Owner [OWNER] | General manager [MANAGER] | Reception [RECEPTION] | Practitioner [PRACTITIONER] | Finance [FINANCE] | Marketing [MARKETING] | Booking coordinator [BOOKING] | Profile editor [EDITOR]
+
+EOP-09 | Required | Single choice
+Should one manager be able to manage several establishments?
+Options: Yes [YES] | Yes, with separate permission per establishment [SEPARATE] | No [NO] | Not sure [UNSURE]
+
+EOP-10 | Required | Multiple choice; maximum 6
+Which booking capabilities matter most?
+Options: Service availability [SERVICE] | Practitioner availability [PRACTITIONER] | Room or resource availability [RESOURCE] | Walk-in queue [WALK_IN] | Deposits and payment status [PAYMENT] | Cancellation rules [CANCELLATION] | Reminders [REMINDER] | Home service address handling [HOME_SERVICE] | Group bookings [GROUP]
+
+EOP-11 | Required | Single choice
+Which booking confirmation model do you prefer?
+Options: Automatic when availability exists [AUTOMATIC] | Staff approval required [APPROVAL] | Different by service [BY_SERVICE] | Message before confirmation [MESSAGE]
+
+EOP-12 | Required | Numeric scale 1-10
+How valuable would a structured service-and-price menu be compared with uploading only a menu image?
+Endpoints: 1 = Not valuable | 10 = Extremely valuable
+
+EOP-13 | Required | Multiple choice; maximum 5
+Which analytics would be useful?
+Options: Profile views [VIEWS] | Search appearances [SEARCH] | Booking conversion [CONVERSION] | Popular services [SERVICES] | Cancellation reasons [CANCELLATION] | Review themes [REVIEWS] | Client location summary [LOCATION] | Repeat booking [REPEAT]
+
+EOP-14 | Required | Multiple choice; maximum 4
+Which review-management features matter most?
+Options: Official response [RESPONSE] | Abuse report [REPORT] | Verified booking label [VERIFIED] | Staff notification [NOTIFICATION] | Trend summary [TREND] | Service recovery workflow [RECOVERY] | Correction history [HISTORY]
+
+EOP-15 | Required | Single choice
+Would you answer short operator-targeted Community Pulse questions?
+Options: Yes regularly [REGULAR] | Sometimes [SOMETIMES] | Only when the topic affects operations [RELEVANT] | Unlikely [UNLIKELY] | No [NO]
+
+EOP-16 | Required | Multiple choice; maximum 4
+Which business-support topics are most useful?
+Options: Pricing [PRICING] | Scheduling [SCHEDULING] | Staff management [STAFF] | Customer service [CUSTOMER] | Safety and compliance [SAFETY] | Marketing [MARKETING] | Review handling [REVIEWS] | Data and analytics [DATA]
+
+EOP-17 | Required | Single choice
+Which paid business benefit is most plausible?
+Options: Advanced booking tools [BOOKING] | Advanced analytics [ANALYTICS] | Promotional placement [PROMOTION] | Additional staff access [STAFF] | AI assistance credits [AI] | None [NONE]
+
+EOP-18 | Required | Numeric scale 1-10
+How important is a clear separation between paid promotion and organic search or review ranking?
+Endpoints: 1 = Not important | 10 = Essential
+
+EOP-19 | Required | Single choice
+What should Massage Nexus build first for establishments?
+Options: Accurate directory profile [PROFILE] | Claim and staff access [CLAIM] | Service and price management [MENU] | Booking operations [BOOKING] | Reviews and responses [REVIEWS] | Analytics [ANALYTICS]
+
+EOP-20 | Optional | Long text; maximum 1000 characters
+What is your biggest operational problem that a directory or booking platform could realistically help solve?
+
+EOP-21 | Optional | Long text; maximum 1000 characters
+What would make you trust Massage Nexus with your establishment information?
+
+================================================================================
+FORM 4. MASSAGE CAMPUS LEARNER
+================================================================================
+
+form_key: prelaunch_campus_learner_v1
+form_version: 1
+audience: Adults interested in learning about massage as a client, practitioner, trainee, or industry participant.
+recommended_sections: Eligibility; Learning Goals; Format and Accessibility; Progress and Community; Final Comment.
+
+LRN-01 | Required | Single choice
+Why are you interested in massage learning?
+Options: Better-informed client [CLIENT] | Practitioner training support [PRACTITIONER] | Current student or trainee [STUDENT] | Establishment staff development [STAFF] | General wellness interest [GENERAL] | Research or writing [RESEARCH]
+
+LRN-02 | Required | Single choice
+What is your current knowledge level?
+Options: New to the topic [NEW] | Basic familiarity [BASIC] | Intermediate [INTERMEDIATE] | Advanced [ADVANCED] | Professional or instructor level [PROFESSIONAL]
+
+LRN-03 | Required | Multiple choice; maximum 5
+Which topics would you study first?
+Options: Massage types and techniques [TECHNIQUES] | Safety and contraindications [SAFETY] | Anatomy basics [ANATOMY] | Client communication [COMMUNICATION] | Professional boundaries [BOUNDARIES] | Spa etiquette [ETIQUETTE] | Business operations [BUSINESS] | Research literacy [RESEARCH] | Career pathways [CAREER]
+
+LRN-04 | Required | Ranking; rank top 5
+Rank the learning formats you prefer.
+Options: Short articles [ARTICLE] | Step-by-step lessons [LESSON] | Video demonstrations [VIDEO] | Diagrams [DIAGRAM] | Quizzes [QUIZ] | Scenarios [SCENARIO] | Downloadable references [DOWNLOAD] | Live sessions [LIVE] | Discussion [DISCUSSION]
+
+LRN-05 | Required | Single choice
+What lesson length is easiest to complete?
+Options: Under 5 minutes [LT5] | 5-10 minutes [M5_10] | 11-20 minutes [M11_20] | 21-40 minutes [M21_40] | More than 40 minutes [GT40]
+
+LRN-06 | Required | Numeric scale 1-10
+How valuable is saved progress across lessons and devices?
+Endpoints: 1 = Not valuable | 10 = Extremely valuable
+
+LRN-07 | Required | Multiple choice; maximum 5
+Which learning supports matter most?
+Options: Glossary [GLOSSARY] | Sources and references [SOURCES] | Captions and transcripts [CAPTIONS] | Downloadable notes [NOTES] | Practice questions [PRACTICE] | Progress tracker [PROGRESS] | Ask-an-instructor area [INSTRUCTOR] | Peer discussion [DISCUSSION]
+
+LRN-08 | Required | Single choice
+How should quizzes normally behave?
+Options: Immediate answer and explanation [IMMEDIATE] | Explanation after the section [SECTION_END] | Score only at the end [END] | No preference [NO_PREFERENCE]
+
+LRN-09 | Required | Single choice
+How many quiz attempts should ordinary learning checks allow?
+Options: Unlimited with varied questions [UNLIMITED] | Three attempts [THREE] | Two attempts [TWO] | One attempt [ONE] | No preference [NO_PREFERENCE]
+
+LRN-10 | Required | Numeric scale 1-10
+How important is it to distinguish Campus completion from a government license or school qualification?
+Endpoints: 1 = Not important | 10 = Essential
+
+LRN-11 | Required | Multiple choice; maximum 4
+Which progress recognition is motivating?
+Options: Completion record [COMPLETION] | Badge [BADGE] | Nexus Points [POINTS] | Inklings [INKLINGS] | Learning streak [STREAK] | Shareable progress [SHARE] | None [NONE]
+
+LRN-12 | Required | Single choice
+Would you answer one short learning-preference Community Pulse question while browsing?
+Options: Yes regularly [REGULAR] | Sometimes [SOMETIMES] | Only on Campus pages [CAMPUS_ONLY] | Unlikely [UNLIKELY] | No [NO]
+
+LRN-13 | Required | Multiple choice; maximum 4
+What would make you stop using a learning platform?
+Options: Inaccurate information [INACCURATE] | Too much text [TOO_LONG] | Inaccessible media [INACCESSIBLE] | Hidden costs [COST] | No progress tracking [NO_PROGRESS] | Repetitive quizzes [REPETITIVE] | Poor mobile experience [MOBILE] | Unclear credential claims [CREDENTIAL]
+
+LRN-14 | Required | Single choice
+Which language presentation helps most?
+Options: Selected language [SELECTED] | English [ENGLISH] | Original and translation side by side [SIDE_BY_SIDE] | No preference [NO_PREFERENCE]
+
+LRN-15 | Required | Multiple choice; maximum 5
+Which accessibility features would you use?
+Options: Captions [CAPTIONS] | Transcripts [TRANSCRIPTS] | Keyboard navigation [KEYBOARD] | Screen-reader structure [SCREEN_READER] | Adjustable text [TEXT_SIZE] | Reduced motion [REDUCED_MOTION] | High contrast [CONTRAST] | Audio description [AUDIO_DESCRIPTION]
+
+LRN-16 | Required | Single choice
+Would you pay for any personal Campus feature?
+Options: Advanced course [COURSE] | Instructor session [INSTRUCTOR] | Additional AI study assistance [AI] | Certificate from an authorized partner [PARTNER] | No [NO] | Not sure [UNSURE]
+
+LRN-17 | Required | Numeric scale 1-10
+How useful would AI assistance be for explaining a lesson, generating practice questions, or summarizing your notes?
+Endpoints: 1 = Not useful | 10 = Extremely useful
+
+LRN-18 | Required | Single choice
+What should Massage Campus build first?
+Options: Client basics [CLIENT] | Practitioner fundamentals [PRACTITIONER] | Safety and boundaries [SAFETY] | Service and technique guides [TECHNIQUE] | Business operations [BUSINESS] | Quizzes and progress [PROGRESS]
+
+LRN-19 | Optional | Long text; maximum 1000 characters
+What massage topic is hardest to learn from current online resources?
+
+LRN-20 | Optional | Long text; maximum 1000 characters
+What would make Massage Campus feel credible and worth returning to?

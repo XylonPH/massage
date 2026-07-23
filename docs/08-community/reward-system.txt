@@ -1,7 +1,7 @@
 Title: Massage Nexus Reward System
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines shared reward eligibility, award schedules, limits, anti-abuse rules, and authoritative reward-event accounting across Nexus Points, Embers, and Inklings.
 
 Related Documents:
@@ -32,8 +32,8 @@ Concept            | Meaning
 -------------------+-----------------------------------------------------------------------
 Contribution Count | Rebuildable factual count of qualifying user activity.
 Nexus Points       | Permanent, non-spendable lifetime value of approved activity.
-Embers             | Spendable platform reward currency.
-Inklings           | Exploration, seasonal, mascot, and game-progress currency.
+Embers             | Scarce premium platform credit for bounded higher-value uses, including approved AI use.
+Inklings           | Common earnable and spendable site-participation and game currency.
 Badges             | Visible achievements and recognition.
 Rank Paths         | Fictional platform progression titles.
 Reputation         | Community-tested trust quality that may rise or fall.
@@ -83,7 +83,7 @@ Content reaction reward:
 
 Action                                      | Nexus Points | Embers | Inklings
 --------------------------------------------+--------------+--------+---------
-Thumbs up/down on an eligible content item  | 1            | 10     | 5
+Thumbs up/down on an eligible content item  | 1            | 0      | 5
 
 Eligible content may include an article, review, news item, guide, comic, comment, discussion,
 media item, or translation. Only the first 25 otherwise eligible thumbs-up/down actions by one user
@@ -94,8 +94,8 @@ Experience and product rating rewards:
 
 Action                                  | Nexus Points | Embers | Inklings
 ----------------------------------------+--------------+--------+---------
-Eligible simple spa/therapist/product   | 5            | 50     | 20
-Eligible criteria-based rating          | 10           | 100    | 40
+Eligible simple spa/therapist/product   | 5            | 0      | 20
+Eligible criteria-based rating          | 10           | 0      | 40
 
 A criteria-based reward requires at least three eligible target criteria. Honest Not Observed and
 Not Applicable answers do not reduce the reward merely because the criterion could not be judged.
@@ -104,8 +104,8 @@ One verified-experience bonus may stack with the applicable base reward:
 
 Source or condition                                | Nexus Points | Embers | Inklings
 ---------------------------------------------------+--------------+--------+---------
-Massage Nexus verified completed experience        | +2           | +20    | +10
-Confirmed external or on-site experience           | +1           | +10    | +5
+Massage Nexus verified completed experience        | +2           | 0      | +10
+Confirmed external or on-site experience           | +1           | 0      | +5
 User-entered personal history                       | 0            | 0      | 0
 Self or connected rating                            | 0            | 0      | 0
 Revoked, invalidated, quarantined, or duplicate     | 0            | 0      | 0
@@ -154,7 +154,28 @@ user-writing credit as fully user-written work unless a later rule explicitly al
 Exact article, media, translation, booking, purchase, and contribution amounts remain unresolved.
 
 ================================================================================
-5. BOOKINGS, PURCHASES, EVENTS, AND CAMPAIGNS
+5. SURVEY AND COMMUNITY PULSE REWARDS
+================================================================================
+
+Routine eligible Community Pulse answer:
+
+Action                                      | Nexus Points | Embers | Inklings
+--------------------------------------------+--------------+--------+---------
+First answer to one eligible run question   | 1            | 0      | 5
+
+Only the first three otherwise eligible Community Pulse answers by one user per UTC reward-ledger
+day receive this reward. The user may continue answering without another award. The idempotency scope
+is user + survey_run + question_key + reward rule. Editing, retrying, translating, importing,
+reopening, or invalidating and resubmitting the same current answer does not issue another reward.
+
+A full survey may issue one versioned completion reward based on verified burden. Its calculation
+must exclude question rewards already earned through Community Pulse. Routine surveys do not award
+Embers. An exceptional Ember research incentive requires an explicit budgeted campaign and separate
+Reward System and monetization approval. Microsoft Forms, paper, anonymous, administrative, test,
+duplicate, ineligible, and invalidated responses receive no platform reward.
+
+================================================================================
+6. BOOKINGS, PURCHASES, EVENTS, AND CAMPAIGNS
 ================================================================================
 
 Eligible bookings, completed experiences, purchases, events, campaigns, polls, quizzes, QR scans,
@@ -171,7 +192,7 @@ a supported connected identity, platform API, official campaign link, QR event, 
 platform-confirmed mechanism. A screenshot alone is not sufficient evidence for a material reward.
 
 ================================================================================
-6. AUTHORITATIVE DATA AND RECONCILIATION
+7. AUTHORITATIVE DATA AND RECONCILIATION
 ================================================================================
 
 user_reward stores one immutable earn, spend, expiry, correction, reversal, adjustment, or migration
@@ -189,7 +210,7 @@ time for ordinary profile, header, and workspace display. The projection is rebu
 never sufficient by itself for reconciliation, dispute resolution, expiry, or reversal.
 
 ================================================================================
-7. OPEN DECISIONS
+8. OPEN DECISIONS
 ================================================================================
 
 - final review Ember and Inkling awards;

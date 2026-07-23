@@ -1,7 +1,7 @@
 Title: Massage Nexus Discussion System
-Document Version: 0.21
+Document Version: 0.31
 Date Created: 2026-07-16
-Revision Date: 2026-07-20
+Revision Date: 2026-07-23
 
 Related Documents:
 - Massage Nexus - 03 - Features v1.90
@@ -14,6 +14,7 @@ Related Documents:
 - Massage Nexus - 22 - Admin Workspace v0.10
 - Massage Nexus - 29 - News Writing Guide v0.10
 - docs/18-policy/accessibility-and-inclusive-design-requirements.txt
+- docs/08-community/survey-system.txt
 - Shared Project Standards v2.60
 
 DOCUMENT DESCRIPTION
@@ -386,6 +387,12 @@ A discussion poll may include:
 Polls should not be used as proof of factual truth.
 
 Votes may be limited by account and anti-abuse checks.
+
+A Discussion poll is authored and interpreted as part of its Discussion. It does not use Community
+Pulse, does not enter the platform Survey System research sample automatically, and does not inherit
+survey rewards or public-result methodology merely because both features present selectable options.
+An administrator who wants a Discussion topic to inform formal research creates a separate Survey
+System instrument and run with explicit audience, revision, privacy, and methodology.
 
 ================================================================================
 16. TAGS AND CATEGORIES

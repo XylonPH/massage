@@ -1,7 +1,7 @@
 Title: Massage Nexus Inkling System
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines Inklings as the exploration, seasonal, mascot, story, and game-progress currency and records the accepted direction for playful site activities and modern game technology.
 
 Related Documents:
@@ -20,10 +20,10 @@ Related Documents:
 Inklings are the second Massage Nexus gamification currency. The earlier working name was Ink Drops;
 the accepted working name is Inklings.
 
-Inklings represent exploration, game-board activity, seasonal progress, mascot interactions,
-mini-games, story progress, challenges, and playful site participation. They are separate from
-permanent Nexus Points and the broader spendable-perk role of Embers. Like Embers, they may use a
-larger visible number scale when earning and redemption values remain coherent.
+Inklings are the common earnable and spendable site-participation currency. They represent
+exploration, game-board activity, seasonal progress, mascot interactions, mini-games, story progress,
+challenges, surveys, quizzes, and other bounded participation. They are intentionally easier to earn
+and less valuable per unit than scarce Embers, and remain separate from permanent Nexus Points.
 
 ================================================================================
 2. POSSIBLE SOURCES AND USES
@@ -33,7 +33,7 @@ Possible sources:
 - daily check-ins and Resting Leaf interactions;
 - mascot clicks and verified Easter-egg discovery;
 - Relaxation Room visits;
-- Campus quizzes and polls;
+- Campus quizzes, eligible surveys, and Community Pulse answers;
 - event QR scans and campaign participation;
 - mini-game and challenge activity;
 - eligible booking or purchase activity;
@@ -52,6 +52,10 @@ Possible uses:
 Logging in, clicking repeatedly, or replaying an already completed interaction must not become an
 unlimited farming route. Each source needs a versioned eligibility rule, idempotency scope, period
 limit, and abuse control under the Reward System.
+
+The accepted routine Community Pulse award is five Inklings for the first eligible answer to an exact
+run question, limited to the first three rewarded Community Pulse answers per user per UTC day. Edits
+and imported responses do not earn Inklings.
 
 ================================================================================
 3. MASCOTS, EASTER EGGS, AND MINI-GAMES

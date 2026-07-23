@@ -130,7 +130,6 @@ contact_url
 contact_value_display
 contact_value_normalized
 content_language_id_list
-context_collection
 context_record_id
 contribution_accepted_count
 contribution_submitted_count
@@ -1096,6 +1095,7 @@ type_story_arc
 type_street
 type_subscription_audience
 type_survey
+type_survey_context
 type_survey_question
 type_sync_scope
 type_task

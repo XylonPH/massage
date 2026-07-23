@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace User Interface
-Document Version: 0.50
+Document Version: 0.60
 Date Created: 2026-07-19
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines the working user-interface direction for the permission-scoped Massage Nexus Admin Workspace, including its shell, navigation, dashboards, queues, review screens, moderation, editorial and translation tools, external-service usage controls, system operations, responsive behavior, accessibility, states, and high-risk interactions. Administrative authority and workflow rules remain in the Admin Workspace and related capability specifications.
 
 Related Documents:
@@ -576,9 +576,30 @@ actions. It does not yet claim to implement assignment, side-by-side comparison,
 stale-work detection, or the complete readiness checklist described above.
 
 Quote pages should expose attribution, source, language, display window, approval, and duplicate
-review. Survey and Quiz pages should expose question structure, audience, availability, translation,
-accessibility, scoring or result rules where applicable, response/export controls, preview,
-publication, closure, and archive.
+review.
+
+The Survey index should provide filters for instrument type, lifecycle, current revision, audience,
+run state, placement, language readiness, opening and closing time, response count, completion rate,
+result suppression, reward rule, and import state. The Survey editor should separate Instrument,
+Questions, Translation, Run Settings, Community Pulse, Results, Rewards, Imports, and Audit into
+clear task areas without implying separate unconnected records.
+
+Question editing should support add, edit, order, duplicate, remove from draft, required-answer
+rules, controlled options, scale endpoints, answer limits, Community Pulse eligibility, and preview.
+Run settings should expose audiences, placements, identity mode, answer editing, opening and closing
+time, public-result rule, minimum response count, embargo, and reward rule. Publication readiness
+must show blocking validation, translation, accessibility, privacy, and reward errors.
+
+Results should show response and completion counts, funnels, option distributions, scale
+distributions, comparable-run trends, cohort warnings, threshold and embargo state, and a text/table
+equivalent for every chart. Aggregate export and raw-response export require distinct controls and
+permissions. The import screen should preview Microsoft Forms or paper mappings, source checksum,
+unmapped questions and options, duplicate and rejected rows, cohort source, and final reconciliation
+before an authorized import writes records.
+
+Published revisions are read-only. Delete is available only for an unused draft and requires
+confirmation. Response-bearing records present Close, Withdraw, Invalidate, or Archive according to
+their lifecycle. Quiz pages remain separate and expose their own scoring and attempt rules.
 
 The publication action should open a compact readiness summary. Missing mandatory approval, disclosure, source, translation, or accessibility requirements block publication rather than appearing as a dismissible warning.
 

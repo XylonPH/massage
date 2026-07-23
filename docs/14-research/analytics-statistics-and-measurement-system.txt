@@ -1,9 +1,7 @@
 Title: Massage Nexus Analytics Statistics and Measurement System
-Document Version: 0.10
+Document Version: 0.20
 Date Created: 2026-07-18
-Revision Date: 2026-07-18
-Status: Internal Planning Draft
-
+Revision Date: 2026-07-23
 Related Documents:
 - Massage Nexus - 03 - Features v2.40
 - Massage Nexus - 15 - Language Strategy v0.30
@@ -374,6 +372,28 @@ Possible metrics:
 - social-account coverage;
 - media coverage;
 - accessibility coverage.
+
+Survey measurement includes:
+- open, completed, closed, withdrawn, and invalidated responses;
+- question answer count, skip count, and completion funnel;
+- option and scale distribution;
+- comparable-run trends;
+- target audience and eligibility method;
+- native survey, Community Pulse, Microsoft Forms, paper, and administrative source cohorts;
+- import validation, rejected-row, duplicate, and mapping counts;
+- result threshold, embargo, and suppression reason;
+- reward and badge eligibility counts separately from response totals.
+
+survey_response and survey_answer are the authoritative research records. survey_aggregate is a
+rebuildable privacy-checked projection and must identify its calculation version and time. Raw
+answers are not analytics_event records. A Community Pulse public result requires at least 20
+eligible registered responses by default, and a run may require more. Threshold passage does not
+override sensitivity, small-subgroup, embargo, withdrawal, or methodology suppression.
+
+Microsoft Forms, paper, native full-form, and Community Pulse cohorts remain separable. Combining
+them requires documented equivalence of wording, revision, eligibility, recruitment, and collection
+period. A convenience sample must not be described as representative solely because it has many
+responses.
 
 Public methodology should explain that a record count is not a complete census, a map absence
 does not prove nonexistence, verification dates differ by field, and country comparisons may

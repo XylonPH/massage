@@ -1,7 +1,7 @@
 Title: Massage Nexus Features
-Document Version: 3.14
+Document Version: 3.24
 Date Created: 2026-06-30
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
 
 Platform Scope: This file covers the public Massage Nexus website and its browser-based user, provider, seller, advertiser, contributor, research, translation, editorial, Support, moderation, and administration workspaces. It may mention mobile, desktop, APIs, and integrations where the website must support or connect to them, while platform-specific behavior remains in the separate application documents.
@@ -99,7 +99,7 @@ Recommendations help users discover relevant services, spas, therapists, article
 Users may choose supported appearance themes while preserving accessibility and consistent interface behavior.
 
 9. Dynamic Engagement Sidebar
-The Dynamic Engagement Sidebar provides an intelligent, context-aware secondary column on public-facing pages (Articles, News, Reviews, Spa Profiles, Therapist Profiles, Service Profiles, etc.). It adapts its length and modules based on the main content's length. Modules include Quizzes, Surveys, Trending Therapists, Trending Spas, Recent Reviews, Recent Discussions, and personalized elements like Recent Visits. Quizzes and Surveys allow anonymous participation (tracked via session) with lead-generation prompts upon completion. The sidebar is explicitly excluded from internal workspaces.
+The Dynamic Engagement Sidebar provides an intelligent, context-aware secondary column on public-facing pages (Articles, News, Reviews, Spa Profiles, Therapist Profiles, Service Profiles, etc.). It adapts its length and modules based on the main content's length. Modules include Quizzes, Community Pulse, Survey invitations, Trending Therapists, Trending Spas, Recent Reviews, Recent Discussions, and personalized elements like Recent Visits. Guests may preview Community Pulse choices locally, but official submission, completion, results contribution, and rewards require a registered login; no guest answer is stored or counted. The sidebar is explicitly excluded from internal workspaces.
 
 10. Accessibility
 Accessibility applies across public pages, account flows, profiles, search, maps, media, booking, Support, workspaces, translations, Comments, Discussions, and administrative tools. The platform should support screen readers, keyboard navigation, scalable text, captions, contrast, reduced motion, understandable labels and errors, accessible forms, and non-visual alternatives. Accessibility is a system-wide requirement rather than a one-sentence interface preference.
@@ -147,7 +147,7 @@ Massage Campus is the structured learning area of Massage Nexus for clients, the
 Quizzes and knowledge checks support Massage Campus, onboarding, contributor development, campaigns, and light community engagement. Assessments may use questions, scenarios, practical checks, attempts, feedback, passing rules, progress, and completion records. They do not create a professional license or formal qualification unless an authorized external institution separately provides one.
 
 22. Surveys and Polls
-Surveys and Polls gather structured opinions, needs, satisfaction, market observations, and community feedback from users, providers, therapists, contributors, advertisers, and other approved groups. Participation, anonymity, sampling, consent, incentives, publication, privacy thresholds, and repeat measurement must be defined. Results may inform planning and public Statistics but must not be presented as representative of an entire market without an appropriate methodology.
+Surveys and Polls gather structured opinions, needs, satisfaction, market observations, and community feedback from general users, clients, completed-booking clients, practitioners, establishment operators, sellers, Campus learners, instructors, Campus administrators, contributors, editors, translators, advertisers, and other approved groups. Community Pulse presents one eligible question from the same versioned Survey System and requires login for official submission. Exact revisions and repeatable runs preserve longitudinal answers without blocking a respondent from answering the same logical question in a later period. Results may inform planning and public Statistics but must not be presented as representative of an entire market without an appropriate methodology.
 
 23. The Resting Leaf
 The Resting Leaf is the original comic and character world of Massage Nexus, using short visual stories to show spa situations, client habits, wellness humor, and everyday service moments. It is a supporting brand and content extension, not a core platform directory or transactional feature.
@@ -3543,9 +3543,22 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 
 30.1 Surveys
 ------------
+- Versioned survey instrument and immutable published revision
+- Repeatable scheduled survey run
+- Audience eligibility from authoritative user relationships
+- Dedicated User Workspace Survey area with Available, In Progress, Completed, Closed, and Withdrawn views
+- Incremental completion shared between Community Pulse and the full survey form
+- Native, Microsoft Forms, paper, and administrative response-source separation
+- External import batch with exact form version, checksum, mapping, validation, and audit
 - User-needs survey
+- Client-needs survey
 - Provider-needs survey
 - Therapist-needs survey
+- Establishment-operator survey
+- Seller survey
+- Campus learner survey
+- Campus instructor survey
+- Campus administrator survey
 - Advertiser survey
 - Contributor survey
 - Correspondent survey
@@ -3564,6 +3577,11 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 
 30.2 Polls
 ----------
+- Community Pulse authenticated submission with guest interaction preview
+- Completion-aware per-user and per-run rotation
+- One current answer per user, run, and question
+- Answer editing without duplicate response, result, reward, or badge progress
+- Aggregate result after the run threshold and embargo rules are satisfied
 - Single-choice poll
 - Multiple-choice poll
 - Ranked-choice poll

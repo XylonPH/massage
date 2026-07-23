@@ -1,0 +1,161 @@
+[
+    {
+        "_id": 607,
+        "field_name": "type_survey",
+        "field_label": "Survey Type",
+        "selection_rule": "Single-select per survey_main record",
+        "field_description": "Classifies whether an instrument is a multi-question survey or a single-question platform poll. Community Pulse is a presentation of eligible poll questions, not a separate response type.",
+        "field_option": [
+            { "option_code": "SUR", "option_label": "Survey", "option_description": "An instrument containing one or more ordered questions and ordinarily presented as a dedicated form." },
+            { "option_code": "POL", "option_label": "Poll", "option_description": "A single-question instrument that may be presented through Community Pulse or another approved platform placement." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 608,
+        "field_name": "type_survey_question",
+        "field_label": "Survey Question Type",
+        "selection_rule": "Single-select per question definition",
+        "field_description": "Defines the answer control and stored answer shape for one immutable survey-revision question.",
+        "field_option": [
+            { "option_code": "SGL", "option_label": "Single Choice", "option_description": "Respondent selects exactly one option from a controlled list." },
+            { "option_code": "MUL", "option_label": "Multiple Choice", "option_description": "Respondent selects a bounded number of options from a controlled list." },
+            { "option_code": "SCL", "option_label": "Numeric Scale", "option_description": "Respondent selects one integer on the question's defined scale, normally 1 through 10." },
+            { "option_code": "RNK", "option_label": "Ranking", "option_description": "Respondent places controlled options into a preferred order." },
+            { "option_code": "IMG", "option_label": "Image Choice", "option_description": "Respondent selects one controlled option represented by an accessible image and text label." },
+            { "option_code": "YNO", "option_label": "Yes or No", "option_description": "Respondent selects Yes or No; use only when the question genuinely has two exhaustive answers." },
+            { "option_code": "STX", "option_label": "Short Text", "option_description": "Respondent enters a short free-text answer within the revision's character limit." },
+            { "option_code": "LTX", "option_label": "Long Text", "option_description": "Respondent enters a longer free-text answer within the revision's character limit." },
+            { "option_code": "MTX", "option_label": "Matrix", "option_description": "Respondent answers a bounded set of row prompts against one shared option scale; publication requires accessible non-table alternatives." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 609,
+        "field_name": "target_survey_audience",
+        "field_label": "Survey Target Audience",
+        "selection_rule": "Multi-select per survey run; eligibility is derived from authoritative account relationships",
+        "field_description": "Identifies each respondent group eligible for a survey run without turning the selection into a workspace role or user-controlled role switch.",
+        "field_option": [
+            { "option_code": "GEN", "option_label": "General Registered User", "option_description": "Any active registered Massage Nexus member." },
+            { "option_code": "CLI", "option_label": "Client", "option_description": "Any member in the platform's baseline client audience, whether or not the member has another role." },
+            { "option_code": "CBC", "option_label": "Completed-Booking Client", "option_description": "A client linked to an eligible completed booking or service event." },
+            { "option_code": "PRC", "option_label": "Practitioner", "option_description": "A verified or otherwise eligible therapist or practitioner derived from practitioner relationships." },
+            { "option_code": "EOP", "option_label": "Establishment Operator", "option_description": "A member with effective management access to an establishment, including an authorized owner or operator." },
+            { "option_code": "SEL", "option_label": "Seller", "option_description": "A member with effective management access to a seller or commercial product operation." },
+            { "option_code": "LRN", "option_label": "Campus Learner", "option_description": "A member with an active or recently completed Massage Campus enrollment." },
+            { "option_code": "INS", "option_label": "Campus Instructor", "option_description": "An eligible instructor or trainer in Massage Campus." },
+            { "option_code": "CAD", "option_label": "Campus Administrator", "option_description": "A member with effective administrative responsibility in Massage Campus." },
+            { "option_code": "CON", "option_label": "Contributor", "option_description": "A member with eligible contribution activity or an effective contributor assignment." },
+            { "option_code": "EDT", "option_label": "Editor", "option_description": "A member with effective editorial access." },
+            { "option_code": "TRN", "option_label": "Translator", "option_description": "A member with effective translation access or approved translation participation." },
+            { "option_code": "ADV", "option_label": "Advertiser", "option_description": "A member linked to an eligible advertiser or sponsorship account." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 610,
+        "field_name": "source_survey_response",
+        "field_label": "Survey Response Source",
+        "selection_rule": "Single-select per response",
+        "field_description": "Identifies the channel through which one survey response was captured so native, Community Pulse, Microsoft Forms, paper, and controlled administrative-entry cohorts remain distinguishable.",
+        "field_option": [
+            { "option_code": "NAT", "option_label": "Native Survey", "option_description": "Captured through a dedicated Massage Nexus survey form." },
+            { "option_code": "CPL", "option_label": "Community Pulse", "option_description": "Captured one question at a time through the authenticated Community Pulse widget." },
+            { "option_code": "MSF", "option_label": "Microsoft Forms", "option_description": "Imported from a preserved Microsoft Forms response export." },
+            { "option_code": "PPR", "option_label": "Paper Form", "option_description": "Entered from an original printed questionnaire under the paper-entry verification process." },
+            { "option_code": "ADM", "option_label": "Administrative Entry", "option_description": "Entered by an authorized administrator from another approved documented source." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 611,
+        "field_name": "mode_survey_identity",
+        "field_label": "Survey Identity Mode",
+        "selection_rule": "Single-select per survey run",
+        "field_description": "Defines whether respondent identity is retained and who may connect it to answers; it does not change the public aggregate threshold.",
+        "field_option": [
+            { "option_code": "IDN", "option_label": "Identified", "option_description": "Authorized survey staff may view the respondent identity with the response for an approved purpose." },
+            { "option_code": "CNF", "option_label": "Confidential", "option_description": "The system retains a respondent link for eligibility and completion, while ordinary result viewers receive de-identified answers and aggregates." },
+            { "option_code": "ANM", "option_label": "Anonymous", "option_description": "No Massage Nexus user identity is stored with the response; external duplicate controls and methodology must be documented separately." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 612,
+        "field_name": "placement_survey",
+        "field_label": "Survey Placement",
+        "selection_rule": "Multi-select per survey run",
+        "field_description": "Identifies each approved interface placement where a survey run or Community Pulse question may be offered.",
+        "field_option": [
+            { "option_code": "HOM", "option_label": "Homepage Sidebar", "option_description": "Community Pulse placement in the public homepage right sidebar." },
+            { "option_code": "CNT", "option_label": "Content Sidebar", "option_description": "Right-sidebar placement on approved Article, Review, News, or Guide pages." },
+            { "option_code": "DIR", "option_label": "Directory Sidebar", "option_description": "Right-sidebar placement on approved establishment, practitioner, service, or product profile pages." },
+            { "option_code": "DSC", "option_label": "Discussion Sidebar", "option_description": "Right-sidebar placement near a Discussion page without becoming a user-authored Discussion poll." },
+            { "option_code": "WSP", "option_label": "Workspace Invitation", "option_description": "Invitation or pinned task inside an eligible user's workspace." },
+            { "option_code": "DED", "option_label": "Dedicated Survey Page", "option_description": "Full survey form on its dedicated authenticated route." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 613,
+        "field_name": "status_survey_run",
+        "field_label": "Survey Run Status",
+        "selection_rule": "Single-select per survey_run record",
+        "field_description": "Tracks the scheduling and participation lifecycle of one conducted period of an immutable survey revision.",
+        "field_option": [
+            { "option_code": "DRA", "option_label": "Draft", "option_description": "Run settings may still be edited and no participation is accepted." },
+            { "option_code": "SCH", "option_label": "Scheduled", "option_description": "Approved run is waiting for its opening time." },
+            { "option_code": "OPN", "option_label": "Open", "option_description": "Eligible respondents may submit or edit answers under the run rules." },
+            { "option_code": "CLS", "option_label": "Closed", "option_description": "Normal participation and editing have ended; retained responses remain analyzable." },
+            { "option_code": "WDR", "option_label": "Withdrawn", "option_description": "The run was withdrawn from participation because of a material issue; retained data follows the recorded withdrawal decision." },
+            { "option_code": "ARC", "option_label": "Archived", "option_description": "The closed run is retained outside ordinary active administration views." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 614,
+        "field_name": "status_survey_response",
+        "field_label": "Survey Response Status",
+        "selection_rule": "Single-select per survey_response record",
+        "field_description": "Tracks whether a respondent's run-specific response is in progress, complete, withdrawn, or invalidated.",
+        "field_option": [
+            { "option_code": "PRG", "option_label": "In Progress", "option_description": "At least one answer is saved but required completion has not been submitted." },
+            { "option_code": "CMP", "option_label": "Completed", "option_description": "The response satisfies the run's completion rule and has been submitted." },
+            { "option_code": "WDR", "option_label": "Withdrawn", "option_description": "The respondent withdrew the response where withdrawal is supported." },
+            { "option_code": "INV", "option_label": "Invalidated", "option_description": "Authorized review excluded the response because it was duplicate, fraudulent, ineligible, corrupted, or otherwise invalid." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 615,
+        "field_name": "status_survey_import",
+        "field_label": "Survey Import Status",
+        "selection_rule": "Single-select per survey_import_batch record",
+        "field_description": "Tracks validation and processing of an external survey-response import batch.",
+        "field_option": [
+            { "option_code": "DRA", "option_label": "Draft", "option_description": "Source and mapping may still be prepared." },
+            { "option_code": "VAL", "option_label": "Validating", "option_description": "The source file and mappings are being checked without writing response records." },
+            { "option_code": "RDY", "option_label": "Ready", "option_description": "Validation passed and the batch is authorized for import." },
+            { "option_code": "IMP", "option_label": "Importing", "option_description": "Response and answer records are being written idempotently." },
+            { "option_code": "CMP", "option_label": "Completed", "option_description": "The batch finished and preserves imported and rejected counts." },
+            { "option_code": "FLD", "option_label": "Failed", "option_description": "The batch stopped because of an error and requires review before retry." },
+            { "option_code": "CAN", "option_label": "Cancelled", "option_description": "An authorized user cancelled the batch before successful completion." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    },
+    {
+        "_id": 616,
+        "field_name": "type_survey_context",
+        "field_label": "Survey Context Type",
+        "selection_rule": "Single-select when a run is triggered or scoped by another domain record",
+        "field_description": "Classifies the optional domain context that caused or scopes an event-triggered survey run without storing a raw collection name as an ungoverned enumeration.",
+        "field_option": [
+            { "option_code": "BKG", "option_label": "Booking", "option_description": "Survey is scoped to an eligible booking or completed service event." },
+            { "option_code": "CRS", "option_label": "Campus Course", "option_description": "Survey is scoped to a Massage Campus course, module, lesson, or program completion." },
+            { "option_code": "SUP", "option_label": "Support", "option_description": "Survey is scoped to an eligible Support interaction or resolved ticket." },
+            { "option_code": "CAM", "option_label": "Campaign", "option_description": "Survey is scoped to an approved research, outreach, event, or product campaign." }
+        ],
+        "source_document": "docs/08-community/survey-system.txt"
+    }
+]

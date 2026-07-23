@@ -1,5 +1,5 @@
 Title: Massage Nexus: Database Structure
-Document Version: 2.30
+Document Version: 2.40
 Date Created: 2026-07-12
 Revision Date: 2026-07-23
 
@@ -446,7 +446,38 @@ AI may assist with classification, comparison, flagging, and recommendations, bu
 
 Restoring an older revision creates a new current revision based on the earlier version. It must not erase intervening history.
 
-15. AUDIT, REWARD, ANALYTICS, AND COUNTER COLLECTIONS
+15. SURVEY, AUDIT, REWARD, ANALYTICS, AND COUNTER COLLECTIONS
+
+- survey_main
+  Stable survey or single-question poll identity and current approved revision pointer.
+
+- survey_revision
+  Exact versioned multilingual instrument definition, including ordered questions, options,
+  validation, Community Pulse eligibility, and review state. Published revisions are immutable.
+
+- survey_run
+  One conducted period of an exact revision, including target audiences, placements, identity mode,
+  opening and closing time, result threshold, embargo, reward rule, context, and lifecycle.
+
+- survey_response
+  One respondent's run-specific envelope, deduplication key, source, progress, consent timestamp,
+  completion state, and lifecycle. A registered user has at most one response per run.
+
+- survey_answer
+  One current typed answer per response and question. Community Pulse and the dedicated full form
+  update the same run answer instead of creating parallel records.
+
+- survey_aggregate
+  Rebuildable privacy-checked result projection for one run question and approved cohort.
+
+- survey_import_batch
+  Controlled Microsoft Forms, paper, or administrative import provenance, exact form version,
+  source-file checksum, mapping, validation counts, and lifecycle.
+
+Survey notifications reuse user_notification. Survey rewards reuse user_reward. Badge progress uses
+badge_main and user_badge. Raw survey answers are not analytics_event records, and user_main does not
+store growing survey response or answer arrays. Complete behavior and structure-guide references are
+defined in docs/08-community/survey-system.txt.
 
 - audit_log
   Immutable operational trail for important record, administrative, security, approval, restoration, and system actions.

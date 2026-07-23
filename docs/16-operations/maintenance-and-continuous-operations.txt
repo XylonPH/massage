@@ -1,7 +1,7 @@
 Title: Massage Nexus Maintenance and Continuous Operations
-Document Version: 0.11
+Document Version: 0.21
 Date Created: 2026-07-18
-Revision Date: 2026-07-21
+Revision Date: 2026-07-23
 Document Description: Defines how Massage Nexus is maintained after a stable public release, including content publishing, comics, social media, moderation, research freshness, analytics, AI-assisted operations, security, technical upgrades, refactoring, documentation, surveys, backups, incidents, and continuous improvement.
 
 Related Documents:
@@ -557,13 +557,26 @@ Continuous:
 - cancellation reasons;
 - provider claim and onboarding feedback.
 
+Community Pulse:
+- operate continuously when an eligible reviewed inventory exists;
+- add approximately two to four reviewed questions per month;
+- apply per-user completion lookup, cooldowns, daily reward limits, and fatigue controls.
+
 Quarterly:
-- user satisfaction survey;
-- provider satisfaction survey;
-- therapist and contributor survey;
-- accessibility survey;
+- general registered-user needs and satisfaction survey;
 - content and feature demand;
 - reasons people do not use booking, reviews, or accounts.
+
+Semiannual initially:
+- practitioner survey;
+- establishment-operator survey;
+- seller and contributor survey;
+- Campus learner, instructor, and administrator survey;
+- accessibility review survey where a separate focused run is useful.
+
+Event-triggered:
+- booking and Support satisfaction with eligibility and fatigue sampling;
+- Campus course or program feedback after completion.
 
 Annual:
 - broad product and market survey;
@@ -581,6 +594,12 @@ Surveys must:
 - separate users, providers, therapists, and contributors;
 - publish aggregate findings when useful;
 - influence roadmap and maintenance priorities.
+
+Do not conduct a survey merely because its calendar date arrived. Every run needs a decision purpose,
+defined audience, current revision, owner, closing rule, analysis plan, and result-use plan. One broad
+full-survey invitation per audience should be active at a time. Normal reminders are initial,
+midpoint, and final, and stop after completion or closure. External Microsoft Forms and paper runs
+follow docs/14-research/survey-fieldwork-and-microsoft-forms-guide.txt.
 
 ================================================================================
 15. SUPPORT AND PROVIDER RELATIONS

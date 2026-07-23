@@ -1,7 +1,7 @@
 Title: Massage Nexus Badge System
-Document Version: 1.90
+Document Version: 2.00
 Date Created: 2026-07-07
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines Massage Nexus badge meaning, families, milestone sequences, rating and review badges, verification and role-badge limits, received-rating recognition, public display, and the boundary between badges and permissions, ranks, reputation, rewards, and awards.
 
 Related Documents:
@@ -13,6 +13,7 @@ Related Documents:
 - docs/08-community/rating-system.txt
 - docs/08-community/reputation-system.txt
 - docs/09-content/review-writing.txt
+- docs/08-community/survey-system.txt
 - docs/11-workspaces/admin-workspace.txt
 
 ================================================================================
@@ -227,7 +228,39 @@ Artwork requires:
 Badge artwork style, rarity, complete icon templates, and final display-slot limits remain open.
 
 ================================================================================
-10. DATA DIRECTION
+10. SURVEY AND COMMUNITY PULSE BADGES
+================================================================================
+
+Survey participation uses the existing Participation Badge family and Anchored Milestone Sequence;
+it does not create a separate badge engine.
+
+Community Pulse answer milestones use the high-frequency sequence:
+1, 10, 50, 100, 150, 250, 400, 650, 1050...
+
+Working labels:
+- First Community Pulse;
+- 10 Community Pulse Answers;
+- 50 Community Pulse Answers;
+- later labels matching the approved milestone value.
+
+Full-survey completion milestones begin:
+1, 10, 25, 50, 100...
+
+Working labels:
+- First Survey;
+- 10 Surveys;
+- 25 Surveys;
+- 50 Surveys;
+- 100 Surveys.
+
+Only a unique eligible answer or completion counts. Editing, retrying, translating, importing,
+testing, duplicating, reopening, or invalidating and resubmitting the same run answer does not add
+badge progress. Microsoft Forms, paper, anonymous, administrative, ineligible, and invalidated
+responses do not count. Badge progress is independent of whether the daily points or Inkling reward
+limit has already been reached.
+
+================================================================================
+11. DATA DIRECTION
 ================================================================================
 
 Badge definitions and user awards must not be embedded as growing arrays in user_main. The future
@@ -250,7 +283,7 @@ user_main may cache badge count and up to six featured badge identifiers, but us
 authoritative.
 
 ================================================================================
-11. OPEN DECISIONS
+12. OPEN DECISIONS
 ================================================================================
 
 - exact complete badge catalogue;

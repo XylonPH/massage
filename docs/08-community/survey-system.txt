@@ -1,98 +1,395 @@
 Title: Massage Nexus Survey System
-Document Version: 0.20
+Document Version: 1.00
 Date Created: 2026-07-20
-Revision Date: 2026-07-22
-Status: Internal Planning Draft
-Document Description: Defines platform polls and surveys, including the homepage Community Pulse widget, participation rules, per-user completion rotation, result recording, privacy boundaries, rewards references, and administration. Exact question schemas and collections remain deferred.
+Revision Date: 2026-07-23
+Document Description: Defines surveys, single-question polls, the Community Pulse presentation, repeatable survey runs, audience targeting, authenticated participation, results, rewards, administration, imports, privacy, accessibility, localization, analytics, and collection boundaries.
 
 Related Documents:
-- docs/06-user-interface/home-page-ui.txt (section 18, Community Pulse)
-- docs/11-workspaces/admin-workspace.txt (Editorial Management, Survey administration)
+- docs/04-architecture/database-structure.txt
+- docs/06-user-interface/home-page-ui.txt
 - docs/08-community/reward-system.txt
-- docs/08-community/inkling-system.txt
-- docs/14-research/analytics-statistics-and-measurement-system.txt
-- docs/16-operations/maintenance-and-continuous-operations.txt
+- docs/08-community/badge-system.txt
+- docs/11-workspaces/admin-workspace.txt
+- docs/11-workspaces/user-workspace.txt
 - docs/13-localization/translation-system.txt
+- docs/14-research/analytics-statistics-and-measurement-system.txt
+- docs/14-research/survey-fieldwork-and-microsoft-forms-guide.txt
+- docs/16-operations/maintenance-and-continuous-operations.txt
 - docs/18-policy/accessibility-and-inclusive-design-requirements.txt
 
 ================================================================================
-1. PURPOSE AND BOUNDARY
+1. PURPOSE AND TERMINOLOGY
 ================================================================================
 
-Surveys and polls collect lightweight, structured user opinion to guide platform decisions and
-make participation feel active. A poll is normally a single question with predefined choices; a
-survey may contain several questions. Both are platform-authored: they are not user-generated
-discussions, reviews, or ratings, and answering one is not a review or rating of any target.
+The Survey System gathers structured opinions, needs, satisfaction, preferences, and research
+signals. It supports platform planning, service improvement, longitudinal comparison, and approved
+public aggregate results. A response is evidence about the respondents and method used; it must not
+be described as representative of a wider population without an appropriate sample and methodology.
 
-Survey results are opinion signals, not official platform statistics. Published aggregates must
-follow the Analytics Statistics and Measurement System rules (approved aggregates, minimum group
-sizes, no exposure of individual answers).
+Survey
+An instrument containing one or more ordered questions, normally presented as a dedicated form.
 
-================================================================================
-2. PLACEMENT
-================================================================================
+Poll
+A single-question Survey System instrument. A Discussion poll remains owned by the Discussion
+System because it is user-authored discussion content, not platform research.
 
-The current placement is the homepage right sidebar (Community Pulse). The same widget or its
-survey items may later appear on other approved pages. Placement does not change ownership: the
-survey record and its results belong to the Survey System regardless of which page displays it.
+Community Pulse
+The compact platform presentation that offers one eligible poll or one eligible question from a
+larger survey. Community Pulse is not a separate survey database and does not change the question's
+run, revision, audience, answer, privacy, reward, or result rules.
 
-================================================================================
-3. PARTICIPATION AND COMPLETION ROTATION
-================================================================================
+Survey revision
+The exact immutable wording, translations, question order, option keys, and validation contract.
 
-Participation:
-- registered users participate normally and their completion state is recorded per user;
-- guests may be shown polls and may answer casually where allowed, but guest answers do not
-  create official recorded results and guests may be invited to sign in;
-- one user answers a given survey or poll item once; changing an answer, where allowed, updates
-  the same recorded response rather than creating a second one.
-
-Completion rotation (accepted direction):
-- after a user completes an item, the widget briefly shows the result or acknowledgment;
-- after a short delay, if the user is still on the page, a new unanswered item replaces the
-  completed one in place;
-- rotation is per user and completion-aware: any page showing the widget serves items the user
-  has not yet answered, not items they already completed;
-- when no unanswered items remain for the user, the widget may show recent results, a neutral
-  message, or hide, rather than repeating completed items;
-- completion-aware rotation requires an identified user; guests may receive simple time-based
-  rotation instead.
-
-Replacing the completed item in place is a dynamic update and must follow Accessibility and
-Inclusive Design Requirements: the result and the arrival of a new item are announced to
-assistive technology (aria-live), and keyboard focus is not lost or hijacked by the swap.
+Survey run
+One scheduled or conducted period of an exact revision. A later run can ask the same logical
+questions again and creates a new response period without rewriting the earlier result.
 
 ================================================================================
-4. RESULTS, PRIVACY, AND REWARDS
+2. INSTRUMENT AND QUESTION DESIGN
 ================================================================================
 
-- individual answers are private by default; public display uses aggregates only;
-- results shown to the user immediately after answering are the same aggregate view, not other
-  users' individual answers;
-- sensitive topics require the same privacy, minimum-group, and retention rules as other
-  measurement data;
-- poll participation may earn small rewards per the Reward System,
-  subject to its caps and anti-farming rules; answering repeatedly is prevented by the one-answer
-  rule rather than by reward caps alone.
+Administrators create one complete survey instrument containing individually managed questions.
+Each question has a stable question_key. Choice options have stable option_key values. Published
+revisions are immutable; wording, options, order, validation, or translation changes require a new
+revision. Existing runs and answers retain the exact revision they used.
+
+Supported question types:
+- single choice;
+- multiple choice with explicit minimum and maximum selections;
+- numeric scale, normally 1 through 10, with clear endpoint labels;
+- ranking;
+- image choice with equivalent text and alt information;
+- yes or no only when two answers are genuinely exhaustive;
+- short text;
+- long text;
+- bounded matrix questions after accessible linear and mobile alternatives are verified.
+
+A question can be marked Community Pulse eligible. Short text, long text, sensitive, context-heavy,
+or otherwise unsuitable questions remain full-form only. Community Pulse questions should be quick,
+neutral, understandable without surrounding questions, and safe to show on the selected public page.
+
+Questionnaires must:
+- state purpose, expected duration, audience, closing date, identity mode, result use, and reward;
+- avoid leading, double-barrelled, loaded, needlessly invasive, or ambiguous wording;
+- include Not applicable, Prefer not to answer, Not sure, or no forced answer where appropriate;
+- avoid collecting contact or health information merely because a free-text box exists;
+- identify sensitive questions and apply stronger access, retention, and export controls;
+- preview all branches and required-answer behavior before publication.
 
 ================================================================================
-5. ADMINISTRATION AND STORAGE
+3. AUDIENCE AND ELIGIBILITY
 ================================================================================
 
-Survey administration (draft, question and response structure, audience, availability window,
-translation, accessibility, moderation, preview, publication, closure, export authorization,
-archive) belongs to the Admin Workspace editorial area per docs/11-workspaces/admin-workspace.txt.
+Initial and supported audiences are defined by target_survey_audience:
+- general registered user;
+- client, which is a baseline audience available to every member;
+- completed-booking client;
+- practitioner;
+- establishment operator;
+- seller;
+- Campus learner;
+- Campus instructor;
+- Campus administrator;
+- contributor;
+- editor;
+- translator;
+- advertiser.
 
-Final survey and response collections, field names, and option codes are deferred and will be
-defined through the database-structure and structure-guide process before implementation. The
-current homepage Community Pulse widget is a visual preview; submissions are not stored yet.
+Audience eligibility is derived from authoritative account, user_access, practitioner, booking,
+seller, enrollment, and assignment relationships. It is not selected through a user-controlled
+role switch. One user may qualify for several audiences and receives the combined eligible queue
+without duplicate presentation of the same run question.
+
+A run can target one or more audiences. The instrument must not present an operator, practitioner,
+seller, instructor, or administrator question to a user whose authoritative relationships do not
+establish that audience. Targeting rules are evaluated again when a run is served, not copied into
+user_main as a permanent role claim.
 
 ================================================================================
-6. OPEN DECISIONS
+4. PARTICIPATION, GUESTS, REPEAT RUNS, AND EDITING
 ================================================================================
 
-- final survey and response collection design;
-- whether guests may ever have answers counted in any aggregate;
-- multi-question survey presentation (inline, dedicated page, or both);
-- targeting rules (audience, locale, role) beyond simple availability windows;
-- how survey insights feed the research and product-decision workflow.
+Community Pulse may be visible to guests so public pages remain understandable and interactive.
+A guest may select an option locally to preview the interaction, but submission requires login or
+registration. No guest answer is sent to the server, counted, rewarded, stored in an aggregate, or
+later attached automatically to an account. An unsubmitted selection may exist only in the current
+browser tab and must not be treated as research data.
+
+For registered participation:
+- one survey_response exists per run and respondent_key;
+- one current survey_answer exists per response and question_key;
+- completing a question through Community Pulse saves it in the same response used by the full form;
+- the full form shows that question as answered and prefills the saved answer;
+- the respondent may review and edit while the run permits edits;
+- an edit updates the same current answer and does not create another response, reward, badge count,
+  vote, or aggregate participant;
+- a question answered in an older run does not count as answered in a new run;
+- closing or withdrawing a run stops participation according to the recorded lifecycle decision.
+
+Community Pulse answers are research records. They do not automatically modify user_main booking
+preferences or other account settings, and Community Pulse does not offer an optional action to do
+so. A future preference-learning feature requires its own explicit purpose, consent, review, and
+account-setting workflow.
+
+================================================================================
+5. COMMUNITY PULSE PRESENTATION AND ROTATION
+================================================================================
+
+Approved right-sidebar placements include the homepage and selected Article, Review, News, Guide,
+Discussion, establishment, practitioner, service, and product pages. A page may omit the widget when
+the layout, audience, sensitivity, fatigue rule, or eligible-question supply makes it inappropriate.
+
+Serving sequence:
+1. find open runs matching the user's authoritative audiences, language, time, and placement;
+2. obtain Community Pulse-eligible questions from their immutable revisions;
+3. exclude answers already present for that user and run;
+4. apply campaign priority, fatigue, cooldown, sensitivity, and page-context rules;
+5. return one eligible question.
+
+The implementation must query eligible runs first and then perform an indexed answer lookup. It must
+not scan every survey question or the user's full answer history on every page. A short-lived,
+invalidatable per-user eligible-question queue may be cached, but stored responses remain authoritative.
+
+After authenticated submission:
+- acknowledge the saved selection;
+- show the aggregate only when public results are enabled, no embargo applies, and the minimum
+  response threshold is met;
+- otherwise state that the answer was recorded and results will appear after enough responses;
+- keep the result visible long enough to read;
+- after approximately one minute, replace it in the same widget with the next eligible unanswered
+  question when the user remains on the page;
+- offer a clear Next action when useful;
+- do not steal keyboard focus or make the result disappear while it is focused or being read;
+- announce the status and later replacement through an appropriate accessible live region.
+
+When no eligible unanswered question remains, hide Community Pulse or use the space for another
+approved sidebar module. Do not repeat a completed question merely to keep the widget populated.
+
+================================================================================
+6. FULL SURVEY WORKSPACE EXPERIENCE
+================================================================================
+
+The User Workspace Survey area contains:
+- Available;
+- In Progress;
+- Completed;
+- Closed;
+- Withdrawn.
+
+Each invitation or record shows purpose, audience, estimated duration, closing date, progress,
+identity mode, reward if any, answer-edit policy, and whether approved aggregates will be published.
+High-priority research may be pinned in the workspace. Ordinary invitations use notifications and
+must not become repeated blocking prompts.
+
+One active broad full-survey invitation per audience is the normal maximum. A campaign may send an
+initial invitation, one midpoint reminder, and one final reminder. Reminders stop after completion,
+withdrawal, opt-out where applicable, run closure, or loss of eligibility. Notification delivery
+uses the Notification System rather than a separate survey-invitation collection.
+
+================================================================================
+7. RESULTS, PRIVACY, AND ANALYTICS
+================================================================================
+
+Raw answers are private. Public display uses approved de-identified aggregates only. Community Pulse
+defaults to a minimum of 20 eligible registered responses before showing results. A run may require a
+higher threshold because of sensitivity, cohort risk, or methodology; it may not silently lower the
+threshold below the Analytics System's approved minimum.
+
+The threshold is necessary but not sufficient. Results remain suppressed when:
+- the run is embargoed or results are not public;
+- a subgroup can expose or strongly imply an individual answer;
+- eligibility, duplicate, fraud, import, or methodology review is incomplete;
+- the question is too sensitive for publication;
+- the run or result has been withdrawn.
+
+Result views may include:
+- bar charts for controlled options;
+- distributions and averages for numeric scales;
+- ranking summaries;
+- response and completion counts;
+- completion funnels;
+- trends across comparable runs;
+- cohort comparisons only above the approved privacy threshold.
+
+Charts must provide a text/table equivalent, readable labels, logical order, sufficient contrast,
+non-color distinctions, keyboard access, and localized number formatting. Do not publish individual
+free-text answers as an aggregate result. Qualitative responses require a separate approved research
+or editorial analysis with redaction and quotation permission.
+
+Exports may support CSV, XLSX, JSON, approved PDF summaries, and chart images. Aggregate export and
+raw-response export are separate permissions. Raw exports require an explicit purpose, audit entry,
+minimum necessary fields, protected delivery, and retention handling. Public exports contain no
+respondent identifier or small disclosive cohort.
+
+================================================================================
+8. REWARDS AND BADGES
+================================================================================
+
+Routine Community Pulse reward:
+- 1 Nexus Point;
+- 5 Inklings;
+- 0 Embers;
+- only the first three otherwise eligible Community Pulse answers per user per UTC reward-ledger day.
+
+The user may continue answering after the daily reward limit. The first eligible answer to the exact
+run question creates the idempotent reward fact. Edits, retries, translations, imported responses,
+anonymous responses, test responses, duplicates, invalidated responses, and reopened answers do not
+earn another reward.
+
+A full survey may grant one completion reward scaled to verified burden under a versioned campaign
+rule. Questions already rewarded through Community Pulse must not be rewarded again through the
+full-survey completion calculation. Routine surveys award no Embers. A rare, explicitly budgeted
+research campaign may propose an Ember award only after Reward System and monetization approval.
+
+Participation Badge milestones:
+- Community Pulse answers use 1, 10, 50, 100, 150, 250, 400, 650, 1050 and continue through the
+  approved high-frequency Anchored Milestone Sequence;
+- full-survey completions use 1, 10, 25, 50, 100 before later reviewed milestones.
+
+Working labels are First Community Pulse, 10 Community Pulse Answers, and corresponding later
+milestones; and First Survey, 10 Surveys, 25 Surveys, 50 Surveys, and 100 Surveys. Only unique eligible
+answers or completions count. Badge progress is separate from reward amounts.
+
+================================================================================
+9. ADMIN WORKSPACE
+================================================================================
+
+Survey administration belongs in /workspace/editorial/survey with results and approved database
+operations available through permission-scoped linked views. Authorized functions include:
+- create a stable survey or poll;
+- edit an unpublished draft revision;
+- add, edit, order, duplicate, and remove draft questions and options;
+- preview desktop, mobile, Community Pulse, branch, required-answer, and result states;
+- request, edit, review, approve, and mark stale translations;
+- select audience, placement, identity mode, answer editing, threshold, embargo, and reward rule;
+- create, schedule, open, close, withdraw, archive, and repeat runs;
+- monitor invitations, response counts, completion, drop-off, import quality, and suppression;
+- aggregate or rebuild results;
+- export authorized aggregate or raw datasets;
+- create and validate Microsoft Forms, paper, and administrative import batches;
+- audit publication, withdrawal, export, import, reward, and high-risk actions.
+
+Published revisions cannot be edited in place. Create a new revision instead. A draft with no run or
+response reference may be hard-deleted by an authorized user after confirmation. A published survey,
+run, revision, response, or import batch is archived, closed, withdrawn, or invalidated as appropriate;
+it is not hard-deleted through ordinary administration. A response-bearing run must preserve
+referential integrity and the recorded methodology.
+
+Publication readiness blocks release when mandatory purpose, audience, question validation,
+translation, accessibility, privacy, result, scheduling, or reward information is incomplete.
+
+================================================================================
+10. EXTERNAL MICROSOFT FORMS AND PAPER FIELDWORK
+================================================================================
+
+Prelaunch and off-platform research may use Microsoft Forms or printed questionnaires. Record that
+work in Massage Nexus when it is part of the project's research history, even when the website was
+not live at collection time.
+
+Required preservation:
+- stable survey_key, survey_revision_number, question_key, and option_key mapping;
+- exact questionnaire wording and version used;
+- intended audience, recruitment method, dates, locations where relevant, and consent wording;
+- protected original Microsoft Forms export or paper source package;
+- file checksum and controlled import batch;
+- source_survey_response for each imported cohort;
+- validation, rejected-row, duplicate, skipped, unreadable, corrected, and import notes;
+- native, Microsoft Forms, paper, and administrative cohorts separable in analysis.
+
+Do not attach anonymous or externally collected answers to a future Massage Nexus account without
+specific informed permission and a lawful matching process. External anonymous respondents receive
+no retroactive points, Inklings, Embers, or badges.
+
+Paper forms use a survey/run identifier and non-account response serial. Data entry preserves the
+original form, distinguishes blank, unreadable, corrected, and not-applicable answers, and uses
+double entry or risk-based second-person verification. Destroying or retaining paper originals
+follows the approved research retention schedule; entering the data is not permission to discard
+the source immediately.
+
+The practical setup and questionnaire-copy workflow is defined in
+docs/14-research/survey-fieldwork-and-microsoft-forms-guide.txt.
+
+================================================================================
+11. CADENCE AND FATIGUE
+================================================================================
+
+Initial operating cadence:
+- Community Pulse operates continuously when eligible inventory exists; add approximately two to
+  four reviewed questions each month rather than replacing the entire bank;
+- general registered-user survey: quarterly;
+- practitioner, establishment operator, seller, contributor, Campus learner, Campus instructor,
+  and Campus administrator broad surveys: semiannual initially;
+- course or program feedback: event-triggered after completion;
+- booking or Support satisfaction: event-triggered with eligibility and fatigue sampling;
+- strategic research and market-direction survey: annual;
+- prelaunch questionnaire: one conducted research run, repeated only when the instrument or decision
+  need materially changes.
+
+Cadence is a maximum planning rhythm, not a requirement to send a survey without a real decision
+purpose. An audience should not receive another broad invitation while its current broad survey is
+open. Community Pulse and event-triggered prompts apply cooldowns so engagement does not become
+harassment or reward farming.
+
+================================================================================
+12. MULTILINGUAL RULES
+================================================================================
+
+Native surveys and Community Pulse are multilingual structured content. English is the required
+source and fallback for the initial question bank. Every published native revision must contain
+approved translations for the locales required by its release scope. Question and option keys remain
+language-neutral and stable. Translation status is tied to the exact revision; changing source wording
+makes affected translations stale and requires a new survey revision before future runs use it.
+
+The initial Microsoft Forms and printed prelaunch packs are English-only by current decision. Their
+English-only scope must be stated in methodology and must not be misrepresented as a multilingual
+sample. If a translated external form is later created, preserve it as a separately versioned source
+and map each language version to the same stable question and option keys where meanings are equivalent.
+
+================================================================================
+13. COLLECTIONS AND QUERY BOUNDARIES
+================================================================================
+
+The accepted collection direction is:
+- survey_main: stable instrument identity and current-revision pointer;
+- survey_revision: exact immutable multilingual title, description, questions, options, constraints,
+  and review state;
+- survey_run: one audience, placement, timing, identity, result, reward, and lifecycle configuration;
+- survey_response: one respondent/run envelope, deduplication key, progress, source, and completion;
+- survey_answer: one current answer per response and question;
+- survey_aggregate: rebuildable question/run/cohort counts, charts, and suppression state;
+- survey_import_batch: Microsoft Forms, paper, or controlled administrative import provenance and mapping.
+
+Notifications and reminders reuse the Notification System. Reward events use user_reward. Badge
+definitions and progress use badge_main and user_badge. Survey answer history and administrative
+actions reuse the approved revision and audit systems where required. user_main may show bounded
+survey statistics in a rebuildable activity summary, but it does not own response or answer arrays.
+
+Structure guides:
+- data/structure_guide/survey_main.php
+- data/structure_guide/survey_revision.php
+- data/structure_guide/survey_run.php
+- data/structure_guide/survey_response.php
+- data/structure_guide/survey_answer.php
+- data/structure_guide/survey_aggregate.php
+- data/structure_guide/survey_import_batch.php
+
+Controlled options are defined in data/taxonomy/massage_nexus/survey_system.json.
+
+================================================================================
+14. IMPLEMENTATION ACCEPTANCE
+================================================================================
+
+The implementation is acceptable when:
+- a published revision cannot be changed in place;
+- the same survey can run again in a later period without colliding with earlier completion;
+- audience eligibility is authorization-derived and efficiently queried;
+- a guest cannot create an official answer, result, reward, or completion record;
+- Community Pulse and the full form share one current run answer per question;
+- edits do not duplicate responses, rewards, badge progress, or aggregate participants;
+- result threshold, embargo, suppression, and raw-export permissions are server-enforced;
+- multilingual fallback and stale-translation behavior follow the Translation System;
+- Microsoft Forms and paper imports preserve source, version, mapping, cohort, and audit;
+- keyboard, screen-reader, reduced-motion, mobile, error, empty, loading, and replacement states pass
+  accessibility review;
+- reward, aggregate, and progress projections can be rebuilt from authoritative records.

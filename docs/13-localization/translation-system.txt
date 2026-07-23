@@ -1,9 +1,7 @@
 Title: Massage Nexus Translation and Localization Management System
-Document Version: 0.50
+Document Version: 0.60
 Date Created: 2026-07-16
-Revision Date: 2026-07-22
-Status: Internal Planning Draft
-
+Revision Date: 2026-07-23
 Related Documents:
 - Massage Nexus - 15 - Language Strategy v0.30
 - Massage Nexus Runtime AI System
@@ -276,6 +274,19 @@ A translation may contain:
 - legal authority status.
 
 Final data placement belongs in the database specification.
+
+Survey revisions use embedded multilingual values for bounded titles, descriptions, questions,
+option labels, and scale endpoints. Stable question_key and option_key values remain language-neutral.
+Translation review is tied to the exact survey_revision. A source wording or answer-contract change
+creates a new revision and makes affected translation work stale for future runs; a published run
+continues to reference the wording and translations it actually used.
+
+Community Pulse displays the requested approved language when available and falls back according to
+the normal language strategy. The initial work-queue question bank contains English source/fallback
+text and is not ready for multilingual publication until its required locale translations are
+reviewed. The initial Microsoft Forms and printed prelaunch questionnaires are English-only. If an
+external translated questionnaire is later created, preserve it as a separate exact form version
+and map equivalent question and option keys explicitly.
 
 ================================================================================
 7. STATUS WORKFLOW

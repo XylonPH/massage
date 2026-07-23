@@ -1,7 +1,7 @@
 Title: Massage Nexus User Workspace
-Document Version: 1.04
+Document Version: 1.14
 Date Created: 2026-07-16
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description:
 This document defines the general authenticated User Workspace for Massage Nexus and the
 relationship between the shared network account, Massage Nexus membership, additive personal,
@@ -892,6 +892,30 @@ Possible uses:
 - therapist availability;
 - establishment schedule;
 - calendar integration.
+
+================================================================================
+24A. SURVEYS
+================================================================================
+
+Routes:
+
+/workspace/survey
+/workspace/survey/available
+/workspace/survey/in-progress
+/workspace/survey/completed
+/workspace/survey/closed
+/workspace/survey/withdrawn
+/workspace/survey/{survey-run-id}
+
+The Survey area shows purpose, audience, expected duration, closing date, current progress, identity
+mode, answer-edit policy, reward if any, and whether approved aggregate results may be published.
+Community Pulse answers for the same run prefill the full form and reduce its remaining question
+count. An answer from an older run does not count as completion of a later run.
+
+High-priority research may be pinned. Ordinary invitations use bounded notifications. A normal
+campaign sends at most an initial invitation, one midpoint reminder, and one final reminder, and
+stops after completion, withdrawal, closure, loss of eligibility, or applicable opt-out. Survey
+answers remain in the Survey System and never become booking preferences automatically.
 
 ================================================================================
 25. REPUTATION AND REWARDS

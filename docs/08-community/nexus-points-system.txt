@@ -1,7 +1,7 @@
 Title: Massage Nexus Points System
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines Nexus Points as the permanent, non-spendable measure of a user's lifetime useful approved activity and separates them from currencies, trust, ranks, badges, statistics, and authority.
 
 Related Documents:
@@ -44,13 +44,18 @@ Versioned reward rules may award Nexus Points for:
 - eligible content, spa, therapist, or product ratings;
 - eligible completed-experience ratings;
 - confirmed valid reports;
-- eligible Campus quizzes or polls;
+- eligible Campus quizzes, surveys, or Community Pulse answers;
 - verified event, campaign, or outreach participation;
 - eligible bookings or purchases.
 
 An action being listed as a possible source does not guarantee an award. The Reward System owns
 shared eligibility, exact schedules, caps, anti-abuse, idempotency, and reversal rules. The source
 domain owns whether the underlying activity is approved and valid.
+
+The accepted routine Community Pulse award is one Nexus Point for the first eligible answer to an
+exact run question, subject to the Reward System's first-three-per-UTC-day limit. Editing the answer
+does not award another point. Full-survey completion may use a separate versioned burden-based rule
+without double-awarding questions already rewarded through Community Pulse.
 
 ================================================================================
 3. DISPLAY AND PROGRESSION

@@ -1,0 +1,229 @@
+Title: Massage Nexus Survey Fieldwork and Microsoft Forms Guide
+Document Version: 1.00
+Date Created: 2026-07-23
+Revision Date: 2026-07-23
+Document Description: Defines how to build, distribute, print, preserve, export, and later import the English prelaunch questionnaires through Microsoft Forms and paper while maintaining compatible question keys, provenance, consent, quality, privacy, and cohort separation.
+
+Related Documents:
+- docs/08-community/survey-system.txt
+- docs/14-research/analytics-statistics-and-measurement-system.txt
+- docs/14-research/data-research-provenance-and-field-verification-system.txt
+- data/work_queue/survey/prelaunch-questionnaire-pack.txt
+- data/work_queue/survey/community-pulse-question-bank.json
+
+================================================================================
+1. SCOPE
+================================================================================
+
+This guide covers the initial English prelaunch questionnaires for:
+- clients;
+- therapists and practitioners;
+- spa and establishment operators;
+- Massage Campus learners.
+
+Use one Microsoft Form per audience. The same audience-specific question set can be printed for
+paper fieldwork. Microsoft Forms and printed forms are English-only for this first research round.
+Native Massage Nexus surveys and Community Pulse remain multilingual under the Survey System and
+Translation System.
+
+The questionnaire source pack is a reviewed import candidate, not a governing specification. Copy
+its stable form, question, and option keys into Microsoft Forms descriptions or the research mapping
+sheet even when Microsoft Forms does not expose those keys to respondents.
+
+================================================================================
+2. BEFORE BUILDING A FORM
+================================================================================
+
+For each audience:
+1. choose the exact questionnaire version from the source pack;
+2. record form_key, form_version, target audience, purpose, intended decisions, recruitment method,
+   collection dates, expected duration, identity mode, and result-use statement;
+3. decide whether the response is anonymous or identified before distribution;
+4. create a protected folder for the blank form PDF, response export, mapping sheet, methodology
+   note, and later import checksum;
+5. do not collect name, email, telephone, health details, booking details, employer, establishment,
+   or other identifying facts unless the research purpose genuinely requires them;
+6. do not promise anonymity when Microsoft or organizational settings record identity.
+
+For the prelaunch questionnaires, anonymous response collection is preferred unless the owner has a
+specific follow-up study requiring contact. If volunteers may be interviewed later, collect contact
+permission and contact details through a separate form so ordinary questionnaire answers remain
+unlinked.
+
+================================================================================
+3. CREATE THE MICROSOFT FORM
+================================================================================
+
+Current Microsoft Forms workflow:
+1. open https://forms.office.com/ and sign in;
+2. choose New Form;
+3. enter the audience-specific title and the introduction from the questionnaire pack;
+4. use Add new to create Choice, Text, Rating, Date, Ranking, Likert, or other supported questions;
+5. use Section to divide the form into Introduction, About You, Needs and Behavior, Massage Nexus
+   Direction, and Final Comment;
+6. add all questions before configuring branches;
+7. set Required only where the questionnaire pack marks the item required;
+8. preserve answer-option order and exact meaning;
+9. use Preview in both Computer and Mobile views and submit synthetic test responses;
+10. correct wording, branch, required-answer, and mobile-layout defects before distribution.
+
+Microsoft documents that New Form supports common question types and Sections, and that Preview can
+test computer and mobile presentation:
+https://support.microsoft.com/en-us/forms/create-a-form-with-microsoft-forms
+
+Form construction rules:
+- put the stable key at the end of the internal question subtitle when practical, for example
+  [Q: CLI-01]; otherwise preserve it in a separate mapping sheet;
+- do not renumber keys after distribution;
+- use Choice rather than free text for controlled options;
+- use a 1-to-10 choice or rating control only when the exact endpoints remain visible;
+- use Text with the long-answer setting only for the final optional comment and other approved
+  qualitative questions;
+- do not use a File upload question for this prelaunch survey;
+- avoid collecting browser, identity, or organization data that is not part of the method.
+
+================================================================================
+4. BRANCHING AND AUDIENCE QUALIFICATION
+================================================================================
+
+Each form begins with an audience qualification question. If a respondent does not qualify, branch
+to a short thank-you ending rather than presenting irrelevant operator, practitioner, or learner
+questions.
+
+Microsoft Forms branching is forward-only: an answer can go to a later question, later section, or
+the end of the form, but not back to an earlier question. Create all sections and questions first,
+then use More settings for question > Add branching. Preview every possible path.
+
+Official branching guidance:
+https://support.microsoft.com/en-us/forms/use-branching-logic-in-microsoft-forms
+
+Do not place four audiences into one highly branched form for the initial study. Separate forms make
+recruitment, duration, analysis, preservation, printing, and later import clearer. If one person
+qualifies for more than one audience, the person may answer more than one form; analyze those forms as
+separate audience cohorts and do not infer that the answers come from different people.
+
+================================================================================
+5. SETTINGS AND DISTRIBUTION
+================================================================================
+
+Before collecting responses:
+- confirm whether Anyone can respond or an organization-restricted setting is appropriate;
+- if using public anonymous recruitment, disable name recording and state that no Massage Nexus
+  account is required;
+- set the opening and closing dates in the methodology record even if Forms does not enforce both;
+- disable response editing after submission unless the method explicitly allows it;
+- do not enable respondent receipts if that setting would require recorded organizational identity;
+- use one controlled collection link or QR code per audience and recruitment source where source
+  comparison is required;
+- do not publish a collaboration/edit link as the respondent link;
+- test the final collection link in a private browser window and on a mobile device.
+
+Microsoft's current collection instructions cover link, QR code, embed, email, response settings,
+and audience restrictions:
+https://support.microsoft.com/en-us/forms/send-a-form-to-get-responses
+
+Recruitment message must state:
+- who is conducting the study;
+- why the person's audience is invited;
+- approximate duration;
+- voluntary participation and skip/stop rights;
+- whether responses are anonymous or confidential;
+- how results will be used;
+- closing date;
+- contact route for questions or withdrawal where applicable.
+
+Do not describe a convenience sample of friends, local contacts, or social-media volunteers as a
+random or representative sample.
+
+================================================================================
+6. PRINTED QUESTIONNAIRE
+================================================================================
+
+Microsoft Forms can print a blank form through More form settings > Print Form. It can also print a
+response summary or an individual response from the Responses area:
+https://support.microsoft.com/en-us/forms/print-a-form
+
+For field-ready paper copies:
+1. print the audience title, form_key, version, date, consent/introduction text, and response serial;
+2. preserve question keys in small non-prominent text for data entry;
+3. include checkboxes or circles large enough to mark clearly;
+4. never rely on color alone;
+5. keep scale endpoints visible on the same page as the scale;
+6. avoid splitting a question from its answer options across pages;
+7. include Prefer not to answer and Not applicable where defined;
+8. provide a private return envelope or collection method when answers may be sensitive;
+9. keep unused forms, completed forms, and the response log controlled separately.
+
+Assign a non-account serial such as CLI-PPR-0001. The serial supports data-entry reconciliation; it
+must not encode the respondent's name, telephone number, birthday, employer, or precise address.
+
+Paper quality process:
+- one person enters the response using the exact question and option mapping;
+- a second person verifies every response for a small study, or a documented risk-based sample for
+  a large low-risk study;
+- preserve blank, skipped, Not applicable, Prefer not to answer, unreadable, and corrected marks as
+  distinct source states during entry;
+- do not guess an unclear mark;
+- record corrections and rejected forms without altering the original paper;
+- scan or retain originals according to the approved research retention schedule.
+
+================================================================================
+7. RESULTS, EXPORT, AND PRESERVATION
+================================================================================
+
+During collection, review only response count, obvious technical failures, duplicate-test entries,
+and serious safety or privacy problems. Do not keep changing live questions because early results
+look unexpected. A material wording change creates a new form version and normally a new survey run.
+
+In Microsoft Forms, use Responses > Open in Excel to export responses. Microsoft documents that the
+Excel workbook can then be saved or exported to other controlled formats:
+https://support.microsoft.com/en-us/forms/how-do-i-export-my-form-responses
+
+At closure preserve:
+- blank form PDF or print image;
+- form title, form_key, version, audience, and settings screenshots;
+- exact question-key and option-key mapping;
+- final Excel response export;
+- export date and time;
+- file checksum;
+- recruitment message and collection link source;
+- methodology and consent wording;
+- response, exclusion, duplicate, and incomplete counts;
+- any known Forms outage, branching error, wording issue, or sampling limitation.
+
+Keep the protected original export unchanged. Perform cleanup in a copy. Do not email raw exports
+casually, place them in a public repository, or upload them to an AI service without approved data
+handling.
+
+================================================================================
+8. IMPORT INTO MASSAGE NEXUS
+================================================================================
+
+Create or select the matching survey_main, exact survey_revision, and external survey_run. Then:
+1. store the protected source package through the approved document storage process;
+2. create survey_import_batch with source_survey_response MSF or PPR;
+3. record source file name, checksum, external form ID, form version, and mapping;
+4. validate without writing response records;
+5. review unmapped columns, invalid option labels, duplicates, blank rows, and exclusions;
+6. authorize the import;
+7. create one survey_response per accepted row and one survey_answer per mapped answered question;
+8. reconcile imported and rejected counts to the source export;
+9. keep MSF, PPR, and native cohorts separable in survey_response and analytics;
+10. audit completion and retain the batch mapping.
+
+Do not reward imported responses. Do not attach an anonymous response to a future account. Do not
+overwrite native answers with an external row merely because question text looks similar.
+
+================================================================================
+9. INITIAL SOURCE FILES
+================================================================================
+
+The current reviewed source artifacts are:
+- data/work_queue/survey/prelaunch-questionnaire-pack.txt: English Microsoft Forms and paper copy;
+- data/work_queue/survey/community-pulse-question-bank.json: multilingual-ready native question
+  candidates with English source text and stable keys.
+
+data/work_queue contains removable import and editorial candidates. It is not documentation
+authority, runtime configuration, or production data. Remove a candidate after successful import
+only when the database record, import provenance, mapping, source revision, and required archive copy
+are preserved elsewhere.

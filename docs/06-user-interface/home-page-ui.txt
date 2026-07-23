@@ -1,7 +1,7 @@
 Title: Massage Nexus Homepage UI
-Version: 1.44
+Version: 1.54
 Date Created: 2026-07-01
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 
 Homepage UI Documentation
 =========================
@@ -348,7 +348,20 @@ Sponsored placement blocks provide tasteful monetization spaces without making t
 
 Placement: Right sidebar, after an initial sponsored placement.
 
-Community Pulse is a rotating poll or survey widget that asks users a short question and encourages quick participation. After a user answers, the system shows the result briefly, then after a short delay a new unanswered item replaces the completed one in place if the user is still on the page. Rotation is per user and completion-aware: any page showing the widget serves items the user has not yet answered, never items they already completed. This feature helps collect lightweight user opinions and makes the homepage feel interactive. Participation rules, result recording, and rotation behavior are owned by docs/08-community/survey-system.txt.
+Community Pulse presents one short question from an open Survey System run. Guests can see the
+question and make a local selection, but Submit opens login or registration and no guest answer is
+sent, stored, counted, rewarded, or attached automatically to a later account. A registered user's
+submission is saved once for the exact run and question and may also count toward the same full
+survey's progress.
+
+After submission, the widget acknowledges the selected answer. It shows the aggregate only when the
+run permits public results, any embargo has passed, and at least 20 eligible registered responses or
+the run's higher threshold have been received. Otherwise it states that the answer was recorded and
+results will appear later. After approximately one minute, the widget may replace the result with the
+next eligible unanswered question without stealing focus; a clear Next control may be offered. The
+status and replacement are announced accessibly. When no eligible unanswered question remains, the
+widget hides or yields the space to another approved module. Participation, query, privacy, reward,
+and rotation rules are owned by docs/08-community/survey-system.txt.
 
 --------------------------------------------------------------------------------
 

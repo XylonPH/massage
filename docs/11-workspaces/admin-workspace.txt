@@ -1,7 +1,7 @@
 Title: Massage Nexus Admin Workspace
-Document Version: 0.90
+Document Version: 1.00
 Date Created: 2026-07-16
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines the operational administration workspace for Massage Nexus, including permission-scoped dashboards, queues, record review, moderation, verification, editorial and translation approval, user support, integrations, usage and cost controls, system operations, audit, and high-risk safeguards. Detailed domain rules remain in their authoritative capability specifications, while the Admin Workspace defines how authorized administrators apply those rules.
 
 Related Documents:
@@ -677,11 +677,33 @@ domain specification. The shared workspace and queue patterns do not merge these
 generic content collection. announcement_main is the current working collection name for official
 first-party announcements; it is not independent News.
 
-Quote administration (`/workspace/editorial/quote`) includes attribution_label, source_title, source_url, original language selection (language_original_id), 9 category options (type_quote_category), display window (published_at), visibility scope, duplication review, approval, scheduling, retirement, and Livewire form/index management with live component preview. Survey and Quiz
-administration includes draft, question and response structure, audience, availability window,
-translation, accessibility, moderation, scoring or result rules where applicable, preview,
-publication, closure, export authorization, and archive. Their final schemas remain owned by their
-future domain specifications.
+Quote administration (`/workspace/editorial/quote`) includes attribution_label, source_title, source_url, original language selection (language_original_id), 9 category options (type_quote_category), display window (published_at), visibility scope, duplication review, approval, scheduling, retirement, and Livewire form/index management with live component preview.
+
+Survey administration (`/workspace/editorial/survey`) includes:
+- stable survey or poll creation and duplicate screening;
+- unpublished revision editing, question and option ordering, duplication, validation, and removal;
+- desktop, mobile, Community Pulse, branch, required-answer, under-threshold, and result preview;
+- source language and revision-bound translation readiness;
+- target audiences derived from authoritative user relationships;
+- Community Pulse eligibility and placement selection;
+- identity mode, answer-edit policy, opening and closing time, minimum response threshold, embargo,
+  public-result rule, and versioned reward rule;
+- run scheduling, opening, closure, withdrawal, repetition, and archive;
+- response, completion, drop-off, cohort, reward, and aggregate monitoring;
+- privacy-checked result rebuilding and charts;
+- separately authorized aggregate and raw-response export;
+- Microsoft Forms, paper, and administrative import-batch validation, mapping, reconciliation, and
+  audit.
+
+Published survey revisions cannot be edited in place. A draft with no run or response reference may
+be deleted after authorization and confirmation. Published or response-bearing records use close,
+withdraw, invalidate, or archive actions instead of ordinary hard deletion. Notification delivery
+and reminders reuse the Notification System. Final schema ownership belongs to
+docs/08-community/survey-system.txt and the survey PHP structure guides.
+
+Quiz administration remains separate and includes draft, question and response structure, audience,
+availability, translation, accessibility, scoring, preview, publication, closure, export
+authorization, and archive under the Quiz System.
 
 Sponsored content must remain labeled.
 

@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 1.99
+Document Version: 2.09
 Date Created: 2026-07-16
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -448,6 +448,13 @@ Massage Campus foundation:
 Surveys, polls, and feedback:
 - user, provider, therapist, contributor, advertiser, accessibility, Support, booking, and
   maintenance surveys;
+- stable survey identity, immutable multilingual revisions, repeatable runs, audience-derived
+  eligibility, response envelopes, one current answer per run question, privacy-checked aggregates,
+  and controlled external import batches;
+- authenticated Community Pulse participation with guest interaction preview, incremental full-form
+  completion, completion-aware rotation, result threshold, rewards, and accessible replacement;
+- Survey Workspace participation and permission-scoped administration for authoring, translation,
+  scheduling, publication, closure, withdrawal, aggregation, import, and export;
 - article, News, Campus, Discussion, and campaign polls;
 - sampling, consent, anonymity, incentives, anti-manipulation, analysis, and public-methodology
   controls.

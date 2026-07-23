@@ -1,7 +1,7 @@
 Title: Massage Nexus File and Folder Structure
-Document Version: 2.23
+Document Version: 2.33
 Date Created: 2026-07-16
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 
 Document Description: This document defines the intended repository, application, documentation, source-asset, API-contract, localization, storage, test, and code folder structure for Massage Nexus.
 
@@ -130,6 +130,9 @@ massage/
 |   |
 |   +-- common_reference/
 |   +-- theme/
+|   +-- work_queue/
+|   |   +-- survey/
+|   |
 |   +-- field_index.txt
 |
 +-- docs/
@@ -211,7 +214,9 @@ Contains machine-readable repository source data that supports development, vali
 data/structure_guide/
 Contains PHP-readable database structure guides such as field_main.php, theme_main.php,
 article_main.php, article_body.php, article_revision.php, tag_main.php, media_image.php,
-media_video.php, dog_breed_main.php, quote_main.php, practitioner_main.php, and user_main.php.
+media_video.php, dog_breed_main.php, quote_main.php, practitioner_main.php, user_main.php,
+survey_main.php, survey_revision.php, survey_run.php, survey_response.php, survey_answer.php,
+survey_aggregate.php, and survey_import_batch.php.
 These are human- and AI-readable machine-readable source artifacts kept in PHP array form for
 review and field-index validation. They are not runtime application code, import data, seed files,
 migrations, finalized contracts, or production schemas. Each snake_case filename is the technical
@@ -221,13 +226,26 @@ data/taxonomy/shared/
 Contains the Shared Taxonomy reusable field definitions, split into semantically grouped JSON files. Each file is a flat JSON array of field-definition records preserving the original record shape, so files can be concatenated or imported directly. The record source is the Zenith Shared Taxonomy export; groupings are organizational and do not change record content.
 
 data/taxonomy/massage_nexus/
-Contains machine-readable Massage Nexus classification data generated from the classification documents under docs/05-directory/ (service, establishment, practitioner, product), plus content-side classification records and massage-technique framework reference records. The classification documents remain the authoritative source; when a classification document changes, regenerate or update the matching JSON file in the same change. Each record carries a source_document path back to its authority.
+Contains machine-readable Massage Nexus classification and controlled-field data generated from or
+owned by authoritative project specifications, including directory classifications, content-side
+classifications, survey_system.json, and massage-technique framework records. Directory
+classification documents remain authoritative for their matching classification JSON. Each record
+identifies its source_document authority.
 
 data/common_reference/
 Contains shared reference datasets (country, currency, language, region, time zone, area hierarchy profile, dog breed, neural agent) preserved in their import-compatible top-level JSON shape. Shared Project Standards section 12 currently approves language_main, currency_main, country_main, and time_zone_main as common_reference collections; the additional datasets stored here await separate approval before database import. These may later be imported into massage_main; no separate common-reference service or database is created.
 
 data/theme/
 Contains theme/configuration data such as theme_main.json (Ink & Ember and other theme definitions). Theme data is configuration, not taxonomy, and is not automatically converted into CSS or Tailwind configuration.
+
+data/work_queue/
+Contains temporary, reviewable source candidates intended for later human work or controlled
+database import, such as survey questions to conduct and future article or field-visit queues. It is
+not authoritative documentation, runtime configuration, taxonomy, a structure guide, or production
+data. Use semantic subfolders such as data/work_queue/survey/. A candidate may be removed after
+successful import or completion only when required provenance, mapping, source revision, and archive
+evidence remain preserved by the owning system. Do not create empty future subfolders merely to
+reserve names.
 
 data/field_index.txt
 Generated bare list of every known field name (from the taxonomy files and PHP structure guides), deliberately without definition locations so the file stays small and cheap to read. Check this file first before creating any new field name; to find where a listed name is defined, run php tools/script/build_field_index.php --where field_name. Regenerate the index with the same script whenever a taxonomy file or structure guide adds, renames, or removes a field; do not edit it by hand.
@@ -349,6 +367,7 @@ docs/
 +-- 14-research/
 |   +-- analytics-statistics-and-measurement-system.txt
 |   +-- data-research-provenance-and-field-verification-system.txt
+|   +-- survey-fieldwork-and-microsoft-forms-guide.txt
 |
 +-- 15-business/
 |   +-- branded-portal.txt

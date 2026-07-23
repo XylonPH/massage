@@ -1,9 +1,8 @@
 Title: Massage Nexus Booking and Appointment System
-Document Version: 1.30
+Document Version: 1.40
 Date Created: 2026-07-17
-Revision Date: 2026-07-22
-Status: Internal Planning Reference
-Shared Standard Reference: Shared Project Standards v2.60
+Revision Date: 2026-07-23
+Shared Standard Reference: Shared Project Standards v2.90
 
 Related Documents:
 - Massage Nexus - 05 - Service Classification v2.00
@@ -775,6 +774,12 @@ Private survey:
 - may be anonymous to ordinary staff while linked internally;
 - may trigger service recovery;
 - may be withheld from public Reputation and rating systems.
+
+The private satisfaction instrument may reuse Survey System revision, run, response, answer, and
+aggregate structures with a booking context reference and stricter permissions. It remains a
+transactional confidential survey, not Community Pulse. Its answers do not become public ratings,
+reviews, testimonials, Reputation, or booking preferences automatically. Event-triggered invitations
+must apply Survey System fatigue controls and stop after completion or booking ineligibility.
 
 Provider must obtain permission before publishing private response.
 

@@ -1,8 +1,8 @@
 Title: Massage Nexus Ember System
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-07
-Revision Date: 2026-07-22
-Document Description: Defines Embers as the spendable Massage Nexus reward currency for approved cosmetics, limited platform perks, feature credits, business support, and bounded AI use without purchasing trust or authority.
+Revision Date: 2026-07-23
+Document Description: Defines Embers as the scarce premium Massage Nexus credit for bounded AI use and selected higher-value platform benefits without purchasing trust or authority.
 
 Related Documents:
 - docs/08-community/reward-system.txt
@@ -16,14 +16,16 @@ Related Documents:
 1. MEANING AND SCALE
 ================================================================================
 
-Embers are the accepted spendable reward currency. They support cosmetics, selected platform perks,
-limited feature credits, events, and non-trust benefits. Ember amounts may intentionally use tens,
-hundreds, or thousands for a gratifying visible scale when earning rates and redemption costs remain
-consistent.
+Embers are the scarce, higher-value spendable platform credit. Their clearest use is bounded AI
+credit, with selected higher-value feature credits and non-trust benefits allowed under explicit
+cost, failure, refund, and budget rules. Embers are more valuable and materially harder to earn than
+Inklings; routine clicking, reactions, ratings, polls, surveys, or ordinary participation award zero
+Embers.
 
-Embers are not Nexus Points, Inklings, Reputation, a transferable cash wallet, legal tender, or a
-stored-value payment account. Transfer, purchase, cash-out, tax, expiry, and refund behavior require
-separate approval before those capabilities exist.
+Embers may be earned only through rare approved sources and may later be purchased through an
+approved payment product. Purchase is not active until pricing, consumer disclosure, accounting,
+refund, expiry, tax, fraud, and payment obligations are implemented. Embers are not Nexus Points,
+Inklings, Reputation, a transferable cash wallet, legal tender, or a cash-out asset.
 
 ================================================================================
 2. APPROVED USE DIRECTION
@@ -91,7 +93,7 @@ Open decisions:
 - final earning rules and source caps;
 - redemption catalogue and costs;
 - expiry, refund, and failed-delivery rules;
-- whether users may purchase Embers directly;
+- direct-purchase pricing, packages, accounting, and launch requirements;
 - provider credit limits and monetization safeguards;
 - AI quota conversion and model-access rules;
 - transfer and gifting policy, which remain disabled unless separately approved.
