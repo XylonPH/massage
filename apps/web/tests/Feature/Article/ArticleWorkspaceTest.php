@@ -67,7 +67,6 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertArrayNotHasKey('status_publication', $article->getAttributes());
         $this->assertArrayNotHasKey('status_review', $article->getAttributes());
         $this->assertArrayNotHasKey('visibility_scope', $article->getAttributes());
-        $this->assertArrayNotHasKey('level_nsfw', $article->getAttributes());
         $this->assertArrayNotHasKey('is_commentable', $article->getAttributes());
         $this->assertArrayNotHasKey('is_shareable', $article->getAttributes());
         $this->assertArrayNotHasKey('status_record_lifecycle', $body->getAttributes());
@@ -96,6 +95,23 @@ class ArticleWorkspaceTest extends TestCase
             ->assertSee('data-entity-picker', false)
             ->assertSee(__('article.language_spanish'))
             ->assertDontSee('name="scheduled_publish_at"', false);
+    }
+
+    public function test_new_article_form_has_no_preselected_audience_or_nsfw_level(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/workspace/article/new');
+
+        $response->assertOk();
+        $this->assertMatchesRegularExpression(
+            '/<select id="target_audience"[^>]*>\s*<option value="" disabled selected>/',
+            $response->getContent(),
+        );
+        $this->assertMatchesRegularExpression(
+            '/<select id="level_nsfw"[^>]*>\s*<option value="" disabled selected>/',
+            $response->getContent(),
+        );
     }
 
     public function test_member_can_save_an_anonymous_article_with_an_automatic_slug(): void

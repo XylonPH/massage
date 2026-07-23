@@ -66,7 +66,6 @@ class Article extends Model
     protected function sparseDefaults(): array
     {
         return [
-            'target_audience' => 'G',
             'tag_id_list' => [],
             'author_user_id_list' => [],
             'author_credit_list' => [],
@@ -93,7 +92,6 @@ class Article extends Model
             'status_publication' => 'D',
             'status_review' => 'P',
             'visibility_scope' => 'PVT',
-            'level_nsfw' => 'N',
             'status_record_lifecycle' => 'ACT',
             'record_note' => [],
         ];

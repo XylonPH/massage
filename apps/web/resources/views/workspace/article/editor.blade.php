@@ -328,13 +328,15 @@
                                 <div>
                                     <label for="target_audience" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.audience_label') }}</label>
                                     <select id="target_audience" name="target_audience" required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                        @foreach ($audiences as $audience)<option value="{{ $audience->value }}" @selected(old('target_audience', $article?->target_audience ?? 'G') === $audience->value)>{{ $audience->label() }}</option>@endforeach
+                                        <option value="" disabled @selected(blank(old('target_audience', $article?->target_audience)))>{{ __('article.choose_audience') }}</option>
+                                        @foreach ($audiences as $audience)<option value="{{ $audience->value }}" @selected(old('target_audience', $article?->target_audience) === $audience->value)>{{ $audience->label() }}</option>@endforeach
                                     </select>
                                 </div>
                                 <div>
                                     <label for="level_nsfw" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.nsfw_label') }}</label>
                                     <select id="level_nsfw" name="level_nsfw" required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                        @foreach (['N' => __('article.none'), 'M' => __('article.mild'), 'S' => __('article.sensitive'), 'E' => __('article.explicit')] as $code => $label)<option value="{{ $code }}" @selected(old('level_nsfw', $article?->level_nsfw ?? 'N') === $code)>{{ $label }}</option>@endforeach
+                                        <option value="" disabled @selected(blank(old('level_nsfw', $article?->level_nsfw)))>{{ __('article.choose_nsfw_level') }}</option>
+                                        @foreach (['N' => __('article.none'), 'M' => __('article.mild'), 'S' => __('article.sensitive'), 'E' => __('article.explicit')] as $code => $label)<option value="{{ $code }}" @selected(old('level_nsfw', $article?->level_nsfw) === $code)>{{ $label }}</option>@endforeach
                                     </select>
                                 </div>
                                 <div>
