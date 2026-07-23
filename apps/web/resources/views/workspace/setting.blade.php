@@ -5,7 +5,7 @@
 @section('page-context', __('user.settings_intro'))
 
 @section('content')
-<div class="mx-auto max-w-5xl space-y-6">
+<div x-data="{ tab: 'account' }" class="mx-auto max-w-5xl space-y-6">
     @if (session('status'))
         <div class="flex items-center gap-3 rounded-2xl border border-leaf-200 bg-leaf-50/90 p-4 text-sm font-semibold text-leaf-800 shadow-sm dark:border-leaf-800 dark:bg-leaf-950/80 dark:text-leaf-300" role="status">
             <div class="inline-flex size-8 shrink-0 items-center justify-center rounded-xl bg-leaf-100 text-leaf-700 dark:bg-leaf-900 dark:text-leaf-300">
@@ -23,32 +23,44 @@
         </div>
     @endif
 
-    {{-- Quick Anchor Navigation Bar --}}
-    <div class="flex items-center gap-2 overflow-x-auto rounded-2xl border border-ink-100 bg-white p-2 shadow-2xs dark:border-ink-800 dark:bg-ink-900">
-        <a href="#account-settings" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd"/></svg>
+    {{-- Interactive Tab Rendering Navigation Bar --}}
+    <div class="flex items-center gap-1.5 overflow-x-auto rounded-2xl border border-slate-200 bg-white p-2 shadow-2xs dark:border-ink-800 dark:bg-ink-900" role="tablist">
+        <button type="button" @click="tab = 'account'" 
+                :class="tab === 'account' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd"/></svg>
             <span>Account</span>
-        </a>
-        <a href="#appearance-settings" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v2.5A2.25 2.25 0 0 0 4.25 9h2.5A2.25 2.25 0 0 0 9 6.75v-2.5A2.25 2.25 0 0 0 6.75 2h-2.5Zm0 11.5A2.25 2.25 0 0 0 2 15.75v2.5A2.25 2.25 0 0 0 4.25 20h2.5A2.25 2.25 0 0 0 9 17.75v-2.5A2.25 2.25 0 0 0 6.75 13.5h-2.5Zm11.5-11.5A2.25 2.25 0 0 0 13.5 4.25v2.5A2.25 2.25 0 0 0 15.75 9h2.5A2.25 2.25 0 0 0 20 6.75v-2.5A2.25 2.25 0 0 0 17.75 2h-2.5Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button type="button" @click="tab = 'appearance'" 
+                :class="tab === 'appearance' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M4.25 2A2.25 2.25 0 0 0 2 4.25v2.5A2.25 2.25 0 0 0 4.25 9h2.5A2.25 2.25 0 0 0 9 6.75v-2.5A2.25 2.25 0 0 0 6.75 2h-2.5Zm0 11.5A2.25 2.25 0 0 0 2 15.75v2.5A2.25 2.25 0 0 0 4.25 20h2.5A2.25 2.25 0 0 0 9 17.75v-2.5A2.25 2.25 0 0 0 6.75 13.5h-2.5Zm11.5-11.5A2.25 2.25 0 0 0 13.5 4.25v2.5A2.25 2.25 0 0 0 15.75 9h2.5A2.25 2.25 0 0 0 20 6.75v-2.5A2.25 2.25 0 0 0 17.75 2h-2.5Z" clip-rule="evenodd"/></svg>
             <span>Appearance</span>
-        </a>
-        <a href="#notification-settings" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path d="M10 2a6 6 0 0 0-6 6v3.586l-.707.707A1 1 0 0 0 4 14h12a1 1 0 0 0 .707-1.707L16 11.586V8a6 6 0 0 0-6-6ZM10 18a3 3 0 0 1-3-3h6a3 3 0 0 1-3 3Z"/></svg>
+        </button>
+        <button type="button" @click="tab = 'notifications'" 
+                :class="tab === 'notifications' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path d="M10 2a6 6 0 0 0-6 6v3.586l-.707.707A1 1 0 0 0 4 14h12a1 1 0 0 0 .707-1.707L16 11.586V8a6 6 0 0 0-6-6ZM10 18a3 3 0 0 1-3-3h6a3 3 0 0 1-3 3Z"/></svg>
             <span>Notifications</span>
-        </a>
-        <a href="#security-sessions" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button type="button" @click="tab = 'sessions'" 
+                :class="tab === 'sessions' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd"/></svg>
             <span>Sessions</span>
-        </a>
-        <a href="#recognized-devices" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path fill-rule="evenodd" d="M2 4.25A2.25 2.25 0 0 1 4.25 2h11.5A2.25 2.25 0 0 1 18 4.25v8.5A2.25 2.25 0 0 1 15.75 15h-3.105a3.501 3.501 0 0 0 1.1 1.5h1.505a.75.75 0 0 1 0 1.5h-10.5a.75.75 0 0 1 0-1.5h1.505a3.501 3.501 0 0 0 1.1-1.5H4.25A2.25 2.25 0 0 1 2 12.75v-8.5Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button type="button" @click="tab = 'devices'" 
+                :class="tab === 'devices' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M2 4.25A2.25 2.25 0 0 1 4.25 2h11.5A2.25 2.25 0 0 1 18 4.25v8.5A2.25 2.25 0 0 1 15.75 15h-3.105a3.501 3.501 0 0 0 1.1 1.5h1.505a.75.75 0 0 1 0 1.5h-10.5a.75.75 0 0 1 0-1.5h1.505a3.501 3.501 0 0 0 1.1-1.5H4.25A2.25 2.25 0 0 1 2 12.75v-8.5Z" clip-rule="evenodd"/></svg>
             <span>Devices</span>
-        </a>
-        <a href="#mfa-info" class="inline-flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-ink-700 transition hover:bg-ink-50 hover:text-ember-600 dark:text-ink-200 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4 text-ink-400" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-1 5a1 1 0 1 1 2 0v3.586l1.293 1.293a1 1 0 0 1-1.414 1.414l-1.586-1.586A1 1 0 0 1 9 11V7Z" clip-rule="evenodd"/></svg>
+        </button>
+        <button type="button" @click="tab = 'mfa'" 
+                :class="tab === 'mfa' ? 'bg-ember-500 text-white shadow-2xs font-black' : 'text-ink-700 hover:bg-slate-100 hover:text-ink-950 dark:text-ink-200 dark:hover:bg-ink-800 font-bold'"
+                class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-xs transition">
+            <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path fill-rule="evenodd" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-1 5a1 1 0 1 1 2 0v3.586l1.293 1.293a1 1 0 0 1-1.414 1.414l-1.586-1.586A1 1 0 0 1 9 11V7Z" clip-rule="evenodd"/></svg>
             <span>MFA Security</span>
-        </a>
+        </button>
     </div>
 
     @php($appearance = $user->appearance_preference ?? [])
@@ -58,8 +70,8 @@
     <form method="post" action="{{ route('workspace.setting.update') }}" class="space-y-6">
         @csrf @method('put')
 
-        {{-- Section 1: Account and Region --}}
-        <section id="account-settings" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-7" aria-labelledby="account-settings-heading">
+        {{-- Tab 1: Account and Region --}}
+        <section x-show="tab === 'account'" id="account-settings" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-8" aria-labelledby="account-settings-heading">
             <div class="flex items-center gap-3 border-b border-ink-100 pb-4 dark:border-ink-800">
                 <div class="inline-flex size-10 items-center justify-center rounded-xl bg-ember-100 text-ember-600 dark:bg-ember-950/80 dark:text-ember-400">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
@@ -126,8 +138,8 @@
             </div>
         </section>
 
-        {{-- Section 2: Appearance and Accessibility --}}
-        <section id="appearance-settings" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-7" aria-labelledby="appearance-settings-heading">
+        {{-- Tab 2: Appearance and Accessibility --}}
+        <section x-show="tab === 'appearance'" id="appearance-settings" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-8" aria-labelledby="appearance-settings-heading">
             <div class="flex items-center gap-3 border-b border-ink-100 pb-4 dark:border-ink-800">
                 <div class="inline-flex size-10 items-center justify-center rounded-xl bg-amber-100 text-amber-800 dark:bg-amber-950/80 dark:text-amber-400">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
@@ -189,8 +201,8 @@
             </div>
         </section>
 
-        {{-- Section 3: Notifications --}}
-        <section id="notification-settings" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-7" aria-labelledby="notification-settings-heading">
+        {{-- Tab 3: Notifications --}}
+        <section x-show="tab === 'notifications'" id="notification-settings" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-8" aria-labelledby="notification-settings-heading">
             <div class="flex items-center gap-3 border-b border-ink-100 pb-4 dark:border-ink-800">
                 <div class="inline-flex size-10 items-center justify-center rounded-xl bg-leaf-100 text-leaf-700 dark:bg-leaf-950/80 dark:text-leaf-400">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
@@ -278,8 +290,8 @@
         </div>
     </form>
 
-    {{-- Section 4: Security and Active Sessions --}}
-    <section id="security-sessions" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-7" aria-labelledby="security-sessions-heading">
+    {{-- Tab 4: Security and Active Sessions --}}
+    <section x-show="tab === 'sessions'" id="security-sessions" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-8" aria-labelledby="security-sessions-heading">
         <div class="flex flex-wrap items-center justify-between gap-4 border-b border-ink-100 pb-4 dark:border-ink-800">
             <div class="flex items-center gap-3">
                 <div class="inline-flex size-10 items-center justify-center rounded-xl bg-ember-100 text-ember-600 dark:bg-ember-950/80 dark:text-ember-400">
@@ -350,8 +362,8 @@
         </div>
     </section>
 
-    {{-- Section 5: Recognized Devices --}}
-    <section id="recognized-devices" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-7" aria-labelledby="recognized-devices-heading">
+    {{-- Tab 5: Recognized Devices --}}
+    <section x-show="tab === 'devices'" id="recognized-devices" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-800 dark:bg-ink-900 sm:p-8" aria-labelledby="recognized-devices-heading">
         <div class="flex items-center gap-3 border-b border-ink-100 pb-4 dark:border-ink-800">
             <div class="inline-flex size-10 items-center justify-center rounded-xl bg-leaf-100 text-leaf-700 dark:bg-leaf-950/80 dark:text-leaf-400">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
@@ -416,8 +428,8 @@
         </div>
     </section>
 
-    {{-- Section 6: Multi-Factor Authentication --}}
-    <section id="mfa-info" class="scroll-mt-24 rounded-3xl border border-ink-100 bg-gradient-to-br from-ink-50/80 via-white to-amber-50/30 p-6 shadow-sm dark:border-ink-800 dark:from-ink-950/80 dark:via-ink-950 dark:to-ember-950/20 sm:p-7" aria-labelledby="mfa-info-heading">
+    {{-- Tab 6: Multi-Factor Authentication --}}
+    <section x-show="tab === 'mfa'" id="mfa-info" class="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-white to-amber-50/30 p-6 shadow-sm dark:border-ink-800 dark:from-ink-900 dark:via-ink-900 dark:to-ember-950/20 sm:p-8" aria-labelledby="mfa-info-heading">
         <div class="flex items-start gap-4">
             <div class="inline-flex size-12 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-800 shadow-2xs dark:bg-amber-950 dark:text-amber-300">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">

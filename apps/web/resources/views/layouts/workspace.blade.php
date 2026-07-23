@@ -14,6 +14,17 @@
         {{ __('common.skip_to_content') }}
     </a>
 
+    {{-- Fixed Quick Home Action Button --}}
+    <a href="{{ route('home') }}" 
+       title="{{ __('workspace.back_to_site') }}" 
+       aria-label="{{ __('workspace.back_to_site') }}"
+       class="fixed right-6 sm:right-8 top-4 z-40 inline-flex items-center justify-center rounded-2xl border border-ink-200/90 bg-white/90 p-2.5 text-ink-700 shadow-md backdrop-blur-md transition duration-150 hover:scale-105 hover:border-ember-400 hover:bg-ember-50 hover:text-ember-600 dark:border-ink-700/90 dark:bg-ink-900/90 dark:text-ink-200 dark:hover:border-ember-600 dark:hover:bg-ink-800 dark:hover:text-ember-400">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+    </a>
+
     <div class="mx-auto flex min-h-screen max-w-[1600px]">
         {{-- ============ Sidebar ============ --}}
         <aside id="workspace-sidebar"
@@ -46,8 +57,8 @@
 
         {{-- ============ Main column ============ --}}
         <div class="min-w-0 flex-1">
-            <header class="sticky top-0 z-30 border-b border-ink-100 bg-white/95 backdrop-blur dark:border-ink-800 dark:bg-ink-900/95">
-                <div class="flex h-[4.5rem] items-center gap-4 px-4 sm:px-6 lg:px-8">
+            <header class="border-b border-ink-100 bg-white dark:border-ink-800 dark:bg-ink-900">
+                <div class="flex h-[4.5rem] items-center gap-4 px-4 pr-16 sm:px-6 sm:pr-20 lg:px-8">
                     <button type="button" data-menu-toggle aria-expanded="false" aria-controls="workspace-sidebar"
                             class="inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 lg:hidden dark:text-ink-200 dark:hover:bg-ink-800">
                         <span class="sr-only">{{ __('navigation.open_menu') }}</span>
@@ -61,13 +72,6 @@
                     </div>
                     <div class="flex shrink-0 items-center gap-2.5">
                         @yield('page-actions')
-                        <a href="{{ route('home') }}" title="{{ __('workspace.back_to_site') }}" aria-label="{{ __('workspace.back_to_site') }}"
-                           class="inline-flex items-center justify-center rounded-xl border border-ink-200 bg-white p-2.5 text-ink-700 shadow-sm transition hover:border-ember-300 hover:bg-ember-50 hover:text-ember-600 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-200 dark:hover:border-ember-700 dark:hover:bg-ink-800 dark:hover:text-ember-400">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9 22 9 12 15 12 15 22"/>
-                            </svg>
-                        </a>
                     </div>
                 </div>
             </header>

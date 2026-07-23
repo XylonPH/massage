@@ -166,66 +166,74 @@
                         </section>
 
                         <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm dark:border-ink-800 dark:bg-ink-900" aria-labelledby="article-attribution-title">
-                            <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                                <div>
-                                    <h2 id="article-attribution-title" class="font-black text-ink-950 dark:text-ink-50">{{ __('article.attribution_access_title') }}</h2>
-                                    <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ __('article.attribution_access_hint') }}</p>
-                                </div>
-                                <div class="w-full sm:w-56">
-                                    <label for="language_original_id" class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.language_label') }}</label>
-                                    <select id="language_original_id" @if (! $article) name="language_original_id" @else disabled @endif required class="w-full rounded-lg border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                        @foreach ($languages as $languageId => $language)
-                                            <option value="{{ $languageId }}" @selected((int) old('language_original_id', $article?->language_original_id ?? 3049) === $languageId)>{{ __($language['label_key']) }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($article)<input type="hidden" name="language_original_id" value="{{ $article->language_original_id }}">@endif
-                                    <p class="mt-1 text-xs text-ink-400 dark:text-ink-500">{{ $article ? __('article.language_locked_hint') : __('article.language_hint') }}</p>
-                                </div>
+                            <div class="border-b border-ink-100 pb-4 dark:border-ink-800">
+                                <h2 id="article-attribution-title" class="font-black text-ink-950 dark:text-ink-50">{{ __('article.attribution_access_title') }}</h2>
+                                <p class="mt-1 text-sm text-ink-500 dark:text-ink-400">{{ __('article.attribution_access_hint') }}</p>
                             </div>
 
-                            <div class="mt-5 grid gap-5 lg:grid-cols-2">
-                                <div>
-                                    <div class="flex items-center justify-between gap-3">
-                                        <div>
-                                            <h3 class="text-sm font-black text-ink-900 dark:text-ink-200">{{ __('article.byline_title') }}</h3>
-                                            <p class="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{{ __('article.byline_hint') }}</p>
-                                        </div>
-                                        <button type="button" data-add-author class="rounded-lg border border-ink-200 px-3 py-1.5 text-xs font-bold text-ink-700 hover:bg-ink-50 dark:border-ink-700 dark:text-ink-300 dark:hover:bg-ink-800">{{ __('article.add_author') }}</button>
-                                    </div>
-                                    <div class="mt-3 space-y-3" data-author-list>
-                                        @foreach ($creditRows as $index => $credit)
-                                            <div class="grid gap-2 rounded-xl border border-ink-100 bg-ink-50 p-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_auto] dark:border-ink-700 dark:bg-ink-900" data-author-row>
-                                                <div>
-                                                    <label class="mb-1 block text-xs font-semibold text-ink-500 dark:text-ink-400">{{ __('article.linked_account_label') }}</label>
-                                                    <select name="author_credit_list[{{ $index }}][user_id]" data-author-user class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                                        <option value="">{{ __('article.custom_author_option') }}</option>
-                                                        @foreach ($userOptions as $option)
-                                                            <option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}" @selected(($credit['user_id'] ?? null) === $option['id'])>{{ '@'.$option['username'] }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label class="mb-1 block text-xs font-semibold text-ink-500 dark:text-ink-400">{{ __('article.byline_name_label') }}</label>
-                                                    <input name="author_credit_list[{{ $index }}][display_name]" value="{{ $credit['display_name'] ?? '' }}" maxlength="100" required class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
-                                                </div>
-                                                <button type="button" data-remove-author class="self-end rounded-lg p-2 text-ink-400 hover:bg-white hover:text-ember-700 dark:text-ink-500 dark:hover:bg-ink-900 dark:hover:text-ember-500" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">×</button>
+                            {{-- Language Selection Field --}}
+                            <div class="mt-5 rounded-xl border border-ink-100 bg-ink-50/50 p-4 dark:border-ink-800 dark:bg-ink-950/50">
+                                <label for="language_original_id" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-ink-700 dark:text-ink-300">{{ __('article.language_label') }}</label>
+                                <select id="language_original_id" @if (! $article) name="language_original_id" @else disabled @endif required class="w-full max-w-md rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm font-semibold text-ink-950 shadow-2xs focus:border-ember-500 focus:outline-none dark:border-ink-700 dark:bg-ink-900 dark:text-white">
+                                    @foreach ($languages as $languageId => $language)
+                                        <option value="{{ $languageId }}" @selected((int) old('language_original_id', $article?->language_original_id ?? 3049) === $languageId)>{{ __($language['label_key']) }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($article)<input type="hidden" name="language_original_id" value="{{ $article->language_original_id }}">@endif
+                                <p class="mt-1.5 text-xs text-ink-500 dark:text-ink-400">{{ $article ? __('article.language_locked_hint') : __('article.language_hint') }}</p>
+                            </div>
+
+                            <div class="mt-6 grid gap-6 lg:grid-cols-2">
+                                {{-- Byline Authors Column --}}
+                                <div class="flex flex-col justify-between space-y-3">
+                                    <div>
+                                        <div class="flex items-center justify-between gap-3">
+                                            <div>
+                                                <h3 class="text-sm font-black text-ink-900 dark:text-ink-200">{{ __('article.byline_title') }}</h3>
+                                                <p class="mt-0.5 text-xs text-ink-500 dark:text-ink-400">{{ __('article.byline_hint') }}</p>
                                             </div>
-                                        @endforeach
+                                            <button type="button" data-add-author class="inline-flex shrink-0 items-center gap-1 rounded-xl border border-ink-200 bg-white px-3 py-1.5 text-xs font-bold text-ink-700 shadow-2xs hover:bg-ink-50 dark:border-ink-700 dark:bg-ink-950 dark:text-ink-300 dark:hover:bg-ink-800">{{ __('article.add_author') }}</button>
+                                        </div>
+                                        <div class="mt-3 space-y-3" data-author-list>
+                                            @foreach ($creditRows as $index => $credit)
+                                                <div class="flex items-end gap-3 rounded-2xl border border-ink-100 bg-ink-50/70 p-3.5 dark:border-ink-800 dark:bg-ink-950/70" data-author-row>
+                                                    <div class="flex-1 min-w-0">
+                                                        <label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.linked_account_label') }}</label>
+                                                        <select name="author_credit_list[{{ $index }}][user_id]" data-author-user class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white">
+                                                            <option value="">{{ __('article.custom_author_option') }}</option>
+                                                            @foreach ($userOptions as $option)
+                                                                <option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}" @selected(($credit['user_id'] ?? null) === $option['id'])>{{ '@'.$option['username'] }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="flex-1 min-w-0">
+                                                        <label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.byline_name_label') }}</label>
+                                                        <input name="author_credit_list[{{ $index }}][display_name]" value="{{ $credit['display_name'] ?? '' }}" maxlength="100" required class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white">
+                                                    </div>
+                                                    <button type="button" data-remove-author class="inline-flex size-9 shrink-0 items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-500 shadow-2xs transition hover:border-red-300 hover:bg-red-50 hover:text-red-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-400 dark:hover:border-red-800 dark:hover:bg-red-950 dark:hover:text-red-400" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">
+                                                        <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
+                                                    </button>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div>
-                                    <h3 class="text-sm font-black text-ink-900 dark:text-ink-200">{{ __('article.shared_ownership_title') }}</h3>
-                                    <p class="mt-0.5 text-xs leading-5 text-ink-500 dark:text-ink-400">{{ __('article.shared_ownership_hint') }}</p>
+                                {{-- Shared Ownership Access Column --}}
+                                <div class="flex flex-col space-y-3">
+                                    <div>
+                                        <h3 class="text-sm font-black text-ink-900 dark:text-ink-200">{{ __('article.shared_ownership_title') }}</h3>
+                                        <p class="mt-0.5 text-xs leading-5 text-ink-500 dark:text-ink-400">{{ __('article.shared_ownership_hint') }}</p>
+                                    </div>
                                     @if ($canManageOwnership)
-                                        <select name="article_owner_user_id_list[]" multiple size="7" class="mt-3 w-full rounded-xl border border-ink-200 px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900">
+                                        <select name="article_owner_user_id_list[]" multiple size="6" class="mt-1 w-full rounded-2xl border border-ink-200 bg-white p-3 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white">
                                             @foreach ($userOptions as $option)
                                                 <option value="{{ $option['id'] }}" @selected(in_array($option['id'], $selectedOwnerIds, true))>{{ '@'.$option['username'].' — '.$option['display_name'] }}</option>
                                             @endforeach
                                         </select>
-                                        <p class="mt-1 text-xs text-ink-400 dark:text-ink-500">{{ __('article.shared_ownership_creator_hint') }}</p>
+                                        <p class="text-xs text-ink-400 dark:text-ink-500">{{ __('article.shared_ownership_creator_hint') }}</p>
                                     @else
-                                        <div class="mt-3 flex flex-wrap gap-2">
+                                        <div class="mt-1 flex flex-wrap gap-2">
                                             @foreach ($userOptions->whereIn('id', $ownerIds) as $option)
                                                 <span class="rounded-full bg-ink-100 px-3 py-1 text-xs font-semibold text-ink-700 dark:bg-ink-900 dark:text-ink-300">{{ '@'.$option['username'] }}</span>
                                             @endforeach
@@ -285,10 +293,12 @@
                         </section>
 
                         <template data-author-template>
-                            <div class="grid gap-2 rounded-xl border border-ink-100 bg-ink-50 p-3 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_auto] dark:border-ink-700 dark:bg-ink-900" data-author-row>
-                                <div><label class="mb-1 block text-xs font-semibold text-ink-500 dark:text-ink-400">{{ __('article.linked_account_label') }}</label><select name="author_credit_list[__INDEX__][user_id]" data-author-user class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900"><option value="">{{ __('article.custom_author_option') }}</option>@foreach ($userOptions as $option)<option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}">{{ '@'.$option['username'] }}</option>@endforeach</select></div>
-                                <div><label class="mb-1 block text-xs font-semibold text-ink-500 dark:text-ink-400">{{ __('article.byline_name_label') }}</label><input name="author_credit_list[__INDEX__][display_name]" maxlength="100" required class="w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm dark:border-ink-700 dark:bg-ink-950 dark:text-white dark:focus:border-ember-500 dark:focus:ring-ember-900"></div>
-                                <button type="button" data-remove-author class="self-end rounded-lg p-2 text-ink-400 hover:bg-white hover:text-ember-700 dark:text-ink-500 dark:hover:bg-ink-900 dark:hover:text-ember-500" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">×</button>
+                            <div class="flex items-end gap-3 rounded-2xl border border-ink-100 bg-ink-50/70 p-3.5 dark:border-ink-800 dark:bg-ink-950/70" data-author-row>
+                                <div class="flex-1 min-w-0"><label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.linked_account_label') }}</label><select name="author_credit_list[__INDEX__][user_id]" data-author-user class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white"><option value="">{{ __('article.custom_author_option') }}</option>@foreach ($userOptions as $option)<option value="{{ $option['id'] }}" data-display-name="{{ $option['display_name'] }}">{{ '@'.$option['username'] }}</option>@endforeach</select></div>
+                                <div class="flex-1 min-w-0"><label class="mb-1 block text-xs font-bold text-ink-700 dark:text-ink-300">{{ __('article.byline_name_label') }}</label><input name="author_credit_list[__INDEX__][display_name]" maxlength="100" required class="w-full rounded-xl border border-ink-200 bg-white px-3 py-2 text-sm text-ink-950 shadow-2xs dark:border-ink-700 dark:bg-ink-900 dark:text-white"></div>
+                                <button type="button" data-remove-author class="inline-flex size-9 shrink-0 items-center justify-center rounded-xl border border-ink-200 bg-white text-ink-500 shadow-2xs transition hover:border-red-300 hover:bg-red-50 hover:text-red-700 dark:border-ink-700 dark:bg-ink-900 dark:text-ink-400 dark:hover:border-red-800 dark:hover:bg-red-950 dark:hover:text-red-400" aria-label="{{ __('article.remove_author') }}" title="{{ __('article.remove_author') }}">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true"><path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z"/></svg>
+                                </button>
                             </div>
                         </template>
                         <template data-source-template>
