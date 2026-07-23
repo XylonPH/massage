@@ -57,24 +57,37 @@
 
         {{-- ============ Main column ============ --}}
         <div class="min-w-0 flex-1">
-            <header class="border-b border-ink-100 bg-white dark:border-ink-800 dark:bg-ink-900">
-                <div class="flex h-[4.5rem] items-center gap-4 px-4 pr-16 sm:px-6 sm:pr-20 lg:px-8">
-                    <button type="button" data-menu-toggle aria-expanded="false" aria-controls="workspace-sidebar"
-                            class="inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 lg:hidden dark:text-ink-200 dark:hover:bg-ink-800">
-                        <span class="sr-only">{{ __('navigation.open_menu') }}</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-6" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
-                    </button>
-                    <div class="min-w-0 flex-1">
-                        <h1 class="truncate text-xl font-black text-ink-950 dark:text-ink-50">@yield('page-title')</h1>
-                        @hasSection('page-context')
-                            <p class="truncate text-sm text-ink-600 dark:text-ink-300">@yield('page-context')</p>
-                        @endif
+            {{-- Mobile Top Bar --}}
+            <div class="flex h-14 items-center justify-between border-b border-ink-100 bg-white px-4 lg:hidden dark:border-ink-800 dark:bg-ink-900">
+                <button type="button" data-menu-toggle aria-expanded="false" aria-controls="workspace-sidebar"
+                        class="inline-flex items-center justify-center rounded-lg p-2 text-ink-800 hover:bg-ink-50 dark:text-ink-200 dark:hover:bg-ink-800">
+                    <span class="sr-only">{{ __('navigation.open_menu') }}</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="size-6" aria-hidden="true"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+                </button>
+                <a href="{{ route('home') }}" aria-label="{{ config('app.name') }}">
+                    <span class="dark:hidden"><x-logo size="h-8" /></span>
+                    <span class="hidden dark:block"><x-logo dark size="h-8" /></span>
+                </a>
+            </div>
+
+            {{-- Desktop Header Bar (Only rendered when page-title or page-actions is defined) --}}
+            @if (View::hasSection('page-title') || View::hasSection('page-actions'))
+                <header class="hidden lg:block border-b border-ink-100 bg-white dark:border-ink-800 dark:bg-ink-900">
+                    <div class="flex h-[4.5rem] items-center gap-4 px-4 pr-16 sm:px-6 sm:pr-20 lg:px-8">
+                        <div class="min-w-0 flex-1">
+                            @hasSection('page-title')
+                                <h1 class="truncate text-xl font-black text-ink-950 dark:text-ink-50">@yield('page-title')</h1>
+                            @endif
+                            @hasSection('page-context')
+                                <p class="truncate text-sm text-ink-600 dark:text-ink-300">@yield('page-context')</p>
+                            @endif
+                        </div>
+                        <div class="flex shrink-0 items-center gap-2.5">
+                            @yield('page-actions')
+                        </div>
                     </div>
-                    <div class="flex shrink-0 items-center gap-2.5">
-                        @yield('page-actions')
-                    </div>
-                </div>
-            </header>
+                </header>
+            @endif
 
             <main id="main-content" class="px-4 py-8 sm:px-6 lg:px-8">
                 {{ $slot ?? '' }}

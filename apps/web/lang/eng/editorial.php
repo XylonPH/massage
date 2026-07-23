@@ -110,7 +110,7 @@ return [
     'est_level_spa_market' => 'Market Class',
     'est_type_physical_setting' => 'Physical Setting',
     'est_type_establishment_operation' => 'Operation Model',
-    'est_status_establishment' => 'Establishment Status (Operating Condition)',
+    'est_status_establishment' => 'Spa Status',
     'est_date_opened' => 'Date Opened',
     'est_date_closed' => 'Date Closed',
     'date_precision_label' => 'Precision',
