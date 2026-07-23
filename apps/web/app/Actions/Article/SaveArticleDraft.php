@@ -10,7 +10,6 @@ use App\Models\User;
 use App\Support\Article\ArticleContent;
 use App\Support\Article\ArticleLanguage;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class SaveArticleDraft
 {
@@ -26,12 +25,6 @@ class SaveArticleDraft
         $languageKey = ArticleLanguage::keyForId($languageId);
         $html = $this->content->sanitize((string) $input['article_body']);
         $metrics = $this->content->metrics($html);
-
-        if ($metrics['word_count'] === 0) {
-            throw ValidationException::withMessages([
-                'article_body' => __('article.validation_body_visible_text'),
-            ]);
-        }
 
         $slug = $this->uniqueSlug(
             (string) ($input['article_slug'] ?: Str::slug((string) $input['article_title'])),

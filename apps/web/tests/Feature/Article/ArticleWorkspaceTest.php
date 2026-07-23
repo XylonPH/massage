@@ -232,6 +232,18 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertCount(0, PendingArticleRevisions::all());
     }
 
+    public function test_draft_with_an_empty_body_can_still_be_saved(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+            'article_body' => '<p></p>',
+        ]));
+
+        $response->assertRedirect();
+        $this->assertSame(1, Article::query()->count());
+    }
+
     public function test_resubmitting_a_revision_after_requested_changes_reaches_editorial_queue(): void
     {
         $author = User::factory()->create();
