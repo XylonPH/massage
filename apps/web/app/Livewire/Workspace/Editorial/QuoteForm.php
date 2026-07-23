@@ -20,7 +20,7 @@ class QuoteForm extends Component
     /** @var array<string, mixed> */
     public array $state = [
         'language_original_id' => 3049,
-        'type_quote_category' => 'WEL',
+        'type_quote_category' => 'RRL',
         'attribution_label' => '',
         'source_title' => '',
         'source_url' => '',
@@ -52,7 +52,7 @@ class QuoteForm extends Component
             $record = Quote::query()->findOrFail($quote);
             $this->state = [
                 'language_original_id' => (int) ($record->language_original_id ?? 3049),
-                'type_quote_category' => is_array($record->type_quote_category) ? ($record->type_quote_category[0] ?? 'WEL') : ($record->type_quote_category ?? 'WEL'),
+                'type_quote_category' => is_array($record->type_quote_category) ? ($record->type_quote_category[0] ?? 'RRL') : ($record->type_quote_category ?? 'RRL'),
                 'attribution_label' => $record->attribution_label ?? '',
                 'source_title' => $record->source_title ?? '',
                 'source_url' => $record->source_url ?? '',

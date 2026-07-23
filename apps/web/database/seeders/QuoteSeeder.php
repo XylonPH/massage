@@ -20,7 +20,7 @@ class QuoteSeeder extends Seeder
             // ==========================================
             [
                 'language_original_id' => 3049,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Naomi Judd',
                 'quote_text' => [
                     'eng' => ['text' => 'Your body hears everything your mind says.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -93,7 +93,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3049,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Ovid',
                 'quote_text' => [
                     'eng' => ['text' => 'Take rest; a field that has rested gives a bountiful crop.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -165,7 +165,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3049,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Thomas Dekker',
                 'quote_text' => [
                     'eng' => ['text' => 'Sleep is that golden chain that ties health and our bodies together.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -237,7 +237,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3049,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Sydney J. Harris',
                 'quote_text' => [
                     'eng' => ['text' => 'The time to relax is when you don\'t have time for it.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -265,7 +265,7 @@ class QuoteSeeder extends Seeder
             // ==========================================
             [
                 'language_original_id' => 3600,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Kasabihang Tagalog',
                 'quote_text' => [
                     'fil' => ['text' => 'Ang pahinga ay hindi pagsasayang ng oras, kundi pag-iipon ng lakas.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -346,7 +346,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3600,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'José Rizal',
                 'quote_text' => [
                     'fil' => ['text' => 'Ang pagpapahinga ng isip ay nagbibigay ng panibagong sigla sa kaluluwa.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -427,7 +427,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3600,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Kasabihan',
                 'quote_text' => [
                     'fil' => ['text' => 'Bigyan ng kapahingahan ang isip upang makakita ng bagong liwanag.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -508,7 +508,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 3600,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Kasabihan',
                 'quote_text' => [
                     'fil' => ['text' => 'Ang mahimbing na tulog ay gamot sa pagod na katawan.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -539,7 +539,7 @@ class QuoteSeeder extends Seeder
             // ==========================================
             [
                 'language_original_id' => 1458,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Panultihong Bisaya',
                 'quote_text' => [
                     'ceb' => ['text' => 'Ang pagpahulay dili kalimot sa paglihok, kon dili pag-andam sa mas lig-ong ugma.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -620,7 +620,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 1458,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Panultihon',
                 'quote_text' => [
                     'ceb' => ['text' => 'Pahuway usahay aron dili dali kapoyon ang kalag.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -701,7 +701,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 1458,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Panultihong Bisaya',
                 'quote_text' => [
                     'ceb' => ['text' => 'Ihatag sa imong hunahuna ang kahigayonan nga makapahuway.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -723,7 +723,7 @@ class QuoteSeeder extends Seeder
             // ==========================================
             [
                 'language_original_id' => 7142,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '한국 속담',
                 'quote_text' => [
                     'kor' => ['text' => '쉬어 가며 일해라.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -804,7 +804,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 7142,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '한국 속담',
                 'quote_text' => [
                     'kor' => ['text' => '잘 자는 것이 보약이다.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -885,7 +885,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 7142,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '한국 속담',
                 'quote_text' => [
                     'kor' => ['text' => '휴식은 다음 발걸음을 위한 준비이다.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -907,7 +907,7 @@ class QuoteSeeder extends Seeder
             // ==========================================
             [
                 'language_original_id' => 12559,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Proverbio español',
                 'quote_text' => [
                     'spa' => ['text' => 'El descanso no es pérdida de tiempo, sino reparación de fuerzas.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -988,7 +988,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 12559,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Refrán popular',
                 'quote_text' => [
                     'spa' => ['text' => 'Dormir bien es la mitad del remedio.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -1069,7 +1069,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 12559,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => 'Refrán popular',
                 'quote_text' => [
                     'spa' => ['text' => 'Regálate un momento de silencio cada día.', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -1111,7 +1111,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 17097,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '庄子 (Zhuangzi)',
                 'quote_text' => [
                     'zho-hans' => ['text' => '虚室生白，吉祥止止。', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -1181,7 +1181,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 17097,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '中国谚语',
                 'quote_text' => [
                     'zho-hans' => ['text' => '磨刀不误砍柴工。', 'method_translation' => 'HUM', 'status_review' => 'A'],
@@ -1271,7 +1271,7 @@ class QuoteSeeder extends Seeder
             ],
             [
                 'language_original_id' => 17097,
-                'type_quote_category' => 'RLX',
+                'type_quote_category' => 'RRL',
                 'attribution_label' => '中国谚语',
                 'quote_text' => [
                     'zho-hans' => ['text' => '早睡早起，精神百倍。', 'method_translation' => 'HUM', 'status_review' => 'A'],

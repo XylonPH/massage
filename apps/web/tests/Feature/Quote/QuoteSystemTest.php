@@ -30,7 +30,7 @@ class QuoteSystemTest extends TestCase
         }
     }
 
-    public function test_all_five_quote_categories_have_valid_theme_mappings(): void
+    public function test_all_nine_quote_categories_have_valid_theme_mappings(): void
     {
         foreach (QuoteCategory::cases() as $category) {
             $this->assertNotEmpty($category->getLabel());
@@ -49,7 +49,7 @@ class QuoteSystemTest extends TestCase
                 'eng' => ['text' => 'Testing rotation service quote text.', 'method_translation' => 'HUM', 'status_review' => 'A'],
             ],
             'language_original_id' => 3049,
-            'type_quote_category' => QuoteCategory::Relaxation->value,
+            'type_quote_category' => QuoteCategory::RestRelaxation->value,
             'attribution_label' => 'Test Author',
             'visibility_scope' => 'PUB',
             'level_nsfw' => NsfwLevel::None->value,
@@ -79,7 +79,7 @@ class QuoteSystemTest extends TestCase
             '_id' => 'Qfuture123456789',
             'quote_text' => ['eng' => ['text' => 'Future quote text', 'method_translation' => 'HUM', 'status_review' => 'A']],
             'language_original_id' => 3049,
-            'type_quote_category' => QuoteCategory::Wellness->value,
+            'type_quote_category' => QuoteCategory::MindfulnessPresence->value,
             'visibility_scope' => 'PUB',
             'level_nsfw' => NsfwLevel::None->value,
             'status_record_lifecycle' => RecordLifecycleStatus::Active->value,
@@ -91,7 +91,7 @@ class QuoteSystemTest extends TestCase
             '_id' => 'Qinact1234567890',
             'quote_text' => ['eng' => ['text' => 'Inactive quote text', 'method_translation' => 'HUM', 'status_review' => 'A']],
             'language_original_id' => 3049,
-            'type_quote_category' => QuoteCategory::Wellness->value,
+            'type_quote_category' => QuoteCategory::MindfulnessPresence->value,
             'visibility_scope' => 'PUB',
             'level_nsfw' => NsfwLevel::None->value,
             'status_record_lifecycle' => RecordLifecycleStatus::Inactive->value,
@@ -130,7 +130,7 @@ class QuoteSystemTest extends TestCase
             'id' => 'Qblade1234567890',
             'text' => 'Blade rendering test quote.',
             'attribution_label' => 'Blade Author',
-            'category' => QuoteCategory::SelfCare,
+            'category' => QuoteCategory::SpiritualReflection,
             'language_key' => 'eng',
             'is_original' => true,
             'original_text' => 'Blade rendering test quote.',
@@ -141,7 +141,7 @@ class QuoteSystemTest extends TestCase
 
         $view->assertSee('Blade rendering test quote.');
         $view->assertSee('Blade Author');
-        $view->assertSee('Self-Care');
+        $view->assertSee('Spiritual Reflection');
     }
 
     public function test_admin_workspace_quote_routes_require_editorial_permission(): void

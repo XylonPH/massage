@@ -1396,11 +1396,12 @@ WORKING MEDIA AND DATA DIRECTION
 
 Current Collection Decision
 
-The current working collection name is:
+The current comic collection family is:
 
-content_comic
+comic_main
+comic_panel
 
-This replaces the earlier tentative comic_main direction. It is singular, uses snake_case, and may be renamed later if a broader content architecture creates a better reason.
+comic_main is the principal language-specific strip record. comic_panel stores the six ordered panel records that belong to that strip. Both names are singular snake_case and follow the database collection-family direction.
 
 The following are not required:
 
@@ -1408,14 +1409,13 @@ The following are not required:
 - comic_key;
 - content_style;
 - comic_format;
-- thumbnail_media_image_id;
-- a separate comic_panel collection.
+- thumbnail_media_image_id.
 
 The Resting Leaf is currently the only comic series, so series_key adds no useful distinction. comic_title and comic_slug provide the content title and public slug. conversational Taglish is the normal editorial direction rather than a variable content_style value. The format is currently the standard six-panel comic, so comic_format should be added only if the platform later supports meaningfully different comic formats.
 
-Current Working content_comic Properties
+Current Working comic_main Properties
 
-The following property direction is accepted for continued planning:
+The authoritative field contract is maintained in data/structure_guide/comic_main.php. Its current property direction is:
 
 _id
 comic_title
@@ -1423,17 +1423,25 @@ comic_slug
 short_description
 language_id
 cast_key_list
-alternative_text
-caption
+alt_text
+caption_text
 comic_transcript
-tag_list
+tag_id_list
+primary_media_image_id
 level_nsfw
 status_publication
-scheduled_at
-published_at
-created_at
-updated_at
+status_record_lifecycle
 record_note
+revision_number
+created_at
+created_by_user_id
+updated_at
+updated_by_user_id
+scheduled_publish_at
+published_at
+published_by_user_id
+archived_at
+archived_by_user_id
 
 Property Notes
 
@@ -1457,21 +1465,25 @@ cast_key_list
 
 Stores the stable keys of recurring Nexus Cast members appearing in the strip. The keys currently come from nexus_cast.json. This is a controlled project reference, not yet a database taxonomy. Generic unnamed background extras do not need cast keys.
 
-alternative_text
+alt_text
 
-Describes the meaningful visual sequence for accessibility. It should not merely repeat the caption.
+Describes the meaningful visual sequence of the complete comic page for accessibility. It should not merely repeat caption_text or comic_transcript. The field name reuses the shared media alternative-text convention.
 
-caption
+caption_text
 
 A concise public caption or supporting text shown with the comic when needed.
 
 comic_transcript
 
-Optional readable text containing the final dialogue and relevant captions. It supports accessibility, search, correction, and future language adaptation without creating separate panel records. A detailed panel-by-panel production script is not required after publication.
+Optional readable text containing the final dialogue and relevant captions in panel order. It supports accessibility, search, correction, and future language adaptation. It may be assembled from comic_panel.dialogue_text but remains on comic_main as the complete-page reading projection.
 
-tag_list
+tag_id_list
 
-Working tag values for discovery. Final tag storage and controlled-value behavior should follow the project database design.
+References tag_main records used for discovery, filtering, and editorial organization.
+
+primary_media_image_id
+
+References the media_image record for the approved complete comic page. The media record owns technical file information, Azure Blob location, dimensions, format, file size, processing history, thumbnails, and other derivatives.
 
 level_nsfw
 
@@ -1481,14 +1493,14 @@ status_publication
 
 The publication lifecycle state, such as draft, scheduled, published, archived, or another later approved status.
 
-scheduled_at
+scheduled_publish_at
 
 Used only while the comic is scheduled for future release. It records the intended publication moment.
 
 When the comic is actually published:
 
 - write the actual publication moment to published_at;
-- remove or unset scheduled_at from the MongoDB document rather than keeping an obsolete scheduled value;
+- remove or unset scheduled_publish_at from the MongoDB document rather than keeping an obsolete scheduled value;
 - retain created_at because the creation moment remains historically different from scheduling and publication.
 
 published_at
@@ -1507,23 +1519,47 @@ record_note
 
 Stores internal notes according to the wider project record-note direction.
 
+revision_number and Audit Fields
+
+revision_number is the optimistic-concurrency token for shared editorial changes. Creation, update, publication, and archival actor and timestamp fields preserve responsibility and history without placing runtime authorization in the record.
+
 Timestamp Direction
 
 Exact moments use the *_at naming direction from Shared Project Standards v2.60. Timestamps should be stored unambiguously, normally in UTC, and displayed in the relevant user or publication time zone.
 
-No Separate Panel Collection
+Current Working comic_panel Properties
 
-comic_panel is removed from the current direction.
+The authoritative field contract is maintained in data/structure_guide/comic_panel.php. Its current property direction is:
 
-Panel information means the planning material for each panel: visual action, expression, dialogue, balloon placement, and continuity. This information is useful during production but does not need six separate database documents.
+_id
+comic_id
+panel_number
+cast_key_list
+panel_description
+dialogue_text
+alt_text
+primary_media_image_id
+status_record_lifecycle
+revision_number
+created_at
+created_by_user_id
+updated_at
+updated_by_user_id
+
+Each standard comic_main record has six comic_panel children with a unique panel_number from 1 through 6. Application validation must reject duplicate numbers and must not publish the parent until the complete sequence exists.
+
+panel_description retains the approved production direction for that panel, including the relevant setting, visual action, expressions, balloon placement, time and lighting, important props, and continuity change. cast_key_list records the recurring Nexus Cast members visibly present. dialogue_text retains the final dialogue, captions, and sound-effect text in reading order; it may be empty for a silent panel. alt_text describes the meaningful panel visual for accessibility.
+
+primary_media_image_id is optional. It references a panel-specific media_image when an individual panel image or approved crop is retained. Full-page-first generation remains the preferred production method, so a comic_panel record does not require a separate image when comic_main.primary_media_image_id already references the approved complete page.
 
 The default post-publication direction is:
 
 - retain the finished comic image;
-- retain the final dialogue through comic_transcript when useful;
-- retain alternative_text and caption;
-- do not retain a mandatory structured panel script in the database;
-- keep detailed planning notes only in the working chat or source file when they remain useful.
+- retain the six ordered comic_panel records;
+- retain the final per-panel dialogue and accessibility text;
+- retain comic_main.comic_transcript when a complete-page reading projection is useful;
+- retain the panel production direction needed for correction, continuity, restoration, or language adaptation;
+- allow panel-specific media references without requiring panel-by-panel image generation.
 
 Public Route and Comic of the Day Direction
 
@@ -1540,19 +1576,17 @@ Image Storage and Media Relationship
 
 The comic is always published as an image-based work, but the binary image should still be stored in Azure Blob Storage rather than inside the MongoDB document.
 
-The final relationship between content_comic and media_image remains under discussion.
+Current architectural direction:
 
-Current architectural recommendation:
-
-- content_comic stores editorial and publication information;
+- comic_main stores strip-level editorial and publication information;
+- comic_panel stores ordered panel-level production, dialogue, accessibility, and optional media relationships;
 - media_image stores technical file information, Azure Blob location, dimensions, format, file size, processing history, and thumbnail or derivative handling;
-- content_comic references one media_image_id;
+- comic_main.primary_media_image_id references the approved complete-page media record;
+- comic_panel.primary_media_image_id may reference an individual panel image or approved crop;
 - do not add thumbnail_media_image_id because the media system already handles thumbnail information;
-- alternative_text, caption, and comic_transcript may remain in content_comic because they describe the published comic context.
+- alt_text, caption_text, and comic_transcript remain in the comic collections because they describe the published comic context rather than the reusable technical media asset alone.
 
-A one-to-one relationship does not by itself make media_image unnecessary. Embedding all image properties directly in content_comic would duplicate the media system and make later processing, replacement, rights, derivatives, and storage management less consistent.
-
-This recommendation is not yet a final user decision. If content_comic later owns the technical image properties directly, the required storage, format, dimension, file-size, derivative, and thumbnail fields must be defined explicitly.
+A one-to-one relationship does not by itself make media_image unnecessary. Embedding all image properties directly in comic_main or comic_panel would duplicate the media system and make later processing, replacement, rights, derivatives, and storage management less consistent.
 
 Current Master Export Direction
 
@@ -1561,7 +1595,7 @@ Current Master Export Direction
 - Acceptable generation dimensions when model output is limited: 1536 × 1024 pixels
 - Master file format: PNG
 - Recommended web derivative: WebP generated from the approved PNG master
-- Thumbnail handling: through the selected media system rather than a duplicate content_comic thumbnail field
+- Thumbnail handling: through the selected media system rather than a duplicate comic_main or comic_panel thumbnail field
 
 The PNG master should be retained for quality and later manual logo, footer, dialogue, or lettering correction.
 
@@ -1630,9 +1664,7 @@ DOCUMENT BOUNDARIES AND DEFERRED ITEMS
 
 The following technical matters belong in later database or platform documentation rather than being finalized in this fictional-world guide:
 
-- whether content_comic references media_image_id or directly owns all technical image properties;
 - the exact language-reference structure behind language_id;
-- final controlled values for status_publication, level_nsfw, and tag storage;
 - whether cast keys remain JSON references permanently or later become database identifiers;
 - archive pagination, previous-next navigation, and homepage presentation for Comic of the Day.
 
@@ -1657,14 +1689,16 @@ Current settled directions include:
 - temporary outside locations: allowed without naming or fully developing them;
 - canonical active edition: natural Metro Manila Taglish;
 - future localized editions: same cast and setting, culturally adapted, and reviewed by a fluent or culturally knowledgeable person before publication;
-- collection name: content_comic for now;
-- comic_panel: not used;
+- principal collection name: comic_main;
+- panel collection name: comic_panel;
 - series_key: not used;
 - comic_key: not used;
 - comic_format: not used while the standard remains six panels;
 - content_style: not used while natural Taglish remains the standard dialogue direction;
 - public routes: /comic and /comic/{comic-slug};
-- detailed panel records: not required after publication;
+- panel records: six ordered comic_panel records retained for each standard strip;
+- complete-page media: referenced by comic_main.primary_media_image_id;
+- panel media: optional through comic_panel.primary_media_image_id;
 - separate story-bible file: not required at the current continuity scale;
 - lettering software: no specific software is mandated;
 - standard page: 3:2 landscape with three columns and two rows;
