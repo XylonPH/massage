@@ -241,7 +241,7 @@ if (form) {
                     const payload = await response.json();
                     editor.chain().focus().insertContent({
                         type: 'articleImage',
-                        attrs: { mediaImageId: payload.id, src: payload.url, alt: altText },
+                        attrs: { mediaImageId: payload.id, src: `/media/image/${payload.id}`, alt: altText },
                     }).run();
                 } catch (error) {
                     window.alert(form.dataset.uploadErrorLabel || 'Image upload failed. Try again.');
