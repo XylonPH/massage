@@ -17,14 +17,28 @@ use App\Support\Article\PendingArticleRevisions;
 use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use MongoDB\BSON\Regex;
 
 class ArticleController extends Controller
 {
+    private const MINIMUM_SUBMISSION_WORDS = 300;
+
+    /** @var array<string, array{collection: string, label_fields: list<string>, search_fields: list<string>}> */
+    private const LOOKUP_TYPES = [
+        'article' => ['collection' => 'article_main', 'label_fields' => ['article_title'], 'search_fields' => ['article_title.eng.text', 'article_title.eng']],
+        'organization' => ['collection' => 'organization_main', 'label_fields' => ['organization_name', 'display_name', 'name'], 'search_fields' => ['organization_name.eng.text', 'organization_name.eng', 'display_name.eng.text', 'display_name.eng', 'name.eng.text', 'name.eng']],
+        'establishment' => ['collection' => 'establishment_main', 'label_fields' => ['display_name'], 'search_fields' => ['display_name.eng.text', 'display_name.eng']],
+        'practitioner' => ['collection' => 'practitioner_main', 'label_fields' => ['practitioner_name'], 'search_fields' => ['practitioner_name.eng.text', 'practitioner_name.eng']],
+        'service' => ['collection' => 'service_main', 'label_fields' => ['service_name'], 'search_fields' => ['service_name.eng.text', 'service_name.eng']],
+        'product' => ['collection' => 'product_main', 'label_fields' => ['product_name', 'display_name', 'name'], 'search_fields' => ['product_name.eng.text', 'product_name.eng', 'display_name.eng.text', 'display_name.eng', 'name.eng.text', 'name.eng']],
+    ];
+
     public function drafts(Request $request): View
     {
         return $this->index($request, 'draft');
@@ -95,6 +109,69 @@ class ArticleController extends Controller
         ));
     }
 
+    public function lookup(Request $request, string $type): JsonResponse
+    {
+        $validated = $request->validate([
+            'q' => ['required', 'string', 'min:2', 'max:100'],
+            'exclude' => ['nullable', 'string', 'size:16'],
+        ]);
+        $term = trim($validated['q']);
+
+        if ($type === 'user') {
+            $users = User::query()
+                ->where('status_account', 'ACT')
+                ->where('status_membership', 'ACT')
+                ->where(function (Builder $query) use ($term): void {
+                    $query->where('username', 'like', "%{$term}%")
+                        ->orWhere('display_name', 'like', "%{$term}%");
+                })
+                ->orderBy('username')
+                ->limit(20)
+                ->get();
+
+            return response()->json(['results' => $users->map(fn (User $user): array => [
+                'id' => (string) $user->getKey(),
+                'label' => '@'.$user->username.' — '.$user->publicName(),
+                'display_name' => $user->publicName(),
+            ])->values()]);
+        }
+
+        abort_unless(array_key_exists($type, self::LOOKUP_TYPES), 404);
+        $lookup = self::LOOKUP_TYPES[$type];
+        $regex = new Regex(preg_quote($term), 'i');
+        $query = DB::connection('mongodb')->table($lookup['collection'])
+            ->where(function ($query): void {
+                $query->where('status_record_lifecycle', 'ACT')->orWhereNull('status_record_lifecycle');
+            })
+            ->where(function ($query) use ($lookup, $regex): void {
+                foreach ($lookup['search_fields'] as $index => $field) {
+                    $index === 0
+                        ? $query->where($field, 'regex', $regex)
+                        : $query->orWhere($field, 'regex', $regex);
+                }
+            });
+
+        if (filled($validated['exclude'] ?? null)) {
+            $query->where('_id', '!=', $validated['exclude']);
+        }
+
+        $results = $query->limit(20)->get()->map(function (mixed $record) use ($lookup): array {
+            $values = $record instanceof Model ? $record->getAttributes() : (array) $record;
+            $id = (string) ($values['_id'] ?? $values['id'] ?? '');
+            $label = '';
+            foreach ($lookup['label_fields'] as $field) {
+                $label = $this->localizedLabel($values[$field] ?? null);
+                if ($label !== '') {
+                    break;
+                }
+            }
+
+            return ['id' => $id, 'label' => $label !== '' ? $label : $id];
+        })->filter(fn (array $result): bool => $result['id'] !== '')->values();
+
+        return response()->json(['results' => $results]);
+    }
+
     public function store(SaveArticleRequest $request, SaveArticleDraft $save): RedirectResponse
     {
         $article = $save->execute($request->validated(), $request->user());
@@ -139,6 +216,14 @@ class ArticleController extends Controller
             ->where('article_id', (string) $article->getKey())
             ->where('language_id', (int) $article->language_original_id)
             ->firstOrFail();
+        if ($body->word_count < self::MINIMUM_SUBMISSION_WORDS) {
+            return back()->withErrors([
+                'article_body' => __('article.submission_minimum_words', [
+                    'minimum' => self::MINIMUM_SUBMISSION_WORDS,
+                    'current' => $body->word_count,
+                ]),
+            ]);
+        }
         $revision = ArticleRevision::query()
             ->where('article_body_id', (string) $body->getKey())
             ->orderByDesc('revision_number')
@@ -250,15 +335,12 @@ class ArticleController extends Controller
         $selectedUserIds = array_values(array_unique([
             ...$ownerIds,
             ...collect($authorCredits)->pluck('user_id')->filter()->all(),
+            ...collect(old('author_credit_list', []))->pluck('user_id')->filter()->all(),
+            ...collect(old('article_owner_user_id_list', []))->filter()->all(),
         ]));
-        $users = User::query()
-            ->where('status_account', 'ACT')
-            ->where('status_membership', 'ACT')
-            ->orderBy('username')
-            ->get();
-        if ($selectedUserIds !== []) {
-            $users = $users->merge(User::query()->whereIn('_id', $selectedUserIds)->get())->unique('_id');
-        }
+        $users = $selectedUserIds === []
+            ? collect()
+            : User::query()->whereIn('_id', $selectedUserIds)->get();
 
         return [
             'article' => $article,
@@ -271,6 +353,7 @@ class ArticleController extends Controller
                 'id' => (string) $user->getKey(),
                 'username' => (string) $user->username,
                 'display_name' => $user->publicName(),
+                'label' => '@'.$user->username.' — '.$user->publicName(),
             ])->sortBy('username')->values(),
             'languages' => ArticleLanguage::all(),
             'canManageOwnership' => ! $article || (string) $article->created_by_user_id === (string) $viewer->getKey(),
@@ -314,12 +397,12 @@ class ArticleController extends Controller
     private function relatedOptions(?Article $article): array
     {
         return [
-            'related_article_id_list' => $this->recordOptions('article_main', ['article_title'], $article?->related_article_id_list ?? [], $article ? (string) $article->getKey() : null),
-            'related_organization_id_list' => $this->recordOptions('organization_main', ['organization_name', 'display_name', 'name'], $article?->related_organization_id_list ?? []),
-            'related_establishment_id_list' => $this->recordOptions('establishment_main', ['display_name'], $article?->related_establishment_id_list ?? []),
-            'related_practitioner_id_list' => $this->recordOptions('practitioner_main', ['practitioner_name'], $article?->related_practitioner_id_list ?? []),
-            'related_service_id_list' => $this->recordOptions('service_main', ['service_name'], $article?->related_service_id_list ?? []),
-            'related_product_id_list' => $this->recordOptions('product_main', ['product_name', 'display_name', 'name'], $article?->related_product_id_list ?? []),
+            'related_article_id_list' => $this->recordOptions('article_main', ['article_title'], old('related_article_id_list', $article?->related_article_id_list ?? [])),
+            'related_organization_id_list' => $this->recordOptions('organization_main', ['organization_name', 'display_name', 'name'], old('related_organization_id_list', $article?->related_organization_id_list ?? [])),
+            'related_establishment_id_list' => $this->recordOptions('establishment_main', ['display_name'], old('related_establishment_id_list', $article?->related_establishment_id_list ?? [])),
+            'related_practitioner_id_list' => $this->recordOptions('practitioner_main', ['practitioner_name'], old('related_practitioner_id_list', $article?->related_practitioner_id_list ?? [])),
+            'related_service_id_list' => $this->recordOptions('service_main', ['service_name'], old('related_service_id_list', $article?->related_service_id_list ?? [])),
+            'related_product_id_list' => $this->recordOptions('product_main', ['product_name', 'display_name', 'name'], old('related_product_id_list', $article?->related_product_id_list ?? [])),
         ];
     }
 
@@ -327,21 +410,13 @@ class ArticleController extends Controller
      * @param  array<int, string>  $selectedIds
      * @return array<int, array{id: string, label: string}>
      */
-    private function recordOptions(string $collection, array $labelFields, array $selectedIds, ?string $excludeId = null): array
+    private function recordOptions(string $collection, array $labelFields, array $selectedIds): array
     {
-        $query = DB::connection('mongodb')->table($collection)->where(function ($query): void {
-            $query->where('status_record_lifecycle', 'ACT')->orWhereNull('status_record_lifecycle');
-        });
-        if ($excludeId) {
-            $query->where('_id', '!=', $excludeId);
+        if ($selectedIds === []) {
+            return [];
         }
-        $records = $query->get();
-        if ($selectedIds !== []) {
-            $selected = DB::connection('mongodb')->table($collection)->whereIn('_id', $selectedIds)->get();
-            $records = $records->merge($selected)->unique(
-                fn (mixed $record): string => (string) data_get($record, '_id', data_get($record, 'id', ''))
-            );
-        }
+
+        $records = DB::connection('mongodb')->table($collection)->whereIn('_id', $selectedIds)->get();
 
         return $records->map(function (mixed $record) use ($labelFields): array {
             $values = $record instanceof Model

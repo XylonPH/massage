@@ -1,7 +1,7 @@
 Title: Massage Nexus Article Writing Guide
-Document Version: 2.70
+Document Version: 2.80
 Date Created: 2026-07-04
-Revision Date: 2026-07-22
+Revision Date: 2026-07-23
 Document Description: Defines Massage Nexus article-writing scope, quality, research, classification, safety, authorship, AI assistance, reading-duration handling, media planning, output structure, and current workspace implementation boundaries. The working topic calendar and reusable prompt library are maintained separately so growing inventories do not obscure the governing rules.
 Related Documents:
 - docs/09-content/article-calendar.txt
@@ -257,8 +257,10 @@ Current authoring behavior includes:
   original creator manages the owner list, and the creator cannot be removed;
 - structured repeated source records with separate title, organization, URL, and publication-
   identifier controls instead of delimiter-encoded text;
-- database-backed selectors for related Articles, organizations, establishments, practitioners,
-  services, and products. A submitted relationship ID must resolve to an active record;
+- server-searched, bounded-result pickers for registered byline accounts, shared owners, and
+  related Articles, organizations, establishments, practitioners, services, and products. The
+  editor never embeds every available record in page HTML; a submitted relationship ID must still
+  resolve to an active record server-side;
 - article classification, revision notes, comment and sharing preferences in a compact metadata rail;
 - anonymous publication preference through article_main.is_anonymous. Public article pages and
   public author listings suppress author_credit_list, while ownership and audit associations remain
@@ -266,6 +268,15 @@ Current authoring behavior includes:
 - proposed publication scheduling for users with article.schedule. A future date may be recorded,
   but scheduling never bypasses editorial review or publication approval, and the publication job
   remains a separate workflow responsibility.
+
+Draft saving and editorial submission intentionally have different completeness rules. Any draft
+with visible body text may be saved so early work is not lost. Editorial submission requires at
+least 300 visible words, matching the lower bound of the accepted Short focused Article range;
+normal Articles should still aim for the higher target ranges above. The editor must communicate
+this distinction and must not describe a tiny draft-save threshold as the minimum Article length.
+
+New Articles have no preselected category. The author must deliberately choose one before the first
+draft save.
 
 The current editorial implementation adds an Article review queue at /workspace/editorial/article
 for users with editorial workspace access. It shows each Article's latest submitted revision and

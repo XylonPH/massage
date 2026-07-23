@@ -1,5 +1,5 @@
 Title: Massage Nexus Add a Spa Form (Establishment Contribution and Editorial Establishment Form)
-Document Version: 1.00
+Document Version: 1.10
 Date Created: 2026-07-23
 Revision Date: 2026-07-23
 Document Description: Describes the actual current behavior of the shared EstablishmentForm Livewire component that powers both the public member "Add a Spa" contribution flow (/workspace/contribution/establishment/new) and the direct-edit editorial establishment form (/workspace/editorial/establishment/{new|edit}) — its step structure, field-by-field intent per tab, dynamic UI rules, duplicate-check timing, validation, submission shape, and the reference-data dependency used for country/region/city selection.
@@ -58,6 +58,11 @@ Next/Back on steps 1 and 2 call nextStep()/prevStep(). nextStep() validates only
 step's rule subset (rulesForStep()) before advancing; step 1 validates only
 type_establishment_relationship, is_workspace_access_requested, and relationship_note. Advancing
 past step 2 into step 3 always triggers checkForDuplicates() (section 5).
+
+When Spa Details validation fails, the component maps the first invalid field to its owning detail
+tab, opens that tab automatically, displays a page-level explanation, and shows an error-count badge
+on every tab containing invalid fields. A user must not be left on a different tab with no visible
+explanation for why Next did not advance.
 
 Editorial mode shows one flat page: a shared tab bar (Alpine x-data="{ tab: 'identity' }") switches
 between the eight tab partials, a Cancel link returns to the editorial establishment index, and a

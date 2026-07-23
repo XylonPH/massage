@@ -14,6 +14,112 @@ if (form) {
     const saveState = form.querySelector('[data-editor-save-state]');
     let updateReadiness = () => {};
 
+    const initializeEntityPickers = (root = form) => {
+        root.querySelectorAll('[data-entity-picker]:not([data-picker-ready])').forEach((picker) => {
+            picker.dataset.pickerReady = 'true';
+            const search = picker.querySelector('[data-picker-search]');
+            const results = picker.querySelector('[data-picker-results]');
+            const selected = picker.querySelector('[data-picker-selected]');
+            const status = picker.querySelector('[data-picker-status]');
+            const multiple = picker.dataset.multiple === 'true';
+            let timer;
+            let controller;
+
+            const removeChip = (button) => button.closest('[data-picker-chip]')?.remove();
+            selected.querySelectorAll('[data-picker-remove]').forEach((button) => {
+                button.addEventListener('click', () => removeChip(button));
+            });
+
+            const addSelection = (item) => {
+                if (!item?.id || selected.querySelector(`[data-picker-chip][data-id="${CSS.escape(item.id)}"]`)) return;
+                if (!multiple) selected.replaceChildren();
+
+                const chip = document.createElement('span');
+                chip.dataset.pickerChip = '';
+                chip.dataset.id = item.id;
+                chip.className = 'inline-flex max-w-full items-center gap-1.5 rounded-full bg-ink-100 px-3 py-1.5 text-xs font-semibold text-ink-800 dark:bg-ink-800 dark:text-ink-100';
+
+                const text = document.createElement('span');
+                text.className = 'truncate';
+                text.textContent = item.label;
+                const remove = document.createElement('button');
+                remove.type = 'button';
+                remove.dataset.pickerRemove = '';
+                remove.className = 'rounded-full text-ink-500 hover:text-ember-700 dark:text-ink-300 dark:hover:text-ember-300';
+                remove.setAttribute('aria-label', `Remove ${item.label}`);
+                remove.textContent = '×';
+                remove.addEventListener('click', () => removeChip(remove));
+                const hidden = document.createElement('input');
+                hidden.type = 'hidden';
+                hidden.name = multiple ? `${picker.dataset.fieldName}[]` : picker.dataset.fieldName;
+                hidden.value = item.id;
+                chip.append(text, remove, hidden);
+                selected.append(chip);
+                picker.dispatchEvent(new CustomEvent('article:entity-selected', { bubbles: true, detail: item }));
+            };
+
+            const showResults = (items) => {
+                results.replaceChildren();
+                items.forEach((item) => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.role = 'option';
+                    button.className = 'block w-full rounded-lg px-3 py-2 text-left text-sm text-ink-900 hover:bg-ember-50 focus:bg-ember-50 focus:outline-none dark:text-ink-100 dark:hover:bg-ink-800 dark:focus:bg-ink-800';
+                    button.textContent = item.label;
+                    button.addEventListener('click', () => {
+                        addSelection(item);
+                        search.value = '';
+                        results.hidden = true;
+                        status.textContent = '';
+                        search.focus();
+                    });
+                    results.append(button);
+                });
+                results.hidden = items.length === 0;
+                status.textContent = items.length === 0 ? picker.dataset.emptyLabel : '';
+            };
+
+            search.addEventListener('input', () => {
+                window.clearTimeout(timer);
+                controller?.abort();
+                const query = search.value.trim();
+                if (query.length < 2) {
+                    results.hidden = true;
+                    status.textContent = query.length === 0 ? '' : form.dataset.searchMinimumLabel;
+                    return;
+                }
+
+                timer = window.setTimeout(async () => {
+                    controller = new AbortController();
+                    status.textContent = picker.dataset.searchingLabel;
+                    try {
+                        const endpoint = new URL(picker.dataset.endpoint, window.location.origin);
+                        endpoint.searchParams.set('q', query);
+                        const response = await fetch(endpoint, {
+                            headers: { Accept: 'application/json' },
+                            signal: controller.signal,
+                        });
+                        if (!response.ok) throw new Error('Lookup failed');
+                        const payload = await response.json();
+                        showResults(Array.isArray(payload.results) ? payload.results : []);
+                    } catch (error) {
+                        if (error.name === 'AbortError') return;
+                        results.hidden = true;
+                        status.textContent = picker.dataset.errorLabel;
+                    }
+                }, 250);
+            });
+
+            picker.addEventListener('article:entity-selected', (event) => {
+                if (picker.dataset.entityType !== 'user') return;
+                const nameInput = picker.closest('[data-author-row]')?.querySelector('[name$="[display_name]"]');
+                if (nameInput && event.detail.display_name) nameInput.value = event.detail.display_name;
+            });
+        });
+    };
+
+    initializeEntityPickers();
+
     const readOnly = editorElement?.dataset.readOnly === 'true';
 
     if (editorElement && bodyInput && htmlInput && visualPanel && htmlPanel) {
@@ -166,7 +272,7 @@ if (form) {
         const checks = {
             title: (title?.value.trim().length || 0) >= 4,
             description: (description?.value.trim().length || 0) >= 20,
-            body: stripHtml(bodyInput?.value || '').split(/\s+/u).filter(Boolean).length >= 20,
+            body: stripHtml(bodyInput?.value || '').split(/\s+/u).filter(Boolean).length >= Number(form.dataset.minimumSubmissionWords || 300),
             sources: Array.from(form.querySelectorAll('[name$="[source_title]"]')).some((input) => input.value.trim().length > 0),
         };
         Object.entries(checks).forEach(([key, complete]) => {
@@ -246,7 +352,10 @@ if (form) {
         const index = `${prefix}-${Date.now()}-${list.children.length}`;
         const wrapper = document.createElement('div');
         wrapper.innerHTML = template.innerHTML.replaceAll('__INDEX__', index).trim();
-        if (wrapper.firstElementChild) list.append(wrapper.firstElementChild);
+        if (wrapper.firstElementChild) {
+            list.append(wrapper.firstElementChild);
+            initializeEntityPickers(list.lastElementChild);
+        }
     }
 
     function updateActiveButtons(editor) {

@@ -1,4 +1,4 @@
-@props(['tabs' => [], 'icons' => [], 'vertical' => false])
+@props(['tabs' => [], 'icons' => [], 'vertical' => false, 'errorCounts' => []])
 
 @if ($vertical)
     <div class="flex overflow-x-auto gap-1.5 pb-2 sm:pb-0 sm:flex-col sm:overflow-visible sm:-mr-px sm:z-10 sm:space-y-1.5" role="tablist">
@@ -18,6 +18,9 @@
                     </svg>
                 @endif
                 <span x-show="!collapsed" class="truncate">{{ $label }}</span>
+                @if (($errorCounts[$key] ?? 0) > 0)
+                    <span class="ml-auto inline-flex min-w-5 items-center justify-center rounded-full bg-red-600 px-1.5 py-0.5 text-[10px] font-black text-white" aria-label="{{ trans_choice('editorial.tab_error_count', $errorCounts[$key], ['count' => $errorCounts[$key]]) }}">{{ $errorCounts[$key] }}</span>
+                @endif
             </button>
         @endforeach
     </div>
@@ -34,6 +37,9 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-4 shrink-0" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="{{ $icons[$key] }}"/></svg>
                 @endif
                 <span class="truncate">{{ $label }}</span>
+                @if (($errorCounts[$key] ?? 0) > 0)
+                    <span class="inline-flex min-w-5 items-center justify-center rounded-full bg-red-600 px-1.5 py-0.5 text-[10px] font-black text-white">{{ $errorCounts[$key] }}</span>
+                @endif
             </button>
         @endforeach
     </div>

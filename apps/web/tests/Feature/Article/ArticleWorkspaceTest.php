@@ -91,6 +91,9 @@ class ArticleWorkspaceTest extends TestCase
             ->assertSee('data-editor-spoken-reading-time', false)
             ->assertSee('data-add-author', false)
             ->assertSee('data-add-source', false)
+            ->assertSee(__('article.choose_category'))
+            ->assertSee('value="" disabled selected', false)
+            ->assertSee('data-entity-picker', false)
             ->assertSee(__('article.language_spanish'))
             ->assertDontSee('name="scheduled_publish_at"', false);
     }
@@ -108,6 +111,21 @@ class ArticleWorkspaceTest extends TestCase
         $article = Article::query()->firstOrFail();
         $this->assertTrue($article->is_anonymous);
         $this->assertSame('automatically-generated-slug', $article->localized('article_slug'));
+    }
+
+    public function test_registered_byline_and_owner_search_is_server_side_and_bounded(): void
+    {
+        $author = User::factory()->create(['username' => 'lookup-author']);
+        $collaborator = User::factory()->create(['username' => 'searchable-collaborator', 'display_name' => 'Searchable Collaborator']);
+
+        $this->actingAs($author)->get('/workspace/article/new')
+            ->assertOk()
+            ->assertDontSee('@searchable-collaborator');
+
+        $this->actingAs($author)->get('/workspace/article/lookup/user?q=searchable')
+            ->assertOk()
+            ->assertJsonPath('results.0.id', (string) $collaborator->getKey())
+            ->assertJsonPath('results.0.display_name', 'Searchable Collaborator');
     }
 
     public function test_article_scheduling_requires_permission(): void
@@ -153,7 +171,7 @@ class ArticleWorkspaceTest extends TestCase
 
         $this->actingAs($user)->put('/workspace/article/'.$article->getKey(), $this->validPayload([
             'article_title' => 'Updated Article Title',
-            'article_body' => '<h2>Before you arrive</h2><p>This revised article body makes the comparison visible to its author.</p>',
+            'article_body' => '<h2>Before you arrive</h2><p>This revised article body makes the comparison visible to its author. '.str_repeat('Complete practical guidance helps Massage Nexus readers prepare safely and confidently. ', 35).'</p>',
             'revision_note' => 'Improved the introduction.',
         ]))->assertRedirect();
         $this->assertSame(2, ArticleRevision::query()->where('article_id', (string) $article->getKey())->count());
@@ -180,6 +198,21 @@ class ArticleWorkspaceTest extends TestCase
         ]))->assertRedirect();
         $this->actingAs($user)->get('/workspace/article/draft')->assertOk()->assertSee('A New Unsubmitted Revision');
         $this->actingAs($user)->get('/workspace/article/submitted')->assertOk()->assertDontSee('A New Unsubmitted Revision');
+    }
+
+    public function test_incomplete_draft_can_be_saved_but_cannot_be_submitted_for_review(): void
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user)->post('/workspace/article', $this->validPayload([
+            'article_body' => '<p>A short but valid early draft.</p>',
+        ]))->assertRedirect();
+        $article = Article::query()->firstOrFail();
+
+        $this->actingAs($user)->post('/workspace/article/'.$article->getKey().'/submit')
+            ->assertRedirect()
+            ->assertSessionHasErrors('article_body');
+
+        $this->assertCount(0, PendingArticleRevisions::all());
     }
 
     public function test_resubmitting_a_revision_after_requested_changes_reaches_editorial_queue(): void
@@ -276,7 +309,11 @@ class ArticleWorkspaceTest extends TestCase
         try {
             $this->assertSame(1, DB::connection('mongodb')->table('service_main')->where('_id', $serviceId)->count());
             $this->assertSame(1, DB::connection('mongodb')->table('service_main')->where('_id', $serviceId)->where('status_record_lifecycle', 'ACT')->count());
-            $this->actingAs($user)->get('/workspace/article/new')->assertOk()->assertSee('Test Massage Service');
+            $this->actingAs($user)->get('/workspace/article/new')->assertOk()->assertDontSee('Test Massage Service');
+            $this->actingAs($user)->get('/workspace/article/lookup/service?q=Massage')
+                ->assertOk()
+                ->assertJsonPath('results.0.id', $serviceId)
+                ->assertJsonPath('results.0.label', 'Test Massage Service');
             $this->actingAs($user)->post('/workspace/article', $this->validPayload([
                 'article_title' => 'Gabay sa Unang Masahe',
                 'article_slug' => 'gabay-sa-unang-masahe',
@@ -316,7 +353,7 @@ class ArticleWorkspaceTest extends TestCase
             'target_audience' => 'C',
             'level_nsfw' => 'N',
             'tags' => 'first massage, spa etiquette',
-            'article_body' => '<h2>Before you book</h2><p>This article contains enough visible words to save safely.</p>',
+            'article_body' => '<h2>Before you book</h2><p>This article contains enough visible words to save safely. '.str_repeat('Complete practical guidance helps Massage Nexus readers prepare safely and confidently. ', 35).'</p>',
             'author_credit_list' => [[
                 'user_id' => (string) $user->getKey(),
                 'display_name' => $user->publicName(),
