@@ -25,6 +25,7 @@
             @case('clear') <path d="m4 20 5-5M14 4l6 6-9 9H5v-6zM10 8l6 6" /> @break
             @case('undo') <path d="m9 7-5 5 5 5M4 12h9a6 6 0 0 1 6 6" /> @break
             @case('redo') <path d="m15 7 5 5-5 5M20 12h-9a6 6 0 0 0-6 6" /> @break
+            @case('insertImage') <path d="M3 16.5V6a1.5 1.5 0 0 1 1.5-1.5h15A1.5 1.5 0 0 1 21 6v12a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18Zm0 0 5-5 4 4 3-3 6 6M9 9.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" /> @break
         @endswitch
     </svg>
 @endif

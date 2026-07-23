@@ -2,6 +2,7 @@ import { Editor } from '@tiptap/core';
 import Placeholder from '@tiptap/extension-placeholder';
 import TextAlign from '@tiptap/extension-text-align';
 import StarterKit from '@tiptap/starter-kit';
+import { ArticleImage } from './article-image-node.js';
 
 const form = document.querySelector('[data-article-form]');
 
@@ -152,6 +153,7 @@ if (form) {
                 }),
                 TextAlign.configure({ types: ['heading', 'paragraph'], alignments: ['left', 'center', 'right', 'justify'] }),
                 Placeholder.configure({ placeholder: editorElement.dataset.placeholder || '' }),
+                ArticleImage,
             ],
             editorProps: {
                 attributes: {
@@ -211,6 +213,43 @@ if (form) {
             if (readOnly) button.disabled = true;
             button.addEventListener('click', () => actions[button.dataset.editorAction]?.());
         });
+
+        const imageInsertButton = form.querySelector('[data-insert-image]');
+        const imageFileInput = form.querySelector('[data-image-file-input]');
+        const mediaUploadUrl = form.dataset.mediaUploadUrl;
+
+        if (imageInsertButton && imageFileInput && mediaUploadUrl) {
+            imageInsertButton.addEventListener('click', () => imageFileInput.click());
+            imageFileInput.addEventListener('change', async () => {
+                const file = imageFileInput.files[0];
+                if (!file) return;
+                const altText = window.prompt(form.dataset.altTextPrompt || 'Describe this image for accessibility:');
+                if (!altText) {
+                    imageFileInput.value = '';
+                    return;
+                }
+                const body = new FormData();
+                body.append('image', file);
+                body.append('alt_text', altText);
+                try {
+                    const response = await fetch(mediaUploadUrl, {
+                        method: 'POST',
+                        headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content, Accept: 'application/json' },
+                        body,
+                    });
+                    if (!response.ok) throw new Error('Upload failed');
+                    const payload = await response.json();
+                    editor.chain().focus().insertContent({
+                        type: 'articleImage',
+                        attrs: { mediaImageId: payload.id, src: payload.url, alt: altText },
+                    }).run();
+                } catch (error) {
+                    window.alert(form.dataset.uploadErrorLabel || 'Image upload failed. Try again.');
+                } finally {
+                    imageFileInput.value = '';
+                }
+            });
+        }
 
         form.querySelectorAll('[data-editor-mode]').forEach((button) => {
             button.addEventListener('click', () => {

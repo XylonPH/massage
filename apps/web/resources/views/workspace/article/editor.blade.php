@@ -52,6 +52,9 @@
                   data-saved-label="{{ __('article.draft_state') }}"
                   data-minimum-submission-words="300"
                   data-search-minimum-label="{{ __('article.search_minimum_characters') }}"
+                  data-media-upload-url="{{ $article ? route('workspace.article.media.store', $article) : '' }}"
+                  data-alt-text-prompt="{{ __('article.alt_text_prompt') }}"
+                  data-upload-error-label="{{ __('article.upload_error') }}"
                   class="mt-5">
                 @csrf
                 @if ($article) @method('put') @endif
@@ -140,6 +143,14 @@
                                     @foreach ([['undo', __('article.toolbar_undo')], ['redo', __('article.toolbar_redo')]] as [$action, $label])
                                         <button type="button" data-editor-action="{{ $action }}" class="mn-editor-button" aria-label="{{ $label }}" title="{{ $label }}"><x-article-editor-icon :name="$action" /></button>
                                     @endforeach
+                                    <span class="mx-1 h-6 w-px bg-ink-200" aria-hidden="true"></span>
+                                    <button type="button" data-insert-image
+                                            @if (! $article) disabled @endif
+                                            class="mn-editor-button" aria-label="{{ __('article.toolbar_insert_image') }}"
+                                            title="{{ $article ? __('article.toolbar_insert_image') : __('article.save_draft_before_images') }}">
+                                        <x-article-editor-icon name="insertImage" />
+                                    </button>
+                                    <input type="file" data-image-file-input accept="image/jpeg,image/png,image/webp" class="hidden" @if (! $article) disabled @endif>
                                 </div>
                                 <div data-article-editor
                                      data-read-only="{{ $article?->status_publication === 'P' ? 'true' : 'false' }}"
