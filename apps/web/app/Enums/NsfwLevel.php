@@ -13,8 +13,8 @@ enum NsfwLevel: string
     {
         return match ($this) {
             self::None => 'None',
-            self::Suggestive => 'Suggestive',
-            self::Mature => 'Mature',
+            self::Suggestive => 'Sensitive',
+            self::Mature => 'Mild',
             self::Explicit => 'Explicit',
         };
     }

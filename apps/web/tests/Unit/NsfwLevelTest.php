@@ -16,4 +16,15 @@ class NsfwLevelTest extends TestCase
     {
         $this->assertSame(['N', 'S', 'M', 'E'], array_map(fn (NsfwLevel $case) => $case->value, NsfwLevel::cases()));
     }
+
+    public function test_labels_match_the_shared_level_nsfw_taxonomy(): void
+    {
+        // data/taxonomy/shared/record_lifecycle_and_review.json, field_name "level_nsfw" (_id 43)
+        // is this project's authoritative source for these codes/labels; every consumer
+        // (article form, Quote editor) must agree with it, not with each other.
+        $this->assertSame('None', NsfwLevel::None->getLabel());
+        $this->assertSame('Mild', NsfwLevel::Mature->getLabel());
+        $this->assertSame('Sensitive', NsfwLevel::Suggestive->getLabel());
+        $this->assertSame('Explicit', NsfwLevel::Explicit->getLabel());
+    }
 }
