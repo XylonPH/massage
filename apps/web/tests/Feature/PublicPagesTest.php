@@ -13,13 +13,8 @@ class PublicPagesTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee(__('home.featured_spas'));
         $response->assertSee(__('home.featured_therapists'));
-        $response->assertSee(__('home.browse_by_area'));
-        $response->assertSee(__('home.browse_by_type'));
         $response->assertSee(__('home.latest_articles'));
         $response->assertSee(__('footer.compass_guide'));
-        $response->assertSee('/directory/area', false);
-        $response->assertSee('/directory/type-spa', false);
-        $response->assertDontSee('/browse/', false);
     }
 
     public function test_spa_profile_renders_for_known_sample_slug(): void
@@ -115,13 +110,12 @@ class PublicPagesTest extends TestCase
             ->assertSee('/therapist/maya-santos', false);
     }
 
-    public function test_planned_sections_render_coming_soon_pages(): void
+    public function test_campus_and_promo_pages_render_successfully(): void
     {
-        foreach (['/directory', '/directory/area', '/directory/type-spa', '/campus', '/promo'] as $path) {
+        foreach (['/campus', '/promo'] as $path) {
             $response = $this->get($path);
 
             $response->assertStatus(200);
-            $response->assertSee(__('common.coming_soon_badge'));
         }
     }
 

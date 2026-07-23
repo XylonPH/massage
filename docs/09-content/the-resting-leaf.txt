@@ -1,11 +1,11 @@
 Title: Massage Nexus Fictional World Guide
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-03
-Revision Date: 2026-07-15
+Revision Date: 2026-07-24
 
 DOCUMENT DESCRIPTION
 
-This document defines the fictional visual and story world used by Massage Nexus through The Resting Leaf and the Nexus Cast. It covers the recurring setting, character roles and tiers, continuity, comic direction, comedy standards, visual production standards, language and cultural direction, branded page layout, canonical visual-reference control, anti-drift production rules, working content_comic data direction, topic-planning direction, and the external prompt-file system used for production.
+This document defines the fictional visual and story world used by Massage Nexus through The Resting Leaf and the Nexus Cast. It covers the recurring setting, character roles and tiers, continuity, comic direction, comedy standards, visual production standards, language and cultural direction, branded page layout, canonical visual-reference control, anti-drift production rules, working comic_main and comic_panel data direction, topic-planning direction, and the external prompt-file system used for production.
 
 The Resting Leaf is an in-universe fictional spa and recurring comic setting. The Nexus Cast are fictional human characters used inside the comic and, when appropriate, as recurring visual models for Massage Nexus social-media posts, advertisements, demonstrations, onboarding scenes, mockups, presentation images, commercials, and other spa- or wellness-related media.
 
@@ -1029,7 +1029,7 @@ A maintained JSON reference file is sufficient for the Nexus Cast at the current
 
 nexus_cast.json
 
-The file may contain stable character keys used by comic production and by cast_key_list in content_comic. These keys are controlled internal references stored in the project JSON file. They are not yet a database taxonomy and not database record identifiers.
+The file may contain stable character keys used by comic production and by cast_key_list in comic_main and comic_panel. These keys are controlled internal references stored in the project JSON file. They are not yet a database taxonomy and not database record identifiers.
 
 A dedicated database collection for the Nexus Cast is not currently required because the cast is small, fixed, editorially controlled, and rarely changed.
 
@@ -1274,7 +1274,7 @@ Recommended planning fields are:
 - continuity or canon note;
 - recent-use check when the idea relies on a recurring gag or familiar comic device.
 
-When a strip is published, its actual publication timestamp belongs in content_comic.published_at. The working calendar may then mark the item as published or move it to a separate published-comic tracker.
+When a strip is published, its actual publication timestamp belongs in comic_main.published_at. The working calendar may then mark the item as published or move it to a separate published-comic tracker.
 
 The first confirmed Resting Leaf story plan is Grand Opening. Its title, script, joke, cast, dialogue, and continuity plan are approved in the dedicated production thread. Its final artwork is not yet approved, and its exact release date remains to be assigned through the working calendar.
 
