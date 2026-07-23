@@ -222,6 +222,9 @@ class ArticleController extends Controller
             'published_at' => $article->published_at,
             'reading_duration_visual' => (int) $article->reading_duration_visual,
             'level_nsfw' => $article->level_nsfw,
+            'featured_thumbnail_url' => $article->featured_media_image_id
+                ? route('media.image.thumbnail', ['media_image' => $article->featured_media_image_id])
+                : null,
         ];
     }
 

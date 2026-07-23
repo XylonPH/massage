@@ -22,6 +22,9 @@
                 <span aria-hidden="true">/</span>
                 <span class="truncate text-ink-700 dark:text-ink-200">{{ $article->localized('article_title') }}</span>
             </nav>
+            @if ($article->cover_media_image_id)
+                <img src="{{ route('media.image.show', ['media_image' => $article->cover_media_image_id]) }}" alt="" class="mt-6 aspect-[21/9] w-full rounded-2xl object-cover">
+            @endif
             <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_21rem] lg:gap-10">
                 <div>
                     <div class="flex flex-wrap items-center gap-2 text-sm font-bold text-ink-600 dark:text-ink-300">

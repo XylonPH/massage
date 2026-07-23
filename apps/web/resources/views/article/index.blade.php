@@ -31,6 +31,9 @@
                 @foreach ($articles as $item)
                     <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-ink-800 dark:bg-ink-900">
                         <div class="h-2 bg-gradient-to-r from-ember-500 via-ink-600 to-leaf-500" aria-hidden="true"></div>
+                        @if ($item['featured_thumbnail_url'])
+                            <img src="{{ $item['featured_thumbnail_url'] }}" alt="" class="h-40 w-full object-cover">
+                        @endif
                         <div class="flex flex-1 flex-col p-6">
                             <div class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-wide text-ink-500 dark:text-ink-400">
                                 @if ($item['category'])

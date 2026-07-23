@@ -90,9 +90,13 @@
                     @endphp
                     <article class="group grid gap-4 px-5 py-5 transition hover:bg-ink-50/70 sm:px-6 lg:grid-cols-[minmax(0,1fr)_9.5rem_11rem_auto] lg:items-center dark:hover:bg-ink-800/35">
                         <div class="flex min-w-0 items-start gap-3.5">
-                            <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-ink-50 text-ink-500 transition group-hover:bg-white group-hover:text-ember-600 group-hover:shadow-sm dark:bg-ink-800 dark:text-ink-300 dark:group-hover:bg-ink-800 dark:group-hover:text-ember-400">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l4 4v14H6V3Zm9 0v4h4M9 12h6M9 16h4" /></svg>
-                            </span>
+                            @if ($item->featured_media_image_id)
+                                <img src="{{ route('media.image.thumbnail', $item->featured_media_image_id) }}" alt="" class="size-10 shrink-0 rounded-xl object-cover">
+                            @else
+                                <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-ink-50 text-ink-500 transition group-hover:bg-white group-hover:text-ember-600 group-hover:shadow-sm dark:bg-ink-800 dark:text-ink-300 dark:group-hover:bg-ink-800 dark:group-hover:text-ember-400">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="size-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3h9l4 4v14H6V3Zm9 0v4h4M9 12h6M9 16h4" /></svg>
+                                </span>
+                            @endif
                             <div class="min-w-0 pt-0.5">
                                 <h3 class="font-black leading-6 text-ink-950 dark:text-white">
                                     <a href="{{ route('workspace.article.edit', $item) }}" class="rounded-sm decoration-ember-400 decoration-2 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember-500">
