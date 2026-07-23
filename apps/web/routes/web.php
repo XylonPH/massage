@@ -152,6 +152,7 @@ Route::prefix('workspace/article')
         Route::post('/', [WorkspaceArticleController::class, 'store'])->middleware('throttle:20,1')->name('store');
         Route::post('/{article}/media', [WorkspaceArticleController::class, 'storeMedia'])->middleware('throttle:30,1')->name('media.store');
         Route::post('/{article}/media/{media_image}/featured', [WorkspaceArticleController::class, 'setFeaturedMedia'])->middleware('throttle:30,1')->name('media.featured');
+        Route::post('/{article}/media/{media_image}/cover', [WorkspaceArticleController::class, 'setCoverMedia'])->middleware('throttle:30,1')->name('media.cover');
         Route::get('/{article}/edit', [WorkspaceArticleController::class, 'edit'])->name('edit');
         Route::put('/{article}', [WorkspaceArticleController::class, 'update'])->middleware('throttle:30,1')->name('update');
         Route::post('/{article}/submit', [WorkspaceArticleController::class, 'submit'])->middleware('throttle:10,1')->name('submit');

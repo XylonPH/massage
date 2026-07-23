@@ -193,6 +193,14 @@
                                     @endforeach
                                 </div>
                             @endif
+
+                            <div class="mt-4">
+                                <label class="mb-1 block text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ __('article.hero_image_label') }}</label>
+                                <input type="file" data-hero-image-file-input accept="image/jpeg,image/png,image/webp" class="text-sm">
+                                @if ($article->cover_media_image_id)
+                                    <img src="{{ route('media.image.thumbnail', $article->cover_media_image_id) }}" alt="" class="mt-2 h-24 rounded-lg object-cover">
+                                @endif
+                            </div>
                         @endif
 
                         <section class="rounded-2xl border border-ink-100 bg-white p-5 shadow-sm dark:border-ink-800 dark:bg-ink-900" aria-labelledby="article-attribution-title">

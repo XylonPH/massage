@@ -251,6 +251,40 @@ if (form) {
             });
         }
 
+        const heroFileInput = document.querySelector('[data-hero-image-file-input]');
+        if (heroFileInput && mediaUploadUrl) {
+            heroFileInput.addEventListener('change', async () => {
+                const file = heroFileInput.files[0];
+                if (!file) return;
+                const altText = window.prompt(form.dataset.altTextPrompt || 'Describe this image for accessibility:');
+                if (!altText) {
+                    heroFileInput.value = '';
+                    return;
+                }
+                const body = new FormData();
+                body.append('image', file);
+                body.append('alt_text', altText);
+                try {
+                    const response = await fetch(mediaUploadUrl, {
+                        method: 'POST',
+                        headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content, Accept: 'application/json' },
+                        body,
+                    });
+                    if (!response.ok) throw new Error('Upload failed');
+                    const payload = await response.json();
+                    const coverUrl = mediaUploadUrl.replace(/\/media$/, `/media/${payload.id}/cover`);
+                    const coverForm = document.createElement('form');
+                    coverForm.method = 'POST';
+                    coverForm.action = coverUrl;
+                    coverForm.innerHTML = `<input type="hidden" name="_token" value="${document.querySelector('meta[name="csrf-token"]')?.content}">`;
+                    document.body.append(coverForm);
+                    coverForm.submit();
+                } catch (error) {
+                    window.alert(form.dataset.uploadErrorLabel || 'Image upload failed. Try again.');
+                }
+            });
+        }
+
         form.querySelectorAll('[data-editor-mode]').forEach((button) => {
             button.addEventListener('click', () => {
                 const nextMode = button.dataset.editorMode;

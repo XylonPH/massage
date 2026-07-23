@@ -213,6 +213,16 @@ class ArticleController extends Controller
         return back()->with('status', __('article.draft_saved'));
     }
 
+    public function setCoverMedia(Request $request, Article $article, MediaImage $media_image): RedirectResponse
+    {
+        $this->authorizeOwner($request, $article);
+        abort_unless(in_array((string) $article->getKey(), $media_image->related_article_id_list ?? [], true), 422, __('article.cover_image_not_owned'));
+
+        $article->forceFill(['cover_media_image_id' => (string) $media_image->getKey()])->save();
+
+        return back()->with('status', __('article.draft_saved'));
+    }
+
     public function edit(Request $request, Article $article, WorkspaceAccess $workspaceAccess): View
     {
         $this->authorizeOwner($request, $article);
