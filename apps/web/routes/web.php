@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceProfileController;
 use App\Http\Controllers\SpaProfileController;
 use App\Http\Controllers\TherapistProfileController;
 use App\Http\Controllers\Web\Public\ArticleController as PublicArticleController;
+use App\Http\Controllers\Web\Media\MediaImageController;
 use App\Http\Controllers\Web\Public\ReviewController as PublicReviewController;
 use App\Http\Controllers\Web\Public\UserProfileController;
 use App\Http\Controllers\Web\Workspace\ArticleController as WorkspaceArticleController;
@@ -70,6 +71,11 @@ Route::prefix('article')->name('article.')->group(function () {
     Route::get('/archive', [PublicArticleController::class, 'archive'])->name('archive');
     Route::get('/search', [PublicArticleController::class, 'search'])->name('search');
     Route::get('/{article_slug}', [PublicArticleController::class, 'show'])->name('show');
+});
+
+Route::prefix('media/image')->name('media.image.')->group(function () {
+    Route::get('/{media_image}', [MediaImageController::class, 'show'])->name('show');
+    Route::get('/{media_image}/thumbnail', [MediaImageController::class, 'thumbnail'])->name('thumbnail');
 });
 
 Route::prefix('review')->name('review.')->group(function () {
