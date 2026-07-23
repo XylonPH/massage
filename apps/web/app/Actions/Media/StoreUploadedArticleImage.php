@@ -16,7 +16,11 @@ class StoreUploadedArticleImage
 
     public function execute(UploadedFile $file, string $altText, Article $article, User $user): MediaImage
     {
-        $extension = strtolower($file->getClientOriginalExtension() ?: $file->extension() ?: 'jpg');
+        $extension = match ($file->getMimeType()) {
+            'image/png' => 'png',
+            'image/webp' => 'webp',
+            default => 'jpg',
+        };
         $datePath = now()->format('Y/m');
         $baseName = Str::random(16);
         $storedPath = "media/image/{$datePath}/{$baseName}.{$extension}";

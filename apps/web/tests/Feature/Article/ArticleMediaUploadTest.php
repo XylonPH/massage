@@ -58,6 +58,44 @@ class ArticleMediaUploadTest extends TestCase
         $this->assertLessThanOrEqual(480, $image->image_variant_list[0]['height_pixel']);
     }
 
+    public function test_uploaded_image_extension_is_derived_from_verified_mime_type_not_client_filename(): void
+    {
+        Storage::fake('public');
+        $user = User::factory()->create();
+        $article = $this->createArticle($user);
+
+        // fake()->image() always produces genuine GD-backed JPEG bytes. The
+        // client-supplied filename here claims a dangerous/mismatched extension,
+        // while ->mimeType() stands in for the server-side, content-verified MIME
+        // type (in real requests this is what UploadedFile::getMimeType() reports
+        // via fileinfo, independent of the filename).
+        //
+        // Note: a literal ".php" filename is rejected earlier by Laravel's own
+        // `mimes` rule (Validator::shouldBlockPhpUpload() denylists php/php3/
+        // php4/php5/php7/php8/phtml/phar by client extension alone) before it
+        // would ever reach our action, so it can't exercise the bug this test
+        // targets. ".exe" is not on that denylist and still demonstrates that a
+        // dangerous client-supplied extension must never end up as the on-disk
+        // extension.
+        $this->actingAs($user)->post("/workspace/article/{$article->getKey()}/media", [
+            'image' => UploadedFile::fake()->image('malicious.exe', 800, 600)->mimeType('image/jpeg'),
+            'alt_text' => 'A descriptive alt text.',
+        ]);
+
+        // Not asserting the HTTP response here: the controller builds its JSON
+        // response with route('media.image.show'), which is not defined yet
+        // (a separate, not-yet-built task) — the same pre-existing gap that
+        // causes test_owner_can_upload_an_image_to_their_article to fail with
+        // a RouteNotFoundException in this file. The image record is created
+        // before that call, so we verify the fix against the persisted record.
+        $image = MediaImage::query()->firstOrFail();
+        $this->assertSame('jpg', $image->file_extension);
+        $this->assertStringEndsWith('.jpg', $image->storage_path);
+        $this->assertStringEndsWith('.jpg', $image->image_variant_list[0]['storage_path']);
+        $this->assertStringNotContainsString('.exe', $image->storage_path);
+        Storage::disk('public')->assertExists($image->storage_path);
+    }
+
     public function test_non_owner_cannot_upload_an_image(): void
     {
         Storage::fake('public');
