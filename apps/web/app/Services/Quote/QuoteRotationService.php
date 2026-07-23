@@ -94,19 +94,14 @@ class QuoteRotationService
     /**
      * Clear all cached daily quotes.
      */
-    public function clearCache(): void
+    public function clearCache(?string $dateString = null): void
     {
-        // Flush keys matching quote:daily pattern or forget common keys
-        Cache::forget('quote:daily:home:eng:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:fil:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:ceb:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:kor:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:spa:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:zho-hans:'.now()->format('Y-m-d'));
-        Cache::forget('quote:daily:home:zho-hant:'.now()->format('Y-m-d'));
+        $targetDate = $dateString ?? now()->format('Y-m-d');
+        foreach (['eng', 'fil', 'ceb', 'kor', 'spa', 'zho-hans', 'zho-hant'] as $lang) {
+            Cache::forget("quote:daily:home:{$lang}:{$targetDate}");
+        }
 
         if (method_exists(Cache::store(), 'flush')) {
-            // If store supports tagging or flushing specific tags
             try {
                 Cache::tags(['quotes'])->flush();
             } catch (\Throwable $e) {

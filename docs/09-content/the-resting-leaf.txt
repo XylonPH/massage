@@ -1614,9 +1614,6 @@ Current Prompt Files
 4. Massage Nexus - The Resting Leaf - Cast Sheet Generation Prompt v1.10.txt
    Creates a presentation sheet only. A generated cast sheet does not replace approved individual character or wardrobe references. A manually assembled composite is preferred when authoritative identity preservation is required.
 
-5. Massage Nexus - The Resting Leaf - Existing Comic Revision Prompt v1.00.txt
-   Historical prompt for revising an existing page. It should not be used for repeated broad full-page generative edits. It remains pending a separate revision or replacement.
-
 Prompt Versioning
 
 Prompt files use document-specific versions. Updating this guide does not automatically change every prompt version.

@@ -25,7 +25,7 @@ class QuotePanel extends Component
         if (is_string($this->category)) {
             $this->category = QuoteCategory::tryFrom($this->category);
         }
-        $this->category ??= QuoteCategory::RestRelaxation;
+        $this->category ??= QuoteCategory::Wellness;
 
         $this->gradientClass = $this->category->panelGradientClass();
         $this->accentClass = $this->category->accentColorClass();

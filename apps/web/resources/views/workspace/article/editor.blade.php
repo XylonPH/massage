@@ -338,8 +338,8 @@
                                         <option value="" disabled @selected(blank(old('level_nsfw', $article?->level_nsfw)))>{{ __('article.choose_nsfw_level') }}</option>
                                         @foreach ([
                                             \App\Enums\NsfwLevel::None->value => __('article.none'),
-                                            \App\Enums\NsfwLevel::Mature->value => __('article.mild'),
-                                            \App\Enums\NsfwLevel::Suggestive->value => __('article.sensitive'),
+                                            \App\Enums\NsfwLevel::Mild->value => __('article.mild'),
+                                            \App\Enums\NsfwLevel::Sensitive->value => __('article.sensitive'),
                                             \App\Enums\NsfwLevel::Explicit->value => __('article.explicit'),
                                         ] as $code => $label)<option value="{{ $code }}" @selected(old('level_nsfw', $article?->level_nsfw) === $code)>{{ $label }}</option>@endforeach
                                     </select>

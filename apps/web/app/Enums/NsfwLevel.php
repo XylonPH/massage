@@ -5,16 +5,16 @@ namespace App\Enums;
 enum NsfwLevel: string
 {
     case None = 'N';
-    case Suggestive = 'S';
-    case Mature = 'M';
+    case Mild = 'M';
+    case Sensitive = 'S';
     case Explicit = 'E';
 
     public function getLabel(): ?string
     {
         return match ($this) {
             self::None => 'None',
-            self::Suggestive => 'Sensitive',
-            self::Mature => 'Mild',
+            self::Mild => 'Mild',
+            self::Sensitive => 'Sensitive',
             self::Explicit => 'Explicit',
         };
     }
@@ -23,8 +23,8 @@ enum NsfwLevel: string
     {
         return match ($this) {
             self::None => 'success',
-            self::Suggestive => 'warning',
-            self::Mature => 'danger',
+            self::Mild => 'warning',
+            self::Sensitive => 'warning',
             self::Explicit => 'danger',
         };
     }
