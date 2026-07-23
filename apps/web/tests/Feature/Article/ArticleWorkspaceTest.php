@@ -67,6 +67,7 @@ class ArticleWorkspaceTest extends TestCase
         $this->assertArrayNotHasKey('status_publication', $article->getAttributes());
         $this->assertArrayNotHasKey('status_review', $article->getAttributes());
         $this->assertArrayNotHasKey('visibility_scope', $article->getAttributes());
+        $this->assertArrayNotHasKey('level_nsfw', $article->getAttributes());
         $this->assertArrayNotHasKey('is_commentable', $article->getAttributes());
         $this->assertArrayNotHasKey('is_shareable', $article->getAttributes());
         $this->assertArrayNotHasKey('status_record_lifecycle', $body->getAttributes());
