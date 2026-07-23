@@ -1248,7 +1248,7 @@ If the page has several identity, uniform, role, or architecture errors, stop th
 
 17. Prepare Publication Metadata
 
-Prepare comic_title, comic_slug, short_description, language_id, alternative_text, caption, comic_transcript when retained, tags, NSFW level, cast references, status, and scheduling or publication timestamp.
+Prepare comic_title, comic_slug, short_description, language_id, alt_text, caption_text, comic_transcript when retained, tag_id_list, NSFW level, cast references, status, and scheduling or publication timestamp.
 
 18. Preserve New Canon
 
@@ -1459,7 +1459,7 @@ A concise description used for previews, cards, search results, or sharing.
 
 language_id
 
-References the language used by the published comic version. The exact language-reference implementation will be discussed separately.
+References the language used by this comic edition through the numeric identifier in common_reference.language_main.
 
 cast_key_list
 
@@ -1505,7 +1505,7 @@ When the comic is actually published:
 
 published_at
 
-Records the actual publication moment. It may differ from created_at and from the former scheduled_at value.
+Records the actual publication moment. It may differ from created_at and from the former scheduled_publish_at value.
 
 created_at
 
@@ -1664,7 +1664,6 @@ DOCUMENT BOUNDARIES AND DEFERRED ITEMS
 
 The following technical matters belong in later database or platform documentation rather than being finalized in this fictional-world guide:
 
-- the exact language-reference structure behind language_id;
 - whether cast keys remain JSON references permanently or later become database identifiers;
 - archive pagination, previous-next navigation, and homepage presentation for Comic of the Day.
 

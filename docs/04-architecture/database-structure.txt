@@ -1,7 +1,7 @@
 Title: Massage Nexus: Database Structure
-Document Version: 2.40
+Document Version: 2.50
 Date Created: 2026-07-12
-Revision Date: 2026-07-23
+Revision Date: 2026-07-24
 
 PURPOSE
 
@@ -396,10 +396,16 @@ Do not create separate establishment_review, practitioner_review, and product_re
   Independently reported, timely, attributable News. News remains distinct from official
   announcements, press releases, evergreen Articles, Reviews, and sponsored material.
 
-- content_comic
-  Comic identity, publication state, credits, relationships, and the current six-panel comic media
-  direction. The Resting Leaf specification owns its accepted fields and explicitly does not require
-  a separate comic_panel collection under the current scope.
+- comic_main
+  One language-specific comic strip's identity, public metadata, publication state, complete-page
+  media relationship, accessibility transcript, classifications, and audit history. The Resting Leaf
+  specification and data/structure_guide/comic_main.php own its accepted field direction.
+
+- comic_panel
+  One ordered panel belonging to comic_main, including its production direction, final dialogue,
+  panel accessibility text, optional panel-level media relationship, and audit history. The current
+  Resting Leaf scope requires six panel records per standard strip; application validation must
+  enforce a complete unique sequence from 1 through 6 before publication.
 
 - legal_main
   Public legal document and public-facing policy identity, version, locale, approval, effective-date,

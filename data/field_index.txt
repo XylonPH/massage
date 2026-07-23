@@ -93,6 +93,7 @@ cancelled_at
 capability_name
 caption_text
 care_description
+cast_key_list
 category_report_list
 category_retention
 changed_field_path_list
@@ -115,6 +116,10 @@ cohort_key
 collection_count
 color_config
 color_mode
+comic_id
+comic_slug
+comic_title
+comic_transcript
 comment_count
 communication_preference
 community_summary
@@ -177,6 +182,7 @@ department
 detected_person_list
 detected_person_number
 device_name
+dialogue_text
 digest_frequency
 direction_note
 disabled_at
@@ -503,6 +509,8 @@ original_statement
 own_practitioner_id
 ownership_percentage
 page_count
+panel_description
+panel_number
 parking_availability
 parking_availability_list
 parking_note
