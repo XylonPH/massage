@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\Workspace;
 
 use App\Actions\Article\SaveArticleDraft;
+use App\Actions\Media\StoreUploadedArticleImage;
 use App\Enums\ArticleAudience;
 use App\Enums\ArticleCategory;
 use App\Http\Controllers\Controller;
@@ -11,6 +12,7 @@ use App\Models\Article\Article;
 use App\Models\Article\ArticleBody;
 use App\Models\Article\ArticleRevision;
 use App\Models\Article\Tag;
+use App\Models\Media\MediaImage;
 use App\Models\User;
 use App\Support\Article\ArticleLanguage;
 use App\Support\Article\PendingArticleRevisions;
@@ -178,6 +180,27 @@ class ArticleController extends Controller
 
         return redirect()->route('workspace.article.edit', $article)
             ->with('status', __('article.draft_saved'));
+    }
+
+    public function storeMedia(Request $request, Article $article, StoreUploadedArticleImage $store): JsonResponse
+    {
+        $this->authorizeOwner($request, $article);
+
+        $existingCount = MediaImage::query()->where('related_article_id_list', (string) $article->getKey())->count();
+        abort_if($existingCount >= 10, 422, __('article.media_limit_reached'));
+
+        $validated = $request->validate([
+            'image' => ['required', 'image', 'mimes:jpeg,png,webp', 'max:5120', 'dimensions:max_width=4000,max_height=4000'],
+            'alt_text' => ['required', 'string', 'max:255'],
+        ]);
+
+        $image = $store->execute($validated['image'], $validated['alt_text'], $article, $request->user());
+
+        return response()->json([
+            'id' => (string) $image->getKey(),
+            'url' => route('media.image.show', ['media_image' => $image->getKey()]),
+            'thumbnail_url' => route('media.image.thumbnail', ['media_image' => $image->getKey()]),
+        ]);
     }
 
     public function edit(Request $request, Article $article, WorkspaceAccess $workspaceAccess): View

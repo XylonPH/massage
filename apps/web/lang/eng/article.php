@@ -167,6 +167,7 @@ return [
     'published_read_only' => 'Published articles are read-only in the contributor workspace.',
     'unpublish' => 'Unpublish article',
     'unpublished_successfully' => 'The article is no longer public and can be revised again.',
+    'media_limit_reached' => 'This article already has the maximum of 10 images.',
     'validation_body_visible_text' => 'The article body must contain visible readable text.',
     'toolbar_paragraph' => 'Paragraph',
     'toolbar_heading_2' => 'Heading 2',
