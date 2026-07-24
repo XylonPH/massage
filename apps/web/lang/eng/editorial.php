@@ -109,7 +109,7 @@ return [
     'est_email' => 'Business Email',
     'est_contact_number' => 'Contact Number',
     'est_status_record_lifecycle' => 'Record Lifecycle Status',
-    'est_type_spa' => 'Establishment Type',
+    'est_type_spa' => 'Type of Spa',
     'est_level_spa_market' => 'Market Class',
     'est_type_physical_setting' => 'Physical Setting',
     'est_type_establishment_operation' => 'Operation Model',

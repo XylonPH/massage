@@ -108,6 +108,18 @@ class ContributionTest extends TestCase
         $this->assertSame('Add a Spa', __('workspace.contribution_establishment_title'));
     }
 
+    public function test_classification_tab_shows_type_of_spa_not_establishment_type(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2);
+
+        $test->assertSee(__('editorial.est_type_spa'));
+        $test->assertSee('Type of Spa');
+        $test->assertDontSee('Establishment Type');
+    }
+
     public function test_tab_labels_contain_no_ampersand(): void
     {
         $user = User::factory()->create();
