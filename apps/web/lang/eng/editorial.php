@@ -56,6 +56,7 @@ return [
     'approval_confirmation_body' => 'Approving creates a new, publicly listed establishment from this submission.',
     'approval_confirmation_checkbox' => 'I have reviewed this submission and confirm it should be published.',
     'confirm_approval' => 'Confirm approval',
+    'contribution_approval_confirmation_required' => 'Confirm the checkbox before approving this submission.',
     'contribution_approved' => 'Contribution approved and published.',
     'contribution_rejected' => 'Contribution rejected.',
     'contribution_already_decided' => 'This contribution has already been decided.',

@@ -61,7 +61,7 @@ class ContributionReview extends Component
     public function approve(): void
     {
         if (! $this->showApprovalConfirmation || ! $this->approvalConfirmed) {
-            $this->addError('approvalConfirmed', __('editorial.approval_confirmation_required'));
+            $this->addError('approvalConfirmed', __('editorial.contribution_approval_confirmation_required'));
 
             return;
         }
