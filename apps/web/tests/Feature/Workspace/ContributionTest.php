@@ -58,6 +58,11 @@ class ContributionTest extends TestCase
             ->set('type_establishment_relationship', 'MGR')
             ->set('is_workspace_access_requested', true)
             ->set('relationship_note', 'I manage daily operations.')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save')
             ->assertRedirect(route('workspace.contribution.index'));
 
@@ -89,6 +94,11 @@ class ContributionTest extends TestCase
             ->set('state.status_establishment', 'OP')
             ->set('type_establishment_relationship', 'NON')
             ->set('is_workspace_access_requested', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save')
             ->assertHasErrors('is_workspace_access_requested');
 
@@ -391,6 +401,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', 'Makati, Philippines')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) auth()->id())->first();
@@ -477,6 +492,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep');
 
         $test->assertSet('currentStep', 3);
@@ -540,6 +560,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep')
             ->call('save')
             ->assertHasNoErrors(['duplicateAcknowledged']);
@@ -611,6 +636,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep');
 
         $test->assertSee(__('workspace.add_spa_duplicate_warning_title'));
@@ -641,6 +671,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true)
             ->call('save')
@@ -672,6 +707,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true);
 
@@ -712,6 +752,11 @@ class ContributionTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true);
 
@@ -751,6 +796,11 @@ class ContributionTest extends TestCase
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('duplicateAcknowledged', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
@@ -848,6 +898,11 @@ class ContributionTest extends TestCase
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
             ->set('type_establishment_relationship', 'NON')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save')
             ->assertRedirect(route('workspace.contribution.index'));
 
@@ -954,5 +1009,53 @@ class ContributionTest extends TestCase
 
         $test->assertHasErrors('state.official_name');
         $this->assertSame('identity', $test->get('activeDetailTab'));
+    }
+
+    public function test_submission_requires_at_least_one_contact_channel(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Test Spa')
+            ->set('state.type_spa', 'CS')
+            ->set('state.status_establishment', 'OP')
+            ->call('save');
+
+        $test->assertHasErrors('state.contact_channel_list');
+    }
+
+    public function test_no_parking_available_is_dropped_once_another_option_is_also_present(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.parking_availability_list', ['PRK_ONS_FREE', 'NONE']);
+
+        $this->assertSame(['PRK_ONS_FREE'], $test->get('state.parking_availability_list'));
+    }
+
+    public function test_no_parking_available_is_dropped_regardless_of_which_option_arrived_second(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.parking_availability_list', ['NONE', 'PRK_STR']);
+
+        $this->assertSame(['PRK_STR'], $test->get('state.parking_availability_list'));
+    }
+
+    public function test_no_parking_available_alone_is_left_untouched(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.parking_availability_list', ['NONE']);
+
+        $this->assertSame(['NONE'], $test->get('state.parking_availability_list'));
     }
 }

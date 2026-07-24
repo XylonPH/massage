@@ -207,6 +207,19 @@ class EstablishmentForm extends Component
         if ($key === 'mode_access' && $value === 'WI' && ! $this->hasPhysicalPremises()) {
             $this->state['mode_access'] = null;
         }
+
+        if ($key === 'parking_availability_list') {
+            $this->enforceParkingMutualExclusivity($value);
+        }
+    }
+
+    private function enforceParkingMutualExclusivity(mixed $value): void
+    {
+        if (! is_array($value) || count($value) <= 1 || ! in_array('NONE', $value, true)) {
+            return;
+        }
+
+        $this->state['parking_availability_list'] = array_values(array_filter($value, fn (string $option): bool => $option !== 'NONE'));
     }
 
     private function clearPhysicalPremisesState(): void
@@ -435,7 +448,7 @@ class EstablishmentForm extends Component
             'state.landmark_list' => ['array', 'max:20'],
             'state.landmark_list.*.landmark_name' => ['required', 'string', 'max:255'],
             'state.landmark_list.*.walking_duration_minute' => ['nullable', 'numeric', 'min:0'],
-            'state.contact_channel_list' => ['array', 'max:20'],
+            'state.contact_channel_list' => ['array', 'min:1', 'max:20'],
             'state.contact_channel_list.*.type_contact_channel' => ['required', 'string', Rule::in(array_keys(TaxonomyOptions::for('type_contact_channel')))],
             'state.contact_channel_list.*.type_contact_number' => ['nullable', 'string', Rule::in(array_keys(TaxonomyOptions::for('type_contact_number')))],
             'state.contact_channel_list.*.status_contact_channel' => ['nullable', 'string', Rule::in(array_keys(TaxonomyOptions::for('status_contact_channel')))],

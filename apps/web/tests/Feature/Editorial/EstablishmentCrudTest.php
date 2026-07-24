@@ -95,6 +95,11 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save')
             ->assertRedirect(route('workspace.editorial.establishment.index'));
 
@@ -164,6 +169,11 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.city_name', 'Makati')
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $this->assertSame('New Name', $establishment->refresh()->display_name['eng']);
@@ -203,6 +213,11 @@ class EstablishmentCrudTest extends TestCase
             ->call('addRow', 'landmark_list')
             ->set('state.landmark_list.0.landmark_name', 'City Hall')
             ->set('state.landmark_list.0.walking_duration_minute', 5)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $record = Establishment::query()->first();
@@ -236,6 +251,11 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('state.operating_hours.0.open_time', '09:00')
             ->set('state.operating_hours.0.close_time', '18:00')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $record = Establishment::query()->first();
@@ -278,6 +298,11 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('state.shower_availability', 'IR')
             ->set('state.parking_availability_list', ['PRK_ONS_FREE'])
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $record = Establishment::query()->first();
@@ -324,6 +349,11 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.unit_label', 'Unit 201')
             ->set('state.postal_code', '1200')
             ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $record = Establishment::query()->first();

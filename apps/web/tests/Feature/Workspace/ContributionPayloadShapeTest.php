@@ -51,6 +51,11 @@ class ContributionPayloadShapeTest extends TestCase
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('duplicateAcknowledged', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
@@ -118,6 +123,11 @@ class ContributionPayloadShapeTest extends TestCase
             ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('duplicateAcknowledged', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
@@ -156,6 +166,11 @@ class ContributionPayloadShapeTest extends TestCase
             ->set('state.coordinate_latitude', 14.5547)
             ->set('state.coordinate_longitude', 121.0244)
             ->set('duplicateAcknowledged', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
@@ -184,6 +199,11 @@ class ContributionPayloadShapeTest extends TestCase
             ->set('state.address_public', '123 Bay Street, Makati')
             ->set('state.description_eng', 'A calm neighborhood spa.')
             ->set('duplicateAcknowledged', true)
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) $user->getKey())->firstOrFail();
