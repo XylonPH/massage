@@ -89,17 +89,6 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
-            ->set('state.official_name', 'Calm Springs Wellness Inc.')
-            ->set('state.country_id', 608)
-            ->set('state.region_id', 1)
-            ->set('state.city_name', 'Makati')
-            ->set('state.street_address', '123 Bay Street')
-            ->set('state.address_public', '123 Bay Street, Makati')
-            ->call('addRow', 'contact_channel_list')
-            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
-            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
-            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
-            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('save')
             ->assertRedirect(route('workspace.editorial.establishment.index'));
 
