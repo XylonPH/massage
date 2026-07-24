@@ -47,6 +47,11 @@ class ContributionTest extends TestCase
             ->test(EstablishmentForm::class)
             ->set('isContribution', true)
             ->set('state.display_name_eng', 'Harbor Calm Spa')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Manila')
+            ->set('state.street_address', '123 Bay Street')
             ->set('state.address_public', '123 Bay Street, Manila')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -74,6 +79,11 @@ class ContributionTest extends TestCase
             ->test(EstablishmentForm::class)
             ->set('isContribution', true)
             ->set('state.display_name_eng', 'Community Spa')
+            ->set('state.official_name', 'Community Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Quezon City')
+            ->set('state.street_address', '456 North Avenue')
             ->set('state.address_public', 'Quezon City')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -375,6 +385,12 @@ class ContributionTest extends TestCase
             ->set('state.mode_service_delivery', ['HM'])
             ->set('state.status_establishment', 'OP')
             ->set('state.shower_availability', 'IR')
+            ->set('state.official_name', 'Mobile Massage Co Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', 'Makati, Philippines')
             ->call('save');
 
         $contribution = Contribution::query()->where('submitted_by_user_id', (string) auth()->id())->first();
@@ -455,6 +471,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'Harbor Calm Spa')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep');
 
         $test->assertSet('currentStep', 3);
@@ -512,6 +534,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'A Totally Unique Spa Name')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'A Totally Unique Spa Name Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep')
             ->call('save')
             ->assertHasNoErrors(['duplicateAcknowledged']);
@@ -577,6 +605,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'Harbor Calm Spa')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep');
 
         $test->assertSee(__('workspace.add_spa_duplicate_warning_title'));
@@ -601,6 +635,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'Harbor Calm Spa')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true)
             ->call('save')
@@ -626,6 +666,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'Harbor Calm Spa')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true);
 
@@ -660,6 +706,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'Harbor Calm Spa')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep')
             ->set('duplicateAcknowledged', true);
 
@@ -692,6 +744,12 @@ class ContributionTest extends TestCase
             ->set('state.display_name_fil', 'Harbor Calm Spa (Filipino)')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Harbor Calm Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->set('duplicateAcknowledged', true)
             ->call('save');
 
@@ -781,6 +839,11 @@ class ContributionTest extends TestCase
             ->test(EstablishmentForm::class)
             ->set('isContribution', true)
             ->set('state.display_name_eng', 'Verification Spa')
+            ->set('state.official_name', 'Verification Spa Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Manila')
+            ->set('state.street_address', '123 Verification Street')
             ->set('state.address_public', '123 Verification Street, Manila')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
@@ -828,5 +891,68 @@ class ContributionTest extends TestCase
             ->html();
 
         $this->assertSame(1, substr_count($html, 'aria-label="Language"'));
+    }
+
+    public function test_submission_requires_full_address(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
+            ->set('state.display_name_eng', 'Test Spa')
+            ->set('state.type_spa', 'CS')
+            ->set('state.status_establishment', 'OP')
+            ->call('save');
+
+        $test->assertHasErrors([
+            'state.official_name', 'state.country_id', 'state.region_id',
+            'state.city_name', 'state.street_address', 'state.address_public',
+        ]);
+    }
+
+    public function test_compose_address_public_excludes_street_detail_for_home_service_only_spa(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'HP')
+            ->set('state.mode_service_delivery', ['HM'])
+            ->set('state.country_id', 1)
+            ->set('state.street_address', '123 Test Street')
+            ->set('state.city_name', 'Makati City')
+            ->call('composeAddressPublic');
+
+        $this->assertStringNotContainsString('123 Test Street', $test->get('state.address_public'));
+        $this->assertStringContainsString('Makati City', $test->get('state.address_public'));
+    }
+
+    public function test_compose_address_public_includes_street_detail_for_fixed_premises_spa(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'CS')
+            ->set('state.country_id', 1)
+            ->set('state.street_address', '123 Test Street')
+            ->set('state.city_name', 'Makati City')
+            ->call('composeAddressPublic');
+
+        $this->assertStringContainsString('123 Test Street', $test->get('state.address_public'));
+    }
+
+    public function test_official_name_validation_error_opens_identity_tab_not_location(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'CS')
+            ->call('save');
+
+        $test->assertHasErrors('state.official_name');
+        $this->assertSame('identity', $test->get('activeDetailTab'));
     }
 }

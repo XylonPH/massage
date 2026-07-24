@@ -12,6 +12,10 @@
         the 8 spa-detail tabs themselves (x-show="tab === '...'" with fixed wire:model
         targets that never change per element).
     --}}
+    <x-form.field :label="__('editorial.est_official_name')" :help="__('editorial.est_official_name_hint')" :error="$errors->first('state.official_name')">
+        <x-form.input wire:model="state.official_name" maxlength="255" />
+    </x-form.field>
+
     @foreach (['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'] as $lang)
         <div x-show="$wire.activeLanguageTab === '{{ $lang }}'" wire:key="display-name-field-{{ $lang }}">
             <x-form.field :label="__('editorial.est_display_name_eng')" :error="$errors->first('state.display_name_'.$lang)">

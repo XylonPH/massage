@@ -1,9 +1,5 @@
 {{-- Location --}}
 <div x-show="tab === 'location'" x-cloak wire:key="tab-content-location" class="mt-5 space-y-5">
-    <x-form.field :label="__('editorial.est_official_name')" :help="__('editorial.est_official_name_hint')" :error="$errors->first('state.official_name')">
-        <x-form.input wire:model="state.official_name" maxlength="255" />
-    </x-form.field>
-
     <div class="grid gap-5 sm:grid-cols-2">
         <x-form.field :label="__('editorial.est_country')" :error="$errors->first('state.country_id')">
             <x-form.select wire:model.live="state.country_id" :options="app(\App\Support\Address\AddressLookup::class)->countries()" :placeholder="__('editorial.select_placeholder')" />

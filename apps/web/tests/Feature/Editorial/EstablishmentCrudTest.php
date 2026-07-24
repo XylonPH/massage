@@ -89,6 +89,12 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('save')
             ->assertRedirect(route('workspace.editorial.establishment.index'));
 
@@ -126,6 +132,12 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', '')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('nextStep')
             ->assertHasErrors(['state.type_spa' => 'required'])
             ->assertSet('activeDetailTab', 'classification')
@@ -146,6 +158,12 @@ class EstablishmentCrudTest extends TestCase
             ->test(EstablishmentForm::class, ['establishment' => (string) $establishment->getKey()])
             ->assertSet('state.display_name_eng', 'Old Name')
             ->set('state.display_name_eng', 'New Name')
+            ->set('state.official_name', 'Old Name Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('save');
 
         $this->assertSame('New Name', $establishment->refresh()->display_name['eng']);
@@ -176,6 +194,12 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('addRow', 'landmark_list')
             ->set('state.landmark_list.0.landmark_name', 'City Hall')
             ->set('state.landmark_list.0.walking_duration_minute', 5)
@@ -204,6 +228,12 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->set('state.operating_hours.0.open_time', '09:00')
             ->set('state.operating_hours.0.close_time', '18:00')
             ->call('save');
@@ -240,6 +270,12 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Wellness Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->set('state.shower_availability', 'IR')
             ->set('state.parking_availability_list', ['PRK_ONS_FREE'])
             ->call('save');
@@ -287,6 +323,7 @@ class EstablishmentCrudTest extends TestCase
             ->set('state.floor_label', '2nd Floor')
             ->set('state.unit_label', 'Unit 201')
             ->set('state.postal_code', '1200')
+            ->set('state.address_public', '123 Bay Street, Makati')
             ->call('save');
 
         $record = Establishment::query()->first();
