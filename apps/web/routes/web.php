@@ -28,6 +28,7 @@ use App\Http\Middleware\EnsureWorkspacePermission;
 use App\Livewire\Workspace\Editorial\ArticleIndex as EditorialArticleIndex;
 use App\Livewire\Workspace\Editorial\ArticleReview as EditorialArticleReview;
 use App\Livewire\Workspace\Editorial\ContributionIndex as EditorialContributionIndex;
+use App\Livewire\Workspace\Editorial\ContributionReview as EditorialContributionReview;
 use App\Livewire\Workspace\Editorial\EditorialHome;
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
 use App\Livewire\Content\ComicReader;
@@ -184,6 +185,7 @@ Route::prefix('workspace/editorial')
         Route::get('/article', EditorialArticleIndex::class)->name('article.index');
         Route::get('/article/{article}/review', EditorialArticleReview::class)->name('article.review');
         Route::get('/contribution', EditorialContributionIndex::class)->name('contribution.index');
+        Route::get('/contribution/{contribution}/review', EditorialContributionReview::class)->name('contribution.review');
         Route::get('/establishment', EstablishmentIndex::class)->name('establishment.index');
         Route::get('/establishment/new', EstablishmentForm::class)->name('establishment.create');
         Route::get('/establishment/{establishment}/edit', EstablishmentForm::class)->name('establishment.edit');

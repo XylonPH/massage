@@ -3,6 +3,7 @@
 namespace Tests\Feature\Editorial;
 
 use App\Models\Contribution;
+use App\Models\Establishment;
 use App\Models\User;
 use App\Models\UserAccess;
 use Livewire\Livewire;
@@ -15,6 +16,7 @@ class ContributionReviewTest extends TestCase
     {
         Contribution::query()->delete();
         UserAccess::query()->delete();
+        Establishment::query()->delete();
         parent::tearDown();
     }
 
@@ -64,5 +66,67 @@ class ContributionReviewTest extends TestCase
             ->assertSee('Pending Spa')
             ->assertSee((string) $pending->getKey())
             ->assertDontSee('Already Decided Spa');
+    }
+
+    public function test_approving_promotes_the_contribution_and_records_the_decision(): void
+    {
+        $reviewer = $this->editorialUser();
+        $contribution = $this->pendingContribution();
+
+        Livewire::actingAs($reviewer)
+            ->test(\App\Livewire\Workspace\Editorial\ContributionReview::class, ['contribution' => (string) $contribution->getKey()])
+            ->call('requestApproval')
+            ->set('approvalConfirmed', true)
+            ->call('approve')
+            ->assertRedirect(route('workspace.editorial.contribution.index'));
+
+        $contribution->refresh();
+        $this->assertSame('APR', $contribution->status_contribution);
+        $this->assertNotNull($contribution->reviewed_at);
+        $this->assertSame((string) $reviewer->getKey(), $contribution->reviewer_user_id);
+        $this->assertSame(1, \App\Models\Establishment::query()->where('display_name.eng', 'Test Spa')->count());
+    }
+
+    public function test_rejecting_requires_a_decision_note_and_creates_no_establishment(): void
+    {
+        $reviewer = $this->editorialUser();
+        $contribution = $this->pendingContribution();
+
+        Livewire::actingAs($reviewer)
+            ->test(\App\Livewire\Workspace\Editorial\ContributionReview::class, ['contribution' => (string) $contribution->getKey()])
+            ->call('reject')
+            ->assertHasErrors('decisionNote');
+
+        $this->assertSame(0, \App\Models\Establishment::query()->count());
+    }
+
+    public function test_rejecting_with_a_reason_records_the_decision(): void
+    {
+        $reviewer = $this->editorialUser();
+        $contribution = $this->pendingContribution();
+
+        Livewire::actingAs($reviewer)
+            ->test(\App\Livewire\Workspace\Editorial\ContributionReview::class, ['contribution' => (string) $contribution->getKey()])
+            ->set('decisionNote', 'Missing verifiable contact information.')
+            ->call('reject')
+            ->assertRedirect(route('workspace.editorial.contribution.index'));
+
+        $contribution->refresh();
+        $this->assertSame('REJ', $contribution->status_contribution);
+        $this->assertSame('Missing verifiable contact information.', $contribution->decision_note);
+        $this->assertSame(0, \App\Models\Establishment::query()->count());
+    }
+
+    public function test_a_decided_contribution_cannot_be_decided_again(): void
+    {
+        $reviewer = $this->editorialUser();
+        $contribution = $this->pendingContribution();
+        $contribution->forceFill(['status_contribution' => 'APR'])->save();
+
+        Livewire::actingAs($reviewer)
+            ->test(\App\Livewire\Workspace\Editorial\ContributionReview::class, ['contribution' => (string) $contribution->getKey()])
+            ->set('decisionNote', 'Too late.')
+            ->call('reject')
+            ->assertStatus(409);
     }
 }
