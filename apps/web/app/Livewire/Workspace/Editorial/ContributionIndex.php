@@ -6,9 +6,11 @@ use App\Models\Contribution;
 use App\Support\Workspace\WorkspaceAccess;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
 
+#[Layout('layouts.workspace', ['navActive' => 'admin-editorial'])]
 class ContributionIndex extends Component
 {
     use WithPagination;
