@@ -740,4 +740,34 @@ class ContributionTest extends TestCase
             ->assertOk()
             ->assertSee('Verification Spa');
     }
+
+    /**
+     * The task-2 brief specified this test as a plain HTTP GET to
+     * '/workspace/contribution/establishment/new' followed by getContent(). That request
+     * mounts EstablishmentForm with its default currentStep === 1 ("who you are"), and the
+     * language switcher only ever renders inside the step-2 "spa details" tab body (see
+     * establishment-form.blade.php's `@if ($isContribution && $currentStep === 1) ... @elseif
+     * (... === 3) ... @else` branching) — step 1 never includes it, by design (brief Step 5:
+     * "not on step 1 'who you are' or step 3 'review and submit'"). A bare GET to /new
+     * therefore contains zero occurrences of aria-label="Language" both before and after this
+     * fix, so the literal brief assertion of exactly 1 can never pass against real routing
+     * behavior. Verified empirically: dumping the fetched HTML for that literal request shows
+     * 0 occurrences of 'establishment-language-switcher', 'tab_identity', or
+     * 'aria-label="Language"' — only the step-1 "who you are" partial is present.
+     * Using Livewire::test() with currentStep explicitly advanced to 2 (the same pattern
+     * already used by other tests in this file, e.g.
+     * test_classification_tab_shows_type_of_spa_not_establishment_type above) reaches the
+     * actual tab content the switcher lives in and is a meaningful regression guard for
+     * "rendered once, not once per tab".
+     */
+    public function test_language_switcher_renders_exactly_once_not_once_per_tab(): void
+    {
+        $html = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->html();
+
+        $this->assertSame(1, substr_count($html, 'aria-label="Language"'));
+    }
 }

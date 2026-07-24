@@ -150,6 +150,8 @@
 
                 {{-- Pure White Form Body Container --}}
                 <div class="min-w-0 min-h-[34rem] space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-700 dark:bg-ink-900 sm:p-8">
+                    @include('livewire.workspace.establishment-form._language-switcher')
+
                     @include('livewire.workspace.establishment-form._tab-identity')
                     @include('livewire.workspace.establishment-form._tab-classification')
                     @include('livewire.workspace.establishment-form._tab-access')

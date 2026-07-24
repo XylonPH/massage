@@ -58,14 +58,26 @@ class EstablishmentCrudTest extends TestCase
             ->assertDontSee('Ocean Breeze');
     }
 
-    public function test_language_switcher_aria_label_matches_its_own_tab_not_identity_on_every_tab(): void
+    /**
+     * Was test_language_switcher_aria_label_matches_its_own_tab_not_identity_on_every_tab,
+     * asserting the OLD per-tab pill-button switcher's tab-specific aria-label appeared for
+     * both the Identity and Location tabs (i.e. the same control rendering twice, once per
+     * tab, each carrying its own tab's label). The establishment-form language switcher was
+     * converted to a single page-level dropdown with one tab-independent aria-label="Language",
+     * rendered exactly once above the tab content regardless of which detail tab is active
+     * (see _language-switcher.blade.php); updated 2026-07-24 to assert that instead.
+     */
+    public function test_language_switcher_renders_once_with_a_single_aria_label_regardless_of_active_tab(): void
     {
         $user = $this->editor();
 
         $test = Livewire::actingAs($user)->test(EstablishmentForm::class);
 
-        $test->assertSee('aria-label="'.__('editorial.tab_identity').' language"', false);
-        $test->assertSee('aria-label="'.__('editorial.tab_location').' language"', false);
+        $test->assertSee('aria-label="Language"', false);
+        $this->assertSame(1, substr_count($test->html(), 'aria-label="Language"'));
+
+        $test->set('activeDetailTab', 'location');
+        $this->assertSame(1, substr_count($test->html(), 'aria-label="Language"'));
     }
 
     public function test_editor_can_create_an_establishment_with_only_required_fields(): void

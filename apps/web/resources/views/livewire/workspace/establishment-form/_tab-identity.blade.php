@@ -1,7 +1,5 @@
 {{-- Identity --}}
 <div x-show="tab === 'identity'" wire:key="tab-content-identity" class="mt-5 space-y-5">
-    @include('livewire.workspace.establishment-form._language-switcher', ['switcherLabel' => __('editorial.tab_identity')])
-
     {{--
         Six statically-bound elements per field (one per language), toggled via
         x-show, rather than a single element whose wire:model target string is

@@ -66,8 +66,6 @@
         </x-form.field>
     </div>
 
-    @include('livewire.workspace.establishment-form._language-switcher', ['switcherLabel' => __('editorial.tab_location')])
-
     {{-- See _tab-identity.blade.php for why these are six statically-bound elements per field (one per language, toggled via x-show) rather than one element with a re-interpolated wire:model string. --}}
     @foreach (['eng', 'fil', 'spa', 'kor', 'zho_hant', 'zho_hans'] as $lang)
         <div x-show="$wire.activeLanguageTab === '{{ $lang }}'" wire:key="direction-note-field-{{ $lang }}">

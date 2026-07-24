@@ -165,6 +165,7 @@ return [
     'est_air_conditioning_information' => 'Air-Conditioning',
     'est_amenities' => 'General Amenities',
     'est_accessibility_information' => 'Accessibility Features',
+    'language_switcher_label' => 'Editing language',
     'lang_eng' => 'English',
     'lang_fil' => 'Filipino',
     'lang_spa' => 'Spanish',
