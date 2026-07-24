@@ -1,7 +1,7 @@
 Title: Massage Nexus Features
-Document Version: 3.24
+Document Version: 3.25
 Date Created: 2026-06-30
-Revision Date: 2026-07-23
+Revision Date: 2026-07-24
 Document Description: This is the master working inventory of website features and feature details planned for Massage Nexus. It serves as the owner's memory and planning checklist before and during implementation: the grouped feature summaries explain the major systems, while the Detailed Working Feature Inventory preserves the smaller pages, fields, actions, workflows, tools, controls, and possible additions that must not disappear merely because a separate specification exists. This file is not a Roadmap, implementation strategy, changelog, release log, database schema, or list of document revisions.
 
 Platform Scope: This file covers the public Massage Nexus website and its browser-based user, provider, seller, advertiser, contributor, research, translation, editorial, Support, moderation, and administration workspaces. It may mention mobile, desktop, APIs, and integrations where the website must support or connect to them, while platform-specific behavior remains in the separate application documents.
@@ -282,6 +282,9 @@ The platform may provide separate First-Party App, Partner, and approved Public 
 
 61. Branded Portal
 Branded Portal allows an approved spa, therapist, school, training institution, organization, or selected partner to present a customized public website through a Massage Nexus subdomain, custom domain, or approved white-label surface. It continues to use shared accounts, normalized profiles, permissions, learning, booking, content, and workspace systems. The customized portal does not replace the authoritative Massage Nexus profile or weaken platform trust, moderation, verification, and disclosure rules.
+
+62. Establishment Profile Expansion (Planning Capture)
+Captured 2026-07-24 as a large batch of dictated requirements covering: corrected Amenities/Accessibility hide-and-clear behavior for Home Service Provider plus a fuller type_spa compatibility matrix and a warning-not-hard-error principle for illogical-but-possible combinations; a new Legal & Verification concept (business registration number, TIN, other registration numbers, opt-in public disclosure, possible dedicated tab) related to official_name and the still-unbuilt verification-upload step; Add a Spa form UI/UX fixes (Parking mutual-exclusivity and Amenities-list overlap, facility-option wording, shared-facility capacity counts, description character limits and a live counter, an Access/Delivery tab split, a dedicated Parking tab with a paid-parking rate); missing public-profile fields (payment methods were already covered; pool/buffet/gym/bar/cafeteria amenities, floor count, and staff gender/language summaries were genuinely missing and have been added to establishment_main); a phased multi-step wizard restructuring (image upload reusing the article MediaImage pattern, menu/pricing, staff assignment, promos/vouchers, house rules using the article-body pattern, renumbered review/submit); confirmation that menu/pricing and staff/practitioner tie-in already exist while promos/vouchers and a split establishment_location collection do not yet exist; and long-term Google Maps import and AI-assisted intake ideas. Full detail is in section 36 of the Detailed Working Feature Inventory below and in the Simple Checklist's matching section 31.
 
 DETAILED WORKING FEATURE INVENTORY
 ================================================================================
@@ -4106,3 +4109,82 @@ Neural Agents, Nexus Cast, and Mascots are architecturally and creatively separa
 - Safe degraded mode
 - No authorization bypass
 - No stale private-data exposure
+
+
+
+================================================================================
+36. ESTABLISHMENT PROFILE EXPANSION (PLANNING CAPTURE, NOT YET IMPLEMENTED)
+================================================================================
+
+Captured 2026-07-24 from the project owner's dictated requirements for the Add a Spa contribution
+form, the establishment public profile, and the establishment data model. Nothing in this section
+is implemented yet; see the matching Simple Checklist section 31 for completion-status checkboxes
+and docs/01-project/roadmap.txt's matching 2026-07-24 checkpoint for phase placement.
+
+
+36.1 Amenities/Accessibility Hide-and-Clear Bugfix (Corrected Scope)
+----------------------------------------------------------------------
+- Actively clear Amenities/Accessibility tab state the moment Type of Spa becomes Home Service Provider, not only strip it silently at submit time
+- Visible notice explaining why the fields were cleared
+- Full type_spa-vs-other-classification-field compatibility matrix (Home Service Provider vs. Access Model = Walk-in, Service Delivery Mode = On-Site, and likely some Operation Model / Physical Setting options), still to be defined
+- Warning-not-hard-error design principle for illogical-but-not-impossible field combinations that the compatibility-matrix work may discover
+
+
+36.2 Legal & Verification (New Concept)
+----------------------------------------
+- official_name clarified as the likely legal/registered business name (DTI/SEC/city government), distinct from display_name
+- Business registration number
+- Tax identification number (TIN)
+- Other registration/verification numbers
+- Default-private with claimed-operator opt-in public disclosure (transparency)
+- Possible dedicated Legal & Verification form tab, separate from Identity
+- Related to but distinct from the still-unbuilt documentation/verification upload step
+
+
+36.3 Add a Spa Form UI/UX Fixes
+----------------------------------
+- Identity/Location language selector duplication: investigated and confirmed NOT a bug — one shared $activeLanguageTab component property is intentionally reused across both tabs via a shared partial
+- Identity-tab button/toggle-group-instead-of-dropdown field: no toggle-group currently exists in _tab-identity.blade.php (only selects and text/textarea inputs); needs owner clarification on which field or tab was meant
+- Parking (parking_availability_list): make No Parking Available mutually exclusive with every other option
+- Remove or cross-validate the general Amenities list's separate Parking (PRK) option against parking_availability_list
+- Facility-option wording: In Room (Private) to Private Room; Available on Request to Available Upon Request; Shared to Shared Space; Shower Availability's Shared specifically to Varsity Shower — all applied to establishment_classification.json
+- Shared/communal facility capacity-count fields: shower, sauna, steam room, jacuzzi shared capacity — added to establishment_main
+- Locker total count and available/working count — added to establishment_main
+- Minimum/maximum character validation and a live character counter for short_description and full_description, matching the article editor's short_description counter pattern (apps/web/resources/views/workspace/article/editor.blade.php and apps/web/resources/js/article-editor.js's data-article-description handling); exact min/max character limits not yet defined
+- Split the Access tab into separate Access and (Service) Delivery tabs
+- Dedicated Parking tab, split out of its current location
+- Paid-parking rate field, once Parking's paid/free distinction is confirmed as needing a stored rate rather than free text
+
+
+36.4 Missing Public-Profile Fields
+-------------------------------------
+- Payment methods accepted — already covered by establishment_main.payment_method_list and data/taxonomy/shared/finance_and_payment.json's type_payment_method taxonomy (Cash, Credit Card, Debit Card, Bank Transfer, E-Wallet, Check, Voucher, Stored-Value Card, Transit Card, QR Payment, Mobile Payment, Other)
+- Swimming pool, food buffet, gym, bar, cafeteria — added as new amenity_list taxonomy codes (POOL, BUFFET, GYM, BAR, CAFE)
+- Building floor count — added as establishment_main.building_floor_count
+- Staff/therapist gender(s) on staff — added as establishment_main.staff_gender_list, a denormalized summary sourced from the confirmed practitioner roster (individual therapist gender remains authoritative on practitioner_main)
+- Staff/therapist communication languages — added as establishment_main.staff_language_id_list, a denormalized summary sourced from the confirmed practitioner roster
+- Sub-type-specific fields for Salon Spa, Nail Spa, and Beauty Spa (the type_spa codes SL, NL, BT already exist in the taxonomy); the owner did not specify exact additional fields (e.g. hair services, nail art, facial/skincare), so none were invented — flagged as needing further product definition
+
+
+36.5 Multi-Step Wizard Restructuring (Phased Backlog)
+----------------------------------------------------------
+- Image-upload step for the spa, reusing/generalizing the MediaImage model (apps/web/app/Models/Media/MediaImage.php, which already carries a related_establishment_id_list) and the StoreUploadedArticleImage action pattern built for articles
+- Menu/price-listing step, tying listed items to establishment_service
+- Staff/therapist/practitioner-assignment step
+- Promos/vouchers step
+- House-rules step using the same rich-text editing pattern as articles, implying new storage in the spirit of article_body
+- Renumbered final review/submit step
+
+
+36.6 New/Changed Collections
+---------------------------------
+- Split establishment_location out of establishment_main into its own collection; no structure guide exists yet and none was drafted in this pass — the project owner notes this class of file takes substantial dedicated effort
+- Menu/pricing — already exists: establishment_service and service_main structure guides
+- Staff/practitioner tie-in to a specific establishment — already exists: practitioner_main and establishment_practitioner structure guides
+- Promos/vouchers for establishments — does not yet exist; quote_main is an unrelated homepage Quote of the Day system (docs/06-user-interface/home-page-ui.txt section 20), not an establishment promo/voucher system
+
+
+36.7 Future External-Integration Ideas (Long-Term Aspirational)
+----------------------------------------------------------------------
+- Google/Google Maps listing import to pre-fill spa details during submission, reducing manual data entry
+- AI-assisted intake: when the platform's AI context feature is enabled for a user, parse pasted or uploaded free-text (e.g. a forum conversation) to auto-fill spa detail fields, therapist list, and promos/vouchers

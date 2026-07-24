@@ -1,7 +1,7 @@
 Title: Massage Nexus Spa Profile UI
-Document Version: 0.41
+Document Version: 0.50
 Date Created: 2026-07-18
-Revision Date: 2026-07-23
+Revision Date: 2026-07-24
 
 Spa Profile UI Documentation
 =============================
@@ -143,3 +143,28 @@ Open Items
 - Decide whether the coordinate-based external map action should remain the default or be supplemented by an embedded map after a provider is selected.
 - Add a Report action once the moderation/reporting flow is designed.
 - Confirm whether Facilities should absorb the Overview amenities list or remain Treatment-Areas-only.
+
+Planned Additions (Captured 2026-07-24, Not Yet Implemented)
+================================================================
+
+The project owner dictated a batch of requirements affecting what this page should eventually show.
+Full detail is in docs/01-project/simple-checklist.txt section 31 and docs/01-project/features.txt
+section 36. Items relevant to this page specifically:
+
+- A possible new "About, Verification, and Sources"-adjacent Legal & Verification section: whether
+  official_name represents the legally registered business name, plus business registration number,
+  TIN, and other registration numbers, default-private with claimed-operator opt-in public
+  disclosure. Whether/how this should surface on the public profile (vs. remaining purely internal
+  to the operator's own workspace) is undecided.
+- New public-facing fields once data/structure_guide/establishment_main.php version 1.60's additions
+  are wired to persistence: payment methods accepted (already modeled, not yet surfaced here),
+  swimming pool / food buffet / gym / bar / cafeteria amenities, building floor count, and staff
+  gender/language summaries. These would most plausibly extend the Overview amenities grid (staff
+  gender/language) and the Facilities tab or Overview (building floor count, generic amenities)
+  rather than requiring new tabs, but the exact placement is not yet decided.
+- Shared/communal facility capacity counts (shower, sauna, steam room, jacuzzi shared capacity;
+  locker total/available count) would most plausibly extend the Facilities tab's Treatment Areas
+  display.
+- A future promos/vouchers system (not yet modeled at the data layer — see the Features/Checklist
+  capture) would populate the still-unimplemented Promotions and Updates tab referenced in the Open
+  Items above.

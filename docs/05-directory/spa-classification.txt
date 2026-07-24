@@ -1,7 +1,7 @@
 Document Title: Massage Nexus: Spa Classification
-Document Version: 1.80
+Document Version: 1.90
 Date Created: 2026-07-11
-Revision Date: 2026-07-21
+Revision Date: 2026-07-24
 
 DOCUMENT DESCRIPTION
 --------------------
@@ -284,6 +284,38 @@ TR   | Tourists          | Is prepared for travelers through location, language,
 OW   | Office Workers    | Supports workplace stress, occupational strain, sitting, standing, or commuting fatigue.
 
 Client Focus describes intentional service relevance and does not restrict access unless Client Access says otherwise.
+
+================================================================================
+13. PLANNED CHANGES (CAPTURED 2026-07-24, NOT YET IMPLEMENTED)
+================================================================================
+
+The project owner dictated a batch of requirements affecting establishment classification. Full
+detail is in docs/01-project/simple-checklist.txt section 31 and docs/01-project/features.txt
+section 36; data/taxonomy/massage_nexus/establishment_classification.json already carries the
+wording and note changes below.
+
+- A full compatibility matrix between type_spa (this document, section 1) and the other
+  classification fields still needs to be defined: Home Service Provider (HP) is already
+  documented as facilities-incompatible via the Add a Spa form's hasPhysicalPremises() check
+  (docs/06-user-interface/add-spa-form-ui.txt section 5.1), but should likely also become
+  incompatible with Access Model = Walk-in (section 5) and Service Delivery Mode = On-Site
+  (section 4), and possibly some Operation Model (section 6) / Physical Setting (section 3)
+  combinations. Field-value combinations that are illogical but not strictly impossible should
+  surface as a warning rather than a hard validation error, since the combination might be
+  intentional.
+- Facility-option wording changed on the related establishment_classification.json taxonomy (not
+  this document's own field tables, which do not repeat facility-option labels): "In Room
+  (Private)" to "Private Room"; "Available on Request" to "Available Upon Request"; "Shared" to
+  "Shared Space", except Shower Availability's "Shared", which became "Varsity Shower".
+- Parking Availability (establishment_classification.json) gained a documented requirement that
+  "No Parking Available" become mutually exclusive with every other option, and a note that its
+  overlap with the general Amenities list's separate "Parking" option needs cross-validation or
+  deprecation.
+- New amenity_list codes: POOL (Swimming Pool), BUFFET (Food Buffet), GYM (Gym), BAR (Bar), CAFE
+  (Cafeteria).
+- Sub-type-specific fields for Salon Spa (SL), Nail Spa (NL), and Beauty Spa (BT) were flagged as
+  possibly needed (e.g. hair services, nail art, facial/skincare services) but not defined; the
+  owner did not specify exact fields.
 
 RELATED STRUCTURE TAXONOMY
 --------------------------

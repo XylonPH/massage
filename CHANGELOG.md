@@ -6,6 +6,19 @@ individual entries.
 
 ## Unreleased
 
+- 2026-07-24: Captured a large batch of dictated establishment-profile-expansion requirements as
+  planning only, not yet implemented — see `docs/01-project/roadmap.txt`, `simple-checklist.txt`
+  section 31, and `features.txt` section 36 for the full backlog (compatibility-matrix validation,
+  a new Legal & Verification concept, Add a Spa form UI/UX fixes, a phased multi-step wizard
+  restructuring, and new/changed collections). Alongside the planning capture, applied the
+  well-defined additive pieces directly: added shared/communal facility capacity-count fields,
+  building floor count, and staff gender/language summary fields to
+  `data/structure_guide/establishment_main.php` (bumped to version 1.60); relabeled several
+  facility-option taxonomy values, added new generic amenity codes (pool, buffet, gym, bar,
+  cafeteria), and documented the Parking mutual-exclusivity requirement in
+  `data/taxonomy/massage_nexus/establishment_classification.json`; and updated
+  `docs/06-user-interface/add-spa-form-ui.txt`, `spa-profile-ui.txt`, and
+  `docs/05-directory/spa-classification.txt` accordingly.
 - Redesigned the "Add a Spa" establishment contribution form as a 3-step Livewire wizard (who you
   are, spa details, review and submit) shared with the direct-edit editorial establishment form,
   with 6-language multilingual capture, dynamic physical-premises and closed-date rules, an

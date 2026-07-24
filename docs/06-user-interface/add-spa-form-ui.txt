@@ -1,7 +1,7 @@
 Title: Massage Nexus Add a Spa Form (Establishment Contribution and Editorial Establishment Form)
-Document Version: 1.10
+Document Version: 1.20
 Date Created: 2026-07-23
-Revision Date: 2026-07-23
+Revision Date: 2026-07-24
 Document Description: Describes the actual current behavior of the shared EstablishmentForm Livewire component that powers both the public member "Add a Spa" contribution flow (/workspace/contribution/establishment/new) and the direct-edit editorial establishment form (/workspace/editorial/establishment/{new|edit}) — its step structure, field-by-field intent per tab, dynamic UI rules, duplicate-check timing, validation, submission shape, and the reference-data dependency used for country/region/city selection.
 
 Related Documents:
@@ -370,3 +370,76 @@ docs/02-governance/edit-system.txt sections 12-14).
 - Runtime storage (contribution_main, is_workspace_access_requested, status_contribution) has not
   yet migrated to the user_contribution structure guide's exact collection name and field names
   (section 11.2).
+
+================================================================================
+13. PLANNED CHANGES (CAPTURED 2026-07-24, NOT YET IMPLEMENTED)
+================================================================================
+
+The project owner dictated a large batch of requirements for this form. Nothing in this section is
+built yet; it documents planned scope so it is not lost and so other concurrent contributors can see
+it. See docs/01-project/simple-checklist.txt section 31 and docs/01-project/features.txt section 36
+for the complete backlog capture, including items outside this form's boundary (public-profile
+fields, new collections, external integrations).
+
+13.1 Language selector — verified not a duplication
+Section 6 documents that Identity and Location each `@include` the same
+_language-switcher.blade.php partial, bound to the single component property $activeLanguageTab.
+This was re-verified against the owner's report of "duplicated" language selectors: it is one
+shared language context correctly reused across two tabs, not two independent selectors that could
+drift out of sync. No change is planned for this item; it is recorded here only to close the
+question.
+
+13.2 Amenities/Accessibility hide-and-clear correction
+Section 5.1 documents that PHYSICAL_PREMISES_FIELDS are force-reset server-side at save/submit time
+when hasPhysicalPremises() is false. Planned correction: the reset should also happen client-side
+the moment type_spa/mode_service_delivery changes make hasPhysicalPremises() false while the user is
+still on the form (not only at save/submit), with a visible notice explaining why the fields were
+cleared. Separately, Home Service Provider should become incompatible with Access Model = Walk-in,
+Service Delivery Mode = On-Site, and likely some Operation Model / Physical Setting options, as part
+of a broader type_spa compatibility matrix that still needs to be defined. Illogical-but-not-
+impossible combinations found while building that matrix should surface as a warning/notice rather
+than a hard validation error.
+
+13.3 Legal & Verification tab (new)
+official_name (section 4.4, currently a plain Location-tab field with no documented meaning) is
+believed to represent the legally registered business name (DTI/SEC/city government), distinct from
+display_name. If confirmed, this implies new fields — business registration number, TIN, and other
+registration/verification numbers — default-private with claimed-operator opt-in public disclosure,
+likely warranting their own Legal & Verification tab separate from Identity. Related to, but distinct
+from, the still-unbuilt documentation/verification upload step for owner submissions.
+
+13.4 Tab restructuring
+- Section 4.3's "Access and Delivery" tab may split into two separate tabs: Access, and (Service)
+  Delivery.
+- Parking (currently rendered on the Location tab, section 4.4) may get its own dedicated tab,
+  including a new capacity field and a paid-parking rate field if Parking's paid/free distinction is
+  confirmed as needing a stored rate.
+- A field/toggle-group-vs-dropdown UI concern was raised for the Identity tab (section 4.1); no
+  toggle-group currently exists in that tab (only selects and text/textarea inputs), so the specific
+  field could not be identified from the current implementation and needs owner clarification.
+
+13.5 Field-level changes
+- Parking (parking_availability_list): No Parking Available should become mutually exclusive with
+  every other option; the general Amenities list's separate Parking (PRK) option should stop
+  representing the same concept independently.
+- Facility-option wording changes (taxonomy label text only): In Room (Private) to Private Room;
+  Available on Request to Available Upon Request; Shared to Shared Space, except Shower
+  Availability's Shared, which becomes Varsity Shower. Already applied to
+  data/taxonomy/massage_nexus/establishment_classification.json.
+- New shared/communal facility capacity-count fields (shower, sauna, steam room, jacuzzi shared
+  capacity; locker total/available count) and a building floor count, staff gender summary, and
+  staff language summary have been added to data/structure_guide/establishment_main.php (version
+  1.60); this form does not yet expose them.
+- short_description and description (full_description) currently have no minimum-character
+  requirement and no live counter; planned to add min/max validation (exact numbers not yet defined)
+  and a live character counter matching the article editor's short_description pattern
+  (apps/web/resources/views/workspace/article/editor.blade.php,
+  apps/web/resources/js/article-editor.js).
+
+13.6 Multi-step wizard restructuring (phased, aspirational)
+The 3-step contribution wizard (section 2) may eventually grow to include an image-upload step
+(reusing/generalizing the MediaImage model and StoreUploadedArticleImage action built for articles),
+a menu/price-listing step tied to establishment_service, a staff/therapist/practitioner-assignment
+step, a promos/vouchers step, a house-rules step using the article rich-text editing pattern, and a
+renumbered final review/submit step. This is documented as a phased backlog item only; it is not
+specified in implementation detail here.
