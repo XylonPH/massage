@@ -143,8 +143,8 @@
                         'contact' => __('editorial.tab_contact'),
                         'hours' => __('editorial.tab_hours'),
                         'facilities' => $this->hasPhysicalPremises() ? __('editorial.tab_facilities') : null,
-                        'amenities' => __('editorial.tab_amenities'),
-                        'accessibility' => __('editorial.tab_accessibility'),
+                        'amenities' => $this->hasPhysicalPremises() ? __('editorial.tab_amenities') : null,
+                        'accessibility' => $this->hasPhysicalPremises() ? __('editorial.tab_accessibility') : null,
                     ])" :icons="$tabIcons" :error-counts="$detailTabErrorCounts" />
                 </div>
 

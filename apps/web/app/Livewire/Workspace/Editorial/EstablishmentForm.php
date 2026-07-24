@@ -199,6 +199,26 @@ class EstablishmentForm extends Component
             $this->state['operating_hours'][(int) $matches[1]]['open_time'] = null;
             $this->state['operating_hours'][(int) $matches[1]]['close_time'] = null;
         }
+
+        if (in_array($key, ['type_spa', 'mode_service_delivery'], true) && ! $this->hasPhysicalPremises()) {
+            $this->clearPhysicalPremisesState();
+        }
+
+        if ($key === 'mode_access' && $value === 'WI' && ! $this->hasPhysicalPremises()) {
+            $this->state['mode_access'] = null;
+        }
+    }
+
+    private function clearPhysicalPremisesState(): void
+    {
+        foreach (self::PHYSICAL_PREMISES_FIELDS as $field) {
+            $this->state[$field] = in_array($field, self::LIST_FIELDS, true) ? [] : null;
+        }
+        $this->state['treatment_area_list'] = [];
+        if ($this->state['mode_access'] === 'WI') {
+            $this->state['mode_access'] = null;
+        }
+        $this->state['type_physical_setting'] = null;
     }
 
     public function mount(?string $establishment = null): void
@@ -487,10 +507,7 @@ class EstablishmentForm extends Component
         }
 
         if (! $this->hasPhysicalPremises()) {
-            foreach (self::PHYSICAL_PREMISES_FIELDS as $field) {
-                $this->state[$field] = in_array($field, self::LIST_FIELDS, true) ? [] : null;
-            }
-            $this->state['treatment_area_list'] = [];
+            $this->clearPhysicalPremisesState();
         }
 
         $plain = [];
@@ -527,10 +544,7 @@ class EstablishmentForm extends Component
         RateLimiter::hit($rateLimitKey, 60);
 
         if (! $this->hasPhysicalPremises()) {
-            foreach (self::PHYSICAL_PREMISES_FIELDS as $field) {
-                $this->state[$field] = in_array($field, self::LIST_FIELDS, true) ? [] : null;
-            }
-            $this->state['treatment_area_list'] = [];
+            $this->clearPhysicalPremisesState();
         }
 
         $establishment = [];

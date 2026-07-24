@@ -1,4 +1,5 @@
 {{-- Amenities --}}
+@if ($this->hasPhysicalPremises())
 <div x-show="tab === 'amenities'" x-cloak wire:key="tab-content-amenities" class="mt-5 space-y-5">
     @php($amenityIcons = [
         'WIFI' => 'M2 8.5a15 15 0 0 1 20 0 M5.5 12a10 10 0 0 1 13 0 M12 16.5h.01',
@@ -14,3 +15,4 @@
         <x-form.toggle-group :options="$taxonomy['amenity_list']" model="state.amenity_list" :icons="$amenityIcons" />
     </x-form.field>
 </div>
+@endif

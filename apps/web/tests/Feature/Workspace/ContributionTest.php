@@ -381,6 +381,65 @@ class ContributionTest extends TestCase
         $this->assertNull(data_get($contribution->proposed_data, 'establishment.shower_availability'));
     }
 
+    public function test_amenities_and_accessibility_tabs_hidden_for_home_service_only_spa(): void
+    {
+        $html = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'HP')
+            ->set('state.mode_service_delivery', ['HM'])
+            ->html();
+
+        $this->assertStringNotContainsString(__('editorial.tab_amenities'), $html);
+        $this->assertStringNotContainsString(__('editorial.tab_accessibility'), $html);
+    }
+
+    public function test_amenities_and_accessibility_tabs_visible_when_physical_premises_exist(): void
+    {
+        $html = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'MS')
+            ->html();
+
+        $this->assertStringContainsString(__('editorial.tab_amenities'), $html);
+        $this->assertStringContainsString(__('editorial.tab_accessibility'), $html);
+    }
+
+    public function test_switching_to_home_service_only_immediately_clears_already_entered_amenities(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'MS')
+            ->set('state.amenity_list', ['WIFI'])
+            ->set('state.mode_access', 'WI');
+
+        $this->assertSame(['WIFI'], $test->get('state.amenity_list'));
+        $this->assertSame('WI', $test->get('state.mode_access'));
+
+        $test->set('state.type_spa', 'HP')->set('state.mode_service_delivery', ['HM']);
+
+        $this->assertSame([], $test->get('state.amenity_list'));
+        $this->assertNull($test->get('state.mode_access'));
+    }
+
+    public function test_walk_in_access_cleared_for_home_service_only_but_other_access_modes_unaffected(): void
+    {
+        $test = Livewire::actingAs(User::factory()->create())
+            ->test(EstablishmentForm::class)
+            ->set('isContribution', true)
+            ->set('currentStep', 2)
+            ->set('state.type_spa', 'HP')
+            ->set('state.mode_service_delivery', ['HM'])
+            ->set('state.mode_access', 'AR');
+
+        $this->assertSame('AR', $test->get('state.mode_access'));
+    }
+
     public function test_entering_review_step_populates_duplicate_candidates_when_a_display_name_matches(): void
     {
         Establishment::query()->create([

@@ -1,4 +1,5 @@
 {{-- Accessibility --}}
+@if ($this->hasPhysicalPremises())
 <div x-show="tab === 'accessibility'" x-cloak wire:key="tab-content-accessibility" class="mt-5 space-y-5">
     @php($accessibilityIcons = [
         'SFE' => 'M3 20h18 M3 20 15 8h4v12',
@@ -16,3 +17,4 @@
         <x-form.toggle-group :options="$taxonomy['accessibility_feature_list']" model="state.accessibility_feature_list" :icons="$accessibilityIcons" />
     </x-form.field>
 </div>
+@endif
