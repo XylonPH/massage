@@ -1,7 +1,7 @@
 Title: Massage Nexus Roadmap
-Document Version: 2.09
+Document Version: 2.10
 Date Created: 2026-07-16
-Revision Date: 2026-07-23
+Revision Date: 2026-07-24
 Document Description: This Roadmap organizes Massage Nexus into dependency phases, milestones, release gates, and continuing operations. It maps every major system—including directory profiles, research, editorial content, News, Massage Campus, quizzes, surveys, community, Support, unified permission-aware workspace capabilities, booking, monetization, applications, and global expansion—without duplicating the thousands of detailed feature items kept in the Features document. Completion status belongs in the Simple Checklist, and detailed behavior belongs in each system specification.
 
 ================================================================================
@@ -387,6 +387,45 @@ Current directory data-model checkpoint (2026-07-21):
   boundaries have PHP structure guides and the required project taxonomy;
 - runtime persistence, migrations, imports, forms, routes, booking resources, private-person
   identity storage, and public UI integration remain later implementation work.
+
+Establishment Profile Expansion — planning capture (2026-07-24):
+The project owner dictated a large batch of requirements for the "Add a Spa" contribution form,
+the establishment public profile, and the establishment data model. This is a requirements-capture
+checkpoint only; nothing described below is implemented yet. Full item-by-item detail lives in the
+new "Establishment Profile Expansion" sections of the Simple Checklist (section 31) and Features
+(grouped summary 62 and detailed inventory section 36). Summary of what was captured:
+- corrected and expanded scope for the already-planned Amenities/Accessibility-hiding bugfix:
+  active field clearing (not just hidden-and-discarded) with a visible notice, a fuller
+  type_spa-vs-other-classification-field compatibility matrix still to be defined, and a general
+  warning-not-hard-error design principle for illogical-but-not-impossible combinations;
+- a new Legal & Verification concept (official_name clarified as the likely legal/registered name,
+  plus business registration number, TIN, and other registration numbers, opt-in public disclosure,
+  and a possible dedicated form tab), related to but distinct from the still-unbuilt
+  documentation/verification upload step;
+- confirmed the Identity/Location shared language switcher is correctly implemented as one shared
+  context, not a genuine duplication (see docs/06-user-interface/add-spa-form-ui.txt section 6);
+- Parking taxonomy mutual-exclusivity (No Parking Available vs. every other option) and its overlap
+  with the general Amenities list's Parking option, now noted directly on
+  data/taxonomy/massage_nexus/establishment_classification.json;
+- facility-option wording changes applied to establishment_classification.json (In Room (Private)
+  to Private Room; Available on Request to Available Upon Request; Shared to Shared Space, except
+  Shower Availability's Shared, which became Varsity Shower);
+- new shared/communal facility capacity-count fields and a building floor count, staff gender/
+  language summary fields, and confirmation that payment methods and generic hospitality amenities
+  (pool, buffet, gym, bar, cafeteria) were the only genuinely missing public-profile fields against
+  docs/05-directory/spa-profile.txt — added to data/structure_guide/establishment_main.php (version
+  1.60) and establishment_classification.json;
+- a phased multi-step wizard restructuring backlog item (image upload reusing the MediaImage
+  model, menu/pricing, staff assignment, promos/vouchers, house rules using the article-body
+  pattern, renumbered review/submit) and a possible Access/Delivery tab split plus a dedicated
+  Parking tab with a paid-parking rate field;
+- confirmation that provider menu/pricing (establishment_service, service_main) and staff/
+  practitioner-to-establishment tie-in (practitioner_main, establishment_practitioner) already
+  exist; promos/vouchers for establishments do not yet exist (quote_main is an unrelated homepage
+  Quote of the Day system) and establishment_location does not yet exist as its own collection —
+  both remain future structure-guide-authoring work, deliberately not drafted in this pass;
+- long-term aspirational items: Google/Google Maps listing import to pre-fill submissions, and
+  AI-assisted intake parsing free-text into spa details, therapist list, and promos/vouchers.
 
 PHASE 5 EXIT GATE — DIRECTORY DISCOVERY FOUNDATION
 

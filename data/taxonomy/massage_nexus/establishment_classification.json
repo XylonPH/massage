@@ -661,7 +661,35 @@
                 "option_code": "LOUNGE",
                 "option_label": "Waiting Lounge",
                 "option_description": ""
+            },
+            {
+                "option_code": "POOL",
+                "option_label": "Swimming Pool",
+                "option_description": ""
+            },
+            {
+                "option_code": "BUFFET",
+                "option_label": "Food Buffet",
+                "option_description": ""
+            },
+            {
+                "option_code": "GYM",
+                "option_label": "Gym",
+                "option_description": ""
+            },
+            {
+                "option_code": "BAR",
+                "option_label": "Bar",
+                "option_description": ""
+            },
+            {
+                "option_code": "CAFE",
+                "option_label": "Cafeteria",
+                "option_description": ""
             }
+        ],
+        "classification_note": [
+            "PLANNED (captured 2026-07-24): POOL, BUFFET, GYM, BAR, and CAFE were added to close a gap identified against docs/05-directory/spa-profile.txt; see PRK's duplication note under the parking_availability field above."
         ]
     },
     {
@@ -791,6 +819,11 @@
             { "option_code": "PRK_NEARBY_PAID", "option_label": "Nearby Paid Lot", "option_description": "" },
             { "option_code": "PRK_VALET", "option_label": "Valet Parking", "option_description": "" },
             { "option_code": "PRK_MOTO_ONLY", "option_label": "Motorcycle Parking Only", "option_description": "" }
+        ],
+        "classification_note": [
+            "PLANNED (not yet enforced, captured 2026-07-24): NONE (No Parking Available) should become mutually exclusive with every other option in this field once form validation is updated — selecting NONE should clear any other selected parking option and selecting any other option should clear NONE. This field currently allows both to be selected simultaneously.",
+            "PLANNED (not yet enforced, captured 2026-07-24): the general amenity_list field's PRK (Parking) code duplicates this dedicated field with no cross-validation between the two. A future pass should evaluate deprecating amenity_list.PRK in favor of this field once the establishment form validates the two together; amenity_list.PRK is not removed in this documentation pass because establishment_main sample data and existing code still reference it.",
+            "PLANNED (not yet enforced, captured 2026-07-24): a future pass should add a numeric paid-parking rate field (amount + currency) once it is confirmed that PRK_ONS_PAID/PRK_NEARBY_PAID paid parking should carry a stored rate rather than remaining free-text in parking_note."
         ]
     },
     {
@@ -801,17 +834,17 @@
         "field_option": [
             {
                 "option_code": "IR",
-                "option_label": "In Room (Private)",
+                "option_label": "Private Room",
                 "option_description": ""
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared",
+                "option_label": "Varsity Shower",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available on Request",
+                "option_label": "Available Upon Request",
                 "option_description": "May require an additional fee, depending on the establishment."
             },
             {
@@ -824,6 +857,9 @@
                 "option_label": "Unknown",
                 "option_description": ""
             }
+        ],
+        "classification_note": [
+            "Labels relabeled 2026-07-24: IR was \"In Room (Private)\", NR was \"Available on Request\". SC is \"Varsity Shower\" specifically for this field (a communal/shared shower facility term) rather than the generic \"Shared Space\" used on the other availability fields below; option codes are unchanged."
         ]
     },
     {
@@ -834,17 +870,17 @@
         "field_option": [
             {
                 "option_code": "IR",
-                "option_label": "In Room (Private)",
+                "option_label": "Private Room",
                 "option_description": ""
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared",
+                "option_label": "Shared Space",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available on Request",
+                "option_label": "Available Upon Request",
                 "option_description": "May require an additional fee, depending on the establishment."
             },
             {
@@ -857,6 +893,9 @@
                 "option_label": "Unknown",
                 "option_description": ""
             }
+        ],
+        "classification_note": [
+            "Labels relabeled 2026-07-24: IR was \"In Room (Private)\", SC was \"Shared\", NR was \"Available on Request\". Option codes are unchanged."
         ]
     },
     {
@@ -867,17 +906,17 @@
         "field_option": [
             {
                 "option_code": "IR",
-                "option_label": "In Room (Private)",
+                "option_label": "Private Room",
                 "option_description": ""
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared",
+                "option_label": "Shared Space",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available on Request",
+                "option_label": "Available Upon Request",
                 "option_description": "May require an additional fee, depending on the establishment."
             },
             {
@@ -890,6 +929,9 @@
                 "option_label": "Unknown",
                 "option_description": ""
             }
+        ],
+        "classification_note": [
+            "Labels relabeled 2026-07-24: IR was \"In Room (Private)\", SC was \"Shared\", NR was \"Available on Request\". Option codes are unchanged."
         ]
     },
     {
@@ -900,17 +942,17 @@
         "field_option": [
             {
                 "option_code": "IR",
-                "option_label": "In Room (Private)",
+                "option_label": "Private Room",
                 "option_description": ""
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared",
+                "option_label": "Shared Space",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available on Request",
+                "option_label": "Available Upon Request",
                 "option_description": "May require an additional fee, depending on the establishment."
             },
             {
@@ -923,6 +965,9 @@
                 "option_label": "Unknown",
                 "option_description": ""
             }
+        ],
+        "classification_note": [
+            "Labels relabeled 2026-07-24: IR was \"In Room (Private)\", SC was \"Shared\", NR was \"Available on Request\". Option codes are unchanged."
         ]
     },
     {
@@ -933,17 +978,17 @@
         "field_option": [
             {
                 "option_code": "IR",
-                "option_label": "In Room (Private)",
+                "option_label": "Private Room",
                 "option_description": ""
             },
             {
                 "option_code": "SC",
-                "option_label": "Shared",
+                "option_label": "Shared Space",
                 "option_description": ""
             },
             {
                 "option_code": "NR",
-                "option_label": "Available on Request",
+                "option_label": "Available Upon Request",
                 "option_description": "May require an additional fee, depending on the establishment."
             },
             {
@@ -956,6 +1001,10 @@
                 "option_label": "Unknown",
                 "option_description": ""
             }
+        ],
+        "classification_note": [
+            "Labels relabeled 2026-07-24: IR was \"In Room (Private)\", SC was \"Shared\", NR was \"Available on Request\". Option codes are unchanged.",
+            "PLANNED (captured 2026-07-24): a future pass should add locker_count_total / locker_count_available capacity fields to establishment_main (see that structure guide's 2026-07-24 addition) alongside this availability code."
         ]
     },
     {

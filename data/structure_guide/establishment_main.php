@@ -1,7 +1,7 @@
 <?php
 /**
  * Title: Massage Nexus Establishment Main Structure Guide
- * Version: 1.50
+ * Version: 1.60
  * Collection: establishment_main
  * Description: Stores one establishment or supported provider's public profile and directory classification record.
  * Purpose: Documents the establishment_main record shape for review, validation, comparison, and implementation without acting as runtime code, a migration, or a seed.
@@ -10,10 +10,36 @@
  * - Public location and contact values must not expose private residential addresses or personal channels.
  * - Contact channels and operating schedules are loaded from their authoritative collections; they are not duplicated as unsourced snapshots here.
  * - The current public Spa page may use synthetic records until persistent establishment work is complete.
+ *
+ * 2026-07-24 addition (planning capture, not yet implemented in the form or public profile):
+ * - building_floor_count, and the shared/communal-facility capacity counts
+ *   (shower_shared_capacity, sauna_shared_capacity, steam_room_shared_capacity,
+ *   jacuzzi_shared_capacity, locker_count_total, locker_count_available) were added to close a
+ *   gap identified against docs/05-directory/spa-profile.txt: hospitality amenities (floor count)
+ *   and shared/communal facility capacity had no field to record.
+ * - staff_gender_list and staff_language_id_list were added as establishment-level denormalized
+ *   summaries (which staff genders and communication languages are represented on-site) for public
+ *   profile display and directory search filtering. Individual therapist gender and language remain
+ *   authoritative on practitioner_main; these two summary fields are populated from the
+ *   establishment's confirmed roster and are not independently authored. The exact recompute trigger
+ *   (on roster change vs. scheduled) is not yet decided.
+ * - payment_method_list already existed on this collection before this pass and already has a
+ *   matching taxonomy (data/taxonomy/shared/finance_and_payment.json field type_payment_method,
+ *   including CSH, CC, DC, BTR, EWL, CHK, VCH, SVC, TRC, QRP, MOB, OTH); no change was needed for
+ *   payment methods.
+ * - Swimming pool, food buffet, gym, bar, and cafeteria were added as new amenity_list taxonomy
+ *   codes (POOL, BUFFET, GYM, BAR, CAFE) rather than new scalar fields on this collection, since
+ *   amenity_list is already a generic code array; see
+ *   data/taxonomy/massage_nexus/establishment_classification.json.
+ * - A separate establishment_location collection split, a Legal & Verification field set
+ *   (official_name clarification, business registration number, TIN, other registration numbers),
+ *   sub-type-specific fields (salon/nail/beauty), and menu/staff/promo/house-rules wizard steps
+ *   are documented only in docs/01-project/roadmap.txt, simple-checklist.txt, and features.txt as
+ *   backlog; they are deliberately NOT added to this structure guide in this pass.
  */
 
 $created_at = '2026-07-20T07:25:30Z';
-$updated_at = '2026-07-22T05:16:05Z';
+$updated_at = '2026-07-24T01:11:19Z';
 $establishment_main_default = [
     'mode_service_delivery' => [],
     'target_client_focus' => [],
@@ -73,10 +99,16 @@ $establishment_main = [
     ],
     'treatment_area_list' => [['type_treatment_area' => 'ER', 'level_treatment_privacy' => 'PV', 'type_treatment_capacity' => 'I', 'quantity' => 4]], // Bounded public treatment-area summary.
     'shower_availability' => 'IR', // Shower access classification.
+    'shower_shared_capacity' => null, // Simultaneous-use capacity of the shared/varsity shower, when shower_availability is SC.
     'sauna_availability' => 'NA', // Sauna access classification.
+    'sauna_shared_capacity' => null, // Simultaneous-use capacity of the shared sauna, when sauna_availability is SC.
     'steam_room_availability' => 'NA', // Steam room access classification.
+    'steam_room_shared_capacity' => null, // Simultaneous-use capacity of the shared steam room, when steam_room_availability is SC.
     'jacuzzi_availability' => 'NA', // Jacuzzi access classification.
+    'jacuzzi_shared_capacity' => null, // Simultaneous-use capacity of the shared jacuzzi, when jacuzzi_availability is SC.
     'locker_availability' => 'NR', // Locker access classification.
+    'locker_count_total' => null, // Total number of lockers, when known.
+    'locker_count_available' => null, // Number of currently available/working lockers, when known.
     'couple_room_availability' => 'NA', // Couple-room access classification.
     'private_room_availability' => 'IR', // Private-room access classification.
     'curtain_divider_information' => 'NA', // Curtain/divider classification.
@@ -87,6 +119,9 @@ $establishment_main = [
     'accessibility_feature_list' => ['SFE', 'ELV'], // Confirmed accessibility codes.
     'payment_method_list' => ['CSH', 'CC'], // Accepted payment-method codes.
     'parking_availability_list' => ['PRK_ONS_FREE'], // Confirmed parking availability codes.
+    'building_floor_count' => 5, // Total number of floors in the building, when known.
+    'staff_gender_list' => ['F', 'M'], // Denormalized summary of confirmed staff genders, sourced from the establishment's confirmed practitioner roster.
+    'staff_language_id_list' => [3049], // Denormalized summary of numeric common_reference language IDs staff can communicate in, sourced from the establishment's confirmed practitioner roster.
     'date_opened' => '2024-03-01', // Best-supported opening date.
     'date_opened_precision' => 'M', // Precision of date_opened.
     'date_opened_qualifier' => 'EXA', // Qualifier of date_opened.
@@ -108,8 +143,8 @@ $establishment_main_field_order = [
     'target_client_focus', 'country_id', 'geographic_area_id_list', 'street_address', 'building_name',
     'floor_label', 'unit_label', 'postal_code', 'address_public', 'level_address_visibility',
     'location_point', 'type_coordinate', 'level_coordinate_confidence',
-    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'shower_availability', 'sauna_availability', 'steam_room_availability', 'jacuzzi_availability', 'locker_availability', 'couple_room_availability', 'private_room_availability', 'curtain_divider_information', 'air_conditioning_information', 'room_types', 'bed_mat_chair_setup', 'amenity_list',
-    'accessibility_feature_list', 'payment_method_list', 'parking_availability_list', 'date_opened', 'date_opened_precision', 'date_opened_qualifier', 'date_closed', 'date_closed_precision', 'date_closed_qualifier', 'primary_media_image_id',
+    'direction_note', 'parking_note', 'landmark_list', 'treatment_area_list', 'shower_availability', 'shower_shared_capacity', 'sauna_availability', 'sauna_shared_capacity', 'steam_room_availability', 'steam_room_shared_capacity', 'jacuzzi_availability', 'jacuzzi_shared_capacity', 'locker_availability', 'locker_count_total', 'locker_count_available', 'couple_room_availability', 'private_room_availability', 'curtain_divider_information', 'air_conditioning_information', 'room_types', 'bed_mat_chair_setup', 'amenity_list',
+    'accessibility_feature_list', 'payment_method_list', 'parking_availability_list', 'building_floor_count', 'staff_gender_list', 'staff_language_id_list', 'date_opened', 'date_opened_precision', 'date_opened_qualifier', 'date_closed', 'date_closed_precision', 'date_closed_qualifier', 'primary_media_image_id',
     'status_record_lifecycle', 'revision_number', 'created_at', 'updated_at', 'last_confirmed_at',
 ];
 
@@ -164,10 +199,16 @@ $establishment_main_field_property = [
     'landmark_list' => ['field_label' => 'Landmark List', 'field_description' => 'Bounded nearby public landmarks.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'treatment_area_list' => ['field_label' => 'Treatment Area List', 'field_description' => 'Bounded public treatment-area summary; individual bookable resources are separate.', 'type_data' => 'A', 'type_field' => 'JSE'],
     'shower_availability' => ['field_label' => 'Shower Availability', 'field_description' => 'Controlled shower-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'shower_shared_capacity' => ['field_label' => 'Shower Shared Capacity', 'field_description' => 'Confirmed simultaneous-use capacity of the shared/varsity shower, applicable when shower_availability is Shared (SC).', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'sauna_availability' => ['field_label' => 'Sauna Availability', 'field_description' => 'Controlled sauna-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'sauna_shared_capacity' => ['field_label' => 'Sauna Shared Capacity', 'field_description' => 'Confirmed simultaneous-use capacity of the shared sauna, applicable when sauna_availability is Shared (SC).', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'steam_room_availability' => ['field_label' => 'Steam Room Availability', 'field_description' => 'Controlled steam-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'steam_room_shared_capacity' => ['field_label' => 'Steam Room Shared Capacity', 'field_description' => 'Confirmed simultaneous-use capacity of the shared steam room, applicable when steam_room_availability is Shared (SC).', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'jacuzzi_availability' => ['field_label' => 'Jacuzzi Availability', 'field_description' => 'Controlled jacuzzi-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'jacuzzi_shared_capacity' => ['field_label' => 'Jacuzzi Shared Capacity', 'field_description' => 'Confirmed simultaneous-use capacity of the shared jacuzzi, applicable when jacuzzi_availability is Shared (SC).', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'locker_availability' => ['field_label' => 'Locker Availability', 'field_description' => 'Controlled locker-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
+    'locker_count_total' => ['field_label' => 'Locker Count Total', 'field_description' => 'Total number of lockers at the establishment, when known.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
+    'locker_count_available' => ['field_label' => 'Locker Count Available', 'field_description' => 'Number of currently available or working lockers, when known.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 0],
     'couple_room_availability' => ['field_label' => 'Couple Room Availability', 'field_description' => 'Controlled couple-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'private_room_availability' => ['field_label' => 'Private Room Availability', 'field_description' => 'Controlled private-room-access classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'curtain_divider_information' => ['field_label' => 'Room Divider Information', 'field_description' => 'Controlled curtain-or-divider classification.', 'type_data' => 'S', 'type_field' => 'DDL'],
@@ -178,6 +219,9 @@ $establishment_main_field_property = [
     'accessibility_feature_list' => ['field_label' => 'Accessibility Feature List', 'field_description' => 'Confirmed public accessibility codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'payment_method_list' => ['field_label' => 'Payment Method List', 'field_description' => 'Accepted payment-method codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
     'parking_availability_list' => ['field_label' => 'Parking Availability', 'field_description' => 'Confirmed parking-availability codes.', 'type_data' => 'A', 'type_field' => 'TAG'],
+    'building_floor_count' => ['field_label' => 'Building Floor Count', 'field_description' => 'Total number of floors in the building housing the establishment, when known.', 'type_data' => 'I', 'type_field' => 'NMB', 'min_number' => 1],
+    'staff_gender_list' => ['field_label' => 'Staff Gender List', 'field_description' => 'Denormalized summary of confirmed staff genders, sourced from the establishment\'s confirmed practitioner roster and reusing the shared gender_identity taxonomy (data/taxonomy/shared/person_identity_and_contact.json); not independently authored here.', 'type_data' => 'A', 'type_field' => 'TAG'],
+    'staff_language_id_list' => ['field_label' => 'Staff Language ID List', 'field_description' => 'Denormalized summary of numeric common_reference language IDs staff can communicate in, sourced from the establishment\'s confirmed practitioner roster; not independently authored here.', 'type_data' => 'A', 'type_field' => 'TAG', 'is_relational' => true],
     'date_opened' => ['field_label' => 'Date Opened', 'field_description' => 'Best-supported opening date, denormalized from the authoritative establishment_event opening record for display and query.', 'type_data' => 'S', 'type_field' => 'DTI'],
     'date_opened_precision' => ['field_label' => 'Date Opened Precision', 'field_description' => 'Controlled precision of date_opened, matching establishment_event.type_date_precision.', 'type_data' => 'S', 'type_field' => 'DDL'],
     'date_opened_qualifier' => ['field_label' => 'Date Opened Qualifier', 'field_description' => 'Controlled qualifier of date_opened, matching establishment_event.type_date_qualifier.', 'type_data' => 'S', 'type_field' => 'DDL'],
