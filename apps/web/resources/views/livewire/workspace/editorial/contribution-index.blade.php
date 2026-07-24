@@ -46,7 +46,7 @@
                             <td class="px-5 py-4 text-right whitespace-nowrap">
                                 @if (\Illuminate\Support\Facades\Route::has('workspace.editorial.contribution.review'))
                                     <a href="{{ route('workspace.editorial.contribution.review', $contribution) }}" wire:navigate class="font-bold text-amber-600 hover:underline dark:text-amber-400">
-                                        {{ __('editorial.review_article') }}
+                                        {{ __('editorial.review_contribution') }}
                                     </a>
                                 @endif
                             </td>

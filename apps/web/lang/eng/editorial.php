@@ -39,6 +39,7 @@ return [
     'article_decision_saved' => 'The editorial decision was saved.',
     'article_already_reviewed' => 'This submission has already been reviewed.',
     'contribution_review_title' => 'Contribution Review',
+    'review_contribution' => 'Review submission',
     'no_pending_contributions' => 'No contributions are waiting for review.',
     'untitled_contribution' => 'Untitled submission',
     'submitted' => 'Submitted :date',

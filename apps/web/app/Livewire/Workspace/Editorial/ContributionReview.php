@@ -33,9 +33,20 @@ class ContributionReview extends Component
         abort_unless($user && app(WorkspaceAccess::class)->can($user, 'workspace.editorial.access'), 403);
     }
 
-    private function pendingContribution(): Contribution
+    private function establishmentContribution(): Contribution
     {
         $contribution = Contribution::query()->findOrFail($this->contribution);
+        abort_unless(
+            $contribution->type_contribution === 'ADD' && $contribution->target_collection === 'establishment_main',
+            404
+        );
+
+        return $contribution;
+    }
+
+    private function pendingContribution(): Contribution
+    {
+        $contribution = $this->establishmentContribution();
         abort_unless($contribution->status_contribution === 'PND', 409, __('editorial.contribution_already_decided'));
 
         return $contribution;
@@ -102,7 +113,7 @@ class ContributionReview extends Component
 
     public function render(): View
     {
-        $contribution = Contribution::query()->findOrFail($this->contribution);
+        $contribution = $this->establishmentContribution();
 
         return view('livewire.workspace.editorial.contribution-review', [
             'record' => $contribution,

@@ -48,6 +48,18 @@ class ContributionReviewTest extends TestCase
         ]);
     }
 
+    private function pendingPractitionerContribution(string $practitionerName = 'Test Practitioner'): Contribution
+    {
+        return Contribution::query()->create([
+            'type_contribution' => 'ADD',
+            'target_collection' => 'practitioner_main',
+            'submitted_by_user_id' => (string) User::factory()->create()->getKey(),
+            'proposed_data' => ['practitioner_name' => ['eng' => ['text' => $practitionerName, 'method_translation' => 'HUM', 'status_review' => 'P']]],
+            'status_contribution' => 'PND',
+            'submitted_at' => now(),
+        ]);
+    }
+
     public function test_non_editorial_user_cannot_access_the_contribution_list(): void
     {
         $this->actingAs(User::factory()->create())
@@ -121,12 +133,50 @@ class ContributionReviewTest extends TestCase
     {
         $this->pendingContribution();
         $this->pendingContribution();
+        $this->pendingContribution();
 
         $this->actingAs($this->editorialUser())
             ->get('/workspace/editorial')
             ->assertOk()
-            ->assertSee('2')
+            // Scoped to the rendered contribution-count card markup itself, not just any "3"
+            // on the page (the grid layout classes contain digits like "sm:grid-cols-2").
+            ->assertSee('text-3xl font-black text-ink-950 dark:text-ink-50">3</p>', false)
             ->assertSee(route('workspace.editorial.contribution.index'), false);
+    }
+
+    public function test_a_non_establishment_contribution_review_page_404s(): void
+    {
+        $contribution = $this->pendingPractitionerContribution();
+
+        $this->actingAs($this->editorialUser())
+            ->get(route('workspace.editorial.contribution.review', $contribution))
+            ->assertNotFound();
+    }
+
+    public function test_a_non_establishment_contribution_cannot_be_approved(): void
+    {
+        $reviewer = $this->editorialUser();
+        $contribution = $this->pendingPractitionerContribution();
+        $this->actingAs($reviewer);
+
+        // Exercised directly against the component (rather than through Livewire::test's
+        // full request/snapshot cycle) so we can assert on the underlying HTTP exception the
+        // establishment-only guard raises before any promotion side effect can occur.
+        $component = new \App\Livewire\Workspace\Editorial\ContributionReview();
+        $component->mount((string) $contribution->getKey());
+        $component->showApprovalConfirmation = true;
+        $component->approvalConfirmed = true;
+
+        try {
+            $component->approve();
+            $this->fail('Expected a 404 response for a non-establishment contribution.');
+        } catch (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $exception) {
+            // Expected: the establishment-only review UI must refuse to touch this record at all.
+        }
+
+        $this->assertSame(0, Establishment::query()->count());
+        $contribution->refresh();
+        $this->assertSame('PND', $contribution->status_contribution);
     }
 
     public function test_a_decided_contribution_cannot_be_decided_again(): void
