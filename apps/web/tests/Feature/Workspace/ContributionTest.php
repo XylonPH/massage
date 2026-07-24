@@ -9,6 +9,7 @@ use App\Models\Reference\Country;
 use App\Models\Reference\Region;
 use App\Models\User;
 use App\Models\UserAccess;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Livewire;
 use Tests\Concerns\InteractsWithMongoUsers;
 use Tests\TestCase;
@@ -294,9 +295,21 @@ class ContributionTest extends TestCase
             ->test(EstablishmentForm::class)
             ->set('isContribution', true)
             ->set('currentStep', 2)
+            ->set('type_establishment_relationship', 'NON')
             ->set('state.display_name_eng', 'Calm Springs')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'Calm Springs Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep')
             ->assertHasNoErrors(['state.date_closed']);
     }
@@ -515,8 +528,20 @@ class ContributionTest extends TestCase
             ->set('state.display_name_eng', 'A Totally Unique Spa Name')
             ->set('state.type_spa', 'DY')
             ->set('state.status_establishment', 'OP')
+            ->set('state.official_name', 'A Totally Unique Spa Name Inc.')
+            ->set('state.country_id', 608)
+            ->set('state.region_id', 1)
+            ->set('state.city_name', 'Makati')
+            ->set('state.street_address', '123 Bay Street')
+            ->set('state.address_public', '123 Bay Street, Makati')
+            ->call('addRow', 'contact_channel_list')
+            ->set('state.contact_channel_list.0.type_contact_channel', 'EML')
+            ->set('state.contact_channel_list.0.contact_label', 'Front desk')
+            ->set('state.contact_channel_list.0.contact_value', 'hello@example.com')
+            ->set('state.contact_channel_list.0.contact_url', 'https://example.com')
             ->call('nextStep');
 
+        $this->assertSame(3, $test->get('currentStep'));
         $this->assertCount(0, $test->instance()->duplicateCandidates);
     }
 
@@ -1057,5 +1082,28 @@ class ContributionTest extends TestCase
             ->set('state.parking_availability_list', ['NONE']);
 
         $this->assertSame(['NONE'], $test->get('state.parking_availability_list'));
+    }
+
+    public function test_parking_none_combined_with_another_option_is_rejected_server_side_even_if_client_hook_is_bypassed(): void
+    {
+        // enforceParkingMutualExclusivity() only runs inside updatedState(), which fires on
+        // Livewire's normal ->set() path. A crafted/bypassed request (e.g. a raw network call
+        // that skips the browser's Livewire runtime) could still reach the server with both
+        // 'NONE' and another option present, so this exercises the rules() closure directly
+        // against the component's real, unmodified rule set rather than going through
+        // updatedState().
+        $component = new EstablishmentForm;
+
+        $rulesMethod = new \ReflectionMethod($component, 'rules');
+        $rulesMethod->setAccessible(true);
+        $rules = $rulesMethod->invoke($component);
+
+        $validator = Validator::make(
+            ['state' => ['parking_availability_list' => ['NONE', 'PRK_STR']]],
+            ['state.parking_availability_list' => $rules['state.parking_availability_list']]
+        );
+
+        $this->assertTrue($validator->fails());
+        $this->assertArrayHasKey('state.parking_availability_list', $validator->errors()->toArray());
     }
 }

@@ -431,7 +431,11 @@ class EstablishmentForm extends Component
             'state.bed_mat_chair_setup.*' => [Rule::in(array_keys(TaxonomyOptions::for('bed_mat_chair_setup')))],
             'state.accessibility_feature_list' => ['array'],
             'state.accessibility_feature_list.*' => [Rule::in(array_keys(TaxonomyOptions::for('accessibility_feature_list')))],
-            'state.parking_availability_list' => ['array'],
+            'state.parking_availability_list' => ['array', function (string $attribute, mixed $value, \Closure $fail): void {
+                if (is_array($value) && in_array('NONE', $value, true) && count($value) > 1) {
+                    $fail(__('editorial.parking_none_exclusive'));
+                }
+            }],
             'state.parking_availability_list.*' => [Rule::in(array_keys(TaxonomyOptions::for('parking_availability')))],
             'state.status_record_lifecycle' => ['required', 'string'],
             'state.date_opened' => ['nullable', 'date'],

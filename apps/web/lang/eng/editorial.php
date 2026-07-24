@@ -136,6 +136,7 @@ return [
     'map_picker_label' => 'Pin the location on the map',
     'map_picker_hint' => 'Drag the pin, or enter coordinates manually below.',
     'est_parking_availability' => 'Parking',
+    'parking_none_exclusive' => 'Select "No Parking Available" on its own, or choose specific parking options — not both.',
     'est_address_public' => 'Public Address',
     'est_coordinate_latitude' => 'Map Latitude',
     'est_coordinate_longitude' => 'Map Longitude',
