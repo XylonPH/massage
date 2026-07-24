@@ -109,6 +109,11 @@
                     <p class="mt-1">{{ __('editorial.detail_validation_opened_tab', ['tab' => $detailTabLabels[$activeDetailTab] ?? $detailTabLabels['identity']]) }}</p>
                 </div>
             @endif
+
+            <div class="mb-4 flex justify-end">
+                @include('livewire.workspace.establishment-form._language-switcher')
+            </div>
+
             <div x-data="{ tab: $wire.entangle('activeDetailTab'), collapsed: false }" wire:key="spa-details-tabs"
                  :class="collapsed ? 'sm:grid-cols-[4.25rem_1fr]' : 'sm:grid-cols-[13rem_1fr] lg:grid-cols-[15rem_1fr]'"
                  class="grid gap-0 sm:items-start transition-all duration-300">
@@ -150,7 +155,6 @@
 
                 {{-- Pure White Form Body Container --}}
                 <div class="min-w-0 min-h-[34rem] space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-ink-700 dark:bg-ink-900 sm:p-8">
-                    @include('livewire.workspace.establishment-form._language-switcher')
 
                     @include('livewire.workspace.establishment-form._tab-identity')
                     @include('livewire.workspace.establishment-form._tab-classification')

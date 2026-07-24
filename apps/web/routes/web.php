@@ -29,6 +29,7 @@ use App\Livewire\Workspace\Editorial\ArticleIndex as EditorialArticleIndex;
 use App\Livewire\Workspace\Editorial\ArticleReview as EditorialArticleReview;
 use App\Livewire\Workspace\Editorial\EditorialHome;
 use App\Livewire\Workspace\Editorial\EstablishmentForm;
+use App\Livewire\Content\ComicReader;
 use App\Livewire\Workspace\Editorial\EstablishmentIndex;
 use App\Livewire\Workspace\Editorial\QuoteForm;
 use App\Livewire\Workspace\Editorial\QuoteIndex;
@@ -98,6 +99,7 @@ Route::get('/directory', [DirectoryController::class, 'index'])->name('directory
 Route::get('/promo', [PromoController::class, 'index'])->name('promo.index');
 Route::get('/promos', [PromoController::class, 'index'])->name('promos.index');
 Route::get('/campus', [CampusController::class, 'index'])->name('campus.index');
+Route::get('/comic', ComicReader::class)->name('comic.index');
 
 Route::view('/help/{subpath?}', 'coming-soon', ['sectionKey' => 'navigation.help'])
     ->where('subpath', '.*')
