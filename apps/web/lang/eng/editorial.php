@@ -60,6 +60,7 @@ return [
     'contribution_approved' => 'Contribution approved and published.',
     'contribution_rejected' => 'Contribution rejected.',
     'contribution_already_decided' => 'This contribution has already been decided.',
+    'contribution_review_queue' => 'Contributions to review',
     'establishments' => 'Establishments',
     'services' => 'Services',
     'quotes' => 'Quotes',

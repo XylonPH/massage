@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Workspace\Editorial;
 
+use App\Models\Contribution;
 use App\Models\Establishment;
 use App\Models\Quote;
 use App\Models\Service;
@@ -20,6 +21,7 @@ class EditorialHome extends Component
             'serviceCount' => Service::query()->count(),
             'quoteCount' => Quote::query()->count(),
             'articleCount' => PendingArticleRevisions::all()->count(),
+            'contributionCount' => Contribution::query()->where('status_contribution', 'PND')->where('type_contribution', 'ADD')->count(),
         ])->title(__('editorial.title'));
     }
 }

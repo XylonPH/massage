@@ -117,6 +117,18 @@ class ContributionReviewTest extends TestCase
         $this->assertSame(0, \App\Models\Establishment::query()->count());
     }
 
+    public function test_editorial_dashboard_shows_pending_contribution_count(): void
+    {
+        $this->pendingContribution();
+        $this->pendingContribution();
+
+        $this->actingAs($this->editorialUser())
+            ->get('/workspace/editorial')
+            ->assertOk()
+            ->assertSee('2')
+            ->assertSee(route('workspace.editorial.contribution.index'), false);
+    }
+
     public function test_a_decided_contribution_cannot_be_decided_again(): void
     {
         $reviewer = $this->editorialUser();
